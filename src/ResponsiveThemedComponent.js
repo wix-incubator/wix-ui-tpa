@@ -4,7 +4,7 @@ import Wix from 'Wix';
 
 class SdkThemeGenerator extends React.PureComponent {
   static propTypes = {
-    children: func.isRequired,
+    render: func.isRequired,
     theme: func.isRequired,
     events: array.isRequired
   };
@@ -31,16 +31,16 @@ class SdkThemeGenerator extends React.PureComponent {
   }
 
   render() {
-    return (
-      <div>{this.props.children({calculatedTheme: this.state.calculatedTheme})}</div>
-    );
+    return this.props.render({calculatedTheme: this.state.calculatedTheme});
   }
 }
 
 export const ResponsiveThemedComponent = ({children, theme, events}) => (
-  <SdkThemeGenerator theme={theme} events={events}>
-    {({calculatedTheme}) => React.cloneElement(children, {theme: calculatedTheme})}
-  </SdkThemeGenerator>
+  <SdkThemeGenerator
+    theme={theme}
+    events={events}
+    render={({calculatedTheme}) => React.cloneElement(children, {theme: calculatedTheme})}
+    />
 );
 
 ResponsiveThemedComponent.propTypes = {
