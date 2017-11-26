@@ -11,6 +11,7 @@ class SdkThemeGenerator extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    this.update = this.update.bind(this);
     this.state = {
       calculatedTheme: props.theme(),
       events: props.events.filter(event => Wix.Events[event] !== undefined)
