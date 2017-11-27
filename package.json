@@ -85,6 +85,7 @@
       ]
     }
   },
+  "license": "MIT",
   "publishConfig": {
     "registry": "http://repo.dev.wix/artifactory/api/npm/npm-local/"
   },
