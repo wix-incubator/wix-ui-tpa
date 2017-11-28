@@ -1,11 +1,11 @@
 import React from 'react';
-import {func, node, array} from 'prop-types';
+import {func, node, array, object, oneOfType} from 'prop-types';
 import Wix from 'Wix';
 
 class SdkThemeGenerator extends React.PureComponent {
   static propTypes = {
     render: func.isRequired,
-    theme: func.isRequired,
+    theme: oneOfType([func, object]).isRequired,
     events: array.isRequired
   };
 
@@ -13,7 +13,7 @@ class SdkThemeGenerator extends React.PureComponent {
     super(props);
     this.update = this.update.bind(this);
     this.state = {
-      calculatedTheme: props.theme(),
+      calculatedTheme: getTheme(props.theme),
       events: props.events.filter(event => Wix.Events[event] !== undefined)
     };
   }
@@ -27,7 +27,7 @@ class SdkThemeGenerator extends React.PureComponent {
   }
 
   update(data) {
-    this.setState({calculatedTheme: this.props.theme(data)});
+    this.setState({calculatedTheme: getTheme(this.props.theme, data)});
   }
 
   render() {
@@ -45,7 +45,7 @@ export const ResponsiveThemedComponent = ({children, theme, events}) => (
 
 ResponsiveThemedComponent.propTypes = {
   children: node,
-  theme: func,
+  theme: oneOfType([func, object]),
   events: array
 };
 
@@ -55,3 +55,6 @@ ResponsiveThemedComponent.defaultProps = {
   events: ['STYLE_PARAMS_CHANGE']
 };
 
+function getTheme(theme, params) {
+  return typeof theme === 'function' ? theme(params) : theme;
+}
