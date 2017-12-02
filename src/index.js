@@ -1,1 +1,0 @@
-export {ResponsiveThemedComponent} from './ResponsiveThemedComponent';

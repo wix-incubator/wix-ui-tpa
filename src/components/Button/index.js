@@ -1,15 +1,5 @@
-import React from 'react';
+import {tpaComponentFactory} from '../../tpaComponentFactory';
 import CoreButton from 'wix-ui-core/Button';
-import {ResponsiveThemedComponent} from '../../ResponsiveThemedComponent';
+import {theme} from './theme';
 
-const Button = ({theme, events, ...coreProps}) => (
-  <ResponsiveThemedComponent theme={theme} events={events}>
-    <CoreButton {...coreProps}/>
-  </ResponsiveThemedComponent>
-);
-
-Button.propTypes = {
-  ...CoreButton.propTypes
-};
-
-export default Button;
+export default tpaComponentFactory({CoreComponent: CoreButton, theme});

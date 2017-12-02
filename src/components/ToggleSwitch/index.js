@@ -1,15 +1,5 @@
-import React from 'react';
+import {tpaComponentFactory} from '../../tpaComponentFactory';
 import CoreToggleSwitch from 'wix-ui-core/ToggleSwitch';
-import {ResponsiveThemedComponent} from '../../ResponsiveThemedComponent';
+import {theme} from './theme';
 
-const ToggleSwitch = ({theme, events, ...coreProps}) => (
-  <ResponsiveThemedComponent theme={theme} events={events}>
-    <CoreToggleSwitch {...coreProps}/>
-  </ResponsiveThemedComponent>
-);
-
-ToggleSwitch.propTypes = {
-  ...CoreToggleSwitch.propTypes
-};
-
-export default ToggleSwitch;
+export default tpaComponentFactory({CoreComponent: CoreToggleSwitch, theme});
