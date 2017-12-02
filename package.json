@@ -58,7 +58,7 @@
     "react-dom": "^15.5.0",
     "react-test-renderer": "^15.5.4",
     "react-test-utils": "0.0.1",
-    "wix-ui-test-utils": "^1.0.0",
+    "wix-ui-test-utils": "^1.0.7",
     "yoshi": "latest"
   },
   "babel": {
@@ -98,7 +98,8 @@
       "app": "index.js"
     },
     "externals": {
-      "react": "React"
+      "react": "React",
+      "Wix": "Wix"
     }
   },
   "jest": {
