@@ -2,12 +2,18 @@ import React from 'react';
 import {func, node, array, object, oneOfType} from 'prop-types';
 import Wix from 'Wix';
 
-class SdkThemeGenerator extends React.PureComponent {
+export class ResponsiveThemedComponent extends React.PureComponent {
   static propTypes = {
-    render: func.isRequired,
-    theme: oneOfType([func, object]).isRequired,
-    events: array.isRequired
-  };
+    children: node,
+    theme: oneOfType([func, object]),
+    events: array
+  }
+
+  static defaultProps = {
+    children: null,
+    theme: () => {},
+    events: ['STYLE_PARAMS_CHANGE']
+  }
 
   constructor(props) {
     super(props);
@@ -31,29 +37,10 @@ class SdkThemeGenerator extends React.PureComponent {
   }
 
   render() {
-    return this.props.render({calculatedTheme: this.state.calculatedTheme});
+    const {calculatedTheme} = this.state;
+    return React.cloneElement(this.props.children, {theme: calculatedTheme});
   }
 }
-
-export const ResponsiveThemedComponent = ({children, theme, events}) => (
-  <SdkThemeGenerator
-    theme={theme}
-    events={events}
-    render={({calculatedTheme}) => React.cloneElement(children, {theme: calculatedTheme})}
-    />
-);
-
-ResponsiveThemedComponent.propTypes = {
-  children: node,
-  theme: oneOfType([func, object]),
-  events: array
-};
-
-ResponsiveThemedComponent.defaultProps = {
-  children: null,
-  theme: () => {},
-  events: ['STYLE_PARAMS_CHANGE']
-};
 
 function getTheme(theme, params) {
   return typeof theme === 'function' ? theme(params) : theme;
