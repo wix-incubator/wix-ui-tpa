@@ -19,8 +19,8 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "build": "import-path --path src/components",
-    "pretest": "yoshi build && build-storybook",
+    "build": "yoshi build && import-path --path src/components",
+    "pretest": "npm run build && build-storybook",
     "test": "yoshi test --jest && yoshi test --protractor",
     "posttest": "yoshi lint",
     "start": "yoshi start & npm run storybook",
