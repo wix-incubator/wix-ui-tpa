@@ -12,7 +12,7 @@ export class ResponsiveThemedComponent extends React.PureComponent {
   static defaultProps = {
     children: null,
     theme: () => {},
-    events: ['STYLE_PARAMS_CHANGE']
+    events: ['STYLE_PARAMS_CHANGE', 'THEME_CHANGE']
   }
 
   constructor(props) {
