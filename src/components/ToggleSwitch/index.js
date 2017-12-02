@@ -1,6 +1,6 @@
 import React from 'react';
 import {func, array, object, oneOfType} from 'prop-types';
-import CoreToggleSwitch from 'wix-ui-core/dist/src/components/ToggleSwitch';
+import CoreToggleSwitch from 'wix-ui-core/ToggleSwitch';
 import {ResponsiveThemedComponent} from '../../ResponsiveThemedComponent';
 
 const ToggleSwitch = ({theme, events, ...coreProps}) => (
