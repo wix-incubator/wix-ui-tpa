@@ -41,7 +41,6 @@ export function tpaComponentFactory({CoreComponent, theme}) {
     }
 
     render() {
-      // eslint-disable-next-line no-unused-vars
       const {wixBindings, events, ...coreProps} = this.props;
       return <CoreComponent {...coreProps} theme={this.state.calculatedTheme}/>;
     }
