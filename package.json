@@ -19,14 +19,13 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "build": "yoshi build && import-path --path src/components",
+    "build": "haste build && import-path --path src/components",
     "pretest": "npm run build && build-storybook",
-    "test": "yoshi test --jest && yoshi test --protractor",
-    "posttest": "yoshi lint",
-    "start": "yoshi start & npm run storybook",
-    "release": "yoshi release && gh-pages-auto-release --dist=storybook-static",
+    "test": "haste test --jest && haste test --protractor",
+    "start": "haste start & npm run storybook",
+    "release": "haste release && gh-pages-auto-release --dist=storybook-static",
     "storybook": "start-storybook -p 6006",
-    "lint": "yoshi lint"
+    "lint": "haste lint"
   },
   "peerDependencies": {
     "react": "^15.4.0"
@@ -56,7 +55,8 @@
     "ts-jest": "^21.2.4",
     "typescript": "^2.6.2",
     "wix-ui-test-utils": "^1.0.7",
-    "yoshi": "latest"
+    "haste-preset-yoshi": "latest",
+    "haste-cli": "~0.1.16"
   },
   "license": "MIT",
   "publishConfig": {
@@ -83,5 +83,8 @@
     ],
     "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
     "setupTestFrameworkScriptFile": "wix-ui-test-utils/dist/src/jest-setup"
+  },
+  "haste": {
+    "preset": "yoshi"
   }
 }
