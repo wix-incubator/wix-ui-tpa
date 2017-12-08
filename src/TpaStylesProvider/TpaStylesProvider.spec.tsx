@@ -1,7 +1,7 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
-import {TpaStylesProvider} from './';
-import {WixSdk} from '../../test/WixSdkTestkit';
+import {TpaStylesProvider} from './TpaStyleProvider';
+import {WixSdk} from '../WixSdk/WixSdkMock';
 import {withTpaStyles} from './withTpaStyles';
 
 let wixSdk;

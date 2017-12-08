@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {object} from 'prop-types';
-import {WixSdk} from './WixSdk.d';
+import {WixSdk} from '../WixSdk/WixSdk.d';
 
 interface TpaStylesProviderProps {
   children: any;
