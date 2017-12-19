@@ -8,9 +8,9 @@
     "email": "liorbe@wix.com"
   },
   "bugs": {
-    "url": "https://github.com/wix/wix-ui/issues"
+    "url": "https://github.com/wix/wix-ui-tpa/issues"
   },
-  "homepage": "https://github.com/wix/wix-ui#readme",
+  "homepage": "https://github.com/wix/wix-ui-tpa#readme",
   "main": "./dist/src/index.js",
   "files": [
     "dist",
