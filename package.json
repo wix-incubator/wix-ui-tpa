@@ -23,7 +23,7 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "build": "haste build && import-path --path src/components",
+    "build": "haste build && import-path --path src/components --dts",
     "pretest": "npm run build && build-storybook",
     "test": "haste test --jest && haste test --protractor",
     "posttest": "haste lint",
@@ -41,9 +41,9 @@
     "wix-ui-core": "^1.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-options": "3.2.13",
-    "@storybook/react": "~3.1.0",
-    "@storybook/storybook-deployer": "~2.0.0",
+    "@storybook/addon-options": "^3.2.13",
+    "@storybook/react": "^3.1.0",
+    "@storybook/storybook-deployer": "^2.0.0",
     "@types/color": "^2.0.0",
     "@types/jest": "^21.1.8",
     "@types/react": "^16.0.25",
@@ -51,7 +51,7 @@
     "@types/storybook__react": "^3.0.5",
     "enzyme": "^2.3.0",
     "gh-pages-auto-release": "^1.1.2",
-    "import-path": "^0.0.10",
+    "import-path": "^1.0.0",
     "prop-types": "^15.5.4",
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
@@ -59,7 +59,7 @@
     "ts-jest": "^21.2.4",
     "typescript": "^2.6.2",
     "wix-ui-test-utils": "^1.0.0",
-    "haste-preset-yoshi": "latest"
+    "haste-preset-yoshi": "^1.0.19"
   },
   "license": "MIT",
   "publishConfig": {

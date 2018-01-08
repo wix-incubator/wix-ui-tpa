@@ -14,5 +14,6 @@ yarn.lock
 storybook-static
 
 /*.js
+/*.d.ts
 !wallaby.js
 !protractor.conf.js
