@@ -1,0 +1,13 @@
+:import {
+    -st-from: "../../src/components/ToggleSwitch/ToggleSwitch.st.css";
+    -st-default: ToggleSwitch;
+}
+
+.root {
+    --runtimeSettings1: '"color(color-23)"';
+    -st-extends: ToggleSwitch;
+    -st-mixin: ToggleSwitch(
+            MainColor '"color(--runtimeSettings1)"',
+            Selected '"color(color-6)"'
+    );
+}

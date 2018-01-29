@@ -28,7 +28,7 @@
     "test": "haste test --jest && haste test --protractor",
     "posttest": "haste lint",
     "test:watch": "haste test --jest --watch",
-    "start": "haste start --no-test & npm run storybook",
+    "start": "haste start & npm run storybook",
     "release": "haste release && gh-pages-auto-release --dist=storybook-static",
     "storybook": "start-storybook -p 6006"
   },
@@ -52,6 +52,7 @@
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-15": "^1.0.5",
     "gh-pages-auto-release": "^1.1.2",
+    "haste-preset-yoshi": "^1.0.19",
     "import-path": "^1.0.0",
     "prop-types": "^15.5.4",
     "react": "^15.5.0",
@@ -62,7 +63,7 @@
     "typescript": "^2.6.2",
     "wix-eventually": "^2.1.0",
     "wix-storybook-utils": "^1.0.0",
-    "haste-preset-yoshi": "^1.0.19"
+    "wix-style-processor": "^3.0.120"
   },
   "license": "MIT",
   "publishConfig": {

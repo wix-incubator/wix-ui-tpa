@@ -1,0 +1,152 @@
+:import {
+    -st-from: "../../tpaStyles/styleableExt.js";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "wix-ui-core/dist/src/components/StylableToggleSwitch/ToggleSwitchStyle.st.css";
+    -st-default: ToggleSwitch;
+}
+
+:import {
+    -st-from: "wix-ui-core/dist/src/components/StylableToggleSwitch/ToggleSwitch.st.css";
+    -st-default: BaseToggleSwitch;
+}
+
+:import {
+    -st-from: "../../tpaStyles/variables.st.css";
+    -st-named: HighlightColor;
+}
+
+:vars {
+    MainColor: value(HighlightColor);
+    Selected: value(MainColor);
+    Hover: wixApply(opacity, value(MainColor), 0.7);
+    Muted: wixApply(opacity, value(MainColor), 0.3);
+    Disabled: wixApply(opacity, wixApply(color, color-1), 0.3);
+}
+
+:vars {
+    rootWidth: initial;
+    rootHeight: initial;
+
+    transitionSpeed: 0.3s;
+    labelMovementRange: 23px;
+
+    outerLabelWidth: 45px;
+    outerLabelHeight: 24px;
+
+    borderRadius: 50px;
+    outerLabelBorderSize: 0;
+    outerLabelBorderSizeChecked: 0;
+    outerLabelBorderSizeDisabled: 0;
+    outerLabelBorderSizeHover: 0;
+    outerLabelBorderSizeHoverChecked: 0;
+
+    backgroundColor: value(Selected);
+    backgroundColorChecked: value(Selected);
+    backgroundColorDisabled: value(Disabled);
+    backgroundColorHover: value(Hover);
+    backgroundColorHoverChecked: value(Hover);
+    backgroundColorFocus: value(Hover);
+
+    outerLabelBorderColor: white;
+    outerLabelBorderColorChecked: white;
+    outerLabelBorderColorDisabled: white;
+    outerLabelBorderColorHover: white;
+    outerLabelBorderColorHoverChecked: white;
+
+    innerLabelWidth: 21px;
+    innerLabelHeight: 22px;
+
+    innerLabelBorderRadius: 50px;
+    innerLabelBorderSize: 0;
+    innerLabelBorderSizeChecked: 0;
+    innerLabelBorderSizeDisabled: 0;
+    innerLabelBorderSizeHover: 0;
+    innerLabelBorderSizeHoverChecked: 0;
+
+    innerLabelBackgroundColor: white;
+    innerLabelBackgroundColorChecked: white;
+    innerLabelBackgroundColorDisabled: white;
+    innerLabelBackgroundColorHover: white;
+    innerLabelBackgroundColorHoverChecked: white;
+
+    color: white;
+    colorChecked: white;
+    colorDisabled: white;
+    colorCheckedDisabled:white;
+    colorHover: white;
+    colorHoverChecked: white;
+    colorFocus:  white;
+
+    innerLabelBorderColor: white;
+    innerLabelBorderColorChecked: white;
+    innerLabelBorderColorDisabled: white;
+    innerLabelBorderColorHover: white;
+    innerLabelBorderColorHoverChecked: white;
+
+    toggleIconWidth: 8px;
+    toggleIconHeight: 6px;
+    toggleIconDisplay: none;
+
+    focusOutline: none;
+}
+
+.root {
+    -st-extends: BaseToggleSwitch;
+    -st-mixin: ToggleSwitch(
+        rootWidth value(rootWidth),
+        rootHeight value(rootHeight),
+        transitionSpeed value(transitionSpeed),
+        labelMovementRange value(labelMovementRange),
+        outerLabelWidth value(outerLabelWidth),
+        outerLabelHeight value(outerLabelHeight),
+        borderRadius value(borderRadius),
+        outerLabelBorderSize value(outerLabelBorderSize),
+        outerLabelBorderSizeChecked value(outerLabelBorderSizeChecked),
+        outerLabelBorderSizeDisabled value(outerLabelBorderSizeDisabled),
+        outerLabelBorderSizeHover value(outerLabelBorderSizeHover),
+        outerLabelBorderSizeHoverChecked value(outerLabelBorderSizeHoverChecked),
+        backgroundColor value(backgroundColor),
+        backgroundColorChecked value(backgroundColorChecked),
+        backgroundColorDisabled value(backgroundColorDisabled),
+        backgroundColorHover value(backgroundColorHover),
+        backgroundColorHoverChecked value(backgroundColorHoverChecked),
+        backgroundColorFocus value(backgroundColorFocus),
+        outerLabelBorderColor value(outerLabelBorderColor),
+        outerLabelBorderColorChecked value(outerLabelBorderColorChecked),
+        outerLabelBorderColorDisabled value(outerLabelBorderColorDisabled),
+        outerLabelBorderColorHover value(outerLabelBorderColorHover),
+        outerLabelBorderColorHoverChecked value(outerLabelBorderColorHoverChecked),
+        innerLabelWidth value(innerLabelWidth),
+        innerLabelHeight value(innerLabelHeight),
+        innerLabelBorderRadius value(innerLabelBorderRadius),
+        innerLabelBorderSize value(innerLabelBorderSize),
+        innerLabelBorderSizeChecked value(innerLabelBorderSizeChecked),
+        innerLabelBorderSizeDisabled value(innerLabelBorderSizeDisabled),
+        innerLabelBorderSizeHover value(innerLabelBorderSizeHover),
+        innerLabelBorderSizeHoverChecked value(innerLabelBorderSizeHoverChecked),
+        innerLabelBackgroundColor value(innerLabelBackgroundColor),
+        innerLabelBackgroundColorChecked value(innerLabelBackgroundColorChecked),
+        innerLabelBackgroundColorDisabled value(innerLabelBackgroundColorDisabled),
+        innerLabelBackgroundColorHover value(innerLabelBackgroundColorHover),
+        innerLabelBackgroundColorHoverChecked value(innerLabelBackgroundColorHoverChecked),
+        color value(color),
+        colorChecked value(colorChecked),
+        colorDisabled value(colorDisabled),
+        colorCheckedDisabled value(colorCheckedDisabled),
+        colorHover value(colorHover),
+        colorHoverChecked value(colorHoverChecked),
+        colorFocus  value(colorFocus ),
+        innerLabelBorderColor value(innerLabelBorderColor),
+        innerLabelBorderColorChecked value(innerLabelBorderColorChecked),
+        innerLabelBorderColorDisabled value(innerLabelBorderColorDisabled),
+        innerLabelBorderColorHover value(innerLabelBorderColorHover),
+        innerLabelBorderColorHoverChecked value(innerLabelBorderColorHoverChecked),
+        toggleIconWidth value(toggleIconWidth),
+        toggleIconHeight value(toggleIconHeight),
+        toggleIconDisplay value(toggleIconDisplay),
+        focusOutline value(focusOutline)
+    );
+}

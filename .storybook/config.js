@@ -3,6 +3,7 @@ import {setOptions} from '@storybook/addon-options';
 
 function loadStories() {
   require('../stories');
+  require('../mocks');
   require('./stories.scss');
 }
 
