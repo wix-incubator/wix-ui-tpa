@@ -1,1 +1,3 @@
-declare module 'Wix';
+declare interface Window {
+  Wix: any;
+}
