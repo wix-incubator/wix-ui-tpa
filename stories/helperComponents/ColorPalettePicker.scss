@@ -1,0 +1,15 @@
+.colorPalettePicker {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+}
+
+.colorPickerPalettePickerContainer {
+  height: 260px;
+  overflow-y: auto;
+}
+
+.colorPickerPaletteContainer {
+  width: 210px;
+  margin-right: 50px;
+}

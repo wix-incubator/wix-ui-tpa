@@ -1,4 +1,4 @@
-import {configure, storiesOf} from '@storybook/react';
+import {configure} from '@storybook/react';
 import {setOptions} from '@storybook/addon-options';
 
 function loadStories() {

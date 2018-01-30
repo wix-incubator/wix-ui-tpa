@@ -1,5 +1,3 @@
-import * as tpaResponse from './wix-tpa-fake-response.json';
+import * as tpaResponse from './fakeTPAInitResponse.json';
 
 window.postMessage(JSON.stringify(tpaResponse), '*');
-
-window.addEventListener('message', console.log);
