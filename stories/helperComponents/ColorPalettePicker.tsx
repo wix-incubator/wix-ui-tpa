@@ -5,14 +5,22 @@ import * as ThemeChangeEvent from '../../mocks/fakeTPAThemeChange.json';
 
 interface IColorPalettePickerState {
   selectedPalette: string[][];
-  selectedColor: {
-    value: string;
-    index: number;
+  selectedColors: {
+    [id: string]: {
+      value: string;
+      index: number;
+    }
   };
 }
 
 interface IColorPalettePickerProps {
-  wixParams?: Array<{ label: string, wixParam: string }>;
+  wixParams?: IWixParam[];
+}
+
+interface IWixParam {
+  label: string,
+  wixParam: string,
+  defaultColor: string
 }
 
 const COLOR_PALETTE = [
@@ -24,57 +32,101 @@ const COLOR_PALETTE = [
 ];
 
 export class ColorPalettePicker extends React.PureComponent<IColorPalettePickerProps, IColorPalettePickerState> {
+  static defaultProps = {
+    wixParams: []
+  };
+
   constructor(props) {
     super(props);
-
+    const {wixParams} = props;
     this.state = {
       selectedPalette: COLOR_PALETTE,
-      selectedColor: {
-        value: COLOR_PALETTE[4][2],
-        index: 14
-      }
+      selectedColors: this.getSelectedColors(wixParams)
     };
   }
 
   onPaletteChange(selectedPalette) {
-    const colorIndex = this.state.selectedColor.index;
+    const selectedColors = this.props.wixParams.reduce((obj, param) => {
+      const colorIndex = this.state.selectedColors[param.wixParam].index;
+      obj[param.wixParam] = {
+        value: selectedPalette[colorIndex % 5][(colorIndex - colorIndex % 5) / 5],
+        index: colorIndex
+      };
+      return obj;
+    }, {});
+
     this.setState({
       selectedPalette,
-      selectedColor: {value: selectedPalette[colorIndex % 5][(colorIndex - colorIndex % 5) / 5], index: colorIndex}
-    });
-
-    this.triggerThemeChange(selectedPalette);
+      selectedColors
+    }, () => this.triggerThemeChange());
   }
 
   onColorChanged(selectedColor, wixParam) {
-    this.setState({selectedColor}, () => this.triggerThemeChange(this.state.selectedPalette, this.state.selectedColor.value, wixParam));
+    this.setState({
+      selectedColors: {...this.state.selectedColors, ...{[wixParam]: selectedColor}}
+    }, () => this.triggerThemeChange());
   }
 
-  private triggerThemeChange(selectedPalette: string[][], selectedColor?: string, wixParam?) {
-    if (selectedColor) {
-      ThemeChangeEvent.params.style.colors[wixParam] = {value: selectedColor};
-    }
+  private triggerThemeChange() {
+    ThemeChangeEvent.params.style.colors = this.props.wixParams.reduce((obj, item) => {
+      const color = this.state.selectedColors[item.wixParam];
+      obj[item.wixParam] = {
+        name: `color_${this.toTPAIndex(color.index)}`,
+        value: this.state.selectedColors[item.wixParam].value
+      };
+      return obj;
+    }, {});
+
     for (let i = 5; i < ThemeChangeEvent.params.siteColors.length; i++) {
-      ThemeChangeEvent.params.siteColors[i].value = selectedPalette[Math.floor((i - 5) / 5)][(i - 5) % 5];
+      let {row, col} = this.getPaletteIndices(i - 5);
+      ThemeChangeEvent.params.siteColors[i].value = this.state.selectedPalette[row][col];
     }
     window.postMessage(JSON.stringify(ThemeChangeEvent), '*');
   }
 
+  private toTPAIndex(index) {
+    // 1 -> 1
+    // 2 -> 6
+    // 3 -> 11
+    // 4 -> 16
+    // 5 -> 21
+    // 6 -> 11,
+    return index;
+  }
+
+  private getSelectedColors(wixParams: IWixParam[] = []) {
+    return wixParams.reduce((obj, item) => {
+      const {row, col} = this.getPaletteIndices(parseInt(item.defaultColor.split('-')[1], 10) - 1);
+      obj[item.wixParam] = {
+        value: COLOR_PALETTE[row][col],
+        index: 14
+      };
+      return obj;
+    }, {});
+  }
+
+  private getPaletteIndices(TPAIdx: number): { row: number, col: number } {
+    return {
+      row: Math.floor(TPAIdx / 5),
+      col: TPAIdx % 5
+    };
+  }
+
   render() {
     return <div className={styles.colorPalettePicker}>
-      <div className={styles.colorPickerPaletteContainer}>
+      <ul className={styles.colorPickerList}>
         {
           this.props.wixParams.map(({label, wixParam}) =>
-            <div>
-              <label>{label}</label>
+            <li key={wixParam}>
+              <label>{label} - {this.state.selectedColors[wixParam].value}</label>
               <UI.ColorPickerPalette onChange={(value, index) => this.onColorChanged({value, index}, wixParam)}
-                                     value={this.state.selectedColor.value}
+                                     value={this.state.selectedColors[wixParam].value}
                                      palette={this.state.selectedPalette}/>
-            </div>
+            </li>
           )
         }
-      </div>
-      <div className={styles.colorPickerPalettePickerContainer}>
+      </ul>
+      <div className={styles.palettePickerContainer}>
         <UI.ColorPickerPalettePicker value={this.state.selectedPalette}
                                      onChange={(palette) => this.onPaletteChange(palette)}/>
       </div>
