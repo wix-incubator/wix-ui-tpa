@@ -4,10 +4,11 @@
 }
 
 .root {
-    --runtimeSettings1: '"color(color-23)"';
-    -st-extends: ToggleSwitch;
-    -st-mixin: ToggleSwitch(
-            MainColor '"color(--runtimeSettings1)"',
-            Selected '"color(color-6)"'
-    );
-}
+     --runtimeSettings1: '"color(color-24)"';
+     -st-extends: ToggleSwitch;
+     -st-mixin: ToggleSwitch(
+        Hover '"color(--runtimeSettings1)"',
+        Selected '"color(color-19)"',
+        backgroundColorHover '"color(color-11)"'
+     );
+ }

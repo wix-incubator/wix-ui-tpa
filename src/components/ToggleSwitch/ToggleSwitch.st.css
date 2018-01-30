@@ -24,7 +24,7 @@
     Selected: value(MainColor);
     Hover: wixApply(opacity, value(MainColor), 0.7);
     Muted: wixApply(opacity, value(MainColor), 0.3);
-    Disabled: wixApply(opacity, wixApply(color, color-1), 0.3);
+    Disabled: wixApply(opacity, wixApply(color, color-5), 0.9);
 }
 
 /* Extended Variables */
@@ -54,7 +54,7 @@
 
     outerLabelBorderColor: white;
     outerLabelBorderColorChecked: white;
-    outerLabelBorderColorDisabled: white;
+    outerLabelBorderColorDisabled: value(Disabled);
     outerLabelBorderColorHover: white;
     outerLabelBorderColorHoverChecked: white;
 
