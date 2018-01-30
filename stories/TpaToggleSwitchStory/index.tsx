@@ -18,13 +18,13 @@ storiesOf('Components', module)
   .add('TpaToggleSwitch', () =>
     <TabbedView tabs={['API', 'Readme']}>
       <div>
+        <ColorPalettePicker wixParams={[{label: 'Selected', wixParam: 'runtimeSettings1'}, {label: '4fff', wixParam: 'runtimeSettings2'}]}/>
         <CodeExample title="Toggle Switch Raw" code={RawSource}>
           <TpaToggleSwitchExample/>
         </CodeExample>
         <CodeExample title="Toggle Switch Extension Example" code={['//st.css:', CssSource, '', '//Code:', RawSourceExtended].join('\n')}>
           <TpaToggleSwitchExtensionExample/>
         </CodeExample>
-        <ColorPalettePicker wixParams={[{label: 'Selected', wixParam: 'runtimeSettings1'}, {label: '4fff', wixParam: 'runtimeSettings2'}]}/>
       </div>
 
       <Markdown source={Readme}/>

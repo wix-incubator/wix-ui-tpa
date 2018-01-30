@@ -30,7 +30,7 @@
     "test:watch": "haste test --jest --watch",
     "start": "haste start --no-test & npm run compile-base-ui && npm run storybook",
     "release": "haste release && gh-pages-auto-release --dist=storybook-static",
-    "storybook": "start-storybook -p 6006 -s ./storybook-static"
+    "storybook": "start-storybook -p 6006 -s ./storybook-static/resources"
   },
   "peerDependencies": {
     "react": "^15.4.0"
