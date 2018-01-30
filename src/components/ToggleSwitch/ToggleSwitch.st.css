@@ -18,6 +18,7 @@
     -st-named: HighlightColor;
 }
 
+/* Recommended Variables */
 :vars {
     MainColor: value(HighlightColor);
     Selected: value(MainColor);
@@ -26,6 +27,7 @@
     Disabled: wixApply(opacity, wixApply(color, color-1), 0.3);
 }
 
+/* Extended Variables */
 :vars {
     rootWidth: initial;
     rootHeight: initial;

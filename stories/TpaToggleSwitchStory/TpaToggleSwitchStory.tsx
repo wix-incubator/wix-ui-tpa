@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {TpaToggleSwitch} from '../../src/index';
+import {TpaToggleSwitch} from '../../src';
+
 import {ToggleSwitchProps} from 'wix-ui-core/dist/src/components/ToggleSwitch';
 import toggleSwitchStylesExt from './ToggleSwitchExt.st.css';
 import {withStylable} from 'wix-ui-core/dist/src';
@@ -22,7 +23,7 @@ export class TpaToggleSwitchStory extends React.Component<any, any> {
                        checked={this.state.checked}/>
       <div style={{marginTop: '24px'}}>Extended Component:</div>
       <TpaToggleSwitchExt onChange={() => this.setState({checked: !this.state.checked})}
-                       checked={this.state.checked}/>
+                          checked={this.state.checked}/>
     </div>;
   }
 }
