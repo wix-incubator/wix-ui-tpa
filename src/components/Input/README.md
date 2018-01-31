@@ -9,7 +9,12 @@ By default the Input will pull the theme from the site (site colors),
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
-| MainColor  | string   | Palette color-8 | The main color of the toggle, all other colors are driven by it |
+| MainBorderColor  | string   | Palette color-5 | The color of the input border - 20% opacity by default, no opacity when focused |
+| MainBackgroundColor  | string   | transparent | The color of the background of the input, 30% opacity when disabled |
+| MainTextColor  | string   | Palette color-5 | The color of the text/placeholder, 30% opacity when disabled and placeholder |
+| lineHeight  | css height   | 42px | the height of the input and the text |
+| fontSize  | css size   | 15px | the size of the text inside the input |
+
 Full list of supported props can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=Input)
 
 
@@ -24,7 +29,10 @@ In order to override the theme, use Wix Styleable extends capabilities and wrap 
 
     //once mixin is pulled, you can override theme props as follows
     .root {
-
+        -st-extends: ToggleSwitch;
+        -st-mixin: ToggleSwitch(
+        //overrides
+        );
     }
     ```
 
