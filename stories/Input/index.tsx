@@ -10,6 +10,7 @@ import * as Readme from '../../src/components/Input/README.md';
 import * as RawSource from '!raw-loader!./InputExample.tsx';
 import {InputExample} from './InputExample';
 import {ColorPalettePicker} from '../helperComponents/ColorPalettePicker';
+import {InputExtendedExample} from './InputExtendedExample';
 
 storiesOf('Components', module)
   .add('TpaInput', () =>
@@ -20,13 +21,17 @@ storiesOf('Components', module)
             <InputExample/>
           </CodeExample>
           <CodeExample title="Input Extended" code={RawSource}>
-            <InputExample/>
+            <InputExtendedExample value={'Some text here'}/>
           </CodeExample>
         </div>
         <ColorPalettePicker wixParams={[{
-          label: 'TBD',
-          wixParam: 'TBD',
-          defaultColor: 'color-23'
+          label: 'Background Color',
+          wixParam: 'inputBackgroundColor',
+          defaultColor: 'color-1'
+        }, {
+          label: 'Text Color',
+          wixParam: 'inputTextColor',
+          defaultColor: 'color-5'
         }]}/>
       </div>
       <Markdown source={Readme}/>
