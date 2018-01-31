@@ -18,9 +18,9 @@ interface IColorPalettePickerProps {
 }
 
 interface IWixParam {
-  label: string,
-  wixParam: string,
-  defaultColor: string
+  label: string;
+  wixParam: string;
+  defaultColor: string;
 }
 
 const COLOR_PALETTE = [
