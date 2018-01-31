@@ -1,0 +1,84 @@
+:import {
+    -st-from: "../../tpaStyles/styleableExt.js";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "wix-ui-core/dist/src/components/Input/InputStyle.st.css";
+    -st-default: Input;
+}
+
+:import {
+    -st-from: "wix-ui-core/dist/src/components/Input/Input.st.css";
+    -st-default: BaseInput;
+}
+
+:import {
+    -st-from: "../../tpaStyles/variables.st.css";
+    -st-named: HighlightColor;
+}
+
+/* Recommended Variables */
+:vars {
+    MainBorderColor: wixApply(color, color-5);
+    MainBackgroundColor: transparent;
+    MainTextColor: wixApply(color, color-5);
+    lineHeight: 42px;
+    fontSize: 15px;
+}
+
+/* Extended Variables */
+:vars {
+    color: value(MainTextColor);
+    colorDisabled: wixApply(opacity, value(MainTextColor), 0.3);
+    colorHover: value(MainTextColor);
+    colorFocus: value(MainTextColor);
+    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.3);
+    backgroundColor: value(MainBackgroundColor);
+    backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), 0.3);
+    backgroundColorHover: value(MainBackgroundColor);
+    backgroundColorFocus: value(MainBackgroundColor);
+    borderColor: wixApply(opacity, value(MainBorderColor), 0.2);
+    borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.2);
+    borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);
+    borderColorFocus: value(MainBorderColor);
+    hoverBorderColor: value(MainBorderColor);
+    borderRadius: 0;
+    border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
+}
+
+.root {
+    -st-extends: BaseInput;
+    -st-states: valid, invalid;
+    -st-mixin: Input(
+        color value(color),
+        colorDisabled value(colorDisabled),
+        colorHover value(colorHover),
+        colorFocus value(colorFocus),
+        colorPlaceholder value(colorPlaceholder),
+        backgroundColor value(backgroundColor),
+        backgroundColorDisabled value(backgroundColorDisabled),
+        backgroundColorHover value(backgroundColorHover),
+        backgroundColorFocus value(backgroundColorFocus),
+        borderColor value(borderColor),
+        borderColorDisabled value(borderColorDisabled),
+        borderColorHover value(borderColorHover),
+        borderColorFocus value(borderColorFocus),
+        hoverBorderColor value(hoverBorderColor),
+        borderRadius value(borderRadius),
+        fontSize value(fontSize),
+        border value(border)
+    );
+}
+
+/*input overrides*/
+.root::root {
+    line-height: value(lineHeight);
+    height: value(lineHeight);
+    transition: border-color .1s ease-in;
+    padding: 0 10px;
+}
+
+.root:invalid::root {
+    border-color: red;
+}

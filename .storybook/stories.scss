@@ -9,3 +9,9 @@ body {
   line-height: 1.2;
   font-size: 13px;
 }
+
+:global(.tpa-container) {
+  padding: 25px 50px;
+  color: "color(color-5)";
+  background-color: "color(color-1)";
+}

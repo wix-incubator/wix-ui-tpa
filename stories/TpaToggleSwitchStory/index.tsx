@@ -19,9 +19,16 @@ storiesOf('Components', module)
     <TabbedView tabs={['API', 'Readme']}>
       <div>
         <CodeExample title="Toggle Switch Raw" code={RawSource}>
-          <TpaToggleSwitchExample/>
+          <div className="tpa-container">
+            <TpaToggleSwitchExample/>
+          </div>
         </CodeExample>
-        <CodeExample title="Toggle Switch Extension Example - with app settings" code={['//st.css:', CssSource, '', '//Code:', RawSourceExtended].join('\n')}>
+        <CodeExample title="Toggle Switch Extension Example - with app settings"
+                     code={['//st.css:', CssSource, '', '//Code:', RawSourceExtended].join('\n')}>
+          <div className="tpa-container">
+            <TpaToggleSwitchExtensionExample/>
+            <h3>You set a new value for disabled color and selected color by picking colors from the color picker</h3>
+          </div>
           <ColorPalettePicker wixParams={[{
             label: 'Selected color',
             wixParam: 'runtimeSettings1',
@@ -31,8 +38,6 @@ storiesOf('Components', module)
             wixParam: 'runtimeSettings2',
             defaultColor: 'color-2'
           }]}/>
-          <TpaToggleSwitchExtensionExample/>
-          <label>You set a new value for disabled color and selected color by picking colors from the color picker</label>
         </CodeExample>
       </div>
 
