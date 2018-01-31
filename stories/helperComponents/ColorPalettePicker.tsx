@@ -41,15 +41,16 @@ export class ColorPalettePicker extends React.PureComponent<IColorPalettePickerP
     const {wixParams} = props;
     this.state = {
       selectedPalette: COLOR_PALETTE,
-      selectedColors: this.getSelectedColors(wixParams)
+      selectedColors: this.getInitialSelectedColors(wixParams)
     };
   }
 
   onPaletteChange(selectedPalette) {
     const selectedColors = this.props.wixParams.reduce((obj, param) => {
       const colorIndex = this.state.selectedColors[param.wixParam].index;
+      const {row, col} = this.getPaletteIndicesFromTPAIdx(this.toTPAIndex(colorIndex) - 1);
       obj[param.wixParam] = {
-        value: selectedPalette[colorIndex % 5][(colorIndex - colorIndex % 5) / 5],
+        value: selectedPalette[col][row],
         index: colorIndex
       };
       return obj;
@@ -78,37 +79,33 @@ export class ColorPalettePicker extends React.PureComponent<IColorPalettePickerP
     }, {});
 
     for (let i = 5; i < ThemeChangeEvent.params.siteColors.length; i++) {
-      let {row, col} = this.getPaletteIndices(i - 5);
-      ThemeChangeEvent.params.siteColors[i].value = this.state.selectedPalette[row][col];
+      let {row, col} = this.getPaletteIndicesFromTPAIdx(i - 5);
+      ThemeChangeEvent.params.siteColors[i].value = this.state.selectedPalette[col][row];
     }
     window.postMessage(JSON.stringify(ThemeChangeEvent), '*');
   }
 
   private toTPAIndex(index) {
-    // 1 -> 1
-    // 2 -> 6
-    // 3 -> 11
-    // 4 -> 16
-    // 5 -> 21
-    // 6 -> 11,
-    return index;
+    const {row, col} = this.getPaletteIndicesFromTPAIdx(index);
+    return row * 5 + col + 1;
   }
 
-  private getSelectedColors(wixParams: IWixParam[] = []) {
+  private getInitialSelectedColors(wixParams: IWixParam[] = []) {
     return wixParams.reduce((obj, item) => {
-      const {row, col} = this.getPaletteIndices(parseInt(item.defaultColor.split('-')[1], 10) - 1);
+      let tpaIdx = parseInt(item.defaultColor.split('-')[1], 10) - 1;
+      const {row, col} = this.getPaletteIndicesFromTPAIdx(tpaIdx);
       obj[item.wixParam] = {
-        value: COLOR_PALETTE[row][col],
-        index: 14
+        value: COLOR_PALETTE[col][row],
+        index: row * 5 + col
       };
       return obj;
     }, {});
   }
 
-  private getPaletteIndices(TPAIdx: number): { row: number, col: number } {
+  private getPaletteIndicesFromTPAIdx(TPAIdx: number): { row: number, col: number } {
     return {
-      row: Math.floor(TPAIdx / 5),
-      col: TPAIdx % 5
+      col: (TPAIdx - TPAIdx % 5) / 5,
+      row: TPAIdx % 5
     };
   }
 
