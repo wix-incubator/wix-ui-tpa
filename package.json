@@ -23,14 +23,15 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
+    "compile-base-ui": "npm run clean && node ./.storybook/base-ui-compiler.js",
     "build": "haste build && import-path --path src/components --dts",
     "pretest": "haste lint && npm run build && build-storybook && npm run compile-base-ui",
     "test": "haste test --jest && haste test --protractor",
     "test:watch": "haste test --jest --watch",
     "start": "haste start --no-test & npm run compile-base-ui && npm run storybook",
     "release": "haste release && gh-pages-auto-release --dist=storybook-static",
-    "storybook": "start-storybook -p 6006 -s ./storybook-static/resources"
+    "storybook": "start-storybook -p 6006 -s ./storybook-static",
+    "clean": "rm -rf storybook-static"
   },
   "peerDependencies": {
     "react": "^15.4.0"

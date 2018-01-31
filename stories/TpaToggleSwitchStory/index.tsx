@@ -18,20 +18,21 @@ storiesOf('Components', module)
   .add('TpaToggleSwitch', () =>
     <TabbedView tabs={['API', 'Readme']}>
       <div>
-        <ColorPalettePicker wixParams={[{
-          label: 'Selected',
-          wixParam: 'runtimeSettings1',
-          defaultColor: 'color-23'
-        }, {
-          label: 'Disabled',
-          wixParam: 'runtimeSettings2',
-          defaultColor: 'color-2'
-        }]}/>
         <CodeExample title="Toggle Switch Raw" code={RawSource}>
           <TpaToggleSwitchExample/>
         </CodeExample>
-        <CodeExample title="Toggle Switch Extension Example" code={['//st.css:', CssSource, '', '//Code:', RawSourceExtended].join('\n')}>
+        <CodeExample title="Toggle Switch Extension Example - with app settings" code={['//st.css:', CssSource, '', '//Code:', RawSourceExtended].join('\n')}>
+          <ColorPalettePicker wixParams={[{
+            label: 'Selected color',
+            wixParam: 'runtimeSettings1',
+            defaultColor: 'color-23'
+          }, {
+            label: 'Disabled color',
+            wixParam: 'runtimeSettings2',
+            defaultColor: 'color-2'
+          }]}/>
           <TpaToggleSwitchExtensionExample/>
+          <label>You set a new value for disabled color and selected color by picking colors from the color picker</label>
         </CodeExample>
       </div>
 

@@ -3,7 +3,7 @@ const importOnce = require('node-sass-import-once');
 const fs = require('fs');
 const path = require('path');
 
-const outputFile = './storybook-static/resources/base-ui.min.css';
+const outputFile = './storybook-static/base-ui.min.css';
 
 sass.render({
   file: './.storybook/base-ui-loader.scss',
@@ -27,11 +27,11 @@ sass.render({
   }
 });
 
-
 function ensureDirectoryExistence(filePath) {
   const dirname = path.dirname(filePath);
   if (fs.existsSync(dirname)) {
     return true;
   }
+  ensureDirectoryExistence(dirname);
   fs.mkdirSync(dirname);
 }
