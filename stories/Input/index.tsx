@@ -23,7 +23,7 @@ storiesOf('Components', module)
             <InputExample/>
           </CodeExample>
           <CodeExample title="Input Extended" code={['//.st.css', ExtendedCSSRawSource, '', '//.tsx', ExtendedRawSource].join('\n')}>
-            <InputExtendedExample value={'Some text here'}/>
+            <InputExtendedExample placeholder={'Some text here'}/>
           </CodeExample>
         </div>
         <ColorPalettePicker wixParams={[{
