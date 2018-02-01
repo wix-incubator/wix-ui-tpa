@@ -1,5 +1,6 @@
+import * as React from 'react';
 import {withStylable} from 'wix-ui-core/dist/src';
-import {TpaInput, TPAInputProps} from '../../src/components/Input';
+import {TpaInput, TpaInputProps} from '../../src/components/Input';
 import extendedStyles from './InputExtendedExample.st.css';
 
-export const InputExtendedExample = withStylable<TPAInputProps>(TpaInput, extendedStyles, () => null);
+export const InputExtendedExample = withStylable<TpaInputProps>(TpaInput, extendedStyles, () => null);

@@ -28,7 +28,7 @@
     "pretest": "haste lint && npm run build && build-storybook && npm run compile-base-ui",
     "test": "haste test --jest && haste test --protractor",
     "test:watch": "haste test --jest --watch",
-    "start": "npm run clean && haste start --no-test & npm run compile-base-ui && npm run storybook",
+    "start": "npm run clean && haste start & npm run compile-base-ui && npm run storybook",
     "release": "haste release && gh-pages-auto-release --dist=storybook-static",
     "storybook": "start-storybook -p 6006 -s ./storybook-static",
     "clean": "rm -rf storybook-static",
@@ -81,6 +81,7 @@
       "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
       "\\.(css)$": "stylable-integration/jest"
     },
+    "transformIgnorePatterns": [],
     "moduleFileExtensions": [
       "ts",
       "tsx",

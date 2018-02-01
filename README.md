@@ -4,25 +4,48 @@ When writing a TPA application to be used in Wix websites, this package would al
 
 If this is the first time you are writing a TPA application, you would most likely want to read this [doc](https://dev.wix.com/).
 
-A full working TPA example which uses `wix-ui-tpa`: https://github.com/wix/wix-ui-tpa-example.
+## Using the withStylable HOC wrapper
 
-## Using the TpaStylesProvider
+In order to customize a component using styleable, you should wrap the component you want to style using the withStyleable HOC.
+The out of the box components provided by this library are inheriting the styles of the site according to the common defaults styles, but if you need to extend it do the following,
 
-First thing we need to do is to wrap the application with the `TpaStylesProvider`. This provider receives the Wix sdk and subscribes event listeners for `STYLE_PARAMS_CHANGE` AND `THEME_CHANGE` events.
-It means that each time one of these events occurs, the `TpaStylesProvider` will trigger a re-render with the updated site styles.
+1. Create a stylable st.css file that extends the component that you want to style (e.g. an input):
+    ```css
+    //st.css file
+    :import {
+      -st-from: "wix-ui-tpa/dist/src/components/Input/Input.st.css";
+      -st-default: Input;
+    }
 
-Moreover, the provider will pass to all the `wix-ui-tpa` components the site colors and fonts through the react context.
+    .root {
+      --yourSettingsKey: "color(color-5)"
+      -st-extends: Input;
+      -st-mixin: Input(
+        //overriden definitions
+        MainTextColor '"color(--yourSettingsKey)"'
+      );
+    }
+    ```
+    For more information about the capabilities of the stylable library refer to [https://stylable.io/](https://stylable.io/)
+    For more information about the "color(something)" syntax please refer to [wix-style-processor](https://github.com/wix/wix-style-processor) documentation.
 
-```javascript
-import Wix from 'Wix';
-import {TpaStylesProvider} from 'wix-ui-tpa';
 
-const App = () => (
-  <TpaStylesProvider wixSdk={Wix}>
-    // The entire application goes here
-  </TpaStylesProvider>
-);
-```
+2. create your own component that uses the overridden theme
+    ``` javascript
+    import * as React from 'react';
+    import {withStylable} from 'wix-ui-core/dist/src';
+    import {TpaInput, TpaInputProps} from 'wix-style-tpa/Input';
+    import extendedStyles from './InputExtendedExample.st.css';
+
+    export const InputExtendedExample = withStylable<TpaInputProps>(TpaInput, extendedStyles, () => null);
+    ```
+
+3. You can now render the new component:
+    ``` javascript
+        render() {
+            return <InputExtendedExample/>;
+        }
+    ```
 
 ## Adding components to the application
 
@@ -30,66 +53,30 @@ Each component in `wix-ui-tpa` is an HOC that gets the `colors` and `fonts` of t
 
 colors and sites are the values specified in the Wix sdk: `Wix.Styles.getStyleParams()`.
 
-When you render a component within the `TpaStylesProvider`, you would have to pass one additional `wixBindings` object prop.
-This prop is the dictionary that maps theme key to settings pannel key.
-
-Let's see how to add a `Button` to the application.
-Say we have the following simple settings pannel:
-
-```javascript
-import UI from 'editor-ui-lib';
-import React from 'react';
-
-export default class Settings extends React.Component {
-  render() {
-    return (
-      <UI.appSettings>
-        <UI.panelTabs defaultTabIndex={0}>
-          <UI.colorPickerSlider
-          title="Button background"
-          wix-param="_btnBgColor"
-          startWithColor="color-8"
-          startWithOpacity={0.1}
-          />
-
-        <hr/>
-
-        <UI.fontAndColorPicker
-          title="Button font and color"
-          wix-param-font="_btnFont"
-          wix-param-color="_btnTextColor"
-          startWithColor="color-1"
-          startWithTheme="font_8"
-          infoText="some information text should be here"
-          />
-        </UI.panelTabs>
-      </UI.appSettings>
-    );
-  }
-}
-```
-
-By looking at the [wix-ui-core docs] (TBD) we can see that Button's theme object contains `fonts`, `backgroundColor` and `color` properties.
-We would like to bind between the settings pannel's `wix-param*` keys in order to update the theme object with respect to the `wix-param*` changes.
-
-This is how we would do that:
-
-```javascript
-import Wix from 'Wix';
-import {TpaStylesProvider} from 'wix-ui-tpa';
-import Button from 'wix-ui-tpa/Button';
-
-const buttonWixBindings = {
-  fonts: '_btnFont',
-  backgroundColor: '_btnBgColor',
-  color: '_btnTextColor'
-};
-
-const App = () => (
-  <TpaStylesProvider wixSdk={Wix}>
-    <Button wixBindings={buttonWixBindings}>Hello</Button>
-  </TpaStylesProvider>
-);
-```
-
 Now each time the user will change the settings pannel's components, it will update the style of the components.
+
+## Testing with jest
+Since st.css are build time files, jest has to be familiar and parse them.
+As a result, a jest trasnformer is required in order to handle them:
+
+1. Install stylable-integration library
+    ```npm i -D stylable-integration```
+2. Add a transform definition to package.json
+    ``` json
+    "jest": {
+        ///...
+        "transform": {
+          "\\.(css)$": "stylable-integration/jest"
+        }
+        //...
+    }
+    ```
+
+3. Since you are probably using st.css files from the tpa/core ui library, jest has to transform files in node_modules library, so please make sure that in package.json, "transformIgnorePatterns" property does not include node_modules library.
+  Note that jest ignores node_modules library by default so in case you do not have this prop defined, please define it as an empty array:
+  ``` json
+      "jest": {
+        //...
+        "transformIgnorePatterns": []
+        //...
+      ```

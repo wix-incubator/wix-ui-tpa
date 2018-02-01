@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "sourceMap": true,
-    "noImplicitAny": false,
+    "declaration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "es5",
-    "noUnusedLocals": true,
     "jsx": "react",
     "lib": ["dom", "es2016"]
   },

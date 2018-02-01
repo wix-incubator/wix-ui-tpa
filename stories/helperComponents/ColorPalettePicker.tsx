@@ -3,7 +3,7 @@ import * as UI from 'wix-base-ui/dist/base-ui';
 import * as styles from './ColorPalettePicker.scss';
 import * as ThemeChangeEvent from '../../mocks/fakeTPAThemeChange.json';
 
-interface IColorPalettePickerState {
+export interface IColorPalettePickerState {
   selectedPalette: string[][];
   selectedColors: {
     [id: string]: {
@@ -13,11 +13,11 @@ interface IColorPalettePickerState {
   };
 }
 
-interface IColorPalettePickerProps {
+export interface IColorPalettePickerProps {
   wixParams?: IWixParam[];
 }
 
-interface IWixParam {
+export interface IWixParam {
   label: string;
   wixParam: string;
   defaultColor: string;
