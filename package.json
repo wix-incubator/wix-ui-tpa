@@ -19,20 +19,21 @@
   "files": [
     "dist",
     "*.js",
-    "src/tpaStyles/*.js",
     "!wallaby.js",
     "!protractor.conf.js"
   ],
   "scripts": {
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
-    "build": "haste build && import-path --path src/components --dts",
+    "build": "haste build && import-path --path src/components --dts && npm run copy-styleable-ext",
     "pretest": "haste lint && npm run build && build-storybook && npm run compile-base-ui",
     "test": "haste test --jest && haste test --protractor",
     "test:watch": "haste test --jest --watch",
     "start": "npm run clean && haste start --no-test & npm run compile-base-ui && npm run storybook",
     "release": "haste release && gh-pages-auto-release --dist=storybook-static",
     "storybook": "start-storybook -p 6006 -s ./storybook-static",
-    "clean": "rm -rf storybook-static"
+    "clean": "rm -rf storybook-static",
+    "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
+
   },
   "peerDependencies": {
     "react": "^15.4.0"
