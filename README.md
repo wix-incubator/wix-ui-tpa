@@ -64,11 +64,9 @@ As a result, a jest trasnformer is required in order to handle them:
 2. Add a transform definition to package.json
     ``` json
     "jest": {
-        ///...
         "transform": {
           "\\.(css)$": "stylable-integration/jest"
         }
-        //...
     }
     ```
 
@@ -76,7 +74,5 @@ As a result, a jest trasnformer is required in order to handle them:
   Note that jest ignores node_modules library by default so in case you do not have this prop defined, please define it as an empty array:
   ``` json
       "jest": {
-        //...
         "transformIgnorePatterns": []
-        //...
       ```
