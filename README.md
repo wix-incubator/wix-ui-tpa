@@ -27,6 +27,7 @@ The out of the box components provided by this library are inheriting the styles
     }
     ```
     For more information about the capabilities of the stylable library refer to [https://stylable.io/](https://stylable.io/)
+    
     For more information about the "color(something)" syntax please refer to [wix-style-processor](https://github.com/wix/wix-style-processor) documentation.
 
 
