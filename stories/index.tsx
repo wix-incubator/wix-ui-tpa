@@ -2,5 +2,5 @@ import styleProcessor from 'wix-style-processor';
 
 styleProcessor.init();
 
-require('./TpaToggleSwitchStory');
+require('./ToggleSwitch');
 require('./Input');
