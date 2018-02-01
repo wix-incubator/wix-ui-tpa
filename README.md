@@ -75,4 +75,5 @@ As a result, a jest trasnformer is required in order to handle them:
   ``` json
       "jest": {
         "transformIgnorePatterns": []
-      ```
+      }
+     ```
