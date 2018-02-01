@@ -37,15 +37,12 @@
     "react": "^15.4.0"
   },
   "dependencies": {
-    "color": "^2.0.1",
-    "lodash": "^4.17.4",
     "wix-ui-core": "^1.0.0"
   },
   "devDependencies": {
     "@storybook/addon-options": "^3.2.13",
     "@storybook/react": "^3.1.0",
     "@storybook/storybook-deployer": "^2.0.0",
-    "@types/color": "^2.0.0",
     "@types/jest": "^21.1.8",
     "@types/react": "^16.0.25",
     "@types/react-dom": "^16.0.3",
@@ -64,7 +61,6 @@
     "ts-jest": "^21.2.4",
     "typescript": "^2.6.2",
     "wix-base-ui": "^2.531.0",
-    "wix-eventually": "^2.1.0",
     "wix-storybook-utils": "^1.0.0",
     "wix-style-processor": "^3.0.120"
   },
