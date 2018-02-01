@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../tpaStyles/styleableExt.js";
+    -st-from: "../../tpaStyles/styleableExt";
     -st-named: wixApply;
 }
 
