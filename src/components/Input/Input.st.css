@@ -47,6 +47,8 @@
     border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
 }
 
+@custom-selector :--input .root;
+
 .root {
     -st-extends: BaseInput;
     -st-states: valid, invalid;
@@ -72,13 +74,13 @@
 }
 
 /*input overrides*/
-.root::root {
+:--input {
     line-height: value(lineHeight);
     height: value(lineHeight);
     transition: border-color .1s ease-in;
     padding: 0 10px;
 }
 
-.root:invalid::root {
+.root:invalid:--input{
     border-color: red;
 }
