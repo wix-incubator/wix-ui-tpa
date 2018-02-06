@@ -44,8 +44,7 @@
   "devDependencies": {
     "@storybook/addon-options": "^3.2.13",
     "@storybook/react": "^3.1.0",
-    "@storybook/storybook-deployer": "^2.0.0",
-    "@types/jest": "^21.1.8",
+    "@types/jest": "^22.1.1",
     "@types/react": "^16.0.25",
     "@types/react-dom": "^16.0.3",
     "@types/storybook__react": "^3.0.5",
@@ -60,7 +59,7 @@
     "react-dom": "^15.5.0",
     "react-test-renderer": "^15.5.4",
     "stylable-integration": "^6.0.5",
-    "ts-jest": "^21.2.4",
+    "ts-jest": "^22.0.3",
     "typescript": "^2.6.2",
     "wix-base-ui": "^2.531.0",
     "wix-storybook-utils": "^1.0.0",
