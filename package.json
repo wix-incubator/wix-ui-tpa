@@ -33,7 +33,6 @@
     "storybook": "start-storybook -p 6006 -s ./storybook-static",
     "clean": "rm -rf storybook-static",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
-
   },
   "peerDependencies": {
     "react": "^15.4.0"
@@ -63,7 +62,8 @@
     "typescript": "^2.6.2",
     "wix-base-ui": "^2.531.0",
     "wix-storybook-utils": "^1.0.0",
-    "wix-style-processor": "^3.0.120"
+    "wix-style-processor": "^3.0.120",
+    "wix-ui-test-utils": "^1.0.0"
   },
   "license": "MIT",
   "publishConfig": {
@@ -91,7 +91,7 @@
       "<rootDir>/node_modules/"
     ],
     "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
-    "setupTestFrameworkScriptFile": "wix-ui-test-utils/dist/src/jest-setup",
+    "setupTestFrameworkScriptFile": "wix-ui-test-utils/jest-setup",
     "setupFiles": [
       "<rootDir>/test/enzyme-setup.js"
     ]
