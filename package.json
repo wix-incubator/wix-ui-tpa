@@ -38,7 +38,7 @@
     "react": "^15.4.0"
   },
   "dependencies": {
-    "wix-ui-core": "^1.0.0"
+    "wix-ui-core": "latest"
   },
   "devDependencies": {
     "@storybook/addon-options": "^3.2.13",
@@ -49,21 +49,21 @@
     "@types/storybook__react": "^3.0.5",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-15": "^1.0.5",
-    "gh-pages-auto-release": "^1.1.2",
-    "haste-preset-yoshi": "^1.0.19",
-    "import-path": "^1.0.0",
+    "gh-pages-auto-release": "latest",
+    "haste-preset-yoshi": "latest",
+    "import-path": "latest",
     "node-sass-import-once": "^1.2.0",
     "prop-types": "^15.5.4",
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
     "react-test-renderer": "^15.5.4",
-    "stylable-integration": "^6.0.5",
+    "stylable-integration": "latest",
     "ts-jest": "^22.0.3",
     "typescript": "^2.6.2",
-    "wix-base-ui": "^2.531.0",
-    "wix-storybook-utils": "^1.0.0",
-    "wix-style-processor": "^3.0.120",
-    "wix-ui-test-utils": "^1.0.0"
+    "wix-base-ui": "latest",
+    "wix-storybook-utils": "latest",
+    "wix-style-processor": "latest",
+    "wix-ui-test-utils": "latest"
   },
   "license": "MIT",
   "publishConfig": {
