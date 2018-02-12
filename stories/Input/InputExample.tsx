@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TpaInput} from '../../src';
+import {Input} from '../../src';
 
 export class InputExample extends React.Component<any, any> {
   constructor(props) {
@@ -12,7 +12,7 @@ export class InputExample extends React.Component<any, any> {
   render() {
     const labelId = `${Math.random()}`;
     return <div>
-      <TpaInput placeholder={'a placeholder'}
+      <Input placeholder={'a placeholder'}
                 required={true}
                 valid={this.state.valid} />
       <input id={labelId} type="checkbox" style={{margin: '0 5px 0 16px'}}

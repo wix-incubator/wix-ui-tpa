@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {TpaToggleSwitch} from '../../src';
+import {ToggleSwitch} from '../../src';
 import * as styles from './ToggleSwtichStory.scss';
 
-export class TpaToggleSwitchExample extends React.Component<any, any> {
+export class ToggleSwitchExample extends React.Component<any, any> {
   constructor(props) {
     super(props);
 
@@ -14,7 +14,7 @@ export class TpaToggleSwitchExample extends React.Component<any, any> {
 
   render() {
     return <div className={styles.root}>
-      <TpaToggleSwitch onChange={() => this.setState({checked: !this.state.checked})}
+      <ToggleSwitch onChange={() => this.setState({checked: !this.state.checked})}
                        disabled={this.state.disabled}
                        checked={this.state.checked}/>
       <input className={styles.checkbox} id="disabled" type="checkbox"

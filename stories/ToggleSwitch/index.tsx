@@ -7,26 +7,26 @@ import Markdown from 'wix-storybook-utils/Markdown';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as Readme from '../../src/components/ToggleSwitch/README.md';
-import {TpaToggleSwitchExample} from './TpaToggleSwitchExample';
-import {TpaToggleSwitchExtensionExample} from './TpaToggleSwitchExtensionExample';
-import * as RawSource from '!raw-loader!./TpaToggleSwitchExample.tsx';
-import * as RawSourceExtended from '!raw-loader!./TpaToggleSwitchExtensionExample.tsx';
+import {ToggleSwitchExample} from './ToggleSwitchExample';
+import {ToggleSwitchExtensionExample} from './ToggleSwitchExtensionExample';
+import * as RawSource from '!raw-loader!./ToggleSwitchExample.tsx';
+import * as RawSourceExtended from '!raw-loader!./ToggleSwitchExtensionExample.tsx';
 import * as CssSource from '!raw-loader!./ToggleSwitchExt.st.css';
 import {ColorPalettePicker} from '../helperComponents/ColorPalettePicker';
 
 storiesOf('Components', module)
-  .add('TpaToggleSwitch', () =>
+  .add('ToggleSwitch', () =>
     <TabbedView tabs={['API', 'Readme']}>
       <div>
         <CodeExample title="Toggle Switch Raw" code={RawSource}>
           <div className="tpa-container">
-            <TpaToggleSwitchExample/>
+            <ToggleSwitchExample/>
           </div>
         </CodeExample>
         <CodeExample title="Toggle Switch Extension Example - with app settings"
                      code={['//st.css:', CssSource, '', '//Code:', RawSourceExtended].join('\n')}>
           <div className="tpa-container">
-            <TpaToggleSwitchExtensionExample/>
+            <ToggleSwitchExtensionExample/>
             <h3>You set a new value for disabled color and selected color by picking colors from the color picker</h3>
           </div>
           <ColorPalettePicker wixParams={[{

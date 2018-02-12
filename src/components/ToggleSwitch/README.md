@@ -1,4 +1,4 @@
-## TpaToggleSwitch
+## ToggleSwitch
 An implementation of a ToggleSwitch for TPAs,
 The base implementation can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=StylableToggleSwitchStory).
 The TPA implementation provides few extendable theme properties with the ability to override the base properties as well,
@@ -17,9 +17,9 @@ By default the Toggle will pull the theme from the site (site colors),
 Full list of supported props can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=StylableToggleSwitchStory)
 
 
-In order to override the theme, use Wix Styleable extends capabilities and wrap with withStylable HOC:
+In order to override the theme, use Wix Stylable extends capabilities and wrap with withStylable HOC:
 
-1. create an styleable file (e.g. ToggleSwitchExt.st.css)
+1. create an stylable file (e.g. ToggleSwitchExt.st.css)
     ``` css
     :import {
         -st-from: "wix-ui-tpa/ToggleSwitch/ToggleSwitch.st.css";
@@ -43,5 +43,5 @@ In order to override the theme, use Wix Styleable extends capabilities and wrap 
     import toggleSwitchStylesExt from './ToggleSwitchExt.st.css';
     import {withStylable} from 'wix-ui-core/dist/src';
 
-    const TpaToggleSwitchExt = withStylable<ToggleSwitchProps>(TpaToggleSwitch, toggleSwitchStylesExt, () => null);
+    const ToggleSwitchExt = withStylable<ToggleSwitchProps>(ToggleSwitch, toggleSwitchStylesExt, () => null);
     ```

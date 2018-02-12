@@ -15,7 +15,7 @@ import {ColorPalettePicker} from '../helperComponents/ColorPalettePicker';
 import {InputExtendedExample} from './InputExtendedExample';
 
 storiesOf('Components', module)
-  .add('TpaInput', () =>
+  .add('Input', () =>
     <TabbedView tabs={['API', 'Readme']}>
       <div>
         <div className="tpa-container">

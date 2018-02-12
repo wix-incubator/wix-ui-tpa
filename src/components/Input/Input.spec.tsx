@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {mount} from 'enzyme';
-import {TpaInput} from './index';
+import {Input} from './index';
 
-describe('TpaInput', () => {
+describe('Input', () => {
   let wrapper;
 
   afterEach(() => wrapper.detach());
 
   it('should create an input element', () => {
     wrapper = mount(
-      <TpaInput onChange={() => null}/>,
+      <Input onChange={() => null}/>,
       {attachTo: document.createElement('div')}
     );
     expect(wrapper.find('input').length).toBe(1);

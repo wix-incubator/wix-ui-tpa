@@ -41,10 +41,10 @@
     "wix-ui-core": "latest"
   },
   "devDependencies": {
-    "@storybook/addon-options": "^3.2.13",
-    "@storybook/react": "^3.1.0",
+    "@storybook/addon-options": "^3.3.13",
+    "@storybook/react": "^3.3.13",
     "@types/jest": "^22.1.1",
-    "@types/react": "^16.0.25",
+    "@types/react": "^16.0.36",
     "@types/react-dom": "^16.0.3",
     "@types/storybook__react": "^3.0.5",
     "enzyme": "^3.0.0",
@@ -59,8 +59,8 @@
     "react-test-renderer": "^15.5.4",
     "stylable-integration": "latest",
     "ts-jest": "^22.0.3",
-    "typescript": "^2.6.2",
-    "wix-base-ui": "latest",
+    "typescript": "^2.7.1",
+    "wix-base-ui": "^2.547.0",
     "wix-storybook-utils": "latest",
     "wix-style-processor": "latest",
     "wix-ui-test-utils": "latest"
