@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Input as InputCore, InputProps as CoreProps} from 'wix-ui-core/Input';
 import inputStyles from './Input.st.css';
-import {withStylable} from 'wix-ui-core/dist/src';
+import {withStylable} from 'wix-ui-core/withStylable';
 
 export interface InputProps extends CoreProps {
   valid?: boolean;

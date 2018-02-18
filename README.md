@@ -37,7 +37,7 @@ The out of the box components provided by this library are inheriting the styles
 2. create your own component that uses the overridden theme
     ``` javascript
     import * as React from 'react';
-    import {withStylable} from 'wix-ui-core/dist/src';
+    import {withStylable} from 'wix-ui-core/withStylable';
     import {Input, InputProps} from 'wix-style-tpa/Input';
     import extendedStyles from './InputExtendedExample.st.css';
 

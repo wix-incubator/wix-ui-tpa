@@ -41,7 +41,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import toggleSwitchStylesExt from './ToggleSwitchExt.st.css';
-    import {withStylable} from 'wix-ui-core/dist/src';
+    import {withStylable} from 'wix-ui-core/withStylable';
 
     const ToggleSwitchExt = withStylable<ToggleSwitchProps>(ToggleSwitch, toggleSwitchStylesExt, () => null);
     ```

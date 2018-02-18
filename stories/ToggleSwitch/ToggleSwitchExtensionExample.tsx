@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {ToggleSwitch} from '../../src';
 
-import {ToggleSwitchProps} from 'wix-ui-core/dist/src/components/ToggleSwitch';
+import {ToggleSwitchProps} from 'wix-ui-core/ToggleSwitch';
 import toggleSwitchStylesExt from './ToggleSwitchExt.st.css';
-import {withStylable} from 'wix-ui-core/dist/src';
+import {withStylable} from 'wix-ui-core/withStylable';
 import * as styles from './ToggleSwtichStory.scss';
 
 const ToggleSwitchExt = withStylable<ToggleSwitchProps>(ToggleSwitch, toggleSwitchStylesExt, () => null);
