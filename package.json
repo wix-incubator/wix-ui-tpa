@@ -56,7 +56,7 @@
     "stylable-integration": "latest",
     "ts-jest": "^22.0.3",
     "typescript": "^2.7.1",
-    "wix-base-ui": "^2.547.0",
+    "wix-base-ui": "latest",
     "wix-storybook-utils": "latest",
     "wix-style-processor": "latest",
     "wix-ui-test-utils": "latest"

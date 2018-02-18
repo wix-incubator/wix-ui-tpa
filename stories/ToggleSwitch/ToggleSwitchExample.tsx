@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ToggleSwitch} from '../../src';
+import {ToggleSwitch} from '../../src/components/ToggleSwitch';
 import * as styles from './ToggleSwtichStory.scss';
 
 export class ToggleSwitchExample extends React.Component<any, any> {

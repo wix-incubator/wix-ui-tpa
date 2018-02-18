@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ToggleSwitch} from '../../src';
+import {ToggleSwitch} from '../../src/components/ToggleSwitch';
 
 import {ToggleSwitchProps} from 'wix-ui-core/ToggleSwitch';
 import toggleSwitchStylesExt from './ToggleSwitchExt.st.css';
