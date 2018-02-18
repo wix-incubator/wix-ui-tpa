@@ -15,7 +15,6 @@
     "url": "git+https://github.com/wix/wix-ui-tpa.git"
   },
   "homepage": "https://github.com/wix/wix-ui-tpa#readme",
-  "main": "./dist/src/index.js",
   "files": [
     "dist",
     "*.js",
@@ -33,9 +32,6 @@
     "storybook": "start-storybook -p 6006 -s ./storybook-static",
     "clean": "rm -rf storybook-static",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
-  },
-  "peerDependencies": {
-    "react": "^15.4.0"
   },
   "dependencies": {
     "wix-ui-core": "latest"
@@ -68,12 +64,6 @@
   "license": "MIT",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
-  },
-  "yoshi": {
-    "externals": {
-      "react": "React",
-      "Wix": "Wix"
-    }
   },
   "jest": {
     "transform": {
