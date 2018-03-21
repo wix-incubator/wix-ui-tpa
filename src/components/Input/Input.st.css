@@ -47,7 +47,7 @@
     border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
 }
 
-@custom-selector :--input .root;
+@custom-selector :--input .root::nativeInput;
 
 .root {
     -st-extends: BaseInput;
