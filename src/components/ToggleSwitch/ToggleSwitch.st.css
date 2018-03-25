@@ -4,12 +4,12 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/StylableToggleSwitch/ToggleSwitchStyle.st.css";
+    -st-from: "wix-ui-core/dist/src/components/ToggleSwitch/ToggleSwitchStyle.st.css";
     -st-default: ToggleSwitch;
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/StylableToggleSwitch/ToggleSwitch.st.css";
+    -st-from: "wix-ui-core/dist/src/components/ToggleSwitch/ToggleSwitch.st.css";
     -st-default: BaseToggleSwitch;
 }
 

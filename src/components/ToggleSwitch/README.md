@@ -1,6 +1,6 @@
 ## ToggleSwitch
 An implementation of a ToggleSwitch for TPAs,
-The base implementation can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=StylableToggleSwitchStory).
+The base implementation can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=ToggleSwitchStory).
 The TPA implementation provides few extendable theme properties with the ability to override the base properties as well,
 
 By default the Toggle will pull the theme from the site (site colors),
@@ -14,7 +14,7 @@ By default the Toggle will pull the theme from the site (site colors),
 | Hover      | string   | MainColor with 70% opacity | The color of the toggle background when hovered |
 | Muted      | string   | MainColor with 30% opacity | The color of the toggle background when not selected |
 | Disabled   | string   | Palette color-1 with 30% opacity | The color of the toggle when disabled |
-Full list of supported props can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=StylableToggleSwitchStory)
+Full list of supported props can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=ToggleSwitchStory)
 
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with withStylable HOC:
