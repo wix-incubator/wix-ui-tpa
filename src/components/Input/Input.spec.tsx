@@ -1,17 +1,31 @@
 import * as React from 'react';
+import {inputDriverFactory} from './Input.driver';
+import {Input} from './';
+import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
+import {isEnzymeTestkitExists} from 'wix-ui-test-utils/enzyme';
+import {isTestkitExists} from 'wix-ui-test-utils/vanilla';
 import {mount} from 'enzyme';
-import {Input} from './index';
+import {inputTestkitFactory} from '../../testkit';
+import {inputTestkitFactory as enzymeInputTestkitFactory} from '../../testkit/enzyme';
 
 describe('Input', () => {
-  let wrapper;
+  const createDriver = createDriverFactory(inputDriverFactory);
 
-  afterEach(() => wrapper.detach());
+  it('should render', () => {
+    const value = 'hello!';
+    const driver = createDriver(<Input value={value}/>);
+    expect(driver.getValue()).toEqual(value);
+  });
 
-  it('should create an input element', () => {
-    wrapper = mount(
-      <Input onChange={() => null}/>,
-      {attachTo: document.createElement('div')}
-    );
-    expect(wrapper.find('input').length).toBe(1);
+  describe('testkit', () => {
+    it('should exist', () => {
+      expect(isTestkitExists(<Input/>, inputTestkitFactory)).toBe(true);
+    });
+  });
+
+  describe('enzyme testkit', () => {
+    it('should exist', () => {
+      expect(isEnzymeTestkitExists(<Input/>, enzymeInputTestkitFactory, mount)).toBe(true);
+    });
   });
 });

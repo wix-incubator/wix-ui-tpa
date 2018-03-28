@@ -11,7 +11,12 @@ const defaultProps = {
   valid: true
 };
 
-export const Input = withStylable<CoreProps, InputProps>(InputCore, inputStyles, ({valid}) => ({
-  valid,
-  invalid: !valid
-}), defaultProps);
+export const Input = withStylable<CoreProps, InputProps>(
+  InputCore,
+  inputStyles,
+  ({valid}) => ({
+    valid,
+    invalid: !valid
+  }),
+  defaultProps
+);
