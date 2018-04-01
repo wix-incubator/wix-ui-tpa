@@ -3,4 +3,4 @@ import styleProcessor from 'wix-style-processor';
 styleProcessor.init();
 
 require('./ToggleSwitch');
-require('./Input');
+require('./Input.story.tsx');
