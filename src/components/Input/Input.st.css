@@ -4,30 +4,26 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/Input/InputStyle.st.css";
-    -st-default: Input;
-}
-
-:import {
     -st-from: "wix-ui-core/dist/src/components/Input/Input.st.css";
     -st-default: BaseInput;
 }
 
 :import {
-    -st-from: "../../tpaStyles/variables.st.css";
-    -st-named: HighlightColor;
+    -st-from: "../../baseComponents/ErrorLine/ErrorLine.st.css";
+    -st-default: ErrorLine;
 }
 
-/* Recommended Variables */
+:import {
+    -st-from: "../../palette.st.css";
+    -st-named: errorColor, emptyErrorColor;
+}
+
 :vars {
     MainBorderColor: wixApply(color, color-5);
     MainBackgroundColor: transparent;
     MainTextColor: wixApply(color, color-5);
-    lineHeight: 42px;
-    fontSize: 15px;
 }
 
-/* Extended Variables */
 :vars {
     color: value(MainTextColor);
     colorDisabled: wixApply(opacity, value(MainTextColor), 0.3);
@@ -43,44 +39,76 @@
     borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);
     borderColorFocus: value(MainBorderColor);
     hoverBorderColor: value(MainBorderColor);
-    borderRadius: 0;
     border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
+    font: wixApply(font, "Body-M")
 }
-
-@custom-selector :--input .root::nativeInput;
 
 .root {
+    -st-states: empty;
     -st-extends: BaseInput;
-    -st-states: valid, invalid;
-    -st-mixin: Input(
-        color value(color),
-        colorDisabled value(colorDisabled),
-        colorHover value(colorHover),
-        colorFocus value(colorFocus),
-        colorPlaceholder value(colorPlaceholder),
-        backgroundColor value(backgroundColor),
-        backgroundColorDisabled value(backgroundColorDisabled),
-        backgroundColorHover value(backgroundColorHover),
-        backgroundColorFocus value(backgroundColorFocus),
-        borderColor value(borderColor),
-        borderColorDisabled value(borderColorDisabled),
-        borderColorHover value(borderColorHover),
-        borderColorFocus value(borderColorFocus),
-        hoverBorderColor value(hoverBorderColor),
-        borderRadius value(borderRadius),
-        fontSize value(fontSize),
-        border value(border)
-    );
+
+    /* todo - Define fonts somewhere*/
+    font: value(font);
 }
 
-/*input overrides*/
-:--input {
-    line-height: value(lineHeight);
-    height: value(lineHeight);
+/* Placeholder color */
+.root::nativeInput::-webkit-input-placeholder,
+.root::nativeInput::-moz-placeholder,
+.root::nativeInput:-moz-placeholder,
+.root::nativeInput:-ms-input-placeholder {
+    color: value(colorPlaceholder);
+}
+
+.root::nativeInput {
+    font-size: 16px;
+    line-height: 24px;
+    height: 36px;
+    padding: 0 13px;
+    border-radius: 0;
     transition: border-color .1s ease-in;
-    padding: 0 10px;
+    color: value(color);
+    background-color: value(backgroundColor);
+    border-color: value(borderColor);
+    border: value(border);
+    box-sizing: border-box;
 }
 
-.root:invalid:--input{
-    border-color: red;
+.root:hover::nativeInput {
+    color: value(colorHover);
+    background-color: value(backgroundColorHover);
+    border-color: value(borderColorHover);
+}
+
+.root:disabled::nativeInput {
+    color: value(colorDisabled);
+    background-color: value(backgroundColorDisabled);
+    border-color: value(borderColorDisabled);
+}
+
+.root:focus::nativeInput {
+    outline: 0;
+    color: value(colorFocus);
+    background-color: value(backgroundColorFocus);
+    border-color: value(borderColorFocus);
+}
+
+.root:error::nativeInput {
+    border-color: value(errorColor);
+}
+
+.root:error:empty::nativeInput {
+    border-color: value(emptyErrorColor);
+}
+
+.root::nativeInput::selection {
+    /*TODO - should get the value from the editor*/
+    background: rgba(33, 33, 33, 0.1);
+}
+
+.errorMessage {
+    display: none;
+}
+
+.root:error .errorMessage {
+    display: block;
 }

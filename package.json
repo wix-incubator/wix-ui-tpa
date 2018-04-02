@@ -27,10 +27,9 @@
     "pretest": "haste lint && npm run build && build-storybook && npm run compile-base-ui",
     "test": "haste test --jest && haste test --protractor",
     "test:watch": "haste test --jest --watch",
-    "start": "npm run clean && haste start & npm run compile-base-ui && npm run storybook",
+    "start": "haste start --no-test & npm run storybook",
     "release": "haste release && gh-pages-auto-release --dist=storybook-static",
-    "storybook": "start-storybook -p 6006 -s ./storybook-static",
-    "clean": "rm -rf storybook-static",
+    "storybook": "start-storybook -p 6006",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
   },
   "dependencies": {
@@ -55,7 +54,7 @@
     "react": "^15.5.0",
     "react-dom": "^15.5.0",
     "react-test-renderer": "^15.5.4",
-    "stylable": "latest",
+    "stylable": "5.3.0",
     "stylable-integration": "latest",
     "ts-jest": "^22.0.3",
     "typescript": "^2.7.1",

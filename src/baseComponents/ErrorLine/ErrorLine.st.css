@@ -1,0 +1,17 @@
+:import {
+    -st-from: "../../palette.st.css";
+    -st-named: errorColor, emptyErrorColor;
+}
+
+.root {
+    -st-states: empty;
+
+    height: 18px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: value(errorColor);
+}
+
+.root:empty {
+    color: value(emptyErrorColor);
+}
