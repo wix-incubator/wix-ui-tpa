@@ -40,6 +40,7 @@
     borderColorFocus: value(MainBorderColor);
     hoverBorderColor: value(MainBorderColor);
     border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
+    font: wixApply(font, "Body-M")
 }
 
 .root {
@@ -47,8 +48,7 @@
     -st-extends: BaseInput;
 
     /* todo - Define fonts somewhere*/
-    font-family: AvenirLTPro;
-    font-weight: 300;
+    font: value(font);
 }
 
 /* Placeholder color */
@@ -63,14 +63,14 @@
     font-size: 16px;
     line-height: 24px;
     height: 36px;
-    padding: 0 12px;
+    padding: 0 13px;
     border-radius: 0;
     transition: border-color .1s ease-in;
-
     color: value(color);
     background-color: value(backgroundColor);
     border-color: value(borderColor);
     border: value(border);
+    box-sizing: border-box;
 }
 
 .root:hover::nativeInput {
@@ -98,6 +98,11 @@
 
 .root:error:empty::nativeInput {
     border-color: value(emptyErrorColor);
+}
+
+.root::nativeInput::selection {
+    /*TODO - should get the value from the editor*/
+    background: rgba(33, 33, 33, 0.1);
 }
 
 .errorMessage {
