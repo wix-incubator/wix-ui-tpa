@@ -29,7 +29,7 @@ export const Input: React.SFC<InputProps> = (props: InputProps) => {
       errorMessage={errorMessage}
       inputValue={value}
       disabled={disabled}
-      render={({error, empty}) => <InputWithErrorStates error={error} empty={empty} {...coreInputProps}/>}
+      render={(errorProps) => <InputWithErrorStates error={errorProps.error} empty={errorProps.empty} {...coreInputProps}/>}
     />
   );
 };

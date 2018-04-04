@@ -36,11 +36,11 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
       errorMessage={errorMessage}
       inputValue={'always-on'}
       disabled={disabled}
-      render={({error, empty}) => (
+      render={(errorProps) => (
         <AutocompleteWithErrorStates
           {...coreAutocompleteProps}
-          error={error}
-          empty={empty}
+          error={errorProps.error}
+          empty={errorProps.empty}
           suffix={
             <span className={style.suffix}>
             {<ChevronDown className={style.arrowIcon}/>}

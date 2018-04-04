@@ -9,7 +9,7 @@ export type ErrorMessageWrapperProps = {
   disabled: boolean;
   errorMessage: string;
   inputValue: string;
-}
+};
 
 export const ErrorMessageWrapper: React.SFC<ErrorMessageWrapperProps> = (props) => {
   const {render, error, disabled, errorMessage, inputValue} = props;
@@ -22,5 +22,5 @@ export const ErrorMessageWrapper: React.SFC<ErrorMessageWrapperProps> = (props) 
       {render({error: inErrorState, empty})}
       {inErrorState && <div className={style.errorMessage}>{errorMessage}</div>}
     </div>
-  )
+  );
 };
