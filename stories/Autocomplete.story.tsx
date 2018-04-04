@@ -24,7 +24,6 @@ export default {
     onManualInput: (value: string) => `Manual input: ${value}`,
     onBlur: () => 'Triggered onBlur',
     onFocus: () => 'Triggered onFocus',
-    onChange: evt => evt.target.value,
-    size: ['small', 'medium', 'large']
+    onChange: evt => evt.target.value
   }
 };
