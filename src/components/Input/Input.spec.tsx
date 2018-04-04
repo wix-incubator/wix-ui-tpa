@@ -17,26 +17,6 @@ describe('Input', () => {
     expect(driver.getValue()).toEqual(value);
   });
 
-  describe('error message', () => {
-    it('should show an error message', () => {
-      const errorMessage = 'some error';
-      const driver = createDriver(<Input error errorMessage={errorMessage}/>);
-      expect(driver.getErrorMessage()).toEqual(errorMessage);
-    });
-
-    it('should define an empty state', () => {
-      const driver = createDriver(<Input/>);
-      expect(driver.hasEmptyState()).toBeTruthy();
-    });
-
-    it('should not show an error message if not in error state', () => {
-      const errorMessage = 'some error';
-      const driver = createDriver(<Input errorMessage={errorMessage}/>);
-      expect(driver.hasErrorMessage()).toBeFalsy();
-    });
-
-  });
-
   describe('testkit', () => {
     it('should exist', () => {
       expect(isTestkitExists(<Input/>, inputTestkitFactory)).toBe(true);
