@@ -12,6 +12,6 @@ describe('Autocomplete', () => {
   eyes.it('should render autocomplete', async () => {
     const driver = autocompleteTestkitFactory({dataHook});
     await waitForVisibilityOf(driver.element(), 'Cannot find Autocomplete');
-    expect(driver.element()).toBeDefined();
+    expect(driver.element().isDisplayed()).toBe(true);
   });
 });
