@@ -33,7 +33,7 @@
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
   },
   "dependencies": {
-    "wix-ui-core": "latest",
+    "wix-ui-core": "^1.0.0",
     "wix-ui-icons-common": "^1.0.23"
   },
   "devDependencies": {
