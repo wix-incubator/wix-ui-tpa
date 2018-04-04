@@ -54,7 +54,7 @@ describe('ErrorMessageWrapper', () => {
     it('should display an error message', () => {
       const driver = createDriver(<ErrorMessageWrapper {...props}/>);
       expect(driver.hasErrorMessage()).toBeTruthy();
-      expect(driver.getErrorMessage()).toEqual('some error')
+      expect(driver.getErrorMessage()).toEqual('some error');
       expect(props.render).toHaveBeenCalledWith({error: true, empty: true});
     });
 
