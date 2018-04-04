@@ -1,43 +1,35 @@
 import * as React from 'react';
 import {Input as CoreInput, InputProps as CoreInputProps} from 'wix-ui-core/Input';
 import style from './Input.st.css';
-import {ErrorLine} from '../../baseComponents/ErrorLine';
 import {withStylable} from 'wix-ui-core/withStylable';
+import {ErrorMessageWrapper} from '../../baseComponents/ErrorMessageWrapper';
+import {ErrorProps} from '../../baseComponents/ErrorMessageWrapper/ErrorMessageWrapper';
 
 export interface TPAInputProps {
   /** the error message to display */
   errorMessage?: string;
+  /** apply error state*/
+  error?: boolean;
 }
-
-const TPAInput = withStylable<CoreInputProps, TPAInputProps>(
-  CoreInput,
-  style,
-  (props) => ({empty: isEmptyInput(props)})
-);
-
 export type InputProps = TPAInputProps & CoreInputProps;
 
-function isEmptyInput(props) {
-  return !props.value;
-}
+const InputWithErrorStates = withStylable<CoreInputProps, ErrorProps>(
+  CoreInput,
+  style,
+  ({error, empty}) => ({error, empty})
+);
 
-export const Input: React.SFC<InputProps> = (props) => {
-  const {errorMessage, ...tpaInputProps} = props;
-  const empty = isEmptyInput(props);
-
-  const shouldShowErrorMessage = !!props.error && !props.disabled && props.errorMessage;
+export const Input: React.SFC<InputProps> = (props: InputProps) => {
+  const {errorMessage, error, ...coreInputProps} = props;
+  const {value, disabled} = props;
 
   return (
-    <TPAInput
-      {...tpaInputProps}
-      suffix={
-        <span>
-          {tpaInputProps.suffix}
-          {shouldShowErrorMessage && <ErrorLine className={style.errorMessage} message={errorMessage} empty={empty}/>}
-        </span>
-      }
+    <ErrorMessageWrapper
+      error={error}
+      errorMessage={errorMessage}
+      inputValue={value}
+      disabled={disabled}
+      render={(errorProps) => <InputWithErrorStates error={errorProps.error} empty={errorProps.empty} {...coreInputProps}/>}
     />
   );
 };
-
-Input.displayName = 'Input';

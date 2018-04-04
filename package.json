@@ -33,14 +33,15 @@
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
   },
   "dependencies": {
-    "wix-ui-core": "latest"
+    "wix-ui-core": "^1.0.0",
+    "wix-ui-icons-common": "^1.0.23"
   },
   "devDependencies": {
     "@storybook/addon-options": "^3.3.13",
     "@storybook/react": "^3.3.13",
     "@types/jest": "^22.1.1",
-    "@types/react": "^16.0.36",
-    "@types/react-dom": "^16.0.3",
+    "@types/react": "^15.0.0",
+    "@types/react-dom": "^15.0.0",
     "@types/storybook__react": "^3.0.5",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-15": "^1.0.5",

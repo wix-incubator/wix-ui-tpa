@@ -3,15 +3,22 @@
     -st-named: errorColor, emptyErrorColor;
 }
 
+:import {
+    -st-from: "wix-ui-core/dist/src/components/Input/Input.st.css";
+    -st-default: CoreInput;
+}
+
 .root {
     -st-states: empty;
+}
 
+.root .errorMessage{
     height: 18px;
     font-size: 12px;
     line-height: 1.5;
     color: value(errorColor);
 }
 
-.root:empty {
+.root:empty .errorMessage {
     color: value(emptyErrorColor);
 }

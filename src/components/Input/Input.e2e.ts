@@ -1,6 +1,6 @@
 import * as eyes from 'eyes.it';
 import {browser} from 'protractor';
-import {createStoryUrl} from 'wix-ui-test-utils/protractor';
+import {createStoryUrl, waitForVisibilityOf} from 'wix-ui-test-utils/protractor';
 import {inputTestkitFactory} from '../../testkit/protractor';
 
 describe('Input', () => {
@@ -9,8 +9,9 @@ describe('Input', () => {
 
   beforeEach(() => browser.get(storyUrl));
 
-  eyes.it('should render', () => {
+  eyes.it('should render', async () => {
     const driver = inputTestkitFactory({dataHook});
+    await waitForVisibilityOf(driver.element(), 'Cannot find Input');
     expect(driver.element().isDisplayed()).toBe(true);
   });
 });
