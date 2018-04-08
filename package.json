@@ -23,12 +23,12 @@
   ],
   "scripts": {
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
-    "build": "haste build && import-path --path src/components --dts && npm run copy-styleable-ext",
-    "pretest": "haste lint && npm run build && build-storybook && npm run compile-base-ui",
-    "test": "haste test --jest && haste test --protractor",
-    "test:watch": "haste test --jest --watch",
-    "start": "haste start --no-test & npm run storybook",
-    "release": "haste release && gh-pages-auto-release --dist=storybook-static",
+    "build": "yoshi build && import-path --path src/components --dts && npm run copy-styleable-ext",
+    "pretest": "yoshi lint && npm run build && build-storybook && npm run compile-base-ui",
+    "test": "yoshi test --jest && yoshi test --protractor",
+    "test:watch": "yoshi test --jest --watch",
+    "start": "yoshi start --no-test & npm run storybook",
+    "release": "yoshi release && gh-pages-auto-release --dist=storybook-static",
     "storybook": "start-storybook -p 6006",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
   },
@@ -47,7 +47,6 @@
     "enzyme-adapter-react-15": "^1.0.5",
     "eyes.it": "^2.0.3",
     "gh-pages-auto-release": "latest",
-    "haste-preset-yoshi": "latest",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "latest",
     "node-sass-import-once": "^1.2.0",
@@ -62,7 +61,8 @@
     "wix-base-ui": "latest",
     "wix-storybook-utils": "latest",
     "wix-style-processor": "latest",
-    "wix-ui-test-utils": "latest"
+    "wix-ui-test-utils": "latest",
+    "yoshi": "^1.2.0"
   },
   "license": "MIT",
   "publishConfig": {
@@ -88,8 +88,5 @@
     "setupFiles": [
       "<rootDir>/test/enzyme-setup.js"
     ]
-  },
-  "haste": {
-    "preset": "yoshi"
   }
 }
