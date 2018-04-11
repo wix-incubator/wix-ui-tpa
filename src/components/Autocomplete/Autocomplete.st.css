@@ -9,6 +9,11 @@
 }
 
 :import {
+    -st-from: "wix-ui-core/dist/src/baseComponents/DropdownContent/DropdownContent.st.css";
+    -st-default: DropdownContent;
+}
+
+:import {
     -st-from: "../Input/Input.st.css";
     -st-default: Input;
     -st-named: inputStyling;
@@ -46,6 +51,19 @@
     align-items: center;
 }
 
+DropdownContent::dropdownOption {
+    height: 42px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    font-size: 16px;
+    color: #212121;
+}
+
+DropdownContent::dropdownOption:hovered {
+    background-color: #f4f4f4;
+}
+
 .suffix {
-    padding-right: 14px;
+    padding: 0 14px;
+    display: flex;
 }
