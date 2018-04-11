@@ -5,3 +5,4 @@ styleProcessor.init();
 require('./ToggleSwitch');
 require('./Input.story.tsx');
 require('./Autocomplete.story.tsx');
+require('./Checkbox.story.tsx');

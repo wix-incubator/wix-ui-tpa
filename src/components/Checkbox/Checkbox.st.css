@@ -1,0 +1,136 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "wix-ui-core/dist/src/components/Checkbox/Checkbox.st.css";
+    -st-default: CoreCheckbox;
+}
+
+:import {
+    -st-from: "../../palette.st.css";
+    -st-named: errorColor, emptyErrorColor;
+}
+
+:vars {
+    MainBorderColor: wixApply(color, color-5);
+    MainBackgroundColor: transparent;
+    MainTextColor: wixApply(color, color-5);
+}
+
+/*:vars {*/
+    /*color: value(MainTextColor);*/
+    /*colorDisabled: wixApply(opacity, value(MainTextColor), 0.3);*/
+    /*colorHover: value(MainTextColor);*/
+    /*colorFocus: value(MainTextColor);*/
+    /*colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.3);*/
+    /*backgroundColor: value(MainBackgroundColor);*/
+    /*backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), 0.3);*/
+    /*backgroundColorHover: value(MainBackgroundColor);*/
+    /*backgroundColorFocus: value(MainBackgroundColor);*/
+    /*borderColor: wixApply(opacity, value(MainBorderColor), 0.2);*/
+    /*borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.2);*/
+    /*borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);*/
+    /*borderColorFocus: value(MainBorderColor);*/
+    /*hoverBorderColor: value(MainBorderColor);*/
+    /*border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);*/
+    /*font: wixApply(font, "Body-M")*/
+/*}*/
+
+.checkboxStyling {
+    /*box-sizing: border-box;*/
+
+    /*border-color: value(borderColor);*/
+    /*border: value(border);*/
+    /*border-radius: 0;*/
+    /*transition: border-color .1s ease-in;*/
+
+    /*!* todo - Define fonts somewhere*!*/
+    /*font: value(font);*/
+}
+
+.root {
+    -st-extends: CoreCheckbox;
+    -st-states: error, empty;
+    -st-mixin: checkboxStyling;
+}
+
+/*.root:hover {*/
+    /*border-color: value(borderColorHover);*/
+/*}*/
+
+/*.root:disabled {*/
+    /*border-color: value(borderColorDisabled);*/
+/*}*/
+
+/*.root:focus {*/
+    /*border-color: value(borderColorFocus);*/
+/*}*/
+
+/*!*error styling*!*/
+
+/*.root:error {*/
+    /*border-color: value(errorColor);*/
+/*}*/
+
+/*.root:error:hover {*/
+    /*border-color: value(errorColor);*/
+/*}*/
+
+/*.root:error:focus {*/
+    /*border-color: value(errorColor);*/
+/*}*/
+
+/*.root:empty:error {*/
+    /*border-color: value(emptyErrorColor);*/
+/*}*/
+
+/*.root:empty:error:hover {*/
+    /*border-color: value(emptyErrorColor);*/
+/*}*/
+
+/*.root:empty:error:focus {*/
+    /*border-color: value(emptyErrorColor);*/
+/*}*/
+
+/*.root::nativeInput {*/
+    /*width: 100%;*/
+    /*font-size: 16px;*/
+    /*line-height: 24px;*/
+    /*height: 36px;*/
+    /*padding: 0 13px;*/
+    /*border: 0;*/
+    /*color: value(color);*/
+    /*background-color: value(backgroundColor);*/
+    /*box-sizing: border-box;*/
+/*}*/
+
+/*.root:hover::nativeInput {*/
+    /*color: value(colorHover);*/
+    /*background-color: value(backgroundColorHover);*/
+/*}*/
+
+/*.root:disabled::nativeInput {*/
+    /*color: value(colorDisabled);*/
+    /*background-color: value(backgroundColorDisabled);*/
+/*}*/
+
+/*.root:focus::nativeInput {*/
+    /*outline: 0;*/
+    /*color: value(colorFocus);*/
+    /*background-color: value(backgroundColorFocus);*/
+/*}*/
+
+/*.root::nativeInput::selection {*/
+    /*!*TODO - should get the value from the editor*!*/
+    /*background: rgba(33, 33, 33, 0.1);*/
+/*}*/
+
+/*!* Placeholder color *!*/
+/*.root::nativeInput::-webkit-input-placeholder,*/
+/*.root::nativeInput::-moz-placeholder,*/
+/*.root::nativeInput:-moz-placeholder,*/
+/*.root::nativeInput:-ms-input-placeholder {*/
+    /*color: value(colorPlaceholder);*/
+/*}*/

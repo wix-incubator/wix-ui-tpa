@@ -5,3 +5,6 @@ export const inputTestkitFactory = testkitFactoryCreator(inputDriverFactory);
 
 import {autocompleteDriverFactory} from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory = testkitFactoryCreator(autocompleteDriverFactory);
+
+import {checkboxDriverFactory} from '../components/Checkbox/Checkbox.driver';
+export const checkboxTestkitFactory = testkitFactoryCreator(checkboxDriverFactory);

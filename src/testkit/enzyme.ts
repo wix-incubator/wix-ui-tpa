@@ -5,3 +5,6 @@ export const inputTestkitFactory: (obj: WrapperData) => any = enzymeTestkitFacto
 
 import {autocompleteDriverFactory} from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory: (obj: WrapperData) => any = enzymeTestkitFactoryCreator(autocompleteDriverFactory);
+
+import {checkboxDriverFactory} from '../components/Checkbox/Checkbox.driver';
+export const checkboxTestkitFactory: (obj: WrapperData) => any = enzymeTestkitFactoryCreator(checkboxDriverFactory);

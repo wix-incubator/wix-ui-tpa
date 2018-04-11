@@ -1,31 +1,31 @@
 import * as React from 'react';
-import {inputDriverFactory} from './Input.driver';
-import {Input} from './';
+import {checkboxDriverFactory} from './Checkbox.driver';
+import {Checkbox} from './';
 import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
 import {isEnzymeTestkitExists} from 'wix-ui-test-utils/enzyme';
 import {isTestkitExists} from 'wix-ui-test-utils/vanilla';
 import {mount} from 'enzyme';
 import {checkboxTestkitFactory} from '../../testkit';
-import {checkboxTestkitFactory as enzymeInputTestkitFactory} from '../../testkit/enzyme';
+import {checkboxTestkitFactory as enzymeCheckboxTestkitFactory} from '../../testkit/enzyme';
 
-describe('Input', () => {
-  const createDriver = createDriverFactory(inputDriverFactory);
+describe('Checkbox', () => {
+  const createDriver = createDriverFactory(checkboxDriverFactory);
 
   it('should render', () => {
     const value = 'hello!';
-    const driver = createDriver(<Input value={value}/>);
+    const driver = createDriver(<Checkbox value={value}/>);
     expect(driver.getValue()).toEqual(value);
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<Input/>, checkboxTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<Checkbox/>, checkboxTestkitFactory)).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Input/>, enzymeInputTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<Checkbox/>, enzymeCheckboxTestkitFactory, mount)).toBe(true);
     });
   });
 });
