@@ -9,7 +9,7 @@ By default the Input will pull the theme from the site (site colors),
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
-| MainBorderColor  | string   | Palette color-5 | The color of the input border - 60% opacity by default, 30% opacity when disabled, 100% opacity when hovered |
+| MainBorderColor  | string   | Palette color-5 | The color of the input border - 60% opacity by default, 30% opacity when disabled |
 | MainBackgroundColor  | string   | Palette color-1 | The color of the background of the input, 30% opacity when disabled, MainTextColor 5% opacity when hovered |
 | MainTextColor  | string   | Palette color-5 | The color of the text/placeholder, 30% opacity when disabled, 60% opacity for placeholder |
 | lineHeight  | css height   | 42px | the height of the input with border |

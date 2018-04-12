@@ -31,10 +31,10 @@
     backgroundColorFocus: value(MainBackgroundColor);
     borderColor: wixApply(opacity, value(MainBorderColor), 0.6);
     borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.3);
-    borderColorHover: value(MainBorderColor);
+    borderColorHover: value(borderColor);
     borderColorFocus: value(borderColor);
     border: 1px solid value(borderColor);
-    font: wixApply(font, "Body-M")
+    font: wixApply(font, "{theme: 'Body-M', size: '16px'}");
 }
 
 .inputStyling {
@@ -95,7 +95,7 @@
 
 .root::nativeInput {
     width: 100%;
-    font-size: 16px;
+    font: value(font);
     line-height: 24px;
     height: 40px;
     padding: 0 14px;

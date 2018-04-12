@@ -9,14 +9,9 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/baseComponents/DropdownContent/DropdownContent.st.css";
-    -st-default: DropdownContent;
-}
-
-:import {
     -st-from: "../Input/Input.st.css";
     -st-default: Input;
-    -st-named: inputStyling;
+    -st-named: inputStyling, color, colorDisabled, borderColor, borderColorHover, borderColorDisabled, font;
 }
 
 :import {
@@ -26,7 +21,8 @@
 
 
 :vars {
-    font: wixApply(font, "Body-M")
+    optionColor: value(color);
+    optionColorHover: wixApply(opacity, value(optionColor), 0.6);
 }
 
 .root {
@@ -35,6 +31,14 @@
     -st-mixin: inputStyling;
 
     width: 100%;
+}
+
+.root:hover {
+    border-color: value(borderColorHover);
+}
+
+.root:disabled {
+    border-color: value(borderColorDisabled);
 }
 
 .root:error {
@@ -49,21 +53,52 @@
     -st-mixin: Input;
     display: flex;
     align-items: center;
+    border: 0;
 }
 
-DropdownContent::dropdownOption {
-    height: 42px;
+.root::popoverContent {
+    margin-left: -1px;
+    width: calc(100% + 2px);
+    border-color: value(borderColor);
+}
+
+.root::dropdownContent::optionsContainer {
+    max-height: 284px;
+}
+
+.root::dropdownContent::dropdownOption {
+    height: 39px;
     box-sizing: border-box;
     padding: 10px 14px;
-    font-size: 16px;
-    color: #212121;
+    font: value(font);
+    color: value(optionColor);
 }
 
-DropdownContent::dropdownOption:hovered {
-    background-color: #f4f4f4;
+.root::dropdownContent::dropdownOption:hovered {
+    background-color: unset;
+    color: value(optionColorHover)
+}
+
+.root::divider {
+    background-color: value(optionColor);
 }
 
 .suffix {
     padding: 0 14px;
     display: flex;
+    position: absolute;
+    right: 0;
+}
+
+.suffix svg path {
+    fill: value(color);
+}
+
+.root:disabled .suffix svg path {
+    fill: value(colorDisabled);
+}
+
+:global(.rtl) .suffix {
+    left: 0;
+    right: unset;
 }
