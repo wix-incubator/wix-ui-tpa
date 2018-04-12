@@ -15,7 +15,7 @@
 
 :vars {
     MainBorderColor: wixApply(color, color-5);
-    MainBackgroundColor: transparent;
+    MainBackgroundColor: wixApply(color, color-1);
     MainTextColor: wixApply(color, color-5);
 }
 
@@ -24,17 +24,16 @@
     colorDisabled: wixApply(opacity, value(MainTextColor), 0.3);
     colorHover: value(MainTextColor);
     colorFocus: value(MainTextColor);
-    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.3);
+    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.6);
     backgroundColor: value(MainBackgroundColor);
     backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), 0.3);
-    backgroundColorHover: value(MainBackgroundColor);
+    backgroundColorHover: wixApply(opacity, value(MainTextColor), 0.05);
     backgroundColorFocus: value(MainBackgroundColor);
-    borderColor: wixApply(opacity, value(MainBorderColor), 0.2);
-    borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.2);
-    borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);
-    borderColorFocus: value(MainBorderColor);
-    hoverBorderColor: value(MainBorderColor);
-    border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
+    borderColor: wixApply(opacity, value(MainBorderColor), 0.6);
+    borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.3);
+    borderColorHover: value(MainBorderColor);
+    borderColorFocus: value(borderColor);
+    border: 1px solid value(borderColor);
     font: wixApply(font, "Body-M")
 }
 
@@ -98,8 +97,8 @@
     width: 100%;
     font-size: 16px;
     line-height: 24px;
-    height: 36px;
-    padding: 0 13px;
+    height: 40px;
+    padding: 0 14px;
     border: 0;
     color: value(color);
     background-color: value(backgroundColor);
