@@ -79,8 +79,21 @@
     color: value(optionColorHover)
 }
 
-.root::divider {
-    background-color: value(optionColor);
+.root::dropdownContent::optionsContainer::-webkit-scrollbar {
+    width: 24px;
+    background-color: none;
+}
+
+.root::dropdownContent::optionsContainer::-webkit-scrollbar-button {
+    height: 6px;
+}
+
+.root::dropdownContent::optionsContainer::-webkit-scrollbar-thumb {
+    background-color: wixApply(opacity, value(color), 0.2);
+    border-radius: 12px;
+    background-clip: padding-box;
+    border: 10px solid rgba(0, 0, 0, 0);
+    height: 61px;
 }
 
 .suffix {
