@@ -79,6 +79,10 @@
     color: value(optionColorHover)
 }
 
+.root::divider:not(:customDivider) {
+    background-color: value(optionColor);
+}
+
 .root::dropdownContent::optionsContainer::-webkit-scrollbar {
     width: 24px;
     background-color: none;
