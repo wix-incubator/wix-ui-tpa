@@ -15,39 +15,39 @@
 
 :vars {
     MainBorderColor: wixApply(color, color-5);
-    MainBackgroundColor: transparent;
+    MainBackgroundColor: white;
+    BlackBackgroundColor: black;
     MainTextColor: wixApply(color, color-5);
 }
 
-/*:vars {*/
-    /*color: value(MainTextColor);*/
-    /*colorDisabled: wixApply(opacity, value(MainTextColor), 0.3);*/
-    /*colorHover: value(MainTextColor);*/
-    /*colorFocus: value(MainTextColor);*/
-    /*colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.3);*/
-    /*backgroundColor: value(MainBackgroundColor);*/
-    /*backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), 0.3);*/
-    /*backgroundColorHover: value(MainBackgroundColor);*/
-    /*backgroundColorFocus: value(MainBackgroundColor);*/
-    /*borderColor: wixApply(opacity, value(MainBorderColor), 0.2);*/
-    /*borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.2);*/
-    /*borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);*/
-    /*borderColorFocus: value(MainBorderColor);*/
-    /*hoverBorderColor: value(MainBorderColor);*/
-    /*border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);*/
-    /*font: wixApply(font, "Body-M")*/
-/*}*/
+:vars {
+    color: value(MainTextColor);
+    colorDisabled: wixApply(opacity, value(MainTextColor), 0.2);
+    colorHover: value(MainTextColor);
+    colorFocus: value(MainTextColor);
+    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.3);
+    backgroundColor: value(MainBackgroundColor);
+    backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), 0.3);
+    backgroundColorHover: wixApply(opacity, value(BlackBackgroundColor), 0.2);
+    backgroundColorFocus: value(MainBackgroundColor);
+    borderColor: wixApply(opacity, value(MainBorderColor), 0.6);
+    borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.2);
+    borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);
+    borderColorFocus: value(MainBorderColor);
+    hoverBorderColor: value(MainBorderColor);
+    size: 20px;
+    labelPadding: 0 12px;
+    border: 1px solid value(borderColor);
+    borderFocused: 2px solid value(borderColor);
+    padding: 2px;
+    paddingFocused: 1px;
+    font: wixApply(font, "Body-M");
+}
 
 .checkboxStyling {
-    /*box-sizing: border-box;*/
-
-    /*border-color: value(borderColor);*/
-    /*border: value(border);*/
-    /*border-radius: 0;*/
-    /*transition: border-color .1s ease-in;*/
-
-    /*!* todo - Define fonts somewhere*!*/
-    /*font: value(font);*/
+    box-sizing: border-box;
+    transition: border-color .1s ease-in;
+    font: value(font);
 }
 
 .root {
@@ -56,81 +56,62 @@
     -st-mixin: checkboxStyling;
 }
 
-/*.root:hover {*/
-    /*border-color: value(borderColorHover);*/
-/*}*/
+.root::box {
+    display: inline-block;
+    background-color: value(backgroundColor);
+    border: value(border);
+    width: value(size);
+    height: value(size);
+    padding: value(padding);
+    vertical-align: middle;
+}
 
-/*.root:disabled {*/
-    /*border-color: value(borderColorDisabled);*/
-/*}*/
+.root:error::box {
+    border-color: value(errorColor);
+}
 
-/*.root:focus {*/
-    /*border-color: value(borderColorFocus);*/
-/*}*/
+.root:error:hover::box {
+    border-color: value(errorColor);
+}
 
-/*!*error styling*!*/
+.root:error:focus::box {
+    border-color: value(errorColor);
+}
 
-/*.root:error {*/
-    /*border-color: value(errorColor);*/
-/*}*/
+.root:empty:error::box {
+    border-color: value(emptyErrorColor);
+}
 
-/*.root:error:hover {*/
-    /*border-color: value(errorColor);*/
-/*}*/
+.root:empty:error:hover::box {
+    border-color: value(emptyErrorColor);
+}
 
-/*.root:error:focus {*/
-    /*border-color: value(errorColor);*/
-/*}*/
+.root:empty:error:focus::box {
+    border-color: value(emptyErrorColor);
+}
 
-/*.root:empty:error {*/
-    /*border-color: value(emptyErrorColor);*/
-/*}*/
+.root::childContainer {
+    display: inline-block;
+    padding: value(labelPadding);
+    vertical-align: middle;
+}
 
-/*.root:empty:error:hover {*/
-    /*border-color: value(emptyErrorColor);*/
-/*}*/
+.label {
+    display: block;
+    font: value(font);
+}
 
-/*.root:empty:error:focus {*/
-    /*border-color: value(emptyErrorColor);*/
-/*}*/
+.root:hover::box {
+    background-color: value(backgroundColorHover);
+}
 
-/*.root::nativeInput {*/
-    /*width: 100%;*/
-    /*font-size: 16px;*/
-    /*line-height: 24px;*/
-    /*height: 36px;*/
-    /*padding: 0 13px;*/
-    /*border: 0;*/
-    /*color: value(color);*/
-    /*background-color: value(backgroundColor);*/
-    /*box-sizing: border-box;*/
-/*}*/
+.root:focus::box {
+    border: value(borderFocused);
+    padding: value(paddingFocused);
+}
 
-/*.root:hover::nativeInput {*/
-    /*color: value(colorHover);*/
-    /*background-color: value(backgroundColorHover);*/
-/*}*/
-
-/*.root:disabled::nativeInput {*/
-    /*color: value(colorDisabled);*/
-    /*background-color: value(backgroundColorDisabled);*/
-/*}*/
-
-/*.root:focus::nativeInput {*/
-    /*outline: 0;*/
-    /*color: value(colorFocus);*/
-    /*background-color: value(backgroundColorFocus);*/
-/*}*/
-
-/*.root::nativeInput::selection {*/
-    /*!*TODO - should get the value from the editor*!*/
-    /*background: rgba(33, 33, 33, 0.1);*/
-/*}*/
-
-/*!* Placeholder color *!*/
-/*.root::nativeInput::-webkit-input-placeholder,*/
-/*.root::nativeInput::-moz-placeholder,*/
-/*.root::nativeInput:-moz-placeholder,*/
-/*.root::nativeInput:-ms-input-placeholder {*/
-    /*color: value(colorPlaceholder);*/
-/*}*/
+.root:disabled::box {
+    background-color: value(backgroundColor);
+    border-color: value(borderColorDisabled);
+    color: value(colorDisabled);
+}

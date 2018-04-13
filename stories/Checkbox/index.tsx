@@ -14,7 +14,7 @@ export const Examples = () => (
     <div className="tpa-container">
       <CodeExample title="Checkbox Extended"
                    code={['//.st.css', ExtendedCSSRawSource, '', '//.tsx', ExtendedRawSource].join('\n')}>
-        <CheckboxExtendedExample placeholder="Some text here"/>
+        <CheckboxExtendedExample labelText="Checkbox"/>
       </CodeExample>
     </div>
     <ColorPalettePicker wixParams={[{

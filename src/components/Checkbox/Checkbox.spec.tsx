@@ -11,10 +11,17 @@ import {checkboxTestkitFactory as enzymeCheckboxTestkitFactory} from '../../test
 describe('Checkbox', () => {
   const createDriver = createDriverFactory(checkboxDriverFactory);
 
-  it('should render', () => {
-    const value = 'hello!';
-    const driver = createDriver(<Checkbox value={value}/>);
-    expect(driver.getValue()).toEqual(value);
+  it.skip('should render', () => {
+    const props = {
+      'data-hook': 'storybook-Checkbox',
+      onChange: () => null,
+      checked: true,
+      labelText: 'Checkbox label text',
+      error: true,
+      errorMessage: 'Checkbox is required'
+    };
+    const driver = createDriver(<Checkbox {...props}/>);
+    expect(driver.isChecked()).toEqual(props.checked);
   });
 
   describe('testkit', () => {

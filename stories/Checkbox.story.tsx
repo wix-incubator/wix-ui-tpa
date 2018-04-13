@@ -11,8 +11,11 @@ export default {
   componentPath: '../src/components/Checkbox/Checkbox.tsx',
   componentProps: (setState, getState) => ({
     'data-hook': 'storybook-Checkbox',
-    value: '',
-    onChange: ({target: {value}}) => setState({value})
+    onChange: ({target: {checked}}) => setState({checked}),
+    checked: true,
+    labelText: 'Checkbox label text',
+    error: true,
+    errorMessage: 'Checkbox is required'
   }),
   examples: (
     <Examples/>

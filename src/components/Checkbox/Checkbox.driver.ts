@@ -13,7 +13,6 @@ export const checkboxDriverFactory = ({element, eventTrigger}) => {
     ...checkboxDriver,
     getErrorMessage: () => getErrorMessageElement().innerHTML,
     hasEmptyState: () => stylableDOMUtil.hasStyleState(element, 'empty'),
-    hasErrorMessage: () => !!getErrorMessageElement(),
-    getValue: () => !!element.checked
+    hasErrorMessage: () => !!getErrorMessageElement()
   };
 };
