@@ -42,7 +42,7 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
             <span className={style.suffix}>
               {<ChevronDown width={14} height={14} viewBox="8 7 9 10" className={style.arrowIcon}/>}
               {suffix}
-          </span>
+            </span>
           }/>
       )}
     />);

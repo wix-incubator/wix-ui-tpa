@@ -50,6 +50,10 @@
     border: 0; /*Border is set on the root*/
 }
 
+.root::inputComponent::nativeInput {
+    padding-right: 42px;
+}
+
 .root::popoverContent {
     margin-left: -1px;
     width: calc(100% + 2px);
@@ -68,7 +72,7 @@
     color: value(optionColor);
 }
 
-.root::dropdownContent::dropdownOption:hover {
+.root::dropdownContent::dropdownOption:hovered {
     background-color: unset;
     color: value(optionColorHover)
 }
@@ -78,19 +82,16 @@
 }
 
 /*Scrollbar*/
-
-@custom-selector :--scrollbar .root::dropdownContent::optionsContainer;
-
---scrollbar::-webkit-scrollbar {
+.root::dropdownContent::optionsContainer::-webkit-scrollbar {
     width: 24px;
-    background-color: none;
+    background-color: unset;
 }
 
---scrollbar::-webkit-scrollbar-button {
+.root::dropdownContent::optionsContainer::-webkit-scrollbar-button {
     height: 6px;
 }
 
---scrollbar::-webkit-scrollbar-thumb {
+.root::dropdownContent::optionsContainer::-webkit-scrollbar-thumb {
     background-color: wixApply(opacity, value(color), 0.2);
     border-radius: 12px;
     background-clip: padding-box;
@@ -99,23 +100,27 @@
 }
 
 /*Suffix icon*/
-
 .suffix {
-    padding: 0 14px;
     display: flex;
     position: absolute;
-    right: 0;
+    right: 14px;
 }
 
-.suffix svg path {
+.arrowIcon {
     fill: value(color);
 }
 
-.root:disabled .suffix svg path {
+.root:disabled .arrowIcon {
     fill: value(colorDisabled);
 }
 
-:global(.rtl) .suffix {
-    left: 0;
-    right: unset;
-}
+/*!*RTL*!*/
+/*:global(.rtl) .suffix {*/
+    /*left: 14px;*/
+    /*right: unset;*/
+/*}*/
+
+/*:global(.rtl) .root::inputComponent::nativeInput {*/
+    /*padding-right: unset;*/
+    /*padding-left: 42px;*/
+/*}*/
