@@ -51,13 +51,12 @@
 }
 
 .inputStyling {
+    /*This abstraction is useful to make containers have same styling as input. e.g. Autocomplete*/
     box-sizing: border-box;
-
     border-color: value(borderColor);
     border: value(border);
     border-radius: 0;
     transition: border-color .1s ease-in;
-
     /* todo - Define fonts somewhere*/
     font: value(font);
 }

@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../palette.st.css";
-    -st-named: errorColor, emptyErrorColor;
+    -st-named: errorColor;
 }
 
 :import {
@@ -8,17 +8,9 @@
     -st-default: CoreInput;
 }
 
-.root {
-    -st-states: empty;
-}
-
-.root .errorMessage{
+.root .errorMessage {
     height: 18px;
     font-size: 12px;
     line-height: 1.5;
     color: value(errorColor);
-}
-
-.root:empty .errorMessage {
-    color: value(emptyErrorColor);
 }

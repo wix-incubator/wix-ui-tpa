@@ -16,9 +16,8 @@
 
 :import {
     -st-from: "../../palette.st.css";
-    -st-named: errorColor, emptyErrorColor;
+    -st-named: errorColor;
 }
-
 
 :vars {
     optionColor: value(color);
@@ -27,9 +26,8 @@
 
 .root {
     -st-extends: CoreAutocomplete;
-    -st-states: error, empty;
-    -st-mixin: inputStyling;
-
+    -st-states: error;
+    -st-mixin: inputStyling; /*Apply same styling as the Input*/
     width: 100%;
 }
 
@@ -45,15 +43,11 @@
     border-color: value(errorColor);
 }
 
-.root:empty:error {
-    border-color: value(emptyErrorColor);
-}
-
 .root::inputComponent {
     -st-mixin: Input;
     display: flex;
     align-items: center;
-    border: 0;
+    border: 0; /*Border is set on the root*/
 }
 
 .root::popoverContent {
@@ -74,7 +68,7 @@
     color: value(optionColor);
 }
 
-.root::dropdownContent::dropdownOption:hovered {
+.root::dropdownContent::dropdownOption:hover {
     background-color: unset;
     color: value(optionColorHover)
 }
@@ -83,22 +77,28 @@
     background-color: value(optionColor);
 }
 
-.root::dropdownContent::optionsContainer::-webkit-scrollbar {
+/*Scrollbar*/
+
+@custom-selector :--scrollbar .root::dropdownContent::optionsContainer;
+
+--scrollbar::-webkit-scrollbar {
     width: 24px;
     background-color: none;
 }
 
-.root::dropdownContent::optionsContainer::-webkit-scrollbar-button {
+--scrollbar::-webkit-scrollbar-button {
     height: 6px;
 }
 
-.root::dropdownContent::optionsContainer::-webkit-scrollbar-thumb {
+--scrollbar::-webkit-scrollbar-thumb {
     background-color: wixApply(opacity, value(color), 0.2);
     border-radius: 12px;
     background-clip: padding-box;
     border: 10px solid rgba(0, 0, 0, 0);
     height: 61px;
 }
+
+/*Suffix icon*/
 
 .suffix {
     padding: 0 14px;
