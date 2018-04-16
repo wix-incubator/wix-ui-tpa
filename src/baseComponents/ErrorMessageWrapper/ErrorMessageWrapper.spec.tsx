@@ -40,14 +40,14 @@ describe('ErrorMessageWrapper', () => {
       const driver = createDriver(<ErrorMessageWrapper {...props}/>);
       expect(driver.hasErrorMessage()).toBeTruthy();
       expect(driver.getErrorMessage()).toEqual('some error');
-      expect(props.render).toHaveBeenCalledWith({error: true, empty: true});
+      expect(props.render).toHaveBeenCalledWith({error: true});
     });
 
     it('should not display an error message when disabled', () => {
       props.disabled = true;
       const driver = createDriver(<ErrorMessageWrapper {...props}/>);
       expect(driver.hasErrorMessage()).toBeFalsy();
-      expect(props.render).toHaveBeenCalledWith({error: false, empty: true});
+      expect(props.render).toHaveBeenCalledWith({error: false});
     });
   });
 });
