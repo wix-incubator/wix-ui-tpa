@@ -65,7 +65,6 @@
 }
 
 .root::dropdownContent::dropdownOption {
-    height: 39px;
     box-sizing: border-box;
     padding: 10px 14px;
     font: value(font);
