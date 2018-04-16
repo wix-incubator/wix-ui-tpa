@@ -57,6 +57,7 @@
     border: value(border);
     border-radius: 0;
     transition: border-color .1s ease-in;
+    background-color: value(backgroundColor);
     /* todo - Define fonts somewhere*/
     font: value(font);
 }
@@ -91,7 +92,6 @@
     padding: 0 14px;
     border: 0;
     color: value(color);
-    background-color: value(backgroundColor);
     box-sizing: border-box;
 }
 
@@ -112,8 +112,7 @@
 }
 
 .root::nativeInput::selection {
-    /*TODO - should get the value from the editor*/
-    background: rgba(33, 33, 33, 0.1);
+    background: wixApply(opacity, value(MainTextColor), 0.2);
 }
 
 /* Placeholder color */
