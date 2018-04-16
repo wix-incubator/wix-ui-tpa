@@ -10,49 +10,60 @@
 
 :import {
     -st-from: "../../palette.st.css";
-    -st-named: errorColor, emptyErrorColor;
+    -st-named: errorColor;
 }
 
 :vars {
     MainBorderColor: wixApply(color, color-5);
-    MainBackgroundColor: transparent;
+    MainBackgroundColor: wixApply(color, color-1);
     MainTextColor: wixApply(color, color-5);
 }
 
 :vars {
     color: value(MainTextColor);
-    colorDisabled: wixApply(opacity, value(MainTextColor), 0.3);
-    colorHover: value(MainTextColor);
-    colorFocus: value(MainTextColor);
-    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.3);
+    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.6);
     backgroundColor: value(MainBackgroundColor);
-    backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), 0.3);
-    backgroundColorHover: value(MainBackgroundColor);
+    borderColor: wixApply(opacity, value(MainBorderColor), 0.6);
+    border: 1px solid value(borderColor);
+    font: wixApply(font, "{theme: 'Body-M', size: '16px'}");
+}
+
+:vars {
+    /*Hover*/
+    colorHover: value(MainTextColor);
+    backgroundColorHover: wixApply(opacity, value(MainTextColor), 0.05);
+    borderColorHover: value(borderColor);
+}
+
+:vars {
+    /*Focus*/
+    colorFocus: value(MainTextColor);
     backgroundColorFocus: value(MainBackgroundColor);
-    borderColor: wixApply(opacity, value(MainBorderColor), 0.2);
-    borderColorDisabled: wixApply(opacity, value(MainBorderColor), 0.2);
-    borderColorHover: wixApply(opacity, value(MainBorderColor), 0.2);
-    borderColorFocus: value(MainBorderColor);
-    hoverBorderColor: value(MainBorderColor);
-    border: 1px solid wixApply(opacity, value(MainBorderColor), 0.2);
-    font: wixApply(font, "Body-M")
+    borderColorFocus: value(borderColor);
+}
+
+:vars {
+    /*Disabled*/
+    disabledOpacity: 0.3;
+    colorDisabled: wixApply(opacity, value(MainTextColor), value(disabledOpacity));
+    backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), value(disabledOpacity));
+    borderColorDisabled: wixApply(opacity, value(MainBorderColor), value(disabledOpacity));
 }
 
 .inputStyling {
+    /*This abstraction is useful to make containers have same styling as input. e.g. Autocomplete*/
     box-sizing: border-box;
-
     border-color: value(borderColor);
     border: value(border);
     border-radius: 0;
     transition: border-color .1s ease-in;
-
     /* todo - Define fonts somewhere*/
     font: value(font);
 }
 
 .root {
     -st-extends: CoreInput;
-    -st-states: error, empty;
+    -st-states: error;
     -st-mixin: inputStyling;
 }
 
@@ -68,38 +79,16 @@
     border-color: value(borderColorFocus);
 }
 
-/*error styling*/
-
 .root:error {
     border-color: value(errorColor);
 }
 
-.root:error:hover {
-    border-color: value(errorColor);
-}
-
-.root:error:focus {
-    border-color: value(errorColor);
-}
-
-.root:empty:error {
-    border-color: value(emptyErrorColor);
-}
-
-.root:empty:error:hover {
-    border-color: value(emptyErrorColor);
-}
-
-.root:empty:error:focus {
-    border-color: value(emptyErrorColor);
-}
-
 .root::nativeInput {
     width: 100%;
-    font-size: 16px;
+    font: value(font);
     line-height: 24px;
-    height: 36px;
-    padding: 0 13px;
+    height: 40px;
+    padding: 0 14px;
     border: 0;
     color: value(color);
     background-color: value(backgroundColor);

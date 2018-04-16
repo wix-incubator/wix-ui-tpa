@@ -1,1 +1,1 @@
-export {ErrorMessageWrapper, ErrorMessageWrapperProps} from './ErrorMessageWrapper';
+export {ErrorMessageWrapper, ErrorMessageWrapperProps, ErrorProps} from './ErrorMessageWrapper';

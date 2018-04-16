@@ -1,10 +1,9 @@
 import * as React from 'react';
 import {Autocomplete as CoreAutocomplete, AutocompleteProps as CoreAutocompleteProps} from 'wix-ui-core/Autocomplete';
 import {withStylable} from 'wix-ui-core/withStylable';
-import ChevronDown from 'wix-ui-icons-common/ChevronDown'; //TODO
+import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import style from './Autocomplete.st.css';
-import {ErrorMessageWrapper} from '../../baseComponents/ErrorMessageWrapper';
-import {ErrorProps} from '../../baseComponents/ErrorMessageWrapper/ErrorMessageWrapper';
+import {ErrorMessageWrapper, ErrorProps} from '../../baseComponents/ErrorMessageWrapper';
 
 export interface TPAAutocompleteProps {
   /** the error message to display */
@@ -18,7 +17,7 @@ export type AutocompleteProps = TPAAutocompleteProps & CoreAutocompleteProps;
 const AutocompleteWithErrorStates = withStylable<CoreAutocompleteProps, ErrorProps>(
   CoreAutocomplete,
   style,
-  ({error, empty}) => ({error, empty})
+  ({error}) => ({error})
 );
 
 export type AutocompleteType = React.SFC<AutocompleteProps> & {
@@ -34,18 +33,16 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
     <ErrorMessageWrapper
       error={error}
       errorMessage={errorMessage}
-      inputValue={'always-on'}
       disabled={disabled}
       render={(errorProps) => (
         <AutocompleteWithErrorStates
           {...coreAutocompleteProps}
           error={errorProps.error}
-          empty={errorProps.empty}
           suffix={
             <span className={style.suffix}>
-            {<ChevronDown className={style.arrowIcon}/>}
+              {<ChevronDown width={14} height={14} viewBox="8 7 9 10" className={style.arrowIcon}/>}
               {suffix}
-          </span>
+            </span>
           }/>
       )}
     />);
