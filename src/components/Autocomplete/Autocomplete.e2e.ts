@@ -12,6 +12,13 @@ describe('Autocomplete', () => {
   eyes.it('should render autocomplete', async () => {
     const driver = autocompleteTestkitFactory({dataHook});
     await waitForVisibilityOf(driver.element(), 'Cannot find Autocomplete');
-    expect(driver.element().isDisplayed()).toBe(true);
+    expect(await driver.element().isDisplayed()).toBe(true);
+  });
+
+  eyes.it('sh0uld open the dropdown on click', async () => {
+    const driver = autocompleteTestkitFactory({dataHook});
+    await waitForVisibilityOf(driver.element(), 'Cannot find Autocomplete');
+    await driver.click();
+    expect(await driver.dropdownContent().optionAt(0).getText()).toBe('value0');
   });
 });
