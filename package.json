@@ -35,7 +35,7 @@
     "release": "yoshi release && gh-pages-auto-release --dist=storybook-static && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
-    "postPRBuild": "teamcity-surge-autorelease"
+    "postprbuild": "teamcity-surge-autorelease"
   },
   "dependencies": {
     "wix-ui-core": "^1.0.0",
