@@ -32,9 +32,10 @@
     "test:e2e": "yoshi test --protractor",
     "lint": "yoshi lint",
     "start": "yoshi start --no-test & npm run storybook",
-    "release": "yoshi release && gh-pages-auto-release --dist=storybook-static",
+    "release": "yoshi release && gh-pages-auto-release --dist=storybook-static && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006",
-    "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles"
+    "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
+    "pr-release": "teamcity-surge-autorelease"
   },
   "dependencies": {
     "wix-ui-core": "^1.0.0",
@@ -61,7 +62,6 @@
     "react-test-renderer": "^16.3.1",
     "stylable": "5.3.0",
     "stylable-integration": "latest",
-    "surge-github-autorelease": "^1.0.23",
     "ts-jest": "^22.0.3",
     "typescript": "^2.7.1",
     "wix-base-ui": "latest",
@@ -95,5 +95,8 @@
       "raf/polyfill",
       "<rootDir>/test/enzyme-setup.js"
     ]
+  },
+  "optionalDependencies": {
+    "teamcity-surge-autorelease": "^1.0.3"
   }
 }
