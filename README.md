@@ -4,7 +4,7 @@ When writing a TPA application to be used in Wix websites, this package would al
 
 If this is the first time you are writing a TPA application, you would most likely want to read this [doc](https://dev.wix.com/).
 
-#### Live demo - https://wix.github.io/wix-ui-tpa
+#### Live demo - https://wix-wix-ui-tpa.surge.sh/
 #### A demo app that uses it - https://github.com/wix/wix-ui-tpa-example
 
 ## Using the withStylable HOC wrapper
