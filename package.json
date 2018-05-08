@@ -32,10 +32,10 @@
     "test:e2e": "yoshi test --protractor",
     "lint": "yoshi lint",
     "start": "yoshi start --no-test & npm run storybook",
-    "release": "yoshi release && gh-pages-auto-release --dist=storybook-static && teamcity-surge-autorelease",
+    "release": "yoshi release && teamcity-surge-autorelease --dist=storybook-static",
     "storybook": "start-storybook -p 6006",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
-    "pr-release": "teamcity-surge-autorelease"
+    "pr-release": "teamcity-surge-autorelease --dist=storybook-static"
   },
   "dependencies": {
     "wix-ui-core": "^1.0.0",
