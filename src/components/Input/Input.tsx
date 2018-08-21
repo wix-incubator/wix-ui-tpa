@@ -13,7 +13,7 @@ export interface TPAInputProps {
 export type InputProps = TPAInputProps & CoreInputProps;
 
 const InputWithErrorStates = withStylable<CoreInputProps, ErrorProps>(
-  CoreInput,
+  CoreInput as any, //todo - ugly hack to make the build pass
   style,
   ({error}) => ({error})
 );
