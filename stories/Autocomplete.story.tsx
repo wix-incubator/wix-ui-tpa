@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Autocomplete} from '../src/components/Autocomplete';
-import {generateOptions} from 'wix-ui-core/dist/src/baseComponents/DropdownOption/OptionsExample';
+import {generateOptions} from 'wix-ui-core/dist/src/components/DropdownOption/OptionsExample';
 import * as AutocompleteSource from '!raw-loader!../src/components/Autocomplete/Autocomplete.tsx';
 import {Option, DividerArgs} from 'wix-ui-core/dist/src/baseComponents/DropdownOption';
 const CodeExample = require('../src/components/Autocomplete/CodeExample.md');
