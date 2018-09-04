@@ -19,13 +19,13 @@ describe('Input', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<Input/>, inputTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<Input/>, inputTestkitFactory, {dataHookPropName: 'data-hook'})).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Input/>, enzymeInputTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<Input/>, enzymeInputTestkitFactory, mount, {dataHookPropName: 'data-hook'})).toBe(true);
     });
   });
 });
