@@ -10,9 +10,8 @@
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",
-    "./src/**/*.tsx",
-    "./src/components/**/*.ts",
-    "./test/**/*.tsx",
-    "./src/external-types.d.ts"
+    "./node_modules/wix-ui-core/dist/src/types.d.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
   ]
 }
