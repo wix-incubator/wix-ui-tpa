@@ -4,7 +4,7 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/Index.st.css";
+    -st-from: "wix-ui-core/index.st.css";
     -st-named: Input;
 }
 
