@@ -4,8 +4,8 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/Input/Input.st.css";
-    -st-default: CoreInput;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Input;
 }
 
 :import {
@@ -63,7 +63,7 @@
 }
 
 .root {
-    -st-extends: CoreInput;
+    -st-extends: Input;
     -st-states: error;
     -st-mixin: inputStyling;
 }

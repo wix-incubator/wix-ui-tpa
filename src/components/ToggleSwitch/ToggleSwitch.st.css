@@ -4,13 +4,13 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/ToggleSwitch/ToggleSwitchStyle.st.css";
-    -st-default: ToggleSwitch;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ToggleSwitchStyle;
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/ToggleSwitch/ToggleSwitch.st.css";
-    -st-default: BaseToggleSwitch;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ToggleSwitch;
 }
 
 :import {
@@ -96,8 +96,8 @@
 }
 
 .root {
-    -st-extends: BaseToggleSwitch;
-    -st-mixin: ToggleSwitch(
+    -st-extends: ToggleSwitch;
+    -st-mixin: ToggleSwitchStyle(
         rootWidth value(rootWidth),
         rootHeight value(rootHeight),
         transitionSpeed value(transitionSpeed),

@@ -4,8 +4,8 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/dist/src/components/Autocomplete/Autocomplete.st.css";
-    -st-default: CoreAutocomplete;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Autocomplete ;
 }
 
 :import {
@@ -25,7 +25,7 @@
 }
 
 .root {
-    -st-extends: CoreAutocomplete;
+    -st-extends: Autocomplete;
     -st-states: error;
     -st-mixin: inputStyling; /*Apply same styling as the Input*/
     width: 100%;
