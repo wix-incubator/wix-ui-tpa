@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "wix-ui-core/index.st.css";
-    -st-named: CoreInput;
+    -st-named: Input;
 }
 
 .root .errorMessage {
