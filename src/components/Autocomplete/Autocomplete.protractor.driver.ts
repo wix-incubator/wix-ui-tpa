@@ -1,1 +1,1 @@
-export * from 'wix-ui-core/dist/src/components/Autocomplete/Autocomplete.protractor.driver';
+export * from 'wix-ui-core/drivers/protractorDrivers';
