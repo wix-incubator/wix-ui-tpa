@@ -1,1 +1,1 @@
-export {autocompleteDriverFactory, AutocompleteDriver} from 'wix-ui-core/drivers/protractor';
+export {inputDriverFactory} from 'wix-ui-core/drivers/protractor';
