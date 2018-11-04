@@ -1,1 +1,1 @@
-export {inputDriverFactory} from 'wix-ui-core/drivers/protractor';
+export {inputDriverFactory, InputDriver} from 'wix-ui-core/drivers/protractor';
