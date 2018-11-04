@@ -1,4 +1,4 @@
-import {inputDriverFactory as coreDriver} from 'wix-ui-core/dist/src/components/Input/Input.driver';
+import {inputDriverFactory as coreDriver} from 'wix-ui-core/drivers/vanilla';
 import {StylableDOMUtil} from '@stylable/dom-test-kit';
 import style from './Input.st.css';
 
