@@ -93,6 +93,7 @@
     border: 0;
     color: value(color);
     box-sizing: border-box;
+    background-color: value(backgroundColor);
 }
 
 .root:hover::nativeInput {
