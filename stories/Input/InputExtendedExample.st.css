@@ -4,9 +4,10 @@
 }
 
 .root {
-  --inputBackgroundColor: '"color(color-1)"';
+  --inputBackgroundColor: '"opacity(color(color-1), 0)"';
   --inputTextColor: '"color(color-5)"';
 
+  -st-extends: TPAInput;
   -st-mixin: TPAInput(
           MainBackgroundColor '"opacity(color(--inputBackgroundColor), 0.2)"',
           MainTextColor '"color(--inputTextColor)"'

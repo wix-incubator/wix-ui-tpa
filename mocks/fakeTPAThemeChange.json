@@ -2088,16 +2088,7 @@
       }
     ],
     "style": {
-      "colors": {
-        "inputBackgroundColor" : {
-          "themeName": "color_11",
-          "value": "#CCE4A0"
-        },
-        "inputTextColor": {
-          "themeName": "color_12",
-          "value": "#AACA70"
-        }
-      },
+      "colors": {},
       "numbers": {},
       "booleans": {},
       "fonts": {},

@@ -72,7 +72,7 @@ export class ColorPalettePicker extends React.PureComponent<IColorPalettePickerP
     ThemeChangeEvent.params.style.colors = this.props.wixParams.reduce((obj, item) => {
       const color = this.state.selectedColors[item.wixParam];
       obj[item.wixParam] = {
-        themeName: `color_${this.toTPAIndex(color.index)}`,
+        name: `color_${this.toTPAIndex(color.index)}`,
         value: this.state.selectedColors[item.wixParam].value
       };
       return obj;
