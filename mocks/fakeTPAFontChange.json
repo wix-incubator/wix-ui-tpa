@@ -1,11 +1,10 @@
 {
-  "intent": "TPA_RESPONSE",
-  "callId": 1,
-  "type": "appIsAlive",
-  "res": {
+  "intent": "addEventListener",
+  "eventType": "THEME_CHANGE",
+  "params": {
     "fonts": {
       "cssUrls": [
-        "https://static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/v4/languages.css"
+        "//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/v4/languages.css"
       ],
       "imageSpriteUrl": "https://static.parastorage.com/services/santa-resources/resources/viewer/editorUI/fonts.v4.png",
       "fontsMeta": [
@@ -2092,11 +2091,19 @@
       "colors": {},
       "numbers": {},
       "booleans": {},
-      "fonts": {},
-      "googleFontsCssUrl": "//fonts.googleapis.com/css?family=Noticia+Text:n,b,i,bi|&subset=hebrew,arabic,latin",
+      "fonts": {
+        "textFont": {
+          "cssFontFamily": "'courier new','courier-ps-w01','courier-ps-w02','courier-ps-w10','monospace'",
+          "family": "courier new",
+          "fontStyleParam": true,
+          "preset": "Custom",
+          "size": 20,
+          "style": {"bold": false, "italic": false, "underline": false},
+          "value": "font:normal normal normal 20px/25px \"courier new\",courier-ps-w01,courier-ps-w02,courier-ps-w10,monospace;"
+        }
+      },
+      "googleFontsCssUrl": "",
       "uploadFontFaces": ""
-    },
-    "isVisualFocusEnabled": false
-  },
-  "status": true
+    }
+  }
 }

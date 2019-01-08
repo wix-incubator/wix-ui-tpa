@@ -2,7 +2,7 @@ import * as React from 'react';
 import style from './ErrorMessageWrapper.st.css';
 
 export type ErrorProps = {
-  error: boolean
+  error?: boolean
 };
 
 export type ErrorMessageWrapperProps = {
