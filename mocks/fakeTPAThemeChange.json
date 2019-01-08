@@ -2094,11 +2094,15 @@
           "value": "#FFFFFF"
         },
         "inputTextColor": {
-          "name": "color_5",
+          "themeName": "color_5",
           "value": "#606060"
         },
         "textColor": {
-          "name": "color_5",
+          "themeName": "color_5",
+          "value": "#606060"
+        },
+        "dividerColor": {
+          "themeName": "color_5",
           "value": "#606060"
         }
       },
