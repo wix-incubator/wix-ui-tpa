@@ -2,6 +2,7 @@ import {BaseDriver, DriverFactory} from 'wix-ui-core/src/common/BaseDriver.protr
 
 export interface TextDriver extends BaseDriver {
   getText: () => Promise<string>;
+  getTagName: () => Promise<string>;
 }
 
 export const textDriverFactory: DriverFactory<TextDriver> = component => {
