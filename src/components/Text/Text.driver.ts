@@ -7,7 +7,7 @@ export const textDriverFactory = ({element}) => {
   return {
     exists: () => !!element,
     getTagName: () => element.tagName.toLowerCase(),
-    getContent: () => element.innerHTML,
+    getContent: () => element.firstChild.innerHTML,
     getTypography: () => stylableDOMUtil.getStyleState(element, 'typography'),
   };
 };

@@ -34,7 +34,7 @@ const CoreText = ({typography, children, dataHook, ...rest}) => {
       'data-hook': dataHook,
       ...rest
     },
-    (<span className={style.overrideStyle}>{children}</span>),
+    (<span data-hook="style-override-wrapper" className={style.overrideStyle}>{children}</span>),
   );
 };
 
