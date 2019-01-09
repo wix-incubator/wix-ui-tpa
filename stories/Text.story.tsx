@@ -10,12 +10,14 @@ export default {
   source: TextSource,
   componentPath: '../src/components/Text/Text.tsx',
   componentProps: () => ({
-    dataHook: 'storybook-Text',
+    'data-hook': 'storybook-Text',
     children: 'Some text',
     typography: TYPOGRAPHY.runningText,
   }),
   exampleProps: {
     typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
+    'data-hook': 'storybook-Text',
+    children: 'Some text',
   },
   examples: (
     <Examples/>

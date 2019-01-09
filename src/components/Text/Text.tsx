@@ -3,7 +3,6 @@ import style from './Text.st.css';
 
 export interface TextProps {
   typography?: TYPOGRAPHY;
-  dataHook?: string;
 }
 
 export enum TYPOGRAPHY {
@@ -19,7 +18,7 @@ function getTagNameByTypography(typography: string) {
   }
 }
 
-const CoreText = ({typography, children, dataHook, ...rest}) => {
+const CoreText = ({typography, children, ...rest}) => {
   const tagName = getTagNameByTypography(typography);
 
   return React.createElement(
@@ -29,10 +28,9 @@ const CoreText = ({typography, children, dataHook, ...rest}) => {
         'root',
         {
           typography
-        }
+        },
+        rest
       ),
-      'data-hook': dataHook,
-      ...rest
     },
     (<span data-hook="style-override-wrapper" className={style.overrideStyle}>{children}</span>),
   );
@@ -40,7 +38,6 @@ const CoreText = ({typography, children, dataHook, ...rest}) => {
 
 CoreText.defaultProps = {
   typography: TYPOGRAPHY.runningText,
-  dataHook: 'Text',
 };
 
 export const Text: React.SFC<TextProps> = CoreText;

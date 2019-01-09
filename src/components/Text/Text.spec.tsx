@@ -54,13 +54,13 @@ describe('Text', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<Text/>, textTestkitFactory)).toBe(true);
+      expect(isTestkitExists(<Text/>, textTestkitFactory, {dataHookPropName: 'data-hook'})).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Text/>, enzymeTextTestkitFactory, mount)).toBe(true);
+      expect(isEnzymeTestkitExists(<Text/>, enzymeTextTestkitFactory, mount, {dataHookPropName: 'data-hook'})).toBe(true);
     });
   });
 });
