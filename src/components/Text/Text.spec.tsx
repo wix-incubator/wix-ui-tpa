@@ -29,7 +29,7 @@ describe('Text', () => {
     const expectedTag = 'h5';
     const expectedTypography = TYPOGRAPHY.smallTitle;
 
-    driver = createDriver(<Text typography={expectedTypography}/>);
+    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
@@ -38,13 +38,13 @@ describe('Text', () => {
     const expectedTag = 'p';
     const expectedTypography = TYPOGRAPHY.runningText;
 
-    driver = createDriver(<Text typography={expectedTypography}/>);
+    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
 
-  it('should use runningText as default', () => {
-    const expectedTag = 'p';
+  it('should use default props', () => {
+    const expectedTag = 'span';
     const expectedTypography = TYPOGRAPHY.runningText;
 
     driver = createDriver(<Text/>);

@@ -3,6 +3,7 @@ import style from './Text.st.css';
 
 export interface TextProps {
   typography?: TYPOGRAPHY;
+  tagName?: string;
 }
 
 export enum TYPOGRAPHY {
@@ -10,18 +11,8 @@ export enum TYPOGRAPHY {
   runningText = 'runningText'
 }
 
-function getTagNameByTypography(typography: string) {
-  if (typography === TYPOGRAPHY.smallTitle) {
-    return 'h5';
-  } else {
-    return 'p';
-  }
-}
-
-const CoreText = ({typography, children, ...rest}) => {
-  const tagName = getTagNameByTypography(typography);
-
-  return React.createElement(
+const CoreText = ({typography, tagName, children, ...rest}) =>
+  React.createElement(
     tagName,
     {
       ...style(
@@ -34,10 +25,10 @@ const CoreText = ({typography, children, ...rest}) => {
     },
     (<span data-hook="style-override-wrapper" className={style.overrideStyle}>{children}</span>),
   );
-};
 
 CoreText.defaultProps = {
   typography: TYPOGRAPHY.runningText,
+  tagName: 'span',
 };
 
 export const Text: React.SFC<TextProps> = CoreText;
