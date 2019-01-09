@@ -34,9 +34,7 @@
     -st-states: typography(enum(smallTitle, runningText));
 }
 
-.root .overrideStyle{
-    -st-mixin: textStyle;
-}
+.overrideStyle {}
 
 .root:typography(smallTitle) {
     -st-mixin: textStyle(color value(SmallTitleColor), font value(SmallTitleFont));

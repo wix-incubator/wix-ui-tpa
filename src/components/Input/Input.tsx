@@ -11,7 +11,7 @@ export interface TPAInputProps {
 }
 export type InputProps = ErrorProps & TPAInputProps & CoreInputProps;
 
-const InputWithErrorFactory = InputClass => (props: InputProps) => {
+export const Input: React.SFC<InputProps> = (props: InputProps) => {
   const {errorMessage, error, ...coreInputProps} = props;
   const {disabled} = props;
 
@@ -20,9 +20,7 @@ const InputWithErrorFactory = InputClass => (props: InputProps) => {
       error={error}
       errorMessage={errorMessage}
       disabled={disabled}
-      render={(errorProps) => <InputClass {...style('root', {error})} error={errorProps.error} {...coreInputProps}/>}
+      render={(errorProps) => <CoreInput {...style('root', {error})} error={errorProps.error} {...coreInputProps}/>}
     />
   );
 };
-
-export const Input: React.SFC<InputProps> = InputWithErrorFactory(CoreInput);
