@@ -16,8 +16,6 @@ export default {
   }),
   exampleProps: {
     typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
-    'data-hook': 'storybook-Text',
-    children: 'Some text',
   },
   examples: (
     <Examples/>

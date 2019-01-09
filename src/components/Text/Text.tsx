@@ -1,19 +1,15 @@
 import * as React from 'react';
 import style from './Text.st.css';
+import {DEFAULT_TAG_NAME, TYPOGRAPHY} from './constants';
 
 export interface TextProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
 }
 
-export enum TYPOGRAPHY {
-  smallTitle = 'smallTitle',
-  runningText = 'runningText'
-}
-
 const CoreText = ({typography, tagName, children, ...rest}) =>
   React.createElement(
-    tagName,
+    tagName || DEFAULT_TAG_NAME,
     {
       ...style(
         'root',
@@ -28,7 +24,7 @@ const CoreText = ({typography, tagName, children, ...rest}) =>
 
 CoreText.defaultProps = {
   typography: TYPOGRAPHY.runningText,
-  tagName: 'span',
+  tagName: DEFAULT_TAG_NAME,
 };
 
 export const Text: React.SFC<TextProps> = CoreText;

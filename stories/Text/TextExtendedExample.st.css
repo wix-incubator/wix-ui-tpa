@@ -1,12 +1,9 @@
 :import {
   -st-from: "../../src/components/Text/Text.st.css";
-  -st-default: TPAText;
   -st-named: textStyle, overrideStyle;
 }
 
-.root {
-  -st-mixin: TPAText;
-}
+.root {}
 
 .root .overrideStyle {
   --textColor: ;
