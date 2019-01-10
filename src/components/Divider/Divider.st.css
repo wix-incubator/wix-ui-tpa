@@ -1,0 +1,18 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    DefaultDividerColor: wixApply(color, color-5);
+    DefaultDividerWidth: wixApply(unit, 1, px);
+    DividerColor: wixApply(color);
+    DividerWidth: wixApply(unit);
+}
+
+.root {
+    width: 100%;
+    border-bottom-style: solid;
+    border-bottom-color: wixApply(fallback, value(DividerColor), value(DefaultDividerColor));
+    border-bottom-width: wixApply(fallback, value(DividerWidth), value(DefaultDividerWidth));
+}

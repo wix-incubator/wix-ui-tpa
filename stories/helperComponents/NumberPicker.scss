@@ -1,0 +1,20 @@
+.numberPickerContainer {
+  display: flex;
+  margin: 50px;
+}
+
+.numberPickerList {
+  width: 210px;
+  padding: 0;
+  list-style: none;
+
+  > li {
+    label {
+      display: block;
+      margin-bottom: 0.5em;
+    }
+    + li {
+      margin-top: 2em;
+    }
+  }
+}
