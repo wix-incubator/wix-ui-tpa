@@ -19,7 +19,7 @@ const CoreText = ({typography, tagName, children, ...rest}) =>
         rest
       ),
     },
-    (<span data-hook="style-override-wrapper" className={style.overrideStyle}>{children}</span>),
+    children,
   );
 
 CoreText.defaultProps = {
