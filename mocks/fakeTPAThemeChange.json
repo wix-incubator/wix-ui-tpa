@@ -1870,63 +1870,63 @@
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "22px",
-        "fontFamily": "dinneuzeitgroteskltw01-_812426",
-        "value": "font:normal normal normal 22px/1.4em dinneuzeitgroteskltw01-_812426,sans-serif;"
+        "size": "33px",
+        "fontFamily": "noticia text",
+        "value": "font:normal normal normal 33px/1.4em \"noticia text\",serif;"
       },
       "Menu": {
         "editorKey": "font_1",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "16px",
-        "fontFamily": "din-next-w01-light",
-        "value": "font:normal normal normal 16px/1.4em din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif;"
+        "size": "12px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 12px/1.4em \"open sans\",sans-serif;"
       },
       "Page-title": {
         "editorKey": "font_2",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "97px",
-        "fontFamily": "dinneuzeitgroteskltw01-_812426",
-        "value": "font:normal normal normal 97px/1.4em dinneuzeitgroteskltw01-_812426,sans-serif;"
+        "size": "22px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 22px/1.4em \"open sans\",sans-serif;"
       },
       "Heading-XL": {
         "editorKey": "font_3",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "112px",
-        "fontFamily": "dinneuzeitgroteskltw01-_812426",
-        "value": "font:normal normal normal 112px/1.4em dinneuzeitgroteskltw01-_812426,sans-serif;"
+        "size": "60px",
+        "fontFamily": "noticia text",
+        "value": "font:normal normal normal 60px/1.4em \"noticia text\",serif;"
       },
       "Heading-L": {
         "editorKey": "font_4",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "97px",
-        "fontFamily": "dinneuzeitgroteskltw01-_812426",
-        "value": "font:normal normal normal 97px/1.4em dinneuzeitgroteskltw01-_812426,sans-serif;"
+        "size": "30px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 30px/1.4em \"open sans\",sans-serif;"
       },
       "Heading-M": {
         "editorKey": "font_5",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "20px",
-        "fontFamily": "dinneuzeitgroteskltw01-_812426",
-        "value": "font:normal normal normal 20px/1.4em dinneuzeitgroteskltw01-_812426,sans-serif;"
+        "size": "22px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 22px/1.4em \"open sans\",sans-serif;"
       },
       "Heading-S": {
         "editorKey": "font_6",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "17px",
-        "fontFamily": "avenir-lt-w01_35-light1475496",
-        "value": "font:normal normal normal 17px/1.4em avenir-lt-w01_35-light1475496,sans-serif;"
+        "size": "18px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 18px/1.4em \"open sans\",sans-serif;"
       },
       "Body-L": {
         "editorKey": "font_7",
@@ -1934,26 +1934,26 @@
         "style": "normal",
         "weight": "normal",
         "size": "16px",
-        "fontFamily": "avenir-lt-w01_35-light1475496",
-        "value": "font:normal normal normal 16px/1.4em avenir-lt-w01_35-light1475496,sans-serif;"
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 16px/1.4em \"open sans\",sans-serif;"
       },
       "Body-M": {
         "editorKey": "font_8",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "15px",
-        "fontFamily": "avenir-lt-w01_35-light1475496",
-        "value": "font:normal normal normal 15px/1.4em avenir-lt-w01_35-light1475496,sans-serif;"
+        "size": "13px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 13px/1.4em \"open sans\",sans-serif;"
       },
       "Body-S": {
         "editorKey": "font_9",
         "lineHeight": "1.4em",
         "style": "normal",
         "weight": "normal",
-        "size": "14px",
-        "fontFamily": "avenir-lt-w01_35-light1475496",
-        "value": "font:normal normal normal 14px/1.4em avenir-lt-w01_35-light1475496,sans-serif;"
+        "size": "12px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 12px/1.4em \"open sans\",sans-serif;"
       },
       "Body-XS": {
         "editorKey": "font_10",
@@ -1961,8 +1961,8 @@
         "style": "normal",
         "weight": "normal",
         "size": "12px",
-        "fontFamily": "din-next-w01-light",
-        "value": "font:normal normal normal 12px/1.4em din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif;"
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 12px/1.4em \"open sans\",sans-serif;"
       }
     },
     "siteColors": [
@@ -1992,110 +1992,118 @@
       },
       {
         "name": "color_12",
-        "value": "#EDEDEE"
+        "value": "#F2F2F2"
       },
       {
         "name": "color_13",
-        "value": "#8E8E8F"
+        "value": "#CFCFCF"
       },
       {
         "name": "color_14",
-        "value": "#5F5F5F"
+        "value": "#A8A8A8"
       },
       {
         "name": "color_15",
-        "value": "#2F2F30"
+        "value": "#606060"
       },
       {
         "name": "color_16",
-        "value": "#E8CFC8"
+        "value": "#A4E6F7"
       },
       {
         "name": "color_17",
-        "value": "#D0B0A6"
+        "value": "#77D7EF"
       },
       {
         "name": "color_18",
-        "value": "#B97F6D"
+        "value": "#00B9E8"
       },
       {
         "name": "color_19",
-        "value": "#7B5549"
+        "value": "#007B9A"
       },
       {
         "name": "color_20",
-        "value": "#3E2A24"
+        "value": "#003D4D"
       },
       {
         "name": "color_21",
-        "value": "#BBD5D6"
+        "value": "#F0ADA0"
       },
       {
         "name": "color_22",
-        "value": "#91ACAD"
+        "value": "#E28371"
       },
       {
         "name": "color_23",
-        "value": "#688384"
+        "value": "#D32300"
       },
       {
         "name": "color_24",
-        "value": "#3E5A5B"
+        "value": "#8D1700"
       },
       {
         "name": "color_25",
-        "value": "#123132"
+        "value": "#460B00"
       },
       {
         "name": "color_26",
-        "value": "#D6CFC5"
+        "value": "#D3E9AA"
       },
       {
         "name": "color_27",
-        "value": "#AEA599"
+        "value": "#B6D47E"
       },
       {
         "name": "color_28",
-        "value": "#857865"
+        "value": "#89BF24"
       },
       {
         "name": "color_29",
-        "value": "#595043"
+        "value": "#5B7F18"
       },
       {
         "name": "color_30",
-        "value": "#2C2822"
+        "value": "#2D3F0C"
       },
       {
         "name": "color_31",
-        "value": "#C8CAD3"
+        "value": "#FFEFAA"
       },
       {
         "name": "color_32",
-        "value": "#999CA6"
+        "value": "#FFE77F"
       },
       {
         "name": "color_33",
-        "value": "#676B7A"
+        "value": "#FFD000"
       },
       {
         "name": "color_34",
-        "value": "#454751"
+        "value": "#A98A00"
       },
       {
         "name": "color_35",
-        "value": "#222429"
+        "value": "#544500"
       }
     ],
     "style": {
       "colors": {
         "inputBackgroundColor" : {
-          "themeName": "color_11",
-          "value": "#CCE4A0"
+          "themeName": "color_1",
+          "value": "#FFFFFF"
         },
         "inputTextColor": {
-          "themeName": "color_12",
-          "value": "#AACA70"
+          "themeName": "color_5",
+          "value": "#606060"
+        },
+        "textColor": {
+          "themeName": "color_5",
+          "value": "#606060"
+        },
+        "dividerColor": {
+          "themeName": "color_5",
+          "value": "#606060"
         }
       },
       "numbers": {},
