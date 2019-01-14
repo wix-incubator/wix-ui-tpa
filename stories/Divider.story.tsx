@@ -11,12 +11,7 @@ export default {
   componentPath: '../src/components/Divider/Divider.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Divider',
-    // children: 'Some text',
-    // typography: TYPOGRAPHY.runningText,
   }),
-  exampleProps: {
-    // typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
-  },
   examples: (
     <Examples/>
   )
