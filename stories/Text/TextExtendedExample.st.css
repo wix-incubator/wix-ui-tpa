@@ -1,0 +1,14 @@
+:import {
+    -st-from: "../../src/components/Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+.root {
+    --textColor: ;
+    --textFont: ;
+
+    -st-mixin: TPAText(
+            OverrideTextColor '"color(--textColor)"',
+            OverrideTextFont '"font(--textFont)"'
+    );
+}
