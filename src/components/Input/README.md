@@ -29,8 +29,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
     //once mixin is pulled, you can override theme props as follows
     .root {
-        -st-extends: ToggleSwitch;
-        -st-mixin: ToggleSwitch(
+        -st-mixin: Input(
         //overrides
         );
     }

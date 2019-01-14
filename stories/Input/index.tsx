@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-import {storiesOf} from '@storybook/react';
-
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./InputExtendedExample.tsx';
