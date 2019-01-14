@@ -1,0 +1,2109 @@
+{
+  "intent": "addEventListener",
+  "eventType": "THEME_CHANGE",
+  "params": {
+    "fonts": {
+      "cssUrls": [
+        "//static.parastorage.com/services/santa-resources/resources/viewer/user-site-fonts/v4/languages.css"
+      ],
+      "imageSpriteUrl": "https://static.parastorage.com/services/santa-resources/resources/viewer/editorUI/fonts.v4.png",
+      "fontsMeta": [
+        {
+          "lang": "arabic",
+          "fonts": [
+            {
+              "displayName": "Ahmed Outline",
+              "fontFamily": "ahmedltw20-outlineregul",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 185,
+              "cssFontFamily": "ahmedltw20-outlineregul,fantasy"
+            },
+            {
+              "displayName": "Amiri",
+              "fontFamily": "amiri",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "open source",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 187,
+              "cssFontFamily": "amiri,serif"
+            },
+            {
+              "displayName": "Arabic Typesetting Regular",
+              "fontFamily": "arabictypesettingw23-re",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 177,
+              "cssFontFamily": "arabictypesettingw23-re,serif"
+            },
+            {
+              "displayName": "Arial",
+              "fontFamily": "arial",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "ｍｓ ｐゴシック,ms pgothic,돋움,dotum,helvetica",
+              "spriteIndex": 2,
+              "cssFontFamily": "arial,\"ｍｓ ｐゴシック\",\"ms pgothic\",\"돋움\",dotum,helvetica,sans-serif"
+            },
+            {
+              "displayName": "Arian",
+              "fontFamily": "arian-lt-w20-regular",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 180,
+              "cssFontFamily": "arian-lt-w20-regular,sans-serif"
+            },
+            {
+              "displayName": "Arian Light",
+              "fontFamily": "arian-lt-w20-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 179,
+              "cssFontFamily": "arian-lt-w20-light,sans-serif"
+            },
+            {
+              "displayName": "Courier New",
+              "fontFamily": "courier new",
+              "cdnName": "",
+              "genericFamily": "monospace",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "courier-ps-w01,courier-ps-w02,courier-ps-w10",
+              "spriteIndex": 7,
+              "cssFontFamily": "\"courier new\",courier-ps-w01,courier-ps-w02,courier-ps-w10,monospace"
+            },
+            {
+              "displayName": "DIN Next Arabic",
+              "fontFamily": "dinnextltw23-ultralight",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 183,
+              "cssFontFamily": "dinnextltw23-ultralight,sans-serif"
+            },
+            {
+              "displayName": "Droid Naskh",
+              "fontFamily": "droid-naskh",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "open source",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 188,
+              "cssFontFamily": "droid-naskh,serif"
+            },
+            {
+              "displayName": "Janna",
+              "fontFamily": "janna-lt-w20-regular",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 181,
+              "cssFontFamily": "janna-lt-w20-regular,sans-serif"
+            },
+            {
+              "displayName": "Kufi Regular",
+              "fontFamily": "kufi-lt-w20-regular",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 186,
+              "cssFontFamily": "kufi-lt-w20-regular,fantasy"
+            },
+            {
+              "displayName": "Midan",
+              "fontFamily": "midan-w20",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 178,
+              "cssFontFamily": "midan-w20,serif"
+            },
+            {
+              "displayName": "Neue Helvetica Arabic",
+              "fontFamily": "helveticaneueltw20-ligh",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 182,
+              "cssFontFamily": "helveticaneueltw20-ligh,sans-serif"
+            },
+            {
+              "displayName": "Tahoma",
+              "fontFamily": "tahoma",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular",
+              "spriteIndex": 77,
+              "cssFontFamily": "tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif"
+            },
+            {
+              "displayName": "Tanseek Modern Light",
+              "fontFamily": "tanseekmodernw20-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 184,
+              "cssFontFamily": "tanseekmodernw20-light,sans-serif"
+            },
+            {
+              "displayName": "Times New Roman",
+              "fontFamily": "times new roman",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "times",
+              "spriteIndex": 81,
+              "cssFontFamily": "\"times new roman\",times,serif"
+            }
+          ]
+        },
+        {
+          "lang": "hebrew",
+          "fonts": [
+            {
+              "displayName": "Adler",
+              "fontFamily": "adler-w26-regular",
+              "cdnName": "",
+              "genericFamily": "cursive",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 161,
+              "cssFontFamily": "adler-w26-regular,cursive"
+            },
+            {
+              "displayName": "Alef",
+              "fontFamily": "alef-regular",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 159,
+              "cssFontFamily": "alef-regular,sans-serif"
+            },
+            {
+              "displayName": "Almoni DL Bold",
+              "fontFamily": "almoni-dl-aaa-700",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 173,
+              "cssFontFamily": "almoni-dl-aaa-700,sans-serif"
+            },
+            {
+              "displayName": "Almoni DL Light",
+              "fontFamily": "almoni-dl-aaa-300",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 171,
+              "cssFontFamily": "almoni-dl-aaa-300,sans-serif"
+            },
+            {
+              "displayName": "Almoni DL Regular",
+              "fontFamily": "almoni-dl-aaa-400",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 172,
+              "cssFontFamily": "almoni-dl-aaa-400,sans-serif"
+            },
+            {
+              "displayName": "Arial",
+              "fontFamily": "arial",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "ｍｓ ｐゴシック,ms pgothic,돋움,dotum,helvetica",
+              "spriteIndex": 2,
+              "cssFontFamily": "arial,\"ｍｓ ｐゴシック\",\"ms pgothic\",\"돋움\",dotum,helvetica,sans-serif"
+            },
+            {
+              "displayName": "Asimon",
+              "fontFamily": "asimon-aaa-400",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 168,
+              "cssFontFamily": "asimon-aaa-400,sans-serif"
+            },
+            {
+              "displayName": "Atlas",
+              "fontFamily": "atlas-aaa-500",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 169,
+              "cssFontFamily": "atlas-aaa-500,sans-serif"
+            },
+            {
+              "displayName": "Chips",
+              "fontFamily": "chips-w26-normal",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 165,
+              "cssFontFamily": "chips-w26-normal,fantasy"
+            },
+            {
+              "displayName": "Courier New",
+              "fontFamily": "courier new",
+              "cdnName": "",
+              "genericFamily": "monospace",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "courier-ps-w01,courier-ps-w02,courier-ps-w10",
+              "spriteIndex": 7,
+              "cssFontFamily": "\"courier new\",courier-ps-w01,courier-ps-w02,courier-ps-w10,monospace"
+            },
+            {
+              "displayName": "Frank Ruhl",
+              "fontFamily": "frank-ruhl-w26-regular",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 158,
+              "cssFontFamily": "frank-ruhl-w26-regular,serif"
+            },
+            {
+              "displayName": "Gulash",
+              "fontFamily": "gulash-w26-regular",
+              "cdnName": "",
+              "genericFamily": "cursive",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 164,
+              "cssFontFamily": "gulash-w26-regular,cursive"
+            },
+            {
+              "displayName": "Longlife",
+              "fontFamily": "haim-arukeem-w26-medium",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 162,
+              "cssFontFamily": "haim-arukeem-w26-medium,sans-serif"
+            },
+            {
+              "displayName": "Miriam",
+              "fontFamily": "miriam-w26-medium",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 160,
+              "cssFontFamily": "miriam-w26-medium,serif"
+            },
+            {
+              "displayName": "Mixtape",
+              "fontFamily": "mixtape-aaa-400",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 174,
+              "cssFontFamily": "mixtape-aaa-400,sans-serif"
+            },
+            {
+              "displayName": "Museum",
+              "fontFamily": "museum-aaa-400",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 175,
+              "cssFontFamily": "museum-aaa-400,sans-serif"
+            },
+            {
+              "displayName": "Nekudot Bold",
+              "fontFamily": "nekudot-w26-bold",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 166,
+              "cssFontFamily": "nekudot-w26-bold,fantasy"
+            },
+            {
+              "displayName": "Omes",
+              "fontFamily": "omes-aaa-400",
+              "cdnName": "",
+              "genericFamily": "cursive",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 170,
+              "cssFontFamily": "omes-aaa-400,cursive"
+            },
+            {
+              "displayName": "Open Sans Condensed",
+              "fontFamily": "opensanshebrewcondensed-regular",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 167,
+              "cssFontFamily": "opensanshebrewcondensed-regular,sans-serif"
+            },
+            {
+              "displayName": "Shabazi Bold",
+              "fontFamily": "shabazi-w26-bold",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "hebrew"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 163,
+              "cssFontFamily": "shabazi-w26-bold,serif"
+            },
+            {
+              "displayName": "Tahoma",
+              "fontFamily": "tahoma",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular",
+              "spriteIndex": 77,
+              "cssFontFamily": "tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif"
+            },
+            {
+              "displayName": "Times New Roman",
+              "fontFamily": "times new roman",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "times",
+              "spriteIndex": 81,
+              "cssFontFamily": "\"times new roman\",times,serif"
+            }
+          ]
+        },
+        {
+          "lang": "latin",
+          "fonts": [
+            {
+              "displayName": "Adobe Caslon",
+              "fontFamily": "adobe-caslon-w01-smbd",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 218,
+              "cssFontFamily": "adobe-caslon-w01-smbd,serif"
+            },
+            {
+              "displayName": "Amatic SC",
+              "fontFamily": "amatic sc",
+              "cdnName": "Amatic+SC",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 154,
+              "cssFontFamily": "\"amatic sc\",cursive"
+            },
+            {
+              "displayName": "American Typewriter",
+              "fontFamily": "americantypwrteritcw01--731025",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "americantypwrteritcw02--737091",
+              "spriteIndex": 142,
+              "cssFontFamily": "americantypwrteritcw01--731025,americantypwrteritcw02--737091,serif"
+            },
+            {
+              "displayName": "Anton",
+              "fontFamily": "anton",
+              "cdnName": "Anton",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 0,
+              "cssFontFamily": "anton,sans-serif"
+            },
+            {
+              "displayName": "Arial",
+              "fontFamily": "arial",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "ｍｓ ｐゴシック,ms pgothic,돋움,dotum,helvetica",
+              "spriteIndex": 2,
+              "cssFontFamily": "arial,\"ｍｓ ｐゴシック\",\"ms pgothic\",\"돋움\",dotum,helvetica,sans-serif"
+            },
+            {
+              "displayName": "Arial Black",
+              "fontFamily": "arial black",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "arial-w01-black,arial-w02-black,arial-w10 black",
+              "spriteIndex": 12,
+              "cssFontFamily": "\"arial black\",arial-w01-black,arial-w02-black,\"arial-w10 black\",sans-serif"
+            },
+            {
+              "displayName": "Avenida",
+              "fontFamily": "avenida-w01",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "avenida-w02",
+              "spriteIndex": 112,
+              "cssFontFamily": "avenida-w01,avenida-w02,fantasy"
+            },
+            {
+              "displayName": "Avenir",
+              "fontFamily": "avenir-lt-w01_85-heavy1475544",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 215,
+              "cssFontFamily": "avenir-lt-w01_85-heavy1475544,sans-serif"
+            },
+            {
+              "displayName": "Avenir Light",
+              "fontFamily": "avenir-lt-w01_35-light1475496",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 216,
+              "cssFontFamily": "avenir-lt-w01_35-light1475496,sans-serif"
+            },
+            {
+              "displayName": "Basic",
+              "fontFamily": "basic",
+              "cdnName": "Basic",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 15,
+              "cssFontFamily": "basic,sans-serif"
+            },
+            {
+              "displayName": "Belinda",
+              "fontFamily": "belinda-w00-regular",
+              "cdnName": "",
+              "genericFamily": "script",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 221,
+              "cssFontFamily": "belinda-w00-regular,script"
+            },
+            {
+              "displayName": "Bodoni Poster",
+              "fontFamily": "bodoni-w01-poster",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "bodoni-poster-w10",
+              "spriteIndex": 108,
+              "cssFontFamily": "bodoni-w01-poster,bodoni-poster-w10,fantasy"
+            },
+            {
+              "displayName": "Braggadocio",
+              "fontFamily": "braggadocio-w01",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 117,
+              "cssFontFamily": "braggadocio-w01,fantasy"
+            },
+            {
+              "displayName": "Brandon Grotesque",
+              "fontFamily": "brandon-grot-w01-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 214,
+              "cssFontFamily": "brandon-grot-w01-light,sans-serif"
+            },
+            {
+              "displayName": "Bree",
+              "fontFamily": "bree-w01-thin-oblique",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 210,
+              "cssFontFamily": "bree-w01-thin-oblique,sans-serif"
+            },
+            {
+              "displayName": "Caudex",
+              "fontFamily": "caudex",
+              "cdnName": "Caudex",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 17,
+              "cssFontFamily": "caudex,serif"
+            },
+            {
+              "displayName": "Chelsea Market",
+              "fontFamily": "chelsea market",
+              "cdnName": "Chelsea+Market",
+              "genericFamily": "fantasy",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 19,
+              "cssFontFamily": "\"chelsea market\",fantasy"
+            },
+            {
+              "displayName": "Cinzel",
+              "fontFamily": "cinzel",
+              "cdnName": "Cinzel",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 204,
+              "cssFontFamily": "cinzel,serif"
+            },
+            {
+              "displayName": "Clarendon LT",
+              "fontFamily": "clarendon-w01-medium-692107",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "clarendon-w02-medium-693834",
+              "spriteIndex": 138,
+              "cssFontFamily": "clarendon-w01-medium-692107,clarendon-w02-medium-693834,serif"
+            },
+            {
+              "displayName": "Comic Sans MS",
+              "fontFamily": "comic sans ms",
+              "cdnName": "",
+              "genericFamily": "cursive",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "comic-sans-w01-regular,comic-sans-w02-regular,comic-sans-w10-regular",
+              "spriteIndex": 20,
+              "cssFontFamily": "\"comic sans ms\",comic-sans-w01-regular,comic-sans-w02-regular,comic-sans-w10-regular,cursive"
+            },
+            {
+              "displayName": "Cookie",
+              "fontFamily": "cookie",
+              "cdnName": "Cookie",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 148,
+              "cssFontFamily": "cookie,cursive"
+            },
+            {
+              "displayName": "Coquette",
+              "fontFamily": "coquette-w00-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 155,
+              "cssFontFamily": "coquette-w00-light,sans-serif"
+            },
+            {
+              "displayName": "Corben",
+              "fontFamily": "corben",
+              "cdnName": "Corben",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 23,
+              "cssFontFamily": "corben,serif"
+            },
+            {
+              "displayName": "Courier New",
+              "fontFamily": "courier new",
+              "cdnName": "",
+              "genericFamily": "monospace",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "courier-ps-w01,courier-ps-w02,courier-ps-w10",
+              "spriteIndex": 7,
+              "cssFontFamily": "\"courier new\",courier-ps-w01,courier-ps-w02,courier-ps-w10,monospace"
+            },
+            {
+              "displayName": "DIN Neuzeit Grotesk",
+              "fontFamily": "dinneuzeitgroteskltw01-_812426",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 224,
+              "cssFontFamily": "dinneuzeitgroteskltw01-_812426,sans-serif"
+            },
+            {
+              "displayName": "DIN Next Light",
+              "fontFamily": "din-next-w01-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "din-next-w02-light,din-next-w10-light",
+              "spriteIndex": 121,
+              "cssFontFamily": "din-next-w01-light,din-next-w02-light,din-next-w10-light,sans-serif"
+            },
+            {
+              "displayName": "Droid Serif",
+              "fontFamily": "droid-serif-w01-regular",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "droid-serif-w02-regular,droid-serif-w10-regular",
+              "spriteIndex": 135,
+              "cssFontFamily": "droid-serif-w01-regular,droid-serif-w02-regular,droid-serif-w10-regular,serif"
+            },
+            {
+              "displayName": "EB Garamond",
+              "fontFamily": "eb garamond",
+              "cdnName": "EB+Garamond",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 24,
+              "cssFontFamily": "\"eb garamond\",serif"
+            },
+            {
+              "displayName": "Enriqueta",
+              "fontFamily": "enriqueta",
+              "cdnName": "Enriqueta",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 27,
+              "cssFontFamily": "enriqueta,serif"
+            },
+            {
+              "displayName": "Forum",
+              "fontFamily": "forum",
+              "cdnName": "Forum",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 29,
+              "cssFontFamily": "forum,serif"
+            },
+            {
+              "displayName": "Fredericka the Great",
+              "fontFamily": "fredericka the great",
+              "cdnName": "Fredericka+the+Great",
+              "genericFamily": "fantasy",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 32,
+              "cssFontFamily": "\"fredericka the great\",fantasy"
+            },
+            {
+              "displayName": "Futura",
+              "fontFamily": "futura-lt-w01-book",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 212,
+              "cssFontFamily": "futura-lt-w01-book,sans-serif"
+            },
+            {
+              "displayName": "Futura Light",
+              "fontFamily": "futura-lt-w01-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 213,
+              "cssFontFamily": "futura-lt-w01-light,sans-serif"
+            },
+            {
+              "displayName": "Georgia",
+              "fontFamily": "georgia",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "palatino,book antiqua,palatino linotype",
+              "spriteIndex": 33,
+              "cssFontFamily": "georgia,palatino,\"book antiqua\",\"palatino linotype\",serif"
+            },
+            {
+              "displayName": "Geotica Four Open",
+              "fontFamily": "geotica-w01-four-open",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 115,
+              "cssFontFamily": "geotica-w01-four-open,fantasy"
+            },
+            {
+              "displayName": "Helvetica",
+              "fontFamily": "helvetica-w01-roman",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "helvetica-w02-roman,helvetica-lt-w10-roman",
+              "spriteIndex": 124,
+              "cssFontFamily": "helvetica-w01-roman,helvetica-w02-roman,helvetica-lt-w10-roman,sans-serif"
+            },
+            {
+              "displayName": "Helvetica Bold",
+              "fontFamily": "helvetica-w01-bold",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "helvetica-w02-bold,helvetica-lt-w10-bold",
+              "spriteIndex": 129,
+              "cssFontFamily": "helvetica-w01-bold,helvetica-w02-bold,helvetica-lt-w10-bold,sans-serif"
+            },
+            {
+              "displayName": "Helvetica Light",
+              "fontFamily": "helvetica-w01-light",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "helvetica-w02-light",
+              "spriteIndex": 127,
+              "cssFontFamily": "helvetica-w01-light,helvetica-w02-light,sans-serif"
+            },
+            {
+              "displayName": "ITC Arecibo",
+              "fontFamily": "itc-arecibo-w01-regular",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 111,
+              "cssFontFamily": "itc-arecibo-w01-regular,fantasy"
+            },
+            {
+              "displayName": "Impact",
+              "fontFamily": "impact",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "impact-w01-2010,impact-w02-2010,impact-w10-2010",
+              "spriteIndex": 36,
+              "cssFontFamily": "impact,impact-w01-2010,impact-w02-2010,impact-w10-2010,sans-serif"
+            },
+            {
+              "displayName": "Jockey One",
+              "fontFamily": "jockey one",
+              "cdnName": "Jockey+One",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 39,
+              "cssFontFamily": "\"jockey one\",sans-serif"
+            },
+            {
+              "displayName": "Josefin Slab",
+              "fontFamily": "josefin slab",
+              "cdnName": "Josefin+Slab",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 41,
+              "cssFontFamily": "\"josefin slab\",serif"
+            },
+            {
+              "displayName": "Jura",
+              "fontFamily": "jura",
+              "cdnName": "Jura",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 42,
+              "cssFontFamily": "jura,sans-serif"
+            },
+            {
+              "displayName": "Kelly Slab",
+              "fontFamily": "kelly slab",
+              "cdnName": "Kelly+Slab",
+              "genericFamily": "fantasy",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 45,
+              "cssFontFamily": "\"kelly slab\",fantasy"
+            },
+            {
+              "displayName": "Kepler",
+              "fontFamily": "kepler-w03-light-scd-cp",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 219,
+              "cssFontFamily": "kepler-w03-light-scd-cp,serif"
+            },
+            {
+              "displayName": "Libre Baskerville",
+              "fontFamily": "libre baskerville",
+              "cdnName": "Libre+Baskerville",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 207,
+              "cssFontFamily": "\"libre baskerville\",serif"
+            },
+            {
+              "displayName": "Linotype Didot",
+              "fontFamily": "didot-w01-italic",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 217,
+              "cssFontFamily": "didot-w01-italic,serif"
+            },
+            {
+              "displayName": "Lobster",
+              "fontFamily": "lobster",
+              "cdnName": "Lobster",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 54,
+              "cssFontFamily": "lobster,cursive"
+            },
+            {
+              "displayName": "Lucida Console",
+              "fontFamily": "lucida console",
+              "cdnName": "",
+              "genericFamily": "monospace",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "lucida-console-w01",
+              "spriteIndex": 48,
+              "cssFontFamily": "\"lucida console\",lucida-console-w01,monospace"
+            },
+            {
+              "displayName": "Lucida Sans Unicode",
+              "fontFamily": "lucida sans unicode",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "lucida grande",
+              "spriteIndex": 50,
+              "cssFontFamily": "\"lucida sans unicode\",\"lucida grande\",sans-serif"
+            },
+            {
+              "displayName": "Lulo Clean",
+              "fontFamily": "lulo-clean-w01-one-bold",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 211,
+              "cssFontFamily": "lulo-clean-w01-one-bold,sans-serif"
+            },
+            {
+              "displayName": "Marck Script",
+              "fontFamily": "marck script",
+              "cdnName": "Marck+Script",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 51,
+              "cssFontFamily": "\"marck script\",cursive"
+            },
+            {
+              "displayName": "Marzo",
+              "fontFamily": "marzo-w00-regular",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 116,
+              "cssFontFamily": "marzo-w00-regular,fantasy"
+            },
+            {
+              "displayName": "Monoton",
+              "fontFamily": "monoton",
+              "cdnName": "Monoton",
+              "genericFamily": "fantasy",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 144,
+              "cssFontFamily": "monoton,fantasy"
+            },
+            {
+              "displayName": "Monotype Baskerville",
+              "fontFamily": "baskervillemtw01-smbdit",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 220,
+              "cssFontFamily": "baskervillemtw01-smbdit,serif"
+            },
+            {
+              "displayName": "Mr De Haviland",
+              "fontFamily": "mr de haviland",
+              "cdnName": "Mr+De+Haviland",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 57,
+              "cssFontFamily": "\"mr de haviland\",cursive"
+            },
+            {
+              "displayName": "Museo",
+              "fontFamily": "museo-w01-700",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 140,
+              "cssFontFamily": "museo-w01-700,serif"
+            },
+            {
+              "displayName": "Museo Slab",
+              "fontFamily": "museo-slab-w01-100",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 141,
+              "cssFontFamily": "museo-slab-w01-100,serif"
+            },
+            {
+              "displayName": "Niconne",
+              "fontFamily": "niconne",
+              "cdnName": "Niconne",
+              "genericFamily": "fantasy",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 58,
+              "cssFontFamily": "niconne,fantasy"
+            },
+            {
+              "displayName": "Nimbus Sans",
+              "fontFamily": "nimbus-sans-tw01con",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 132,
+              "cssFontFamily": "nimbus-sans-tw01con,sans-serif"
+            },
+            {
+              "displayName": "Noticia Text",
+              "fontFamily": "noticia text",
+              "cdnName": "Noticia+Text",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 59,
+              "cssFontFamily": "\"noticia text\",serif"
+            },
+            {
+              "displayName": "Open Sans",
+              "fontFamily": "open sans",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "open source",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 61,
+              "cssFontFamily": "\"open sans\",sans-serif"
+            },
+            {
+              "displayName": "Open Sans Condensed",
+              "fontFamily": "open sans condensed",
+              "cdnName": "Open+Sans+Condensed:300",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 151,
+              "cssFontFamily": "\"open sans condensed\",sans-serif"
+            },
+            {
+              "displayName": "Overlock",
+              "fontFamily": "overlock",
+              "cdnName": "Overlock",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 64,
+              "cssFontFamily": "overlock,sans-serif"
+            },
+            {
+              "displayName": "Pacifica Condensed",
+              "fontFamily": "pacifica-w00-condensed",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 114,
+              "cssFontFamily": "pacifica-w00-condensed,fantasy"
+            },
+            {
+              "displayName": "Palatino Linotype",
+              "fontFamily": "palatino linotype",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 65,
+              "cssFontFamily": "\"palatino linotype\",serif"
+            },
+            {
+              "displayName": "Patrick Hand",
+              "fontFamily": "patrick hand",
+              "cdnName": "Patrick+Hand",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 67,
+              "cssFontFamily": "\"patrick hand\",cursive"
+            },
+            {
+              "displayName": "Peaches & Cream",
+              "fontFamily": "peaches-and-cream-regular-w00",
+              "cdnName": "",
+              "genericFamily": "script",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 223,
+              "cssFontFamily": "peaches-and-cream-regular-w00,script"
+            },
+            {
+              "displayName": "Play",
+              "fontFamily": "play",
+              "cdnName": "Play",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 69,
+              "cssFontFamily": "play,sans-serif"
+            },
+            {
+              "displayName": "Playfair Display",
+              "fontFamily": "playfair display",
+              "cdnName": "Playfair+Display",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 206,
+              "cssFontFamily": "\"playfair display\",serif"
+            },
+            {
+              "displayName": "Proxima Nova",
+              "fontFamily": "proxima-n-w01-reg",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 209,
+              "cssFontFamily": "proxima-n-w01-reg,sans-serif"
+            },
+            {
+              "displayName": "Raleway",
+              "fontFamily": "raleway",
+              "cdnName": "Raleway",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 150,
+              "cssFontFamily": "raleway,sans-serif"
+            },
+            {
+              "displayName": "Reklame Script",
+              "fontFamily": "reklamescriptw00-medium",
+              "cdnName": "",
+              "genericFamily": "cursive",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 118,
+              "cssFontFamily": "reklamescriptw00-medium,cursive"
+            },
+            {
+              "displayName": "Rosewood",
+              "fontFamily": "rosewood-w01-regular",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 157,
+              "cssFontFamily": "rosewood-w01-regular,sans-serif"
+            },
+            {
+              "displayName": "Sacramento",
+              "fontFamily": "sacramento",
+              "cdnName": "Sacramento",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 146,
+              "cssFontFamily": "sacramento,cursive"
+            },
+            {
+              "displayName": "Sail",
+              "fontFamily": "sail",
+              "cdnName": "Sail",
+              "genericFamily": "serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 205,
+              "cssFontFamily": "sail,serif"
+            },
+            {
+              "displayName": "Sarina",
+              "fontFamily": "sarina",
+              "cdnName": "Sarina",
+              "genericFamily": "cursive",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 72,
+              "cssFontFamily": "sarina,cursive"
+            },
+            {
+              "displayName": "Signika",
+              "fontFamily": "signika",
+              "cdnName": "Signika",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 74,
+              "cssFontFamily": "signika,sans-serif"
+            },
+            {
+              "displayName": "Snell Roundhand",
+              "fontFamily": "snellroundhandw01-scrip",
+              "cdnName": "",
+              "genericFamily": "cursive",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 120,
+              "cssFontFamily": "snellroundhandw01-scrip,cursive"
+            },
+            {
+              "displayName": "Soho Condensed",
+              "fontFamily": "soho-w01-thin-condensed",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin",
+                "latin-ext"
+              ],
+              "permissions": "all",
+              "fallbacks": "soho-w02-thin-condensed",
+              "spriteIndex": 133,
+              "cssFontFamily": "soho-w01-thin-condensed,soho-w02-thin-condensed,serif"
+            },
+            {
+              "displayName": "Spinnaker",
+              "fontFamily": "spinnaker",
+              "cdnName": "Spinnaker",
+              "genericFamily": "sans-serif",
+              "provider": "google",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 76,
+              "cssFontFamily": "spinnaker,sans-serif"
+            },
+            {
+              "displayName": "Stencil",
+              "fontFamily": "stencil-w01-bold",
+              "cdnName": "",
+              "genericFamily": "fantasy",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 110,
+              "cssFontFamily": "stencil-w01-bold,fantasy"
+            },
+            {
+              "displayName": "Tahoma",
+              "fontFamily": "tahoma",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular",
+              "spriteIndex": 77,
+              "cssFontFamily": "tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif"
+            },
+            {
+              "displayName": "Times New Roman",
+              "fontFamily": "times new roman",
+              "cdnName": "",
+              "genericFamily": "serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic",
+                "hebrew",
+                "arabic"
+              ],
+              "permissions": "all",
+              "fallbacks": "times",
+              "spriteIndex": 81,
+              "cssFontFamily": "\"times new roman\",times,serif"
+            },
+            {
+              "displayName": "Trend",
+              "fontFamily": "trend-sans-w00-four",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "monotype",
+              "characterSets": [
+                "latin"
+              ],
+              "permissions": "all",
+              "fallbacks": "",
+              "spriteIndex": 208,
+              "cssFontFamily": "trend-sans-w00-four,sans-serif"
+            },
+            {
+              "displayName": "Verdana",
+              "fontFamily": "verdana",
+              "cdnName": "",
+              "genericFamily": "sans-serif",
+              "provider": "system",
+              "characterSets": [
+                "latin",
+                "latin-ext",
+                "cyrillic"
+              ],
+              "permissions": "all",
+              "fallbacks": "geneva",
+              "spriteIndex": 86,
+              "cssFontFamily": "verdana,geneva,sans-serif"
+            }
+          ]
+        }
+      ]
+    },
+    "siteTextPresets": {
+      "Title": {
+        "editorKey": "font_0",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "33px",
+        "fontFamily": "noticia text",
+        "value": "font:normal normal normal 33px/1.4em \"noticia text\",serif;"
+      },
+      "Menu": {
+        "editorKey": "font_1",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "12px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 12px/1.4em \"open sans\",sans-serif;"
+      },
+      "Page-title": {
+        "editorKey": "font_2",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "22px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 22px/1.4em \"open sans\",sans-serif;"
+      },
+      "Heading-XL": {
+        "editorKey": "font_3",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "60px",
+        "fontFamily": "noticia text",
+        "value": "font:normal normal normal 60px/1.4em \"noticia text\",serif;"
+      },
+      "Heading-L": {
+        "editorKey": "font_4",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "30px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 30px/1.4em \"open sans\",sans-serif;"
+      },
+      "Heading-M": {
+        "editorKey": "font_5",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "22px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 22px/1.4em \"open sans\",sans-serif;"
+      },
+      "Heading-S": {
+        "editorKey": "font_6",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "18px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 18px/1.4em \"open sans\",sans-serif;"
+      },
+      "Body-L": {
+        "editorKey": "font_7",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "16px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 16px/1.4em \"open sans\",sans-serif;"
+      },
+      "Body-M": {
+        "editorKey": "font_8",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "13px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 13px/1.4em \"open sans\",sans-serif;"
+      },
+      "Body-S": {
+        "editorKey": "font_9",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "12px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 12px/1.4em \"open sans\",sans-serif;"
+      },
+      "Body-XS": {
+        "editorKey": "font_10",
+        "lineHeight": "1.4em",
+        "style": "normal",
+        "weight": "normal",
+        "size": "12px",
+        "fontFamily": "open sans",
+        "value": "font:normal normal normal 12px/1.4em \"open sans\",sans-serif;"
+      }
+    },
+    "siteColors": [
+      {
+        "name": "color_1",
+        "value": "#FFFFFF"
+      },
+      {
+        "name": "color_2",
+        "value": "#000000"
+      },
+      {
+        "name": "color_3",
+        "value": "#ED1C24"
+      },
+      {
+        "name": "color_4",
+        "value": "#0088CB"
+      },
+      {
+        "name": "color_5",
+        "value": "#FFCB05"
+      },
+      {
+        "name": "color_11",
+        "value": "#FFFFFF"
+      },
+      {
+        "name": "color_12",
+        "value": "#F2F2F2"
+      },
+      {
+        "name": "color_13",
+        "value": "#CFCFCF"
+      },
+      {
+        "name": "color_14",
+        "value": "#A8A8A8"
+      },
+      {
+        "name": "color_15",
+        "value": "#606060"
+      },
+      {
+        "name": "color_16",
+        "value": "#A4E6F7"
+      },
+      {
+        "name": "color_17",
+        "value": "#77D7EF"
+      },
+      {
+        "name": "color_18",
+        "value": "#00B9E8"
+      },
+      {
+        "name": "color_19",
+        "value": "#007B9A"
+      },
+      {
+        "name": "color_20",
+        "value": "#003D4D"
+      },
+      {
+        "name": "color_21",
+        "value": "#F0ADA0"
+      },
+      {
+        "name": "color_22",
+        "value": "#E28371"
+      },
+      {
+        "name": "color_23",
+        "value": "#D32300"
+      },
+      {
+        "name": "color_24",
+        "value": "#8D1700"
+      },
+      {
+        "name": "color_25",
+        "value": "#460B00"
+      },
+      {
+        "name": "color_26",
+        "value": "#D3E9AA"
+      },
+      {
+        "name": "color_27",
+        "value": "#B6D47E"
+      },
+      {
+        "name": "color_28",
+        "value": "#89BF24"
+      },
+      {
+        "name": "color_29",
+        "value": "#5B7F18"
+      },
+      {
+        "name": "color_30",
+        "value": "#2D3F0C"
+      },
+      {
+        "name": "color_31",
+        "value": "#FFEFAA"
+      },
+      {
+        "name": "color_32",
+        "value": "#FFE77F"
+      },
+      {
+        "name": "color_33",
+        "value": "#FFD000"
+      },
+      {
+        "name": "color_34",
+        "value": "#A98A00"
+      },
+      {
+        "name": "color_35",
+        "value": "#544500"
+      }
+    ],
+    "style": {
+      "colors": {},
+      "numbers": {},
+      "booleans": {},
+      "fonts": {
+        "textFont": {
+          "cssFontFamily": "'courier new','courier-ps-w01','courier-ps-w02','courier-ps-w10','monospace'",
+          "family": "courier new",
+          "fontStyleParam": true,
+          "preset": "Custom",
+          "size": 20,
+          "style": {"bold": false, "italic": false, "underline": false},
+          "value": "font:normal normal normal 20px/25px \"courier new\",courier-ps-w01,courier-ps-w02,courier-ps-w10,monospace;"
+        }
+      },
+      "googleFontsCssUrl": "",
+      "uploadFontFaces": ""
+    }
+  }
+}
