@@ -10,7 +10,7 @@ module.exports = (config, env) => {
     options: {
       storyConfig: {
         moduleName: 'wix-ui-tpa',
-        repoBaseURL: 'https://github.com/wix/wix-ui-tpa'
+        repoBaseURL: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components'
       }
     }
   });
