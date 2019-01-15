@@ -4,15 +4,20 @@
 }
 
 :vars {
-    DefaultDividerColor: wixApply(color, color-5);
-    DefaultDividerWidth: wixApply(unit, 1, px);
-    DividerColor: wixApply(color);
-    DividerWidth: wixApply(unit);
+    /*Constance*/
+    MainColor: color-5;
+    MainWidth: 1;
+}
+
+:vars {
+    /*Overrides*/
+    MainDividerColor: wixApply(color);
+    MainDividerWidth: value(MainWidth);
 }
 
 .root {
     width: 100%;
     border-bottom-style: solid;
-    border-bottom-color: wixApply(fallback, value(DividerColor), value(DefaultDividerColor));
-    border-bottom-width: wixApply(fallback, value(DividerWidth), value(DefaultDividerWidth));
+    border-bottom-color: wixApply(color, wixApply(fallback, value(MainDividerColor), value(MainColor)));
+    border-bottom-width: wixApply(unit, wixApply(fallback, value(MainDividerWidth), value(MainWidth)), px);
 }

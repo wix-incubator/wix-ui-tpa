@@ -1,16 +1,11 @@
 :import {
     -st-from: "../../src/components/Divider/Divider.st.css";
     -st-default: TPADivider;
-    -st-named: DefaultDividerColor, DefaultDividerWidth;
-
 }
 
 .root {
-    --dividerColor: value(DefaultDividerColor);
-    --dividerWidth: value(DefaultDividerWidth);
-
     -st-mixin: TPADivider(
-          DividerColor '"color(--dividerColor)"',
-          DividerWidth '"unit(--dividerWidth, px)"'
+        MainDividerColor '"color(--dividerColor)"',
+        MainDividerWidth '"--dividerWidth"'
   );
 }
