@@ -12,7 +12,7 @@ import {ToggleSwitchExtensionExample} from './ToggleSwitchExtensionExample';
 import * as RawSource from '!raw-loader!./ToggleSwitchExample.tsx';
 import * as RawSourceExtended from '!raw-loader!./ToggleSwitchExtensionExample.tsx';
 import * as CssSource from '!raw-loader!./ToggleSwitchExt.st.css';
-import {ColorPalettePicker} from '../helperComponents/ColorPalettePicker';
+import {MockSettings} from '../helperComponents/MockSettings';
 
 storiesOf('Components', module)
   .add('ToggleSwitch', () =>
@@ -29,15 +29,16 @@ storiesOf('Components', module)
             <ToggleSwitchExtensionExample/>
             <h3>You set a new value for disabled color and selected color by picking colors from the color picker</h3>
           </div>
-          <ColorPalettePicker wixParams={[{
-            label: 'Selected color',
-            wixParam: 'runtimeSettings1',
-            defaultColor: 'color-23'
-          }, {
-            label: 'Disabled color',
-            wixParam: 'runtimeSettings2',
-            defaultColor: 'color-2'
-          }]}/>
+          <MockSettings
+            wixColorParams={[{
+              label: 'Selected color',
+              wixParam: 'runtimeSettings1',
+              defaultColor: 'color-23'
+            }, {
+              label: 'Disabled color',
+              wixParam: 'runtimeSettings2',
+              defaultColor: 'color-2'
+            }]}/>
         </CodeExample>
       </div>
 

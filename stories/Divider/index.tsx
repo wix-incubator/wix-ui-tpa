@@ -4,8 +4,7 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./DividerExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./DividerExtendedExample.st.css';
-import {ColorPalettePicker} from '../helperComponents/ColorPalettePicker';
-import {NumberPicker} from '../helperComponents/NumberPicker';
+import {MockSettings} from '../helperComponents/MockSettings';
 import {DividerExtendedExample} from './DividerExtendedExample';
 
 export const Examples = () => (
@@ -16,17 +15,17 @@ export const Examples = () => (
         <DividerExtendedExample/>
       </CodeExample>
     </div>
-    <ColorPalettePicker wixParams={[{
-      label: 'Color',
-      wixParam: 'dividerColor',
-      defaultColor: 'color-5'
-    }]}/>
-    <NumberPicker wixParams={[{
-      label: 'Width',
-      wixParam: 'dividerWidth',
-      defaultNumber: 1,
-      unit: 'px'
-    }]}/>
-
+    <MockSettings
+      wixNumberParams={[{
+        label: 'Width',
+        wixParam: 'dividerWidth',
+        defaultNumber: 1,
+        unit: 'px'
+      }]}
+      wixColorParams={[{
+        label: 'Color',
+        wixParam: 'dividerColor',
+        defaultColor: 'color-5'
+      }]}/>
   </div>
 );

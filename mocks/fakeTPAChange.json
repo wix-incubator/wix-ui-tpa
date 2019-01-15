@@ -2088,9 +2088,27 @@
       }
     ],
     "style": {
-      "colors": {},
-      "numbers": {},
-      "booleans": {},
+      "colors": {
+        "inputBackgroundColor" : {
+          "themeName": "color_1",
+          "value": "#FFFFFF"
+        },
+        "inputTextColor": {
+          "themeName": "color_5",
+          "value": "#606060"
+        },
+        "textColor": {
+          "themeName": "color_5",
+          "value": "#606060"
+        },
+        "dividerColor": {
+          "themeName": "color_5",
+          "value": "#606060"
+        }
+      },
+      "numbers": {
+        "dividerWidth": 1
+      },
       "fonts": {
         "textFont": {
           "cssFontFamily": "'courier new','courier-ps-w01','courier-ps-w02','courier-ps-w10','monospace'",
@@ -2102,6 +2120,7 @@
           "value": "font:normal normal normal 20px/25px \"courier new\",courier-ps-w01,courier-ps-w02,courier-ps-w10,monospace;"
         }
       },
+      "booleans": {},
       "googleFontsCssUrl": "",
       "uploadFontFaces": ""
     }
