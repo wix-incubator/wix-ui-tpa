@@ -5,6 +5,7 @@ import {ButtonProps as ButtonNextProps} from 'wix-ui-core/dist/src/components/bu
 // import { withEllipsedTooltip } from 'wix-ui-core/dist/src/hocs/EllipsedTooltip';
 
 export enum PRIORITY {
+  basic = 'basic',
   primary = 'primary',
   secondary = 'secondary'
 }
@@ -18,7 +19,7 @@ const CoreButton = ({dataHook, priority, ...rest}) =>
   (<ButtonNext {...rest} data-hook={dataHook} {...style('root', {priority}, rest)}/>);
 
 CoreButton.defaultProps = {
-  priority: PRIORITY.primary
+  priority: PRIORITY.basic
 };
 
 export const Button: React.SFC<ButtonProps> = CoreButton;

@@ -14,6 +14,7 @@
     MinHeight: 42px;
     PrimaryColor: color-8;
     SecondaryColor: color-1;
+    BasicColor: color-5;
     DisabledColor: color-3;
     MainFont: "{theme: 'Heading-M', size: '16px', lineHeight: '1em'}";
     BorderWidth: 1;
@@ -30,9 +31,14 @@
     MainBorderRadius: value(BorderRadius);
 }
 
+:vars {
+    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    PrimaryBorderWidth: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 0), px);
+}
+
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary));
+    -st-states: priority(enum(primary, secondary, basic));
 
     padding: 13px 21px;
     min-width: value(MinWidth);
@@ -47,39 +53,68 @@
     margin: 0 auto;
 }
 
+/*Basic*/
+
+:vars {
+    BasicBackgroundColor: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(BasicColor)));
+}
+
+.root:priority(basic) {
+    color: value(PrimaryTextColor);
+    background-color: value(BasicBackgroundColor);
+    border-width: value(PrimaryBorderWidth);
+}
+
+.root:priority(basic):active,
+.root:priority(basic):focus,
+.root:priority(basic):hover {
+    background-color: wixApply(opacity, value(BasicBackgroundColor), 0.8);
+}
+
 /*Primary*/
 
+:vars {
+    PrimaryBackgroundColor: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(PrimaryColor)));
+}
+
 .root:priority(primary) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
-    background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(PrimaryColor)));
-    border-width: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 0), px);
+    color: value(PrimaryTextColor);
+    background-color: value(PrimaryBackgroundColor);
+    border-width: value(PrimaryBorderWidth);
 }
 
 .root:priority(primary):active,
 .root:priority(primary):focus,
 .root:priority(primary):hover {
-    background-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(PrimaryColor))), 0.8);
-}
-
-.root:priority(primary):disabled {
-    color: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor))), 0.6);
-    background-color: wixApply(color, value(DisabledColor));
+    background-color: wixApply(opacity, value(PrimaryBackgroundColor), 0.8);
 }
 
 /*Secondary*/
 
+:vars {
+    SecondaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    SecondaryBorderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(PrimaryColor)));
+}
+
 .root:priority(secondary) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    color: value(SecondaryTextColor);
     background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), transparent));
-    border-color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    border-color: value(SecondaryBorderColor);
     border-width: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 1), px);
 }
 
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
-    color: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor))), 0.6);
-    border-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor))), 0.6);
+    color: wixApply(opacity, value(SecondaryTextColor), 0.6);
+    border-color: wixApply(opacity, value(SecondaryBorderColor), 0.6);
+}
+
+/*Disabled*/
+
+.root:priority(basic):disabled,
+.root:priority(primary):disabled {
+    background-color: wixApply(color, value(DisabledColor));
 }
 
 .root:priority(secondary):disabled {
