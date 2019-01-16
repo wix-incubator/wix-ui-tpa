@@ -12,8 +12,8 @@
 }
 
 :vars {
-    MainTextColor: wixApply(color);
-    MainTextFont: wixApply(font);
+    MainTextColor: --overridable;
+    MainTextFont: --overridable;
 }
 
 .root {
@@ -22,7 +22,8 @@
 
 .root:typography(smallTitle) {
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(SmallTitleFont)));
+    font: wixApply(font, wixApply(fallback, value(MainTextFont), value(SmallTitleFont)));
+    /*font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(SmallTitleFont)));*/
 }
 
 .root:typography(runningText) {
