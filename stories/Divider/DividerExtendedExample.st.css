@@ -5,7 +5,7 @@
 
 .root {
     -st-mixin: TPADivider(
-        MainDividerColor '"color(--dividerColor)"',
+        MainDividerColor '"--dividerColor"',
         MainDividerWidth '"--dividerWidth"'
   );
 }
