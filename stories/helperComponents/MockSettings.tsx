@@ -296,8 +296,9 @@ export class MockSettings extends React.PureComponent<IMockSettingsProps, IMockS
         </ul>
       </div>
       <div className={styles.palettePickerContainer}>
-        <UI.ColorPickerPalettePicker value={this.state.selectedPalette}
-                                     onChange={(palette) => this.onPaletteChange(palette)}/>
+        <UI.ColorPickerPalettePicker
+          value={this.state.selectedPalette}
+          onChange={(palette) => this.onPaletteChange(palette)}/>
       </div>
     </div>);
   }
