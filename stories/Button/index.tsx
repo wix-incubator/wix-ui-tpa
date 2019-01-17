@@ -39,7 +39,7 @@ export const Examples = () => (
       }, {
         label: 'Background Color',
         wixParam: 'buttonBackgroundColor',
-        defaultColor: 'color-8'
+        defaultColor: 'color-5'
       }, {
         label: 'Border Color',
         wixParam: 'borderColor',
