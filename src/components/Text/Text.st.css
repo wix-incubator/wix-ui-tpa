@@ -4,20 +4,16 @@
 }
 
 :vars {
-    OverrideTextColor: wixApply(color);
-    OverrideTextFont: wixApply(font);
+    /*Constance*/
+    PrimaryColor: color-5;
+    SecondaryColor: color-3;
+    SmallTitleFont: "{theme: 'Heading-M', size: '22px', lineHeight: '1.5em'}";
+    RunningTextFont: "{theme: 'Heading-M', size: '16px', lineHeight: '1.5em'}";
 }
 
 :vars {
-    /*SmallTitle values*/
-    SmallTitleColor: wixApply(color, color-5);
-    SmallTitleFont: wixApply(font, "{theme: 'Heading-M', size: '22px', lineHeight: '1.5em'}");
-}
-
-:vars {
-    /*RunningText values*/
-    RunningTextColor: wixApply(color, color-3);
-    RunningTextFont: wixApply(font, "{theme: 'Heading-M', size: '16px', lineHeight: '1.5em'}");
+    MainTextColor: --overridable;
+    MainTextFont: --overridable;
 }
 
 .root {
@@ -25,11 +21,11 @@
 }
 
 .root:typography(smallTitle) {
-    color: wixApply(fallback, value(OverrideTextColor), value(SmallTitleColor));
-    font: wixApply(fallback, value(OverrideTextFont), value(SmallTitleFont));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(SmallTitleFont)));
 }
 
 .root:typography(runningText) {
-    color: wixApply(fallback, value(OverrideTextColor), value(RunningTextColor));
-    font: wixApply(fallback, value(OverrideTextFont), value(RunningTextFont));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(RunningTextFont)));
 }
