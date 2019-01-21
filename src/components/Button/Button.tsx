@@ -21,7 +21,7 @@ export interface ButtonProps extends ButtonNextProps {
   size?: SIZE;
 }
 
-const CoreButton = ({priority, size, dataHook, ...rest}) =>
+const CoreButton = ({priority, size, ...rest}) =>
   (<ButtonNext {...rest} {...style('root', {priority, size}, rest)}/>);
 
 CoreButton.defaultProps = {

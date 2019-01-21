@@ -11,21 +11,21 @@ import {createUniDriverFactory} from 'wix-ui-test-utils/uni-driver-factory';
 describe('Button', () => {
   const createDriver = createUniDriverFactory(buttonDriverFactory);
 
-  it('should render', () => {
+  it('should render', async () => {
     const value = 'hello!';
     const driver = createDriver(<Button>{value}</Button>);
-    expect(driver.getButtonTextContent()).resolves.toEqual(value);
+    expect(await driver.getButtonTextContent()).toEqual(value);
   });
 
   describe('testkit', () => {
-    it('should exist', () => {
-      expect(isUniTestkitExists(<Button/>, buttonTestkitFactory)).resolves.toBe(true);
+    it('should exist', async () => {
+      expect(await isUniTestkitExists(<Button/>, buttonTestkitFactory, {dataHookPropName: 'data-hook'})).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
-    it('should exist', () => {
-      expect(isUniEnzymeTestkitExists(<Button/>, enzymeButtonTestkitFactory, mount)).resolves.toBe(true);
+    it('should exist', async () => {
+      expect(await isUniEnzymeTestkitExists(<Button/>, enzymeButtonTestkitFactory, mount, {dataHookPropName: 'data-hook'})).toBe(true);
     });
   });
 });
