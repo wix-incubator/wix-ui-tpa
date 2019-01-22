@@ -1,0 +1,158 @@
+:import {
+    -st-from: "../../tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "./mixins";
+    -st-named: fontBuilder;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
+}
+
+:vars {
+    /*Constance*/
+    MinWidth: 120px;
+    MaxWidth: 300px;
+    PrimaryColor: color-8;
+    SecondaryColor: color-1;
+    BasicColor: color-5;
+    DisabledColor: color-3;
+    MainFont: Body-M;
+    BorderWidth: 1;
+    BorderRadius: 0;
+}
+
+:vars {
+    /*Overrides*/
+    MainTextColor: --overidable;
+    MainBackgroundColor: --overidable;
+    MainTextFont: --overidable;
+    MainBorderColor: value(PrimaryColor);
+    MainBorderWidth: --overidable;
+    MainBorderRadius: value(BorderRadius);
+}
+
+:vars {
+    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    PrimaryBorderWidth: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 0), px);
+}
+
+.root {
+    -st-extends: ButtonNext;
+    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large));
+
+    min-width: value(MinWidth);
+    max-width: value(MaxWidth);
+    border-style: solid;
+    border-color: wixApply(color, wixApply(fallback, value(MainBorderColor), value(PrimaryColor)));
+    border-radius: wixApply(unit, wixApply(fallback, value(MainBorderRadius), 0), px);
+}
+
+.root::content {
+    margin: 0 auto;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/*Basic*/
+
+:vars {
+    BasicBackgroundColor: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(BasicColor)));
+}
+
+.root:priority(basic) {
+    color: value(PrimaryTextColor);
+    background-color: value(BasicBackgroundColor);
+    border-width: value(PrimaryBorderWidth);
+}
+
+.root:priority(basic):active,
+.root:priority(basic):focus,
+.root:priority(basic):hover {
+    background-color: wixApply(opacity, value(BasicBackgroundColor), 0.8);
+}
+
+/*Primary*/
+
+:vars {
+    PrimaryBackgroundColor: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(PrimaryColor)));
+}
+
+.root:priority(primary) {
+    color: value(PrimaryTextColor);
+    background-color: value(PrimaryBackgroundColor);
+    border-width: value(PrimaryBorderWidth);
+}
+
+.root:priority(primary):active,
+.root:priority(primary):focus,
+.root:priority(primary):hover {
+    background-color: wixApply(opacity, value(PrimaryBackgroundColor), 0.8);
+}
+
+/*Secondary*/
+
+:vars {
+    SecondaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    SecondaryBorderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(PrimaryColor)));
+}
+
+.root:priority(secondary) {
+    color: value(SecondaryTextColor);
+    background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), transparent));
+    border-color: value(SecondaryBorderColor);
+    border-width: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 1), px);
+}
+
+.root:priority(secondary):active,
+.root:priority(secondary):focus,
+.root:priority(secondary):hover {
+    color: wixApply(opacity, value(SecondaryTextColor), 0.6);
+    border-color: wixApply(opacity, value(SecondaryBorderColor), 0.6);
+}
+
+/*Disabled*/
+
+.root:priority(basic):disabled,
+.root:priority(primary):disabled {
+    background-color: wixApply(color, value(DisabledColor));
+}
+
+.root:priority(secondary):disabled {
+    color: wixApply(color, value(DisabledColor));
+    border-color: wixApply(color, value(DisabledColor));
+}
+
+/*Tiny*/
+
+.root:size(tiny) {
+    padding: 6px 16px;
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, fontBuilder(value(MainFont), 14px, 1.43em)));
+}
+
+/*Small*/
+
+.root:size(small) {
+    padding: 7px 16px;
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, fontBuilder(value(MainFont), 16px, 1.5em)));
+}
+
+/*Medium*/
+
+.root:size(medium) {
+    padding: 10px 16px;
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, fontBuilder(value(MainFont), 16px, 1.5em)));
+}
+
+/*Large*/
+
+.root:size(large) {
+    padding: 10px 16px;
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, fontBuilder(value(MainFont), 20px, 1.5em)));
+
+}
