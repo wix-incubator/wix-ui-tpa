@@ -4,11 +4,8 @@
 }
 
 .root {
-    --textColor: ;
-    --textFont: ;
-
     -st-mixin: TPAText(
-            OverrideTextColor '"color(--textColor)"',
-            OverrideTextFont '"font(--textFont)"'
+            MainTextColor '"--textColor"',
+            MainTextFont '"--textFont"'
     );
 }
