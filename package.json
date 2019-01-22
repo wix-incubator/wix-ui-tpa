@@ -22,9 +22,9 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
-    "build": "yoshi build && import-path --path src/components --dts && npm run copy-styleable-ext",
-    "pretest": "build-storybook && npm run compile-base-ui",
+    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && build-storybook",
+    "postbuild": "import-path --path src/components --dts",
+    "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "test": "npm run test:unit && npm run test:e2e",
     "posttest": "npm run lint",
     "test:watch": "yoshi test --jest --watch",
@@ -32,10 +32,11 @@
     "test:e2e": "yoshi test --protractor",
     "lint": "yoshi lint --fix",
     "start": "yoshi start --no-test & npm run storybook",
-    "release": "yoshi release && teamcity-surge-autorelease --dist=storybook-static",
+    "release": "yoshi release",
+    "postpublish": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
-    "pr-release": "teamcity-surge-autorelease --dist=storybook-static"
+    "compile-base-ui": "node ./.storybook/base-ui-compiler.js"
   },
   "dependencies": {
     "wix-ui-core": "^1.0.0",
@@ -94,8 +95,5 @@
       "raf/polyfill",
       "<rootDir>/test/enzyme-setup.js"
     ]
-  },
-  "optionalDependencies": {
-    "teamcity-surge-autorelease": "^1.0.3"
   }
 }
