@@ -12,13 +12,30 @@
   display: flex;
   margin: 50px;
   position: relative;
+  width: fit-content;
+}
+
+.colorPickerContainer {
+  width: fit-content;
+  max-width: 520px;
+  overflow-x: auto;
+
+  .pickerList {
+    width: max-content;
+
+    > li {
+      width: 210px;
+      display: inline-block;
+      margin: 0 5px;
+    }
+  }
 }
 
 .palettePickerContainer {
   min-height: 150px;
   overflow-y: auto;
   position: absolute;
-  left: 260px;
+  right: -150px;
   top: 0;
   bottom: 0;
 }

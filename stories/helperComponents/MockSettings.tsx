@@ -280,21 +280,25 @@ export class MockSettings extends React.PureComponent<IMockSettingsProps, IMockS
 
   private renderColorPicker() {
     return ( <div className={styles.colorPalettePicker}>
-      <ul className={styles.pickerList}>
-        {
-          this.props.wixColorParams.map(({label, wixParam}) =>
-            <li key={wixParam}>
-              <label>{label} - {this.state.selectedColors[wixParam].value}</label>
-              <UI.ColorPickerPalette onChange={(value, index) => this.onColorChanged({value, index}, wixParam)}
-                                     value={this.state.selectedColors[wixParam].value}
-                                     palette={this.state.selectedPalette}/>
-            </li>
-          )
-        }
-      </ul>
+      <div className={styles.colorPickerContainer}>
+        <ul className={styles.pickerList}>
+          {
+            this.props.wixColorParams.map(({label, wixParam}) =>
+              <li key={wixParam}>
+                <label>{label} - {this.state.selectedColors[wixParam].value}</label>
+                <UI.ColorPickerPalette
+                  onChange={(value, index) => this.onColorChanged({value, index}, wixParam)}
+                  value={this.state.selectedColors[wixParam].value}
+                  palette={this.state.selectedPalette}/>
+              </li>
+            )
+          }
+        </ul>
+      </div>
       <div className={styles.palettePickerContainer}>
-        <UI.ColorPickerPalettePicker value={this.state.selectedPalette}
-                                     onChange={(palette) => this.onPaletteChange(palette)}/>
+        <UI.ColorPickerPalettePicker
+          value={this.state.selectedPalette}
+          onChange={(palette) => this.onPaletteChange(palette)}/>
       </div>
     </div>);
   }
