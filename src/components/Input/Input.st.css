@@ -17,6 +17,7 @@
     MainBorderColor: wixApply(color, color-5);
     MainBackgroundColor: wixApply(color, color-1);
     MainTextColor: wixApply(color, color-5);
+    MainTextFont: wixApply(font, "{theme: 'Body-M', size: '16px'}");
 }
 
 :vars {
@@ -25,7 +26,7 @@
     backgroundColor: value(MainBackgroundColor);
     borderColor: wixApply(opacity, value(MainBorderColor), 0.6);
     border: 1px solid value(borderColor);
-    font: wixApply(font, "{theme: 'Body-M', size: '16px'}");
+    font: value(MainTextFont);
 }
 
 :vars {

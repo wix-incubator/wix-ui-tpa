@@ -24,6 +24,15 @@ export const Examples = () => (
         label: 'Text Color',
         wixParam: 'inputTextColor',
         defaultColor: 'color-5'
+      }, {
+        label: 'Border Color',
+        wixParam: 'inputBorderColor',
+        defaultColor: 'color-5'
+      }]}
+      wixFontParams={[{
+        label: 'Font',
+        wixParam: 'textFont',
+        defaultFont: 'arial'
       }]}/>
   </div>
 );
