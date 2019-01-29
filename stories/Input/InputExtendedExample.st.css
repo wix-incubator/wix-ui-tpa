@@ -4,11 +4,10 @@
 }
 
 .root {
-  --inputBackgroundColor: ;
-  --inputTextColor: ;
-
   -st-mixin: TPAInput(
-          MainBackgroundColor '"opacity(color(--inputBackgroundColor), 0.2)"',
-          MainTextColor '"color(--inputTextColor)"'
+      MainBackgroundColor '"opacity(color(--inputBackgroundColor), 0.2)"',
+      MainTextColor '"color(--inputTextColor)"',
+      MainBorderColor '"font(--inputBorderColor)"',
+      MainTextFont '"font(--textFont)"'
   );
 }
