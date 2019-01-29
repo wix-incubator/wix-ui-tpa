@@ -18,7 +18,6 @@ export default {
   exampleProps: {
     priority: Object.keys(PRIORITY).map(key => PRIORITY[key]),
     size: Object.keys(SIZE).map(key => SIZE[key]),
-    children: 'sad'
   },
   examples: (
     <Examples/>
