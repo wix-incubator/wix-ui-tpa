@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Input as CoreInput, InputProps as CoreInputProps} from 'wix-ui-core/Input';
+import {Input as CoreInput, InputProps as CoreInputProps} from 'wix-ui-core/input';
 import style from './Input.st.css';
 import {ErrorMessageWrapper, ErrorProps} from '../../baseComponents/ErrorMessageWrapper';
 

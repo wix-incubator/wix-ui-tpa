@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ToggleSwitch} from '../../src/components/ToggleSwitch';
 
-import {ToggleSwitchProps} from 'wix-ui-core/ToggleSwitch';
+import {ToggleSwitchProps} from 'wix-ui-core/toggle-switch';
 import toggleSwitchStylesExt from './ToggleSwitchExt.st.css';
 import {withStylable} from 'wix-ui-core/withStylable';
 import * as styles from './ToggleSwtichStory.scss';

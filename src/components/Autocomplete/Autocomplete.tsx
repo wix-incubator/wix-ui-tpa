@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Autocomplete as CoreAutocomplete, AutocompleteProps as CoreAutocompleteProps} from 'wix-ui-core/Autocomplete';
+import {Autocomplete as CoreAutocomplete, AutocompleteProps as CoreAutocompleteProps} from 'wix-ui-core/autocomplete';
 import {withStylable} from 'wix-ui-core/withStylable';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import style from './Autocomplete.st.css';

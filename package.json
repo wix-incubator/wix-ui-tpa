@@ -39,7 +39,7 @@
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js"
   },
   "dependencies": {
-    "wix-ui-core": "^1.0.0",
+    "wix-ui-core": "^2.0.66",
     "wix-ui-icons-common": "^1.0.23"
   },
   "devDependencies": {
