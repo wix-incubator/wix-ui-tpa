@@ -8,12 +8,8 @@ By default the Text will pull the theme from the site (site colors),
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
-| OverrideTextColor  | string   | none | The color of the text instead of the default color set by typography |
-| OverrideTextFont  | string   | none | The font of the text instead of the default font set by typography |
-| RunningTextColor  | string   | Palette color-3 | The color of the text when typography is runningText |
-| RunningTextFont  | string   | Theme Body-M, lineHeight 1.5em, fontSize 16px | The font of the text when typography is runningText |
-| SmallTitleColor  | string   | Palette color-5 | The color of the text when typography is smallTitle |
-| SmallTitleFont  | string   | Theme Heading-M, lineHeight 1.5em, fontSize 22px | The font of the text when typography is runningText |
+| MainTextColor | string   | none | The color of the text instead of the default color set by typography |
+| MainTextFont  | string   | none | The font of the text instead of the default font set by typography |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
@@ -32,8 +28,8 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
         --textFont: ;
 
         -st-mixin: textStyle (
-            OverrideTextColor '"color(--textColor)"',
-            OverrideTextFont '"font(--textFont)"'
+            MainTextColor '"color(--textColor)"',
+            MainTextFont '"font(--textFont)"'
         )
     }
 
