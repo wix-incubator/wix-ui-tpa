@@ -8,7 +8,8 @@
     PrimaryColor: color-5;
     SecondaryColor: color-3;
     SmallTitleFont: "{theme: 'Heading-M', size: '22px', lineHeight: '1.5em'}";
-    RunningTextFont: "{theme: 'Heading-M', size: '16px', lineHeight: '1.5em'}";
+    RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    LargeTitleFont: "{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}";
 }
 
 :vars {
@@ -17,7 +18,7 @@
 }
 
 .root {
-    -st-states: typography(enum(smallTitle, runningText));
+    -st-states: typography(enum(smallTitle, runningText,largeTitle));
 }
 
 .root:typography(smallTitle) {
@@ -28,4 +29,9 @@
 .root:typography(runningText) {
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(RunningTextFont)));
+}
+
+.root:typography(largeTitle) {
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(LargeTitleFont)));
 }
