@@ -43,6 +43,15 @@ describe('Text', () => {
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
 
+  it('should render runningText2', () => {
+    const expectedTag = 'p';
+    const expectedTypography = TYPOGRAPHY.runningText2;
+
+    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
+
+    expectTextToHaveAttributes(expectedTag, expectedTypography);
+  });
+
   it('should render largeTitle', () => {
     const expectedTag = 'p';
     const expectedTypography = TYPOGRAPHY.largeTitle;
