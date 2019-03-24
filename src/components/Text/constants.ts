@@ -1,7 +1,7 @@
 export enum TYPOGRAPHY {
   smallTitle = 'smallTitle',
   runningText = 'runningText',
-  runningText2 = 'runningText2',
+  listText = 'listText',
   largeTitle = 'largeTitle'
 }
 
