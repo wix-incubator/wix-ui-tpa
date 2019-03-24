@@ -7,7 +7,7 @@
     /*Constance*/
     PrimaryColor: color-5;
     SecondaryColor: color-3;
-    SmallTitleFont: "{theme: 'Heading-M', size: '24px', lineHeight: '1.33em'}";
+    SmallTitleFont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
     RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     ListTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '2em'}";
     LargeTitleFont: "{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}";
