@@ -22,7 +22,7 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && build-storybook",
+    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
     "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "test": "npm run test:unit && npm run test:e2e",
@@ -31,12 +31,13 @@
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
     "lint": "yoshi lint --fix",
-    "start": "yoshi start --no-test & npm run storybook",
+    "start": "npm run storybook",
     "release": "yoshi release",
     "postpublish": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./src/assets",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
-    "compile-base-ui": "node ./.storybook/base-ui-compiler.js"
+    "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
+    "storybook:build": "build-storybook  -s ./src/assets"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
