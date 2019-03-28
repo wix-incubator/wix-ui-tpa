@@ -51,7 +51,9 @@ describe('Text', () => {
     const expectedTag = 'p';
     const expectedTypography = TYPOGRAPHY.listText;
 
-    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
+    driver = createDriver(
+      <Text tagName={expectedTag} typography={expectedTypography} />,
+    );
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
