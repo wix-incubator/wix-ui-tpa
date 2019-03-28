@@ -1,3 +1,3 @@
-import * as tpaResponse from './fakeTPAInitResponse.json';
+import tpaResponse from './fakeTPAInitResponse.json';
 
 window.postMessage(JSON.stringify(tpaResponse), '*');

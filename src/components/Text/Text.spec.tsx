@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {textDriverFactory} from './Text.driver';
-import {Text, TYPOGRAPHY} from './';
-import {createDriverFactory} from 'wix-ui-test-utils/driver-factory';
-import {isEnzymeTestkitExists} from 'wix-ui-test-utils/enzyme';
-import {isTestkitExists} from 'wix-ui-test-utils/vanilla';
-import {mount} from 'enzyme';
-import {textTestkitFactory} from '../../testkit';
-import {textTestkitFactory as enzymeTextTestkitFactory} from '../../testkit/enzyme';
+import { textDriverFactory } from './Text.driver';
+import { Text, TYPOGRAPHY } from './';
+import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
+import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
+import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
+import { mount } from 'enzyme';
+import { textTestkitFactory } from '../../testkit';
+import { textTestkitFactory as enzymeTextTestkitFactory } from '../../testkit/enzyme';
 
 describe('Text', () => {
   const createDriver = createDriverFactory(textDriverFactory);
@@ -29,7 +29,9 @@ describe('Text', () => {
     const expectedTag = 'h5';
     const expectedTypography = TYPOGRAPHY.smallTitle;
 
-    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
+    driver = createDriver(
+      <Text tagName={expectedTag} typography={expectedTypography} />,
+    );
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
@@ -38,7 +40,9 @@ describe('Text', () => {
     const expectedTag = 'p';
     const expectedTypography = TYPOGRAPHY.runningText;
 
-    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
+    driver = createDriver(
+      <Text tagName={expectedTag} typography={expectedTypography} />,
+    );
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
@@ -56,7 +60,9 @@ describe('Text', () => {
     const expectedTag = 'p';
     const expectedTypography = TYPOGRAPHY.largeTitle;
 
-    driver = createDriver(<Text tagName={expectedTag} typography={expectedTypography}/>);
+    driver = createDriver(
+      <Text tagName={expectedTag} typography={expectedTypography} />,
+    );
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
@@ -65,20 +71,28 @@ describe('Text', () => {
     const expectedTag = 'span';
     const expectedTypography = TYPOGRAPHY.runningText;
 
-    driver = createDriver(<Text/>);
+    driver = createDriver(<Text />);
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<Text/>, textTestkitFactory, {dataHookPropName: 'data-hook'})).toBe(true);
+      expect(
+        isTestkitExists(<Text />, textTestkitFactory, {
+          dataHookPropName: 'data-hook',
+        }),
+      ).toBe(true);
     });
   });
 
   describe('enzyme testkit', () => {
     it('should exist', () => {
-      expect(isEnzymeTestkitExists(<Text/>, enzymeTextTestkitFactory, mount, {dataHookPropName: 'data-hook'})).toBe(true);
+      expect(
+        isEnzymeTestkitExists(<Text />, enzymeTextTestkitFactory, mount, {
+          dataHookPropName: 'data-hook',
+        }),
+      ).toBe(true);
     });
   });
 });

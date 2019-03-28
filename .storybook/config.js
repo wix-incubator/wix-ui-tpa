@@ -1,5 +1,4 @@
-import {configure} from '@storybook/react';
-import {setOptions} from '@storybook/addon-options';
+import {configure, addParameters} from '@storybook/react';
 
 function loadStories() {
   require('../stories');
@@ -7,11 +6,12 @@ function loadStories() {
   require('./stories.scss');
 }
 
-configure(loadStories, module);
-
-setOptions({
-  showDownPanel: false,
-  name: 'wix-ui-tpa',
-  url: 'https://github.com/wix/wix-ui-tpa',
-  sidebarAnimations: true
+addParameters({
+  options: {
+    name: 'wix-ui-tpa',
+    url: 'https://github.com/wix-private/wix-ui-tpa',
+    showAddonPanel: false,
+  }
 });
+
+configure(loadStories, module);

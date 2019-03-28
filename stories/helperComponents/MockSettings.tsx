@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as UI from 'wix-base-ui/dist/base-ui';
-import * as styles from './MockSettings.scss';
-import * as SettingsChangedEvent from '../../mocks/fakeTPAChange.json';
+import styles from './MockSettings.scss';
+import SettingsChangedEvent from '../../mocks/fakeTPAChange.json';
 
 export interface IMockSettingsState {
   selectedNumber: any;

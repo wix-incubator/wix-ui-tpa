@@ -1,18 +1,19 @@
-import {inputDriverFactory as coreDriver} from 'wix-ui-core/drivers/vanilla';
-import {StylableDOMUtil} from '@stylable/dom-test-kit';
+import { inputDriverFactory as coreDriver } from 'wix-ui-core/drivers/vanilla';
+import { StylableDOMUtil } from '@stylable/dom-test-kit';
 import style from './Input.st.css';
 
-export const inputDriverFactory = ({element, eventTrigger}) => {
-    const stylableDOMUtil = new StylableDOMUtil(style);
+export const inputDriverFactory = ({ element, eventTrigger }) => {
+  const stylableDOMUtil = new StylableDOMUtil(style);
 
-  const getErrorMessageElement = () => element.querySelector(stylableDOMUtil.scopeSelector('.errorMessage'));
+  const getErrorMessageElement = () =>
+    element.querySelector(stylableDOMUtil.scopeSelector('.errorMessage'));
 
-  const inputDriver = coreDriver({element, eventTrigger});
+  const inputDriver = coreDriver({ element, eventTrigger });
 
   return {
     ...inputDriver,
     getErrorMessage: () => getErrorMessageElement().innerHTML,
     hasEmptyState: () => stylableDOMUtil.hasStyleState(element, 'empty'),
-    hasErrorMessage: () => !!getErrorMessageElement()
+    hasErrorMessage: () => !!getErrorMessageElement(),
   };
 };

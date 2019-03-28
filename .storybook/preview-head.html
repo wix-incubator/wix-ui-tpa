@@ -1,12 +1,5 @@
-<script>
-  const isLocal = window.location.href.match(/localhost/);
-  const link = document.createElement('link');
-  link.type = 'text/css';
-  link.rel = 'stylesheet';
-  link.href = (isLocal ? 'http://localhost:3200/' : '') + 'assets/base-ui.min.css';
-  document.getElementsByTagName('head')[0].appendChild(link);
-</script>
 <script type="text/javascript" src="//static.parastorage.com/services/js-sdk/1.105.0/js/wix.min.js"></script>
+<link type="text/css" rel="stylesheet" href="base-ui.min.css"/>
 <script>
   window.Wix.Utils.getViewMode = () => 'editor';
 </script>

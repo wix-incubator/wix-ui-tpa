@@ -22,7 +22,7 @@
     "!protractor.conf.js"
   ],
   "scripts": {
-    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && build-storybook",
+    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
     "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "test": "npm run test:unit && npm run test:e2e",
@@ -31,44 +31,50 @@
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
     "lint": "yoshi lint --fix",
-    "start": "yoshi start --no-test & npm run storybook",
+    "start": "npm run storybook",
     "release": "yoshi release",
     "postpublish": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 -s ./src/assets",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
-    "compile-base-ui": "node ./.storybook/base-ui-compiler.js"
+    "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
+    "storybook:build": "build-storybook  -s ./src/assets"
   },
   "dependencies": {
+    "@stylable/dom-test-kit": "^0.1.0",
     "wix-ui-core": "^2.0.66",
-    "wix-ui-icons-common": "^1.0.23"
+    "wix-ui-icons-common": "^2.0.0"
   },
   "devDependencies": {
-    "@storybook/addon-options": "^3.3.13",
-    "@storybook/react": "^3.3.13",
-    "@types/jest": "^22.1.1",
-    "@types/react": "^16.3.8",
-    "@types/react-dom": "^16.0.5",
-    "@types/storybook__react": "^3.0.5",
-    "enzyme": "^3.0.0",
-    "enzyme-adapter-react-16": "^1.0.5",
+    "@storybook/addon-links": "^5.0.0",
+    "@storybook/react": "^5.0.0",
+    "@types/enzyme": "^3.1.8",
+    "@types/jest": "^23.0.0",
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.3",
+    "@types/storybook__react": "^4.0.1",
+    "babel-cli": "^6.26.0",
+    "core-js": "^2.6.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.11.0",
     "eyes.it": "^2.0.3",
     "gh-pages-auto-release": "latest",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "latest",
     "node-sass-import-once": "^1.2.0",
     "prop-types": "^15.5.4",
+    "protractor": "^5.3.0",
     "raf": "^3.4.0",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
-    "react-test-renderer": "^16.3.1",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
     "stylable-integration": "latest",
     "ts-jest": "^22.0.3",
-    "typescript": "^3.0.0",
+    "typescript": "^3.2.4",
     "wix-base-ui": "latest",
-    "wix-storybook-utils": "^2.0.0",
+    "wix-storybook-utils": "^2.0.40",
     "wix-style-processor": "latest",
-    "wix-ui-test-utils": "latest",
-    "yoshi": "^1.2.0"
+    "wix-ui-test-utils": "^1.0.0",
+    "yoshi": "^3.28.0",
+    "yoshi-style-dependencies": "^3.16.0"
   },
   "license": "MIT",
   "publishConfig": {
@@ -76,7 +82,9 @@
   },
   "jest": {
     "transform": {
-      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "moduleNameMapper": {
       "\\.(scss)$": "identity-obj-proxy"
     },
     "transformIgnorePatterns": [],
@@ -87,13 +95,23 @@
     ],
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
-      "<rootDir>/node_modules/"
+      "<rootDir>/node_modules/",
+      "/src/.*\\.browser\\.spec\\.(ts|tsx)$"
     ],
     "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
     "setupTestFrameworkScriptFile": "wix-ui-test-utils/jest-setup",
     "setupFiles": [
       "raf/polyfill",
-      "<rootDir>/test/enzyme-setup.js"
+      "<rootDir>/test/enzyme-setup"
+    ]
+  },
+  "yoshi": {
+    "exports": "wix-ui-tpa",
+    "tpaStyle": true
+  },
+  "babel": {
+    "presets": [
+      "env"
     ]
   }
 }
