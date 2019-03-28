@@ -7,8 +7,9 @@
     /*Constance*/
     PrimaryColor: color-5;
     SecondaryColor: color-3;
-    SmallTitleFont: "{theme: 'Heading-M', size: '22px', lineHeight: '1.5em'}";
+    SmallTitleFont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
     RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    ListTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '2em'}";
     LargeTitleFont: "{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}";
 }
 
@@ -18,7 +19,7 @@
 }
 
 .root {
-    -st-states: typography(enum(smallTitle, runningText,largeTitle));
+    -st-states: typography(enum(smallTitle, runningText, listText, largeTitle));
 }
 
 .root:typography(smallTitle) {
@@ -29,6 +30,11 @@
 .root:typography(runningText) {
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(RunningTextFont)));
+}
+
+.root:typography(listText) {
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(ListTextFont)));
 }
 
 .root:typography(largeTitle) {
