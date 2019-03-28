@@ -24,7 +24,7 @@
   "scripts": {
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
-    "pr-postbuild": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "pr-postbuild": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "test": "npm run test:unit && npm run test:e2e",
     "posttest": "npm run lint",
     "test:watch": "yoshi test --jest --watch",
@@ -33,7 +33,7 @@
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
     "release": "yoshi release",
-    "postpublish": "npm install teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "postpublish": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006 -s ./src/assets",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
