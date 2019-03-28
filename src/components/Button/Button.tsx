@@ -21,9 +21,11 @@ export interface ButtonProps extends ButtonNextProps {
   size?: SIZE;
 }
 
-const CoreButton = ({ priority, size, ...rest }) => (
-  <ButtonNext {...rest} {...style('root', { priority, size }, rest)} />
-);
+const CoreButton: React.FunctionComponent<ButtonProps> = ({
+  priority,
+  size,
+  ...rest
+}) => <ButtonNext {...rest} {...style('root', { priority, size }, rest)} />;
 
 CoreButton.defaultProps = {
   priority: PRIORITY.basic,
