@@ -49,7 +49,7 @@
     max-width: value(MaxWidth);
     border-style: solid;
     border-color: wixApply(color, wixApply(fallback, value(MainBorderColor), value(PrimaryColor)));
-    border-radius: wixApply(unit, wixApply(fallback, value(MainBorderRadius), 0), px);
+    border-radius: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderRadius)), 0), px);
 }
 
 .root::content {
@@ -106,7 +106,7 @@
     color: value(SecondaryTextColor);
     background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), transparent));
     border-color: value(SecondaryBorderColor);
-    border-width: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 1), px);
+    border-width: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), 1), px);
 }
 
 .root:priority(secondary):active,

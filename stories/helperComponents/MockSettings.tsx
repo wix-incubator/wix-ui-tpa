@@ -311,7 +311,7 @@ export class MockSettings extends React.PureComponent<IMockSettingsProps, IMockS
             <li key={wixParam}>
               <label>{label} - {this.state.selectedNumber[wixParam]}{unit}</label>
               <UI.Slider
-                min={1}
+                min={0}
                 max={100}
                 hideNumericInput={true}
                 value={this.state.selectedNumber[wixParam]}

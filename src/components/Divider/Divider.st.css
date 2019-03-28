@@ -19,5 +19,5 @@
     width: 100%;
     border-bottom-style: solid;
     border-bottom-color: wixApply(color, wixApply(fallback, value(MainDividerColor), value(MainColor)));
-    border-bottom-width: wixApply(unit, wixApply(fallback, value(MainDividerWidth), value(MainWidth)), px);
+    border-bottom-width: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainDividerWidth)), value(MainWidth)), px);
 }
