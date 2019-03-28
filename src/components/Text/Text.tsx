@@ -7,7 +7,12 @@ export interface TextProps {
   tagName?: string;
 }
 
-const CoreText = ({ typography, tagName, children, ...rest }) =>
+const CoreText: React.FunctionComponent<TextProps> = ({
+  typography,
+  tagName,
+  children,
+  ...rest
+}) =>
   React.createElement(
     tagName || DEFAULT_TAG_NAME,
     {

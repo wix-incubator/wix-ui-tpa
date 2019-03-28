@@ -1,8 +1,8 @@
 export enum TYPOGRAPHY {
+  largeTitle = 'largeTitle',
   smallTitle = 'smallTitle',
-  runningText = 'runningText',
   listText = 'listText',
-  largeTitle = 'largeTitle'
+  runningText = 'runningText',
 }
 
 export const DEFAULT_TAG_NAME = 'span';
