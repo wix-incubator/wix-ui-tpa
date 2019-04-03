@@ -1,0 +1,66 @@
+:import {
+    -st-from: "../../tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    /*Constance*/
+    defaultTabColor: color-5;
+    defaultTabFont: "{theme: 'Body-M', size: '16px'}";
+    defaultSelectedBorderColor: color-8;
+    defaultUnselectedBorderColor: color-5;
+}
+
+:vars {
+    MainTextColor: --overridable;
+    MainTextFont: --overridable;
+    SelecetdTabBorderColor: --overridable;
+    UnSelectedTabBorderColor: --overridable;
+}
+
+.root {
+    -st-states: skin(enum(underline, clear)), contentAlignment(enum(center, left, right)), contentWidth(enum(stretch, shrink));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
+    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
+}
+
+.root nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.root:contentAlignment(left) nav {
+    justify-content: flex-start;
+}
+
+.root:contentAlignment(right) nav {
+    justify-content: flex-end;
+}
+
+.root:contentAlignment(center) nav {
+    justify-content: center;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.root:contentWidth(stretch) .tab {
+    flex: 1;
+}
+
+.root:skin(underline) .tab {
+    border-bottom: 1px solid;
+    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(UnSelectedTabBorderColor), value(defaultUnselectedBorderColor))), 0.2);
+    margin: 0 0 -1px;
+}
+
+.root:skin(underline) .activeTab,
+.root:skin(clear) .activeTab {
+    border-bottom: 3px solid;
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelecetdTabBorderColor), value(defaultSelectedBorderColor)));
+}
