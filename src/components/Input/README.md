@@ -12,8 +12,7 @@ By default the Input will pull the theme from the site (site colors),
 | MainBorderColor  | string   | Palette color-5 | The color of the input border - 60% opacity by default, 30% opacity when disabled |
 | MainBackgroundColor  | string   | Palette color-1 | The color of the background of the input, 30% opacity when disabled, MainTextColor 5% opacity when hovered |
 | MainTextColor  | string   | Palette color-5 | The color of the text/placeholder, 30% opacity when disabled, 60% opacity for placeholder |
-| lineHeight  | css height   | 42px | the height of the input with border |
-| fontSize  | css size   | 16px | the size of the text inside the input |
+| MainTextFont  |  string  | Palette Body-M size 16px | The font of the text/placeholder |
 
 Full list of supported props can be found [here](https://wix.github.io/wix-ui/?selectedKind=Components&selectedStory=Input)
 
@@ -24,21 +23,23 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` css
     :import {
         -st-from: "wix-ui-tpa/Input/Input.st.css";
-        -st-default: Input;
+        -st-default: TPAInput;
     }
-
-    //once mixin is pulled, you can override theme props as follows
+    
     .root {
-        -st-mixin: Input(
-        //overrides
-        );
+        -st-mixin: TPAInput(
+          MainBackgroundColor '"opacity(color(--inputBackgroundColor), 0.2)"',
+          MainTextColor '"--inputTextColor"',
+          MainBorderColor '"--inputBorderColor"',
+          MainTextFont '"--textFont"'
+);
     }
     ```
 
 2. Create a component that uses it
     ``` javascript
-    import inputStylesExt from './Input.st.css';
-    import {withStylable} from 'wix-ui-core/withStylable';
+    import {Input} from 'wix-ui-tpa/Input';
+    import inputStylesExt from './InputExt.st.css';
 
-    const InputExt = withStylable<InputProps>(Input, inputStylesExt, () => null);
+    const const InputExt = (props) => <Input {...props} {...inputStylesExt('root', {}, props)}/>;
     ```

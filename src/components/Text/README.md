@@ -8,8 +8,16 @@ By default the Text will pull the theme from the site (site colors),
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
-| MainTextColor | string   | none | The color of the text instead of the default color set by typography |
-| MainTextFont  | string   | none | The font of the text instead of the default font set by typography |
+| MainTextColor | string   | depends on the typography prop | The color of the text instead of the default color set by typography |
+| MainTextFont  | string   | depends on the typography prop | The font of the text instead of the default font set by typography |
+
+| typography   | theme | size | line height | color |
+|------------|----------|:--------------:|:-------------:|-------------|
+| largeTitle | Palette Heading-M   | 32px | 1.25em | Palette color-5 |
+| listText  | Palette Body-M   | 16px  | 2em | Palette color-3 |
+| runningText  | Palette Body-M   | 16px  | 1.5em | Palette color-3 |
+| runningText  | Palette Page-title   | 24px  | 1.33em | Palette color-5 |
+
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
@@ -17,27 +25,22 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` css
     :import {
         -st-from: "wix-ui-tpa/Text/Text.st.css";
-        -st-named: textStyle, overrideStyle;
+        -st-default: TPAText;
     }
-
+    
     .root {
-    }
-
-    .root .overrideStyle {
-        --textColor: ;
-        --textFont: ;
-
-        -st-mixin: textStyle (
-            MainTextColor '"color(--textColor)"',
-            MainTextFont '"font(--textFont)"'
-        )
+        -st-mixin: TPAText(
+                MainTextColor '"--textColor"',
+                MainTextFont '"--textFont"'
+        );
     }
 
     ```
 
 2. Create a component that uses it
     ``` javascript
-    import textStylesExt from './Text.st.css';
+    import {Text} from 'wix-ui-tpa/Text';
+    import textStylesExt from './TextExt.st.css';
 
     const TextExt = (props) => <Text {...props} {...textStylesExt('root', {}, props)}/>;
     ```

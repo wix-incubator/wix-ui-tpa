@@ -15,32 +15,40 @@ By default the Button will pull the theme from the site (site colors),
 | MainBorderWidth  | string   | none | The width of the border instead of the default |
 | MainBorderRadius  | string   | none | The radius of the border instead of the default |
 
+| typography   | theme | size | line height | color |
+|------------|----------|:--------------:|:-------------:|-------------|
+| largeTitle | Palette Heading-M   | 32px | 1.25em | Palette color-5 |
+| listText  | Palette Body-M   | 16px  | 2em | Palette color-3 |
+| runningText  | Palette Body-M   | 16px  | 1.5em | Palette color-3 |
+| runningText  | Palette Page-title   | 24px  | 1.33em | Palette color-5 |
+
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
 1. create an stylable file (e.g. ButtonExt.st.css)
     ``` css
     :import {
         -st-from: "wix-ui-tpa/Button/Button.st.css";
-        -st-named: TPAButton;
+        -st-default: TPAButton;
     }
-
+    
     .root {
-      -st-extends: TPAButton;
-      -st-mixin: TPAButton(
-              MainTextColor '"--buttonTextColor"',
-              MainBackgroundColor '"--buttonBackgroundColor"',
-              MainTextFont '"--buttonTextFont"',
-              MainBorderWidth '"--borderWidth"',
-              MainBorderRadius '"--borderRadius"',
-              MainBorderColor '"--borderColor"'
-      );
+        -st-extends: TPAButton;
+        -st-mixin: TPAButton(
+            MainTextColor '"--buttonTextColor"',
+            MainBackgroundColor '"--buttonBackgroundColor"',
+            MainTextFont '"--buttonTextFont"',
+            MainBorderWidth '"--borderWidth"',
+            MainBorderRadius '"--borderRadius"',
+            MainBorderColor '"--borderColor"'
+        );
     }
 
     ```
 
 2. Create a component that uses it
     ``` javascript
-    import textStylesExt from './Button.st.css';
+    import Button from 'wix-ui-tpa/Button';
+    import buttonStylesExt from './ButtonExt.st.css';
 
-    const ButtonExt = (props) => <Button {...props} {...textStylesExt('root', {}, props)}/>;
+    const ButtonExt = (props) => <Button {...props} {...buttonStylesExt('root', {}, props)}/>;
     ```
