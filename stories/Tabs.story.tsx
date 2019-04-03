@@ -19,6 +19,7 @@ export default {
   source: TabsSource,
   componentPath: '../src/components/Tabs/Tabs.tsx',
   componentProps: (setState) => ({
+    'data-hook': 'storybook-Tabs',
     items,
     onClick: (item) => {
       setState({activeId: item.id})

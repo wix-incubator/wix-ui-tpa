@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { tabsDriverFactory } from './Tabs.driver';
-import { Tabs, TabsProps } from './';
+import { Tabs } from './';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
-import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
-import { mount } from 'enzyme';
-import { tabsTestkitFactory } from '../../testkit';
-import { tabsTestkitFactory as enzymeTabsTestkitFactory } from '../../testkit/enzyme';
 
 describe('Text', () => {
   const createDriver = createDriverFactory(tabsDriverFactory);
@@ -108,30 +103,5 @@ describe('Text', () => {
     );
 
     expect(driver.getContentWidth()).toBe('stretch');
-  });
-
-  describe('testkit', () => {
-    it('should exist', () => {
-      expect(
-        isTestkitExists(<Tabs items={items} />, tabsTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
-      ).toBe(true);
-    });
-  });
-
-  describe('enzyme testkit', () => {
-    it('should exist', () => {
-      expect(
-        isEnzymeTestkitExists(
-          <Tabs items={items} />,
-          enzymeTabsTestkitFactory,
-          mount,
-          {
-            dataHookPropName: 'data-hook',
-          },
-        ),
-      ).toBe(true);
-    });
   });
 });
