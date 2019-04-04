@@ -7,14 +7,14 @@
     /*Constance*/
     defaultTabColor: color-5;
     defaultTabFont: "{theme: 'Body-M', size: '16px'}";
-    defaultSelectedIndicatorColor: color-8;
+    defaultSelectedTabIndicatorColor: color-8;
     defaultIndicatorColor: color-5;
 }
 
 :vars {
     MainTextColor: --overridable;
     MainTextFont: --overridable;
-    SelectedIndicatorColor: --overridable;
+    SelectedTabIndicatorColor: --overridable;
     IndicatorColor: --overridable;
 }
 
@@ -62,5 +62,5 @@
 .root:skin(underline) .activeTab,
 .root:skin(clear) .activeTab {
     border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedIndicatorColor), value(defaultSelectedIndicatorColor)));
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
 }

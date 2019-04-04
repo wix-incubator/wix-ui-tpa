@@ -29,8 +29,8 @@ export const Examples = () => (
         defaultColor: 'color-5'
       },
       {
-        label: 'Selected Indicator Border Color',
-        wixParam: 'selectedIndicatorColor',
+        label: 'Selected Tab Indicator Border Color',
+        wixParam: 'selectedTabIndicatorColor',
         defaultColor: 'color-8'
       },
       {

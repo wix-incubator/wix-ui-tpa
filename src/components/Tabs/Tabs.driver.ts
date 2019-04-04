@@ -10,7 +10,6 @@ export const tabsDriverFactory = ({ element }) => {
 
   return {
     exists: () => !!element,
-    getTitles: () => getItems().map(item => item.textContent),
     getTitleAt: index => getItems()[index].textContent,
     clickTabAt: index => Simulate.click(getItems()[index]),
     getActiveTabIndex: () =>

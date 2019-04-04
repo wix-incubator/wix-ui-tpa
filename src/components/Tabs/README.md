@@ -10,7 +10,7 @@ By default the properties will pull the theme from the site (site colors/fonts),
 |------------|----------|--------------|-------------|
 | MainTextColor | string   | Palette color-5 | The color of the tab text instead of the default color |
 | MainTextFont  | string   | Palette Body-M 16px | The font of the tab text instead of the default font |
-| SelectedIndicatorColor  | string   | Palette color-8 | The color of the selected tab border instead of the default color |
+| SelectedTabIndicatorColor  | string   | Palette color-8 | The color of the selected tab border instead of the default color |
 | IndicatorColor  | string   | Palette color-5 | The color of the tab border instead of the default color |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
@@ -26,7 +26,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             -st-mixin: TPATabs(
                     MainTextColor '"--textColor"',
                     MainTextFont '"--textFont"',
-                    SelectedIndicatorColor '"--selectedIndicatorColor"',
+                    SelectedTabIndicatorColor '"--selectedTabIndicatorColor"',
                     IndicatorColor '"--indicatorColor"'
             );
         }

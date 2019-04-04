@@ -7,7 +7,7 @@
     -st-mixin: TPATabs(
             MainTextColor '"--textColor"',
             MainTextFont '"--textFont"',
-            SelectedIndicatorColor '"--selectedIndicatorColor"',
+            SelectedTabIndicatorColor '"--selectedTabIndicatorColor"',
             IndicatorColor '"--indicatorColor"'
     );
 }

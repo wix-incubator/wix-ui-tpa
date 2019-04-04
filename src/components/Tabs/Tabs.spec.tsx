@@ -10,9 +10,12 @@ describe('Text', () => {
 
   it('should render list of items with titles', () => {
     driver = createDriver(<Tabs items={items} />);
-    const expectedTitles = items.map(item => item.title);
 
-    expect(driver.getTitles()).toEqual(expectedTitles);
+    const expectedTitles = items.map(item => item.title);
+    const receivedTitles = Array(items.length)
+      .fill(0)
+      .map((_, index) => driver.getTitleAt(index));
+    expect(receivedTitles).toEqual(expectedTitles);
   });
 
   it('should call onTabClick callback when clicking on tab item', () => {
