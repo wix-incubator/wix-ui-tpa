@@ -24,6 +24,11 @@
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
 }
 
+.root:skin(underline) {
+    border-bottom: 1px solid;
+    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
+}
+
 .root nav {
     display: flex;
     justify-content: center;
@@ -53,14 +58,7 @@
     flex: 1;
 }
 
-.root:skin(underline) .tab {
-    border-bottom: 1px solid;
-    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
-    margin: 0 0 -1px;
-}
-
-.root:skin(underline) .activeTab,
-.root:skin(clear) .activeTab {
+.activeTab {
     border-bottom: 3px solid;
     border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
 }
