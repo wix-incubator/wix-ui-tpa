@@ -3,13 +3,13 @@ export enum SKIN {
   clear = 'clear',
 }
 
-export enum CONTENT_ALIGNMENT {
+export enum ALIGNMENT {
   center = 'center',
   left = 'left',
   right = 'right',
 }
 
-export enum CONTENT_WIDTH {
-  stretch = 'stretch',
-  shrink = 'shrink',
+export enum VARIANT {
+  fullWidth = 'fullWidth',
+  standard = 'standard',
 }

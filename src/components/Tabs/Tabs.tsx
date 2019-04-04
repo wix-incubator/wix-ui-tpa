@@ -1,46 +1,47 @@
 import * as React from 'react';
 import style from './Tabs.st.css';
 import classNames from 'classnames';
-import { CONTENT_ALIGNMENT, SKIN, CONTENT_WIDTH } from './constants';
+import { ALIGNMENT, SKIN, VARIANT } from './constants';
 
 export interface TabsProps {
-  /** Items to be render as tabs - See TabItem */
+  /** tabs to be displayed */
   items: TabItem[];
-  /** Callback function when tab is selected , returning the selected TabItem */
-  onClick?: Function;
-  /** Id of the selected tab item */
-  activeId: string | number;
-  /** Control whether to display border under tabs*/
-  skin?: string;
-  /** Control where to align the tabs */
-  contentAlignment?: string;
-  /** Control whether to stretch tabs on all content width*/
-  contentWidth?: string;
+  /** callback function when tab is selected , returning the selected TabItem */
+  onTabClick?: Function;
+  /** index of the selected tab item */
+  activeTabIndex: number;
+  /** control whether to display border under tabs*/
+  skin?: SKIN;
+  /** control where to align the tabs */
+  alignment?: ALIGNMENT;
+  /** control whether to set tabs on all content width*/
+  variant?: VARIANT;
 }
 
 export interface TabItem {
   /** Title of the tab */
   title?: string;
-  /** Id of the tab */
-  id: string | number;
-  /** Data hook of the tab */
-  dataHook?: string;
 }
 
-const selectTab = (selectedTab, activeId, onClick) => {
-  if (activeId !== selectedTab.id) {
-    onClick(selectedTab);
+const selectTab = (
+  selectedTab,
+  newActiveTabIndex,
+  activeTabIndex,
+  onTabClick,
+) => {
+  if (activeTabIndex !== newActiveTabIndex) {
+    onTabClick(newActiveTabIndex);
   }
 };
 
-const renderTabItem = ({ item, onClick, activeId }) => {
+const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
   return (
     <div
-      data-hook={item.dataHook}
-      key={`tab-item-${item.id}`}
-      onClick={() => selectTab(item, activeId, onClick)}
+      data-hook={`tab-item-${index}`}
+      key={`tab-item-${index}`}
+      onClick={() => selectTab(item, index, activeTabIndex, onTabClick)}
       className={classNames(style.tab, {
-        [style.activeTab]: activeId === item.id,
+        [style.activeTab]: activeTabIndex === index,
       })}
     >
       {item.title}
@@ -49,19 +50,23 @@ const renderTabItem = ({ item, onClick, activeId }) => {
 };
 
 const Tabs = props => {
-  const { items, skin, contentAlignment, contentWidth, ...rest } = props;
+  const { items, activeTabIndex, onTabClick, skin, alignment, variant } = props;
   return (
-    <div {...style('root', { skin, contentAlignment, contentWidth }, rest)}>
-      <nav>{items.map(item => renderTabItem({ item, ...props }))}</nav>
+    <div {...style('root', { skin, alignment, variant }, props)}>
+      <nav>
+        {items.map((item, index) =>
+          renderTabItem({ item, index, onTabClick, activeTabIndex }),
+        )}
+      </nav>
     </div>
   );
 };
 
 Tabs.defaultProps = {
-  onClick: () => {},
+  onTabClick: (tabIndex: number) => {},
   skin: SKIN.underline,
-  contentAlignment: CONTENT_ALIGNMENT.center,
-  contentWidth: CONTENT_WIDTH.shrink,
+  alignment: ALIGNMENT.center,
+  variant: VARIANT.standard,
 };
 
 export { Tabs };

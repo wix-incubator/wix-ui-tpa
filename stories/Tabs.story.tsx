@@ -1,16 +1,14 @@
 import * as React from 'react';
-import {Tabs, SKIN , CONTENT_ALIGNMENT, CONTENT_WIDTH} from '../src/components/Tabs';
+import {Tabs, SKIN , ALIGNMENT, VARIANT} from '../src/components/Tabs';
 import * as TabsSource from '!raw-loader!../src/components/Tabs/Tabs.tsx';
 import {Examples} from './Tabs';
 
-const items = [
-  {id: 'some-id-1', title: 'Title 1', dataHook: 'tab-item-1'},
-  {id: 'some-id-2', title: 'Title 2' , dataHook: 'tab-item-2'},
-  {id: 'some-id-3', title: 'Title 3' , dataHook: 'tab-item-3'},
-  {id: 'some-id-4', title: 'Title 4', dataHook: 'tab-item-4'},
-];
 
-let activeId = 'some-id-1';
+const items = Array(10).fill('').map((item, index) => ({title: `Title ${index + 1}`}));
+
+const exampleItems = [{ label: 'few items', value: items.slice(0, 4) }, { label: 'many items', value: items }];
+
+let activeTabIndex = 0;
 
 export default {
   category: 'Components',
@@ -20,19 +18,20 @@ export default {
   componentPath: '../src/components/Tabs/Tabs.tsx',
   componentProps: (setState) => ({
     'data-hook': 'storybook-Tabs',
-    items,
-    onClick: (item) => {
-      setState({activeId: item.id})
+    items: exampleItems[1].value,
+    onTabClick: (selectedTabIndex) => {
+      setState({activeTabIndex: selectedTabIndex})
     },
-    activeId,
+    activeTabIndex,
     skin: SKIN.clear,
-    contentAlignment: CONTENT_ALIGNMENT.center,
-    contentWidth: CONTENT_WIDTH.shrink,
+    alignment: ALIGNMENT.center,
+    variant: VARIANT.standard,
   }),
   exampleProps: {
     skin: Object.keys(SKIN).map(key => SKIN[key]),
-    contentAlignment: Object.keys(CONTENT_ALIGNMENT).map(key => CONTENT_ALIGNMENT[key]),
-    contentWidth: Object.keys(CONTENT_WIDTH).map(key => CONTENT_WIDTH[key]),
+    alignment: Object.keys(ALIGNMENT).map(key => ALIGNMENT[key]),
+    variant: Object.keys(VARIANT).map(key => VARIANT[key]),
+    items: exampleItems,
   },
   examples: (
     <Examples/>

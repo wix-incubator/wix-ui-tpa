@@ -8,9 +8,10 @@ import {TabsExtendedExample} from './TabsExtendedExample';
 import {MockSettings} from '../helperComponents/MockSettings';
 
 const items = [
-  {id: 'some-id-1', title: 'Title 1', dataHook: 'tab-item-1'},
-  {id: 'some-id-2', title: 'Title 2' , dataHook: 'tab-item-2'},
-  {id: 'some-id-3', title: 'Title 3' , dataHook: 'tab-item-3'},
+  {title: 'Title 1'},
+  {title: 'Title 2'},
+  {title: 'Title 3'},
+  {title: 'Title 4'},
 ];
 
 export const Examples = () => (
@@ -18,7 +19,7 @@ export const Examples = () => (
     <div className="tpa-container">
       <CodeExample title="Tabs Extended"
                    code={['//.st.css', ExtendedCSSRawSource, '', '//.tsx', ExtendedRawSource].join('\n')}>
-        <TabsExtendedExample items={items} activeId={items[0].id}></TabsExtendedExample>
+        <TabsExtendedExample items={items} activeTabIndex={0}></TabsExtendedExample>
       </CodeExample>
     </div>
     <MockSettings
@@ -28,13 +29,13 @@ export const Examples = () => (
         defaultColor: 'color-5'
       },
       {
-        label: 'Selected Tab Border Color',
-        wixParam: 'selectedTabBorderColor',
+        label: 'Selected Indicator Border Color',
+        wixParam: 'selectedIndicatorColor',
         defaultColor: 'color-8'
       },
       {
-        label: 'UnSelected Tab Border Color',
-        wixParam: 'unselectedTabBorderColor',
+        label: 'Indicator Border Color',
+        wixParam: 'indicatorColor',
         defaultColor: 'color-5'
       }]}
       wixFontParams={[{

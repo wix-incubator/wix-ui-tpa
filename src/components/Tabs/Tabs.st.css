@@ -7,19 +7,19 @@
     /*Constance*/
     defaultTabColor: color-5;
     defaultTabFont: "{theme: 'Body-M', size: '16px'}";
-    defaultSelectedBorderColor: color-8;
-    defaultUnselectedBorderColor: color-5;
+    defaultSelectedIndicatorColor: color-8;
+    defaultIndicatorColor: color-5;
 }
 
 :vars {
     MainTextColor: --overridable;
     MainTextFont: --overridable;
-    SelecetdTabBorderColor: --overridable;
-    UnSelectedTabBorderColor: --overridable;
+    SelectedIndicatorColor: --overridable;
+    IndicatorColor: --overridable;
 }
 
 .root {
-    -st-states: skin(enum(underline, clear)), contentAlignment(enum(center, left, right)), contentWidth(enum(stretch, shrink));
+    -st-states: skin(enum(underline, clear)), alignment(enum(center, left, right)), variant(enum(fullWidth, standard));
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
 }
@@ -30,15 +30,15 @@
     flex-wrap: wrap;
 }
 
-.root:contentAlignment(left) nav {
+.root:alignment(left) nav {
     justify-content: flex-start;
 }
 
-.root:contentAlignment(right) nav {
+.root:alignment(right) nav {
     justify-content: flex-end;
 }
 
-.root:contentAlignment(center) nav {
+.root:alignment(center) nav {
     justify-content: center;
 }
 
@@ -49,18 +49,18 @@
     white-space: nowrap;
 }
 
-.root:contentWidth(stretch) .tab {
+.root:variant(fullWidth) .tab {
     flex: 1;
 }
 
 .root:skin(underline) .tab {
     border-bottom: 1px solid;
-    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(UnSelectedTabBorderColor), value(defaultUnselectedBorderColor))), 0.2);
+    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
     margin: 0 0 -1px;
 }
 
 .root:skin(underline) .activeTab,
 .root:skin(clear) .activeTab {
     border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(SelecetdTabBorderColor), value(defaultSelectedBorderColor)));
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedIndicatorColor), value(defaultSelectedIndicatorColor)));
 }

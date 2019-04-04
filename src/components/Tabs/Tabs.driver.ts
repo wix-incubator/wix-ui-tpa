@@ -11,14 +11,12 @@ export const tabsDriverFactory = ({ element }) => {
   return {
     exists: () => !!element,
     getTitles: () => getItems().map(item => item.textContent),
-    clickTabAt: dataHook =>
-      Simulate.click(element.querySelector(`[data-hook=${dataHook}]`)),
+    getTitleAt: index => getItems()[index].textContent,
+    clickTabAt: index => Simulate.click(getItems()[index]),
     getActiveTabIndex: () =>
       getItems().findIndex(item => item.classList.contains(style.activeTab)),
     getSkin: () => stylableDOMUtil.getStyleState(element, 'skin'),
-    getContentAlignment: () =>
-      stylableDOMUtil.getStyleState(element, 'contentAlignment'),
-    getContentWidth: () =>
-      stylableDOMUtil.getStyleState(element, 'contentWidth'),
+    getAlignment: () => stylableDOMUtil.getStyleState(element, 'alignment'),
+    getVariant: () => stylableDOMUtil.getStyleState(element, 'variant'),
   };
 };

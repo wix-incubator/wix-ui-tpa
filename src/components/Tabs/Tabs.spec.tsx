@@ -6,10 +6,7 @@ import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 describe('Text', () => {
   const createDriver = createDriverFactory(tabsDriverFactory);
   let driver;
-  const items = [
-    { id: 'some-id-1', title: 'some-title-1', dataHook: 'tab-item-1' },
-    { id: 'some-id-2', title: 'some-title-2', dataHook: 'tab-item-2' },
-  ];
+  const items = [{ title: 'some-title-1' }, { title: 'some-title-2' }];
 
   it('should render list of items with titles', () => {
     driver = createDriver(<Tabs items={items} />);
@@ -18,48 +15,57 @@ describe('Text', () => {
     expect(driver.getTitles()).toEqual(expectedTitles);
   });
 
-  it('should call onClick callback when clicking on tab item', () => {
-    const onClick = jest.fn();
-    const expectedSelectedItem = items[1];
+  it('should call onTabClick callback when clicking on tab item', () => {
+    const onTabClick = jest.fn();
+    const currentSelectedIndex = 0;
+    const newSelectedIndex = 1;
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} onClick={onClick} />,
+      <Tabs
+        items={items}
+        activeTabIndex={currentSelectedIndex}
+        onTabClick={onTabClick}
+      />,
     );
-    driver.clickTabAt(expectedSelectedItem.dataHook);
+    driver.clickTabAt(newSelectedIndex);
 
-    expect(onClick).toHaveBeenCalledWith(expectedSelectedItem);
+    expect(onTabClick).toHaveBeenCalledWith(newSelectedIndex);
   });
 
-  it('should not call onClick callback when clicking on selected tab item', () => {
-    const onClick = jest.fn();
-    const expectedSelectedItem = items[0];
+  it('should not call onTabClick callback when clicking on selected tab item', () => {
+    const onTabClick = jest.fn();
+    const selectedIndex = 0;
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} onClick={onClick} />,
+      <Tabs
+        items={items}
+        activeTabIndex={selectedIndex}
+        onTabClick={onTabClick}
+      />,
     );
-    driver.clickTabAt(expectedSelectedItem.dataHook);
+    driver.clickTabAt(selectedIndex);
 
-    expect(onClick).not.toHaveBeenCalled();
+    expect(onTabClick).not.toHaveBeenCalled();
   });
 
   it('should mark active tab', () => {
     const selectedIndex = 1;
     driver = createDriver(
-      <Tabs items={items} activeId={items[selectedIndex].id} />,
+      <Tabs items={items} activeTabIndex={selectedIndex} />,
     );
 
     expect(driver.getActiveTabIndex()).toBe(selectedIndex);
   });
 
   it('should set default states stylable states', () => {
-    driver = createDriver(<Tabs items={items} activeId={items[0].id} />);
+    driver = createDriver(<Tabs items={items} activeTabIndex={0} />);
 
     expect(driver.getSkin()).toBe('underline');
-    expect(driver.getContentWidth()).toBe('shrink');
-    expect(driver.getContentAlignment()).toBe('center');
+    expect(driver.getVariant()).toBe('standard');
+    expect(driver.getAlignment()).toBe('center');
   });
 
   it('should have border for unselected tabs if skin prop is "underline"', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} skin="underline" />,
+      <Tabs items={items} activeTabIndex={0} skin="underline" />,
     );
 
     expect(driver.getSkin()).toBe('underline');
@@ -67,41 +73,41 @@ describe('Text', () => {
 
   it('should not have border for unselected tabs if skin prop is "clear"', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} skin="clear" />,
+      <Tabs items={items} activeTabIndex={0} skin="clear" />,
     );
 
     expect(driver.getSkin()).toBe('clear');
   });
 
-  it('should align content to left when contentAlignment prop is "left"', () => {
+  it('should align content to left when alignment prop is "left"', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} contentAlignment="left" />,
+      <Tabs items={items} activeTabIndex={0} alignment="left" />,
     );
 
-    expect(driver.getContentAlignment()).toBe('left');
+    expect(driver.getAlignment()).toBe('left');
   });
 
-  it('should align content to right when contentAlignment prop is "right"', () => {
+  it('should align content to right when alignment prop is "right"', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} contentAlignment="right" />,
+      <Tabs items={items} activeTabIndex={0} alignment="right" />,
     );
 
-    expect(driver.getContentAlignment()).toBe('right');
+    expect(driver.getAlignment()).toBe('right');
   });
 
-  it('should align content to center when contentAlignment prop is "center"', () => {
+  it('should align content to center when alignment prop is "center"', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} contentAlignment="center" />,
+      <Tabs items={items} activeId={0} alignment="center" />,
     );
 
-    expect(driver.getContentAlignment()).toBe('center');
+    expect(driver.getAlignment()).toBe('center');
   });
 
-  it('should stretch tabs on all the content width', () => {
+  it('should set tabs on all content width', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={items[0].id} contentWidth="stretch" />,
+      <Tabs items={items} activeId={0} variant="fullWidth" />,
     );
 
-    expect(driver.getContentWidth()).toBe('stretch');
+    expect(driver.getVariant()).toBe('fullWidth');
   });
 });
