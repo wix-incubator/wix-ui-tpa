@@ -34,3 +34,12 @@ export const autocompleteTestkitFactory = protractorTestkitFactoryCreator<
   AutocompleteDriver
 >(autocompleteDriverFactory);
 export { AutocompleteDriver };
+
+import {
+  cardDriverFactory,
+  CardDriver,
+} from '../components/Card/Card.protractor.driver';
+export const cardTestkitFactory = protractorTestkitFactoryCreator<CardDriver>(
+  cardDriverFactory,
+);
+export { CardDriver };

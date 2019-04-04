@@ -1,0 +1,16 @@
+:vars {
+    /*Overrides*/
+    BorderWidth: --overidable;
+    BorderColor: --overidable;
+    PaddingSize: --overidable;
+}
+
+.withBorder {
+    border-style: solid;
+    border-color: value(BorderColor);
+    border-width: value(BorderWidth);
+}
+
+.withDynamicPadding {
+    padding: calc(value(PaddingSize) - value(BorderWidth));
+}

@@ -23,3 +23,8 @@ import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomple
 export const autocompleteTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(autocompleteDriverFactory);
+
+import { cardDriverFactory } from '../components/Card/Card.driver';
+export const cardTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeTestkitFactoryCreator(cardDriverFactory);
