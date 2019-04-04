@@ -14,9 +14,9 @@ By default the Text will pull the theme from the site (site colors),
 | typography   | theme | size | line height | color |
 |------------|----------|:--------------:|:-------------:|-------------|
 | largeTitle | Palette Heading-M   | 32px | 1.25em | Palette color-5 |
+| smallTitle  | Palette Page-title   | 24px  | 1.33em | Palette color-5 |
 | listText  | Palette Body-M   | 16px  | 2em | Palette color-3 |
 | runningText  | Palette Body-M   | 16px  | 1.5em | Palette color-3 |
-| runningText  | Palette Page-title   | 24px  | 1.33em | Palette color-5 |
 
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
