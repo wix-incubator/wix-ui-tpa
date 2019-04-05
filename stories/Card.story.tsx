@@ -72,6 +72,7 @@ export default {
   component: Card,
   componentPath: '../src/components/Card/Card.tsx',
   componentProps: () => ({
+  media: mediaExamples[0].value
     'data-hook': 'storybook-Card',
   }),
   exampleProps: {
