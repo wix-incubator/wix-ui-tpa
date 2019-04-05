@@ -62,7 +62,10 @@
 import * as React from 'react';
 import {Examples} from './Card';
 import {Card} from '../src/components/Card';
-
+const mediaExamples = [
+  { label: 'image', value: <img src="something"/>},
+  { label: 'video', value: <video src=""/> },
+];
 export default {
   category: 'Components',
   storyName: 'Card',
