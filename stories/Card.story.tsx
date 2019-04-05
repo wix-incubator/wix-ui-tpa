@@ -74,6 +74,9 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Card',
   }),
+  exampleProps: {
+    media: mediaExamples,
+  }
   examples: (
     <Examples/>
   )
