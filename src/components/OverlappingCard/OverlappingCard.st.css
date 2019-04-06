@@ -4,17 +4,17 @@
 }
 
 :import {
-    -st-from: "./Card.st.css";
+    -st-from: "'../Card/Card.st.css";
     -st-named: mediaContainer, infoContainer, infoPadding, borderWidth, borderColor, mediaBGColor, infoBGColor, negativeInfoPadding;
 }
 
 :import {
-    -st-from: "./Card.st.css";
+    -st-from: "../Card/Card.st.css";
     -st-default: Card;
 }
 
 :import {
-    -st-from: "./mixins.st.css";
+    -st-from: "../Card/mixins.st.css";
     -st-named: withBorder, withDynamicPadding;
 }
 

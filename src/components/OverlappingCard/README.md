@@ -1,5 +1,5 @@
-## Card
-An implementation of an Card for TPAs,
+## OverlappingCard
+An implementation of an OverlappingCard for TPAs,
 The TPA implementation provides few extendable theme properties with the ability to override the base properties as well,
 
 By default the Card will pull the theme from the site (site colors),
@@ -16,10 +16,10 @@ By default the Card will pull the theme from the site (site colors),
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
-1. create an stylable file (e.g. CardExt.st.css)
+1. create an stylable file (e.g. OverlappingCardExt.st.css)
     ``` css
     :import {
-        -st-from: "wix-ui-tpa/Card/Card.st.css";
+        -st-from: "wix-ui-tpa/OverlappingCard/OverlappingCard.st.css";
         -st-default: TPACard;
     }
 
@@ -36,7 +36,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import cardStylesExt from './CardExt.st.css';
+    import cardStylesExt from './OverlappingCardExt.st.css';
 
-    const CardExt = (props) => <Card {...props} {...cardStylesExt('root', {}, props)}/>;
+    const OverlappingCardExt = (props) => <OverlappingCard {...props} {...cardStylesExt('root', {}, props)}/>;
     ```
