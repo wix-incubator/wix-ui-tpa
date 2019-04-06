@@ -2,9 +2,9 @@ import * as React from 'react';
 import style from './Card.st.css';
 
 export enum CardRatioOptions {
-  RATIO_50_50 = 'ratio-50',
-  RATIO_40_60 = 'ratio-40',
-  RATIO_30_70 = 'ratio-30',
+  RATIO_50_50 = '50',
+  RATIO_40_60 = '40',
+  RATIO_30_70 = '30',
 }
 
 export interface CardProps {

@@ -1,6 +1,6 @@
 // import * as React from 'react';
-// import {Card} from '../src/components/Card';
-// import * as examples from './Card/examples';
+// import {Card} from '../';
+// import * as examples from './examples';
 // import {
 //   api,
 //   divider,
@@ -60,24 +60,43 @@
 // };
 
 import * as React from 'react';
-import {Examples} from './Card';
-import {Card} from '../src/components/Card';
+import Examples from './exampleWithSettingPanel';
+import {Card, CardRatioOptions} from '../';
+import {Button} from '../../Button';
+import {Divider} from '../../Divider';
+import {Text, TYPOGRAPHY} from '../../Text';
+
 const mediaExamples = [
-  { label: 'image', value: <img src="something"/>},
+  { label: 'image',
+    value: <div style={{
+      background: 'url("https://picsum.photos/300/300") no-repeat center center',
+      height: '100%',
+      backgroundSize: 'cover'
+    }} />},
   { label: 'video', value: <video src=""/> },
 ];
+
+const infoExample = <div>
+  <Text typography={TYPOGRAPHY.largeTitle}>BIG TITLE WITH LINE BREAKING</Text>
+  <div style={{marginTop: '24px'}}><Button>button</Button></div>
+</div>;
+
 export default {
+  kind: 'Components',
   category: 'Components',
   storyName: 'Card',
+  dataHook: 'storybook-Card',
   component: Card,
-  componentPath: '../src/components/Card/Card.tsx',
+  componentPath: '../Card.tsx',
   componentProps: () => ({
-  media: mediaExamples[0].value
+    media: mediaExamples[0].value,
+    info: infoExample,
     'data-hook': 'storybook-Card',
   }),
   exampleProps: {
     media: mediaExamples,
-  }
+    ratio: Object.keys(CardRatioOptions).map(key => CardRatioOptions[key]),
+  },
   examples: (
     <Examples/>
   )

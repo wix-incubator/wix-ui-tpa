@@ -16,7 +16,7 @@ By default the Card will pull the theme from the site (site colors),
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
 1. create an stylable file (e.g. DividerExt.st.css)
-    ` css
+    ``` css
     :import {
         -st-from: "wix-ui-tpa/Card/Card.st.css";
         -st-default: TPACard;
@@ -31,11 +31,11 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
       );
     }
 
-    `
+    ```
 
 2. Create a component that uses it
-    ` javascript
+    ``` javascript
     import cardStylesExt from './Card.st.css';
 
     const CardExt = (props) => <Card {...props} {...cardStylesExt('root', {}, props)}/>;
-    `
+    ```

@@ -4,10 +4,10 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./CardExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CardExtendedExample.st.css';
-import {MockSettings} from '../helperComponents/MockSettings';
+import {MockSettings} from '../../../../stories/helperComponents/MockSettings';
 import {CardExtendedExample} from './CardExtendedExample';
 
-export const Examples = () => (
+export default () => (
   <div>
     <div className="tpa-container">
       <CodeExample title="Card Extended"

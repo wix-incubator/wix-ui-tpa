@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../src/components/Card/Card.st.css";
+    -st-from: "../Card.st.css";
     -st-default: TPACard;
 }
 

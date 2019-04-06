@@ -1,57 +1,57 @@
 import * as React from 'react';
 import { cardDriverFactory } from './Card.driver';
 import { Card, CardRatioOptions } from './';
-import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
-import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
+import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
+import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { cardTestkitFactory } from '../../testkit';
 import { cardTestkitFactory as enzymeCardTestkitFactory } from '../../testkit/enzyme';
+import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 
 describe('Card', () => {
-  const createDriver = createDriverFactory(cardDriverFactory);
+  const createDriver = createUniDriverFactory(cardDriverFactory);
 
-  it('should render info', () => {
+  it('should render info', async () => {
     const value = 'info!';
     const driver = createDriver(<Card info={value} />);
-    expect(driver.getInfoContent()).toEqual(value);
+    expect(await driver.getInfoContent()).toEqual(value);
   });
 
-  it('should render image', () => {
+  it('should render image', async () => {
     const value = 'image!';
     const driver = createDriver(<Card media={value} />);
-    expect(driver.getMediaContent()).toEqual(value);
+    expect(await driver.getMediaContent()).toEqual(value);
   });
 
-  it('should render ratio 50 as default', () => {
+  it('should render ratio 50 as default', async () => {
     const driver = createDriver(<Card />);
-    expect(driver.getRatio()).toEqual(CardRatioOptions.RATIO_50_50);
+    expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_50_50);
   });
 
-  it('should render ratio 40', () => {
+  it('should render ratio 40', async () => {
     const driver = createDriver(<Card ratio={CardRatioOptions.RATIO_40_60} />);
-    expect(driver.getRatio()).toEqual(CardRatioOptions.RATIO_40_60);
+    expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_40_60);
   });
 
-  it('should render ratio 30', () => {
+  it('should render ratio 30', async () => {
     const driver = createDriver(<Card ratio={CardRatioOptions.RATIO_30_70} />);
-    expect(driver.getRatio()).toEqual(CardRatioOptions.RATIO_30_70);
+    expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_30_70);
   });
 
-  it('should flipped the ratio', () => {
+  it('should flipped the ratio', async () => {
     const driver = createDriver(<Card flippedRatio />);
-    expect(driver.hasFlippedRatioState()).toEqual(true);
+    expect(await driver.hasFlippedRatioState()).toEqual(true);
   });
 
-  it('should invert the image position', () => {
+  it('should invert the image position', async () => {
     const driver = createDriver(<Card invertInfoPosition />);
-    expect(driver.hasInvertImagePositionState()).toEqual(true);
+    expect(await driver.hasInvertImagePositionState()).toEqual(true);
   });
 
   describe('testkit', () => {
-    it('should exist', () => {
+    it('should exist', async () => {
       expect(
-        isTestkitExists(<Card />, cardTestkitFactory, {
+        await isUniTestkitExists(<Card />, cardTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -59,9 +59,9 @@ describe('Card', () => {
   });
 
   describe('enzyme testkit', () => {
-    it('should exist', () => {
+    it('should exist', async () => {
       expect(
-        isEnzymeTestkitExists(<Card />, enzymeCardTestkitFactory, mount, {
+        await isUniEnzymeTestkitExists(<Card />, enzymeCardTestkitFactory, mount, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {Card} from '../../src/components/Card';
+import {Card} from '../index';
 import extendedStyles from './CardExtendedExample.st.css';
-import {TYPOGRAPHY, Text} from '../../src/components/Text';
-import {Divider} from '../../src/components/Divider';
-import {Button} from '../../src/components/Button';
+import {TYPOGRAPHY, Text} from '../../Text';
+import {Divider} from '../../Divider';
+import {Button} from '../../Button';
 
 export const CardExtendedExample = (props) =>
   <div>

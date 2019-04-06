@@ -1,22 +1,34 @@
-import { StylableDOMUtil } from '@stylable/dom-test-kit';
+import {
+  BaseUniDriver,
+  baseUniDriverFactory
+} from 'wix-ui-test-utils/base-driver';
+import {StylableUnidriverUtil, UniDriver} from 'wix-ui-test-utils/unidriver';
 import style from './Card.st.css';
 
-export const cardDriverFactory = ({ element }) => {
-  const stylableDOMUtil = new StylableDOMUtil(style);
+export interface CardDriver extends BaseUniDriver {
+  getMediaContent: () => Promise<string>;
+  getInfoContent: () => Promise<string>;
+  getRatio: () => Promise<string>;
+  hasFlippedRatioState: () => Promise<boolean>;
+  hasInvertImagePositionState: () => Promise<boolean>;
+}
 
-  const getImageContainerElement = () =>
-    element.querySelector(stylableDOMUtil.scopeSelector('.mediaContainer'));
+export const cardDriverFactory = (base: UniDriver): CardDriver => {
+  const stylableUtil = new StylableUnidriverUtil(style);
+
+  const getMediaContainerElement = () =>
+    base.$(`.${style.mediaContainer}`);
   const getInfoContainerElement = () =>
-    element.querySelector(stylableDOMUtil.scopeSelector('.infoContainer'));
+    base.$(`.${style.infoContainer}`);
 
   return {
-    exists: () => !!element,
-    getMediaContent: () => getImageContainerElement().innerHTML,
-    getInfoContent: () => getInfoContainerElement().innerHTML,
-    getRatio: () => stylableDOMUtil.getStyleState(element, 'ratio'),
-    hasFlippedRatioState: () =>
-      stylableDOMUtil.hasStyleState(element, 'flippedRatio'),
-    hasInvertImagePositionState: () =>
-      stylableDOMUtil.hasStyleState(element, 'invertInfoPosition'),
+    ...baseUniDriverFactory(base),
+    getMediaContent: async () => (await getMediaContainerElement().getNative()).innerHTML,
+    getInfoContent: async () => (await getInfoContainerElement().getNative()).innerHTML,
+    getRatio: async () => stylableUtil.getStyleState(base, 'ratio'),
+    hasFlippedRatioState: async () =>
+      stylableUtil.hasStyleState(base, 'flippedRatio'),
+    hasInvertImagePositionState: async () =>
+      stylableUtil.hasStyleState(base, 'invertInfoPosition'),
   };
 };

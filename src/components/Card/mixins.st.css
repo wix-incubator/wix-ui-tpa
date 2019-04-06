@@ -1,8 +1,8 @@
 :vars {
     /*Overrides*/
-    BorderWidth: --overidable;
-    BorderColor: --overidable;
-    PaddingSize: --overidable;
+    BorderWidth: --overridable;
+    BorderColor: --overridable;
+    PaddingSize: --overridable;
 }
 
 .withBorder {

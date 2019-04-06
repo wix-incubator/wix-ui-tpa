@@ -2,7 +2,7 @@ import styleProcessor from 'wix-style-processor';
 
 styleProcessor.init();
 
-require('./Card.story.tsx');
+require('../src/components/Card/docs/index.story');
 require('./Divider.story.tsx');
 require('./ToggleSwitch');
 require('./Text.story.tsx');

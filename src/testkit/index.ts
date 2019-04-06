@@ -23,4 +23,4 @@ export const autocompleteTestkitFactory = testkitFactoryCreator(
 );
 
 import { cardDriverFactory } from '../components/Card/Card.driver';
-export const cardTestkitFactory = testkitFactoryCreator(cardDriverFactory);
+export const cardTestkitFactory = uniTestkitFactoryCreator(cardDriverFactory);

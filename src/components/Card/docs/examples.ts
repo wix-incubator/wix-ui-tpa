@@ -4,7 +4,7 @@ const imageComponent = (width = 550, height = 322) => `
 <div
  style={{
     height: '100%',
-    backgroundImage: 'url(https://picsum.photos/${width}/${height}})',
+    backgroundImage: 'url(https://picsum.photos/${width}/${height})',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover'

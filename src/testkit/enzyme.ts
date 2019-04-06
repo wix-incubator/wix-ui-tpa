@@ -27,7 +27,7 @@ export const autocompleteTestkitFactory: (
 import { cardDriverFactory } from '../components/Card/Card.driver';
 export const cardTestkitFactory: (
   obj: WrapperData,
-) => any = enzymeTestkitFactoryCreator(cardDriverFactory);
+) => any = enzymeUniTestkitFactoryCreator(cardDriverFactory);
 
 import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
 export const tabsTestkitFactory: (
