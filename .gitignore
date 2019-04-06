@@ -19,3 +19,4 @@ wix-ui-tpa.iml
 /*.d.ts
 !wallaby.js
 !protractor.conf.js
+index.st.css
