@@ -9,6 +9,9 @@ export const inputTestkitFactory = testkitFactoryCreator(inputDriverFactory);
 import { textDriverFactory } from '../components/Text/Text.driver';
 export const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
+import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
+export const tabsTestkitFactory = testkitFactoryCreator(tabsDriverFactory);
+
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory = uniTestkitFactoryCreator(
   buttonDriverFactory,
