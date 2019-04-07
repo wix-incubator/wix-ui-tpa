@@ -1,0 +1,69 @@
+:import {
+    -st-from: "../../tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    /*Constance*/
+    defaultTabColor: color-5;
+    defaultTabFont: "{theme: 'Body-M', size: '16px'}";
+    defaultSelectedTabIndicatorColor: color-8;
+    defaultIndicatorColor: color-5;
+}
+
+:vars {
+    MainTextColor: --overridable;
+    MainTextFont: --overridable;
+    SelectedTabIndicatorColor: --overridable;
+    IndicatorColor: --overridable;
+}
+
+.root {
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
+    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
+    line-height: 1.5em;
+}
+
+.root nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.root:alignment(left) nav {
+    justify-content: flex-start;
+}
+
+.root:alignment(right) nav {
+    justify-content: flex-end;
+}
+
+.root:alignment(center) nav {
+    justify-content: center;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 14px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.root:variant(fullWidth) .tab {
+    flex: 1;
+}
+
+.root:skin(fullUnderline),
+.root:skin(fitUnderline) .tab{
+    border-bottom: 1px solid;
+    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
+}
+
+.root:skin(clear) .activeTab,
+.root:skin(fullUnderline) .activeTab,
+.root:skin(fitUnderline) .activeTab {
+    border-bottom: 3px solid;
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
+    padding-bottom: 11px;
+}

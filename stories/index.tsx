@@ -8,3 +8,4 @@ require('./Text.story.tsx');
 require('./Button.story.tsx');
 require('./Input.story.tsx');
 require('./Autocomplete.story.tsx');
+require('./Tabs.story.tsx');
