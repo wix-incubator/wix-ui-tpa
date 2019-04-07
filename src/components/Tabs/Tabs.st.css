@@ -22,6 +22,7 @@
     -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit));
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
+    line-height: 1.5em;
 }
 
 .root nav {
@@ -64,4 +65,5 @@
 .root:skin(fitUnderline) .activeTab {
     border-bottom: 3px solid;
     border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
+    padding-bottom: 11px;
 }
