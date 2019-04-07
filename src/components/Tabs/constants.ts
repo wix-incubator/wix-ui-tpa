@@ -1,6 +1,7 @@
 export enum SKIN {
-  underline = 'underline',
+  fullUnderline = 'fullUnderline',
   clear = 'clear',
+  fitUnderline = 'fitUnderline',
 }
 
 export enum ALIGNMENT {
@@ -11,5 +12,5 @@ export enum ALIGNMENT {
 
 export enum VARIANT {
   fullWidth = 'fullWidth',
-  standard = 'standard',
+  fit = 'fit',
 }

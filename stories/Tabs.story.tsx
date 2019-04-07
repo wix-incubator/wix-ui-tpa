@@ -23,9 +23,9 @@ export default {
       setState({activeTabIndex: selectedTabIndex})
     },
     activeTabIndex,
-    skin: SKIN.clear,
+    skin: SKIN.fullUnderline,
     alignment: ALIGNMENT.center,
-    variant: VARIANT.standard,
+    variant: VARIANT.fit,
   }),
   exampleProps: {
     skin: Object.keys(SKIN).map(key => SKIN[key]),

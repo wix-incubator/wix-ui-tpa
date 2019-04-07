@@ -64,9 +64,9 @@ const Tabs = props => {
 
 Tabs.defaultProps = {
   onTabClick: (tabIndex: number) => {},
-  skin: SKIN.underline,
+  skin: SKIN.fullUnderline,
   alignment: ALIGNMENT.center,
-  variant: VARIANT.standard,
+  variant: VARIANT.fit,
 };
 
 export { Tabs };

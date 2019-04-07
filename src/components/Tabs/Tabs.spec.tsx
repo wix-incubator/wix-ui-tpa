@@ -61,25 +61,33 @@ describe('Text', () => {
   it('should set default states stylable states', () => {
     driver = createDriver(<Tabs items={items} activeTabIndex={0} />);
 
-    expect(driver.getSkin()).toBe('underline');
-    expect(driver.getVariant()).toBe('standard');
+    expect(driver.getSkin()).toBe('fullUnderline');
+    expect(driver.getVariant()).toBe('fit');
     expect(driver.getAlignment()).toBe('center');
   });
 
-  it('should have border for unselected tabs if skin prop is "underline"', () => {
+  it('should have divider when skin prop is "fullUnderline"', () => {
     driver = createDriver(
-      <Tabs items={items} activeTabIndex={0} skin="underline" />,
+      <Tabs items={items} activeTabIndex={0} skin="fullUnderline" />,
     );
 
-    expect(driver.getSkin()).toBe('underline');
+    expect(driver.getSkin()).toBe('fullUnderline');
   });
 
-  it('should not have border for unselected tabs if skin prop is "clear"', () => {
+  it('should not have divider when skin prop is "clear"', () => {
     driver = createDriver(
       <Tabs items={items} activeTabIndex={0} skin="clear" />,
     );
 
     expect(driver.getSkin()).toBe('clear');
+  });
+
+  it('should have divider that fits tab width when skin prop is "fitUnderline"', () => {
+    driver = createDriver(
+      <Tabs items={items} activeTabIndex={0} skin="fitUnderline" />,
+    );
+
+    expect(driver.getSkin()).toBe('fitUnderline');
   });
 
   it('should align content to left when alignment prop is "left"', () => {

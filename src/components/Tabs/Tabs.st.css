@@ -19,14 +19,9 @@
 }
 
 .root {
-    -st-states: skin(enum(underline, clear)), alignment(enum(center, left, right)), variant(enum(fullWidth, standard));
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit));
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
-}
-
-.root:skin(underline) {
-    border-bottom: 1px solid;
-    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
 }
 
 .root nav {
@@ -58,7 +53,15 @@
     flex: 1;
 }
 
-.activeTab {
+.root:skin(fullUnderline),
+.root:skin(fitUnderline) .tab{
+    border-bottom: 1px solid;
+    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
+}
+
+.root:skin(clear) .activeTab,
+.root:skin(fullUnderline) .activeTab,
+.root:skin(fitUnderline) .activeTab {
     border-bottom: 3px solid;
     border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
 }
