@@ -23,12 +23,7 @@ export interface TabItem {
   title?: string;
 }
 
-const selectTab = (
-  selectedTab,
-  newActiveTabIndex,
-  activeTabIndex,
-  onTabClick,
-) => {
+const selectTab = (newActiveTabIndex, activeTabIndex, onTabClick) => {
   if (activeTabIndex !== newActiveTabIndex) {
     onTabClick(newActiveTabIndex);
   }
@@ -39,7 +34,7 @@ const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
     <div
       data-hook={`tab-item-${index}`}
       key={`tab-item-${index}`}
-      onClick={() => selectTab(item, index, activeTabIndex, onTabClick)}
+      onClick={() => selectTab(index, activeTabIndex, onTabClick)}
       className={classNames(style.tab, {
         [style.activeTab]: activeTabIndex === index,
       })}
