@@ -35,6 +35,11 @@ export const autocompleteTestkitFactory = protractorTestkitFactoryCreator<
 >(autocompleteDriverFactory);
 export { AutocompleteDriver };
 
+import { cardDriverFactory } from '../components/Card/Card.driver';
+export const cardTestkitFactory = protractorUniTestkitFactoryCreator(
+  cardDriverFactory,
+);
+
 import { tabsDriverFactory } from '../components/Tabs/Tabs.protractor.driver';
 import { BaseDriver } from 'wix-ui-core/dist/src/common/BaseDriver.protractor';
 export const tabsTestkitFactory = protractorTestkitFactoryCreator<BaseDriver>(

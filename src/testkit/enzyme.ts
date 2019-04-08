@@ -24,6 +24,11 @@ export const autocompleteTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(autocompleteDriverFactory);
 
+import { cardDriverFactory } from '../components/Card/Card.driver';
+export const cardTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(cardDriverFactory);
+
 import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
 export const tabsTestkitFactory: (
   obj: WrapperData,

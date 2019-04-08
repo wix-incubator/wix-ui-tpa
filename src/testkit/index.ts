@@ -21,3 +21,6 @@ import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomple
 export const autocompleteTestkitFactory = testkitFactoryCreator(
   autocompleteDriverFactory,
 );
+
+import { cardDriverFactory } from '../components/Card/Card.driver';
+export const cardTestkitFactory = uniTestkitFactoryCreator(cardDriverFactory);

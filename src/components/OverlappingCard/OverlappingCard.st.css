@@ -1,0 +1,53 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "../Card/Card.st.css";
+    -st-named: mediaContainer, infoContainer, infoPadding, borderWidth, borderColor, mediaBGColor, infoBGColor, negativeInfoPadding;
+}
+
+:import {
+    -st-from: "../Card/Card.st.css";
+    -st-default: Card;
+}
+
+:import {
+    -st-from: "../Card/mixins.st.css";
+    -st-named: withBorder, withDynamicPadding;
+}
+
+.root {
+    -st-extends: Card;
+    -st-states: flippedRatio, invertInfoPosition;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas: "media margin-top" "media info" "media margin-bottom";
+    border: none;
+}
+
+.root:invertInfoPosition {
+    grid-template-areas: "margin-top media" "info media" "margin-bottom media";
+}
+
+.root > .mediaContainer {
+    background-color: value(mediaBGColor);
+    margin-right: value(negativeInfoPadding);
+}
+
+.root:invertInfoPosition > .mediaContainer {
+    margin-right: 0;
+    margin-left: value(negativeInfoPadding);
+}
+
+.root > .infoContainer {
+    background-color: value(infoBGColor);
+    z-index: 20;
+    -st-mixin: withBorder(
+            BorderColor value(borderColor),
+            BorderWidth value(borderWidth)
+    ), withDynamicPadding(
+            PaddingSize value(infoPadding),
+            BorderWidth value(borderWidth)
+    );
+}

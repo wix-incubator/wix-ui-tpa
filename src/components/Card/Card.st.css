@@ -1,0 +1,127 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "./mixins.st.css";
+    -st-named: withBorder, withDynamicPadding;
+}
+
+:vars {
+    /*Constance*/
+    DefaultCardBG: color-1;
+    DefaultBorderColor: color-5;
+    DefaultBorderWidth: 1;
+}
+
+:vars {
+    /*Overrides*/
+    MainBorderWidth: --overridable;
+    MainBorderColor: --overridable;
+    MainInfoColor: --overridable;
+    MainMediaColor: --overridable;
+}
+
+:vars {
+    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), value(DefaultBorderWidth)), px);
+    borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor)));
+    infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultCardBG)));
+    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), value(DefaultCardBG)));
+}
+
+:vars {
+    infoPadding: 60px;
+    negativeInfoPadding: -60px;
+}
+
+.root {
+    -st-states: ratio(enum(50, 40, 30)), flippedRatio, invertInfoPosition;
+    display: flex;
+    box-sizing: border-box;
+    display: inline-grid;
+    width: 100%;
+    grid-template-areas: "media info";
+    -st-mixin: withBorder(
+            BorderColor value(borderColor),
+            BorderWidth value(borderWidth)
+    );
+}
+
+.root:invertInfoPosition {
+    grid-template-areas: "info media";
+}
+
+.root:ratio(50) {
+    grid-template-columns: 50% 50%;
+}
+
+.root:ratio(40) {
+    grid-template-columns: 40% 60%;
+}
+
+.root:ratio(40):flippedRatio {
+    grid-template-columns: 60% 40%;
+}
+
+.root:ratio(30) {
+    grid-template-columns: 30% 70%;
+}
+
+.root:ratio(30):flippedRatio {
+    grid-template-columns: 70% 30%;
+}
+
+/*unsupported grid fallback*/
+
+.root:invertInfoPosition {
+    flex-direction: row-reverse;
+}
+
+.root:ratio(50) > .mediaContainer,
+.root:ratio(50) > .infoContainer {
+    flex: 50%;
+}
+
+.root:ratio(40):flippedRatio:invertInfoPosition > .mediaContainer,
+.root:ratio(40):invertInfoPosition > .infoContainer,
+.root:ratio(40):flippedRatio > .infoContainer,
+.root:ratio(40) > .mediaContainer {
+    flex: 40%;
+}
+
+.root:ratio(40):flippedRatio:invertInfoPosition > .infoContainer,
+.root:ratio(40):invertInfoPosition > .mediaContainer,
+.root:ratio(40):flippedRatio > .mediaContainer,
+.root:ratio(40) > .infoContainer {
+    flex: 60%;
+}
+
+.root:ratio(30):flippedRatio:invertInfoPosition > .mediaContainer,
+.root:ratio(30):invertInfoPosition > .infoContainer,
+.root:ratio(30):flippedRatio > .infoContainer,
+.root:ratio(30) > .mediaContainer {
+    flex: 30%;
+}
+
+.root:ratio(30):flippedRatio:invertInfoPosition > .infoContainer,
+.root:ratio(30):invertInfoPosition > .mediaContainer,
+.root:ratio(30):flippedRatio > .mediaContainer,
+.root:ratio(30) > .infoContainer {
+    flex: 70%;
+}
+
+.mediaContainer {
+    background-color: value(mediaBGColor);
+    grid-area: media;
+}
+
+.infoContainer {
+    box-sizing: border-box;
+    background-color: value(infoBGColor);
+    grid-area: info;
+    -st-mixin: withDynamicPadding(
+            PaddingSize value(infoPadding),
+            BorderWidth value(borderWidth)
+    );
+}
