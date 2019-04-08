@@ -34,6 +34,7 @@ The out of the box components provided by this library are inheriting the styles
     For more information about the "color(something)" syntax please refer to [wix-style-processor](https://github.com/wix/wix-style-processor) documentation.
 
 
+
 2. create your own component that uses the overridden theme
     ``` javascript
     import * as React from 'react';
