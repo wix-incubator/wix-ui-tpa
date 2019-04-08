@@ -10,8 +10,7 @@
 
 :vars {
     /*Constance*/
-    MinWidth: 120px;
-    MaxWidth: 300px;
+    MinWidth: 100px;
     PrimaryColor: color-8;
     SecondaryColor: color-1;
     BasicColor: color-5;
@@ -44,10 +43,10 @@
     -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large));
 
     min-width: value(MinWidth);
-    max-width: value(MaxWidth);
     border-style: solid;
     border-color: wixApply(color, value(MainBorderColor));
     border-radius: wixApply(unit, value(MainBorderRadius), px);
+    transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
 }
 
 .root::content {
@@ -143,7 +142,7 @@
 /*Medium*/
 
 .root:size(medium) {
-    padding: 10px 16px;
+    padding: 8px 16px;
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MediumFont)));
 }
 
