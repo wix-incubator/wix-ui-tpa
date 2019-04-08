@@ -1,5 +1,5 @@
 // import * as React from 'react';
-// import {Card} from '../';
+// import {OverlappingCard} from '../';
 // import * as examples from './examples';
 // import {
 //   api,
@@ -15,19 +15,19 @@
 //   mdx,
 // } from 'wix-storybook-utils/Sections';
 // import { baseScope } from './utils/LiveCodeExample';
-// import MDX from '../src/components/Card/README.mdx'
+// import MDX from '../src/components/OverlappingCard/README.mdx'
 //
 // const code = config => baseCode({ components: baseScope, compact: true, ...config });
 //
 // export default {
 //   category: 'Components',
-//   storyName: 'Card',
-//   component: Card,
-//   componentPath: '../src/components/Card/Card.tsx',
-//   dataHook: 'storybook-Card',
+//   storyName: 'OverlappingCard',
+//   component: OverlappingCard,
+//   componentPath: '../src/components/OverlappingCard/OverlappingCard.tsx',
+//   dataHook: 'storybook-OverlappingCard',
 //   sections: [
 //     header({
-//       sourceUrl: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/Card'
+//       sourceUrl: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/OverlappingCard'
 //     }),
 //
 //     tabs([
@@ -43,7 +43,7 @@
 //           title('Examples'),
 //
 //           ...[
-//             { title: 'Side By Side', source: examples.sideBySide },
+//             { title: 'Overlapping', source: examples.overlapping },
 //           ].map(code),
 //         ],
 //       }),
@@ -60,7 +60,7 @@
 
 import * as React from 'react';
 import Examples from './exampleWithSettingPanel';
-import { Card, CardRatioOptions } from '../';
+import { OverlappingCard, OverlappingCardRatioOptions } from '../';
 import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
 
@@ -71,7 +71,7 @@ const mediaExamples = [
       <div
         style={{
           background:
-            'url("https://picsum.photos/550/380") no-repeat center center',
+            'url("https://picsum.photos/300/300") no-repeat center center',
           height: '100%',
           backgroundSize: 'cover',
         }}
@@ -93,17 +93,19 @@ const infoExample = (
 export default {
   kind: 'Components',
   category: 'Components',
-  storyName: 'Card',
-  component: Card,
-  componentPath: '../Card.tsx',
+  storyName: 'OverlappingCard',
+  component: OverlappingCard,
+  componentPath: '../OverlappingCard.tsx',
   componentProps: () => ({
     media: mediaExamples[0].value,
     info: infoExample,
-    'data-hook': 'storybook-Card',
+    'data-hook': 'storybook-OverlappingCard',
   }),
   exampleProps: {
     media: mediaExamples,
-    ratio: Object.keys(CardRatioOptions).map(key => CardRatioOptions[key]),
+    ratio: Object.keys(OverlappingCardRatioOptions).map(
+      key => OverlappingCardRatioOptions[key],
+    ),
   },
   examples: <Examples />,
 };

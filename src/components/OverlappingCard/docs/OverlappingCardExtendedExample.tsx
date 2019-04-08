@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Card } from '../index';
-import extendedStyles from './CardExtendedExample.st.css';
+import { OverlappingCard } from '../index';
+import extendedStyles from './OverlappingCardExtendedExample.st.css';
 import { TYPOGRAPHY, Text } from '../../Text';
 import { Divider } from '../../Divider';
 import { Button } from '../../Button';
 
 export const CardExtendedExample = props => (
   <div>
-    <Card
+    <OverlappingCard
       media={
         <div
           style={{
             height: '100%',
-            backgroundImage: 'url(https://picsum.photos/791/321)',
+            backgroundImage: 'url(https://picsum.photos/852/388)',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',

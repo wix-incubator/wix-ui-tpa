@@ -35,9 +35,7 @@ export const autocompleteTestkitFactory = protractorTestkitFactoryCreator<
 >(autocompleteDriverFactory);
 export { AutocompleteDriver };
 
-import {
-  cardDriverFactory,
-} from '../components/Card/Card.driver';
+import { cardDriverFactory } from '../components/Card/Card.driver';
 export const cardTestkitFactory = protractorUniTestkitFactoryCreator(
   cardDriverFactory,
 );

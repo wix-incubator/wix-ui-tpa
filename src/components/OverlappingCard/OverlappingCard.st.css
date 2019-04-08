@@ -4,7 +4,7 @@
 }
 
 :import {
-    -st-from: "'../Card/Card.st.css";
+    -st-from: "../Card/Card.st.css";
     -st-named: mediaContainer, infoContainer, infoPadding, borderWidth, borderColor, mediaBGColor, infoBGColor, negativeInfoPadding;
 }
 

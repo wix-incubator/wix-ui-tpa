@@ -1,4 +1,4 @@
-export const importExample = `import {Card} from 'wix-ui-tpa/dist/src/components/Card';`;
+export const importExample = `import {OverlappingCard} from 'wix-ui-tpa/dist/src/components/OverlappingCard';`;
 
 const imageComponent = (width = 550, height = 322) => `
 <div
@@ -11,13 +11,13 @@ const imageComponent = (width = 550, height = 322) => `
  }}/>
 `;
 
-export const sideBySide = `
-<Card
-  media={${imageComponent(560, 330)}}
+export const overlapping = `
+<OverlappingCard
+  media={${imageComponent(852, 388)}}
   info={
     <div>
       <div style={{marginBottom: '10px'}}>
-        <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
+        <Text typography={TYPOGRAPHY.smallTitle}>Overlapping</Text>
       </div>
       <div style={{marginBottom: '10px'}}>
         <Text typography={TYPOGRAPHY.runningText}>Tagline</Text>
