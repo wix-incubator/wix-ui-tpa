@@ -10,7 +10,8 @@
 
 :vars {
     /*Constance*/
-    DefaultCardBG: color-1;
+    DefaultInfoCardBG: color-1;
+    DefaultMediaCardBG: color-5;
     DefaultBorderColor: color-5;
     DefaultBorderWidth: 1;
 }
@@ -26,8 +27,8 @@
 :vars {
     borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), value(DefaultBorderWidth)), px);
     borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor)));
-    infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultCardBG)));
-    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), value(DefaultCardBG)));
+    infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultInfoCardBG)));
+    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaCardBG)), 0.2)));
 }
 
 :vars {

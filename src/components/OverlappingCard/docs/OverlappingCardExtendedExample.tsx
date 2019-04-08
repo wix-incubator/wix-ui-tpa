@@ -12,7 +12,7 @@ export const CardExtendedExample = props => (
         <div
           style={{
             height: '100%',
-            backgroundImage: 'url(https://picsum.photos/852/388)',
+            backgroundImage: 'url(https://picsum.photos/852/383)',
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
             backgroundSize: 'contain',
