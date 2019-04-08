@@ -29,7 +29,7 @@
     "posttest": "npm run lint",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
-    "test:e2e": "node test-build.js",
+    "test:e2e": "node ./test-build.js",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
     "release": "yoshi release",
