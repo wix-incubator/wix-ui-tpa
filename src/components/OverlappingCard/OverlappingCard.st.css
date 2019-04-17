@@ -22,8 +22,6 @@
     -st-extends: Card;
     -st-states: invertInfoPosition;
     border: none;
-    position: relative;
-    padding: 2.4% 0;
 }
 
 .root > .mediaContainer {
