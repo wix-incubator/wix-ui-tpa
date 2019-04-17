@@ -71,7 +71,7 @@ const mediaExamples = [
       <div
         style={{
           background:
-            'url("https://picsum.photos/550/380") no-repeat center center',
+            'url("https://static.wixstatic.com/media/dd7e03deffdd4267b75ef0a60d8510c7.jpg/v1/fill/w_550,h_380,al_c,q_80,usm_0.66_1.00_0.01/Gift%20Wrapped.jpg") no-repeat center center',
           height: '100%',
           backgroundSize: 'cover',
         }}
