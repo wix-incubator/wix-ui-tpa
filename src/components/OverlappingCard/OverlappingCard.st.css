@@ -27,11 +27,7 @@
 .root > .mediaContainer {
     background-color: value(mediaBGColor);
     margin-right: value(negativeInfoPadding);
-    position: relative;
     height: 120%;
-    top: -10%;
-    right: 0;
-    left: 0;
 }
 
 .root:invertInfoPosition > .mediaContainer {
@@ -42,6 +38,8 @@
 .root > .infoContainer {
     background-color: value(infoBGColor);
     z-index: 20;
+    position: relative;
+    top: 10%;
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
