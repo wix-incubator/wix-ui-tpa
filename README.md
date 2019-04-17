@@ -64,27 +64,3 @@ You can use [Input](./src/components/Input/index.tsx) component as a good refere
 
 As a general approach, each TPA stylable compoennt, should expose a limted set of stylable attributes, which are used in order to create the ui-core style, with the ability to override specific ones as well;
 See [Input](./src/components/Input/Input.st.css) as an example, as you can see there are few variables defined in it (marked with /*Recommended Variables*/) followed by the entire list of variables defined in the parent component, which are built from the recommended set. The core mixin is than used in order to render the styles of the TPA theme, which allows the user of the library to either override a property that will impact several core properties (e.g. ***MainBorderColor***), or to override a core property (e.g. ***hoverBorderColor***) in order to achieve the desired style.
-
-## Testing with jest
-Since st.css are build time files, jest has to be familiar and parse them.
-As a result, a jest trasnformer is required in order to handle them:
-
-1. Install stylable-integration library
-    ```npm i -D stylable-integration```
-2. Add a transform definition to package.json
-    ``` json
-    "jest": {
-        "transform": {
-          "\\.(css)$": "stylable-integration/jest"
-        }
-    }
-    ```
-
-3. Since you are probably using st.css files from the tpa/core ui library, jest has to transform files in node_modules library, so please make sure that in package.json, "transformIgnorePatterns" property does not include node_modules library.
-  Note that jest ignores node_modules library by default so in case you do not have this prop defined, please define it as an empty array:
-  ``` json
-      "jest": {
-        "transformIgnorePatterns": []
-      }
-     ```
-
