@@ -79,6 +79,7 @@ const mediaExamples = [
     ),
   },
   { label: 'video', value: <video src="" /> },
+  { label: 'none', value: null },
 ];
 
 const infoExample = (

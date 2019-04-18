@@ -30,6 +30,11 @@
     grid-template-areas: ". media" "info media" ". media";
 }
 
+.root:ratio(100) {
+    grid-template-areas: "info";
+    grid-template-rows: 1fr;
+}
+
 .root > .mediaContainer {
     background-color: value(mediaBGColor);
     margin-right: value(negativeInfoPadding);

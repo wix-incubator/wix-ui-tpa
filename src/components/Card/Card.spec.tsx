@@ -24,18 +24,27 @@ describe('Card', () => {
   });
 
   it('should render ratio 50 as default', async () => {
-    const driver = createDriver(<Card />);
+    const driver = createDriver(<Card info="info" media="media" />);
     expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_50_50);
   });
 
   it('should render ratio 40', async () => {
-    const driver = createDriver(<Card ratio={CardRatioOptions.RATIO_40_60} />);
+    const driver = createDriver(
+      <Card ratio={CardRatioOptions.RATIO_40_60} info="info" media="media" />,
+    );
     expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_40_60);
   });
 
   it('should render ratio 30', async () => {
-    const driver = createDriver(<Card ratio={CardRatioOptions.RATIO_30_70} />);
+    const driver = createDriver(
+      <Card ratio={CardRatioOptions.RATIO_30_70} info="info" media="media" />,
+    );
     expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_30_70);
+  });
+
+  it('should render ratio 100 if there is no media', async () => {
+    const driver = createDriver(<Card info="info" />);
+    expect(await driver.getRatio()).toEqual(CardRatioOptions.RATIO_100);
   });
 
   it('should flipped the ratio', async () => {
