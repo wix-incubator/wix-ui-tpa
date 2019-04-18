@@ -20,14 +20,19 @@
 
 .root {
     -st-extends: Card;
-    -st-states: invertInfoPosition;
+    -st-states: flippedRatio, invertInfoPosition;
+    grid-template-rows: 1fr 8fr 1fr; /*1fr = 10%*/
+    grid-template-areas: "media margin-top" "media info" "media margin-bottom";
     border: none;
+}
+
+.root:invertInfoPosition {
+    grid-template-areas: ". media" "info media" ". media";
 }
 
 .root > .mediaContainer {
     background-color: value(mediaBGColor);
     margin-right: value(negativeInfoPadding);
-    height: 120%;
 }
 
 .root:invertInfoPosition > .mediaContainer {
@@ -38,8 +43,6 @@
 .root > .infoContainer {
     background-color: value(infoBGColor);
     z-index: 20;
-    position: relative;
-    top: 10%;
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
