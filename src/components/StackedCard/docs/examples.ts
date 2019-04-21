@@ -11,13 +11,13 @@ const imageComponent = (width = 550, height = 322) => `
  }}/>
 `;
 
-export const overlapping = `
+export const stacked = `
 <StackedCard
   media={${imageComponent(782, 518)}}
   info={
     <div>
       <div style={{marginBottom: '10px'}}>
-        <Text typography={TYPOGRAPHY.smallTitle}>Overlapping</Text>
+        <Text typography={TYPOGRAPHY.smallTitle}>Stacked</Text>
       </div>
       <div style={{marginBottom: '10px'}}>
         <Text typography={TYPOGRAPHY.runningText}>Tagline</Text>

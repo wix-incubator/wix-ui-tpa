@@ -1,5 +1,5 @@
 // import * as React from 'react';
-// import {OverlappingCard} from '../';
+// import {StackedCard} from '../';
 // import * as examples from './examples';
 // import {
 //   api,
@@ -15,19 +15,19 @@
 //   mdx,
 // } from 'wix-storybook-utils/Sections';
 // import { baseScope } from './utils/LiveCodeExample';
-// import MDX from '../src/components/OverlappingCard/README.mdx'
+// import MDX from '../src/components/StackedCard/README.mdx'
 //
 // const code = config => baseCode({ components: baseScope, compact: true, ...config });
 //
 // export default {
 //   category: 'Components',
-//   storyName: 'OverlappingCard',
-//   component: OverlappingCard,
-//   componentPath: '../src/components/OverlappingCard/OverlappingCard.tsx',
-//   dataHook: 'storybook-OverlappingCard',
+//   storyName: 'StackedCard',
+//   component: StackedCard,
+//   componentPath: '../src/components/StackedCard/StackedCard.tsx',
+//   dataHook: 'storybook-StackedCard',
 //   sections: [
 //     header({
-//       sourceUrl: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/OverlappingCard'
+//       sourceUrl: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/StackedCard'
 //     }),
 //
 //     tabs([
@@ -43,7 +43,7 @@
 //           title('Examples'),
 //
 //           ...[
-//             { title: 'Overlapping', source: examples.overlapping },
+//             { title: 'Stacked', source: examples.stacked },
 //           ].map(code),
 //         ],
 //       }),

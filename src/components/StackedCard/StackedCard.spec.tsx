@@ -8,7 +8,7 @@ import { cardTestkitFactory } from '../../testkit';
 import { cardTestkitFactory as enzymeCardTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 
-describe('OverlappingCard', () => {
+describe('StackedCard', () => {
   const createDriver = createUniDriverFactory(stackedCardDriverFactory);
 
   it('should render info', async () => {
@@ -24,7 +24,7 @@ describe('OverlappingCard', () => {
   });
 
   it('should render ratio 50 as default', async () => {
-    const driver = createDriver(<StackedCard />);
+    const driver = createDriver(<StackedCard info="info" media="media" />);
     expect(await driver.getRatio()).toEqual(
       StackedCardRatioOptions.RATIO_50_50,
     );
@@ -32,7 +32,11 @@ describe('OverlappingCard', () => {
 
   it('should render ratio 40', async () => {
     const driver = createDriver(
-      <StackedCard ratio={StackedCardRatioOptions.RATIO_40_60} />,
+      <StackedCard
+        ratio={StackedCardRatioOptions.RATIO_40_60}
+        info="info"
+        media="media"
+      />,
     );
     expect(await driver.getRatio()).toEqual(
       StackedCardRatioOptions.RATIO_40_60,
@@ -41,11 +45,20 @@ describe('OverlappingCard', () => {
 
   it('should render ratio 30', async () => {
     const driver = createDriver(
-      <StackedCard ratio={StackedCardRatioOptions.RATIO_30_70} />,
+      <StackedCard
+        ratio={StackedCardRatioOptions.RATIO_30_70}
+        info="info"
+        media="media"
+      />,
     );
     expect(await driver.getRatio()).toEqual(
       StackedCardRatioOptions.RATIO_30_70,
     );
+  });
+
+  it('should render ratio 100 if there is no media', async () => {
+    const driver = createDriver(<StackedCard info="info" />);
+    expect(await driver.getRatio()).toEqual(StackedCardRatioOptions.RATIO_100);
   });
 
   it('should flipped the ratio', async () => {
