@@ -1,10 +1,10 @@
 import * as React from 'react';
 import style from './StackedCard.st.css';
-import { Card, CardProps } from '../Card';
+import { Card, CardProps, CardRatioOptions } from '../Card';
 
 export interface StackedCardProps extends CardProps {}
 
-export const StackedCard = (props: StackedCardProps) => {
+const StackedCard = (props: StackedCardProps) => {
   const { ratio, flippedRatio, invertInfoPosition } = props;
   return (
     <Card
@@ -13,3 +13,7 @@ export const StackedCard = (props: StackedCardProps) => {
     />
   );
 };
+
+StackedCard.displayName = 'StackedCard';
+
+export { StackedCard, CardRatioOptions as StackedCardRatioOptions };
