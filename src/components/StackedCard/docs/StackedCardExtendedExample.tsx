@@ -6,7 +6,7 @@ import { Divider } from '../../Divider';
 import { Button } from '../../Button';
 
 export const CardExtendedExample = props => (
-  <div style={{width: '300px'}}>
+  <div style={{ width: '300px' }}>
     <StackedCard
       media={
         <div
