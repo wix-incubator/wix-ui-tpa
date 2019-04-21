@@ -1,0 +1,14 @@
+:import {
+    -st-from: "../StackedCard.st.css";
+    -st-default: TPACard;
+}
+
+.card {
+    -st-mixin: TPACard(
+            MainInfoColor '"--infoBGColor"',
+            MainMediaColor '"--imageBGColor"',
+            MainBorderColor '"--borderColor"',
+            MainBorderWidth '"--borderWidth"'
+    );
+    width: 280px;
+}

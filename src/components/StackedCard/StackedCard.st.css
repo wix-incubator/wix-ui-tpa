@@ -1,0 +1,81 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "../Card/Card.st.css";
+    -st-named: mediaContainer, infoContainer, infoPadding, borderWidth, borderColor, mediaBGColor, infoBGColor;
+}
+
+:import {
+    -st-from: "../Card/Card.st.css";
+    -st-default: Card;
+}
+
+:import {
+    -st-from: "../Card/mixins.st.css";
+    -st-named: withBorder, withDynamicPadding;
+}
+
+.root {
+    -st-extends: Card;
+    -st-states: flippedRatio, invertInfoPosition;
+    grid-template-areas: "media" "info";
+    -st-mixin: withBorder(
+            BorderColor value(borderColor),
+            BorderWidth value(borderWidth)
+    )
+}
+
+.root:invertInfoPosition {
+    grid-template-areas: "info" "media";
+}
+
+.root:ratio(100) {
+    grid-template-areas: "info";
+    grid-template-rows: 1fr;
+}
+
+.root:ratio(100),
+.root:ratio(50),
+.root:ratio(40),
+.root:ratio(30),
+.root:ratio(100):flippedRatio,
+.root:ratio(50):flippedRatio,
+.root:ratio(40):flippedRatio,
+.root:ratio(30):flippedRatio {
+    grid-template-columns: none;
+}
+
+.root:ratio(50) {
+    grid-template-rows: 1fr 1fr;
+}
+
+.root:ratio(40) {
+    grid-template-rows: 4fr 6fr;
+}
+
+.root:ratio(40):flippedRatio {
+    grid-template-rows: 6fr 4fr;
+}
+
+.root:ratio(30) {
+    grid-template-rows: 3fr 7fr;
+}
+
+.root:ratio(30):flippedRatio {
+    grid-template-rows: 7fr 3fr;
+}
+
+.root > .mediaContainer {
+    background-color: value(mediaBGColor);
+}
+
+.root > .infoContainer {
+    background-color: value(infoBGColor);
+    -st-mixin: withDynamicPadding(
+            PaddingSize value(infoPadding),
+            BorderWidth value(borderWidth)
+    );
+}
