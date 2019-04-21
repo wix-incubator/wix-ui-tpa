@@ -11,6 +11,8 @@ export interface CardDriver extends BaseUniDriver {
   getRatio(): Promise<string>;
   hasFlippedRatioState(): Promise<boolean>;
   hasInvertImagePositionState(): Promise<boolean>;
+  isMediaContentExist(): Promise<boolean>;
+  isInfoContentExist(): Promise<boolean>;
 }
 
 export const cardDriverFactory = (base: UniDriver): CardDriver => {
@@ -23,8 +25,10 @@ export const cardDriverFactory = (base: UniDriver): CardDriver => {
     ...baseUniDriverFactory(base),
     getMediaContent: async () =>
       (await getMediaContainerElement().getNative()).innerHTML,
+    isMediaContentExist: async () => getMediaContainerElement().exists(),
     getInfoContent: async () =>
       (await getInfoContainerElement().getNative()).innerHTML,
+    isInfoContentExist: async () => getInfoContainerElement().exists(),
     getRatio: async () => stylableUtil.getStyleState(base, 'ratio'),
     hasFlippedRatioState: async () =>
       stylableUtil.hasStyleState(base, 'flippedRatio'),

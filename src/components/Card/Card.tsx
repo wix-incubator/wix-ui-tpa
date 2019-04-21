@@ -2,6 +2,7 @@ import * as React from 'react';
 import style from './Card.st.css';
 
 export enum CardRatioOptions {
+  RATIO_100 = '100',
   RATIO_50_50 = '50',
   RATIO_40_60 = '40',
   RATIO_30_70 = '30',
@@ -24,7 +25,17 @@ const Card = ({
   ...rest
 }: CardProps) => {
   return (
-    <div {...style('root', { ratio, invertInfoPosition, flippedRatio }, rest)}>
+    <div
+      {...style(
+        'root',
+        {
+          ratio: media ? ratio : CardRatioOptions.RATIO_100,
+          invertInfoPosition,
+          flippedRatio,
+        },
+        rest,
+      )}
+    >
       {media && <div className={style.mediaContainer}>{media}</div>}
       {info && <div className={style.infoContainer}>{info}</div>}
     </div>
