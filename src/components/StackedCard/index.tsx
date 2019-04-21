@@ -1,1 +1,5 @@
-export { StackedCard, StackedCardProps, StackedCardRatioOptions } from './StackedCard';
+export {
+  StackedCard,
+  StackedCardProps,
+  StackedCardRatioOptions,
+} from './StackedCard';
