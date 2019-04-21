@@ -24,7 +24,7 @@ describe('OverlappingCard', () => {
   });
 
   it('should render ratio 50 as default', async () => {
-    const driver = createDriver(<OverlappingCard />);
+    const driver = createDriver(<OverlappingCard info="info" media="media" />);
     expect(await driver.getRatio()).toEqual(
       OverlappingCardRatioOptions.RATIO_50_50,
     );
@@ -32,7 +32,11 @@ describe('OverlappingCard', () => {
 
   it('should render ratio 40', async () => {
     const driver = createDriver(
-      <OverlappingCard ratio={OverlappingCardRatioOptions.RATIO_40_60} />,
+      <OverlappingCard
+        ratio={OverlappingCardRatioOptions.RATIO_40_60}
+        info="info"
+        media="media"
+      />,
     );
     expect(await driver.getRatio()).toEqual(
       OverlappingCardRatioOptions.RATIO_40_60,
@@ -41,10 +45,21 @@ describe('OverlappingCard', () => {
 
   it('should render ratio 30', async () => {
     const driver = createDriver(
-      <OverlappingCard ratio={OverlappingCardRatioOptions.RATIO_30_70} />,
+      <OverlappingCard
+        ratio={OverlappingCardRatioOptions.RATIO_30_70}
+        info="info"
+        media="media"
+      />,
     );
     expect(await driver.getRatio()).toEqual(
       OverlappingCardRatioOptions.RATIO_30_70,
+    );
+  });
+
+  it('should render ratio 100 if there is no media', async () => {
+    const driver = createDriver(<OverlappingCard info="info" />);
+    expect(await driver.getRatio()).toEqual(
+      OverlappingCardRatioOptions.RATIO_100,
     );
   });
 

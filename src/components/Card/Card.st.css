@@ -37,7 +37,7 @@
 }
 
 .root {
-    -st-states: ratio(enum(50, 40, 30)), flippedRatio, invertInfoPosition;
+    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition;
     display: flex;
     box-sizing: border-box;
     display: inline-grid;
@@ -51,6 +51,10 @@
 
 .root:invertInfoPosition {
     grid-template-areas: "info media";
+}
+
+.root:ratio(100) {
+    grid-template-areas: "info";
 }
 
 .root:ratio(50) {
