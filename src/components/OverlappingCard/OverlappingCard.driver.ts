@@ -1,7 +1,41 @@
-import { CardDriver, cardDriverFactory } from '../Card/Card.driver';
-
-export interface OverlappingCardDriver extends CardDriver {}
-
-export const overlappingCardDriverFactory: (
+import {
+  BaseUniDriver,
+  baseUniDriverFactory,
+  StylableUnidriverUtil,
   UniDriver,
-) => OverlappingCardDriver = cardDriverFactory;
+} from 'wix-ui-test-utils/unidriver';
+import style from './OverlappingCard.st.css';
+
+export interface OverlappingCardDriver extends BaseUniDriver {
+  getMediaContent(): Promise<string>;
+  getInfoContent(): Promise<string>;
+  getRatio(): Promise<string>;
+  hasFlippedRatioState(): Promise<boolean>;
+  hasInvertImagePositionState(): Promise<boolean>;
+  isMediaContentExist(): Promise<boolean>;
+  isInfoContentExist(): Promise<boolean>;
+}
+
+export const overlappingCardDriverFactory = (
+  base: UniDriver,
+): OverlappingCardDriver => {
+  const stylableUtil = new StylableUnidriverUtil(style);
+
+  const getMediaContainerElement = () => base.$(`.${style.mediaContainer}`);
+  const getInfoContainerElement = () => base.$(`.${style.infoContainer}`);
+
+  return {
+    ...baseUniDriverFactory(base),
+    getMediaContent: async () =>
+      (await getMediaContainerElement().getNative()).innerHTML,
+    isMediaContentExist: async () => getMediaContainerElement().exists(),
+    getInfoContent: async () =>
+      (await getInfoContainerElement().getNative()).innerHTML,
+    isInfoContentExist: async () => getInfoContainerElement().exists(),
+    getRatio: async () => stylableUtil.getStyleState(base, 'ratio'),
+    hasFlippedRatioState: async () =>
+      stylableUtil.hasStyleState(base, 'flippedRatio'),
+    hasInvertImagePositionState: async () =>
+      stylableUtil.hasStyleState(base, 'invertInfoPosition'),
+  };
+};
