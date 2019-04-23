@@ -6,6 +6,7 @@ export enum CardRatioOptions {
   RATIO_50_50 = '50',
   RATIO_40_60 = '40',
   RATIO_30_70 = '30',
+  SAME_AS_CONTENT = 'SAME_AS_CONTENT',
 }
 
 export interface CardProps {
@@ -14,7 +15,17 @@ export interface CardProps {
   ratio?: CardRatioOptions;
   flippedRatio?: boolean;
   invertInfoPosition?: boolean;
+  stacked?: boolean;
+  imageAspectRatio?: number;
 }
+
+const getRatio = (imageAspectRatio, stacked) => {
+  if (imageAspectRatio) {
+    return imageAspectRatio && `${Math.round(100/imageAspectRatio)}%`;
+  }
+
+  return `${stacked ? 100 : 0}%`
+};
 
 const Card = ({
   info,
@@ -22,6 +33,8 @@ const Card = ({
   ratio,
   invertInfoPosition,
   flippedRatio,
+  stacked,
+  imageAspectRatio,
   ...rest
 }: CardProps) => {
   return (
@@ -32,11 +45,17 @@ const Card = ({
           ratio: media ? ratio : CardRatioOptions.RATIO_100,
           invertInfoPosition,
           flippedRatio,
+          stacked,
+          imageAspectRatio: !!imageAspectRatio
         },
         rest,
       )}
     >
-      {media && <div className={style.mediaContainer}>{media}</div>}
+      {media && ratio !== CardRatioOptions.RATIO_100 && (
+        <div className={style.mediaWrapper} style={{paddingTop: getRatio(imageAspectRatio, stacked)}}>
+          <div className={style.mediaContainer}>{media}</div>
+        </div>
+      )}
       {info && <div className={style.infoContainer}>{info}</div>}
     </div>
   );
@@ -48,6 +67,7 @@ Card.defaultProps = {
   ratio: CardRatioOptions.RATIO_50_50,
   flippedRatio: false,
   invertInfoPosition: false,
+  stacked: false,
 };
 
 export { Card };
