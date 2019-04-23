@@ -21,10 +21,10 @@ export interface CardProps {
 
 const getRatio = (imageAspectRatio, stacked) => {
   if (imageAspectRatio) {
-    return imageAspectRatio && `${Math.round(100/imageAspectRatio)}%`;
+    return imageAspectRatio && `${Math.round(100 / imageAspectRatio)}%`;
   }
 
-  return `${stacked ? 100 : 0}%`
+  return `${stacked ? 100 : 0}%`;
 };
 
 const Card = ({
@@ -46,13 +46,16 @@ const Card = ({
           invertInfoPosition,
           flippedRatio,
           stacked,
-          imageAspectRatio: !!imageAspectRatio
+          imageAspectRatio: !!imageAspectRatio,
         },
         rest,
       )}
     >
       {media && ratio !== CardRatioOptions.RATIO_100 && (
-        <div className={style.mediaWrapper} style={{paddingTop: getRatio(imageAspectRatio, stacked)}}>
+        <div
+          className={style.mediaWrapper}
+          style={{ paddingTop: getRatio(imageAspectRatio, stacked) }}
+        >
           <div className={style.mediaContainer}>{media}</div>
         </div>
       )}

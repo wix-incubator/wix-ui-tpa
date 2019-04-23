@@ -2,7 +2,7 @@ import * as React from 'react';
 import style from './OverlappingCard.st.css';
 import { CardRatioOptions } from '../Card';
 
-export { CardRatioOptions as OverlappingCardRatioOptions}
+export { CardRatioOptions as OverlappingCardRatioOptions };
 
 export interface OverlappingCardProps {
   media?: React.ReactNode;
@@ -13,13 +13,13 @@ export interface OverlappingCardProps {
 }
 
 const OverlappingCard = ({
-                info,
-                media,
-                ratio,
-                invertInfoPosition,
-                flippedRatio,
-                ...rest
-              }: OverlappingCardProps) => {
+  info,
+  media,
+  ratio,
+  invertInfoPosition,
+  flippedRatio,
+  ...rest
+}: OverlappingCardProps) => {
   return (
     <div
       {...style(
@@ -32,7 +32,9 @@ const OverlappingCard = ({
         rest,
       )}
     >
-      {media && ratio !== CardRatioOptions.RATIO_100 && <div className={style.mediaContainer}>{media}</div>}
+      {media && ratio !== CardRatioOptions.RATIO_100 && (
+        <div className={style.mediaContainer}>{media}</div>
+      )}
       {info && <div className={style.infoContainer}>{info}</div>}
     </div>
   );
