@@ -19,19 +19,22 @@ export enum SIZE {
 export interface ButtonProps extends ButtonNextProps {
   priority?: PRIORITY;
   size?: SIZE;
+  fullWidth?: boolean;
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({
-  priority,
-  size,
-  ...rest
-}) => <ButtonNext {...rest} {...style('root', { priority, size }, rest)} />;
+const Button = ({ priority, size, fullWidth, ...rest }: ButtonProps) => (
+  <ButtonNext
+    {...rest}
+    {...style('root', { priority, size, fullWidth }, rest)}
+  />
+);
 
 Button.displayName = 'Button';
 
 Button.defaultProps = {
   priority: PRIORITY.basic,
   size: SIZE.medium,
+  fullWidth: false,
 };
 
 export { Button };

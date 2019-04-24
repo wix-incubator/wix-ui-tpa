@@ -40,13 +40,17 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large));
+    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large)), fullWidth;
 
     min-width: value(MinWidth);
     border: none;
     position: relative;
     transition: background-color .2s ease-in-out, color .2s ease-in-out, border-radius .2s ease-in-out;
     border-radius: wixApply(unit, value(MainBorderRadius), px);
+}
+
+.root:fullWidth {
+    width: 100%;
 }
 
 .root:after {

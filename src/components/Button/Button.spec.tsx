@@ -17,6 +17,11 @@ describe('Button', () => {
     expect(await driver.getButtonTextContent()).toEqual(value);
   });
 
+  it('should set to fullWidth', async () => {
+    const driver = createDriver(<Button fullWidth />);
+    expect(await driver.isFullWidth()).toEqual(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
