@@ -17,7 +17,25 @@ export const sideBySide = `
   info={
     <div>
       <div style={{marginBottom: '10px'}}>
-        <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
+        <Text typography={TYPOGRAPHY.smallTitle}>SIDE BY SIDE</Text>
+      </div>
+      <div style={{margin: '10px 0'}}><Divider/></div>
+      <div style={{marginTop: '20px'}}>
+        <Button >Book</Button>
+      </div>
+    </div>
+  }/>
+`;
+
+export const stacked = `
+<Card
+  mediaAspectRatio={1.77777}
+  stacked
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <div style={{marginBottom: '10px'}}>
+        <Text typography={TYPOGRAPHY.smallTitle}>STACKED</Text>
       </div>
       <div style={{marginBottom: '10px'}}>
         <Text typography={TYPOGRAPHY.runningText}>Tagline</Text>

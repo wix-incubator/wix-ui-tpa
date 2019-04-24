@@ -37,7 +37,7 @@
 }
 
 .root {
-    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked, imageAspectRatio;
+    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked, mediaAspectRatio;
     display: flex;
     box-sizing: border-box;
     width: 100%;
@@ -96,11 +96,11 @@
     flex: 70%;
 }
 
-.root:imageAspectRatio > .mediaWrapper {
+.root:mediaAspectRatio > .mediaWrapper {
     position: relative;
 }
 
-.root:imageAspectRatio > .mediaWrapper > .mediaContainer {
+.root:mediaAspectRatio > .mediaWrapper > .mediaContainer {
     position: absolute;
     top: 0;
     width: 100%;
