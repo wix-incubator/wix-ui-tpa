@@ -21,15 +21,17 @@ export interface ButtonProps extends ButtonNextProps {
   size?: SIZE;
 }
 
-const CoreButton: React.FunctionComponent<ButtonProps> = ({
+const Button: React.FunctionComponent<ButtonProps> = ({
   priority,
   size,
   ...rest
 }) => <ButtonNext {...rest} {...style('root', { priority, size }, rest)} />;
 
-CoreButton.defaultProps = {
+Button.displayName = 'Button';
+
+Button.defaultProps = {
   priority: PRIORITY.basic,
   size: SIZE.medium,
 };
 
-export const Button: React.FunctionComponent<ButtonProps> = CoreButton;
+export { Button };
