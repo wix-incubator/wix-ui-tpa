@@ -4,8 +4,8 @@ import { OverlappingCard, OverlappingCardRatioOptions } from './';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { cardTestkitFactory } from '../../testkit';
-import { cardTestkitFactory as enzymeCardTestkitFactory } from '../../testkit/enzyme';
+import { overlappingCardTestkitFactory } from '../../testkit';
+import { overlappingCardTestkitFactory as enzymeOverlappingCardTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 
 describe('OverlappingCard', () => {
@@ -76,9 +76,13 @@ describe('OverlappingCard', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<OverlappingCard />, cardTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <OverlappingCard />,
+          overlappingCardTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -88,7 +92,7 @@ describe('OverlappingCard', () => {
       expect(
         await isUniEnzymeTestkitExists(
           <OverlappingCard />,
-          enzymeCardTestkitFactory,
+          enzymeOverlappingCardTestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',

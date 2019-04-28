@@ -29,6 +29,11 @@ export const cardTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(cardDriverFactory);
 
+import { overlappingCardDriverFactory } from '../components/OverlappingCard/OverlappingCard.driver';
+export const overlappingCardTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(overlappingCardDriverFactory);
+
 import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
 export const tabsTestkitFactory: (
   obj: WrapperData,
