@@ -45,42 +45,24 @@ const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
   );
 };
 
-export class Tabs extends React.Component<TabsProps> {
-  static contextType = TPAComponentsContext;
-  static displayName = 'Tabs';
-  static defaultProps = {
-    onTabClick: (tabIndex: number) => {},
-    skin: SKIN.fullUnderline,
-    alignment: ALIGNMENT.center,
-    variant: VARIANT.fit,
-  };
+const Tabs = (props: TabsProps) => {
+  const { items, activeTabIndex, onTabClick, skin, alignment, variant } = props;
+  return (
+    <div {...style('root', { skin, alignment, variant }, props)}>
+      <nav>
+        {items.map((item, index) =>
+          renderTabItem({ item, index, onTabClick, activeTabIndex }),
+        )}
+      </nav>
+    </div>
+  );
+};
 
-  render() {
-    const {
-      items,
-      activeTabIndex,
-      onTabClick,
-      skin,
-      alignment,
-      variant,
-      ...rest
-    } = this.props;
+Tabs.defaultProps = {
+  onTabClick: (tabIndex: number) => { },
+  skin: SKIN.fullUnderline,
+  alignment: ALIGNMENT.center,
+  variant: VARIANT.fit,
+};
 
-    return (
-      <TPAComponentsConsumer>
-        {
-          ({mobile}) => <div
-            {...style('root', { skin, alignment, variant, mobile }, rest)}
-          >
-            <nav>
-              {items.map((item, index) =>
-                renderTabItem({ item, index, onTabClick, activeTabIndex }),
-              )}
-            </nav>
-          </div>
-        }
-      </TPAComponentsConsumer>
-    );
-  }
-}
-
+export { Tabs };
