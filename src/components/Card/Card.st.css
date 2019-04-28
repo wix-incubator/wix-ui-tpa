@@ -57,6 +57,13 @@
 
 .root:stacked:invertInfoPosition {
     flex-direction: column-reverse;
+    justify-content: space-between;
+}
+
+.root:stacked > .infoContainer,
+.root:stacked > .mediaWrapper {
+    flex-grow: 0;
+    flex-basis: auto;
 }
 
 .root:ratio(100) > .infoContainer {
