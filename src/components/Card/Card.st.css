@@ -97,7 +97,7 @@
     flex: 70%;
 }
 
-.root:stacked > .mediaWrapper {
+.root:stacked:mediaAspectRatio:invertInfoPosition > .mediaWrapper {
     flex-grow: 0;
     flex-basis: auto;
 }
