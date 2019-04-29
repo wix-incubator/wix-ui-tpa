@@ -60,12 +60,6 @@
     justify-content: space-between;
 }
 
-.root:stacked > .infoContainer,
-.root:stacked > .mediaWrapper {
-    flex-grow: 0;
-    flex-basis: auto;
-}
-
 .root:ratio(100) > .infoContainer {
     flex: 100%;
 }
@@ -101,6 +95,11 @@
 .root:ratio(30):flippedRatio > .mediaWrapper,
 .root:ratio(30) > .infoContainer {
     flex: 70%;
+}
+
+.root:stacked > .mediaWrapper {
+    flex-grow: 0;
+    flex-basis: auto;
 }
 
 .root:mediaAspectRatio > .mediaWrapper {
