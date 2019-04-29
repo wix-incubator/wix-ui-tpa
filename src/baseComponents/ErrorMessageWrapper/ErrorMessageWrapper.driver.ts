@@ -10,5 +10,6 @@ export const errorMessageWrapperDriverFactory = ({ element }) => {
     getErrorMessage: () => getErrorMessageElement().innerHTML,
     hasEmptyState: () => stylableDOMUtil.hasStyleState(element, 'empty'),
     hasErrorMessage: () => !!getErrorMessageElement(),
+    getRenderElement: () => element.children[0],
   };
 };
