@@ -24,3 +24,8 @@ export const autocompleteTestkitFactory = testkitFactoryCreator(
 
 import { cardDriverFactory } from '../components/Card/Card.driver';
 export const cardTestkitFactory = uniTestkitFactoryCreator(cardDriverFactory);
+
+import { overlappingCardDriverFactory } from '../components/OverlappingCard/OverlappingCard.driver';
+export const overlappingCardTestkitFactory = uniTestkitFactoryCreator(
+  overlappingCardDriverFactory,
+);

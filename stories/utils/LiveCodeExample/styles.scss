@@ -1,0 +1,9 @@
+//@import '../../../src/fonts.scss';
+
+.title {
+  //@include FontRoman();
+
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #32536a;
+}

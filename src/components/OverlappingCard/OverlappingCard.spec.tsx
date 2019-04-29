@@ -4,23 +4,25 @@ import { OverlappingCard, OverlappingCardRatioOptions } from './';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { cardTestkitFactory } from '../../testkit';
-import { cardTestkitFactory as enzymeCardTestkitFactory } from '../../testkit/enzyme';
+import { overlappingCardTestkitFactory } from '../../testkit';
+import { overlappingCardTestkitFactory as enzymeOverlappingCardTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 
 describe('OverlappingCard', () => {
   const createDriver = createUniDriverFactory(overlappingCardDriverFactory);
 
   it('should render info', async () => {
-    const value = 'info!';
+    const valueAsString = '<div>info!</div>';
+    const value = <div dangerouslySetInnerHTML={{ __html: valueAsString }} />;
     const driver = createDriver(<OverlappingCard info={value} />);
-    expect(await driver.getInfoContent()).toEqual(value);
+    expect((await driver.getInfoContent()).innerHTML).toEqual(valueAsString);
   });
 
   it('should render image', async () => {
-    const value = 'image!';
+    const valueAsString = '<div>image!</div>';
+    const value = <div dangerouslySetInnerHTML={{ __html: valueAsString }} />;
     const driver = createDriver(<OverlappingCard media={value} />);
-    expect(await driver.getMediaContent()).toEqual(value);
+    expect((await driver.getMediaContent()).innerHTML).toEqual(valueAsString);
   });
 
   it('should render ratio 50 as default', async () => {
@@ -65,20 +67,24 @@ describe('OverlappingCard', () => {
 
   it('should flipped the ratio', async () => {
     const driver = createDriver(<OverlappingCard flippedRatio />);
-    expect(await driver.hasFlippedRatioState()).toEqual(true);
+    expect(await driver.isFlippedRatio()).toEqual(true);
   });
 
   it('should invert the image position', async () => {
     const driver = createDriver(<OverlappingCard invertInfoPosition />);
-    expect(await driver.hasInvertImagePositionState()).toEqual(true);
+    expect(await driver.isImagePositionInverted()).toEqual(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<OverlappingCard />, cardTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <OverlappingCard />,
+          overlappingCardTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -88,7 +94,7 @@ describe('OverlappingCard', () => {
       expect(
         await isUniEnzymeTestkitExists(
           <OverlappingCard />,
-          enzymeCardTestkitFactory,
+          enzymeOverlappingCardTestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',

@@ -17,7 +17,25 @@ export const sideBySide = `
   info={
     <div>
       <div style={{marginBottom: '10px'}}>
-        <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
+        <Text typography={TYPOGRAPHY.smallTitle}>SIDE BY SIDE</Text>
+      </div>
+      <div style={{margin: '10px 0'}}><Divider/></div>
+      <div style={{marginTop: '20px'}}>
+        <Button >Book</Button>
+      </div>
+    </div>
+  }/>
+`;
+
+export const stacked = `
+<Card
+  mediaAspectRatio={16/9}
+  stacked
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <div style={{marginBottom: '10px'}}>
+        <Text typography={TYPOGRAPHY.smallTitle}>STACKED</Text>
       </div>
       <div style={{marginBottom: '10px'}}>
         <Text typography={TYPOGRAPHY.runningText}>Tagline</Text>
@@ -32,6 +50,79 @@ export const sideBySide = `
       <div style={{marginTop: '20px'}}>
         <Button >Book</Button>
       </div>
+    </div>
+  }/>
+`;
+
+export const ratio = `
+<div>
+<Card
+  ratio={CardRatioOptions.RATIO_50_50}
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>50/50</Text>
+    </div>
+  }/>
+  <Card
+  ratio={CardRatioOptions.RATIO_40_60}
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>40/60</Text>
+    </div>
+  }/>
+  <Card
+  ratio={CardRatioOptions.RATIO_30_70}
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>30/70</Text>
+    </div>
+  }/>
+</div>
+`;
+
+export const flippedRatio = `
+<div>
+<Card
+  flippedRatio
+  ratio={CardRatioOptions.RATIO_50_50}
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>50/50</Text>
+    </div>
+  }/>
+  <Card
+  flippedRatio
+  ratio={CardRatioOptions.RATIO_40_60}
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>60/40</Text>
+    </div>
+  }/>
+  <Card
+  flippedRatio
+  ratio={CardRatioOptions.RATIO_30_70}
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>70/30</Text>
+    </div>
+  }/>
+</div>
+`;
+
+export const invertPosition = `
+<Card
+  ratio={CardRatioOptions.RATIO_40_60}
+  invertInfoPosition
+  media={${imageComponent(560, 330)}}
+  info={
+    <div>
+      <Text typography={TYPOGRAPHY.largeTitle}>INVERT INFO MEDIA POSITIONS</Text>
     </div>
   }/>
 `;

@@ -1,68 +1,23 @@
-// import * as React from 'react';
-// import {Card} from '../';
-// import * as examples from './examples';
-// import {
-//   api,
-//   divider,
-//   header,
-//   importExample,
-//   playground,
-//   tab,
-//   code as baseCode,
-//   tabs,
-//   testkit,
-//   title,
-//   mdx,
-// } from 'wix-storybook-utils/Sections';
-// import { baseScope } from './utils/LiveCodeExample';
-// import MDX from '../src/components/Card/README.mdx'
-//
-// const code = config => baseCode({ components: baseScope, compact: true, ...config });
-//
-// export default {
-//   category: 'Components',
-//   storyName: 'Card',
-//   component: Card,
-//   componentPath: '../src/components/Card/Card.tsx',
-//   dataHook: 'storybook-Card',
-//   sections: [
-//     header({
-//       sourceUrl: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/Card'
-//     }),
-//
-//     tabs([
-//       tab({
-//         title: 'Usage',
-//         sections: [
-//           importExample({
-//             source: examples.importExample,
-//           }),
-//
-//           divider(),
-//
-//           title('Examples'),
-//
-//           ...[
-//             { title: 'Side By Side', source: examples.sideBySide },
-//           ].map(code),
-//         ],
-//       }),
-//
-//       ...[
-//         { title: 'API', sections: [api()] },
-//         { title: 'TestKit', sections: [testkit()] },
-//         { title: 'Playground', sections: [playground()] },
-//       ].map(tab),
-//     ]),
-//     mdx({ content: MDX }),
-//   ]
-// };
-
 import * as React from 'react';
-import Examples from './exampleWithSettingPanel';
 import { Card, CardRatioOptions } from '../';
+import * as examples from './examples';
+import {
+  api,
+  divider,
+  importExample,
+  playground,
+  tab,
+  code as baseCode,
+  tabs,
+  testkit,
+  title,
+} from 'wix-storybook-utils/Sections';
+import { baseScope } from '../../../../stories/utils/LiveCodeExample';
 import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
+
+const code = config =>
+  baseCode({ components: baseScope, compact: true, ...config });
 
 const mediaExamples = [
   {
@@ -92,7 +47,6 @@ const infoExample = (
 );
 
 export default {
-  kind: 'Components',
   category: 'Components',
   storyName: 'Card',
   component: Card,
@@ -106,5 +60,38 @@ export default {
     media: mediaExamples,
     ratio: Object.keys(CardRatioOptions).map(key => CardRatioOptions[key]),
   },
-  examples: <Examples />,
+  dataHook: 'storybook-Card',
+  sections: [
+    tabs([
+      tab({
+        title: 'Usage',
+        sections: [
+          importExample({
+            source: examples.importExample,
+          }),
+
+          divider(),
+
+          title('Examples'),
+
+          ...[
+            { title: 'Side By Side', source: examples.sideBySide },
+            { title: 'Stacked', source: examples.stacked },
+            { title: 'Ratios', source: examples.ratio },
+            { title: 'Flipped Ratios', source: examples.flippedRatio },
+            {
+              title: 'Invert Content Position',
+              source: examples.invertPosition,
+            },
+          ].map(code),
+        ],
+      }),
+
+      ...[
+        { title: 'API', sections: [api()] },
+        { title: 'TestKit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
+      ].map(tab),
+    ]),
+  ],
 };

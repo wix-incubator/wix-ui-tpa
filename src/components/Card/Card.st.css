@@ -37,94 +37,90 @@
 }
 
 .root {
-    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition;
+    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked, mediaAspectRatio;
     display: flex;
     box-sizing: border-box;
-    display: inline-grid;
     width: 100%;
-    grid-template-areas: "media info";
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     );
 }
 
-.root:invertInfoPosition {
-    grid-template-areas: "info media";
+.root:stacked {
+    flex-direction: column;
 }
-
-.root:ratio(100) {
-    grid-template-areas: "info";
-}
-
-.root:ratio(50) {
-    grid-template-columns: 50% 50%;
-}
-
-.root:ratio(40) {
-    grid-template-columns: 40% 60%;
-}
-
-.root:ratio(40):flippedRatio {
-    grid-template-columns: 60% 40%;
-}
-
-.root:ratio(30) {
-    grid-template-columns: 30% 70%;
-}
-
-.root:ratio(30):flippedRatio {
-    grid-template-columns: 70% 30%;
-}
-
-/*unsupported grid fallback*/
 
 .root:invertInfoPosition {
     flex-direction: row-reverse;
 }
 
-.root:ratio(50) > .mediaContainer,
+.root:stacked:invertInfoPosition {
+    flex-direction: column-reverse;
+    justify-content: space-between;
+}
+
+.root:stacked > .infoContainer,
+.root:stacked > .mediaWrapper {
+    flex-grow: 0;
+    flex-basis: auto;
+}
+
+.root:ratio(100) > .infoContainer {
+    flex: 100%;
+}
+
+.root:ratio(50) > .mediaWrapper,
 .root:ratio(50) > .infoContainer {
     flex: 50%;
 }
 
-.root:ratio(40):flippedRatio:invertInfoPosition > .mediaContainer,
+.root:ratio(40):flippedRatio:invertInfoPosition > .mediaWrapper,
 .root:ratio(40):invertInfoPosition > .infoContainer,
 .root:ratio(40):flippedRatio > .infoContainer,
-.root:ratio(40) > .mediaContainer {
+.root:ratio(40) > .mediaWrapper {
     flex: 40%;
 }
 
 .root:ratio(40):flippedRatio:invertInfoPosition > .infoContainer,
-.root:ratio(40):invertInfoPosition > .mediaContainer,
-.root:ratio(40):flippedRatio > .mediaContainer,
+.root:ratio(40):invertInfoPosition > .mediaWrapper,
+.root:ratio(40):flippedRatio > .mediaWrapper,
 .root:ratio(40) > .infoContainer {
     flex: 60%;
 }
 
-.root:ratio(30):flippedRatio:invertInfoPosition > .mediaContainer,
+.root:ratio(30):flippedRatio:invertInfoPosition > .mediaWrapper,
 .root:ratio(30):invertInfoPosition > .infoContainer,
 .root:ratio(30):flippedRatio > .infoContainer,
-.root:ratio(30) > .mediaContainer {
+.root:ratio(30) > .mediaWrapper {
     flex: 30%;
 }
 
 .root:ratio(30):flippedRatio:invertInfoPosition > .infoContainer,
-.root:ratio(30):invertInfoPosition > .mediaContainer,
-.root:ratio(30):flippedRatio > .mediaContainer,
+.root:ratio(30):invertInfoPosition > .mediaWrapper,
+.root:ratio(30):flippedRatio > .mediaWrapper,
 .root:ratio(30) > .infoContainer {
     flex: 70%;
 }
 
-.mediaContainer {
-    background-color: value(mediaBGColor);
-    grid-area: media;
+.root:mediaAspectRatio > .mediaWrapper {
+    position: relative;
 }
 
-.infoContainer {
+.root:mediaAspectRatio > .mediaWrapper > .mediaContainer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.root .mediaContainer {
+    background-color: value(mediaBGColor);
+    height: 100%;
+}
+
+.root > .infoContainer {
     box-sizing: border-box;
     background-color: value(infoBGColor);
-    grid-area: info;
     -st-mixin: withDynamicPadding(
             PaddingSize value(infoPadding),
             BorderWidth value(borderWidth)

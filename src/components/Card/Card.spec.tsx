@@ -12,15 +12,17 @@ describe('Card', () => {
   const createDriver = createUniDriverFactory(cardDriverFactory);
 
   it('should render info', async () => {
-    const value = 'info!';
+    const valueAsString = '<div>info!</div>';
+    const value = <div dangerouslySetInnerHTML={{ __html: valueAsString }} />;
     const driver = createDriver(<Card info={value} />);
-    expect(await driver.getInfoContent()).toEqual(value);
+    expect((await driver.getInfoContent()).innerHTML).toEqual(valueAsString);
   });
 
   it('should render image', async () => {
-    const value = 'image!';
+    const valueAsString = '<div>image!</div>';
+    const value = <div dangerouslySetInnerHTML={{ __html: valueAsString }} />;
     const driver = createDriver(<Card media={value} />);
-    expect(await driver.getMediaContent()).toEqual(value);
+    expect((await driver.getMediaContent()).innerHTML).toEqual(valueAsString);
   });
 
   it('should render ratio 50 as default', async () => {
@@ -49,12 +51,12 @@ describe('Card', () => {
 
   it('should flipped the ratio', async () => {
     const driver = createDriver(<Card flippedRatio />);
-    expect(await driver.hasFlippedRatioState()).toEqual(true);
+    expect(await driver.isFlippedRatio()).toEqual(true);
   });
 
   it('should invert the image position', async () => {
     const driver = createDriver(<Card invertInfoPosition />);
-    expect(await driver.hasInvertImagePositionState()).toEqual(true);
+    expect(await driver.isImagePositionInverted()).toEqual(true);
   });
 
   describe('testkit', () => {

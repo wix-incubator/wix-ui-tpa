@@ -1,3 +1,5 @@
-export { OverlappingCard, OverlappingCardProps } from './OverlappingCard';
-
-export { CardRatioOptions as OverlappingCardRatioOptions } from '../Card';
+export {
+  OverlappingCard,
+  OverlappingCardProps,
+  OverlappingCardRatioOptions,
+} from './OverlappingCard';

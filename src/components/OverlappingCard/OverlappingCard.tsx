@@ -1,15 +1,51 @@
 import * as React from 'react';
 import style from './OverlappingCard.st.css';
-import { Card, CardProps } from '../Card';
+import { CardRatioOptions } from '../Card';
 
-export interface OverlappingCardProps extends CardProps {}
+export { CardRatioOptions as OverlappingCardRatioOptions };
 
-export const OverlappingCard = (props: OverlappingCardProps) => {
-  const { ratio, flippedRatio, invertInfoPosition } = props;
+export interface OverlappingCardProps {
+  media?: React.ReactNode;
+  info?: React.ReactNode;
+  ratio?: CardRatioOptions;
+  flippedRatio?: boolean;
+  invertInfoPosition?: boolean;
+}
+
+const OverlappingCard = ({
+  info,
+  media,
+  ratio,
+  invertInfoPosition,
+  flippedRatio,
+  ...rest
+}: OverlappingCardProps) => {
   return (
-    <Card
-      {...props}
-      {...style('root', { ratio, flippedRatio, invertInfoPosition }, props)}
-    />
+    <div
+      {...style(
+        'root',
+        {
+          ratio: media ? ratio : CardRatioOptions.RATIO_100,
+          invertInfoPosition,
+          flippedRatio,
+        },
+        rest,
+      )}
+    >
+      {media && ratio !== CardRatioOptions.RATIO_100 && (
+        <div className={style.mediaContainer}>{media}</div>
+      )}
+      {info && <div className={style.infoContainer}>{info}</div>}
+    </div>
   );
 };
+
+OverlappingCard.displayName = 'OverlappingCard';
+
+OverlappingCard.defaultProps = {
+  ratio: CardRatioOptions.RATIO_50_50,
+  flippedRatio: false,
+  invertInfoPosition: false,
+};
+
+export { OverlappingCard };

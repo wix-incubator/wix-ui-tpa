@@ -5,11 +5,6 @@
 
 :import {
     -st-from: "../Card/Card.st.css";
-    -st-named: mediaContainer, infoContainer, infoPadding, borderWidth, borderColor, mediaBGColor, infoBGColor, negativeInfoPadding;
-}
-
-:import {
-    -st-from: "../Card/Card.st.css";
     -st-default: Card;
 }
 
@@ -18,26 +13,122 @@
     -st-named: withBorder, withDynamicPadding;
 }
 
+:vars {
+    /*Constance*/
+    DefaultInfoCardBG: color-1;
+    DefaultMediaCardBG: color-5;
+    DefaultBorderColor: color-5;
+    DefaultBorderWidth: 1;
+}
+
+:vars {
+    /*Overrides*/
+    MainBorderWidth: --overridable;
+    MainBorderColor: --overridable;
+    MainInfoColor: --overridable;
+    MainMediaColor: --overridable;
+}
+
+:vars {
+    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), value(DefaultBorderWidth)), px);
+    borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor)));
+    infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultInfoCardBG)));
+    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaCardBG)), 0.2)));
+}
+
+:vars {
+    infoPadding: 60px;
+    negativeInfoPadding: -60px;
+}
+
 .root {
-    -st-extends: Card;
-    -st-states: flippedRatio, invertInfoPosition;
+    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: inline-grid;
+    width: 100%;
     grid-template-rows: 1fr 8fr 1fr; /*1fr = 10%*/
     grid-template-areas: "media margin-top" "media info" "media margin-bottom";
-    border: none;
+}
+
+.root:ratio(100) {
+    grid-template-areas: "info";
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+}
+
+.root:ratio(50) {
+    grid-template-columns: 1fr 1fr;
+}
+
+.root:ratio(40) {
+    grid-template-columns: 4fr 6fr;
+}
+
+.root:ratio(40):flippedRatio {
+    grid-template-columns: 6fr 4fr;
+}
+
+.root:ratio(30) {
+    grid-template-columns: 3fr 7fr;
+}
+
+.root:ratio(30):flippedRatio {
+    grid-template-columns: 7fr 3fr;
 }
 
 .root:invertInfoPosition {
     grid-template-areas: ". media" "info media" ". media";
 }
 
-.root:ratio(100) {
-    grid-template-areas: "info";
-    grid-template-rows: 1fr;
+/*unsupported grid fallback*/
+
+.root:invertInfoPosition {
+    flex-direction: row-reverse;
+}
+
+.root:ratio(100) > .infoContainer {
+    flex: 100%;
+}
+
+.root:ratio(50) > .mediaContainer,
+.root:ratio(50) > .infoContainer {
+    flex: 50%;
+}
+
+.root:ratio(40):flippedRatio:invertInfoPosition > .mediaContainer,
+.root:ratio(40):invertInfoPosition > .infoContainer,
+.root:ratio(40):flippedRatio > .infoContainer,
+.root:ratio(40) > .mediaContainer {
+    flex: 40%;
+}
+
+.root:ratio(40):flippedRatio:invertInfoPosition > .infoContainer,
+.root:ratio(40):invertInfoPosition > .mediaContainer,
+.root:ratio(40):flippedRatio > .mediaContainer,
+.root:ratio(40) > .infoContainer {
+    flex: 60%;
+}
+
+.root:ratio(30):flippedRatio:invertInfoPosition > .mediaContainer,
+.root:ratio(30):invertInfoPosition > .infoContainer,
+.root:ratio(30):flippedRatio > .infoContainer,
+.root:ratio(30) > .mediaContainer {
+    flex: 30%;
+}
+
+.root:ratio(30):flippedRatio:invertInfoPosition > .infoContainer,
+.root:ratio(30):invertInfoPosition > .mediaContainer,
+.root:ratio(30):flippedRatio > .mediaContainer,
+.root:ratio(30) > .infoContainer {
+    flex: 70%;
 }
 
 .root > .mediaContainer {
     background-color: value(mediaBGColor);
     margin-right: value(negativeInfoPadding);
+    grid-area: media;
 }
 
 .root:invertInfoPosition > .mediaContainer {
@@ -47,6 +138,8 @@
 
 .root > .infoContainer {
     background-color: value(infoBGColor);
+    box-sizing: border-box;
+    grid-area: info;
     z-index: 20;
     -st-mixin: withBorder(
             BorderColor value(borderColor),
