@@ -14,3 +14,7 @@
           MainBorderColor '"--borderColor"'
   );
 }
+
+.root + .root {
+    margin-left: 10px;
+}

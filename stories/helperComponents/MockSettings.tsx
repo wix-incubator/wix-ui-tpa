@@ -187,7 +187,7 @@ export class MockSettings extends React.PureComponent<
           ...{ [wixParam]: { value: selectedFont } },
         },
       },
-      () => this.triggerChanged(),
+      () => this.triggerChanged('font'),
     );
   }
 
@@ -199,7 +199,7 @@ export class MockSettings extends React.PureComponent<
           ...{ [wixParam]: selectedNumber },
         },
       },
-      () => this.triggerChanged(),
+      () => this.triggerChanged('number'),
     );
   }
 
@@ -221,7 +221,7 @@ export class MockSettings extends React.PureComponent<
         selectedPalette,
         selectedColors,
       },
-      () => this.triggerChanged(),
+      () => this.triggerChanged('palette'),
     );
   }
 
@@ -233,55 +233,65 @@ export class MockSettings extends React.PureComponent<
           ...{ [wixParam]: selectedColor },
         },
       },
-      () => this.triggerChanged(),
+      () => this.triggerChanged('color'),
     );
   }
 
-  private triggerChanged() {
-    SettingsChangedEvent.params.style.numbers = this.props.wixNumberParams.reduce(
-      (obj, item) => {
-        obj[item.wixParam] = this.state.selectedNumber[item.wixParam];
-        return obj;
-      },
-      {},
-    );
+  private triggerChanged(changed: 'color' | 'font' | 'number' | 'palette') {
+    if (changed === 'number') {
+      SettingsChangedEvent.params.style.numbers = this.props.wixNumberParams.reduce(
+        (obj, item) => {
+          obj[item.wixParam] = this.state.selectedNumber[item.wixParam];
+          return obj;
+        },
+        {},
+      );
+    }
 
-    SettingsChangedEvent.params.style.fonts = this.props.wixFontParams.reduce(
-      (obj, item) => {
-        const font = this.getFontByFontFamily(
-          this.state.selectedFont[item.wixParam].value,
-        );
-        obj[item.wixParam] = {
-          cssFontFamily: font.cssFontFamily,
-          family: font.fontFamily,
-          fontParam: true,
-          index: font.spriteIndex,
-          size: 30,
-          style: { bold: false, italic: false, underline: false },
-          value: `font:normal normal normal 30px/1.4em ${font.cssFontFamily};`,
-        };
-        return obj;
-      },
-      {},
-    );
+    if (changed === 'font') {
+      SettingsChangedEvent.params.style.fonts = this.props.wixFontParams.reduce(
+        (obj, item) => {
+          const font = this.getFontByFontFamily(
+            this.state.selectedFont[item.wixParam].value,
+          );
+          obj[item.wixParam] = {
+            cssFontFamily: font.cssFontFamily,
+            family: font.fontFamily,
+            fontParam: true,
+            index: font.spriteIndex,
+            size: 30,
+            style: { bold: false, italic: false, underline: false },
+            value: `font:normal normal normal 30px/1.4em ${
+              font.cssFontFamily
+            };`,
+          };
+          return obj;
+        },
+        {},
+      );
+    }
 
-    SettingsChangedEvent.params.style.colors = this.props.wixColorParams.reduce(
-      (obj, item) => {
-        const color = this.state.selectedColors[item.wixParam];
-        obj[item.wixParam] = {
-          themeName: `color_${this.toTPAIndex(color.index)}`,
-          value: this.state.selectedColors[item.wixParam].value,
-        };
-        return obj;
-      },
-      {},
-    );
+    if (changed === 'color') {
+      SettingsChangedEvent.params.style.colors = this.props.wixColorParams.reduce(
+        (obj, item) => {
+          const color = this.state.selectedColors[item.wixParam];
+          obj[item.wixParam] = {
+            themeName: `color_${this.toTPAIndex(color.index)}`,
+            value: this.state.selectedColors[item.wixParam].value,
+          };
+          return obj;
+        },
+        {},
+      );
+    }
 
-    for (let i = 5; i < SettingsChangedEvent.params.siteColors.length; i++) {
-      const { row, col } = this.getPaletteIndicesFromTPAIdx(i - 5);
-      SettingsChangedEvent.params.siteColors[
-        i
-      ].value = this.state.selectedPalette[col][row];
+    if (changed === 'palette') {
+      for (let i = 5; i < SettingsChangedEvent.params.siteColors.length; i++) {
+        const { row, col } = this.getPaletteIndicesFromTPAIdx(i - 5);
+        SettingsChangedEvent.params.siteColors[
+          i
+        ].value = this.state.selectedPalette[col][row];
+      }
     }
     window.postMessage(JSON.stringify(SettingsChangedEvent), '*');
   }

@@ -13,7 +13,8 @@ export default {
     'data-hook': 'storybook-Button',
     children: 'Book Now',
     priority: PRIORITY.basic,
-    size: SIZE.medium
+    size: SIZE.medium,
+    fullWidth: false,
   }),
   exampleProps: {
     priority: Object.keys(PRIORITY).map(key => PRIORITY[key]),

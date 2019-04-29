@@ -2,6 +2,7 @@ import * as React from 'react';
 import style from './Button.st.css';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
+import { Simulate } from 'react-dom/test-utils';
 
 export enum PRIORITY {
   basic = 'basic',
@@ -19,17 +20,22 @@ export enum SIZE {
 export interface ButtonProps extends ButtonNextProps {
   priority?: PRIORITY;
   size?: SIZE;
+  fullWidth?: boolean;
 }
 
-const CoreButton: React.FunctionComponent<ButtonProps> = ({
-  priority,
-  size,
-  ...rest
-}) => <ButtonNext {...rest} {...style('root', { priority, size }, rest)} />;
+const Button = ({ priority, size, fullWidth, ...rest }: ButtonProps) => (
+  <ButtonNext
+    {...rest}
+    {...style('root', { priority, size, fullWidth }, rest)}
+  />
+);
 
-CoreButton.defaultProps = {
+Button.displayName = 'Button';
+
+Button.defaultProps = {
   priority: PRIORITY.basic,
   size: SIZE.medium,
+  fullWidth: false,
 };
 
-export const Button: React.FunctionComponent<ButtonProps> = CoreButton;
+export { Button };

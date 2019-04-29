@@ -40,13 +40,31 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large));
+    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large)), fullWidth;
 
     min-width: value(MinWidth);
+    border: none;
+    position: relative;
+    transition: background-color .2s ease-in-out, color .2s ease-in-out, border-radius .2s ease-in-out;
+    border-radius: wixApply(unit, value(MainBorderRadius), px);
+}
+
+.root:fullWidth {
+    width: 100%;
+}
+
+.root::after {
     border-style: solid;
     border-color: wixApply(color, value(MainBorderColor));
     border-radius: wixApply(unit, value(MainBorderRadius), px);
-    transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    transition: border-color .2s ease-in-out, border-radius .2s ease-in-out;
 }
 
 .root::content {
@@ -65,6 +83,9 @@
 .root:priority(basic) {
     color: value(PrimaryTextColor);
     background-color: value(BasicBackgroundColor);
+}
+
+.root:priority(basic)::after {
     border-width: value(PrimaryBorderWidth);
 }
 
@@ -83,6 +104,9 @@
 .root:priority(primary) {
     color: value(PrimaryTextColor);
     background-color: value(PrimaryBackgroundColor);
+}
+
+.root:priority(primary)::after {
     border-width: value(PrimaryBorderWidth);
 }
 
@@ -102,14 +126,23 @@
 .root:priority(secondary) {
     color: value(SecondaryTextColor);
     background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), transparent));
+}
+
+.root:priority(secondary)::after {
     border-color: value(SecondaryBorderColor);
     border-width: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), 1), px);
+    border-style: solid;
 }
 
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
     color: wixApply(opacity, value(SecondaryTextColor), 0.6);
+}
+
+.root:priority(secondary):active::after,
+.root:priority(secondary):focus::after,
+.root:priority(secondary):hover::after {
     border-color: wixApply(opacity, value(SecondaryBorderColor), 0.6);
 }
 
@@ -122,6 +155,9 @@
 
 .root:priority(secondary):disabled {
     color: wixApply(color, value(DisabledColor));
+}
+
+.root:priority(secondary):disabled::after {
     border-color: wixApply(color, value(DisabledColor));
 }
 
