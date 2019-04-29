@@ -32,15 +32,19 @@
 }
 
 .root:alignment(left) nav {
+    /*rtl:remove*/
     justify-content: flex-start;
+    /*rtl:raw:
+      justify-content: flex-end;
+    */
 }
 
 .root:alignment(right) nav {
+    /*rtl:remove*/
     justify-content: flex-end;
-}
-
-.root:alignment(center) nav {
-    justify-content: center;
+    /*rtl:raw:
+      justify-content: flex-start;
+    */
 }
 
 .tab {
