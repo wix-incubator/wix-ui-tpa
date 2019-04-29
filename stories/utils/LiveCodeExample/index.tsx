@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import LiveCodeExample from 'wix-storybook-utils/LiveCodeExample';
 
-import allComponents from '../allComponents';
+import { LiveScope } from '../allComponents';
 import * as styles from './styles.scss';
 
 /**
@@ -34,7 +34,7 @@ export const createPropsArray = props =>
     return `${key}={${JSON.stringify(value)}}`;
   });
 
-export const baseScope = allComponents;
+export const baseScope = LiveScope;
 
 const Component = props => {
   const { scope, title, ...rest } = props;

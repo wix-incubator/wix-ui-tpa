@@ -6,7 +6,6 @@ export enum CardRatioOptions {
   RATIO_50_50 = '50',
   RATIO_40_60 = '40',
   RATIO_30_70 = '30',
-  SAME_AS_CONTENT = 'SAME_AS_CONTENT',
 }
 
 export interface CardProps {
@@ -16,6 +15,7 @@ export interface CardProps {
   flippedRatio?: boolean;
   invertInfoPosition?: boolean;
   stacked?: boolean;
+  /** puts the media slot on top of the info slot. disables the `ratio` behavior */
   mediaAspectRatio?: number;
 }
 

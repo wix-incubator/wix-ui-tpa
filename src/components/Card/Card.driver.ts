@@ -6,11 +6,11 @@ import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Card.st.css';
 
 export interface CardDriver extends BaseUniDriver {
-  getMediaContent(): Promise<string>;
-  getInfoContent(): Promise<string>;
+  getMediaContent(): Promise<HTMLElement>;
+  getInfoContent(): Promise<HTMLElement>;
   getRatio(): Promise<string>;
-  hasFlippedRatioState(): Promise<boolean>;
-  hasInvertImagePositionState(): Promise<boolean>;
+  isFlippedRatio(): Promise<boolean>;
+  isImagePositionInverted(): Promise<boolean>;
   isMediaContentExist(): Promise<boolean>;
   isInfoContentExist(): Promise<boolean>;
 }
@@ -18,21 +18,19 @@ export interface CardDriver extends BaseUniDriver {
 export const cardDriverFactory = (base: UniDriver): CardDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
-  const getMediaContainerElement = () => base.$(`.${style.mediaContainer}`);
-  const getInfoContainerElement = () => base.$(`.${style.infoContainer}`);
+  const getMediaContainerElement = () => base.$(`.${style.mediaContainer} > *`);
+  const getInfoContainerElement = () => base.$(`.${style.infoContainer} > *`);
 
   return {
     ...baseUniDriverFactory(base),
-    getMediaContent: async () =>
-      (await getMediaContainerElement().getNative()).innerHTML,
+    getMediaContent: async () => getMediaContainerElement().getNative(),
     isMediaContentExist: async () => getMediaContainerElement().exists(),
-    getInfoContent: async () =>
-      (await getInfoContainerElement().getNative()).innerHTML,
+    getInfoContent: async () => getInfoContainerElement().getNative(),
     isInfoContentExist: async () => getInfoContainerElement().exists(),
     getRatio: async () => stylableUtil.getStyleState(base, 'ratio'),
-    hasFlippedRatioState: async () =>
+    isFlippedRatio: async () =>
       stylableUtil.hasStyleState(base, 'flippedRatio'),
-    hasInvertImagePositionState: async () =>
+    isImagePositionInverted: async () =>
       stylableUtil.hasStyleState(base, 'invertInfoPosition'),
   };
 };
