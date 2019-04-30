@@ -24,6 +24,15 @@
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
+    width: 100%;
+}
+
+.navWrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    min-width: 60px;
+    overflow: auto;
 }
 
 .root:mobile {
@@ -33,8 +42,37 @@
 
 .root nav {
     display: flex;
+    flex: 1;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+}
+
+.scrollBtn {
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: width .2s ease;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.root:scrollable .tab {
+    flex-shrink: 0;
+}
+
+.root:scrollable .scrollBtn {
+    width: 30px;
+}
+
+.root:scrollable .scrollBtn.scrollBtnLeft {
+    left: 0;
+}
+
+.root:scrollable .scrollBtn.scrollBtnRight {
+    right: 0;
 }
 
 .root:mobile {
