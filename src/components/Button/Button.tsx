@@ -2,7 +2,6 @@ import * as React from 'react';
 import style from './Button.st.css';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
-import { Simulate } from 'react-dom/test-utils';
 
 export enum PRIORITY {
   basic = 'basic',
