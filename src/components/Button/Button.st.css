@@ -34,7 +34,7 @@
 }
 
 :vars {
-    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor))), fullWidth;
     PrimaryBorderWidth: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 0), px);
 }
 
@@ -55,6 +55,11 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.root:fullWidth {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /*Basic*/
