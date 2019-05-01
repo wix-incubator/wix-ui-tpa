@@ -2,9 +2,10 @@ import * as React from 'react';
 import classNames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
-import style from './Tabs.st.css';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
-import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
+import { animate } from '../TabsInfoLayout/TabsInfoSectionUtils';
+import { isOperationKey } from '../../common/utils';
+import style from './Tabs.st.css';
 
 export interface TabsProps {
   /** tabs to be displayed */
@@ -40,6 +41,7 @@ interface TabsState {
 
 class Tabs extends React.PureComponent<TabsProps> {
   private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
+  private _tabsEl: HTMLDivElement;
 
   state: TabsState = {
     scrollable: false,
@@ -63,8 +65,17 @@ class Tabs extends React.PureComponent<TabsProps> {
     this._setScrollableIfNeeded();
   }
 
-  componentDidUpdate() {
-    this._setScrollableIfNeeded();
+  componentDidUpdate(prevProps: TabsProps) {
+    if (
+      prevProps.items !== this.props.items ||
+      prevProps.alignment !== this.props.alignment ||
+      prevProps.skin !== this.props.skin ||
+      prevProps.variant !== this.props.variant
+    ) {
+      this._setScrollableIfNeeded();
+    } else if (prevProps.activeTabIndex !== this.props.activeTabIndex) {
+      this._scrollToViewIfNeeded();
+    }
   }
 
   _onResize = () => {
@@ -91,6 +102,28 @@ class Tabs extends React.PureComponent<TabsProps> {
     }
 
     return shouldShowScroll;
+  }
+
+  _scrollToViewIfNeeded() {
+    const { activeTabIndex } = this.props;
+    const currentTabElement = this._wrapperRef.current.querySelector(
+      `[data-index="${activeTabIndex}"]`,
+    ) as HTMLElement;
+    const tabsElement = this._getTabsElement();
+    const leftLimit = tabsElement.scrollLeft;
+    const rightLimit = leftLimit + tabsElement.clientWidth;
+    const leftDelta = currentTabElement.offsetLeft - leftLimit;
+    const rightDelta =
+      currentTabElement.offsetLeft + currentTabElement.clientWidth - rightLimit;
+    let scroll = 0;
+
+    if (leftDelta < 0) {
+      scroll = -1;
+    } else if (rightDelta > 0) {
+      scroll = 1;
+    }
+
+    this._scrollTabs(scroll);
   }
 
   _setScrollableIfNeeded = () => {
@@ -141,28 +174,100 @@ class Tabs extends React.PureComponent<TabsProps> {
     }
   };
 
-  _getNavButton(icon: React.ReactElement, className: string) {
+  _scrollTabs(direction: number) {
+    const tabsElement = this._getTabsElement();
+    const clientWidth = direction * tabsElement.clientWidth;
+    const nextScrollLeft = tabsElement.scrollLeft + clientWidth;
+    animate('scrollLeft', tabsElement, nextScrollLeft);
+  }
+
+  _getTabsElement() {
+    if (!this._tabsEl) {
+      this._tabsEl =
+        this._wrapperRef.current &&
+        this._wrapperRef.current.querySelector(`.${style.tabs}`);
+    }
+
+    return this._tabsEl;
+  }
+
+  _onNavClickLeft = () => {
+    this._scrollTabs(-1);
+  };
+
+  _onNavClickRight = () => {
+    this._scrollTabs(1);
+  };
+
+  _onNavKeyDownLeft = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const keyCode = e.keyCode;
+
+    if (isOperationKey(keyCode)) {
+      this._onNavClickLeft();
+      return false;
+    }
+  };
+
+  _onNavKeyDownRight = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const keyCode = e.keyCode;
+
+    if (isOperationKey(keyCode)) {
+      this._onNavClickRight();
+      return false;
+    }
+  };
+
+  _getNavButton(
+    icon: React.ReactElement,
+    className: string,
+    onClick: React.MouseEventHandler,
+    onKeyDown: React.KeyboardEventHandler,
+  ) {
     return (
-      <div className={classNames(style.navBtn, className)}>
+      <div
+        className={classNames(style.navBtn, className)}
+        onClick={onClick}
+        onKeyDown={onKeyDown}
+        tabIndex={0}
+      >
         {React.cloneElement(icon, { size: 35 })}
       </div>
     );
   }
 
   _getLeftNavButton() {
-    return this._getNavButton(<ChevronLeft />, style.navBtnLeft);
+    return this._getNavButton(
+      <ChevronLeft />,
+      style.navBtnLeft,
+      this._onNavClickLeft,
+      this._onNavKeyDownLeft,
+    );
   }
 
   _getRightNavButton() {
-    return this._getNavButton(<ChevronRight />, style.navBtnRight);
+    return this._getNavButton(
+      <ChevronRight />,
+      style.navBtnRight,
+      this._onNavClickRight,
+      this._onNavKeyDownRight,
+    );
   }
 
   _selectTab = (e: React.SyntheticEvent) => {
     const { activeTabIndex, onTabClick } = this.props;
-    const newActiveTabIndex = e.target.getAttribute('data-index');
+    const newActiveTabIndex = +e.target.getAttribute('data-index');
 
     if (activeTabIndex !== newActiveTabIndex) {
       onTabClick(newActiveTabIndex);
+    }
+  };
+
+  _onTabKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const keyCode = e.keyCode;
+
+    if (isOperationKey(keyCode)) {
+      this._selectTab(e);
+      return false;
     }
   };
 
@@ -175,9 +280,11 @@ class Tabs extends React.PureComponent<TabsProps> {
         data-index={index}
         key={`tab-item-${index}`}
         onClick={this._selectTab}
+        onKeyDown={this._onTabKeyDown}
         className={classNames(style.tab, {
           [style.activeTab]: activeTabIndex === index,
         })}
+        tabIndex={0}
       >
         {item.title}
       </div>
