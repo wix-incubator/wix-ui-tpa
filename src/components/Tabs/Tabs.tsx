@@ -13,7 +13,7 @@ export interface TabsProps {
   /** callback function when tab is selected , returning the selected TabItem */
   onTabClick?: Function;
   /** index of the selected tab item */
-  activeTabIndex: number;
+  activeTabIndex?: number;
   /** control whether to display border under tabs*/
   skin?: SKIN;
   /** control where to align the tabs */
@@ -49,6 +49,7 @@ class Tabs extends React.PureComponent<TabsProps> {
   };
 
   static defaultProps = {
+    activeTabIndex: 0,
     onTabClick: (tabIndex: number) => {},
     skin: SKIN.fullUnderline,
     alignment: ALIGNMENT.center,
