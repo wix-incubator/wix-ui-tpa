@@ -1,7 +1,8 @@
 import * as React from 'react';
-import ReactResizeDetector from 'react-resize-detector';
-import style from './Tabs.st.css';
 import classNames from 'classnames';
+import ReactResizeDetector from 'react-resize-detector';
+import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
+import style from './Tabs.st.css';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
 
@@ -25,39 +26,24 @@ export interface TabItem {
   title?: string;
 }
 
-interface TabsState {
-  scrollable: boolean;
+const enum ScrollBtnOptions {
+  both = 'both',
+  left = 'left',
+  right = 'right',
+  none = 'none',
 }
 
-const EPSILON = 6;
-
-const selectTab = (newActiveTabIndex, activeTabIndex, onTabClick) => {
-  if (activeTabIndex !== newActiveTabIndex) {
-    onTabClick(newActiveTabIndex);
-  }
-};
-
-const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
-  return (
-    <div
-      data-hook={`tab-item-${index}`}
-      key={`tab-item-${index}`}
-      onClick={() => selectTab(index, activeTabIndex, onTabClick)}
-      className={classNames(style.tab, {
-        [style.activeTab]: activeTabIndex === index,
-      })}
-    >
-      {item.title}
-    </div>
-  );
-};
+interface TabsState {
+  scrollable: boolean;
+  scrollButtons?: ScrollBtnOptions;
+}
 
 class Tabs extends React.PureComponent<TabsProps> {
-  _nav: HTMLElement;
-  _wrapper: HTMLElement;
+  private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
 
   state: TabsState = {
     scrollable: false,
+    scrollButtons: ScrollBtnOptions.none,
   };
 
   static defaultProps = {
@@ -69,12 +55,17 @@ class Tabs extends React.PureComponent<TabsProps> {
 
   constructor(props: Readonly<TabsProps>) {
     super(props);
+
+    this._wrapperRef = React.createRef<HTMLDivElement>();
   }
 
-  _wrapperRef = (el: HTMLElement) => {
-    this._wrapper = el;
+  componentDidMount() {
     this._setScrollableIfNeeded();
-  };
+  }
+
+  componentDidUpdate() {
+    this._setScrollableIfNeeded();
+  }
 
   _onResize = () => {
     this._setScrollableIfNeeded();
@@ -83,7 +74,7 @@ class Tabs extends React.PureComponent<TabsProps> {
   _calculateNavigationWidth = () => {
     let width = 0;
 
-    this._wrapper.querySelectorAll(`.${style.tab}`).forEach(tab => {
+    this._wrapperRef.current.querySelectorAll(`.${style.tab}`).forEach(tab => {
       width += tab.clientWidth;
     });
 
@@ -93,14 +84,9 @@ class Tabs extends React.PureComponent<TabsProps> {
   _shouldShowScroll() {
     let shouldShowScroll = false;
 
-    if (this._wrapper) {
+    if (this._wrapperRef.current) {
       const navWidth = this._calculateNavigationWidth();
-      const wrapperWidth = this._wrapper.offsetWidth;
-      console.log(
-        'adler',
-        'Tabs.tsx:98',
-        this._wrapper.querySelector('nav').scrollLeft,
-      );
+      const wrapperWidth = this._wrapperRef.current.offsetWidth;
       shouldShowScroll = navWidth > wrapperWidth;
     }
 
@@ -108,50 +94,118 @@ class Tabs extends React.PureComponent<TabsProps> {
   }
 
   _setScrollableIfNeeded = () => {
-    const { scrollable } = this.state;
+    const { scrollable, scrollButtons } = this.state;
     const shouldShowScroll = this._shouldShowScroll();
+    const newShowScrollButtons = this._showScrollButtons();
+    const newState = {} as TabsState;
 
     if (shouldShowScroll !== scrollable) {
-      this.setState({ scrollable: shouldShowScroll });
+      newState.scrollable = shouldShowScroll;
     }
+
+    if (newShowScrollButtons !== scrollButtons) {
+      newState.scrollButtons = newShowScrollButtons;
+    }
+
+    this.setState(newState);
+  };
+
+  _showScrollButtons = () => {
+    const {
+      scrollWidth,
+      clientWidth,
+      scrollLeft,
+    } = this._wrapperRef.current.querySelector(`.${style.tabs}`);
+    let shouldShow = ScrollBtnOptions.none;
+
+    if (scrollLeft > 0) {
+      shouldShow = ScrollBtnOptions.left;
+    }
+
+    if (scrollWidth > clientWidth + scrollLeft) {
+      shouldShow =
+        shouldShow === ScrollBtnOptions.none
+          ? ScrollBtnOptions.right
+          : ScrollBtnOptions.both;
+    }
+
+    return shouldShow;
   };
 
   _onScroll = (e: React.SyntheticEvent) => {
-    console.log(e);
+    const { scrollButtons } = this.state;
+    const newShowScrollButtons = this._showScrollButtons();
+
+    if (newShowScrollButtons !== scrollButtons) {
+      this.setState({ scrollButtons: newShowScrollButtons });
+    }
   };
 
-  render() {
-    const {
-      items,
-      activeTabIndex,
-      onTabClick,
-      skin,
-      alignment,
-      variant,
-    } = this.props;
-    const { scrollable } = this.state;
+  _getNavButton(icon: React.ReactElement, className: string) {
+    return (
+      <div className={classNames(style.scrollBtn, className)}>
+        {React.cloneElement(icon, { size: 35 })}
+      </div>
+    );
+  }
+
+  _getLeftNavButton() {
+    return this._getNavButton(<ChevronLeft />, style.scrollBtnLeft);
+  }
+
+  _getRightNavButton() {
+    return this._getNavButton(<ChevronRight />, style.scrollBtnRight);
+  }
+
+  _selectTab = (e: React.SyntheticEvent) => {
+    const { activeTabIndex, onTabClick } = this.props;
+    const newActiveTabIndex = e.target.getAttribute('data-index');
+
+    if (activeTabIndex !== newActiveTabIndex) {
+      onTabClick(newActiveTabIndex);
+    }
+  };
+
+  _renderTabItem = (item: TabItem, index: number) => {
+    const { activeTabIndex } = this.props;
 
     return (
       <div
-        {...style('root', { skin, alignment, variant, scrollable }, this.props)}
+        data-hook={`tab-item-${index}`}
+        data-index={index}
+        key={`tab-item-${index}`}
+        onClick={this._selectTab}
+        className={classNames(style.tab, {
+          [style.activeTab]: activeTabIndex === index,
+        })}
       >
+        {item.title}
+      </div>
+    );
+  };
+
+  _getNavigationItems() {
+    const { items } = this.props;
+
+    return (
+      <div className={style.tabs} onScroll={this._onScroll}>
+        <nav>{items.map(this._renderTabItem)}</nav>
+      </div>
+    );
+  }
+
+  render() {
+    const { skin, alignment, variant } = this.props;
+    const { scrollable, scrollButtons } = this.state;
+    const styleProps = { skin, alignment, variant, scrollable, scrollButtons };
+
+    return (
+      <div {...style('root', styleProps, this.props)}>
         <ReactResizeDetector handleWidth onResize={this._onResize} />
-        <div
-          className={style.navWrapper}
-          ref={this._wrapperRef}
-          onScroll={this._onScroll}
-        >
-          <div className={classNames(style.scrollBtn, style.scrollBtnLeft)}>
-            &lt;
-          </div>
-          <nav>
-            {items.map((item, index) =>
-              renderTabItem({ item, index, onTabClick, activeTabIndex }),
-            )}
-          </nav>
-          <div className={classNames(style.scrollBtn, style.scrollBtnRight)}>
-            &gt;
-          </div>
+        <div className={style.content} ref={this._wrapperRef}>
+          {this._getLeftNavButton()}
+          {this._getNavigationItems()}
+          {this._getRightNavButton()}
         </div>
       </div>
     );
