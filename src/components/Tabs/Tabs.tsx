@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
-import { animate } from '../TabsInfoLayout/TabsInfoSectionUtils';
+import { animate } from '../../common/animations';
 import { isOperationKey } from '../../common/utils';
 import style from './Tabs.st.css';
 
