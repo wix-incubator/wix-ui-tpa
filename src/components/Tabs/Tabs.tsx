@@ -26,7 +26,7 @@ export interface TabItem {
   title?: string;
 }
 
-const enum ScrollBtnOptions {
+const enum NavButtonOptions {
   both = 'both',
   left = 'left',
   right = 'right',
@@ -35,7 +35,7 @@ const enum ScrollBtnOptions {
 
 interface TabsState {
   scrollable: boolean;
-  scrollButtons?: ScrollBtnOptions;
+  navButtons?: NavButtonOptions;
 }
 
 class Tabs extends React.PureComponent<TabsProps> {
@@ -43,7 +43,7 @@ class Tabs extends React.PureComponent<TabsProps> {
 
   state: TabsState = {
     scrollable: false,
-    scrollButtons: ScrollBtnOptions.none,
+    navButtons: NavButtonOptions.none,
   };
 
   static defaultProps = {
@@ -94,67 +94,67 @@ class Tabs extends React.PureComponent<TabsProps> {
   }
 
   _setScrollableIfNeeded = () => {
-    const { scrollable, scrollButtons } = this.state;
+    const { scrollable, navButtons } = this.state;
     const shouldShowScroll = this._shouldShowScroll();
-    const newShowScrollButtons = this._showScrollButtons();
+    const newShowNavButtons = this._showNavButtons();
     const newState = {} as TabsState;
 
     if (shouldShowScroll !== scrollable) {
       newState.scrollable = shouldShowScroll;
     }
 
-    if (newShowScrollButtons !== scrollButtons) {
-      newState.scrollButtons = newShowScrollButtons;
+    if (newShowNavButtons !== navButtons) {
+      newState.navButtons = newShowNavButtons;
     }
 
     this.setState(newState);
   };
 
-  _showScrollButtons = () => {
+  _showNavButtons = () => {
     const {
       scrollWidth,
       clientWidth,
       scrollLeft,
     } = this._wrapperRef.current.querySelector(`.${style.tabs}`);
-    let shouldShow = ScrollBtnOptions.none;
+    let shouldShow = NavButtonOptions.none;
 
     if (scrollLeft > 0) {
-      shouldShow = ScrollBtnOptions.left;
+      shouldShow = NavButtonOptions.left;
     }
 
     if (scrollWidth > clientWidth + scrollLeft) {
       shouldShow =
-        shouldShow === ScrollBtnOptions.none
-          ? ScrollBtnOptions.right
-          : ScrollBtnOptions.both;
+        shouldShow === NavButtonOptions.none
+          ? NavButtonOptions.right
+          : NavButtonOptions.both;
     }
 
     return shouldShow;
   };
 
   _onScroll = (e: React.SyntheticEvent) => {
-    const { scrollButtons } = this.state;
-    const newShowScrollButtons = this._showScrollButtons();
+    const { navButtons } = this.state;
+    const newShowNavButtons = this._showNavButtons();
 
-    if (newShowScrollButtons !== scrollButtons) {
-      this.setState({ scrollButtons: newShowScrollButtons });
+    if (newShowNavButtons !== navButtons) {
+      this.setState({ navButtons: newShowNavButtons });
     }
   };
 
   _getNavButton(icon: React.ReactElement, className: string) {
     return (
-      <div className={classNames(style.scrollBtn, className)}>
+      <div className={classNames(style.navBtn, className)}>
         {React.cloneElement(icon, { size: 35 })}
       </div>
     );
   }
 
   _getLeftNavButton() {
-    return this._getNavButton(<ChevronLeft />, style.scrollBtnLeft);
+    return this._getNavButton(<ChevronLeft />, style.navBtnLeft);
   }
 
   _getRightNavButton() {
-    return this._getNavButton(<ChevronRight />, style.scrollBtnRight);
+    return this._getNavButton(<ChevronRight />, style.navBtnRight);
   }
 
   _selectTab = (e: React.SyntheticEvent) => {
@@ -196,8 +196,8 @@ class Tabs extends React.PureComponent<TabsProps> {
 
   render() {
     const { skin, alignment, variant } = this.props;
-    const { scrollable, scrollButtons } = this.state;
-    const styleProps = { skin, alignment, variant, scrollable, scrollButtons };
+    const { scrollable, navButtons } = this.state;
+    const styleProps = { skin, alignment, variant, scrollable, navButtons };
 
     return (
       <div {...style('root', styleProps, this.props)}>
