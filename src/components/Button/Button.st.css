@@ -34,13 +34,13 @@
 }
 
 :vars {
-    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor))), fullWidth;
+    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
     PrimaryBorderWidth: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 0), px);
 }
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large));
+    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large)), fullWidth;
 
     min-width: value(MinWidth);
     border-style: solid;
