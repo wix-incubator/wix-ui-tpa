@@ -254,9 +254,11 @@ class Tabs extends React.PureComponent<TabsProps> {
     );
   }
 
-  _selectTab = (e: React.SyntheticEvent) => {
+  _selectTab = (e: React.SyntheticEvent<HTMLDivElement>) => {
     const { activeTabIndex, onTabClick } = this.props;
-    const newActiveTabIndex = +e.target.getAttribute('data-index');
+    const newActiveTabIndex = +(e.target as HTMLDivElement).getAttribute(
+      'data-index',
+    );
 
     if (activeTabIndex !== newActiveTabIndex) {
       onTabClick(newActiveTabIndex);
@@ -267,7 +269,7 @@ class Tabs extends React.PureComponent<TabsProps> {
     const keyCode = e.keyCode;
 
     if (isOperationKey(keyCode)) {
-      this._selectTab(e);
+      this._selectTab(e as React.SyntheticEvent<HTMLDivElement>);
       return false;
     }
   };
