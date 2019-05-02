@@ -3,15 +3,22 @@ import classNames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
+import { KEY_CODES } from '../../common/constants';
 import { animate } from '../../common/animations';
-import { isOperationKey } from '../../common/utils';
+import { Tab } from './Tab';
+import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
+
+export interface TabItem {
+  /** Title of the tab */
+  title?: string;
+}
 
 export interface TabsProps {
   /** tabs to be displayed */
   items: TabItem[];
-  /** callback function when tab is selected , returning the selected TabItem */
-  onTabClick?: Function;
+  /** callback function when tab is selected , returning the selected item index */
+  onTabClick?(index: number): void;
   /** index of the selected tab item */
   activeTabIndex?: number;
   /** control whether to display border under tabs*/
@@ -22,9 +29,9 @@ export interface TabsProps {
   variant?: VARIANT;
 }
 
-export interface TabItem {
-  /** Title of the tab */
-  title?: string;
+interface TabsState {
+  scrollable: boolean;
+  navButtons?: NavButtonOptions;
 }
 
 const enum NavButtonOptions {
@@ -34,12 +41,17 @@ const enum NavButtonOptions {
   none = 'none',
 }
 
-interface TabsState {
-  scrollable: boolean;
-  navButtons?: NavButtonOptions;
+export function isSelectKey(keyCode: number) {
+  switch (keyCode) {
+    case KEY_CODES.ENTER:
+    case KEY_CODES.SPACEBAR:
+      return true;
+    default:
+      return false;
+  }
 }
 
-class Tabs extends React.PureComponent<TabsProps> {
+class Tabs extends React.PureComponent<TabsProps, TabsState> {
   private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
   private _tabsEl: HTMLDivElement;
 
@@ -50,7 +62,7 @@ class Tabs extends React.PureComponent<TabsProps> {
 
   static defaultProps = {
     activeTabIndex: 0,
-    onTabClick: (tabIndex: number) => {},
+    onTabClick: (tabIndex: number) => tabIndex,
     skin: SKIN.fullUnderline,
     alignment: ALIGNMENT.center,
     variant: VARIANT.fit,
@@ -200,123 +212,31 @@ class Tabs extends React.PureComponent<TabsProps> {
     this._scrollTabs(1);
   };
 
-  _onNavKeyDownLeft = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const keyCode = e.keyCode;
-
-    if (isOperationKey(keyCode)) {
-      this._onNavClickLeft();
-      return false;
-    }
-  };
-
-  _onNavKeyDownRight = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const keyCode = e.keyCode;
-
-    if (isOperationKey(keyCode)) {
-      this._onNavClickRight();
-      return false;
-    }
-  };
-
-  _getNavButton(
-    icon: React.ReactElement,
-    className: string,
-    onClick: React.MouseEventHandler,
-    onKeyDown: React.KeyboardEventHandler,
-  ) {
-    return (
-      <div
-        className={classNames(style.navBtn, className)}
-        onClick={onClick}
-        onKeyDown={onKeyDown}
-        tabIndex={0}
-      >
-        {React.cloneElement(icon, { size: 35 })}
-      </div>
-    );
-  }
-
-  _getLeftNavButton() {
-    return this._getNavButton(
-      <ChevronLeft />,
-      style.navBtnLeft,
-      this._onNavClickLeft,
-      this._onNavKeyDownLeft,
-    );
-  }
-
-  _getRightNavButton() {
-    return this._getNavButton(
-      <ChevronRight />,
-      style.navBtnRight,
-      this._onNavClickRight,
-      this._onNavKeyDownRight,
-    );
-  }
-
-  _selectTab = (e: React.SyntheticEvent<HTMLDivElement>) => {
+  _selectTab = (index: number) => {
     const { activeTabIndex, onTabClick } = this.props;
-    const newActiveTabIndex = +(e.target as HTMLDivElement).getAttribute(
-      'data-index',
-    );
 
-    if (activeTabIndex !== newActiveTabIndex) {
-      onTabClick(newActiveTabIndex);
+    if (activeTabIndex !== index) {
+      onTabClick(index);
     }
   };
-
-  _onTabKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const keyCode = e.keyCode;
-
-    if (isOperationKey(keyCode)) {
-      this._selectTab(e as React.SyntheticEvent<HTMLDivElement>);
-      return false;
-    }
-  };
-
-  _renderTabItem = (item: TabItem, index: number) => {
-    const { activeTabIndex } = this.props;
-
-    return (
-      <div
-        data-hook={`tab-item-${index}`}
-        data-index={index}
-        key={`tab-item-${index}`}
-        onClick={this._selectTab}
-        onKeyDown={this._onTabKeyDown}
-        className={classNames(style.tab, {
-          [style.activeTab]: activeTabIndex === index,
-        })}
-        tabIndex={0}
-      >
-        {item.title}
-      </div>
-    );
-  };
-
-  _getNavigationItems() {
-    const { items } = this.props;
-
-    return (
-      <div className={style.tabs} onScroll={this._onScroll}>
-        <nav>{items.map(this._renderTabItem)}</nav>
-      </div>
-    );
-  }
 
   render() {
-    const { skin, alignment, variant } = this.props;
+    const { items, activeTabIndex, skin, alignment, variant } = this.props;
     const { scrollable, navButtons } = this.state;
     const styleProps = { skin, alignment, variant, scrollable, navButtons };
 
     return (
       <div {...style('root', styleProps, this.props)}>
         <ReactResizeDetector handleWidth onResize={this._onResize} />
-        <div className={style.content} ref={this._wrapperRef}>
-          {this._getLeftNavButton()}
-          {this._getNavigationItems()}
-          {this._getRightNavButton()}
-        </div>
+        <TabsUI
+          wrapperRef={this._wrapperRef}
+          items={items}
+          onTabClick={this._selectTab}
+          activeTabIndex={activeTabIndex}
+          onScroll={this._onScroll}
+          onLeftNavClick={this._onNavClickLeft}
+          onRightNavClick={this._onNavClickRight}
+        />
       </div>
     );
   }
