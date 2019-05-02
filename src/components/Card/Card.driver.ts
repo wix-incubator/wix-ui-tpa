@@ -13,6 +13,7 @@ export interface CardDriver extends BaseUniDriver {
   isImagePositionInverted(): Promise<boolean>;
   isMediaContentExist(): Promise<boolean>;
   isInfoContentExist(): Promise<boolean>;
+  isMobile(): Promise<boolean>;
 }
 
 export const cardDriverFactory = (base: UniDriver): CardDriver => {
@@ -32,5 +33,6 @@ export const cardDriverFactory = (base: UniDriver): CardDriver => {
       stylableUtil.hasStyleState(base, 'flippedRatio'),
     isImagePositionInverted: async () =>
       stylableUtil.hasStyleState(base, 'invertInfoPosition'),
+    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
   };
 };

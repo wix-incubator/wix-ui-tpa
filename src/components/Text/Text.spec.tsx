@@ -78,6 +78,12 @@ describe('Text', () => {
     expectTextToHaveAttributes(expectedTag, expectedTypography);
   });
 
+  it('should use mobile design', () => {
+    driver = createDriver(<Text isMobile/>);
+
+    expect(driver.isMobile()).toEqual(true);
+  });
+
   describe('testkit', () => {
     it('should exist', () => {
       expect(

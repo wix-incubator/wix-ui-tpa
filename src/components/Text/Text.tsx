@@ -5,11 +5,13 @@ import { DEFAULT_TAG_NAME, TYPOGRAPHY } from './constants';
 export interface TextProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
+  isMobile?: boolean;
 }
 
 const CoreText: React.FunctionComponent<TextProps> = ({
   typography,
   tagName,
+  isMobile,
   children,
   ...rest
 }) =>
@@ -20,6 +22,7 @@ const CoreText: React.FunctionComponent<TextProps> = ({
         'root',
         {
           typography,
+          mobile: isMobile,
         },
         rest,
       ),
@@ -27,9 +30,12 @@ const CoreText: React.FunctionComponent<TextProps> = ({
     children,
   );
 
+CoreText.displayName = 'Text';
+
 CoreText.defaultProps = {
   typography: TYPOGRAPHY.runningText,
   tagName: DEFAULT_TAG_NAME,
+  isMobile: false,
 };
 
 export const Text: React.FunctionComponent<TextProps> = CoreText;

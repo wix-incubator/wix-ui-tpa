@@ -7,6 +7,7 @@
     /*Constance*/
     defaultTabColor: color-5;
     defaultTabFont: "{theme: 'Body-M', size: '16px'}";
+    defaultMobileTabFont: "{theme: 'Body-M', size: '14px'}";
     defaultSelectedTabIndicatorColor: color-8;
     defaultIndicatorColor: color-5;
 }
@@ -19,16 +20,36 @@
 }
 
 .root {
-    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit));
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), mobile;
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
+}
+
+.root:mobile {
+    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
+    line-height: 1.44em;
 }
 
 .root nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.root:mobile {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.root:mobile nav {
+    min-width: 100%;
+    width: fit-content;
+    flex-wrap: nowrap;
+}
+
+.root:mobile nav > .tab {
+    width: 100%;
 }
 
 .root:alignment(left) nav {
@@ -49,7 +70,7 @@
 
 .tab {
     cursor: pointer;
-    padding: 14px;
+    padding: 14px 3%;
     text-align: center;
     white-space: nowrap;
 }

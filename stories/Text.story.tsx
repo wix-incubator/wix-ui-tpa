@@ -13,6 +13,7 @@ export default {
     'data-hook': 'storybook-Text',
     children: 'Some text',
     typography: TYPOGRAPHY.runningText,
+    isMobile: false,
   }),
   exampleProps: {
     typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),

@@ -21,6 +21,7 @@
     SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     LargeFont: "{theme: 'Body-M', size: '20px', lineHeight: '1.5em'}";
+    MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
 
 :vars {
@@ -40,7 +41,7 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large)), fullWidth;
+    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large)), fullWidth, mobile;
 
     min-width: value(MinWidth);
     border-style: solid;
@@ -152,10 +153,14 @@
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MediumFont)));
 }
 
+.root:mobile:size(medium) {
+    padding: 10px 16px;
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileMediumFont)));
+}
+
 /*Large*/
 
 .root:size(large) {
     padding: 10px 16px;
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(LargeFont)));
-
 }

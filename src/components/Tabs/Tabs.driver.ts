@@ -17,5 +17,6 @@ export const tabsDriverFactory = ({ element }) => {
     getSkin: () => stylableDOMUtil.getStyleState(element, 'skin'),
     getAlignment: () => stylableDOMUtil.getStyleState(element, 'alignment'),
     getVariant: () => stylableDOMUtil.getStyleState(element, 'variant'),
+    isMobile: () => stylableDOMUtil.getStyleState(element, 'mobile') === 'true',
   };
 };

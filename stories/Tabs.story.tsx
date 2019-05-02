@@ -26,6 +26,7 @@ export default {
     skin: SKIN.fullUnderline,
     alignment: ALIGNMENT.center,
     variant: VARIANT.fit,
+    isMobile: false,
   }),
   exampleProps: {
     skin: Object.keys(SKIN).map(key => SKIN[key]),

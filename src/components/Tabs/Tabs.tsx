@@ -16,6 +16,8 @@ export interface TabsProps {
   alignment?: ALIGNMENT;
   /** control whether to set tabs on all content width*/
   variant?: VARIANT;
+  /** control whether to display mobile css*/
+  isMobile?: boolean;
 }
 
 export interface TabItem {
@@ -44,10 +46,20 @@ const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
   );
 };
 
-const Tabs = props => {
-  const { items, activeTabIndex, onTabClick, skin, alignment, variant } = props;
+const CoreTabs: React.FunctionComponent<TabsProps> = props => {
+  const {
+    items,
+    activeTabIndex,
+    onTabClick,
+    skin,
+    alignment,
+    variant,
+    isMobile,
+  } = props;
   return (
-    <div {...style('root', { skin, alignment, variant }, props)}>
+    <div
+      {...style('root', { skin, alignment, variant, mobile: isMobile }, props)}
+    >
       <nav>
         {items.map((item, index) =>
           renderTabItem({ item, index, onTabClick, activeTabIndex }),
@@ -57,11 +69,14 @@ const Tabs = props => {
   );
 };
 
-Tabs.defaultProps = {
+CoreTabs.displayName = 'Tabs';
+
+CoreTabs.defaultProps = {
   onTabClick: (tabIndex: number) => {},
   skin: SKIN.fullUnderline,
   alignment: ALIGNMENT.center,
   variant: VARIANT.fit,
+  isMobile: false,
 };
 
-export { Tabs };
+export const Tabs: React.FunctionComponent<TabsProps> = CoreTabs;

@@ -13,7 +13,9 @@ export interface CardProps {
   info?: React.ReactNode;
   ratio?: CardRatioOptions;
   flippedRatio?: boolean;
+  /** puts the media slot on the opposite of the info slot. disabled on mobile */
   invertInfoPosition?: boolean;
+  isMobile?: boolean;
   stacked?: boolean;
   /** puts the media slot on top of the info slot. disables the `ratio` behavior */
   mediaAspectRatio?: number;
@@ -35,6 +37,7 @@ const Card = ({
   flippedRatio,
   stacked,
   mediaAspectRatio,
+  isMobile,
   ...rest
 }: CardProps) => {
   return (
@@ -46,6 +49,7 @@ const Card = ({
           invertInfoPosition,
           flippedRatio,
           stacked,
+          mobile: isMobile,
           mediaAspectRatio: !!mediaAspectRatio || stacked,
         },
         rest,
@@ -71,6 +75,7 @@ Card.defaultProps = {
   flippedRatio: false,
   invertInfoPosition: false,
   stacked: false,
+  isMobile: false,
 };
 
 export { Card };

@@ -20,12 +20,19 @@ export interface ButtonProps extends ButtonNextProps {
   priority?: PRIORITY;
   size?: SIZE;
   fullWidth?: boolean;
+  isMobile?: boolean;
 }
 
-const Button = ({ priority, size, fullWidth, ...rest }: ButtonProps) => (
+const Button = ({
+  priority,
+  size,
+  fullWidth,
+  isMobile,
+  ...rest
+}: ButtonProps) => (
   <ButtonNext
     {...rest}
-    {...style('root', { priority, size, fullWidth }, rest)}
+    {...style('root', { priority, size, fullWidth, mobile: isMobile }, rest)}
   />
 );
 
@@ -35,6 +42,7 @@ Button.defaultProps = {
   priority: PRIORITY.basic,
   size: SIZE.medium,
   fullWidth: false,
+  isMobile: false,
 };
 
 export { Button };

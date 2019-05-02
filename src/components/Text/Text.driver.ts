@@ -9,5 +9,6 @@ export const textDriverFactory = ({ element }) => {
     getTagName: () => element.tagName.toLowerCase(),
     getContent: () => element.textContent,
     getTypography: () => stylableDOMUtil.getStyleState(element, 'typography'),
+    isMobile: () => stylableDOMUtil.getStyleState(element, 'mobile') === 'true',
   };
 };

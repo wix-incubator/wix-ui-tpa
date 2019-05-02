@@ -59,6 +59,11 @@ describe('Card', () => {
     expect(await driver.isImagePositionInverted()).toEqual(true);
   });
 
+  it('should use mobile design', async () => {
+    const driver = createDriver(<Card invertInfoPosition isMobile />);
+    expect(await driver.isMobile()).toEqual(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

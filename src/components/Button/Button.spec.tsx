@@ -22,6 +22,11 @@ describe('Button', () => {
     expect(await driver.isFullWidth()).toEqual(true);
   });
 
+  it('should use mobile design', async () => {
+    const driver = createDriver(<Button fullWidth isMobile />);
+    expect(await driver.isMobile()).toEqual(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
