@@ -16,7 +16,7 @@ interface State {
   count: number;
 }
 
-{%descriptionJSDoc%}
+/** {%description%} */
 export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, State> {
   static displayName = '{%ComponentName%}';
   static defaultProps: DefaultProps = { buttonText: 'Click me!' };
