@@ -61,7 +61,7 @@
 .root:skin(fullUnderline),
 .root:skin(fitUnderline) .tab{
     border-bottom: 1px solid;
-    border-bottom-color: wixApply(opacity, wixApply(color, wixApply(fallback, value(IndicatorColor), value(defaultIndicatorColor))), 0.2);
+    border-bottom-color: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
 }
 
 .root:skin(clear) .activeTab,
