@@ -58,7 +58,6 @@ export default {
     flippedRatio: false,
     invertInfoPosition: false,
     stacked: false,
-    isMobile: false,
   }),
   exampleProps: {
     media: mediaExamples,

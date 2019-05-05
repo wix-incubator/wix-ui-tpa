@@ -1,5 +1,6 @@
 import * as React from 'react';
 import style from './Card.st.css';
+import { WixUiTpaConfigProps, withWixUiTpaConfig } from '../WixUiTpaConfig';
 
 export enum CardRatioOptions {
   RATIO_100 = '100',
@@ -8,14 +9,13 @@ export enum CardRatioOptions {
   RATIO_30_70 = '30',
 }
 
-export interface CardProps {
+export interface CardProps extends WixUiTpaConfigProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
   ratio?: CardRatioOptions;
   flippedRatio?: boolean;
   /** puts the media slot on the opposite of the info slot. disabled on mobile */
   invertInfoPosition?: boolean;
-  isMobile?: boolean;
   stacked?: boolean;
   /** puts the media slot on top of the info slot. disables the `ratio` behavior */
   mediaAspectRatio?: number;
@@ -29,7 +29,7 @@ const getRatio = (mediaAspectRatio, stacked) => {
   return `${stacked ? 100 : 0}%`;
 };
 
-const Card = ({
+const Card = withWixUiTpaConfig<CardProps>(({
   info,
   media,
   ratio,
@@ -37,7 +37,7 @@ const Card = ({
   flippedRatio,
   stacked,
   mediaAspectRatio,
-  isMobile,
+  mobile,
   ...rest
 }: CardProps) => {
   return (
@@ -49,7 +49,7 @@ const Card = ({
           invertInfoPosition,
           flippedRatio,
           stacked,
-          mobile: isMobile,
+          mobile,
           mediaAspectRatio: !!mediaAspectRatio || stacked,
         },
         rest,
@@ -66,7 +66,7 @@ const Card = ({
       {info && <div className={style.infoContainer}>{info}</div>}
     </div>
   );
-};
+});
 
 Card.displayName = 'Card';
 
@@ -75,7 +75,6 @@ Card.defaultProps = {
   flippedRatio: false,
   invertInfoPosition: false,
   stacked: false,
-  isMobile: false,
 };
 
 export { Card };

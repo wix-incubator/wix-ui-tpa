@@ -1,18 +1,18 @@
 import * as React from 'react';
 import style from './Text.st.css';
 import { DEFAULT_TAG_NAME, TYPOGRAPHY } from './constants';
+import { WixUiTpaConfigProps, withWixUiTpaConfig } from '../WixUiTpaConfig';
 
-export interface TextProps {
+export interface TextProps extends WixUiTpaConfigProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
-  isMobile?: boolean;
 }
 
-const CoreText: React.FunctionComponent<TextProps> = ({
+const Text = withWixUiTpaConfig<TextProps>(({
   typography,
   tagName,
-  isMobile,
   children,
+  mobile,
   ...rest
 }) =>
   React.createElement(
@@ -22,20 +22,19 @@ const CoreText: React.FunctionComponent<TextProps> = ({
         'root',
         {
           typography,
-          mobile: isMobile,
+          mobile,
         },
         rest,
       ),
     },
     children,
-  );
+  ));
 
-CoreText.displayName = 'Text';
+Text.displayName = 'Text';
 
-CoreText.defaultProps = {
+Text.defaultProps = {
   typography: TYPOGRAPHY.runningText,
   tagName: DEFAULT_TAG_NAME,
-  isMobile: false,
 };
 
-export const Text: React.FunctionComponent<TextProps> = CoreText;
+export { Text };

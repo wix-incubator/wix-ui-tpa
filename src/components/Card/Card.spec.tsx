@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import { cardTestkitFactory } from '../../testkit';
 import { cardTestkitFactory as enzymeCardTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
+import {WixUiTpaConfigWrapper} from '../WixUiTpaConfig';
 
 describe('Card', () => {
   const createDriver = createUniDriverFactory(cardDriverFactory);
@@ -60,7 +61,7 @@ describe('Card', () => {
   });
 
   it('should use mobile design', async () => {
-    const driver = createDriver(<Card invertInfoPosition isMobile />);
+    const driver = createDriver(WixUiTpaConfigWrapper({mobile: true})(<Card invertInfoPosition />));
     expect(await driver.isMobile()).toEqual(true);
   });
 

@@ -131,21 +131,23 @@ export const invertPosition = `
 `;
 
 export const stackedMobile = `
-<Card
-  ratio={CardRatioOptions.RATIO_40_60}
-  isMobile
-  mediaAspectRatio={16 / 9}
-  stacked
-  media={${imageComponent(560, 330)}}
-  info={
-    <div>
-      <Text typography={TYPOGRAPHY.largeTitle}>STACKED ON MOBILE</Text>
-      <div style={{marginBottom: '5px'}}>
-        <Text>min width 130px</Text>
+<WixUiTpaConfigProvider value={{mobile: true}}>
+  <Card
+    ratio={CardRatioOptions.RATIO_40_60}
+    isMobile
+    mediaAspectRatio={16 / 9}
+    stacked
+    media={${imageComponent(560, 330)}}
+    info={
+      <div>
+        <Text typography={TYPOGRAPHY.largeTitle}>STACKED ON MOBILE</Text>
+        <div style={{marginBottom: '5px'}}>
+          <Text>min width 130px</Text>
+        </div>
+        <div style={{marginBottom: '5px'}}>
+          <Text>info padding 20px</Text>
+        </div>
       </div>
-      <div style={{marginBottom: '5px'}}>
-        <Text>info padding 20px</Text>
-      </div>
-    </div>
   }/>
+</WixUiTpaConfigProvider>
 `;

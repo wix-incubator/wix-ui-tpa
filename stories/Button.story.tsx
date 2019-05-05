@@ -15,7 +15,6 @@ export default {
     priority: PRIORITY.basic,
     size: SIZE.medium,
     fullWidth: false,
-    isMobile: false,
   }),
   exampleProps: {
     priority: Object.keys(PRIORITY).map(key => PRIORITY[key]),
