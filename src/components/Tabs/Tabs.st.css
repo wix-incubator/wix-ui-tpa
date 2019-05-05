@@ -83,6 +83,14 @@
     min-width: 100%;
 }
 
+.selectedIndicator {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid;
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
+    transition: all .3s ease-in-out;
+}
+
 .tab {
     cursor: pointer;
     padding: 14px 3%;
@@ -127,7 +135,5 @@
 .root:skin(clear) .activeTab,
 .root:skin(fullUnderline) .activeTab,
 .root:skin(fitUnderline) .activeTab {
-    border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
     padding-bottom: 11px;
 }

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
-import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { Tab } from './Tab';
 import style from './Tabs.st.css';
 import { isSelectKey } from './Tabs';
@@ -12,11 +11,8 @@ export interface TabItem {
 }
 
 interface TabsUIProps {
-  /** tabs to be displayed */
   items: TabItem[];
-  /** callback function when tab is selected , returning the selected item index */
   onTabClick?(index: number): void;
-  /** index of the selected tab item */
   activeTabIndex?: number;
   onScroll(event: React.SyntheticEvent<HTMLDivElement>): void;
   onLeftNavClick(): void;
@@ -26,8 +22,48 @@ interface TabsUIProps {
   selectedTabRef: React.RefObject<HTMLDivElement>;
 }
 
-class TabsUI extends React.PureComponent<TabsUIProps> {
+interface TabsUIRect {
+  left: number;
+  width: number;
+}
+
+interface TabsUIState {
+  activeIndicatorRect: TabsUIRect;
+}
+
+class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
+  state = {
+    activeIndicatorRect: {
+      left: 0,
+      width: 0,
+    },
+  };
+
+  componentDidMount() {
+    setTimeout(this._updateSelectedTabPosition, 100);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.activeTabIndex !== this.props.activeTabIndex) {
+      this._updateSelectedTabPosition();
+    }
+  }
+
+  _updateSelectedTabPosition = () => {
+    const { selectedTabRef } = this.props;
+
+    if (selectedTabRef && selectedTabRef.current) {
+      const newLeft = selectedTabRef.current.offsetLeft;
+      const newWidth = selectedTabRef.current.offsetWidth;
+
+      this.setState({
+        activeIndicatorRect: { left: newLeft, width: newWidth },
+      });
+    }
+  };
+
   _getNavigationItems() {
+    const { activeIndicatorRect } = this.state;
     const {
       items,
       activeTabIndex,
@@ -51,6 +87,7 @@ class TabsUI extends React.PureComponent<TabsUIProps> {
             />
           ))}
         </nav>
+        <div className={style.selectedIndicator} style={activeIndicatorRect} />
       </div>
     );
   }
