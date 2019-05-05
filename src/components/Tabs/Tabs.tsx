@@ -1,11 +1,8 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
-import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { KEY_CODES } from '../../common/constants';
 import { animate } from '../../common/animations';
-import { Tab } from './Tab';
 import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
 
@@ -30,7 +27,6 @@ export interface TabsProps {
 }
 
 interface TabsState {
-  scrollable: boolean;
   navButtons?: NavButtonOptions;
 }
 
@@ -53,10 +49,10 @@ export function isSelectKey(keyCode: number) {
 
 class Tabs extends React.PureComponent<TabsProps, TabsState> {
   private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
-  private _tabsEl: HTMLDivElement;
+  private readonly _navRef: React.RefObject<HTMLElement>;
+  private readonly _selectedTabRef: React.RefObject<HTMLDivElement>;
 
   state: TabsState = {
-    scrollable: false,
     navButtons: NavButtonOptions.none,
   };
 
@@ -72,10 +68,13 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
     super(props);
 
     this._wrapperRef = React.createRef<HTMLDivElement>();
+    this._navRef = React.createRef<HTMLElement>();
+    this._selectedTabRef = React.createRef<HTMLDivElement>();
   }
 
   componentDidMount() {
-    this._setScrollableIfNeeded();
+    // wrapped in setTimeout in order to let width calculations to be up to date
+    setTimeout(this._showNavButtonsIfNeeded, 100);
   }
 
   componentDidUpdate(prevProps: TabsProps) {
@@ -85,83 +84,41 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
       prevProps.skin !== this.props.skin ||
       prevProps.variant !== this.props.variant
     ) {
-      this._setScrollableIfNeeded();
+      this._showNavButtonsIfNeeded();
     } else if (prevProps.activeTabIndex !== this.props.activeTabIndex) {
       this._scrollToViewIfNeeded();
     }
   }
 
   _onResize = () => {
-    this._setScrollableIfNeeded();
+    this._showNavButtonsIfNeeded();
   };
 
-  _calculateNavigationWidth = () => {
-    let width = 0;
-
-    this._wrapperRef.current.querySelectorAll(`.${style.tab}`).forEach(tab => {
-      width += tab.clientWidth;
-    });
-
-    return width;
-  };
-
-  _shouldShowScroll() {
-    let shouldShowScroll = false;
-
-    if (this._wrapperRef.current) {
-      const navWidth = this._calculateNavigationWidth();
-      const wrapperWidth = this._wrapperRef.current.offsetWidth;
-      shouldShowScroll = navWidth > wrapperWidth;
-    }
-
-    return shouldShowScroll;
-  }
-
-  _scrollToViewIfNeeded() {
-    const { activeTabIndex } = this.props;
-    const currentTabElement = this._wrapperRef.current.querySelector(
-      `[data-index="${activeTabIndex}"]`,
-    ) as HTMLElement;
-    const tabsElement = this._getTabsElement();
+  _scrollToViewIfNeeded = () => {
+    const currentTabElement = this._selectedTabRef.current;
+    const tabsElement = this._wrapperRef.current;
     const leftLimit = tabsElement.scrollLeft;
     const rightLimit = leftLimit + tabsElement.clientWidth;
     const leftDelta = currentTabElement.offsetLeft - leftLimit;
     const rightDelta =
       currentTabElement.offsetLeft + currentTabElement.clientWidth - rightLimit;
-    let scroll = 0;
 
-    if (leftDelta < 0) {
-      scroll = -1;
-    } else if (rightDelta > 0) {
-      scroll = 1;
+    if (leftDelta < 0 || rightDelta > 0) {
+      this._animateScroll(currentTabElement.offsetLeft);
     }
-
-    this._scrollTabs(scroll);
-  }
-
-  _setScrollableIfNeeded = () => {
-    const { scrollable, navButtons } = this.state;
-    const shouldShowScroll = this._shouldShowScroll();
-    const newShowNavButtons = this._showNavButtons();
-    const newState = {} as TabsState;
-
-    if (shouldShowScroll !== scrollable) {
-      newState.scrollable = shouldShowScroll;
-    }
-
-    if (newShowNavButtons !== navButtons) {
-      newState.navButtons = newShowNavButtons;
-    }
-
-    this.setState(newState);
   };
 
-  _showNavButtons = () => {
-    const {
-      scrollWidth,
-      clientWidth,
-      scrollLeft,
-    } = this._wrapperRef.current.querySelector(`.${style.tabs}`);
+  _showNavButtonsIfNeeded = () => {
+    const { navButtons } = this.state;
+    const newShowNavButtons = this._shouldShowNavButtons();
+
+    if (newShowNavButtons !== navButtons) {
+      this.setState({ navButtons: newShowNavButtons });
+    }
+  };
+
+  _shouldShowNavButtons = () => {
+    const { scrollWidth, clientWidth, scrollLeft } = this._wrapperRef.current;
     let shouldShow = NavButtonOptions.none;
 
     if (scrollLeft > 0) {
@@ -178,30 +135,20 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
     return shouldShow;
   };
 
-  _onScroll = (e: React.SyntheticEvent) => {
-    const { navButtons } = this.state;
-    const newShowNavButtons = this._showNavButtons();
-
-    if (newShowNavButtons !== navButtons) {
-      this.setState({ navButtons: newShowNavButtons });
-    }
+  _onScroll = () => {
+    this._showNavButtonsIfNeeded();
   };
 
   _scrollTabs(direction: number) {
-    const tabsElement = this._getTabsElement();
+    const tabsElement = this._wrapperRef.current;
     const clientWidth = direction * tabsElement.clientWidth;
     const nextScrollLeft = tabsElement.scrollLeft + clientWidth;
-    animate('scrollLeft', tabsElement, nextScrollLeft);
+    this._animateScroll(nextScrollLeft);
   }
 
-  _getTabsElement() {
-    if (!this._tabsEl) {
-      this._tabsEl =
-        this._wrapperRef.current &&
-        this._wrapperRef.current.querySelector(`.${style.tabs}`);
-    }
-
-    return this._tabsEl;
+  _animateScroll(scrollLeft: number) {
+    const tabsElement = this._wrapperRef.current;
+    animate('scrollLeft', tabsElement, scrollLeft);
   }
 
   _onNavClickLeft = () => {
@@ -222,14 +169,16 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
   render() {
     const { items, activeTabIndex, skin, alignment, variant } = this.props;
-    const { scrollable, navButtons } = this.state;
-    const styleProps = { skin, alignment, variant, scrollable, navButtons };
+    const { navButtons } = this.state;
+    const styleProps = { skin, alignment, variant, navButtons };
 
     return (
       <div {...style('root', styleProps, this.props)}>
         <ReactResizeDetector handleWidth onResize={this._onResize} />
         <TabsUI
           wrapperRef={this._wrapperRef}
+          navRef={this._navRef}
+          selectedTabRef={this._selectedTabRef}
           items={items}
           onTabClick={this._selectTab}
           activeTabIndex={activeTabIndex}

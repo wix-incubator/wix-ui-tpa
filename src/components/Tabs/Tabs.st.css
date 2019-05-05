@@ -23,7 +23,7 @@
 }
 
 .root {
-    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), scrollable, navButtons(enum(none, left, right, both));
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both));
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
@@ -62,6 +62,7 @@
     align-items: center;
     overflow: auto;
     height: 100%;
+    position: relative;
 }
 
 .tabs::-webkit-scrollbar {
@@ -75,6 +76,11 @@
     overflow: hidden;
     flex: 1;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    min-width: 100%;
 }
 
 .tab {
@@ -83,27 +89,13 @@
     text-align: center;
     white-space: nowrap;
     height: 100%;
+    flex-shrink: 0;
 }
 
 .root:navButtons(right) .navBtn.navBtnRight,
 .root:navButtons(left) .navBtn.navBtnLeft,
 .root:navButtons(both) .navBtn {
     width: 35px;
-}
-
-.root:scrollable .tabs {
-    position: relative;
-}
-
-.root:scrollable .tabs nav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-}
-
-.root:scrollable .tab {
-    flex-shrink: 0;
 }
 
 .root:alignment(left) nav {

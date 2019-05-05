@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { isSelectKey } from './Tabs';
 import style from './Tabs.st.css';
 
-function Tab({ index, isActive, title, onClick }) {
+function Tab({ index, isActive, title, onClick, tabRef }) {
   const onSelectTab = () => {
     onClick(index);
   };
@@ -28,6 +28,7 @@ function Tab({ index, isActive, title, onClick }) {
         [style.activeTab]: isActive,
       })}
       tabIndex={0}
+      ref={tabRef}
     >
       {title}
     </div>

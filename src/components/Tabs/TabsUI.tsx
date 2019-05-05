@@ -21,22 +21,33 @@ interface TabsUIProps {
   onScroll(event: React.SyntheticEvent<HTMLDivElement>): void;
   onLeftNavClick(): void;
   onRightNavClick(): void;
-  wrapperRef: any; 
+  wrapperRef: React.RefObject<HTMLDivElement>;
+  navRef: React.RefObject<HTMLElement>;
+  selectedTabRef: React.RefObject<HTMLDivElement>;
 }
 
 class TabsUI extends React.PureComponent<TabsUIProps> {
   _getNavigationItems() {
-    const { items, activeTabIndex, onTabClick, onScroll } = this.props;
+    const {
+      items,
+      activeTabIndex,
+      onTabClick,
+      onScroll,
+      wrapperRef,
+      navRef,
+      selectedTabRef,
+    } = this.props;
 
     return (
-      <div className={style.tabs} onScroll={onScroll}>
-        <nav>
+      <div className={style.tabs} onScroll={onScroll} ref={wrapperRef}>
+        <nav ref={navRef}>
           {items.map((item, index) => (
             <Tab
               title={item.title}
               index={index}
               isActive={activeTabIndex === index}
               onClick={onTabClick}
+              tabRef={activeTabIndex === index ? selectedTabRef : null}
             />
           ))}
         </nav>
@@ -103,10 +114,8 @@ class TabsUI extends React.PureComponent<TabsUIProps> {
   }
 
   render() {
-    const { wrapperRef } = this.props;
-    
     return (
-      <div className={style.content} ref={wrapperRef}>
+      <div className={style.content}>
         {this._getLeftNavButton()}
         {this._getNavigationItems()}
         {this._getRightNavButton()}
