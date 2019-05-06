@@ -7,7 +7,7 @@ import { KEY_CODES } from '../../common/constants';
 import { Tab } from './Tab';
 import style from './Tabs.st.css';
 
-export function isSelectKey(keyCode: number) {
+function isSelectKey(keyCode: number) {
   switch (keyCode) {
     case KEY_CODES.ENTER:
     case KEY_CODES.SPACEBAR:
@@ -34,10 +34,11 @@ interface TabsUIProps {
   wrapperRef: React.RefObject<HTMLDivElement>;
   navRef: React.RefObject<HTMLElement>;
   selectedTabRef: React.RefObject<HTMLDivElement>;
+  rtl: boolean;
 }
 
 interface TabsUIRect {
-  left: number;
+  verticalPos: number;
   width: number;
 }
 
@@ -48,13 +49,13 @@ interface TabsUIState {
 class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   state = {
     activeIndicatorRect: {
-      left: 0,
+      verticalPos: 0,
       width: 0,
     },
   };
 
   componentDidMount() {
-    setTimeout(this._updateSelectedTabPosition, 100);
+    setTimeout(this._updateSelectedTabPosition, 200);
   }
 
   componentDidUpdate(prevProps) {
@@ -70,14 +71,17 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   _updateSelectedTabPosition = () => {
-    const { selectedTabRef } = this.props;
+    const { selectedTabRef, rtl, navRef } = this.props;
 
     if (selectedTabRef && selectedTabRef.current) {
       const newLeft = selectedTabRef.current.offsetLeft;
       const newWidth = selectedTabRef.current.offsetWidth;
+      const verticalPos = rtl
+        ? navRef.current.offsetWidth - (newLeft + newWidth)
+        : newLeft;
 
       this.setState({
-        activeIndicatorRect: { left: newLeft, width: newWidth },
+        activeIndicatorRect: { verticalPos, width: newWidth },
       });
     }
   };
@@ -102,12 +106,19 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
 
   _getNavigationItems() {
     const { activeIndicatorRect } = this.state;
-    const { items, onScroll, wrapperRef, navRef } = this.props;
+    const { items, onScroll, wrapperRef, navRef, rtl } = this.props;
+    const positionName = rtl ? 'right' : 'left';
+    const indicatorStyle = {
+      [positionName]: activeIndicatorRect.verticalPos,
+      width: activeIndicatorRect.width,
+    };
 
     return (
       <div className={style.tabs} onScroll={onScroll} ref={wrapperRef}>
-        <nav ref={navRef}>{items.map(this._getTabItem)}</nav>
-        <div className={style.selectedIndicator} style={activeIndicatorRect} />
+        <nav ref={navRef}>
+          {items.map(this._getTabItem)}
+          <div className={style.selectedIndicator} style={indicatorStyle} />
+        </nav>
       </div>
     );
   }
@@ -131,7 +142,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   _getLeftNavButton() {
-    const { onLeftNavClick } = this.props;
+    const { onLeftNavClick, rtl } = this.props;
 
     const onNavKeyDownLeft = (e: React.KeyboardEvent<HTMLDivElement>) => {
       const keyCode = e.keyCode;
@@ -143,7 +154,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
     };
 
     return this._getNavButton(
-      <ChevronLeft />,
+      rtl ? <ChevronRight /> : <ChevronLeft />,
       style.navBtnLeft,
       onLeftNavClick,
       onNavKeyDownLeft,
@@ -151,7 +162,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   _getRightNavButton() {
-    const { onRightNavClick } = this.props;
+    const { onRightNavClick, rtl } = this.props;
 
     const onNavKeyDownRight = (e: React.KeyboardEvent<HTMLDivElement>) => {
       const keyCode = e.keyCode;
@@ -163,7 +174,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
     };
 
     return this._getNavButton(
-      <ChevronRight />,
+      !rtl ? <ChevronRight /> : <ChevronLeft />,
       style.navBtnRight,
       onRightNavClick,
       onNavKeyDownRight,

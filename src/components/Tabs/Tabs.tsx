@@ -3,8 +3,8 @@ import isEqual from 'lodash/isEqual';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { animate } from '../../common/animations';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { TabsUI, isSelectKey } from './TabsUI';
+import { TPAComponentsContext } from '../TPAComponentsConfig';
+import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
 
 export interface TabItem {
@@ -42,6 +42,8 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
   private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
   private readonly _navRef: React.RefObject<HTMLElement>;
   private readonly _selectedTabRef: React.RefObject<HTMLDivElement>;
+
+  static contextType = TPAComponentsContext;
 
   state: TabsState = {
     navButtons: NavButtonOptions.none,
@@ -109,17 +111,20 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
   };
 
   _shouldShowNavButtons = () => {
+    const { rtl } = this.context;
     const { scrollWidth, clientWidth, scrollLeft } = this._wrapperRef.current;
+    const leftButton = rtl ? NavButtonOptions.right : NavButtonOptions.left;
+    const rightButton = rtl ? NavButtonOptions.left : NavButtonOptions.right;
     let shouldShow = NavButtonOptions.none;
 
-    if (scrollLeft > 0) {
-      shouldShow = NavButtonOptions.left;
+    if (Math.abs(scrollLeft) > 0) {
+      shouldShow = leftButton;
     }
 
-    if (scrollWidth > clientWidth + scrollLeft) {
+    if (scrollWidth > clientWidth + Math.abs(scrollLeft)) {
       shouldShow =
         shouldShow === NavButtonOptions.none
-          ? NavButtonOptions.right
+          ? rightButton
           : NavButtonOptions.both;
     }
 
@@ -131,10 +136,11 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
   };
 
   _scrollTabs(direction: number) {
+    const { rtl } = this.context;
     const tabsElement = this._wrapperRef.current;
     const clientWidth = direction * tabsElement.clientWidth;
     const nextScrollLeft = tabsElement.scrollLeft + clientWidth;
-    this._animateScroll(nextScrollLeft);
+    this._animateScroll((rtl ? -1 : 1) * nextScrollLeft);
   }
 
   _animateScroll(scrollLeft: number) {
@@ -158,31 +164,29 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
   };
 
   render() {
+    const { mobile, rtl } = this.context;
     const { items, activeTabIndex, skin, alignment, variant } = this.props;
     const { navButtons } = this.state;
     const styleProps = { skin, alignment, variant, navButtons };
 
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...style('root', { ...styleProps, mobile }, this.props)}>
-            <ReactResizeDetector handleWidth onResize={this._onResize} />
-            <TabsUI
-              wrapperRef={this._wrapperRef}
-              navRef={this._navRef}
-              selectedTabRef={this._selectedTabRef}
-              items={items}
-              onTabClick={this._selectTab}
-              activeTabIndex={activeTabIndex}
-              alignment={alignment}
-              variant={variant}
-              onScroll={this._onScroll}
-              onLeftNavClick={this._onNavClickLeft}
-              onRightNavClick={this._onNavClickRight}
-            />
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <div {...style('root', { ...styleProps, mobile, rtl }, this.props)}>
+        <ReactResizeDetector handleWidth onResize={this._onResize} />
+        <TabsUI
+          wrapperRef={this._wrapperRef}
+          navRef={this._navRef}
+          selectedTabRef={this._selectedTabRef}
+          items={items}
+          onTabClick={this._selectTab}
+          activeTabIndex={activeTabIndex}
+          alignment={alignment}
+          variant={variant}
+          onScroll={this._onScroll}
+          rtl={rtl}
+          onLeftNavClick={this._onNavClickLeft}
+          onRightNavClick={this._onNavClickRight}
+        />
+      </div>
     );
   }
 }

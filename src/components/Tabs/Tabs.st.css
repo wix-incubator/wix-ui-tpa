@@ -25,21 +25,12 @@
 }
 
 .root {
-    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile;
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile, rtl;
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
     width: 100%;
     height: value(tabsHeight);
-}
-
-.root:mobile {
-    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
-    line-height: 1.44em;
-}
-
-.root:mobile nav > .tab {
-    flex: 1;
 }
 
 .root,
@@ -147,4 +138,34 @@
 .root:skin(fullUnderline) .activeTab,
 .root:skin(fitUnderline) .activeTab {
     padding-bottom: 11px;
+}
+
+.root:mobile {
+    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
+    line-height: 1.44em;
+}
+
+.root:mobile nav > .tab {
+    flex: 1;
+}
+
+.root:rtl nav {
+    left: initial;
+    right: 0;
+}
+
+.root:rtl:alignment(left) nav {
+    justify-content: flex-end;
+}
+
+.root:rtl:alignment(right) nav {
+    justify-content: flex-start;
+}
+
+.root:rtl .selectedIndicator {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid;
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
+    transition: all .3s ease-in-out;
 }
