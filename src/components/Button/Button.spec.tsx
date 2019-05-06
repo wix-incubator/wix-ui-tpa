@@ -24,7 +24,9 @@ describe('Button', () => {
   });
 
   it('should use mobile design', async () => {
-    const driver = createDriver(TPAComponentsWrapper({mobile: true})(<Button />));
+    const driver = createDriver(
+      TPAComponentsWrapper({ mobile: true })(<Button />),
+    );
     expect(await driver.isMobile()).toEqual(true);
   });
 

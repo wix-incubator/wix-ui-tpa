@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { tabsDriverFactory } from './Tabs.driver';
-import { Tabs, SKIN } from './';
+import { Tabs, SKIN, ALIGNMENT, VARIANT } from './';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import { ALIGNMENT, VARIANT } from './constants';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Text', () => {
   const createDriver = createDriverFactory(tabsDriverFactory);
@@ -10,7 +10,7 @@ describe('Text', () => {
   const items = [{ title: 'some-title-1' }, { title: 'some-title-2' }];
 
   it('should render list of items with titles', () => {
-    driver = createDriver(<Tabs items={items} />);
+    driver = createDriver(<Tabs items={items} activeTabIndex={1} />);
 
     const expectedTitles = items.map(item => item.title);
     const receivedTitles = Array(items.length)
@@ -121,5 +121,15 @@ describe('Text', () => {
     );
 
     expect(driver.getVariant()).toBe('fullWidth');
+  });
+
+  it('should use mobile design', () => {
+    driver = createDriver(
+      TPAComponentsWrapper({ mobile: true })(
+        <Tabs items={items} activeTabIndex={0} />,
+      ),
+    );
+
+    expect(driver.isMobile()).toEqual(true);
   });
 });

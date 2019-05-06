@@ -3,7 +3,10 @@ import isEqual from 'lodash/isEqual';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { animate } from '../../common/animations';
-import { TPAComponentsContext } from '../TPAComponentsConfig';
+import {
+  TPAComponentsContext,
+  TPAComponentsConfig,
+} from '../TPAComponentsConfig';
 import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
 
@@ -38,12 +41,13 @@ const enum NavButtonOptions {
   none = 'none',
 }
 
-class Tabs extends React.PureComponent<TabsProps, TabsState> {
+class Tabs extends React.Component<TabsProps, TabsState> {
   private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
   private readonly _navRef: React.RefObject<HTMLElement>;
   private readonly _selectedTabRef: React.RefObject<HTMLDivElement>;
 
   static contextType = TPAComponentsContext;
+  context!: React.ContextType<typeof TPAComponentsContext>;
 
   state: TabsState = {
     navButtons: NavButtonOptions.none,

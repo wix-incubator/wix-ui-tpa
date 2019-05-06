@@ -61,7 +61,9 @@ describe('Card', () => {
   });
 
   it('should use mobile design', async () => {
-    const driver = createDriver(TPAComponentsWrapper({mobile: true})(<Card invertInfoPosition />));
+    const driver = createDriver(
+      TPAComponentsWrapper({ mobile: true })(<Card invertInfoPosition />),
+    );
     expect(await driver.isMobile()).toEqual(true);
   });
 
