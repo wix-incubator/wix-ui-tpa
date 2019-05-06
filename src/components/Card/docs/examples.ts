@@ -131,7 +131,7 @@ export const invertPosition = `
 `;
 
 export const stackedMobile = `
-<WixUiTpaConfigProvider value={{mobile: true}}>
+<TPAComponentsProvider value={{mobile: true}}>
   <Card
     ratio={CardRatioOptions.RATIO_40_60}
     isMobile
@@ -149,5 +149,5 @@ export const stackedMobile = `
         </div>
       </div>
   }/>
-</WixUiTpaConfigProvider>
+</TPAComponentsProvider>
 `;

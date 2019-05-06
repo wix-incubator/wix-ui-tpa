@@ -2,7 +2,7 @@ import * as React from 'react';
 import { tabsDriverFactory } from './Tabs.driver';
 import { ALIGNMENT, SKIN, Tabs, VARIANT } from './';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
-import { WixUiTpaConfigWrapper } from '../WixUiTpaConfig';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Text', () => {
   const createDriver = createDriverFactory(tabsDriverFactory);
@@ -125,7 +125,7 @@ describe('Text', () => {
 
   it('should use mobile design', () => {
     driver = createDriver(
-      WixUiTpaConfigWrapper({mobile: true})(<Tabs items={items} activeTabIndex={0} />),
+      TPAComponentsWrapper({mobile: true})(<Tabs items={items} activeTabIndex={0} />),
     );
 
     expect(driver.isMobile()).toEqual(true);

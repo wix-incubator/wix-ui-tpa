@@ -7,7 +7,7 @@ import { mount } from 'enzyme';
 import { buttonTestkitFactory } from '../../testkit';
 import { buttonTestkitFactory as enzymeButtonTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { WixUiTpaConfigWrapper } from '../WixUiTpaConfig';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Button', () => {
   const createDriver = createUniDriverFactory(buttonDriverFactory);
@@ -24,7 +24,7 @@ describe('Button', () => {
   });
 
   it('should use mobile design', async () => {
-    const driver = createDriver(WixUiTpaConfigWrapper({mobile: true})(<Button />));
+    const driver = createDriver(TPAComponentsWrapper({mobile: true})(<Button />));
     expect(await driver.isMobile()).toEqual(true);
   });
 

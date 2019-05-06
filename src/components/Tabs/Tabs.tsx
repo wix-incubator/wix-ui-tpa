@@ -2,9 +2,9 @@ import * as React from 'react';
 import style from './Tabs.st.css';
 import classNames from 'classnames';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
-import { withWixUiTpaConfig, WixUiTpaConfigProps } from '../WixUiTpaConfig';
+import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
 
-export interface TabsProps extends WixUiTpaConfigProps {
+export interface TabsProps {
   /** tabs to be displayed */
   items: TabItem[];
   /** callback function when tab is selected , returning the selected TabItem */
@@ -45,36 +45,42 @@ const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
   );
 };
 
-const Tabs = withWixUiTpaConfig<TabsProps>(props => {
-  const {
-    items,
-    activeTabIndex,
-    onTabClick,
-    skin,
-    alignment,
-    variant,
-    mobile,
-  } = props;
-  return (
-    <div
-      {...style('root', { skin, alignment, variant, mobile }, props)}
-    >
-      <nav>
-        {items.map((item, index) =>
-          renderTabItem({ item, index, onTabClick, activeTabIndex }),
-        )}
-      </nav>
-    </div>
-  );
-});
+export class Tabs extends React.Component<TabsProps> {
+  static contextType = TPAComponentsContext;
+  static displayName = 'Tabs';
+  static defaultProps = {
+    onTabClick: (tabIndex: number) => {},
+    skin: SKIN.fullUnderline,
+    alignment: ALIGNMENT.center,
+    variant: VARIANT.fit,
+  };
 
-Tabs.displayName = 'Tabs';
+  render() {
+    const {
+      items,
+      activeTabIndex,
+      onTabClick,
+      skin,
+      alignment,
+      variant,
+      ...rest
+    } = this.props;
 
-Tabs.defaultProps = {
-  onTabClick: (tabIndex: number) => {},
-  skin: SKIN.fullUnderline,
-  alignment: ALIGNMENT.center,
-  variant: VARIANT.fit,
-};
+    return (
+      <TPAComponentsConsumer>
+        {
+          ({mobile}) => <div
+            {...style('root', { skin, alignment, variant, mobile }, rest)}
+          >
+            <nav>
+              {items.map((item, index) =>
+                renderTabItem({ item, index, onTabClick, activeTabIndex }),
+              )}
+            </nav>
+          </div>
+        }
+      </TPAComponentsConsumer>
+    );
+  }
+}
 
-export { Tabs };
