@@ -1,0 +1,16 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: {%ComponentName%};
+}
+
+:import {
+    -st-from: "../../palette.st.css";
+    -st-named: errorColor;
+}
+
+

@@ -38,7 +38,8 @@
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
     "storybook:build": "build-storybook  -s ./src/assets",
-    "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css"
+    "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css",
+    "generate": "wuf generate"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -73,6 +74,7 @@
     "wix-base-ui": "latest",
     "wix-storybook-utils": "^2.0.40",
     "wix-style-processor": "latest",
+    "wix-ui-framework": "^1.2.1",
     "wix-ui-test-utils": "^1.0.0",
     "yoshi": "^3.28.0",
     "yoshi-style-dependencies": "^3.16.0"
@@ -97,6 +99,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/node_modules/",
+      "<rootDir>/generator",
       "/src/.*\\.browser\\.spec\\.(ts|tsx)$"
     ],
     "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
