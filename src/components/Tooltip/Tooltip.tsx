@@ -22,7 +22,7 @@ export class Tooltip extends React.Component {
       <CoreTooltip
         {...tooltipStyles('root', {}, this.props)}
         {...this.props}
-        timeout={200}
+        timeout={{ enter: 120, exit: 80 }}
         customArrow={customArrow}
       />
     );
