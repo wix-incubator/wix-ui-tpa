@@ -1,11 +1,12 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
 import { ALIGNMENT, VARIANT } from './constants';
 import { KEY_CODES } from '../../common/constants';
 import { Tab } from './Tab';
 import style from './Tabs.st.css';
+
+const isEqual = require('lodash/isEqual');
 
 export function isSelectKey(keyCode: number) {
   switch (keyCode) {

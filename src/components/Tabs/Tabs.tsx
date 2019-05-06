@@ -1,5 +1,4 @@
 import * as React from 'react';
-import isEqual from 'lodash/isEqual';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { animate } from '../../common/animations';
@@ -9,6 +8,8 @@ import {
 } from '../TPAComponentsConfig';
 import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
+
+const isEqual = require('lodash/isEqual');
 
 export interface TabItem {
   /** Title of the tab */
