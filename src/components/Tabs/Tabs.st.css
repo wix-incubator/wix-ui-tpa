@@ -5,6 +5,7 @@
 
 :vars {
     tabsHeight: 52px;
+    navBtnWidth: 35px;
 }
 
 :vars {
@@ -103,7 +104,7 @@
 .root:navButtons(right) .navBtn.navBtnRight,
 .root:navButtons(left) .navBtn.navBtnLeft,
 .root:navButtons(both) .navBtn {
-    width: 35px;
+    width: value(navBtnWidth);
 }
 
 .root:alignment(left) nav {

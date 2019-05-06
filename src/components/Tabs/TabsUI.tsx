@@ -1,6 +1,8 @@
 import * as React from 'react';
+import isEqual from 'lodash/isEqual';
 import classNames from 'classnames';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
+import { ALIGNMENT, VARIANT } from './constants';
 import { Tab } from './Tab';
 import style from './Tabs.st.css';
 import { isSelectKey } from './Tabs';
@@ -14,6 +16,8 @@ interface TabsUIProps {
   items: TabItem[];
   onTabClick?(index: number): void;
   activeTabIndex?: number;
+  alignment?: ALIGNMENT;
+  variant?: VARIANT;
   onScroll(event: React.SyntheticEvent<HTMLDivElement>): void;
   onLeftNavClick(): void;
   onRightNavClick(): void;
@@ -44,7 +48,13 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.activeTabIndex !== this.props.activeTabIndex) {
+    if (
+      prevProps.activeTabIndex !== this.props.activeTabIndex ||
+      !isEqual(prevProps.items, this.props.items) ||
+      prevProps.alignment !== this.props.alignment ||
+      !isEqual(prevProps.items, this.props.items) ||
+      prevProps.variant !== this.props.variant
+    ) {
       this._updateSelectedTabPosition();
     }
   }
@@ -62,31 +72,31 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
     }
   };
 
+  _getTabItem = (item: TabItem, index: number) => {
+    const { activeTabIndex, onTabClick, selectedTabRef } = this.props;
+    const isActive = activeTabIndex === index;
+
+    return (
+      <Tab
+        key={`${item.title}-${index}`}
+        title={item.title}
+        index={index}
+        className={classNames(style.tab, {
+          [style.activeTab]: isActive,
+        })}
+        onClick={onTabClick}
+        tabRef={isActive ? selectedTabRef : null}
+      />
+    );
+  };
+
   _getNavigationItems() {
     const { activeIndicatorRect } = this.state;
-    const {
-      items,
-      activeTabIndex,
-      onTabClick,
-      onScroll,
-      wrapperRef,
-      navRef,
-      selectedTabRef,
-    } = this.props;
+    const { items, onScroll, wrapperRef, navRef } = this.props;
 
     return (
       <div className={style.tabs} onScroll={onScroll} ref={wrapperRef}>
-        <nav ref={navRef}>
-          {items.map((item, index) => (
-            <Tab
-              title={item.title}
-              index={index}
-              isActive={activeTabIndex === index}
-              onClick={onTabClick}
-              tabRef={activeTabIndex === index ? selectedTabRef : null}
-            />
-          ))}
-        </nav>
+        <nav ref={navRef}>{items.map(this._getTabItem)}</nav>
         <div className={style.selectedIndicator} style={activeIndicatorRect} />
       </div>
     );

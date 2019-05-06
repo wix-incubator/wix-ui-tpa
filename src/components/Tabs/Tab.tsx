@@ -1,9 +1,7 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import { isSelectKey } from './Tabs';
-import style from './Tabs.st.css';
 
-function Tab({ index, isActive, title, onClick, tabRef }) {
+function Tab({ index, className, title, onClick, tabRef }) {
   const onSelectTab = () => {
     onClick(index);
   };
@@ -24,9 +22,7 @@ function Tab({ index, isActive, title, onClick, tabRef }) {
       key={`${title}-${index}`}
       onClick={onSelectTab}
       onKeyDown={onKeyDown}
-      className={classNames(style.tab, {
-        [style.activeTab]: isActive,
-      })}
+      className={className}
       tabIndex={0}
       ref={tabRef}
     >

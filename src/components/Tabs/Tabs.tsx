@@ -1,4 +1,5 @@
 import * as React from 'react';
+import isEqual from 'lodash/isEqual';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { KEY_CODES } from '../../common/constants';
@@ -79,7 +80,7 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
   componentDidUpdate(prevProps: TabsProps) {
     if (
-      prevProps.items !== this.props.items ||
+      !isEqual(prevProps.items, this.props.items) ||
       prevProps.alignment !== this.props.alignment ||
       prevProps.skin !== this.props.skin ||
       prevProps.variant !== this.props.variant
@@ -147,8 +148,7 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
   }
 
   _animateScroll(scrollLeft: number) {
-    const tabsElement = this._wrapperRef.current;
-    animate('scrollLeft', tabsElement, scrollLeft);
+    animate('scrollLeft', this._wrapperRef.current, scrollLeft);
   }
 
   _onNavClickLeft = () => {
@@ -182,6 +182,8 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
           items={items}
           onTabClick={this._selectTab}
           activeTabIndex={activeTabIndex}
+          alignment={alignment}
+          variant={variant}
           onScroll={this._onScroll}
           onLeftNavClick={this._onNavClickLeft}
           onRightNavClick={this._onNavClickRight}
