@@ -2,6 +2,7 @@ import * as React from 'react';
 import style from './Tabs.st.css';
 import classNames from 'classnames';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
+import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
 
 export interface TabsProps {
   /** tabs to be displayed */
@@ -44,24 +45,42 @@ const renderTabItem = ({ item, index, onTabClick, activeTabIndex }) => {
   );
 };
 
-const Tabs = props => {
-  const { items, activeTabIndex, onTabClick, skin, alignment, variant } = props;
-  return (
-    <div {...style('root', { skin, alignment, variant }, props)}>
-      <nav>
-        {items.map((item, index) =>
-          renderTabItem({ item, index, onTabClick, activeTabIndex }),
-        )}
-      </nav>
-    </div>
-  );
-};
+export class Tabs extends React.Component<TabsProps> {
+  static contextType = TPAComponentsContext;
+  static displayName = 'Tabs';
+  static defaultProps = {
+    onTabClick: (tabIndex: number) => {},
+    skin: SKIN.fullUnderline,
+    alignment: ALIGNMENT.center,
+    variant: VARIANT.fit,
+  };
 
-Tabs.defaultProps = {
-  onTabClick: (tabIndex: number) => {},
-  skin: SKIN.fullUnderline,
-  alignment: ALIGNMENT.center,
-  variant: VARIANT.fit,
-};
+  render() {
+    const {
+      items,
+      activeTabIndex,
+      onTabClick,
+      skin,
+      alignment,
+      variant,
+      ...rest
+    } = this.props;
 
-export { Tabs };
+    return (
+      <TPAComponentsConsumer>
+        {
+          ({mobile}) => <div
+            {...style('root', { skin, alignment, variant, mobile }, rest)}
+          >
+            <nav>
+              {items.map((item, index) =>
+                renderTabItem({ item, index, onTabClick, activeTabIndex }),
+              )}
+            </nav>
+          </div>
+        }
+      </TPAComponentsConsumer>
+    );
+  }
+}
+

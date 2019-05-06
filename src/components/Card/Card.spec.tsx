@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import { cardTestkitFactory } from '../../testkit';
 import { cardTestkitFactory as enzymeCardTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Card', () => {
   const createDriver = createUniDriverFactory(cardDriverFactory);
@@ -57,6 +58,11 @@ describe('Card', () => {
   it('should invert the image position', async () => {
     const driver = createDriver(<Card invertInfoPosition />);
     expect(await driver.isImagePositionInverted()).toEqual(true);
+  });
+
+  it('should use mobile design', async () => {
+    const driver = createDriver(TPAComponentsWrapper({mobile: true})(<Card invertInfoPosition />));
+    expect(await driver.isMobile()).toEqual(true);
   });
 
   describe('testkit', () => {

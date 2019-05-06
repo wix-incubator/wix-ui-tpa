@@ -11,6 +11,10 @@
     RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     ListTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '2em'}";
     LargeTitleFont: "{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}";
+    MobileSmallTitleFont: "{theme: 'Page-title', size: '20px', lineHeight: '1.4em'}";
+    MobileRunningTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.42em'}";
+    MobileListTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.72em'}";
+    MobileLargeTitleFont: "{theme: 'Heading-M', size: '24px', lineHeight: '1.33em'}";
 }
 
 :vars {
@@ -19,7 +23,7 @@
 }
 
 .root {
-    -st-states: typography(enum(smallTitle, runningText, listText, largeTitle));
+    -st-states: typography(enum(smallTitle, runningText, listText, largeTitle)), mobile;
 }
 
 .root:typography(smallTitle) {
@@ -40,4 +44,24 @@
 .root:typography(largeTitle) {
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(LargeTitleFont)));
+}
+
+.root:mobile:typography(smallTitle) {
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileSmallTitleFont)));
+}
+
+.root:mobile:typography(runningText) {
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileRunningTextFont)));
+}
+
+.root:mobile:typography(listText) {
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileListTextFont)));
+}
+
+.root:mobile:typography(largeTitle) {
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileLargeTitleFont)));
 }

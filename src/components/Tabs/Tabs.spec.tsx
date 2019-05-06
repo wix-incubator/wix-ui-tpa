@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { tabsDriverFactory } from './Tabs.driver';
-import { Tabs } from './';
+import { ALIGNMENT, SKIN, Tabs, VARIANT } from './';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Text', () => {
   const createDriver = createDriverFactory(tabsDriverFactory);
@@ -9,7 +10,7 @@ describe('Text', () => {
   const items = [{ title: 'some-title-1' }, { title: 'some-title-2' }];
 
   it('should render list of items with titles', () => {
-    driver = createDriver(<Tabs items={items} />);
+    driver = createDriver(<Tabs items={items} activeTabIndex={1} />);
 
     const expectedTitles = items.map(item => item.title);
     const receivedTitles = Array(items.length)
@@ -68,7 +69,7 @@ describe('Text', () => {
 
   it('should have divider when skin prop is "fullUnderline"', () => {
     driver = createDriver(
-      <Tabs items={items} activeTabIndex={0} skin="fullUnderline" />,
+      <Tabs items={items} activeTabIndex={0} skin={SKIN.fullUnderline} />,
     );
 
     expect(driver.getSkin()).toBe('fullUnderline');
@@ -76,7 +77,7 @@ describe('Text', () => {
 
   it('should not have divider when skin prop is "clear"', () => {
     driver = createDriver(
-      <Tabs items={items} activeTabIndex={0} skin="clear" />,
+      <Tabs items={items} activeTabIndex={0} skin={SKIN.clear} />,
     );
 
     expect(driver.getSkin()).toBe('clear');
@@ -84,7 +85,7 @@ describe('Text', () => {
 
   it('should have divider that fits tab width when skin prop is "fitUnderline"', () => {
     driver = createDriver(
-      <Tabs items={items} activeTabIndex={0} skin="fitUnderline" />,
+      <Tabs items={items} activeTabIndex={0} skin={SKIN.fitUnderline} />,
     );
 
     expect(driver.getSkin()).toBe('fitUnderline');
@@ -92,7 +93,7 @@ describe('Text', () => {
 
   it('should align content to left when alignment prop is "left"', () => {
     driver = createDriver(
-      <Tabs items={items} activeTabIndex={0} alignment="left" />,
+      <Tabs items={items} activeTabIndex={0} alignment={ALIGNMENT.left} />,
     );
 
     expect(driver.getAlignment()).toBe('left');
@@ -100,7 +101,7 @@ describe('Text', () => {
 
   it('should align content to right when alignment prop is "right"', () => {
     driver = createDriver(
-      <Tabs items={items} activeTabIndex={0} alignment="right" />,
+      <Tabs items={items} activeTabIndex={0} alignment={ALIGNMENT.right} />,
     );
 
     expect(driver.getAlignment()).toBe('right');
@@ -108,7 +109,7 @@ describe('Text', () => {
 
   it('should align content to center when alignment prop is "center"', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={0} alignment="center" />,
+      <Tabs items={items} activeTabIndex={0} alignment={ALIGNMENT.center} />,
     );
 
     expect(driver.getAlignment()).toBe('center');
@@ -116,9 +117,17 @@ describe('Text', () => {
 
   it('should set tabs on all content width', () => {
     driver = createDriver(
-      <Tabs items={items} activeId={0} variant="fullWidth" />,
+      <Tabs items={items} activeTabIndex={0} variant={VARIANT.fullWidth} />,
     );
 
     expect(driver.getVariant()).toBe('fullWidth');
+  });
+
+  it('should use mobile design', () => {
+    driver = createDriver(
+      TPAComponentsWrapper({mobile: true})(<Tabs items={items} activeTabIndex={0} />),
+    );
+
+    expect(driver.isMobile()).toEqual(true);
   });
 });

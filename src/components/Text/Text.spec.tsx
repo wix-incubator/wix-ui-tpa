@@ -7,6 +7,7 @@ import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { textTestkitFactory } from '../../testkit';
 import { textTestkitFactory as enzymeTextTestkitFactory } from '../../testkit/enzyme';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Text', () => {
   const createDriver = createDriverFactory(textDriverFactory);
@@ -76,6 +77,12 @@ describe('Text', () => {
     driver = createDriver(<Text />);
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
+  });
+
+  it('should use mobile design', () => {
+    driver = createDriver(TPAComponentsWrapper({mobile: true})(<Text />));
+
+    expect(driver.isMobile()).toEqual(true);
   });
 
   describe('testkit', () => {

@@ -20,6 +20,12 @@ export const sideBySide = `
         <Text typography={TYPOGRAPHY.smallTitle}>SIDE BY SIDE</Text>
       </div>
       <div style={{margin: '10px 0'}}><Divider/></div>
+      <div style={{marginBottom: '5px'}}>
+        <Text>min width 700px</Text>
+      </div>
+      <div style={{marginBottom: '5px'}}>
+        <Text>info padding 60px</Text>
+      </div>
       <div style={{marginTop: '20px'}}>
         <Button >Book</Button>
       </div>
@@ -37,15 +43,12 @@ export const stacked = `
       <div style={{marginBottom: '10px'}}>
         <Text typography={TYPOGRAPHY.smallTitle}>STACKED</Text>
       </div>
-      <div style={{marginBottom: '10px'}}>
-        <Text typography={TYPOGRAPHY.runningText}>Tagline</Text>
-      </div>
       <div style={{margin: '10px 0'}}><Divider/></div>
       <div style={{marginBottom: '5px'}}>
-        <Text typography={TYPOGRAPHY.runningText}>Lorem ipsum dolor sit amet.</Text>
+        <Text>min width 130px</Text>
       </div>
       <div style={{marginBottom: '5px'}}>
-        <Text typography={TYPOGRAPHY.runningText}>Lorem ipsum dolor sit amet.</Text>
+        <Text>info padding 32px</Text>
       </div>
       <div style={{marginTop: '20px'}}>
         <Button >Book</Button>
@@ -125,4 +128,26 @@ export const invertPosition = `
       <Text typography={TYPOGRAPHY.largeTitle}>INVERT INFO MEDIA POSITIONS</Text>
     </div>
   }/>
+`;
+
+export const stackedMobile = `
+<TPAComponentsProvider value={{mobile: true}}>
+  <Card
+    ratio={CardRatioOptions.RATIO_40_60}
+    isMobile
+    mediaAspectRatio={16 / 9}
+    stacked
+    media={${imageComponent(560, 330)}}
+    info={
+      <div>
+        <Text typography={TYPOGRAPHY.largeTitle}>STACKED ON MOBILE</Text>
+        <div style={{marginBottom: '5px'}}>
+          <Text>min width 130px</Text>
+        </div>
+        <div style={{marginBottom: '5px'}}>
+          <Text>info padding 20px</Text>
+        </div>
+      </div>
+  }/>
+</TPAComponentsProvider>
 `;

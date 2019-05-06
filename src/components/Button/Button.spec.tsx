@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import { buttonTestkitFactory } from '../../testkit';
 import { buttonTestkitFactory as enzymeButtonTestkitFactory } from '../../testkit/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
+import { TPAComponentsWrapper } from '../../test/utils';
 
 describe('Button', () => {
   const createDriver = createUniDriverFactory(buttonDriverFactory);
@@ -20,6 +21,11 @@ describe('Button', () => {
   it('should set to fullWidth', async () => {
     const driver = createDriver(<Button fullWidth />);
     expect(await driver.isFullWidth()).toEqual(true);
+  });
+
+  it('should use mobile design', async () => {
+    const driver = createDriver(TPAComponentsWrapper({mobile: true})(<Button />));
+    expect(await driver.isMobile()).toEqual(true);
   });
 
   describe('testkit', () => {

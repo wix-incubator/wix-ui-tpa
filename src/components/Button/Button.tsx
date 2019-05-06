@@ -2,6 +2,7 @@ import * as React from 'react';
 import style from './Button.st.css';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
+import { TPAComponentsContext, TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export enum PRIORITY {
   basic = 'basic',
@@ -22,19 +23,29 @@ export interface ButtonProps extends ButtonNextProps {
   fullWidth?: boolean;
 }
 
-const Button = ({ priority, size, fullWidth, ...rest }: ButtonProps) => (
-  <ButtonNext
-    {...rest}
-    {...style('root', { priority, size, fullWidth }, rest)}
-  />
-);
+export class Button extends React.Component<ButtonProps> {
+  static contextType = TPAComponentsContext;
+  static displayName = 'Button';
+  static defaultProps = {
+    priority: PRIORITY.basic,
+    size: SIZE.medium,
+    fullWidth: false,
+  };
 
-Button.displayName = 'Button';
-
-Button.defaultProps = {
-  priority: PRIORITY.basic,
-  size: SIZE.medium,
-  fullWidth: false,
-};
-
-export { Button };
+  render() {
+    const {
+      priority,
+      size,
+      fullWidth,
+      ...rest
+    } = this.props;
+    return (
+      <TPAComponentsConsumer>
+        {({mobile}) => <ButtonNext
+          {...rest}
+          {...style('root', { priority, size, fullWidth, mobile }, rest)}
+        />}
+      </TPAComponentsConsumer>
+    );
+  }
+}

@@ -1,35 +1,46 @@
 import * as React from 'react';
 import style from './Text.st.css';
 import { DEFAULT_TAG_NAME, TYPOGRAPHY } from './constants';
+import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
 
 export interface TextProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
 }
 
-const CoreText: React.FunctionComponent<TextProps> = ({
-  typography,
-  tagName,
-  children,
-  ...rest
-}) =>
-  React.createElement(
-    tagName || DEFAULT_TAG_NAME,
-    {
-      ...style(
-        'root',
-        {
-          typography,
-        },
-        rest,
-      ),
-    },
-    children,
-  );
+export class Text extends React.Component<TextProps> {
+  static contextType = TPAComponentsContext;
+  static displayName = 'Text';
+  static defaultProps = {
+    typography: TYPOGRAPHY.runningText,
+  };
 
-CoreText.defaultProps = {
-  typography: TYPOGRAPHY.runningText,
-  tagName: DEFAULT_TAG_NAME,
-};
+  render() {
+    const {
+      typography,
+      tagName,
+      children,
+      ...rest
+    } = this.props;
 
-export const Text: React.FunctionComponent<TextProps> = CoreText;
+    return (
+      <TPAComponentsConsumer>
+        {({mobile}) =>
+          React.createElement(
+            tagName || DEFAULT_TAG_NAME,
+            {
+              ...style(
+                'root',
+                {
+                  typography,
+                  mobile,
+                },
+                rest,
+              ),
+            },
+            children,
+          )}
+      </TPAComponentsConsumer>
+    );
+  }
+}

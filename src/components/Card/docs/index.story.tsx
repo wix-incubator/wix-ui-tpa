@@ -55,6 +55,9 @@ export default {
     media: mediaExamples[0].value,
     info: infoExample,
     'data-hook': 'storybook-Card',
+    flippedRatio: false,
+    invertInfoPosition: false,
+    stacked: false,
   }),
   exampleProps: {
     media: mediaExamples,
@@ -77,6 +80,7 @@ export default {
           ...[
             { title: 'Side By Side', source: examples.sideBySide },
             { title: 'Stacked', source: examples.stacked },
+            { title: 'Stacked On Mobile', source: examples.stackedMobile },
             { title: 'Ratios', source: examples.ratio },
             { title: 'Flipped Ratios', source: examples.flippedRatio },
             {

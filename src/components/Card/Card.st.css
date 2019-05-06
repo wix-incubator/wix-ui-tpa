@@ -33,11 +33,12 @@
 
 :vars {
     infoPadding: 60px;
-    negativeInfoPadding: -60px;
+    stackedInfoPadding: 32px;
+    mobileInfoPadding: 20px;
 }
 
 .root {
-    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked, mediaAspectRatio;
+    -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked, mediaAspectRatio, mobile;
     display: flex;
     box-sizing: border-box;
     width: 100%;
@@ -45,10 +46,17 @@
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     );
+    min-width: 700px;
+}
+
+.root:stacked:invertInfoPosition:mobile,
+.root:stacked:mobile,
+.root:stacked {
+    flex-direction: column;
 }
 
 .root:stacked {
-    flex-direction: column;
+    min-width: 130px;
 }
 
 .root:invertInfoPosition {
@@ -122,6 +130,20 @@
     background-color: value(infoBGColor);
     -st-mixin: withDynamicPadding(
             PaddingSize value(infoPadding),
+            BorderWidth value(borderWidth)
+    );
+}
+
+.root:stacked > .infoContainer {
+    -st-mixin: withDynamicPadding(
+            PaddingSize value(stackedInfoPadding),
+            BorderWidth value(borderWidth)
+    );
+}
+
+.root:mobile > .infoContainer {
+    -st-mixin: withDynamicPadding(
+            PaddingSize value(mobileInfoPadding),
             BorderWidth value(borderWidth)
     );
 }
