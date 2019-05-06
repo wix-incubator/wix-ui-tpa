@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isSelectKey } from './Tabs';
+import { isSelectKey } from './TabsUI';
 
 function Tab({ index, className, title, onClick, tabRef }) {
   const onSelectTab = () => {

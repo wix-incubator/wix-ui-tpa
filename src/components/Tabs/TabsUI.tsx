@@ -7,7 +7,7 @@ import { KEY_CODES } from '../../common/constants';
 import { Tab } from './Tab';
 import style from './Tabs.st.css';
 
-function isSelectKey(keyCode: number) {
+export function isSelectKey(keyCode: number) {
   switch (keyCode) {
     case KEY_CODES.ENTER:
     case KEY_CODES.SPACEBAR:
