@@ -2,9 +2,9 @@ import * as React from 'react';
 import isEqual from 'lodash/isEqual';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
-import { KEY_CODES } from '../../common/constants';
 import { animate } from '../../common/animations';
-import { TabsUI } from './TabsUI';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { TabsUI, isSelectKey } from './TabsUI';
 import style from './Tabs.st.css';
 
 export interface TabItem {
@@ -36,16 +36,6 @@ const enum NavButtonOptions {
   left = 'left',
   right = 'right',
   none = 'none',
-}
-
-export function isSelectKey(keyCode: number) {
-  switch (keyCode) {
-    case KEY_CODES.ENTER:
-    case KEY_CODES.SPACEBAR:
-      return true;
-    default:
-      return false;
-  }
 }
 
 class Tabs extends React.PureComponent<TabsProps, TabsState> {
@@ -173,22 +163,26 @@ class Tabs extends React.PureComponent<TabsProps, TabsState> {
     const styleProps = { skin, alignment, variant, navButtons };
 
     return (
-      <div {...style('root', styleProps, this.props)}>
-        <ReactResizeDetector handleWidth onResize={this._onResize} />
-        <TabsUI
-          wrapperRef={this._wrapperRef}
-          navRef={this._navRef}
-          selectedTabRef={this._selectedTabRef}
-          items={items}
-          onTabClick={this._selectTab}
-          activeTabIndex={activeTabIndex}
-          alignment={alignment}
-          variant={variant}
-          onScroll={this._onScroll}
-          onLeftNavClick={this._onNavClickLeft}
-          onRightNavClick={this._onNavClickRight}
-        />
-      </div>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div {...style('root', { ...styleProps, mobile }, this.props)}>
+            <ReactResizeDetector handleWidth onResize={this._onResize} />
+            <TabsUI
+              wrapperRef={this._wrapperRef}
+              navRef={this._navRef}
+              selectedTabRef={this._selectedTabRef}
+              items={items}
+              onTabClick={this._selectTab}
+              activeTabIndex={activeTabIndex}
+              alignment={alignment}
+              variant={variant}
+              onScroll={this._onScroll}
+              onLeftNavClick={this._onNavClickLeft}
+              onRightNavClick={this._onNavClickRight}
+            />
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }

@@ -12,6 +12,7 @@
     /*Constance*/
     defaultTabColor: color-5;
     defaultTabFont: "{theme: 'Body-M', size: '16px'}";
+    defaultMobileTabFont: "{theme: 'Body-M', size: '14px'}";
     defaultSelectedTabIndicatorColor: color-8;
     defaultIndicatorColor: color-5;
 }
@@ -24,12 +25,21 @@
 }
 
 .root {
-    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both));
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile;
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
     width: 100%;
     height: value(tabsHeight);
+}
+
+.root:mobile {
+    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
+    line-height: 1.44em;
+}
+
+.root:mobile nav > .tab {
+    flex: 1;
 }
 
 .root,
