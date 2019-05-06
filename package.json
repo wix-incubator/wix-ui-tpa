@@ -44,6 +44,8 @@
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
     "classnames": "^2.2.6",
+    "lodash": "^4.17.11",
+    "react-resize-detector": "^4.1.3",
     "wix-ui-core": "^2.0.66",
     "wix-ui-icons-common": "^2.0.0"
   },

@@ -80,7 +80,7 @@ describe('Text', () => {
   });
 
   it('should use mobile design', () => {
-    driver = createDriver(TPAComponentsWrapper({mobile: true})(<Text />));
+    driver = createDriver(TPAComponentsWrapper({ mobile: true })(<Text />));
 
     expect(driver.isMobile()).toEqual(true);
   });

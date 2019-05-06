@@ -1,7 +1,10 @@
 import * as React from 'react';
 import style from './Text.st.css';
 import { DEFAULT_TAG_NAME, TYPOGRAPHY } from './constants';
-import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
+import {
+  TPAComponentsConsumer,
+  TPAComponentsContext,
+} from '../TPAComponentsConfig';
 
 export interface TextProps {
   typography?: TYPOGRAPHY;
@@ -16,16 +19,11 @@ export class Text extends React.Component<TextProps> {
   };
 
   render() {
-    const {
-      typography,
-      tagName,
-      children,
-      ...rest
-    } = this.props;
+    const { typography, tagName, children, ...rest } = this.props;
 
     return (
       <TPAComponentsConsumer>
-        {({mobile}) =>
+        {({ mobile }) =>
           React.createElement(
             tagName || DEFAULT_TAG_NAME,
             {
@@ -39,7 +37,8 @@ export class Text extends React.Component<TextProps> {
               ),
             },
             children,
-          )}
+          )
+        }
       </TPAComponentsConsumer>
     );
   }
