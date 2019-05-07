@@ -17,5 +17,5 @@
 }
 
 .withDynamicPadding {
-    padding: wixApply(calc, wixApply(string, -), value(PaddingSize), value(BorderWidth));
+    padding: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
 }
