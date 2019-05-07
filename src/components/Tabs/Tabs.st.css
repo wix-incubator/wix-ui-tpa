@@ -25,7 +25,7 @@
 }
 
 .root {
-    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile, rtl;
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile;
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
@@ -41,8 +41,7 @@
 .content {
     width: 100%;
     height: 100%;
-    display: flex;
-    min-width: 60px;
+    position: relative;
 }
 
 .navBtn {
@@ -53,36 +52,49 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-shrink: 0;
     cursor: pointer;
+    position: absolute;
+    top: 0;
+}
+
+.navBtn.navBtnLeft {
+    left: 0;
+}
+
+.navBtn.navBtnRight {
+    right: 0;
 }
 
 .tabs {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: auto;
-    height: 100%;
-    position: relative;
-}
-
-.tabs::-webkit-scrollbar {
-    display: none;
-}
-
-.tabs nav {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
     overflow: hidden;
-    flex: 1;
     height: 100%;
     position: absolute;
     top: 0;
     left: 0;
+    right: 0;
+    transition: left .2s ease, right .2s ease;
+}
+
+.tabs nav {
+    overflow: auto;
     height: 100%;
-    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    white-space:nowrap;
+    position: relative;
+}
+
+.tabs nav::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 14px 3%;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+    display: inline-block;
 }
 
 .selectedIndicator {
@@ -93,38 +105,37 @@
     transition: all .3s ease-in-out;
 }
 
-.tab {
-    cursor: pointer;
-    padding: 14px 3%;
-    text-align: center;
-    white-space: nowrap;
-    height: 100%;
-    flex-shrink: 0;
-}
-
 .root:navButtons(right) .navBtn.navBtnRight,
 .root:navButtons(left) .navBtn.navBtnLeft,
 .root:navButtons(both) .navBtn {
     width: value(navBtnWidth);
 }
 
+.root:navButtons(right) .tabs,
+.root:navButtons(both) .tabs {
+    right: value(navBtnWidth);
+}
+
+.root:navButtons(left) .tabs,
+.root:navButtons(both) .tabs {
+    left: value(navBtnWidth);
+}
+
 .root:alignment(left) nav {
-    /*rtl:remove*/
-    justify-content: flex-start;
-    /*rtl:raw:
-      justify-content: flex-end;
-    */
+    text-align: left;
 }
 
 .root:alignment(right) nav {
-    /*rtl:remove*/
-    justify-content: flex-end;
-    /*rtl:raw:
-      justify-content: flex-start;
-    */
+    text-align: right;
 }
 
-.root:variant(fullWidth) .tab {
+.root:variant(fullWidth) nav,
+.root:mobile nav {
+    display: flex;
+}
+
+.root:variant(fullWidth) .tab,
+.root:mobile .tab {
     flex: 1;
 }
 
@@ -143,29 +154,5 @@
 .root:mobile {
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
     line-height: 1.44em;
-}
-
-.root:mobile nav > .tab {
-    flex: 1;
-}
-
-.root:rtl nav {
-    left: initial;
-    right: 0;
-}
-
-.root:rtl:alignment(left) nav {
-    justify-content: flex-end;
-}
-
-.root:rtl:alignment(right) nav {
-    justify-content: flex-start;
-}
-
-.root:rtl .selectedIndicator {
-    position: absolute;
-    bottom: 0;
-    border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
-    transition: all .3s ease-in-out;
+    height: 48px;
 }

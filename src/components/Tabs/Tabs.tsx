@@ -2,10 +2,7 @@ import * as React from 'react';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { animate } from '../../common/animations';
-import {
-  TPAComponentsContext,
-  TPAComponentsConfig,
-} from '../TPAComponentsConfig';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
 
@@ -33,6 +30,7 @@ export interface TabsProps {
 
 interface TabsState {
   navButtons?: NavButtonOptions;
+  tabsKey: string;
 }
 
 const enum NavButtonOptions {
@@ -43,15 +41,13 @@ const enum NavButtonOptions {
 }
 
 class Tabs extends React.Component<TabsProps, TabsState> {
-  private readonly _wrapperRef: React.RefObject<HTMLDivElement>;
   private readonly _navRef: React.RefObject<HTMLElement>;
   private readonly _selectedTabRef: React.RefObject<HTMLDivElement>;
-
-  static contextType = TPAComponentsContext;
-  context!: React.ContextType<typeof TPAComponentsContext>;
+  private _resizeTimer: number;
 
   state: TabsState = {
     navButtons: NavButtonOptions.none,
+    tabsKey: this._generateRandomKey(),
   };
 
   static defaultProps = {
@@ -65,14 +61,12 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   constructor(props: Readonly<TabsProps>) {
     super(props);
 
-    this._wrapperRef = React.createRef<HTMLDivElement>();
     this._navRef = React.createRef<HTMLElement>();
     this._selectedTabRef = React.createRef<HTMLDivElement>();
   }
 
   componentDidMount() {
-    // wrapped in setTimeout in order to let width calculations to be up to date
-    setTimeout(this._showNavButtonsIfNeeded, 100);
+    this._showNavButtonsIfNeeded();
   }
 
   componentDidUpdate(prevProps: TabsProps) {
@@ -88,13 +82,22 @@ class Tabs extends React.Component<TabsProps, TabsState> {
     }
   }
 
+  _generateRandomKey() {
+    return `${Math.random()}`;
+  }
+
   _onResize = () => {
+    clearTimeout(this._resizeTimer);
     this._showNavButtonsIfNeeded();
+
+    this._resizeTimer = window.setTimeout(() => {
+      this.setState({ tabsKey: this._generateRandomKey() });
+    }, 100);
   };
 
   _scrollToViewIfNeeded = () => {
     const currentTabElement = this._selectedTabRef.current;
-    const tabsElement = this._wrapperRef.current;
+    const tabsElement = this._navRef.current;
     const leftLimit = tabsElement.scrollLeft;
     const rightLimit = leftLimit + tabsElement.clientWidth;
     const leftDelta = currentTabElement.offsetLeft - leftLimit;
@@ -116,20 +119,17 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   };
 
   _shouldShowNavButtons = () => {
-    const { rtl } = this.context;
-    const { scrollWidth, clientWidth, scrollLeft } = this._wrapperRef.current;
-    const leftButton = rtl ? NavButtonOptions.right : NavButtonOptions.left;
-    const rightButton = rtl ? NavButtonOptions.left : NavButtonOptions.right;
+    const { scrollWidth, clientWidth, scrollLeft } = this._navRef.current;
     let shouldShow = NavButtonOptions.none;
 
     if (Math.abs(scrollLeft) > 0) {
-      shouldShow = leftButton;
+      shouldShow = NavButtonOptions.left;
     }
 
     if (scrollWidth > clientWidth + Math.abs(scrollLeft)) {
       shouldShow =
         shouldShow === NavButtonOptions.none
-          ? rightButton
+          ? NavButtonOptions.right
           : NavButtonOptions.both;
     }
 
@@ -141,15 +141,14 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   };
 
   _scrollTabs(direction: number) {
-    const { rtl } = this.context;
-    const tabsElement = this._wrapperRef.current;
+    const tabsElement = this._navRef.current;
     const clientWidth = direction * tabsElement.clientWidth;
     const nextScrollLeft = tabsElement.scrollLeft + clientWidth;
-    this._animateScroll((rtl ? -1 : 1) * nextScrollLeft);
+    this._animateScroll(nextScrollLeft);
   }
 
   _animateScroll(scrollLeft: number) {
-    animate('scrollLeft', this._wrapperRef.current, scrollLeft);
+    animate('scrollLeft', this._navRef.current, scrollLeft);
   }
 
   _onNavClickLeft = () => {
@@ -169,29 +168,32 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   };
 
   render() {
-    const { mobile, rtl } = this.context;
+    // const { mobile } = this.context;
+    const { navButtons, tabsKey } = this.state;
     const { items, activeTabIndex, skin, alignment, variant } = this.props;
-    const { navButtons } = this.state;
     const styleProps = { skin, alignment, variant, navButtons };
 
     return (
-      <div {...style('root', { ...styleProps, mobile, rtl }, this.props)}>
-        <ReactResizeDetector handleWidth onResize={this._onResize} />
-        <TabsUI
-          wrapperRef={this._wrapperRef}
-          navRef={this._navRef}
-          selectedTabRef={this._selectedTabRef}
-          items={items}
-          onTabClick={this._selectTab}
-          activeTabIndex={activeTabIndex}
-          alignment={alignment}
-          variant={variant}
-          onScroll={this._onScroll}
-          rtl={rtl}
-          onLeftNavClick={this._onNavClickLeft}
-          onRightNavClick={this._onNavClickRight}
-        />
-      </div>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div {...style('root', { ...styleProps, mobile }, this.props)}>
+            <ReactResizeDetector handleWidth onResize={this._onResize} />
+            <TabsUI
+              key={tabsKey}
+              navRef={this._navRef}
+              selectedTabRef={this._selectedTabRef}
+              items={items}
+              onTabClick={this._selectTab}
+              activeTabIndex={activeTabIndex}
+              alignment={alignment}
+              variant={variant}
+              onScroll={this._onScroll}
+              onLeftNavClick={this._onNavClickLeft}
+              onRightNavClick={this._onNavClickRight}
+            />
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }

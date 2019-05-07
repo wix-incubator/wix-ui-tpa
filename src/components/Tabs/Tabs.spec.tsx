@@ -4,7 +4,7 @@ import { Tabs, SKIN, ALIGNMENT, VARIANT } from './';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { TPAComponentsWrapper } from '../../test/utils';
 
-describe('Text', () => {
+describe('Tabs', () => {
   const createDriver = createDriverFactory(tabsDriverFactory);
   let driver;
   const items = [{ title: 'some-title-1' }, { title: 'some-title-2' }];
