@@ -94,6 +94,7 @@
 }
 
 .tab {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
     cursor: pointer;
     padding: 14px 3%;
     text-align: center;
