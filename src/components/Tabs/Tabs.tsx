@@ -45,9 +45,6 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   private readonly _selectedTabRef: React.RefObject<HTMLDivElement>;
   private _resizeTimer: number;
 
-  // static context = TPAComponentsContext;
-  // context!: React.ContextType<typeof TPAComponentsContext>;
-
   state: TabsState = {
     navButtons: NavButtonOptions.none,
     tabsKey: this._generateRandomKey(),
