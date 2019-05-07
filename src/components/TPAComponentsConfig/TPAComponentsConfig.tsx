@@ -2,7 +2,7 @@ import * as React from 'react';
 
 export interface TPAComponentsConfig {
   mobile: boolean;
-  rtl: boolean;
+  rtl?: boolean;
 }
 
 export const TPAComponentsContext = React.createContext<TPAComponentsConfig>({
