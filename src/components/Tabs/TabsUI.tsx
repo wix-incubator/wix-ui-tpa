@@ -29,17 +29,15 @@ interface TabsUIProps {
   activeTabIndex?: number;
   alignment?: ALIGNMENT;
   variant?: VARIANT;
-  onScroll(event: React.SyntheticEvent<HTMLDivElement>): void;
+  onScroll(event: React.SyntheticEvent<HTMLElement>): void;
   onLeftNavClick(): void;
   onRightNavClick(): void;
-  wrapperRef: React.RefObject<HTMLDivElement>;
   navRef: React.RefObject<HTMLElement>;
   selectedTabRef: React.RefObject<HTMLDivElement>;
-  rtl: boolean;
 }
 
 interface TabsUIRect {
-  verticalPos: number;
+  left: number;
   width: number;
 }
 
@@ -50,7 +48,7 @@ interface TabsUIState {
 class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   state = {
     activeIndicatorRect: {
-      verticalPos: 0,
+      left: 0,
       width: 0,
     },
   };
@@ -72,17 +70,14 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   _updateSelectedTabPosition = () => {
-    const { selectedTabRef, rtl, navRef } = this.props;
+    const { selectedTabRef } = this.props;
 
     if (selectedTabRef && selectedTabRef.current) {
       const newLeft = selectedTabRef.current.offsetLeft;
       const newWidth = selectedTabRef.current.offsetWidth;
-      const verticalPos = rtl
-        ? navRef.current.offsetWidth - (newLeft + newWidth)
-        : newLeft;
 
       this.setState({
-        activeIndicatorRect: { verticalPos, width: newWidth },
+        activeIndicatorRect: { left: newLeft, width: newWidth },
       });
     }
   };
@@ -107,18 +102,16 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
 
   _getNavigationItems() {
     const { activeIndicatorRect } = this.state;
-    const { items, onScroll, wrapperRef, navRef, rtl } = this.props;
-    const positionName = rtl ? 'right' : 'left';
-    const indicatorStyle = {
-      [positionName]: activeIndicatorRect.verticalPos,
-      width: activeIndicatorRect.width,
-    };
+    const { items, onScroll, navRef } = this.props;
 
     return (
-      <div className={style.tabs} onScroll={onScroll} ref={wrapperRef}>
-        <nav ref={navRef}>
+      <div className={style.tabs}>
+        <nav ref={navRef} onScroll={onScroll}>
           {items.map(this._getTabItem)}
-          <div className={style.selectedIndicator} style={indicatorStyle} />
+          <div
+            className={style.selectedIndicator}
+            style={activeIndicatorRect}
+          />
         </nav>
       </div>
     );
@@ -143,7 +136,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   _getLeftNavButton() {
-    const { onLeftNavClick, rtl } = this.props;
+    const { onLeftNavClick } = this.props;
 
     const onNavKeyDownLeft = (e: React.KeyboardEvent<HTMLDivElement>) => {
       const keyCode = e.keyCode;
@@ -155,7 +148,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
     };
 
     return this._getNavButton(
-      rtl ? <ChevronRight /> : <ChevronLeft />,
+      <ChevronLeft />,
       style.navBtnLeft,
       onLeftNavClick,
       onNavKeyDownLeft,
@@ -163,7 +156,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
   }
 
   _getRightNavButton() {
-    const { onRightNavClick, rtl } = this.props;
+    const { onRightNavClick } = this.props;
 
     const onNavKeyDownRight = (e: React.KeyboardEvent<HTMLDivElement>) => {
       const keyCode = e.keyCode;
@@ -175,7 +168,7 @@ class TabsUI extends React.PureComponent<TabsUIProps, TabsUIState> {
     };
 
     return this._getNavButton(
-      !rtl ? <ChevronRight /> : <ChevronLeft />,
+      <ChevronRight />,
       style.navBtnRight,
       onRightNavClick,
       onNavKeyDownRight,
