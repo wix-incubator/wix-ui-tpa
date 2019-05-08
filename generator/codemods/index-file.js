@@ -4,7 +4,7 @@ module.exports = (file, api, options) => {
 
   const { ComponentName } = options;
 
-  root.get().node.program.body.push( `require('../src/components/${ComponentName}/docs/index.story');`);
+  root.get().node.program.body.push( `export { ${ComponentName} } from './${ComponentName}';`);
 
   return root.toSource();
 };

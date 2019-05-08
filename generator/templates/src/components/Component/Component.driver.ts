@@ -1,12 +1,19 @@
-import { {%componentName%}DriverFactory as coreDriver } from 'wix-ui-core/drivers/vanilla';
-import { StylableDOMUtil } from '@stylable/dom-test-kit';
+import {
+  BaseUniDriver,
+  baseUniDriverFactory,
+} from 'wix-ui-test-utils/base-driver';
+import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './{%ComponentName%}.st.css';
 
-export const {%componentName%}DriverFactory = ({ element, eventTrigger }) => {
-  const {%componentName%}Driver = coreDriver({ element, eventTrigger });
+export interface {%componentName%}Driver extends BaseUniDriver {
+  isMobile(): Promise<boolean>;
+}
+
+export const {%componentName%}DriverFactory = (base: UniDriver): {%componentName%}Driver => {
+  const stylableUtil = new StylableUnidriverUtil(style);
 
   return {
-    ...{%componentName%}Driver,
-    callMe: () => console.log('implement me'),
+    ...baseUniDriverFactory(base),
+    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
   };
 };
