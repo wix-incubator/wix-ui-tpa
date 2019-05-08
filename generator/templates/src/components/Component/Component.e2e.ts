@@ -18,7 +18,7 @@ describe('{%componentName%}', () => {
 
   eyes.it('should render', async () => {
     const driver = {%componentName%}TestkitFactory({ dataHook });
-    await waitForVisibilityOf(driver.element(), 'Cannot find {%ComponentName%}');
-    expect(await driver.element().isDisplayed()).toBe(true);
+    await waitForVisibilityOf(await driver.element(), 'Cannot find {%ComponentName%}');
+    expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

@@ -29,7 +29,7 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
 
   render() {
     const { count } = this.state;
-    const { buttonText, rest } = this.props;
+    const { buttonText, ...rest } = this.props;
     const isEven = count % 2 === 0;
 
     return (
@@ -37,9 +37,8 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
         {({ mobile }) => (
           <div {...styles('root', { mobile }, rest)}>
             <Text {...styles('number', { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number (
-                {count}
-              ) of times
+              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
+              of times
             </Text>
 
             <div className={styles.button}>

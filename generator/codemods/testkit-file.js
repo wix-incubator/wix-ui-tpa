@@ -3,7 +3,7 @@ module.exports = (file, api, options) => {
   const root = j(file.source);
 
   const { ComponentName } = options;
-  const componentName = ComponentName.toString().toLowerCase();
+  const componentName = ComponentName.charAt(0).toLowerCase() + ComponentName.substr(1);
 
   root.get().node.program.body.push( `import { ${componentName}DriverFactory } from '../components/${ComponentName}/${ComponentName}.driver';
 export const ${componentName}TestkitFactory = uniTestkitFactoryCreator(${componentName}DriverFactory);`);

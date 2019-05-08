@@ -7,15 +7,13 @@ import { TPAComponentsWrapper } from '../../test/utils';
 import { {%componentName%}DriverFactory } from './{%ComponentName%}.driver';
 import { {%ComponentName%} } from './';
 import { {%componentName%}TestkitFactory } from '../../testkit';
-import { {%componentName%}TestkitFactory as enzyme{%componentName%}TestkitFactory } from '../../testkit/enzyme';
+import { {%componentName%}TestkitFactory as enzyme{%ComponentName%}TestkitFactory } from '../../testkit/enzyme';
 
 describe('{%ComponentName%}', () => {
   const createDriver = createUniDriverFactory({%componentName%}DriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(
-      <{%ComponentName%} buttonText="Click Me" />,
-    );
+    const driver = createDriver(<{%ComponentName%} buttonText="Click Me" />);
     expect(await driver.exists()).toBe(true);
   });
 
@@ -41,7 +39,7 @@ describe('{%ComponentName%}', () => {
       expect(
         await isUniEnzymeTestkitExists(
           <{%ComponentName%} />,
-          enzyme{%componentName%}TestkitFactory,
+          enzyme{%ComponentName%}TestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',
