@@ -12,7 +12,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { baseScope } from '../../../../stories/utils/LiveCodeExample';
+import { LiveScope } from '../../../../stories/utils/allComponents';
 
 const code = config =>
   baseCode({ components: baseScope, compact: true, ...config });
