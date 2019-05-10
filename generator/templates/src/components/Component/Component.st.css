@@ -3,14 +3,21 @@
     -st-named: wixApply;
 }
 
-:import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: {%ComponentName%};
+:vars {
+    /*Defaults*/
+    /*Defaults params goes here*/
 }
 
-:import {
-    -st-from: "../../palette.st.css";
-    -st-named: errorColor;
+:vars {
+    /*Overrides*/
+    /*Deceleration of overridable placeholders*/
 }
 
+.root {
+    -st-states: mobile;
+    /*css goes here*/
+}
 
+.root:mobile {
+    /*mobile css goes here*/
+}

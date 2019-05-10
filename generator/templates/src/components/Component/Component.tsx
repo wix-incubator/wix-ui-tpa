@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Text } from '../Text';
 import { Button } from '../Button';
 import styles from './{%ComponentName%}.st.css';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface {%ComponentName%}Props {
-  dataHook?: string;
   buttonText: string;
 }
 
@@ -29,25 +29,24 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
 
   render() {
     const { count } = this.state;
-    const { dataHook, buttonText } = this.props;
+    const { buttonText, ...rest } = this.props;
     const isEven = count % 2 === 0;
 
     return (
-      <div className={styles.root} data-hook={dataHook}>
-        <Text>
-          You clicked this button {isEven ? 'even' : 'odd'} number (
-          <span
-            {...styles('number', { even: isEven, odd: !isEven }, this.props)}
-          >
-            {count}
-          </span>
-          ) of times
-        </Text>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div {...styles('root', { mobile }, rest)}>
+            <Text {...styles('number', { even: isEven, odd: !isEven })}>
+              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
+              of times
+            </Text>
 
-        <div className={styles.button}>
-          <Button onClick={this._handleClick}>{buttonText}</Button>
-        </div>
-      </div>
+            <div className={styles.button}>
+              <Button onClick={this._handleClick}>{buttonText}</Button>
+            </div>
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }
