@@ -5,8 +5,7 @@
 
 :vars {
     /*Constance*/
-    PrimaryColor: color-5;
-    SecondaryColor: color-3;
+    TextColor: color-5;
     SmallTitleFont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
     RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     ListTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '2em'}";
@@ -27,41 +26,41 @@
 }
 
 .root:typography(smallTitle) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(SmallTitleFont)));
 }
 
 .root:typography(runningText) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(RunningTextFont)));
 }
 
 .root:typography(listText) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(ListTextFont)));
 }
 
 .root:typography(largeTitle) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(LargeTitleFont)));
 }
 
 .root:mobile:typography(smallTitle) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileSmallTitleFont)));
 }
 
 .root:mobile:typography(runningText) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileRunningTextFont)));
 }
 
 .root:mobile:typography(listText) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileListTextFont)));
 }
 
 .root:mobile:typography(largeTitle) {
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
+    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(TextColor)));
     font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileLargeTitleFont)));
 }
