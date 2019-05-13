@@ -12,10 +12,10 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { LiveScope } from '../../../../stories/utils/allComponents';
+import { allComponents } from '../../../../stories/utils/allComponents';
 
 const code = config =>
-  baseCode({ components: baseScope, compact: true, ...config });
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',

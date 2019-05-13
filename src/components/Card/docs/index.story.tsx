@@ -12,12 +12,12 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { baseScope } from '../../../../stories/utils/LiveCodeExample';
+import { allComponents } from '../../../../stories/utils/allComponents';
 import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
 
 const code = config =>
-  baseCode({ components: baseScope, compact: true, ...config });
+  baseCode({ components: allComponents, compact: true, ...config });
 
 const mediaExamples = [
   {
