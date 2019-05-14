@@ -16,7 +16,6 @@ export class StripCard extends React.Component<StripCardProps> {
   static displayName = 'StripCard';
   static defaultProps: DefaultProps = { roundMedia: false };
 
-
   render() {
     const { media, info, roundMedia, ...rest } = this.props;
 

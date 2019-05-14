@@ -23,7 +23,6 @@ export const stripCardDriverFactory = (base: UniDriver): stripCardDriver => {
     isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
     getMediaContent: async () => getMediaContainerElement().getNative(),
     getInfoContent: async () => getInfoContainerElement().getNative(),
-    isMediaRounded: async () =>
-      stylableUtil.hasStyleState(base, 'roundMedia'),
+    isMediaRounded: async () => stylableUtil.hasStyleState(base, 'roundMedia'),
   };
 };

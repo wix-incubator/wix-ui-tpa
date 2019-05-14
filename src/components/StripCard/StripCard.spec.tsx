@@ -19,7 +19,7 @@ describe('StripCard', () => {
   it('should render info', async () => {
     const valueAsString = '<div>info!</div>';
     const value = <div dangerouslySetInnerHTML={{ __html: valueAsString }} />;
-    const driver = createDriver(<StripCard info={value}/>);
+    const driver = createDriver(<StripCard info={value} />);
     expect((await driver.getInfoContent()).innerHTML).toEqual(valueAsString);
   });
 
@@ -31,7 +31,9 @@ describe('StripCard', () => {
   });
 
   it('should render round media', async () => {
-    const driver = createDriver(<StripCard roundMedia media={<div>image</div>}/>);
+    const driver = createDriver(
+      <StripCard roundMedia media={<div>image</div>} />,
+    );
     expect(await driver.isMediaRounded()).toEqual(true);
   });
 

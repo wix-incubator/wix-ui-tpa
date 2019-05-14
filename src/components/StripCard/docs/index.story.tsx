@@ -13,8 +13,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import {Text, TYPOGRAPHY} from '../../Text';
-import {Button} from '../../Button';
+import { Text, TYPOGRAPHY } from '../../Text';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });

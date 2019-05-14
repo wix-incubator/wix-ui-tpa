@@ -3,14 +3,18 @@
     -st-named: wixApply;
 }
 
+:import {
+    -st-from: "../Card/mixins.st.css";
+    -st-named: withBorder, withDynamicPadding;
+}
+
 :vars {
     /*Defaults*/
     ImageWidth: 84px;
     ImageHeight: 84px;
     CardMinHeight: 92px;
     MediaInfoMargin: 32px;
-    DefaultVerticalPadding: 32px;
-    DefaultSidePadding: 32;
+    DefaultPadding: 32px;
     DefaultBorderWidth: 0;
     DefaultCardBG: color-1;
     DefaultBorderColor: color-5;
@@ -27,26 +31,22 @@
 
 :vars {
     cardBGColor: wixApply(color, wixApply(fallback, value(MainBGColor), value(DefaultCardBG)));
-    horizontalPaddig: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainSidePadding)), value(DefaultSidePadding)), px);
     borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), wixApply(zeroAsTrue, value(DefaultBorderWidth))), px);
     borderColor: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor))), 0.2);
 }
 
-:vars {
-    dynamicVerticalPadding: wixApply(calculate, wixApply(string, -), value(DefaultVerticalPadding), value(borderWidth));
-    dynamicHorizontalPadding: wixApply(calculate, wixApply(string, -), value(horizontalPaddig), value(borderWidth));
-}
-
 .root {
     -st-states: mobile, roundMedia;
+    -st-mixin: withBorder(
+            BorderColor value(borderColor),
+            BorderWidth value(borderWidth)
+    ), withDynamicPadding(
+            PaddingSize value(DefaultPadding),
+            BorderWidth value(borderWidth)
+    );
     display: flex;
     background-color: value(cardBGColor);
     min-height: value(CardMinHeight);
-    padding: value(dynamicVerticalPadding) value(dynamicHorizontalPadding);
-    border-width: value(borderWidth);
-    border-color: value(borderColor);
-    border-style: solid;
-    box-sizing: border-box;
     min-width: value(MinWidth);
 }
 
