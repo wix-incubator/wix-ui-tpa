@@ -10,7 +10,7 @@
 .root::popoverContent {
     background-color: #212121;
     padding: 4px 12px;
-    border: 1px rgba(255,255,255,0.38) solid;
+    border: 1px #757575 solid;
     border-radius: 3px;
     color: white;
     line-height: 20px;
