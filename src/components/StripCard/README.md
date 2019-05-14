@@ -1,4 +1,42 @@
 ## StripCard
-An implementation of an StripCard for TPAs
-This Readme was auto-generated and needs to be filled manually
+An implementation of an StripCard for TPAs,
+The TPA implementation provides few extendable theme properties with the ability to override the base properties as well,
 
+By default the StripCard will pull the theme from the site (site colors),
+
+## Theme properties (All are optional)
+
+| propName   | propType | defaultValue | description |
+|------------|----------|--------------|-------------|
+| MainBGColor  | string   | color-1 | The color of the card background instead of the default color |
+| MainBorderColor  | string   | color-5 20% opacity | The color of the border instead of the default color |
+| MainBorderWidth  | number   | 0px | The width of the border instead of the default width |
+| MainSidePadding  | number   | 32px | The side padding of the card instead of the default padding |
+
+
+In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
+
+1. create an stylable file (e.g. CardExt.st.css)
+    ``` css
+    :import {
+        -st-from: "wix-ui-tpa/StripCard/StripCard.st.css";
+        -st-default: TPAStripCard;
+    }
+
+    .root {
+        -st-mixin: TPAStripCard(
+            MainBGColor '"--backgroundColor"',
+            MainBorderColor '"--borderColor"',
+            MainBorderWidth '"--borderWidth"',
+            MainSidePadding '"--sidePadding"'
+      );
+    }
+
+    ```
+
+2. Create a component that uses it
+    ``` javascript
+    import stripStylesExt from './StripCardExt.st.css';
+
+    const StripCardExt = (props) => <StripCard {...props} {...stripStylesExt('root', {}, props)}/>;
+    ```
