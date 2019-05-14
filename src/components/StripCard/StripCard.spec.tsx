@@ -37,7 +37,7 @@ describe('StripCard', () => {
     expect(await driver.isMediaRounded()).toEqual(true);
   });
 
-  it('should render round media', async () => {
+  it('should render without side padding', async () => {
     const driver = createDriver(<StripCard withoutSidePadding />);
     expect(await driver.isWithSidePadding()).toEqual(true);
   });
