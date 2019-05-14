@@ -11,7 +11,6 @@ By default the StripCard will pull the theme from the site (site colors),
 | MainBGColor  | string   | color-1 | The color of the card background instead of the default color |
 | MainBorderColor  | string   | color-5 20% opacity | The color of the border instead of the default color |
 | MainBorderWidth  | number   | 0px | The width of the border instead of the default width |
-| MainSidePadding  | number   | 32px | The side padding of the card instead of the default padding |
 
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
@@ -28,7 +27,6 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             MainBGColor '"--backgroundColor"',
             MainBorderColor '"--borderColor"',
             MainBorderWidth '"--borderWidth"',
-            MainSidePadding '"--sidePadding"'
       );
     }
 

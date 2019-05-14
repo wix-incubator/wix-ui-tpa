@@ -24,7 +24,6 @@
 :vars {
     /*Overrides*/
     MainBGColor: --overridable;
-    MainSidePadding: --overridable;
     MainBorderWidth: --overridable;
     MainBorderColor: --overridable;
 }
