@@ -1,0 +1,73 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    /*Defaults*/
+    ImageWidth: 84px;
+    ImageHeight: 84px;
+    CardMinHeight: 92px;
+    MediaInfoMargin: 32px;
+    DefaultVerticalPadding: 32px;
+    DefaultSidePadding: 32;
+    DefaultBorderWidth: 0;
+    DefaultCardBG: color-1;
+    DefaultBorderColor: color-5;
+    MinWidth: 740px;
+}
+
+:vars {
+    /*Overrides*/
+    MainBGColor: --overridable;
+    MainSidePadding: --overridable;
+    MainBorderWidth: --overridable;
+    MainBorderColor: --overridable;
+}
+
+:vars {
+    cardBGColor: wixApply(color, wixApply(fallback, value(MainBGColor), value(DefaultCardBG)));
+    horizontalPaddig: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainSidePadding)), value(DefaultSidePadding)), px);
+    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), wixApply(zeroAsTrue, value(DefaultBorderWidth))), px);
+    borderColor: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor))), 0.2);
+}
+
+:vars {
+    dynamicVerticalPadding: wixApply(calculate, wixApply(string, -), value(DefaultVerticalPadding), value(borderWidth));
+    dynamicHorizontalPadding: wixApply(calculate, wixApply(string, -), value(horizontalPaddig), value(borderWidth));
+}
+
+.root {
+    -st-states: mobile, roundMedia;
+    display: flex;
+    background-color: value(cardBGColor);
+    min-height: value(CardMinHeight);
+    padding: value(dynamicVerticalPadding) value(dynamicHorizontalPadding);
+    border-width: value(borderWidth);
+    border-color: value(borderColor);
+    border-style: solid;
+    box-sizing: border-box;
+    min-width: value(MinWidth);
+}
+
+.root:mobile {
+    /*mobile css goes here*/
+}
+
+.mediaContainer {
+    width: value(ImageWidth);
+    height: value(ImageHeight);
+    margin-right: value(MediaInfoMargin);
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.root:roundMedia .mediaContainer {
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.infoContainer {
+    height: auto;
+    width: 100%;
+}

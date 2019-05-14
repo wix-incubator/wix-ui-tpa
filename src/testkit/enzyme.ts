@@ -38,3 +38,8 @@ import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
 export const tabsTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(tabsDriverFactory);
+
+import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver';
+export const stripCardTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(stripCardDriverFactory);

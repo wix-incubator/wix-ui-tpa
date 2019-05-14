@@ -45,3 +45,8 @@ import { BaseDriver } from 'wix-ui-core/dist/src/common/BaseDriver.protractor';
 export const tabsTestkitFactory = protractorTestkitFactoryCreator<BaseDriver>(
   tabsDriverFactory,
 );
+
+import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver';
+export const stripCardTestkitFactory = protractorUniTestkitFactoryCreator(
+  stripCardDriverFactory,
+);
