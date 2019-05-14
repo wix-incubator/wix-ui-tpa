@@ -36,7 +36,7 @@
 }
 
 .root {
-    -st-states: mobile, roundMedia;
+    -st-states: mobile, roundMedia, withoutSidePadding;
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
@@ -52,6 +52,11 @@
 
 .root:mobile {
     /*mobile css goes here*/
+}
+
+.root:withoutSidePadding {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .mediaContainer {

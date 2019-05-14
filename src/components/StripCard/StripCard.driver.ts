@@ -8,6 +8,7 @@ import style from './StripCard.st.css';
 export interface stripCardDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
   isMediaRounded(): Promise<boolean>;
+  isWithSidePadding(): Promise<boolean>;
   getMediaContent(): Promise<HTMLElement>;
   getInfoContent(): Promise<HTMLElement>;
 }
@@ -24,5 +25,7 @@ export const stripCardDriverFactory = (base: UniDriver): stripCardDriver => {
     getMediaContent: async () => getMediaContainerElement().getNative(),
     getInfoContent: async () => getInfoContainerElement().getNative(),
     isMediaRounded: async () => stylableUtil.hasStyleState(base, 'roundMedia'),
+    isWithSidePadding: async () =>
+      stylableUtil.hasStyleState(base, 'withoutSidePadding'),
   };
 };

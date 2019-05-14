@@ -52,6 +52,7 @@ export default {
     media: mediaExamples[0].value,
     info: infoExample,
     roundMedia: false,
+    withoutSidePadding: false,
   }),
   exampleProps: {
     media: mediaExamples,
@@ -75,6 +76,10 @@ export default {
             { title: 'Minimum Height', source: examples.minHeight },
             { title: 'Without Media', source: examples.stripOnlyInfo },
             { title: 'Round Media', source: examples.roundMedia },
+            {
+              title: 'Without Side Padding',
+              source: examples.withoutSidePadding,
+            },
           ].map(code),
         ],
       }),

@@ -51,3 +51,16 @@ export const roundMedia = `
   }
 />
 `;
+
+export const withoutSidePadding = `
+<StripCard 
+  media={${imageComponent(100, 100)}}
+  withoutSidePadding
+  info={
+    <div>
+      <Text tagName="div" typography={TYPOGRAPHY.smallTitle}>WITHOUT SIDE PADDING</Text>
+      <Text typography={TYPOGRAPHY.runningText}>Side padding set to 0px</Text>
+    </div>
+  }
+/>
+`;
