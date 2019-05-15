@@ -50,6 +50,7 @@
     background-color: value(cardBGColor);
     min-height: value(CardMinHeight);
     min-width: value(MinWidth);
+    box-sizing: border-box;
 }
 
 .root:mobile {
