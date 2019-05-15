@@ -64,3 +64,14 @@ export const withoutSidePadding = `
   }
 />
 `;
+
+export const noImageLoaded = `
+<StripCard 
+  media={<div/>}
+  info={
+    <div>
+      <Text tagName="div" typography={TYPOGRAPHY.smallTitle}>MEDIA NOT AVAILABLE</Text>
+    </div>
+  }
+/>
+`;

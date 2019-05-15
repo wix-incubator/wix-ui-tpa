@@ -9,6 +9,7 @@ By default the StripCard will pull the theme from the site (site colors),
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
 | MainBGColor  | string   | color-1 | The color of the card background instead of the default color |
+| MainMediaColor  | string   | color-5 20% opacity | The color of the image container instead of the default color |
 | MainBorderColor  | string   | color-5 20% opacity | The color of the border instead of the default color |
 | MainBorderWidth  | number   | 0px | The width of the border instead of the default width |
 
@@ -25,8 +26,9 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     .root {
         -st-mixin: TPAStripCard(
             MainBGColor '"--backgroundColor"',
+            MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',
-            MainBorderWidth '"--borderWidth"',
+            MainBorderWidth '"--borderWidth"'
       );
     }
 

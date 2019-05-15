@@ -17,6 +17,7 @@
     DefaultPadding: 32px;
     DefaultBorderWidth: 0;
     DefaultCardBG: color-1;
+    DefaultMediaBG: color-5;
     DefaultBorderColor: color-5;
     MinWidth: 740px;
 }
@@ -24,6 +25,7 @@
 :vars {
     /*Overrides*/
     MainBGColor: --overridable;
+    MainMediaColor: --overridable;
     MainBorderWidth: --overridable;
     MainBorderColor: --overridable;
 }
@@ -32,6 +34,7 @@
     cardBGColor: wixApply(color, wixApply(fallback, value(MainBGColor), value(DefaultCardBG)));
     borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), wixApply(zeroAsTrue, value(DefaultBorderWidth))), px);
     borderColor: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor))), 0.2);
+    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaBG)), 0.2)));
 }
 
 .root {
@@ -64,6 +67,7 @@
     margin-right: value(MediaInfoMargin);
     margin-top: 4px;
     flex-shrink: 0;
+    background-color: value(mediaBGColor);
 }
 
 .root:roundMedia .mediaContainer {

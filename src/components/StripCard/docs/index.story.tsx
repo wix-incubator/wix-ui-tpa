@@ -75,6 +75,7 @@ export default {
             { title: 'Strip', source: examples.strip },
             { title: 'Minimum Height', source: examples.minHeight },
             { title: 'Without Media', source: examples.stripOnlyInfo },
+            { title: 'Media Not Available', source: examples.noImageLoaded },
             { title: 'Round Media', source: examples.roundMedia },
             {
               title: 'Without Side Padding',
