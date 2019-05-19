@@ -74,8 +74,8 @@
 .navigation {
     -st-extends: Navigation;
     -st-mixin: Navigation(
-        IndicatorColor: value(IndicatorColor),
-        SelectedTabIndicatorColor: value(IndicatorColor)
+        indicatorColor value(IndicatorColor),
+        selectedTabIndicatorColor value(SelectedTabIndicatorColor)
     );
     position: absolute;
     top: 0;
