@@ -18,9 +18,10 @@ export const tabsDriverFactory = ({ element }) => {
     clickTabAt: index => Simulate.click(getItems()[index]),
     getActiveTabIndex: () =>
       +element.querySelector('[data-active="true"]').getAttribute('data-index'),
-    getSkin: () => innerStylableDOMUtil.getStyleState(getTabs(), 'skin'),
-    getAlignment: () => innerStylableDOMUtil.getStyleState(getTabs(), 'alignment'),
-    getVariant: () => innerStylableDOMUtil.getStyleState(getTabs(), 'variant'),
     isMobile: () => stylableDOMUtil.getStyleState(element, 'mobile') === 'true',
+    getSkin: () => stylableDOMUtil.getStyleState(element, 'skin'),
+    getAlignment: () =>
+      innerStylableDOMUtil.getStyleState(getTabs(), 'alignment'),
+    getVariant: () => innerStylableDOMUtil.getStyleState(getTabs(), 'variant'),
   };
 };
