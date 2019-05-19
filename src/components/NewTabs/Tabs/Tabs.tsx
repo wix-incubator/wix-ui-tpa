@@ -2,7 +2,7 @@ import * as React from 'react';
 import classnames from 'classnames';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
 import { TabItem } from '../Tab/Tab';
-import { ScrollableTabs, ScrollState } from '../ScrollableTabs/ScrollableTabs';
+import { ScrollableTabs } from '../ScrollableTabs/ScrollableTabs';
 import { TabsNavButton } from '../TabsNavButton/TabsNavButton';
 import { ALIGNMENT, SKIN, VARIANT } from '../../Tabs/constants';
 import style from './Tabs.st.css';
@@ -35,32 +35,74 @@ interface TabsState {
 }
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
+  private _tabsRef: ScrollableTabs;
+
   state = {
     navButtons: NavButtonOptions.none,
     tabsKey: 'asd',
   };
 
-  _onClickLeft = () => {};
+  _onClickLeft = () => {
+    this._tabsRef.scrollLeft();
+  };
 
-  _onClickRight = () => {};
+  _onClickRight = () => {
+    this._tabsRef.scrollRight();
+  };
 
   _onClickItem = () => {};
 
-  _onScrollStateChange = (state: ScrollState) => {
+  _onScroll = (event: React.UIEvent) => {
     const { navButtons } = this.state;
+    const target = event.target as HTMLDivElement;
+    const navigationWidth = target.clientWidth;
+    const navigationScrollWidth = target.scrollWidth;
+    const scrollLeft = target.scrollLeft;
+    let newNavButtons = NavButtonOptions.none;
+
+    if (scrollLeft > 0) {
+      newNavButtons = NavButtonOptions.left;
+    }
+
+    if (scrollLeft + navigationWidth < navigationScrollWidth) {
+      newNavButtons =
+        newNavButtons === NavButtonOptions.none
+          ? NavButtonOptions.right
+          : NavButtonOptions.both;
+    }
+
+    if (newNavButtons !== navButtons) {
+      this.setState({ navButtons: newNavButtons });
+    }
+  };
+
+  _tabsRefCallback = (el: ScrollableTabs) => {
+    this._tabsRef = el;
   };
 
   render() {
-    const { items, alignment, skin, variant, activeTabIndex } = this.props;
+    const { navButtons } = this.state;
+    const {
+      items,
+      alignment,
+      skin,
+      variant,
+      activeTabIndex,
+      onTabClick,
+    } = this.props;
+
     return (
-      <div {...style('root', { skin, variant }, this.props)}>
+      <div {...style('root', { navButtons }, this.props)}>
         <ScrollableTabs
           alignment={alignment}
+          variant={variant}
+          skin={skin}
           items={items}
           className={style.navigation}
-          onClickItem={this._onClickItem}
-          onScrollStateChange={this._onScrollStateChange}
+          onClickItem={onTabClick}
+          onScroll={this._onScroll}
           activeTabIndex={activeTabIndex}
+          ref={this._tabsRefCallback}
         />
         <TabsNavButton
           onClick={this._onClickLeft}

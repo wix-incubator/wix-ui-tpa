@@ -1,24 +1,27 @@
 import * as React from 'react';
 import { Tab, TabItem } from '../Tab/Tab';
-import { ALIGNMENT as Alignment } from '../../Tabs';
+import {
+  ALIGNMENT as Alignment,
+  VARIANT as Variant,
+  SKIN as Skin,
+} from '../../Tabs';
 import { animateProp } from '../../../common/animations';
 import style from './ScrollableTabs.st.css';
+
+const isEqual = require('lodash/isEqual');
 
 interface TabsUIRect {
   left: number;
   width: number;
 }
 
-export interface ScrollState {
-  scrollLeft: number;
-  scrollWidth: number;
-}
-
 interface ScrollableTabsProps {
   items: TabItem[];
   alignment: Alignment;
-  onScrollStateChange(state: ScrollState): void;
-  onClickItem(): void;
+  variant: Variant;
+  skin: Skin;
+  onScroll(event: React.UIEvent): void;
+  onClickItem(index: number): void;
   className: string;
   activeTabIndex: number;
 }
@@ -48,18 +51,18 @@ export class ScrollableTabs extends React.Component<
     this._selectedTabRef = React.createRef();
   }
 
-  componentDidMount() {
-    const { onScrollStateChange } = this.props;
+  componentDidMount = this._updateComponent;
 
-    this._updateComponent();
-
-    onScrollStateChange({
-      scrollLeft: this._navRef.current.scrollLeft,
-      scrollWidth: this._navRef.current.scrollWidth,
-    });
+  componentDidUpdate(prevProps: ScrollableTabsProps) {
+    if (
+      prevProps.activeTabIndex !== this.props.activeTabIndex ||
+      !isEqual(prevProps.items, this.props.items) ||
+      prevProps.alignment !== this.props.alignment ||
+      prevProps.variant !== this.props.variant
+    ) {
+      this._updateComponent();
+    }
   }
-
-  componentDidUpdate = this._updateComponent;
 
   _updateComponent() {
     this._updateIndicatorPosition();
@@ -68,16 +71,18 @@ export class ScrollableTabs extends React.Component<
 
   _updateIndicatorPosition() {
     const { selectedIndicatorRect } = this.state;
-    const newLeft = this._selectedTabRef.current.offsetLeft;
-    const newWidth = this._selectedTabRef.current.offsetWidth;
+    if (this._selectedTabRef && this._selectedTabRef.current) {
+      const newLeft = this._selectedTabRef.current.offsetLeft;
+      const newWidth = this._selectedTabRef.current.offsetWidth;
 
-    if (
-      selectedIndicatorRect.left !== newLeft ||
-      selectedIndicatorRect.width !== newWidth
-    ) {
-      this.setState({
-        selectedIndicatorRect: { left: newLeft, width: newWidth },
-      });
+      if (
+        selectedIndicatorRect.left !== newLeft ||
+        selectedIndicatorRect.width !== newWidth
+      ) {
+        this.setState({
+          selectedIndicatorRect: { left: newLeft, width: newWidth },
+        });
+      }
     }
   }
 
@@ -115,29 +120,25 @@ export class ScrollableTabs extends React.Component<
     }
   };
 
-  scrollTo(scrollLeft: number) {
-    this._animateScroll(scrollLeft);
+  scrollLeft() {
+    this._animateScroll(-1 * this._navRef.current.clientWidth);
+  }
+
+  scrollRight() {
+    this._animateScroll(this._navRef.current.clientWidth);
   }
 
   _animateScroll(scrollLeft: number) {
     animateProp('scrollLeft', this._navRef.current, scrollLeft);
   }
 
-  _onScroll = () => {
-    const { onScrollStateChange } = this.props;
-    onScrollStateChange({
-      scrollLeft: this._navRef.current.scrollLeft,
-      scrollWidth: this._navRef.current.scrollWidth,
-    });
-  };
-
   render() {
     const { selectedIndicatorRect } = this.state;
-    const { items, alignment } = this.props;
+    const { onScroll, items, alignment, variant, skin, ...rest } = this.props;
 
     return (
-      <div {...style('root', { alignment }, this.props)}>
-        <nav ref={this._navRef} onScroll={this._onScroll}>
+      <div {...style('root', { alignment, variant, skin }, rest)}>
+        <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
           {items.map(this._getTabItem)}
           <div
             className={style.selectedIndicator}

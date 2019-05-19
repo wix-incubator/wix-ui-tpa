@@ -1,27 +1,43 @@
 :import {
+    -st-from: "../../../tpaStyles/styleableExt.js";
+    -st-named: wixApply;
+}
+
+:import {
     -st-from: "../Tab/Tab.st.css";
     -st-default: Tab;
 }
 
 :vars {
     defaultSelectedTabIndicatorColor: color-8;
+    defaultIndicatorColor: color-5;
+}
+
+:vars {
+    IndicatorColor: --overridable;
+    SelectedTabIndicatorColor: --overridable;
+}
+
+:vars {
+    calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
 }
 
 .root {
+    -st-states: alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), skin(enum(fullUnderline, clear, fitUnderline));
     overflow: hidden;
     height: 100%;
 }
 
-.root nav {
+.nav {
     overflow: auto;
     height: 100%;
     width: 100%;
     text-align: center;
     white-space:nowrap;
-    position: relative;
+    position: absolute;
 }
 
-.root nav::-webkit-scrollbar {
+.nav::-webkit-scrollbar {
     display: none;
 }
 
@@ -34,6 +50,31 @@
     position: absolute;
     bottom: 0;
     border-bottom: 3px solid;
-    border-bottom-color: value(defaultSelectedTabIndicatorColor);
+    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
     transition: all .3s ease-in-out;
+}
+
+.root:alignment(left) .nav {
+    text-align: left;
+}
+
+.root:alignment(right) .nav {
+    text-align: right;
+}
+
+.root:variant(fullWidth) .nav {
+    display: flex;
+}
+
+.root:variant(fullWidth) .tab {
+    flex: 1;
+}
+
+.root:skin(fullUnderline) {
+    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
+}
+
+.root:skin(fitUnderline) .tab {
+    border-bottom: 1px solid;
+    border-bottom-color: value(calculatedBorderColor);
 }
