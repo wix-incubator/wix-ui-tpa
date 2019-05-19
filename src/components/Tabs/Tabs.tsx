@@ -40,6 +40,12 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   private _tabsRef: ScrollableTabs;
   private _resizeTimer: number;
 
+  static defaultProps = {
+    skin: SKIN.fullUnderline,
+    variant: VARIANT.fit,
+    alignment: ALIGNMENT.center,
+  };
+
   state = {
     navButtons: NavButtonOptions.none,
     tabsKey: this._generateRandomKey(),
@@ -59,6 +65,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   _onClickRight = () => {
     this._tabsRef.scrollRight();
+  };
+
+  _onClickItem = (index: number) => {
+    const { activeTabIndex, onTabClick } = this.props;
+
+    if (index !== activeTabIndex) {
+      onTabClick(index);
+    }
   };
 
   _onScroll = (event: React.UIEvent) => {
@@ -160,7 +174,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               skin={skin}
               items={items}
               className={style.navigation}
-              onClickItem={onTabClick}
+              onClickItem={this._onClickItem}
               onScroll={this._onScroll}
               activeTabIndex={activeTabIndex}
               ref={this._tabsRefCallback}

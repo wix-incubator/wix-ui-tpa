@@ -96,6 +96,7 @@ export class ScrollableTabs extends React.Component<
         className={style.tab}
         item={item}
         index={index}
+        isActive={isActive}
         ref={isActive ? this._selectedTabRef : null}
         onClick={onClickItem}
       />
@@ -133,7 +134,7 @@ export class ScrollableTabs extends React.Component<
   }
 
   getNavElement() {
-    return this._navRef && this._navRef.current || null;
+    return (this._navRef && this._navRef.current) || null;
   }
 
   render() {

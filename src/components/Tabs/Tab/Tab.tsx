@@ -10,12 +10,13 @@ export interface TabItem {
 interface TabProps {
   item: TabItem;
   index: number;
+  isActive: boolean;
   onClick(index: number): void;
   className: string;
 }
 
 export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
-  const { index, item, onClick } = props;
+  const { index, item, onClick, isActive } = props;
   const title = item.title;
   const onSelectTab = () => {
     onClick(index);
@@ -34,6 +35,8 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
     <div
       {...style('root', {}, props)}
       ref={ref}
+      data-index={index}
+      data-active={isActive}
       data-hook={`tab-item-${index}`}
       key={`${title}-${index}`}
       onClick={onSelectTab}

@@ -38,8 +38,6 @@ export const Examples = () => {
         >
           <TabsExtendedExample
             items={items}
-            variant={VARIANT.fit}
-            skin={SKIN.fullUnderline}
             activeTabIndex={tabIndex1}
             onTabClick={index => setTabIndex1(index)}
           />
@@ -59,7 +57,6 @@ export const Examples = () => {
           >
             <TabsMobileExample
               items={items}
-              skin={SKIN.fullUnderline}
               activeTabIndex={tabIndex2}
               onTabClick={index => setTabIndex2(index)}
             />
