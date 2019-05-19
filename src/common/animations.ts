@@ -2,7 +2,7 @@ const easeInOutSin = (time: number): number => {
   return (1 + Math.sin(Math.PI * time - Math.PI / 2)) / 2;
 };
 
-export const animate = (
+export const animateProp = (
   elementPropToAnimate: string,
   element: Element,
   amountToMove: number,

@@ -1,0 +1,7 @@
+.root {
+    cursor: pointer;
+    padding: 14px 3%;
+    text-align: center;
+    white-space: nowrap;
+    height: 100%;
+}

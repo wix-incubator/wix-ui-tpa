@@ -152,7 +152,7 @@
 }
 
 .root:mobile {
-    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
     line-height: 1.44em;
     height: 48px;
 }

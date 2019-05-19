@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
-import { animate } from '../../common/animations';
+import { animateProp } from '../../common/animations';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
@@ -148,7 +148,7 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   _animateScroll(scrollLeft: number) {
-    animate('scrollLeft', this._navRef.current, scrollLeft);
+    animateProp('scrollLeft', this._navRef.current, scrollLeft);
   }
 
   _onNavClickLeft = () => {
@@ -168,7 +168,6 @@ class Tabs extends React.Component<TabsProps, TabsState> {
   };
 
   render() {
-    // const { mobile } = this.context;
     const { navButtons, tabsKey } = this.state;
     const { items, activeTabIndex, skin, alignment, variant } = this.props;
     const styleProps = { skin, alignment, variant, navButtons };

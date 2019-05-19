@@ -1,0 +1,40 @@
+.root {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    height: 52px;
+}
+
+.root, 
+.root * {
+    box-sizing: border-box;
+}
+
+.navBtn {
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: width .2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+}
+
+.navBtn.navBtnLeft {
+    left: 0;
+}
+
+.navBtn.navBtnRight {
+    right: 0;
+}
+
+.navigation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: left .2s ease, right .2s ease;
+}

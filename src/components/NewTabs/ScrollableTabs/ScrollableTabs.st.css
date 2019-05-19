@@ -1,0 +1,39 @@
+:import {
+    -st-from: "../Tab/Tab.st.css";
+    -st-default: Tab;
+}
+
+:vars {
+    defaultSelectedTabIndicatorColor: color-8;
+}
+
+.root {
+    overflow: hidden;
+    height: 100%;
+}
+
+.root nav {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    white-space:nowrap;
+    position: relative;
+}
+
+.root nav::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    -st-extends: Tab;
+    display: inline-block;
+}
+
+.selectedIndicator {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid;
+    border-bottom-color: value(defaultSelectedTabIndicatorColor);
+    transition: all .3s ease-in-out;
+}
