@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { Tab, TabItem } from '../Tab/Tab';
-import {
-  ALIGNMENT as Alignment,
-  VARIANT as Variant,
-  SKIN as Skin,
-} from '../../Tabs';
+import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateProp } from '../../../common/animations';
 import style from './ScrollableTabs.st.css';
 
@@ -19,7 +15,6 @@ interface ScrollableTabsProps {
   items: TabItem[];
   alignment: Alignment;
   variant: Variant;
-  skin: Skin;
   onScroll(event: React.UIEvent): void;
   onClickItem(index: number): void;
   className: string;
@@ -139,10 +134,10 @@ export class ScrollableTabs extends React.Component<
 
   render() {
     const { selectedIndicatorRect } = this.state;
-    const { onScroll, items, alignment, variant, skin, ...rest } = this.props;
+    const { onScroll, items, alignment, variant, ...rest } = this.props;
 
     return (
-      <div {...style('root', { alignment, variant, skin }, rest)}>
+      <div {...style('root', { alignment, variant }, rest)}>
         <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
           {items.map(this._getTabItem)}
           <div

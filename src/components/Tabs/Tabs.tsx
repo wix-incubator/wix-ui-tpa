@@ -154,24 +154,16 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   render() {
     const { navButtons, tabsKey } = this.state;
-    const {
-      items,
-      alignment,
-      skin,
-      variant,
-      activeTabIndex,
-      onTabClick,
-    } = this.props;
+    const { items, alignment, skin, variant, activeTabIndex } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...style('root', { navButtons, mobile }, this.props)}>
+          <div {...style('root', { skin, navButtons, mobile }, this.props)}>
             <ReactResizeDetector handleWidth onResize={this._onResize} />
             <ScrollableTabs
               alignment={alignment}
               variant={variant}
-              skin={skin}
               items={items}
               className={style.navigation}
               onClickItem={this._onClickItem}

@@ -8,11 +8,6 @@
     -st-default: Navigation;
 }
 
-:import {
-    -st-from: "./TabsNavButton/TabsNavButton.st.css";
-    -st-default: NavBtn;
-}
-
 :vars {
     tabsHeight: 52px;
     tabsMobileHeight: 48px;
@@ -35,8 +30,12 @@
     IndicatorColor: --overridable;
 }
 
+:vars {
+    calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
+}
+
 .root {
-    -st-states: variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile;
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), navButtons(enum(none, left, right, both)), mobile;
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
@@ -124,6 +123,15 @@
 
 .root:navButtons(both) .navigation::nav {
     width: calc(100% + (2 * value(navBtnWidth)));
+}
+
+.root:skin(fullUnderline) {
+    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
+}
+
+.root:skin(fitUnderline) .navBtn,
+.root:skin(fitUnderline) .navigation::tab {
+    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
 }
 
 .root:mobile .navigation::nav {

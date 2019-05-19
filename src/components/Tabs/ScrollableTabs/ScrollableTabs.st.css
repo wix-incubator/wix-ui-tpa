@@ -10,20 +10,14 @@
 
 :vars {
     defaultSelectedTabIndicatorColor: color-8;
-    defaultIndicatorColor: color-5;
 }
 
 :vars {
-    indicatorColor: --overridable;
     selectedTabIndicatorColor: --overridable;
 }
 
-:vars {
-    calculatedBorderColor: wixApply(color, wixApply(fallback, value(indicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
-}
-
 .root {
-    -st-states: alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), skin(enum(fullUnderline, clear, fitUnderline));
+    -st-states: alignment(enum(center, left, right)), variant(enum(fullWidth, fit));
     overflow: hidden;
     height: 100%;
 }
@@ -68,13 +62,4 @@
 
 .root:variant(fullWidth) .tab {
     flex: 1;
-}
-
-.root:skin(fullUnderline) {
-    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
-}
-
-.root:skin(fitUnderline) .tab {
-    border-bottom: 1px solid;
-    border-bottom-color: value(calculatedBorderColor);
 }
