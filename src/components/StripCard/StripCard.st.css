@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../Card/mixins.st.css";
-    -st-named: withBorder, withDynamicPadding;
+    -st-named: withBorder, withDynamicPadding, withDynamicSidePadding;
 }
 
 :vars {
@@ -28,6 +28,7 @@
     MainMediaColor: --overridable;
     MainBorderWidth: --overridable;
     MainBorderColor: --overridable;
+    MainSidePadding: --overridable;
 }
 
 :vars {
@@ -44,6 +45,9 @@
             BorderWidth value(borderWidth)
     ), withDynamicPadding(
             PaddingSize value(DefaultPadding),
+            BorderWidth value(borderWidth)
+    ), withDynamicSidePadding(
+            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(MainSidePadding)), value(DefaultPadding)),
             BorderWidth value(borderWidth)
     );
     display: flex;

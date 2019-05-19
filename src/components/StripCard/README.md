@@ -28,7 +28,8 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             MainBGColor '"--backgroundColor"',
             MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',
-            MainBorderWidth '"--borderWidth"'
+            MainBorderWidth '"--borderWidth"',
+            MainSidePadding '"--sidePadding"'
       );
     }
 
