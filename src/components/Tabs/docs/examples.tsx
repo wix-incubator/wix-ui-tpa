@@ -4,12 +4,12 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
-
 import { TabsExtendedExample } from './TabsExtendedExample';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 
+import { MockSettings } from '../helperComponents/MockSettings';
+import * as MobileRawSource from '!raw-loader!./TabsMobileExample.tsx';
 import { TabsMobileExample } from './TabsMobileExample';
-import * as TabsMobileExampleRaw from '!raw-loader!./TabsMobileExample.tsx';
+import { VARIANT, SKIN } from '../../src/components/Tabs';
 
 const items = [
   { title: 'Title 1' },
@@ -21,6 +21,7 @@ const items = [
 export const Examples = () => {
   const [tabIndex1, setTabIndex1] = React.useState(0);
   const [tabIndex2, setTabIndex2] = React.useState(0);
+  const [tabIndex3, setTabIndex3] = React.useState(0);
 
   return (
     <div>
@@ -37,6 +38,8 @@ export const Examples = () => {
         >
           <TabsExtendedExample
             items={items}
+            variant={VARIANT.fit}
+            skin={SKIN.fullUnderline}
             activeTabIndex={tabIndex1}
             onTabClick={index => setTabIndex1(index)}
           />
@@ -51,11 +54,12 @@ export const Examples = () => {
               ExtendedCSSRawSource,
               '',
               '//.tsx',
-              TabsMobileExampleRaw,
+              MobileRawSource,
             ].join('\n')}
           >
             <TabsMobileExample
               items={items}
+              skin={SKIN.fullUnderline}
               activeTabIndex={tabIndex2}
               onTabClick={index => setTabIndex2(index)}
             />

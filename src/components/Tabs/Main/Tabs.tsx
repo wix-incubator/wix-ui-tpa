@@ -1,10 +1,11 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
+import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import { TabItem } from '../Tab/Tab';
 import { ScrollableTabs } from '../ScrollableTabs/ScrollableTabs';
 import { TabsNavButton } from '../TabsNavButton/TabsNavButton';
-import { ALIGNMENT, SKIN, VARIANT } from '../../Tabs/constants';
+import { ALIGNMENT, SKIN, VARIANT } from '../constants';
 import style from './Tabs.st.css';
 
 const enum NavButtonOptions {
@@ -50,8 +51,6 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this._tabsRef.scrollRight();
   };
 
-  _onClickItem = () => {};
-
   _onScroll = (event: React.UIEvent) => {
     const { navButtons } = this.state;
     const target = event.target as HTMLDivElement;
@@ -92,31 +91,35 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     } = this.props;
 
     return (
-      <div {...style('root', { navButtons }, this.props)}>
-        <ScrollableTabs
-          alignment={alignment}
-          variant={variant}
-          skin={skin}
-          items={items}
-          className={style.navigation}
-          onClickItem={onTabClick}
-          onScroll={this._onScroll}
-          activeTabIndex={activeTabIndex}
-          ref={this._tabsRefCallback}
-        />
-        <TabsNavButton
-          onClick={this._onClickLeft}
-          className={classnames(style.navBtn, style.navBtnLeft)}
-        >
-          <ChevronLeft size="35" />
-        </TabsNavButton>
-        <TabsNavButton
-          onClick={this._onClickRight}
-          className={classnames(style.navBtn, style.navBtnRight)}
-        >
-          <ChevronRight size="35" />
-        </TabsNavButton>
-      </div>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div {...style('root', { navButtons, mobile }, this.props)}>
+            <ScrollableTabs
+              alignment={alignment}
+              variant={variant}
+              skin={skin}
+              items={items}
+              className={style.navigation}
+              onClickItem={onTabClick}
+              onScroll={this._onScroll}
+              activeTabIndex={activeTabIndex}
+              ref={this._tabsRefCallback}
+            />
+            <TabsNavButton
+              onClick={this._onClickLeft}
+              className={classnames(style.navBtn, style.navBtnLeft)}
+            >
+              <ChevronLeft size="35" />
+            </TabsNavButton>
+            <TabsNavButton
+              onClick={this._onClickRight}
+              className={classnames(style.navBtn, style.navBtnRight)}
+            >
+              <ChevronRight size="35" />
+            </TabsNavButton>
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }
