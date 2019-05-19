@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../src/components/Tabs/Main/Tabs.st.css";
+    -st-from: "../../src/components/Tabs/Tabs.st.css";
     -st-default: TPATabs;
 }
 
