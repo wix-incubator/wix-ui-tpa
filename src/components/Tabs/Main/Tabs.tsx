@@ -1,5 +1,6 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import ReactResizeDetector from 'react-resize-detector';
 import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import { TabItem } from '../Tab/Tab';
@@ -37,11 +38,20 @@ interface TabsState {
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
   private _tabsRef: ScrollableTabs;
+  private _resizeTimer: number;
 
   state = {
     navButtons: NavButtonOptions.none,
-    tabsKey: 'asd',
+    tabsKey: this._generateRandomKey(),
   };
+
+  componentDidMount() {
+    this._updateButtonsIfNeeded();
+  }
+
+  componentDidUpdate() {
+    this._updateButtonsIfNeeded();
+  }
 
   _onClickLeft = () => {
     this._tabsRef.scrollLeft();
@@ -57,6 +67,22 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     const navigationWidth = target.clientWidth;
     const navigationScrollWidth = target.scrollWidth;
     const scrollLeft = target.scrollLeft;
+    const newNavButtons = this._getNewNavButtons(
+      navigationWidth,
+      navigationScrollWidth,
+      scrollLeft,
+    );
+
+    if (newNavButtons !== navButtons) {
+      this.setState({ navButtons: newNavButtons });
+    }
+  };
+
+  _getNewNavButtons(
+    navigationWidth: number,
+    navigationScrollWidth: number,
+    scrollLeft: number,
+  ) {
     let newNavButtons = NavButtonOptions.none;
 
     if (scrollLeft > 0) {
@@ -70,17 +96,50 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
           : NavButtonOptions.both;
     }
 
-    if (newNavButtons !== navButtons) {
-      this.setState({ navButtons: newNavButtons });
+    return newNavButtons;
+  }
+
+  _updateButtonsIfNeeded() {
+    const { navButtons } = this.state;
+    const navElement = this._tabsRef.getNavElement();
+
+    if (navElement) {
+      const navigationWidth = navElement.clientWidth;
+      const navigationScrollWidth = navElement.scrollWidth;
+      const scrollLeft = navElement.scrollLeft;
+
+      const newNavButtons = this._getNewNavButtons(
+        navigationWidth,
+        navigationScrollWidth,
+        scrollLeft,
+      );
+
+      if (newNavButtons !== navButtons) {
+        this.setState({ navButtons: newNavButtons });
+      }
     }
+  }
+
+  _onResize = () => {
+    clearTimeout(this._resizeTimer);
+
+    this._updateButtonsIfNeeded();
+
+    this._resizeTimer = window.setTimeout(() => {
+      this.setState({ tabsKey: this._generateRandomKey() });
+    }, 100);
   };
+
+  _generateRandomKey() {
+    return `${Math.random()}`;
+  }
 
   _tabsRefCallback = (el: ScrollableTabs) => {
     this._tabsRef = el;
   };
 
   render() {
-    const { navButtons } = this.state;
+    const { navButtons, tabsKey } = this.state;
     const {
       items,
       alignment,
@@ -94,6 +153,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div {...style('root', { navButtons, mobile }, this.props)}>
+            <ReactResizeDetector handleWidth onResize={this._onResize} />
             <ScrollableTabs
               alignment={alignment}
               variant={variant}
@@ -104,6 +164,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onScroll={this._onScroll}
               activeTabIndex={activeTabIndex}
               ref={this._tabsRefCallback}
+              key={tabsKey}
             />
             <TabsNavButton
               onClick={this._onClickLeft}

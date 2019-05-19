@@ -120,6 +120,10 @@ export class ScrollableTabs extends React.Component<
     }
   };
 
+  _animateScroll(scrollLeft: number) {
+    animateProp('scrollLeft', this._navRef.current, scrollLeft);
+  }
+
   scrollLeft() {
     this._animateScroll(-1 * this._navRef.current.clientWidth);
   }
@@ -128,8 +132,8 @@ export class ScrollableTabs extends React.Component<
     this._animateScroll(this._navRef.current.clientWidth);
   }
 
-  _animateScroll(scrollLeft: number) {
-    animateProp('scrollLeft', this._navRef.current, scrollLeft);
+  getNavElement() {
+    return this._navRef && this._navRef.current || null;
   }
 
   render() {
