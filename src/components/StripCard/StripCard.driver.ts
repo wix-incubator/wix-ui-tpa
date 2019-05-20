@@ -5,7 +5,7 @@ import {
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './StripCard.st.css';
 
-export interface stripCardDriver extends BaseUniDriver {
+export interface StripCardDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
   isMediaRounded(): Promise<boolean>;
   isWithSidePadding(): Promise<boolean>;
@@ -13,7 +13,7 @@ export interface stripCardDriver extends BaseUniDriver {
   getInfoContent(): Promise<HTMLElement>;
 }
 
-export const stripCardDriverFactory = (base: UniDriver): stripCardDriver => {
+export const stripCardDriverFactory = (base: UniDriver): StripCardDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   const getInfoContainerElement = () => base.$(`.${style.infoContainer} > *`);
@@ -26,6 +26,6 @@ export const stripCardDriverFactory = (base: UniDriver): stripCardDriver => {
     getInfoContent: async () => getInfoContainerElement().getNative(),
     isMediaRounded: async () => stylableUtil.hasStyleState(base, 'roundMedia'),
     isWithSidePadding: async () =>
-      stylableUtil.hasStyleState(base, 'withoutSidePadding'),
+      stylableUtil.hasStyleState(base, 'sidePadding'),
   };
 };

@@ -39,7 +39,7 @@
 }
 
 .root {
-    -st-states: mobile, roundMedia, withoutSidePadding;
+    -st-states: roundMedia, sidePadding;
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
@@ -57,11 +57,7 @@
     box-sizing: border-box;
 }
 
-.root:mobile {
-    /*mobile css goes here*/
-}
-
-.root:withoutSidePadding {
+.root:not(:sidePadding) {
     padding-left: 0;
     padding-right: 0;
 }

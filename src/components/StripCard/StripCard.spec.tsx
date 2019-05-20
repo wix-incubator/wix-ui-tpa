@@ -38,8 +38,8 @@ describe('StripCard', () => {
   });
 
   it('should render without side padding', async () => {
-    const driver = createDriver(<StripCard withoutSidePadding />);
-    expect(await driver.isWithSidePadding()).toEqual(true);
+    const driver = createDriver(<StripCard sidePadding={false} />);
+    expect(await driver.isWithSidePadding()).toEqual(false);
   });
 
   describe('testkit', () => {

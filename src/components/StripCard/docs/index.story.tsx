@@ -32,7 +32,15 @@ const mediaExamples = [
       />
     ),
   },
-  { label: 'video', value: <video src="" /> },
+  {
+    label: 'video',
+    value: (
+      <video
+        style={{ width: 'inherit', height: 'inherit' }}
+        src="https://interactive-examples.mdn.mozilla.net/media/examples/flower.webm"
+      />
+    ),
+  },
   { label: 'none', value: null },
 ];
 
@@ -52,7 +60,7 @@ export default {
     media: mediaExamples[0].value,
     info: infoExample,
     roundMedia: false,
-    withoutSidePadding: false,
+    sidePadding: true,
   }),
   exampleProps: {
     media: mediaExamples,
