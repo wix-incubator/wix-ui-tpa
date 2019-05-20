@@ -3,4 +3,4 @@ export {
   TPAComponentsProvider,
   TPAComponentsConfig,
   TPAComponentsContext,
-} from './TPAComponentsConfig';
+} from './TPAComponentsContext';
