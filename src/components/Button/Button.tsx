@@ -5,7 +5,7 @@ import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/
 import {
   TPAComponentsContext,
   TPAComponentsConsumer,
-} from '../TPAComponentsConfig';
+} from '../TPAComponentsContext';
 
 export enum PRIORITY {
   basic = 'basic',

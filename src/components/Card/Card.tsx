@@ -3,7 +3,7 @@ import style from './Card.st.css';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,
-} from '../TPAComponentsConfig';
+} from '../TPAComponentsContext';
 
 export enum CardRatioOptions {
   RATIO_100 = '100',

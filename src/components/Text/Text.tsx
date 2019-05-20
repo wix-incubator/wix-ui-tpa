@@ -4,7 +4,7 @@ import { DEFAULT_TAG_NAME, TYPOGRAPHY } from './constants';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,
-} from '../TPAComponentsConfig';
+} from '../TPAComponentsContext';
 
 export interface TextProps {
   typography?: TYPOGRAPHY;

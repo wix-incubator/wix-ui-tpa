@@ -2,7 +2,7 @@ import * as React from 'react';
 import ReactResizeDetector from 'react-resize-detector';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import { animate } from '../../common/animations';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { TPAComponentsConsumer } from '../TPAComponentsContext';
 import { TabsUI } from './TabsUI';
 import style from './Tabs.st.css';
 

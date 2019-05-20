@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text } from '../Text';
 import { Button } from '../Button';
 import styles from './{%ComponentName%}.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { TPAComponentsConsumer } from '../TPAComponentsContext';
 
 export interface {%ComponentName%}Props {
   buttonText: string;
