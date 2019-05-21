@@ -29,3 +29,8 @@ import { overlappingCardDriverFactory } from '../components/OverlappingCard/Over
 export const overlappingCardTestkitFactory = uniTestkitFactoryCreator(
   overlappingCardDriverFactory,
 );
+
+import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver';
+export const stripCardTestkitFactory = uniTestkitFactoryCreator(
+  stripCardDriverFactory,
+);

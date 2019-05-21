@@ -19,3 +19,8 @@
 .withDynamicPadding {
     padding: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
 }
+
+.withDynamicSidePadding {
+    padding-left: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
+    padding-right: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
+}

@@ -5,11 +5,11 @@ import {
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './{%ComponentName%}.st.css';
 
-export interface {%componentName%}Driver extends BaseUniDriver {
+export interface {%ComponentName%}Driver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
 }
 
-export const {%componentName%}DriverFactory = (base: UniDriver): {%componentName%}Driver => {
+export const {%componentName%}DriverFactory = (base: UniDriver): {%ComponentName%}Driver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {

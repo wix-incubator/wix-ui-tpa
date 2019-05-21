@@ -1,0 +1,82 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "../Card/mixins.st.css";
+    -st-named: withBorder, withDynamicPadding, withDynamicSidePadding;
+}
+
+:vars {
+    /*Defaults*/
+    ImageWidth: 84px;
+    ImageHeight: 84px;
+    CardMinHeight: 92px;
+    MediaInfoMargin: 32px;
+    DefaultPadding: 32px;
+    DefaultBorderWidth: 0;
+    DefaultCardBG: color-1;
+    DefaultMediaBG: color-5;
+    DefaultBorderColor: color-5;
+    MinWidth: 740px;
+}
+
+:vars {
+    /*Overrides*/
+    MainBGColor: --overridable;
+    MainMediaColor: --overridable;
+    MainBorderWidth: --overridable;
+    MainBorderColor: --overridable;
+    MainSidePadding: --overridable;
+}
+
+:vars {
+    cardBGColor: wixApply(color, wixApply(fallback, value(MainBGColor), value(DefaultCardBG)));
+    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), wixApply(zeroAsTrue, value(DefaultBorderWidth))), px);
+    borderColor: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor))), 0.2);
+    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaBG)), 0.2)));
+}
+
+.root {
+    -st-states: roundMedia, sidePadding;
+    -st-mixin: withBorder(
+            BorderColor value(borderColor),
+            BorderWidth value(borderWidth)
+    ), withDynamicPadding(
+            PaddingSize value(DefaultPadding),
+            BorderWidth value(borderWidth)
+    ), withDynamicSidePadding(
+            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(MainSidePadding)), value(DefaultPadding)),
+            BorderWidth value(borderWidth)
+    );
+    display: flex;
+    background-color: value(cardBGColor);
+    min-height: value(CardMinHeight);
+    min-width: value(MinWidth);
+    box-sizing: border-box;
+}
+
+.root:not(:sidePadding) {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.mediaContainer {
+    width: value(ImageWidth);
+    height: value(ImageHeight);
+    margin-right: value(MediaInfoMargin);
+    margin-top: 4px;
+    flex-shrink: 0;
+    background-color: value(mediaBGColor);
+}
+
+.root:roundMedia .mediaContainer {
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.infoContainer {
+    height: auto;
+    width: 100%;
+}
