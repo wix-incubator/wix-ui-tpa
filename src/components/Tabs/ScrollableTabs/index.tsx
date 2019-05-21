@@ -1,0 +1,1 @@
+export { ScrollableTabs } from './ScrollableTabs';

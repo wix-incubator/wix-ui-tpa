@@ -70,6 +70,11 @@
     right: 0;
 }
 
+.navBtn svg {
+    width: value(navBtnWidth);
+    height: value(navBtnWidth);
+}
+
 .navigation {
     -st-extends: Navigation;
     -st-mixin: Navigation(
@@ -113,12 +118,12 @@
 
 .root:navButtons(left) .navigation::nav,
 .root:navButtons(both) .navigation::nav {
-    left: calc(-1 * value(navBtnWidth));
+    left: wixApply(calculate, "*", -1, value(navBtnWidth));
 }
 
 .root:navButtons(right) .navigation::nav,
 .root:navButtons(both) .navigation::nav {
-    right: calc(-1 * value(navBtnWidth));
+    right: wixApply(calculate, "*", -1, value(navBtnWidth));
 }
 
 .root:navButtons(both) .navigation::nav {

@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { Tab, TabItem } from '../Tab/Tab';
 import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
-import { animateProp } from '../../../common/animations';
+import { animateElementByProp } from '../../../common/animations';
 import style from './ScrollableTabs.st.css';
 
 const isEqual = require('lodash/isEqual');
+
+export interface ScrollPosition {
+  scrollLeft: number;
+  scrollRight: number;
+}
 
 interface TabsUIRect {
   left: number;
@@ -46,7 +51,9 @@ export class ScrollableTabs extends React.Component<
     this._selectedTabRef = React.createRef();
   }
 
-  componentDidMount = this._updateComponent;
+  componentDidMount() {
+    this._updateComponent();
+  }
 
   componentDidUpdate(prevProps: ScrollableTabsProps) {
     if (
@@ -81,23 +88,6 @@ export class ScrollableTabs extends React.Component<
     }
   }
 
-  _getTabItem = (item: TabItem, index: number) => {
-    const { activeTabIndex, onClickItem } = this.props;
-    const isActive = activeTabIndex === index;
-
-    return (
-      <Tab
-        key={`${item.title}-${index}`}
-        className={style.tab}
-        item={item}
-        index={index}
-        isActive={isActive}
-        ref={isActive ? this._selectedTabRef : null}
-        onClick={onClickItem}
-      />
-    );
-  };
-
   _scrollToViewIfNeeded = () => {
     if (this._selectedTabRef && this._selectedTabRef.current) {
       const currentTabElement = this._selectedTabRef.current;
@@ -117,7 +107,7 @@ export class ScrollableTabs extends React.Component<
   };
 
   _animateScroll(scrollLeft: number) {
-    animateProp('scrollLeft', this._navRef.current, scrollLeft);
+    animateElementByProp('scrollLeft', this._navRef.current, scrollLeft);
   }
 
   scrollLeft() {
@@ -128,18 +118,52 @@ export class ScrollableTabs extends React.Component<
     this._animateScroll(this._navRef.current.clientWidth);
   }
 
-  getNavElement() {
-    return (this._navRef && this._navRef.current) || null;
+  getNavScrollPosition(): ScrollPosition {
+    const scrollPosition = { scrollLeft: 0, scrollRight: 0 };
+
+    if (this._navRef && this._navRef.current) {
+      const element = this._navRef.current;
+
+      scrollPosition.scrollLeft = element.scrollLeft;
+      scrollPosition.scrollRight =
+        element.scrollWidth - (element.scrollLeft + element.offsetWidth);
+    }
+
+    return scrollPosition;
   }
 
   render() {
     const { selectedIndicatorRect } = this.state;
-    const { onScroll, items, alignment, variant, ...rest } = this.props;
+    const {
+      activeTabIndex,
+      onClickItem,
+      onScroll,
+      items,
+      alignment,
+      variant,
+      ...rest
+    } = this.props;
 
     return (
-      <div {...style('root', { alignment, variant }, rest)}>
+      <div
+        {...style('root', { alignment, variant }, rest)}
+        data-hook={'scrollable-tabs'}
+        data-alignment={alignment}
+        data-variant={variant}
+      >
         <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
-          {items.map(this._getTabItem)}
+          {items.map((item, index) => (
+            <Tab
+              key={`${item.title}-${index}`}
+              className={style.tab}
+              item={item}
+              index={index}
+              dataHook={`tab-item-${index}`}
+              isActive={activeTabIndex === index}
+              ref={activeTabIndex === index ? this._selectedTabRef : null}
+              onClick={onClickItem}
+            />
+          ))}
           <div
             className={style.selectedIndicator}
             style={selectedIndicatorRect}
