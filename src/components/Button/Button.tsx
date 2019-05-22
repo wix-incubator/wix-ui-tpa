@@ -27,6 +27,7 @@ export interface ButtonProps extends ButtonNextProps {
 }
 
 export class Button extends React.Component<ButtonProps> {
+  buttonRef: any;
   static contextType = TPAComponentsContext;
   static displayName = 'Button';
   static defaultProps = {
@@ -41,6 +42,7 @@ export class Button extends React.Component<ButtonProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ButtonNext
+            ref={buttonRef => (this.buttonRef = buttonRef)}
             {...rest}
             {...style('root', { priority, size, fullWidth, mobile }, rest)}
           />

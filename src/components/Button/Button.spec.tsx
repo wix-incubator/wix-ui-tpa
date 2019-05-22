@@ -30,6 +30,19 @@ describe('Button', () => {
     expect(await driver.isMobile()).toEqual(true);
   });
 
+  it('should let focus on inner button using ref', async () => {
+    let buttonRef;
+    const driver = createDriver(
+      <Button
+        fullWidth
+        ref={ref => {
+          buttonRef = ref;
+        }}
+      />,
+    );
+    expect(buttonRef.buttonRef.focus).toBeInstanceOf(Function);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
@@ -53,3 +66,4 @@ describe('Button', () => {
     });
   });
 });
+//file.only
