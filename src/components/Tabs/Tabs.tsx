@@ -157,12 +157,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
             <TabsNavButton
               onClick={this._onClickLeft}
               className={classnames(style.navBtn, style.navBtnLeft)}
+              tabIndex={NavButtonOptions.right ? -1 : 0}
             >
               <ChevronLeft />
             </TabsNavButton>
             <TabsNavButton
               onClick={this._onClickRight}
               className={classnames(style.navBtn, style.navBtnRight)}
+              tabIndex={NavButtonOptions.left ? -1 : 0}
             >
               <ChevronRight />
             </TabsNavButton>
