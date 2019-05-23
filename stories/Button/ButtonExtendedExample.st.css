@@ -9,7 +9,7 @@
           MainTextColor '"--buttonTextColor"',
           MainBackgroundColor '"--buttonBackgroundColor"',
           MainTextFont '"--buttonTextFont"',
-          MainBorderWidth '"unit(--borderWidth, px)"',
+          MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
           MainBorderRadius '"unit(--borderRadius, px)"',
           MainBorderColor '"--borderColor"'
   );
