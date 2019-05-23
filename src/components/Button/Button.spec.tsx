@@ -31,16 +31,9 @@ describe('Button', () => {
   });
 
   it('should let focus on inner button using ref', async () => {
-    let buttonRef;
-    const driver = createDriver(
-      <Button
-        fullWidth
-        ref={ref => {
-          buttonRef = ref;
-        }}
-      />,
-    );
-    expect(buttonRef.buttonRef.focus).toBeInstanceOf(Function);
+    const ref = React.createRef<HTMLButtonElement>();
+    const driver = createDriver(<Button fullWidth ref={ref} />);
+    expect(ref.current.focus).toBeInstanceOf(Function);
   });
 
   describe('testkit', () => {

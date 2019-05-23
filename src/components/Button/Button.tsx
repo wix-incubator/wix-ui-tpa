@@ -24,9 +24,10 @@ export interface ButtonProps extends ButtonNextProps {
   priority?: PRIORITY;
   size?: SIZE;
   fullWidth?: boolean;
+  innerRef?: React.RefObject<HTMLButtonElement>;
 }
 
-export class Button extends React.Component<ButtonProps> {
+class ButtonComponent extends React.Component<ButtonProps> {
   static contextType = TPAComponentsContext;
   static displayName = 'Button';
   static defaultProps = {
@@ -34,15 +35,14 @@ export class Button extends React.Component<ButtonProps> {
     size: SIZE.medium,
     fullWidth: false,
   };
-  buttonRef: any;
 
   render() {
-    const { priority, size, fullWidth, ...rest } = this.props;
+    const { priority, size, fullWidth, innerRef, ...rest } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ButtonNext
-            ref={buttonRef => (this.buttonRef = buttonRef)}
+            ref={innerRef}
             {...rest}
             {...style('root', { priority, size, fullWidth, mobile }, rest)}
           />
@@ -51,3 +51,9 @@ export class Button extends React.Component<ButtonProps> {
     );
   }
 }
+
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (props, ref: React.RefObject<HTMLButtonElement>) => (
+    <ButtonComponent {...props} innerRef={ref} />
+  ),
+);
