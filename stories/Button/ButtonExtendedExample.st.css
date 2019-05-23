@@ -10,7 +10,7 @@
           MainBackgroundColor '"--buttonBackgroundColor"',
           MainTextFont '"--buttonTextFont"',
           MainBorderWidth '"--borderWidth"',
-          MainBorderRadius '"--borderRadius"',
+          MainBorderRadius '"unit(--borderRadius, px)"',
           MainBorderColor '"--borderColor"'
   );
 }

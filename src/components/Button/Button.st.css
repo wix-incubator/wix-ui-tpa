@@ -47,7 +47,7 @@
     border-style: solid;
     box-sizing: content-box;
     border-color: wixApply(color, value(MainBorderColor));
-    border-radius: wixApply(unit, value(MainBorderRadius), px);
+    border-radius: value(MainBorderRadius);
     transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
 }
 
