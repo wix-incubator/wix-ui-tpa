@@ -11,7 +11,7 @@
           MainTextFont '"--buttonTextFont"',
           MainBorderWidth '"--borderWidth"',
           MainBorderRadius '"unit(--borderRadius, px)"',
-    MainBorderColor '"--borderColor"'
+          MainBorderColor '"--borderColor"'
   );
 }
 
