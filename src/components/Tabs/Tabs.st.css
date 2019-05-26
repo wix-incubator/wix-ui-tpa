@@ -78,8 +78,8 @@
 .navigation {
     -st-extends: Navigation;
     -st-mixin: Navigation(
-        indicatorColor value(IndicatorColor),
-        selectedIndicatorColor value(SelectedTabIndicatorColor)
+        indicatorColor value(calculatedBorderColor),
+        selectedIndicatorColor wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)))
     );
     position: absolute;
     top: 0;

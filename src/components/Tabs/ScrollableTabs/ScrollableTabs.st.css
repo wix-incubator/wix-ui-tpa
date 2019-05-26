@@ -9,7 +9,6 @@
 }
 
 :vars {
-    defaultSelectedTabIndicatorColor: color-8;
     selectedIndicatorColor: --overridable;
 }
 
@@ -34,6 +33,9 @@
 
 .tab {
     -st-extends: Tab;
+    -st-mixin: Tab(
+        focusIndicatorColor wixApply(opacity, value(selectedIndicatorColor), 0.2)
+    );
     display: inline-block;
 }
 
@@ -41,7 +43,7 @@
     position: absolute;
     bottom: 0;
     border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(selectedIndicatorColor), value(defaultSelectedTabIndicatorColor)));
+    border-bottom-color: value(selectedIndicatorColor);
     transition: left .3s ease-in-out, width .3s ease-in-out;
 }
 

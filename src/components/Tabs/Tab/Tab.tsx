@@ -22,12 +22,12 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
   const onSelectTab = () => {
     onClick(index);
   };
-
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const keyCode = e.keyCode;
 
     if (isSelectKey(keyCode)) {
       onSelectTab();
+      e.preventDefault();
       return false;
     }
   };
@@ -44,7 +44,10 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
       onKeyDown={onKeyDown}
       tabIndex={0}
     >
-      {title}
+      <div className={style.content} tabIndex={-1}>
+        {title}
+        <div className={style.focusIndicator}/>
+      </div>
     </div>
   );
 });
