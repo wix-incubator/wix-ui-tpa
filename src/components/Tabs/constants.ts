@@ -14,3 +14,7 @@ export enum VARIANT {
   fullWidth = 'fullWidth',
   fit = 'fit',
 }
+
+export const DATA_HOOKS = {
+  scrollableTabs: 'scrollable-tabs',
+};

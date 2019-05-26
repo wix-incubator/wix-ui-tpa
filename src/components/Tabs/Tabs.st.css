@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../tpaStyles/styleableExt.js";
+    -st-from: "../../tpaStyles/styleableExt";
     -st-named: wixApply;
 }
 
@@ -9,14 +9,7 @@
 }
 
 :vars {
-    tabsHeight: 52px;
-    tabsMobileHeight: 48px;
-    navBtnWidth: 35px;
-    navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-:vars {
-    /*Constance*/
+    /* default values */
     defaultTabColor: color-5;
     defaultTabFont: "{theme: 'Body-M', size: '16px'}";
     defaultMobileTabFont: "{theme: 'Body-M', size: '14px'}";
@@ -32,6 +25,11 @@
 }
 
 :vars {
+    /* constants */
+    tabsHeight: 52px;
+    tabsMobileHeight: 48px;
+    navBtnWidth: 35px;
+    navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
 }
 
@@ -81,7 +79,7 @@
     -st-extends: Navigation;
     -st-mixin: Navigation(
         indicatorColor value(IndicatorColor),
-        selectedTabIndicatorColor value(SelectedTabIndicatorColor)
+        selectedIndicatorColor value(SelectedTabIndicatorColor)
     );
     position: absolute;
     top: 0;

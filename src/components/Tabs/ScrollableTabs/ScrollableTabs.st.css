@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../../tpaStyles/styleableExt.js";
+    -st-from: "../../../tpaStyles/styleableExt";
     -st-named: wixApply;
 }
 
@@ -10,10 +10,7 @@
 
 :vars {
     defaultSelectedTabIndicatorColor: color-8;
-}
-
-:vars {
-    selectedTabIndicatorColor: --overridable;
+    selectedIndicatorColor: --overridable;
 }
 
 .root {
@@ -44,7 +41,7 @@
     position: absolute;
     bottom: 0;
     border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(selectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
+    border-bottom-color: wixApply(color, wixApply(fallback, value(selectedIndicatorColor), value(defaultSelectedTabIndicatorColor)));
     transition: left .3s ease-in-out, width .3s ease-in-out;
 }
 

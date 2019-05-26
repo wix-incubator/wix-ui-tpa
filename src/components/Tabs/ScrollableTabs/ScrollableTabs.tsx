@@ -3,8 +3,9 @@ import { Tab, TabItem } from '../Tab/Tab';
 import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateElementByProp } from '../../../common/animations';
 import style from './ScrollableTabs.st.css';
-
-const isEqual = require('lodash/isEqual');
+// @ts-ignore
+import * as isEqual from 'lodash/isEqual';
+import {DATA_HOOKS} from "../constants";
 
 export interface ScrollPosition {
   scrollLeft: number;
@@ -147,7 +148,7 @@ export class ScrollableTabs extends React.Component<
     return (
       <div
         {...style('root', { alignment, variant }, rest)}
-        data-hook={'scrollable-tabs'}
+        data-hook={DATA_HOOKS.scrollableTabs}
         data-alignment={alignment}
         data-variant={variant}
       >
