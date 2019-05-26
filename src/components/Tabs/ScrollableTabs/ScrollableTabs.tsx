@@ -1,11 +1,11 @@
 import * as React from 'react';
+// @ts-ignore
+import * as isEqual from 'lodash/isEqual';
 import { Tab, TabItem } from '../Tab/Tab';
 import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateElementByProp } from '../../../common/animations';
+import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from "../dataHooks";
 import style from './ScrollableTabs.st.css';
-// @ts-ignore
-import * as isEqual from 'lodash/isEqual';
-import {DATA_HOOKS} from "../constants";
 
 export interface ScrollPosition {
   scrollLeft: number;
@@ -137,6 +137,15 @@ export class ScrollableTabs extends React.Component<
     return scrollPosition;
   }
 
+  _getDataAttributes() {
+    const { alignment, variant } = this.props;
+
+    return {
+      [TABS_DATA_KEYS.alignment]: alignment,
+      [TABS_DATA_KEYS.variant]: variant,
+    };
+  }
+
   render() {
     const { selectedIndicatorRect } = this.state;
     const {
@@ -152,9 +161,8 @@ export class ScrollableTabs extends React.Component<
     return (
       <div
         {...style('root', { alignment, variant }, rest)}
-        data-hook={DATA_HOOKS.scrollableTabs}
-        data-alignment={alignment}
-        data-variant={variant}
+        {...this._getDataAttributes()}
+        data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
         <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
           {items.map((item, index) => (
@@ -163,7 +171,7 @@ export class ScrollableTabs extends React.Component<
               className={style.tab}
               item={item}
               index={index}
-              dataHook={`tab-item-${index}`}
+              dataHook={`${TABS_DATA_HOOKS.tab}-index`}
               isActive={activeTabIndex === index}
               ref={activeTabIndex === index ? this._selectedTabRef : null}
               onClick={onClickItem}

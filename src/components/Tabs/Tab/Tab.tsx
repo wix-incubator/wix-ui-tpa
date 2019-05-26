@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { isSelectKey } from '../utils';
 import style from './Tab.st.css';
+import {TABS_DATA_KEYS} from "../dataHooks";
 
 export interface TabItem {
   /** Title of the tab */
@@ -31,13 +32,16 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
       return false;
     }
   };
+  const dataAttributes = {
+    [TABS_DATA_KEYS.tabIndex]: index,
+    [TABS_DATA_KEYS.tabIsActive]: isActive,
+  };
 
   return (
     <div
       {...style('root', {}, props)}
       ref={ref}
-      data-index={index}
-      data-active={isActive}
+      {...dataAttributes}
       data-hook={dataHook}
       key={`${title}-${index}`}
       onClick={onSelectTab}

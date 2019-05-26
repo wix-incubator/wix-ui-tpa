@@ -8,6 +8,7 @@ import { ScrollableTabs } from './ScrollableTabs';
 import { TabsNavButton } from './TabsNavButton';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import style from './Tabs.st.css';
+import {TABS_DATA_KEYS} from './dataHooks';
 
 const enum NavButtonOptions {
   both = 'both',
@@ -123,6 +124,17 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this._tabsRef = el;
   };
 
+  _getDataAttributes(mobile) {
+    const { navButtons } = this.state;
+    const { skin } = this.props;
+
+    return {
+      [TABS_DATA_KEYS.skin]: skin,
+      [TABS_DATA_KEYS.mobile]: mobile,
+      [TABS_DATA_KEYS.navButtons]: navButtons,
+    };
+  }
+
   render() {
     const { navButtons } = this.state;
     const { items, alignment, skin, variant, activeTabIndex } = this.props;
@@ -132,9 +144,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         {({ mobile }) => (
           <div
             {...style('root', { skin, navButtons, mobile }, this.props)}
-            data-skin={skin}
-            data-navbuttons={navButtons}
-            data-mobile={mobile}
+            {...this._getDataAttributes(mobile)}
           >
             <ReactResizeDetector handleWidth onResize={this._onResize} />
             <ScrollableTabs
