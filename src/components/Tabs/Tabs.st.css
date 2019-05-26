@@ -12,6 +12,7 @@
     tabsHeight: 52px;
     tabsMobileHeight: 48px;
     navBtnWidth: 35px;
+    navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 :vars {
@@ -44,7 +45,7 @@
     position: relative;
 }
 
-.root, 
+.root,
 .root * {
     box-sizing: border-box;
 }
@@ -53,7 +54,7 @@
     width: 0;
     height: 100%;
     overflow: hidden;
-    transition: width .3s ease .2s, opacity .2s ease;
+    transition: width .3s value(navBtnEase) .2s, opacity .2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -86,7 +87,7 @@
     top: 0;
     left: 0;
     right: 0;
-    transition: left .2s ease, right .2s ease;
+    transition: left .3s value(navBtnEase), right .3s value(navBtnEase);
 }
 
 .root:navButtons(right) .navBtn.navBtnRight,
@@ -94,7 +95,7 @@
 .root:navButtons(both) .navBtn {
     width: value(navBtnWidth);
     opacity: 1;
-    transition: width .3s ease, opacity .2s ease .1s;
+    transition: width .3s value(navBtnEase), opacity .2s ease .3s;
 }
 
 .root:navButtons(right) .navigation,
@@ -108,7 +109,7 @@
 }
 
 .navigation::nav {
-    transition: all .2s ease;
+    transition: all .3s value(navBtnEase);
     width: 100%;
     left: 0;
     right: 0;
