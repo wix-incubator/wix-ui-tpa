@@ -33,7 +33,6 @@ export interface TabsProps {
 
 interface TabsState {
   navButtons?: NavButtonOptions;
-  tabsKey: string;
 }
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
@@ -48,7 +47,6 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   state = {
     navButtons: NavButtonOptions.none,
-    tabsKey: this._generateRandomKey(),
   };
 
   componentDidMount() {
@@ -117,20 +115,16 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this._updateButtonsIfNeeded();
 
     this._resizeTimer = window.setTimeout(() => {
-      this.setState({ tabsKey: this._generateRandomKey() });
+      this._tabsRef.updateIndicatorPosition();
     }, 100);
   };
-
-  _generateRandomKey() {
-    return `${Math.random()}`;
-  }
 
   _tabsRefCallback = (el: ScrollableTabs) => {
     this._tabsRef = el;
   };
 
   render() {
-    const { navButtons, tabsKey } = this.state;
+    const { navButtons } = this.state;
     const { items, alignment, skin, variant, activeTabIndex } = this.props;
 
     return (
@@ -152,7 +146,6 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onScroll={this._onScroll}
               activeTabIndex={activeTabIndex}
               ref={this._tabsRefCallback}
-              key={tabsKey}
             />
             <TabsNavButton
               onClick={this._onClickLeft}

@@ -67,6 +67,10 @@ export class ScrollableTabs extends React.Component<
     }
   }
 
+  updateIndicatorPosition() {
+    this._updateIndicatorPosition();
+  }
+
   _updateComponent() {
     this._updateIndicatorPosition();
     this._scrollToViewIfNeeded();
