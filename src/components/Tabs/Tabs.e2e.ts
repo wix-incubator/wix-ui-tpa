@@ -19,10 +19,6 @@ describe('Tabs', () => {
   eyes.it('should render', async () => {
     const driver = tabsTestkitFactory({ dataHook });
     await waitForVisibilityOf(await driver.element(), 'Cannot find Tabs');
-    expect(await driver.exists()).toBe(true);
-  });
-
-  it('should show nav buttons', async () => {
-
+    expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });
