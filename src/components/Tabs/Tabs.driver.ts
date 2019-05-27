@@ -1,23 +1,34 @@
-import { Simulate } from 'react-dom/test-utils';
-import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
+import { UniDriver, BaseUniDriver } from 'wix-ui-test-utils/unidriver';
+import { baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import {TABS_DATA_HOOKS, TABS_DATA_KEYS} from "./dataHooks";
 
-export const tabsDriverFactory = ({ element }) => {
-  const getItems: any = () =>
-    Array.from(element.querySelector('nav').childNodes);
+export interface TabsDriver extends BaseUniDriver {
+    exists(): Promise<boolean>;
+    getTitleAt(index: number): Promise<string>;
+    clickTabAt(index: number): Promise<void>;
+    getActiveTabIndex(): Promise<string>;
+    isMobile(): Promise<boolean>;
+    getSkin(): Promise<string>;
+    getAlignment(): Promise<string>;
+    getVariant(): Promise<string>;
+    getNavButtonsShown(): Promise<string>;
+}
 
-  const getTabs: any = () =>
-    element.querySelector(`[data-hook="${TABS_DATA_HOOKS.scrollableTabs}"]`);
+const getTab: any = (base: UniDriver, index: number) => base.$(`[data-hook="${TABS_DATA_HOOKS.tab}-${index}"]`);
 
-  return {
-    exists: () => !!element,
-    getTitleAt: index => getItems()[index].textContent,
-    clickTabAt: index => Simulate.click(getItems()[index]),
-    getActiveTabIndex: () =>
-      +element.querySelector(`[${TABS_DATA_KEYS.tabIsActive}="true"]`).getAttribute(TABS_DATA_KEYS.tabIndex),
-    isMobile: () => element.getAttribute(TABS_DATA_KEYS.mobile) === 'true',
-    getSkin: () => element.getAttribute(TABS_DATA_KEYS.skin),
-    getAlignment: () => getTabs().getAttribute(TABS_DATA_KEYS.alignment),
-    getVariant: () => getTabs().getAttribute(TABS_DATA_KEYS.variant),
-    getNavButtonsShown: () => getTabs().getAttribute(TABS_DATA_KEYS.navButtons),
-  };
+const getTabs: any = base =>
+    base.$(`[data-hook="${TABS_DATA_HOOKS.scrollableTabs}"]`);
+
+export const tabsDriverFactory = (base: UniDriver): TabsDriver => {
+    return {
+        ...baseUniDriverFactory(base),
+        getTitleAt: index => getTab(base, index).text(),
+        clickTabAt: index => getTab(base, index).click(),
+        getActiveTabIndex: () => base.$(`[${TABS_DATA_KEYS.tabIsActive}="true"]`).attr(TABS_DATA_KEYS.tabIndex),
+        isMobile: async () => (await base.attr(TABS_DATA_KEYS.mobile)) === 'true',
+        getSkin: () => base.attr(TABS_DATA_KEYS.skin),
+        getAlignment: () => getTabs(base).attr(TABS_DATA_KEYS.alignment),
+        getVariant: () => getTabs(base).attr(TABS_DATA_KEYS.variant),
+        getNavButtonsShown: () => getTabs(base).attr(TABS_DATA_KEYS.navButtons)
+    };
 };

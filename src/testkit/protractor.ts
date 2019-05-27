@@ -45,9 +45,8 @@ export const cardTestkitFactory = protractorUniTestkitFactoryCreator(
   cardDriverFactory,
 );
 
-import { tabsDriverFactory } from '../components/Tabs/Tabs.protractor.driver';
-import { BaseDriver } from 'wix-ui-core/dist/src/common/BaseDriver.protractor';
-export const tabsTestkitFactory = protractorTestkitFactoryCreator<BaseDriver>(
+import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
+export const tabsTestkitFactory = protractorUniTestkitFactoryCreator(
   tabsDriverFactory,
 );
 

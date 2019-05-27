@@ -1,7 +1,7 @@
 export enum TABS_DATA_HOOKS {
     scrollableTabs = 'scrollable-tabs',
     tab = 'tab-item',
-};
+}
 
 export enum TABS_DATA_KEYS {
     alignment = 'data-alignment',
@@ -11,4 +11,4 @@ export enum TABS_DATA_KEYS {
     mobile = 'data-mobile',
     tabIndex = 'data-tab-index',
     tabIsActive = 'data-tab-active',
-};
+}
