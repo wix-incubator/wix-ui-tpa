@@ -20,7 +20,7 @@ export interface GridProps {
   maxColumns?: number;
   minColumnWidth?: number;
   maxColumnWidth?: number;
-  listWidth?: number;
+  width?: number;
   rowGap?: number;
   columnGap?: number;
   dividerWidth?: string | number;
@@ -32,7 +32,7 @@ interface DefaultProps {
   maxColumns: number;
   rowGap: number;
   columnGap: number;
-  listWidth: number;
+  width: number;
   dividerWidth: string;
 }
 
@@ -44,14 +44,14 @@ export class Grid extends React.Component<GridProps> {
     maxColumns: 1,
     rowGap: 32,
     columnGap: 32,
-    listWidth: 0,
+    width: 0,
     dividerWidth: '1px',
   };
 
   render() {
     const {
       withDivider,
-      listWidth,
+      width,
       maxColumnWidth,
       rowGap,
       columnGap,
@@ -62,14 +62,14 @@ export class Grid extends React.Component<GridProps> {
       typeof this.props.dividerWidth === 'number'
         ? `${this.props.dividerWidth}px`
         : this.props.dividerWidth;
-    const isFullWidth = listWidth === 0;
+    const isFullWidth = width === 0;
     const maxColumns = Math.min(this.props.maxColumns, items.length);
     const minColumnWidth =
       this.props.minColumnWidth ||
       getMinWidthByCardType(items[0] && items[0].item);
     const itemsPerRow = isFullWidth
       ? maxColumns
-      : itemsPerRowWidth(listWidth, minColumnWidth, maxColumns, columnGap);
+      : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
     const gridTemplateColumns = isFullWidth
       ? ''
       : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, ${
@@ -116,7 +116,7 @@ export class Grid extends React.Component<GridProps> {
         `,
           }}
         />
-        {listWidth === 0
+        {isFullWidth
           ? getMediaQueries({
               maxColumns,
               minColumnWidth,
