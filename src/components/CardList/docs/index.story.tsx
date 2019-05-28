@@ -84,8 +84,14 @@ export default {
             { title: 'Responsive', source: examples.responsive },
             { title: 'Max Items Per Row', source: examples.maxItemsPerRow },
             { title: 'List Of Strip Cards', source: examples.listOfStripCard },
-            { title: 'With dividers between the Items', source: examples.withDividers },
-            { title: 'List Of Overlapping Cards', source: examples.listOfOverlappingCard },
+            {
+              title: 'With dividers between the Items',
+              source: examples.withDividers,
+            },
+            {
+              title: 'List Of Overlapping Cards',
+              source: examples.listOfOverlappingCard,
+            },
           ].map(code),
         ],
       }),

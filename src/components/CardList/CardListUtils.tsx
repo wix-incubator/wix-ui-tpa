@@ -40,12 +40,14 @@ export function getMediaQueries({
   while (maxItemsPerRow > 0) {
     const minWidth =
       maxItemsPerRow * minItemWidth + columnGap * (maxItemsPerRow - 1);
-    mediaQueries = `@media (min-width: ${minWidth}px) {#${cardListId} .${ListItemClass} {grid-template-columns: repeat(${maxItemsPerRow}, minmax(${minItemWidth}px, ${
+    mediaQueries = `@media (min-width: ${minWidth}px) {#${cardListId} .${ListItemClass} {-ms-grid-columns: repeat(${maxItemsPerRow}, minmax(${minItemWidth}px, ${
+      maxItemWidth ? `${maxItemWidth}px` : '100vw'
+    }));grid-template-columns: repeat(${maxItemsPerRow}, minmax(${minItemWidth}px, ${
       maxItemWidth ? `${maxItemWidth}px` : '100vw'
     }));}}${mediaQueries}`;
     maxItemsPerRow--;
   }
-  return <style type="text/css">{mediaQueries}</style>;
+  return <style dangerouslySetInnerHTML={{ __html: mediaQueries }} />;
 }
 
 export function getMinWidthByCardType(CardComponent): number {
@@ -64,5 +66,10 @@ export function getMinWidthByCardType(CardComponent): number {
 }
 
 export function generateListClassId(): string {
-  return 'list_' + Math.random().toString(36).substr(2, 9)
+  return (
+    'list_' +
+    Math.random()
+      .toString(36)
+      .substr(2, 9)
+  );
 }

@@ -2,7 +2,8 @@ import * as React from 'react';
 import {
   itemsPerRowWidth,
   getMediaQueries,
-  getMinWidthByCardType, generateListClassId,
+  getMinWidthByCardType,
+  generateListClassId,
 } from './CardListUtils';
 import { Card } from '../Card';
 import { OverlappingCard } from '../OverlappingCard';
@@ -53,19 +54,24 @@ describe('CardListUtils', () => {
       const expectedClassName = 'someClassName';
       const expectedCardListId = 'someID';
       const expectedStyle = (
-        <style type="text/css">
-          {`@media (min-width: ${
-            expectedMinWidths[2]
-          }px) {#${expectedCardListId} .${expectedClassName} {grid-template-columns: repeat(${expectedMaxItemsPerRow -
-            2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}` +
-            `@media (min-width: ${
-              expectedMinWidths[1]
-            }px) {#${expectedCardListId} .${expectedClassName} {grid-template-columns: repeat(${expectedMaxItemsPerRow -
-              1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}` +
-            `@media (min-width: ${
-              expectedMinWidths[0]
-            }px) {#${expectedCardListId} .${expectedClassName} {grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}`}
-        </style>
+        <style
+          dangerouslySetInnerHTML={{
+            __html:
+              `@media (min-width: ${
+                expectedMinWidths[2]
+              }px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
+                2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow -
+                2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}` +
+              `@media (min-width: ${
+                expectedMinWidths[1]
+              }px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
+                1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow -
+                1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}` +
+              `@media (min-width: ${
+                expectedMinWidths[0]
+              }px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}`,
+          }}
+        />
       );
 
       expect(
@@ -75,7 +81,7 @@ describe('CardListUtils', () => {
           maxItemWidth: expectedMaxItemWidth,
           columnGap,
           ListItemClass: expectedClassName,
-          cardListId: expectedCardListId
+          cardListId: expectedCardListId,
         }),
       ).toEqual(expectedStyle);
     });
@@ -86,9 +92,12 @@ describe('CardListUtils', () => {
       const expectedClassName = 'someClassName';
       const expectedCardListId = 'someID';
       const expectedStyle = (
-        <style type="text/css">{`@media (min-width: 300px) {#${expectedCardListId} .${expectedClassName} {grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));}}`}</style>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `@media (min-width: 300px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));}}`,
+          }}
+        />
       );
-
       expect(
         getMediaQueries({
           maxItemsPerRow: expectedMaxItemsPerRow,
@@ -132,6 +141,6 @@ describe('CardListUtils', () => {
   describe('generateListClassId', () => {
     it('should add prefix to the id', () => {
       expect(generateListClassId()).toContain('list_');
-    })
+    });
   });
 });

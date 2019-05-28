@@ -21,7 +21,7 @@ export interface CardListProps {
   listWidth?: number;
   rowGap?: number;
   columnGap?: number;
-  dividerWidth?: string;
+  dividerWidth?: string | number;
 }
 
 interface DefaultProps {
@@ -43,7 +43,7 @@ export class CardList extends React.Component<CardListProps> {
     rowGap: 32,
     columnGap: 32,
     listWidth: 0,
-    dividerWidth: '8px',
+    dividerWidth: '1px',
   };
 
   render() {
@@ -54,9 +54,12 @@ export class CardList extends React.Component<CardListProps> {
       rowGap,
       columnGap,
       items,
-      dividerWidth,
       ...rest
     } = this.props;
+    const dividerWidth =
+      typeof this.props.dividerWidth === 'number'
+        ? `${this.props.dividerWidth}px`
+        : this.props.dividerWidth;
     const isFullWidth = listWidth === 0;
     const maxItemsPerRow = Math.min(this.props.maxItemsPerRow, items.length);
     const minItemWidth =
@@ -72,24 +75,36 @@ export class CardList extends React.Component<CardListProps> {
         }))`;
 
     const cardListId = generateListClassId();
-    const cssStateDivider = Object.keys(styles.$cssStates({ dividers: true }))[0];
+    const cssStateDivider = Object.keys(
+      styles.$cssStates({ dividers: true }),
+    )[0];
 
     const dividerCorrectness = `
-      #${cardListId}.${styles.root}[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::before,
-      #${cardListId}.${styles.root}[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::after {left: 0}`;
+      #${cardListId}.${
+      styles.root
+    }[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::before,
+      #${cardListId}.${
+      styles.root
+    }[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::after {left: 0}`;
 
     styles.$css += dividerCorrectness;
     return (
-      <div>
-        <style dangerouslySetInnerHTML={{__html: `
+      <div {...styles('root', { dividers: withDivider }, rest)} id={cardListId}>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `  
+          #${cardListId} .${styles.listWrapper} {
+            -ms-grid-columns: ${gridTemplateColumns};
+          }
+
           #${cardListId}[${cssStateDivider}] {
             padding: calc((${columnGap}px / 2) + ${dividerWidth}) 0;
           }
-          
+
           #${cardListId}[${cssStateDivider}] li::before {
             top: calc((${columnGap}px / -2) - ${dividerWidth});
           }
-          
+
           #${cardListId}[${cssStateDivider}] li::after {
             bottom: calc((${columnGap}px / -2) - ${dividerWidth});
           }
@@ -101,10 +116,11 @@ export class CardList extends React.Component<CardListProps> {
             height: ${dividerWidth};
           }
           ${withDivider ? dividerCorrectness : ''}
-        `}}/>
-        <div {...styles('root', { dividers: withDivider }, rest)} id={cardListId}>
-          {listWidth === 0
-            ? getMediaQueries({
+        `,
+          }}
+        />
+        {listWidth === 0
+          ? getMediaQueries({
               maxItemsPerRow,
               minItemWidth,
               maxItemWidth,
@@ -112,26 +128,25 @@ export class CardList extends React.Component<CardListProps> {
               ListItemClass: styles.listWrapper,
               cardListId,
             })
-            : null}
-          <ul
-            className={styles.listWrapper}
-            style={{
-              gridTemplateColumns,
-              gap: `calc(${rowGap}px + ${dividerWidth}) ${columnGap}px`,
-            }}
-          >
-            {items.map(({ item, key }, index) => {
-              return (
-                <li
-                  className={styles.cardContainer}
-                  key={key ? key : `card-container-${index}`}
-                >
-                  {item}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+          : null}
+        <ul
+          className={styles.listWrapper}
+          style={{
+            gridTemplateColumns,
+            gap: `calc(${rowGap}px + ${dividerWidth}) ${columnGap}px`,
+          }}
+        >
+          {items.map(({ item, key }, index) => {
+            return (
+              <li
+                className={styles.cardContainer}
+                key={key ? key : `card-container-${index}`}
+              >
+                {item}
+              </li>
+            );
+          })}
+        </ul>
       </div>
     );
   }

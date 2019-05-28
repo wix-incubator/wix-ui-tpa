@@ -56,6 +56,35 @@ describe('CardList', () => {
     );
   });
 
+  it('should accept dividerWidth as number', async () => {
+    const dividerWidth = 3;
+    const expectedDividerWidth = `${dividerWidth}px`;
+    const driver = createDriver(
+      <CardList
+        dividerWidth={dividerWidth}
+        listWidth={1}
+        withDivider
+        items={generateItems()}
+      />,
+    );
+
+    expect(await driver.isDividerWidth(expectedDividerWidth)).toEqual(true);
+  });
+
+  it('should accept dividerWidth as string', async () => {
+    const expectedDividerWidth = '7px';
+    const driver = createDriver(
+      <CardList
+        dividerWidth={expectedDividerWidth}
+        listWidth={1}
+        withDivider
+        items={generateItems()}
+      />,
+    );
+
+    expect(await driver.isDividerWidth(expectedDividerWidth)).toEqual(true);
+  });
+
   it('should limit items per row depending on the width of the List', async () => {
     const expectedItemsPerRow = 4;
     spyOn(CardListUtils, 'itemsPerRowWidth').and.returnValue(
@@ -70,7 +99,13 @@ describe('CardList', () => {
   it('should use amount of items as maxItemsPerRow if lower then maxItemsPerRow', async () => {
     const expectedItemsPerRow = 4;
 
-    const driver = createDriver(<CardList items={generateItems(expectedItemsPerRow)} maxItemsPerRow={expectedItemsPerRow + 1} listWidth={1000} />);
+    const driver = createDriver(
+      <CardList
+        items={generateItems(expectedItemsPerRow)}
+        maxItemsPerRow={expectedItemsPerRow + 1}
+        listWidth={1000}
+      />,
+    );
 
     expect(await driver.isItemsPerRow(expectedItemsPerRow)).toBe(true);
   });
@@ -120,7 +155,9 @@ describe('CardList', () => {
     const expectedColumnGap = 48;
     const expectedCardListId = 'someID';
     spyOn(CardListUtils, 'getMediaQueries');
-    spyOn(CardListUtils, 'generateListClassId').and.returnValue(expectedCardListId);
+    spyOn(CardListUtils, 'generateListClassId').and.returnValue(
+      expectedCardListId,
+    );
 
     createDriver(
       <CardList
@@ -149,7 +186,9 @@ describe('CardList', () => {
     const expectedColumnGap = 48;
     const expectedCardListId = 'someID';
     spyOn(CardListUtils, 'getMediaQueries');
-    spyOn(CardListUtils, 'generateListClassId').and.returnValue(expectedCardListId);
+    spyOn(CardListUtils, 'generateListClassId').and.returnValue(
+      expectedCardListId,
+    );
 
     createDriver(
       <CardList
@@ -185,7 +224,9 @@ describe('CardList', () => {
   });
 
   it('should display divider', async () => {
-    const driver = createDriver(<CardList withDivider items={generateItems()}/>);
+    const driver = createDriver(
+      <CardList withDivider items={generateItems()} />,
+    );
 
     expect(await driver.isWithDivider()).toEqual(true);
   });

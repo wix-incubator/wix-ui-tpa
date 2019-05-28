@@ -1,6 +1,6 @@
 export const importExample = `import { CardList } from 'wix-ui-tpa/CardList';`;
 
-export const generateCardItems = (numOfCards) => `[
+export const generateCardItems = numOfCards => `[
   ${Array(numOfCards)
     .fill(null)
     .map(
@@ -28,7 +28,7 @@ export const generateCardItems = (numOfCards) => `[
     `,
     )}]`;
 
-export const generateOverlappingCardItems = (numOfCards) => `[
+export const generateOverlappingCardItems = numOfCards => `[
   ${Array(numOfCards)
     .fill(null)
     .map(
@@ -54,7 +54,7 @@ export const generateOverlappingCardItems = (numOfCards) => `[
     `,
     )}]`;
 
-export const generateStripCardItems = (numOfCards) => `[
+export const generateStripCardItems = numOfCards => `[
   ${Array(numOfCards)
     .fill(null)
     .map(
@@ -81,7 +81,9 @@ export const generateStripCardItems = (numOfCards) => `[
     )}]`;
 
 export const responsive = `
-<CardList maxItemsPerRow={4} minItemWidth={200}   listWidth={5000} items={${generateCardItems(2)}} />
+<CardList maxItemsPerRow={4} minItemWidth={200}   listWidth={5000} items={${generateCardItems(
+  2,
+)}} />
 `;
 
 export const maxItemsPerRow = `
