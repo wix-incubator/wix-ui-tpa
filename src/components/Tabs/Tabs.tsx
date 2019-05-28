@@ -8,9 +8,9 @@ import { ScrollableTabs } from './ScrollableTabs';
 import { TabsNavButton } from './TabsNavButton';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import style from './Tabs.st.css';
-import {TABS_DATA_KEYS} from './dataHooks';
+import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 
-const enum NavButtonOptions {
+export const enum NavButtonOptions {
   both = 'both',
   left = 'left',
   right = 'right',
@@ -30,6 +30,7 @@ export interface TabsProps {
   alignment?: ALIGNMENT;
   /** control whether to set tabs on all content width*/
   variant?: VARIANT;
+  dataHook?: string;
 }
 
 interface TabsState {
@@ -137,7 +138,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   render() {
     const { navButtons } = this.state;
-    const { items, alignment, skin, variant, activeTabIndex } = this.props;
+    const {
+      items,
+      alignment,
+      skin,
+      variant,
+      activeTabIndex,
+      dataHook,
+    } = this.props;
 
     return (
       <TPAComponentsConsumer>
@@ -145,6 +153,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
           <div
             {...style('root', { skin, navButtons, mobile }, this.props)}
             {...this._getDataAttributes(mobile)}
+            data-hook={dataHook}
           >
             <ReactResizeDetector handleWidth onResize={this._onResize} />
             <ScrollableTabs
@@ -161,6 +170,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onClick={this._onClickLeft}
               className={classnames(style.navBtn, style.navBtnLeft)}
               tabIndex={NavButtonOptions.right ? -1 : 0}
+              dataHook={TABS_DATA_HOOKS.leftNavButton}
             >
               <ChevronLeft />
             </TabsNavButton>
@@ -168,6 +178,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onClick={this._onClickRight}
               className={classnames(style.navBtn, style.navBtnRight)}
               tabIndex={NavButtonOptions.left ? -1 : 0}
+              dataHook={TABS_DATA_HOOKS.rightNavButton}
             >
               <ChevronRight />
             </TabsNavButton>

@@ -5,6 +5,7 @@ import { isSelectKey } from '../utils';
 interface TabsNavButtonProps {
   onClick(): void;
   className: string;
+  dataHook: string;
   tabIndex: number;
 }
 
@@ -13,6 +14,7 @@ export const TabsNavButton: React.FunctionComponent<TabsNavButtonProps> = ({
   children,
   tabIndex,
   className,
+  dataHook,
 }) => {
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const keyCode = e.keyCode;
@@ -29,6 +31,7 @@ export const TabsNavButton: React.FunctionComponent<TabsNavButtonProps> = ({
       onClick={onClick}
       onKeyDown={onKeyDown}
       tabIndex={tabIndex}
+      data-hook={dataHook}
     >
       {children}
     </div>

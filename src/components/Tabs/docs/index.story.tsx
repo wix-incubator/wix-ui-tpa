@@ -13,8 +13,6 @@ const exampleItems = [
   { label: 'many items', value: items },
 ];
 
-let activeTabIndex = 0;
-
 export default {
   category: 'Components',
   storyName: 'Tabs',
@@ -22,12 +20,12 @@ export default {
   source: TabsSource,
   componentPath: '../src/components/Tabs/Tabs.tsx',
   componentProps: setState => ({
-    'data-hook': 'storybook-Tabs',
+    dataHook: 'storybook-Tabs',
     items: exampleItems[1].value,
     onTabClick: selectedTabIndex => {
       setState({ activeTabIndex: selectedTabIndex });
     },
-    activeTabIndex,
+    activeTabIndex: 0,
     skin: SKIN.fullUnderline,
     alignment: ALIGNMENT.center,
     variant: VARIANT.fit,

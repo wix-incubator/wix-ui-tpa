@@ -4,7 +4,7 @@ import * as isEqual from 'lodash/isEqual';
 import { Tab, TabItem } from '../Tab/Tab';
 import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateElementByProp } from '../../../common/animations';
-import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from "../dataHooks";
+import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from '../dataHooks';
 import style from './ScrollableTabs.st.css';
 
 export interface ScrollPosition {
@@ -116,11 +116,21 @@ export class ScrollableTabs extends React.Component<
   }
 
   scrollLeft() {
-    this._animateScroll(-1 * this._navRef.current.clientWidth);
+    this._scrollToSide(-1);
   }
 
   scrollRight() {
-    this._animateScroll(this._navRef.current.clientWidth);
+    this._scrollToSide(1);
+  }
+
+  _scrollToSide(scrollDirection: number) {
+    const scrollWidth = this._navRef.current.scrollWidth;
+    const scrollLeft = this._navRef.current.scrollLeft;
+    const clientWidth = this._navRef.current.clientWidth;
+    const scrollDistance =
+      scrollDirection * Math.min(scrollWidth - scrollLeft, clientWidth);
+
+    this._animateScroll(scrollLeft + scrollDistance);
   }
 
   getNavScrollPosition(): ScrollPosition {

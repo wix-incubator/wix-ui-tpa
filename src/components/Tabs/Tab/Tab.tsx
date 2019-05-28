@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { isSelectKey } from '../utils';
 import style from './Tab.st.css';
-import {TABS_DATA_KEYS} from "../dataHooks";
+import { TABS_DATA_KEYS } from '../dataHooks';
 
 export interface TabItem {
   /** Title of the tab */
@@ -50,7 +50,7 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
     >
       <div className={style.content} tabIndex={-1}>
         {title}
-        <div className={style.focusIndicator}/>
+        <div className={style.focusIndicator} />
       </div>
     </div>
   );

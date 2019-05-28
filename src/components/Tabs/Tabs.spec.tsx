@@ -13,9 +13,11 @@ describe('Tabs', () => {
     driver = createDriver(<Tabs items={items} activeTabIndex={1} />);
 
     const expectedTitles = items.map(item => item.title);
-    const receivedTitles = await Promise.all(Array(items.length)
-      .fill(0)
-      .map((_, index) => driver.getTitleAt(index)));
+    const receivedTitles = await Promise.all(
+      Array(items.length)
+        .fill(0)
+        .map((_, index) => driver.getTitleAt(index)),
+    );
 
     expect(receivedTitles).toEqual(expectedTitles);
   });
