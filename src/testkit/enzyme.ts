@@ -44,7 +44,7 @@ export const stripCardTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(stripCardDriverFactory);
 
-import { listCardDriverFactory } from '../components/ListCard/ListCard.driver';
-export const listCardTestkitFactory: (
+import { cardListDriverFactory } from '../components/CardList/CardList.driver';
+export const cardListTestkitFactory: (
   obj: WrapperData,
-) => any = enzymeUniTestkitFactoryCreator(listCardDriverFactory);
+) => any = enzymeUniTestkitFactoryCreator(cardListDriverFactory);

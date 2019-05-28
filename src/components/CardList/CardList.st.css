@@ -23,21 +23,9 @@
     margin: 0 auto;
 }
 
-.root:dividers {
-    padding: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), 2) 0;
-    position: relative;
-}
-
+.root:dividers,
 .root:dividers .cardContainer {
     position: relative;
-}
-
-.root:dividers li::before {
-    top: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), -2);
-}
-
-.root:dividers li::after {
-    bottom: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), -2);
 }
 
 .listWrapper {
@@ -64,7 +52,6 @@
     content: '';
     position: absolute;
     background-color: value(dividerColor);
-    height: value(dividerWidth);
     left: 0;
     right: 0;
 }

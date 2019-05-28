@@ -1,4 +1,4 @@
-export const importExample = `import { ListCard } from 'wix-ui-tpa/ListCard';`;
+export const importExample = `import { CardList } from 'wix-ui-tpa/CardList';`;
 
 export const generateCardItems = (numOfCards) => `[
   ${Array(numOfCards)
@@ -81,11 +81,11 @@ export const generateStripCardItems = (numOfCards) => `[
     )}]`;
 
 export const responsive = `
-<ListCard maxItemsPerRow={4} minItemWidth={200}   listWidth={5000} items={${generateCardItems(2)}} />
+<CardList maxItemsPerRow={4} minItemWidth={200}   listWidth={5000} items={${generateCardItems(2)}} />
 `;
 
 export const maxItemsPerRow = `
-<ListCard
+<CardList
   maxItemsPerRow={4}
   listWidth={500}
   maxItemWidth={300}
@@ -96,7 +96,7 @@ export const maxItemsPerRow = `
 `;
 
 export const listOfStripCard = `
-<ListCard
+<CardList
   maxItemsPerRow={1}
   listWidth={700}
   items={${generateStripCardItems(3)}}
@@ -104,7 +104,7 @@ export const listOfStripCard = `
 `;
 
 export const withDividers = `
-<ListCard
+<CardList
   maxItemsPerRow={1}
   listWidth={700}
   withDivider
@@ -113,7 +113,7 @@ export const withDividers = `
 `;
 
 export const listOfOverlappingCard = `
-<ListCard
+<CardList
   maxItemsPerRow={1}
   listWidth={700}
   items={${generateOverlappingCardItems(3)}}

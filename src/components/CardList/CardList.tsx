@@ -1,20 +1,20 @@
 import * as React from 'react';
-import styles from './ListCard.st.css';
+import styles from './CardList.st.css';
 import {
   generateListClassId,
   getMediaQueries,
   getMinWidthByCardType,
   itemsPerRowWidth,
-} from './ListCardUtils';
+} from './CardListUtils';
 
-export interface IListCardItem {
+export interface ICardListItem {
   item: React.ReactNode;
   key?: string | number;
 }
 
-export interface ListCardProps {
+export interface CardListProps {
   withDivider: boolean;
-  items: IListCardItem[];
+  items: ICardListItem[];
   maxItemsPerRow?: number;
   minItemWidth?: number;
   maxItemWidth?: number;
@@ -26,7 +26,7 @@ export interface ListCardProps {
 
 interface DefaultProps {
   withDivider: boolean;
-  items: IListCardItem[];
+  items: ICardListItem[];
   maxItemsPerRow: number;
   rowGap: number;
   columnGap: number;
@@ -34,8 +34,8 @@ interface DefaultProps {
   dividerWidth: string;
 }
 
-export class ListCard extends React.Component<ListCardProps> {
-  static displayName = 'ListCard';
+export class CardList extends React.Component<CardListProps> {
+  static displayName = 'CardList';
   static defaultProps: DefaultProps = {
     withDivider: false,
     items: [],
@@ -43,7 +43,7 @@ export class ListCard extends React.Component<ListCardProps> {
     rowGap: 32,
     columnGap: 32,
     listWidth: 0,
-    dividerWidth: '1px',
+    dividerWidth: '8px',
   };
 
   render() {
@@ -71,22 +71,38 @@ export class ListCard extends React.Component<ListCardProps> {
           maxItemWidth ? `${maxItemWidth}px` : '100vw'
         }))`;
 
-    const listCardId = generateListClassId();
+    const cardListId = generateListClassId();
+    const cssStateDivider = Object.keys(styles.$cssStates({ dividers: true }))[0];
 
-    const dividerCorrectness = `#${listCardId}.${styles.root}[${Object.keys(styles.$cssStates({ dividers: true }))[0]}] li:nth-child(${itemsPerRow}n+1)::before,
-     #${listCardId}.${styles.root}[${Object.keys(styles.$cssStates({ dividers: true }))[0]}] li:nth-child(${itemsPerRow}n+1)::after {left: 0}`;
+    const dividerCorrectness = `
+      #${cardListId}.${styles.root}[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::before,
+      #${cardListId}.${styles.root}[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::after {left: 0}`;
 
     styles.$css += dividerCorrectness;
     return (
       <div>
-        {withDivider ? <style type="text/css" >{dividerCorrectness}</style> : ''}
-        {/*<style type="text/css">`*/}
-        {/*  .${styles.root}:dividers \{*/}
-        {/*    padding: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), 2) 0;*/}
-        {/*    position: relative;*/}
-        {/*  \}*/}
-        {/*`</style>*/}
-        <div {...styles('root', { dividers: withDivider }, rest)} id={listCardId}>
+        <style dangerouslySetInnerHTML={{__html: `
+          #${cardListId}[${cssStateDivider}] {
+            padding: calc((${columnGap}px / 2) + ${dividerWidth}) 0;
+          }
+          
+          #${cardListId}[${cssStateDivider}] li::before {
+            top: calc((${columnGap}px / -2) - ${dividerWidth});
+          }
+          
+          #${cardListId}[${cssStateDivider}] li::after {
+            bottom: calc((${columnGap}px / -2) - ${dividerWidth});
+          }
+
+          #${cardListId}[${cssStateDivider}] li::before,
+          #${cardListId}[${cssStateDivider}] li::after,
+          #${cardListId}[${cssStateDivider}] .${styles.listWrapper}::before,
+          #${cardListId}[${cssStateDivider}] .${styles.listWrapper}::after {
+            height: ${dividerWidth};
+          }
+          ${withDivider ? dividerCorrectness : ''}
+        `}}/>
+        <div {...styles('root', { dividers: withDivider }, rest)} id={cardListId}>
           {listWidth === 0
             ? getMediaQueries({
               maxItemsPerRow,
@@ -94,14 +110,14 @@ export class ListCard extends React.Component<ListCardProps> {
               maxItemWidth,
               columnGap,
               ListItemClass: styles.listWrapper,
-              listCardId,
+              cardListId,
             })
             : null}
           <ul
             className={styles.listWrapper}
             style={{
               gridTemplateColumns,
-              gap: `${rowGap}px ${columnGap}px`,
+              gap: `calc(${rowGap}px + ${dividerWidth}) ${columnGap}px`,
             }}
           >
             {items.map(({ item, key }, index) => {

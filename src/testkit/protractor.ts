@@ -51,7 +51,7 @@ export const stripCardTestkitFactory = protractorUniTestkitFactoryCreator(
   stripCardDriverFactory,
 );
 
-import { listCardDriverFactory } from '../components/ListCard/ListCard.driver';
-export const listCardTestkitFactory = protractorUniTestkitFactoryCreator(
-  listCardDriverFactory,
+import { cardListDriverFactory } from '../components/CardList/CardList.driver';
+export const cardListTestkitFactory = protractorUniTestkitFactoryCreator(
+  cardListDriverFactory,
 );

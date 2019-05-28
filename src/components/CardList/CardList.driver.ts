@@ -3,15 +3,15 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './ListCard.st.css';
+import style from './CardList.st.css';
 
-export interface listCardDriver extends BaseUniDriver {
+export interface cardListDriver extends BaseUniDriver {
   isItemsPerRow(itemsPerRow): Promise<boolean>;
   isItemMaxWidth(itemsPerRow): Promise<boolean>;
   isWithDivider(): Promise<boolean>;
 }
 
-export const listCardDriverFactory = (base: UniDriver): listCardDriver => {
+export const cardListDriverFactory = (base: UniDriver): cardListDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {

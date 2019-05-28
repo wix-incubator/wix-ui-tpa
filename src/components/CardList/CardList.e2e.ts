@@ -4,22 +4,22 @@ import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
-import { listCardTestkitFactory } from '../../testkit/protractor';
+import { cardListTestkitFactory } from '../../testkit/protractor';
 
-describe('listCard', () => {
+describe('cardList', () => {
   const storyUrl = createStoryUrl({
     kind: 'Components',
-    story: 'ListCard',
+    story: 'CardList',
     withExamples: true,
   });
-  const dataHook = 'storybook-ListCard';
+  const dataHook = 'storybook-CardList';
 
   beforeEach(() => browser.get(storyUrl));
 
   eyes.it('should render', async () => {
-    const driver = listCardTestkitFactory({ dataHook });
+    const driver = cardListTestkitFactory({ dataHook });
     debugger;
-    await waitForVisibilityOf(await driver.element(), 'Cannot find ListCard');
+    await waitForVisibilityOf(await driver.element(), 'Cannot find CardList');
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

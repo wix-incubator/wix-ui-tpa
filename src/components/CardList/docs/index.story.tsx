@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ListCard } from '../';
+import { CardList } from '../';
 import * as examples from './examples';
 import {
   api,
@@ -50,11 +50,11 @@ const itemsExamples = [
 
 export default {
   category: 'Components',
-  storyName: 'ListCard',
-  component: ListCard,
-  componentPath: '../ListCard.tsx',
+  storyName: 'CardList',
+  component: CardList,
+  componentPath: '../CardList.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-ListCard',
+    'data-hook': 'storybook-CardList',
     items: itemsExamples[1].value,
     maxItemsPerRow: '3',
     minItemWidth: '130',
@@ -66,7 +66,7 @@ export default {
   exampleProps: {
     items: itemsExamples,
   },
-  dataHook: 'storybook-ListCard',
+  dataHook: 'storybook-CardList',
   sections: [
     tabs([
       tab({
