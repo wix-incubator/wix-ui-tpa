@@ -59,7 +59,7 @@ export default {
     maxColumns: '3',
     minColumnWidth: '130',
     maxColumnWidth: '300',
-    listWidth: '780',
+    width: '780',
     rowGap: '32',
     columnGap: '32',
   }),

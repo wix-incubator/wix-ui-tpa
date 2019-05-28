@@ -40,7 +40,7 @@ describe('Grid', () => {
 
     createDriver(
       <Grid
-        listWidth={expectedListWidth}
+        width={expectedListWidth}
         maxColumns={expectedMaxItemsPerRow}
         minColumnWidth={expectedMinItemWidth}
         columnGap={expectedColumnGap}
@@ -62,7 +62,7 @@ describe('Grid', () => {
     const driver = createDriver(
       <Grid
         dividerWidth={dividerWidth}
-        listWidth={1}
+        width={1}
         withDivider
         items={generateItems()}
       />,
@@ -76,7 +76,7 @@ describe('Grid', () => {
     const driver = createDriver(
       <Grid
         dividerWidth={expectedDividerWidth}
-        listWidth={1}
+        width={1}
         withDivider
         items={generateItems()}
       />,
@@ -89,7 +89,7 @@ describe('Grid', () => {
     const expectedItemsPerRow = 4;
     spyOn(GridUtils, 'itemsPerRowWidth').and.returnValue(expectedItemsPerRow);
 
-    const driver = createDriver(<Grid listWidth={1} />);
+    const driver = createDriver(<Grid width={1} />);
 
     expect(await driver.isItemsPerRow(expectedItemsPerRow)).toBe(true);
   });
@@ -101,7 +101,7 @@ describe('Grid', () => {
       <Grid
         items={generateItems(expectedItemsPerRow)}
         maxColumns={expectedItemsPerRow + 1}
-        listWidth={1000}
+        width={1000}
       />,
     );
 
@@ -112,7 +112,7 @@ describe('Grid', () => {
     const expectedItemMaxWidth = 300;
 
     const driver = createDriver(
-      <Grid listWidth={1} maxColumnWidth={expectedItemMaxWidth} />,
+      <Grid width={1} maxColumnWidth={expectedItemMaxWidth} />,
     );
 
     expect(await driver.isItemMaxWidth(expectedItemMaxWidth)).toEqual(true);
@@ -121,7 +121,7 @@ describe('Grid', () => {
   it('should use default max item width', async () => {
     const expectedItemMaxWidth = '100vw';
 
-    const driver = createDriver(<Grid listWidth={1} />);
+    const driver = createDriver(<Grid width={1} />);
 
     expect(await driver.isItemMaxWidth(expectedItemMaxWidth)).toEqual(true);
   });
@@ -129,7 +129,7 @@ describe('Grid', () => {
   it('should use item key', async () => {
     const items = generateItems(2, true);
 
-    const driver = mount(<Grid listWidth={1} items={items} />);
+    const driver = mount(<Grid width={1} items={items} />);
     const cardWrappers = driver.find('li');
 
     expect(cardWrappers.at(0).key()).toEqual(items[0].key);
@@ -139,7 +139,7 @@ describe('Grid', () => {
   it('should use default key', async () => {
     const items = generateItems(2);
 
-    const driver = mount(<Grid listWidth={1} items={items} />);
+    const driver = mount(<Grid width={1} items={items} />);
     const cardWrappers = driver.find('li');
 
     expect(cardWrappers.at(0).key()).toEqual('card-container-0');
@@ -208,9 +208,7 @@ describe('Grid', () => {
     spyOn(GridUtils, 'getMinWidthByCardType');
     const expectedCardComponent = <div />;
 
-    createDriver(
-      <Grid listWidth={1} items={[{ item: expectedCardComponent }]} />,
-    );
+    createDriver(<Grid width={1} items={[{ item: expectedCardComponent }]} />);
 
     expect(GridUtils.getMinWidthByCardType).toHaveBeenCalledWith(
       expectedCardComponent,

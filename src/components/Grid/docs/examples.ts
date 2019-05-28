@@ -87,7 +87,7 @@ export const generateStripCardItems = numOfCards =>
     );
 
 export const responsive = `
-<Grid maxColumns={4} minColumnWidth={200}   listWidth={5000} items={[${generateCardItems(
+<Grid maxColumns={4} minColumnWidth={200}   width={5000} items={[${generateCardItems(
   2,
 )}]} />
 `;
@@ -96,7 +96,7 @@ export const quilted = `
 <Grid
   maxColumns={4}
   minColumnWidth={20}
-  listWidth={500}
+  width={500}
   rowGap={4}
   columnGap={4}
   items={[${generateCardItems(
@@ -109,7 +109,7 @@ export const quilted = `
 export const maxColumns = `
 <Grid
   maxColumns={4}
-  listWidth={500}
+  width={500}
   maxColumnWidth={300}
   minColumnWidth={100}
   withDivider
@@ -120,7 +120,7 @@ export const maxColumns = `
 export const listOfStripCard = `
 <Grid
   maxColumns={1}
-  listWidth={700}
+  width={700}
   minColumnWidth={500}
   items={[${generateStripCardItems(3)}]}
   />
@@ -129,7 +129,7 @@ export const listOfStripCard = `
 export const withDividers = `
 <Grid
   maxColumns={1}
-  listWidth={700}
+  width={700}
   minColumnWidth={500}
   withDivider
   items={[${generateStripCardItems(3)}]}
@@ -139,7 +139,7 @@ export const withDividers = `
 export const listOfOverlappingCard = `
 <Grid
   maxColumns={1}
-  listWidth={700}
+  width={700}
   minColumnWidth={500}
   items={[${generateOverlappingCardItems(3)}]}
   />
