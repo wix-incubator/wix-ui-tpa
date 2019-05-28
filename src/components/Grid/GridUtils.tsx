@@ -26,12 +26,12 @@ export function getMediaQueries({
   maxColumnWidth = 0,
   columnGap,
   ListItemClass,
-  cardListId,
+  gridId,
 }) {
   let mediaQueries = '';
   while (maxColumns > 0) {
     const minWidth = maxColumns * minColumnWidth + columnGap * (maxColumns - 1);
-    mediaQueries = `@media (min-width: ${minWidth}px) {#${cardListId} .${ListItemClass} {-ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, ${
+    mediaQueries = `@media (min-width: ${minWidth}px) {#${gridId} .${ListItemClass} {-ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, ${
       maxColumnWidth ? `${maxColumnWidth}px` : '100vw'
     }));grid-template-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, ${
       maxColumnWidth ? `${maxColumnWidth}px` : '100vw'

@@ -4,7 +4,7 @@ import {
   getMediaQueries,
   getMinWidthByCardType,
   generateListClassId,
-} from './CardListUtils';
+} from './GridUtils';
 import { Card } from '../Card';
 import { OverlappingCard } from '../OverlappingCard';
 import { StripCard } from '../StripCard';
@@ -16,7 +16,7 @@ import {
   STRIP_CARD_MIN_WIDTH,
 } from './constants';
 
-describe('CardListUtils', () => {
+describe('GridUtils', () => {
   describe('itemsPerRowWidth', () => {
     it('should return the smallest itemsPerRow limited by the ListWidth', () => {
       expect(itemsPerRowWidth(510, 120, 5, 10)).toEqual(4);
@@ -52,24 +52,24 @@ describe('CardListUtils', () => {
           columnGap * (expectedMaxItemsPerRow - 3),
       ];
       const expectedClassName = 'someClassName';
-      const expectedCardListId = 'someID';
+      const expectedGridId = 'someID';
       const expectedStyle = (
         <style
           dangerouslySetInnerHTML={{
             __html:
               `@media (min-width: ${
                 expectedMinWidths[2]
-              }px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
+              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
                 2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow -
                 2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}` +
               `@media (min-width: ${
                 expectedMinWidths[1]
-              }px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
+              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
                 1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow -
                 1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}` +
               `@media (min-width: ${
                 expectedMinWidths[0]
-              }px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}`,
+              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}px));}}`,
           }}
         />
       );
@@ -81,7 +81,7 @@ describe('CardListUtils', () => {
           maxColumnWidth: expectedMaxItemWidth,
           columnGap,
           ListItemClass: expectedClassName,
-          cardListId: expectedCardListId,
+          gridId: expectedGridId,
         }),
       ).toEqual(expectedStyle);
     });
@@ -90,11 +90,11 @@ describe('CardListUtils', () => {
       const expectedMaxItemsPerRow = 1;
       const expectedMinItemWidth = 300;
       const expectedClassName = 'someClassName';
-      const expectedCardListId = 'someID';
+      const expectedGridId = 'someID';
       const expectedStyle = (
         <style
           dangerouslySetInnerHTML={{
-            __html: `@media (min-width: 300px) {#${expectedCardListId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));}}`,
+            __html: `@media (min-width: 300px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));}}`,
           }}
         />
       );
@@ -104,7 +104,7 @@ describe('CardListUtils', () => {
           minColumnWidth: expectedMinItemWidth,
           columnGap: 48,
           ListItemClass: expectedClassName,
-          cardListId: expectedCardListId,
+          gridId: expectedGridId,
         }),
       ).toEqual(expectedStyle);
     });

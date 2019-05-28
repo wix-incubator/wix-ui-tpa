@@ -3,16 +3,16 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { cardListDriverFactory } from './CardList.driver';
-import { CardList } from './';
-import { cardListTestkitFactory } from '../../testkit';
-import { cardListTestkitFactory as enzymeCardListTestkitFactory } from '../../testkit/enzyme';
-import { ICardListItem } from './CardList';
+import { gridDriverFactory } from './Grid.driver';
+import { Grid } from './';
+import { gridTestkitFactory } from '../../testkit';
+import { gridTestkitFactory as enzymeGridTestkitFactory } from '../../testkit/enzyme';
+import { IGridItem } from './Grid';
 import { Card } from '../Card';
-import styles from './CardList.st.css';
-import * as CardListUtils from './CardListUtils';
+import styles from './Grid.st.css';
+import * as GridUtils from './GridUtils';
 
-function generateItems(amount = 5, withKey = false): ICardListItem[] {
+function generateItems(amount = 5, withKey = false): IGridItem[] {
   return Array(amount)
     .fill(null)
     .map((item, index) => {
@@ -23,23 +23,23 @@ function generateItems(amount = 5, withKey = false): ICardListItem[] {
     });
 }
 
-describe('CardList', () => {
-  const createDriver = createUniDriverFactory(cardListDriverFactory);
+describe('Grid', () => {
+  const createDriver = createUniDriverFactory(gridDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<CardList />);
+    const driver = createDriver(<Grid />);
     expect(await driver.exists()).toBe(true);
   });
 
   it('should calculate max items per row', () => {
-    spyOn(CardListUtils, 'itemsPerRowWidth');
+    spyOn(GridUtils, 'itemsPerRowWidth');
     const expectedListWidth = 520;
     const expectedMaxItemsPerRow = 5;
     const expectedMinItemWidth = 120;
     const expectedColumnGap = 10;
 
     createDriver(
-      <CardList
+      <Grid
         listWidth={expectedListWidth}
         maxColumns={expectedMaxItemsPerRow}
         minColumnWidth={expectedMinItemWidth}
@@ -48,7 +48,7 @@ describe('CardList', () => {
       />,
     );
 
-    expect(CardListUtils.itemsPerRowWidth).toHaveBeenCalledWith(
+    expect(GridUtils.itemsPerRowWidth).toHaveBeenCalledWith(
       expectedListWidth,
       expectedMinItemWidth,
       expectedMaxItemsPerRow,
@@ -60,7 +60,7 @@ describe('CardList', () => {
     const dividerWidth = 3;
     const expectedDividerWidth = `${dividerWidth}px`;
     const driver = createDriver(
-      <CardList
+      <Grid
         dividerWidth={dividerWidth}
         listWidth={1}
         withDivider
@@ -74,7 +74,7 @@ describe('CardList', () => {
   it('should accept dividerWidth as string', async () => {
     const expectedDividerWidth = '7px';
     const driver = createDriver(
-      <CardList
+      <Grid
         dividerWidth={expectedDividerWidth}
         listWidth={1}
         withDivider
@@ -87,11 +87,9 @@ describe('CardList', () => {
 
   it('should limit items per row depending on the width of the List', async () => {
     const expectedItemsPerRow = 4;
-    spyOn(CardListUtils, 'itemsPerRowWidth').and.returnValue(
-      expectedItemsPerRow,
-    );
+    spyOn(GridUtils, 'itemsPerRowWidth').and.returnValue(expectedItemsPerRow);
 
-    const driver = createDriver(<CardList listWidth={1} />);
+    const driver = createDriver(<Grid listWidth={1} />);
 
     expect(await driver.isItemsPerRow(expectedItemsPerRow)).toBe(true);
   });
@@ -100,7 +98,7 @@ describe('CardList', () => {
     const expectedItemsPerRow = 4;
 
     const driver = createDriver(
-      <CardList
+      <Grid
         items={generateItems(expectedItemsPerRow)}
         maxColumns={expectedItemsPerRow + 1}
         listWidth={1000}
@@ -114,7 +112,7 @@ describe('CardList', () => {
     const expectedItemMaxWidth = 300;
 
     const driver = createDriver(
-      <CardList listWidth={1} maxColumnWidth={expectedItemMaxWidth} />,
+      <Grid listWidth={1} maxColumnWidth={expectedItemMaxWidth} />,
     );
 
     expect(await driver.isItemMaxWidth(expectedItemMaxWidth)).toEqual(true);
@@ -123,7 +121,7 @@ describe('CardList', () => {
   it('should use default max item width', async () => {
     const expectedItemMaxWidth = '100vw';
 
-    const driver = createDriver(<CardList listWidth={1} />);
+    const driver = createDriver(<Grid listWidth={1} />);
 
     expect(await driver.isItemMaxWidth(expectedItemMaxWidth)).toEqual(true);
   });
@@ -131,7 +129,7 @@ describe('CardList', () => {
   it('should use item key', async () => {
     const items = generateItems(2, true);
 
-    const driver = mount(<CardList listWidth={1} items={items} />);
+    const driver = mount(<Grid listWidth={1} items={items} />);
     const cardWrappers = driver.find('li');
 
     expect(cardWrappers.at(0).key()).toEqual(items[0].key);
@@ -141,7 +139,7 @@ describe('CardList', () => {
   it('should use default key', async () => {
     const items = generateItems(2);
 
-    const driver = mount(<CardList listWidth={1} items={items} />);
+    const driver = mount(<Grid listWidth={1} items={items} />);
     const cardWrappers = driver.find('li');
 
     expect(cardWrappers.at(0).key()).toEqual('card-container-0');
@@ -153,14 +151,12 @@ describe('CardList', () => {
     const expectedMinItemWidth = 300;
     const expectedMaxItemWidth = 400;
     const expectedColumnGap = 48;
-    const expectedCardListId = 'someID';
-    spyOn(CardListUtils, 'getMediaQueries');
-    spyOn(CardListUtils, 'generateListClassId').and.returnValue(
-      expectedCardListId,
-    );
+    const expectedGridId = 'someID';
+    spyOn(GridUtils, 'getMediaQueries');
+    spyOn(GridUtils, 'generateListClassId').and.returnValue(expectedGridId);
 
     createDriver(
-      <CardList
+      <Grid
         maxColumnWidth={expectedMaxItemWidth}
         maxColumns={expectedMaxItemsPerRow}
         minColumnWidth={expectedMinItemWidth}
@@ -169,13 +165,13 @@ describe('CardList', () => {
       />,
     );
 
-    expect(CardListUtils.getMediaQueries).toHaveBeenCalledWith({
+    expect(GridUtils.getMediaQueries).toHaveBeenCalledWith({
       maxColumnWidth: expectedMaxItemWidth,
       maxColumns: expectedMaxItemsPerRow,
       minColumnWidth: expectedMinItemWidth,
       columnGap: expectedColumnGap,
       ListItemClass: styles.listWrapper,
-      cardListId: expectedCardListId,
+      gridId: expectedGridId,
     });
   });
 
@@ -184,14 +180,12 @@ describe('CardList', () => {
     const expectedMinItemWidth = 300;
     const expectedMaxItemWidth = 400;
     const expectedColumnGap = 48;
-    const expectedCardListId = 'someID';
-    spyOn(CardListUtils, 'getMediaQueries');
-    spyOn(CardListUtils, 'generateListClassId').and.returnValue(
-      expectedCardListId,
-    );
+    const expectedGridId = 'someID';
+    spyOn(GridUtils, 'getMediaQueries');
+    spyOn(GridUtils, 'generateListClassId').and.returnValue(expectedGridId);
 
     createDriver(
-      <CardList
+      <Grid
         maxColumnWidth={expectedMaxItemWidth}
         maxColumns={expectedMaxItemsPerRow + 1}
         minColumnWidth={expectedMinItemWidth}
@@ -200,33 +194,31 @@ describe('CardList', () => {
       />,
     );
 
-    expect(CardListUtils.getMediaQueries).toHaveBeenCalledWith({
+    expect(GridUtils.getMediaQueries).toHaveBeenCalledWith({
       maxColumnWidth: expectedMaxItemWidth,
       maxColumns: expectedMaxItemsPerRow,
       minColumnWidth: expectedMinItemWidth,
       columnGap: expectedColumnGap,
       ListItemClass: styles.listWrapper,
-      cardListId: expectedCardListId,
+      gridId: expectedGridId,
     });
   });
 
   it('should use CardComponent Type to determine min width if none was provided', () => {
-    spyOn(CardListUtils, 'getMinWidthByCardType');
+    spyOn(GridUtils, 'getMinWidthByCardType');
     const expectedCardComponent = <div />;
 
     createDriver(
-      <CardList listWidth={1} items={[{ item: expectedCardComponent }]} />,
+      <Grid listWidth={1} items={[{ item: expectedCardComponent }]} />,
     );
 
-    expect(CardListUtils.getMinWidthByCardType).toHaveBeenCalledWith(
+    expect(GridUtils.getMinWidthByCardType).toHaveBeenCalledWith(
       expectedCardComponent,
     );
   });
 
   it('should display divider', async () => {
-    const driver = createDriver(
-      <CardList withDivider items={generateItems()} />,
-    );
+    const driver = createDriver(<Grid withDivider items={generateItems()} />);
 
     expect(await driver.isWithDivider()).toEqual(true);
   });
@@ -234,7 +226,7 @@ describe('CardList', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<CardList />, cardListTestkitFactory, {
+        await isUniTestkitExists(<Grid />, gridTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -245,8 +237,8 @@ describe('CardList', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <CardList />,
-          enzymeCardListTestkitFactory,
+          <Grid />,
+          enzymeGridTestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',

@@ -1,22 +1,22 @@
 import * as React from 'react';
-import styles from './CardList.st.css';
+import styles from './Grid.st.css';
 import {
   generateListClassId,
   getMediaQueries,
   getMinWidthByCardType,
   itemsPerRowWidth,
-} from './CardListUtils';
+} from './GridUtils';
 
-export interface ICardListItem {
+export interface IGridItem {
   item: React.ReactNode;
   key?: string | number;
   colSpan?: number;
   rowSpan?: number;
 }
 
-export interface CardListProps {
+export interface GridProps {
   withDivider: boolean;
-  items: ICardListItem[];
+  items: IGridItem[];
   maxColumns?: number;
   minColumnWidth?: number;
   maxColumnWidth?: number;
@@ -28,7 +28,7 @@ export interface CardListProps {
 
 interface DefaultProps {
   withDivider: boolean;
-  items: ICardListItem[];
+  items: IGridItem[];
   maxColumns: number;
   rowGap: number;
   columnGap: number;
@@ -36,8 +36,8 @@ interface DefaultProps {
   dividerWidth: string;
 }
 
-export class CardList extends React.Component<CardListProps> {
-  static displayName = 'CardList';
+export class Grid extends React.Component<GridProps> {
+  static displayName = 'Grid';
   static defaultProps: DefaultProps = {
     withDivider: false,
     items: [],
@@ -76,41 +76,41 @@ export class CardList extends React.Component<CardListProps> {
           maxColumnWidth ? `${maxColumnWidth}px` : '100vw'
         }))`;
 
-    const cardListId = generateListClassId();
+    const gridId = generateListClassId();
     const cssStateDivider = Object.keys(
       styles.$cssStates({ dividers: true }),
     )[0];
 
     return (
-      <div {...styles('root', { dividers: withDivider }, rest)} id={cardListId}>
+      <div {...styles('root', { dividers: withDivider }, rest)} id={gridId}>
         <style
           dangerouslySetInnerHTML={{
             __html: `  
-          #${cardListId} .${styles.listWrapper} {
+          #${gridId} .${styles.listWrapper} {
             -ms-grid-columns: ${gridTemplateColumns};
           }
 
-          #${cardListId}[${cssStateDivider}] {
+          #${gridId}[${cssStateDivider}] {
             padding: calc((${columnGap}px / 2) + ${dividerWidth}) 0;
           }
 
-          #${cardListId}[${cssStateDivider}] li::before {
+          #${gridId}[${cssStateDivider}] li::before {
             top: calc((${columnGap}px / -2) - ${dividerWidth});
           }
 
-          #${cardListId}[${cssStateDivider}] li::after {
+          #${gridId}[${cssStateDivider}] li::after {
             bottom: calc((${columnGap}px / -2) - ${dividerWidth});
           }
 
-          #${cardListId}[${cssStateDivider}] li::before,
-          #${cardListId}[${cssStateDivider}] li::after,
-          #${cardListId}[${cssStateDivider}] .${styles.listWrapper}::before,
-          #${cardListId}[${cssStateDivider}] .${styles.listWrapper}::after {
+          #${gridId}[${cssStateDivider}] li::before,
+          #${gridId}[${cssStateDivider}] li::after,
+          #${gridId}[${cssStateDivider}] .${styles.listWrapper}::before,
+          #${gridId}[${cssStateDivider}] .${styles.listWrapper}::after {
             height: ${dividerWidth};
           }
           
-          #${cardListId}[${cssStateDivider}] li::after,
-          #${cardListId}[${cssStateDivider}] li::before {
+          #${gridId}[${cssStateDivider}] li::after,
+          #${gridId}[${cssStateDivider}] li::before {
            left: -${columnGap}px;
 }
         `,
@@ -123,7 +123,7 @@ export class CardList extends React.Component<CardListProps> {
               maxColumnWidth,
               columnGap,
               ListItemClass: styles.listWrapper,
-              cardListId,
+              gridId,
             })
           : null}
         <ul

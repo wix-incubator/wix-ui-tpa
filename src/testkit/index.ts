@@ -35,7 +35,5 @@ export const stripCardTestkitFactory = uniTestkitFactoryCreator(
   stripCardDriverFactory,
 );
 
-import { cardListDriverFactory } from '../components/CardList/CardList.driver';
-export const cardListTestkitFactory = uniTestkitFactoryCreator(
-  cardListDriverFactory,
-);
+import { gridDriverFactory } from '../components/Grid/Grid.driver';
+export const gridTestkitFactory = uniTestkitFactoryCreator(gridDriverFactory);

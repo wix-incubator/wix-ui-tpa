@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardList } from '../';
+import { Grid } from '../';
 import * as examples from './examples';
 import {
   api,
@@ -50,11 +50,11 @@ const itemsExamples = [
 
 export default {
   category: 'Components',
-  storyName: 'CardList',
-  component: CardList,
-  componentPath: '../CardList.tsx',
+  storyName: 'Grid',
+  component: Grid,
+  componentPath: '../Grid.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-CardList',
+    'data-hook': 'storybook-Grid',
     items: itemsExamples[1].value,
     maxColumns: '3',
     minColumnWidth: '130',
@@ -66,7 +66,7 @@ export default {
   exampleProps: {
     items: itemsExamples,
   },
-  dataHook: 'storybook-CardList',
+  dataHook: 'storybook-Grid',
   sections: [
     tabs([
       tab({

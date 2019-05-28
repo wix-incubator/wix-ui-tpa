@@ -1,4 +1,4 @@
-export const importExample = `import { CardList } from 'wix-ui-tpa/CardList';`;
+export const importExample = `import { Grid } from 'wix-ui-tpa/Grid';`;
 
 export const generateCardItems = (
   numOfCards,
@@ -87,13 +87,13 @@ export const generateStripCardItems = numOfCards =>
     );
 
 export const responsive = `
-<CardList maxColumns={4} minColumnWidth={200}   listWidth={5000} items={[${generateCardItems(
+<Grid maxColumns={4} minColumnWidth={200}   listWidth={5000} items={[${generateCardItems(
   2,
 )}]} />
 `;
 
 export const quilted = `
-<CardList
+<Grid
   maxColumns={4}
   minColumnWidth={20}
   listWidth={500}
@@ -107,7 +107,7 @@ export const quilted = `
 `;
 
 export const maxColumns = `
-<CardList
+<Grid
   maxColumns={4}
   listWidth={500}
   maxColumnWidth={300}
@@ -118,7 +118,7 @@ export const maxColumns = `
 `;
 
 export const listOfStripCard = `
-<CardList
+<Grid
   maxColumns={1}
   listWidth={700}
   minColumnWidth={500}
@@ -127,7 +127,7 @@ export const listOfStripCard = `
 `;
 
 export const withDividers = `
-<CardList
+<Grid
   maxColumns={1}
   listWidth={700}
   minColumnWidth={500}
@@ -137,7 +137,7 @@ export const withDividers = `
 `;
 
 export const listOfOverlappingCard = `
-<CardList
+<Grid
   maxColumns={1}
   listWidth={700}
   minColumnWidth={500}

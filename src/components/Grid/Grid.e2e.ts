@@ -4,22 +4,22 @@ import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
-import { cardListTestkitFactory } from '../../testkit/protractor';
+import { gridTestkitFactory } from '../../testkit/protractor';
 
-describe('cardList', () => {
+describe('grid', () => {
   const storyUrl = createStoryUrl({
     kind: 'Components',
-    story: 'CardList',
+    story: 'Grid',
     withExamples: true,
   });
-  const dataHook = 'storybook-CardList';
+  const dataHook = 'storybook-Grid';
 
   beforeEach(() => browser.get(storyUrl));
 
   eyes.it('should render', async () => {
-    const driver = cardListTestkitFactory({ dataHook });
+    const driver = gridTestkitFactory({ dataHook });
     debugger;
-    await waitForVisibilityOf(await driver.element(), 'Cannot find CardList');
+    await waitForVisibilityOf(await driver.element(), 'Cannot find Grid');
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

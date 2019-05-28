@@ -3,16 +3,16 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './CardList.st.css';
+import style from './Grid.st.css';
 
-export interface cardListDriver extends BaseUniDriver {
+export interface gridDriver extends BaseUniDriver {
   isDividerWidth(dividerWidth): Promise<boolean>;
   isItemsPerRow(itemsPerRow): Promise<boolean>;
   isItemMaxWidth(itemsPerRow): Promise<boolean>;
   isWithDivider(): Promise<boolean>;
 }
 
-export const cardListDriverFactory = (base: UniDriver): cardListDriver => {
+export const gridDriverFactory = (base: UniDriver): gridDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {
