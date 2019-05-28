@@ -48,9 +48,9 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
       onKeyDown={onKeyDown}
       tabIndex={0}
     >
-      <div className={style.content} tabIndex={-1}>
-        {title}
-        <div className={style.focusIndicator} />
+      {title}
+      <div className={style.focusIndicatorWrapper} tabIndex={-1}>
+        <div className={style.focusIndicator} tabIndex={-1}/>
       </div>
     </div>
   );
