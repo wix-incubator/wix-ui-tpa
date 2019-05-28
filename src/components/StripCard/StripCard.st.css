@@ -34,7 +34,7 @@
 :vars {
     cardBGColor: wixApply(color, wixApply(fallback, value(MainBGColor), value(DefaultCardBG)));
     borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), wixApply(zeroAsTrue, value(DefaultBorderWidth))), px);
-    borderColor: wixApply(opacity, wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor))), 0.2);
+    borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), wixApply(opacity, wixApply(color, value(DefaultBorderColor)), 0.2)));
     mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaBG)), 0.2)));
 }
 
