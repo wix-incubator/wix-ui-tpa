@@ -12,3 +12,4 @@ require('./Button.story.tsx');
 require('./Input.story.tsx');
 require('./Autocomplete.story.tsx');
 require('./Tabs.story.tsx');
+require('../src/components/ListCard/docs/index.story');

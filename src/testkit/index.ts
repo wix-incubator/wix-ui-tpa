@@ -34,3 +34,8 @@ import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver
 export const stripCardTestkitFactory = uniTestkitFactoryCreator(
   stripCardDriverFactory,
 );
+
+import { listCardDriverFactory } from '../components/ListCard/ListCard.driver';
+export const listCardTestkitFactory = uniTestkitFactoryCreator(
+  listCardDriverFactory,
+);

@@ -1,0 +1,75 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultDividerColor: color-5;
+}
+
+:vars {
+    /*Overrides*/
+    MainDividerColor: --overidable;
+}
+
+:vars {
+    dividerColor: wixApply(fallback, value(MainDividerColor), wixApply(color, value(DefaultDividerColor)));
+}
+
+.root {
+    -st-states: dividers;
+    max-width: max-content;
+    margin: 0 auto;
+}
+
+.root:dividers {
+    padding: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), 2) 0;
+    position: relative;
+}
+
+.root:dividers .cardContainer {
+    position: relative;
+}
+
+.root:dividers li::before {
+    top: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), -2);
+}
+
+.root:dividers li::after {
+    bottom: wixApply(calculate, wixApply(string, /), wixApply(calculate, wixApply(string, +), value(dividerWidth), 32px), -2);
+}
+
+.listWrapper {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 1fr;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.root:dividers .listWrapper::before {
+    top: 0;
+}
+
+.root:dividers .listWrapper::after {
+    bottom: 0;
+}
+
+.root:dividers li::after,
+.root:dividers li::before,
+.root:dividers .listWrapper::before,
+.root:dividers .listWrapper::after {
+    content: '';
+    position: absolute;
+    background-color: value(dividerColor);
+    height: value(dividerWidth);
+    left: 0;
+    right: 0;
+}
+
+.root:dividers li::after,
+.root:dividers li::before {
+ left: -32px;
+}

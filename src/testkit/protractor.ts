@@ -50,3 +50,8 @@ import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver
 export const stripCardTestkitFactory = protractorUniTestkitFactoryCreator(
   stripCardDriverFactory,
 );
+
+import { listCardDriverFactory } from '../components/ListCard/ListCard.driver';
+export const listCardTestkitFactory = protractorUniTestkitFactoryCreator(
+  listCardDriverFactory,
+);
