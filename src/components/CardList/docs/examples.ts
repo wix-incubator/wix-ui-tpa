@@ -1,11 +1,17 @@
 export const importExample = `import { CardList } from 'wix-ui-tpa/CardList';`;
 
-export const generateCardItems = numOfCards => `[
-  ${Array(numOfCards)
+export const generateCardItems = (
+  numOfCards,
+  colSpanDecorator: (index?) => number = () => 1,
+  rowSpanDecorator: (index?) => number = () => 1,
+) =>
+  Array(numOfCards)
     .fill(null)
     .map(
       (value, index) => `
       {
+        colSpan: ${colSpanDecorator(index)},
+        rowSpan: ${rowSpanDecorator(index)},
         item: 
           <Card
             stacked
@@ -26,10 +32,10 @@ export const generateCardItems = numOfCards => `[
             }/>,
       }
     `,
-    )}]`;
+    );
 
-export const generateOverlappingCardItems = numOfCards => `[
-  ${Array(numOfCards)
+export const generateOverlappingCardItems = numOfCards =>
+  Array(numOfCards)
     .fill(null)
     .map(
       (value, index) => `
@@ -52,10 +58,10 @@ export const generateOverlappingCardItems = numOfCards => `[
             }/>,
       }
     `,
-    )}]`;
+    );
 
-export const generateStripCardItems = numOfCards => `[
-  ${Array(numOfCards)
+export const generateStripCardItems = numOfCards =>
+  Array(numOfCards)
     .fill(null)
     .map(
       (value, index) => `
@@ -78,46 +84,63 @@ export const generateStripCardItems = numOfCards => `[
             }/>,
       }
     `,
-    )}]`;
+    );
 
 export const responsive = `
-<CardList maxItemsPerRow={4} minItemWidth={200}   listWidth={5000} items={${generateCardItems(
+<CardList maxColumns={4} minColumnWidth={200}   listWidth={5000} items={[${generateCardItems(
   2,
-)}} />
+)}]} />
 `;
 
-export const maxItemsPerRow = `
+export const quilted = `
 <CardList
-  maxItemsPerRow={4}
+  maxColumns={4}
+  minColumnWidth={20}
   listWidth={500}
-  maxItemWidth={300}
-  minItemWidth={100}
+  rowGap={4}
+  columnGap={4}
+  items={[${generateCardItems(
+    8,
+    index => [2, 1, 1, 2, 2, 2, 1, 1][index],
+    index => [2, 1, 1, 1, 1, 2, 1, 1][index],
+  )}]} />
+`;
+
+export const maxColumns = `
+<CardList
+  maxColumns={4}
+  listWidth={500}
+  maxColumnWidth={300}
+  minColumnWidth={100}
   withDivider
-  items={${generateCardItems(9)}}
+  items={[${generateCardItems(9)}]}
   />
 `;
 
 export const listOfStripCard = `
 <CardList
-  maxItemsPerRow={1}
+  maxColumns={1}
   listWidth={700}
-  items={${generateStripCardItems(3)}}
+  minColumnWidth={500}
+  items={[${generateStripCardItems(3)}]}
   />
 `;
 
 export const withDividers = `
 <CardList
-  maxItemsPerRow={1}
+  maxColumns={1}
   listWidth={700}
+  minColumnWidth={500}
   withDivider
-  items={${generateStripCardItems(3)}}
+  items={[${generateStripCardItems(3)}]}
   />
 `;
 
 export const listOfOverlappingCard = `
 <CardList
-  maxItemsPerRow={1}
+  maxColumns={1}
   listWidth={700}
-  items={${generateOverlappingCardItems(3)}}
+  minColumnWidth={500}
+  items={[${generateOverlappingCardItems(3)}]}
   />
 `;

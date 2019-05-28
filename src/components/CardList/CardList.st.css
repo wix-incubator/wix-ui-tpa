@@ -21,6 +21,7 @@
     -st-states: dividers;
     max-width: max-content;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 .root:dividers,
@@ -54,9 +55,4 @@
     background-color: value(dividerColor);
     left: 0;
     right: 0;
-}
-
-.root:dividers li::after,
-.root:dividers li::before {
- left: -32px;
 }

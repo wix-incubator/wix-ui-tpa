@@ -76,9 +76,9 @@ describe('CardListUtils', () => {
 
       expect(
         getMediaQueries({
-          maxItemsPerRow: expectedMaxItemsPerRow,
-          minItemWidth: expectedMinItemWidth,
-          maxItemWidth: expectedMaxItemWidth,
+          maxColumns: expectedMaxItemsPerRow,
+          minColumnWidth: expectedMinItemWidth,
+          maxColumnWidth: expectedMaxItemWidth,
           columnGap,
           ListItemClass: expectedClassName,
           cardListId: expectedCardListId,
@@ -100,8 +100,8 @@ describe('CardListUtils', () => {
       );
       expect(
         getMediaQueries({
-          maxItemsPerRow: expectedMaxItemsPerRow,
-          minItemWidth: expectedMinItemWidth,
+          maxColumns: expectedMaxItemsPerRow,
+          minColumnWidth: expectedMinItemWidth,
           columnGap: 48,
           ListItemClass: expectedClassName,
           cardListId: expectedCardListId,

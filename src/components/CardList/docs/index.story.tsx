@@ -56,9 +56,9 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-CardList',
     items: itemsExamples[1].value,
-    maxItemsPerRow: '3',
-    minItemWidth: '130',
-    maxItemWidth: '300',
+    maxColumns: '3',
+    minColumnWidth: '130',
+    maxColumnWidth: '300',
     listWidth: '780',
     rowGap: '32',
     columnGap: '32',
@@ -82,7 +82,8 @@ export default {
 
           ...[
             { title: 'Responsive', source: examples.responsive },
-            { title: 'Max Items Per Row', source: examples.maxItemsPerRow },
+            { title: 'Quilted', source: examples.quilted },
+            { title: 'Max Items Per Row', source: examples.maxColumns },
             { title: 'List Of Strip Cards', source: examples.listOfStripCard },
             {
               title: 'With dividers between the Items',

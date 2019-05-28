@@ -10,14 +10,16 @@ import {
 export interface ICardListItem {
   item: React.ReactNode;
   key?: string | number;
+  colSpan?: number;
+  rowSpan?: number;
 }
 
 export interface CardListProps {
   withDivider: boolean;
   items: ICardListItem[];
-  maxItemsPerRow?: number;
-  minItemWidth?: number;
-  maxItemWidth?: number;
+  maxColumns?: number;
+  minColumnWidth?: number;
+  maxColumnWidth?: number;
   listWidth?: number;
   rowGap?: number;
   columnGap?: number;
@@ -27,7 +29,7 @@ export interface CardListProps {
 interface DefaultProps {
   withDivider: boolean;
   items: ICardListItem[];
-  maxItemsPerRow: number;
+  maxColumns: number;
   rowGap: number;
   columnGap: number;
   listWidth: number;
@@ -39,7 +41,7 @@ export class CardList extends React.Component<CardListProps> {
   static defaultProps: DefaultProps = {
     withDivider: false,
     items: [],
-    maxItemsPerRow: 1,
+    maxColumns: 1,
     rowGap: 32,
     columnGap: 32,
     listWidth: 0,
@@ -50,7 +52,7 @@ export class CardList extends React.Component<CardListProps> {
     const {
       withDivider,
       listWidth,
-      maxItemWidth,
+      maxColumnWidth,
       rowGap,
       columnGap,
       items,
@@ -61,17 +63,17 @@ export class CardList extends React.Component<CardListProps> {
         ? `${this.props.dividerWidth}px`
         : this.props.dividerWidth;
     const isFullWidth = listWidth === 0;
-    const maxItemsPerRow = Math.min(this.props.maxItemsPerRow, items.length);
-    const minItemWidth =
-      this.props.minItemWidth ||
+    const maxColumns = Math.min(this.props.maxColumns, items.length);
+    const minColumnWidth =
+      this.props.minColumnWidth ||
       getMinWidthByCardType(items[0] && items[0].item);
     const itemsPerRow = isFullWidth
-      ? maxItemsPerRow
-      : itemsPerRowWidth(listWidth, minItemWidth, maxItemsPerRow, columnGap);
+      ? maxColumns
+      : itemsPerRowWidth(listWidth, minColumnWidth, maxColumns, columnGap);
     const gridTemplateColumns = isFullWidth
       ? ''
-      : `repeat(${itemsPerRow}, minmax(${minItemWidth}px, ${
-          maxItemWidth ? `${maxItemWidth}px` : '100vw'
+      : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, ${
+          maxColumnWidth ? `${maxColumnWidth}px` : '100vw'
         }))`;
 
     const cardListId = generateListClassId();
@@ -79,15 +81,6 @@ export class CardList extends React.Component<CardListProps> {
       styles.$cssStates({ dividers: true }),
     )[0];
 
-    const dividerCorrectness = `
-      #${cardListId}.${
-      styles.root
-    }[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::before,
-      #${cardListId}.${
-      styles.root
-    }[${cssStateDivider}] li:nth-child(${itemsPerRow}n+1)::after {left: 0}`;
-
-    styles.$css += dividerCorrectness;
     return (
       <div {...styles('root', { dividers: withDivider }, rest)} id={cardListId}>
         <style
@@ -115,15 +108,19 @@ export class CardList extends React.Component<CardListProps> {
           #${cardListId}[${cssStateDivider}] .${styles.listWrapper}::after {
             height: ${dividerWidth};
           }
-          ${withDivider ? dividerCorrectness : ''}
+          
+          #${cardListId}[${cssStateDivider}] li::after,
+          #${cardListId}[${cssStateDivider}] li::before {
+           left: -${columnGap}px;
+}
         `,
           }}
         />
         {listWidth === 0
           ? getMediaQueries({
-              maxItemsPerRow,
-              minItemWidth,
-              maxItemWidth,
+              maxColumns,
+              minColumnWidth,
+              maxColumnWidth,
               columnGap,
               ListItemClass: styles.listWrapper,
               cardListId,
@@ -136,9 +133,13 @@ export class CardList extends React.Component<CardListProps> {
             gap: `calc(${rowGap}px + ${dividerWidth}) ${columnGap}px`,
           }}
         >
-          {items.map(({ item, key }, index) => {
+          {items.map(({ item, key, colSpan, rowSpan }, index) => {
             return (
               <li
+                style={{
+                  gridColumnEnd: `span ${colSpan || 1}`,
+                  gridRowEnd: `span ${rowSpan || 1}`,
+                }}
                 className={styles.cardContainer}
                 key={key ? key : `card-container-${index}`}
               >

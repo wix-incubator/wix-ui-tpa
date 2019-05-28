@@ -10,42 +10,33 @@ import {
   STRIP_CARD_MIN_WIDTH,
 } from './constants';
 
-export function itemsPerRowWidth(
-  rowWidth,
-  itemWidth,
-  maxItemsPerRow,
-  columnGap,
-) {
+export function itemsPerRowWidth(rowWidth, itemWidth, maxColumns, columnGap) {
   if (rowWidth !== 0) {
-    while (
-      rowWidth <
-      maxItemsPerRow * itemWidth + columnGap * (maxItemsPerRow - 1)
-    ) {
-      maxItemsPerRow--;
+    while (rowWidth < maxColumns * itemWidth + columnGap * (maxColumns - 1)) {
+      maxColumns--;
     }
   }
 
-  return maxItemsPerRow || 1;
+  return maxColumns || 1;
 }
 
 export function getMediaQueries({
-  maxItemsPerRow,
-  minItemWidth,
-  maxItemWidth = 0,
+  maxColumns,
+  minColumnWidth,
+  maxColumnWidth = 0,
   columnGap,
   ListItemClass,
   cardListId,
 }) {
   let mediaQueries = '';
-  while (maxItemsPerRow > 0) {
-    const minWidth =
-      maxItemsPerRow * minItemWidth + columnGap * (maxItemsPerRow - 1);
-    mediaQueries = `@media (min-width: ${minWidth}px) {#${cardListId} .${ListItemClass} {-ms-grid-columns: repeat(${maxItemsPerRow}, minmax(${minItemWidth}px, ${
-      maxItemWidth ? `${maxItemWidth}px` : '100vw'
-    }));grid-template-columns: repeat(${maxItemsPerRow}, minmax(${minItemWidth}px, ${
-      maxItemWidth ? `${maxItemWidth}px` : '100vw'
+  while (maxColumns > 0) {
+    const minWidth = maxColumns * minColumnWidth + columnGap * (maxColumns - 1);
+    mediaQueries = `@media (min-width: ${minWidth}px) {#${cardListId} .${ListItemClass} {-ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, ${
+      maxColumnWidth ? `${maxColumnWidth}px` : '100vw'
+    }));grid-template-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, ${
+      maxColumnWidth ? `${maxColumnWidth}px` : '100vw'
     }));}}${mediaQueries}`;
-    maxItemsPerRow--;
+    maxColumns--;
   }
   return <style dangerouslySetInnerHTML={{ __html: mediaQueries }} />;
 }

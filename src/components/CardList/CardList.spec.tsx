@@ -41,8 +41,8 @@ describe('CardList', () => {
     createDriver(
       <CardList
         listWidth={expectedListWidth}
-        maxItemsPerRow={expectedMaxItemsPerRow}
-        minItemWidth={expectedMinItemWidth}
+        maxColumns={expectedMaxItemsPerRow}
+        minColumnWidth={expectedMinItemWidth}
         columnGap={expectedColumnGap}
         items={generateItems()}
       />,
@@ -96,13 +96,13 @@ describe('CardList', () => {
     expect(await driver.isItemsPerRow(expectedItemsPerRow)).toBe(true);
   });
 
-  it('should use amount of items as maxItemsPerRow if lower then maxItemsPerRow', async () => {
+  it('should use amount of items as maxColumns if lower then maxColumns', async () => {
     const expectedItemsPerRow = 4;
 
     const driver = createDriver(
       <CardList
         items={generateItems(expectedItemsPerRow)}
-        maxItemsPerRow={expectedItemsPerRow + 1}
+        maxColumns={expectedItemsPerRow + 1}
         listWidth={1000}
       />,
     );
@@ -114,7 +114,7 @@ describe('CardList', () => {
     const expectedItemMaxWidth = 300;
 
     const driver = createDriver(
-      <CardList listWidth={1} maxItemWidth={expectedItemMaxWidth} />,
+      <CardList listWidth={1} maxColumnWidth={expectedItemMaxWidth} />,
     );
 
     expect(await driver.isItemMaxWidth(expectedItemMaxWidth)).toEqual(true);
@@ -161,25 +161,25 @@ describe('CardList', () => {
 
     createDriver(
       <CardList
-        maxItemWidth={expectedMaxItemWidth}
-        maxItemsPerRow={expectedMaxItemsPerRow}
-        minItemWidth={expectedMinItemWidth}
+        maxColumnWidth={expectedMaxItemWidth}
+        maxColumns={expectedMaxItemsPerRow}
+        minColumnWidth={expectedMinItemWidth}
         columnGap={expectedColumnGap}
         items={generateItems(expectedMaxItemsPerRow + 1)}
       />,
     );
 
     expect(CardListUtils.getMediaQueries).toHaveBeenCalledWith({
-      maxItemWidth: expectedMaxItemWidth,
-      maxItemsPerRow: expectedMaxItemsPerRow,
-      minItemWidth: expectedMinItemWidth,
+      maxColumnWidth: expectedMaxItemWidth,
+      maxColumns: expectedMaxItemsPerRow,
+      minColumnWidth: expectedMinItemWidth,
       columnGap: expectedColumnGap,
       ListItemClass: styles.listWrapper,
       cardListId: expectedCardListId,
     });
   });
 
-  it('should use amount of items as maxItemsPerRow if lower then maxItemsPerRow on responsive', async () => {
+  it('should use amount of items as maxColumns if lower then maxColumns on responsive', async () => {
     const expectedMaxItemsPerRow = 3;
     const expectedMinItemWidth = 300;
     const expectedMaxItemWidth = 400;
@@ -192,18 +192,18 @@ describe('CardList', () => {
 
     createDriver(
       <CardList
-        maxItemWidth={expectedMaxItemWidth}
-        maxItemsPerRow={expectedMaxItemsPerRow + 1}
-        minItemWidth={expectedMinItemWidth}
+        maxColumnWidth={expectedMaxItemWidth}
+        maxColumns={expectedMaxItemsPerRow + 1}
+        minColumnWidth={expectedMinItemWidth}
         columnGap={expectedColumnGap}
         items={generateItems(expectedMaxItemsPerRow)}
       />,
     );
 
     expect(CardListUtils.getMediaQueries).toHaveBeenCalledWith({
-      maxItemWidth: expectedMaxItemWidth,
-      maxItemsPerRow: expectedMaxItemsPerRow,
-      minItemWidth: expectedMinItemWidth,
+      maxColumnWidth: expectedMaxItemWidth,
+      maxColumns: expectedMaxItemsPerRow,
+      minColumnWidth: expectedMinItemWidth,
       columnGap: expectedColumnGap,
       ListItemClass: styles.listWrapper,
       cardListId: expectedCardListId,
