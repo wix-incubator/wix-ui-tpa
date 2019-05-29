@@ -62,6 +62,8 @@ export default {
     width: '780',
     rowGap: '32',
     columnGap: '32',
+    withDivider: false,
+    dividerWidth: '1px',
   }),
   exampleProps: {
     items: itemsExamples,
