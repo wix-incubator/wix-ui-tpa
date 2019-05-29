@@ -58,7 +58,6 @@ export default {
     items: itemsExamples[1].value,
     maxColumns: '3',
     minColumnWidth: '130',
-    maxColumnWidth: '300',
     width: '780',
     rowGap: '32',
     columnGap: '32',
