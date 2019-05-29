@@ -10,6 +10,10 @@ export interface gridDriver extends BaseUniDriver {
   isItemsPerRow(itemsPerRow): Promise<boolean>;
   isItemMaxWidth(itemsPerRow): Promise<boolean>;
   isWithDivider(): Promise<boolean>;
+  rowGap(withDivider?): Promise<string>;
+  columnGap(): Promise<string>;
+  rowSpan(index?): Promise<number>;
+  columnSpan(index?): Promise<number>;
 }
 
 export const gridDriverFactory = (base: UniDriver): gridDriver => {
@@ -30,6 +34,29 @@ export const gridDriverFactory = (base: UniDriver): gridDriver => {
     },
     isDividerWidth: async dividerWidth => {
       return (await base.$('style').text()).includes(`height: ${dividerWidth}`);
+    },
+    rowGap: async (withDivider = false) => {
+      const gap = await base.$('ul').attr('style');
+      return gap.match(
+        withDivider ? /calc\([0-9]*px \+ [0-9]*px\)/g : /[0-9]*px/g,
+      )[0];
+    },
+    columnGap: async () => {
+      return (await base.$('ul').attr('style')).match(/[0-9]*px/g).pop();
+    },
+    rowSpan: async (index = 0) => {
+      const gridRowEnd = (await base
+        .$$('li')
+        .get(index)
+        .attr('style')).match(/grid-row-end: span [0-9]*/g)[0];
+      return Number(gridRowEnd.match(/[0-9]+/g)[0]);
+    },
+    columnSpan: async (index = 0) => {
+      const gridRowEnd = (await base
+        .$$('li')
+        .get(index)
+        .attr('style')).match(/grid-column-end: span [0-9]*/g)[0];
+      return Number(gridRowEnd.match(/[0-9]+/g)[0]);
     },
   };
 };

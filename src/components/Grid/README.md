@@ -10,7 +10,6 @@ The TPA implementation provides few extendable theme properties with the ability
 | withDivider  | boolean   | false | displays divider between the rows |
 | maxColumns  | number   | 1 | max of columns per row |
 | minColumnWidth  | number   | 0 | minimum width of each column in `px` * |
-| maxColumnWidth  | number   | `100vw` | maximum width of each column in `px` |
 | width  | number   | 0 | the width of the grid in `px` ** |
 | rowGap  | number   | 32 | the gap between each row |
 | columnGap  | number   | 32 | the gap between each column |

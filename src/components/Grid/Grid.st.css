@@ -14,7 +14,7 @@
 }
 
 :vars {
-    dividerColor: wixApply(fallback, value(MainDividerColor), wixApply(color, value(DefaultDividerColor)));
+    dividerColor: wixApply(color, wixApply(fallback, value(MainDividerColor), wixApply(opacity, wixApply(color, value(DefaultDividerColor)), 0.2)));
 }
 
 .root {
