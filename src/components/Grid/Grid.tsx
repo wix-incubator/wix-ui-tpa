@@ -91,15 +91,15 @@ export class Grid extends React.Component<GridProps> {
           }
 
           #${gridId}[${cssStateDivider}] {
-            padding: calc((${columnGap}px / 2) + ${dividerWidth}) 0;
+            padding: calc((${rowGap}px / 2) + ${dividerWidth}) 0;
           }
 
           #${gridId}[${cssStateDivider}] li::before {
-            top: calc((${columnGap}px / -2) - ${dividerWidth});
+            top: calc((${rowGap}px / -2) - ${dividerWidth});
           }
 
           #${gridId}[${cssStateDivider}] li::after {
-            bottom: calc((${columnGap}px / -2) - ${dividerWidth});
+            bottom: calc((${rowGap}px / -2) - ${dividerWidth});
           }
 
           #${gridId}[${cssStateDivider}] li::before,
@@ -111,7 +111,7 @@ export class Grid extends React.Component<GridProps> {
           
           #${gridId}[${cssStateDivider}] li::after,
           #${gridId}[${cssStateDivider}] li::before {
-           left: -${columnGap}px;
+           left: -${rowGap}px;
 }
         `,
           }}
