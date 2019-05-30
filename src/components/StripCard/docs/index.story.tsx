@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StripCard } from '../';
 import * as examples from './examples';
 import {
+  header,
   api,
   divider,
   importExample,
@@ -53,20 +54,22 @@ const infoExample = (
 export default {
   category: 'Components',
   storyName: 'StripCard',
+
   component: StripCard,
   componentPath: '../StripCard.tsx',
-  componentProps: () => ({
+  componentProps: {
     'data-hook': 'storybook-StripCard',
     media: mediaExamples[0].value,
     info: infoExample,
     roundMedia: false,
     sidePadding: true,
-  }),
+  },
   exampleProps: {
     media: mediaExamples,
   },
-  dataHook: 'storybook-StripCard',
+
   sections: [
+    header(),
     tabs([
       tab({
         title: 'Usage',
