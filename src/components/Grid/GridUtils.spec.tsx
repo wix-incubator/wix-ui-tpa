@@ -59,16 +59,16 @@ describe('GridUtils', () => {
               `@media (min-width: ${
                 expectedMinWidths[2]
               }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-                2}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow -
-                2}, minmax(${expectedMinItemWidth}px, 100vw));}}` +
+                2}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow -
+                2}, minmax(${expectedMinItemWidth}px, 100%));}}` +
               `@media (min-width: ${
                 expectedMinWidths[1]
               }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-                1}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow -
-                1}, minmax(${expectedMinItemWidth}px, 100vw));}}` +
+                1}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow -
+                1}, minmax(${expectedMinItemWidth}px, 100%));}}` +
               `@media (min-width: ${
                 expectedMinWidths[0]
-              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));}}`,
+              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));}}`,
           }}
         />
       );
@@ -92,7 +92,7 @@ describe('GridUtils', () => {
       const expectedStyle = (
         <style
           dangerouslySetInnerHTML={{
-            __html: `@media (min-width: 300px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100vw));}}`,
+            __html: `@media (min-width: 300px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));}}`,
           }}
         />
       );

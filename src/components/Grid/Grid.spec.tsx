@@ -124,7 +124,7 @@ describe('Grid', () => {
   });
 
   it('should use default max item width', async () => {
-    const expectedItemMaxWidth = '100vw';
+    const expectedItemMaxWidth = '100%';
 
     const driver = createDriver(<Grid width={1} />);
 
@@ -201,6 +201,16 @@ describe('Grid', () => {
 
     expect(await driver.rowGap()).toEqual(`${ROW_GAP}px`);
     expect(await driver.columnGap()).toEqual(`${COLUMN_GAP}px`);
+  });
+
+  it('should allow gap 0', async () => {
+    const expectedRowGap = 0;
+    const expectedColumnGap = 0;
+
+    const driver = createDriver(<Grid rowGap={expectedRowGap} columnGap={expectedColumnGap} items={generateItems()} />);
+
+    expect(await driver.rowGap()).toEqual(`${expectedRowGap}px`);
+    expect(await driver.columnGap()).toEqual(`${expectedColumnGap}px`);
   });
 
   it('should add divider width to row gap', async () => {

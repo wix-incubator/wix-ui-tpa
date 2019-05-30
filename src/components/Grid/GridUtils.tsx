@@ -30,7 +30,7 @@ export function getMediaQueries({
   let mediaQueries = '';
   while (maxColumns > 0) {
     const minWidth = maxColumns * minColumnWidth + columnGap * (maxColumns - 1);
-    mediaQueries = `@media (min-width: ${minWidth}px) {#${gridId} .${ListItemClass} {-ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100vw));grid-template-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100vw));}}${mediaQueries}`;
+    mediaQueries = `@media (min-width: ${minWidth}px) {#${gridId} .${ListItemClass} {-ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100%));grid-template-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100%));}}${mediaQueries}`;
     maxColumns--;
   }
   return <style dangerouslySetInnerHTML={{ __html: mediaQueries }} />;

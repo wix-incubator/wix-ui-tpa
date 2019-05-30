@@ -61,9 +61,17 @@ export class Grid extends React.Component<GridProps> {
         {({ mobile }) => {
           const { withDivider, width, items, ...rest } = this.props;
           const rowGap =
-            this.props.rowGap || (mobile ? MOBILE_ROW_GAP : ROW_GAP);
+            typeof this.props.rowGap === 'number'
+              ? this.props.rowGap
+              : mobile
+              ? MOBILE_ROW_GAP
+              : ROW_GAP;
           const columnGap =
-            this.props.columnGap || (mobile ? MOBILE_COLUMN_GAP : COLUMN_GAP);
+            typeof this.props.columnGap === 'number'
+              ? this.props.columnGap
+              : mobile
+              ? MOBILE_COLUMN_GAP
+              : COLUMN_GAP;
           const dividerWidth =
             typeof this.props.dividerWidth === 'number'
               ? `${this.props.dividerWidth}px`
@@ -78,7 +86,7 @@ export class Grid extends React.Component<GridProps> {
             : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
           const gridTemplateColumns = isFullWidth
             ? ''
-            : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, 100vw))`;
+            : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, 100%))`;
 
           const gridId = generateListClassId();
           const cssStateDivider = Object.keys(
