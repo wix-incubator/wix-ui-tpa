@@ -87,8 +87,8 @@ export const generateStripCardItems = numOfCards =>
     );
 
 export const responsive = `
-<Grid maxColumns={4} minColumnWidth={200}   width={5000} items={[${generateCardItems(
-  2,
+<Grid maxColumns={4} minColumnWidth={400} items={[${generateCardItems(
+  4,
 )}]} />
 `;
 
