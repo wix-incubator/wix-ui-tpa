@@ -3,24 +3,41 @@ import * as React from 'react';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./ButtonExtendedExample';
+import * as ExtendedRawSourceWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample';
 import * as ExtendedCSSRawSource from '!raw-loader!./ButtonExtendedExample.st.css';
+import * as ExtendedCSSRawSourceWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.st.css';
 import { ButtonExtendedExample } from './ButtonExtendedExample';
+import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
 import { MockSettings } from '../helperComponents/MockSettings';
 
 export const Examples = () => (
   <div>
+      <div className="tpa-container">
+          <CodeExample
+              title="Button Extended"
+              code={[
+                  '//.st.css',
+                  ExtendedCSSRawSource,
+                  '',
+                  '//.tsx',
+                  ExtendedRawSource,
+              ].join('\n')}
+          >
+              <ButtonExtendedExample>some text</ButtonExtendedExample>
+          </CodeExample>
+      </div>
     <div className="tpa-container">
       <CodeExample
-        title="Button Extended"
+        title="Button with style params"
         code={[
           '//.st.css',
-          ExtendedCSSRawSource,
+            ExtendedCSSRawSourceWithStyleParams,
           '',
           '//.tsx',
-          ExtendedRawSource,
+            ExtendedRawSourceWithStyleParams,
         ].join('\n')}
       >
-        <ButtonExtendedExample>some text</ButtonExtendedExample>
+        <ButtonExtendedWithStyleParamsExample>some text</ButtonExtendedWithStyleParamsExample>
       </CodeExample>
     </div>
     <MockSettings

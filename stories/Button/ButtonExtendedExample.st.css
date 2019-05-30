@@ -5,14 +5,7 @@
 
 .root {
   -st-extends: TPAButton;
-  -st-mixin: TPAButton(
-          MainTextColor '"--buttonTextColor"',
-          MainBackgroundColor '"--buttonBackgroundColor"',
-          MainTextFont '"--buttonTextFont"',
-          MainBorderWidth '"--borderWidth"',
-          MainBorderRadius '"unit(--borderRadius, px)"',
-          MainBorderColor '"--borderColor"'
-  );
+
 }
 
 .root + .root {

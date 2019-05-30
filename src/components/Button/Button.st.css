@@ -36,7 +36,7 @@
 
 :vars {
     PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
-    PrimaryBorderWidth: wixApply(unit, wixApply(fallback, value(MainBorderWidth), 0), px);
+    PrimaryBorderWidth: wixApply(fallback, value(MainBorderWidth), 0);
 }
 
 .root {
@@ -110,7 +110,7 @@
     color: value(SecondaryTextColor);
     background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), transparent));
     border-color: value(SecondaryBorderColor);
-    border-width: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), 1), px);
+    border-width: wixApply(fallback, value(MainBorderWidth), 1px);
 }
 
 .root:priority(secondary):active,
