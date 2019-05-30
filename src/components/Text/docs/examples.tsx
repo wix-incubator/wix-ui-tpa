@@ -5,7 +5,7 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 import * as ExtendedRawSource from '!raw-loader!./TextExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./TextExtendedExample.st.css';
 import {TextExtendedExample} from './TextExtendedExample';
-import {MockSettings} from '../helperComponents/MockSettings';
+import {MockSettings} from '../../../../stories/helperComponents/MockSettings';
 
 export const Examples = () => (
   <div>

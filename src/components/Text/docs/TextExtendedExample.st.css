@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../src/components/Text/Text.st.css";
+    -st-from: "../Text.st.css";
     -st-default: TPAText;
 }
 
