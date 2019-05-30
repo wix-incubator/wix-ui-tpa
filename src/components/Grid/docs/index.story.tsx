@@ -49,7 +49,7 @@ const itemsExamples = [
 ];
 
 export default {
-  category: 'Components',
+  category: 'Bookings',
   storyName: 'Grid',
   component: Grid,
   componentPath: '../Grid.tsx',
