@@ -10,13 +10,12 @@ import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
-import style from '../Button/Button.st.css';
 
 export const ROW_GAP = 32;
 export const COLUMN_GAP = 32;
 export const MOBILE_ROW_GAP = 20;
 export const MOBILE_COLUMN_GAP = 20;
-export const COLUMS_SPAN = 1;
+export const COLUMN_SPAN = 1;
 export const ROW_SPAN = 1;
 
 export interface IGridItem {
@@ -142,7 +141,7 @@ export class Grid extends React.Component<GridProps> {
               >
                 {items.map(
                   (
-                    { item, key, colSpan = COLUMS_SPAN, rowSpan = ROW_SPAN },
+                    { item, key, colSpan = COLUMN_SPAN, rowSpan = ROW_SPAN },
                     index,
                   ) => {
                     return (

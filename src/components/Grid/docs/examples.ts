@@ -92,7 +92,21 @@ export const responsive = `
 )}]} />
 `;
 
-export const quilted = `
+export const quiltedRows = `
+<Grid
+  maxColumns={3}
+  minColumnWidth={20}
+  width={500}
+  rowGap={4}
+  columnGap={4}
+  items={[${generateCardItems(
+    7,
+() => 1,
+    index => [2, 1, 1, 1, 2, 1, 1][index],
+  )}]} />
+`;
+
+export const quiltedColumnss = `
 <Grid
   maxColumns={4}
   minColumnWidth={20}
@@ -100,9 +114,9 @@ export const quilted = `
   rowGap={4}
   columnGap={4}
   items={[${generateCardItems(
-    8,
-    index => [2, 1, 1, 2, 2, 2, 1, 1][index],
-    index => [2, 1, 1, 1, 1, 2, 1, 1][index],
+    6,
+    index => [2, 1, 1, 1, 1, 2][index],
+  () => 1,
   )}]} />
 `;
 

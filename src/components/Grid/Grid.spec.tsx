@@ -9,7 +9,7 @@ import { gridTestkitFactory } from '../../testkit';
 import { gridTestkitFactory as enzymeGridTestkitFactory } from '../../testkit/enzyme';
 import {
   COLUMN_GAP,
-  COLUMS_SPAN,
+  COLUMN_SPAN,
   IGridItem,
   MOBILE_COLUMN_GAP,
   MOBILE_ROW_GAP,
@@ -155,7 +155,7 @@ describe('Grid', () => {
     const driver = createDriver(<Grid width={1} items={generateItems()} />);
 
     expect(await driver.rowSpan()).toEqual(ROW_SPAN);
-    expect(await driver.columnSpan()).toEqual(COLUMS_SPAN);
+    expect(await driver.columnSpan()).toEqual(COLUMN_SPAN);
   });
 
   it('should use given item span', async () => {

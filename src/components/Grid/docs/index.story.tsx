@@ -83,7 +83,8 @@ export default {
 
           ...[
             { title: 'Responsive', source: examples.responsive },
-            { title: 'Quilted', source: examples.quilted },
+            { title: 'Quilted Columns', source: examples.quiltedColumnss },
+            { title: 'Quilted Rows', source: examples.quiltedRows },
             { title: 'Max Items Per Row', source: examples.maxColumns },
             { title: 'List Of Strip Cards', source: examples.listOfStripCard },
             {
