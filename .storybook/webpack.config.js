@@ -47,8 +47,9 @@ module.exports = ({config}) => {
         options: {
           storyConfig: {
             moduleName: 'wix-ui-tpa',
-            repoBaseURL: 'https://github.com/wix-private/wix-ui-tpa/tree/master/src/components/',
-            importFormat: "import {%componentName} from '%moduleName/%componentName'"
+            repoBaseURL: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/',
+            importFormat: "import {%componentName} from '%moduleName/%componentName'",
+            issueURL: "https://github.com/wix/wix-ui-tpa/issues/new"
           }
         }
       })

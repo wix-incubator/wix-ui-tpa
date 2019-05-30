@@ -75,7 +75,7 @@
     "ts-jest": "^22.0.3",
     "typescript": "^3.2.4",
     "wix-base-ui": "latest",
-    "wix-storybook-utils": "^2.0.40",
+    "wix-storybook-utils": "^3.0.4",
     "wix-style-processor": "latest",
     "wix-ui-framework": "^1.2.1",
     "wix-ui-test-utils": "^1.0.0",
