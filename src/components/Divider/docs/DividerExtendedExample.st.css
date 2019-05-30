@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../src/components/Divider/Divider.st.css";
+    -st-from: "../Divider.st.css";
     -st-default: TPADivider;
 }
 

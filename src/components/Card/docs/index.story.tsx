@@ -81,7 +81,7 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Side By Side', source: ';' },
+            { title: 'Side By Side', source: examples.sideBySide },
             { title: 'Stacked', source: examples.stacked },
             { title: 'Stacked On Mobile', source: examples.stackedMobile },
             { title: 'Ratios', source: examples.ratio },
