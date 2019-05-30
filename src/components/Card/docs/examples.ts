@@ -1,5 +1,3 @@
-export const importExample = `import {Card} from 'wix-ui-tpa/dist/src/components/Card';`;
-
 const imageComponent = (width = 550, height = 322) => `
 <div
  style={{
