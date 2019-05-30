@@ -18,7 +18,6 @@ describe('grid', () => {
 
   eyes.it('should render', async () => {
     const driver = gridTestkitFactory({ dataHook });
-    debugger;
     await waitForVisibilityOf(await driver.element(), 'Cannot find Grid');
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
