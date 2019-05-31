@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Tabs, SKIN, ALIGNMENT, VARIANT } from '../src/components/Tabs';
-import * as TabsSource from '!raw-loader!../src/components/Tabs/Tabs.tsx';
-import { Examples } from './Tabs';
+import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
+import { Examples } from './examples';
 
 
 const items = Array(10)
@@ -13,30 +12,29 @@ const exampleItems = [
   { label: 'many items', value: items },
 ];
 
-let activeTabIndex = 0;
-
 export default {
   category: 'Components',
   storyName: 'Tabs',
+
   component: Tabs,
-  source: TabsSource,
-  componentPath: '../src/components/Tabs/Tabs.tsx',
+  componentPath: '../Tabs.tsx',
+
   componentProps: setState => ({
     'data-hook': 'storybook-Tabs',
     items: exampleItems[1].value,
-    onTabClick: selectedTabIndex => {
-      setState({ activeTabIndex: selectedTabIndex });
-    },
-    activeTabIndex,
+    onTabClick: activeTabIndex => setState({ activeTabIndex }),
+    activeTabIndex: 0,
     skin: SKIN.fullUnderline,
     alignment: ALIGNMENT.center,
     variant: VARIANT.fit,
   }),
+
   exampleProps: {
     skin: Object.keys(SKIN).map(key => SKIN[key]),
     alignment: Object.keys(ALIGNMENT).map(key => ALIGNMENT[key]),
     variant: Object.keys(VARIANT).map(key => VARIANT[key]),
     items: exampleItems,
   },
+
   examples: <Examples />,
 };

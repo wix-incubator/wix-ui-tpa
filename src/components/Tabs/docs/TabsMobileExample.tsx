@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Tabs, TabsProps } from '../../src/components/Tabs';
+import { Tabs, TabsProps } from '../Tabs';
 import extendedStyles from './TabsExtendedExample.st.css';
-import { TPAComponentsProvider } from '../../src/components/TPAComponentsConfig';
+import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 export const TabsMobileExample: React.SFC<TabsProps> = props => {
   return (
