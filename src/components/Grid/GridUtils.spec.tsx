@@ -4,6 +4,7 @@ import {
   getMediaQueries,
   getMinWidthByCardType,
   generateListClassId,
+  getGridStyle,
 } from './GridUtils';
 import { Card } from '../Card';
 import { OverlappingCard } from '../OverlappingCard';
@@ -52,26 +53,32 @@ describe('GridUtils', () => {
       ];
       const expectedClassName = 'someClassName';
       const expectedGridId = 'someID';
-      const expectedStyle = (
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              `@media (min-width: ${
-                expectedMinWidths[2]
-              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-                2}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow -
-                2}, minmax(${expectedMinItemWidth}px, 100%));}}` +
-              `@media (min-width: ${
-                expectedMinWidths[1]
-              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-                1}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow -
-                1}, minmax(${expectedMinItemWidth}px, 100%));}}` +
-              `@media (min-width: ${
-                expectedMinWidths[0]
-              }px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));}}`,
-          }}
-        />
-      );
+      const expectedStyle = `
+@media (min-width: ${expectedMinWidths[2]}px) {
+  #${expectedGridId} .${expectedClassName} {
+    -ms-grid-columns: repeat(${expectedMaxItemsPerRow -
+      2}, minmax(${expectedMinItemWidth}px, 100%));
+    grid-template-columns: repeat(${expectedMaxItemsPerRow -
+      2}, minmax(${expectedMinItemWidth}px, 100%));
+  }
+}
+
+@media (min-width: ${expectedMinWidths[1]}px) {
+  #${expectedGridId} .${expectedClassName} {
+    -ms-grid-columns: repeat(${expectedMaxItemsPerRow -
+      1}, minmax(${expectedMinItemWidth}px, 100%));
+    grid-template-columns: repeat(${expectedMaxItemsPerRow -
+      1}, minmax(${expectedMinItemWidth}px, 100%));
+  }
+}
+
+@media (min-width: ${expectedMinWidths[0]}px) {
+  #${expectedGridId} .${expectedClassName} {
+    -ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
+    grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
+  }
+}
+`;
 
       expect(
         getMediaQueries({
@@ -89,13 +96,15 @@ describe('GridUtils', () => {
       const expectedMinItemWidth = 300;
       const expectedClassName = 'someClassName';
       const expectedGridId = 'someID';
-      const expectedStyle = (
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `@media (min-width: 300px) {#${expectedGridId} .${expectedClassName} {-ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));}}`,
-          }}
-        />
-      );
+      const expectedStyle = `
+@media (min-width: 300px) {
+  #${expectedGridId} .${expectedClassName} {
+    -ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
+    grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
+  }
+}
+`;
+
       expect(
         getMediaQueries({
           maxColumns: expectedMaxItemsPerRow,
@@ -103,6 +112,56 @@ describe('GridUtils', () => {
           columnGap: 48,
           ListItemClass: expectedClassName,
           gridId: expectedGridId,
+        }),
+      ).toEqual(expectedStyle);
+    });
+  });
+
+  describe('', () => {
+    it('should return style tag for Grid component', () => {
+      const expectedGridId = 'some-id';
+      const expectedStateDivider = 'some-state=divider';
+      const expectedDividerWidth = '4px';
+      const expectedRowGap = 24;
+      const expectedTemplateColumns = 'someTemplateColumns';
+      const expectedListWrapperClass = 'someTemplateColumns';
+      const expectedStyle = `  
+#${expectedGridId} .${expectedListWrapperClass} {
+  -ms-grid-columns: ${expectedTemplateColumns};
+}
+
+#${expectedGridId}[${expectedStateDivider}] {
+  padding: calc((${expectedRowGap}px / 2) + ${expectedDividerWidth}) 0;
+}
+
+#${expectedGridId}[${expectedStateDivider}] li::before {
+  top: calc((${expectedRowGap}px / -2) - ${expectedDividerWidth});
+}
+
+#${expectedGridId}[${expectedStateDivider}] li::after {
+bottom: calc((${expectedRowGap}px / -2) - ${expectedDividerWidth});
+}
+
+#${expectedGridId}[${expectedStateDivider}] li::before,
+#${expectedGridId}[${expectedStateDivider}] li::after,
+#${expectedGridId}[${expectedStateDivider}] .${expectedListWrapperClass}::before,
+#${expectedGridId}[${expectedStateDivider}] .${expectedListWrapperClass}::after {
+  height: ${expectedDividerWidth};
+}
+
+#${expectedGridId}[${expectedStateDivider}] li::after,
+#${expectedGridId}[${expectedStateDivider}] li::before {
+  left: -${expectedRowGap}px;
+}`;
+
+      expect(
+        getGridStyle({
+          gridId: expectedGridId,
+          cssStateDivider: expectedStateDivider,
+          dividerWidth: expectedDividerWidth,
+          rowGap: expectedRowGap,
+          gridTemplateColumns: expectedTemplateColumns,
+          listWrapperClass: expectedListWrapperClass,
         }),
       ).toEqual(expectedStyle);
     });

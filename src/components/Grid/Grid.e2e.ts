@@ -8,7 +8,7 @@ import { gridTestkitFactory } from '../../testkit/protractor';
 
 describe('grid', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Bookings',
     story: 'Grid',
     withExamples: true,
   });

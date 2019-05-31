@@ -2,6 +2,7 @@ import * as React from 'react';
 import styles from './Grid.st.css';
 import {
   generateListClassId,
+  getGridStyle,
   getMediaQueries,
   getMinWidthByCardType,
   itemsPerRowWidth,
@@ -99,45 +100,27 @@ export class Grid extends React.Component<GridProps> {
             >
               <style
                 dangerouslySetInnerHTML={{
-                  __html: `  
-          #${gridId} .${styles.listWrapper} {
-            -ms-grid-columns: ${gridTemplateColumns};
-          }
-
-          #${gridId}[${cssStateDivider}] {
-            padding: calc((${rowGap}px / 2) + ${dividerWidth}) 0;
-          }
-
-          #${gridId}[${cssStateDivider}] li::before {
-            top: calc((${rowGap}px / -2) - ${dividerWidth});
-          }
-
-          #${gridId}[${cssStateDivider}] li::after {
-            bottom: calc((${rowGap}px / -2) - ${dividerWidth});
-          }
-
-          #${gridId}[${cssStateDivider}] li::before,
-          #${gridId}[${cssStateDivider}] li::after,
-          #${gridId}[${cssStateDivider}] .${styles.listWrapper}::before,
-          #${gridId}[${cssStateDivider}] .${styles.listWrapper}::after {
-            height: ${dividerWidth};
-          }
-          
-          #${gridId}[${cssStateDivider}] li::after,
-          #${gridId}[${cssStateDivider}] li::before {
-           left: -${rowGap}px;
-          }`,
+                  __html: `${getGridStyle({
+                    rowGap,
+                    dividerWidth,
+                    cssStateDivider,
+                    gridId,
+                    gridTemplateColumns,
+                    listWrapperClass: styles.listWrapper,
+                  })}
+                  ${
+                    isFullWidth
+                      ? getMediaQueries({
+                          maxColumns,
+                          minColumnWidth,
+                          columnGap,
+                          ListItemClass: styles.listWrapper,
+                          gridId,
+                        })
+                      : ''
+                  }`,
                 }}
               />
-              {isFullWidth
-                ? getMediaQueries({
-                    maxColumns,
-                    minColumnWidth,
-                    columnGap,
-                    ListItemClass: styles.listWrapper,
-                    gridId,
-                  })
-                : null}
               <ul
                 className={styles.listWrapper}
                 style={{

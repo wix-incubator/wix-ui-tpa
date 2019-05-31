@@ -30,10 +30,55 @@ export function getMediaQueries({
   let mediaQueries = '';
   while (maxColumns > 0) {
     const minWidth = maxColumns * minColumnWidth + columnGap * (maxColumns - 1);
-    mediaQueries = `@media (min-width: ${minWidth}px) {#${gridId} .${ListItemClass} {-ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100%));grid-template-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100%));}}${mediaQueries}`;
+    mediaQueries = `
+@media (min-width: ${minWidth}px) {
+  #${gridId} .${ListItemClass} {
+    -ms-grid-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100%));
+    grid-template-columns: repeat(${maxColumns}, minmax(${minColumnWidth}px, 100%));
+  }
+}
+${mediaQueries}`;
     maxColumns--;
   }
-  return <style dangerouslySetInnerHTML={{ __html: mediaQueries }} />;
+  return mediaQueries;
+}
+
+export function getGridStyle({
+  gridId,
+  gridTemplateColumns,
+  cssStateDivider,
+  rowGap,
+  dividerWidth,
+  listWrapperClass,
+}) {
+  return `  
+#${gridId} .${listWrapperClass} {
+  -ms-grid-columns: ${gridTemplateColumns};
+}
+
+#${gridId}[${cssStateDivider}] {
+  padding: calc((${rowGap}px / 2) + ${dividerWidth}) 0;
+}
+
+#${gridId}[${cssStateDivider}] li::before {
+  top: calc((${rowGap}px / -2) - ${dividerWidth});
+}
+
+#${gridId}[${cssStateDivider}] li::after {
+bottom: calc((${rowGap}px / -2) - ${dividerWidth});
+}
+
+#${gridId}[${cssStateDivider}] li::before,
+#${gridId}[${cssStateDivider}] li::after,
+#${gridId}[${cssStateDivider}] .${listWrapperClass}::before,
+#${gridId}[${cssStateDivider}] .${listWrapperClass}::after {
+  height: ${dividerWidth};
+}
+
+#${gridId}[${cssStateDivider}] li::after,
+#${gridId}[${cssStateDivider}] li::before {
+  left: -${rowGap}px;
+}`;
 }
 
 export function getMinWidthByCardType(CardComponent): number {

@@ -207,7 +207,13 @@ describe('Grid', () => {
     const expectedRowGap = 0;
     const expectedColumnGap = 0;
 
-    const driver = createDriver(<Grid rowGap={expectedRowGap} columnGap={expectedColumnGap} items={generateItems()} />);
+    const driver = createDriver(
+      <Grid
+        rowGap={expectedRowGap}
+        columnGap={expectedColumnGap}
+        items={generateItems()}
+      />,
+    );
 
     expect(await driver.rowGap()).toEqual(`${expectedRowGap}px`);
     expect(await driver.columnGap()).toEqual(`${expectedColumnGap}px`);
@@ -241,7 +247,7 @@ describe('Grid', () => {
     expect(await driver.columnGap()).toEqual(`${MOBILE_COLUMN_GAP}px`);
   });
 
-  it('should use amount of items as maxColumns if lower then maxColumns on responsive', async () => {
+  it('should use amount of items as maxColumns if lower then maxColumns on responsive', () => {
     const expectedMaxItemsPerRow = 3;
     const expectedMinItemWidth = 300;
     const expectedColumnGap = 48;
@@ -265,6 +271,58 @@ describe('Grid', () => {
       ListItemClass: styles.listWrapper,
       gridId: expectedGridId,
     });
+  });
+
+  it('should call getGridStyle', () => {
+    const expectedMaxItemsPerRow = 3;
+    const expectedMinItemWidth = 300;
+    const expectedColumnGap = 48;
+    const expectedRowGap = 47;
+    const expectedDividerWidth = '34px';
+    const expectedGridId = 'someID';
+    const expectedCSSStateDivider = Object.keys(
+      styles.$cssStates({ dividers: true }),
+    )[0];
+    spyOn(GridUtils, 'getGridStyle');
+    spyOn(GridUtils, 'generateListClassId').and.returnValue(expectedGridId);
+
+    createDriver(
+      <Grid
+        rowGap={expectedRowGap}
+        dividerWidth={expectedDividerWidth}
+        maxColumns={expectedMaxItemsPerRow + 1}
+        minColumnWidth={expectedMinItemWidth}
+        columnGap={expectedColumnGap}
+        items={generateItems(expectedMaxItemsPerRow)}
+      />,
+    );
+
+    expect(GridUtils.getGridStyle).toHaveBeenCalledWith({
+      rowGap: expectedRowGap,
+      dividerWidth: expectedDividerWidth,
+      cssStateDivider: expectedCSSStateDivider,
+      gridId: expectedGridId,
+      gridTemplateColumns: '',
+      listWrapperClass: styles.listWrapper,
+    });
+  });
+
+  it('should call getGridStyle with correct gridTemplateColumns when not responsive', () => {
+    const expectedGridTemplateRow = 'repeat(1, minmax(0px, 100%))';
+    spyOn(GridUtils, 'getGridStyle');
+
+    createDriver(<Grid width={700} />);
+
+    expect(GridUtils.getGridStyle).toHaveBeenCalledWith(
+      expect.objectContaining({
+        gridTemplateColumns: expectedGridTemplateRow,
+        rowGap: expect.any(Number),
+        dividerWidth: expect.any(String),
+        cssStateDivider: expect.any(String),
+        gridId: expect.any(String),
+        listWrapperClass: expect.any(String),
+      }),
+    );
   });
 
   it('should use CardComponent Type to determine min width if none was provided', () => {
