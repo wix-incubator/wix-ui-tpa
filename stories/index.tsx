@@ -2,13 +2,13 @@ import styleProcessor from 'wix-style-processor';
 
 styleProcessor.init();
 
-require('../src/components/Card/docs/index.story');
-require('../src/components/OverlappingCard/docs/index.story');
-require('../src/components/StripCard/docs/index.story');
-require('./Divider.story.tsx');
-require('./ToggleSwitch');
-require('./Text.story.tsx');
-require('./Button.story.tsx');
-require('./Input.story.tsx');
-require('./Autocomplete.story.tsx');
-require('./Tabs.story.tsx');
+import '../src/components/Autocomplete/docs/index.story';
+import '../src/components/Button/docs/index.story';
+import '../src/components/Card/docs/index.story';
+import '../src/components/Divider/docs/index.story';
+import '../src/components/Input/docs/index.story';
+import '../src/components/OverlappingCard/docs/index.story';
+import '../src/components/StripCard/docs/index.story';
+import '../src/components/Tabs/docs/index.story';
+import '../src/components/Text/docs/index.story';
+import '../src/components/ToggleSwitch/docs'; // TODO: convert to .story
