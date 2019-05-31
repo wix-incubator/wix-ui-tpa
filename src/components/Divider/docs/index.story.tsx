@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Divider} from '../Divider';
-import {Examples} from './examples';
+import { Divider } from '../Divider';
+import { Examples } from './examples';
 
 export default {
   category: 'Components',
@@ -13,6 +13,5 @@ export default {
     'data-hook': 'storybook-Divider',
   },
 
-  examples: (<Examples/>
-)
+  examples: <Examples />,
 };

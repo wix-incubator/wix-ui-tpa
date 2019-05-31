@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Input} from '..';
-import {Examples} from './examples';
+import { Input } from '..';
+import { Examples } from './examples';
 
 export default {
   category: 'Components',
@@ -12,10 +12,8 @@ export default {
   componentProps: (setState, getState) => ({
     'data-hook': 'storybook-Input',
     value: '',
-    onChange: ({target: {value}}) => setState({value})
+    onChange: ({ target: { value } }) => setState({ value }),
   }),
 
-  examples: (
-    <Examples/>
-  )
+  examples: <Examples />,
 };

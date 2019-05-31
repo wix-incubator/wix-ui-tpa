@@ -70,21 +70,22 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          importExample('import {OverlappingCard} from \'wix-ui-tpa/OverlappingCard\''),
+          importExample(
+            "import {OverlappingCard} from 'wix-ui-tpa/OverlappingCard'",
+          ),
 
           description(readme),
 
           divider(),
-        ]
+        ],
       }),
-
 
       ...[
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
-    ])
+    ]),
   ],
 
   examples: <Examples />,

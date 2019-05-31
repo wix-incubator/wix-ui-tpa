@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
 import { Examples } from './examples';
 
-
 const items = Array(10)
   .fill('')
   .map((item, index) => ({ title: `Title ${index + 1}` }));

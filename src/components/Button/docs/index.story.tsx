@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Button, PRIORITY, SIZE} from '..';
-import {Examples} from './examples';
+import { Button, PRIORITY, SIZE } from '..';
+import { Examples } from './examples';
 
 export default {
   category: 'Components',
@@ -19,7 +19,5 @@ export default {
     priority: Object.keys(PRIORITY).map(key => PRIORITY[key]),
     size: Object.keys(SIZE).map(key => SIZE[key]),
   },
-  examples: (
-    <Examples/>
-  )
+  examples: <Examples />,
 };

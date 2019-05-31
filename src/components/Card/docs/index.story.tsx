@@ -74,7 +74,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          importExample('import {Card} from \'wix-ui-tpa/dist/src/components/Card\';'),
+          importExample(
+            "import {Card} from 'wix-ui-tpa/dist/src/components/Card';",
+          ),
 
           divider(),
 
