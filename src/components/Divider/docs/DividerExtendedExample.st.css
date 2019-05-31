@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../Divider.st.css";
+    -st-default: TPADivider;
+}
+
+.root {
+    -st-mixin: TPADivider(
+        MainDividerColor '"--dividerColor"',
+        MainDividerWidth '"--dividerWidth"'
+  );
+}

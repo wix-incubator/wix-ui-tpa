@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Card, CardRatioOptions } from '../';
-import * as examples from './examples';
 import {
+  header,
   api,
   divider,
   importExample,
@@ -12,9 +11,12 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
+import { Card, CardRatioOptions } from '../';
+import * as examples from './examples';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -51,27 +53,30 @@ export default {
   storyName: 'Card',
   component: Card,
   componentPath: '../Card.tsx',
-  componentProps: () => ({
+
+  componentProps: {
     media: mediaExamples[0].value,
     info: infoExample,
     'data-hook': 'storybook-Card',
     flippedRatio: false,
     invertInfoPosition: false,
     stacked: false,
-  }),
+  },
+
   exampleProps: {
     media: mediaExamples,
     ratio: Object.keys(CardRatioOptions).map(key => CardRatioOptions[key]),
   },
-  dataHook: 'storybook-Card',
+
   sections: [
+    header(),
     tabs([
       tab({
         title: 'Usage',
         sections: [
-          importExample({
-            source: examples.importExample,
-          }),
+          importExample(
+            "import {Card} from 'wix-ui-tpa/dist/src/components/Card';",
+          ),
 
           divider(),
 
