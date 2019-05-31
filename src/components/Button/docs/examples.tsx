@@ -2,10 +2,12 @@ import * as React from 'react';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
-import * as ExtendedRawSource from '!raw-loader!./ButtonExtendedExample';
-import * as ExtendedRawSourceWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample';
-import * as ExtendedCSSRawSource from '!raw-loader!./ButtonExtendedExample.st.css';
-import * as ExtendedCSSRawSourceWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.st.css';
+import * as ExtendedRaw from '!raw-loader!./ButtonExtendedExample.tsx';
+import * as ExtendedRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.tsx';
+
+import * as ExtendedCSSRaw from '!raw-loader!./ButtonExtendedExample.st.css';
+import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.st.css';
+
 import { ButtonExtendedExample } from './ButtonExtendedExample';
 import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
@@ -15,13 +17,9 @@ export const Examples = () => (
     <div className="tpa-container">
       <CodeExample
         title="Button Extended"
-        code={[
-          '//.st.css',
-          ExtendedCSSRawSource,
-          '',
-          '//.tsx',
-          ExtendedRawSource,
-        ].join('\n')}
+        code={['//.st.css', ExtendedCSSRaw, '', '//.tsx', ExtendedRaw].join(
+          '\n',
+        )}
       >
         <ButtonExtendedExample>some text</ButtonExtendedExample>
       </CodeExample>
@@ -31,10 +29,10 @@ export const Examples = () => (
         title="Button with style params"
         code={[
           '//.st.css',
-          ExtendedCSSRawSourceWithStyleParams,
+          ExtendedCSSRawWithStyleParams,
           '',
           '//.tsx',
-          ExtendedRawSourceWithStyleParams,
+          ExtendedRawWithStyleParams,
         ].join('\n')}
       >
         <ButtonExtendedWithStyleParamsExample>

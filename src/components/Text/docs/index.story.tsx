@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import {Text, TYPOGRAPHY} from '..';
-import * as TextSource from '!raw-loader!../Text';
-import {Examples} from './examples';
+import { Text, TYPOGRAPHY } from '..';
+import { Examples } from './examples';
 
 export default {
   category: 'Components',
@@ -19,7 +18,5 @@ export default {
   exampleProps: {
     typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
   },
-  examples: (
-    <Examples/>
-  )
+  examples: <Examples />,
 };
