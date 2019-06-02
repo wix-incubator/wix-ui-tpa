@@ -28,6 +28,7 @@ export interface IGridItem {
 
 export interface GridProps {
   withDivider: boolean;
+  autoRowHeight: boolean;
   items: IGridItem[];
   maxColumns?: number;
   minColumnWidth?: number;
@@ -39,6 +40,7 @@ export interface GridProps {
 
 interface DefaultProps {
   withDivider: boolean;
+  autoRowHeight: boolean;
   items: IGridItem[];
   maxColumns: number;
   width: number;
@@ -54,13 +56,20 @@ export class Grid extends React.Component<GridProps> {
     maxColumns: 1,
     width: 0,
     dividerWidth: '1px',
+    autoRowHeight: true,
   };
 
   render() {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => {
-          const { withDivider, width, items, ...rest } = this.props;
+          const {
+            withDivider,
+            width,
+            items,
+            autoRowHeight,
+            ...rest
+          } = this.props;
           const rowGap =
             typeof this.props.rowGap === 'number'
               ? this.props.rowGap
@@ -95,7 +104,11 @@ export class Grid extends React.Component<GridProps> {
           )[0];
           return (
             <div
-              {...styles('root', { dividers: withDivider }, rest)}
+              {...styles(
+                'root',
+                { dividers: withDivider, autoRowHeight },
+                rest,
+              )}
               id={gridId}
             >
               <style

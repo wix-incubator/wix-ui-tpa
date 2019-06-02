@@ -54,6 +54,7 @@
     min-height: value(CardMinHeight);
     box-sizing: border-box;
     height: 100%;
+    width: 100%;
 }
 
 .root:not(:sidePadding) {
