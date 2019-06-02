@@ -62,6 +62,7 @@ export default {
     rowGap: '32',
     columnGap: '32',
     withDivider: false,
+    autoRowHeight: true,
     dividerWidth: '1px',
   }),
   exampleProps: {
