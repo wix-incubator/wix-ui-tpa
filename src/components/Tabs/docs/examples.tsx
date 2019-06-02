@@ -6,10 +6,9 @@ import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
 import { TabsExtendedExample } from './TabsExtendedExample';
 
-import { MockSettings } from '../helperComponents/MockSettings';
+import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 import * as MobileRawSource from '!raw-loader!./TabsMobileExample.tsx';
 import { TabsMobileExample } from './TabsMobileExample';
-import { VARIANT, SKIN } from '../../src/components/Tabs';
 
 const items = [
   { title: 'Title 1' },
@@ -21,7 +20,6 @@ const items = [
 export const Examples = () => {
   const [tabIndex1, setTabIndex1] = React.useState(0);
   const [tabIndex2, setTabIndex2] = React.useState(0);
-  const [tabIndex3, setTabIndex3] = React.useState(0);
 
   return (
     <div>
