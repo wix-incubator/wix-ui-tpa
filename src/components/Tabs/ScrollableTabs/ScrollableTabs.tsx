@@ -25,6 +25,7 @@ interface ScrollableTabsProps {
   onClickItem(index: number): void;
   className: string;
   activeTabIndex: number;
+  animateIndicator?: boolean;
 }
 
 interface ScrollableTabsState {
@@ -56,7 +57,10 @@ export class ScrollableTabs extends React.Component<
     this._updateComponent();
   }
 
-  componentDidUpdate(prevProps: ScrollableTabsProps) {
+  componentDidUpdate(
+    prevProps: ScrollableTabsProps,
+    prevState: ScrollableTabsState,
+  ) {
     if (
       prevProps.activeTabIndex !== this.props.activeTabIndex ||
       !isEqual(prevProps.items, this.props.items) ||
@@ -78,6 +82,7 @@ export class ScrollableTabs extends React.Component<
 
   _updateIndicatorPosition() {
     const { selectedIndicatorRect } = this.state;
+
     if (this._selectedTabRef && this._selectedTabRef.current) {
       const newLeft = this._selectedTabRef.current.offsetLeft;
       const newWidth = this._selectedTabRef.current.offsetWidth;
@@ -165,12 +170,13 @@ export class ScrollableTabs extends React.Component<
       items,
       alignment,
       variant,
+      animateIndicator,
       ...rest
     } = this.props;
 
     return (
       <div
-        {...style('root', { alignment, variant }, rest)}
+        {...style('root', { alignment, variant, animateIndicator }, rest)}
         {...this._getDataAttributes()}
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
@@ -183,13 +189,14 @@ export class ScrollableTabs extends React.Component<
               index={index}
               dataHook={`${TABS_DATA_HOOKS.tab}-${index}`}
               isActive={activeTabIndex === index}
+              indicateActive={!animateIndicator}
               ref={activeTabIndex === index ? this._selectedTabRef : null}
               onClick={onClickItem}
             />
           ))}
           <div
             className={style.selectedIndicator}
-            style={selectedIndicatorRect}
+            style={animateIndicator ? selectedIndicatorRect : null}
           />
         </nav>
       </div>

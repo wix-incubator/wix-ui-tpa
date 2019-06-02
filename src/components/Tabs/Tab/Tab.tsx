@@ -12,13 +12,14 @@ interface TabProps {
   item: TabItem;
   index: number;
   isActive: boolean;
+  indicateActive: boolean;
   onClick(index: number): void;
   className: string;
   dataHook: string;
 }
 
 export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
-  const { index, item, onClick, isActive, dataHook } = props;
+  const { index, item, onClick, isActive, dataHook, indicateActive } = props;
   const title = item.title;
   const onSelectTab = () => {
     onClick(index);
@@ -39,7 +40,7 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
 
   return (
     <div
-      {...style('root', {}, props)}
+      {...style('root', { isActive, indicateActive }, props)}
       ref={ref}
       {...dataAttributes}
       data-hook={dataHook}
@@ -50,7 +51,7 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
     >
       {title}
       <div className={style.focusIndicatorWrapper} tabIndex={-1}>
-        <div className={style.focusIndicator} tabIndex={-1}/>
+        <div className={style.focusIndicator} tabIndex={-1} />
       </div>
     </div>
   );

@@ -35,6 +35,7 @@ export interface TabsProps {
 
 interface TabsState {
   navButtons?: NavButtonOptions;
+  firstRender: null | boolean; // used for ssr
 }
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
@@ -49,7 +50,21 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   state = {
     navButtons: NavButtonOptions.none,
+    firstRender: null,
   };
+
+  static getDerivedStateFromProps(props, state) {
+    let newState = null;
+
+    if (state.firstRender !== false) {
+      newState = {
+        navButtons: state.navButtons,
+        firstRender: state.firstRender === null,
+      };
+    }
+
+    return newState;
+  }
 
   componentDidMount() {
     this._updateButtonsIfNeeded();
@@ -116,9 +131,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
     this._updateButtonsIfNeeded();
 
-    this._resizeTimer = window.setTimeout(() => {
-      this._tabsRef.updateIndicatorPosition();
-    }, 100);
+    if (!this.state.firstRender) {
+      this._resizeTimer = window.setTimeout(() => {
+        this._tabsRef.updateIndicatorPosition();
+      }, 100);
+    }
   };
 
   _tabsRefCallback = (el: ScrollableTabs) => {
@@ -137,7 +154,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { navButtons } = this.state;
+    const { navButtons, firstRender } = this.state;
     const {
       items,
       alignment,
@@ -164,6 +181,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onClickItem={this._onClickItem}
               onScroll={this._onScroll}
               activeTabIndex={activeTabIndex}
+              animateIndicator={!firstRender}
               ref={this._tabsRefCallback}
             />
             <TabsNavButton

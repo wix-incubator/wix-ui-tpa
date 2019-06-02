@@ -13,7 +13,7 @@
 }
 
 .root {
-    -st-states: alignment(enum(center, left, right)), variant(enum(fullWidth, fit));
+    -st-states: alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), animateIndicator;
     overflow: hidden;
     height: 100%;
 }
@@ -35,6 +35,7 @@
     -st-extends: Tab;
     -st-mixin: Tab(
         focusIndicatorColor wixApply(opacity, value(selectedIndicatorColor), 0.2)
+        activeIndicatorColor value(selectedIndicatorColor)
     );
     display: inline-block;
 }
@@ -44,6 +45,9 @@
     bottom: 0;
     border-bottom: 3px solid;
     border-bottom-color: value(selectedIndicatorColor);
+}
+
+.root:animateIndicator .selectedIndicator {
     transition: left .3s ease-in-out, width .3s ease-in-out;
 }
 

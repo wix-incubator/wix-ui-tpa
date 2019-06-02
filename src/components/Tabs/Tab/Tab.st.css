@@ -4,10 +4,12 @@
 }
 
 :vars {
+    activeIndicatorColor: wixApply(color, color-8);
     focusIndicatorColor: wixApply(color, color-8);
 }
 
 .root {
+    -st-states: isActive, indicateActive;
     cursor: pointer;
     height: 100%;
     text-align: center;
@@ -32,6 +34,11 @@
     width: 100%;
     height: 3px;
     background-color: transparent;
+}
+
+.root:isActive:indicateActive {
+    border-bottom: 3px solid;
+    border-bottom-color: value(activeIndicatorColor);
 }
 
 .root:focus,
