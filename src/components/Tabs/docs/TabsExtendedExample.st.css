@@ -1,0 +1,13 @@
+:import {
+    -st-from: "../Tabs.st.css";
+    -st-default: TPATabs;
+}
+
+.root {
+    -st-mixin: TPATabs(
+            MainTextColor '"--textColor"',
+            MainTextFont '"--textFont"',
+            SelectedTabIndicatorColor '"--selectedTabIndicatorColor"',
+            IndicatorColor '"--indicatorColor"'
+    );
+}

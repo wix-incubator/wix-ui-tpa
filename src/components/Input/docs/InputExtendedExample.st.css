@@ -1,0 +1,13 @@
+:import {
+  -st-from: "../Input.st.css";
+  -st-default: TPAInput;
+}
+
+.root {
+  -st-mixin: TPAInput(
+      MainBackgroundColor '"opacity(color(--inputBackgroundColor), 0.2)"',
+      MainTextColor '"color(--inputTextColor)"',
+      MainBorderColor '"font(--inputBorderColor)"',
+      MainTextFont '"font(--textFont)"'
+  );
+}

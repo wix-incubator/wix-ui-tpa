@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../Text.st.css";
+    -st-default: TPAText;
+}
+
+.root {
+    -st-mixin: TPAText(
+            MainTextColor '"--textColor"',
+            MainTextFont '"--textFont"'
+    );
+}
