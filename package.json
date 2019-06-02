@@ -29,7 +29,9 @@
     "posttest": "npm run lint",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
-    "test:e2e": "yoshi test --protractor",
+    "test:e2e": "concurrently 'node scripts/e2e-server.js' 'npm run test:e2e-only' --names 'e2e-server,protractor' --success first --kill-others",
+    "test:e2e-only": "NODE_ENV=production yoshi test --protractor",
+    "test:eyes-storybook": "eyes-storybook -c ./.storybook-test",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
     "release": "yoshi release",
@@ -37,9 +39,10 @@
     "storybook": "start-storybook -p 6006 -s ./src/assets",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
-    "storybook:build": "build-storybook  -s ./src/assets",
+    "storybook:build": "build-storybook -s ./src/assets",
     "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css",
-    "generate": "wuf generate"
+    "generate": "wuf generate",
+    "eyes-storybook-debug": "start-storybook --ci -c ./.storybook-test -p 6007 -s ./src/assets"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -50,6 +53,7 @@
     "wix-ui-icons-common": "^2.0.0"
   },
   "devDependencies": {
+    "@applitools/eyes-storybook": "^2.6.20",
     "@storybook/addon-links": "5.0.9",
     "@storybook/react": "5.0.9",
     "@types/enzyme": "^3.1.8",
@@ -62,6 +66,7 @@
     "@ui-autotools/sanity": "^2.8.2",
     "autoprefixer": "^9.5.1",
     "babel-cli": "^6.26.0",
+    "concurrently": "^4.1.0",
     "core-js": "^2.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
