@@ -20,6 +20,7 @@ import { Card } from '../Card';
 import styles from './Grid.st.css';
 import * as GridUtils from './GridUtils';
 import { TPAComponentsWrapper } from '../../test/utils';
+import {DEFAULT_MIN_WIDTH} from './constants';
 
 function generateItems(amount = 5, withKey = false): IGridItem[] {
   return Array(amount)
@@ -322,17 +323,6 @@ describe('Grid', () => {
         gridId: expect.any(String),
         listWrapperClass: expect.any(String),
       }),
-    );
-  });
-
-  it('should use CardComponent Type to determine min width if none was provided', () => {
-    spyOn(GridUtils, 'getMinWidthByCardType');
-    const expectedCardComponent = <div />;
-
-    createDriver(<Grid width={1} items={[{ item: expectedCardComponent }]} />);
-
-    expect(GridUtils.getMinWidthByCardType).toHaveBeenCalledWith(
-      expectedCardComponent,
     );
   });
 

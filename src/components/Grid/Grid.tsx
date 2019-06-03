@@ -4,13 +4,13 @@ import {
   generateListClassId,
   getGridStyle,
   getMediaQueries,
-  getMinWidthByCardType,
   itemsPerRowWidth,
 } from './GridUtils';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
+import { DEFAULT_MIN_WIDTH } from './constants';
 
 export const ROW_GAP = 32;
 export const COLUMN_GAP = 32;
@@ -44,6 +44,7 @@ interface DefaultProps {
   items: IGridItem[];
   maxColumns: number;
   width: number;
+  minColumnWidth: number;
   dividerWidth: string;
 }
 
@@ -57,6 +58,7 @@ export class Grid extends React.Component<GridProps> {
     width: 0,
     dividerWidth: '1px',
     autoRowHeight: true,
+    minColumnWidth: DEFAULT_MIN_WIDTH,
   };
 
   render() {
@@ -68,6 +70,7 @@ export class Grid extends React.Component<GridProps> {
             width,
             items,
             autoRowHeight,
+            minColumnWidth,
             ...rest
           } = this.props;
           const rowGap =
@@ -88,9 +91,6 @@ export class Grid extends React.Component<GridProps> {
               : this.props.dividerWidth;
           const isFullWidth = width === 0;
           const maxColumns = Math.min(this.props.maxColumns, items.length);
-          const minColumnWidth =
-            this.props.minColumnWidth ||
-            getMinWidthByCardType(items[0] && items[0].item);
           const itemsPerRow = isFullWidth
             ? maxColumns
             : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
