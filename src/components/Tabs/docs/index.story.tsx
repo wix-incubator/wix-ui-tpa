@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
-import * as TabsSource from '!raw-loader!../src/components/Tabs/Tabs.tsx';
+import * as TabsSource from '!raw-loader!../Tabs.tsx';
 import { Examples } from './examples';
 
 
@@ -18,7 +18,7 @@ export default {
   storyName: 'Tabs',
   component: Tabs,
   source: TabsSource,
-  componentPath: '../src/components/Tabs/Tabs.tsx',
+  componentPath: '../Tabs.tsx',
   componentProps: setState => ({
     dataHook: 'storybook-Tabs',
     items: exampleItems[1].value,
