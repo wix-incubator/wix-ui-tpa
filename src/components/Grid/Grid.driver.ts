@@ -4,13 +4,14 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Grid.st.css';
+import { GridDataHooks, GridDataKeys } from './DataHooks';
 
 export interface gridDriver extends BaseUniDriver {
-  isDividerWidth(dividerWidth): Promise<boolean>;
-  isItemsPerRow(itemsPerRow): Promise<boolean>;
-  isItemMaxWidth(itemsPerRow): Promise<boolean>;
+  dividerWidth(): Promise<string>;
+  itemsPerRow(): Promise<number>;
+  itemMaxWidth(): Promise<string>;
   isWithDivider(): Promise<boolean>;
-  rowGap(withDivider?): Promise<string>;
+  rowGap(): Promise<string>;
   columnGap(): Promise<string>;
   rowSpan(index?): Promise<number>;
   columnSpan(index?): Promise<number>;
@@ -19,44 +20,42 @@ export interface gridDriver extends BaseUniDriver {
 export const gridDriverFactory = (base: UniDriver): gridDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
+  const listWrapperDriver = base.$(`[data-hook="${GridDataHooks.container}"]`);
   return {
     ...baseUniDriverFactory(base),
-    isItemsPerRow: async itemsPerRow => {
-      return (await base.$('ul').attr('style')).includes(
-        `repeat(${itemsPerRow},`,
-      );
+    itemsPerRow: async () => {
+      return Number(await listWrapperDriver.attr(GridDataKeys.itemsPerRow));
     },
-    isItemMaxWidth: async itemMaxWidth => {
-      return (await base.$('ul').attr('style')).includes(itemMaxWidth);
+    itemMaxWidth: async () => {
+      return listWrapperDriver.attr(GridDataKeys.itemMaxWidth);
     },
     isWithDivider: async () => {
       return stylableUtil.hasStyleState(base, 'dividers');
     },
-    isDividerWidth: async dividerWidth => {
-      return (await base.$('style').text()).includes(`height: ${dividerWidth}`);
+    dividerWidth: async () => {
+      return listWrapperDriver.attr(GridDataKeys.dividerWidth);
     },
-    rowGap: async (withDivider = false) => {
-      const gap = await base.$('ul').attr('style');
-      return gap.match(
-        withDivider ? /calc\([0-9]*px \+ [0-9]*px\)/g : /[0-9]*px/g,
-      )[0];
+    rowGap: async () => {
+      return listWrapperDriver.attr(GridDataKeys.rowGap);
     },
     columnGap: async () => {
-      return (await base.$('ul').attr('style')).match(/[0-9]*px/g).pop();
+      return listWrapperDriver.attr(GridDataKeys.columnGap);
     },
     rowSpan: async (index = 0) => {
-      const gridRowEnd = (await base
-        .$$('li')
-        .get(index)
-        .attr('style')).match(/grid-row-end: span [0-9]*/g)[0];
-      return Number(gridRowEnd.match(/[0-9]+/g)[0]);
+      return Number(
+        await base
+          .$$(`[data-hook="${GridDataHooks.item}"]`)
+          .get(index)
+          .attr(GridDataKeys.rowSpan),
+      );
     },
     columnSpan: async (index = 0) => {
-      const gridRowEnd = (await base
-        .$$('li')
-        .get(index)
-        .attr('style')).match(/grid-column-end: span [0-9]*/g)[0];
-      return Number(gridRowEnd.match(/[0-9]+/g)[0]);
+      return Number(
+        await base
+          .$$(`[data-hook="${GridDataHooks.item}"]`)
+          .get(index)
+          .attr(GridDataKeys.columnSpan),
+      );
     },
   };
 };

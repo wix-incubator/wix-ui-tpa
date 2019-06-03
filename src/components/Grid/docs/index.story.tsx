@@ -15,6 +15,7 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { Card } from '../../Card';
 import { Text } from '../../Text';
+import {DEFAULT_MIN_WIDTH} from '../constants';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -57,7 +58,7 @@ export default {
     'data-hook': 'storybook-Grid',
     items: itemsExamples[1].value,
     maxColumns: '3',
-    minColumnWidth: '130',
+    minColumnWidth: DEFAULT_MIN_WIDTH,
     width: '780',
     rowGap: '32',
     columnGap: '32',

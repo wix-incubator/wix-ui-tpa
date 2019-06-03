@@ -11,6 +11,7 @@ import {
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
 import { DEFAULT_MIN_WIDTH } from './constants';
+import { GridDataKeys, GridDataHooks } from './DataHooks';
 
 export const ROW_GAP = 32;
 export const COLUMN_GAP = 32;
@@ -19,7 +20,7 @@ export const MOBILE_COLUMN_GAP = 20;
 export const COLUMN_SPAN = 1;
 export const ROW_SPAN = 1;
 
-export interface IGridItem {
+export interface GridItem {
   item: React.ReactNode;
   key?: string | number;
   colSpan?: number;
@@ -29,7 +30,7 @@ export interface IGridItem {
 export interface GridProps {
   withDivider: boolean;
   autoRowHeight: boolean;
-  items: IGridItem[];
+  items: GridItem[];
   maxColumns?: number;
   minColumnWidth?: number;
   width?: number;
@@ -41,7 +42,7 @@ export interface GridProps {
 interface DefaultProps {
   withDivider: boolean;
   autoRowHeight: boolean;
-  items: IGridItem[];
+  items: GridItem[];
   maxColumns: number;
   width: number;
   minColumnWidth: number;
@@ -61,6 +62,29 @@ export class Grid extends React.Component<GridProps> {
     minColumnWidth: DEFAULT_MIN_WIDTH,
   };
 
+  private getContainerDataAttributes({
+    itemsPerRow,
+    itemMaxWidth,
+    dividerWidth,
+    rowGapInPixels,
+    columnGapInPixels,
+  }) {
+    return {
+      [GridDataKeys.itemsPerRow]: itemsPerRow,
+      [GridDataKeys.itemMaxWidth]: itemMaxWidth,
+      [GridDataKeys.dividerWidth]: dividerWidth,
+      [GridDataKeys.rowGap]: rowGapInPixels,
+      [GridDataKeys.columnGap]: columnGapInPixels,
+    };
+  }
+
+  private getItemDataAttributes({ rowSpan, columnSpan }) {
+    return {
+      [GridDataKeys.rowSpan]: rowSpan,
+      [GridDataKeys.columnSpan]: columnSpan,
+    };
+  }
+
   render() {
     return (
       <TPAComponentsConsumer>
@@ -73,6 +97,7 @@ export class Grid extends React.Component<GridProps> {
             minColumnWidth,
             ...rest
           } = this.props;
+          const itemMaxWidth = '100%';
           const rowGap =
             typeof this.props.rowGap === 'number'
               ? this.props.rowGap
@@ -89,6 +114,10 @@ export class Grid extends React.Component<GridProps> {
             typeof this.props.dividerWidth === 'number'
               ? `${this.props.dividerWidth}px`
               : this.props.dividerWidth;
+          const rowGapInPixels = withDivider
+            ? `calc(${rowGap}px + ${dividerWidth})`
+            : `${rowGap}px`;
+          const columnGapInPixels = `${columnGap}px`;
           const isFullWidth = width === 0;
           const maxColumns = Math.min(this.props.maxColumns, items.length);
           const itemsPerRow = isFullWidth
@@ -96,7 +125,7 @@ export class Grid extends React.Component<GridProps> {
             : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
           const gridTemplateColumns = isFullWidth
             ? ''
-            : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, 100%))`;
+            : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, ${itemMaxWidth}))`;
 
           const gridId = generateListClassId();
           const cssStateDivider = Object.keys(
@@ -138,10 +167,16 @@ export class Grid extends React.Component<GridProps> {
                 className={styles.listWrapper}
                 style={{
                   gridTemplateColumns,
-                  gap: withDivider
-                    ? `calc(${rowGap}px + ${dividerWidth}) ${columnGap}px`
-                    : `${rowGap}px ${columnGap}px`,
+                  gap: `${rowGapInPixels} ${columnGapInPixels}`,
                 }}
+                {...this.getContainerDataAttributes({
+                  itemMaxWidth,
+                  itemsPerRow,
+                  dividerWidth,
+                  rowGapInPixels,
+                  columnGapInPixels,
+                })}
+                data-hook={GridDataHooks.container}
               >
                 {items.map(
                   (
@@ -156,6 +191,11 @@ export class Grid extends React.Component<GridProps> {
                         }}
                         className={styles.cardContainer}
                         key={key ? key : `card-container-${index}`}
+                        data-hook={GridDataHooks.item}
+                        {...this.getItemDataAttributes({
+                          rowSpan,
+                          columnSpan: colSpan,
+                        })}
                       >
                         {item}
                       </li>

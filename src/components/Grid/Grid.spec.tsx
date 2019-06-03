@@ -10,7 +10,7 @@ import { gridTestkitFactory as enzymeGridTestkitFactory } from '../../testkit/en
 import {
   COLUMN_GAP,
   COLUMN_SPAN,
-  IGridItem,
+  GridItem,
   MOBILE_COLUMN_GAP,
   MOBILE_ROW_GAP,
   ROW_GAP,
@@ -20,8 +20,9 @@ import { Card } from '../Card';
 import styles from './Grid.st.css';
 import * as GridUtils from './GridUtils';
 import { TPAComponentsWrapper } from '../../test/utils';
+import {GridDataHooks} from './DataHooks';
 
-function generateItems(amount = 5, withKey = false): IGridItem[] {
+function generateItems(amount = 5, withKey = false): GridItem[] {
   return Array(amount)
     .fill(null)
     .map((item, index) => {
@@ -77,7 +78,7 @@ describe('Grid', () => {
       />,
     );
 
-    expect(await driver.isDividerWidth(expectedDividerWidth)).toEqual(true);
+    expect(await driver.dividerWidth()).toEqual(expectedDividerWidth);
   });
 
   it('should accept dividerWidth as string', async () => {
@@ -91,7 +92,7 @@ describe('Grid', () => {
       />,
     );
 
-    expect(await driver.isDividerWidth(expectedDividerWidth)).toEqual(true);
+    expect(await driver.dividerWidth()).toEqual(expectedDividerWidth);
   });
 
   it('should limit items per row depending on the width of the List', async () => {
@@ -100,7 +101,7 @@ describe('Grid', () => {
 
     const driver = createDriver(<Grid width={1} />);
 
-    expect(await driver.isItemsPerRow(expectedItemsPerRow)).toBe(true);
+    expect(await driver.itemsPerRow()).toBe(expectedItemsPerRow);
   });
 
   it('should use amount of items as maxColumns if lower then maxColumns', async () => {
@@ -114,13 +115,13 @@ describe('Grid', () => {
       />,
     );
 
-    expect(await driver.isItemsPerRow(expectedItemsPerRow)).toBe(true);
+    expect(await driver.itemsPerRow()).toBe(expectedItemsPerRow);
   });
 
   it('should use 1 default amount of items ', async () => {
     const driver = createDriver(<Grid items={generateItems()} width={1} />);
 
-    expect(await driver.isItemsPerRow(1)).toBe(true);
+    expect(await driver.itemsPerRow()).toBe(1);
   });
 
   it('should use default max item width', async () => {
@@ -128,14 +129,14 @@ describe('Grid', () => {
 
     const driver = createDriver(<Grid width={1} />);
 
-    expect(await driver.isItemMaxWidth(expectedItemMaxWidth)).toEqual(true);
+    expect(await driver.itemMaxWidth()).toEqual(expectedItemMaxWidth);
   });
 
   it('should use item key', async () => {
     const items = generateItems(2, true);
 
     const driver = mount(<Grid width={1} items={items} />);
-    const cardWrappers = driver.find('li');
+    const cardWrappers = driver.find(`[data-hook="${GridDataHooks.item}"]`);
 
     expect(cardWrappers.at(0).key()).toEqual(items[0].key);
     expect(cardWrappers.at(1).key()).toEqual(items[1].key);
@@ -145,7 +146,7 @@ describe('Grid', () => {
     const items = generateItems(2);
 
     const driver = mount(<Grid width={1} items={items} />);
-    const cardWrappers = driver.find('li');
+    const cardWrappers = driver.find(`[data-hook="${GridDataHooks.item}"]`);
 
     expect(cardWrappers.at(0).key()).toEqual('card-container-0');
     expect(cardWrappers.at(1).key()).toEqual('card-container-1');
@@ -233,12 +234,12 @@ describe('Grid', () => {
       />,
     );
 
-    expect(await driver.rowGap(withDivider)).toEqual(
+    expect(await driver.rowGap()).toEqual(
       `calc(${expectedRowGap}px + ${expectedDividerWidth}px)`,
     );
   });
 
-  it('should set default gap 20px (mobile)', async () => {
+  it('should set default gap (mobile)', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: true })(<Grid items={generateItems()} />),
     );
