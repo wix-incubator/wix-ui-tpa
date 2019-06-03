@@ -1,2 +1,2 @@
-export { Tabs, TabsProps } from './Tabs';
-export { SKIN, VARIANT, ALIGNMENT } from './constants';
+export * from './Tabs';
+export * from './constants';

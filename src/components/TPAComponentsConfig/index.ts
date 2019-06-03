@@ -1,6 +1,1 @@
-export {
-  TPAComponentsConsumer,
-  TPAComponentsProvider,
-  TPAComponentsConfig,
-  TPAComponentsContext,
-} from './TPAComponentsConfig';
+export * from './TPAComponentsConfig';
