@@ -20,7 +20,6 @@ import { Card } from '../Card';
 import styles from './Grid.st.css';
 import * as GridUtils from './GridUtils';
 import { TPAComponentsWrapper } from '../../test/utils';
-import {DEFAULT_MIN_WIDTH} from './constants';
 
 function generateItems(amount = 5, withKey = false): IGridItem[] {
   return Array(amount)
