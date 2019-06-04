@@ -18,7 +18,7 @@
 }
 
 .root {
-    -st-states: dividers, autoRowHeight;
+    -st-states: dividers, uniformRowHeight;
     max-width: max-content;
     margin: 0 auto;
     overflow: hidden;
@@ -26,13 +26,12 @@
 }
 
 .root:dividers,
-.root:dividers .cardContainer {
+.root:dividers .item {
     position: relative;
 }
 
-.root .cardContainer {
+.root .item {
     display: flex;
-    justify-content: center;
 }
 
 .listWrapper {
@@ -43,7 +42,7 @@
     padding: 0;
 }
 
-.root:autoRowHeight .listWrapper {
+.root:uniformRowHeight .listWrapper {
     grid-auto-rows: 1fr;
 }
 

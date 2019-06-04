@@ -6,8 +6,8 @@ The TPA implementation provides few extendable theme properties with the ability
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
-| items  | IGridItem[]   | [] | items to fill the Grid |
-| withDivider  | boolean   | false | displays divider between the rows |
+| children  | Grid.Item[]   | [] | items to fill the Grid |
+| showRowDivider  | boolean   | false | displays divider between the rows |
 | maxColumns  | number   | 1 | max of columns per row |
 | minColumnWidth  | number   | 0 | minimum width of each column in `px` * |
 | width  | number   | 0 | the width of the grid in `px` ** |
@@ -25,12 +25,11 @@ The TPA implementation provides few extendable theme properties with the ability
 | OverlappingCard  | 700   |
 | StripCard  | 700   |
 
-#### IGridItem
+#### Grid.Item
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
-| item  | ReactNode   | - | the item to be rendered |
-| key  | string \| number   | card-container-{index} | React key attribute |
+| children  | ReactNode   | - | the item to be rendered |
 | colSpan  | number   | 1 | amount of columns the item span over |
 | rowSpan  | number   | 1 | amount of rows the item span over |
 

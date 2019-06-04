@@ -21,27 +21,29 @@ const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 function generateCardItems(amount = 3) {
-  return Array(amount).fill({
-    item: (
-      <Card
-        stacked
-        mediaAspectRatio={16 / 9}
-        media={
-          <div
-            style={{
-              height: '100%',
-              backgroundImage:
-                'url(https://static.wixstatic.com/media/dd7e03deffdd4267b75ef0a60d8510c7.jpg/v1/fill/w_560,h_320,al_c,q_80,usm_0.66_1.00_0.01/Gift%20Wrapped.jpg)',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-            }}
-          />
-        }
-        info={<Text>Item</Text>}
-      />
-    ),
-  });
+  return Array(amount)
+    .fill(null)
+    .map((item, index) => (
+      <Grid.Item key={`Grid_item_${index}`}>
+        <Card
+          stacked
+          mediaAspectRatio={16 / 9}
+          media={
+            <div
+              style={{
+                height: '100%',
+                backgroundImage:
+                  'url(https://static.wixstatic.com/media/dd7e03deffdd4267b75ef0a60d8510c7.jpg/v1/fill/w_560,h_320,al_c,q_80,usm_0.66_1.00_0.01/Gift%20Wrapped.jpg)',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+              }}
+            />
+          }
+          info={<Text>Item</Text>}
+        />
+      </Grid.Item>
+    ));
 }
 
 const itemsExamples = [
@@ -57,19 +59,19 @@ export default {
   componentPath: '../Grid.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Grid',
-    items: itemsExamples[1].value,
+    children: itemsExamples[1].value,
     maxColumns: '3',
     minColumnWidth: '130',
     maxColumnWidth: '400',
     width: '780',
     rowGap: '32',
     columnGap: '32',
-    withDivider: false,
-    autoRowHeight: true,
+    showRowDivider: false,
+    uniformRowHeight: true,
     dividerWidth: '1px',
   }),
   exampleProps: {
-    items: itemsExamples,
+    children: itemsExamples,
   },
   sections: [
     header(),
@@ -87,13 +89,13 @@ export default {
 
           ...[
             { title: 'Responsive', source: examples.responsive },
-            { title: 'Quilted Columns', source: examples.quiltedColumnss },
+            { title: 'Quilted Columns', source: examples.quiltedColumns },
             { title: 'Quilted Rows', source: examples.quiltedRows },
             { title: 'Max Items Per Row', source: examples.maxColumns },
             { title: 'List Of Strip Cards', source: examples.listOfStripCard },
             {
-              title: 'With dividers between the Items',
-              source: examples.withDividers,
+              title: 'With dividers between the Rows',
+              source: examples.showRowDividers,
             },
             {
               title: 'List Of Overlapping Cards',

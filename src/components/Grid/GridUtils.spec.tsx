@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   itemsPerRowWidth,
   getMediaQueries,
-  generateListClassId,
+  generateKey,
   getMinWidthByCardType,
   getGridStyle,
 } from './GridUtils';
@@ -171,9 +171,11 @@ bottom: calc((${expectedRowGap}px / -2) - ${expectedDividerWidth});
     });
   });
 
-  describe('generateListClassId', () => {
+  describe('generateKey', () => {
     it('should add prefix to the id', () => {
-      expect(generateListClassId()).toContain('list_');
+      const expectedPrefix = 'list_';
+
+      expect(generateKey(expectedPrefix)).toContain(expectedPrefix);
     });
   });
 

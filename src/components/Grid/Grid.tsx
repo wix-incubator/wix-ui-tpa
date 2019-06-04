@@ -1,37 +1,29 @@
 import * as React from 'react';
 import styles from './Grid.st.css';
 import {
-  generateListClassId,
+  generateKey,
   getGridStyle,
   getMediaQueries,
-  getMinWidthByCardType,
   itemsPerRowWidth,
 } from './GridUtils';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
-import { DEFAULT_MIN_WIDTH } from './constants';
+import {
+  COLUMN_GAP,
+  DEFAULT_MIN_WIDTH,
+  MOBILE_COLUMN_GAP,
+  MOBILE_ROW_GAP,
+  ROW_GAP,
+} from './constants';
 import { GridDataKeys, GridDataHooks } from './DataHooks';
-
-export const ROW_GAP = 32;
-export const COLUMN_GAP = 32;
-export const MOBILE_ROW_GAP = 20;
-export const MOBILE_COLUMN_GAP = 20;
-export const COLUMN_SPAN = 1;
-export const ROW_SPAN = 1;
-
-export interface GridItem {
-  item: React.ReactNode;
-  key?: string | number;
-  colSpan?: number;
-  rowSpan?: number;
-}
+import { Item } from './Item/Item';
 
 export interface GridProps {
-  withDivider: boolean;
-  autoRowHeight: boolean;
-  items: GridItem[];
+  children?: React.ReactNode[];
+  showRowDivider: boolean;
+  uniformRowHeight: boolean;
   maxColumns?: number;
   minColumnWidth?: number;
   maxColumnWidth?: number;
@@ -42,25 +34,27 @@ export interface GridProps {
 }
 
 interface DefaultProps {
-  withDivider: boolean;
-  autoRowHeight: boolean;
-  items: GridItem[];
+  children: React.ReactNode[];
+  showRowDivider: boolean;
+  uniformRowHeight: boolean;
   maxColumns: number;
   width: number;
   minColumnWidth: number;
   dividerWidth: string;
 }
 
-export class Grid extends React.Component<GridProps> {
+export class Grid extends React.PureComponent<GridProps> {
   static contextType = TPAComponentsContext;
   static displayName = 'Grid';
+  static Item = Item;
+
   static defaultProps: DefaultProps = {
-    withDivider: false,
-    items: [],
+    children: [],
+    showRowDivider: false,
     maxColumns: 1,
     width: 0,
     dividerWidth: '1px',
-    autoRowHeight: true,
+    uniformRowHeight: true,
     minColumnWidth: DEFAULT_MIN_WIDTH,
   };
 
@@ -84,27 +78,18 @@ export class Grid extends React.Component<GridProps> {
     };
   }
 
-  private getItemDataAttributes({ rowSpan, columnSpan }) {
-    return {
-      [GridDataKeys.rowSpan]: rowSpan,
-      [GridDataKeys.columnSpan]: columnSpan,
-    };
-  }
-
   render() {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => {
           const {
-            withDivider,
+            showRowDivider,
             width,
-            items,
-            autoRowHeight,
+            children,
+            uniformRowHeight,
+            minColumnWidth,
             ...rest
           } = this.props;
-          const minColumnWidth =
-            this.props.minColumnWidth ||
-            getMinWidthByCardType(items[0] && items[0].item);
           const itemMinWidth = `${minColumnWidth}px`;
           const itemMaxWidth = this.props.maxColumnWidth
             ? `${this.props.maxColumnWidth}px`
@@ -125,12 +110,12 @@ export class Grid extends React.Component<GridProps> {
             typeof this.props.dividerWidth === 'number'
               ? `${this.props.dividerWidth}px`
               : this.props.dividerWidth;
-          const rowGapInPixels = withDivider
+          const rowGapInPixels = showRowDivider
             ? `calc(${rowGap}px + ${dividerWidth})`
             : `${rowGap}px`;
           const columnGapInPixels = `${columnGap}px`;
           const isFullWidth = width === 0;
-          const maxColumns = Math.min(this.props.maxColumns, items.length);
+          const maxColumns = Math.min(this.props.maxColumns, children.length);
           const itemsPerRow = isFullWidth
             ? maxColumns
             : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
@@ -138,7 +123,7 @@ export class Grid extends React.Component<GridProps> {
             ? ''
             : `repeat(${itemsPerRow}, minmax(${itemMinWidth}, ${itemMaxWidth}))`;
 
-          const gridId = generateListClassId();
+          const gridId = generateKey();
           const cssStateDivider = Object.keys(
             styles.$cssStates({ dividers: true }),
           )[0];
@@ -146,7 +131,7 @@ export class Grid extends React.Component<GridProps> {
             <div
               {...styles(
                 'root',
-                { dividers: withDivider, autoRowHeight },
+                { dividers: showRowDivider, uniformRowHeight },
                 rest,
               )}
               id={gridId}
@@ -192,30 +177,7 @@ export class Grid extends React.Component<GridProps> {
                 })}
                 data-hook={GridDataHooks.container}
               >
-                {items.map(
-                  (
-                    { item, key, colSpan = COLUMN_SPAN, rowSpan = ROW_SPAN },
-                    index,
-                  ) => {
-                    return (
-                      <li
-                        style={{
-                          gridColumnEnd: `span ${colSpan}`,
-                          gridRowEnd: `span ${rowSpan}`,
-                        }}
-                        className={styles.cardContainer}
-                        key={key ? key : `card-container-${index}`}
-                        data-hook={GridDataHooks.item}
-                        {...this.getItemDataAttributes({
-                          rowSpan,
-                          columnSpan: colSpan,
-                        })}
-                      >
-                        {item}
-                      </li>
-                    );
-                  },
-                )}
+                {children}
               </ul>
             </div>
           );

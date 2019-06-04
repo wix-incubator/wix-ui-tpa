@@ -11,12 +11,9 @@ export interface gridDriver extends BaseUniDriver {
   itemsPerRow(): Promise<number>;
   maxColumnWidth(): Promise<string>;
   minColumnWidth(): Promise<string>;
-  itemMaxWidth(): Promise<string>;
-  isWithDivider(): Promise<boolean>;
+  isShowRowDivider(): Promise<boolean>;
   rowGap(): Promise<string>;
   columnGap(): Promise<string>;
-  rowSpan(index?): Promise<number>;
-  columnSpan(index?): Promise<number>;
 }
 
 export const gridDriverFactory = (base: UniDriver): gridDriver => {
@@ -34,10 +31,7 @@ export const gridDriverFactory = (base: UniDriver): gridDriver => {
     minColumnWidth: async () => {
       return listWrapperDriver.attr(GridDataKeys.minColumnWidth);
     },
-    itemMaxWidth: async () => {
-      return listWrapperDriver.attr(GridDataKeys.itemMaxWidth);
-    },
-    isWithDivider: async () => {
+    isShowRowDivider: async () => {
       return stylableUtil.hasStyleState(base, 'dividers');
     },
     dividerWidth: async () => {
@@ -48,22 +42,6 @@ export const gridDriverFactory = (base: UniDriver): gridDriver => {
     },
     columnGap: async () => {
       return listWrapperDriver.attr(GridDataKeys.columnGap);
-    },
-    rowSpan: async (index = 0) => {
-      return Number(
-        await base
-          .$$(`[data-hook="${GridDataHooks.item}"]`)
-          .get(index)
-          .attr(GridDataKeys.rowSpan),
-      );
-    },
-    columnSpan: async (index = 0) => {
-      return Number(
-        await base
-          .$$(`[data-hook="${GridDataHooks.item}"]`)
-          .get(index)
-          .attr(GridDataKeys.columnSpan),
-      );
     },
   };
 };

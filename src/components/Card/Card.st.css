@@ -47,6 +47,11 @@
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     );
+    min-width: 700px;
+}
+
+.root:stacked {
+    min-width: 130px;
 }
 
 .root:stacked:invertInfoPosition:mobile,

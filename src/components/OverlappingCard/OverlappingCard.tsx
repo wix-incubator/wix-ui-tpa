@@ -41,6 +41,7 @@ const OverlappingCard = ({
 };
 
 OverlappingCard.displayName = 'OverlappingCard';
+OverlappingCard.MIN_WIDTH = 700;
 
 OverlappingCard.defaultProps = {
   ratio: CardRatioOptions.RATIO_50_50,
