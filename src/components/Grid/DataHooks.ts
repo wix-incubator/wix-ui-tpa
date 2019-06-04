@@ -11,4 +11,6 @@ export enum GridDataKeys {
   columnGap = 'data-column-gap',
   rowSpan = 'data-row-span',
   columnSpan = 'data-column-span',
+  maxColumnWidth = 'data-max-column-width',
+  minColumnWidth = 'data-min-column-width',
 }

@@ -20,7 +20,7 @@ import { Card } from '../Card';
 import styles from './Grid.st.css';
 import * as GridUtils from './GridUtils';
 import { TPAComponentsWrapper } from '../../test/utils';
-import {GridDataHooks} from './DataHooks';
+import { GridDataHooks } from './DataHooks';
 
 function generateItems(amount = 5, withKey = false): GridItem[] {
   return Array(amount)
@@ -125,7 +125,7 @@ describe('Grid', () => {
   });
 
   it('should use default max item width', async () => {
-    const expectedItemMaxWidth = '100%';
+    const expectedItemMaxWidth = '100vw';
 
     const driver = createDriver(<Grid width={1} />);
 
@@ -174,6 +174,7 @@ describe('Grid', () => {
   it('should use media query if list width is 0', async () => {
     const expectedMaxItemsPerRow = 3;
     const expectedMinItemWidth = 300;
+    const expectedMaxItemWidth = 400;
     const expectedColumnGap = 48;
     const expectedGridId = 'someID';
     spyOn(GridUtils, 'getMediaQueries');
@@ -183,6 +184,7 @@ describe('Grid', () => {
       <Grid
         maxColumns={expectedMaxItemsPerRow}
         minColumnWidth={expectedMinItemWidth}
+        maxColumnWidth={expectedMaxItemWidth}
         columnGap={expectedColumnGap}
         items={generateItems(expectedMaxItemsPerRow + 1)}
       />,
@@ -191,6 +193,7 @@ describe('Grid', () => {
     expect(GridUtils.getMediaQueries).toHaveBeenCalledWith({
       maxColumns: expectedMaxItemsPerRow,
       minColumnWidth: expectedMinItemWidth,
+      maxColumnWidth: `${expectedMaxItemWidth}px`,
       columnGap: expectedColumnGap,
       ListItemClass: styles.listWrapper,
       gridId: expectedGridId,
@@ -251,6 +254,7 @@ describe('Grid', () => {
   it('should use amount of items as maxColumns if lower then maxColumns on responsive', () => {
     const expectedMaxItemsPerRow = 3;
     const expectedMinItemWidth = 300;
+    const expectedMaxItemWidth = 500;
     const expectedColumnGap = 48;
     const expectedGridId = 'someID';
     spyOn(GridUtils, 'getMediaQueries');
@@ -260,6 +264,7 @@ describe('Grid', () => {
       <Grid
         maxColumns={expectedMaxItemsPerRow + 1}
         minColumnWidth={expectedMinItemWidth}
+        maxColumnWidth={expectedMaxItemWidth}
         columnGap={expectedColumnGap}
         items={generateItems(expectedMaxItemsPerRow)}
       />,
@@ -268,6 +273,7 @@ describe('Grid', () => {
     expect(GridUtils.getMediaQueries).toHaveBeenCalledWith({
       maxColumns: expectedMaxItemsPerRow,
       minColumnWidth: expectedMinItemWidth,
+      maxColumnWidth: `${expectedMaxItemWidth}px`,
       columnGap: expectedColumnGap,
       ListItemClass: styles.listWrapper,
       gridId: expectedGridId,
@@ -309,7 +315,7 @@ describe('Grid', () => {
   });
 
   it('should call getGridStyle with correct gridTemplateColumns when not responsive', () => {
-    const expectedGridTemplateRow = 'repeat(1, minmax(0px, 100%))';
+    const expectedGridTemplateRow = 'repeat(1, minmax(0px, 100vw))';
     spyOn(GridUtils, 'getGridStyle');
 
     createDriver(<Grid width={700} />);
@@ -326,10 +332,37 @@ describe('Grid', () => {
     );
   });
 
+  it('should use max item width', async () => {
+    const expectedItemMaxWidth = 300;
+
+    const driver = createDriver(<Grid maxColumnWidth={expectedItemMaxWidth} />);
+
+    expect(await driver.maxColumnWidth()).toEqual(`${expectedItemMaxWidth}px`);
+  });
+
+  it('should use max item width', async () => {
+    const expectedItemMinWidth = 300;
+
+    const driver = createDriver(<Grid minColumnWidth={expectedItemMinWidth} />);
+
+    expect(await driver.minColumnWidth()).toEqual(`${expectedItemMinWidth}px`);
+  });
+
   it('should display divider', async () => {
     const driver = createDriver(<Grid withDivider items={generateItems()} />);
 
     expect(await driver.isWithDivider()).toEqual(true);
+  });
+
+  it('should use CardComponent Type to determine min width if none was provided', () => {
+    spyOn(GridUtils, 'getMinWidthByCardType');
+    const expectedCardComponent = <div />;
+
+    createDriver(<Grid width={1} items={[{ item: expectedCardComponent }]} />);
+
+    expect(GridUtils.getMinWidthByCardType).toHaveBeenCalledWith(
+      expectedCardComponent,
+    );
   });
 
   describe('testkit', () => {

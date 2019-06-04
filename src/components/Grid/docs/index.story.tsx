@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Grid } from '../';
 import * as examples from './examples';
 import {
+  header,
   api,
   divider,
   importExample,
@@ -15,13 +16,12 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { Card } from '../../Card';
 import { Text } from '../../Text';
-import {DEFAULT_MIN_WIDTH} from '../constants';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
-const generateCardItems = (amount = 3) =>
-  Array(amount).fill({
+function generateCardItems(amount = 3) {
+  return Array(amount).fill({
     item: (
       <Card
         stacked
@@ -42,6 +42,7 @@ const generateCardItems = (amount = 3) =>
       />
     ),
   });
+}
 
 const itemsExamples = [
   { label: 'none', value: [] },
@@ -58,7 +59,8 @@ export default {
     'data-hook': 'storybook-Grid',
     items: itemsExamples[1].value,
     maxColumns: '3',
-    minColumnWidth: DEFAULT_MIN_WIDTH,
+    minColumnWidth: '130',
+    maxColumnWidth: '400',
     width: '780',
     rowGap: '32',
     columnGap: '32',
@@ -69,8 +71,8 @@ export default {
   exampleProps: {
     items: itemsExamples,
   },
-  dataHook: 'storybook-Grid',
   sections: [
+    header(),
     tabs([
       tab({
         title: 'Usage',

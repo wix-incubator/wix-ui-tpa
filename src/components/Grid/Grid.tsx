@@ -4,6 +4,7 @@ import {
   generateListClassId,
   getGridStyle,
   getMediaQueries,
+  getMinWidthByCardType,
   itemsPerRowWidth,
 } from './GridUtils';
 import {
@@ -33,6 +34,7 @@ export interface GridProps {
   items: GridItem[];
   maxColumns?: number;
   minColumnWidth?: number;
+  maxColumnWidth?: number;
   width?: number;
   rowGap?: number;
   columnGap?: number;
@@ -68,6 +70,8 @@ export class Grid extends React.Component<GridProps> {
     dividerWidth,
     rowGapInPixels,
     columnGapInPixels,
+    maxColumnWidth,
+    minColumnWidth,
   }) {
     return {
       [GridDataKeys.itemsPerRow]: itemsPerRow,
@@ -75,6 +79,8 @@ export class Grid extends React.Component<GridProps> {
       [GridDataKeys.dividerWidth]: dividerWidth,
       [GridDataKeys.rowGap]: rowGapInPixels,
       [GridDataKeys.columnGap]: columnGapInPixels,
+      [GridDataKeys.maxColumnWidth]: maxColumnWidth,
+      [GridDataKeys.minColumnWidth]: minColumnWidth,
     };
   }
 
@@ -94,10 +100,15 @@ export class Grid extends React.Component<GridProps> {
             width,
             items,
             autoRowHeight,
-            minColumnWidth,
             ...rest
           } = this.props;
-          const itemMaxWidth = '100%';
+          const minColumnWidth =
+            this.props.minColumnWidth ||
+            getMinWidthByCardType(items[0] && items[0].item);
+          const itemMinWidth = `${minColumnWidth}px`;
+          const itemMaxWidth = this.props.maxColumnWidth
+            ? `${this.props.maxColumnWidth}px`
+            : '100vw';
           const rowGap =
             typeof this.props.rowGap === 'number'
               ? this.props.rowGap
@@ -125,7 +136,7 @@ export class Grid extends React.Component<GridProps> {
             : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
           const gridTemplateColumns = isFullWidth
             ? ''
-            : `repeat(${itemsPerRow}, minmax(${minColumnWidth}px, ${itemMaxWidth}))`;
+            : `repeat(${itemsPerRow}, minmax(${itemMinWidth}, ${itemMaxWidth}))`;
 
           const gridId = generateListClassId();
           const cssStateDivider = Object.keys(
@@ -155,6 +166,7 @@ export class Grid extends React.Component<GridProps> {
                       ? getMediaQueries({
                           maxColumns,
                           minColumnWidth,
+                          maxColumnWidth: itemMaxWidth,
                           columnGap,
                           ListItemClass: styles.listWrapper,
                           gridId,
@@ -175,6 +187,8 @@ export class Grid extends React.Component<GridProps> {
                   dividerWidth,
                   rowGapInPixels,
                   columnGapInPixels,
+                  maxColumnWidth: itemMaxWidth,
+                  minColumnWidth: itemMinWidth,
                 })}
                 data-hook={GridDataHooks.container}
               >

@@ -3,8 +3,19 @@ import {
   itemsPerRowWidth,
   getMediaQueries,
   generateListClassId,
+  getMinWidthByCardType,
   getGridStyle,
 } from './GridUtils';
+import { Card } from '../Card';
+import { OverlappingCard } from '../OverlappingCard';
+import { StripCard } from '../StripCard';
+import {
+  DEFAULT_MIN_WIDTH,
+  CARD_MIN_WIDTH,
+  OVERLAPPING_CARD_MIN_WIDTH,
+  STACKED_CARD_MIN_WIDTH,
+  STRIP_CARD_MIN_WIDTH,
+} from './constants';
 
 describe('GridUtils', () => {
   describe('itemsPerRowWidth', () => {
@@ -31,6 +42,7 @@ describe('GridUtils', () => {
     it('should generate media queries for given attributes', () => {
       const expectedMaxItemsPerRow = 3;
       const expectedMinItemWidth = 300;
+      const expectedMaxItemWidth = '400px';
       const columnGap = 48;
       const expectedMinWidths = [
         expectedMaxItemsPerRow * expectedMinItemWidth +
@@ -46,25 +58,25 @@ describe('GridUtils', () => {
 @media (min-width: ${expectedMinWidths[2]}px) {
   #${expectedGridId} .${expectedClassName} {
     -ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-      2}, minmax(${expectedMinItemWidth}px, 100%));
+      2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
     grid-template-columns: repeat(${expectedMaxItemsPerRow -
-      2}, minmax(${expectedMinItemWidth}px, 100%));
+      2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
   }
 }
 
 @media (min-width: ${expectedMinWidths[1]}px) {
   #${expectedGridId} .${expectedClassName} {
     -ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-      1}, minmax(${expectedMinItemWidth}px, 100%));
+      1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
     grid-template-columns: repeat(${expectedMaxItemsPerRow -
-      1}, minmax(${expectedMinItemWidth}px, 100%));
+      1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
   }
 }
 
 @media (min-width: ${expectedMinWidths[0]}px) {
   #${expectedGridId} .${expectedClassName} {
-    -ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
-    grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
+    -ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
+    grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
   }
 }
 `;
@@ -73,6 +85,7 @@ describe('GridUtils', () => {
         getMediaQueries({
           maxColumns: expectedMaxItemsPerRow,
           minColumnWidth: expectedMinItemWidth,
+          maxColumnWidth: expectedMaxItemWidth,
           columnGap,
           ListItemClass: expectedClassName,
           gridId: expectedGridId,
@@ -83,13 +96,14 @@ describe('GridUtils', () => {
     it('should set max to 1fr if MaxItemWidth was not given', () => {
       const expectedMaxItemsPerRow = 1;
       const expectedMinItemWidth = 300;
+      const expectedMaxItemWidth = '400px';
       const expectedClassName = 'someClassName';
       const expectedGridId = 'someID';
       const expectedStyle = `
 @media (min-width: 300px) {
   #${expectedGridId} .${expectedClassName} {
-    -ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
-    grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, 100%));
+    -ms-grid-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
+    grid-template-columns: repeat(${expectedMaxItemsPerRow}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
   }
 }
 `;
@@ -98,6 +112,7 @@ describe('GridUtils', () => {
         getMediaQueries({
           maxColumns: expectedMaxItemsPerRow,
           minColumnWidth: expectedMinItemWidth,
+          maxColumnWidth: expectedMaxItemWidth,
           columnGap: 48,
           ListItemClass: expectedClassName,
           gridId: expectedGridId,
@@ -159,6 +174,34 @@ bottom: calc((${expectedRowGap}px / -2) - ${expectedDividerWidth});
   describe('generateListClassId', () => {
     it('should add prefix to the id', () => {
       expect(generateListClassId()).toContain('list_');
+    });
+  });
+
+  describe('getMinWidthByCardType', () => {
+    it('should return Card min width', () => {
+      expect(getMinWidthByCardType(<Card />)).toEqual(CARD_MIN_WIDTH);
+    });
+
+    it('should return stacked Card min width', () => {
+      expect(getMinWidthByCardType(<Card stacked />)).toEqual(
+        STACKED_CARD_MIN_WIDTH,
+      );
+    });
+
+    it('should return Overlapping min width', () => {
+      expect(getMinWidthByCardType(<OverlappingCard />)).toEqual(
+        OVERLAPPING_CARD_MIN_WIDTH,
+      );
+    });
+
+    it('should return StripCard min width', () => {
+      expect(getMinWidthByCardType(<StripCard />)).toEqual(
+        STRIP_CARD_MIN_WIDTH,
+      );
+    });
+
+    it('should default 0', () => {
+      expect(getMinWidthByCardType(<div />)).toEqual(DEFAULT_MIN_WIDTH);
     });
   });
 });

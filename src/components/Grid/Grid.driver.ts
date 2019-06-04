@@ -9,6 +9,8 @@ import { GridDataHooks, GridDataKeys } from './DataHooks';
 export interface gridDriver extends BaseUniDriver {
   dividerWidth(): Promise<string>;
   itemsPerRow(): Promise<number>;
+  maxColumnWidth(): Promise<string>;
+  minColumnWidth(): Promise<string>;
   itemMaxWidth(): Promise<string>;
   isWithDivider(): Promise<boolean>;
   rowGap(): Promise<string>;
@@ -25,6 +27,12 @@ export const gridDriverFactory = (base: UniDriver): gridDriver => {
     ...baseUniDriverFactory(base),
     itemsPerRow: async () => {
       return Number(await listWrapperDriver.attr(GridDataKeys.itemsPerRow));
+    },
+    maxColumnWidth: async () => {
+      return listWrapperDriver.attr(GridDataKeys.maxColumnWidth);
+    },
+    minColumnWidth: async () => {
+      return listWrapperDriver.attr(GridDataKeys.minColumnWidth);
     },
     itemMaxWidth: async () => {
       return listWrapperDriver.attr(GridDataKeys.itemMaxWidth);
