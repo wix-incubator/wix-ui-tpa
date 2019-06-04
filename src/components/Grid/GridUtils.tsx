@@ -1,14 +1,4 @@
 import * as React from 'react';
-import { Card } from '../Card';
-import { OverlappingCard } from '../OverlappingCard';
-import { StripCard } from '../StripCard';
-import {
-  DEFAULT_MIN_WIDTH,
-  CARD_MIN_WIDTH,
-  OVERLAPPING_CARD_MIN_WIDTH,
-  STACKED_CARD_MIN_WIDTH,
-  STRIP_CARD_MIN_WIDTH,
-} from './constants';
 
 export function itemsPerRowWidth(rowWidth, itemWidth, maxColumns, columnGap) {
   if (rowWidth !== 0) {
@@ -18,21 +8,6 @@ export function itemsPerRowWidth(rowWidth, itemWidth, maxColumns, columnGap) {
   }
 
   return maxColumns || 1;
-}
-
-export function getMinWidthByCardType(CardComponent): number {
-  switch (CardComponent && CardComponent.type.displayName) {
-    case Card.displayName:
-      return CardComponent.props.stacked
-        ? STACKED_CARD_MIN_WIDTH
-        : CARD_MIN_WIDTH;
-    case OverlappingCard.displayName:
-      return OVERLAPPING_CARD_MIN_WIDTH;
-    case StripCard.displayName:
-      return STRIP_CARD_MIN_WIDTH;
-    default:
-      return DEFAULT_MIN_WIDTH;
-  }
 }
 
 export function getMediaQueries({

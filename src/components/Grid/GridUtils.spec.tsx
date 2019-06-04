@@ -3,19 +3,8 @@ import {
   itemsPerRowWidth,
   getMediaQueries,
   generateKey,
-  getMinWidthByCardType,
   getGridStyle,
 } from './GridUtils';
-import { Card } from '../Card';
-import { OverlappingCard } from '../OverlappingCard';
-import { StripCard } from '../StripCard';
-import {
-  DEFAULT_MIN_WIDTH,
-  CARD_MIN_WIDTH,
-  OVERLAPPING_CARD_MIN_WIDTH,
-  STACKED_CARD_MIN_WIDTH,
-  STRIP_CARD_MIN_WIDTH,
-} from './constants';
 
 describe('GridUtils', () => {
   describe('itemsPerRowWidth', () => {
@@ -176,34 +165,6 @@ bottom: calc((${expectedRowGap}px / -2) - ${expectedDividerWidth});
       const expectedPrefix = 'list_';
 
       expect(generateKey(expectedPrefix)).toContain(expectedPrefix);
-    });
-  });
-
-  describe('getMinWidthByCardType', () => {
-    it('should return Card min width', () => {
-      expect(getMinWidthByCardType(<Card />)).toEqual(CARD_MIN_WIDTH);
-    });
-
-    it('should return stacked Card min width', () => {
-      expect(getMinWidthByCardType(<Card stacked />)).toEqual(
-        STACKED_CARD_MIN_WIDTH,
-      );
-    });
-
-    it('should return Overlapping min width', () => {
-      expect(getMinWidthByCardType(<OverlappingCard />)).toEqual(
-        OVERLAPPING_CARD_MIN_WIDTH,
-      );
-    });
-
-    it('should return StripCard min width', () => {
-      expect(getMinWidthByCardType(<StripCard />)).toEqual(
-        STRIP_CARD_MIN_WIDTH,
-      );
-    });
-
-    it('should default 0', () => {
-      expect(getMinWidthByCardType(<div />)).toEqual(DEFAULT_MIN_WIDTH);
     });
   });
 });

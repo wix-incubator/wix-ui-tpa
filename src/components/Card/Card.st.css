@@ -35,6 +35,8 @@
     infoPadding: 60px;
     stackedInfoPadding: 32px;
     mobileInfoPadding: 20px;
+    MinWidth: 700px;
+    MobileMinWidth: 130px;
 }
 
 .root {
@@ -47,11 +49,11 @@
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     );
-    min-width: 700px;
+    min-width: value(MinWidth);
 }
 
 .root:stacked {
-    min-width: 130px;
+    min-width: value(MobileMinWidth);
 }
 
 .root:stacked:invertInfoPosition:mobile,

@@ -8,6 +8,7 @@ The TPA implementation provides few extendable theme properties with the ability
 |------------|----------|--------------|-------------|
 | children  | Grid.Item[]   | [] | items to fill the Grid |
 | showRowDivider  | boolean   | false | displays divider between the rows |
+| uniformRowHeight  | boolean   | true | set all the rows height the same as the tallest |
 | maxColumns  | number   | 1 | max of columns per row |
 | minColumnWidth  | number   | 0 | minimum width of each column in `px` * |
 | width  | number   | 0 | the width of the grid in `px` ** |
