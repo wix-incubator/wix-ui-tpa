@@ -39,6 +39,7 @@
 :vars {
     infoPadding: 60px;
     negativeInfoPadding: -60px;
+    MinWidth: 700px;
 }
 
 .root {
@@ -48,6 +49,8 @@
     box-sizing: border-box;
     display: inline-grid;
     width: 100%;
+    height: 100%;
+    min-width: value(MinWidth);
     grid-template-rows: 1fr 8fr 1fr; /*1fr = 10%*/
     grid-template-areas: "media margin-top" "media info" "media margin-bottom";
 }

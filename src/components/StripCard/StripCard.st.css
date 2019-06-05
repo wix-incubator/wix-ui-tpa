@@ -19,7 +19,7 @@
     DefaultCardBG: color-1;
     DefaultMediaBG: color-5;
     DefaultBorderColor: color-5;
-    MinWidth: 740px;
+    MinWidth: 700px;
 }
 
 :vars {
@@ -53,8 +53,10 @@
     display: flex;
     background-color: value(cardBGColor);
     min-height: value(CardMinHeight);
-    min-width: value(MinWidth);
     box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    min-width: value(MinWidth);
 }
 
 .root:not(:sidePadding) {

@@ -11,4 +11,5 @@ import '../src/components/OverlappingCard/docs/index.story';
 import '../src/components/StripCard/docs/index.story';
 import '../src/components/Tabs/docs/index.story';
 import '../src/components/Text/docs/index.story';
+import '../src/components/Grid/docs/index.story';
 import '../src/components/ToggleSwitch/docs'; // TODO: convert to .story

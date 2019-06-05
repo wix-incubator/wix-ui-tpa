@@ -35,6 +35,8 @@
     infoPadding: 60px;
     stackedInfoPadding: 32px;
     mobileInfoPadding: 20px;
+    MinWidth: 700px;
+    MobileMinWidth: 130px;
 }
 
 .root {
@@ -42,21 +44,22 @@
     display: flex;
     box-sizing: border-box;
     width: 100%;
+    height: 100%;
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     );
-    min-width: 700px;
+    min-width: value(MinWidth);
+}
+
+.root:stacked {
+    min-width: value(MobileMinWidth);
 }
 
 .root:stacked:invertInfoPosition:mobile,
 .root:stacked:mobile,
 .root:stacked {
     flex-direction: column;
-}
-
-.root:stacked {
-    min-width: 130px;
 }
 
 .root:invertInfoPosition {
@@ -112,6 +115,7 @@
 
 .root:mediaAspectRatio > .mediaWrapper {
     position: relative;
+    flex: 0 0 0;
 }
 
 .root:mediaAspectRatio > .mediaWrapper > .mediaContainer {

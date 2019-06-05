@@ -43,3 +43,8 @@ import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver
 export const stripCardTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(stripCardDriverFactory);
+
+import { gridDriverFactory } from '../components/Grid/Grid.driver';
+export const gridTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(gridDriverFactory);

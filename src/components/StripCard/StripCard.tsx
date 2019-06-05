@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styles from './StripCard.st.css';
 
+export const MIN_WIDTH = 700;
+
 export interface StripCardProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
@@ -15,6 +17,7 @@ interface DefaultProps {
 
 export class StripCard extends React.Component<StripCardProps> {
   static displayName = 'StripCard';
+  static MIN_WIDTH = 700;
   static defaultProps: DefaultProps = {
     roundMedia: false,
     sidePadding: true,

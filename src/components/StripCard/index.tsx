@@ -1,1 +1,1 @@
-export { StripCard, StripCardProps } from './StripCard';
+export { StripCard, StripCardProps, MIN_WIDTH } from './StripCard';

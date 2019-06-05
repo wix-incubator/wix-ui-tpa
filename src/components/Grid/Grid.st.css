@@ -1,0 +1,66 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultDividerColor: color-5;
+}
+
+:vars {
+    /*Overrides*/
+    MainDividerColor: --overidable;
+}
+
+:vars {
+    dividerColor: wixApply(color, wixApply(fallback, value(MainDividerColor), wixApply(opacity, wixApply(color, value(DefaultDividerColor)), 0.2)));
+}
+
+.root {
+    -st-states: dividers, uniformRowHeight;
+    max-width: max-content;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+.root:dividers,
+.root:dividers .item {
+    position: relative;
+}
+
+.root .item {
+    display: flex;
+}
+
+.listWrapper {
+    display: grid;
+    grid-auto-columns: 1fr;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.root:uniformRowHeight .listWrapper {
+    grid-auto-rows: 1fr;
+}
+
+.root:dividers .listWrapper::before {
+    top: 0;
+}
+
+.root:dividers .listWrapper::after {
+    bottom: 0;
+}
+
+.root:dividers li::after,
+.root:dividers li::before,
+.root:dividers .listWrapper::before,
+.root:dividers .listWrapper::after {
+    content: '';
+    position: absolute;
+    background-color: value(dividerColor);
+    left: 0;
+    right: 0;
+}

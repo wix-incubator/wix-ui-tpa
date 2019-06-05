@@ -1,0 +1,11 @@
+export const DEFAULT_MIN_WIDTH = 0;
+export const CARD_MIN_WIDTH = 700;
+export const OVERLAPPING_CARD_MIN_WIDTH = 700;
+export const STRIP_CARD_MIN_WIDTH = 700;
+export const STACKED_CARD_MIN_WIDTH = 130;
+export const DEFAULT_ROW_SPAN = 1;
+export const DEFAULT_COLUMN_SPAN = 1;
+export const ROW_GAP = 32;
+export const COLUMN_GAP = 32;
+export const MOBILE_ROW_GAP = 20;
+export const MOBILE_COLUMN_GAP = 20;

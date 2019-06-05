@@ -60,6 +60,7 @@
     "@types/storybook__react": "^4.0.1",
     "@ui-autotools/registry": "^4.0.0",
     "@ui-autotools/sanity": "^2.8.2",
+    "autoprefixer": "^9.5.1",
     "babel-cli": "^6.26.0",
     "core-js": "^2.6.0",
     "enzyme": "^3.7.0",

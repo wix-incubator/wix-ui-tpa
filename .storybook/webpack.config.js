@@ -5,6 +5,9 @@ const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
 const StylableWebpackPlugin = require('@stylable/webpack-plugin');
 const project = require('yoshi-config');
 const { resolveNamespaceFactory } = require('@stylable/node');
+const autoprefixer = require('autoprefixer')({ grid: true, browsers: ['>1%'] });
+const postcss = require('postcss');
+const autoprefixProcessor = postcss([autoprefixer]);
 
 //TODO - this should be configured inside yoshi
 function reconfigureStylable(config) {
@@ -20,11 +23,17 @@ function reconfigureStylable(config) {
       runtimeStylesheetId: 'namespace',
     },
     resolveNamespace: resolveNamespaceFactory(project.name),
+    transformHooks: {
+      postProcessor: (stylableResult) => {
+        autoprefixProcessor.process(stylableResult.meta.outputAst).sync();
+        return stylableResult;
+      }
+    }
   });
 
   //remove previous stylable config and attach new one
-  config.plugins.pop()
-  config.plugins.push(stylablePlugin)
+  config.plugins.pop();
+  config.plugins.push(stylablePlugin);
 
   return config;
 }

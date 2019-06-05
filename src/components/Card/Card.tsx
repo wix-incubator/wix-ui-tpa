@@ -27,6 +27,9 @@ export interface CardProps {
 export class Card extends React.Component<CardProps> {
   static contextType = TPAComponentsContext;
   static displayName = 'Card';
+  static MIN_WIDTH = 700;
+  static MIN_WIDTH_MOBILE = 130;
+
   static defaultProps = {
     ratio: CardRatioOptions.RATIO_50_50,
     flippedRatio: false,
