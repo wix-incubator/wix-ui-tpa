@@ -88,6 +88,7 @@ export class Grid extends React.PureComponent<GridProps> {
             children,
             uniformRowHeight,
             minColumnWidth,
+            maxColumns,
             ...rest
           } = this.props;
           const itemMinWidth = `${minColumnWidth}px`;
@@ -115,7 +116,6 @@ export class Grid extends React.PureComponent<GridProps> {
             : `${rowGap}px`;
           const columnGapInPixels = `${columnGap}px`;
           const isFullWidth = width === 0;
-          const maxColumns = Math.min(this.props.maxColumns, children.length);
           const itemsPerRow = isFullWidth
             ? maxColumns
             : itemsPerRowWidth(width, minColumnWidth, maxColumns, columnGap);
