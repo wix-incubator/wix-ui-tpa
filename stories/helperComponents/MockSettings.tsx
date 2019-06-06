@@ -26,6 +26,8 @@ export interface IWixNumberParam {
   wixParam: string;
   defaultNumber: number;
   unit: string;
+  min?: number;
+  max?: number;
 }
 
 export interface IWixFontParam {
@@ -348,15 +350,15 @@ export class MockSettings extends React.PureComponent<
     return (
       <div className={styles.numberPickerContainer}>
         <ul className={styles.pickerList}>
-          {this.props.wixNumberParams.map(({ label, wixParam, unit }) => (
+          {this.props.wixNumberParams.map(({ label, wixParam, unit, max = 100, min = 0 }) => (
             <li key={wixParam}>
               <label>
                 {label} - {this.state.selectedNumber[wixParam]}
                 {unit}
               </label>
               <UI.Slider
-                min={0}
-                max={100}
+                min={min}
+                max={max}
                 hideNumericInput
                 value={this.state.selectedNumber[wixParam]}
                 onChange={value => this.onNumberChange(value, wixParam)}

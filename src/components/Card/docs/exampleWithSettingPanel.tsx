@@ -30,6 +30,8 @@ export default () => (
           wixParam: 'borderWidth',
           defaultNumber: 1,
           unit: 'px',
+          max: 10,
+          min: 0,
         },
       ]}
       wixColorParams={[

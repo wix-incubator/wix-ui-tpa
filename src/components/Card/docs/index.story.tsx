@@ -17,6 +17,7 @@ import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Card, CardRatioOptions } from '../';
 import * as examples from './examples';
+import settingPanel from './exampleWithSettingPanel';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -100,6 +101,7 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        { title: 'Settings Panel', sections: [settingPanel()]}
       ].map(tab),
     ]),
   ],
