@@ -2,6 +2,7 @@ import * as React from 'react';
 import { {%ComponentName%} } from '../';
 import * as examples from './examples';
 import {
+  header,
   api,
   divider,
   importExample,
@@ -30,6 +31,7 @@ export default {
   },
   dataHook: 'storybook-{%ComponentName%}',
   sections: [
+    header(),
     tabs([
       tab({
         title: 'Usage',
