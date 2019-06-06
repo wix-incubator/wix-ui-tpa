@@ -169,11 +169,3 @@ export const listOfOverlappingCard = `
 </Grid>
 `;
 
-export const largeMaxColumnsSmallAmountOfItems = `
-<Grid
-  maxColumns={3}
-  minColumnWidth={Card.MIN_WIDTH_MOBILE}
->
-  ${generateCardItems(1)}
-</Grid>
-`;

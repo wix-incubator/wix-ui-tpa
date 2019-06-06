@@ -92,7 +92,6 @@ export default {
             { title: 'Quilted Columns', source: examples.quiltedColumns },
             { title: 'Quilted Rows', source: examples.quiltedRows },
             { title: 'Max Items Per Row', source: examples.maxColumns },
-            { title: 'Max Items Per Row Larger Then Amount Of Items', source: examples.largeMaxColumnsSmallAmountOfItems },
             { title: 'List Of Strip Cards', source: examples.listOfStripCard },
             {
               title: 'With dividers between the Rows',
