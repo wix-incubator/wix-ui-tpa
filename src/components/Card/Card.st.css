@@ -45,6 +45,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    background-color: value(infoBGColor);
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
@@ -131,7 +132,7 @@
 
 .root > .infoContainer {
     box-sizing: border-box;
-    background-color: value(infoBGColor);
+    background-color: transparent;
     -st-mixin: withDynamicPadding(
             PaddingSize value(infoPadding),
             BorderWidth value(borderWidth)
