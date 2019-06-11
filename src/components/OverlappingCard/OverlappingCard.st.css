@@ -128,6 +128,12 @@
     flex: 70%;
 }
 
+.root > .mediaContainer {
+    background-color: value(mediaBGColor);
+    margin-right: value(negativeInfoPadding);
+    grid-area: media;
+}
+
 .root:invertInfoPosition > .mediaContainer {
     margin-right: 0;
     margin-left: value(negativeInfoPadding);
@@ -145,10 +151,4 @@
             PaddingSize value(infoPadding),
             BorderWidth value(borderWidth)
     );
-}
-
-.root > .mediaContainer {
-    background: linear-gradient(value(mediaBGColor), value(mediaBGColor)), linear-gradient(value(infoBGColor), value(infoBGColor));
-    margin-right: value(negativeInfoPadding);
-    grid-area: media;
 }
