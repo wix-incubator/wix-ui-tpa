@@ -34,6 +34,11 @@ export default () => (
       ]}
       wixColorParams={[
         {
+          label: 'Card Background Color',
+          wixParam: 'cardBGColor',
+          defaultColor: 'color-1',
+        },
+        {
           label: 'Info Background Color',
           wixParam: 'infoBGColor',
           defaultColor: 'color-1',
@@ -41,7 +46,7 @@ export default () => (
         {
           label: 'Image Background Color',
           wixParam: 'imageBGColor',
-          defaultColor: 'color-1',
+          defaultColor: 'color-5',
         },
         {
           label: 'Border Color',
