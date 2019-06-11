@@ -48,7 +48,7 @@ function generateCardItems(amount = 3) {
 
 const itemsExamples = [
   { label: 'none', value: [] },
-  { label: 'few', value: generateCardItems(3) },
+  { label: 'few', value: generateCardItems(2) },
   { label: 'many', value: generateCardItems(5) },
 ];
 
