@@ -22,7 +22,7 @@
     MainBorderColor: --overridable;
     MainInfoColor: --overridable;
     MainMediaColor: --overridable;
-    MainInfoSidePadding: --overridable;
+    StackedInfoSidePadding: --overridable;
 }
 
 :vars {
@@ -144,7 +144,7 @@
             PaddingSize value(stackedInfoPadding),
             BorderWidth value(borderWidth)
     ), withDynamicSidePadding(
-            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(MainInfoSidePadding)), value(stackedInfoPadding)),
+            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(StackedInfoSidePadding)), value(stackedInfoPadding)),
             BorderWidth value(borderWidth)
     );
 }

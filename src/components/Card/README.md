@@ -12,7 +12,7 @@ By default the Card will pull the theme from the site (site colors),
 | MainMediaColor  | string   | color-5 20% opacity | The color of the image container instead of the default color |
 | MainBorderColor  | string   | color-5 | The color of the border instead of the default color |
 | MainBorderWidth  | string   | 1px | The width of the border instead of the default width |
-| MainInfoSidePadding  | string   | 32px | The width of Stack layout Side padding |
+| StackedInfoSidePadding  | string   | 32px | The width of Stack layout Side padding |
 
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
@@ -30,7 +30,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',
             MainBorderWidth '"--borderWidth"',
-            MainInfoSidePadding '"--infoSidePadding"'
+            StackedInfoSidePadding '"--infoSidePadding"'
       );
     }
 
