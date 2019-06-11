@@ -10,6 +10,7 @@
 
 :vars {
     /*Constance*/
+    DefaultCardBG: color-1;
     DefaultInfoCardBG: color-1;
     DefaultMediaCardBG: color-5;
     DefaultBorderColor: color-5;
@@ -18,6 +19,7 @@
 
 :vars {
     /*Overrides*/
+    MainCardColor: --overridable;
     MainBorderWidth: --overridable;
     MainBorderColor: --overridable;
     MainInfoColor: --overridable;
@@ -26,6 +28,7 @@
 }
 
 :vars {
+    cardBGColor: wixApply(color, wixApply(fallback, value(MainCardColor), value(DefaultCardBG)));
     borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), value(DefaultBorderWidth)), px);
     borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor)));
     infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultInfoCardBG)));
@@ -46,6 +49,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+    background-color: value(cardBGColor);
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
