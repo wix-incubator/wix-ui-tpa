@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "./mixins.st.css";
-    -st-named: withBorder, withDynamicPadding;
+    -st-named: withBorder, withDynamicPadding, withDynamicSidePadding;
 }
 
 :vars {
@@ -22,6 +22,7 @@
     MainBorderColor: --overridable;
     MainInfoColor: --overridable;
     MainMediaColor: --overridable;
+    StackedInfoSidePadding: --overridable;
 }
 
 :vars {
@@ -141,6 +142,9 @@
 .root:stacked > .infoContainer {
     -st-mixin: withDynamicPadding(
             PaddingSize value(stackedInfoPadding),
+            BorderWidth value(borderWidth)
+    ), withDynamicSidePadding(
+            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(StackedInfoSidePadding)), value(stackedInfoPadding)),
             BorderWidth value(borderWidth)
     );
 }
