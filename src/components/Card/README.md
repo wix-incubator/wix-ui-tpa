@@ -8,6 +8,7 @@ By default the Card will pull the theme from the site (site colors),
 
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
+| MainCardColor  | string   | color-1 | The color of the Card instead of the default color |
 | MainInfoColor  | string   | color-1 | The color of the info container instead of the default color |
 | MainMediaColor  | string   | color-5 20% opacity | The color of the image container instead of the default color |
 | MainBorderColor  | string   | color-5 | The color of the border instead of the default color |
@@ -26,6 +27,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
     .root {
         -st-mixin: TPACard(
+            MainCardColor '"--cardColor"',
             MainInfoColor '"--infoColor"',
             MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',

@@ -5,6 +5,7 @@
 
 .card {
     -st-mixin: TPACard(
+            MainCardColor '"--cardBGColor"',
             MainInfoColor '"--infoBGColor"',
             MainMediaColor '"--imageBGColor"',
             MainBorderColor '"--borderColor"',
