@@ -1,0 +1,18 @@
+:import {
+    -st-from: "../../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+.root {
+    -st-extends: TPAButton;
+    -st-mixin: TPAButton(
+            MainTextColor '"--buttonTextColor"',
+            MainBackgroundColor '"--buttonBackgroundColor"',
+            MainTextFont '"--buttonTextFont"',
+            MainBorderWidth '"unit(fallback(--borderWidth, 0), px)"',
+            MainBorderRadius '"unit(--borderRadius, px)"',
+            MainBorderColor '"--borderColor"'
+    );
+
+    width: 300px;
+}
