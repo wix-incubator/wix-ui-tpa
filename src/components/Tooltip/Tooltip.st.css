@@ -1,0 +1,80 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Tooltip;
+}
+
+.root {
+    -st-extends: Tooltip;
+}
+
+.root::popoverContent {
+    background-color: #212121;
+    padding: 4px 12px;
+    border: 1px rgba(255,255,255,0.38) solid;
+    border-radius: 3px;
+    color: white;
+    line-height: 20px;
+    font-family: HelveticaNeueW01-45Ligh, HelveticaNeueW02-45Ligh, HelveticaNeueW10-45Ligh, Helvetica Neue, Helvetica, Arial, メイリオ, meiryo, ヒラギノ角ゴ pro w3, hiragino kaku gothic pro, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: auto;
+}
+
+.tpaArrow {
+    display: block;
+    position: absolute;
+    margin: 0;
+}
+
+.tpaArrow svg {
+    display: block;
+}
+
+.root::popover[data-placement*="top"].withArrow { padding-bottom: 6px; }
+.root::popover[data-placement*="bottom"].withArrow { padding-top: 6px; }
+.root::popover[data-placement*="left"].withArrow { padding-right: 6px; }
+.root::popover[data-placement*="right"].withArrow { padding-left: 6px; }
+
+.root::popover[data-placement*="top"] .tpaArrow {
+    bottom: 0;
+    width: 12px;
+    height: 7px;
+}
+
+.root::popover[data-placement*="bottom"] .tpaArrow {
+    top: 0;
+    width: 12px;
+    height: 7px;
+}
+
+.root::popover[data-placement*="left"] .tpaArrow {
+    right: 0;
+    width: 7px;
+    height: 12px;
+}
+
+.root::popover[data-placement*="right"] .tpaArrow {
+    left: 0;
+    width: 7px;
+    height: 12px;
+}
+
+
+
+.root::popoverAnimation { opacity: 0; transform-origin: bottom; }
+.root::popoverAnimation-enter {animation: bounce-in 150ms linear 0s 1 normal forwards;}
+.root::popoverAnimation-enter.popoverAnimation-enter-active {}
+.root::popoverAnimation-exit {animation: bounce-in 150ms linear 0s 1 reverse forwards;}
+.root::popoverAnimation-exit.popoverAnimation-exit-active { }
+
+@keyframes bounce-in {
+    0%{
+        transform: scale(0.95);
+        /*transform: translateY(1px);*/
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1);
+        /*transform: translateY(0);*/
+        opacity: 1;
+    }
+}
