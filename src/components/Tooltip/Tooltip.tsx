@@ -14,7 +14,7 @@ function customArrow(placement: Placement, arrowProps) {
   );
 }
 
-export class Tooltip extends React.Component {
+export class Tooltip extends React.Component<TooltipProps> {
   static displayName = 'Tooltip';
 
   render() {
