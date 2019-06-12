@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tooltip as CoreTooltip, TooltipProps } from 'wix-ui-core/tooltip';
+import { Tooltip as CoreTooltip, TooltipProps as CoreTooltipProps } from 'wix-ui-core/tooltip';
 import tooltipStyles from './Tooltip.st.css';
 import { getArrowByPlacement } from './Arrows';
 import { Placement } from 'wix-ui-core/popover';
@@ -13,6 +13,8 @@ function customArrow(placement: Placement, arrowProps) {
     </div>
   );
 }
+
+export interface TooltipProps extends CoreTooltipProps {}
 
 export class Tooltip extends React.Component<TooltipProps> {
   static displayName = 'Tooltip';
