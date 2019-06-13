@@ -12,7 +12,7 @@ describe('Tooltip', () => {
     story: 'Tooltip',
     withExamples: true,
   });
-  const dataHook = 'storybook-Tooltip';
+  const dataHook = 'story-tooltip';
 
   beforeEach(() => browser.get(storyUrl));
 
