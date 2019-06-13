@@ -1,16 +1,15 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import style from './StatesButton.st.css';
-import { Button, SIZE } from '../Button';
+import { Button, ButtonProps, SIZE } from '../Button';
 import { Check } from '../../icons/dist';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
-export interface StatesButtonProps {
-  className?: string;
+export interface StatesButtonProps extends ButtonProps {
   disabled: boolean;
-  onClick: Function;
   text: string;
+  dataHook?: string;
 }
 
 interface StatesButtonState {
@@ -37,20 +36,14 @@ export class StatesButton extends React.Component<
     this.setState({ success: false });
   }
 
-  private readonly onClick = () => {
-    this.props.onClick();
-  };
-
   public render() {
-    const { text, disabled, className } = this.props;
+    const { text, disabled, dataHook, ...rest } = this.props;
     const { success } = this.state;
     return (
       <Button
-        data-hook="states-button"
-        className={className ? className : null}
+        data-hook={dataHook}
         disabled={disabled}
-        size={SIZE.large}
-        onClick={this.onClick}
+        {...rest}
         ref={this.buttonRef}
         {...style('root', {}, this.props)}
       >
@@ -63,7 +56,7 @@ export class StatesButton extends React.Component<
         </div>
         {success && (
           <div className={classNames(style.text, style.successIcon)}>
-            <Check data-hook={'checkIcon'} />
+            <Check width="1em" height="1em" data-hook={'checkIcon'} />
           </div>
         )}
       </Button>

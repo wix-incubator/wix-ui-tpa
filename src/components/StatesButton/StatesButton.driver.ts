@@ -9,13 +9,13 @@ export interface StatesButtonDriver extends ButtonNextDriver {
   checkIconExists(): Promise<boolean>;
 }
 
-export const statesButtonDriverFactory = (base: UniDriver): StatesButtonDriver => {
+export const statesButtonDriverFactory = (
+  base: UniDriver,
+): StatesButtonDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {
     ...buttonNextDriverFactory(base),
-    checkIconExists: async () =>
-      (await base.getNative()).querySelector('[data-hook="checkIcon"]') !==
-      null,
+    checkIconExists: () => base.$('[data-hook="checkIcon"]').exists(),
   };
 };

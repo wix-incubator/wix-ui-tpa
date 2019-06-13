@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StatesButton } from '..';
 import extendedStyles from './StatesButtonExample.st.css';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import { SIZE } from '../../Button';
 
 const ref: React.RefObject<StatesButton> = React.createRef();
 
@@ -11,6 +12,7 @@ const defaultProps = {
     // tslint:disable-next-line:no-floating-promises
     ref.current.onActionSuccess();
   },
+  size: SIZE.large,
   text: 'My States Button',
 };
 

@@ -68,17 +68,19 @@ describe('StatesButton', () => {
     expect(await driver.isButtonDisabled()).toEqual(true);
   });
 
-  it('when disabled prop is false button should be disabled', async () => {
+  it('when disabled prop is false button should be not disabled', async () => {
     const driver = createDriver(
       <StatesButton {...defaultProps} disabled={false} />,
     );
     expect(await driver.isButtonDisabled()).toEqual(false);
   });
 
-  it('should be able to pass className as prop', async () => {
+  it('should be able to pass dataHook as prop', async () => {
     const driver = createDriver(
-      <StatesButton {...defaultProps} className={'myClass'} />,
+      <StatesButton {...defaultProps} dataHook={'myDataHook'} />,
     );
-    expect((await driver.element()).className).toContain('myClass');
+    expect((await driver.element()).getAttribute('data-hook')).toContain(
+      'myDataHook',
+    );
   });
 });
