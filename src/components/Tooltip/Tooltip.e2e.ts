@@ -20,7 +20,7 @@ describe('Tooltip', () => {
     const driver = tooltipTestkitFactory({ dataHook });
     await waitForVisibilityOf(driver.element(), 'Cannot find Tooltip');
     expect(await driver.element().isDisplayed()).toBe(true);
-    driver.mouseEnter();
-    expect(driver.isContentElementExists()).toBeTruthy();
+    await driver.mouseEnter();
+    expect(await driver.isContentElementExists()).toBeTruthy();
   });
 });
