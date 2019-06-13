@@ -55,3 +55,12 @@ import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory = protractorUniTestkitFactoryCreator(
   gridDriverFactory,
 );
+
+import {
+  tooltipDriverFactory,
+  TooltipProtractorDriver,
+} from '../components/Tooltip/Tooltip.protractor.driver';
+export const tooltipTestkitFactory = protractorTestkitFactoryCreator<TooltipProtractorDriver>(
+    tooltipDriverFactory,
+);
+export { TooltipProtractorDriver };
