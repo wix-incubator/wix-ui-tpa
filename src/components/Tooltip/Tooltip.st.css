@@ -1,0 +1,95 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Tooltip;
+}
+
+.root {
+    -st-extends: Tooltip;
+}
+
+.root::popoverContent {
+    background-color: #212121;
+    padding: 4px 12px;
+    border: 1px #757575 solid;
+    border-radius: 3px;
+    color: white;
+    line-height: 20px;
+    font-family: HelveticaNeueW01-45Ligh, HelveticaNeueW02-45Ligh, HelveticaNeueW10-45Ligh, Helvetica Neue, Helvetica, Arial, メイリオ, meiryo, ヒラギノ角ゴ pro w3, hiragino kaku gothic pro, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: auto;
+}
+
+.tpaArrow {
+    display: block;
+    position: absolute;
+    margin: 0;
+}
+
+.tpaArrow svg {
+    display: block;
+}
+
+.root::popover[data-placement*="top"].withArrow { padding-bottom: 6px; }
+.root::popover[data-placement*="bottom"].withArrow { padding-top: 6px; }
+.root::popover[data-placement*="left"].withArrow { padding-right: 6px; }
+.root::popover[data-placement*="right"].withArrow { padding-left: 6px; }
+
+.root::popover[data-placement*="top"] .tpaArrow {
+    bottom: 0;
+    width: 12px;
+    height: 7px;
+}
+
+.root::popover[data-placement*="bottom"] .tpaArrow {
+    top: 0;
+    width: 12px;
+    height: 7px;
+}
+
+.root::popover[data-placement*="left"] .tpaArrow {
+    right: 0;
+    width: 7px;
+    height: 12px;
+}
+
+.root::popover[data-placement*="right"] .tpaArrow {
+    left: 0;
+    width: 7px;
+    height: 12px;
+}
+
+.root::popover[data-placement*="top"].popoverAnimation-enter {
+    opacity: 0;
+    transform: scale(0.9) translateY(3px);
+}
+
+.root::popover[data-placement*="bottom"].popoverAnimation-enter {
+    opacity: 0;
+    transform: scale(0.9) translateY(-3px);
+}
+
+.root::popover[data-placement*="left"].popoverAnimation-enter {
+    opacity: 0;
+    transform: scale(0.9) translateX(10px);
+}
+
+.root::popover[data-placement*="right"].popoverAnimation-enter {
+    opacity: 0;
+    transform: scale(0.9) translateX(-10px);
+}
+
+.root::popover[data-placement].popoverAnimation-enter.popoverAnimation-enter-active {
+    opacity: 1;
+    transition: transform 120ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 120ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: scale(1) translateY(0) translateX(0);
+}
+
+.root::popover[data-placement].popoverAnimation-exit {
+    opacity: 1;
+    transform: scale(1) translateY(0) translateX(0);
+}
+
+.root::popover[data-placement].popoverAnimation-exit.popoverAnimation-exit-active {
+    opacity: 0;
+    transition: transform 80ms linear, opacity 80ms linear;
+}

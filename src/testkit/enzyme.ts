@@ -48,3 +48,8 @@ import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(gridDriverFactory);
+
+import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
+export const tooltipTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
