@@ -38,14 +38,14 @@ describe('StatesButton', () => {
       expect(await driver.getButtonTextContent()).toEqual('add to cart');
     });
 
-    it('should call "onClick" callback when clicking and show success icon after "onActionSuccess" was called, then after 2 seconds return to normal text', async () => {
+    it('should call "onClick" callback when clicking and show success icon after "onProgressReset" was called, then after 2 seconds return to normal text', async () => {
       onClickSpy.mockImplementation(() => Promise.resolve());
       expect(onClickSpy).not.toHaveBeenCalled();
       await driver.click();
       expect(onClickSpy).toHaveBeenCalled();
       expect(await driver.checkIconExists()).toEqual(false);
       // tslint:disable-next-line:no-floating-promises
-      ref.current.onActionSuccess();
+      ref.current.onProgressReset();
       expect(await driver.checkIconExists()).toEqual(true);
       jest.runTimersToTime(1999);
       expect(await driver.checkIconExists()).toEqual(true);

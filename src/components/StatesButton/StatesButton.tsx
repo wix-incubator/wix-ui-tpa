@@ -30,7 +30,7 @@ export class StatesButton extends React.Component<
     this.buttonRef.current.focus();
   };
 
-  public async onActionSuccess() {
+  public async onProgressReset() {
     this.setState({ success: true });
     await delay(2000);
     this.setState({ success: false });
