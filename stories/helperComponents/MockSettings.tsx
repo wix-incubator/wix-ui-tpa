@@ -261,7 +261,9 @@ export class MockSettings extends React.PureComponent<
             index: font.spriteIndex,
             size: 30,
             style: { bold: false, italic: false, underline: false },
-            value: `font:normal normal normal 30px/1.4em ${font.cssFontFamily};`,
+            value: `font:normal normal normal 30px/1.4em ${
+              font.cssFontFamily
+            };`,
           };
           return obj;
         },

@@ -1,8 +1,5 @@
 import * as React from 'react';
-import {
-  Tooltip as CoreTooltip,
-  TooltipProps as CoreTooltipProps,
-} from 'wix-ui-core/tooltip';
+import { Tooltip as CoreTooltip, TooltipProps as CoreTooltipProps } from 'wix-ui-core/tooltip';
 import tooltipStyles from './Tooltip.st.css';
 import { getArrowByPlacement } from './Arrows';
 import { Placement } from 'wix-ui-core/popover';
