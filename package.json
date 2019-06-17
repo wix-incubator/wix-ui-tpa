@@ -65,7 +65,6 @@
     "@ui-autotools/registry": "^4.0.0",
     "@ui-autotools/sanity": "^2.8.2",
     "autoprefixer": "^9.5.1",
-    "babel-cli": "^6.26.0",
     "core-js": "^2.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
@@ -86,8 +85,8 @@
     "wix-style-processor": "latest",
     "wix-ui-framework": "^1.2.1",
     "wix-ui-test-utils": "^1.0.0",
-    "yoshi": "^3.28.0",
-    "yoshi-style-dependencies": "^3.16.0"
+    "yoshi": "^4.9.0",
+    "yoshi-style-dependencies": "^4.6.0"
   },
   "license": "MIT",
   "publishConfig": {
@@ -122,10 +121,5 @@
   "yoshi": {
     "exports": "wix-ui-tpa",
     "tpaStyle": true
-  },
-  "babel": {
-    "presets": [
-      "env"
-    ]
   }
 }
