@@ -60,7 +60,7 @@ import {
   tooltipDriverFactory,
   TooltipProtractorDriver,
 } from '../components/Tooltip/Tooltip.protractor.driver';
-export const tooltipTestkitFactory = protractorTestkitFactoryCreator<TooltipProtractorDriver>(
-    tooltipDriverFactory,
-);
+export const tooltipTestkitFactory = protractorTestkitFactoryCreator<
+  TooltipProtractorDriver
+>(tooltipDriverFactory);
 export { TooltipProtractorDriver };
