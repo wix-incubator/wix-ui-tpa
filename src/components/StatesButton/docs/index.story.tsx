@@ -10,7 +10,7 @@ const defaultProps = {
   disabled: false,
   onClick: () => {
     // tslint:disable-next-line:no-floating-promises
-    ref.current.onActionSuccess();
+    ref.current.onProgressReset();
   },
   size: SIZE.large,
   text: 'My States Button',
