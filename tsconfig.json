@@ -6,10 +6,13 @@
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
-    "lib": ["dom", "es2016"]
+    "lib": ["dom", "esnext"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",
+    "./node_modules/yoshi/types.d.ts",
     "./src/**/*.tsx",
     "./src/components/**/*.ts",
     "./test/**/*.tsx",
