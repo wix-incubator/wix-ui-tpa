@@ -6,16 +6,14 @@
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
-    "lib": ["dom", "esnext"],
-    "resolveJsonModule": true,
-    "esModuleInterop": true
+    "lib": ["dom", "es2016"]
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",
-    "./node_modules/yoshi/types.d.ts",
     "./src/**/*.tsx",
     "./src/components/**/*.ts",
     "./test/**/*.tsx",
-    "./src/external-types.d.ts", "src/common/utils.ts", "src/common/animations.ts"
+    "./src/external-types.d.ts", "src/common/utils.ts", "src/common/animations.ts",
+    "./node_modules/yoshi/types.d.ts"
   ]
 }

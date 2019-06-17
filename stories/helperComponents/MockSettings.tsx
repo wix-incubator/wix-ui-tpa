@@ -265,7 +265,7 @@ export class MockSettings extends React.PureComponent<
           };
           return obj;
         },
-        { textFont: undefined },
+        {},
       );
     }
 

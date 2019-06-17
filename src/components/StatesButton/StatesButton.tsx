@@ -63,7 +63,10 @@ export class StatesButton extends React.Component<
   }
 }
 
-const Check: React.FunctionComponent<{ size: string }> = ({ size, ...props }) => (
+const Check: React.FunctionComponent<{ size: string }> = ({
+  size,
+  ...props
+}) => (
   <svg
     viewBox="0 0 16 12"
     fill="currentColor"
