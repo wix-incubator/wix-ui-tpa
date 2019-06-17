@@ -1,0 +1,54 @@
+:import {
+    -st-from: "../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+.root {
+    -st-extends: TPAButton;
+    padding:16px 8px 16px 8px;
+    position: relative;
+    cursor: pointer;
+    display: block;
+    border-style: solid;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.successIcon {
+    position: relative;
+    top: 0.15em;
+    animation: bounce-in 0.5s ease 0s 1 normal;
+}
+
+.text {
+    line-height: 1.5;
+    display: inline-block;
+    margin: 3px;
+}
+
+.hideText {
+    opacity: 0;
+    width: 0;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    32% {
+        transform: translateY(-5px);
+        opacity: 1;
+    }
+    68% {
+        transform: translateY(2px);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

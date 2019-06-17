@@ -4,6 +4,7 @@ styleProcessor.init();
 
 import '../src/components/Autocomplete/docs/index.story';
 import '../src/components/Button/docs/index.story';
+import '../src/components/StatesButton/docs/index.story';
 import '../src/components/Card/docs/index.story';
 import '../src/components/Divider/docs/index.story';
 import '../src/components/Input/docs/index.story';
