@@ -25,11 +25,13 @@
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
     "pr-postbuild": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
-    "test": "npm run test:unit && autotools-sanity && npm run test:e2e",
+    "test": "npm run test:unit && autotools-sanity && npm run test:e2e && npm run test:eyes-storybook",
     "posttest": "npm run lint",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
+    "test:eyes-storybook": "if test \"$APPLITOOLS_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
+    "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
     "release": "yoshi release",
@@ -37,9 +39,10 @@
     "storybook": "start-storybook -p 6006 -s ./src/assets",
     "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
-    "storybook:build": "build-storybook  -s ./src/assets",
+    "storybook:build": "build-storybook -s ./src/assets",
     "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css",
-    "generate": "wuf generate"
+    "generate": "wuf generate",
+    "eyes-storybook-debug": "start-storybook --ci -c ./.storybook-test -p 6007 -s ./src/assets"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -50,6 +53,7 @@
     "wix-ui-icons-common": "^2.0.0"
   },
   "devDependencies": {
+    "@applitools/eyes-storybook": "^2.6.20",
     "@storybook/addon-links": "5.0.9",
     "@storybook/react": "5.0.9",
     "@types/enzyme": "^3.1.8",
