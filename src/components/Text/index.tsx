@@ -1,2 +1,2 @@
-export * from './Text';
-export * from './constants';
+export { Text, TextProps } from './Text';
+export { TYPOGRAPHY } from './constants';
