@@ -5,11 +5,11 @@ import { getArrowByPlacement } from './Arrows';
 import { Placement } from 'wix-ui-core/popover';
 
 function customArrow(placement: Placement, arrowProps) {
-  const arrowSvg = getArrowByPlacement(placement);
+  const ArrowSvg = getArrowByPlacement(placement);
 
   return (
     <div className={tooltipStyles.tpaArrow} {...arrowProps}>
-      {arrowSvg}
+      <ArrowSvg />
     </div>
   );
 }
