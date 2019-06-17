@@ -86,8 +86,8 @@
     "wix-style-processor": "latest",
     "wix-ui-framework": "^1.2.1",
     "wix-ui-test-utils": "^1.0.0",
-    "yoshi": "^3.28.0",
-    "yoshi-style-dependencies": "^3.16.0"
+    "yoshi": "^4.9.0",
+    "yoshi-style-dependencies": "^4.6.0"
   },
   "license": "MIT",
   "publishConfig": {
