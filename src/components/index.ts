@@ -6,3 +6,4 @@ export { Button, PRIORITY, SIZE } from './Button';
 export { TPAComponentsProvider } from './TPAComponentsConfig';
 export { StripCard } from './StripCard';
 export { Grid } from './Grid';
+export { IconToggle } from './IconToggle';

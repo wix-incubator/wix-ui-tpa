@@ -37,3 +37,6 @@ export const stripCardTestkitFactory = uniTestkitFactoryCreator(
 
 import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory = uniTestkitFactoryCreator(gridDriverFactory);
+
+import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
+export const iconToggleTestkitFactory = uniTestkitFactoryCreator(iconToggleDriverFactory);

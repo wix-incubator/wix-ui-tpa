@@ -58,3 +58,8 @@ import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
+
+import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
+export const iconToggleTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(iconToggleDriverFactory);

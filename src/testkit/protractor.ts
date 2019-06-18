@@ -69,3 +69,8 @@ export const tooltipTestkitFactory = protractorTestkitFactoryCreator<
   TooltipProtractorDriver
 >(tooltipDriverFactory);
 export { TooltipProtractorDriver };
+
+import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
+export const iconToggleTestkitFactory = protractorUniTestkitFactoryCreator(
+  iconToggleDriverFactory,
+);
