@@ -41,7 +41,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
           <div {...styles('root', { mobile }, rest)}>
             <div className={styles.likeButton}>
               <IconToggle 
-                icon={Heart}
+                icon={<Heart />}
                 label={label}
                 onChange={onChange}
                 checked={checked}
