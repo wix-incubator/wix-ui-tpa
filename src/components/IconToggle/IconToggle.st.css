@@ -14,7 +14,7 @@
 }
 
 .root {
-    -st-states: mobile, labelPlacement( enum(right, left) );
+    -st-states: mobile, checked, labelPlacement( enum(right, left) );
     /*css goes here*/
 }
 
@@ -42,6 +42,14 @@
 
 .label {
     grid-area: label;
+}
+
+.icon path {
+    stroke: dodgerblue;
+}
+
+.root:checked .icon path {
+    fill: dodgerblue;
 }
 
 /* .toggle,
