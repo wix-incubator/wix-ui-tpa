@@ -122,7 +122,6 @@
   },
   "yoshi": {
     "exports": "wix-ui-tpa",
-    "tpaStyle": true,
-    "entry": "./index.js"
+    "tpaStyle": true
   }
 }
