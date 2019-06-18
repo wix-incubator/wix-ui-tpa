@@ -15,4 +15,5 @@ import '../src/components/Text/docs/index.story';
 import '../src/components/Grid/docs/index.story';
 import '../src/components/ToggleSwitch/docs'; // TODO: convert to .story
 import '../src/components/Tooltip/docs/index.story';
-require('../src/components/IconToggle/docs/index.story');
+import '../src/components/IconToggle/docs/index.story';
+import '../src/components/LikeButton/docs/index.story';

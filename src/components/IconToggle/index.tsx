@@ -1,1 +1,1 @@
-export { IconToggle, IconToggleProps } from './IconToggle';
+export { IconToggle, IconToggleProps, Placement, OnChangeEvent } from './IconToggle';

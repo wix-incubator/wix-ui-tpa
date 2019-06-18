@@ -4,22 +4,23 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
-import { iconToggleDriverFactory } from './IconToggle.driver';
-import { IconToggle } from './';
-import { iconToggleTestkitFactory } from '../../testkit';
-import { iconToggleTestkitFactory as enzymeIconToggleTestkitFactory } from '../../testkit/enzyme';
+import { likeButtonDriverFactory } from './LikeButton.driver';
+import { LikeButton } from './';
+import { likeButtonTestkitFactory } from '../../testkit';
+import { likeButtonTestkitFactory as enzymeLikeButtonTestkitFactory } from '../../testkit/enzyme';
 
-describe('IconToggle', () => {
-  const createDriver = createUniDriverFactory(iconToggleDriverFactory);
+describe('LikeButton', () => {
+  const createDriver = createUniDriverFactory(likeButtonDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<IconToggle />);
+    const driver = createDriver(<LikeButton />);
     expect(await driver.exists()).toBe(true);
   });
 
+
   it('should use mobile design', async () => {
     const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<IconToggle />),
+      TPAComponentsWrapper({ mobile: true })(<LikeButton />),
     );
     expect(await driver.isMobile()).toBe(true);
   });
@@ -27,7 +28,7 @@ describe('IconToggle', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<IconToggle />, iconToggleTestkitFactory, {
+        await isUniTestkitExists(<LikeButton />, likeButtonTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -38,8 +39,8 @@ describe('IconToggle', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <IconToggle />,
-          enzymeIconToggleTestkitFactory,
+          <LikeButton />,
+          enzymeLikeButtonTestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',

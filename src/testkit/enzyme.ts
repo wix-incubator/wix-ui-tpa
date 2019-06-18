@@ -63,3 +63,8 @@ import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.dri
 export const iconToggleTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(iconToggleDriverFactory);
+
+import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
+export const likeButtonTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(likeButtonDriverFactory);

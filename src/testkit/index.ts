@@ -40,3 +40,6 @@ export const gridTestkitFactory = uniTestkitFactoryCreator(gridDriverFactory);
 
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
 export const iconToggleTestkitFactory = uniTestkitFactoryCreator(iconToggleDriverFactory);
+
+import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
+export const likeButtonTestkitFactory = uniTestkitFactoryCreator(likeButtonDriverFactory);
