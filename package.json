@@ -1,7 +1,9 @@
 {
   "private": false,
   "name": "wix-ui-tpa",
+  "sideEffects": false,
   "version": "1.0.0",
+  "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
     "name": "Wix",
@@ -120,6 +122,7 @@
   },
   "yoshi": {
     "exports": "wix-ui-tpa",
-    "tpaStyle": true
+    "tpaStyle": true,
+    "entry": "./index.js"
   }
 }

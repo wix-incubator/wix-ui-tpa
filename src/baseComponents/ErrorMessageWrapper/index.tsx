@@ -1,5 +1,1 @@
-export {
-  ErrorMessageWrapper,
-  ErrorMessageWrapperProps,
-  ErrorProps,
-} from './ErrorMessageWrapper';
+export * from './ErrorMessageWrapper';
