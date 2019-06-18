@@ -14,10 +14,37 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: mobile, labelPlacement( enum(right, left) );
     /*css goes here*/
 }
 
 .root:mobile {
     /*mobile css goes here*/
 }
+
+.root {
+    display: grid;
+    grid-template-columns: min-content min-content;
+    grid-column-gap: 6px;
+}
+
+.root:labelPlacement(right) {
+    grid-template-areas: 'toggle label';
+}
+
+.root:labelPlacement(left) {
+    grid-template-areas: 'label toggle';
+}
+
+.toggle {
+    grid-area: toggle;
+}
+
+.label {
+    grid-area: label;
+}
+
+/* .toggle,
+.label {
+    border: 1px solid red;
+} */

@@ -25,9 +25,13 @@ export default {
   componentPath: '../IconToggle.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-IconToggle',
+    labelPlacement: 'right',
   }),
   exampleProps: {
-    //
+    labelPlacement: [
+      'right',
+      'left'
+    ],
   },
   dataHook: 'storybook-IconToggle',
   sections: [
