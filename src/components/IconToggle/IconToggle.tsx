@@ -6,7 +6,7 @@ import {
 import styles from "./IconToggle.st.css";
 import { TPAComponentsConsumer } from "../TPAComponentsConfig";
 
-import { ReactComponent as DefaultIcon } from "./EmptyStateDefault.svg";
+import { ReactComponent as HeartIcon } from "../../icons/raw/Heart.svg";
 
 export interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
@@ -35,7 +35,7 @@ interface DefaultProps {
 export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = "IconToggle";
   static defaultProps: DefaultProps = {
-    icon: <DefaultIcon />,
+    icon: <HeartIcon />,
     label: "Like",
     labelPlacement: "right",
     checked: false,
