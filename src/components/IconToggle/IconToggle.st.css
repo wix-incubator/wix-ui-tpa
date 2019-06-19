@@ -5,7 +5,6 @@
 
 :vars {
     /*Defaults*/
-    /*Defaults params goes here*/
     DefaultColor: color-5;
     DisabledColor: color-3;
     DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
@@ -13,7 +12,6 @@
 
 :vars {
     /*Overrides*/
-    /*Deceleration of overridable placeholders*/
     IconColor: --overridable;
     LabelColor: --overridable;
     LabelFont: --overridable;
@@ -21,18 +19,10 @@
 
 .root {
     -st-states: mobile, checked, disabled, labelPlacement( enum(right, left) );
-    /*css goes here*/
-}
-
-.root:mobile {
-    /*mobile css goes here*/
-}
-
-.root {
+    display: inline-block;
     padding: 0;
     margin: 0;
     line-height: 0;
-    display: inline-block;
 }
 
 .container {
@@ -54,22 +44,16 @@
     grid-area: icon;
 }
 
+.icon:hover {
+    opacity: 0.6;
+}
+
 .icon svg {
     display: block;
 }
 
-.label {
-    grid-area: label;
-    color: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
-    font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
-}
-
 .icon path {
     stroke: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
-}
-
-.icon:hover {
-    opacity: 0.6;
 }
 
 .root:checked .icon path {
@@ -81,17 +65,12 @@
     stroke: wixApply(color, value(DisabledColor));
 }
 
+.label {
+    grid-area: label;
+    color: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
+    font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
+}
+
 .root:disabled .label {
     color: wixApply(color, value(DisabledColor));
 }
-
-/* .root,
-.icon,
-.toggle,
-.label {
-    border: 1px solid red;
-}
-
-.toggle {
-    border: 1px solid black;
-} */
