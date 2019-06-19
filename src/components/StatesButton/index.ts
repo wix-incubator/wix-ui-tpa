@@ -1,1 +1,1 @@
-export { StatesButton, StatesButtonProps } from './StatesButton';
+export * from './StatesButton';

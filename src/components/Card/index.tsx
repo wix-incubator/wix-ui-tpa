@@ -1,1 +1,1 @@
-export { Card, CardProps, CardRatioOptions } from './Card';
+export * from './Card';

@@ -1,5 +1,1 @@
-export {
-  OverlappingCard,
-  OverlappingCardProps,
-  OverlappingCardRatioOptions,
-} from './OverlappingCard';
+export * from './OverlappingCard';
