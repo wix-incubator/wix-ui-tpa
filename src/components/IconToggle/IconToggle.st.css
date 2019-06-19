@@ -6,14 +6,16 @@
 :vars {
     /*Defaults*/
     /*Defaults params goes here*/
-    PrimaryColor: color-5;
+    DefaultColor: color-5;
     DisabledColor: color-3;
+    DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
 }
 
 :vars {
     /*Overrides*/
     /*Deceleration of overridable placeholders*/
     IconColor: --overridable;
+    LabelFont: --overidable;
 }
 
 .root {
@@ -26,30 +28,43 @@
 }
 
 .root {
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    display: inline-block;
+}
+
+.container {
     display: grid;
     grid-template-columns: min-content min-content;
     grid-column-gap: 6px;
+    align-items: center;
 }
 
-.root:labelPlacement(right) {
-    grid-template-areas: 'toggle label';
+.root:labelPlacement(right) .container {
+    grid-template-areas: 'icon label';
 }
 
-.root:labelPlacement(left) {
-    grid-template-areas: 'label toggle';
+.root:labelPlacement(left) .container {
+    grid-template-areas: 'label icon';
 }
 
-.toggle {
-    grid-area: toggle;
+.icon {
+    grid-area: icon;
+}
+
+.icon svg {
+    display: block;
 }
 
 .label {
     grid-area: label;
-    color: wixApply(color, value(PrimaryColor));
+    color: wixApply(color, value(DefaultColor));
+    font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
 }
 
 .icon path {
-    stroke: wixApply(color, wixApply(fallback, value(IconColor), value(PrimaryColor)));
+    stroke: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
 }
 
 .icon:hover {
@@ -57,7 +72,7 @@
 }
 
 .root:checked .icon path {
-    fill: wixApply(color, wixApply(fallback, value(IconColor), value(PrimaryColor)));
+    fill: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
 }
 
 .root:disabled .icon path {
@@ -69,7 +84,13 @@
     color: wixApply(color, value(DisabledColor));
 }
 
-/* .toggle,
+/* .root,
+.icon,
+.toggle,
 .label {
     border: 1px solid red;
+}
+
+.toggle {
+    border: 1px solid black;
 } */

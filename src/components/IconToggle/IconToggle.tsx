@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   Checkbox as CoreCheckbox,
-  CheckboxProps as CoreCheckboxProps,
+  CheckboxProps as CoreCheckboxProps
 } from "wix-ui-core/checkbox";
 import styles from "./IconToggle.st.css";
 import { TPAComponentsConsumer } from "../TPAComponentsConfig";
@@ -34,23 +34,42 @@ interface DefaultProps {
 /** IconToggle */
 export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = "IconToggle";
-  static defaultProps: DefaultProps = { 
-    icon: <DefaultIcon />, 
-    label: "Like", 
-    labelPlacement: 'right', 
+  static defaultProps: DefaultProps = {
+    icon: <DefaultIcon />,
+    label: "Like",
+    labelPlacement: "right",
     checked: false,
-    disabled: false,
+    disabled: false
   };
 
   render() {
-    const { icon, label, labelPlacement, onChange, checked, disabled, ...rest } = this.props;
-    
-    const renderIcon = () => <div className={styles.icon}>{icon}</div>
+    const {
+      icon,
+      label,
+      labelPlacement,
+      onChange,
+      checked,
+      disabled,
+      ...rest
+    } = this.props;
+
+    const renderIcon = () => (
+      <div className={styles.container}>
+        <div className={styles.icon}>{icon}</div>
+        <div className={styles.label}>{label}</div>
+      </div>
+    );
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles("root", { mobile, checked, disabled, labelPlacement }, rest)}>
+          <div
+            {...styles(
+              "root",
+              { mobile, checked, disabled, labelPlacement },
+              rest
+            )}
+          >
             <CoreCheckbox
               className={styles.toggle}
               uncheckedIcon={renderIcon()}
@@ -62,11 +81,9 @@ export class IconToggle extends React.Component<IconToggleProps> {
               disabled={disabled}
               onChange={onChange}
             />
-            <span className={styles.label}>{label}</span>
           </div>
         )}
       </TPAComponentsConsumer>
     );
   }
 }
-
