@@ -3,6 +3,11 @@
     -st-named: wixApply;
 }
 
+:import {
+    -st-from: "../IconToggle/IconToggle.st.css";
+    -st-default: IconToggle;
+}
+
 :vars {
     /*Defaults*/
     /*Defaults params goes here*/
@@ -16,8 +21,13 @@
 .root {
     -st-states: mobile;
     /*css goes here*/
+
+    -st-mixin: IconToggle(
+        IconColor 'red'
+    );
 }
 
 .root:mobile {
     /*mobile css goes here*/
 }
+  
