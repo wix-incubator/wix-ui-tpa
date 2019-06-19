@@ -15,7 +15,8 @@
     /*Overrides*/
     /*Deceleration of overridable placeholders*/
     IconColor: --overridable;
-    LabelFont: --overidable;
+    LabelColor: --overridable;
+    LabelFont: --overridable;
 }
 
 .root {
@@ -59,7 +60,7 @@
 
 .label {
     grid-area: label;
-    color: wixApply(color, value(DefaultColor));
+    color: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
     font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
 }
 
