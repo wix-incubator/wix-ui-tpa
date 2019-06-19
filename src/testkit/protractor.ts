@@ -26,6 +26,11 @@ export const buttonTestkitFactory = protractorUniTestkitFactoryCreator(
   buttonDriverFactory,
 );
 
+import { statesButtonDriverFactory } from '../components/StatesButton/StatesButton.driver';
+export const statesButtonTestkitFactory = protractorUniTestkitFactoryCreator(
+  statesButtonDriverFactory,
+);
+
 import {
   autocompleteDriverFactory,
   AutocompleteDriver,
