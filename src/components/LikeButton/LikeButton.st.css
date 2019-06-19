@@ -11,11 +11,17 @@
 :vars {
     /*Defaults*/
     /*Defaults params goes here*/
+    IconColor: wixApply(color, color-5);
+}
+
+:vars {
+    IconColor: --overridable;
 }
 
 :vars {
     /*Overrides*/
     /*Deceleration of overridable placeholders*/
+    iconColor: value(IconColor);
 }
 
 .root {
@@ -23,7 +29,7 @@
     /*css goes here*/
 
     -st-mixin: IconToggle(
-        IconColor 'red'
+        IconColor value(iconColor)
     );
 }
 
@@ -31,3 +37,4 @@
     /*mobile css goes here*/
 }
   
+

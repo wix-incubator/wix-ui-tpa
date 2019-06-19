@@ -10,7 +10,6 @@ export interface LikeButtonProps {
   checked: boolean;
   onChange?: (event: OnChangeEvent) => void;
   disabled: boolean;
-  color: string;
 }
 
 interface DefaultProps {
@@ -18,7 +17,6 @@ interface DefaultProps {
   labelPlacement: Placement;
   checked: boolean;
   disabled: boolean;
-  color: string;
 }
 
 /** like button */
@@ -29,11 +27,10 @@ export class LikeButton extends React.Component<LikeButtonProps> {
     labelPlacement: 'right',
     checked: false,
     disabled: false,
-    color: '#000',
   };
 
   render() {
-    const { label, labelPlacement, onChange, checked, disabled, color, ...rest } = this.props;
+    const { label, labelPlacement, onChange, checked, disabled, ...rest } = this.props;
 
     return (
       <TPAComponentsConsumer>
@@ -43,6 +40,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
               <IconToggle 
                 icon={<Heart />}
                 label={label}
+                disabled={disabled}
                 onChange={onChange}
                 checked={checked}
                 labelPlacement={labelPlacement} />

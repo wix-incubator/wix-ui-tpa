@@ -45,6 +45,7 @@
 
 .label {
     grid-area: label;
+    color: wixApply(color, value(PrimaryColor));
 }
 
 .icon path {
