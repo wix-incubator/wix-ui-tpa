@@ -26,6 +26,7 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-IconToggle',
     checked: false,
+    disabled: false,
     labelPlacement: 'right',
   }),
   exampleProps: {

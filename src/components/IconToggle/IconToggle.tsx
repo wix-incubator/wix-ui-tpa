@@ -20,6 +20,7 @@ export interface IconToggleProps {
   labelPlacement: Placement;
   onChange?: (event: OnChangeEvent) => void;
   checked: boolean;
+  disabled: boolean;
 }
 
 interface DefaultProps {
@@ -27,27 +28,29 @@ interface DefaultProps {
   label: React.ReactNode | string;
   labelPlacement: Placement;
   checked: boolean;
+  disabled: boolean;
 }
 
 /** IconToggle */
 export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = "IconToggle";
   static defaultProps: DefaultProps = { 
-    icon: DefaultIcon, 
+    icon: <DefaultIcon />, 
     label: "Like", 
     labelPlacement: 'right', 
     checked: false,
+    disabled: false,
   };
 
   render() {
-    const { icon, label, labelPlacement, onChange, checked, ...rest } = this.props;
+    const { icon, label, labelPlacement, onChange, checked, disabled, ...rest } = this.props;
     
     const renderIcon = () => <div className={styles.icon}>{icon}</div>
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles("root", { mobile, checked, labelPlacement }, rest)}>
+          <div {...styles("root", { mobile, checked, disabled, labelPlacement }, rest)}>
             <CoreCheckbox
               className={styles.toggle}
               uncheckedIcon={renderIcon()}
@@ -56,6 +59,7 @@ export class IconToggle extends React.Component<IconToggleProps> {
               error={false}
               indeterminate={false}
               checked={checked}
+              disabled={disabled}
               onChange={onChange}
             />
             <span className={styles.label}>{label}</span>

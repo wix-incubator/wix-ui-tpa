@@ -6,7 +6,8 @@
 :vars {
     /*Defaults*/
     /*Defaults params goes here*/
-    PrimaryColor: dodgerblue;
+    PrimaryColor: color-5;
+    DisabledColor: color-3;
 }
 
 :vars {
@@ -16,7 +17,7 @@
 }
 
 .root {
-    -st-states: mobile, checked, labelPlacement( enum(right, left) );
+    -st-states: mobile, checked, disabled, labelPlacement( enum(right, left) );
     /*css goes here*/
 }
 
@@ -50,8 +51,21 @@
     stroke: wixApply(color, wixApply(fallback, value(IconColor), value(PrimaryColor)));
 }
 
+.icon:hover {
+    opacity: 0.6;
+}
+
 .root:checked .icon path {
     fill: wixApply(color, wixApply(fallback, value(IconColor), value(PrimaryColor)));
+}
+
+.root:disabled .icon path {
+    fill: wixApply(color, value(DisabledColor));
+    stroke: wixApply(color, value(DisabledColor));
+}
+
+.root:disabled .label {
+    color: wixApply(color, value(DisabledColor));
 }
 
 /* .toggle,
