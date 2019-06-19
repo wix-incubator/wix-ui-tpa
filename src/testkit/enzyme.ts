@@ -19,6 +19,11 @@ export const buttonTestkitFactory = enzymeUniTestkitFactoryCreator(
   buttonDriverFactory,
 );
 
+import { statesButtonDriverFactory } from '../components/StatesButton/StatesButton.driver';
+export const statesButtonTestkitFactory = enzymeUniTestkitFactoryCreator(
+  statesButtonDriverFactory,
+);
+
 import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory: (
   obj: WrapperData,
