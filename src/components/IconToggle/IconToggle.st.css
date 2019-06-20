@@ -26,22 +26,23 @@
 }
 
 .container {
-    display: grid;
-    grid-template-columns: min-content min-content;
-    grid-column-gap: 6px;
+    display: flex;
     align-items: center;
 }
 
 .root:labelPlacement(right) .container {
-    grid-template-areas: 'icon label';
+    flex-direction: row-reverse;
+    justify-content: flex-end;
 }
 
 .root:labelPlacement(left) .container {
-    grid-template-areas: 'label icon';
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
-.icon {
-    grid-area: icon;
+.root:labelPlacement(right) .container > :last-child,
+.root:labelPlacement(left) .container > :first-child  {
+    margin-right: 6px;
 }
 
 .icon:hover {
@@ -66,7 +67,6 @@
 }
 
 .label {
-    grid-area: label;
     color: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
     font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
 }
