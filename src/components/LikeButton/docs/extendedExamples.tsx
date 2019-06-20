@@ -6,7 +6,7 @@ import * as ExtendedRawSource from '!raw-loader!./LikeButtonExtendedExample.tsx'
 import * as ExtendedCSSRawSource from '!raw-loader!./LikeButtonExtendedExample.st.css';
 import { LikeButtonExtendedExample } from './LikeButtonExtendedExample';
 
-export const Examples = () => (
+export default () => (
   <div>
       <div className="tpa-container">
       <CodeExample
