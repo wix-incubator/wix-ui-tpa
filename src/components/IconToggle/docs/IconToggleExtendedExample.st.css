@@ -1,0 +1,12 @@
+:import {
+  -st-from: "../IconToggle.st.css";
+  -st-default: IconToggle;
+}
+
+.root {
+  -st-mixin: IconToggle(
+    IconColor '"color(--iconColor)"',
+    LabelColor '"color(--labelColor)"',
+    LabelFont '"font(--labelFont)"'
+  );
+}

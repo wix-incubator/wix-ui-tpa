@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconToggle } from '../';
-import * as examples from './examples';
+import Examples from './examples.tsx';
 import {
   header,
   api,
@@ -8,15 +8,10 @@ import {
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -30,10 +25,7 @@ export default {
     labelPlacement: 'right',
   }),
   exampleProps: {
-    labelPlacement: [
-      'right',
-      'left'
-    ],
+    labelPlacement: ['right', 'left'],
   },
   dataHook: 'storybook-IconToggle',
   sections: [
@@ -43,17 +35,12 @@ export default {
         title: 'Usage',
         sections: [
           importExample({
-            source: examples.importExample,
+            source: `import { IconToggle } from 'wix-ui-tpa/IconToggle';`,
           }),
 
           divider(),
 
           title('Examples'),
-
-          ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
-          ].map(code),
         ],
       }),
 
@@ -64,4 +51,5 @@ export default {
       ].map(tab),
     ]),
   ],
+  examples: <Examples />,
 };
