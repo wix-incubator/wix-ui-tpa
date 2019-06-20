@@ -10,20 +10,16 @@
 
 :vars {
     /*Defaults*/
-    /*Defaults params goes here*/
     IconColor: wixApply(color, color-5);
 }
 
 :vars {
     /*Overrides*/
-    /*Deceleration of overridable placeholders*/
     iconColor: value(IconColor);
 }
 
 .root {
-    -st-states: mobile, checked;
-    /*css goes here*/
-
+    -st-states: checked;
     -st-mixin: IconToggle(
         IconColor value(iconColor)
     );
@@ -34,9 +30,3 @@
         IconColor '#F64D43'
     );
 }
-
-.root:mobile {
-    /*mobile css goes here*/
-}
-  
-

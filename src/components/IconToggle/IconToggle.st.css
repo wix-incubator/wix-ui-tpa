@@ -18,24 +18,24 @@
 }
 
 .root {
-    -st-states: mobile, checked, disabled, labelPlacement( enum(start, end) );
+    -st-states: checked, disabled, labelPlacement( enum(start, end) );
     display: inline-block;
     padding: 0;
     margin: 0;
     line-height: 0;
 }
 
-.container {
+.content {
     display: flex;
     align-items: center;
 }
 
-.root:labelPlacement(end) .container {
+.root:labelPlacement(start) .content {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
 
-.root:labelPlacement(start) .container {
+.root:labelPlacement(end) .content {
     flex-direction: row;
     justify-content: flex-start;
 }

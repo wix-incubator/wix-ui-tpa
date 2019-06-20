@@ -38,47 +38,37 @@ export class IconToggle extends React.Component<IconToggleProps> {
     disabled: false,
   };
 
-  render() {
-    const {
-      icon,
-      label,
-      labelPlacement,
-      onChange,
-      checked,
-      disabled,
-      ...rest
-    } = this.props;
+  _getContent = () => {
+    const { icon, label } = this.props;
 
-    const renderIcon = () => (
-      <div className={styles.container}>
+    return (
+      <div className={styles.content}>
         <div className={styles.icon}>{icon}</div>
         {label ? <div className={styles.spacer} /> : null}
         {label ? <div className={styles.label}>{label}</div> : null}
       </div>
     );
+  };
+
+  render() {
+    const { labelPlacement, onChange, checked, disabled, ...rest } = this.props;
+
+    const content = this._getContent();
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div
-            {...styles(
-              'root',
-              { mobile, checked, disabled, labelPlacement },
-              rest,
-            )}
-          >
-            <CoreCheckbox
-              className={styles.toggle}
-              uncheckedIcon={renderIcon()}
-              checkedIcon={renderIcon()}
-              indeterminateIcon={renderIcon()}
-              error={false}
-              indeterminate={false}
-              checked={checked}
-              disabled={disabled}
-              onChange={onChange}
-            />
-          </div>
+        {() => (
+          <CoreCheckbox
+            {...styles('root', { checked, disabled, labelPlacement }, rest)}
+            uncheckedIcon={content}
+            checkedIcon={content}
+            indeterminateIcon={content}
+            error={false}
+            indeterminate={false}
+            checked={checked}
+            disabled={disabled}
+            onChange={onChange}
+          />
         )}
       </TPAComponentsConsumer>
     );
