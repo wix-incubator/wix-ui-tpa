@@ -13,7 +13,7 @@ class IconToggleVisual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <IconToggle data-hook={'storybook-e2e-IconToggle'} {...this.props} />
+        <IconToggle icon={<div />} data-hook={'storybook-e2e-IconToggle'} {...this.props} />
       </TPAComponentsProvider>
     );
   }

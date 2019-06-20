@@ -12,32 +12,33 @@ describe('IconToggle', () => {
   const createDriver = createDriverFactory(iconToggleDriverFactory);
 
   it('should render', () => {
-    const driver = createDriver(<IconToggle />);
+    const driver = createDriver(<IconToggle icon={<div />} />);
     expect(driver.exists()).toBe(true);
   });
 
   it('should call onChange', () => {
     const onChangeSpy = jest.fn();
     onChangeSpy.mockImplementation(() => Promise.resolve());
-    const driver = createDriver(<IconToggle onChange={onChangeSpy} />);
+    const driver = createDriver(<IconToggle icon={<div />} onChange={onChangeSpy} />);
     expect(onChangeSpy).not.toHaveBeenCalled();
     driver.click();
     expect(onChangeSpy).toHaveBeenCalled();
   });
 
   it('should be disabled', () => {
-    const driver = createDriver(<IconToggle disabled />);
+    const driver = createDriver(<IconToggle icon={<div />} disabled />);
     expect(driver.isDisabled()).toBe(true);
   });
 
+
   it('should be checked', () => {
-    const driver = createDriver(<IconToggle checked />);
+    const driver = createDriver(<IconToggle icon={<div />} checked />);
     expect(driver.isChecked()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<IconToggle />, iconToggleTestkitFactory)).toBe(
+      expect(isTestkitExists(<IconToggle icon={<div />} />, iconToggleTestkitFactory)).toBe(
         true,
       );
     });
@@ -47,7 +48,7 @@ describe('IconToggle', () => {
     it('should exist', () => {
       expect(
         isEnzymeTestkitExists(
-          <IconToggle />,
+          <IconToggle icon={<div />} />,
           enzymeAutocompleteTestkitFactory,
           mount,
         ),
