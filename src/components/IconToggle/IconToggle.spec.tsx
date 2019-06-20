@@ -19,7 +19,9 @@ describe('IconToggle', () => {
   it('should call onChange', () => {
     const onChangeSpy = jest.fn();
     onChangeSpy.mockImplementation(() => Promise.resolve());
-    const driver = createDriver(<IconToggle icon={<div />} onChange={onChangeSpy} />);
+    const driver = createDriver(
+      <IconToggle icon={<div />} onChange={onChangeSpy} />,
+    );
     expect(onChangeSpy).not.toHaveBeenCalled();
     driver.click();
     expect(onChangeSpy).toHaveBeenCalled();
@@ -30,7 +32,6 @@ describe('IconToggle', () => {
     expect(driver.isDisabled()).toBe(true);
   });
 
-
   it('should be checked', () => {
     const driver = createDriver(<IconToggle icon={<div />} checked />);
     expect(driver.isChecked()).toBe(true);
@@ -38,9 +39,12 @@ describe('IconToggle', () => {
 
   describe('testkit', () => {
     it('should exist', () => {
-      expect(isTestkitExists(<IconToggle icon={<div />} />, iconToggleTestkitFactory)).toBe(
-        true,
-      );
+      expect(
+        isTestkitExists(
+          <IconToggle icon={<div />} />,
+          iconToggleTestkitFactory,
+        ),
+      ).toBe(true);
     });
   });
 
