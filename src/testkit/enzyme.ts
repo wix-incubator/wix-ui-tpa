@@ -68,3 +68,8 @@ import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.dri
 export const likeButtonTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(likeButtonDriverFactory);
+
+import { paginationDriverFactory } from '../components/Pagination/Pagination.driver';
+export const paginationTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeTestkitFactoryCreator(paginationDriverFactory);

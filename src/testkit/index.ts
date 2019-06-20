@@ -47,3 +47,8 @@ import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.dri
 export const likeButtonTestkitFactory = testkitFactoryCreator(
   likeButtonDriverFactory,
 );
+
+import { paginationDriverFactory } from '../components/Pagination/Pagination.driver';
+export const paginationTestkitFactory = testkitFactoryCreator(
+  paginationDriverFactory,
+);
