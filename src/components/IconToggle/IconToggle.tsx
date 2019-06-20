@@ -28,7 +28,6 @@ interface DefaultProps {
   disabled: boolean;
 }
 
-/** IconToggle */
 export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {

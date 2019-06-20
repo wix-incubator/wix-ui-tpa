@@ -1,6 +1,5 @@
 import * as React from 'react';
 import styles from './LikeButton.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ReactComponent as Heart } from '../../icons/raw/Heart.svg';
 import { IconToggle, LabelPlacement, OnChangeEvent } from '../IconToggle';
 
@@ -19,7 +18,6 @@ interface DefaultProps {
   disabled: boolean;
 }
 
-/** like button */
 export class LikeButton extends React.Component<LikeButtonProps> {
   static displayName = 'LikeButton';
   static defaultProps: DefaultProps = {
@@ -40,21 +38,15 @@ export class LikeButton extends React.Component<LikeButtonProps> {
     } = this.props;
 
     return (
-      <TPAComponentsConsumer>
-        {() => (
-          <div className={styles.likeButton}>
-            <IconToggle
-              {...styles('root', { checked, disabled }, rest)}
-              icon={<Heart />}
-              label={`${label}`}
-              disabled={disabled}
-              onChange={onChange}
-              checked={checked}
-              labelPlacement={labelPlacement}
-            />
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <IconToggle
+        {...styles('root', { checked, disabled }, rest)}
+        icon={<Heart />}
+        label={`${label}`}
+        disabled={disabled}
+        onChange={onChange}
+        checked={checked}
+        labelPlacement={labelPlacement}
+      />
     );
   }
 }
