@@ -15,10 +15,6 @@
 }
 
 :vars {
-    IconColor: --overridable;
-}
-
-:vars {
     /*Overrides*/
     /*Deceleration of overridable placeholders*/
     iconColor: value(IconColor);

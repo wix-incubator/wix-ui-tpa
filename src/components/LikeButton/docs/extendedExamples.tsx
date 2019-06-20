@@ -9,7 +9,7 @@ import { LabelPlacement } from '../../IconToggle';
 
 export default () => (
   <div>
-      <div className="tpa-container">
+    <div className="tpa-container">
       <CodeExample
         title="Like Button"
         code={[
@@ -20,11 +20,12 @@ export default () => (
           ExtendedRawSource,
         ].join('\n')}
       >
-        <LikeButtonExtendedExample 
-          label="Like" 
-          labelPlacement={LabelPlacement.END} 
-          checked={false} 
-          disabled={false} />
+        <LikeButtonExtendedExample
+          label="Like"
+          labelPlacement={LabelPlacement.END}
+          checked={false}
+          disabled={false}
+        />
       </CodeExample>
     </div>
     <MockSettings

@@ -1,49 +1,55 @@
 import * as React from 'react';
-import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
-import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { iconToggleDriverFactory } from './IconToggle.driver';
-import { IconToggle } from './';
+import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
+import { IconToggle } from '.';
 import { iconToggleTestkitFactory } from '../../testkit';
-import { iconToggleTestkitFactory as enzymeIconToggleTestkitFactory } from '../../testkit/enzyme';
+import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
+import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
+import { iconToggleTestkitFactory as enzymeAutocompleteTestkitFactory } from '../../testkit/enzyme';
 
 describe('IconToggle', () => {
-  const createDriver = createUniDriverFactory(iconToggleDriverFactory);
+  const createDriver = createDriverFactory(iconToggleDriverFactory);
 
-  it('should render', async () => {
+  it('should render', () => {
     const driver = createDriver(<IconToggle />);
-    expect(await driver.exists()).toBe(true);
+    expect(driver.exists()).toBe(true);
   });
 
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<IconToggle />),
-    );
-    expect(await driver.isMobile()).toBe(true);
+  it('should call onChange', () => {
+    const onChangeSpy = jest.fn();
+    onChangeSpy.mockImplementation(() => Promise.resolve());
+    const driver = createDriver(<IconToggle onChange={onChangeSpy} />);
+    expect(onChangeSpy).not.toHaveBeenCalled();
+    driver.click();
+    expect(onChangeSpy).toHaveBeenCalled();
+  });
+
+  it('should be disabled', () => {
+    const driver = createDriver(<IconToggle disabled />);
+    expect(driver.isDisabled()).toBe(true);
+  });
+
+  it('should be checked', () => {
+    const driver = createDriver(<IconToggle checked />);
+    expect(driver.isChecked()).toBe(true);
   });
 
   describe('testkit', () => {
-    it('should exist', async () => {
-      expect(
-        await isUniTestkitExists(<IconToggle />, iconToggleTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
-      ).toBe(true);
+    it('should exist', () => {
+      expect(isTestkitExists(<IconToggle />, iconToggleTestkitFactory)).toBe(
+        true,
+      );
     });
   });
 
   describe('enzyme testkit', () => {
-    it('should exist', async () => {
+    it('should exist', () => {
       expect(
-        await isUniEnzymeTestkitExists(
+        isEnzymeTestkitExists(
           <IconToggle />,
-          enzymeIconToggleTestkitFactory,
+          enzymeAutocompleteTestkitFactory,
           mount,
-          {
-            dataHookPropName: 'data-hook',
-          },
         ),
       ).toBe(true);
     });

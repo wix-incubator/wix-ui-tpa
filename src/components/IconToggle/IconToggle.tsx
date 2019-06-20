@@ -9,7 +9,7 @@ export interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
 
 export enum LabelPlacement {
   START = 'start',
-  END = 'end'
+  END = 'end',
 }
 
 export interface IconToggleProps {

@@ -70,10 +70,14 @@ export const tooltipTestkitFactory = protractorTestkitFactoryCreator<
 >(tooltipDriverFactory);
 export { TooltipProtractorDriver };
 
-import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
-export const iconToggleTestkitFactory = protractorUniTestkitFactoryCreator(
-  iconToggleDriverFactory,
-);
+import {
+  checkboxDriverFactory as iconToggleDriverFactory,
+  CheckboxDriver as IconToggleDriver,
+} from '../components/IconToggle/IconToggle.protractor.driver';
+export const iconToggleTestkitFactory = protractorTestkitFactoryCreator<
+  IconToggleDriver
+>(iconToggleDriverFactory);
+export { IconToggleDriver };
 
 import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
 export const likeButtonTestkitFactory = protractorUniTestkitFactoryCreator(

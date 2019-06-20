@@ -21,7 +21,7 @@ describe('iconToggle', () => {
 
   it('should render', async () => {
     const driver = iconToggleTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find IconToggle');
-    expect((await driver.element()).isDisplayed()).toBe(true);
+    await waitForVisibilityOf(driver.element(), 'Cannot find IconToggle');
+    expect(await driver.element().isDisplayed()).toBe(true);
   });
 });

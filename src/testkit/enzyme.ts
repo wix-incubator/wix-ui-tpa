@@ -62,7 +62,7 @@ export const tooltipTestkitFactory: (
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
 export const iconToggleTestkitFactory: (
   obj: WrapperData,
-) => any = enzymeUniTestkitFactoryCreator(iconToggleDriverFactory);
+) => any = enzymeTestkitFactoryCreator(iconToggleDriverFactory);
 
 import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
 export const likeButtonTestkitFactory: (

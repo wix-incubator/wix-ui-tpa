@@ -21,11 +21,11 @@ HeartIcon.displayName = 'Heart';
 const iconExamples = [
   {
     label: 'Star',
-    value: <StarIcon />
+    value: <StarIcon />,
   },
   {
     label: 'Heart',
-    value: <HeartIcon />
+    value: <HeartIcon />,
   },
 ];
 

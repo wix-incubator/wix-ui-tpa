@@ -8,7 +8,7 @@ export interface LikeButtonProps {
   label: React.ReactNode | string;
   labelPlacement: LabelPlacement;
   checked: boolean;
-  onChange?: (event: OnChangeEvent) => void;
+  onChange?(event: OnChangeEvent): void;
   disabled: boolean;
 }
 
@@ -22,7 +22,7 @@ interface DefaultProps {
 /** like button */
 export class LikeButton extends React.Component<LikeButtonProps> {
   static displayName = 'LikeButton';
-  static defaultProps: DefaultProps = { 
+  static defaultProps: DefaultProps = {
     label: 0,
     labelPlacement: LabelPlacement.END,
     checked: false,
@@ -30,21 +30,29 @@ export class LikeButton extends React.Component<LikeButtonProps> {
   };
 
   render() {
-    const { label, labelPlacement, onChange, checked, disabled, ...rest } = this.props;
+    const {
+      label,
+      labelPlacement,
+      onChange,
+      checked,
+      disabled,
+      ...rest
+    } = this.props;
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
-            <div className={styles.likeButton}>
-              <IconToggle 
-                {...styles('root', { checked, disabled }, rest)}
-                icon={<Heart />}
-                label={`${label}`}
-                disabled={disabled}
-                onChange={onChange}
-                checked={checked}
-                labelPlacement={labelPlacement} />
-            </div>
+        {() => (
+          <div className={styles.likeButton}>
+            <IconToggle
+              {...styles('root', { checked, disabled }, rest)}
+              icon={<Heart />}
+              label={`${label}`}
+              disabled={disabled}
+              onChange={onChange}
+              checked={checked}
+              labelPlacement={labelPlacement}
+            />
+          </div>
         )}
       </TPAComponentsConsumer>
     );

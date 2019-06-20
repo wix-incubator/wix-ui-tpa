@@ -39,7 +39,11 @@ import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory = uniTestkitFactoryCreator(gridDriverFactory);
 
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
-export const iconToggleTestkitFactory = uniTestkitFactoryCreator(iconToggleDriverFactory);
+export const iconToggleTestkitFactory = testkitFactoryCreator(
+  iconToggleDriverFactory,
+);
 
 import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
-export const likeButtonTestkitFactory = uniTestkitFactoryCreator(likeButtonDriverFactory);
+export const likeButtonTestkitFactory = uniTestkitFactoryCreator(
+  likeButtonDriverFactory,
+);

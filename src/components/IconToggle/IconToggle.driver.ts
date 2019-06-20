@@ -1,19 +1,14 @@
-import {
-  BaseUniDriver,
-  baseUniDriverFactory,
-} from 'wix-ui-test-utils/base-driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './IconToggle.st.css';
+import { checkboxDriverFactory as coreCheckboxDriverFactory } from 'wix-ui-core/drivers/vanilla';
+import { errorMessageWrapperDriverFactory } from '../../baseComponents/ErrorMessageWrapper/ErrorMessageWrapper.driver';
 
-export interface IconToggleDriver extends BaseUniDriver {
-  isMobile(): Promise<boolean>;
-}
-
-export const iconToggleDriverFactory = (base: UniDriver): IconToggleDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
-
+export const iconToggleDriverFactory = ({ element, eventTrigger }) => {
+  const errorMessageWrapperDriver = errorMessageWrapperDriverFactory({
+    element,
+  });
   return {
-    ...baseUniDriverFactory(base),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
+    ...coreCheckboxDriverFactory({
+      element: errorMessageWrapperDriver.getRenderElement(),
+      eventTrigger,
+    }),
   };
 };

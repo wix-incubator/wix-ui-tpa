@@ -17,14 +17,6 @@ describe('LikeButton', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<LikeButton />),
-    );
-    expect(await driver.isMobile()).toBe(true);
-  });
-
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
