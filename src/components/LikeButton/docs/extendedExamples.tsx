@@ -20,12 +20,7 @@ export default () => (
           ExtendedRawSource,
         ].join('\n')}
       >
-        <LikeButtonExtendedExample
-          label="Like"
-          labelPlacement={LabelPlacement.END}
-          checked={false}
-          disabled={false}
-        />
+        <LikeButtonExtendedExample />
       </CodeExample>
     </div>
     <MockSettings
