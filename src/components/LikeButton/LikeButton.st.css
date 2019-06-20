@@ -25,11 +25,17 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: mobile, checked;
     /*css goes here*/
 
     -st-mixin: IconToggle(
         IconColor value(iconColor)
+    );
+}
+
+.root:checked {
+    -st-mixin: IconToggle(
+        IconColor 'red'
     );
 }
 

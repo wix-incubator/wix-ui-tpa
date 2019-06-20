@@ -35,9 +35,9 @@ export class LikeButton extends React.Component<LikeButtonProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
             <div className={styles.likeButton}>
               <IconToggle 
+                {...styles('root', { checked, disabled }, rest)}
                 icon={<Heart />}
                 label={label}
                 disabled={disabled}
@@ -45,7 +45,6 @@ export class LikeButton extends React.Component<LikeButtonProps> {
                 checked={checked}
                 labelPlacement={labelPlacement} />
             </div>
-          </div>
         )}
       </TPAComponentsConsumer>
     );
