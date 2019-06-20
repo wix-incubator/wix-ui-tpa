@@ -30,19 +30,18 @@
     align-items: center;
 }
 
-.root:labelPlacement(right) .container {
+.root:labelPlacement(left) .container {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
 
-.root:labelPlacement(left) .container {
+.root:labelPlacement(right) .container {
     flex-direction: row;
     justify-content: flex-start;
 }
 
-.root:labelPlacement(right) .container > :last-child,
-.root:labelPlacement(left) .container > :first-child  {
-    margin-right: 6px;
+.spacer {
+    width: 6px;
 }
 
 .icon:hover {

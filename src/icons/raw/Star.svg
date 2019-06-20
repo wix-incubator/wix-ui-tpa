@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icon-Buttons--Share" transform="translate(-647.000000, -865.000000)" stroke="#000000">
+            <g id="star-empty" transform="translate(647.000000, 865.000000)">
+                <g id="Selections-/-Primitives-/-Ratings-/-Empty">
+                    <path d="M12.266288,14.2968459 L11.3574631,9.26263762 L14.7735984,6.23833402 L10.1403181,5.92399751 L7.98700007,1.18089625 L5.65488123,6.03123389 L1.28385179,6.25524706 L5.07674743,9.47844043 L3.8323151,14.2431804 L8.00143763,11.9623218 L12.266288,14.2968459 Z" id="Star1"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

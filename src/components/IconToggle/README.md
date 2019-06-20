@@ -36,6 +36,13 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import IconToggle from 'wix-ui-tpa/IconToggle';
     import iconToggleStylesExt from './IconToggleExt.st.css';
+    import { ReactComponent as StarIcon } from './Star.svg';
 
-    const IconToggleExt = (props) => <IconToggle {...props} {...iconToggleStylesExt('root', {}, props)}/>;
+    const IconToggleExt = (props) => (
+        <IconToggle 
+            icon={<StarIcon />} 
+            label="0"
+            {...props}
+            {...iconToggleStylesExt('root', {}, props)}
+        />);
     ```

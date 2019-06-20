@@ -12,6 +12,22 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+import { ReactComponent as StarIcon } from '../../../icons/raw/Star.svg';
+import { ReactComponent as HeartIcon } from '../../../icons/raw/Heart.svg';
+
+StarIcon.displayName = 'Star';
+HeartIcon.displayName = 'Heart';
+
+const iconExamples = [
+  {
+    label: 'Star',
+    value: <StarIcon />
+  },
+  {
+    label: 'Heart',
+    value: <HeartIcon />
+  },
+];
 
 export default {
   category: 'Components',
@@ -20,11 +36,14 @@ export default {
   componentPath: '../IconToggle.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-IconToggle',
+    icon: iconExamples[0].value,
+    label: '0',
     checked: false,
     disabled: false,
     labelPlacement: 'right',
   }),
   exampleProps: {
+    icon: iconExamples,
     labelPlacement: ['right', 'left'],
   },
   dataHook: 'storybook-IconToggle',

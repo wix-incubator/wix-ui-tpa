@@ -1,30 +1,24 @@
-import * as React from "react";
-import {
-  Checkbox as CoreCheckbox,
-  CheckboxProps as CoreCheckboxProps
-} from "wix-ui-core/checkbox";
-import styles from "./IconToggle.st.css";
-import { TPAComponentsConsumer } from "../TPAComponentsConfig";
-
-import { ReactComponent as HeartIcon } from "../../icons/raw/Heart.svg";
+import * as React from 'react';
+import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
+import styles from './IconToggle.st.css';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
 }
 
-export type Placement = "right" | "left";
+export type Placement = 'right' | 'left';
 
 export interface IconToggleProps {
   icon: React.ReactNode;
   label: React.ReactNode | string;
   labelPlacement: Placement;
-  onChange?: (event: OnChangeEvent) => void;
+  onChange?(event: OnChangeEvent): void;
   checked: boolean;
   disabled: boolean;
 }
 
 interface DefaultProps {
-  icon: React.ReactNode;
   label: React.ReactNode | string;
   labelPlacement: Placement;
   checked: boolean;
@@ -33,13 +27,12 @@ interface DefaultProps {
 
 /** IconToggle */
 export class IconToggle extends React.Component<IconToggleProps> {
-  static displayName = "IconToggle";
+  static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {
-    icon: <HeartIcon />,
-    label: "Like",
-    labelPlacement: "right",
+    label: undefined,
+    labelPlacement: 'right',
     checked: false,
-    disabled: false
+    disabled: false,
   };
 
   render() {
@@ -56,7 +49,8 @@ export class IconToggle extends React.Component<IconToggleProps> {
     const renderIcon = () => (
       <div className={styles.container}>
         <div className={styles.icon}>{icon}</div>
-        <div className={styles.label}>{label}</div>
+        {label ? <div className={styles.spacer} /> : null}
+        {label ? <div className={styles.label}>{label}</div> : null}
       </div>
     );
 
@@ -65,9 +59,9 @@ export class IconToggle extends React.Component<IconToggleProps> {
         {({ mobile }) => (
           <div
             {...styles(
-              "root",
+              'root',
               { mobile, checked, disabled, labelPlacement },
-              rest
+              rest,
             )}
           >
             <CoreCheckbox

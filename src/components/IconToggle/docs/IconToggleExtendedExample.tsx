@@ -1,14 +1,26 @@
 import * as React from 'react';
 import { IconToggle } from '../IconToggle';
 import extendedStyles from './IconToggleExtendedExample.st.css';
+import { ReactComponent as StarIcon } from '../../../icons/raw/Star.svg';
 
-export class IconToggleExtendedExample extends React.Component {
-  state = { checked: false };
+interface State {
+  checked: boolean;
+  counter: number;
+}
 
-  handleChange = ({ checked }) => this.setState({ checked });
+export class IconToggleExtendedExample extends React.Component<{}, State> {
+  state = { checked: false, counter: 0 };
+
+  handleChange = ({ checked }) =>
+    this.setState(({ counter }) => ({
+      checked,
+      counter: checked ? counter + 1 : counter - 1,
+    }));
 
   render = () => (
     <IconToggle
+      icon={<StarIcon />}
+      label={`${this.state.counter}`}
       onChange={this.handleChange}
       checked={this.state.checked}
       {...this.props}
