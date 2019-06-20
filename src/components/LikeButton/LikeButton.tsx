@@ -2,11 +2,11 @@ import * as React from 'react';
 import styles from './LikeButton.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ReactComponent as Heart } from '../../icons/raw/Heart.svg';
-import { IconToggle, Placement, OnChangeEvent } from '../IconToggle';
+import { IconToggle, LabelPlacement, OnChangeEvent } from '../IconToggle';
 
 export interface LikeButtonProps {
   label: React.ReactNode | string;
-  labelPlacement: Placement;
+  labelPlacement: LabelPlacement;
   checked: boolean;
   onChange?: (event: OnChangeEvent) => void;
   disabled: boolean;
@@ -14,7 +14,7 @@ export interface LikeButtonProps {
 
 interface DefaultProps {
   label: number;
-  labelPlacement: Placement;
+  labelPlacement: LabelPlacement;
   checked: boolean;
   disabled: boolean;
 }
@@ -24,7 +24,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
   static displayName = 'LikeButton';
   static defaultProps: DefaultProps = { 
     label: 0,
-    labelPlacement: 'right',
+    labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
   };
@@ -39,7 +39,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
               <IconToggle 
                 {...styles('root', { checked, disabled }, rest)}
                 icon={<Heart />}
-                label={label}
+                label={`${label}`}
                 disabled={disabled}
                 onChange={onChange}
                 checked={checked}

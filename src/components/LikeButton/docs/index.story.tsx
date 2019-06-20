@@ -26,6 +26,9 @@ export default {
   componentPath: '../LikeButton.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-LikeButton',
+    label: 0,
+    checked: false,
+    disabled: false,
   }),
   exampleProps: {
     //

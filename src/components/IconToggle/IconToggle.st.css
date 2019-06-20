@@ -18,7 +18,7 @@
 }
 
 .root {
-    -st-states: mobile, checked, disabled, labelPlacement( enum(right, left) );
+    -st-states: mobile, checked, disabled, labelPlacement( enum(start, end) );
     display: inline-block;
     padding: 0;
     margin: 0;
@@ -30,12 +30,12 @@
     align-items: center;
 }
 
-.root:labelPlacement(left) .container {
+.root:labelPlacement(end) .container {
     flex-direction: row-reverse;
     justify-content: flex-end;
 }
 
-.root:labelPlacement(right) .container {
+.root:labelPlacement(start) .container {
     flex-direction: row;
     justify-content: flex-start;
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconToggle } from '../';
+import { IconToggle, LabelPlacement } from '../';
 import Examples from './examples.tsx';
 import {
   header,
@@ -40,11 +40,11 @@ export default {
     label: '0',
     checked: false,
     disabled: false,
-    labelPlacement: 'right',
+    labelPlacement: LabelPlacement.END,
   }),
   exampleProps: {
     icon: iconExamples,
-    labelPlacement: ['right', 'left'],
+    labelPlacement: Object.values(LabelPlacement),
   },
   dataHook: 'storybook-IconToggle',
   sections: [

@@ -7,12 +7,15 @@ export interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
 }
 
-export type Placement = 'right' | 'left';
+export enum LabelPlacement {
+  START = 'start',
+  END = 'end'
+}
 
 export interface IconToggleProps {
   icon: React.ReactNode;
   label: React.ReactNode | string;
-  labelPlacement: Placement;
+  labelPlacement: LabelPlacement;
   onChange?(event: OnChangeEvent): void;
   checked: boolean;
   disabled: boolean;
@@ -20,7 +23,7 @@ export interface IconToggleProps {
 
 interface DefaultProps {
   label: React.ReactNode | string;
-  labelPlacement: Placement;
+  labelPlacement: LabelPlacement;
   checked: boolean;
   disabled: boolean;
 }
@@ -30,7 +33,7 @@ export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {
     label: undefined,
-    labelPlacement: 'right',
+    labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
   };
