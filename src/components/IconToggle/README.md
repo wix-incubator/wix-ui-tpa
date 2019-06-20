@@ -1,4 +1,41 @@
 ## IconToggle
-An implementation of an IconToggle for TPAs
-This Readme was auto-generated and needs to be filled manually
+An implementation of an IconToggle for TPAs,
+The TPA implementation provides few extendable theme properties with the ability to override the base properties as well,
 
+By default the IconToggle will pull the theme from the site (site colors),
+
+## Theme properties (All are optional)
+
+| propName   | propType | defaultValue | description |
+|------------|----------|--------------|-------------|
+| IconColor  | string   | none | The color of the icon instead of the default color set by theme |
+| LabelColor  | string   | none | The color of the label instead of the default color set by theme |
+| LabelFont  | string   | none | The font of the label instead of the default font |
+
+In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
+
+1. create an stylable file (e.g. IconToggleExt.st.css)
+    ``` css
+    :import {
+        -st-from: "wix-ui-tpa/IconToggle/IconToggle.st.css";
+        -st-default: TPAIconToggle;
+    }
+    
+    .root {
+        -st-extends: TPAIconToggle;
+        -st-mixin: TPAIconToggle(
+            IconColor '"--iconColor"',
+            LabelColor '"--labelColor"',
+            LabelFont '"--labelFont"'
+        );
+    }
+
+    ```
+
+2. Create a component that uses it
+    ``` javascript
+    import IconToggle from 'wix-ui-tpa/IconToggle';
+    import iconToggleStylesExt from './IconToggleExt.st.css';
+
+    const IconToggleExt = (props) => <IconToggle {...props} {...iconToggleStylesExt('root', {}, props)}/>;
+    ```

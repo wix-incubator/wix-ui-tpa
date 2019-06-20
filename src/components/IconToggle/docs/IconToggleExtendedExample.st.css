@@ -1,10 +1,10 @@
 :import {
   -st-from: "../IconToggle.st.css";
-  -st-default: IconToggle;
+  -st-default: TPAIconToggle;
 }
 
 .root {
-  -st-mixin: IconToggle(
+  -st-mixin: TPAIconToggle(
     IconColor '"color(--iconColor)"',
     LabelColor '"color(--labelColor)"',
     LabelFont '"font(--labelFont)"'
