@@ -31,7 +31,7 @@
 
 .root:checked {
     -st-mixin: IconToggle(
-        IconColor 'red'
+        IconColor '#F64D43'
     );
 }
 
