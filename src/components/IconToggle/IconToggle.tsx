@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
 import styles from './IconToggle.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
@@ -55,22 +54,18 @@ export class IconToggle extends React.Component<IconToggleProps> {
     const content = this._getContent();
 
     return (
-      <TPAComponentsConsumer>
-        {() => (
-          <div {...styles('root', { checked, disabled, labelPlacement }, rest)}>
-            <CoreCheckbox
-              uncheckedIcon={content}
-              checkedIcon={content}
-              indeterminateIcon={content}
-              error={false}
-              indeterminate={false}
-              checked={checked}
-              disabled={disabled}
-              onChange={onChange}
-            />
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <div {...styles('root', { checked, disabled, labelPlacement }, rest)}>
+        <CoreCheckbox
+          uncheckedIcon={content}
+          checkedIcon={content}
+          indeterminateIcon={content}
+          error={false}
+          indeterminate={false}
+          checked={checked}
+          disabled={disabled}
+          onChange={onChange}
+        />
+      </div>
     );
   }
 }
