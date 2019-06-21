@@ -11,7 +11,7 @@ export default () => (
   <div>
     <div className="tpa-container">
       <CodeExample
-        title="IconToggle Extended"
+        title="Icon Toggle"
         code={[
           '//.st.css',
           ExtendedCSSRawSource,
