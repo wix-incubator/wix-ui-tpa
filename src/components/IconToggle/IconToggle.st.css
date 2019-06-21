@@ -44,7 +44,7 @@
     width: 6px;
 }
 
-.icon:hover {
+.root:hover .icon {
     opacity: 0.6;
 }
 
