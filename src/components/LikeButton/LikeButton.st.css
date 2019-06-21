@@ -10,7 +10,7 @@
 
 :vars {
     /*Defaults*/
-    DefaultColor: wixApply(color, color-5);
+    DefaultColor: color-5;
     CheckedIconColor: '#F64D43';
     DefaultFont: wixApply(font, "{theme: 'Body-M', size: '12px', lineHeight: '16px'}");
 }
