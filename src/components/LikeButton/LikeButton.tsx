@@ -18,13 +18,30 @@ interface DefaultProps {
   disabled: boolean;
 }
 
-export class LikeButton extends React.Component<LikeButtonProps> {
+interface State {
+  checking: boolean;
+}
+
+export class LikeButton extends React.Component<LikeButtonProps, State> {
   static displayName = 'LikeButton';
   static defaultProps: DefaultProps = {
     label: 0,
     labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
+  };
+
+  state = { checking: false };
+
+  componentDidUpdate = prevProps => {
+    const { checked } = this.props;
+    if (checked && checked !== prevProps.checked) {
+      this.setState({ checking: true });
+    }
+  };
+
+  _handleHoverOff = () => {
+    this.state.checking && this.setState({ checking: false });
   };
 
   render() {
@@ -37,16 +54,20 @@ export class LikeButton extends React.Component<LikeButtonProps> {
       ...rest
     } = this.props;
 
+    const { checking } = this.state;
+
     return (
-      <IconToggle
-        {...styles('root', { checked, disabled }, rest)}
-        icon={<Heart />}
-        label={`${label}`}
-        disabled={disabled}
-        onChange={onChange}
-        checked={checked}
-        labelPlacement={labelPlacement}
-      />
+      <div className={styles.likeButton} onMouseLeave={this._handleHoverOff}>
+        <IconToggle
+          {...styles('root', { checked, disabled, checking }, rest)}
+          icon={<Heart />}
+          label={`${label}`}
+          disabled={disabled}
+          onChange={onChange}
+          checked={checked}
+          labelPlacement={labelPlacement}
+        />
+      </div>
     );
   }
 }
