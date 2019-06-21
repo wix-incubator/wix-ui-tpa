@@ -11,24 +11,32 @@
 :vars {
     /*Defaults*/
     IconColor: wixApply(color, color-5);
+    LabelColor: wixApply(color, color-5);
+    LabelFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
 }
 
 :vars {
     /*Overrides*/
     iconColor: value(IconColor);
+    labelColor: value(LabelColor);
+    labelFont: value(LabelFont);
 }
 
 .root {
     -st-states: checked;
     -st-extends: IconToggle;
     -st-mixin: IconToggle(
-        IconColor value(iconColor)
+        IconColor value(iconColor),
+        LabelColor value(labelColor),
+        LabelFont value(labelFont)
     );
 }
 
 .root:checked {
     -st-mixin: IconToggle(
-        IconColor '#F64D43'
+        IconColor '#F64D43',
+        LabelColor value(labelColor),
+        LabelFont value(labelFont)
     );
 }
  
