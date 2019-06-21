@@ -26,12 +26,18 @@ describe('IconToggle', () => {
   });
 
   it('should not render label when empty', () => {
-    const driver = createDriver(<IconToggle icon={ICON} label='' />);
+    const driver = createDriver(<IconToggle icon={ICON} label="" />);
     expect(driver.getLabel()).toBe(null);
   });
 
   it('should render label at start', () => {
-    const driver = createDriver(<IconToggle icon={ICON} label={LABEL} labelPlacement={LabelPlacement.START} />);
+    const driver = createDriver(
+      <IconToggle
+        icon={ICON}
+        label={LABEL}
+        labelPlacement={LabelPlacement.START}
+      />,
+    );
     expect(driver.getLabelPlacement()).toBe(LabelPlacement.START);
   });
 
@@ -53,7 +59,9 @@ describe('IconToggle', () => {
     );
     expect(onChangeSpy).not.toHaveBeenCalled();
     driver.click();
-    expect(onChangeSpy).toHaveBeenCalledWith(expect.objectContaining({ checked: true }));
+    expect(onChangeSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ checked: true }),
+    );
   });
 
   it('should be disabled', () => {
