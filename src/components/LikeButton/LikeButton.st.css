@@ -12,7 +12,7 @@
     /*Defaults*/
     DefaultColor: color-5;
     CheckedIconColor: '#F64D43';
-    DefaultFont: wixApply(font, "{theme: 'Body-M', size: '12px', lineHeight: '16px'}");
+    DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
 }
 
 :vars {
@@ -26,7 +26,7 @@
     iconColor: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
     checkedIconColor: value(CheckedIconColor);
     labelColor: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
-    labelFont: wixApply(font, wixApply(fallback, value(LabelFont), value(DefaultFont)));
+    labelFont: wixApply(font, wixApply(fallback, value(LabelFont), wixApply(font, value(DefaultFont))));
 }
 
 .root {
