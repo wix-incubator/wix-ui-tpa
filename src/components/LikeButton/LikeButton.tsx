@@ -35,7 +35,7 @@ export class LikeButton extends React.Component<LikeButtonProps, State> {
 
   componentDidUpdate = prevProps => {
     const { checked } = this.props;
-    
+
     if (checked && checked !== prevProps.checked) {
       this.setState({ animated: true });
     } else if (!checked && checked !== prevProps.checked) {
