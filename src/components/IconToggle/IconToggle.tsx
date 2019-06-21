@@ -57,17 +57,18 @@ export class IconToggle extends React.Component<IconToggleProps> {
     return (
       <TPAComponentsConsumer>
         {() => (
-          <CoreCheckbox
-            {...styles('root', { checked, disabled, labelPlacement }, rest)}
-            uncheckedIcon={content}
-            checkedIcon={content}
-            indeterminateIcon={content}
-            error={false}
-            indeterminate={false}
-            checked={checked}
-            disabled={disabled}
-            onChange={onChange}
-          />
+          <div {...styles('root', { checked, disabled, labelPlacement }, rest)}>
+            <CoreCheckbox
+              uncheckedIcon={content}
+              checkedIcon={content}
+              indeterminateIcon={content}
+              error={false}
+              indeterminate={false}
+              checked={checked}
+              disabled={disabled}
+              onChange={onChange}
+            />
+          </div>
         )}
       </TPAComponentsConsumer>
     );
