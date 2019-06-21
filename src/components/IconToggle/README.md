@@ -6,11 +6,11 @@ By default the IconToggle will pull the theme from the site (site colors),
 
 ## Theme properties (All are optional)
 
-| propName   | propType | defaultValue | description |
-|------------|----------|--------------|-------------|
-| IconColor  | string   | none | The color of the icon instead of the default color set by theme |
-| LabelColor  | string   | none | The color of the label instead of the default color set by theme |
-| LabelFont  | string   | none | The font of the label instead of the default font |
+| propName   | propType | defaultValue     | description                                         |
+|------------|----------|------------------|-----------------------------------------------------|
+| IconColor  | string   | color-5          | The color of the icon instead of the default color  |
+| LabelColor | string   | color-5          | The color of the label instead of the default color |
+| LabelFont  | string   | Body-M 12px/16px | The font of the label instead of the default font   |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
