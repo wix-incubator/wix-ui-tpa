@@ -29,6 +29,18 @@ export default () => (
           wixParam: 'iconColor',
           defaultColor: 'color-5',
         },
+        {
+          label: 'Label Color',
+          wixParam: 'labelColor',
+          defaultColor: 'color-5',
+        },
+      ]}
+      wixFontParams={[
+        {
+          label: 'Label Font',
+          wixParam: 'labelFont',
+          defaultFont: 'arial',
+        },
       ]}
     />
   </div>

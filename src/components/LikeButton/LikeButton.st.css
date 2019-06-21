@@ -10,16 +10,23 @@
 
 :vars {
     /*Defaults*/
-    IconColor: wixApply(color, color-5);
-    LabelColor: wixApply(color, color-5);
-    LabelFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+    DefaultColor: wixApply(color, color-5);
+    CheckedIconColor: '#F64D43';
+    DefaultFont: wixApply(font, "{theme: 'Body-M', size: '12px', lineHeight: '16px'}");
 }
 
 :vars {
     /*Overrides*/
-    iconColor: value(IconColor);
-    labelColor: value(LabelColor);
-    labelFont: value(LabelFont);
+    IconColor: --overridable;
+    LabelColor: --overridable;
+    LabelFont: --overridable;
+}
+
+:vars {
+    iconColor: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+    checkedIconColor: value(CheckedIconColor);
+    labelColor: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
+    labelFont: wixApply(font, wixApply(fallback, value(LabelFont), value(DefaultFont)));
 }
 
 .root {
@@ -34,7 +41,7 @@
 
 .root:checked {
     -st-mixin: IconToggle(
-        IconColor '#F64D43',
+        IconColor value(checkedIconColor),
         LabelColor value(labelColor),
         LabelFont value(labelFont)
     );

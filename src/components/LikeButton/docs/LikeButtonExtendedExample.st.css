@@ -5,6 +5,8 @@
   
   .root {
     -st-mixin: LikeButton(
-      IconColor '"--iconColor"'
+      IconColor '"--iconColor"',
+      LabelColor '"--labelColor"',
+      LabelFont '"--labelFont"'
     );
   }
