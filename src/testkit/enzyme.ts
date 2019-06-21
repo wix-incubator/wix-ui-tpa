@@ -67,4 +67,4 @@ export const iconToggleTestkitFactory: (
 import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
 export const likeButtonTestkitFactory: (
   obj: WrapperData,
-) => any = enzymeUniTestkitFactoryCreator(likeButtonDriverFactory);
+) => any = enzymeTestkitFactoryCreator(likeButtonDriverFactory);

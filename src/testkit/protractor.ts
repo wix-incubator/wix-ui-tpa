@@ -79,7 +79,11 @@ export const iconToggleTestkitFactory = protractorTestkitFactoryCreator<
 >(iconToggleDriverFactory);
 export { IconToggleDriver };
 
-import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
-export const likeButtonTestkitFactory = protractorUniTestkitFactoryCreator(
+import {
   likeButtonDriverFactory,
-);
+  LikeButtonDriver,
+} from '../components/LikeButton/LikeButton.protractor.driver';
+export const likeButtonTestkitFactory = protractorTestkitFactoryCreator<
+  LikeButtonDriver
+>(iconToggleDriverFactory);
+export { LikeButtonDriver };

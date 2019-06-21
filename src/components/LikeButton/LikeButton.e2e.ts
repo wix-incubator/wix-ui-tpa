@@ -21,7 +21,7 @@ describe('likeButton', () => {
 
   it('should render', async () => {
     const driver = likeButtonTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find LikeButton');
-    expect((await driver.element()).isDisplayed()).toBe(true);
+    await waitForVisibilityOf(driver.element(), 'Cannot find LikeButton');
+    expect(await driver.element().isDisplayed()).toBe(true);
   });
 });

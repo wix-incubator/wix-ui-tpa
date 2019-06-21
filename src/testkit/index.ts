@@ -44,6 +44,6 @@ export const iconToggleTestkitFactory = testkitFactoryCreator(
 );
 
 import { likeButtonDriverFactory } from '../components/LikeButton/LikeButton.driver';
-export const likeButtonTestkitFactory = uniTestkitFactoryCreator(
+export const likeButtonTestkitFactory = testkitFactoryCreator(
   likeButtonDriverFactory,
 );

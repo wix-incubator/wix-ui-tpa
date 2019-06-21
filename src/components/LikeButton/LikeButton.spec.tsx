@@ -1,42 +1,45 @@
 import * as React from 'react';
-import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
-import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { likeButtonDriverFactory } from './LikeButton.driver';
-import { LikeButton } from './';
+import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
+import { LikeButton } from '.';
 import { likeButtonTestkitFactory } from '../../testkit';
-import { likeButtonTestkitFactory as enzymeLikeButtonTestkitFactory } from '../../testkit/enzyme';
+import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
+import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
+import { likeButtonTestkitFactory as enzymeAutocompleteTestkitFactory } from '../../testkit/enzyme';
 
 describe('LikeButton', () => {
-  const createDriver = createUniDriverFactory(likeButtonDriverFactory);
+  const createDriver = createDriverFactory(likeButtonDriverFactory);
 
-  it('should render', async () => {
+  it('should render', () => {
     const driver = createDriver(<LikeButton />);
-    expect(await driver.exists()).toBe(true);
+    expect(driver.exists()).toBe(true);
+  });
+
+  it('should call onChange', () => {
+    const onChangeSpy = jest.fn();
+    onChangeSpy.mockImplementation(() => Promise.resolve());
+    const driver = createDriver(<LikeButton onChange={onChangeSpy} />);
+    expect(onChangeSpy).not.toHaveBeenCalled();
+    driver.click();
+    expect(onChangeSpy).toHaveBeenCalled();
   });
 
   describe('testkit', () => {
-    it('should exist', async () => {
-      expect(
-        await isUniTestkitExists(<LikeButton />, likeButtonTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
-      ).toBe(true);
+    it('should exist', () => {
+      expect(isTestkitExists(<LikeButton />, likeButtonTestkitFactory)).toBe(
+        true,
+      );
     });
   });
 
   describe('enzyme testkit', () => {
-    it('should exist', async () => {
+    it('should exist', () => {
       expect(
-        await isUniEnzymeTestkitExists(
+        isEnzymeTestkitExists(
           <LikeButton />,
-          enzymeLikeButtonTestkitFactory,
+          enzymeAutocompleteTestkitFactory,
           mount,
-          {
-            dataHookPropName: 'data-hook',
-          },
         ),
       ).toBe(true);
     });
