@@ -30,7 +30,7 @@ interface DefaultProps {
 export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {
-    label: undefined,
+    label: '',
     labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
