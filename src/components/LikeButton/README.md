@@ -35,11 +35,9 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import LikeButton from 'wix-ui-tpa/LikeButton';
     import likeButtonStylesExt from './LikeButtonExt.st.css';
-    import { ReactComponent as StarIcon } from './Star.svg';
 
     const LikeButtonExt = (props) => (
         <LikeButton 
-            icon={<StarIcon />} 
             label="0"
             {...props}
             {...likeButtonStylesExt('root', {}, props)}
