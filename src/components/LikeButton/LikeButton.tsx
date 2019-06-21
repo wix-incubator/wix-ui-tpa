@@ -12,7 +12,7 @@ export interface LikeButtonProps {
 }
 
 interface DefaultProps {
-  label: number;
+  label: React.ReactNode | string;
   labelPlacement: LabelPlacement;
   checked: boolean;
   disabled: boolean;
@@ -25,7 +25,7 @@ interface State {
 export class LikeButton extends React.Component<LikeButtonProps, State> {
   static displayName = 'LikeButton';
   static defaultProps: DefaultProps = {
-    label: 0,
+    label: '',
     labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
@@ -64,7 +64,7 @@ export class LikeButton extends React.Component<LikeButtonProps, State> {
         <IconToggle
           {...styles('root', { checked, disabled, animated }, rest)}
           icon={<Heart />}
-          label={`${label}`}
+          label={label}
           disabled={disabled}
           onChange={onChange}
           checked={checked}
