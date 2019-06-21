@@ -48,6 +48,10 @@
     opacity: 0.6;
 }
 
+.root:disabled:hover .icon {
+    opacity: 1;
+}
+
 .icon svg {
     display: block;
 }
