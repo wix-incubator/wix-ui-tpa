@@ -38,9 +38,9 @@ export default {
     'data-hook': 'storybook-IconToggle',
     icon: iconExamples[0].value,
     label: '0',
+    labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
-    labelPlacement: LabelPlacement.END,
   }),
   exampleProps: {
     icon: iconExamples,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LikeButton } from '../';
+import { LikeButton, LabelPlacement } from '../';
 import {
   header,
   api,
@@ -25,12 +25,13 @@ export default {
   componentPath: '../LikeButton.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-LikeButton',
-    label: 0,
+    label: '0',
+    labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
   }),
   exampleProps: {
-    //
+    labelPlacement: Object.values(LabelPlacement),
   },
   dataHook: 'storybook-LikeButton',
   sections: [
