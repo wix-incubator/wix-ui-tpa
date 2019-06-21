@@ -5,7 +5,6 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 import * as ExtendedRawSource from '!raw-loader!./LikeButtonExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./LikeButtonExtendedExample.st.css';
 import { LikeButtonExtendedExample } from './LikeButtonExtendedExample';
-import { LabelPlacement } from '../../IconToggle';
 
 export default () => (
   <div>

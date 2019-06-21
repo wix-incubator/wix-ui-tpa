@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { LikeButton } from '../';
-import * as examples from './examples';
 import {
   header,
   api,
@@ -41,17 +40,12 @@ export default {
         title: 'Usage',
         sections: [
           importExample({
-            source: examples.importExample,
+            source: `import { LikeButton } from 'wix-ui-tpa/LikeButton';`,
           }),
 
           divider(),
 
           title('Examples'),
-
-          ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
-          ].map(code),
         ],
       }),
 
