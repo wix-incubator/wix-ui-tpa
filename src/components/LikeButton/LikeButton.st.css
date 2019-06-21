@@ -30,7 +30,7 @@
 }
 
 .root {
-    -st-states: checked, checking;
+    -st-states: checked, animated;
     -st-extends: IconToggle;
     -st-mixin: IconToggle(
         IconColor value(iconColor),
@@ -62,7 +62,7 @@
     }
 }
 
-.root:checking::icon {
+.root:animated::icon {
     -webkit-animation: pop-in 0.2s ease 0s 1 normal;
    animation: pop-in 0.2s ease 0s 1 normal; 
    animation-fill-mode: forwards;
