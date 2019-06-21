@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconToggle } from '../IconToggle';
 import extendedStyles from './IconToggleExtendedExample.st.css';
-import { ReactComponent as StarIcon } from '../../../icons/raw/Star.svg';
+import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 
 interface State {
   checked: boolean;

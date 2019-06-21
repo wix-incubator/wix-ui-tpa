@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './LikeButton.st.css';
-import { ReactComponent as Heart } from '../../icons/raw/Heart.svg';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 import { IconToggle, LabelPlacement, OnChangeEvent } from '../IconToggle';
 
 export interface LikeButtonProps {
