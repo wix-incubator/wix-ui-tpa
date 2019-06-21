@@ -1,0 +1,12 @@
+:import {
+    -st-from: "../LikeButton.st.css";
+    -st-default: LikeButton;
+  }
+  
+  .root {
+    -st-mixin: LikeButton(
+      IconColor '"--iconColor"',
+      LabelColor '"--labelColor"',
+      LabelFont '"--labelFont"'
+    );
+  }

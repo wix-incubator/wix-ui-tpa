@@ -1,0 +1,72 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "../IconToggle/IconToggle.st.css";
+    -st-default: IconToggle;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultColor: color-5;
+    CheckedIconColor: '#F64D43';
+    DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+}
+
+:vars {
+    /*Overrides*/
+    IconColor: --overridable;
+    LabelColor: --overridable;
+    LabelFont: --overridable;
+}
+
+:vars {
+    iconColor: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+    checkedIconColor: value(CheckedIconColor);
+    labelColor: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
+    labelFont: wixApply(font, wixApply(fallback, value(LabelFont), wixApply(font, value(DefaultFont))));
+}
+
+.root {
+    -st-states: checked, animated;
+    -st-extends: IconToggle;
+    -st-mixin: IconToggle(
+        IconColor value(iconColor),
+        LabelColor value(labelColor),
+        LabelFont value(labelFont)
+    );
+}
+
+.root:checked {
+    -st-mixin: IconToggle(
+        IconColor value(checkedIconColor),
+        LabelColor value(labelColor),
+        LabelFont value(labelFont)
+    );
+}
+ 
+@keyframes pop-in {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.03);
+        opacity: 0.32;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.root:animated::icon {
+   animation: pop-in 0.2s ease 0s 1 normal; 
+   animation-fill-mode: forwards;
+}
+
+.likeButton {
+    display: inline-block;
+}

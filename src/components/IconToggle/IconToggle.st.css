@@ -1,0 +1,79 @@
+:import {
+    -st-from: "../../../src/tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultColor: color-5;
+    DisabledColor: color-3;
+    DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+}
+
+:vars {
+    /*Overrides*/
+    IconColor: --overridable;
+    LabelColor: --overridable;
+    LabelFont: --overridable;
+}
+
+.root {
+    -st-states: checked, disabled, labelPlacement( enum(start, end) );
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+}
+
+.content {
+    display: flex;
+    align-items: center;
+}
+
+.root:labelPlacement(start) .content {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.root:labelPlacement(end) .content {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.spacer {
+    width: 6px;
+}
+
+.root:hover .icon {
+    opacity: 0.6;
+}
+
+.root:disabled:hover .icon {
+    opacity: 1;
+}
+
+.icon svg {
+    display: block;
+}
+
+.icon path {
+    stroke: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+}
+
+.root:checked .icon path {
+    fill: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+}
+
+.root:disabled .icon path {
+    fill: wixApply(color, value(DisabledColor));
+    stroke: wixApply(color, value(DisabledColor));
+}
+
+.label {
+    color: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
+    font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
+}
+
+.root:disabled .label {
+    color: wixApply(color, value(DisabledColor));
+}

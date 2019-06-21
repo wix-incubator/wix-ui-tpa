@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" width="16px" height="16px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" fill-rule="evenodd">
+        <g transform="translate(-647 -865)" stroke="#000">
+            <g transform="translate(647 865)">
+                <path d="m12.266 14.297l-0.90882-5.0342 3.4161-3.0243-4.6333-0.31434-2.1533-4.7431-2.3321 4.8503-4.371 0.22401 3.7929 3.2232-1.2444 4.7647 4.1691-2.2809 4.2649 2.3345z"/>
+            </g>
+        </g>
+    </g>
+</svg>
