@@ -58,6 +58,7 @@
     "@applitools/eyes-storybook": "^2.6.20",
     "@storybook/addon-links": "5.0.9",
     "@storybook/react": "5.0.9",
+    "@stylable/cli": "^2.2.0",
     "@types/enzyme": "^3.1.8",
     "@types/jest": "^23.0.0",
     "@types/lodash": "^4.14.123",
