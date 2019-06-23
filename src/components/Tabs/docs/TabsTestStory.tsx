@@ -22,7 +22,7 @@ function renderTest(props?: any) {
   };
   return (
     <div style={{ margin: '10px', maxWidth: 200 }}>
-      <Tabs dataHook={'storybook-e2e-Tabs'} {...defaultProps} {...props} />
+      <Tabs data-hook={'storybook-e2e-Tabs'} {...defaultProps} {...props} />
     </div>
   );
 }

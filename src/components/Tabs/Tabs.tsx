@@ -30,7 +30,7 @@ export interface TabsProps {
   alignment?: ALIGNMENT;
   /** control whether to set tabs on all content width*/
   variant?: VARIANT;
-  dataHook?: string;
+  'data-hook'?: string;
 }
 
 interface TabsState {
@@ -155,14 +155,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   render() {
     const { navButtons, firstRender } = this.state;
-    const {
-      items,
-      alignment,
-      skin,
-      variant,
-      activeTabIndex,
-      dataHook,
-    } = this.props;
+    const { items, alignment, skin, variant, activeTabIndex } = this.props;
 
     return (
       <TPAComponentsConsumer>
@@ -170,7 +163,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
           <div
             {...style('root', { skin, navButtons, mobile }, this.props)}
             {...this._getDataAttributes(mobile)}
-            data-hook={dataHook}
+            data-hook={this.props['data-hook']}
           >
             <ReactResizeDetector handleWidth onResize={this._onResize} />
             <ScrollableTabs
@@ -188,7 +181,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onClick={this._onClickLeft}
               className={classnames(style.navBtn, style.navBtnLeft)}
               tabIndex={NavButtonOptions.right ? -1 : 0}
-              dataHook={TABS_DATA_HOOKS.leftNavButton}
+              data-hook={TABS_DATA_HOOKS.leftNavButton}
             >
               <ChevronLeft />
             </TabsNavButton>
@@ -196,7 +189,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               onClick={this._onClickRight}
               className={classnames(style.navBtn, style.navBtnRight)}
               tabIndex={NavButtonOptions.left ? -1 : 0}
-              dataHook={TABS_DATA_HOOKS.rightNavButton}
+              data-hook={TABS_DATA_HOOKS.rightNavButton}
             >
               <ChevronRight />
             </TabsNavButton>

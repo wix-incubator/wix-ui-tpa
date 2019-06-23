@@ -187,7 +187,7 @@ export class ScrollableTabs extends React.Component<
               className={style.tab}
               item={item}
               index={index}
-              dataHook={`${TABS_DATA_HOOKS.tab}-${index}`}
+              data-hook={`${TABS_DATA_HOOKS.tab}-${index}`}
               isActive={activeTabIndex === index}
               indicateActive={!animateIndicator}
               ref={activeTabIndex === index ? this._selectedTabRef : null}

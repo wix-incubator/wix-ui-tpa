@@ -22,7 +22,7 @@ class TabsVisual extends React.Component<TabsVisualProps> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <Tabs dataHook={'storybook-e2e-Tabs'} {...this.props} />
+        <Tabs data-hook={'storybook-e2e-Tabs'} {...this.props} />
       </TPAComponentsProvider>
     );
   }
