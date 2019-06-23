@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/styles";
+    -st-named: applyColor, fallback, opacity, font, calculate;
 }
 
 :import {
@@ -30,14 +30,14 @@
     tabsMobileHeight: 48px;
     navBtnWidth: 35px;
     navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
+    calculatedBorderColor: applyColor(fallback(value(IndicatorColor), opacity(applyColor(value(defaultIndicatorColor)), 0.2)));
     shadowBorder: inset 0 -1px 0px 0px value(calculatedBorderColor);
 }
 
 .root {
     -st-states: skin(enum(fullUnderline, clear, fitUnderline)), navButtons(enum(none, left, right, both)), mobile;
-    color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
-    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
+    color: applyColor(fallback(value(MainTextColor), value(defaultTabColor)));
+    font:  fallback(font(value(MainTextFont)), font(value(defaultTabFont)));
     line-height: 1.5em;
     width: 100%;
     height: value(tabsHeight);
@@ -80,7 +80,7 @@
     -st-extends: Navigation;
     -st-mixin: Navigation(
         indicatorColor value(calculatedBorderColor),
-        selectedIndicatorColor wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)))
+        selectedIndicatorColor applyColor(fallback(value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)))
     );
     position: absolute;
     top: 0;
@@ -121,12 +121,12 @@
 
 .root:navButtons(left) .navigation::nav,
 .root:navButtons(both) .navigation::nav {
-    left: wixApply(calculate, "*", -1, value(navBtnWidth));
+    left: calculate("*", -1, value(navBtnWidth));
 }
 
 .root:navButtons(right) .navigation::nav,
 .root:navButtons(both) .navigation::nav {
-    right: wixApply(calculate, "*", -1, value(navBtnWidth));
+    right: calculate("*", -1, value(navBtnWidth));
 }
 
 .root:navButtons(both) .navigation::nav {
@@ -151,7 +151,7 @@
 }
 
 .root:mobile {
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
+    font: fallback(font(value(MainTextFont)), font(value(defaultMobileTabFont)));
     line-height: 1.44em;
     height: value(tabsMobileHeight);
 }

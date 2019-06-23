@@ -4,10 +4,7 @@ import {
   InputProps as CoreInputProps,
 } from 'wix-ui-core/input';
 import style from './Input.st.css';
-import {
-  ErrorMessageWrapper,
-  ErrorProps,
-} from '../../baseComponents/ErrorMessageWrapper';
+import { ErrorMessageWrapper, ErrorProps } from '../ErrorMessageWrapper';
 
 export interface TPAInputProps {
   /** the error message to display */

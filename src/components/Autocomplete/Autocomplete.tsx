@@ -6,10 +6,7 @@ import {
 import { withStylable } from 'wix-ui-core/withStylable';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
 import style from './Autocomplete.st.css';
-import {
-  ErrorMessageWrapper,
-  ErrorProps,
-} from '../../baseComponents/ErrorMessageWrapper';
+import { ErrorMessageWrapper, ErrorProps } from '../ErrorMessageWrapper';
 
 export interface TPAAutocompleteProps {
   /** the error message to display */

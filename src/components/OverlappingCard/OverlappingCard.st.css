@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/styles";
+    -st-named: unit, opacity, fallback, applyColor;
 }
 
 :import {
@@ -30,10 +30,10 @@
 }
 
 :vars {
-    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), value(DefaultBorderWidth)), px);
-    borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor)));
-    infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultInfoCardBG)));
-    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaCardBG)), 0.2)));
+    borderWidth: unit(fallback(zeroAsTrue(value(MainBorderWidth)), value(DefaultBorderWidth)), px);
+    borderColor: applyColor(fallback(value(MainBorderColor), value(DefaultBorderColor)));
+    infoBGColor: applyColor(fallback(value(MainInfoColor), value(DefaultInfoCardBG)));
+    mediaBGColor: applyColor(fallback(value(MainMediaColor), opacity(applyColor(value(DefaultMediaCardBG)), 0.2)));
 }
 
 :vars {
