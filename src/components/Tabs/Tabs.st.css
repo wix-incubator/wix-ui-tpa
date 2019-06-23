@@ -3,13 +3,13 @@
     -st-named: wixApply;
 }
 
-:vars {
-    tabsHeight: 52px;
-    navBtnWidth: 35px;
+:import {
+    -st-from: "./ScrollableTabs/ScrollableTabs.st.css";
+    -st-default: Navigation;
 }
 
 :vars {
-    /*Constance*/
+    /* default values */
     defaultTabColor: color-5;
     defaultTabFont: "{theme: 'Body-M', size: '16px'}";
     defaultMobileTabFont: "{theme: 'Body-M', size: '14px'}";
@@ -24,13 +24,23 @@
     IndicatorColor: --overridable;
 }
 
+:vars {
+    /* constants */
+    tabsHeight: 52px;
+    tabsMobileHeight: 48px;
+    navBtnWidth: 35px;
+    navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
+}
+
 .root {
-    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), navButtons(enum(none, left, right, both)), mobile;
+    -st-states: skin(enum(fullUnderline, clear, fitUnderline)), navButtons(enum(none, left, right, both)), mobile;
     color: wixApply(color, wixApply(fallback, value(MainTextColor), value(defaultTabColor)));
     font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultTabFont)));
     line-height: 1.5em;
     width: 100%;
     height: value(tabsHeight);
+    position: relative;
 }
 
 .root,
@@ -38,23 +48,18 @@
     box-sizing: border-box;
 }
 
-.content {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
 .navBtn {
     width: 0;
     height: 100%;
     overflow: hidden;
-    transition: width .2s ease;
+    transition: width .3s value(navBtnEase) .2s, opacity .2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     position: absolute;
     top: 0;
+    opacity: 0;
 }
 
 .navBtn.navBtnLeft {
@@ -65,94 +70,87 @@
     right: 0;
 }
 
-.tabs {
-    overflow: hidden;
-    height: 100%;
+.navBtn svg {
+    width: value(navBtnWidth);
+    height: value(navBtnWidth);
+}
+
+.navigation {
+    -st-extends: Navigation;
+    -st-mixin: Navigation(
+        indicatorColor value(calculatedBorderColor),
+        selectedIndicatorColor wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)))
+    );
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    transition: left .2s ease, right .2s ease;
-}
-
-.tabs nav {
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    white-space:nowrap;
-    position: relative;
-}
-
-.tabs nav::-webkit-scrollbar {
-    display: none;
-}
-
-.tab {
-    cursor: pointer;
-    padding: 14px 3%;
-    text-align: center;
-    white-space: nowrap;
-    height: 100%;
-    display: inline-block;
-}
-
-.selectedIndicator {
-    position: absolute;
-    bottom: 0;
-    border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
-    transition: all .3s ease-in-out;
+    transition: left .3s value(navBtnEase), right .3s value(navBtnEase);
 }
 
 .root:navButtons(right) .navBtn.navBtnRight,
 .root:navButtons(left) .navBtn.navBtnLeft,
 .root:navButtons(both) .navBtn {
     width: value(navBtnWidth);
+    opacity: 1;
+    transition: width .3s value(navBtnEase), opacity .2s ease .3s;
 }
 
-.root:navButtons(right) .tabs,
-.root:navButtons(both) .tabs {
+.root:navButtons(right) .navigation,
+.root:navButtons(both) .navigation {
     right: value(navBtnWidth);
 }
 
-.root:navButtons(left) .tabs,
-.root:navButtons(both) .tabs {
+.root:navButtons(left) .navigation,
+.root:navButtons(both) .navigation {
     left: value(navBtnWidth);
 }
 
-.root:alignment(left) nav {
-    text-align: left;
+.navigation::nav {
+    transition: all .3s value(navBtnEase);
+    width: 100%;
+    left: 0;
+    right: 0;
 }
 
-.root:alignment(right) nav {
-    text-align: right;
+.root:navButtons(left) .navigation::nav,
+.root:navButtons(right) .navigation::nav {
+    width: calc(100% + value(navBtnWidth));
 }
 
-.root:variant(fullWidth) nav,
-.root:mobile nav {
+.root:navButtons(left) .navigation::nav,
+.root:navButtons(both) .navigation::nav {
+    left: wixApply(calculate, "*", -1, value(navBtnWidth));
+}
+
+.root:navButtons(right) .navigation::nav,
+.root:navButtons(both) .navigation::nav {
+    right: wixApply(calculate, "*", -1, value(navBtnWidth));
+}
+
+.root:navButtons(both) .navigation::nav {
+    width: calc(100% + (2 * value(navBtnWidth)));
+}
+
+.root:skin(fullUnderline) {
+    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
+}
+
+.root:skin(fitUnderline) .navBtn,
+.root:skin(fitUnderline) .navigation::tab {
+    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
+}
+
+.root:mobile .navigation::nav {
     display: flex;
 }
 
-.root:variant(fullWidth) .tab,
-.root:mobile .tab {
+.root:mobile .navigation::tab {
     flex: 1;
 }
 
-.root:skin(fullUnderline),
-.root:skin(fitUnderline) .tab {
-    border-bottom: 1px solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
-}
-
-.root:skin(clear) .activeTab,
-.root:skin(fullUnderline) .activeTab,
-.root:skin(fitUnderline) .activeTab {
-    padding-bottom: 11px;
-}
-
 .root:mobile {
-    font:  wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
+    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(defaultMobileTabFont)));
     line-height: 1.44em;
-    height: 48px;
+    height: value(tabsMobileHeight);
 }

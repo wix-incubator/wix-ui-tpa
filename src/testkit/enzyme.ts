@@ -42,7 +42,7 @@ export const overlappingCardTestkitFactory: (
 import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
 export const tabsTestkitFactory: (
   obj: WrapperData,
-) => any = enzymeTestkitFactoryCreator(tabsDriverFactory);
+) => any = enzymeUniTestkitFactoryCreator(tabsDriverFactory);
 
 import { stripCardDriverFactory } from '../components/StripCard/StripCard.driver';
 export const stripCardTestkitFactory: (

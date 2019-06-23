@@ -1,0 +1,68 @@
+:import {
+    -st-from: "../../../tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:import {
+    -st-from: "../Tab/Tab.st.css";
+    -st-default: Tab;
+}
+
+:vars {
+    selectedIndicatorColor: --overridable;
+}
+
+.root {
+    -st-states: alignment(enum(center, left, right)), variant(enum(fullWidth, fit)), animateIndicator;
+    overflow: hidden;
+    height: 100%;
+}
+
+.nav {
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    white-space:nowrap;
+    position: absolute;
+}
+
+.nav::-webkit-scrollbar {
+    display: none;
+}
+
+.tab {
+    -st-extends: Tab;
+    -st-mixin: Tab(
+        focusIndicatorColor wixApply(opacity, wixApply(color, value(selectedIndicatorColor)), 0.2),
+        activeIndicatorColor value(selectedIndicatorColor)
+    );
+    display: inline-block;
+}
+
+.selectedIndicator {
+    position: absolute;
+    bottom: 0;
+    border-bottom: 3px solid;
+    border-bottom-color: value(selectedIndicatorColor);
+}
+
+.root:animateIndicator .selectedIndicator {
+    transition: left .3s ease-in-out, width .3s ease-in-out;
+}
+
+.root:alignment(left) .nav {
+    text-align: left;
+}
+
+.root:alignment(right) .nav {
+    text-align: right;
+}
+
+.root:variant(fullWidth) .nav {
+    display: flex;
+}
+
+.root:variant(fullWidth) .tab {
+    flex: 1;
+}

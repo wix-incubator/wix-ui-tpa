@@ -2,14 +2,14 @@ const easeInOutSin = (time: number): number => {
   return (1 + Math.sin(Math.PI * time - Math.PI / 2)) / 2;
 };
 
-export const animate = (
-  elementPropToAnimate: string,
+export const animateElementByProp = (
+  propToAnimate: string,
   element: Element,
   amountToMove: number,
 ) => {
   const ease = easeInOutSin;
   const duration = 700;
-  const startPoint: number = element[elementPropToAnimate];
+  const startPoint: number = element[propToAnimate];
   let start: number = null;
   let cancelled: boolean = false;
 
@@ -26,7 +26,7 @@ export const animate = (
       start = timestamp;
     }
     const time = Math.min(1, (timestamp - start) / duration);
-    element[elementPropToAnimate] =
+    element[propToAnimate] =
       ease(time) * (amountToMove - startPoint) + startPoint;
 
     if (time >= 1) {

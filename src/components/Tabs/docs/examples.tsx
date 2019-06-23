@@ -4,12 +4,11 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
-
 import { TabsExtendedExample } from './TabsExtendedExample';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 
+import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import * as MobileRawSource from '!raw-loader!./TabsMobileExample.tsx';
 import { TabsMobileExample } from './TabsMobileExample';
-import * as TabsMobileExampleRaw from '!raw-loader!./TabsMobileExample.tsx';
 
 const items = [
   { title: 'Title 1' },
@@ -51,7 +50,7 @@ export const Examples = () => {
               ExtendedCSSRawSource,
               '',
               '//.tsx',
-              TabsMobileExampleRaw,
+              MobileRawSource,
             ].join('\n')}
           >
             <TabsMobileExample

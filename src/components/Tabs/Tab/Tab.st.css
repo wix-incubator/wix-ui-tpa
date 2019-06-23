@@ -1,0 +1,52 @@
+:import {
+    -st-from: "../../../tpaStyles/styleableExt";
+    -st-named: wixApply;
+}
+
+:vars {
+    activeIndicatorColor: color-8;
+    focusIndicatorColor: color-8;
+}
+
+.root {
+    -st-states: isActive, indicateActive;
+    cursor: pointer;
+    height: 100%;
+    text-align: center;
+    white-space: nowrap;
+    padding: 14px 3%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    position: relative;
+}
+
+.focusIndicatorWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.focusIndicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+}
+
+.root:isActive:indicateActive {
+    border-bottom: 3px solid;
+    border-bottom-color: wixApply(color, value(activeIndicatorColor));
+}
+
+.root:focus,
+.focusIndicator:focus {
+    background-color: transparent;
+    outline: none;
+}
+
+.root:focus .focusIndicator {
+    background-color: wixApply(color, value(focusIndicatorColor));
+}
