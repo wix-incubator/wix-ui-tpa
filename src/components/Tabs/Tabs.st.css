@@ -31,7 +31,7 @@
     navBtnWidth: 35px;
     navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
-    shadowBorder: inset 0 -1px 0.5px -0.5px value(calculatedBorderColor);
+    shadowBorder: inset 0 -1px 1px value(calculatedBorderColor);
 }
 
 .root {
