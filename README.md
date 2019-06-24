@@ -1,11 +1,28 @@
 # wix-ui-tpa
 
+`wix-ui-tpa` is a React library of components that are designed to be used in Wix TPA's.
+
+#### [Demo](https://wix-wix-ui-tpa.surge.sh/) | [Demo App](https://github.com/wix/wix-ui-tpa-example)
+  
+## Installation
+* Install with `npm` or `yarn`:
+```sh
+npm i wix-ui-tpa
+# OR
+yarn add wix-ui-tpa
+```
+ 
+## Prerequisites
+`wix-ui-tpa` uses [Stylable](https://stylable.io/) and [CSS Modules](https://github.com/css-modules/css-modules) configuration by default.   
+In order to use `wix-ui-tpa`, your module bundler should be configured accordingly.
+
+
+### Typescript support
+- Refer to [Stylable Docs](https://stylable.io/docs/getting-started/install-configure#types) regarding Typescript configuration
 When writing a TPA application to be used in Wix websites, this package would allow you to use [wix-ui-core](https://github.com/wix/wix-ui/tree/master/packages/wix-ui-core) components with ad-hoc wrapping layer which comunicates with the Wix sdk in order to react to each relevant change in the settings pannel.
 
 If this is the first time you are writing a TPA application, you would most likely want to read this [doc](https://dev.wix.com/).
 
-#### Live demo - https://wix-wix-ui-tpa.surge.sh/
-#### A demo app that uses it - https://github.com/wix/wix-ui-tpa-example
 
 ## Using the withStylable HOC wrapper
 
