@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: fallback, applyColor, applyFont;
+    -st-named: fallback, color, font;
 }
 
 :import {
@@ -23,10 +23,10 @@
 }
 
 :vars {
-    iconColor: applyColor(fallback(value(IconColor), value(DefaultColor)));
+    iconColor: color(fallback(value(IconColor), value(DefaultColor)));
     checkedIconColor: value(CheckedIconColor);
-    labelColor: applyColor(fallback(value(LabelColor), value(DefaultColor)));
-    labelFont: applyFont(fallback(value(LabelFont), applyFont(value(DefaultFont))));
+    labelColor: color(fallback(value(LabelColor), value(DefaultColor)));
+    labelFont: font(fallback(value(LabelFont), font(value(DefaultFont))));
 }
 
 .root {

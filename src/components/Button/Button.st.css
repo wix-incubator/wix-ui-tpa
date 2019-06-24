@@ -1,11 +1,11 @@
 :import {
-    -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, applyFont;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
 }
 
 :import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: ButtonNext;
+    -st-from: "../../common/styles";
+    -st-named: color, fallback, font;
 }
 
 :vars {
@@ -35,7 +35,7 @@
 }
 
 :vars {
-    PrimaryTextColor: applyColor(fallback(value(MainTextColor), value(SecondaryColor)));
+    PrimaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
     PrimaryBorderWidth: fallback(value(MainBorderWidth), 0);
 }
 
@@ -46,7 +46,7 @@
     min-width: value(MinWidth);
     border-style: solid;
     box-sizing: content-box;
-    border-color: applyColor(value(MainBorderColor));
+    border-color: color(value(MainBorderColor));
     border-radius: value(MainBorderRadius);
     transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
 }
@@ -66,7 +66,7 @@
 /*Basic*/
 
 :vars {
-    BasicBackgroundColor: applyColor(fallback(value(MainBackgroundColor), value(BasicColor)));
+    BasicBackgroundColor: color(fallback(value(MainBackgroundColor), value(BasicColor)));
 }
 
 .root:priority(basic) {
@@ -84,7 +84,7 @@
 /*Primary*/
 
 :vars {
-    PrimaryBackgroundColor: applyColor(fallback(value(MainBackgroundColor), value(PrimaryColor)));
+    PrimaryBackgroundColor: color(fallback(value(MainBackgroundColor), value(PrimaryColor)));
 }
 
 .root:priority(primary) {
@@ -102,13 +102,13 @@
 /*Secondary*/
 
 :vars {
-    SecondaryTextColor: applyColor(fallback(value(MainTextColor), value(PrimaryColor)));
-    SecondaryBorderColor: applyColor(fallback(value(MainBorderColor), value(PrimaryColor)));
+    SecondaryTextColor: color(fallback(value(MainTextColor), value(PrimaryColor)));
+    SecondaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
 }
 
 .root:priority(secondary) {
     color: value(SecondaryTextColor);
-    background-color: applyColor(fallback(value(MainBackgroundColor), transparent));
+    background-color: color(fallback(value(MainBackgroundColor), transparent));
     border-color: value(SecondaryBorderColor);
     border-width: fallback(value(MainBorderWidth), 1px);
 }
@@ -124,43 +124,43 @@
 
 .root:priority(basic):disabled,
 .root:priority(primary):disabled {
-    background-color: applyColor(value(DisabledColor));
+    background-color: color(value(DisabledColor));
 }
 
 .root:priority(secondary):disabled {
-    color: applyColor(value(DisabledColor));
-    border-color: applyColor(value(DisabledColor));
+    color: color(value(DisabledColor));
+    border-color: color(value(DisabledColor));
 }
 
 /*Tiny*/
 
 .root:size(tiny) {
     padding: 6px 16px;
-    font: fallback(applyFont(value(MainTextFont)), applyFont(value(TinyFont)));
+    font: fallback(font(value(MainTextFont)), font(value(TinyFont)));
 }
 
 /*Small*/
 
 .root:size(small) {
     padding: 7px 16px;
-    font: fallback(applyFont(value(MainTextFont)), applyFont(value(SmallFont)));
+    font: fallback(font(value(MainTextFont)), font(value(SmallFont)));
 }
 
 /*Medium*/
 
 .root:size(medium) {
     padding: 8px 16px;
-    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MediumFont)));
+    font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
 }
 
 .root:mobile:size(medium) {
     padding: 10px 16px;
-    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MobileMediumFont)));
+    font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
 }
 
 /*Large*/
 
 .root:size(large) {
     padding: 10px 16px;
-    font: fallback(applyFont(value(MainTextFont)), applyFont(value(LargeFont)));
+    font: fallback(font(value(MainTextFont)), font(value(LargeFont)));
 }

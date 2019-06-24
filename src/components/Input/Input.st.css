@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, applyFont, opacity;
+    -st-named: color, font, opacity;
 }
 
 :import {
@@ -14,19 +14,19 @@
 }
 
 :vars {
-    MainBorderColor: applyColor(color-5);
-    MainBackgroundColor: applyColor(color-1);
-    MainTextColor: applyColor(color-5);
-    MainTextFont: applyFont("{theme: 'Body-M', size: '16px'}");
+    MainBorderColor: color(color-5);
+    MainBackgroundColor: color(color-1);
+    MainTextColor: color(color-5);
+    MainTextFont: font("{theme: 'Body-M', size: '16px'}");
 }
 
 :vars {
-    color: value(MainTextColor);
+    textColor: value(MainTextColor);
+    textFont: value(MainTextFont);
     colorPlaceholder: opacity(value(MainTextColor), 0.6);
     backgroundColor: value(MainBackgroundColor);
     borderColor: opacity(value(MainBorderColor), 0.6);
     border: 1px solid value(borderColor);
-    font: value(MainTextFont);
 }
 
 :vars {
@@ -60,7 +60,7 @@
     transition: border-color .1s ease-in;
     background-color: value(backgroundColor);
     /* todo - Define fonts somewhere*/
-    font: value(font);
+    font: value(textFont);
 }
 
 .root {
@@ -87,12 +87,12 @@
 
 .root::nativeInput {
     width: 100%;
-    font: value(font);
+    font: value(textFont);
     line-height: 24px;
     height: 40px;
     padding: 0 14px;
     border: 0;
-    color: value(color);
+    color: value(textColor);
     box-sizing: border-box;
     background-color: value(backgroundColor);
 }

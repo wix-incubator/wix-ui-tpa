@@ -7,6 +7,6 @@
   -st-mixin: TPAIconToggle(
     IconColor '"color(--iconColor)"',
     LabelColor '"color(--labelColor)"',
-    LabelFont '"applyFont(--labelFont)"'
+    LabelFont '"font(--labelFont)"'
   );
 }

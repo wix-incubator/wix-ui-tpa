@@ -13,12 +13,12 @@ function createStyleFunc (func) {
 
 module.exports.fallback = createStyleFunc('fallback');
 module.exports.zeroAsTrue = createStyleFunc('zeroAsTrue');
-module.exports.applyColor = createStyleFunc('color');
+module.exports.color = createStyleFunc('color');
 module.exports.unit = createStyleFunc('unit');
 module.exports.opacity = createStyleFunc('opacity');
 module.exports.calculate = createStyleFunc('calculate');
 module.exports.string = createStyleFunc('string');
-module.exports.applyFont = createStyleFunc('font');
+module.exports.font = createStyleFunc('font');
 module.exports.join = createStyleFunc('join');
 module.exports.withoutOpacity = createStyleFunc('withoutOpacity');
 module.exports.darken = createStyleFunc('darken');

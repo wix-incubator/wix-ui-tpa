@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, opacity;
+    -st-named: color, fallback, opacity;
 }
 
 :vars {
@@ -14,7 +14,7 @@
 }
 
 :vars {
-    dividerColor: applyColor(fallback(value(MainDividerColor), opacity(applyColor(value(DefaultDividerColor)), 0.2)));
+    dividerColor: color(fallback(value(MainDividerColor), opacity(color(value(DefaultDividerColor)), 0.2)));
 }
 
 .root {

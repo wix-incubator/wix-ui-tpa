@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, applyFont;
+    -st-named: color, fallback, font;
 }
 
 :vars {
@@ -57,23 +57,23 @@
 }
 
 .icon path {
-    stroke: applyColor(fallback(value(IconColor), value(DefaultColor)));
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 .root:checked .icon path {
-    fill: applyColor(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 .root:disabled .icon path {
-    fill: applyColor(value(DisabledColor));
-    stroke: applyColor(value(DisabledColor));
+    fill: color(value(DisabledColor));
+    stroke: color(value(DisabledColor));
 }
 
 .label {
-    color: applyColor(fallback(value(LabelColor), value(DefaultColor)));
-    font: fallback(applyFont(value(LabelFont)), applyFont(value(DefaultFont)));
+    color: color(fallback(value(LabelColor), value(DefaultColor)));
+    font: fallback(font(value(LabelFont)), font(value(DefaultFont)));
 }
 
 .root:disabled .label {
-    color: applyColor(value(DisabledColor));
+    color: color(value(DisabledColor));
 }

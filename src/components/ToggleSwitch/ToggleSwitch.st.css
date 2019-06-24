@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, opacity;
+    -st-named: color, opacity;
 }
 
 :import {
@@ -24,7 +24,7 @@
     Selected: value(MainColor);
     Hover: opacity(value(MainColor), 0.7);
     Muted: opacity(value(MainColor), 0.3);
-    Disabled: opacity(applyColor(color-5), 0.9);
+    Disabled: opacity(color(color-5), 0.9);
 }
 
 /* Extended Variables */
@@ -74,7 +74,7 @@
     innerLabelBackgroundColorHover: white;
     innerLabelBackgroundColorHoverChecked: white;
 
-    color: white;
+    textColor: white;
     colorChecked: white;
     colorDisabled: white;
     colorCheckedDisabled:white;
@@ -134,7 +134,7 @@
         innerLabelBackgroundColorDisabled value(innerLabelBackgroundColorDisabled),
         innerLabelBackgroundColorHover value(innerLabelBackgroundColorHover),
         innerLabelBackgroundColorHoverChecked value(innerLabelBackgroundColorHoverChecked),
-        color value(color),
+        color value(textColor),
         colorChecked value(colorChecked),
         colorDisabled value(colorDisabled),
         colorCheckedDisabled value(colorCheckedDisabled),

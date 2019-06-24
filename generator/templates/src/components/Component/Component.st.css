@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor;
+    -st-named: color;
 }
 
 :vars {
