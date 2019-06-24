@@ -31,6 +31,7 @@
     navBtnWidth: 35px;
     navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     calculatedBorderColor: wixApply(color, wixApply(fallback, value(IndicatorColor), wixApply(opacity, wixApply(color, value(defaultIndicatorColor)), 0.2)));
+    shadowBorder: inset 0 -1px 0.5px -0.5px value(calculatedBorderColor);
 }
 
 .root {
@@ -133,12 +134,12 @@
 }
 
 .root:skin(fullUnderline) {
-    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
+    box-shadow: value(shadowBorder);
 }
 
 .root:skin(fitUnderline) .navBtn,
 .root:skin(fitUnderline) .navigation::tab {
-    box-shadow: inset 0 -1px 1px value(calculatedBorderColor);
+    box-shadow: value(shadowBorder);
 }
 
 .root:mobile .navigation::nav {
