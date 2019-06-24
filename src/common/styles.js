@@ -1,15 +1,20 @@
-function applyStyleFunc (func, args) {
+function applyStyleMethod (func) {
+    var args = Array.prototype.slice.call(arguments, 1);
     return "\"" + func + "(" + args.map(function (arg) {
         return arg.replace(/"/g, '');
     }).join(', ') + ")\"";
 };
 
+
 function createStyleFunc (func) {
     return function () {
         var args = Array.prototype.slice.call(arguments, 0);
-        return applyStyleFunc(func, args);
+        args.unshift(func);
+        return applyStyleMethod.apply(null, args);
     };
 }
+
+module.exports.applyStyleMethod = applyStyleMethod;
 
 module.exports.fallback = createStyleFunc('fallback');
 module.exports.zeroAsTrue = createStyleFunc('zeroAsTrue');

@@ -11,7 +11,7 @@
 :import {
     -st-from: "../Input/Input.st.css";
     -st-default: Input;
-    -st-named: inputStyling, textColor, colorDisabled, borderColor, borderColorHover, borderColorDisabled, textFont;
+    -st-named: inputStyling, color, colorDisabled, borderColor, borderColorHover, borderColorDisabled, font;
 }
 
 :import {
@@ -20,7 +20,7 @@
 }
 
 :vars {
-    optionColor: value(textColor);
+    optionColor: value(color);
     optionColorHover: opacity(value(optionColor), 0.6);
 }
 
@@ -67,7 +67,7 @@
 .root::dropdownContent::dropdownOption {
     box-sizing: border-box;
     padding: 10px 14px;
-    font: value(textFont);
+    font: value(font);
     color: value(optionColor);
 }
 
@@ -91,7 +91,7 @@
 }
 
 .root::dropdownContent::optionsContainer::-webkit-scrollbar-thumb {
-    background-color: opacity(value(textColor), 0.2);
+    background-color: opacity(value(color), 0.2);
     border-radius: 12px;
     background-clip: padding-box;
     border: 10px solid rgba(0, 0, 0, 0);
@@ -106,7 +106,7 @@
 }
 
 .arrowIcon {
-    fill: value(textColor);
+    fill: value(color);
 }
 
 .root:disabled .arrowIcon {

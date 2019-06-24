@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: color, font, opacity;
+    -st-named: applyStyleMethod, opacity;
 }
 
 :import {
@@ -14,19 +14,19 @@
 }
 
 :vars {
-    MainBorderColor: color(color-5);
-    MainBackgroundColor: color(color-1);
-    MainTextColor: color(color-5);
-    MainTextFont: font("{theme: 'Body-M', size: '16px'}");
+    MainBorderColor: applyStyleMethod(color, color-5);
+    MainBackgroundColor: applyStyleMethod(color, color-1);
+    MainTextColor: applyStyleMethod(color, color-5);
+    MainTextFont: applyStyleMethod(font, "{theme: 'Body-M', size: '16px'}");
 }
 
 :vars {
-    textColor: value(MainTextColor);
-    textFont: value(MainTextFont);
+    color: value(MainTextColor);
     colorPlaceholder: opacity(value(MainTextColor), 0.6);
     backgroundColor: value(MainBackgroundColor);
     borderColor: opacity(value(MainBorderColor), 0.6);
     border: 1px solid value(borderColor);
+    font: value(MainTextFont);
 }
 
 :vars {
@@ -60,7 +60,7 @@
     transition: border-color .1s ease-in;
     background-color: value(backgroundColor);
     /* todo - Define fonts somewhere*/
-    font: value(textFont);
+    font: value(font);
 }
 
 .root {
@@ -87,12 +87,12 @@
 
 .root::nativeInput {
     width: 100%;
-    font: value(textFont);
+    font: value(font);
     line-height: 24px;
     height: 40px;
     padding: 0 14px;
     border: 0;
-    color: value(textColor);
+    color: value(color);
     box-sizing: border-box;
     background-color: value(backgroundColor);
 }
