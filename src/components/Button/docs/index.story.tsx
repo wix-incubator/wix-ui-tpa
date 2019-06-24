@@ -16,8 +16,8 @@ export default {
     fullWidth: false,
   },
   exampleProps: {
-    priority: Object.keys(PRIORITY).map(key => PRIORITY[key]),
-    size: Object.keys(SIZE).map(key => SIZE[key]),
+    priority: Object.values(PRIORITY),
+    size: Object.values(SIZE),
   },
   examples: <Examples />,
 };

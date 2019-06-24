@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../../common/styles";
-    -st-named: color, fallback, font;
+    -st-named: color, fallback, font, opacity;
 }
 
 :vars {
