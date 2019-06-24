@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, font;
+    -st-named: applyColor, fallback, applyFont;
 }
 
 :vars {
@@ -71,7 +71,7 @@
 
 .label {
     color: applyColor(fallback(value(LabelColor), value(DefaultColor)));
-    font: fallback(font(value(LabelFont)), font(value(DefaultFont)));
+    font: fallback(applyFont(value(LabelFont)), applyFont(value(DefaultFont)));
 }
 
 .root:disabled .label {

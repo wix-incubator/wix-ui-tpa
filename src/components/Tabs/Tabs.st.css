@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, opacity, font, calculate;
+    -st-named: applyColor, fallback, opacity, applyFont, calculate;
 }
 
 :import {
@@ -37,7 +37,7 @@
 .root {
     -st-states: skin(enum(fullUnderline, clear, fitUnderline)), navButtons(enum(none, left, right, both)), mobile;
     color: applyColor(fallback(value(MainTextColor), value(defaultTabColor)));
-    font:  fallback(font(value(MainTextFont)), font(value(defaultTabFont)));
+    font:  fallback(applyFont(value(MainTextFont)), applyFont(value(defaultTabFont)));
     line-height: 1.5em;
     width: 100%;
     height: value(tabsHeight);
@@ -151,7 +151,7 @@
 }
 
 .root:mobile {
-    font: fallback(font(value(MainTextFont)), font(value(defaultMobileTabFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(defaultMobileTabFont)));
     line-height: 1.44em;
     height: value(tabsMobileHeight);
 }

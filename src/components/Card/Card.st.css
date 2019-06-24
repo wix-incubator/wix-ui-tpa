@@ -28,11 +28,11 @@
 }
 
 :vars {
-    cardBGColor: color(fallback(value(MainCardColor), value(DefaultCardBG)));
+    cardBGColor: applyColor(fallback(value(MainCardColor), value(DefaultCardBG)));
     borderWidth: unit(fallback(zeroAsTrue(value(MainBorderWidth)), value(DefaultBorderWidth)), px);
-    borderColor: color(fallback(value(MainBorderColor), value(DefaultBorderColor)));
-    infoBGColor: color(fallback(value(MainInfoColor), value(DefaultInfoCardBG)));
-    mediaBGColor: color(fallback(value(MainMediaColor), opacity(color(value(DefaultMediaCardBG)), 0.2)));
+    borderColor: applyColor(fallback(value(MainBorderColor), value(DefaultBorderColor)));
+    infoBGColor: applyColor(fallback(value(MainInfoColor), value(DefaultInfoCardBG)));
+    mediaBGColor: applyColor(fallback(value(MainMediaColor), opacity(applyColor(value(DefaultMediaCardBG)), 0.2)));
 }
 
 :vars {

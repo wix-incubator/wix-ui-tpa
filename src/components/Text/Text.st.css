@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, font;
+    -st-named: applyColor, fallback, applyFont;
 }
 
 :vars {
@@ -27,40 +27,40 @@
 
 .root:typography(smallTitle) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(SmallTitleFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(SmallTitleFont)));
 }
 
 .root:typography(runningText) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(RunningTextFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(RunningTextFont)));
 }
 
 .root:typography(listText) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(ListTextFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(ListTextFont)));
 }
 
 .root:typography(largeTitle) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(LargeTitleFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(LargeTitleFont)));
 }
 
 .root:mobile:typography(smallTitle) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileSmallTitleFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MobileSmallTitleFont)));
 }
 
 .root:mobile:typography(runningText) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileRunningTextFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MobileRunningTextFont)));
 }
 
 .root:mobile:typography(listText) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileListTextFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MobileListTextFont)));
 }
 
 .root:mobile:typography(largeTitle) {
     color: applyColor(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileLargeTitleFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MobileLargeTitleFont)));
 }

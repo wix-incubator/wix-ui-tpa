@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyColor, fallback, font;
+    -st-named: applyColor, fallback, applyFont;
 }
 
 :import {
@@ -136,31 +136,31 @@
 
 .root:size(tiny) {
     padding: 6px 16px;
-    font: fallback(font(value(MainTextFont)), font(value(TinyFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(TinyFont)));
 }
 
 /*Small*/
 
 .root:size(small) {
     padding: 7px 16px;
-    font: fallback(font(value(MainTextFont)), font(value(SmallFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(SmallFont)));
 }
 
 /*Medium*/
 
 .root:size(medium) {
     padding: 8px 16px;
-    font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MediumFont)));
 }
 
 .root:mobile:size(medium) {
     padding: 10px 16px;
-    font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(MobileMediumFont)));
 }
 
 /*Large*/
 
 .root:size(large) {
     padding: 10px 16px;
-    font: fallback(font(value(MainTextFont)), font(value(LargeFont)));
+    font: fallback(applyFont(value(MainTextFont)), applyFont(value(LargeFont)));
 }

@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../common/styles.js";
-    -st-named: applyColor, font, opacity;
+    -st-from: "../../common/styles";
+    -st-named: applyColor, applyFont, opacity;
 }
 
 :import {
@@ -17,7 +17,7 @@
     MainBorderColor: applyColor(color-5);
     MainBackgroundColor: applyColor(color-1);
     MainTextColor: applyColor(color-5);
-    MainTextFont: font("{theme: 'Body-M', size: '16px'}");
+    MainTextFont: applyFont("{theme: 'Body-M', size: '16px'}");
 }
 
 :vars {

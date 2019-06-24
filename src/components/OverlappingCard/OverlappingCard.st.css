@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: unit, opacity, fallback, applyColor;
+    -st-named: unit, opacity, fallback, applyColor, zeroAsTrue;
 }
 
 :import {
