@@ -4,7 +4,7 @@ const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
 const StylableWebpackPlugin = require('@stylable/webpack-plugin');
 const project = require('yoshi-config');
 const { resolveNamespaceFactory } = require('@stylable/node');
-const autoprefixer = require('autoprefixer')({ grid: true, browsers: ['>1%'] });
+const autoprefixer = require('autoprefixer')({ grid: true, overrideBrowserslist: ['>1%'] });
 const postcss = require('postcss');
 const autoprefixProcessor = postcss([autoprefixer]);
 
