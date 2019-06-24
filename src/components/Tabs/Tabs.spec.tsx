@@ -59,7 +59,7 @@ describe('Tabs', () => {
       <Tabs items={items} activeTabIndex={selectedIndex} />,
     );
 
-    expect(await driver.getActiveTabIndex()).toBe(`${selectedIndex}`);
+    expect(await driver.getActiveTabIndex()).toBe(selectedIndex);
   });
 
   it('should set default states stylable states', async () => {

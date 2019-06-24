@@ -6,7 +6,7 @@ export interface TabsDriver extends BaseUniDriver {
   exists(): Promise<boolean>;
   getTitleAt(index: number): Promise<string>;
   clickTabAt(index: number): Promise<void>;
-  getActiveTabIndex(): Promise<string>;
+  getActiveTabIndex(): Promise<number>;
   isMobile(): Promise<boolean>;
   getSkin(): Promise<string>;
   getAlignment(): Promise<string>;
@@ -27,10 +27,10 @@ export const tabsDriverFactory = (base: UniDriver): TabsDriver => {
     ...baseUniDriverFactory(base),
     getTitleAt: index => getTab(base, index).text(),
     clickTabAt: index => getTab(base, index).click(),
-    getActiveTabIndex: () =>
-      base
+    getActiveTabIndex: async () =>
+      +(await base
         .$(`[${TABS_DATA_KEYS.tabIsActive}="true"]`)
-        .attr(TABS_DATA_KEYS.tabIndex),
+        .attr(TABS_DATA_KEYS.tabIndex)),
     isMobile: async () => (await base.attr(TABS_DATA_KEYS.mobile)) === 'true',
     getSkin: () => base.attr(TABS_DATA_KEYS.skin),
     getAlignment: () => getTabs(base).attr(TABS_DATA_KEYS.alignment),
