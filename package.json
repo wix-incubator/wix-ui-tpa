@@ -119,7 +119,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/node_modules/",
-      "<rootDir>/generator",
+      "<rootDir>/.wuf",
       "/src/.*\\.browser\\.spec\\.(ts|tsx)$"
     ],
     "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
