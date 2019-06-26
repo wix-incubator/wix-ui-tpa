@@ -26,6 +26,32 @@ describe('Pagination', () => {
     expect(await driver.isMobile()).toBe(true);
   });
 
+  it('Should show first & last navigation buttons when total pages count more than 5', async () => {
+    const driver = createDriver(<Pagination totalPages={10} />);
+    expect(driver.getNavButton('first')).not.toBeNull();
+    expect(driver.getNavButton('last')).not.toBeNull();
+  });
+
+  it('Should hide first & last navigation buttons when total pages count less than 5', async () => {
+    const driver = createDriver(<Pagination totalPages={5} />);
+    expect(driver.getNavButton('first')).toBeNull();
+    expect(driver.getNavButton('last')).toBeNull();
+  });
+
+  it('Should use core "pages" mode when is not mobile', async () => {
+    const driver = createDriver(
+      TPAComponentsWrapper({ mobile: false })(<Pagination totalPages={10} />),
+    );
+    expect(driver.getPageInput()).toBeNull();
+  });
+
+  it('Should use core "input" mode when is mobile', async () => {
+    const driver = createDriver(
+      TPAComponentsWrapper({ mobile: true })(<Pagination totalPages={10} />),
+    );
+    expect(driver.getPageInput()).not.toBeNull();
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

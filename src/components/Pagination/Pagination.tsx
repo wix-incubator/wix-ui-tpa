@@ -28,8 +28,8 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
             nextLabel={ChevronRight}
             firstLabel={DoubleChevronLeft}
             lastLabel={DoubleChevronRight}
-            showFirstLastNavButtons={props.totalPages > 5}
             rtl={rtl}
+            showFirstLastNavButtons={props.totalPages > 5}
             paginationMode={mobileView ? 'input' : 'pages'}
             {...props}
           />
