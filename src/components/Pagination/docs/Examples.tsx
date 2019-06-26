@@ -21,7 +21,12 @@ export const Examples = () => (
           ExtendedRawSource,
         ].join('\n')}
       >
+        <TPAComponentsProvider value={{ rtl: false, mobile: false }}>
+          <PaginationExtendedExample />
+        </TPAComponentsProvider>
+        <br />
         <TPAComponentsProvider value={{ rtl: true, mobile: false }}>
+          <p>RTL</p>
           <PaginationExtendedExample />
         </TPAComponentsProvider>
       </CodeExample>
