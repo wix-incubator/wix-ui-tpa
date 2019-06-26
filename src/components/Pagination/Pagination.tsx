@@ -14,23 +14,16 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 import styles from './Pagination.st.css';
 
-export interface PaginationProps extends CorePaginationProps {
-  /** Justify content */
-  alignment?: 'left' | 'center' | 'right';
-  'data-hook'?: string;
-}
+export interface PaginationProps extends CorePaginationProps {}
 
 /** Pagination component */
-export const Pagination: React.FunctionComponent<PaginationProps> = ({
-  alignment,
-  ...props
-}) => {
+export const Pagination: React.FunctionComponent<PaginationProps> = props => {
   return (
     <TPAComponentsConsumer>
       {({ mobile: mobileView, rtl }) => {
         return (
           <CorePagination
-            {...styles('root', { alignment, mobileView, rtl }, props)}
+            {...styles('root', { mobileView, rtl }, props)}
             previousLabel={ChevronLeft}
             nextLabel={ChevronRight}
             firstLabel={DoubleChevronLeft}
@@ -50,8 +43,4 @@ Pagination.displayName = 'Pagination';
 
 Pagination.defaultProps = {
   maxPagesToShow: 5,
-  totalPages: 10,
-  alignment: 'center',
-  onChange: () =>
-    console.warn('wix-ui-tpa/Pagination: onChange is not implemented'),
 };

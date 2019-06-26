@@ -5,48 +5,32 @@
 }
 
 :import {
-    -st-from: "../../tpaStyles/styleableExt";
-    -st-named: wixApply;
+  -st-from: "../../tpaStyles/styleableExt.js";
+  -st-named: wixApply;
 }
 
 :vars {
-  /* PAGES MODE */
-  selectedPageBG: transparent;
-  selectedPageBorderColor: transparent;
-  selectedPageBorderWidth: 0;
-  selectedPageTextColor: #ed24d9;
-  totalPagesTextColor: #000;
-  pageNumbersTextColor: #000;
-
-
-  /* NAV BUTTONS GENERAL */
-  navButtonBG: transparent;
-  navButtonBorderWidth: 3;
-  navButtonBorderColor: transparent;
-  navButtonDisabledBorderWidth: 3;
-  navButtonDisabledBorderColor: transparent;
-  navButtonDisabledBG: transparent;;
-
-
-  /* ICON NAV BUTTONS */
-  arrowsColor: #000;
-  arrowsDisabledColor: #b1b1b1;
-
-  /* TEXT NAV BUTTONS */
-  navButtonTextSize: 15px;
-  navButtonTextColor: #000;
-  navButtonDisabledTextColor: #b1b1b1;
-
-  /* @type FONT */
-  fnt: font_8;
-  bRadius: 0;
-  shadow: none;
+  defaultTextFont: "{theme: 'Body-M', size: '16px'}";
+  defaultTextFontColor: color-5;
+  defaultSelectedTextFontColor: color-8;
+  defaultDisabledTextFontColor: color-3;
 }
 
 :vars {
   TextFont: --overridable;
   TextFontColor: --overridable;
   SelectedTextFontColor: --overridable;
+  DisabledTextFontColor: --overridable;
+}
+
+.root {
+  -st-extends: Pagination;
+  -st-states: rtl, paginationMode(enum(pages, input)), navButtonsType(enum(text, arrows)), navButtonsAmount(number);
+  
+  align-items: stretch;
+  box-sizing: border-box;
+  display: inline-flex;
+  font:  wixApply(fallback, wixApply(font, value(TextFont)), wixApply(font, value(defaultTextFont)));
 }
 
 .pageButtonRules {
@@ -59,44 +43,19 @@
   margin: 0.25em;
 }
 
-.root {
-  -st-extends: Pagination;
-  -st-states: rtl, paginationMode(enum(pages, input)), navButtonsType(enum(text, arrows)), navButtonsAmount(number), alignment(enum(center, left, right));
-  align-items: stretch;
-  box-sizing: border-box;
-  display: flex;
-  font:  wixApply(fallback, wixApply(font, value(TextFont)), value(fnt));
-}
-
-.root:alignment(left) {
-  justify-content: flex-start;
-}
-
-.root:alignment(center) {
-  justify-content: center;
-}
-.root:alignment(right) {
-  justify-content: flex-end;
-}
-
 .root::pageButton {
   -st-mixin: pageButtonRules;
   position: relative;
-  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(pageNumbersTextColor)));
+  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root::currentPage {
   -st-mixin: pageButtonRules;
-  color: wixApply(color, wixApply(fallback, value(SelectedTextFontColor), value(selectedPageTextColor)));
-  background: value(selectedPageBG);
-  border-radius: value(bRadius);
-  border: value(selectedPageBorderWidth) solid value(selectedPageBorderColor);
-  box-shadow: value(shadow);
-  padding: calc(0.5em - value(selectedPageBorderWidth)) calc(0.5em - value(selectedPageBorderWidth));
+  color: wixApply(color, wixApply(fallback, value(SelectedTextFontColor), value(defaultSelectedTextFontColor)));
+  padding: 0.5em;
 }
 
 .root:not(:disabled)::pageButton:hover::before {
-  background: value(selectedPageBG);
   opacity: 0.2;
   content: "";
   position: absolute;
@@ -104,7 +63,6 @@
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: value(bRadius);
 }
 
 .root:not(:disabled)::pageButton:hover {
@@ -118,24 +76,17 @@
 .root::navButton {
   min-width: 1em;
   min-height: 1em;
-  padding: calc(0.75em - value(navButtonBorderWidth));
   display: flex;
   justify-content: center;
   align-items: center;
-  border: value(navButtonBorderWidth) solid value(navButtonBorderColor);
-  background: value(navButtonBG);
-  border-radius: value(bRadius);
 }
 
 .root::navButton:disabled, .root[data-preview="disabled"]::navButton {
-  padding: calc(0.75em - value(navButtonDisabledBorderWidth));
-  border: value(navButtonDisabledBorderWidth) solid value(navButtonDisabledBorderColor);
-  background: value(navButtonDisabledBG);
   cursor: default;
 }
 
 .root::navButton:disabled svg, .root[data-preview="disabled"]::navButton svg {
-  fill: value(arrowsDisabledColor);
+  fill: wixApply(color, wixApply(fallback, value(DisabledTextFontColor), value(defaultDisabledTextFontColor)));
 }
 
 .root::navButton:hover:not(:disabled) {
@@ -147,21 +98,11 @@
   min-width: 16px;
   height: 1em;
   min-height: 16px;
-  fill: value(arrowsColor);
+  fill: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root[dir="rtl"]::navButton svg {
   transform: scaleX(-1);
-}
-
-.root::navButton span {
-  font-size: value(navButtonTextSize);
-  color: value(navButtonTextColor);
-  line-height: 1em;
-}
-
-.root::navButton:disabled span, .root[data-preview="disabled"]::navButton span {
-  color: value(navButtonDisabledTextColor);
 }
 
 .root::navButtonFirst {
@@ -202,7 +143,7 @@
 
 .root::gap {
   -st-mixin: pageButtonRules;
-  color: value(pageNumbersTextColor);
+  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root::pageStrip {
@@ -243,7 +184,7 @@
 }
 
 .root::slash svg > g {
-  stroke: value(totalPagesTextColor)
+  stroke: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root::totalPages {
@@ -252,7 +193,7 @@
   padding-left: 0.25em;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: value(totalPagesTextColor);
+  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
   align-self: center;
 }
 

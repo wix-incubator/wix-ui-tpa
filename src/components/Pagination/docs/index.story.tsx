@@ -16,7 +16,6 @@ export default {
   }),
 
   exampleProps: {
-    alignment: ['left', 'center', 'right'],
     paginationMode: ['pages', 'input'],
     onChange: ({ page }) => `Selected page: ${page}`,
   },
