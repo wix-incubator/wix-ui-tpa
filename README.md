@@ -1,6 +1,6 @@
 # wix-ui-tpa
 
-`wix-ui-tpa` is a React library of components that are designed to be used in Wix TPA's.
+`wix-ui-tpa` is a library of React components that are designed to be used in Wix TPA's.
 
 #### [Demo](https://wix-wix-ui-tpa.surge.sh/) | [Demo App](https://github.com/wix/wix-ui-tpa-example)
   
@@ -16,9 +16,44 @@ yarn add wix-ui-tpa
 `wix-ui-tpa` uses [Stylable](https://stylable.io/) and [CSS Modules](https://github.com/css-modules/css-modules) configuration by default.   
 In order to use `wix-ui-tpa`, your module bundler should be configured accordingly.
 
+## Usage
 
-### Typescript support
-- Refer to [Stylable Docs](https://stylable.io/docs/getting-started/install-configure#types) regarding Typescript configuration
+```typescript jsx
+import React from 'react';
+import { TPAComponentsProvider } from 'wix-ui-tpa/TPAComponentsConfig';
+import { Text, TYPOGRAPHY } from 'wix-ui-tpa/Text';
+import { Button } from 'wix-ui-tpa/Button';
+
+class App extends React.Component {
+    render() {
+        const { mobile, rtl } = this.props;
+        
+        return (
+            <TPAComponentsProvider value={{ mobile, rtl }}>
+                <Text typography={TYPOGRAPHY.largeTitle}>Hello World</Text>
+                <Button onClick={() => alert('Alerts are annoying')}>Click me</Button>
+            </TPAComponentsProvider>  
+        );   
+    }
+}
+```
+For more on how to use the library and override components' styles, refer to the [Usage document](./docs/USAGE.md)
+
+## Test drivers
+All of `wix-ui-tpa` components are 100% tested and supplies test drivers for easy interactions in your tests. Read more about it in `wix-style-react`'s excellent documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/usage/COMPONENTS_DRIVERS.md)
+
+## Contributing
+Please refer to the [Contributing document](./docs/CONTRIBUTION.md)
+
+
+
+
+
+
+
+  
+    
+<!--
 When writing a TPA application to be used in Wix websites, this package would allow you to use [wix-ui-core](https://github.com/wix/wix-ui/tree/master/packages/wix-ui-core) components with ad-hoc wrapping layer which comunicates with the Wix sdk in order to react to each relevant change in the settings pannel.
 
 If this is the first time you are writing a TPA application, you would most likely want to read this [doc](https://dev.wix.com/).
@@ -105,3 +140,4 @@ As a result, a jest trasnformer is required in order to handle them:
       }
      ```
 
+-->
