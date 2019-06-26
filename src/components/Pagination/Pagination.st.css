@@ -25,7 +25,7 @@
 
 .root {
   -st-extends: Pagination;
-  -st-states: rtl, paginationMode(enum(pages, input)), navButtonsType(enum(text, arrows)), navButtonsAmount(number);
+  -st-states: rtl;
   
   align-items: stretch;
   box-sizing: border-box;
@@ -101,7 +101,7 @@
   fill: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
 }
 
-.root[dir="rtl"]::navButton svg {
+.root:rtl::navButton svg {
   transform: scaleX(-1);
 }
 
@@ -109,7 +109,7 @@
   margin-right: 1em;
 }
 
-.root[dir="rtl"]::navButtonFirst {
+.root:rtl::navButtonFirst {
   margin-right: 0;
   margin-left: 1em;
 }
@@ -118,7 +118,7 @@
   margin-right: 1em;
 }
 
-.root[dir="rtl"]::navButtonPrevious {
+.root:rtl::navButtonPrevious {
   margin-right: 0;
   margin-left: 1em;
 }
@@ -127,7 +127,7 @@
   margin-left: 1em;
 }
 
-.root[dir="rtl"]::navButtonLast {
+.root:rtl::navButtonLast {
   margin-left: 0;
   margin-right: 1em;
 }
@@ -136,7 +136,7 @@
   margin-left: 1em;
 }
 
-.root[dir="rtl"]::navButtonNext {
+.root:rtl::navButtonNext {
   margin-left: 0;
   margin-right: 1em;
 }
