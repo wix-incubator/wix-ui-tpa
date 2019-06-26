@@ -24,10 +24,10 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
         return (
           <CorePagination
             {...styles('root', { mobileView, rtl }, props)}
-            previousLabel={ChevronLeft}
-            nextLabel={ChevronRight}
-            firstLabel={DoubleChevronLeft}
-            lastLabel={DoubleChevronRight}
+            previousLabel={!rtl ? ChevronLeft : ChevronRight}
+            nextLabel={rtl ? ChevronLeft : ChevronRight}
+            firstLabel={!rtl ? DoubleChevronLeft : DoubleChevronRight}
+            lastLabel={rtl ? DoubleChevronLeft : DoubleChevronRight}
             rtl={rtl}
             showFirstLastNavButtons={props.totalPages > props.maxPagesToShow}
             paginationMode={mobileView ? 'input' : 'pages'}

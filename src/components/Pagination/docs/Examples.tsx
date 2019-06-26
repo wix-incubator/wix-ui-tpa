@@ -6,6 +6,7 @@ import { MockSettings } from '../../../../stories/helperComponents/MockSettings'
 import * as ExtendedRawSource from '!raw-loader!./PaginationExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./PaginationExtendedExample.st.css';
 import { PaginationExtendedExample } from './PaginationExtendedExample';
+import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 export const Examples = () => (
   <div>
@@ -20,7 +21,9 @@ export const Examples = () => (
           ExtendedRawSource,
         ].join('\n')}
       >
-        <PaginationExtendedExample />
+        <TPAComponentsProvider value={{ rtl: true, mobile: false }}>
+          <PaginationExtendedExample />
+        </TPAComponentsProvider>
       </CodeExample>
     </div>
     <MockSettings
