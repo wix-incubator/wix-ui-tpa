@@ -17,7 +17,7 @@ yarn add wix-ui-tpa
 In order to use `wix-ui-tpa`, your module bundler should be configured accordingly.
 
 ## Usage
-
+Using components is pretty much like any other React component:
 ```typescript jsx
 import React from 'react';
 import { TPAComponentsProvider } from 'wix-ui-tpa/TPAComponentsConfig';
@@ -37,7 +37,42 @@ class App extends React.Component {
     }
 }
 ```
-For more on how to use the library and override components' styles, refer to the [Usage document](./docs/USAGE.md)
+The difference is the ability to override some of the components' styles:
+```typescript jsx
+// Input.tsx 
+import React from 'react';
+import { Input } from 'wix-ui-tpa/Input';
+import styles from './Input.st.css';
+
+class MyInput extends React.Component {
+    render() {
+        return (
+            <Input 
+                {...styles('root', {}, this.props)}
+                // ...
+            />
+        );
+    }
+}
+
+```
+```css
+// Input.st.css 
+:import {
+  -st-from: "wix-ui-tpa/index.st.css";
+  -st-named: Input;
+}
+
+.root {
+  --yourSettingsKey: "color(color-5)";
+  -st-extends: Input;
+  -st-mixin: Input(
+    MainTextColor '"color(--yourSettingsKey)"'
+  );
+}
+```
+The library relies on [wix-style-processor](https://github.com/wix/wix-style-processor) on parsing Wix template colors, fonts and settings' keys.  
+For more on this, and on how to use the library and override components' styles, refer to the [Usage document](./docs/USAGE.md)
 
 ## Test drivers
 All of `wix-ui-tpa` components are 100% tested and supplies test drivers for easy interactions in your tests. Read more about it in `wix-style-react`'s excellent documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/usage/COMPONENTS_DRIVERS.md)
@@ -65,22 +100,7 @@ In order to customize a component using styleable, you should wrap the component
 The out of the box components provided by this library are inheriting the styles of the site according to the common defaults styles, but if you need to extend it do the following,
 
 1. Create a stylable st.css file that extends the component that you want to style (e.g. an input):
-    ```css
-    //st.css file
-    :import {
-      -st-from: "wix-ui-tpa/dist/src/components/Input/Input.st.css";
-      -st-default: Input;
-    }
 
-    .root {
-      --yourSettingsKey: "color(color-5)"
-      -st-extends: Input;
-      -st-mixin: Input(
-        //overriden definitions
-        MainTextColor '"color(--yourSettingsKey)"'
-      );
-    }
-    ```
     For more information about the capabilities of the stylable library refer to [https://stylable.io/](https://stylable.io/)
     
     For more information about the "color(something)" syntax please refer to [wix-style-processor](https://github.com/wix/wix-style-processor) documentation.
