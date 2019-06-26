@@ -24,7 +24,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             -st-mixin: TPAPagination(
                     TextFont '"--textFont"',
                     TextFontColor '"--textFontColor"',
-                    SelectedTextFontColor '"--selectedTextFontColor"'
+                    SelectedTextFontColor '"--selectedTextFontColor"',
                     DisabledTextFontColor '"--disabledTextFontColor"'
             );
         }
