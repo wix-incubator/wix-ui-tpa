@@ -1,0 +1,47 @@
+{
+  "Autocomplete": {
+    "path": "src/components/Autocomplete"
+  },
+  "Button": {
+    "path": "src/components/Button"
+  },
+  "Card": {
+    "path": "src/components/Card"
+  },
+  "Divider": {
+    "path": "src/components/Divider"
+  },
+  "Grid": {
+    "path": "src/components/Grid"
+  },
+  "IconToggle": {
+    "path": "src/components/IconToggle"
+  },
+  "Input": {
+    "path": "src/components/Input"
+  },
+  "LikeButton": {
+    "path": "src/components/LikeButton"
+  },
+  "OverlappingCard": {
+    "path": "src/components/OverlappingCard"
+  },
+  "Pagination": {
+    "path": "src/components/Pagination"
+  },
+  "StatesButton": {
+    "path": "src/components/StatesButton"
+  },
+  "StripCard": {
+    "path": "src/components/StripCard"
+  },
+  "Tabs": {
+    "path": "src/components/Tabs"
+  },
+  "Text": {
+    "path": "src/components/Text"
+  },
+  "Tooltip": {
+    "path": "src/components/Tooltip"
+  }
+}
