@@ -1,18 +1,9 @@
-function applyStyleMethod (func) {
-    var args = Array.prototype.slice.call(arguments, 1);
-    return "\"" + func + "(" + args.map(function (arg) {
-        return arg.replace(/"/g, '');
-    }).join(', ') + ")\"";
+const applyStyleMethod = (func, ...args) => {
+    const unquotedArgs = args.map(arg => arg.replace(/"/g, '')).join(', ');
+    return `"${func}(${unquotedArgs})"`;
 };
 
-
-function createStyleFunc (func) {
-    return function () {
-        var args = Array.prototype.slice.call(arguments, 0);
-        args.unshift(func);
-        return applyStyleMethod.apply(null, args);
-    };
-}
+const createStyleFunc = func => (...args) => applyStyleMethod(func, ...args);
 
 module.exports.applyStyleMethod = applyStyleMethod;
 
