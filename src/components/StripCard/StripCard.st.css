@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: color, fallback, zeroAsTrue, unit;
+    -st-named: color, fallback, zeroAsTrue, applyUnit, applyOpacity;
 }
 
 :import {
@@ -33,9 +33,9 @@
 
 :vars {
     cardBGColor: color(fallback(value(MainBGColor), value(DefaultCardBG)));
-    borderWidth: unit(fallback(zeroAsTrue(value(MainBorderWidth)), zeroAsTrue(value(DefaultBorderWidth))), px);
-    borderColor: color(fallback(value(MainBorderColor), opacity(color(value(DefaultBorderColor)), 0.2)));
-    mediaBGColor: color(fallback(value(MainMediaColor), opacity(color(value(DefaultMediaBG)), 0.2)));
+    borderWidth: applyUnit(fallback(zeroAsTrue(value(MainBorderWidth)), zeroAsTrue(value(DefaultBorderWidth))), px);
+    borderColor: color(fallback(value(MainBorderColor), applyOpacity(color(value(DefaultBorderColor)), 0.2)));
+    mediaBGColor: color(fallback(value(MainMediaColor), applyOpacity(color(value(DefaultMediaBG)), 0.2)));
 }
 
 .root {

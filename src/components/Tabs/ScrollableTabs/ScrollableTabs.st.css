@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../../common/styles";
-    -st-named: color, opacity;
+    -st-named: color, applyOpacity;
 }
 
 :import {
@@ -34,7 +34,7 @@
 .tab {
     -st-extends: Tab;
     -st-mixin: Tab(
-        focusIndicatorColor opacity(color(value(selectedIndicatorColor)), 0.2),
+        focusIndicatorColor applyOpacity(color(value(selectedIndicatorColor)), 0.2),
         activeIndicatorColor value(selectedIndicatorColor)
     );
     display: inline-block;

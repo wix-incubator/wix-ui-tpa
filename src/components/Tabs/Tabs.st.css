@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: color, fallback, opacity, font, calculate;
+    -st-named: color, fallback, applyOpacity, font, calculate;
 }
 
 :import {
@@ -30,7 +30,7 @@
     tabsMobileHeight: 48px;
     navBtnWidth: 35px;
     navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    calculatedBorderColor: color(fallback(value(IndicatorColor), opacity(color(value(defaultIndicatorColor)), 0.2)));
+    calculatedBorderColor: color(fallback(value(IndicatorColor), applyOpacity(color(value(defaultIndicatorColor)), 0.2)));
     shadowBorder: inset 0 -1px 0px 0px value(calculatedBorderColor);
 }
 
@@ -53,7 +53,7 @@
     width: 0;
     height: 100%;
     overflow: hidden;
-    transition: width .3s value(navBtnEase) .2s, opacity .2s ease;
+    transition: width .3s value(navBtnEase) .2s, applyOpacity .2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,7 +94,7 @@
 .root:navButtons(both) .navBtn {
     width: value(navBtnWidth);
     opacity: 1;
-    transition: width .3s value(navBtnEase), opacity .2s ease .3s;
+    transition: width .3s value(navBtnEase), applyOpacity .2s ease .3s;
 }
 
 .root:navButtons(right) .navigation,

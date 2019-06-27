@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles.js";
-    -st-named: opacity;
+    -st-named: applyOpacity;
 }
 
 :import {
@@ -21,7 +21,7 @@
 
 :vars {
     optionColor: value(color);
-    optionColorHover: opacity(value(optionColor), 0.6);
+    optionColorHover: applyOpacity(value(optionColor), 0.6);
 }
 
 .root {
@@ -91,7 +91,7 @@
 }
 
 .root::dropdownContent::optionsContainer::-webkit-scrollbar-thumb {
-    background-color: opacity(value(color), 0.2);
+    background-color: applyOpacity(value(color), 0.2);
     border-radius: 12px;
     background-clip: padding-box;
     border: 10px solid rgba(0, 0, 0, 0);

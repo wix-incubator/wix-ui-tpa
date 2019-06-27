@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: applyStyleMethod, opacity;
+    -st-named: applyStyleMethod, applyOpacity;
 }
 
 :import {
@@ -22,9 +22,9 @@
 
 :vars {
     color: value(MainTextColor);
-    colorPlaceholder: opacity(value(MainTextColor), 0.6);
+    colorPlaceholder: applyOpacity(value(MainTextColor), 0.6);
     backgroundColor: value(MainBackgroundColor);
-    borderColor: opacity(value(MainBorderColor), 0.6);
+    borderColor: applyOpacity(value(MainBorderColor), 0.6);
     border: 1px solid value(borderColor);
     font: value(MainTextFont);
 }
@@ -32,7 +32,7 @@
 :vars {
     /*Hover*/
     colorHover: value(MainTextColor);
-    backgroundColorHover: opacity(value(MainTextColor), 0.05);
+    backgroundColorHover: applyOpacity(value(MainTextColor), 0.05);
     borderColorHover: value(borderColor);
 }
 
@@ -46,9 +46,9 @@
 :vars {
     /*Disabled*/
     disabledOpacity: 0.3;
-    colorDisabled: opacity(value(MainTextColor), value(disabledOpacity));
-    backgroundColorDisabled: opacity(value(MainBackgroundColor), value(disabledOpacity));
-    borderColorDisabled: opacity(value(MainBorderColor), value(disabledOpacity));
+    colorDisabled: applyOpacity(value(MainTextColor), value(disabledOpacity));
+    backgroundColorDisabled: applyOpacity(value(MainBackgroundColor), value(disabledOpacity));
+    borderColorDisabled: applyOpacity(value(MainBorderColor), value(disabledOpacity));
 }
 
 .inputStyling {
@@ -114,7 +114,7 @@
 }
 
 .root::nativeInput::selection {
-    background: opacity(value(MainTextColor), 0.2);
+    background: applyOpacity(value(MainTextColor), 0.2);
 }
 
 /* Placeholder color */

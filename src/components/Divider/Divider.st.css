@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/styles";
-    -st-named: color, fallback, unit, zeroAsTrue;
+    -st-named: color, fallback, applyUnit, zeroAsTrue;
 }
 
 :vars {
@@ -19,5 +19,5 @@
     width: 100%;
     border-bottom-style: solid;
     border-bottom-color: color(fallback(value(MainDividerColor), value(MainColor)));
-    border-bottom-width: unit(fallback(zeroAsTrue(value(MainDividerWidth)), value(MainWidth)), px);
+    border-bottom-width: applyUnit(fallback(zeroAsTrue(value(MainDividerWidth)), value(MainWidth)), px);
 }

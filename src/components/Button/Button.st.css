@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../../common/styles";
-    -st-named: color, fallback, font, opacity;
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :vars {
@@ -78,7 +78,7 @@
 .root:priority(basic):active,
 .root:priority(basic):focus,
 .root:priority(basic):hover {
-    background-color: opacity(value(BasicBackgroundColor), 0.8);
+    background-color: applyOpacity(value(BasicBackgroundColor), 0.8);
 }
 
 /*Primary*/
@@ -96,7 +96,7 @@
 .root:priority(primary):active,
 .root:priority(primary):focus,
 .root:priority(primary):hover {
-    background-color: opacity(value(PrimaryBackgroundColor), 0.8);
+    background-color: applyOpacity(value(PrimaryBackgroundColor), 0.8);
 }
 
 /*Secondary*/
@@ -116,8 +116,8 @@
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
-    color: opacity(value(SecondaryTextColor), 0.6);
-    border-color: opacity(value(SecondaryBorderColor), 0.6);
+    color: applyOpacity(value(SecondaryTextColor), 0.6);
+    border-color: applyOpacity(value(SecondaryBorderColor), 0.6);
 }
 
 /*Disabled*/
