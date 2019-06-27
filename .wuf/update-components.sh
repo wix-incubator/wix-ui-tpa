@@ -19,6 +19,15 @@ wuf export-testkits \
 
 # enzyme testkits
 wuf export-testkits \
+  --factoryName enzymeTestkitFactoryCreator \
+  --uniFactoryName enzymeUniTestkitFactoryCreator \
+  --components .wuf/components.json \
+  --definitions .wuf/testkits/definitions.js \
+  --template .wuf/testkits/enzyme.template.ts \
+  --output src/testkit/enzyme.ts
+
+# protractor testkits
+wuf export-testkits \
   --factoryName protractorTestkitFactoryCreator \
   --uniFactoryName protractorUniTestkitFactoryCreator \
   --components .wuf/components.json \
