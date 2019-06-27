@@ -33,7 +33,12 @@
   font:  wixApply(fallback, wixApply(font, value(TextFont)), wixApply(font, value(defaultTextFont)));
 }
 
+.buttonTransition {
+  transition: 200ms opacity;
+}
+
 .pageButtonRules {
+  -st-mixin: buttonTransition;
   min-width: 1em;
   min-height: 1em;
   line-height: 1em;
@@ -74,6 +79,7 @@
 }
 
 .root::navButton {
+  -st-mixin: buttonTransition;
   min-width: 1em;
   min-height: 1em;
   display: flex;
