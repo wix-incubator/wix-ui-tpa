@@ -1,0 +1,204 @@
+
+:import {
+  -st-from: "wix-ui-core/index.st.css";
+  -st-named: Pagination
+}
+
+:import {
+  -st-from: "../../tpaStyles/styleableExt.js";
+  -st-named: wixApply;
+}
+
+:vars {
+  defaultTextFont: "{theme: 'Body-M', size: '16px'}";
+  defaultTextFontColor: color-5;
+  defaultSelectedTextFontColor: color-8;
+  defaultDisabledTextFontColor: color-3;
+}
+
+:vars {
+  TextFont: --overridable;
+  TextFontColor: --overridable;
+  SelectedTextFontColor: --overridable;
+  DisabledTextFontColor: --overridable;
+}
+
+.root {
+  -st-extends: Pagination;
+  -st-states: rtl;
+  
+  align-items: stretch;
+  box-sizing: border-box;
+  display: inline-flex;
+  font:  wixApply(fallback, wixApply(font, value(TextFont)), wixApply(font, value(defaultTextFont)));
+}
+
+.buttonTransition {
+  transition: 200ms opacity;
+}
+
+.pageButtonRules {
+  -st-mixin: buttonTransition;
+  min-width: 1em;
+  min-height: 1em;
+  line-height: 1em;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 0.5em;
+  margin: 0.25em;
+}
+
+.root::pageButton {
+  -st-mixin: pageButtonRules;
+  position: relative;
+  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+}
+
+.root::currentPage {
+  -st-mixin: pageButtonRules;
+  color: wixApply(color, wixApply(fallback, value(SelectedTextFontColor), value(defaultSelectedTextFontColor)));
+  padding: 0.5em;
+}
+
+.root:not(:disabled)::pageButton:hover::before {
+  opacity: 0.2;
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.root:not(:disabled)::pageButton:hover {
+  opacity: 0.7;
+}
+
+.root:disabled::pageButton {
+  cursor: default;
+}
+
+.root::navButton {
+  -st-mixin: buttonTransition;
+  min-width: 1em;
+  min-height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.root::navButton:disabled, .root[data-preview="disabled"]::navButton {
+  cursor: default;
+}
+
+.root::navButton:disabled svg, .root[data-preview="disabled"]::navButton svg {
+  fill: wixApply(color, wixApply(fallback, value(DisabledTextFontColor), value(defaultDisabledTextFontColor)));
+}
+
+.root::navButton:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.root::navButton svg {
+  width: 1em;
+  min-width: 16px;
+  height: 1em;
+  min-height: 16px;
+  fill: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+}
+
+.root:rtl::navButton svg {
+  transform: scaleX(-1);
+}
+
+.root::navButtonFirst {
+  margin-right: 1em;
+}
+
+.root:rtl::navButtonFirst {
+  margin-right: 0;
+  margin-left: 1em;
+}
+
+.root::navButtonPrevious {
+  margin-right: 1em;
+}
+
+.root:rtl::navButtonPrevious {
+  margin-right: 0;
+  margin-left: 1em;
+}
+
+.root::navButtonLast {
+  margin-left: 1em;
+}
+
+.root:rtl::navButtonLast {
+  margin-left: 0;
+  margin-right: 1em;
+}
+
+.root::navButtonNext {
+  margin-left: 1em;
+}
+
+.root:rtl::navButtonNext {
+  margin-left: 0;
+  margin-right: 1em;
+}
+
+.root::gap {
+  -st-mixin: pageButtonRules;
+  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+}
+
+.root::pageStrip {
+  min-width: 3em;
+  overflow: visible;
+  align-self: center;
+}
+
+.root::pageStripInner {
+  flex-grow: 1;
+  flex-basis: auto;
+  justify-content: center;
+  overflow: visible;
+  align-items: center;
+}
+
+.root::pageStripTemplate {
+  overflow: hidden;
+}
+
+.root::pageForm {
+  flex-grow: 1;
+  flex-basis: auto;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.root::slash {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  align-self: center;
+}
+
+.root::slash svg {
+  width: 1em;
+  height: 1em;
+}
+
+.root::slash svg > g {
+  stroke: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+}
+
+.root::totalPages {
+  max-width: 4ch;
+  min-width: 1ch;
+  padding-left: 0.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+  align-self: center;
+}

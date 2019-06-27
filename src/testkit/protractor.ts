@@ -86,3 +86,12 @@ export const likeButtonTestkitFactory = protractorTestkitFactoryCreator<
   LikeButtonDriver
 >(iconToggleDriverFactory);
 export { LikeButtonDriver };
+
+import {
+  paginationDriverFactory,
+  PaginationDriver,
+} from '../components/Pagination/Pagination.protractor.driver';
+export const paginationTestkitFactory = protractorTestkitFactoryCreator<
+  PaginationDriver
+>(paginationDriverFactory);
+export { PaginationDriver };

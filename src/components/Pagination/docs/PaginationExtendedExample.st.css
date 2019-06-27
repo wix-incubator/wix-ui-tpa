@@ -1,0 +1,13 @@
+:import {
+    -st-from: "../Pagination.st.css";
+    -st-default: TPAPagination;
+  }
+  
+  .root {
+    -st-mixin: TPAPagination(
+      TextFont '"--textFont"',
+      TextFontColor '"--textFontColor"',
+      SelectedTextFontColor '"--selectedTextFontColor"',
+      DisabledTextFontColor '"--disabledTextFontColor"'
+    );
+  }

@@ -13,4 +13,5 @@ export * from './components/Tabs';
 export * from './components/Text';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
+export * from './components/Pagination';
 export * from './components/TPAComponentsConfig';
