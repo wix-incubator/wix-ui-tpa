@@ -71,14 +71,18 @@ class MyInput extends React.Component {
   );
 }
 ```
-The library relies on [wix-style-processor](https://github.com/wix/wix-style-processor) on parsing Wix template colors, fonts and settings' keys.  
-For more on this, and on how to use the library and override components' styles, refer to the [Usage document](./docs/USAGE.md)
+The library relies on [wix-style-processor](https://github.com/wix/wix-style-processor) 
+on parsing Wix template colors, fonts and settings' keys.  
+For more on this, and on how to use the library and override components' styles, 
+refer to the [Usage document](./docs/USAGE.md).
 
 ## Test drivers
-All of `wix-ui-tpa` components are 100% tested and supplies test drivers for easy interactions in your tests. Read more about it in `wix-style-react`'s excellent documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/usage/COMPONENTS_DRIVERS.md)
+All of `wix-ui-tpa` components are 100% tested and supplies test drivers for easy 
+interactions in your tests. Read more about it in `wix-style-react`'s excellent 
+documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/usage/COMPONENTS_DRIVERS.md).
 
 ## Contributing
-Please refer to the [Contributing document](./docs/CONTRIBUTION.md)
+Please refer to the [Contribution document](./docs/CONTRIBUTION.md).
 
 
 
