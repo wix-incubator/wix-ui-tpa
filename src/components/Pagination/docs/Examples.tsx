@@ -43,11 +43,6 @@ export const Examples = () => (
           wixParam: 'selectedTextFontColor',
           defaultColor: 'color-8',
         },
-        {
-          label: 'Disabled Buttons Color',
-          wixParam: 'disabledTextFontColor',
-          defaultColor: 'color-3',
-        },
       ]}
       wixFontParams={[
         {

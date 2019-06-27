@@ -13,14 +13,12 @@
   defaultTextFont: "{theme: 'Body-M', size: '16px'}";
   defaultTextFontColor: color-5;
   defaultSelectedTextFontColor: color-8;
-  defaultDisabledTextFontColor: color-3;
 }
 
 :vars {
   TextFont: --overridable;
   TextFontColor: --overridable;
   SelectedTextFontColor: --overridable;
-  DisabledTextFontColor: --overridable;
 }
 
 .root {
@@ -92,7 +90,7 @@
 }
 
 .root::navButton:disabled svg, .root[data-preview="disabled"]::navButton svg {
-  fill: wixApply(color, wixApply(fallback, value(DisabledTextFontColor), value(defaultDisabledTextFontColor)));
+  opacity: 0.6;
 }
 
 .root::navButton:hover:not(:disabled) {

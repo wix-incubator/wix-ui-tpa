@@ -9,7 +9,6 @@ The TPA implementation provides few extendable theme properties with the ability
 | TextFont | string   | "{theme: 'Body-M', size: '16px'}" | The font of the pagination pages |
 | TextFontColor  | string   | color-5 | The color of the pagination pages |
 | SelectedTextFontColor  | string   | color-8 | The color of the selected page |
-| DisabledTextFontColor  | string   | color-3 | The color of the disabled nav buttons |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
@@ -24,8 +23,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             -st-mixin: TPAPagination(
                     TextFont '"--textFont"',
                     TextFontColor '"--textFontColor"',
-                    SelectedTextFontColor '"--selectedTextFontColor"',
-                    DisabledTextFontColor '"--disabledTextFontColor"'
+                    SelectedTextFontColor '"--selectedTextFontColor"'
             );
         }
     ```

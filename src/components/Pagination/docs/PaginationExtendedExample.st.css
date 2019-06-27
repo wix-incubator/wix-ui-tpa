@@ -7,7 +7,6 @@
     -st-mixin: TPAPagination(
       TextFont '"--textFont"',
       TextFontColor '"--textFontColor"',
-      SelectedTextFontColor '"--selectedTextFontColor"',
-      DisabledTextFontColor '"--disabledTextFontColor"'
+      SelectedTextFontColor '"--selectedTextFontColor"'
     );
   }
