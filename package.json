@@ -97,7 +97,7 @@
     "wix-base-ui": "3.203.0",
     "wix-storybook-utils": "^3.0.4",
     "wix-style-processor": "latest",
-    "wix-ui-framework": "^2.5.0",
+    "wix-ui-framework": "^3.0.0",
     "wix-ui-test-utils": "^1.0.0",
     "yoshi": "^4.9.0",
     "yoshi-style-dependencies": "^4.6.0"
