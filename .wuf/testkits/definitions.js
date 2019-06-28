@@ -58,5 +58,13 @@ module.exports = {
 
   StatesButton: {
     unidriver: true
+  },
+
+  Tabs: {
+    unidriver: true
+  },
+
+  Divider: {
+    noTestkit: true
   }
 };
