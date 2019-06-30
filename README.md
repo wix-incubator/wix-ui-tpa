@@ -13,7 +13,7 @@ yarn add wix-ui-tpa
 ```
  
 ## Prerequisites
-`wix-ui-tpa` uses [Stylable](https://stylable.io/) and [CSS Modules](https://github.com/css-modules/css-modules) configuration by default.   
+`wix-ui-tpa` uses [Stylable](https://stylable.io/) configuration by default.   
 In order to use `wix-ui-tpa`, your module bundler should be configured accordingly.
 
 ## Usage
@@ -37,7 +37,10 @@ class App extends React.Component {
     }
 }
 ```
-The difference is the ability to override some of the components' styles:
+(Be sure to add the `TPAComponentsProvider` to the root of your project, in order to support
+`mobile` and `rtl` displays).
+ 
+Components' styles can be overridden like this:
 ```typescript jsx
 // Input.tsx 
 import React from 'react';

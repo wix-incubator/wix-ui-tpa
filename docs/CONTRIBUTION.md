@@ -1,6 +1,4 @@
 # Contribution
-
-
 ## `wix-style-processor`
 TPA's get their colors and fonts (most of them) from the template's palette, 
 and let the users override them using the settings panel.
