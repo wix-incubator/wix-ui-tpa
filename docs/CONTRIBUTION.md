@@ -11,6 +11,9 @@ This will generate all the necessary files that are required for the new compone
 * `index.tsx` - for exporting.
 * `README.md` - documentation file.
 
+## Developing A Component
+refer to [Component Considerations](./COMPONENT_CONSIDERATIONS.md).
+
 ## Testing
 When generating a new component we get 3 different test files:
 1) `*.spec.tsx` - enzyme test file
