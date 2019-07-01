@@ -12,7 +12,7 @@ This will generate all the necessary files that are required for the new compone
 * `README.md` - documentation file.
 
 ## Developing A Component
-refer to [Component Considerations](./COMPONENT_CONSIDERATIONS.md).
+refer to [Component Guidelines](COMPONENT_GUIDELINES.md).
 
 ## Testing
 When generating a new component we get 3 different test files:

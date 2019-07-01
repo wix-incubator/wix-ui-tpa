@@ -1,8 +1,11 @@
-# What to consider when creating a `wix-ui-tpa` component
+# Guidelines for creating a `wix-ui-tpa` component
 `wix-ui-tpa` components are used by TPA's and live in Wix's editor and viewer environment.  
 These components will be used and interacted by Wix's *users-of-users*.  
 Because of this, there are several considerations we should have in mind while working on a 
 `wix-ui-tpa` component:
+
+* `wix-ui-tpa` components are designed by the Design System team, which should approve any 
+visual or behavioural change and addition, to the library. 
 
 * Components' style should be customizable, and so, should allow overriding of css 
 (in accordance with the design system's spec).
