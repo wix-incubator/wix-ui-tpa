@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../common/styles.js";
+    -st-from: "../../common/formatters.st.js";
     -st-named: applyOpacity;
 }
 

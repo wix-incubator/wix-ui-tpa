@@ -4,7 +4,7 @@
 }
 
 :import {
-    -st-from: "../../common/styles";
+    -st-from: "../../common/formatters.st";
     -st-named: color, fallback, font, applyOpacity;
 }
 
