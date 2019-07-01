@@ -25,3 +25,6 @@ completely different than the window in the viewer.
 * Widget's in the editor are fluid in their dimensions. `wix-ui-tpa` components should support this.
 
 * Components should be responsive by default.
+
+* `wix-ui-tpa` are rendered for Wix's users-of-users, and so they must comply with web accessibility
+ principles.
