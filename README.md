@@ -13,8 +13,9 @@ yarn add wix-ui-tpa
 ```
  
 ## Prerequisites
-`wix-ui-tpa` uses [Stylable](https://stylable.io/) configuration by default.   
-In order to use `wix-ui-tpa`, your module bundler should be configured accordingly.
+`wix-ui-tpa` uses [Stylable](https://stylable.io/) configuration, and depends on 
+[`wix-style-processor`](https://github.com/wix/wix-style-processor) by default.     
+In order to use `wix-ui-tpa`, your module bundler and app should be configured accordingly.
 
 ## Usage
 Using components is pretty much like any other React component:
