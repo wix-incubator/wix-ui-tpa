@@ -5,8 +5,8 @@ const {%ComponentName%}Metadata = Registry.getComponentMetadata({%ComponentName%
 {%ComponentName%}Metadata.nonReactStrictModeCompliant = true;
 
 {%ComponentName%}Metadata.addSim({
-    title: 'render',
-    props: {
-        buttonText: 'Click me!'
-    },
+  title: 'render',
+  props: {
+      buttonText: 'Click me!'
+  },
 });
