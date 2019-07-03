@@ -2,9 +2,9 @@ import { {%ComponentName%} } from '.';
 import Registry from '@ui-autotools/registry';
 
 const {%ComponentName%}Metadata = Registry.getComponentMetadata({%ComponentName%});
-{%ComponentName%}.nonReactStrictModeCompliant = true;
+{%ComponentName%}Metadata.nonReactStrictModeCompliant = true;
 
-{%ComponentName%}.addSim({
+{%ComponentName%}Metadata.addSim({
     title: 'render',
     props: {
         buttonText: 'Click me!'
