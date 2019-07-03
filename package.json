@@ -20,8 +20,12 @@
   "files": [
     "dist",
     "*.js",
+    "*.d.ts",
+    "index.st.css",
     "!wallaby.js",
-    "!protractor.conf.js"
+    "!protractor.conf.js",
+    "!applitools.*.js",
+    "!webpack.config.storybook.js"
   ],
   "scripts": {
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
