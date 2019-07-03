@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
 }
 
 :vars {

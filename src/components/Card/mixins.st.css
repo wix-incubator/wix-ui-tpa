@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: calculate, string;
 }
 
 :vars {
@@ -17,10 +17,10 @@
 }
 
 .withDynamicPadding {
-    padding: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
+    padding: calculate(string(-), value(PaddingSize), value(BorderWidth));
 }
 
 .withDynamicSidePadding {
-    padding-left: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
-    padding-right: wixApply(calculate, wixApply(string, -), value(PaddingSize), value(BorderWidth));
+    padding-left: calculate(string(-), value(PaddingSize), value(BorderWidth));
+    padding-right: calculate(string(-), value(PaddingSize), value(BorderWidth));
 }

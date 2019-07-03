@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font;
 }
 
 :vars {
@@ -57,23 +57,23 @@
 }
 
 .icon path {
-    stroke: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 .root:checked .icon path {
-    fill: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 .root:disabled .icon path {
-    fill: wixApply(color, value(DisabledColor));
-    stroke: wixApply(color, value(DisabledColor));
+    fill: color(value(DisabledColor));
+    stroke: color(value(DisabledColor));
 }
 
 .label {
-    color: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
-    font: wixApply(fallback, wixApply(font, value(LabelFont)), wixApply(font, value(DefaultFont)));
+    color: color(fallback(value(LabelColor), value(DefaultColor)));
+    font: fallback(font(value(LabelFont)), font(value(DefaultFont)));
 }
 
 .root:disabled .label {
-    color: wixApply(color, value(DisabledColor));
+    color: color(value(DisabledColor));
 }

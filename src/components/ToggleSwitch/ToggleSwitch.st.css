@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: applyStyleMethod, applyOpacity;
 }
 
 :import {
@@ -14,7 +14,7 @@
 }
 
 :import {
-    -st-from: "../../tpaStyles/variables.st.css";
+    -st-from: "../../common/variables.st.css";
     -st-named: HighlightColor;
 }
 
@@ -22,9 +22,9 @@
 :vars {
     MainColor: value(HighlightColor);
     Selected: value(MainColor);
-    Hover: wixApply(opacity, value(MainColor), 0.7);
-    Muted: wixApply(opacity, value(MainColor), 0.3);
-    Disabled: wixApply(opacity, wixApply(color, color-5), 0.9);
+    Hover: applyOpacity(value(MainColor), 0.7);
+    Muted: applyOpacity(value(MainColor), 0.3);
+    Disabled: applyOpacity(applyStyleMethod(color, color-5), 0.9);
 }
 
 /* Extended Variables */

@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st.js";
+    -st-named: applyOpacity;
 }
 
 :import {
@@ -15,13 +15,13 @@
 }
 
 :import {
-    -st-from: "../../palette.st.css";
+    -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
 
 :vars {
     optionColor: value(color);
-    optionColorHover: wixApply(opacity, value(optionColor), 0.6);
+    optionColorHover: applyOpacity(value(optionColor), 0.6);
 }
 
 .root {
@@ -91,7 +91,7 @@
 }
 
 .root::dropdownContent::optionsContainer::-webkit-scrollbar-thumb {
-    background-color: wixApply(opacity, value(color), 0.2);
+    background-color: applyOpacity(value(color), 0.2);
     border-radius: 12px;
     background-clip: padding-box;
     border: 10px solid rgba(0, 0, 0, 0);

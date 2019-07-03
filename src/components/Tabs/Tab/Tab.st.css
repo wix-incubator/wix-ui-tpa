@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../../common/formatters.st";
+    -st-named: color;
 }
 
 :vars {
@@ -38,7 +38,7 @@
 
 .root:isActive:indicateActive {
     border-bottom: 3px solid;
-    border-bottom-color: wixApply(color, value(activeIndicatorColor));
+    border-bottom-color: color(value(activeIndicatorColor));
 }
 
 .root:focus,
@@ -48,5 +48,5 @@
 }
 
 .root:focus .focusIndicator {
-    background-color: wixApply(color, value(focusIndicatorColor));
+    background-color: color(value(focusIndicatorColor));
 }

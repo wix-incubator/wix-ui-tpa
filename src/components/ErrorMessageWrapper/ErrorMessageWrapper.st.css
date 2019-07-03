@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../palette.st.css";
+    -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
 

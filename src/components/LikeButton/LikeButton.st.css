@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: fallback, color, font;
 }
 
 :import {
@@ -23,10 +23,10 @@
 }
 
 :vars {
-    iconColor: wixApply(color, wixApply(fallback, value(IconColor), value(DefaultColor)));
+    iconColor: color(fallback(value(IconColor), value(DefaultColor)));
     checkedIconColor: value(CheckedIconColor);
-    labelColor: wixApply(color, wixApply(fallback, value(LabelColor), value(DefaultColor)));
-    labelFont: wixApply(font, wixApply(fallback, value(LabelFont), wixApply(font, value(DefaultFont))));
+    labelColor: color(fallback(value(LabelColor), value(DefaultColor)));
+    labelFont: font(fallback(value(LabelFont), font(value(DefaultFont))));
 }
 
 .root {
@@ -46,7 +46,7 @@
         LabelFont value(labelFont)
     );
 }
- 
+
 @keyframes pop-in {
     0% {
         transform: scale(0.9);
@@ -63,7 +63,7 @@
 }
 
 .root:animated::icon {
-   animation: pop-in 0.2s ease 0s 1 normal; 
+   animation: pop-in 0.2s ease 0s 1 normal;
    animation-fill-mode: forwards;
 }
 

@@ -1,2 +1,2 @@
-export { LikeButton, LikeButtonProps } from './LikeButton';
-export { LabelPlacement } from '../IconToggle';
+export * from './LikeButton';
+export * from '../IconToggle';

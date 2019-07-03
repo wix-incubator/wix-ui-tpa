@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, zeroAsTrue, applyUnit, applyOpacity;
 }
 
 :import {
@@ -32,10 +32,10 @@
 }
 
 :vars {
-    cardBGColor: wixApply(color, wixApply(fallback, value(MainBGColor), value(DefaultCardBG)));
-    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), wixApply(zeroAsTrue, value(DefaultBorderWidth))), px);
-    borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), wixApply(opacity, wixApply(color, value(DefaultBorderColor)), 0.2)));
-    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaBG)), 0.2)));
+    cardBGColor: color(fallback(value(MainBGColor), value(DefaultCardBG)));
+    borderWidth: applyUnit(fallback(zeroAsTrue(value(MainBorderWidth)), zeroAsTrue(value(DefaultBorderWidth))), px);
+    borderColor: color(fallback(value(MainBorderColor), applyOpacity(color(value(DefaultBorderColor)), 0.2)));
+    mediaBGColor: color(fallback(value(MainMediaColor), applyOpacity(color(value(DefaultMediaBG)), 0.2)));
 }
 
 .root {
@@ -47,7 +47,7 @@
             PaddingSize value(DefaultPadding),
             BorderWidth value(borderWidth)
     ), withDynamicSidePadding(
-            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(MainSidePadding)), value(DefaultPadding)),
+            PaddingSize fallback(zeroAsTrue(value(MainSidePadding)), value(DefaultPadding)),
             BorderWidth value(borderWidth)
     );
     display: flex;

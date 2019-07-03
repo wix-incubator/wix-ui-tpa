@@ -39,7 +39,7 @@
     "release": "yoshi release",
     "postpublish": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006 -s ./src/assets",
-    "copy-styleable-ext": "cp src/tpaStyles/*.js dist/src/tpaStyles",
+    "copy-styleable-ext": "cp src/common/formatters.st.js dist/src/common && cp src/common/formatters.st.js dist/es/src/common",
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
     "storybook:build": "build-storybook -s ./src/assets",
     "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css",

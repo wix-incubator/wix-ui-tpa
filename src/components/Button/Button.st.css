@@ -1,11 +1,11 @@
 :import {
-    -st-from: "../../tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
 }
 
 :import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: ButtonNext;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :vars {
@@ -35,8 +35,8 @@
 }
 
 :vars {
-    PrimaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(SecondaryColor)));
-    PrimaryBorderWidth: wixApply(fallback, value(MainBorderWidth), 0);
+    PrimaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
+    PrimaryBorderWidth: fallback(value(MainBorderWidth), 0);
 }
 
 .root {
@@ -46,7 +46,7 @@
     min-width: value(MinWidth);
     border-style: solid;
     box-sizing: content-box;
-    border-color: wixApply(color, value(MainBorderColor));
+    border-color: color(value(MainBorderColor));
     border-radius: value(MainBorderRadius);
     transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
 }
@@ -66,7 +66,7 @@
 /*Basic*/
 
 :vars {
-    BasicBackgroundColor: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(BasicColor)));
+    BasicBackgroundColor: color(fallback(value(MainBackgroundColor), value(BasicColor)));
 }
 
 .root:priority(basic) {
@@ -78,13 +78,13 @@
 .root:priority(basic):active,
 .root:priority(basic):focus,
 .root:priority(basic):hover {
-    background-color: wixApply(opacity, value(BasicBackgroundColor), 0.8);
+    background-color: applyOpacity(value(BasicBackgroundColor), 0.8);
 }
 
 /*Primary*/
 
 :vars {
-    PrimaryBackgroundColor: wixApply(color, wixApply(fallback, value(MainBackgroundColor), value(PrimaryColor)));
+    PrimaryBackgroundColor: color(fallback(value(MainBackgroundColor), value(PrimaryColor)));
 }
 
 .root:priority(primary) {
@@ -96,71 +96,71 @@
 .root:priority(primary):active,
 .root:priority(primary):focus,
 .root:priority(primary):hover {
-    background-color: wixApply(opacity, value(PrimaryBackgroundColor), 0.8);
+    background-color: applyOpacity(value(PrimaryBackgroundColor), 0.8);
 }
 
 /*Secondary*/
 
 :vars {
-    SecondaryTextColor: wixApply(color, wixApply(fallback, value(MainTextColor), value(PrimaryColor)));
-    SecondaryBorderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(PrimaryColor)));
+    SecondaryTextColor: color(fallback(value(MainTextColor), value(PrimaryColor)));
+    SecondaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
 }
 
 .root:priority(secondary) {
     color: value(SecondaryTextColor);
-    background-color: wixApply(color, wixApply(fallback, value(MainBackgroundColor), transparent));
+    background-color: color(fallback(value(MainBackgroundColor), transparent));
     border-color: value(SecondaryBorderColor);
-    border-width: wixApply(fallback, value(MainBorderWidth), 1px);
+    border-width: fallback(value(MainBorderWidth), 1px);
 }
 
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
-    color: wixApply(opacity, value(SecondaryTextColor), 0.6);
-    border-color: wixApply(opacity, value(SecondaryBorderColor), 0.6);
+    color: applyOpacity(value(SecondaryTextColor), 0.6);
+    border-color: applyOpacity(value(SecondaryBorderColor), 0.6);
 }
 
 /*Disabled*/
 
 .root:priority(basic):disabled,
 .root:priority(primary):disabled {
-    background-color: wixApply(color, value(DisabledColor));
+    background-color: color(value(DisabledColor));
 }
 
 .root:priority(secondary):disabled {
-    color: wixApply(color, value(DisabledColor));
-    border-color: wixApply(color, value(DisabledColor));
+    color: color(value(DisabledColor));
+    border-color: color(value(DisabledColor));
 }
 
 /*Tiny*/
 
 .root:size(tiny) {
     padding: 6px 16px;
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(TinyFont)));
+    font: fallback(font(value(MainTextFont)), font(value(TinyFont)));
 }
 
 /*Small*/
 
 .root:size(small) {
     padding: 7px 16px;
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(SmallFont)));
+    font: fallback(font(value(MainTextFont)), font(value(SmallFont)));
 }
 
 /*Medium*/
 
 .root:size(medium) {
     padding: 8px 16px;
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MediumFont)));
+    font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
 }
 
 .root:mobile:size(medium) {
     padding: 10px 16px;
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(MobileMediumFont)));
+    font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
 }
 
 /*Large*/
 
 .root:size(large) {
     padding: 10px 16px;
-    font: wixApply(fallback, wixApply(font, value(MainTextFont)), wixApply(font, value(LargeFont)));
+    font: fallback(font(value(MainTextFont)), font(value(LargeFont)));
 }

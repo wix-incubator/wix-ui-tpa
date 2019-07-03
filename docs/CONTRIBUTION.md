@@ -58,20 +58,34 @@ and in order to easily use and manipulate these variables, the library depends o
 
 For more information about `wix-style-processor` go to https://github.com/wix/wix-style-processor.  
 
-In order to write legal Stylable code, a Stylable formatter was created, that receives the 
-`wix-style-processor` method and its arguments, as its own arguments.
+In order to write legal Stylable code, and have more readable css,
+several Stylable formatters were created:
+* `fallback` - `fallback(value, defaultValue)` - fallbacks to a default value.
+* `zeroAsTrue` - `zeroAsTrue(value)` - returns value as a string if value is a number, else the value itself.
+* `color` - `color(color-3)` - assigns a color from the site's palette.
+* `applyUnit` - `applyUnit(value, unit)` - applies a unit to the given value.
+* `applyOpacity` - `applyOpacity(color, alpha)` - applies the given opacity to the given color. 
+* `calculate` - `calculate(+, val1, val2)` - returns the native calc function for the given operator and numbers.
+* `string` - `string(-)` - stringifies the given value.
+* `font` - `font(value)` - assigns a font from the site's fonts.
+* `join` - `join(color1, color2)` - blends two colors.
+* `withoutOpacity` - `withoutOpacity(color)` - removes the opacity of a site palette color.
+* `darken` - `darken(color, num)` - makes a darkened version of the given site palette color.
 
-For instance the css above will be written like this:
+These formatters are based on the functions provided by `wix-style-processor`.  
+You can see them [here](https://github.com/wix/wix-style-processor/blob/master/src/defaultPlugins.ts).
+
+As an example, the css above will be written like this:
 ```css
 :import {
-    -st-from: "../../../tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../../common/formatters.st.js";
+    -st-named: applyOpacity, color, font, darken;
 }
 
 .some-class {
-    color: wixApply(opacity, wixApply(color(color-3), 0.5);
-    font: wixApply(font, {theme: 'Body-M', size: '16px', weight: 'bold'})});
-    background-color: wixApply(darken, wixApply(color, color-8));
+    color: applyOpacity(color(color-3), 0.5);
+    font: font({theme: 'Body-M', size: '16px', weight: 'bold'});
+    background-color: darken(color(color-8));
 }
 ``` 
 For more on Stylable formatters read [here](https://stylable.io/docs/references/formatters).

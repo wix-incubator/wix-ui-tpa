@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: applyStyleMethod, applyOpacity;
 }
 
 :import {
@@ -9,22 +9,22 @@
 }
 
 :import {
-    -st-from: "../../palette.st.css";
+    -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
 
 :vars {
-    MainBorderColor: wixApply(color, color-5);
-    MainBackgroundColor: wixApply(color, color-1);
-    MainTextColor: wixApply(color, color-5);
-    MainTextFont: wixApply(font, "{theme: 'Body-M', size: '16px'}");
+    MainBorderColor: applyStyleMethod(color, color-5);
+    MainBackgroundColor: applyStyleMethod(color, color-1);
+    MainTextColor: applyStyleMethod(color, color-5);
+    MainTextFont: applyStyleMethod(font, "{theme: 'Body-M', size: '16px'}");
 }
 
 :vars {
     color: value(MainTextColor);
-    colorPlaceholder: wixApply(opacity, value(MainTextColor), 0.6);
+    colorPlaceholder: applyOpacity(value(MainTextColor), 0.6);
     backgroundColor: value(MainBackgroundColor);
-    borderColor: wixApply(opacity, value(MainBorderColor), 0.6);
+    borderColor: applyOpacity(value(MainBorderColor), 0.6);
     border: 1px solid value(borderColor);
     font: value(MainTextFont);
 }
@@ -32,7 +32,7 @@
 :vars {
     /*Hover*/
     colorHover: value(MainTextColor);
-    backgroundColorHover: wixApply(opacity, value(MainTextColor), 0.05);
+    backgroundColorHover: applyOpacity(value(MainTextColor), 0.05);
     borderColorHover: value(borderColor);
 }
 
@@ -46,9 +46,9 @@
 :vars {
     /*Disabled*/
     disabledOpacity: 0.3;
-    colorDisabled: wixApply(opacity, value(MainTextColor), value(disabledOpacity));
-    backgroundColorDisabled: wixApply(opacity, value(MainBackgroundColor), value(disabledOpacity));
-    borderColorDisabled: wixApply(opacity, value(MainBorderColor), value(disabledOpacity));
+    colorDisabled: applyOpacity(value(MainTextColor), value(disabledOpacity));
+    backgroundColorDisabled: applyOpacity(value(MainBackgroundColor), value(disabledOpacity));
+    borderColorDisabled: applyOpacity(value(MainBorderColor), value(disabledOpacity));
 }
 
 .inputStyling {
@@ -114,7 +114,7 @@
 }
 
 .root::nativeInput::selection {
-    background: wixApply(opacity, value(MainTextColor), 0.2);
+    background: applyOpacity(value(MainTextColor), 0.2);
 }
 
 /* Placeholder color */

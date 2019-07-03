@@ -5,8 +5,8 @@
 }
 
 :import {
-  -st-from: "../../tpaStyles/styleableExt.js";
-  -st-named: wixApply;
+  -st-from: "../../common/formatters.st.js";
+  -st-named: fallback, font, color;
 }
 
 :vars {
@@ -26,11 +26,11 @@
 .root {
   -st-extends: Pagination;
   -st-states: rtl;
-  
+
   align-items: stretch;
   box-sizing: border-box;
   display: inline-flex;
-  font:  wixApply(fallback, wixApply(font, value(TextFont)), wixApply(font, value(defaultTextFont)));
+  font:  fallback(font(value(TextFont)), font(value(defaultTextFont)));
 }
 
 .buttonTransition {
@@ -51,12 +51,12 @@
 .root::pageButton {
   -st-mixin: pageButtonRules;
   position: relative;
-  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+  color: color(fallback(value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root::currentPage {
   -st-mixin: pageButtonRules;
-  color: wixApply(color, wixApply(fallback, value(SelectedTextFontColor), value(defaultSelectedTextFontColor)));
+  color: color(fallback(value(SelectedTextFontColor), value(defaultSelectedTextFontColor)));
   padding: 0.5em;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .root::navButton:disabled svg, .root[data-preview="disabled"]::navButton svg {
-  fill: wixApply(color, wixApply(fallback, value(DisabledTextFontColor), value(defaultDisabledTextFontColor)));
+  fill: color(fallback(value(DisabledTextFontColor), value(defaultDisabledTextFontColor)));
 }
 
 .root::navButton:hover:not(:disabled) {
@@ -104,7 +104,7 @@
   min-width: 16px;
   height: 1em;
   min-height: 16px;
-  fill: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+  fill: color(fallback(value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root:rtl::navButton svg {
@@ -149,7 +149,7 @@
 
 .root::gap {
   -st-mixin: pageButtonRules;
-  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+  color: color(fallback(value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root::pageStrip {
@@ -190,7 +190,7 @@
 }
 
 .root::slash svg > g {
-  stroke: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+  stroke: color(fallback(value(TextFontColor), value(defaultTextFontColor)));
 }
 
 .root::totalPages {
@@ -199,6 +199,6 @@
   padding-left: 0.25em;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: wixApply(color, wixApply(fallback, value(TextFontColor), value(defaultTextFontColor)));
+  color: color(fallback(value(TextFontColor), value(defaultTextFontColor)));
   align-self: center;
 }

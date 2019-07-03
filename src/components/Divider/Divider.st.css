@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, applyUnit, zeroAsTrue;
 }
 
 :vars {
@@ -18,6 +18,6 @@
 .root {
     width: 100%;
     border-bottom-style: solid;
-    border-bottom-color: wixApply(color, wixApply(fallback, value(MainDividerColor), value(MainColor)));
-    border-bottom-width: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainDividerWidth)), value(MainWidth)), px);
+    border-bottom-color: color(fallback(value(MainDividerColor), value(MainColor)));
+    border-bottom-width: applyUnit(fallback(zeroAsTrue(value(MainDividerWidth)), value(MainWidth)), px);
 }

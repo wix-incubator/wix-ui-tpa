@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../../src/tpaStyles/styleableExt";
-    -st-named: wixApply;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyUnit, fallback, zeroAsTrue, applyOpacity;
 }
 
 :import {
@@ -28,11 +28,11 @@
 }
 
 :vars {
-    cardBGColor: wixApply(color, wixApply(fallback, value(MainCardColor), value(DefaultCardBG)));
-    borderWidth: wixApply(unit, wixApply(fallback, wixApply(zeroAsTrue, value(MainBorderWidth)), value(DefaultBorderWidth)), px);
-    borderColor: wixApply(color, wixApply(fallback, value(MainBorderColor), value(DefaultBorderColor)));
-    infoBGColor: wixApply(color, wixApply(fallback, value(MainInfoColor), value(DefaultInfoCardBG)));
-    mediaBGColor: wixApply(color, wixApply(fallback, value(MainMediaColor), wixApply(opacity, wixApply(color, value(DefaultMediaCardBG)), 0.2)));
+    cardBGColor: color(fallback(value(MainCardColor), value(DefaultCardBG)));
+    borderWidth: applyUnit(fallback(zeroAsTrue(value(MainBorderWidth)), value(DefaultBorderWidth)), px);
+    borderColor: color(fallback(value(MainBorderColor), value(DefaultBorderColor)));
+    infoBGColor: color(fallback(value(MainInfoColor), value(DefaultInfoCardBG)));
+    mediaBGColor: color(fallback(value(MainMediaColor), applyOpacity(color(value(DefaultMediaCardBG)), 0.2)));
 }
 
 :vars {
@@ -148,7 +148,7 @@
             PaddingSize value(stackedInfoPadding),
             BorderWidth value(borderWidth)
     ), withDynamicSidePadding(
-            PaddingSize wixApply(fallback, wixApply(zeroAsTrue, value(StackedInfoSidePadding)), value(stackedInfoPadding)),
+            PaddingSize fallback(zeroAsTrue(value(StackedInfoSidePadding)), value(stackedInfoPadding)),
             BorderWidth value(borderWidth)
     );
 }
