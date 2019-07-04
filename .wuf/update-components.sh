@@ -10,8 +10,6 @@ wuf update \
 
 # vanilla testkits
 wuf export-testkits \
-  --factoryName testkitFactoryCreator \
-  --uniFactoryName uniTestkitFactoryCreator \
   --components .wuf/components.json \
   --definitions .wuf/testkits/definitions.js \
   --template .wuf/testkits/vanilla.template.ejs \
