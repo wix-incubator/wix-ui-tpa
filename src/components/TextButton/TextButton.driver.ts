@@ -3,19 +3,17 @@ import {
   buttonNextDriverFactory,
 } from 'wix-ui-core/drivers/unidriver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Button.st.css';
+import style from './TextButton.st.css';
 
-export interface ButtonDriver extends ButtonNextDriver {
-  isFullWidth(): Promise<boolean>;
+export interface TextButtonDriver extends ButtonNextDriver {
   isMobile(): Promise<boolean>;
 }
 
-export const buttonDriverFactory = (base: UniDriver): ButtonDriver => {
+export const textButtonDriverFactory = (base: UniDriver): TextButtonDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {
     ...buttonNextDriverFactory(base),
-    isFullWidth: async () => stylableUtil.hasStyleState(base, 'fullWidth'),
     isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
   };
 };

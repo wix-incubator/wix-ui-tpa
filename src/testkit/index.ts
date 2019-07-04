@@ -52,4 +52,3 @@ export const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory = testkitFactoryCreator(tooltipDriverFactory);
-
