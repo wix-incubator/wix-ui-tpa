@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PRIORITY, TextButton } from '../';
+import { TEXT_BUTTON_PRIORITY, TextButton } from '../';
 import Markdown from 'wix-storybook-utils/Markdown';
 import {
   importExample as importSourceExample,
@@ -31,10 +31,10 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-TextButton',
     children: 'Text Button',
-    priority: PRIORITY.link,
+    priority: TEXT_BUTTON_PRIORITY.link,
   }),
   exampleProps: {
-    priority: Object.values(PRIORITY),
+    priority: Object.values(TEXT_BUTTON_PRIORITY),
   },
   dataHook: 'storybook-TextButton',
   sections: [
