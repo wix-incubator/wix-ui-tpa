@@ -9,11 +9,11 @@ import {
   const driverPath = component.testkitPath || [
     '../components',
     component.name,
-    component.name + (component.unidriver ? '.driver' : '.protractor.driver'),
+    component.name + (component.legacyDriver ? '.protractor.driver' : '.driver'),
   ].join('\/');
 
   const testkitName = camelName + 'TestkitFactory';
-  const factoryName = component.unidriver ? 'protractorUniTestkitFactoryCreator' : 'protractorTestkitFactoryCreator';
+  const factoryName = component.legacyDriver ? 'protractorTestkitFactoryCreator' : 'protractorUniTestkitFactoryCreator';
 %>
 import { <%= driverFactory %> } from '<%= driverPath %>';
 export const <%= testkitName %> = <%= factoryName%>(<%= driverFactory %>)

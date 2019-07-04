@@ -13,7 +13,7 @@ import {
   ].join('\/');
 
   const testkitName = camelName + 'TestkitFactory';
-  const factoryName = component.unidriver ? 'uniTestkitFactoryCreator' : 'testkitFactoryCreator';
+  const factoryName = component.legacyDriver ? 'testkitFactoryCreator' : 'uniTestkitFactoryCreator';
 %>
 import { <%= driverFactory %> } from '<%= driverPath %>';
 export const <%= testkitName %> = <%= factoryName%>(<%= driverFactory %>);
