@@ -1,5 +1,5 @@
 ## TextButton
-An implementation of an TextButton for TPAs.
+An implementation of a TextButton for TPAs.
 The TPA implementation provides a few default overridable styles. By default site theme is used.
 
 ## Theme properties

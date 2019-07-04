@@ -5,7 +5,7 @@ import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
 import { textButtonDriverFactory } from './TextButton.driver';
-import { TextButton } from './';
+import { TEXT_BUTTON_PRIORITY, TextButton } from './';
 import { textButtonTestkitFactory } from '../../testkit';
 import { textButtonTestkitFactory as enzymeTextButtonTestkitFactory } from '../../testkit/enzyme';
 
@@ -24,6 +24,16 @@ describe('TextButton', () => {
       TPAComponentsWrapper({ mobile: true })(<TextButton />),
     );
     expect(await driver.isMobile()).toBe(true);
+  });
+
+  it('should set priority', async () => {
+    const driver = createDriver(
+      TPAComponentsWrapper({ mobile: true })(
+        <TextButton priority={TEXT_BUTTON_PRIORITY.primary} />,
+      ),
+    );
+    expect(await driver.isMobile()).toBe(true);
+    expect(await driver.hasPriority(TEXT_BUTTON_PRIORITY.primary)).toBe(true);
   });
 
   describe('testkit', () => {

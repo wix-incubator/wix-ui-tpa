@@ -17,7 +17,9 @@ export interface TextButtonProps extends ButtonNextProps {
 /** An implementation of link-like button */
 export class TextButton extends React.Component<TextButtonProps> {
   static displayName = 'TextButton';
-  static defaultProps: TextButtonProps = { priority: TEXT_BUTTON_PRIORITY.link };
+  static defaultProps: TextButtonProps = {
+    priority: TEXT_BUTTON_PRIORITY.link,
+  };
 
   render() {
     const { priority, ...rest } = this.props;
