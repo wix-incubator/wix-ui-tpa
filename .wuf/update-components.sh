@@ -4,7 +4,7 @@
 wuf update \
   --shape .wuf/required-component-files.json \
   --components src/components \
-  --exclude TPAComponentsConfig \
+  --exclude "(TPAComponentsConfig|ErrorMessageWrapper)" \
   --max-mismatch 1 \
   --output .wuf/components.json
 
