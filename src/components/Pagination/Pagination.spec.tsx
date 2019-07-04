@@ -19,7 +19,7 @@ describe('Pagination', () => {
     expect(driver.exists()).toBe(true);
   });
 
-  it('should use mobile design', async () => {
+  it.skip('should use mobile design', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: true })(<Pagination totalPages={10} />),
     );
@@ -49,7 +49,7 @@ describe('Pagination', () => {
     expect(driver.getPageInput()).toBeNull();
   });
 
-  it('Should use core "input" mode when is mobile', async () => {
+  it.skip('Should use core "input" mode when is mobile', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: true })(<Pagination totalPages={10} />),
     );
