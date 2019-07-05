@@ -1,0 +1,23 @@
+import {
+  enzymeTestkitFactoryCreator,
+  WrapperData,
+  enzymeUniTestkitFactoryCreator,
+} from 'wix-ui-test-utils/enzyme';
+
+<% components.filter(component => !component.noTestkit).map(component => {
+  const camelName = utils.toCamel(component.name);
+  const driverFactory = camelName + 'DriverFactory';
+  const driverPath = component.testkitPath || [
+    '../components',
+    component.name,
+    component.name + '.driver',
+  ].join('\/');
+
+  const testkitName = camelName + 'TestkitFactory';
+  const factoryName = component.legacyDriver ? 'enzymeTestkitFactoryCreator' : 'enzymeUniTestkitFactoryCreator';
+%>
+import { <%= driverFactory %> } from '<%= driverPath %>';
+export const <%= testkitName %>: (
+  obj: WrapperData,
+) => any = <%= factoryName%>(<%= driverFactory %>);
+<% }) %>

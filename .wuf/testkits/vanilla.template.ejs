@@ -1,0 +1,20 @@
+import {
+  testkitFactoryCreator,
+  uniTestkitFactoryCreator,
+} from 'wix-ui-test-utils/vanilla';
+
+<% components.filter(component => !component.noTestkit).map(component => {
+  const camelName = utils.toCamel(component.name);
+  const driverFactory = camelName + 'DriverFactory';
+  const driverPath = component.testkitPath || [
+    '../components',
+    component.name,
+    component.name + '.driver',
+  ].join('\/');
+
+  const testkitName = camelName + 'TestkitFactory';
+  const factoryName = component.legacyDriver ? 'testkitFactoryCreator' : 'uniTestkitFactoryCreator';
+%>
+import { <%= driverFactory %> } from '<%= driverPath %>';
+export const <%= testkitName %> = <%= factoryName%>(<%= driverFactory %>);
+<% }) %>

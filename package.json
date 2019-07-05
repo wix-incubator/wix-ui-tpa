@@ -28,6 +28,7 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
+    "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
     "pr-postbuild": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
@@ -47,11 +48,13 @@
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
     "storybook:build": "build-storybook -s ./src/assets",
     "generate-stylable-index": "stc --srcDir=\"./dist/src/components\" --diagnostics --indexFile=index.st.css",
-    "generate": "wuf generate",
+    "generate": "wuf generate --codemods .wuf/generator/codemods --templates .wuf/generator/templates",
     "eyes-storybook-debug": "start-storybook --ci -c ./.storybook-test -p 6007 -s ./src/assets",
     "autotools": "npm run autotools:sanity && npm run autotools:a11y",
     "autotools:sanity": "autotools-sanity",
-    "autotools:a11y": "autotools-a11y"
+    "autotools:a11y": "autotools-a11y",
+    "postgenerate": "npm run update-components",
+    "update-components": ".wuf/update-components.sh"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -94,7 +97,7 @@
     "wix-base-ui": "3.203.0",
     "wix-storybook-utils": "^3.0.4",
     "wix-style-processor": "latest",
-    "wix-ui-framework": "^1.2.1",
+    "wix-ui-framework": "^3.0.0",
     "wix-ui-test-utils": "^1.0.0",
     "yoshi": "^4.9.0",
     "yoshi-style-dependencies": "^4.6.0"
@@ -119,7 +122,7 @@
     "testPathIgnorePatterns": [
       "<rootDir>/dist/",
       "<rootDir>/node_modules/",
-      "<rootDir>/generator",
+      "<rootDir>/.wuf",
       "/src/.*\\.browser\\.spec\\.(ts|tsx)$"
     ],
     "testRegex": "/src/.*\\.spec\\.(ts|tsx)$",
