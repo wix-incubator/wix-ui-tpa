@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import {TEXT_BUTTON_PRIORITY, TextButton} from './'
+import { TEXT_BUTTON_PRIORITY, TextButton } from './';
 
 class TextButtonVisual extends React.Component<any> {
   static defaultProps = {

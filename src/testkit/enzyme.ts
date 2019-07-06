@@ -11,7 +11,6 @@ import {
   enzymeUniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/enzyme';
 
-
 import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory: (
   obj: WrapperData,
@@ -72,18 +71,17 @@ export const tabsTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(tabsDriverFactory);
 
-import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
-export const textButtonTestkitFactory: (
-  obj: WrapperData,
-) => any = enzymeUniTestkitFactoryCreator(textButtonDriverFactory);
-
 import { textDriverFactory } from '../components/Text/Text.driver';
 export const textTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(textDriverFactory);
 
+import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
+export const textButtonTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(textButtonDriverFactory);
+
 import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
-

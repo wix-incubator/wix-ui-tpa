@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { TEXT_BUTTON_PRIORITY, TextButton } from '../';
-import Markdown from 'wix-storybook-utils/Markdown';
 import {
   importExample as importSourceExample,
   StyledExample,
@@ -8,6 +7,7 @@ import {
 import {
   header,
   api,
+  description,
   divider,
   importExample,
   playground,
@@ -43,7 +43,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          <Markdown key="readme" source={Readme} />,
+          description(Readme),
 
           importExample({
             source: importSourceExample,
@@ -52,6 +52,8 @@ export default {
           divider(),
 
           title('Examples'),
+
+          code(<StyledExample />),
         ],
       }),
 
@@ -62,5 +64,4 @@ export default {
       ].map(tab),
     ]),
   ],
-  examples: <StyledExample />,
 };

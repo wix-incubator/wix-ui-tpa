@@ -27,7 +27,9 @@ describe('TextButton', () => {
   });
 
   it('should set priority', async () => {
-    const driver = createDriver(<TextButton priority={TEXT_BUTTON_PRIORITY.primary} />);
+    const driver = createDriver(
+      <TextButton priority={TEXT_BUTTON_PRIORITY.primary} />,
+    );
     expect(await driver.hasPriority(TEXT_BUTTON_PRIORITY.primary)).toBe(true);
   });
 
