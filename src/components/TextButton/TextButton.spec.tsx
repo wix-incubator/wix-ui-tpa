@@ -27,12 +27,7 @@ describe('TextButton', () => {
   });
 
   it('should set priority', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(
-        <TextButton priority={TEXT_BUTTON_PRIORITY.primary} />,
-      ),
-    );
-    expect(await driver.isMobile()).toBe(true);
+    const driver = createDriver(<TextButton priority={TEXT_BUTTON_PRIORITY.primary} />);
     expect(await driver.hasPriority(TEXT_BUTTON_PRIORITY.primary)).toBe(true);
   });
 

@@ -14,7 +14,8 @@
     SecondaryColor: color-5;
     LinkColor: color-5;
     DisabledColor: color-3;
-    DefaultFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}"
+    DefaultFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    MobileDefaultFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
 
 :vars {
@@ -34,6 +35,10 @@
     font: fallback(font(value(MainTextFont)), font(value(DefaultFont)))
 }
 
+.root:mobile {
+    font: fallback(font(value(MainTextFont)), font(value(MobileDefaultFont)))
+}
+
 /* Primary */
 
 :vars {
@@ -50,11 +55,6 @@
     color: applyOpacity(value(PrimaryTextColor), 0.6);
 }
 
-.root:priority(primary):disabled {
-    color: color(value(DisabledColor))
-}
-
-
 /* Secondary */
 
 :vars {
@@ -70,11 +70,6 @@
 .root:priority(secondary):hover {
     color: applyOpacity(value(SecondaryTextColor), 0.6);
 }
-
-.root:priority(secondary):disabled {
-    color: color(value(DisabledColor))
-}
-
 
 /* Link */
 
@@ -93,6 +88,10 @@
     color: applyOpacity(value(LinkTextColor), 0.6);
 }
 
-.root:priority(link):disabled {
+/* Disabled */
+
+.root:priority(primary):disabled,
+.root:priority(link):disabled,
+.root:priority(secondary):disabled {
     color: color(value(DisabledColor))
 }
