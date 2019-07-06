@@ -47,6 +47,9 @@ export const stripCardTestkitFactory = protractorUniTestkitFactoryCreator(stripC
 import { tabsDriverFactory } from '../components/Tabs/Tabs.driver';
 export const tabsTestkitFactory = protractorUniTestkitFactoryCreator(tabsDriverFactory)
 
+import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
+export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(textButtonDriverFactory)
+
 import { textDriverFactory } from '../components/Text/Text.protractor.driver';
 export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory)
 

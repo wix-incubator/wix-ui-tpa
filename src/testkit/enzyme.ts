@@ -72,6 +72,11 @@ export const tabsTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(tabsDriverFactory);
 
+import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
+export const textButtonTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(textButtonDriverFactory);
+
 import { textDriverFactory } from '../components/Text/Text.driver';
 export const textTestkitFactory: (
   obj: WrapperData,
