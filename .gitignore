@@ -17,6 +17,7 @@ wix-ui-tpa.iml
 
 /*.js
 /*.d.ts
+!PRpostBuild.js
 !wallaby.js
 !protractor.conf.js
 index.st.css
