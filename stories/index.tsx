@@ -1,7 +1,3 @@
-import styleProcessor from 'wix-style-processor';
-
-styleProcessor.init();
-
 require('../src/components/Autocomplete/docs/index.story');
 require('../src/components/Button/docs/index.story');
 require('../src/components/StatesButton/docs/index.story');
