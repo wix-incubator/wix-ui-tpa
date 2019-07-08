@@ -10,11 +10,10 @@ const autoprefixProcessor = postcss([autoprefixer]);
 
 //TODO - this should be configured inside yoshi
 function reconfigureStylable(config) {
-    const stylableSeparateCss = project.enhancedTpaStyle;
     const stylablePlugin = new StylableWebpackPlugin({
-        outputCSS: stylableSeparateCss,
+        outputCSS: false,
         filename: '[name].stylable.bundle.css',
-        includeCSSInJS: !stylableSeparateCss,
+        includeCSSInJS: true,
         optimize: { classNameOptimizations: false, shortNamespaces: false },
         runtimeMode: 'shared',
         globalRuntimeId: '__stylable_yoshi__',
