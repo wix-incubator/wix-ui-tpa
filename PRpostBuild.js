@@ -1,7 +1,7 @@
 const fs = require('fs');
 const child_process = require('child_process');
 
-console.log('PR publish version - start');
+console.log('PR publish version - START');
 
 try {
     console.log('Checking if should publish PR version');
