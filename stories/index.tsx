@@ -5,6 +5,7 @@ styleProcessor.init();
 require('../src/components/Autocomplete/docs/index.story');
 require('../src/components/Button/docs/index.story');
 require('../src/components/StatesButton/docs/index.story');
+require('../src/components/TextButton/docs/index.story');
 require('../src/components/Card/docs/index.story');
 require('../src/components/Divider/docs/index.story');
 require('../src/components/IconToggle/docs/index.story');

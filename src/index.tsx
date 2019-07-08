@@ -2,6 +2,7 @@ import * as Icons from './assets/icons';
 export { Icons };
 export * from './components/Autocomplete';
 export * from './components/Button';
+export * from './components/TextButton';
 export * from './components/Card';
 export * from './components/Divider';
 export * from './components/Grid';

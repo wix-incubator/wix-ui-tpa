@@ -1,0 +1,97 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:vars {
+    /*Defaults*/
+    PrimaryColor: color-8;
+    SecondaryColor: color-5;
+    LinkColor: color-5;
+    DisabledColor: color-3;
+    DefaultFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    MobileDefaultFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
+}
+
+:vars {
+    /*Overrides*/
+    MainTextColor: --overidable;
+    MainTextFont: --overridable;
+}
+
+.root {
+    -st-extends: ButtonNext;
+    -st-states: priority(enum(link, primary, secondary)), mobile;
+    /*css goes here*/
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    font: fallback(font(value(MainTextFont)), font(value(DefaultFont)))
+}
+
+.root:mobile {
+    font: fallback(font(value(MainTextFont)), font(value(MobileDefaultFont)))
+}
+
+/* Primary */
+
+:vars {
+    PrimaryTextColor: color(fallback(value(MainTextColor), value(PrimaryColor)));
+}
+
+.root:priority(primary) {
+    color: value(PrimaryTextColor);
+}
+
+.root:priority(primary):active,
+.root:priority(primary):focus,
+.root:priority(primary):hover {
+    color: applyOpacity(value(PrimaryTextColor), 0.6);
+}
+
+/* Secondary */
+
+:vars {
+    SecondaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
+}
+
+.root:priority(secondary) {
+    color: value(SecondaryTextColor);
+}
+
+.root:priority(secondary):active,
+.root:priority(secondary):focus,
+.root:priority(secondary):hover {
+    color: applyOpacity(value(SecondaryTextColor), 0.6);
+}
+
+/* Link */
+
+:vars {
+    LinkTextColor: color(fallback(value(MainTextColor), value(LinkColor)));
+}
+
+.root:priority(link) {
+    color: value(LinkTextColor);
+    text-decoration: underline;
+}
+
+.root:priority(link):active,
+.root:priority(link):focus,
+.root:priority(link):hover {
+    color: applyOpacity(value(LinkTextColor), 0.6);
+}
+
+/* Disabled */
+
+.root:priority(primary):disabled,
+.root:priority(link):disabled,
+.root:priority(secondary):disabled {
+    color: color(value(DisabledColor))
+}

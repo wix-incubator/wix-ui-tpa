@@ -1,7 +1,7 @@
 import {
   ButtonNextDriver,
   buttonNextDriverFactory,
-} from 'wix-ui-core/drivers/vanilla';
+} from 'wix-ui-core/drivers/unidriver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Button.st.css';
 

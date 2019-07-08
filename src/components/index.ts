@@ -9,3 +9,4 @@ export * from './Grid';
 export * from './IconToggle';
 export * from './LikeButton';
 export * from './Pagination';
+export * from './TextButton';
