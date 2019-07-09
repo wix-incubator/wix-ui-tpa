@@ -323,8 +323,7 @@ export class MockSettings extends React.PureComponent<
         </h2>
         <div className={styles.colorPalettePicker}>
           <div className={styles.colorPickerContainer}>
-            <ul
-              className={styles.pickerList}>
+            <ul className={styles.pickerList}>
               {this.props.wixColorParams.map(({ label, wixParam }) => (
                 <li key={wixParam}>
                   <label>
