@@ -50,9 +50,9 @@ export const tabsTestkitFactory = protractorUniTestkitFactoryCreator(tabsDriverF
 import { textDriverFactory } from '../components/Text/Text.protractor.driver';
 export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory)
 
-import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
-export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(textButtonDriverFactory)
-
 import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.protractor.driver';
 export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriverFactory)
+
+import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
+export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(textButtonDriverFactory)
 
