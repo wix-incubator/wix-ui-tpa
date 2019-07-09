@@ -318,10 +318,13 @@ export class MockSettings extends React.PureComponent<
   private renderColorPicker() {
     return (
       <div className={styles.styleItem}>
-        <h2 className={styles.title}><span>Colors</span></h2>
+        <h2 className={styles.title}>
+          <span>Colors</span>
+        </h2>
         <div className={styles.colorPalettePicker}>
           <div className={styles.colorPickerContainer}>
-            <ul className={styles.pickerList}>
+            <ul
+              className={styles.pickerList}>
               {this.props.wixColorParams.map(({ label, wixParam }) => (
                 <li key={wixParam}>
                   <label>
@@ -355,7 +358,9 @@ export class MockSettings extends React.PureComponent<
   private renderNumberPicker() {
     return (
       <div className={styles.styleItem}>
-        <h2 className={styles.title}><span>Numbers</span></h2>
+        <h2 className={styles.title}>
+          <span>Numbers</span>
+        </h2>
         <div className={styles.numberPickerContainer}>
           <ul className={styles.pickerList}>
             {this.props.wixNumberParams.map(
@@ -384,7 +389,9 @@ export class MockSettings extends React.PureComponent<
   private renderFontPicker() {
     return (
       <div className={styles.styleItem}>
-        <h2 className={styles.title}><span>Fonts</span></h2>
+        <h2 className={styles.title}>
+          <span>Fonts</span>
+        </h2>
         <div className={styles.fontPickerContainer}>
           <ul className={styles.pickerList}>
             {this.props.wixFontParams.map(({ label, wixParam }) => (

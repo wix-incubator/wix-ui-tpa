@@ -9,10 +9,6 @@ $palettePickerWidth: 96px + 12px + $palettePickerMarginLeft;
 
     .title {
       margin-bottom: 24px;
-
-      span {
-        //border-bottom: 2px solid black;
-      }
     }
 
     .numberPickerContainer {
@@ -31,20 +27,22 @@ $palettePickerWidth: 96px + 12px + $palettePickerMarginLeft;
 
       .colorPickerContainer {
         max-width: ($colorPickerWidth + ($colorPickerMargin * 2)) * 3;
-        overflow-x: auto;
 
         .pickerList {
           padding: 0;
           list-style: none;
           margin: 0;
+          display: flex;
+          flex-wrap: wrap;
 
           > li {
             width: $colorPickerWidth;
-            display: inline-block;
-            margin: 0 $colorPickerMargin;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: $colorPickerMargin;
 
             label {
-              display: block;
               margin-bottom: 0.6em;
             }
           }
