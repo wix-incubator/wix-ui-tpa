@@ -205,7 +205,7 @@ export class MockSettings extends React.PureComponent<
     );
   }
 
-  onPaletteChange(selectedPalette) {
+  onPaletteChange = selectedPalette => {
     const selectedColors = this.props.wixColorParams.reduce((obj, param) => {
       const colorIndex = this.state.selectedColors[param.wixParam].index;
       const { row, col } = this.getPaletteIndicesFromTPAIdx(
@@ -225,7 +225,7 @@ export class MockSettings extends React.PureComponent<
       },
       () => this.triggerChanged('palette'),
     );
-  }
+  };
 
   onColorChanged(selectedColor, wixParam) {
     this.setState(
@@ -345,7 +345,7 @@ export class MockSettings extends React.PureComponent<
               <label>Palette Picker</label>
               <UI.ColorPickerPalettePicker
                 value={this.state.selectedPalette}
-                onChange={palette => this.onPaletteChange(palette)}
+                onChange={this.onPaletteChange}
               />
             </div>
           </div>
