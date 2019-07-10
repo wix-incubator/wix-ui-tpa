@@ -11,12 +11,15 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Card, CardRatioOptions } from '../';
 import * as examples from './examples';
+import * as ExtendedRawSource from '!raw-loader!./CardExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./CardExtendedExample.st.css';
+import { CardExtendedExample } from './CardExtendedExample';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -100,6 +103,50 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              example: <CardExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              params: {
+                numbers: [
+                  {
+                    label: 'Border Width',
+                    wixParam: 'borderWidth',
+                    defaultNumber: 1,
+                    unit: 'px',
+                    max: 10,
+                    min: 0,
+                  },
+                ],
+                colors: [
+                  {
+                    label: 'Card Background Color',
+                    wixParam: 'cardBGColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Info Background Color',
+                    wixParam: 'infoBGColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Image Background Color',
+                    wixParam: 'imageBGColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

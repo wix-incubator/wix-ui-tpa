@@ -26,6 +26,8 @@ export interface IWixNumberParam {
   wixParam: string;
   defaultNumber: number;
   unit: string;
+  min?: number;
+  max?: number;
 }
 
 export interface IWixFontParam {
@@ -203,7 +205,7 @@ export class MockSettings extends React.PureComponent<
     );
   }
 
-  onPaletteChange(selectedPalette) {
+  onPaletteChange = selectedPalette => {
     const selectedColors = this.props.wixColorParams.reduce((obj, param) => {
       const colorIndex = this.state.selectedColors[param.wixParam].index;
       const { row, col } = this.getPaletteIndicesFromTPAIdx(
@@ -223,7 +225,7 @@ export class MockSettings extends React.PureComponent<
       },
       () => this.triggerChanged('palette'),
     );
-  }
+  };
 
   onColorChanged(selectedColor, wixParam) {
     this.setState(
@@ -315,30 +317,38 @@ export class MockSettings extends React.PureComponent<
 
   private renderColorPicker() {
     return (
-      <div className={styles.colorPalettePicker}>
-        <div className={styles.colorPickerContainer}>
-          <ul className={styles.pickerList}>
-            {this.props.wixColorParams.map(({ label, wixParam }) => (
-              <li key={wixParam}>
-                <label>
-                  {label} - {this.state.selectedColors[wixParam].value}
-                </label>
-                <UI.ColorPickerPalette
-                  onChange={(value, index) =>
-                    this.onColorChanged({ value, index }, wixParam)
-                  }
-                  value={this.state.selectedColors[wixParam].value}
-                  palette={this.state.selectedPalette}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.palettePickerContainer}>
-          <UI.ColorPickerPalettePicker
-            value={this.state.selectedPalette}
-            onChange={palette => this.onPaletteChange(palette)}
-          />
+      <div className={styles.styleItem}>
+        <h2 className={styles.title}>
+          <span>Colors</span>
+        </h2>
+        <div className={styles.colorPalettePicker}>
+          <div className={styles.colorPickerContainer}>
+            <ul className={styles.pickerList}>
+              {this.props.wixColorParams.map(({ label, wixParam }) => (
+                <li key={wixParam}>
+                  <label>
+                    {label} - {this.state.selectedColors[wixParam].value}
+                  </label>
+                  <UI.ColorPickerPalette
+                    onChange={(value, index) =>
+                      this.onColorChanged({ value, index }, wixParam)
+                    }
+                    value={this.state.selectedColors[wixParam].value}
+                    palette={this.state.selectedPalette}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className={styles.palettePickerContainer}>
+            <div className={styles.palettePicker}>
+              <label>Palette Picker</label>
+              <UI.ColorPickerPalettePicker
+                value={this.state.selectedPalette}
+                onChange={this.onPaletteChange}
+              />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -346,55 +356,67 @@ export class MockSettings extends React.PureComponent<
 
   private renderNumberPicker() {
     return (
-      <div className={styles.numberPickerContainer}>
-        <ul className={styles.pickerList}>
-          {this.props.wixNumberParams.map(({ label, wixParam, unit }) => (
-            <li key={wixParam}>
-              <label>
-                {label} - {this.state.selectedNumber[wixParam]}
-                {unit}
-              </label>
-              <UI.Slider
-                min={0}
-                max={100}
-                hideNumericInput
-                value={this.state.selectedNumber[wixParam]}
-                onChange={value => this.onNumberChange(value, wixParam)}
-              />
-            </li>
-          ))}
-        </ul>
+      <div className={styles.styleItem}>
+        <h2 className={styles.title}>
+          <span>Numbers</span>
+        </h2>
+        <div className={styles.numberPickerContainer}>
+          <ul className={styles.pickerList}>
+            {this.props.wixNumberParams.map(
+              ({ label, wixParam, unit, max = 100, min = 0 }) => (
+                <li key={wixParam}>
+                  <label>
+                    {label} - {this.state.selectedNumber[wixParam]}
+                    {unit}
+                  </label>
+                  <UI.Slider
+                    min={min}
+                    max={max}
+                    hideNumericInput
+                    value={this.state.selectedNumber[wixParam]}
+                    onChange={value => this.onNumberChange(value, wixParam)}
+                  />
+                </li>
+              ),
+            )}
+          </ul>
+        </div>
       </div>
     );
   }
 
   private renderFontPicker() {
     return (
-      <div className={styles.fontPickerContainer}>
-        <ul className={styles.pickerList}>
-          {this.props.wixFontParams.map(({ label, wixParam }) => (
-            <li key={wixParam}>
-              <label>
-                {label} - {this.state.selectedFont[wixParam].value}
-              </label>
-              <UI.FontFamilyPicker
-                fonts={DEFAULT_EXAMPLES}
-                value={this.state.selectedFont[wixParam].value}
-                getMissingFontName={this.getMissingFontName}
-                onChange={selectedFont =>
-                  this.onFontChange(selectedFont, wixParam)
-                }
-              />
-            </li>
-          ))}
-        </ul>
+      <div className={styles.styleItem}>
+        <h2 className={styles.title}>
+          <span>Fonts</span>
+        </h2>
+        <div className={styles.fontPickerContainer}>
+          <ul className={styles.pickerList}>
+            {this.props.wixFontParams.map(({ label, wixParam }) => (
+              <li key={wixParam}>
+                <label>
+                  {label} - {this.state.selectedFont[wixParam].value}
+                </label>
+                <UI.FontFamilyPicker
+                  fonts={DEFAULT_EXAMPLES}
+                  value={this.state.selectedFont[wixParam].value}
+                  getMissingFontName={this.getMissingFontName}
+                  onChange={selectedFont =>
+                    this.onFontChange(selectedFont, wixParam)
+                  }
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     );
   }
 
   render() {
     return (
-      <div>
+      <div className={styles.root}>
         {!!this.props.wixColorParams.length && this.renderColorPicker()}
         {!!this.props.wixNumberParams.length && this.renderNumberPicker()}
         {!!this.props.wixFontParams.length && this.renderFontPicker()}

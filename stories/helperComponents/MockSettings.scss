@@ -1,57 +1,82 @@
-.numberPickerContainer {
-  display: flex;
-  margin: 50px;
-}
+$colorPickerWidth: 210px;
+$colorPickerMargin: 5px;
+$palettePickerMarginLeft: 96px;
+$palettePickerWidth: 96px + 12px + $palettePickerMarginLeft;
 
-.fontPickerContainer {
-  display: flex;
-  margin: 50px;
-}
+.root {
+  .styleItem {
+    padding: 50px;
 
-.colorPalettePicker {
-  display: flex;
-  margin: 50px;
-  position: relative;
-  width: fit-content;
-}
+    .title {
+      margin-bottom: 24px;
+    }
 
-.colorPickerContainer {
-  width: fit-content;
-  max-width: 520px;
-  overflow-x: auto;
+    .numberPickerContainer {
+      display: flex;
+    }
 
-  .pickerList {
-    width: max-content;
+    .fontPickerContainer {
+      display: flex;
+    }
 
-    > li {
-      width: 210px;
+    .colorPalettePicker {
+      position: relative;
+      min-height: 150px;
       display: inline-block;
-      margin: 0 5px;
+      padding-right: $palettePickerWidth;
+
+      .colorPickerContainer {
+        max-width: ($colorPickerWidth + ($colorPickerMargin * 2)) * 3;
+
+        .pickerList {
+          padding: 0;
+          list-style: none;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+
+          > li {
+            width: $colorPickerWidth;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            margin: $colorPickerMargin;
+
+            label {
+              margin-bottom: 0.6em;
+            }
+          }
+        }
+      }
+
+      .palettePickerContainer {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: $palettePickerWidth;
+        max-height: 100%;
+        overflow-y: auto;
+        text-align: right;
+
+        .palettePicker {
+          display: inline-block;
+
+          label {
+            display: block;
+            text-align: center;
+          }
+
+          :global(.color-picker-palette-picker) {
+            display: inline-block;
+          }
+        }
+      }
     }
-  }
-}
 
-.palettePickerContainer {
-  min-height: 150px;
-  overflow-y: auto;
-  position: absolute;
-  right: -150px;
-  top: 0;
-  bottom: 0;
-}
 
-.pickerList {
-  width: 210px;
-  padding: 0;
-  list-style: none;
-
-  > li {
-    label {
-      display: block;
-      margin-bottom: 0.5em;
-    }
-    + li {
-      margin-top: 2em;
+    .pickerList {
+      padding: 0;
+      list-style: none;
     }
   }
 }
