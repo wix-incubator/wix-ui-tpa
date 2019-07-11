@@ -13,7 +13,9 @@ class TextButtonVisual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <TextButton data-hook={'storybook-e2e-TextButton'} {...this.props} />
+        <TextButton {...this.props}>
+          Text Button
+        </TextButton>
       </TPAComponentsProvider>
     );
   }

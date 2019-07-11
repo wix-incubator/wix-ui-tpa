@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { IconToggle } from './';
-import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { IconToggle, LabelPlacement } from './';
+import { ReactComponent as Star } from '../../assets/icons/Star.svg';
 
 class IconToggleVisual extends React.Component<any> {
   render() {
     return (
-      <IconToggle icon={<Heart />} data-hook={'storybook-e2e-IconToggle'} />
+      <React.Fragment>
+        <IconToggle icon={<Star />} {...this.props} />
+        <IconToggle icon={<Star />} {...this.props} checked />
+        <IconToggle icon={<Star />} {...this.props} disabled />
+      </React.Fragment>
     );
   }
 }
@@ -19,13 +23,23 @@ const tests = [
         it: 'default',
         props: {},
       },
+    ],
+  },
+  {
+    describe: 'label',
+    its: [
       {
-        it: 'checked',
-        props: { checked: true },
+        it: 'default (placement END)',
+        props: {
+          label: 'Star',
+        },
       },
       {
-        it: 'disabled',
-        props: { disabled: true },
+        it: 'placement START',
+        props: {
+          label: 'Star',
+          labelPlacement: LabelPlacement.START,
+        },
       },
     ],
   },

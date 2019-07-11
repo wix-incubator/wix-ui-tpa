@@ -13,7 +13,7 @@ class {%ComponentName%}Visual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <{%ComponentName%} data-hook={'storybook-e2e-{%ComponentName%}'} {...this.props} />
+        <{%ComponentName%} {...this.props} />
       </TPAComponentsProvider>
     );
   }
