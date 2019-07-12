@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import { VisualContainerElement } from '../../../test/VisualContainerElement';
 import { LabelPlacement, LikeButton } from './';
 
 class LikeButtonVisual extends React.Component<any> {
   render() {
     return (
-      <React.Fragment>
+      <VisualContainerElement>
         <LikeButton {...this.props} />
         <LikeButton {...this.props} checked />
         <LikeButton {...this.props} disabled />
-      </React.Fragment>
+      </VisualContainerElement>
     );
   }
 }

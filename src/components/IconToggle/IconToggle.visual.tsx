@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { IconToggle, LabelPlacement } from './';
+import { VisualContainerElement } from '../../../test/VisualContainerElement';
 import { ReactComponent as Star } from '../../assets/icons/Star.svg';
 
 class IconToggleVisual extends React.Component<any> {
   render() {
     return (
-      <React.Fragment>
+      <VisualContainerElement>
         <IconToggle icon={<Star />} {...this.props} />
         <IconToggle icon={<Star />} {...this.props} checked />
         <IconToggle icon={<Star />} {...this.props} disabled />
-      </React.Fragment>
+      </VisualContainerElement>
     );
   }
 }
