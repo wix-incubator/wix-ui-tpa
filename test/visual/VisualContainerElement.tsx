@@ -14,6 +14,7 @@ export class VisualContainerElement extends React.Component<
   };
 
   componentDidMount(): void {
+    // tslint:disable-next-line: no-floating-promises
     onStyleProcessorDone().then(() => {
       this.setState({ isReady: true });
     });
