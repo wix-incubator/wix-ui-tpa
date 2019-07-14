@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/VisualContainerElement';
+import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 import { Pagination, PaginationProps } from './Pagination';
 
 interface IPaginationVisualProps extends PaginationProps {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styleProcessor from 'wix-style-processor';
+import { onStyleProcessorDone } from './StyleProcessorUtil';
 
 interface VisualContainerElementState {
   isReady: boolean;
@@ -14,7 +14,7 @@ export class VisualContainerElement extends React.Component<
   };
 
   componentDidMount(): void {
-    styleProcessor.init().then(() => {
+    onStyleProcessorDone().then(() => {
       this.setState({ isReady: true });
     });
   }
