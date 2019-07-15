@@ -28,7 +28,9 @@ export class IconButton extends React.Component<IconButtonProps, State> {
                 {({ mobile }) => (
                     <ButtonNext
                         {...rest}
-                        {...style('root', { mobile }, rest)}>{icon}</ButtonNext>
+                        {...style('root', { mobile }, rest)}>
+                        <span className={style.icon}>{icon}</span>
+                    </ButtonNext>
                 )}
             </TPAComponentsConsumer>
         );
