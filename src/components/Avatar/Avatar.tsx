@@ -12,15 +12,9 @@ export enum AvatarSize {
   xLarge = 'xLarge',
 }
 
-export enum AvatarState {
-  anonymous = 'anonymous',
-  default = 'default',
-  empty = 'empty'
-}
-
 export interface AvatarProps  {
-  size?: AvatarSize,
   name?: string;
+  size?: AvatarSize,
   src?: string;
 }
 
@@ -49,7 +43,7 @@ export class Avatar extends React.Component<AvatarProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div {...styles('root', { mobile }, rest)}>
-            <div className={styles.button}>
+            <div className={styles.avatar}>
               <CoreAvatar
                 {...rest}
                 placeholder={placeholder()}

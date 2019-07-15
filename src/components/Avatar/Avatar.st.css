@@ -1,4 +1,9 @@
 :import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Avatar;
+}
+
+:import {
     -st-from: "../../common/formatters.st";
     -st-named: color;
 }
@@ -21,3 +26,11 @@
 .root:mobile {
     /*mobile css goes here*/
 }
+
+.avatar {
+    -st-extends: Avatar;
+  }
+
+.avatar:contentType(text)::content {
+    color: red;
+  }
