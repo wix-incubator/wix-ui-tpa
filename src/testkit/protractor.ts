@@ -14,6 +14,9 @@ import {
 import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomplete.protractor.driver';
 export const autocompleteTestkitFactory = protractorTestkitFactoryCreator(autocompleteDriverFactory)
 
+import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
+export const avatarTestkitFactory = protractorUniTestkitFactoryCreator(avatarDriverFactory)
+
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory = protractorUniTestkitFactoryCreator(buttonDriverFactory)
 
@@ -50,9 +53,9 @@ export const tabsTestkitFactory = protractorUniTestkitFactoryCreator(tabsDriverF
 import { textDriverFactory } from '../components/Text/Text.protractor.driver';
 export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory)
 
-import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.protractor.driver';
-export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriverFactory)
-
 import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
 export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(textButtonDriverFactory)
+
+import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.protractor.driver';
+export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriverFactory)
 
