@@ -21,7 +21,7 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: mobile, disabled;
+    -st-states: disabled;
     /*css goes here*/
     background-color: transparent;
     text-decoration: none;
@@ -30,9 +30,6 @@
     padding: 0;
     margin: 0;
     line-height: 0;
-}
-
-.root:mobile {
 }
 
 .root:hover .icon {
@@ -44,7 +41,6 @@
 }
 
 .root:disabled .icon path {
-    fill: color(value(DisabledColor));
     stroke: color(value(DisabledColor));
 }
 

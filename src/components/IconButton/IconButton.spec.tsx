@@ -8,28 +8,26 @@ import { iconButtonDriverFactory } from './IconButton.driver';
 import { IconButton } from './';
 import { iconButtonTestkitFactory } from '../../testkit';
 import { iconButtonTestkitFactory as enzymeIconButtonTestkitFactory } from '../../testkit/enzyme';
+import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
 
 describe('IconButton', () => {
   const createDriver = createUniDriverFactory(iconButtonDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<IconButton />);
+    const driver = createDriver(<IconButton icon={<StarIcon />} />);
     expect(await driver.exists()).toBe(true);
-  });
-
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<IconButton />),
-    );
-    expect(await driver.isMobile()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<IconButton />, iconButtonTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <IconButton icon={<StarIcon />} />,
+          iconButtonTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -38,7 +36,7 @@ describe('IconButton', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <IconButton />,
+          <IconButton icon={<StarIcon />} />,
           enzymeIconButtonTestkitFactory,
           mount,
           {
