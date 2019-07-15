@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-
-import { TPAComponentsProvider } from '../TPAComponentsConfig/TPAComponentsConfig';
-
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
+import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 import { Pagination, PaginationProps } from './Pagination';
 
 interface IPaginationVisualProps extends PaginationProps {
@@ -15,7 +14,9 @@ class PaginationVisual extends React.Component<IPaginationVisualProps> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <Pagination data-hook={'storybook-e2e-LikeButton'} {...this.props} />
+        <VisualContainerElement>
+          <Pagination data-hook={'storybook-e2e-LikeButton'} {...this.props} />
+        </VisualContainerElement>
       </TPAComponentsProvider>
     );
   }
