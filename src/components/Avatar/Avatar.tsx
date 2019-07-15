@@ -5,58 +5,56 @@ import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 import styles from './Avatar.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-export enum IAvatarSize {
+export enum AvatarSize {
   large = 'large',
   medium = 'medium',
   small = 'small',
   xLarge = 'xLarge',
 }
 
-export enum IAvatarState {
+export enum AvatarState {
   anonymous = 'anonymous',
   default = 'default',
   empty = 'empty'
 }
 
 export interface AvatarProps  {
-  size?: IAvatarSize,
-  state?: IAvatarState,
-  placeholder?: any,
-  text?: string,
-  imgProps?: any;
+  size?: AvatarSize,
+  name?: string;
+  src?: string;
 }
 
 interface DefaultProps {
-  size: IAvatarSize,
-  state: IAvatarState,
-  name: string,
-  placeholder: any,
-  text: string,
-  imgProps: any;
+  size: AvatarSize,
 }
 
 /** Avatar is a type of element that visually represents a user, either as an image, placeholder or text (name initials). */
 export class Avatar extends React.Component<AvatarProps> {
   static displayName = 'Avatar';
   static defaultProps: DefaultProps = {
-    size: IAvatarSize.medium,
-    state: IAvatarState.default,
-    placeholder: getDefaultAvatar(),
-    text: '',
-    name: 'Anonymous',
-    imgProps: {}
+    size: AvatarSize.medium,
   };
 
   render() {
-    const { size, state, ...rest } = this.props;
+    const { size, src, ...rest } = this.props;
 
     const placeholder = getDefaultAvatar(size);
+
+    const imgProps = {
+      src,
+      width: getDimention(size),
+      heigh: getDimention(size)
+    };
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div {...styles('root', { mobile }, rest)}>
             <div className={styles.button}>
-              <CoreAvatar {...rest} placeholder={placeholder()} />
+              <CoreAvatar
+                {...rest}
+                placeholder={placeholder()}
+                imgProps={imgProps}
+              />
             </div>
           </div>
         )}
@@ -65,9 +63,18 @@ export class Avatar extends React.Component<AvatarProps> {
   }
 }
 
-function getDefaultAvatar(avatarSize: IAvatarSize = IAvatarSize.medium) {
+function getDimention(avatarSize: AvatarSize = AvatarSize.medium): number {
+  return {
+    [AvatarSize.large]: 52,
+    [AvatarSize.medium]: 36,
+    [AvatarSize.small]: 28,
+    [AvatarSize.xLarge]: 60
+  }[avatarSize];
+}
+
+function getDefaultAvatar(avatarSize: AvatarSize = AvatarSize.medium) {
   const defaultAvatars = {
-    [IAvatarSize.large]: () => (
+    [AvatarSize.large]: () => (
       <svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" >
         <g id="01-Elements/Avatar-1.1-/Single/Large/-Anonymous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <circle id="Oval" fill="#979797" cx="26" cy="26" r="26"></circle>
@@ -75,7 +82,7 @@ function getDefaultAvatar(avatarSize: IAvatarSize = IAvatarSize.medium) {
             <path d="M26,52 C11.6405965,52 0,40.3594035 0,26 C0,11.6405965 11.6405965,0 26,0 C40.3594035,0 52,11.6405965 52,26 C52,40.3594035 40.3594035,52 26,52 Z M26,49.92 C39.2106512,49.92 49.92,39.2106512 49.92,26 C49.92,12.7893488 39.2106512,2.08 26,2.08 C12.7893488,2.08 2.08,12.7893488 2.08,26 C2.08,39.2106512 12.7893488,49.92 26,49.92 Z" id="Combined-Shape"></path>
         </g>
       </svg>),
-    [IAvatarSize.medium]: () => (
+    [AvatarSize.medium]: () => (
       <svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1">
         <g id="01-Elements/Avatar-1.1-/Single/Medium/Anonymous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <circle id="Oval" fill="#979797" cx="18" cy="18" r="18"></circle>
@@ -84,7 +91,7 @@ function getDefaultAvatar(avatarSize: IAvatarSize = IAvatarSize.medium) {
         </g>
       </svg>
     ),
-    [IAvatarSize.small]: () => (
+    [AvatarSize.small]: () => (
       <svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1">
         <g id="01-Elements/Avatar-1.1-/Single/Small/Anonymous-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <g id="Group-2">
@@ -97,7 +104,7 @@ function getDefaultAvatar(avatarSize: IAvatarSize = IAvatarSize.medium) {
         </g>
       </svg>
     ),
-    [IAvatarSize.xLarge]: () => (
+    [AvatarSize.xLarge]: () => (
       <svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1">
         <g id="01-Elements/Avatar-1.1-/Single/XLarge/-Anonymous" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
             <circle id="Oval" fill="#979797" cx="30" cy="30" r="30"></circle>
