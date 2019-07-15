@@ -23,6 +23,9 @@ export const cardTestkitFactory = protractorUniTestkitFactoryCreator(cardDriverF
 import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory = protractorUniTestkitFactoryCreator(gridDriverFactory)
 
+import { iconButtonDriverFactory } from '../components/IconButton/IconButton.driver';
+export const iconButtonTestkitFactory = protractorUniTestkitFactoryCreator(iconButtonDriverFactory)
+
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.protractor.driver';
 export const iconToggleTestkitFactory = protractorTestkitFactoryCreator(iconToggleDriverFactory)
 
@@ -50,9 +53,9 @@ export const tabsTestkitFactory = protractorUniTestkitFactoryCreator(tabsDriverF
 import { textDriverFactory } from '../components/Text/Text.protractor.driver';
 export const textTestkitFactory = protractorTestkitFactoryCreator(textDriverFactory)
 
-import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.protractor.driver';
-export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriverFactory)
-
 import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
 export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(textButtonDriverFactory)
+
+import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.protractor.driver';
+export const tooltipTestkitFactory = protractorTestkitFactoryCreator(tooltipDriverFactory)
 

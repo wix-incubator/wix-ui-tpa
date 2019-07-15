@@ -23,6 +23,9 @@ export const cardTestkitFactory = uniTestkitFactoryCreator(cardDriverFactory);
 import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory = uniTestkitFactoryCreator(gridDriverFactory);
 
+import { iconButtonDriverFactory } from '../components/IconButton/IconButton.driver';
+export const iconButtonTestkitFactory = uniTestkitFactoryCreator(iconButtonDriverFactory);
+
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
 export const iconToggleTestkitFactory = testkitFactoryCreator(iconToggleDriverFactory);
 
@@ -50,9 +53,9 @@ export const tabsTestkitFactory = uniTestkitFactoryCreator(tabsDriverFactory);
 import { textDriverFactory } from '../components/Text/Text.driver';
 export const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
-import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
-export const tooltipTestkitFactory = testkitFactoryCreator(tooltipDriverFactory);
-
 import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
 export const textButtonTestkitFactory = uniTestkitFactoryCreator(textButtonDriverFactory);
+
+import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
+export const tooltipTestkitFactory = testkitFactoryCreator(tooltipDriverFactory);
 

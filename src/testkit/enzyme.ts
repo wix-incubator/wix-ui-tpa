@@ -32,6 +32,11 @@ export const gridTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(gridDriverFactory);
 
+import { iconButtonDriverFactory } from '../components/IconButton/IconButton.driver';
+export const iconButtonTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(iconButtonDriverFactory);
+
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.driver';
 export const iconToggleTestkitFactory: (
   obj: WrapperData,
@@ -77,13 +82,13 @@ export const textTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(textDriverFactory);
 
-import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
-export const tooltipTestkitFactory: (
-  obj: WrapperData,
-) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
-
 import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
 export const textButtonTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(textButtonDriverFactory);
+
+import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
+export const tooltipTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
 
