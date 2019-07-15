@@ -7,6 +7,6 @@ IconButtonMetadata.nonReactStrictModeCompliant = true;
 IconButtonMetadata.addSim({
   title: 'render',
   props: {
-      icon: null
+    icon: null,
   },
 });

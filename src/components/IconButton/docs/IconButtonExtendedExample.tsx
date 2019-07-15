@@ -1,7 +1,7 @@
 import * as React from 'react';
 import extendedStyles from './IconButtonExtendedExample.st.css';
 import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
-import { IconButton } from "../IconButton";
+import { IconButton } from '../IconButton';
 
 interface State {
   checked: boolean;
@@ -9,7 +9,6 @@ interface State {
 }
 
 export class IconButtonExtendedExample extends React.Component<{}, State> {
-
   render = () => (
     <IconButton
       icon={<StarIcon />}
