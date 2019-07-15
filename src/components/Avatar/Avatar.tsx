@@ -30,7 +30,7 @@ export class Avatar extends React.Component<AvatarProps> {
   };
 
   render() {
-    const { size, src, ...rest } = this.props;
+    const { size, src, name, ...rest } = this.props;
 
     const placeholder = getDefaultAvatar(size);
 
@@ -47,6 +47,7 @@ export class Avatar extends React.Component<AvatarProps> {
             {...styles('root', { mobile }, rest)}
             placeholder={placeholder()}
             imgProps={imgProps}
+            text={name && name.split('')[0]}
           />
         )}
       </TPAComponentsConsumer>
