@@ -3,27 +3,6 @@
     -st-named: Avatar;
 }
 
-:import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
-}
-
-:vars {
-    /*Defaults*/
-    /*Defaults params goes here*/
-}
-
-:vars {
-    /*Overrides*/
-    /*Deceleration of overridable placeholders*/
-}
-
 .root {
     -st-extends: Avatar;
-    -st-states: mobile;
-    /*css goes here*/
-}
-
-.root:mobile {
-    /*mobile css goes here*/
 }
