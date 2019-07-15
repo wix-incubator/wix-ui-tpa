@@ -19,6 +19,7 @@
 }
 
 .root {
+    -st-extends: Avatar;
     -st-states: mobile;
     /*css goes here*/
 }
@@ -26,11 +27,3 @@
 .root:mobile {
     /*mobile css goes here*/
 }
-
-.avatar {
-    -st-extends: Avatar;
-  }
-
-.avatar:contentType(text)::content {
-    color: red;
-  }

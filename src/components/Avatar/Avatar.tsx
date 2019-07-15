@@ -42,15 +42,12 @@ export class Avatar extends React.Component<AvatarProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
-            <div className={styles.avatar}>
-              <CoreAvatar
-                {...rest}
-                placeholder={placeholder()}
-                imgProps={imgProps}
-              />
-            </div>
-          </div>
+          <CoreAvatar
+            {...rest}
+            {...styles('root', { mobile }, rest)}
+            placeholder={placeholder()}
+            imgProps={imgProps}
+          />
         )}
       </TPAComponentsConsumer>
     );
