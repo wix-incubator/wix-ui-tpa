@@ -18,37 +18,33 @@ export enum IAvatarState {
   empty = 'empty'
 }
 
-export interface IAvatarProps  {
+export interface AvatarProps  {
   size?: IAvatarSize,
   state?: IAvatarState,
-  name: string,
   placeholder?: any,
-  text: string,
-  imgProps: any;
+  text?: string,
+  imgProps?: any;
 }
 
 interface DefaultProps {
   size: IAvatarSize,
   state: IAvatarState,
+  name: string,
   placeholder: any,
-}
-
-interface State {
-  count: number;
+  text: string,
+  imgProps: any;
 }
 
 /** Avatar is a type of element that visually represents a user, either as an image, placeholder or text (name initials). */
-export class Avatar extends React.Component<IAvatarProps, State> {
+export class Avatar extends React.Component<AvatarProps> {
   static displayName = 'Avatar';
   static defaultProps: DefaultProps = {
     size: IAvatarSize.medium,
     state: IAvatarState.default,
-    placeholder: getDefaultAvatar(IAvatarSize.medium)
-  };
-
-  state = { count: 0 };
-
-  _handleClick = () => {
+    placeholder: getDefaultAvatar(IAvatarSize.medium),
+    text: '',
+    name: 'Anonymous',
+    imgProps: {}
   };
 
   render() {

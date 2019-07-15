@@ -13,7 +13,7 @@ describe('Avatar', () => {
   const createDriver = createUniDriverFactory(avatarDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Avatar buttonText="Click Me" />);
+    const driver = createDriver(<Avatar  />);
     expect(await driver.exists()).toBe(true);
   });
 

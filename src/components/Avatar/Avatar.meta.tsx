@@ -7,6 +7,6 @@ AvatarMetadata.nonReactStrictModeCompliant = true;
 AvatarMetadata.addSim({
   title: 'render',
   props: {
-      buttonText: 'Click me!'
+
   },
 });
