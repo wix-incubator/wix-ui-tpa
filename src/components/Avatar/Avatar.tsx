@@ -15,7 +15,7 @@ export enum AvatarSize {
 export interface AvatarProps {
   /** User's name. Optional. Used in a case when avatar image src is missing or is invalid. */
   name?: string;
-  /** Avatar's size. Optional. One of xLarge | large | medium | small. */
+  /** Avatar's size. Optional. Defaults to 'medium'. One of 'xLarge' | 'large' | 'medium' | 'small'. */
   size?: AvatarSize;
   /** Avatar's image src. Optional. */
   src?: string;
