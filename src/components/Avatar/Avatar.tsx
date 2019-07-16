@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Avatar as CoreAvatar, AvatarProps as CoreAvatarProps } from 'wix-ui-core/avatar';
+import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 
 import styles from './Avatar.st.css';
 import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
@@ -12,7 +12,7 @@ export enum AvatarSize {
   small = 'small',
 }
 
-export interface AvatarProps extends CoreAvatarProps  {
+export interface AvatarProps {
   name?: string;
   size?: AvatarSize;
   src?: string;
