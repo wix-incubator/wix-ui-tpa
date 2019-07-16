@@ -5,7 +5,6 @@ Extends `wix-ui-core`'s (Avatar)[https://github.com/wix/wix-ui/tree/master/packa
 
 ### How to use
 
-
  ``` javascript
   import { Avatar } from 'wix-ui-tpa/Avatar';
 
