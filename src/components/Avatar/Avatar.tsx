@@ -40,7 +40,6 @@ export class Avatar extends React.Component<AvatarProps> {
 
     return (
       <CoreAvatar
-        {...rest}
         {...styles('root', { size }, rest)}
         imgProps={{ src }}
         placeholder={
