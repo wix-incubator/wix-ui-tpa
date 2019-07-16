@@ -10,4 +10,4 @@ export * from './IconToggle';
 export * from './LikeButton';
 export * from './Pagination';
 export * from './TextButton';
-export { Avatar } from './Avatar';
+export * from './Avatar';
