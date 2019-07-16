@@ -14,7 +14,7 @@ AvatarMetadata.addSim({
   title: 'render small with image',
   props: {
     size: AvatarSize.small,
-    name: 'John'
+    name: 'John',
   },
 });
 
@@ -23,7 +23,6 @@ AvatarMetadata.addSim({
   props: {
     size: AvatarSize.medium,
     name: 'John',
-    src: 'https://randomuser.me/api/portraits/men/65.jpg'
+    src: 'https://randomuser.me/api/portraits/men/65.jpg',
   },
 });
-
