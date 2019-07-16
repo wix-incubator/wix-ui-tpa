@@ -1,0 +1,43 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Badge;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity;
+}
+
+:vars {
+    DefaultBgColor: color-5;
+    DefaultTextColor: color-1;
+    LightBgColor: color-1;
+    LightTextColor: color-5;
+    LightBorderColor: color-5;
+    PrimaryBgColor: color-8;
+    PrimaryTextColor: color-1;
+}
+
+.root {
+    -st-extends: Badge;
+    -st-states: priority(enum(light, primary));
+
+    display: inline-block;
+    border-radius: 12px;
+    padding: 0 12px;
+    line-height: 20px;
+    font-size: 12px;
+    background-color: applyOpacity(color(value(DefaultBgColor)), 0.4);
+    color: color(value(DefaultTextColor));
+}
+
+.root:priority(light) {
+    background-color: color(value(LightBgColor));
+    color: color(value(LightTextColor));
+    border: 1px solid applyOpacity(color(value(LightBorderColor)), 0.15);
+}
+
+.root:priority(primary) {
+    background-color: color(value(PrimaryBgColor));
+    color: color(value(PrimaryTextColor));
+}

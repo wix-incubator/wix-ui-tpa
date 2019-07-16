@@ -10,5 +10,6 @@ export * from './IconToggle';
 export * from './LikeButton';
 export * from './Pagination';
 export * from './TextButton';
+export * from './Badge';
 export * from './Avatar';
 export { AvatarGroup } from './AvatarGroup';

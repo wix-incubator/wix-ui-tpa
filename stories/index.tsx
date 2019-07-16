@@ -16,5 +16,6 @@ require('../src/components/ToggleSwitch/docs'); // TODO: convert to .story
 require('../src/components/Tooltip/docs/index.story');
 require('../src/components/Tabs/docs/TabsTestStory');
 require('../src/components/Pagination/docs/index.story');
+require('../src/components/Badge/docs/index.story');
 require('../src/components/Avatar/docs/index.story');
 require('../src/components/AvatarGroup/docs/index.story');
