@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { IconButton } from './';
+import { ReactComponent as ShareIcon } from '../../assets/icons/Share.svg';
 
 class IconButtonVisual extends React.Component<any> {
   static defaultProps = {
@@ -9,12 +9,12 @@ class IconButtonVisual extends React.Component<any> {
   };
 
   render() {
-    const { mobile } = this.props;
-
     return (
-      <TPAComponentsProvider value={{ mobile }}>
-        <IconButton data-hook={'storybook-e2e-IconButton'} {...this.props} />
-      </TPAComponentsProvider>
+      <IconButton
+        icon={<ShareIcon />}
+        data-hook={'storybook-e2e-IconButton'}
+        {...this.props}
+      />
     );
   }
 }
@@ -26,12 +26,6 @@ const tests = [
       {
         it: 'default',
         props: {},
-      },
-      {
-        it: 'mobile',
-        props: {
-          mobile: true,
-        },
       },
     ],
   },
