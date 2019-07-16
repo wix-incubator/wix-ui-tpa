@@ -33,7 +33,7 @@ export class Avatar extends React.Component<AvatarProps> {
     [AvatarSize.large]: 52,
     [AvatarSize.medium]: 36,
     [AvatarSize.small]: 28,
-  }
+  };
 
   render() {
     const { size, src, name, ...rest } = this.props;
