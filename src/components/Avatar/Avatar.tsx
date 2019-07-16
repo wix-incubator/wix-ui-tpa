@@ -6,10 +6,10 @@ import styles from './Avatar.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export enum AvatarSize {
+  xLarge = 'xLarge',
   large = 'large',
   medium = 'medium',
   small = 'small',
-  xLarge = 'xLarge',
 }
 
 export interface AvatarProps  {
@@ -34,19 +34,14 @@ export class Avatar extends React.Component<AvatarProps> {
 
     const placeholder = getDefaultAvatar(size);
 
-    const imgProps = {
-      src,
-      width: getDimention(size),
-      heigh: getDimention(size)
-    };
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <CoreAvatar
             {...rest}
             {...styles('root', {size, mobile})}
+            imgProps={{src}}
             placeholder={placeholder()}
-            imgProps={imgProps}
             text={name && name.split('')[0]}
           />
         )}
@@ -55,17 +50,17 @@ export class Avatar extends React.Component<AvatarProps> {
   }
 }
 
-function getDimention(avatarSize: AvatarSize = AvatarSize.medium): number {
-  return {
-    [AvatarSize.large]: 52,
-    [AvatarSize.medium]: 36,
-    [AvatarSize.small]: 28,
-    [AvatarSize.xLarge]: 60
-  }[avatarSize];
-}
-
 function getDefaultAvatar(avatarSize: AvatarSize = AvatarSize.medium) {
-  const defaultAvatars = {
+  return {
+    [AvatarSize.xLarge]: () => (
+      <svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1">
+        <g id="01-Elements/Avatar-1.1-/Single/XLarge/-Anonymous" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+            <circle id="Oval" fill="#979797" cx="30" cy="30" r="30"></circle>
+            <path d="M7.03132798,49.3929172 C2.64336811,44.1663799 0,37.42081 0,30.0566818 C0,13.4568348 13.4314575,3.55271368e-15 30,3.55271368e-15 C46.5685425,3.55271368e-15 60,13.4568348 60,30.0566818 C60,37.8881933 57.0104478,45.0201381 52.1123401,50.3694772 C47.9923293,42.652942 39.6058749,37.0785757 29.8557692,37.0785757 C19.8191858,37.0785757 11.0885346,41.9146012 7.03132798,49.3929172 Z M30.7384615,33.8925088 C37.1109779,33.8925088 42.2769231,28.7168031 42.2769231,22.3322466 C42.2769231,15.94769 37.1109779,10.7719843 30.7384615,10.7719843 C24.3659452,10.7719843 19.2,15.94769 19.2,22.3322466 C19.2,28.7168031 24.3659452,33.8925088 30.7384615,33.8925088 Z" id="Combined-Shape" fill="#D8D8D8"></path>
+            <path d="M30,60 C13.4314575,60 0,46.5685425 0,30 C0,13.4314575 13.4314575,0 30,0 C46.5685425,0 60,13.4314575 60,30 C60,46.5685425 46.5685425,60 30,60 Z M30,57.6 C45.2430591,57.6 57.6,45.2430591 57.6,30 C57.6,14.7569409 45.2430591,2.4 30,2.4 C14.7569409,2.4 2.4,14.7569409 2.4,30 C2.4,45.2430591 14.7569409,57.6 30,57.6 Z" id="Combined-Shape"></path>
+        </g>
+      </svg>
+    ),
     [AvatarSize.large]: () => (
       <svg width="52px" height="52px" viewBox="0 0 52 52" version="1.1" >
         <g id="01-Elements/Avatar-1.1-/Single/Large/-Anonymous" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
@@ -96,15 +91,5 @@ function getDefaultAvatar(avatarSize: AvatarSize = AvatarSize.medium) {
         </g>
       </svg>
     ),
-    [AvatarSize.xLarge]: () => (
-      <svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1">
-        <g id="01-Elements/Avatar-1.1-/Single/XLarge/-Anonymous" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-            <circle id="Oval" fill="#979797" cx="30" cy="30" r="30"></circle>
-            <path d="M7.03132798,49.3929172 C2.64336811,44.1663799 0,37.42081 0,30.0566818 C0,13.4568348 13.4314575,3.55271368e-15 30,3.55271368e-15 C46.5685425,3.55271368e-15 60,13.4568348 60,30.0566818 C60,37.8881933 57.0104478,45.0201381 52.1123401,50.3694772 C47.9923293,42.652942 39.6058749,37.0785757 29.8557692,37.0785757 C19.8191858,37.0785757 11.0885346,41.9146012 7.03132798,49.3929172 Z M30.7384615,33.8925088 C37.1109779,33.8925088 42.2769231,28.7168031 42.2769231,22.3322466 C42.2769231,15.94769 37.1109779,10.7719843 30.7384615,10.7719843 C24.3659452,10.7719843 19.2,15.94769 19.2,22.3322466 C19.2,28.7168031 24.3659452,33.8925088 30.7384615,33.8925088 Z" id="Combined-Shape" fill="#D8D8D8"></path>
-            <path d="M30,60 C13.4314575,60 0,46.5685425 0,30 C0,13.4314575 13.4314575,0 30,0 C46.5685425,0 60,13.4314575 60,30 C60,46.5685425 46.5685425,60 30,60 Z M30,57.6 C45.2430591,57.6 57.6,45.2430591 57.6,30 C57.6,14.7569409 45.2430591,2.4 30,2.4 C14.7569409,2.4 2.4,14.7569409 2.4,30 C2.4,45.2430591 14.7569409,57.6 30,57.6 Z" id="Combined-Shape"></path>
-        </g>
-      </svg>
-    )
-  };
-  return defaultAvatars[avatarSize];
+  } [avatarSize];
 }
