@@ -25,7 +25,7 @@ interface DefaultProps {
 export class Avatar extends React.Component<AvatarProps> {
   static displayName = 'Avatar';
   static defaultProps: DefaultProps = {
-    size: 'medium' as AvatarSize,
+    size: AvatarSize.medium,
   };
 
   render() {
