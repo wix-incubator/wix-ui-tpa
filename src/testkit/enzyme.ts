@@ -92,4 +92,3 @@ import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
-
