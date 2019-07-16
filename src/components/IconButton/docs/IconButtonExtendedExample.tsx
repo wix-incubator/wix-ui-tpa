@@ -1,17 +1,12 @@
 import * as React from 'react';
 import extendedStyles from './IconButtonExtendedExample.st.css';
-import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
+import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { IconButton } from '../IconButton';
 
-interface State {
-  checked: boolean;
-  counter: number;
-}
-
-export class IconButtonExtendedExample extends React.Component<{}, State> {
+export class IconButtonExtendedExample extends React.Component {
   render = () => (
     <IconButton
-      icon={<StarIcon />}
+      icon={<ShareIcon />}
       {...this.props}
       {...extendedStyles('root', {}, this.props)}
     />

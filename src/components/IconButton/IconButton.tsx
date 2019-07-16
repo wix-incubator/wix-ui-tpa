@@ -17,12 +17,12 @@ export class IconButton extends React.Component<IconButtonProps, State> {
   static defaultProps: DefaultProps = {};
 
   render() {
-    const { icon, ...rest } = this.props;
+    const { icon, disabled, ...rest } = this.props;
     return (
       <ButtonNext
         aria-label={'icon button'}
         {...rest}
-        {...style('root', {}, rest)}
+        {...style('root', { disabled }, rest)}
       >
         <span className={style.icon}>{icon}</span>
       </ButtonNext>

@@ -33,9 +33,3 @@ export const Example = () => (
     />
   </div>
 );
-
-export const mobileExample = `
-<TPAComponentsProvider value={{mobile: true}}>
-  <IconButton />
-</TPAComponentsProvider>
-`;

@@ -15,17 +15,16 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 
-import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
+import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
-import Examples from '../../IconToggle/docs/examples';
 
-StarIcon.displayName = 'Star';
+ShareIcon.displayName = 'Share';
 HeartIcon.displayName = 'Heart';
 
 const iconExamples = [
   {
-    label: 'Star',
-    value: <StarIcon />,
+    label: 'Share',
+    value: <ShareIcon />,
   },
   {
     label: 'Heart',
@@ -43,9 +42,11 @@ export default {
   componentPath: '../IconButton.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-IconButton',
+    icon: iconExamples[0].value,
+    disabled: false,
   }),
   exampleProps: {
-    //
+    icon: iconExamples,
   },
   dataHook: 'storybook-IconButton',
   sections: [

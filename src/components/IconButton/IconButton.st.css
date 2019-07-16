@@ -50,5 +50,6 @@
 
 .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
