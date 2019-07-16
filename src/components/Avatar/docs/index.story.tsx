@@ -14,6 +14,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { AvatarSize } from '../Avatar';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -45,7 +46,10 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
+            { title: 'XLarge', source: examples.example[AvatarSize.xLarge] },
+            { title: 'Large', source: examples.example[AvatarSize.large] },
+            { title: 'Medium', source: examples.example[AvatarSize.medium] },
+            { title: 'Small', source: examples.example[AvatarSize.small] },
             { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
