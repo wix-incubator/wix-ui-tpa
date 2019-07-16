@@ -6,7 +6,5 @@ AvatarMetadata.nonReactStrictModeCompliant = true;
 
 AvatarMetadata.addSim({
   title: 'render',
-  props: {
-
-  },
+  props: {},
 });

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+
 import { Avatar } from './';
 
 class AvatarVisual extends React.Component<any> {
@@ -10,15 +9,7 @@ class AvatarVisual extends React.Component<any> {
   };
 
   render() {
-    const { mobile } = this.props;
-
-    return (
-      <TPAComponentsProvider value={{ mobile }}>
-        <VisualContainerElement>
-          <Avatar data-hook={'storybook-e2e-Avatar'} {...this.props} />
-        </VisualContainerElement>
-      </TPAComponentsProvider>
-    );
+    return <Avatar data-hook={'storybook-e2e-Avatar'} {...this.props} />;
   }
 }
 
@@ -29,12 +20,6 @@ const tests = [
       {
         it: 'default',
         props: {},
-      },
-      {
-        it: 'mobile',
-        props: {
-          mobile: true,
-        },
       },
     ],
   },

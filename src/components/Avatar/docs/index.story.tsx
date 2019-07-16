@@ -50,7 +50,6 @@ export default {
             { title: 'Large', source: examples.example[AvatarSize.large] },
             { title: 'Medium', source: examples.example[AvatarSize.medium] },
             { title: 'Small', source: examples.example[AvatarSize.small] },
-            { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),

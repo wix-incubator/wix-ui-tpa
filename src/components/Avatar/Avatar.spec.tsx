@@ -13,15 +13,8 @@ describe('Avatar', () => {
   const createDriver = createUniDriverFactory(avatarDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Avatar  />);
+    const driver = createDriver(<Avatar />);
     expect(await driver.exists()).toBe(true);
-  });
-
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<Avatar />),
-    );
-    expect(await driver.isMobile()).toBe(true);
   });
 
   describe('testkit', () => {

@@ -5,15 +5,12 @@ import {
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Avatar.st.css';
 
-export interface AvatarDriver extends BaseUniDriver {
-  isMobile(): Promise<boolean>;
-}
+export interface AvatarDriver extends BaseUniDriver {}
 
 export const avatarDriverFactory = (base: UniDriver): AvatarDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
   };
 };

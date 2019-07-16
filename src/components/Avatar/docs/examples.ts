@@ -1,4 +1,4 @@
-import { AvatarSize } from "../Avatar";
+import { AvatarSize } from '../Avatar';
 
 export const importExample = `import { Avatar } from 'wix-ui-tpa/Avatar';`;
 
@@ -9,14 +9,8 @@ export const example = {
   [AvatarSize.small]: getAvatars(AvatarSize.small),
 };
 
-export const mobileExample = `
-<TPAComponentsProvider value={{mobile: true}}>
-  <Avatar />
-</TPAComponentsProvider>
-`;
-
 function getAvatars(size) {
-  return  `
+  return `
   <>
     <Avatar size="${size}" src="https://randomuser.me/api/portraits/men/65.jpg"/>
     <Avatar size="${size}" />
