@@ -44,7 +44,7 @@ export class Avatar extends React.Component<AvatarProps> {
         {() => (
           <CoreAvatar
             {...rest}
-            {...styles('root')}
+            {...styles('root', {size})}
             placeholder={placeholder()}
             imgProps={imgProps}
             text={name && name.split('')[0]}
