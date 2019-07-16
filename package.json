@@ -84,8 +84,10 @@
     "enzyme-adapter-react-16": "^1.11.0",
     "eyes.it": "^2.0.3",
     "gh-pages-auto-release": "latest",
+    "husky": "^3.0.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "latest",
+    "lint-staged": "^9.2.0",
     "node-sass-import-once": "^1.2.0",
     "prop-types": "^15.5.4",
     "protractor": "^5.3.0",
@@ -101,6 +103,14 @@
     "wix-ui-test-utils": "^1.0.0",
     "yoshi": "^4.9.0",
     "yoshi-style-dependencies": "^4.6.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx,scss,less}": ["yoshi lint --fix"]
   },
   "license": "MIT",
   "publishConfig": {
