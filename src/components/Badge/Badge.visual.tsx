@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/VisualContainerElement';
 import { Badge } from './';
+import {VisualContainerElement} from "../../../test/visual/VisualContainerElement";
 
 class BadgeVisual extends React.Component<any> {
   static defaultProps = {
@@ -29,13 +29,7 @@ const tests = [
       {
         it: 'default',
         props: {},
-      },
-      {
-        it: 'mobile',
-        props: {
-          mobile: true,
-        },
-      },
+      }
     ],
   },
 ];

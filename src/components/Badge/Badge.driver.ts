@@ -6,7 +6,9 @@ import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Badge.st.css';
 
 export interface BadgeDriver extends BaseUniDriver {
-  isMobile(): Promise<boolean>;
+  isPrimary(): Promise<boolean>;
+  isLight(): Promise<boolean>;
+  isDefault(): Promise<boolean>;
 }
 
 export const badgeDriverFactory = (base: UniDriver): BadgeDriver => {
@@ -14,6 +16,8 @@ export const badgeDriverFactory = (base: UniDriver): BadgeDriver => {
 
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
+    isPrimary: async () => stylableUtil.hasStyleState(base, 'primary'),
+    isLight: async () => stylableUtil.hasStyleState(base, 'light'),
+    isDefault: async () => !(await this.isPrimary()) && !(await this.isLight())
   };
 };
