@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../Card/mixins.st.css";
-    -st-named: withBorder, withDynamicPadding, withDynamicSidePadding;
+    -st-named: withBorder, withDynamicLeftPadding, withDynamicRightPadding, withDynamicTopPadding, withDynamicBottomPadding;
 }
 
 :vars {
@@ -28,7 +28,10 @@
     MainMediaColor: --overridable;
     MainBorderWidth: --overridable;
     MainBorderColor: --overridable;
-    MainSidePadding: --overridable;
+    MainInfoLeftPadding: --overridable;
+    MainInfoRightPadding: --overridable;
+    MainInfoTopPadding: --overridable;
+    MainInfoBottomPadding: --overridable;
 }
 
 :vars {
@@ -43,11 +46,17 @@
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
-    ), withDynamicPadding(
-            PaddingSize value(DefaultPadding),
+    ), withDynamicLeftPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoLeftPadding)), value(DefaultPadding)),
             BorderWidth value(borderWidth)
-    ), withDynamicSidePadding(
-            PaddingSize fallback(zeroAsTrue(value(MainSidePadding)), value(DefaultPadding)),
+    ), withDynamicRightPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoRightPadding)), value(DefaultPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicTopPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoTopPadding)), value(DefaultPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicBottomPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoBottomPadding)), value(DefaultPadding)),
             BorderWidth value(borderWidth)
     );
     display: flex;

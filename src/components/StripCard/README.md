@@ -29,7 +29,10 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',
             MainBorderWidth '"--borderWidth"',
-            MainSidePadding '"--sidePadding"'
+            MainInfoLeftPadding '"--infoLeftPadding"',
+            MainInfoRightPadding '"--infoRightPadding"',
+            MainInfoTopPadding '"--infoTopPadding"',
+            MainInfoBottomPadding '"--infoBottomPadding"'
       );
     }
 

@@ -24,3 +24,19 @@
     padding-left: calculate(string(-), value(PaddingSize), value(BorderWidth));
     padding-right: calculate(string(-), value(PaddingSize), value(BorderWidth));
 }
+
+.withDynamicLeftPadding {
+    padding-left: calculate(string(-), value(PaddingSize), value(BorderWidth));
+}
+
+.withDynamicRightPadding {
+    padding-right: calculate(string(-), value(PaddingSize), value(BorderWidth));
+}
+
+.withDynamicTopPadding {
+    padding-top: calculate(string(-), value(PaddingSize), value(BorderWidth));
+}
+
+.withDynamicBottomPadding {
+    padding-bottom: calculate(string(-), value(PaddingSize), value(BorderWidth));
+}

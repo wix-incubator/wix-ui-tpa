@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "./mixins.st.css";
-    -st-named: withBorder, withDynamicPadding, withDynamicSidePadding;
+    -st-named: withBorder, withDynamicLeftPadding, withDynamicRightPadding, withDynamicTopPadding, withDynamicBottomPadding;
 }
 
 :vars {
@@ -24,7 +24,10 @@
     MainBorderColor: --overridable;
     MainInfoColor: --overridable;
     MainMediaColor: --overridable;
-    StackedInfoSidePadding: --overridable;
+    MainInfoLeftPadding: --overridable;
+    MainInfoRightPadding: --overridable;
+    MainInfoTopPadding: --overridable;
+    MainInfoBottomPadding: --overridable;
 }
 
 :vars {
@@ -49,7 +52,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background-color: value(cardBGColor);
+    /*background-color: value(cardBGColor);*/
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
@@ -137,25 +140,49 @@
 .root > .infoContainer {
     box-sizing: border-box;
     background-color: value(infoBGColor);
-    -st-mixin: withDynamicPadding(
-            PaddingSize value(infoPadding),
+    -st-mixin: withDynamicLeftPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoLeftPadding)), value(infoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicRightPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoRightPadding)), value(infoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicTopPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoTopPadding)), value(infoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicBottomPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoBottomPadding)), value(infoPadding)),
             BorderWidth value(borderWidth)
     );
 }
 
 .root:stacked > .infoContainer {
-    -st-mixin: withDynamicPadding(
-            PaddingSize value(stackedInfoPadding),
+    -st-mixin: withDynamicLeftPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoLeftPadding)), value(stackedInfoPadding)),
             BorderWidth value(borderWidth)
-    ), withDynamicSidePadding(
-            PaddingSize fallback(zeroAsTrue(value(StackedInfoSidePadding)), value(stackedInfoPadding)),
+    ), withDynamicRightPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoRightPadding)), value(stackedInfoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicTopPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoTopPadding)), value(stackedInfoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicBottomPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoBottomPadding)), value(stackedInfoPadding)),
             BorderWidth value(borderWidth)
     );
 }
 
 .root:mobile > .infoContainer {
-    -st-mixin: withDynamicPadding(
-            PaddingSize value(mobileInfoPadding),
+    -st-mixin: withDynamicLeftPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoLeftPadding)), value(mobileInfoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicRightPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoRightPadding)), value(mobileInfoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicTopPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoTopPadding)), value(mobileInfoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicBottomPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoBottomPadding)), value(mobileInfoPadding)),
             BorderWidth value(borderWidth)
     );
 }

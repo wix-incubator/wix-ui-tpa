@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "../Card/mixins.st.css";
-    -st-named: withBorder, withDynamicPadding;
+    -st-named: withBorder, withDynamicLeftPadding, withDynamicRightPadding, withDynamicTopPadding, withDynamicBottomPadding;
 }
 
 :vars {
@@ -27,6 +27,10 @@
     MainBorderColor: --overridable;
     MainInfoColor: --overridable;
     MainMediaColor: --overridable;
+    MainInfoLeftPadding: --overridable;
+    MainInfoRightPadding: --overridable;
+    MainInfoTopPadding: --overridable;
+    MainInfoBottomPadding: --overridable;
 }
 
 :vars {
@@ -141,8 +145,17 @@
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
-    ), withDynamicPadding(
-            PaddingSize value(infoPadding),
+    ), withDynamicLeftPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoLeftPadding)), value(infoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicRightPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoRightPadding)), value(infoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicTopPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoTopPadding)), value(infoPadding)),
+            BorderWidth value(borderWidth)
+    ), withDynamicBottomPadding(
+            PaddingSize fallback(zeroAsTrue(value(MainInfoBottomPadding)), value(infoPadding)),
             BorderWidth value(borderWidth)
     );
 }

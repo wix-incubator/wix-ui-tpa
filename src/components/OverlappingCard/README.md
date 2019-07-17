@@ -28,7 +28,11 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
             MainInfoColor '"--infoColor"',
             MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',
-            MainBorderWidth '"--borderWidth"'
+            MainBorderWidth '"--borderWidth"',
+            MainInfoLeftPadding '"--infoLeftPadding"',
+            MainInfoRightPadding '"--infoRightPadding"',
+            MainInfoTopPadding '"--infoTopPadding"',
+            MainInfoBottomPadding '"--infoBottomPadding"'
       );
     }
 
