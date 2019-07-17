@@ -19,7 +19,7 @@
 }
 
 :vars {
-    avatarBorderColorValue: color(fallback(value(AvatarBorderColor), value(DefaultAvatarBorderColor)));
+    avatarBorderColorValue: fallback(value(AvatarBorderColor), value(DefaultAvatarBorderColor));
 }
 
 .root {
@@ -80,7 +80,8 @@
 }
 
 .avatar::content {
-    border: solid value(avatarBorderColorValue) 1px;
+    border: solid 1px;
+    border-color: color(value(avatarBorderColorValue));
 }
 
 .avatar:size(large)::content {
