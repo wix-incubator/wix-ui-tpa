@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { AvatarGroup } from '../';
 import * as examples from './examples';
 import {
@@ -14,6 +13,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { AvatarGroupSize } from '../AvatarGroup';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -44,7 +44,12 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...Object.keys(AvatarGroupSize)
+          .map(size => ({
+            title: size,
+            source: examples.example[size],
+          }))
+          .map(code),
         ],
       }),
 
