@@ -3,6 +3,11 @@
     -st-named: color;
 }
 
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Avatar;
+}
+
 :vars {
     /*Defaults*/
     /*Defaults params goes here*/
@@ -14,14 +19,35 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
     display: inline-flex;
     flex-direction: row;
     padding-left: 5px;
 }
 
-.avatar {
+.avatarContainer {
     margin-left: -5px;
     overflow: hidden;
     position: relative;
+}
+
+.avatar {
+    -st-extends: Avatar;
+    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
+}
+
+.avatar:size(large)::content {
+    border-radius: 26px;
+    font-size: 32px;
+    font-weight: 400;
+    height: 52px;
+    width: 52px;
+}
+
+.avatar:size(medium)::content {
+    border-radius: 18px;
+    font-size: 20px;
+    font-weight: 400;
+    height: 36px;
+    width: 36px;
 }
