@@ -11,15 +11,8 @@ export interface BadgeProps {
   priority?: BADGE_PRIORITY;
 }
 
-interface DefaultProps {
-  priority: BADGE_PRIORITY;
-}
-
 class Badge extends React.Component<BadgeProps> {
   static displayName = 'Badge';
-  static defaultProps: DefaultProps = {
-    priority: BADGE_PRIORITY.default,
-  };
 
   render() {
     const { priority, children, ...rest } = this.props;

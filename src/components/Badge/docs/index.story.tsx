@@ -16,6 +16,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as Readme from '../README.md';
+import {ExtendedExample} from "./extendedExample";
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -49,7 +50,7 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Preset examples', source: examples.example }].map(code),
         ],
       }),
 
@@ -60,4 +61,5 @@ export default {
       ].map(tab),
     ]),
   ],
+  examples: <ExtendedExample/>
 };
