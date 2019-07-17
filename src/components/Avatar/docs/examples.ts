@@ -11,9 +11,9 @@ export const example = Object.keys(AvatarSize).reduce((acc, size) => {
 
 function getAvatars(size) {
   return `
-  <>
+  <div>
     <Avatar size="${size}" src="https://randomuser.me/api/portraits/men/65.jpg"/>
     <Avatar size="${size}" />
     <Avatar size="${size}" name="Firstname Lastname"/>
-  </>`;
+  </div>`;
 }
