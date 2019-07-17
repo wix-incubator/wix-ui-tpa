@@ -26,9 +26,12 @@ export default {
   componentPath: '../Avatar.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Avatar',
+    name: 'Username',
+    size: AvatarSize.medium,
+    src: 'https://randomuser.me/api/portraits/men/65.jpg',
   }),
   exampleProps: {
-    //
+    size: [AvatarSize.xLarge, AvatarSize.large, AvatarSize.medium, AvatarSize.small],
   },
   dataHook: 'storybook-Avatar',
   sections: [
