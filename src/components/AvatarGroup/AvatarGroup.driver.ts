@@ -9,7 +9,6 @@ export interface AvatarGroupDriver extends BaseUniDriver {}
 export const avatarGroupDriverFactory = (
   base: UniDriver,
 ): AvatarGroupDriver => {
-
   return {
     ...baseUniDriverFactory(base),
   };

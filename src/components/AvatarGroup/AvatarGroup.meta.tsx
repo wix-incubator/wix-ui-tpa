@@ -14,53 +14,40 @@ AvatarGroupMetadata.addSim({
 
 const items = [
   {},
-  {name: 'anonymous'},
-  {name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg'},
-  {name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg'},
+  { name: 'anonymous' },
+  { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
+  { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
 ];
 
 AvatarGroupMetadata.addSim({
   title: 'render',
   props: {
-    items: [
-     ...items,
-    ],
-    size: AvatarGroupSize.large
+    items: [...items],
+    size: AvatarGroupSize.large,
   },
 });
 
 AvatarGroupMetadata.addSim({
   title: 'render',
   props: {
-    items: [
-     ...items,
-     ...items,
-    ],
-    size: AvatarGroupSize.small
+    items: [...items, ...items],
+    size: AvatarGroupSize.small,
   },
 });
 
 AvatarGroupMetadata.addSim({
   title: 'render',
   props: {
-    items: [
-     ...items,
-     ...items,
-     ...items,
-    ],
-    size: AvatarGroupSize.xSmall
+    items: [...items, ...items, ...items],
+    size: AvatarGroupSize.xSmall,
   },
 });
 
 AvatarGroupMetadata.addSim({
   title: 'render',
   props: {
-    items: [
-     ...items,
-     ...items,
-     ...items,
-    ],
+    items: [...items, ...items, ...items],
     size: AvatarGroupSize.xxSmall,
-    maxAmount: 9
+    maxAmount: 9,
   },
 });
