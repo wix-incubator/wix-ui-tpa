@@ -45,11 +45,11 @@ export default {
           title('Examples'),
 
           ...Object.keys(AvatarGroupSize)
-          .map(size => ({
-            title: size,
-            source: examples.example[size],
-          }))
-          .map(code),
+            .map(size => ({
+              title: size,
+              source: examples.example[size],
+            }))
+            .map(code),
         ],
       }),
 

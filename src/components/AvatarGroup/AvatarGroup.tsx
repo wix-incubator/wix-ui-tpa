@@ -37,16 +37,13 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
   };
 
   render() {
-    const { items, size, ...rest } = this.props;
+    const { items, size, maxAmount, ...rest } = this.props;
 
     return (
       <div {...styles('root', { size }, rest)}>
-        {items.map(({ name, src }) => (
+        {items.slice(0, maxAmount).map(({ name, src }) => (
           <div {...styles('avatar')}>
-            <Avatar
-              name={name}
-              src={src}
-            />
+            <Avatar name={name} src={src} />
           </div>
         ))}
       </div>
