@@ -2,12 +2,9 @@ import { AvatarSize } from '../Avatar';
 
 export const importExample = `import { Avatar } from 'wix-ui-tpa/Avatar';`;
 
-export const example = {
-  [AvatarSize.xLarge]: getAvatars(AvatarSize.xLarge),
-  [AvatarSize.large]: getAvatars(AvatarSize.large),
-  [AvatarSize.medium]: getAvatars(AvatarSize.medium),
-  [AvatarSize.small]: getAvatars(AvatarSize.small),
-};
+export const example = Object.keys(AvatarSize).reduce((acc, size) => {
+  return {...acc, [size]: getAvatars(size)}
+}, {})
 
 function getAvatars(size) {
   return `
