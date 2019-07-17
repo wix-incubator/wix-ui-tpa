@@ -22,13 +22,52 @@
     -st-states: size(enum(large, medium, small, xSmall, xxSmall));
     display: inline-flex;
     flex-direction: row;
-    padding-left: 5px;
+}
+
+.root:size(large) {
+    padding-left: 10px;
+}
+
+.root:size(medium) {
+    padding-left: 8px;
+}
+
+.root:size(small) {
+    padding-left: 6px;
+}
+
+.root:size(xSmall) {
+    padding-left: 4px;
+}
+
+.root:size(xxSmall) {
+    padding-left: 2px;
 }
 
 .avatarContainer {
-    margin-left: -5px;
+    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
     overflow: hidden;
     position: relative;
+}
+
+.avatarContainer:size(large) {
+    margin-left: -10px;
+}
+
+.avatarContainer:size(medium) {
+    margin-left: -8px;
+}
+
+.avatarContainer:size(small) {
+    margin-left: -6px;
+}
+
+.avatarContainer:size(xSmall) {
+    margin-left: -4px;
+}
+
+.avatarContainer:size(xxSmall) {
+    margin-left: -2px;
 }
 
 .avatar {
