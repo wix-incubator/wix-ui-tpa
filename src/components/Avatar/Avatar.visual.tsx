@@ -14,24 +14,10 @@ class AvatarVisual extends React.Component<any> {
   }
 }
 
-const tests = [
-  {
-    describe: 'size: xLarge',
-    its: generateIts(AvatarSize.xLarge),
-  },
-  {
-    describe: 'size: large',
-    its: generateIts(AvatarSize.large),
-  },
-  {
-    describe: 'size: medium',
-    its: generateIts(AvatarSize.medium),
-  },
-  {
-    describe: 'size: small',
-    its: generateIts(AvatarSize.small),
-  },
-];
+const tests = Object.keys(AvatarSize).map(avatarSize => ({
+  describe: `size: ${avatarSize}`,
+  its: generateIts(avatarSize),
+}));
 
 function generateIts(size) {
   return [

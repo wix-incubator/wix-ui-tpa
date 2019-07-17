@@ -31,7 +31,12 @@ export default {
     src: 'https://randomuser.me/api/portraits/men/65.jpg',
   }),
   exampleProps: {
-    size: [AvatarSize.xLarge, AvatarSize.large, AvatarSize.medium, AvatarSize.small],
+    size: [
+      AvatarSize.xLarge,
+      AvatarSize.large,
+      AvatarSize.medium,
+      AvatarSize.small,
+    ],
   },
   dataHook: 'storybook-Avatar',
   sections: [
