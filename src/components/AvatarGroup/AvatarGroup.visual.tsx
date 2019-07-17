@@ -8,10 +8,7 @@ class AvatarGroupVisual extends React.Component<any> {
   };
 
   render() {
-
-    return (
-      <AvatarGroup {...this.props} />
-    );
+    return <AvatarGroup {...this.props} />;
   }
 }
 
@@ -21,7 +18,7 @@ const tests = [
     its: [
       {
         it: 'default',
-        props: {items: [{name: 'User'}]},
+        props: { items: [{ name: 'User' }] },
       },
     ],
   },

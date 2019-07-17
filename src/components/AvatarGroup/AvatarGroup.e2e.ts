@@ -21,7 +21,10 @@ describe('avatarGroup', () => {
 
   it('should render', async () => {
     const driver = avatarGroupTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find AvatarGroup');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find AvatarGroup',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

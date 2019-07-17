@@ -16,32 +16,34 @@ export enum AvatarGroupSize {
 }
 
 export interface AvatarGroupProps {
-  items?: Array<AvatarGroupItem>;
+  items?: AvatarGroupItem[];
   maxAmount?: number;
   size?: AvatarGroupSize;
 }
 
 interface DefaultProps {
-  items: Array<AvatarGroupItem>;
+  items: AvatarGroupItem[];
   maxAmount: number;
   size: AvatarGroupSize;
 }
 
 /** The Avatar group is made up of a group of avatars and an optional text link. Content in text link can be customized to the product's intent. */
-export class AvatarGroup extends React.Component<AvatarGroupProps, {}> {
+export class AvatarGroup extends React.Component<AvatarGroupProps> {
   static displayName = 'AvatarGroup';
   static defaultProps: DefaultProps = {
-    items:[],
+    items: [],
     maxAmount: 5,
     size: AvatarGroupSize.medium,
   };
 
   render() {
-    const {items, size,  ...rest } = this.props;
+    const { items, size, ...rest } = this.props;
 
     return (
       <div {...styles('root', { size }, rest)}>
-        {items.map(({name, src}) => (<Avatar name={name} src={src}/>))}
+        {items.map(({ name, src }) => (
+          <Avatar name={name} src={src} />
+        ))}
       </div>
     );
   }

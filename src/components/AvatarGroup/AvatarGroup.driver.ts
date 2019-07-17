@@ -9,7 +9,9 @@ export interface AvatarGroupDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
 }
 
-export const avatarGroupDriverFactory = (base: UniDriver): AvatarGroupDriver => {
+export const avatarGroupDriverFactory = (
+  base: UniDriver,
+): AvatarGroupDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
   return {

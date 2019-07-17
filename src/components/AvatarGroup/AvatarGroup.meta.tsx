@@ -7,6 +7,6 @@ AvatarGroupMetadata.nonReactStrictModeCompliant = true;
 AvatarGroupMetadata.addSim({
   title: 'render',
   props: {
-      items: []
+    items: [],
   },
 });
