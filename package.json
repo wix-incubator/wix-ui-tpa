@@ -65,7 +65,7 @@
     "wix-ui-icons-common": "^2.0.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "^2.6.20",
+    "@applitools/eyes-storybook": "2.6.25",
     "@storybook/addon-links": "5.0.9",
     "@storybook/react": "5.0.9",
     "@stylable/cli": "^2.2.0",
