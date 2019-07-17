@@ -18,6 +18,18 @@ import { AvatarGroupSize } from '../AvatarGroup';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+
+const items = [
+  {},
+  {name: 'anonymous'},
+  {name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg'},
+  {name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg'},
+  {},
+  {name: 'anonymous'},
+  {name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg'},
+  {name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg'},
+];
+
 export default {
   category: 'Components',
   storyName: 'AvatarGroup',
@@ -25,9 +37,12 @@ export default {
   componentPath: '../AvatarGroup.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-AvatarGroup',
+    items: items,
+    size: AvatarGroupSize.medium,
+    maxAmount: 5,
   }),
   exampleProps: {
-    //
+    size: Object.keys(AvatarGroupSize)
   },
   dataHook: 'storybook-AvatarGroup',
   sections: [
