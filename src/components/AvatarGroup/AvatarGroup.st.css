@@ -76,7 +76,7 @@
 }
 
 .avatar::content {
-    border: solid white 1px;
+    border: solid color(color-1) 1px;
 }
 
 .avatar:size(large)::content {
