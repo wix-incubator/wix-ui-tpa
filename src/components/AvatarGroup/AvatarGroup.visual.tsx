@@ -41,9 +41,9 @@ function generateIts(size) {
     {
       it: 'With 12 items and custom limit',
       props: {
-        size,
         items: [...items, ...items, ...items, ...items],
         maxAmount: 9,
+        size,
       },
     },
   ];
