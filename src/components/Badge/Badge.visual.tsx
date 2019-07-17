@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { Badge } from './';
+import {Badge, BADGE_PRIORITY} from './';
 import {VisualContainerElement} from "../../../test/visual/VisualContainerElement";
 
 class BadgeVisual extends React.Component<any> {
@@ -28,7 +28,24 @@ const tests = [
     its: [
       {
         it: 'default',
-        props: {},
+        props: {
+          priority: BADGE_PRIORITY.default,
+          children: ['Default']
+        },
+      },
+      {
+        it: 'primary',
+        props: {
+          priority: BADGE_PRIORITY.primary,
+          children: ['Primary']
+        },
+      },
+      {
+        it: 'light',
+        props: {
+          priority: BADGE_PRIORITY.light,
+          children: ['Light']
+        },
       }
     ],
   },
