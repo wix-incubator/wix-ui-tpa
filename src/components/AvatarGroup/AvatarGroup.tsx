@@ -16,8 +16,11 @@ export enum AvatarGroupSize {
 }
 
 export interface AvatarGroupProps {
+  /** Array of Avatar items. Optional. Avatar item structure: {name?: 'Username', src?: 'https://link-to-image'}. All fields are optional. */
   items?: AvatarGroupItem[];
+  /** Max amount of items shown in summary. Optional. Defaults to 5. */
   maxAmount?: number;
+  /** Avatar's size. Optional. Dafaults to 'medium'. One of 'large' | 'medium' | 'small' | 'xSmall' | 'xxSmall'. */
   size?: AvatarGroupSize;
 }
 
