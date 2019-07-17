@@ -29,6 +29,11 @@ const items = [
   { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
 ];
 
+const exampleItems = [
+  { label: 'few items', value: items.slice(0, 4) },
+  { label: 'many items', value: items },
+];
+
 export default {
   category: 'Components',
   storyName: 'AvatarGroup',
@@ -36,11 +41,12 @@ export default {
   componentPath: '../AvatarGroup.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-AvatarGroup',
-    items,
-    size: AvatarGroupSize.medium,
+    items: exampleItems[1].value,
     maxAmount: 5,
+    size: AvatarGroupSize.medium,
   }),
   exampleProps: {
+    items: exampleItems,
     size: Object.keys(AvatarGroupSize),
   },
   dataHook: 'storybook-AvatarGroup',
