@@ -51,7 +51,7 @@ export class Avatar extends React.Component<AvatarProps> {
             width={Avatar.dimmentionBySize[size]}
           />
         }
-        text={name && name.split('')[0]}
+        name={name && name.split(' ')[0]}
       />
     );
   }
