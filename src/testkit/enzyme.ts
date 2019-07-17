@@ -91,3 +91,9 @@ import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
+
+import { avatarGroupDriverFactory } from '../components/AvatarGroup/AvatarGroup.driver';
+export const avatarGroupTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(avatarGroupDriverFactory);
+

@@ -53,8 +53,12 @@ export const tabsTestkitFactory = uniTestkitFactoryCreator(tabsDriverFactory);
 import { textDriverFactory } from '../components/Text/Text.driver';
 export const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
+import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
+export const textButtonTestkitFactory = uniTestkitFactoryCreator(textButtonDriverFactory);
+
 import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
 export const tooltipTestkitFactory = testkitFactoryCreator(tooltipDriverFactory);
 
-import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
-export const textButtonTestkitFactory = uniTestkitFactoryCreator(textButtonDriverFactory);
+import { avatarGroupDriverFactory } from '../components/AvatarGroup/AvatarGroup.driver';
+export const avatarGroupTestkitFactory = uniTestkitFactoryCreator(avatarGroupDriverFactory);
+
