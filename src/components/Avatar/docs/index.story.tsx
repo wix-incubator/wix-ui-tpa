@@ -31,12 +31,7 @@ export default {
     src: 'https://randomuser.me/api/portraits/men/65.jpg',
   }),
   exampleProps: {
-    size: [
-      AvatarSize.xLarge,
-      AvatarSize.large,
-      AvatarSize.medium,
-      AvatarSize.small,
-    ],
+    size: Object.keys(AvatarSize),
   },
   dataHook: 'storybook-Avatar',
   sections: [
@@ -53,12 +48,12 @@ export default {
 
           title('Examples'),
 
-          ...[
-            { title: 'XLarge', source: examples.example[AvatarSize.xLarge] },
-            { title: 'Large', source: examples.example[AvatarSize.large] },
-            { title: 'Medium', source: examples.example[AvatarSize.medium] },
-            { title: 'Small', source: examples.example[AvatarSize.small] },
-          ].map(code),
+          ...Object.keys(AvatarSize)
+            .map(size => ({
+              title: size,
+              source: examples.example[size],
+            }))
+            .map(code),
         ],
       }),
 
