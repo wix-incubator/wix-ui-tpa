@@ -1,53 +1,55 @@
-import { AvatarGroup } from '.';
-import Registry from '@ui-autotools/registry';
-import { AvatarGroupSize } from './AvatarGroup';
+// The `ui-autotools` tool, doesn’t support importing svg files as react elements.
 
-const AvatarGroupMetadata = Registry.getComponentMetadata(AvatarGroup);
-AvatarGroupMetadata.nonReactStrictModeCompliant = true;
+// import { AvatarGroup } from '.';
+// import Registry from '@ui-autotools/registry';
+// import { AvatarGroupSize } from './AvatarGroup';
 
-AvatarGroupMetadata.addSim({
-  title: 'render',
-  props: {
-    items: [],
-  },
-});
+// const AvatarGroupMetadata = Registry.getComponentMetadata(AvatarGroup);
+// AvatarGroupMetadata.nonReactStrictModeCompliant = true;
 
-const items = [
-  {},
-  { name: 'anonymous' },
-  { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
-  { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
-];
+// AvatarGroupMetadata.addSim({
+//   title: 'render',
+//   props: {
+//     items: [],
+//   },
+// });
 
-AvatarGroupMetadata.addSim({
-  title: 'render',
-  props: {
-    items: [...items],
-    size: AvatarGroupSize.large,
-  },
-});
+// const items = [
+//   {},
+//   { name: 'anonymous' },
+//   { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
+//   { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
+// ];
 
-AvatarGroupMetadata.addSim({
-  title: 'render',
-  props: {
-    items: [...items, ...items],
-    size: AvatarGroupSize.small,
-  },
-});
+// AvatarGroupMetadata.addSim({
+//   title: 'render',
+//   props: {
+//     items: [...items],
+//     size: AvatarGroupSize.large,
+//   },
+// });
 
-AvatarGroupMetadata.addSim({
-  title: 'render',
-  props: {
-    items: [...items, ...items, ...items],
-    size: AvatarGroupSize.xSmall,
-  },
-});
+// AvatarGroupMetadata.addSim({
+//   title: 'render',
+//   props: {
+//     items: [...items, ...items],
+//     size: AvatarGroupSize.small,
+//   },
+// });
 
-AvatarGroupMetadata.addSim({
-  title: 'render',
-  props: {
-    items: [...items, ...items, ...items],
-    size: AvatarGroupSize.xxSmall,
-    maxAmount: 9,
-  },
-});
+// AvatarGroupMetadata.addSim({
+//   title: 'render',
+//   props: {
+//     items: [...items, ...items, ...items],
+//     size: AvatarGroupSize.xSmall,
+//   },
+// });
+
+// AvatarGroupMetadata.addSim({
+//   title: 'render',
+//   props: {
+//     items: [...items, ...items, ...items],
+//     size: AvatarGroupSize.xxSmall,
+//     maxAmount: 9,
+//   },
+// });
