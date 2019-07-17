@@ -14,6 +14,9 @@ import {
 import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory = testkitFactoryCreator(autocompleteDriverFactory);
 
+import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
+export const avatarTestkitFactory = uniTestkitFactoryCreator(avatarDriverFactory);
+
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory = uniTestkitFactoryCreator(buttonDriverFactory);
 
@@ -55,4 +58,3 @@ export const tooltipTestkitFactory = testkitFactoryCreator(tooltipDriverFactory)
 
 import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
 export const textButtonTestkitFactory = uniTestkitFactoryCreator(textButtonDriverFactory);
-

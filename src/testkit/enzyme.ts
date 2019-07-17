@@ -17,6 +17,11 @@ export const autocompleteTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(autocompleteDriverFactory);
 
+import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
+export const avatarTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(avatarDriverFactory);
+
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory: (
   obj: WrapperData,
@@ -77,13 +82,12 @@ export const textTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(textDriverFactory);
 
-import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
-export const tooltipTestkitFactory: (
-  obj: WrapperData,
-) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
-
 import { textButtonDriverFactory } from '../components/TextButton/TextButton.driver';
 export const textButtonTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(textButtonDriverFactory);
 
+import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.driver';
+export const tooltipTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeTestkitFactoryCreator(tooltipDriverFactory);
