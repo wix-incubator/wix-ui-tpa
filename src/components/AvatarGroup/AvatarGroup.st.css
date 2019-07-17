@@ -36,6 +36,10 @@
     -st-states: size(enum(large, medium, small, xSmall, xxSmall));
 }
 
+.avatar::content {
+    border: solid white 1px;
+}
+
 .avatar:size(large)::content {
     border-radius: 26px;
     font-size: 32px;
@@ -50,4 +54,28 @@
     font-weight: 400;
     height: 36px;
     width: 36px;
+}
+
+.avatar:size(small)::content {
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 400;
+    height: 28px;
+    width: 28px;
+}
+
+.avatar:size(xSmall)::content {
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 400;
+    height: 20px;
+    width: 20px;
+}
+
+.avatar:size(xxSmall)::content {
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 400;
+    height: 16px;
+    width: 16px;
 }
