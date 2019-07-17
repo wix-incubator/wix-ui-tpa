@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback;
 }
 
 :import {
@@ -10,12 +10,16 @@
 
 :vars {
     /*Defaults*/
-    /*Defaults params goes here*/
+    DefaultAvatarBorderColor: color-1;
 }
 
 :vars {
     /*Overrides*/
-    /*Deceleration of overridable placeholders*/
+     AvatarBorderColor: --overridable;
+}
+
+:vars {
+    avatarBorderColorValue: color(fallback(value(AvatarBorderColor), value(DefaultAvatarBorderColor)));
 }
 
 .root {
@@ -76,7 +80,7 @@
 }
 
 .avatar::content {
-    border: solid color(color-1) 1px;
+    border: solid value(avatarBorderColorValue) 1px;
 }
 
 .avatar:size(large)::content {
