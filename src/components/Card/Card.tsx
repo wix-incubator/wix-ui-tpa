@@ -43,7 +43,7 @@ export class Card extends React.Component<CardProps> {
       return mediaAspectRatio && `${Math.round(100 / mediaAspectRatio)}%`;
     }
 
-    return stacked ? '100%': undefined;
+    return `${stacked ? 100 : 0}%`
   }
 
   render() {

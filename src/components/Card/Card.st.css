@@ -52,7 +52,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    /*background-color: value(cardBGColor);*/
+    background-color: value(cardBGColor);
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
