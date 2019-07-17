@@ -1,52 +1,48 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
 import styles from './AvatarGroup.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { Avatar } from '../Avatar';
+
+export interface AvatarGroupItem {
+  name?: string;
+  src?: string;
+}
+
+export enum AvatarGroupSize {
+  large = 'large',
+  medium = 'medium',
+  small = 'small',
+  xSmall = 'xSmall',
+  xxSmall = 'xxSmall',
+}
 
 export interface AvatarGroupProps {
-  buttonText: string;
+  items?: Array<AvatarGroupItem>;
+  maxAmount?: number;
+  size?: AvatarGroupSize;
 }
 
 interface DefaultProps {
-  buttonText: string;
-}
-
-interface State {
-  count: number;
+  items: Array<AvatarGroupItem>;
+  maxAmount: number;
+  size: AvatarGroupSize;
 }
 
 /** The Avatar group is made up of a group of avatars and an optional text link. Content in text link can be customized to the product's intent. */
-export class AvatarGroup extends React.Component<AvatarGroupProps, State> {
+export class AvatarGroup extends React.Component<AvatarGroupProps, {}> {
   static displayName = 'AvatarGroup';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
-
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
+  static defaultProps: DefaultProps = {
+    items:[],
+    maxAmount: 5,
+    size: AvatarGroupSize.medium,
   };
 
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+    const {items, size,  ...rest } = this.props;
 
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
-            <Text {...styles('number', { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-              of times
-            </Text>
-
-            <div className={styles.button}>
-              <Button onClick={this._handleClick}>{buttonText}</Button>
-            </div>
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <div {...styles('root', { size }, rest)}>
+        {items.map(({name, src}) => (<Avatar name={name} src={src}/>))}
+      </div>
     );
   }
 }
