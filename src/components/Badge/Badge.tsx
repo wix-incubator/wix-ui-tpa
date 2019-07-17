@@ -18,6 +18,7 @@ class Badge extends React.Component<BadgeProps> {
     const { priority, children, ...rest } = this.props;
     return (
       <div
+        data-priority={priority}
         {...styles(
           'root',
           {
