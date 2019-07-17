@@ -15,5 +15,13 @@
 
 .root {
     -st-states: mobile;
-    /*css goes here*/
+    display: inline-flex;
+    flex-direction: row;
+    padding-left: 25px;
+}
+
+.avatar {
+    margin-left: -25px;
+    position: relative;
+    overflow: hidden;
 }
