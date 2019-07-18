@@ -40,4 +40,26 @@ describe('AvatarGroup', () => {
       ).toBe(true);
     });
   });
+
+  const items = [
+    {},
+    { name: 'anonymous' },
+    { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
+    { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
+  ];
+
+  it('should render no more than 5 Avatars in the group by default', async () => {
+    const driver = createDriver(
+      <AvatarGroup items={[...items, ...items, ...items]} />,
+    );
+    expect(await driver.getAvatarCount()).toBe(5);
+  });
+
+  it('should render no more than maxAmount Avatars in group', async () => {
+    const driver = createDriver(
+      <AvatarGroup maxAmount={9} items={[...items, ...items, ...items]} />,
+    );
+
+    expect(await driver.getAvatarCount()).toBe(9);
+  });
 });
