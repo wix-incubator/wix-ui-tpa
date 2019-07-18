@@ -75,15 +75,14 @@
 
 .avatar {
     -st-extends: Avatar;
-    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
 }
 
-.avatar::content {
+.root .avatar::content {
     border: solid 1px;
     border-color: color(value(avatarBorderColorValue));
 }
 
-.avatar:size(large)::content {
+.root:size(large) .avatar::content {
     border-radius: 26px;
     font-size: 32px;
     font-weight: 400;
@@ -91,7 +90,7 @@
     width: 52px;
 }
 
-.avatar:size(medium)::content {
+.root:size(medium) .avatar::content {
     border-radius: 18px;
     font-size: 20px;
     font-weight: 400;
@@ -99,7 +98,7 @@
     width: 36px;
 }
 
-.avatar:size(small)::content {
+.root:size(small) .avatar::content {
     border-radius: 14px;
     font-size: 17px;
     font-weight: 400;
@@ -107,7 +106,7 @@
     width: 28px;
 }
 
-.avatar:size(xSmall)::content {
+.root:size(xSmall) .avatar::content {
     border-radius: 10px;
     font-size: 12px;
     font-weight: 400;
@@ -115,7 +114,7 @@
     width: 20px;
 }
 
-.avatar:size(xxSmall)::content {
+.root:size(xxSmall) .avatar::content {
     border-radius: 8px;
     font-size: 10px;
     font-weight: 400;
