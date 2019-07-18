@@ -25,6 +25,8 @@
     badgeBgColor: color(fallback(value(BadgeBgColor), value(DefaultBgColor)));
     badgeTextColor: color(fallback(value(BadgeTextColor), value(DefaultTextColor)));
     badgeBorderColor: color(fallback(value(BadgeBorderColor), transparent));
+    defaultBgColor: applyOpacity(color(value(DefaultBgColor)), 0.4);
+    lightBorderColor: applyOpacity(color(value(LightBorderColor)), 0.15);
 }
 
 .root {
@@ -36,13 +38,13 @@
     font-size: 12px;
     border-width: 1px;
     border-style: solid;
-    background-color: applyOpacity(value(badgeBgColor), 0.4);
+    background-color: value(badgeBgColor);
     color: value(badgeTextColor);
-    border-color: applyOpacity(value(badgeBorderColor), 0.15);
+    border-color: value(badgeBorderColor);
 }
 
 .root:priority(default) {
-    background-color: applyOpacity(color(value(DefaultBgColor)), 0.4);
+    background-color: value(defaultBgColor);
     color: color(value(DefaultTextColor));
     border: none;
 }
@@ -50,7 +52,7 @@
 .root:priority(light) {
     background-color: color(value(LightBgColor));
     color: color(value(LightTextColor));
-    border-color: applyOpacity(color(value(LightBorderColor)), 0.15);
+    border-color: value(lightBorderColor);
 }
 
 .root:priority(primary) {
