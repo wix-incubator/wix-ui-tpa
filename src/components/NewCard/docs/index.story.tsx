@@ -14,6 +14,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { NewCardExample } from './NewCardExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -46,7 +47,6 @@ export default {
 
           ...[
             { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),
@@ -58,4 +58,5 @@ export default {
       ].map(tab),
     ]),
   ],
+  examples: <NewCardExample/>
 };

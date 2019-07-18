@@ -1,52 +1,52 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
 import styles from './NewCard.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface NewCardProps {
-  buttonText: string;
+  stacked?: boolean;
 }
 
 interface DefaultProps {
-  buttonText: string;
+  stacked: boolean;
 }
 
-interface State {
-  count: number;
+interface ContainerProps {
+  children?: React.ReactNode;
+  minWidth?: number;
+}
+
+function Container({ className, children, minWidth = 0 }) {
+  const style = {} as any;
+
+  if (minWidth) {
+    style.flexShrink = 0;
+    style.flexGrow = 1;
+    style.flexBasis = minWidth;
+  }
+
+  return (
+    <div className={className} style={style}>
+      {children}
+    </div>
+  );
+}
+function MediaContainer({ children, minWidth }: ContainerProps) {
+  return Container({ className: styles.media, children, minWidth });
+}
+function InfoContainer({ children, minWidth }: ContainerProps) {
+  return Container({ className: styles.info, children, minWidth });
 }
 
 /** The best card ever */
-export class NewCard extends React.Component<NewCardProps, State> {
+export class NewCard extends React.Component<NewCardProps> {
   static displayName = 'NewCard';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
+  static defaultProps: DefaultProps = { stacked: false };
 
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
-  };
+  static InfoContainer = InfoContainer;
+  static MediaContainer = MediaContainer;
 
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+    const { children, stacked, ...rest } = this.props;
 
-    return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
-            <Text {...styles('number', { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-              of times
-            </Text>
-
-            <div className={styles.button}>
-              <Button onClick={this._handleClick}>{buttonText}</Button>
-            </div>
-          </div>
-        )}
-      </TPAComponentsConsumer>
-    );
+    return <div {...styles('root', { stacked }, rest)}>{children}</div>;
   }
 }

@@ -1,0 +1,67 @@
+:import {
+    -st-from: '../NewCard.st.css';
+    -st-default: NewCard;
+}
+
+.example1 {
+    -st-extends: NewCard;
+}
+
+.example1::info {
+    border: 1px solid black;
+    padding: 30px;
+}
+
+.example1::media {
+    padding: 30px;
+    background-color: gray;
+}
+
+.example1::media img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.example2 {
+    -st-extends: NewCard;
+}
+
+.example2::info {
+    border: 1px solid black;
+    padding: 30px;
+}
+
+.example2::media {
+    padding: 30px;
+    background-color: gray;
+}
+
+.example2::media img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.example3 {
+    -st-extends: NewCard;
+    height: 162px;
+}
+
+.example3::info {
+    border: 1px solid black;
+    padding: 32px;
+    height: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    flex-grow: 1;
+}
+
+.example3::media {
+    max-width: 236px;
+    height: 100%;
+}
+
+.example3::media img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: 100%;
+}
