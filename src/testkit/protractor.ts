@@ -16,7 +16,9 @@ export const autocompleteTestkitFactory = protractorTestkitFactoryCreator(
 );
 
 import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
-export const avatarTestkitFactory = protractorUniTestkitFactoryCreator(avatarDriverFactory)
+export const avatarTestkitFactory = protractorUniTestkitFactoryCreator(
+  avatarDriverFactory,
+);
 
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory = protractorUniTestkitFactoryCreator(
