@@ -1,0 +1,124 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Avatar;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultAvatarBorderColor: color-1;
+}
+
+:vars {
+    /*Overrides*/
+     AvatarBorderColor: --overridable;
+}
+
+:vars {
+    avatarBorderColorValue: fallback(value(AvatarBorderColor), value(DefaultAvatarBorderColor));
+}
+
+.root {
+    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.root:size(large) {
+    padding-left: 14px;
+}
+
+.root:size(medium) {
+    padding-left: 12px;
+}
+
+.root:size(small) {
+    padding-left: 10px;
+}
+
+.root:size(xSmall) {
+    padding-left: 6px;
+}
+
+.root:size(xxSmall) {
+    padding-left: 4px;
+}
+
+.root .avatarContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.root:size(large) .avatarContainer {
+    margin-left: -14px;
+}
+
+.root:size(medium) .avatarContainer {
+    margin-left: -12px;
+}
+
+.root:size(small) .avatarContainer {
+    margin-left: -10px;
+}
+
+.root:size(xSmall) .avatarContainer {
+    margin-left: -6px;
+}
+
+.root:size(xxSmall) .avatarContainer {
+    margin-left: -4px;
+}
+
+.avatar {
+    -st-extends: Avatar;
+}
+
+.root .avatar::content {
+    border: solid 1px;
+    border-color: color(value(avatarBorderColorValue));
+}
+
+.root:size(small) .avatar::content,
+.root:size(medium) .avatar::content,
+.root:size(large) .avatar::content {
+    border-width: 2px;
+}
+
+.root:size(large) .avatar::content {
+    font-size: 32px;
+    font-weight: 400;
+    height: 52px;
+    width: 52px;
+}
+
+.root:size(medium) .avatar::content {
+    font-size: 20px;
+    font-weight: 400;
+    height: 36px;
+    width: 36px;
+}
+
+.root:size(small) .avatar::content {
+    font-size: 17px;
+    font-weight: 400;
+    height: 28px;
+    width: 28px;
+}
+
+.root:size(xSmall) .avatar::content {
+    font-size: 12px;
+    font-weight: 400;
+    height: 20px;
+    width: 20px;
+}
+
+.root:size(xxSmall) .avatar::content {
+    font-size: 10px;
+    font-weight: 400;
+    height: 16px;
+    width: 16px;
+}

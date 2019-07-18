@@ -19,6 +19,8 @@ export interface AvatarProps {
   size?: AvatarSize;
   /** Avatar's image src. Optional. */
   src?: string;
+  /** Avatars's class name. Optional. */
+  className?: string;
 }
 
 interface DefaultProps {
