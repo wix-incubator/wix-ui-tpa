@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-
 import { Avatar } from './';
 import { AvatarSize } from './Avatar';
+import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 
 class AvatarVisual extends React.Component<any> {
   static defaultProps = {
@@ -10,7 +10,11 @@ class AvatarVisual extends React.Component<any> {
   };
 
   render() {
-    return <Avatar data-hook={'storybook-e2e-Avatar'} {...this.props} />;
+    return (
+      <VisualContainerElement>
+        <Avatar data-hook={'storybook-e2e-Avatar'} {...this.props} />
+      </VisualContainerElement>
+    );
   }
 }
 
