@@ -45,6 +45,7 @@ module.exports = merge(
     apiKey: process.env.EYES_API_KEY,
     batchId: getBatchId(),
     batchName: appName,
+    waitBeforeScreenshots: '[data-test-ready="true"]',
   },
   privateConfig,
 );

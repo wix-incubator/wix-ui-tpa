@@ -1,23 +1,14 @@
-import {configure, addParameters} from '@storybook/react';
-import styleProcessor from 'wix-style-processor';
+import {configure} from '@storybook/react';
 import './stories.scss';
+import { init } from '../test/visual/StyleProcessorUtil';
 
 function loadStories() {
   require('../mocks');
-  styleProcessor.init();
 
   const req = require.context('../src', true, /\.visual\.tsx$/);
   req.keys().forEach(filename => req(filename));
+
+  setTimeout(init);
 }
-
-configure(loadStories, module);
-
-addParameters({
-  options: {
-    name: 'wix-ui-tpa',
-    url: 'https://github.com/wix-private/wix-ui-tpa',
-    showAddonPanel: false,
-  }
-});
 
 configure(loadStories, module);

@@ -1,0 +1,52 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Avatar;
+}
+
+.root {
+    -st-extends: Avatar;
+    -st-states: size(enum(large, medium, small, xLarge));
+}
+
+.root::content {
+    align-items: center;
+    background-color: #d8d8d8;
+    color: #979797;
+    display: flex;
+    font-family: "HelveticaNeueW01-65Medi", "Arial", "sans-serif";
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: 0;
+    text-align: center;
+}
+
+.root:size(xLarge)::content {
+    border-radius: 30px;
+    font-size: 36px;
+    height: 60px;
+    width: 60px;
+}
+
+.root:size(large)::content {
+    border-radius: 26px;
+    font-size: 32px;
+    font-weight: 400;
+    height: 52px;
+    width: 52px;
+}
+
+.root:size(medium)::content {
+    border-radius: 18px;
+    font-size: 20px;
+    font-weight: 400;
+    height: 36px;
+    width: 36px;
+}
+
+.root:size(small)::content {
+    border-radius: 14px;
+    font-size: 17px;
+    font-weight: 400;
+    height: 28px;
+    width: 28px;
+}

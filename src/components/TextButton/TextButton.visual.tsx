@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
+import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 import { TEXT_BUTTON_PRIORITY, TextButton } from './';
 
 class TextButtonVisual extends React.Component<any> {
@@ -13,7 +14,9 @@ class TextButtonVisual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <TextButton data-hook={'storybook-e2e-TextButton'} {...this.props} />
+        <VisualContainerElement>
+          <TextButton {...this.props}>Text Button</TextButton>
+        </VisualContainerElement>
       </TPAComponentsProvider>
     );
   }

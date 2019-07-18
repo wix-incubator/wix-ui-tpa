@@ -16,6 +16,11 @@ export const autocompleteTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(autocompleteDriverFactory);
 
+import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
+export const avatarTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(avatarDriverFactory);
+
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory: (
   obj: WrapperData,

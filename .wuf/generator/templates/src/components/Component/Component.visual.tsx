@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
+import { VisualContainerElement } from '../../../test/VisualContainerElement';
 import { {%ComponentName%} } from './';
 
 class {%ComponentName%}Visual extends React.Component<any> {
@@ -13,7 +14,9 @@ class {%ComponentName%}Visual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <{%ComponentName%} data-hook={'storybook-e2e-{%ComponentName%}'} {...this.props} />
+        <VisualContainerElement>
+          <{%ComponentName%} {...this.props} />
+        </VisualContainerElement>
       </TPAComponentsProvider>
     );
   }

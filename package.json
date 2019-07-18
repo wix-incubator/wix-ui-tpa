@@ -37,7 +37,7 @@
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
-    "test:eyes-storybook": "if test \"$APPLITOOLS_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
+    "test:eyes-storybook": "if test \"$EYES_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
@@ -65,7 +65,7 @@
     "wix-ui-icons-common": "^2.0.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "^2.6.20",
+    "@applitools/eyes-storybook": "2.6.25",
     "@storybook/addon-links": "5.0.9",
     "@storybook/react": "5.0.9",
     "@stylable/cli": "^2.2.0",
