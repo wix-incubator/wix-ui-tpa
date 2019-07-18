@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { AvatarGroup } from '../';
 import * as examples from './examples';
 import {
@@ -14,6 +16,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { AvatarGroupSize } from '../AvatarGroup';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
+import { ExtendedExample } from './ExtendedExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -77,6 +83,25 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              example: <ExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              params: {
+                colors: [
+                  {
+                    label: 'Avatar Border Color',
+                    wixParam: 'AvatarBorderColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

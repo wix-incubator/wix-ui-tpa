@@ -1,0 +1,10 @@
+:import {
+    -st-from: "../AvatarGroup.st.css";
+    -st-default: AvatarGroup;
+}
+
+.avatarGroup {
+    -st-mixin: AvatarGroup(
+        AvatarBorderColor '"--AvatarBorderColor"'
+    );
+}
