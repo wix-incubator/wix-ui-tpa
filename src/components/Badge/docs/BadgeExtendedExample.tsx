@@ -4,9 +4,8 @@ import { Badge } from '../Badge';
 
 export class BadgeExtendedExample extends React.Component {
   render = () => (
-    <Badge
-      {...this.props}
-      {...extendedStyles('root', {}, this.props)}
-    >I'm extended badge</Badge>
+    <Badge {...this.props} {...extendedStyles('root', {}, this.props)}>
+      I'm extended badge
+    </Badge>
   );
 }

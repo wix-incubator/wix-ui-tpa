@@ -1,4 +1,4 @@
-import {Badge, BADGE_PRIORITY} from '.';
+import { Badge, BADGE_PRIORITY } from '.';
 import Registry from '@ui-autotools/registry';
 
 const BadgeMetadata = Registry.getComponentMetadata(Badge);

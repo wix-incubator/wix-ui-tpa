@@ -2,7 +2,13 @@ import * as React from 'react';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 import { MockSettings } from '../helperComponents/MockSettings';
 
-export function settingsPanel({ example, rawSource, rawCSSSource, title, params }) {
+export function settingsPanel({
+  example,
+  rawSource,
+  rawCSSSource,
+  title,
+  params,
+}) {
   const wixNumberParams = params.numbers || [];
   const wixColorParams = params.colors || [];
   const wixFontParams = params.fonts || [];
