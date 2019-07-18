@@ -46,6 +46,7 @@ module.exports = merge(
     batchId: getBatchId(),
     batchName: appName,
     waitBeforeScreenshots: '[data-test-ready="true"]',
+    showLogs: true,
   },
   privateConfig,
 );
