@@ -3,7 +3,6 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { newCardDriverFactory } from './NewCard.driver';
 import { NewCard } from './';
 import { newCardTestkitFactory } from '../../testkit';
@@ -13,15 +12,8 @@ describe('NewCard', () => {
   const createDriver = createUniDriverFactory(newCardDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<NewCard buttonText="Click Me" />);
+    const driver = createDriver(<NewCard />);
     expect(await driver.exists()).toBe(true);
-  });
-
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<NewCard />),
-    );
-    expect(await driver.isMobile()).toBe(true);
   });
 
   describe('testkit', () => {
