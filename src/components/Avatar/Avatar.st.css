@@ -11,6 +11,7 @@
 .root::content {
     align-items: center;
     background-color: #d8d8d8;
+    border-radius: 50%;
     color: #979797;
     display: flex;
     font-family: "HelveticaNeueW01-65Medi", "Arial", "sans-serif";
@@ -21,14 +22,12 @@
 }
 
 .root:size(xLarge)::content {
-    border-radius: 30px;
     font-size: 36px;
     height: 60px;
     width: 60px;
 }
 
 .root:size(large)::content {
-    border-radius: 26px;
     font-size: 32px;
     font-weight: 400;
     height: 52px;
@@ -36,7 +35,6 @@
 }
 
 .root:size(medium)::content {
-    border-radius: 18px;
     font-size: 20px;
     font-weight: 400;
     height: 36px;
@@ -44,7 +42,6 @@
 }
 
 .root:size(small)::content {
-    border-radius: 14px;
     font-size: 17px;
     font-weight: 400;
     height: 28px;

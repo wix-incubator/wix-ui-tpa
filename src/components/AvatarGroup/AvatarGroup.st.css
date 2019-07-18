@@ -80,7 +80,6 @@
 .root .avatar::content {
     border: solid 1px;
     border-color: color(value(avatarBorderColorValue));
-    border-radius: 50%;
 }
 
 .root:size(small) .avatar::content,
