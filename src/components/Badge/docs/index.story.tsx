@@ -16,7 +16,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as Readme from '../README.md';
-import {ExtendedExample} from "./extendedExample";
+import {settingsPanel} from "../../../../stories/utils/SettingsPanel";
+import {BadgeExtendedExample} from "./BadgeExtendedExample";
+import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -58,8 +61,34 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        { title: 'Settings Panel', sections: [
+            settingsPanel({
+              example: <BadgeExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              title: 'Badge Extended',
+              params: {
+                colors: [
+                  {
+                    label: 'Badge background color',
+                    wixParam: 'badgeBgColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Badge border color',
+                    wixParam: 'badgeBorderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Badge text color',
+                    wixParam: 'badgeTextColor',
+                    defaultColor: 'color-1',
+                  }
+                ]
+              }
+            })
+          ]}
       ].map(tab),
     ]),
-  ],
-  examples: <ExtendedExample/>
+  ]
 };

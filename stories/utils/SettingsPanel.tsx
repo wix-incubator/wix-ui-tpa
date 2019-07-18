@@ -2,7 +2,7 @@ import * as React from 'react';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 import { MockSettings } from '../helperComponents/MockSettings';
 
-export function settingsPanel({ example, rawSource, rawCSSSource, params }) {
+export function settingsPanel({ example, rawSource, rawCSSSource, title, params }) {
   const wixNumberParams = params.numbers || [];
   const wixColorParams = params.colors || [];
   const wixFontParams = params.fonts || [];
@@ -11,7 +11,7 @@ export function settingsPanel({ example, rawSource, rawCSSSource, params }) {
     <div>
       <div className="tpa-container">
         <CodeExample
-          title="Card Extended"
+          title={title}
           code={['//.st.css', rawCSSSource, '', '//.tsx', rawSource].join('\n')}
         >
           {example}

@@ -8,6 +8,7 @@ export enum BADGE_PRIORITY {
 }
 
 export interface BadgeProps {
+  /** define style preset */
   priority?: BADGE_PRIORITY;
 }
 
