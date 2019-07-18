@@ -80,6 +80,7 @@
 .root .avatar::content {
     border: solid 1px;
     border-color: color(value(avatarBorderColorValue));
+    border-radius: 50%;
 }
 
 .root:size(small) .avatar::content,
@@ -89,7 +90,6 @@
 }
 
 .root:size(large) .avatar::content {
-    border-radius: 26px;
     font-size: 32px;
     font-weight: 400;
     height: 52px;
@@ -97,7 +97,6 @@
 }
 
 .root:size(medium) .avatar::content {
-    border-radius: 18px;
     font-size: 20px;
     font-weight: 400;
     height: 36px;
@@ -105,7 +104,6 @@
 }
 
 .root:size(small) .avatar::content {
-    border-radius: 14px;
     font-size: 17px;
     font-weight: 400;
     height: 28px;
@@ -113,7 +111,6 @@
 }
 
 .root:size(xSmall) .avatar::content {
-    border-radius: 10px;
     font-size: 12px;
     font-weight: 400;
     height: 20px;
@@ -121,7 +118,6 @@
 }
 
 .root:size(xxSmall) .avatar::content {
-    border-radius: 8px;
     font-size: 10px;
     font-weight: 400;
     height: 16px;
