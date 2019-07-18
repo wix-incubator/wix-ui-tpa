@@ -82,6 +82,12 @@
     border-color: color(value(avatarBorderColorValue));
 }
 
+.root:size(small) .avatar::content,
+.root:size(medium) .avatar::content,
+.root:size(large) .avatar::content {
+    border-width: 2px;
+}
+
 .root:size(large) .avatar::content {
     border-radius: 26px;
     font-size: 32px;
