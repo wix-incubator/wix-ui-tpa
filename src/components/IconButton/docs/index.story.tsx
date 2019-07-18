@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IconButton } from '../';
-import { Example } from './examples.tsx';
 import {
   api,
   code as baseCode,
@@ -17,7 +16,11 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
-
+import { settingsPanel } from "../../../../stories/utils/SettingsPanel";
+import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
+import { IconButtonExtendedExample } from "./IconButtonExtendedExample";
+import * as examples from "./examples";
 ShareIcon.displayName = 'Share';
 HeartIcon.displayName = 'Heart';
 
@@ -62,6 +65,9 @@ export default {
           divider(),
 
           title('Examples'),
+            ...[
+                { title: 'Icon Button', source: examples.basicExample },
+            ].map(code),
         ],
       }),
 
@@ -69,8 +75,26 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+          {
+              title: 'Settings Panel',
+              sections: [
+                  settingsPanel({
+                      example: <IconButtonExtendedExample />,
+                      rawSource: ExtendedRawSource,
+                      rawCSSSource: ExtendedCSSRawSource,
+                      params: {
+                          colors: [
+                              {
+                                  label: 'Icon Color',
+                                  wixParam: 'iconColor',
+                                  defaultColor: 'color-5',
+                              },
+                          ],
+                      },
+                  }),
+              ],
+          }
       ].map(tab),
     ]),
   ],
-  examples: <Example />,
 };
