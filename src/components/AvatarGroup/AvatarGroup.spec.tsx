@@ -12,7 +12,7 @@ describe('AvatarGroup', () => {
   const createDriver = createUniDriverFactory(avatarGroupDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<AvatarGroup items={[]} />);
+    const driver = createDriver(<AvatarGroup />);
     expect(await driver.exists()).toBe(true);
   });
 
