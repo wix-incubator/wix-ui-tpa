@@ -33,7 +33,7 @@
 }
 
 .root:hover .icon {
-    opacity: applyOpacity(value(IconColor), 0.6);;
+    opacity: 0.6;
 }
 
 .root:disabled:hover .icon {
