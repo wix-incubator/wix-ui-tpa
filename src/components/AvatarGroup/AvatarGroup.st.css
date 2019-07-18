@@ -29,23 +29,23 @@
 }
 
 .root:size(large) {
-    padding-left: 10px;
+    padding-left: 12px;
 }
 
 .root:size(medium) {
-    padding-left: 8px;
+    padding-left: 10px;
 }
 
 .root:size(small) {
-    padding-left: 6px;
+    padding-left: 8px;
 }
 
 .root:size(xSmall) {
-    padding-left: 4px;
+    padding-left: 5px;
 }
 
 .root:size(xxSmall) {
-    padding-left: 2px;
+    padding-left: 3px;
 }
 
 .root .avatarContainer {
@@ -54,23 +54,23 @@
 }
 
 .root:size(large) .avatarContainer {
-    margin-left: -10px;
+    margin-left: -12px;
 }
 
 .root:size(medium) .avatarContainer {
-    margin-left: -8px;
+    margin-left: -10px;
 }
 
 .root:size(small) .avatarContainer {
-    margin-left: -6px;
+    margin-left: -8px;
 }
 
 .root:size(xSmall) .avatarContainer {
-    margin-left: -4px;
+    margin-left: -5px;
 }
 
 .root:size(xxSmall) .avatarContainer {
-    margin-left: -2px;
+    margin-left: -3px;
 }
 
 .avatar {
