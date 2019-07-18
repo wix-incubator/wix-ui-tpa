@@ -6,7 +6,5 @@ NewCardMetadata.nonReactStrictModeCompliant = true;
 
 NewCardMetadata.addSim({
   title: 'render',
-  props: {
-      buttonText: 'Click me!'
-  },
+  props: {},
 });
