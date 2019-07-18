@@ -48,29 +48,28 @@
     padding-left: 2px;
 }
 
-.avatarContainer {
-    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
+.root .avatarContainer {
     overflow: hidden;
     position: relative;
 }
 
-.avatarContainer:size(large) {
+.root:size(large) .avatarContainer {
     margin-left: -10px;
 }
 
-.avatarContainer:size(medium) {
+.root:size(medium) .avatarContainer {
     margin-left: -8px;
 }
 
-.avatarContainer:size(small) {
+.root:size(small) .avatarContainer {
     margin-left: -6px;
 }
 
-.avatarContainer:size(xSmall) {
+.root:size(xSmall) .avatarContainer {
     margin-left: -4px;
 }
 
-.avatarContainer:size(xxSmall) {
+.root:size(xxSmall) .avatarContainer {
     margin-left: -2px;
 }
 
