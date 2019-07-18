@@ -15,11 +15,6 @@ export const autocompleteTestkitFactory = protractorTestkitFactoryCreator(
   autocompleteDriverFactory,
 );
 
-import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
-export const avatarTestkitFactory = protractorUniTestkitFactoryCreator(
-  avatarDriverFactory,
-);
-
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory = protractorUniTestkitFactoryCreator(
   buttonDriverFactory,
@@ -93,4 +88,9 @@ export const textButtonTestkitFactory = protractorUniTestkitFactoryCreator(
 import { tooltipDriverFactory } from '../components/Tooltip/Tooltip.protractor.driver';
 export const tooltipTestkitFactory = protractorTestkitFactoryCreator(
   tooltipDriverFactory,
+);
+
+import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
+export const avatarTestkitFactory = protractorUniTestkitFactoryCreator(
+  avatarDriverFactory,
 );

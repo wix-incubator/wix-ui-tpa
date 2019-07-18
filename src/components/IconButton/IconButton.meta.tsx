@@ -10,5 +10,6 @@ IconButtonMetadata.addSim({
   title: 'render',
   props: {
     icon: ChevronLeft,
+    'aria-label': 'ChevronLeft',
   },
 });
