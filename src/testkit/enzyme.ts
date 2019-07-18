@@ -11,10 +11,16 @@ import {
   enzymeUniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/enzyme';
 
+
 import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeTestkitFactoryCreator(autocompleteDriverFactory);
+
+import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
+export const avatarTestkitFactory: (
+  obj: WrapperData,
+) => any = enzymeUniTestkitFactoryCreator(avatarDriverFactory);
 
 import { buttonDriverFactory } from '../components/Button/Button.driver';
 export const buttonTestkitFactory: (

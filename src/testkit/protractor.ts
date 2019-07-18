@@ -27,9 +27,7 @@ import { gridDriverFactory } from '../components/Grid/Grid.driver';
 export const gridTestkitFactory = protractorUniTestkitFactoryCreator(gridDriverFactory)
 
 import { iconButtonDriverFactory } from '../components/IconButton/IconButton.driver';
-export const iconButtonTestkitFactory = protractorUniTestkitFactoryCreator(
-    iconButtonDriverFactory,
-);
+export const iconButtonTestkitFactory = protractorUniTestkitFactoryCreator(iconButtonDriverFactory)
 
 import { iconToggleDriverFactory } from '../components/IconToggle/IconToggle.protractor.driver';
 export const iconToggleTestkitFactory = protractorTestkitFactoryCreator(iconToggleDriverFactory)
