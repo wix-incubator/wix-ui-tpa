@@ -18,6 +18,15 @@ describe('IconButton', () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should call onClick function', async () => {
+    const onClick = jest.fn();
+    const driver = createDriver(
+      <IconButton icon={<StarIcon />} onClick={onClick} />,
+    );
+    await driver.click();
+    expect(onClick).toHaveBeenCalled();
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
