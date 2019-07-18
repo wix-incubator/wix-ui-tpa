@@ -3,7 +3,7 @@
     -st-default: AvatarGroup;
 }
 
-.avatarGroup {
+.root {
     -st-mixin: AvatarGroup(
         AvatarBorderColor '"--AvatarBorderColor"'
     );

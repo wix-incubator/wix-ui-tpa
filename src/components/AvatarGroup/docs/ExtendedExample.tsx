@@ -15,26 +15,26 @@ export const ExtendedExample = props => (
   <div>
     <div>
       <AvatarGroup
+        {...extendedStyles('root', {}, props)}
         items={[...items]}
         size={AvatarGroupSize.large}
-        {...extendedStyles('avatarGroup', {}, props)}
       />
     </div>
 
     <div>
       <AvatarGroup
+        {...extendedStyles('root', {}, props)}
         items={[...items, ...items]}
         size={AvatarGroupSize.small}
-        {...extendedStyles('avatarGroup', {}, props)}
       />
     </div>
 
     <div>
       <AvatarGroup
+        {...extendedStyles('root', {}, props)}
         items={[...items, ...items, ...items]}
         maxAmount={9}
         size={AvatarGroupSize.xxSmall}
-        {...extendedStyles('avatarGroup', {}, props)}
       />
     </div>
   </div>
