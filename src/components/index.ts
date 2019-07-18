@@ -12,3 +12,4 @@ export * from './Pagination';
 export * from './TextButton';
 export * from './Avatar';
 export { IconButton } from './IconButton';
+export { AvatarGroup } from './AvatarGroup';

@@ -84,3 +84,7 @@ import { avatarDriverFactory } from '../components/Avatar/Avatar.driver';
 export const avatarTestkitFactory = uniTestkitFactoryCreator(
   avatarDriverFactory,
 );
+
+import { avatarGroupDriverFactory } from '../components/AvatarGroup/AvatarGroup.driver';
+export const avatarGroupTestkitFactory = uniTestkitFactoryCreator(avatarGroupDriverFactory);
+
