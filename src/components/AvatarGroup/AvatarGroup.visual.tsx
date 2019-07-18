@@ -2,6 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
+import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 
 class AvatarGroupVisual extends React.Component<any> {
   static defaultProps = {
@@ -9,7 +10,11 @@ class AvatarGroupVisual extends React.Component<any> {
   };
 
   render() {
-    return <AvatarGroup {...this.props} />;
+    return (
+      <VisualContainerElement>
+        <AvatarGroup {...this.props} />
+      </VisualContainerElement>
+    );
   }
 }
 
