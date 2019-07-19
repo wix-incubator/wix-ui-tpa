@@ -1,52 +1,97 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
+import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
 import styles from './Rating.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
+
+export enum IconSize {
+  LARGE = 'large',
+}
+
+export enum Mode {
+  EDIT = 'edit',
+  PREVIEW = 'preview',
+}
 
 export interface RatingProps {
-  buttonText: string;
+  value: number;
+  mode: Mode;
+  onSelect?(value: number): void;
+  maxRating?: number;
+  disabled?: boolean;
+  error?: boolean;
+  iconSize?: IconSize;
 }
 
 interface DefaultProps {
-  buttonText: string;
-}
-
-interface State {
-  count: number;
+  value: number;
+  maxRating: number;
+  disabled: boolean;
+  error: boolean;
+  mode: Mode;
 }
 
 /** Rating component based on IconToggle */
-export class Rating extends React.Component<RatingProps, State> {
+export class Rating extends React.Component<RatingProps> {
   static displayName = 'Rating';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
-
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
+  static defaultProps: DefaultProps = {
+    value: 0,
+    maxRating: 5,
+    disabled: false,
+    error: false,
+    mode: Mode.PREVIEW,
   };
 
+  _renderContent = () => <StarIcon />;
+
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+    const {
+      value,
+      maxRating,
+      onSelect,
+      disabled,
+      error,
+      iconSize,
+      mode,
+      ...rest
+    } = this.props;
+    const content = this._renderContent();
+    const ratingList = Array.from(new Array(maxRating));
+    const ratingListLength = ratingList.length;
 
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
-            <Text {...styles('number', { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-              of times
-            </Text>
+      <div {...styles('root', {}, rest)}>
+        <div className={styles.iconList}>
+          {ratingList.map((_el, idx: number) => {
+            const checked = ratingListLength - idx <= value;
 
-            <div className={styles.button}>
-              <Button onClick={this._handleClick}>{buttonText}</Button>
-            </div>
-          </div>
-        )}
-      </TPAComponentsConsumer>
+            return (
+              <span
+                key={idx}
+                {...styles('icon', {
+                  checked,
+                  disabled,
+                  error,
+                  iconSize,
+                  mode,
+                })}
+              >
+                <CoreCheckbox
+                  uncheckedIcon={content}
+                  checkedIcon={content}
+                  indeterminateIcon={content}
+                  error={false}
+                  indeterminate={false}
+                  checked={checked}
+                  disabled={disabled}
+                  onChange={() =>
+                    mode === Mode.EDIT && onSelect(ratingListLength - idx)
+                  }
+                />
+              </span>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }

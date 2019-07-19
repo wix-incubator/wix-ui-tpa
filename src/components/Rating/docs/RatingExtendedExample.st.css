@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../Rating.st.css";
+    -st-default: TPARating;
+}
+
+.rating {
+    -st-mixin: TPARating(
+            IconColor '"--iconColor"',
+            IconEmptyColor '"--iconEmptyColor"'
+    );
+}
