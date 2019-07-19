@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { IconButton } from './';
 import { ReactComponent as ShareIcon } from '../../assets/icons/Share.svg';
-import { VisualContainerElement } from "../../../test/visual/VisualContainerElement";
+import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 
 class IconButtonVisual extends React.Component<any> {
   static defaultProps = {
@@ -11,19 +11,19 @@ class IconButtonVisual extends React.Component<any> {
 
   render() {
     return (
-        <VisualContainerElement>
-      <IconButton
-        icon={<ShareIcon />}
-        data-hook={'storybook-e2e-IconButton'}
-        {...this.props}
-      />
-      <IconButton
-        icon={<ShareIcon />}
-        data-hook={'storybook-e2e-IconButton'}
-        {...this.props}
+      <VisualContainerElement>
+        <IconButton
+          icon={<ShareIcon />}
+          data-hook={'storybook-e2e-IconButton'}
+          {...this.props}
+        />
+        <IconButton
+          icon={<ShareIcon />}
+          data-hook={'storybook-e2e-IconButton'}
+          {...this.props}
           disabled
-      />
-        </VisualContainerElement>
+        />
+      </VisualContainerElement>
     );
   }
 }

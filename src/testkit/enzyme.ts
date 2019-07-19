@@ -11,7 +11,6 @@ import {
   enzymeUniTestkitFactoryCreator,
 } from 'wix-ui-test-utils/enzyme';
 
-
 import { autocompleteDriverFactory } from '../components/Autocomplete/Autocomplete.driver';
 export const autocompleteTestkitFactory: (
   obj: WrapperData,
@@ -101,4 +100,3 @@ import { avatarGroupDriverFactory } from '../components/AvatarGroup/AvatarGroup.
 export const avatarGroupTestkitFactory: (
   obj: WrapperData,
 ) => any = enzymeUniTestkitFactoryCreator(avatarGroupDriverFactory);
-
