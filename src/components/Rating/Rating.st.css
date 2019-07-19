@@ -1,23 +1,97 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
 }
 
 :vars {
     /*Defaults*/
-    /*Defaults params goes here*/
+    DefaultColor: color-8;
+    DefaultEmptyColor: color-3;
+    DisabledColor: color-3;
+    IconGap: 3px;
+    IconLargeGap: 11px;
+    IconLargeSize: 30px;
 }
 
 :vars {
-    /*Overrides*/
-    /*Deceleration of overridable placeholders*/
+    /* Overrides */
+    IconColor: --overridable;
+    IconEmptyColor: --overridable;
 }
 
 .root {
     -st-states: mobile;
-    /*css goes here*/
+
+    overflow: hidden;
 }
 
-.root:mobile {
-    /*mobile css goes here*/
+.root:hover .icon:not(:disabled) path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+.iconList {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+
+    float: left;
+}
+
+.icon {
+    -st-states: checked, disabled, error, mode( enum(edit, preview) ), iconSize( enum(large) );
+    padding: 0 value(IconGap);
+}
+
+.root .icon:first-child {
+    padding-right: 0;
+}
+
+.root .icon:last-child {
+    padding-left: 0;
+}
+
+.icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+.icon:disabled,
+.icon:mode(preview) {
+    cursor: default;
+    pointer-events: none;
+}
+
+.icon:disabled path {
+    stroke: color(value(DisabledColor));
+};
+
+.icon:error path,
+.icon:checked:error path {
+    fill: transparent;
+    stroke: color(value(errorColor));
+}
+
+.icon:checked path,
+.icon:not(:mode(preview)):hover path,
+.icon:not(:mode(preview)):hover ~ .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+ }
+
+.root .icon:not(:checked):mode(preview) path {
+    stroke: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+    fill: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+}
+
+.icon:iconSize(large) {
+   padding: 0 value(IconLargeGap);
+}
+
+.icon:iconSize(large) svg {
+    width: value(IconLargeSize);
+    height: value(IconLargeSize);
 }

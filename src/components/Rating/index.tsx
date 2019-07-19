@@ -1,1 +1,1 @@
-export { Rating, RatingProps } from './Rating';
+export { Rating, RatingProps, Mode, IconSize } from './Rating';
