@@ -8,7 +8,6 @@ import style from './IconButton.st.css';
 export interface IconButtonDriver extends BaseUniDriver {}
 
 export const iconButtonDriverFactory = (base: UniDriver): IconButtonDriver => {
-
   return {
     ...baseUniDriverFactory(base),
   };
