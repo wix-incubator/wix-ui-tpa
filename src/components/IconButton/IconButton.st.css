@@ -35,7 +35,9 @@
 .root:hover .icon {
     opacity: 0.6;
 }
-
+.root:disabled {
+    cursor: default;
+}
 .root:disabled:hover .icon {
     opacity: 1;
 }
