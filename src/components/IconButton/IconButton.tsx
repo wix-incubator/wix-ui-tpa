@@ -20,7 +20,6 @@ export class IconButton extends React.Component<IconButtonProps, State> {
     const { icon, disabled, ...rest } = this.props;
     return (
       <ButtonNext
-        aria-label={'icon button'}
         {...rest}
         {...style('root', { disabled }, rest)}
       >
