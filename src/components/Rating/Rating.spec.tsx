@@ -13,7 +13,7 @@ describe('Rating', () => {
   const createDriver = createUniDriverFactory(ratingDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Rating buttonText="Click Me" />);
+    const driver = createDriver(<Rating value={3} />);
     expect(await driver.exists()).toBe(true);
   });
 
@@ -38,7 +38,7 @@ describe('Rating', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Rating />,
+          <Rating value={3} />,
           enzymeRatingTestkitFactory,
           mount,
           {
