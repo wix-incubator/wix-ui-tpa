@@ -87,6 +87,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
+              title: 'Avatar Group',
               example: <ExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
