@@ -9,6 +9,16 @@
     "jsx-wrap-multiline": true,
     "space-in-brackets": ["error", "always"],
     "arrow-parens": [true, "ban-single-arg-parens"],
-    "array-bracket-spacing": [true, "never"]
+    "array-bracket-spacing": [true, "never"],
+    "prettier": [
+      true,
+      {
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ]
+  },
+  "linterOptions": {
+    "exclude": ["src/testkit/**"]
   }
 }
