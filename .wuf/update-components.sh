@@ -8,6 +8,10 @@ wuf update \
   --max-mismatch 1 \
   --output .wuf/components.json
 
+# create testkit folder if needed
+
+mkdir -p src/testkit
+
 # vanilla testkits
 wuf export-testkits \
   --components .wuf/components.json \
