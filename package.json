@@ -110,7 +110,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx,scss,less}": ["yoshi lint --fix"]
+    "*.{js,ts,tsx,scss,less}": [
+      "yoshi lint --fix"
+    ]
   },
   "license": "MIT",
   "publishConfig": {
