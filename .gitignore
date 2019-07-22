@@ -13,6 +13,7 @@ npm-debug.log
 yarn.lock
 storybook-static
 .idea
+.DS_Store
 wix-ui-tpa.iml
 
 /*.js
