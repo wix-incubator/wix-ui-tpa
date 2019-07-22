@@ -6,7 +6,7 @@ import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './{%ComponentName%}.st.css';
 
 export interface {%ComponentName%}Driver extends BaseUniDriver {
-  isMobile(): Promise<boolean>;
+
 }
 
 export const {%componentName%}DriverFactory = (base: UniDriver): {%ComponentName%}Driver => {
@@ -14,6 +14,5 @@ export const {%componentName%}DriverFactory = (base: UniDriver): {%ComponentName
 
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
   };
 };

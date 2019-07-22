@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text } from '../Text';
 import { Button } from '../Button';
 import styles from './{%ComponentName%}.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface {%ComponentName%}Props {
   buttonText: string;
@@ -33,20 +32,16 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     const isEven = count % 2 === 0;
 
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
-            <Text {...styles('number', { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-              of times
-            </Text>
+      <div {...styles('root', {}, rest)}>
+        <Text {...styles('number', { even: isEven, odd: !isEven })}>
+          You clicked this button {isEven ? 'even' : 'odd'} number ({count})
+          of times
+        </Text>
 
-            <div className={styles.button}>
-              <Button onClick={this._handleClick}>{buttonText}</Button>
-            </div>
-          </div>
-        )}
-      </TPAComponentsConsumer>
+        <div className={styles.button}>
+          <Button onClick={this._handleClick}>{buttonText}</Button>
+        </div>
+      </div>
     );
   }
 }
