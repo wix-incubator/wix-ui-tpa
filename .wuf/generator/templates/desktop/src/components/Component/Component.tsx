@@ -34,8 +34,8 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     return (
       <div {...styles('root', {}, rest)}>
         <Text {...styles('number', { even: isEven, odd: !isEven })}>
-          You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-          of times
+          You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
+          times
         </Text>
 
         <div className={styles.button}>
