@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
+import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
 import styles from './Rating.st.css';
 import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
 
 export enum IconSize {
-  LARGE = 'large',
+  Small = 'small',
+  Large = 'large',
 }
 
 export enum Mode {
-  EDIT = 'edit',
-  PREVIEW = 'preview',
+  Input = 'input',
+  Display = 'display',
 }
 
 export interface RatingProps {
   value: number;
   mode: Mode;
   onSelect?(value: number): void;
-  maxRating?: number;
   disabled?: boolean;
   error?: boolean;
   iconSize?: IconSize;
@@ -24,21 +24,21 @@ export interface RatingProps {
 
 interface DefaultProps {
   value: number;
-  maxRating: number;
   disabled: boolean;
   error: boolean;
   mode: Mode;
+  iconSize: IconSize;
 }
 
 /** Rating component based on IconToggle */
 export class Rating extends React.Component<RatingProps> {
   static displayName = 'Rating';
   static defaultProps: DefaultProps = {
-    value: 0,
-    maxRating: 5,
+    value: 3,
     disabled: false,
     error: false,
-    mode: Mode.PREVIEW,
+    mode: Mode.Input,
+    iconSize: IconSize.Small,
   };
 
   _renderContent = () => <StarIcon />;
@@ -46,7 +46,6 @@ export class Rating extends React.Component<RatingProps> {
   render() {
     const {
       value,
-      maxRating,
       onSelect,
       disabled,
       error,
@@ -55,7 +54,7 @@ export class Rating extends React.Component<RatingProps> {
       ...rest
     } = this.props;
     const content = this._renderContent();
-    const ratingList = Array.from(new Array(maxRating));
+    const ratingList = Array.from(new Array(5));
     const ratingListLength = ratingList.length;
 
     return (
@@ -75,16 +74,13 @@ export class Rating extends React.Component<RatingProps> {
                   mode,
                 })}
               >
-                <CoreCheckbox
+                <CoreRadio
                   uncheckedIcon={content}
                   checkedIcon={content}
-                  indeterminateIcon={content}
-                  error={false}
-                  indeterminate={false}
                   checked={checked}
                   disabled={disabled}
                   onChange={() =>
-                    mode === Mode.EDIT && onSelect(ratingListLength - idx)
+                    mode === Mode.Input && onSelect(ratingListLength - idx)
                   }
                 />
               </span>
