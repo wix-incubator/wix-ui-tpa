@@ -1,5 +1,11 @@
+const { resolveNamespaceFactory } = require('@stylable/node');
+const project = require('yoshi-config');
 require('yoshi-helpers/require-hooks').setupRequireHooks();
-require('@stylable/node').attachHook();
+require('@stylable/node').attachHook({
+  stylableConfig: {
+    resolveNamespace: resolveNamespaceFactory(project.name),
+  },
+});
 const path = require('path');
 const fs = require('fs');
 const svgr = require('@svgr/core');
@@ -12,7 +18,12 @@ function mockSvg(module) {
   const svgFilename = JSON.stringify(filePathName);
   const svgContent = fs.readFileSync(module.filename, 'utf8');
   const parsedSvg = svgr.default.sync(svgContent, {
-    plugins: ['@svgr/plugin-jsx'],
+    plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
+    svgoConfig: {
+      plugins: {
+        removeViewBox: false,
+      },
+    },
   });
   const parsed = babelCore.transform(parsedSvg, {
     plugins: [
@@ -24,7 +35,6 @@ function mockSvg(module) {
   const component = eval(parsed.code);
 
   module.exports = {
-    __esModule: true,
     default: svgFilename,
     ReactComponent: component,
   };
