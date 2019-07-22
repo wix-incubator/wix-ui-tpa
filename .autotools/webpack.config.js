@@ -1,4 +1,4 @@
-const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
+const storybookConfig = require('../webpack.config.storybook');
 const path = require('path');
 const packagePath = path.resolve(__dirname, '..');
 
@@ -7,10 +7,8 @@ const config = {
   mode: 'development',
   module: {},
   resolve: {
-    extensions: []
-  }
+    extensions: [],
+  },
 };
 
-const yoshiConfig = wixStorybookConfig(config);
-
-module.exports = yoshiConfig;
+module.exports = storybookConfig({ config });
