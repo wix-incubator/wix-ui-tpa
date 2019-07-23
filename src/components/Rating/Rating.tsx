@@ -64,7 +64,11 @@ export class Rating extends React.Component<RatingProps> {
             const checked = ratingListLength - idx <= value;
 
             return (
-              <span key={idx} {...styles('icon', { checked })}>
+              <span
+                data-hook="icon-wrapper"
+                key={idx}
+                {...styles('icon', { checked })}
+              >
                 <CoreRadio
                   uncheckedIcon={content}
                   checkedIcon={content}
