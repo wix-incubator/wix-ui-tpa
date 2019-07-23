@@ -110,6 +110,7 @@ export default {
               example: <CardExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
+              title: 'Card Extended',
               params: {
                 numbers: [
                   {

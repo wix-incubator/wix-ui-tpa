@@ -1,0 +1,62 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultBgColor: color-5;
+    DefaultTextColor: color-1;
+    LightBgColor: color-1;
+    LightTextColor: color-5;
+    LightBorderColor: color-5;
+    PrimaryBgColor: color-8;
+    PrimaryTextColor: color-1;
+}
+
+:vars {
+    /*Overrides*/
+    BadgeBgColor: --overridable;
+    BadgeTextColor: --overridable;
+    BadgeBorderColor: --overridable;
+}
+
+:vars {
+    badgeBgColor: color(fallback(value(BadgeBgColor), value(DefaultBgColor)));
+    badgeTextColor: color(fallback(value(BadgeTextColor), value(DefaultTextColor)));
+    badgeBorderColor: color(fallback(value(BadgeBorderColor), transparent));
+    defaultBgColor: applyOpacity(color(value(DefaultBgColor)), 0.4);
+    lightBorderColor: applyOpacity(color(value(LightBorderColor)), 0.15);
+}
+
+.root {
+    -st-states: priority(enum(default, light, primary));
+    display: inline-block;
+    border-radius: 12px;
+    padding: 0 12px;
+    line-height: 20px;
+    font-size: 12px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: value(badgeBgColor);
+    color: value(badgeTextColor);
+    border-color: value(badgeBorderColor);
+}
+
+.root:priority(default) {
+    background-color: value(defaultBgColor);
+    color: color(value(DefaultTextColor));
+    border: none;
+}
+
+.root:priority(light) {
+    background-color: color(value(LightBgColor));
+    color: color(value(LightTextColor));
+    border-color: value(lightBorderColor);
+}
+
+.root:priority(primary) {
+    background-color: color(value(PrimaryBgColor));
+    color: color(value(PrimaryTextColor));
+    border: none;
+}
