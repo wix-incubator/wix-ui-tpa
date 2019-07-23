@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
-import { Rating } from './';
+import { Rating, Mode, IconSize } from './';
 
 class RatingVisual extends React.Component<any> {
   static defaultProps = {
@@ -31,9 +31,30 @@ const tests = [
         props: {},
       },
       {
-        it: 'mobile',
+        it: 'disabled',
         props: {
-          mobile: true,
+          disabled: true,
+        },
+      },
+      {
+        it: 'error',
+        props: {
+          error: true,
+        },
+      },
+      {
+        it: 'display mode',
+        props: {
+          value: 3,
+          mode: Mode.Display,
+        },
+      },
+      {
+        it: 'Large Icons',
+        props: {
+          value: 3,
+          mode: Mode.Display,
+          iconSize: IconSize.Large,
         },
       },
     ],
