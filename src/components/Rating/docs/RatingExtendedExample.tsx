@@ -4,17 +4,17 @@ import extendedStyles from './RatingExtendedExample.st.css';
 
 export const RatingExtendedExample = props => (
   <div>
-    <Rating
-      value={0}
-      onSelect={val => console.log(val)}
-      mode={Mode.EDIT}
-      {...extendedStyles('rating')}
-    />
-
-    <Rating
-      value={3}
-      onSelect={val => console.log(val)}
-      {...extendedStyles('rating')}
-    />
+    <div>
+      <h3>Rating Input</h3>
+      <Rating
+        value={0}
+        onSelect={val => console.log(val)}
+        {...extendedStyles('rating')}
+      />
+    </div>
+    <div>
+      <h3>Rating Display</h3>
+      <Rating value={3} mode={Mode.Display} {...extendedStyles('rating')} />
+    </div>
   </div>
 );

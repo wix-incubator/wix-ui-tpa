@@ -34,7 +34,7 @@ interface DefaultProps {
 export class Rating extends React.Component<RatingProps> {
   static displayName = 'Rating';
   static defaultProps: DefaultProps = {
-    value: 3,
+    value: 0,
     disabled: false,
     error: false,
     mode: Mode.Input,
@@ -58,22 +58,13 @@ export class Rating extends React.Component<RatingProps> {
     const ratingListLength = ratingList.length;
 
     return (
-      <div {...styles('root', {}, rest)}>
+      <div {...styles('root', { disabled, error, iconSize, mode }, rest)}>
         <div className={styles.iconList}>
           {ratingList.map((_el, idx: number) => {
             const checked = ratingListLength - idx <= value;
 
             return (
-              <span
-                key={idx}
-                {...styles('icon', {
-                  checked,
-                  disabled,
-                  error,
-                  iconSize,
-                  mode,
-                })}
-              >
+              <span key={idx} {...styles('icon', { checked })}>
                 <CoreRadio
                   uncheckedIcon={content}
                   checkedIcon={content}

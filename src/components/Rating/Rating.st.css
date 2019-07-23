@@ -25,64 +25,88 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: disabled, error, iconSize( enum(small, large) ), mode( enum(input, display) );
 
     display: inline-block;
 }
 
-.root:hover .icon:not(:disabled) path {
-    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+
+/* ------ States ------ */
+
+/* ICON SIZE */
+.root:iconSize(large) .icon {
+   padding: 0 value(IconLargeGap);
 }
 
-.iconList {
+.root:iconSize(large) .icon svg {
+    width: value(IconLargeSize);
+    height: value(IconLargeSize);
+}
+
+.root .iconList {
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+
+    margin: 0 calc(0px - value(IconGap));
 }
 
-.icon {
-    -st-states: checked, disabled, error, mode( enum(input, display) ), iconSize( enum(large) );
-
-    padding: 0 value(IconGap);
+.root:iconSize(large) {
+    margin: 0 calc(0px - value(IconLargeGap));
 }
 
-.icon path {
+/* DISABLED */
+.root:hover:not(:disabled):not(:mode(display)) .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
-.icon:disabled,
-.icon:mode(display) {
+.root:disabled .icon path {
+    stroke: color(value(DisabledColor));
+    fill: transparent;
+};
+
+.root:disabled,
+.root:disabled {
     cursor: default;
     pointer-events: none;
 }
 
-.icon:disabled path {
-    stroke: color(value(DisabledColor));
-};
-
-.icon:error path,
-.icon:checked:error path {
+/* ERROR */
+.root:error .icon path {
     fill: transparent;
-    stroke: color(value(errorColor));
+    stroke: color(value(errorColor))
 }
 
-.icon:checked path,
-.icon:not(:mode(display)):hover path,
-.icon:not(:mode(display)):hover ~ .icon path {
-    stroke: color(fallback(value(IconColor), value(DefaultColor)));
-    fill: color(fallback(value(IconColor), value(DefaultColor)));
- }
+/* MODE */
+.root:mode(display) .icon {
+    cursor: default;
+    pointer-events: none;
+}
 
-.root .icon:not(:checked):mode(display) path {
+.root:mode(display) .icon path {
     stroke: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
     fill: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
 }
 
-.icon:iconSize(large) {
-   padding: 0 value(IconLargeGap);
+/* ------ /States -------*/
+
+.icon {
+    -st-states: checked;
+
+    padding: 0 value(IconGap);
 }
 
-.icon:iconSize(large) svg {
-    width: value(IconLargeSize);
-    height: value(IconLargeSize);
+.root .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+.root .icon:checked path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+ }
+
+.root:not(:mode(display)) .icon:hover path,
+.root:not(:mode(display)) .icon:hover ~ .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
