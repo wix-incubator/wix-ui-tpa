@@ -5,6 +5,7 @@ import { ButtonNext } from 'wix-ui-core/button-next';
 
 export interface IconButtonProps extends ButtonProps {
   icon: React.ReactNode;
+  isFull?: boolean;
 }
 
 interface DefaultProps {}
@@ -17,9 +18,9 @@ export class IconButton extends React.Component<IconButtonProps, State> {
   static defaultProps: DefaultProps = {};
 
   render() {
-    const { icon, disabled, ...rest } = this.props;
+    const { icon, disabled, isFull, ...rest } = this.props;
     return (
-      <ButtonNext {...rest} {...style('root', { disabled }, rest)}>
+      <ButtonNext {...rest} {...style('root', { disabled, isFull }, rest)}>
         <span className={style.icon}>{icon}</span>
       </ButtonNext>
     );

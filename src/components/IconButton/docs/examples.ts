@@ -5,5 +5,6 @@ const ShareIcon = `
 export const basicExample = `
 <IconButton
       icon={${ShareIcon}}
+      isFull
     />
 `;

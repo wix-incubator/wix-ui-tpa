@@ -14,12 +14,14 @@ class IconButtonVisual extends React.Component<any> {
       <VisualContainerElement>
         <IconButton
           icon={<ShareIcon />}
+          isFull
           data-hook={'storybook-e2e-IconButton'}
           {...this.props}
         />
         <IconButton
           icon={<ShareIcon />}
           data-hook={'storybook-e2e-IconButton'}
+          isFull
           {...this.props}
           disabled
         />

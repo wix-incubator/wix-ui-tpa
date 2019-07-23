@@ -21,7 +21,7 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: disabled;
+    -st-states: disabled, isFull;
     /*css goes here*/
     background-color: transparent;
     text-decoration: none;
@@ -48,6 +48,10 @@
     stroke: color(value(DisabledColor));
 }
 
+.root:isFull:disabled .icon path {
+    fill: color(value(DisabledColor));
+}
+
 .icon svg {
     display: block;
 }
@@ -55,4 +59,9 @@
 .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
+
+.root:isFull .icon path {
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
 

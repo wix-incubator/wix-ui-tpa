@@ -15,6 +15,7 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
+import { ReactComponent as ShareFilledIcon } from '../../../assets/icons/ShareFilled.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx';
@@ -22,12 +23,17 @@ import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.s
 import { IconButtonExtendedExample } from './IconButtonExtendedExample';
 import * as examples from './examples';
 ShareIcon.displayName = 'Share';
+ShareFilledIcon.displayName = 'ShareFilled';
 HeartIcon.displayName = 'Heart';
 
 const iconExamples = [
   {
     label: 'Share',
     value: <ShareIcon />,
+  },
+  {
+    label: 'ShareFilled',
+    value: <ShareFilledIcon />,
   },
   {
     label: 'Heart',
@@ -47,6 +53,7 @@ export default {
     'data-hook': 'storybook-IconButton',
     icon: iconExamples[0].value,
     disabled: false,
+    isFull: true
   }),
   exampleProps: {
     icon: iconExamples,
@@ -79,6 +86,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
+              title: 'Icon Button',
               example: <IconButtonExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
