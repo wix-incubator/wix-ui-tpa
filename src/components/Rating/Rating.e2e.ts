@@ -29,5 +29,9 @@ describe('rating', () => {
     const driver = ratingTestkitFactory({ dataHook });
 
     await waitForVisibilityOf(await driver.element(), 'Cannot find Rating');
+
+    await driver.hoverStar(3);
+
+    expect(await driver.getHoveredStars()).toBe(3);
   });
 });
