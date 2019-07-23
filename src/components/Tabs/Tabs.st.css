@@ -46,6 +46,11 @@
     min-height: value(tabsHeight);
     position: relative;
     padding: 14px 0;
+    line-height: 1.5;
+}
+
+.root:before {
+    content: '\00a0';
 }
 
 .root,
@@ -162,5 +167,6 @@
 
 .root:mobile {
     font: fallback(font(value(MainTextFont)), font(value(defaultMobileTabFont)));
+    line-height: 1.428;
     min-height: value(tabsMobileHeight);
 }
