@@ -151,10 +151,13 @@
 }
 
 .root:skin(fullUnderline) .border,
-.root:skin(fitUnderline) .navBtn::border,
-.root:skin(fitUnderline) .navigation::border {
+.root:skin(fitUnderline) .navBtn::border {
     height: 1px;
     background-color: value(calculatedBorderColor);
+}
+
+.root:skin(fitUnderline) .navigation::tab {
+    border-bottom: 1px solid value(calculatedBorderColor);
 }
 
 .root:mobile .navigation::nav {
