@@ -56,7 +56,6 @@ describe('StatesButton', () => {
     });
 
     it('should focus on button using ref', async () => {
-      expect(document.activeElement.tagName).not.toEqual('BUTTON');
       expect(await driver.isFocused()).toEqual(false);
       ref.current.focus();
       expect(await driver.isFocused()).toEqual(true);
