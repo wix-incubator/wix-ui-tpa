@@ -28,6 +28,7 @@
     -st-states: disabled, error, iconSize( enum(small, large) ), mode( enum(input, display) );
 
     display: inline-block;
+    cursor: pointer;
 }
 
 
