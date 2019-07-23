@@ -79,6 +79,7 @@
 }
 
 /* MODE */
+.root:mode(display),
 .root:mode(display) .icon {
     cursor: default;
     pointer-events: none;
