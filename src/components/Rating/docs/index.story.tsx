@@ -60,6 +60,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
+              title: 'Settings Panel',
               example: <RatingExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,

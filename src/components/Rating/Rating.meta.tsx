@@ -8,6 +8,6 @@ RatingMetadata.addSim({
   title: 'render',
   props: {
     value: 0,
-    mode: Mode.EDIT,
+    mode: Mode.Input,
   },
 });
