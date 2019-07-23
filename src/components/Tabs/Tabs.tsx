@@ -193,6 +193,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
             >
               <ChevronRight />
             </TabsNavButton>
+            <div className={style.border} />
           </div>
         )}
       </TPAComponentsConsumer>
