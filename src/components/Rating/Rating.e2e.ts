@@ -24,4 +24,10 @@ describe('rating', () => {
     await waitForVisibilityOf(await driver.element(), 'Cannot find Rating');
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
+
+  it('should hover correct numbers of stars', async () => {
+    const driver = ratingTestkitFactory({ dataHook });
+
+    await waitForVisibilityOf(await driver.element(), 'Cannot find Rating');
+  });
 });

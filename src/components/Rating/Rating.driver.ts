@@ -9,27 +9,29 @@ export interface RatingDriver extends BaseUniDriver {
   getStars(): Promise<number>;
   getActiveStars(): Promise<number>;
   clickOnStar(idx: number): Promise<void>;
+  hoverStar(idx: number): Promise<void>;
   hasError(): Promise<boolean>;
   hasLargeMode(): Promise<boolean>;
   hasDisabled(): Promise<boolean>;
 }
 
 export const ratingDriverFactory = (base: UniDriver): RatingDriver => {
+  const iconDatahook = '[data-hook="icon-wrapper"]';
   const stylableUtil = new StylableUnidriverUtil(style);
+
+  const getStar = (idx: number): UniDriver =>
+    base.$$(`${iconDatahook} input`).get(idx);
 
   return {
     ...baseUniDriverFactory(base),
     async getStars() {
-      return base.$$('[data-hook="icon-wrapper"]').count();
+      return base.$$(iconDatahook).count();
     },
     async getActiveStars() {
-      return base.$$('[data-hook="icon-wrapper"] input[checked]').count();
+      return base.$$(`${iconDatahook} input[checked]`).count();
     },
     async clickOnStar(idx) {
-      return base
-        .$$('[data-hook="icon-wrapper"] input')
-        .get(idx) // Rating index starts from 1
-        .click();
+      return getStar(idx).click();
     },
     async hasError() {
       return stylableUtil.hasStyleState(base, 'error');
@@ -39,6 +41,9 @@ export const ratingDriverFactory = (base: UniDriver): RatingDriver => {
     },
     async hasLargeMode() {
       return stylableUtil.hasStyleState(base, 'iconSize', 'large');
+    },
+    async hoverStar(idx) {
+      return getStar(idx).hover();
     },
   };
 };
