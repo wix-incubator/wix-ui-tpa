@@ -13,6 +13,6 @@ export * from './TextButton';
 export * from './Badge';
 export * from './Avatar';
 export { IconButton } from './IconButton';
+export * from './Ratings';
 export { AvatarGroup } from './AvatarGroup';
 export { Counter } from './Counter';
-export { Rating } from './Rating';
