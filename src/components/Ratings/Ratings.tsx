@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
 import styles from './Ratings.st.css';
 import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
+import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
 
 export enum IconSize {
   Small = 'small',
@@ -20,6 +21,7 @@ export interface RatingsProps {
   disabled?: boolean;
   error?: boolean;
   iconSize?: IconSize;
+  'data-hook'?: string;
 }
 
 interface DefaultProps {
@@ -41,6 +43,16 @@ export class Ratings extends React.Component<RatingsProps> {
     iconSize: IconSize.Small,
   };
 
+  getDataAttributes() {
+    const { disabled, error, iconSize } = this.props;
+
+    return {
+      [RATINGS_DATA_KEYS.Disabled]: disabled,
+      [RATINGS_DATA_KEYS.Error]: error,
+      [RATINGS_DATA_KEYS.IconSize]: iconSize,
+    };
+  }
+
   _renderContent = () => <StarIcon />;
 
   render() {
@@ -58,14 +70,18 @@ export class Ratings extends React.Component<RatingsProps> {
     const ratingListLength = ratingList.length;
 
     return (
-      <div {...styles('root', { disabled, error, iconSize, mode }, rest)}>
+      <div
+        {...styles('root', { disabled, error, iconSize, mode }, rest)}
+        {...this.getDataAttributes()}
+        data-hook={this.props['data-hook']}
+      >
         <div className={styles.iconList}>
           {ratingList.map((_el, idx: number) => {
             const checked = ratingListLength - idx <= value;
 
             return (
               <span
-                data-hook="icon-wrapper"
+                data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
                 {...styles('icon', { checked })}
               >

@@ -2,9 +2,9 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Ratings.st.css';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { UniDriverList } from '@unidriver/core';
+import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
 
 export interface RatingsDriver extends BaseUniDriver {
   getStars(): Promise<number>;
@@ -18,9 +18,8 @@ export interface RatingsDriver extends BaseUniDriver {
 }
 
 export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
-  const iconDatahook = '[data-hook="icon-wrapper"]';
+  const iconDatahook = `[data-hook="${RATINGS_DATA_HOOKS.IconWrapper}"]`;
   const filledColor = 'rgb(0, 185, 232)';
-  const stylableUtil = new StylableUnidriverUtil(style);
 
   const getStarInput = (idx: number): UniDriver =>
     base.$$(`${iconDatahook} input`).get(idx);
@@ -39,13 +38,13 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       return getStarInput(idx).click();
     },
     async hasError() {
-      return stylableUtil.hasStyleState(base, 'error');
+      return (await base.attr(RATINGS_DATA_KEYS.Error)) === 'true';
     },
     async hasDisabled() {
-      return stylableUtil.hasStyleState(base, 'disabled');
+      return (await base.attr(RATINGS_DATA_KEYS.Disabled)) === 'true';
     },
     async hasLargeMode() {
-      return stylableUtil.hasStyleState(base, 'iconSize', 'large');
+      return (await base.attr(RATINGS_DATA_KEYS.IconSize)) === 'large';
     },
     async hoverStar(idx) {
       return getStarInput(5 - idx).hover();
