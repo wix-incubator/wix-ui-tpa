@@ -1,5 +1,5 @@
-## Rating
-An implementation of an Rating for TPAs
+## Ratings
+An implementation of an Ratings for TPAs
 
 
 ## Theme properties (All are optional)
@@ -11,15 +11,15 @@ An implementation of an Rating for TPAs
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
-1. create an stylable file (e.g. RatingExt.st.css)
+1. create an stylable file (e.g. RatingsExt.st.css)
     ``` css
     :import {
-        -st-from: "wix-ui-tpa/Rating/Rating.st.css";
-        -st-default: TPARating;
+        -st-from: "wix-ui-tpa/Ratings/Ratings.st.css";
+        -st-default: TPARatings;
     }
 
     .root {
-        -st-mixin: TPARating(
+        -st-mixin: TPARatings(
             IconColor '"--iconColor"',
             IconEmptyColor '"--iconEmptyColor"'
         );
@@ -29,13 +29,13 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import Rating from 'wix-ui-tpa/Rating';
-    import ratingStylesExt from './RatingExt.st.css';
+    import Ratings from 'wix-ui-tpa/Ratings';
+    import ratingsStylesExt from './RatingsExt.st.css';
 
-    const RatingExt = (props) => (
-        <Rating
+    const RatingsExt = (props) => (
+        <Ratings
             value={0}
             {...props}
-            {...ratingStylesExt('root', {}, props)}
+            {...ratingsStylesExt('root', {}, props)}
         />);
     ```

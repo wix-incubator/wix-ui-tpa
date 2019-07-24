@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
-import styles from './Rating.st.css';
+import styles from './Ratings.st.css';
 import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
 
 export enum IconSize {
@@ -13,7 +13,7 @@ export enum Mode {
   Display = 'display',
 }
 
-export interface RatingProps {
+export interface RatingsProps {
   value: number;
   mode: Mode;
   onSelect?(value: number): void;
@@ -30,9 +30,9 @@ interface DefaultProps {
   iconSize: IconSize;
 }
 
-/** Rating component based on IconToggle */
-export class Rating extends React.Component<RatingProps> {
-  static displayName = 'Rating';
+/** Ratings component based on IconToggle */
+export class Ratings extends React.Component<RatingsProps> {
+  static displayName = 'Ratings';
   static defaultProps: DefaultProps = {
     value: 0,
     disabled: false,

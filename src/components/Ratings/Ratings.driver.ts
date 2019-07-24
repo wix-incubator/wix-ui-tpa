@@ -3,10 +3,10 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Rating.st.css';
+import style from './Ratings.st.css';
 import { UniDriverList } from '@unidriver/core';
 
-export interface RatingDriver extends BaseUniDriver {
+export interface RatingsDriver extends BaseUniDriver {
   getStars(): Promise<number>;
   getActiveStars(): Promise<number>;
   getHoveredStars(): Promise<number>;
@@ -17,7 +17,7 @@ export interface RatingDriver extends BaseUniDriver {
   hasDisabled(): Promise<boolean>;
 }
 
-export const ratingDriverFactory = (base: UniDriver): RatingDriver => {
+export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
   const iconDatahook = '[data-hook="icon-wrapper"]';
   const filledColor = 'rgb(0, 185, 232)';
   const stylableUtil = new StylableUnidriverUtil(style);

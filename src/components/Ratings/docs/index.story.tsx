@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rating } from '../';
+import { Ratings } from '..';
 import * as examples from './examples';
 import {
   header,
@@ -15,25 +15,25 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as ExtendedRawSource from '!raw-loader!./RatingExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./RatingExtendedExample.st.css';
-import { RatingExtendedExample } from './RatingExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./RatingsExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./RatingsExtendedExample.st.css';
+import { RatingsExtendedExample } from './RatingsExtendedExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
-  storyName: 'Rating',
-  component: Rating,
-  componentPath: '../Rating.tsx',
+  storyName: 'Ratings',
+  component: Ratings,
+  componentPath: '../Ratings.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-Rating',
+    'data-hook': 'storybook-Ratings',
   }),
   exampleProps: {
     //
   },
-  dataHook: 'storybook-Rating',
+  dataHook: 'storybook-Ratings',
   sections: [
     header(),
     tabs([
@@ -61,7 +61,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Settings Panel',
-              example: <RatingExtendedExample />,
+              example: <RatingsExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {
