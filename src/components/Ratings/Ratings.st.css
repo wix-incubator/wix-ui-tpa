@@ -107,8 +107,12 @@
     fill: color(fallback(value(IconColor), value(DefaultColor)));
  }
 
-.root:not(:mode(display)) .icon:hover path,
-.root:not(:mode(display)) .icon:hover ~ .icon path {
+.root:not(:mode(display)):hover .icon:hover path,
+.root:not(:mode(display)):hover .icon:hover ~ .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+.root:not(:mode(display)):hover .icon:not(:hover) path {
+    fill: transparent;
 }

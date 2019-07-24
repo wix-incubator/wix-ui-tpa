@@ -43,7 +43,7 @@ describe('Ratings', () => {
     expect(await driver.hasError()).toBeTruthy();
   });
 
-  it('should show errdisabledor state', async () => {
+  it('should show disable state', async () => {
     const driver = createDriver(<Ratings disabled value={0} />);
 
     expect(await driver.hasDisabled()).toBeTruthy();

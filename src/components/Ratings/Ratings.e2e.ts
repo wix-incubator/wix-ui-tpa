@@ -4,18 +4,16 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { ratingsTestkitFactory } from '../../testkit/protractor';
+import {} from './dataHooks';
 
-/**
- * For tests containing interactions.
- * Can be removed if not used.
- * */
-describe('ratings', () => {
+describe('Ratings', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Tests',
     story: 'Ratings',
     withExamples: true,
   });
-  const dataHook = 'storybook-Ratings';
+  const dataHook = 'storybook-e2e-Ratings';
+  const dataHookWithInitialValue = 'storybook-e2e-Ratings-withValue';
 
   beforeEach(() => browser.get(storyUrl));
 
@@ -33,5 +31,17 @@ describe('ratings', () => {
     await driver.hoverStar(3);
 
     expect(await driver.getHoveredStars()).toBe(3);
+  });
+
+  it('should hover correct numbers of stars with value in mode="input"', async () => {
+    const driver = ratingsTestkitFactory({
+      dataHook: dataHookWithInitialValue,
+    });
+
+    await waitForVisibilityOf(await driver.element(), 'Cannot find Ratings');
+
+    await driver.hoverStar(2);
+
+    expect(await driver.getHoveredStars()).toBe(2);
   });
 });
