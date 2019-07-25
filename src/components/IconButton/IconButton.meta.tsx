@@ -11,6 +11,6 @@ IconButtonMetadata.addSim({
   props: {
     icon: ChevronLeft,
     ['aria-label']: 'share',
-    skin: Skins.Line
+    skin: Skins.Line,
   },
 });
