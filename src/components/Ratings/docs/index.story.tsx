@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Ratings } from '..';
+import { Ratings, Mode, IconSize } from '..';
 import * as examples from './examples';
 import {
   header,
@@ -31,7 +31,8 @@ export default {
     'data-hook': 'storybook-Ratings',
   }),
   exampleProps: {
-    //
+    mode: Object.values(Mode),
+    iconSize: Object.values(IconSize),
   },
   dataHook: 'storybook-Ratings',
   sections: [
