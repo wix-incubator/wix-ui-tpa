@@ -7,6 +7,6 @@ const {%ComponentName%}Metadata = Registry.getComponentMetadata({%ComponentName%
 {%ComponentName%}Metadata.addSim({
   title: 'render',
   props: {
-      buttonText: 'Click me!'
+    buttonText: 'Click me!'
   },
 });
