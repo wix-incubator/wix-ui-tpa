@@ -5,25 +5,11 @@ import { ReactComponent as ShareIcon } from '../../assets/icons/Share.svg';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 
 class IconButtonVisual extends React.Component<any> {
-  static defaultProps = {
-    mobile: false,
-  };
-
   render() {
     return (
       <VisualContainerElement>
-        <IconButton
-          icon={<ShareIcon />}
-          data-hook={'storybook-e2e-IconButton'}
-          {...this.props}
-        />
-        <IconButton
-          icon={<ShareIcon />}
-          data-hook={'storybook-e2e-IconButton'}
-          skin={Skins.Full}
-          {...this.props}
-          disabled
-        />
+        <IconButton icon={<ShareIcon />} {...this.props} />
+        <IconButton icon={<ShareIcon />} skin={Skins.Full} {...this.props} />
       </VisualContainerElement>
     );
   }
@@ -36,6 +22,12 @@ const tests = [
       {
         it: 'default',
         props: {},
+      },
+      {
+        it: 'default',
+        props: {
+          disabled: true,
+        },
       },
     ],
   },
