@@ -1,4 +1,4 @@
-import { IconButton } from '.';
+import { IconButton, Skins } from '.';
 import Registry from '@ui-autotools/registry';
 import * as React from 'react';
 import { ChevronLeft } from '../../assets/icons/ChevronLeft';
@@ -11,5 +11,6 @@ IconButtonMetadata.addSim({
   props: {
     icon: ChevronLeft,
     ['aria-label']: 'share',
+    skin: Skins.Line
   },
 });
