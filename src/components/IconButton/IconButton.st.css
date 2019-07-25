@@ -21,7 +21,7 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: disabled, isFull;
+    -st-states: disabled, skin(enum(line, full));
     /*css goes here*/
     background-color: transparent;
     text-decoration: none;
@@ -32,7 +32,7 @@
     line-height: 0;
 }
 
-.root:hover .icon {
+.root:hover {
     opacity: 0.6;
 }
 
@@ -40,28 +40,32 @@
     cursor: default;
 }
 
-.root:disabled:hover .icon {
+.root:disabled:hover {
     opacity: 1;
 }
 
 .root:disabled .icon path {
     stroke: color(value(DisabledColor));
+    fill: none;
 }
 
-.root:isFull:disabled .icon path {
+.root:skin(full):disabled .icon path {
     fill: color(value(DisabledColor));
+    stroke: color(value(DisabledColor));
 }
 
 .icon svg {
     display: block;
 }
 
-.icon path {
+.root:skin(line) .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: none;
 }
 
-.root:isFull .icon path {
+.root:skin(full) .icon path {
     fill: color(fallback(value(IconColor), value(DefaultColor)));
+    stroke: color(fallback(value(IconColor), value(DefaultColor)))  ;
 }
 
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { IconButton } from './';
+import { IconButton, Skins } from './';
 import { ReactComponent as ShareIcon } from '../../assets/icons/Share.svg';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 
@@ -14,14 +14,13 @@ class IconButtonVisual extends React.Component<any> {
       <VisualContainerElement>
         <IconButton
           icon={<ShareIcon />}
-          isFull
           data-hook={'storybook-e2e-IconButton'}
           {...this.props}
         />
         <IconButton
           icon={<ShareIcon />}
           data-hook={'storybook-e2e-IconButton'}
-          isFull
+          skin={Skins.Full}
           {...this.props}
           disabled
         />
