@@ -47,7 +47,7 @@ export default {
     'data-hook': 'storybook-IconButton',
     icon: iconExamples[0].value,
     disabled: false,
-    skin: Skins.Line
+    skin: Skins.Line,
   }),
   exampleProps: {
     icon: iconExamples,
