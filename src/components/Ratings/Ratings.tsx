@@ -86,6 +86,7 @@ export class Ratings extends React.Component<RatingsProps> {
                 {...styles('icon', { checked })}
               >
                 <CoreRadio
+                  aria-label={`${5 - idx} star`}
                   uncheckedIcon={content}
                   checkedIcon={content}
                   checked={checked}
