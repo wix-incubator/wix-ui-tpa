@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
-import { Ratings, Mode, IconSize } from '.';
+import { Ratings, Mode, Size } from '.';
 
 class RatingsVisual extends React.Component<any> {
   static defaultProps = {};
@@ -43,11 +43,37 @@ const tests = [
         },
       },
       {
-        it: 'Large Icons',
+        it: 'Large Size',
         props: {
           value: 3,
           mode: Mode.Display,
-          iconSize: IconSize.Large,
+          size: Size.Large,
+        },
+      },
+      {
+        it: 'Input Options',
+        props: {
+          mode: Mode.Input,
+          size: Size.Large,
+          inputOption: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'],
+        },
+      },
+      {
+        it: 'Input Options with Initial value',
+        props: {
+          value: 3,
+          mode: Mode.Input,
+          size: Size.Large,
+          inputOption: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'],
+        },
+      },
+      {
+        it: 'count info & rating info',
+        props: {
+          value: 3,
+          mode: Mode.Display,
+          countDisplay: '150',
+          ratingDisplay: '3.0',
         },
       },
     ],

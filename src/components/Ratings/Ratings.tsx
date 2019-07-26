@@ -3,8 +3,9 @@ import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
 import styles from './Ratings.st.css';
 import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
 import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
+import classNames from 'classnames';
 
-export enum IconSize {
+export enum Size {
   Small = 'small',
   Large = 'large',
 }
@@ -14,13 +15,22 @@ export enum Mode {
   Display = 'display',
 }
 
+export enum Layout {
+  Aside = 'aside',
+  Bottom = 'bottom',
+}
+
 export interface RatingsProps {
   value: number;
   mode: Mode;
   onSelect?(value: number): void;
+  inputOption?: [string, string, string, string, string];
   disabled?: boolean;
   error?: boolean;
-  iconSize?: IconSize;
+  size?: Size;
+  layout?: Layout;
+  ratingDisplay?: string;
+  countDisplay?: string;
   'data-hook'?: string;
 }
 
@@ -29,7 +39,9 @@ interface DefaultProps {
   disabled: boolean;
   error: boolean;
   mode: Mode;
-  iconSize: IconSize;
+  size: Size;
+  layout: Layout;
+  inputOption: [string, string, string, string, string];
 }
 
 /** Ratings component based on IconToggle */
@@ -40,20 +52,71 @@ export class Ratings extends React.Component<RatingsProps> {
     disabled: false,
     error: false,
     mode: Mode.Input,
-    iconSize: IconSize.Small,
+    size: Size.Small,
+    layout: Layout.Aside,
+    inputOption: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'], //left here for playground. have a question
   };
 
   getDataAttributes() {
-    const { disabled, error, iconSize } = this.props;
+    const { disabled, error, size } = this.props;
 
     return {
       [RATINGS_DATA_KEYS.Disabled]: disabled,
       [RATINGS_DATA_KEYS.Error]: error,
-      [RATINGS_DATA_KEYS.IconSize]: iconSize,
+      [RATINGS_DATA_KEYS.Size]: size,
     };
   }
 
   _renderContent = () => <StarIcon />;
+
+  _renderInputOption = () => {
+    const { inputOption, value } = this.props;
+
+    return (
+      <div className={styles.labelList}>
+        {inputOption.map((el, idx) => (
+          <span
+            key={idx}
+            data-hook={RATINGS_DATA_HOOKS.InputOption}
+            className={classNames(
+              styles.inputOption,
+              `${styles.inputOption}${idx + 1}`,
+            )}
+          >
+            {el}
+          </span>
+        ))}
+        <span
+          data-hook={RATINGS_DATA_HOOKS.InputOptionCurrent}
+          className={classNames(styles.inputOption, styles.inputOptionCurrent)}
+        >
+          {inputOption[value - 1]}
+        </span>
+      </div>
+    );
+  };
+
+  _renderRatingInfo = () => {
+    const { ratingDisplay, countDisplay } = this.props;
+    const info = [];
+
+    if (ratingDisplay) {
+      info.push(ratingDisplay);
+    }
+
+    if (countDisplay) {
+      info.push(countDisplay);
+    }
+
+    return (
+      <div
+        data-hook={RATINGS_DATA_HOOKS.RatingInfo}
+        className={styles.ratingInfo}
+      >
+        {info.join(' | ')}
+      </div>
+    );
+  };
 
   render() {
     const {
@@ -61,29 +124,42 @@ export class Ratings extends React.Component<RatingsProps> {
       onSelect,
       disabled,
       error,
-      iconSize,
+      size,
       mode,
+      inputOption,
+      layout,
+      ratingDisplay,
+      countDisplay,
       ...rest
     } = this.props;
     const content = this._renderContent();
     const ratingList = Array.from(new Array(5));
     const ratingListLength = ratingList.length;
+    const showInputOption = inputOption && mode === Mode.Input;
+    const showRatingInfo =
+      (ratingDisplay || countDisplay) && mode === Mode.Display;
 
     return (
       <div
-        {...styles('root', { disabled, error, iconSize, mode }, rest)}
+        {...styles('root', { disabled, error, size, mode, layout }, rest)}
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
       >
         <div className={styles.iconList}>
           {ratingList.map((_el, idx: number) => {
-            const checked = ratingListLength - idx <= value;
+            const humanOrder = ratingListLength - idx;
+            const checked = humanOrder <= value;
 
             return (
               <span
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
-                {...styles('icon', { checked })}
+                {...styles(
+                  classNames(styles.icon, `${styles.icon}${humanOrder}`),
+                  {
+                    checked,
+                  },
+                )}
               >
                 <CoreRadio
                   aria-label={`${5 - idx} star`}
@@ -91,13 +167,16 @@ export class Ratings extends React.Component<RatingsProps> {
                   checkedIcon={content}
                   checked={checked}
                   disabled={disabled}
-                  onChange={() =>
-                    mode === Mode.Input && onSelect(ratingListLength - idx)
-                  }
+                  onChange={() => mode === Mode.Input && onSelect(humanOrder)}
                 />
               </span>
             );
           })}
+
+          {showInputOption && this._renderInputOption()}
+          {showRatingInfo && this._renderRatingInfo()}
+
+          {layout === Layout.Bottom && <div className={styles.break} />}
         </div>
       </div>
     );

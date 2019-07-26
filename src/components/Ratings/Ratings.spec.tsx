@@ -4,7 +4,7 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { ratingsDriverFactory } from './Ratings.driver';
-import { Ratings, Mode, IconSize } from '.';
+import { Ratings, Mode, Size } from '.';
 import { ratingsTestkitFactory } from '../../testkit';
 import { ratingsTestkitFactory as enzymeRatingTestkitFactory } from '../../testkit/enzyme';
 
@@ -49,10 +49,8 @@ describe('Ratings', () => {
     expect(await driver.hasDisabled()).toBeTruthy();
   });
 
-  it('should show large icons state', async () => {
-    const driver = createDriver(
-      <Ratings iconSize={IconSize.Large} value={0} />,
-    );
+  it('should show large state', async () => {
+    const driver = createDriver(<Ratings size={Size.Large} value={0} />);
 
     expect(await driver.hasLargeMode()).toBeTruthy();
   });
@@ -84,6 +82,41 @@ describe('Ratings', () => {
     await driver.clickOnStar(3);
 
     expect(onSelectSpy).not.toHaveBeenCalled();
+  });
+
+  it('should show corresponding input option', async () => {
+    const driver = createDriver(
+      <Ratings
+        inputOption={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']}
+        value={3}
+      />,
+    );
+
+    expect(await driver.getCurrentValueLabel()).toBe('OK');
+  });
+
+  it('should show counter info w/o rating', async () => {
+    const driver = createDriver(
+      <Ratings mode={Mode.Display} countDisplay="150" />,
+    );
+
+    expect(await driver.getRatingInfoText()).toBe('150');
+  });
+
+  it('should show rating info w/o count', async () => {
+    const driver = createDriver(
+      <Ratings mode={Mode.Display} ratingDisplay="3.0" />,
+    );
+
+    expect(await driver.getRatingInfoText()).toBe('3.0');
+  });
+
+  it('should show rating and count info', async () => {
+    const driver = createDriver(
+      <Ratings mode={Mode.Display} ratingDisplay="3.0" countDisplay="150" />,
+    );
+
+    expect(await driver.getRatingInfoText()).toBe('3.0 | 150');
   });
 
   describe('testkit', () => {
