@@ -44,7 +44,7 @@
     opacity: 1;
 }
 
-.root:disabled .icon path {
+.root:skin(line):disabled .icon path {
     stroke: color(value(DisabledColor));
     fill: none;
 }
