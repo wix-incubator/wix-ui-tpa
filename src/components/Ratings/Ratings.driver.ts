@@ -15,16 +15,25 @@ export interface RatingsDriver extends BaseUniDriver {
   hasError(): Promise<boolean>;
   hasLargeMode(): Promise<boolean>;
   hasDisabled(): Promise<boolean>;
+  getCurrentValueLabel(): Promise<string>;
+  getHoveredLabelText(): Promise<string>;
+  getRatingInfoText(): Promise<string>;
 }
 
 export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
   const iconDatahook = `[data-hook="${RATINGS_DATA_HOOKS.IconWrapper}"]`;
+  const inputOptionDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOption}"]`;
+  const inputOptionCurrentDatahook = `[data-hook="${
+    RATINGS_DATA_HOOKS.InputOptionCurrent
+  }"]`;
+  const ratingInfoDatahook = `[data-hook="${RATINGS_DATA_HOOKS.RatingInfo}"]`;
   const filledColor = 'rgb(0, 185, 232)';
 
   const getStarInput = (idx: number): UniDriver =>
     base.$$(`${iconDatahook} input`).get(idx);
 
   const getStarIcons = (): UniDriverList => base.$$(`${iconDatahook} svg path`);
+  const getLabels = (): UniDriverList => base.$$(inputOptionDatahook);
 
   return {
     ...baseUniDriverFactory(base),
@@ -44,7 +53,7 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       return (await base.attr(RATINGS_DATA_KEYS.Disabled)) === 'true';
     },
     async hasLargeMode() {
-      return (await base.attr(RATINGS_DATA_KEYS.IconSize)) === 'large';
+      return (await base.attr(RATINGS_DATA_KEYS.Size)) === 'large';
     },
     async hoverStar(idx) {
       return getStarInput(5 - idx).hover();
@@ -59,6 +68,23 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       });
 
       return filtered.count();
+    },
+    async getHoveredLabelText() {
+      const labels = getLabels();
+
+      const filteredLabels = labels.filter(async label => {
+        const native = await label.getNative();
+
+        return (await native.getCssValue('display')) === 'inline-block';
+      });
+
+      return filteredLabels.get(0).text();
+    },
+    async getCurrentValueLabel() {
+      return base.$(inputOptionCurrentDatahook).text();
+    },
+    async getRatingInfoText() {
+      return base.$(ratingInfoDatahook).text();
     },
   };
 };

@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-named: color, fallback, font;
 }
 
 :import {
@@ -10,22 +10,26 @@
 
 :vars {
     /*Defaults*/
+    DefaultTextColor: color-5;
     DefaultColor: color-8;
     DefaultEmptyColor: color-3;
     DisabledColor: color-3;
-    IconGap: 3px;
-    IconLargeGap: 11px;
+    IconGap: 1.5px;
+    IconLargeGap: 5.5px;
     IconLargeSize: 30px;
+    DefaultFont: font("{theme: 'Body-S', size: '14px', lineHeight: '1.4em'}");
+    LargeFont: font("{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}");
 }
 
 :vars {
     /* Overrides */
+    TextColor: --overridable;
     IconColor: --overridable;
     IconEmptyColor: --overridable;
 }
 
 .root {
-    -st-states: disabled, error, iconSize( enum(small, large) ), mode( enum(input, display) );
+    -st-states: disabled, error, size( enum(small, large) ), mode( enum(input, display) ), layout( enum(aside, bottom) );
 
     display: inline-block;
     cursor: pointer;
@@ -34,12 +38,12 @@
 
 /* ------ States ------ */
 
-/* ICON SIZE */
-.root:iconSize(large) .icon {
+/* SIZE */
+.root:size(large) .icon {
    padding: 0 value(IconLargeGap);
 }
 
-.root:iconSize(large) .icon svg {
+.root:size(large) .icon svg {
     width: value(IconLargeSize);
     height: value(IconLargeSize);
 }
@@ -48,12 +52,22 @@
     display: flex;
     align-items: center;
     flex-direction: row-reverse;
+    flex-wrap: wrap;
 
     margin: 0 calc(0px - value(IconGap));
 }
 
-.root:iconSize(large) {
+.root:size(large) {
     margin: 0 calc(0px - value(IconLargeGap));
+}
+
+.root:size(large) .inputOption,
+.root:size(large) .ratingInfo {
+    font: value(LargeFont);
+}
+
+.root:size(large) .icon {
+    margin-top: 7px;
 }
 
 /* DISABLED */
@@ -95,7 +109,9 @@
 .icon {
     -st-states: checked;
 
+    margin-top: 5px;
     padding: 0 value(IconGap);
+    order: 1;
 }
 
 .root .icon path {
@@ -115,4 +131,90 @@
 
 .root:not(:mode(display)):hover .icon:not(:hover) path {
     fill: transparent;
+}
+
+/* ----- TEXT ------ */
+.labelList {
+    margin: 0 calc(12px - value(IconGap));
+}
+
+.root:layout(bottom) .labelList {
+    margin: 0 value(IconGap);
+
+    width: 100%;
+    order: 1;
+}
+
+.root:layout(bottom):size(large) .labelList {
+    margin: 0 value(IconLargeGap);
+}
+
+.root:size(large):layout(aside) .labelList {
+    margin: 0 calc(24px - value(IconLargeGap));
+}
+
+.root:layout(bottom) .inputOption {
+    order: 0;
+}
+
+.inputOption {
+    font: value(DefaultFont);
+    color: color(fallback(value(TextColor), value(DefaultTextColor)));
+
+    display: none;
+    order: 3;
+}
+
+.root:not(:disabled):not(:mode(display)) .inputOption.inputOptionCurrent {
+    display: inline-block;
+}
+
+.root:mode(input) .icon:hover ~ .labelList > .inputOptionCurrent{
+    display: none;
+}
+
+.icon1:hover ~ .labelList > .inputOption1 {
+    display: inline-block;
+}
+
+.icon2:hover ~ .labelList > .inputOption2 {
+    display: inline-block;
+}
+
+.icon3:hover ~ .labelList > .inputOption3 {
+    display: inline-block;
+}
+
+.icon4:hover ~ .labelList > .inputOption4 {
+    display: inline-block;
+}
+
+.icon5:hover ~ .labelList > .inputOption5 {
+    display: inline-block;
+}
+/* ------ /inoutOptions ------ */
+
+.break {
+    margin: 0 auto;
+    width: 0;
+    height: 0;
+    order: 0;
+}
+
+.ratingInfo {
+    margin: 0 calc(12px - value(IconGap));
+
+    font: value(DefaultFont);
+    color: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root:layout(bottom):size(large) .ratingInfo {
+    margin: 0 value(IconLargeGap);
+}
+
+.root:layout(bottom) .ratingInfo {
+    margin: 0 value(IconGap);
+
+    width: 100%;
+    order: 1;
 }

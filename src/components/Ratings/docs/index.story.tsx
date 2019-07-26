@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Ratings, Mode, IconSize } from '..';
+import { Ratings, Mode, Size, Layout } from '..';
 import * as examples from './examples';
 import {
   header,
@@ -32,7 +32,8 @@ export default {
   }),
   exampleProps: {
     mode: Object.values(Mode),
-    iconSize: Object.values(IconSize),
+    size: Object.values(Size),
+    layout: Object.values(Layout),
   },
   dataHook: 'storybook-Ratings',
   sections: [
@@ -76,6 +77,11 @@ export default {
                     label: 'Icon Empty Color',
                     wixParam: 'iconEmptyColor',
                     defaultColor: 'color-3',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
                   },
                 ],
               },

@@ -6,6 +6,7 @@
 .ratings {
     -st-mixin: TPARatings(
             IconColor '"--iconColor"',
-            IconEmptyColor '"--iconEmptyColor"'
+            IconEmptyColor '"--iconEmptyColor"',
+            TextColor '"--textColor"'
     );
 }
