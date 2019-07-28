@@ -57,7 +57,8 @@
     "autotools:sanity": "autotools-sanity",
     "autotools:a11y": "autotools-a11y",
     "postgenerate": "npm run update-components",
-    "update-components": ".wuf/update-components.sh"
+    "update-components": ".wuf/update-components.sh",
+    "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
