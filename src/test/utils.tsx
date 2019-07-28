@@ -10,3 +10,8 @@ export const TPAComponentsWrapper = ({ mobile = false, rtl = false }) => {
     );
   };
 };
+
+export interface StylableUnidriverUtilClass {
+  getStyleState(UniDriver, string): Promise<string>;
+  hasStyleState(UniDriver, string): Promise<boolean>;
+}

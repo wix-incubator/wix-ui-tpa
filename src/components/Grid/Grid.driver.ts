@@ -5,6 +5,7 @@ import {
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Grid.st.css';
 import { GridDataHooks, GridDataKeys } from './DataHooks';
+import { StylableUnidriverUtilClass } from '../../test/utils';
 
 export interface gridDriver extends BaseUniDriver {
   dividerWidth(): Promise<string>;
@@ -17,7 +18,9 @@ export interface gridDriver extends BaseUniDriver {
 }
 
 export const gridDriverFactory = (base: UniDriver): gridDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
+  const stylableUtil = new StylableUnidriverUtil(
+    style,
+  ) as StylableUnidriverUtilClass;
 
   const listWrapperDriver = base.$(`[data-hook="${GridDataHooks.container}"]`);
   return {

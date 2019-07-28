@@ -4,6 +4,7 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './StripCard.st.css';
+import { StylableUnidriverUtilClass } from '../../test/utils';
 
 export interface StripCardDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
@@ -14,7 +15,9 @@ export interface StripCardDriver extends BaseUniDriver {
 }
 
 export const stripCardDriverFactory = (base: UniDriver): StripCardDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
+  const stylableUtil = new StylableUnidriverUtil(
+    style,
+  ) as StylableUnidriverUtilClass;
 
   const getInfoContainerElement = () => base.$(`.${style.infoContainer} > *`);
   const getMediaContainerElement = () => base.$(`.${style.mediaContainer} > *`);

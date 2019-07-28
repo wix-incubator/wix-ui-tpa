@@ -5,6 +5,7 @@ import {
   UniDriver,
 } from 'wix-ui-test-utils/unidriver';
 import style from './OverlappingCard.st.css';
+import { StylableUnidriverUtilClass } from '../../test/utils';
 
 export interface OverlappingCardDriver extends BaseUniDriver {
   getMediaContent(): Promise<HTMLElement>;
@@ -19,7 +20,9 @@ export interface OverlappingCardDriver extends BaseUniDriver {
 export const overlappingCardDriverFactory = (
   base: UniDriver,
 ): OverlappingCardDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
+  const stylableUtil = new StylableUnidriverUtil(
+    style,
+  ) as StylableUnidriverUtilClass;
 
   const getMediaContainerElement = () => base.$(`.${style.mediaContainer} > *`);
   const getInfoContainerElement = () => base.$(`.${style.infoContainer} > *`);

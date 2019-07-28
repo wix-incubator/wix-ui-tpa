@@ -4,6 +4,7 @@ import {
 } from 'wix-ui-core/drivers/unidriver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Button.st.css';
+import { StylableUnidriverUtilClass } from '../../test/utils';
 
 export interface ButtonDriver extends ButtonNextDriver {
   isFullWidth(): Promise<boolean>;
@@ -11,7 +12,9 @@ export interface ButtonDriver extends ButtonNextDriver {
 }
 
 export const buttonDriverFactory = (base: UniDriver): ButtonDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
+  const stylableUtil = new StylableUnidriverUtil(
+    style,
+  ) as StylableUnidriverUtilClass;
 
   return {
     ...buttonNextDriverFactory(base),

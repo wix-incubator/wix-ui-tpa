@@ -4,6 +4,7 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Card.st.css';
+import { StylableUnidriverUtilClass } from '../../test/utils';
 
 export interface CardDriver extends BaseUniDriver {
   getMediaContent(): Promise<HTMLElement>;
@@ -17,7 +18,9 @@ export interface CardDriver extends BaseUniDriver {
 }
 
 export const cardDriverFactory = (base: UniDriver): CardDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
+  const stylableUtil = new StylableUnidriverUtil(
+    style,
+  ) as StylableUnidriverUtilClass;
 
   const getMediaContainerElement = () => base.$(`.${style.mediaContainer} > *`);
   const getInfoContainerElement = () => base.$(`.${style.infoContainer} > *`);
