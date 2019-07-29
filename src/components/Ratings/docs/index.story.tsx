@@ -50,7 +50,12 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'mode="input"', source: examples.defult }].map(code),
+          ...[{ title: 'mode="input" with inputOptions', source: examples.inputWithValue }].map(code),
+          ...[{ title: 'mode="display"', source: examples.defaultDisplay }].map(code),
+          ...[{ title: 'mode="display" with labels', source: examples.displayWithLables }].map(
+            code,
+          ),
         ],
       }),
 
