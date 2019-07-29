@@ -41,7 +41,6 @@ interface DefaultProps {
   mode: Mode;
   size: Size;
   layout: Layout;
-  inputOptions: [string, string, string, string, string];
 }
 
 /** Ratings component based on IconToggle */
@@ -54,7 +53,6 @@ export class Ratings extends React.Component<RatingsProps> {
     mode: Mode.Input,
     size: Size.Small,
     layout: Layout.Aside,
-    inputOptions: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'], //left here for playground. have a question
   };
 
   getDataAttributes() {
@@ -149,6 +147,9 @@ export class Ratings extends React.Component<RatingsProps> {
           {ratingList.map((_el, idx: number) => {
             const humanOrder = ratingListLength - idx;
             const checked = humanOrder <= value;
+            const ariaLabel = inputOptions
+              ? inputOptions[5 - idx - 1]
+              : (5 - idx).toString();
 
             return (
               <span
@@ -162,7 +163,7 @@ export class Ratings extends React.Component<RatingsProps> {
                 )}
               >
                 <CoreRadio
-                  aria-label={`${5 - idx} star`}
+                  aria-label={ariaLabel}
                   uncheckedIcon={content}
                   checkedIcon={content}
                   checked={checked}
