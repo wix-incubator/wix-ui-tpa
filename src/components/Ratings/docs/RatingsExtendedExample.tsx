@@ -18,7 +18,13 @@ export const RatingsExtendedExample = () => {
       </div>
       <div>
         <h3>Ratings Display</h3>
-        <Ratings ratingDisplay="3.0" countDisplay="150 Ratings" value={3} mode={Mode.Display} {...extendedStyles('ratings')} />
+        <Ratings
+          ratingDisplay="3.0"
+          countDisplay="150 Ratings"
+          value={3}
+          mode={Mode.Display}
+          {...extendedStyles('ratings')}
+        />
       </div>
     </div>
   );
