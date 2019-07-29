@@ -31,6 +31,7 @@ export const TabsNavButton: React.FunctionComponent<
       data-hook={props['data-hook']}
     >
       {children}
+      <div className={style.border} />
     </div>
   );
 };
