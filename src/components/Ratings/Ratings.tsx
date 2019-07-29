@@ -176,8 +176,8 @@ export class Ratings extends React.Component<RatingsProps> {
             );
           })}
 
-          {showInputOptions && this._renderInputOptions()}
-          {showRatingInfo && this._renderRatingInfo()}
+          {!!showInputOptions && this._renderInputOptions()}
+          {!!showRatingInfo && this._renderRatingInfo()}
 
           {layout === Layout.Bottom && <div className={styles.break} />}
         </div>
