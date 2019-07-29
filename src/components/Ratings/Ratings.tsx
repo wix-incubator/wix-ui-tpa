@@ -24,7 +24,7 @@ export interface RatingsProps {
   value: number;
   mode: Mode;
   onSelect?(value: number): void;
-  inputOptions?: [string, string, string, string, string];
+  inputOptions?: string[];
   disabled?: boolean;
   error?: boolean;
   size?: Size;
@@ -41,6 +41,7 @@ interface DefaultProps {
   mode: Mode;
   size: Size;
   layout: Layout;
+  inputOptions: [];
 }
 
 /** Ratings component based on IconToggle */
@@ -53,6 +54,7 @@ export class Ratings extends React.Component<RatingsProps> {
     mode: Mode.Input,
     size: Size.Small,
     layout: Layout.Aside,
+    inputOptions: [],
   };
 
   getDataAttributes() {

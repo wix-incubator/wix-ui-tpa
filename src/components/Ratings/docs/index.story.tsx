@@ -34,6 +34,13 @@ export default {
     mode: Object.values(Mode),
     size: Object.values(Size),
     layout: Object.values(Layout),
+    inputOptions: [
+      { value: [], label: 'no hovers' },
+      {
+        value: ['Very Baasa', 'Baasa', 'OK', 'Achla', 'Very Achla'],
+        label: 'with hovers',
+      },
+    ],
   },
   dataHook: 'storybook-Ratings',
   sections: [
