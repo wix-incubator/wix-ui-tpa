@@ -135,7 +135,7 @@ export class Ratings extends React.Component<RatingsProps> {
     const content = this._renderContent();
     const ratingList = Array.from(new Array(5));
     const ratingListLength = ratingList.length;
-    const showInputOptions = inputOptions && mode === Mode.Input;
+    const showInputOptions = inputOptions.length && mode === Mode.Input;
     const showRatingInfo =
       (ratingDisplay || countDisplay) && mode === Mode.Display;
 
@@ -149,7 +149,7 @@ export class Ratings extends React.Component<RatingsProps> {
           {ratingList.map((_el, idx: number) => {
             const humanOrder = ratingListLength - idx;
             const checked = humanOrder <= value;
-            const ariaLabel = inputOptions
+            const ariaLabel = inputOptions.length
               ? inputOptions[5 - idx - 1]
               : (5 - idx).toString();
 
