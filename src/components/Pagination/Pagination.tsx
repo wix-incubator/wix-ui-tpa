@@ -20,18 +20,18 @@ export interface PaginationProps extends CorePaginationProps {}
 export const Pagination: React.FunctionComponent<PaginationProps> = props => {
   return (
     <TPAComponentsConsumer>
-      {({ mobile: mobileView, rtl }) => {
+      {({ mobile, rtl }) => {
         return (
           <CorePagination
-            {...styles('root', { mobileView, rtl }, props)}
+            {...styles('root', { mobile, rtl }, props)}
             previousLabel={ChevronLeft}
             nextLabel={ChevronRight}
             firstLabel={DoubleChevronLeft}
             lastLabel={DoubleChevronRight}
             rtl={rtl}
             showFirstLastNavButtons={props.totalPages > props.maxPagesToShow}
-            paginationMode={mobileView ? 'input' : 'pages'}
-            showInputModeTotalPages={mobileView}
+            paginationMode={mobile ? 'compact' : 'pages'}
+            slashLabel={'/'}
             {...props}
           />
         );

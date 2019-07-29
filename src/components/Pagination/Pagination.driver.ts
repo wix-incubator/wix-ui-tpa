@@ -14,6 +14,6 @@ export const paginationDriverFactory = ({ element }) => {
 
   return {
     ...coreDriver,
-    isMobile: async () => stylableDOMUtil.hasStyleState(element, 'mobileView'),
+    isMobile: async () => stylableDOMUtil.hasStyleState(element, 'mobile'),
   };
 };
