@@ -55,7 +55,7 @@ const tests = [
         props: {
           mode: Mode.Input,
           size: Size.Large,
-          inputOption: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'],
+          inputOptions: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'],
         },
       },
       {
@@ -64,7 +64,7 @@ const tests = [
           value: 3,
           mode: Mode.Input,
           size: Size.Large,
-          inputOption: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'],
+          inputOptions: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'],
         },
       },
       {
