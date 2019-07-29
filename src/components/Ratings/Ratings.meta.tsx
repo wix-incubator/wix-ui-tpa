@@ -30,7 +30,7 @@ RatingsMetadata.addSim({
 });
 
 RatingsMetadata.addSim({
-  title: 'render with value mode="display"',
+  title: 'render with value mode display',
   props: {
     value: 3,
     mode: Mode.Display,
@@ -38,7 +38,7 @@ RatingsMetadata.addSim({
 });
 
 RatingsMetadata.addSim({
-  title: 'render with value mode="display" and labels',
+  title: 'render with value mode display and labels',
   props: {
     value: 3,
     mode: Mode.Display,
