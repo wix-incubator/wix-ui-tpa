@@ -8,6 +8,7 @@ An implementation of an Ratings for TPAs
 |------------|----------|------------------|-----------------------------------------------------|
 | IconColor  | string   | color-5          | The color of the icon instead of the default color  |
 | IconEmptyColor | string   | color-3  | The color of not filled icon in display mode |
+| TextColor | string   | color-5  | The color of all labels |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 

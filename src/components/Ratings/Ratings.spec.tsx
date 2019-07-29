@@ -87,7 +87,7 @@ describe('Ratings', () => {
   it('should show corresponding input option', async () => {
     const driver = createDriver(
       <Ratings
-        inputOption={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']}
+        inputOptions={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']}
         value={3}
       />,
     );

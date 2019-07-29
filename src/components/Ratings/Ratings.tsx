@@ -24,7 +24,7 @@ export interface RatingsProps {
   value: number;
   mode: Mode;
   onSelect?(value: number): void;
-  inputOption?: [string, string, string, string, string];
+  inputOptions?: [string, string, string, string, string];
   disabled?: boolean;
   error?: boolean;
   size?: Size;
@@ -41,7 +41,7 @@ interface DefaultProps {
   mode: Mode;
   size: Size;
   layout: Layout;
-  inputOption: [string, string, string, string, string];
+  inputOptions: [string, string, string, string, string];
 }
 
 /** Ratings component based on IconToggle */
@@ -54,7 +54,7 @@ export class Ratings extends React.Component<RatingsProps> {
     mode: Mode.Input,
     size: Size.Small,
     layout: Layout.Aside,
-    inputOption: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'], //left here for playground. have a question
+    inputOptions: ['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla'], //left here for playground. have a question
   };
 
   getDataAttributes() {
@@ -69,12 +69,12 @@ export class Ratings extends React.Component<RatingsProps> {
 
   _renderContent = () => <StarIcon />;
 
-  _renderInputOption = () => {
-    const { inputOption, value } = this.props;
+  _renderInputOptions = () => {
+    const { inputOptions, value } = this.props;
 
     return (
       <div className={styles.labelList}>
-        {inputOption.map((el, idx) => (
+        {inputOptions.map((el, idx) => (
           <span
             key={idx}
             data-hook={RATINGS_DATA_HOOKS.InputOption}
@@ -90,7 +90,7 @@ export class Ratings extends React.Component<RatingsProps> {
           data-hook={RATINGS_DATA_HOOKS.InputOptionCurrent}
           className={classNames(styles.inputOption, styles.inputOptionCurrent)}
         >
-          {inputOption[value - 1]}
+          {inputOptions[value - 1]}
         </span>
       </div>
     );
@@ -126,7 +126,7 @@ export class Ratings extends React.Component<RatingsProps> {
       error,
       size,
       mode,
-      inputOption,
+      inputOptions,
       layout,
       ratingDisplay,
       countDisplay,
@@ -135,7 +135,7 @@ export class Ratings extends React.Component<RatingsProps> {
     const content = this._renderContent();
     const ratingList = Array.from(new Array(5));
     const ratingListLength = ratingList.length;
-    const showInputOption = inputOption && mode === Mode.Input;
+    const showInputOptions = inputOptions && mode === Mode.Input;
     const showRatingInfo =
       (ratingDisplay || countDisplay) && mode === Mode.Display;
 
@@ -173,7 +173,7 @@ export class Ratings extends React.Component<RatingsProps> {
             );
           })}
 
-          {showInputOption && this._renderInputOption()}
+          {showInputOptions && this._renderInputOptions()}
           {showRatingInfo && this._renderRatingInfo()}
 
           {layout === Layout.Bottom && <div className={styles.break} />}

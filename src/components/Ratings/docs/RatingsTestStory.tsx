@@ -20,12 +20,12 @@ function renderTest(props?: any) {
       />
       <Ratings
         data-hook={'storybook-e2e-Ratings-inputOption'}
-        inputOption={inputOption}
+        inputOptions={inputOption}
         {...props}
       />
       <Ratings
         data-hook={'storybook-e2e-Ratings-inputOptionWithValue'}
-        inputOption={inputOption}
+        inputOptions={inputOption}
         {...defaultProps}
         {...props}
       />
