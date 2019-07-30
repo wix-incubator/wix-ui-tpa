@@ -49,7 +49,7 @@
     line-height: 1.5;
 }
 
-.root:before {
+.root::before {
     content: '\00a0';
 }
 
