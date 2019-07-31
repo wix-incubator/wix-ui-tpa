@@ -14,9 +14,33 @@
 }
 
 .root {
-    -st-states: mobile;
-    /*css goes here*/
+    -st-states: mobile, skin(enum(success, error, status));
+    display: inline-flex;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-size: 14px;
+    padding: 16px 32px;
+    font-family: "HelveticaNeueW01-55Roma";
 }
+
+.root .message {
+    display: inline-block;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.root:skin(success) {
+    background-color: #57C487;
+}
+
+.root:skin(error) {
+    background-color: #F64D43;
+}
+
+.root:skin(status) {
+    background-color: #212121;
+}
+
 
 .root:mobile {
     /*mobile css goes here*/
