@@ -28,9 +28,11 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Toast',
     children: 'Hey, I am toast component',
+    skin: TOAST_SKIN.success,
   }),
   exampleProps: {
     skin: Object.values(TOAST_SKIN),
+    shouldShowCloseButton: false,
   },
   dataHook: 'storybook-Toast',
   sections: [
@@ -53,7 +55,6 @@ export default {
             { title: 'Error', source: examples.errorExample },
             { title: 'Status', source: examples.statusExample },
             { title: 'Multiline', source: examples.multilineExample },
-            //   { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),

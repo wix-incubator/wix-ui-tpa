@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './Toast.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { AvatarGroupSize } from '../AvatarGroup';
 
 export enum TOAST_SKIN {
   status = 'status',
@@ -14,21 +15,34 @@ export interface ToastProps {
   onClose?(): any;
 }
 
-interface DefaultProps {}
+export interface DefaultProps {
+  shouldShowCloseButton: boolean;
+}
 
 interface State {}
 
 /** Toasts are used to display important notifications or errors for the entire page. */
 export class Toast extends React.Component<ToastProps, State> {
   static displayName = 'Toast';
+
+  static defaultProps: DefaultProps = {
+    shouldShowCloseButton: false,
+  };
+
   render() {
-    const { skin, children, ...rest } = this.props;
+    const { skin, shouldShowCloseButton, children, ...rest } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div {...styles('root', { mobile, skin }, rest)}>
             <span className={styles.message}>{children}</span>
+            {shouldShowCloseButton && (
+              <div className={styles.closeButton}>
+                {/* TODO: change to ICON button component*/}
+                <span>x</span>
+              </div>
+            )}
           </div>
         )}
       </TPAComponentsConsumer>

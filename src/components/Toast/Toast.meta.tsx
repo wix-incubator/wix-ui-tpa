@@ -7,6 +7,6 @@ ToastMetadata.nonReactStrictModeCompliant = true;
 ToastMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });

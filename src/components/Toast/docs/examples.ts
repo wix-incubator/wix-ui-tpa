@@ -5,13 +5,6 @@ export const errorExample = `<Toast skin={TOAST_SKIN.error}>These files exceed t
 export const statusExample = `<Toast skin={TOAST_SKIN.status}>Uploading...</Toast>`;
 export const multilineExample = `<Toast skin={TOAST_SKIN.error}>Sorry, we couldn't update this list. Please try again in a few minutes or contact our support team.</Toast>`;
 
-// export const desktopExamples = [
-//   { title: 'Success', source: successExample },
-//   { title: 'Error', source: errorExample },
-//   { title: 'Status', source: statusExample },
-//   { title: 'Multiline', source: multilineExample },
-// ];
-
 export const mobileExample = `
 <TPAComponentsProvider value={{mobile: true}}>
 </TPAComponentsProvider>

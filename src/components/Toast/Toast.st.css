@@ -19,15 +19,8 @@
     color: #FFFFFF;
     border-radius: 2px;
     font-size: 14px;
-    padding: 16px 32px;
     font-family: "HelveticaNeueW01-55Roma";
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
-}
-
-.root .message {
-    display: inline-block;
-    max-height: 40px;
-    overflow: hidden;
 }
 
 .root:skin(success) {
@@ -45,4 +38,15 @@
 
 .root:mobile {
     /*mobile css goes here*/
+}
+
+.root .message {
+    margin: 16px 32px;
+    display: inline-block;
+    max-height: 40px;
+    overflow: hidden;
+}
+
+.root .closeButton {
+    margin: 14px 12px 14px 0;
 }
