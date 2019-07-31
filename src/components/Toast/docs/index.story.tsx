@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { Toast } from '../';
+import { Toast, TOAST_SKIN } from '../';
 import * as examples from './examples';
 import {
   header,
   api,
+  description,
   divider,
   importExample,
   playground,
@@ -14,6 +15,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import * as Readme from '../README.md';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -25,9 +27,10 @@ export default {
   componentPath: '../Toast.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Toast',
+    children: 'Hey, I am toast component',
   }),
   exampleProps: {
-    //
+    skin: Object.values(TOAST_SKIN),
   },
   dataHook: 'storybook-Toast',
   sections: [
@@ -36,6 +39,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(Readme),
           importExample({
             source: examples.importExample,
           }),
@@ -45,8 +49,11 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'Success', source: examples.successExample },
+            { title: 'Error', source: examples.errorExample },
+            { title: 'Status', source: examples.statusExample },
+            { title: 'Multiline', source: examples.multilineExample },
+            //   { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),
