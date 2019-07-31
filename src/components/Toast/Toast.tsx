@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styles from './Toast.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { AvatarGroupSize } from '../AvatarGroup';
 
 export enum TOAST_SKIN {
   status = 'status',
@@ -12,7 +11,7 @@ export enum TOAST_SKIN {
 export interface ToastProps {
   skin: TOAST_SKIN;
   shouldShowCloseButton?: boolean;
-  onClose?(): any;
+  onClose?(): void;
 }
 
 export interface DefaultProps {
@@ -29,6 +28,11 @@ export class Toast extends React.Component<ToastProps, State> {
     shouldShowCloseButton: false,
   };
 
+  handleOnCloseClick = () => {
+    const { onClose } = this.props;
+    onClose && onClose();
+  };
+
   render() {
     const { skin, shouldShowCloseButton, children, ...rest } = this.props;
 
@@ -38,7 +42,10 @@ export class Toast extends React.Component<ToastProps, State> {
           <div {...styles('root', { mobile, skin }, rest)}>
             <span className={styles.message}>{children}</span>
             {shouldShowCloseButton && (
-              <div className={styles.closeButton}>
+              <div
+                className={styles.closeButton}
+                onClick={this.handleOnCloseClick}
+              >
                 {/* TODO: change to ICON button component*/}
                 <span>x</span>
               </div>
