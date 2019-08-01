@@ -124,13 +124,17 @@
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
-.root .icon:checked path {
+.root:not(:focus-within) .icon:checked path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
  }
 
 .root:not(:mode(display)):hover .icon:hover path,
-.root:not(:mode(display)):hover .icon:hover ~ .icon path {
+.root:not(:mode(display)):hover .icon:hover ~ .icon path,
+.root:not(:mode(display)) .icon:focus-within path,
+.root:not(:mode(display)) .icon:focus-within ~ .icon path,
+.root:not(:mode(display)) .icon:focus path,
+.root:not(:mode(display)) .icon:focus ~ .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
