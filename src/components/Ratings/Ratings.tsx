@@ -46,7 +46,14 @@ interface DefaultProps {
 
 interface RatingsState {
   currentHovered: number;
+  currentFocus: number;
 }
+
+// Define values for keycodes
+const VK_LEFT = 'ArrowLeft';
+const VK_UP = 'ArrowUp';
+const VK_RIGHT = 'ArrowRight';
+const VK_DOWN = 'ArrowDown';
 
 /** Ratings component based on IconToggle */
 export class Ratings extends React.Component<RatingsProps, RatingsState> {
@@ -61,8 +68,11 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     inputOptions: [],
   };
 
+  iconRefs = [];
+
   state: RatingsState = {
     currentHovered: 0,
+    currentFocus: 0,
   };
 
   getDataAttributes() {
@@ -83,20 +93,89 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     this.setState({ currentHovered: 0 });
   };
 
+  handleKeyDown = (e: KeyboardEvent) => {
+    const { currentFocus } = this.state;
+
+    if (currentFocus === 0) {
+      return;
+    }
+
+    switch (e.key) {
+      case VK_DOWN:
+      case VK_LEFT: {
+        e.preventDefault();
+
+        if (currentFocus === 1) {
+          this.setState({ currentFocus: 5 }, () => {
+            this.iconRefs[0].focus();
+          });
+
+          return;
+        }
+
+        this.setState({ currentFocus: currentFocus - 1 }, () => {
+          this.iconRefs[5 - this.state.currentFocus].focus();
+        });
+
+        return;
+      }
+      case VK_UP:
+      case VK_RIGHT: {
+        e.preventDefault();
+        if (currentFocus === 5) {
+          this.setState({ currentFocus: 1 }, () => {
+            this.iconRefs[4].focus();
+          });
+
+          return;
+        }
+
+        this.setState({ currentFocus: currentFocus + 1 }, () => {
+          this.iconRefs[5 - this.state.currentFocus].focus();
+        });
+
+        return;
+      }
+      default: {
+      }
+    }
+  };
+
+  handleUnfocus = e => {
+    if (!e.relatedTarget) {
+      this.setState({ currentFocus: 0 });
+    }
+  };
+
+  onClick = (idx: number) => {
+    const { mode, onSelect } = this.props;
+
+    this.setState({ currentFocus: idx });
+
+    if (mode === Mode.Input && onSelect) {
+      onSelect(idx);
+    }
+  };
+
+  setRef = (ref: React.Ref<HTMLElement>) => {
+    this.iconRefs.push(ref);
+  };
+
   _renderContent = () => <StarIcon />;
 
   _renderInputOptions = () => {
     const { inputOptions, value } = this.props;
-    const { currentHovered } = this.state;
+    const { currentHovered, currentFocus } = this.state;
+    const currentValue = currentFocus || currentHovered;
 
     return (
       <div className={styles.labelList}>
-        {currentHovered ? (
+        {currentValue ? (
           <span
             data-hook={RATINGS_DATA_HOOKS.InputOption}
             className={styles.inputOption}
           >
-            {inputOptions[currentHovered - 1]}
+            {inputOptions[currentValue - 1]}
           </span>
         ) : (
           <span
@@ -160,6 +239,8 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
       <div
         {...styles('root', { disabled, error, size, mode, layout }, rest)}
         {...this.getDataAttributes()}
+        onKeyDown={this.handleKeyDown}
+        onBlur={this.handleUnfocus}
         data-hook={this.props['data-hook']}
       >
         <div className={styles.iconList}>
@@ -174,9 +255,11 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
               <span
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
+                tabIndex={-1}
                 {...styles(styles.icon, { checked })}
                 onMouseEnter={() => this.handleHoverIcon(humanOrder)}
                 onMouseLeave={this.handleUnhoverIcon}
+                ref={this.setRef}
               >
                 <CoreRadio
                   aria-label={ariaLabel}
@@ -184,7 +267,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                   checkedIcon={content}
                   checked={checked}
                   disabled={disabled}
-                  onChange={() => mode === Mode.Input && onSelect(humanOrder)}
+                  onChange={() => this.onClick(humanOrder)}
                 />
               </span>
             );
