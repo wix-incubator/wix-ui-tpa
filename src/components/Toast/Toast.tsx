@@ -38,20 +38,23 @@ export class Toast extends React.Component<ToastProps, State> {
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...styles('root', { mobile, skin }, rest)}>
-            <span className={styles.message}>{children}</span>
-            {shouldShowCloseButton && (
-              <div
-                className={styles.closeButton}
-                onClick={this.handleOnCloseClick}
-              >
-                {/* TODO: change to ICON button component*/}
-                <span>x</span>
-              </div>
-            )}
-          </div>
-        )}
+        {({ mobile, rtl }) => {
+          console.log(`mobile = ${mobile}, rtl = ${rtl}`);
+          return (
+            <div {...styles('root', { mobile, rtl, skin }, rest)}>
+              <span className={styles.message}>{children}</span>
+              {shouldShowCloseButton && (
+                <div
+                  className={styles.closeButton}
+                  onClick={this.handleOnCloseClick}
+                >
+                  {/* TODO: change to ICON button component*/}
+                  <span>x</span>
+                </div>
+              )}
+            </div>
+          );
+        }}
       </TPAComponentsConsumer>
     );
   }
