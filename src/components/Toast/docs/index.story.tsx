@@ -59,9 +59,13 @@ export default {
 
           title('Mobile Examples'),
 
-          ...[{ title: 'Success', source: examples.successMobileExample }].map(
-            code,
-          ),
+          ...[
+            { title: 'Success', source: examples.successMobileExample },
+            {
+              title: 'Success with close',
+              source: examples.successMobileExampleWithClose,
+            },
+          ].map(code),
         ],
       }),
 

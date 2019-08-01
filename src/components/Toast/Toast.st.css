@@ -4,13 +4,9 @@
 }
 
 :vars {
-    /*Defaults*/
-    /*Defaults params goes here*/
-}
-
-:vars {
-    /*Overrides*/
-    /*Deceleration of overridable placeholders*/
+    successColor: #57C487;
+    errorColor: #F64D43;
+    statusColor: #212121;
 }
 
 .root {
@@ -24,29 +20,39 @@
 }
 
 .root:skin(success) {
-    background-color: #57C487;
+    background-color: value(successColor);
 }
 
 .root:skin(error) {
-    background-color: #F64D43;
+    background-color: value(errorColor);
 }
 
 .root:skin(status) {
-    background-color: #212121;
+    background-color: value(statusColor);
 }
 
-.root .message {
-    margin: 16px 32px;
+.gapBeforeMessage,
+.gapAfterMessage {
+    display: inline-block;
+    min-width: 12px;
+}
+
+.message {
+    margin: 16px 20px;
     display: inline-block;
     max-height: 40px;
     overflow: hidden;
 }
 
-.root .closeButton {
-    padding: 14px 12px 14px 0;
+.closeButton {
+    padding: 14px 12px;
 }
 
-.root:rtl .closeButton {
-    padding-left: 12px;
-    padding-right: 0;
+.root:mobile .message {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.root:mobile .gapBeforeMessage {
+    min-width: 20px;
 }

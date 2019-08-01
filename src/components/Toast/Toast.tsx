@@ -46,10 +46,11 @@ export class Toast extends React.Component<ToastProps, State> {
               {...styles('root', { mobile, rtl, skin }, rest)}
               data-skin={skin}
             >
+              <span className={styles.gapBeforeMessage}></span>
               <span className={styles.message} data-hook="message">
                 {children}
               </span>
-              {shouldShowCloseButton && (
+              {shouldShowCloseButton ? (
                 <div
                   data-hook="closeButton"
                   className={styles.closeButton}
@@ -58,6 +59,8 @@ export class Toast extends React.Component<ToastProps, State> {
                   {/* TODO: change to ICON button component*/}
                   <span>x</span>
                 </div>
+              ) : (
+                <span className={styles.gapAfterMessage}></span>
               )}
             </div>
           );
