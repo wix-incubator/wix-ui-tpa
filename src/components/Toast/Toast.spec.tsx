@@ -5,7 +5,7 @@ import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
 import { toastDriverFactory } from './Toast.driver';
-import { Toast } from './';
+import { Toast, TOAST_SKIN } from './';
 import { toastTestkitFactory } from '../../testkit';
 import { toastTestkitFactory as enzymeToastTestkitFactory } from '../../testkit/enzyme';
 
@@ -13,13 +13,15 @@ describe('Toast', () => {
   const createDriver = createUniDriverFactory(toastDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Toast buttonText="Click Me" />);
+    const driver = createDriver(<Toast skin={TOAST_SKIN.success} />);
     expect(await driver.exists()).toBe(true);
   });
 
   it('should use mobile design', async () => {
     const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<Toast />),
+      TPAComponentsWrapper({ mobile: true })(
+        <Toast skin={TOAST_SKIN.success} />,
+      ),
     );
     expect(await driver.isMobile()).toBe(true);
   });
@@ -27,9 +29,13 @@ describe('Toast', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<Toast />, toastTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <Toast skin={TOAST_SKIN.success} />,
+          toastTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -38,7 +44,7 @@ describe('Toast', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Toast />,
+          <Toast skin={TOAST_SKIN.success} />,
           enzymeToastTestkitFactory,
           mount,
           {
