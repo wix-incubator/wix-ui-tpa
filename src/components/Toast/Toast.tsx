@@ -9,8 +9,10 @@ export enum TOAST_SKIN {
 }
 
 export interface ToastProps {
+  /** Define the styles for toast */
   skin: TOAST_SKIN;
   shouldShowCloseButton?: boolean;
+  /** Callback function, will be called when click on close button */
   onClose?(): void;
 }
 
@@ -20,7 +22,6 @@ export interface DefaultProps {
 
 interface State {}
 
-/** Toasts are used to display important notifications or errors for the entire page. */
 export class Toast extends React.Component<ToastProps, State> {
   static displayName = 'Toast';
 
@@ -41,10 +42,16 @@ export class Toast extends React.Component<ToastProps, State> {
         {({ mobile, rtl }) => {
           console.log(`mobile = ${mobile}, rtl = ${rtl}`);
           return (
-            <div {...styles('root', { mobile, rtl, skin }, rest)}>
-              <span className={styles.message}>{children}</span>
+            <div
+              {...styles('root', { mobile, rtl, skin }, rest)}
+              data-skin={skin}
+            >
+              <span className={styles.message} data-hook="message">
+                {children}
+              </span>
               {shouldShowCloseButton && (
                 <div
+                  data-hook="closeButton"
                   className={styles.closeButton}
                   onClick={this.handleOnCloseClick}
                 >
