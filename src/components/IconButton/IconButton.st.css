@@ -1,0 +1,71 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultColor: color-5;
+    DisabledColor: color-3;
+}
+
+:vars {
+    /*Overrides*/
+    IconColor: --overridable;
+}
+
+.root {
+    -st-extends: ButtonNext;
+    -st-states: disabled, skin(enum(line, full));
+    /*css goes here*/
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+}
+
+.root:hover {
+    opacity: 0.6;
+}
+
+.root:disabled {
+    cursor: default;
+}
+
+.root:disabled:hover {
+    opacity: 1;
+}
+
+.root:skin(line):disabled .icon path {
+    stroke: color(value(DisabledColor));
+    fill: none;
+}
+
+.root:skin(full):disabled .icon path {
+    fill: color(value(DisabledColor));
+    stroke: color(value(DisabledColor));
+}
+
+.icon svg {
+    display: block;
+}
+
+.root:skin(line) .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: none;
+}
+
+.root:skin(full) .icon path {
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+    stroke: color(fallback(value(IconColor), value(DefaultColor)))  ;
+}
+
+
