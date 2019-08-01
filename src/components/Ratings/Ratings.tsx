@@ -175,7 +175,6 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
                 {...styles(styles.icon, { checked })}
-                tabIndex={idx}
                 onMouseEnter={() => this.handleHoverIcon(humanOrder)}
                 onMouseLeave={this.handleUnhoverIcon}
               >
