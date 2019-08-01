@@ -129,7 +129,7 @@ export const invertPosition = `
 `;
 
 export const stackedMobile = `
-<TPAComponentsProvider value={{mobile: true}}>
+<ExampleWithContextProps mobile={true}>
   <Card
     ratio={CardRatioOptions.RATIO_40_60}
     isMobile
@@ -147,5 +147,5 @@ export const stackedMobile = `
         </div>
       </div>
   }/>
-</TPAComponentsProvider>
+</ExampleWithContextProps>
 `;
