@@ -6,6 +6,7 @@ This will generate all the necessary files that are required for the new compone
 * `Component.driver.tsx` - a [`unidriver`](https://github.com/wix-incubator/unidriver) driver file.
 * `Component.spec.tsx` - `enzyme` unit tests for the component.
 * `Component.visual.tsx` - an `eyes-storybook` test file.
+* `Component.meta.tsx` - a [`ui-autotools`](https://github.com/wix-incubator/ui-autotools) test file - tests `SSR` and `A11Y`.
 * `Component.e2e.tsx` - e2e test for interactive tests that require real dom
 * `docs` folder - for `storybook` documentation.
 * `index.tsx` - for exporting.

@@ -20,3 +20,4 @@ require('../src/components/Badge/docs/index.story');
 require('../src/components/Avatar/docs/index.story');
 require('../src/components/AvatarGroup/docs/index.story');
 require('../src/components/IconButton/docs/index.story');
+require('../src/components/Counter/docs/index.story');

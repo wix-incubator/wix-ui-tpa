@@ -199,6 +199,7 @@ export class ScrollableTabs extends React.Component<
             style={animateIndicator ? selectedIndicatorRect : null}
           />
         </nav>
+        <div className={style.border} />
       </div>
     );
   }

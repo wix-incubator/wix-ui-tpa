@@ -1,0 +1,115 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: applyUnit, color, fallback, font, value;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultColor: color-5;
+    DefaultDisabledColor: color-3;
+    DefaultErrorColor: value(errorColor);
+    DefaultBackgroundColor: color-1;
+    DefaultWidth: 96;
+}
+
+:vars {
+    /*Overrides*/
+    MainColor: --overridable;
+    DisabledColor: --overridable;
+    MainWidth: --overridable;
+}
+
+:vars {
+    counterColor: color(fallback(value(MainColor), value(DefaultColor)));
+    counterDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
+    counterWidth: applyUnit(fallback(value(MainWidth), value(DefaultWidth)), px)
+}
+
+.root {
+    -st-states: error, disabled;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: value(counterWidth);
+    height: 40px;
+    padding: 0 6px;
+    background: color(value(DefaultBackgroundColor));
+    border-width: 1px;
+    border-style: solid;
+    border-color: color(value(counterColor));
+}
+
+.root:error {
+    border-color: value(DefaultErrorColor);
+}
+
+.root:disabled {
+    border-color: color(value(counterDisabledColor));
+}
+
+.btn {
+    background: none;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn path {
+    fill: color(value(counterColor));
+}
+
+.btn[disabled] {
+    cursor: default;
+}
+
+.btn[disabled] path {
+    fill: color(value(counterDisabledColor));
+}
+
+.root:disabled .btn {
+    color: color(value(counterDisabledColor));
+}
+
+.root input {
+    background: color(value(DefaultBackgroundColor));
+    padding: 0;
+    border: none;
+    text-align: center;
+    width: 100%;
+    color: value(counterColor);
+    font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+}
+
+.root:disabled input {
+    color: color(value(counterDisabledColor));
+}
+
+
+
+/* Removing browser-specific default buttons inside input element */
+.root input::-webkit-outer-spin-button,
+.root input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.root input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.root input::-ms-clear {
+    display: none;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+:import {
+    -st-from: "../Counter.st.css";
+    -st-default: TPACounter;
+}
+
+.root {
+    -st-mixin: TPACounter(
+            MainColor '"--mainColor"',
+            DisabledColor '"--disabledColor"',
+            MainWidth '"--mainWidth"'
+    );
+}

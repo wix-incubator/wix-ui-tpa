@@ -31,6 +31,22 @@ export const Examples = () => (
         </TPAComponentsProvider>
       </CodeExample>
     </div>
+    <div className="tpa-container">
+      <CodeExample
+        title="Pagination Mobile"
+        code={[
+          '//.st.css',
+          ExtendedCSSRawSource,
+          '',
+          '//.tsx',
+          ExtendedRawSource,
+        ].join('\n')}
+      >
+        <TPAComponentsProvider value={{ rtl: false, mobile: true }}>
+          <PaginationExtendedExample />
+        </TPAComponentsProvider>
+      </CodeExample>
+    </div>
     <MockSettings
       wixColorParams={[
         {

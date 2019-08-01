@@ -42,18 +42,18 @@ describe('Pagination', () => {
     expect(driver.getNavButton('last')).toBeNull();
   });
 
-  it('Should use core "pages" mode when is not mobile', async () => {
+  it('Should not render page input in desktop mode', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: false })(<Pagination totalPages={10} />),
     );
     expect(driver.getPageInput()).toBeNull();
   });
 
-  it('Should use core "input" mode when is mobile', async () => {
+  it('Should not render page input in mobile mode', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: true })(<Pagination totalPages={10} />),
     );
-    expect(driver.getPageInput()).not.toBeNull();
+    expect(driver.getPageInput()).toBeNull();
   });
 
   it('Should not render more than 5 pages by default', async () => {
