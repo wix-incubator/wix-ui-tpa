@@ -5,7 +5,7 @@ export const example = `
 `;
 
 export const mobileExample = `
-<TPAComponentsProvider value={{mobile: true}}>
+<ExampleWithContextProps mobile={true}>
   <{%ComponentName%} />
-</TPAComponentsProvider>
+</ExampleWithContextProps>
 `;
