@@ -23,7 +23,9 @@ export interface RatingsDriver extends BaseUniDriver {
 export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
   const iconDatahook = `[data-hook="${RATINGS_DATA_HOOKS.IconWrapper}"]`;
   const inputOptionDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOption}"]`;
-  const inputOptionCurrentDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOptionCurrent}"]`;
+  const inputOptionCurrentDatahook = `[data-hook="${
+    RATINGS_DATA_HOOKS.InputOptionCurrent
+  }"]`;
   const ratingInfoDatahook = `[data-hook="${RATINGS_DATA_HOOKS.RatingInfo}"]`;
   const filledColor = 'rgb(0, 185, 232)';
 
@@ -31,7 +33,7 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
     base.$$(`${iconDatahook} input`).get(idx);
 
   const getStarIcons = (): UniDriverList => base.$$(`${iconDatahook} svg path`);
-  const getLabels = (): UniDriverList => base.$$(inputOptionDatahook);
+  const getLabel = (): UniDriver => base.$(inputOptionDatahook);
 
   return {
     ...baseUniDriverFactory(base),
@@ -68,15 +70,9 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       return filtered.count();
     },
     async getHoveredLabelText() {
-      const labels = getLabels();
+      const label = getLabel();
 
-      const filteredLabels = labels.filter(async label => {
-        const native = await label.getNative();
-
-        return (await native.getCssValue('display')) === 'inline-block';
-      });
-
-      return filteredLabels.get(0).text();
+      return label.text();
     },
     async getCurrentValueLabel() {
       return base.$(inputOptionCurrentDatahook).text();
