@@ -4,7 +4,6 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { ratingsTestkitFactory } from '../../testkit/protractor';
-import { delay } from 'q';
 
 describe('Ratings', () => {
   const storyUrl = createStoryUrl({
