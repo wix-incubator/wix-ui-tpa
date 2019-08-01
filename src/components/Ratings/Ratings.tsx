@@ -93,7 +93,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     this.setState({ currentHovered: 0 });
   };
 
-  handleKeyDown = (e: KeyboardEvent) => {
+  handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const { currentFocus } = this.state;
 
     if (currentFocus === 0) {
@@ -157,7 +157,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     }
   };
 
-  setRef = (ref: React.Ref<HTMLElement>) => {
+  setRef = ref => {
     this.iconRefs.push(ref);
   };
 
