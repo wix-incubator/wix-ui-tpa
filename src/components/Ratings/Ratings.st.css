@@ -31,10 +31,15 @@
 .root {
     -st-states: disabled, error, size( enum(small, large) ), mode( enum(input, display) ), layout( enum(aside, bottom) );
 
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
 }
 
+.root:layout(bottom) {
+    flex-direction: column;
+    align-items: baseline;
+}
 
 /* ------ States ------ */
 
@@ -55,9 +60,11 @@
     flex-wrap: wrap;
 
     margin: 0 calc(0px - value(IconGap));
+
+    direction: ltr;
 }
 
-.root:size(large) {
+.root:size(large) .iconList {
     margin: 0 calc(0px - value(IconLargeGap));
 }
 
@@ -111,7 +118,6 @@
 
     margin-top: 5px;
     padding: 0 value(IconGap);
-    order: 1;
 }
 
 .root .icon path {
@@ -138,69 +144,24 @@
     margin: 0 calc(12px - value(IconGap));
 }
 
-.root:layout(bottom) .labelList {
-    margin: 0 value(IconGap);
-
-    width: 100%;
-    order: 1;
-}
-
-.root:layout(bottom):size(large) .labelList {
-    margin: 0 value(IconLargeGap);
-}
-
 .root:size(large):layout(aside) .labelList {
     margin: 0 calc(24px - value(IconLargeGap));
 }
 
-.root:layout(bottom) .inputOption {
-    order: 0;
+.root:layout(bottom) .labelList {
+    margin: 0;
 }
 
 .inputOption {
     font: value(DefaultFont);
     color: color(fallback(value(TextColor), value(DefaultTextColor)));
-
-    display: none;
-    order: 3;
 }
 
 .root:not(:disabled):not(:mode(display)) .inputOption.inputOptionCurrent {
     display: inline-block;
 }
 
-.root:mode(input) .icon:hover ~ .labelList > .inputOptionCurrent{
-    display: none;
-}
-
-.icon1:hover ~ .labelList > .inputOption1 {
-    display: inline-block;
-}
-
-.icon2:hover ~ .labelList > .inputOption2 {
-    display: inline-block;
-}
-
-.icon3:hover ~ .labelList > .inputOption3 {
-    display: inline-block;
-}
-
-.icon4:hover ~ .labelList > .inputOption4 {
-    display: inline-block;
-}
-
-.icon5:hover ~ .labelList > .inputOption5 {
-    display: inline-block;
-}
 /* ------ /inoutOptions ------ */
-
-.break {
-    margin: 0 auto;
-    width: 0;
-    height: 0;
-    order: 0;
-}
-
 .ratingInfo {
     margin: 0 calc(12px - value(IconGap));
 
@@ -208,13 +169,12 @@
     color: color(fallback(value(TextColor), value(DefaultTextColor)));
 }
 
-.root:layout(bottom):size(large) .ratingInfo {
-    margin: 0 value(IconLargeGap);
+.root:size(large):layout(aside) .ratingInfo {
+    margin: 0 calc(24px - value(IconLargeGap));
 }
 
 .root:layout(bottom) .ratingInfo {
     margin: 0 value(IconGap);
 
     width: 100%;
-    order: 1;
 }

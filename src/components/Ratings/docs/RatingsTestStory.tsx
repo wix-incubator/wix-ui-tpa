@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+import * as React from 'react';
 import { Ratings } from '..';
 
 const kind = 'Tests';
@@ -12,23 +12,31 @@ function renderTest(props?: any) {
 
   return (
     <div style={{ margin: '10px', maxWidth: 200 }}>
-      <Ratings data-hook={'storybook-e2e-Ratings'} {...props} />
-      <Ratings
-        data-hook={'storybook-e2e-Ratings-withValue'}
-        {...defaultProps}
-        {...props}
-      />
-      <Ratings
-        data-hook={'storybook-e2e-Ratings-inputOption'}
-        inputOptions={inputOption}
-        {...props}
-      />
-      <Ratings
-        data-hook={'storybook-e2e-Ratings-inputOptionWithValue'}
-        inputOptions={inputOption}
-        {...defaultProps}
-        {...props}
-      />
+      <div>
+        <Ratings data-hook={'storybook-e2e-Ratings'} {...props} />
+      </div>
+      <div>
+        <Ratings
+          data-hook={'storybook-e2e-Ratings-withValue'}
+          {...defaultProps}
+          {...props}
+        />
+      </div>
+      <div>
+        <Ratings
+          data-hook={'storybook-e2e-Ratings-inputOption'}
+          inputOptions={inputOption}
+          {...props}
+        />
+      </div>
+      <div>
+        <Ratings
+          data-hook={'storybook-e2e-Ratings-inputOptionWithValue'}
+          inputOptions={inputOption}
+          {...defaultProps}
+          {...props}
+        />
+      </div>
     </div>
   );
 }

@@ -41,11 +41,15 @@ interface DefaultProps {
   mode: Mode;
   size: Size;
   layout: Layout;
-  inputOptions: [];
+  inputOptions: string[];
+}
+
+interface RatingsState {
+  currentHovered: number;
 }
 
 /** Ratings component based on IconToggle */
-export class Ratings extends React.Component<RatingsProps> {
+export class Ratings extends React.Component<RatingsProps, RatingsState> {
   static displayName = 'Ratings';
   static defaultProps: DefaultProps = {
     value: 0,
@@ -55,6 +59,10 @@ export class Ratings extends React.Component<RatingsProps> {
     size: Size.Small,
     layout: Layout.Aside,
     inputOptions: [],
+  };
+
+  state: RatingsState = {
+    currentHovered: 0,
   };
 
   getDataAttributes() {
@@ -67,31 +75,40 @@ export class Ratings extends React.Component<RatingsProps> {
     };
   }
 
+  handleHoverIcon = (idx: number) => {
+    this.setState({ currentHovered: idx });
+  };
+
+  handleUnhoverIcon = () => {
+    this.setState({ currentHovered: 0 });
+  };
+
   _renderContent = () => <StarIcon />;
 
   _renderInputOptions = () => {
     const { inputOptions, value } = this.props;
+    const { currentHovered } = this.state;
 
     return (
       <div className={styles.labelList}>
-        {inputOptions.map((el, idx) => (
+        {currentHovered ? (
           <span
-            key={idx}
             data-hook={RATINGS_DATA_HOOKS.InputOption}
+            className={styles.inputOption}
+          >
+            {inputOptions[currentHovered - 1]}
+          </span>
+        ) : (
+          <span
+            data-hook={RATINGS_DATA_HOOKS.InputOptionCurrent}
             className={classNames(
               styles.inputOption,
-              `${styles.inputOption}${idx + 1}`,
+              styles.inputOptionCurrent,
             )}
           >
-            {el}
+            {inputOptions[value - 1]}
           </span>
-        ))}
-        <span
-          data-hook={RATINGS_DATA_HOOKS.InputOptionCurrent}
-          className={classNames(styles.inputOption, styles.inputOptionCurrent)}
-        >
-          {inputOptions[value - 1]}
-        </span>
+        )}
       </div>
     );
   };
@@ -157,12 +174,9 @@ export class Ratings extends React.Component<RatingsProps> {
               <span
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
-                {...styles(
-                  classNames(styles.icon, `${styles.icon}${humanOrder}`),
-                  {
-                    checked,
-                  },
-                )}
+                {...styles(styles.icon, { checked })}
+                onMouseEnter={() => this.handleHoverIcon(humanOrder)}
+                onMouseLeave={this.handleUnhoverIcon}
               >
                 <CoreRadio
                   aria-label={ariaLabel}
@@ -175,12 +189,9 @@ export class Ratings extends React.Component<RatingsProps> {
               </span>
             );
           })}
-
-          {!!showInputOptions && this._renderInputOptions()}
-          {!!showRatingInfo && this._renderRatingInfo()}
-
-          {layout === Layout.Bottom && <div className={styles.break} />}
         </div>
+        {!!showInputOptions && this._renderInputOptions()}
+        {!!showRatingInfo && this._renderRatingInfo()}
       </div>
     );
   }
