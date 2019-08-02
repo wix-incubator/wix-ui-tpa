@@ -53,9 +53,6 @@
     height: value(IconLargeSize);
 }
 
-.root:focus {
-    border: 1px solid blue;
-}
 
 .root .iconList {
     display: flex;
