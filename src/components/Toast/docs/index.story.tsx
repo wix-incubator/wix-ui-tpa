@@ -50,22 +50,21 @@ export default {
 
           title('Examples'),
 
-          ...[
-            { title: 'Success', source: examples.successExample },
-            { title: 'Error', source: examples.errorExample },
-            { title: 'Status', source: examples.statusExample },
-            { title: 'Multiline', source: examples.multilineExample },
-          ].map(code),
+          ...Object.keys(TOAST_SKIN)
+            .map(skin => ({
+              title: skin,
+              source: examples.example.desktop[skin],
+            }))
+            .map(code),
 
           title('Mobile Examples'),
 
-          ...[
-            { title: 'Success', source: examples.successMobileExample },
-            {
-              title: 'Success with close',
-              source: examples.successMobileExampleWithClose,
-            },
-          ].map(code),
+          ...Object.keys(TOAST_SKIN)
+            .map(skin => ({
+              title: skin,
+              source: examples.example.mobile[skin],
+            }))
+            .map(code),
         ],
       }),
 
