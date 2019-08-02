@@ -238,7 +238,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
               : (5 - idx).toString();
 
             return (
-              <label
+              <span
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
                 {...styles(styles.icon, { checked })}
@@ -255,7 +255,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                   disabled={disabled}
                   onChange={() => this.onClick(humanOrder)}
                 />
-              </label>
+              </span>
             );
           })}
         </div>
