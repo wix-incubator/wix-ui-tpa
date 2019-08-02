@@ -245,6 +245,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                 onMouseEnter={() => this.handleHoverIcon(humanOrder)}
                 onMouseLeave={this.handleUnhoverIcon}
                 ref={this.setRef}
+                tabIndex={-1}
               >
                 <CoreRadio
                   value={humanOrder.toString()}
