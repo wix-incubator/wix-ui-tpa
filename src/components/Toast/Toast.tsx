@@ -1,8 +1,6 @@
 import * as React from 'react';
 import styles from './Toast.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { IconButton } from '../IconButton';
-import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg';
 import { CloseIconButton } from './CloseIconButton/CloseIconButton';
 
 export enum TOAST_SKIN {
@@ -42,31 +40,27 @@ export class Toast extends React.Component<ToastProps, State> {
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile, rtl }) => {
-          console.log(`mobile = ${mobile}, rtl = ${rtl}`);
-          return (
-            <div
-              {...styles('root', { mobile, rtl, skin }, rest)}
-              data-skin={skin}
-            >
-              <span className={styles.gapBeforeMessage}></span>
-              <span className={styles.message} data-hook="message">
-                {children}
-              </span>
-              {shouldShowCloseButton ? (
-                <div
-                  data-hook="closeButton"
-                  className={styles.closeButton}
+        {({ mobile, rtl }) => (
+          <div
+            {...styles('root', { mobile, rtl, skin }, rest)}
+            data-skin={skin}
+          >
+            <span className={styles.gapBeforeMessage}></span>
+            <span className={styles.message} data-hook="message">
+              {children}
+            </span>
+            {shouldShowCloseButton ? (
+              <div className={styles.closeButtonWrapper}>
+                <CloseIconButton
                   onClick={this.handleOnCloseClick}
-                >
-                  <CloseIconButton />
-                </div>
-              ) : (
-                <span className={styles.gapAfterMessage}></span>
-              )}
-            </div>
-          );
-        }}
+                  data-hook="closeButton"
+                />
+              </div>
+            ) : (
+              <span className={styles.gapAfterMessage}></span>
+            )}
+          </div>
+        )}
       </TPAComponentsConsumer>
     );
   }

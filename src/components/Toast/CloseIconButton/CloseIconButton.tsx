@@ -5,6 +5,10 @@ import extendedStyles from './CloseIconButton.st.css';
 
 export const CloseIconButton = function(props) {
   return (
-    <IconButton icon={<PlusIcon />} {...extendedStyles('root', {}, props)} />
+    <IconButton
+      icon={<PlusIcon />}
+      {...extendedStyles('root', {}, props)}
+      {...props}
+    />
   );
 };

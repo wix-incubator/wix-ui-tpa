@@ -3,49 +3,49 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 import { Toast, TOAST_SKIN, ToastProps } from './';
+import { getMessage } from './helpers';
 
-class ToastVisual extends React.Component<ToastProps> {
+interface ToastVisualProps {
+  mobile: boolean;
+}
+
+class ToastVisual extends React.Component<ToastVisualProps & ToastProps> {
   static defaultProps = {
     mobile: false,
   };
 
   render() {
-    // const { mobile } = this.props;
-
-    // return (
-    //   <TPAComponentsProvider value={{ mobile }}>
-    //     <VisualContainerElement>
-    //       <Toast {...this.props} />
-    //     </VisualContainerElement>
-    //   </TPAComponentsProvider>
-    // );
+    const { mobile } = this.props;
 
     return (
-      <VisualContainerElement>
-        <Toast {...this.props} />
-      </VisualContainerElement>
+      <TPAComponentsProvider value={{ mobile }}>
+        <VisualContainerElement>
+          <Toast {...this.props} />
+        </VisualContainerElement>
+      </TPAComponentsProvider>
     );
   }
 }
 
+function getTests(isMobile) {
+  return Object.values(TOAST_SKIN).map(skin => ({
+    it: skin,
+    props: {
+      mobile: isMobile,
+      skin,
+      children: [getMessage(skin)],
+    },
+  }));
+}
+
 const tests = [
   {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {
-          skin: TOAST_SKIN.success,
-        },
-      },
-      // {
-      //   it: 'mobile',
-      //   props: {
-      //     mobile: true,
-      //     skin: TOAST_SKIN.success
-      //   },
-      // },
-    ],
+    describe: 'desktop',
+    its: [...getTests(false)],
+  },
+  {
+    describe: 'mobile',
+    its: [...getTests(true)],
   },
 ];
 

@@ -1,8 +1,9 @@
 import { TOAST_SKIN } from '../Toast';
+import { getMessage } from '../helpers';
 
 export const importExample = `import { Toast, TOAST_SKIN } from 'wix-ui-tpa/Toast';`;
 
-export const example = Object.keys(TOAST_SKIN).reduce(
+export const example = Object.values(TOAST_SKIN).reduce(
   (acc, skin) => {
     return {
       ...acc,
@@ -19,7 +20,7 @@ export const example = Object.keys(TOAST_SKIN).reduce(
   { desktop: {}, mobile: {} },
 );
 
-function getToast(skin, isMobile?): string {
+function getToast(skin: TOAST_SKIN, isMobile?: boolean): string {
   const message = getMessage(skin);
   const toast = `
       <Toast skin="${skin}">${message}</Toast>
@@ -34,19 +35,4 @@ function getToast(skin, isMobile?): string {
   return isMobile
     ? `<ExampleWithContextProps mobile="true">${toast}</ExampleWithContextProps>`
     : `<>${toast}</>`;
-}
-
-function getMessage(skin: TOAST_SKIN): string {
-  switch (skin) {
-    case TOAST_SKIN.success:
-      return '24 photos were uploaded successfully.';
-      break;
-    case TOAST_SKIN.error:
-      return 'These files exceed the upload limit.';
-      break;
-    case TOAST_SKIN.status:
-      return 'Uploading...';
-    default:
-      return '';
-  }
 }
