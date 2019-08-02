@@ -1,6 +1,9 @@
 import * as React from 'react';
 import styles from './Toast.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { IconButton } from '../IconButton';
+import { ReactComponent as PlusIcon } from '../../assets/icons/plus.svg';
+import { CloseIconButton } from './CloseIconButton/CloseIconButton';
 
 export enum TOAST_SKIN {
   status = 'status',
@@ -56,8 +59,7 @@ export class Toast extends React.Component<ToastProps, State> {
                   className={styles.closeButton}
                   onClick={this.handleOnCloseClick}
                 >
-                  {/* TODO: change to ICON button component*/}
-                  <span>x</span>
+                  <CloseIconButton />
                 </div>
               ) : (
                 <span className={styles.gapAfterMessage}></span>
