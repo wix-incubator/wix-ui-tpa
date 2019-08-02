@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isSelectKey } from '../utils';
+import { isSelectKey } from '../../../common/keyCodes';
 import style from './Tab.st.css';
 import { TABS_DATA_KEYS } from '../dataHooks';
 
