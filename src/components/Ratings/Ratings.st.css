@@ -53,6 +53,10 @@
     height: value(IconLargeSize);
 }
 
+.root:focus {
+    border: 1px solid blue;
+}
+
 .root .iconList {
     display: flex;
     align-items: center;
@@ -124,6 +128,7 @@
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
+
 .root:not(:focus-within) .icon:checked path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
@@ -132,9 +137,7 @@
 .root:not(:mode(display)):hover .icon:hover path,
 .root:not(:mode(display)):hover .icon:hover ~ .icon path,
 .root:not(:mode(display)) .icon:focus-within path,
-.root:not(:mode(display)) .icon:focus-within ~ .icon path,
-.root:not(:mode(display)) .icon:focus path,
-.root:not(:mode(display)) .icon:focus ~ .icon path {
+.root:not(:mode(display)) .icon:focus-within ~ .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
