@@ -28,7 +28,7 @@ describe('Ratings', () => {
 
     await driver.clickOnStar(3);
 
-    expect(onSelectSpy).toHaveBeenCalledWith(2);
+    expect(onSelectSpy).toHaveBeenCalledWith(4);
   });
 
   it('should show active stars with provided value', async () => {
@@ -61,7 +61,7 @@ describe('Ratings', () => {
 
     await driver.clickOnStar(3);
 
-    expect(onSelectSpy).toHaveBeenCalledWith(2);
+    expect(onSelectSpy).toHaveBeenCalledWith(4);
   });
 
   it('should NOT call onSelect with mode="display"', async () => {

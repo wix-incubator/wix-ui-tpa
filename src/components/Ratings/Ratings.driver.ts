@@ -23,7 +23,9 @@ export interface RatingsDriver extends BaseUniDriver {
 export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
   const iconDatahook = `[data-hook="${RATINGS_DATA_HOOKS.IconWrapper}"]`;
   const inputOptionDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOption}"]`;
-  const inputOptionCurrentDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOptionCurrent}"]`;
+  const inputOptionCurrentDatahook = `[data-hook="${
+    RATINGS_DATA_HOOKS.InputOptionCurrent
+  }"]`;
   const ratingInfoDatahook = `[data-hook="${RATINGS_DATA_HOOKS.RatingInfo}"]`;
   const filledColor = 'rgb(0, 185, 232)';
 
@@ -54,7 +56,7 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       return (await base.attr(RATINGS_DATA_KEYS.Size)) === 'large';
     },
     async hoverStar(idx) {
-      return getStarInput(5 - idx).hover();
+      return getStarInput(idx - 1).hover();
     },
     async getHoveredStars() {
       const icons = getStarIcons();

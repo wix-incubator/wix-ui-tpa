@@ -49,6 +49,8 @@ interface DefaultProps {
 interface RatingsState {
   currentHovered: number;
   currentFocus: number;
+  listFocused: boolean;
+  captured: boolean;
 }
 
 /** Ratings component based on IconToggle */
@@ -69,6 +71,8 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
   state: RatingsState = {
     currentHovered: 0,
     currentFocus: 0,
+    listFocused: false,
+    captured: false,
   };
 
   getDataAttributes() {
@@ -90,7 +94,6 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
   };
 
   handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    e.preventDefault();
     const { onSelect } = this.props;
     const currentFocus = this.state.currentFocus;
     let direction = 0;
@@ -122,21 +125,41 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
       nextFocus = nextFocus <= 0 ? nextFocus + 5 : nextFocus;
 
       this.setState({ currentFocus: nextFocus }, () => {
-        this.iconRefs[5 - nextFocus].focus();
+        this.iconRefs[nextFocus - 1].focus();
       });
     }
   };
 
-  handleUnfocus = e => {
-    if (!e.relatedTarget) {
-      this.setState({ currentFocus: 0 });
+  handleUnfocus = (e: React.FocusEvent) => {
+    if (
+      !e.relatedTarget ||
+      (e.relatedTarget && this.iconRefs.indexOf(e.relatedTarget) === -1)
+    ) {
+      this.setState({ currentFocus: 0, listFocused: false, captured: false });
     }
+  };
+
+  handleCaptureFocus = (e: React.FocusEvent) => {
+    const { value } = this.props;
+    const { captured } = this.state;
+
+    this.setState({ listFocused: true });
+
+    if (!captured && value && e.target !== this.iconRefs[value - 1]) {
+      this.setState({ captured: true });
+      this.iconRefs[value - 1].focus();
+    }
+  };
+
+  handleItemCapture = (idx: number) => {
+    this.setState({ currentFocus: idx });
   };
 
   onClick = (idx: number) => {
     const { mode, onSelect } = this.props;
 
     this.setState({ currentFocus: idx });
+    this.iconRefs[idx - 1].focus();
 
     if (mode === Mode.Input && onSelect) {
       onSelect(idx);
@@ -214,9 +237,9 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
       countDisplay,
       ...rest
     } = this.props;
+    const { listFocused } = this.state;
     const content = this._renderContent();
     const ratingList = Array.from(new Array(5));
-    const ratingListLength = ratingList.length;
     const showInputOptions = inputOptions.length && mode === Mode.Input;
     const showRatingInfo =
       (ratingDisplay || countDisplay) && mode === Mode.Display;
@@ -229,25 +252,35 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
         onBlur={this.handleUnfocus}
         data-hook={this.props['data-hook']}
       >
-        <div className={styles.iconList}>
+        <div
+          className={classNames(styles.iconList, {
+            [styles.iconListFocused]: listFocused,
+          })}
+          onFocusCapture={this.handleCaptureFocus}
+        >
+          <input type="radio" hidden checked readOnly />
           {ratingList.map((_el, idx: number) => {
-            const humanOrder = ratingListLength - idx;
+            const humanOrder = idx + 1;
             const checked = humanOrder <= value;
             const ariaLabel = inputOptions.length
               ? inputOptions[4 - idx]
               : (5 - idx).toString();
 
             return (
-              <span
+              <label
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 key={idx}
                 {...styles(styles.icon, { checked })}
                 onMouseEnter={() => this.handleHoverIcon(humanOrder)}
                 onMouseLeave={this.handleUnhoverIcon}
+                onFocusCapture={() => {
+                  this.handleItemCapture(humanOrder);
+                }}
                 ref={this.setRef}
-                tabIndex={-1}
+                tabIndex={0}
               >
                 <CoreRadio
+                  tabIndex={-1}
                   value={humanOrder.toString()}
                   aria-label={ariaLabel}
                   uncheckedIcon={content}
@@ -256,7 +289,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                   disabled={disabled}
                   onChange={() => this.onClick(humanOrder)}
                 />
-              </span>
+              </label>
             );
           })}
         </div>

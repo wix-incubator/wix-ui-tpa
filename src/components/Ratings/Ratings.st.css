@@ -56,8 +56,7 @@
 .root .iconList {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
+    flex-direction: row;
 
     margin: 0 calc(0px - value(IconGap));
 
@@ -76,11 +75,13 @@
 }
 
 .root:size(large) .icon {
-    margin-top: 7px;
+    transform: translateY(0);
 }
 
 /* DISABLED */
-.root:disabled .icon path {
+.root:disabled .iconList .icon path,
+.root:disabled .iconList.iconListFocused .icon path,
+.root:disabled .iconList.iconListFocused .icon:focus path {
     stroke: color(value(DisabledColor));
     fill: transparent;
 };
@@ -112,7 +113,7 @@
     pointer-events: none;
 }
 
-.root:mode(display) .icon path {
+.root:mode(display) .iconList .icon path {
     stroke: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
     fill: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
 }
@@ -122,30 +123,39 @@
 .icon {
     -st-states: checked;
 
-    margin-top: 5px;
+    transform: translateY(2px);
     padding: 0 value(IconGap);
 }
 
 .root .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 
-.root:not(:focus-within) .icon:checked path {
+.root .iconList .icon:checked path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
  }
 
-.root:not(:mode(display)) .iconList .icon:hover path,
-.root:not(:mode(display)) .iconList .icon:hover ~ .icon path,
-.root:not(:mode(display)) .icon:focus-within path,
-.root:not(:mode(display)) .icon:focus-within ~ .icon path {
-    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+/* ---- HOVER/FOCUS MAGIC ----  */
+.root input:checked ~ .icon path {
+	fill: transparent;
+}
+
+.root:not(:mode(display)):not(:disabled) .iconList:hover .icon path,
+.root:not(:mode(display)):not(:disabled) .iconList.iconListFocused .icon path {
     fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
-.root .iconList:hover .icon path {
+.root:not(:mode(display)):not(:disabled) .iconList .icon:hover ~ .icon path,
+.root:not(:mode(display)):not(:disabled) .iconList .icon:focus ~ .icon path {
     fill: transparent;
+}
+
+.root:not(:mode(display)):not(:disabled) .iconList .icon:hover path,
+.root:not(:mode(display)):not(:disabled) .iconList .icon:focus path {
+	fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 /* ----- TEXT ------ */
