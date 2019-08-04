@@ -30,10 +30,8 @@
 
 .root {
     -st-states: disabled, error, size( enum(small, large) ), mode( enum(input, display) ), layout( enum(aside, bottom) );
-
-    display: inline-flex;
     align-items: center;
-    cursor: pointer;
+    display: inline-flex;
 }
 
 .root:layout(bottom) {
@@ -57,12 +55,13 @@
 .root .iconList {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
 
     margin: 0 calc(0px - value(IconGap));
 
     direction: ltr;
+    cursor: pointer;
 }
 
 .root:size(large) .iconList {
@@ -86,7 +85,7 @@
 .root:disabled .icon path {
     stroke: color(value(DisabledColor));
     fill: transparent;
-};
+}
 
 .root:disabled,
 .root:disabled {
@@ -121,26 +120,24 @@
     padding: 0 value(IconGap);
 }
 
-.root .icon path {
-    stroke: color(fallback(value(IconColor), value(DefaultColor)));
-}
-
-
-.root:not(:focus-within) .icon:checked path {
-    stroke: color(fallback(value(IconColor), value(DefaultColor)));
-    fill: color(fallback(value(IconColor), value(DefaultColor)));
- }
-
-.root:not(:mode(display)):hover .icon:hover path,
-.root:not(:mode(display)):hover .icon:hover ~ .icon path,
-.root:not(:mode(display)) .icon:focus-within path,
-.root:not(:mode(display)) .icon:focus-within ~ .icon path {
+.icon path,
+.root:mode(display) .iconList .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
-.root:not(:mode(display)):hover .icon:not(:hover) path {
+.root:mode(input) .iconList.empty:not(:hover) .icon path {
     fill: transparent;
+}
+
+.root:mode(input) .iconList:not(:hover) .icon:checked ~ .icon path,
+.root:mode(input):hover .icon:hover ~ .icon path {
+    fill: transparent;
+}
+
+.root:mode(display) .iconList .icon:checked ~ .icon path {
+    stroke: color(value(DisabledColor));
+    fill: color(value(DisabledColor));
 }
 
 /* ----- TEXT ------ */
