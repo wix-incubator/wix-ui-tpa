@@ -14,15 +14,18 @@
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
 }
 
-.root:skin(success) {
+.root:skin(success),
+.root:skin(success) .message:after {
     background-color: value(successColor);
 }
 
-.root:skin(error) {
+.root:skin(error),
+.root:skin(error) .message:after {
     background-color: value(errorColor);
 }
 
-.root:skin(status) {
+.root:skin(status),
+.root:skin(status) .message:after {
     background-color: value(statusColor);
 }
 
@@ -32,12 +35,32 @@
     min-width: 12px;
 }
 
+.message:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.message:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+}
+
 .message {
     margin: 16px 20px;
     display: inline-block;
     max-height: 40px;
     line-height: 20px;
     overflow: hidden;
+    position: relative;
+    text-align: justify;
+    margin-right: calc(20px - 1em);
+    padding-right: 1em;
 }
 
 .closeButtonWrapper {
