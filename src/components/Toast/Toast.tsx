@@ -45,7 +45,7 @@ export class Toast extends React.Component<ToastProps> {
             data-skin={skin}
             data-mobile={mobile}
           >
-            <span className={styles.gapBeforeMessage}></span>
+            <span role="presentation" className={styles.gapBeforeMessage} />
             <span className={styles.message} data-hook="message">
               {children}
             </span>
@@ -57,7 +57,7 @@ export class Toast extends React.Component<ToastProps> {
                 />
               </div>
             ) : (
-              <span className={styles.gapAfterMessage}></span>
+              <span role="presentation" className={styles.gapAfterMessage} />
             )}
           </div>
         )}
