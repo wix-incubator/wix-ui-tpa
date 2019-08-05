@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 import { Toast, TOAST_SKIN, ToastProps } from './';
-import { getMessage } from './helpers';
+import { skinMessages } from './helpers';
 
 interface ToastVisualProps {
   mobile: boolean;
@@ -33,7 +33,7 @@ function getTests(isMobile) {
     props: {
       mobile: isMobile,
       skin,
-      children: [getMessage(skin)],
+      children: [skinMessages[skin]],
     },
   }));
 }

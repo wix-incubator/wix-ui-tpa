@@ -1,8 +1,3 @@
-:import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
-}
-
 :vars {
     successColor: #57C487;
     errorColor: #F64D43;
@@ -15,7 +10,7 @@
     color: #FFFFFF;
     border-radius: 2px;
     font-size: 14px;
-    font-family: "HelveticaNeueW01-55Roma";
+    font-family: "HelveticaNeueW01-55Roma", "HelveticaNeueW02-55Roma", "HelveticaNeueW10-55Roma", "Helvetica Neue", "Helvetica", "Arial", "メイリオ, meiryo", "ヒラギノ角ゴ pro w3", "hiragino kaku gothic pro", "sans-serif";
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
 }
 

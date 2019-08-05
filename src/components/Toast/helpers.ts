@@ -1,16 +1,7 @@
 import { TOAST_SKIN } from './Toast';
 
-export function getMessage(skin: TOAST_SKIN): string {
-  switch (skin) {
-    case TOAST_SKIN.success:
-      return '24 photos were uploaded successfully.';
-      break;
-    case TOAST_SKIN.error:
-      return 'These files exceed the upload limit.';
-      break;
-    case TOAST_SKIN.status:
-      return 'Uploading...';
-    default:
-      return '';
-  }
-}
+export const skinMessages: { [skin in keyof typeof TOAST_SKIN]: string } = {
+  [TOAST_SKIN.success]: '24 photos were uploaded successfully.',
+  [TOAST_SKIN.error]: 'These files exceed the upload limit.',
+  [TOAST_SKIN.status]: 'Uploading...',
+};

@@ -1,5 +1,5 @@
 import { TOAST_SKIN } from '../Toast';
-import { getMessage } from '../helpers';
+import { skinMessages } from '../helpers';
 
 export const importExample = `import { Toast, TOAST_SKIN } from 'wix-ui-tpa/Toast';`;
 
@@ -21,7 +21,7 @@ export const example = Object.values(TOAST_SKIN).reduce(
 );
 
 function getToast(skin: TOAST_SKIN, isMobile?: boolean): string {
-  const message = getMessage(skin);
+  const message = skinMessages[skin];
   const toast = `
       <Toast skin="${skin}">${message}</Toast>
       <br/>

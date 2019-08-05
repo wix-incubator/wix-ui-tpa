@@ -14,25 +14,23 @@ export interface ToastProps {
   skin: TOAST_SKIN;
   shouldShowCloseButton?: boolean;
   /** Callback function, will be called when click on close button */
-  onClose?(): void;
+  onClose?(event: MouseEvent): void;
 }
 
 export interface DefaultProps {
   shouldShowCloseButton: boolean;
 }
 
-interface State {}
-
-export class Toast extends React.Component<ToastProps, State> {
+export class Toast extends React.Component<ToastProps> {
   static displayName = 'Toast';
 
   static defaultProps: DefaultProps = {
     shouldShowCloseButton: false,
   };
 
-  handleOnCloseClick = () => {
+  handleOnCloseClick = (event: MouseEvent) => {
     const { onClose } = this.props;
-    onClose && onClose();
+    onClose && onClose(event);
   };
 
   render() {
@@ -43,7 +41,9 @@ export class Toast extends React.Component<ToastProps, State> {
         {({ mobile, rtl }) => (
           <div
             {...styles('root', { mobile, rtl, skin }, rest)}
+            role="alert"
             data-skin={skin}
+            data-mobile={mobile}
           >
             <span className={styles.gapBeforeMessage}></span>
             <span className={styles.message} data-hook="message">

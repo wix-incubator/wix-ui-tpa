@@ -59,7 +59,11 @@ describe('Toast', () => {
         />,
       );
       await (await driver.getCloseButton()).click();
-      expect(onClose).toHaveBeenCalled();
+      expect(onClose).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'click',
+        }),
+      );
     });
 
     it('should NOT call onClose callback when click outside close button', async () => {

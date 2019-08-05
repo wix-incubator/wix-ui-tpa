@@ -2,8 +2,7 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Toast.st.css';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { TOAST_SKIN } from './Toast';
 
 export interface ToastDriver extends BaseUniDriver {
@@ -17,19 +16,29 @@ export interface ToastDriver extends BaseUniDriver {
 }
 
 const hasSkin = async (base: UniDriver, skin: TOAST_SKIN): Promise<boolean> => {
-  const skinValue = await base.attr('data-skin');
-  return skinValue === skin;
+  return hasDataAttr(base, 'skin', skin);
+};
+
+const hasMobile = async (base: UniDriver): Promise<boolean> => {
+  return hasDataAttr(base, 'mobile', 'true');
+};
+
+const hasDataAttr = async (
+  base: UniDriver,
+  field: string,
+  expectedValue: any,
+): Promise<boolean> => {
+  const fieldValue = await base.attr(`data-${field}`);
+  return fieldValue === expectedValue;
 };
 
 export const toastDriverFactory = (base: UniDriver): ToastDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
-
   const getCloseButton = async () => base.$('[data-hook="closeButton"]');
   const getMessage = async () => base.$('[data-hook="message"]');
 
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
+    isMobile: () => hasMobile(base),
     /* Shows is the toast render with "success" skin */
     isSuccess: () => hasSkin(base, TOAST_SKIN.success),
     /* Shows is the toast render with "error" skin */
