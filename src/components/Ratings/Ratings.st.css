@@ -73,10 +73,6 @@
     font: value(LargeFont);
 }
 
-.root:size(large) .icon {
-    margin-top: 7px;
-}
-
 /* DISABLED */
 .root:hover:not(:disabled):not(:mode(display)) .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
@@ -121,7 +117,6 @@
 .icon {
     -st-states: checked;
 
-    margin-top: 5px;
     padding: 0 value(IconGap);
 }
 
@@ -147,6 +142,7 @@
 
 /* ----- TEXT ------ */
 .labelList {
+    transform: translateY(-2px);
     margin: 0 calc(12px - value(IconGap));
 }
 
@@ -155,6 +151,7 @@
 }
 
 .root:layout(bottom) .labelList {
+    transform: translateY(0);
     margin: 0;
 }
 
