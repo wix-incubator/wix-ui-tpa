@@ -99,6 +99,11 @@
     stroke: color(value(errorColor))
 }
 
+.root:error .iconList:hover .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
 /* MODE */
 .root:mode(display),
 .root:mode(display) .icon {
@@ -121,7 +126,7 @@
 }
 
 .icon path,
-.root:mode(display) .iconList .icon path {
+.root:mode(display) .iconList:not(.empty) .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: color(fallback(value(IconColor), value(DefaultColor)));
 }
@@ -136,8 +141,8 @@
 }
 
 .root:mode(display) .iconList .icon:checked ~ .icon path {
-    stroke: color(value(DisabledColor));
-    fill: color(value(DisabledColor));
+    stroke: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+    fill: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
 }
 
 /* ----- TEXT ------ */

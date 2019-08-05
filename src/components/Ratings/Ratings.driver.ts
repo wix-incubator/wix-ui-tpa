@@ -8,7 +8,7 @@ import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
 
 export interface RatingsDriver extends BaseUniDriver {
   getStars(): Promise<number>;
-  getActiveStars(): Promise<number>;
+  getActiveStar(): Promise<string>;
   getHoveredStars(): Promise<number>;
   clickOnStar(idx: number): Promise<void>;
   hoverStar(idx: number): Promise<void>;
@@ -23,12 +23,14 @@ export interface RatingsDriver extends BaseUniDriver {
 export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
   const iconDatahook = `[data-hook="${RATINGS_DATA_HOOKS.IconWrapper}"]`;
   const inputOptionDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOption}"]`;
-  const inputOptionCurrentDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOptionCurrent}"]`;
+  const inputOptionCurrentDatahook = `[data-hook="${
+    RATINGS_DATA_HOOKS.InputOptionCurrent
+  }"]`;
   const ratingInfoDatahook = `[data-hook="${RATINGS_DATA_HOOKS.RatingInfo}"]`;
   const filledColor = 'rgb(0, 185, 232)';
 
   const getStarInput = (idx: number): UniDriver =>
-    base.$$(`${iconDatahook} input`).get(idx);
+    base.$$(`${iconDatahook}`).get(idx);
 
   const getStarIcons = (): UniDriverList => base.$$(`${iconDatahook} svg path`);
   const getLabel = (): UniDriver => base.$(inputOptionDatahook);
@@ -38,8 +40,8 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
     async getStars() {
       return base.$$(iconDatahook).count();
     },
-    async getActiveStars() {
-      return base.$$(`${iconDatahook} input[checked]`).count();
+    async getActiveStar() {
+      return base.$(`${iconDatahook} input[checked]`).value();
     },
     async clickOnStar(idx) {
       return getStarInput(idx).click();
@@ -54,7 +56,7 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       return (await base.attr(RATINGS_DATA_KEYS.Size)) === 'large';
     },
     async hoverStar(idx) {
-      return getStarInput(5 - idx).hover();
+      return getStarInput(idx - 1).hover();
     },
     async getHoveredStars() {
       const icons = getStarIcons();

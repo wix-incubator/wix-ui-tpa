@@ -14,7 +14,6 @@ export const RatingsExtendedExample = () => {
           value={value}
           inputOptions={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']}
           onSelect={val => {
-            console.log('adler', 'RatingsExtendedExample.tsx:17', val);
             setValue(val);
           }}
           className={extendedStyles.ratings}

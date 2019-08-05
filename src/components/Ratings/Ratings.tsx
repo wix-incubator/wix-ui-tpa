@@ -176,7 +176,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
         data-hook={this.props['data-hook']}
       >
         <div
-          className={styles.iconList + ' ' + (!value ? styles.empty : '')}
+          className={`${styles.iconList} ${!value ? styles.empty : ''}`}
           role={'group'}
           tabIndex={mode === Mode.Display ? -1 : undefined}
         >
@@ -189,7 +189,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
             return (
               <CoreRadio
                 key={idx}
-                value={`${idx}`}
+                value={`${idx + 1}`}
                 aria-label={ariaLabel}
                 uncheckedIcon={content}
                 checkedIcon={content}

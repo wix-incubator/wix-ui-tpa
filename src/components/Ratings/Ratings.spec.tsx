@@ -28,13 +28,13 @@ describe('Ratings', () => {
 
     await driver.clickOnStar(3);
 
-    expect(onSelectSpy).toHaveBeenCalledWith(2);
+    expect(onSelectSpy).toHaveBeenCalledWith(4);
   });
 
   it('should show active stars with provided value', async () => {
     const driver = createDriver(<Ratings value={4} />);
 
-    expect(await driver.getActiveStars()).toBe(4);
+    expect(await driver.getActiveStar()).toBe('4');
   });
 
   it('should show error state', async () => {
@@ -61,7 +61,7 @@ describe('Ratings', () => {
 
     await driver.clickOnStar(3);
 
-    expect(onSelectSpy).toHaveBeenCalledWith(2);
+    expect(onSelectSpy).toHaveBeenCalledWith(4);
   });
 
   it('should NOT call onSelect with mode="display"', async () => {
