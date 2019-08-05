@@ -194,7 +194,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                 uncheckedIcon={content}
                 checkedIcon={content}
                 checked={checked}
-                disabled={disabled}
+                disabled={disabled && mode !== Mode.Display}
                 onChange={() => this.onClick(idx + 1)}
                 name={this.props.name}
                 {...styles(styles.icon, { checked })}

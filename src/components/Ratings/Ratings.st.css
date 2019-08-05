@@ -58,7 +58,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 
-    margin: 0 calc(0px - value(IconGap));
+    margin: 0 calc(0px - value(IconGap) - value(IconGap));
 
     direction: ltr;
     cursor: pointer;
@@ -117,7 +117,7 @@
 .icon {
     -st-states: checked;
 
-    padding: 0 value(IconGap);
+    padding: 0 calc(value(IconGap) + value(IconGap));
 }
 
 .icon path,
@@ -143,16 +143,21 @@
 /* ----- TEXT ------ */
 .labelList {
     transform: translateY(-2px);
-    margin: 0 calc(12px - value(IconGap));
+    margin: 0 12px;
 }
 
 .root:size(large):layout(aside) .labelList {
-    margin: 0 calc(24px - value(IconLargeGap));
+    margin: 0 24px;
 }
 
 .root:layout(bottom) .labelList {
     transform: translateY(0);
-    margin: 0;
+    margin: 10px 0 0;
+}
+
+.root:layout(bottom):size(large) {
+    transform: translateY(0);
+    margin: 20px 0 0;
 }
 
 .inputOption {
