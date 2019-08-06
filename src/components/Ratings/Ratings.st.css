@@ -155,7 +155,7 @@
     margin: 10px 0 0;
 }
 
-.root:layout(bottom):size(large) {
+.root:layout(bottom):size(large) .labelList {
     transform: translateY(0);
     margin: 20px 0 0;
 }
