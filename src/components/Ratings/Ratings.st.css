@@ -171,18 +171,22 @@
 
 /* ------ /inoutOptions ------ */
 .ratingInfo {
-    margin: 0 calc(12px - value(IconGap));
+    margin: 0 12px;
 
     font: value(DefaultFont);
     color: color(fallback(value(TextColor), value(DefaultTextColor)));
 }
 
 .root:size(large):layout(aside) .ratingInfo {
-    margin: 0 calc(24px - value(IconLargeGap));
+    margin: 0 24px;
 }
 
 .root:layout(bottom) .ratingInfo {
-    margin: 0 value(IconGap);
+    margin: 10px 0 0;
 
     width: 100%;
+}
+
+.root:layout(bottom):size(large) .ratingInfo {
+    margin: 20px 0 0;
 }
