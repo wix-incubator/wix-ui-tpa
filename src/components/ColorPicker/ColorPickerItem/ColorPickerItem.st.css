@@ -1,0 +1,51 @@
+/* prettier-ignore */
+:import {
+    -st-from: "../../../common/formatters.st";
+    -st-named: applyUnit, color, fallback, value, applyOpacity;
+}
+
+/* prettier-ignore */
+:vars {
+    /*Defaults*/
+    DefaultItemSize: 24;
+    DefaultFocusColor: color-5;
+}
+
+/* prettier-ignore */
+:vars {
+    Size: --overridable;
+}
+
+/* prettier-ignore */
+:vars {
+    colorPickerItemSize: applyUnit(fallback(value(Size), value(DefaultItemSize)), px);
+    focusColor: applyOpacity(color(value(DefaultFocusColor)), 0.6);
+}
+
+.radioOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 4px;
+  width: value(colorPickerItemSize);
+  height: value(colorPickerItemSize);
+  border-radius: 50%;
+  transition: box-shadow 0.1s linear;
+  box-shadow: 0px 0px 0px 0px color(value(focusColor));
+}
+
+/* DIRTY HACK START */
+.radioOuter:hover,
+input:focus ~ span .radioOuter {
+  box-shadow: 0px 0px 0px 1px color(value(focusColor));
+}
+/* DIRTY HACK FINISH */
+
+.radioInner {
+  box-sizing: border-box;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  border-radius: value(colorPickerBorderRadius);
+  border: 1px solid #c9c9c9;
+}
