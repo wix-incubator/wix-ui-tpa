@@ -15,4 +15,5 @@ export * from './components/Text';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 export * from './components/Pagination';
+export * from './components/Ratings';
 export * from './components/TPAComponentsConfig';

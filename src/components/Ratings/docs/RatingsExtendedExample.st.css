@@ -1,0 +1,12 @@
+:import {
+    -st-from: "../Ratings.st.css";
+    -st-default: TPARatings;
+}
+
+.ratings {
+    -st-mixin: TPARatings(
+            IconColor '"--iconColor"',
+            IconEmptyColor '"--iconEmptyColor"',
+            TextColor '"--textColor"'
+    );
+}

@@ -1,0 +1,194 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultTextColor: color-5;
+    DefaultColor: color-8;
+    DefaultEmptyColor: color-3;
+    DisabledColor: color-3;
+    IconGap: 1.5px;
+    IconLargeGap: 5.5px;
+    IconLargeSize: 30px;
+    DefaultFont: font("{theme: 'Body-S', size: '14px', lineHeight: '1.4em'}");
+    LargeFont: font("{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}");
+}
+
+:vars {
+    /* Overrides */
+    TextColor: --overridable;
+    IconColor: --overridable;
+    IconEmptyColor: --overridable;
+}
+
+.root {
+    -st-states: disabled, error, size( enum(small, large) ), mode( enum(input, display) ), layout( enum(aside, bottom) );
+    align-items: center;
+    display: inline-flex;
+}
+
+.root:layout(bottom) {
+    flex-direction: column;
+    align-items: baseline;
+}
+
+/* ------ States ------ */
+
+/* SIZE */
+.root:size(large) .icon {
+   padding: 0 value(IconLargeGap);
+}
+
+.root:size(large) .icon svg {
+    width: value(IconLargeSize);
+    height: value(IconLargeSize);
+}
+
+
+.root .iconList {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    margin: 0 calc(0px - value(IconGap) - value(IconGap));
+
+    direction: ltr;
+    cursor: pointer;
+}
+
+.root:size(large) .iconList {
+    margin: 0 calc(0px - value(IconLargeGap));
+}
+
+.root:size(large) .inputOption,
+.root:size(large) .ratingInfo {
+    font: value(LargeFont);
+}
+
+/* DISABLED */
+.root:hover:not(:disabled):not(:mode(display)) .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+.root:disabled .icon path {
+    stroke: color(value(DisabledColor));
+    fill: transparent;
+}
+
+.root:disabled,
+.root:disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* ERROR */
+.root:error .icon path {
+    fill: transparent;
+    stroke: color(value(errorColor))
+}
+
+.root:error .iconList:hover .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+/* MODE */
+.root:mode(display),
+.root:mode(display) .icon {
+    cursor: default;
+    pointer-events: none;
+}
+
+.root:mode(display) .icon path {
+    stroke: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+    fill: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+}
+
+/* ------ /States -------*/
+
+.icon {
+    -st-states: checked;
+
+    padding: 0 calc(value(IconGap) + value(IconGap));
+}
+
+.icon path,
+.root:mode(display) .iconList:not(.empty) .icon path {
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    fill: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+.root:mode(input) .iconList.empty:not(:hover) .icon path {
+    fill: transparent;
+}
+
+.root:mode(input) .iconList:not(:hover) .icon:checked ~ .icon path,
+.root:mode(input):hover .icon:hover ~ .icon path {
+    fill: transparent;
+}
+
+.root:mode(display) .iconList .icon:checked ~ .icon path {
+    stroke: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+    fill: color(fallback(value(IconEmptyColor), value(DefaultEmptyColor)));
+}
+
+/* ----- TEXT ------ */
+.labelList {
+    transform: translateY(-2px);
+    margin: 0 12px;
+}
+
+.root:size(large):layout(aside) .labelList {
+    margin: 0 24px;
+}
+
+.root:layout(bottom) .labelList {
+    transform: translateY(0);
+    margin: 10px 0 0;
+}
+
+.root:layout(bottom):size(large) .labelList {
+    transform: translateY(0);
+    margin: 20px 0 0;
+}
+
+.inputOption {
+    font: value(DefaultFont);
+    color: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root:not(:disabled):not(:mode(display)) .inputOption.inputOptionCurrent {
+    display: inline-block;
+}
+
+/* ------ /inoutOptions ------ */
+.ratingInfo {
+    transform: translateY(-2px);
+    margin: 0 12px;
+
+    font: value(DefaultFont);
+    color: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root:size(large):layout(aside) .ratingInfo {
+    margin: 0 24px;
+}
+
+.root:layout(bottom) .ratingInfo {
+    transform: translateY(0);
+    margin: 10px 0 0;
+
+    width: 100%;
+}
+
+.root:layout(bottom):size(large) .ratingInfo {
+    margin: 20px 0 0;
+}
