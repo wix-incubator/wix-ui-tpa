@@ -42,6 +42,7 @@
 
 .closeButtonWrapper {
     padding: 14px 12px;
+    height: 24px;
 }
 
 .root:mobile .message {
