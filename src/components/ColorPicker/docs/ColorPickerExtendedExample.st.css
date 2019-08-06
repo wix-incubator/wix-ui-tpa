@@ -1,0 +1,25 @@
+:import {
+    -st-from: "../ColorPicker.st.css";
+    -st-default: TPAColorPicker;
+}
+
+.root {
+    -st-mixin: TPAColorPicker(
+            MainWidth '"--mainWidth"',
+            ItemSize '"--itemSize"',
+            BorderRadius '"--borderRadius"'
+    );
+}
+
+.radioOuter {
+    -st-mixin: TPAColorPicker(
+            ItemSize '"--itemSize"',
+            BorderRadius '"--borderRadius"'
+    );
+}
+
+.radioInner {
+    -st-mixin: TPAColorPicker(
+            BorderRadius '"--borderRadius"'
+    );
+}

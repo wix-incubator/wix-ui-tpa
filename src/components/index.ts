@@ -15,3 +15,4 @@ export * from './Avatar';
 export { IconButton } from './IconButton';
 export { AvatarGroup } from './AvatarGroup';
 export { Counter } from './Counter';
+export { ColorPicker } from './ColorPicker';

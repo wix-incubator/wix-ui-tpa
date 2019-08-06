@@ -1,0 +1,62 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: applyUnit, color, fallback, value, applyOpacity;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultWidth: 120;
+    DefaultItemSize: 24;
+    DefaultBorderRadius: 100;
+    DefaultFocusColor: color-5;
+}
+
+:vars {
+    /*Overrides*/
+    MainWidth: --overridable;
+    ItemSize: --overridable;
+    BorderRadius: --overridable;
+}
+
+:vars {
+    colorPickerWidth: applyUnit(fallback(value(MainWidth), value(DefaultWidth)), px);
+    colorPickerItemSize: applyUnit(fallback(value(ItemSize), value(DefaultItemSize)), px);
+    colorPickerBorderRadius: applyUnit(fallback(value(BorderRadius), value(DefaultBorderRadius)), px);
+    focusColor: applyOpacity(color(value(DefaultFocusColor)), 0.6);
+}
+
+.root {
+    -st-states: disabled;
+    display: inline-flex;
+    width: calc(value(colorPickerWidth) + 8px);
+    margin: -4px;
+    flex-wrap: wrap;
+}
+
+.radioOuter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    margin: 4px;
+    width: value(colorPickerItemSize);
+    height: value(colorPickerItemSize);
+    border-radius: value(colorPickerBorderRadius);
+    transition: box-shadow 0.1s linear;
+    box-shadow: 0px 0px 0px 0px color(value(focusColor));
+}
+
+/* DIRTY HACK START */
+.radioOuter:hover, input:focus ~ span .radioOuter {
+    box-shadow: 0px 0px 0px 1px color(value(focusColor));
+}
+/* DIRTY HACK FINISH */
+
+.radioInner {
+    box-sizing: border-box;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: value(colorPickerBorderRadius);
+    border: 1px solid #C9C9C9;
+}
+
