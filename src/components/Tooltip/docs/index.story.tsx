@@ -1,12 +1,20 @@
 import * as React from 'react';
 import { Tooltip } from '..';
 import * as TooltipSource from '!raw-loader!../Tooltip.tsx';
-
+import { TooltipSkin } from '../TooltipEnums';
 const childrenExamples = [
   { label: 'Simple text', value: <span>Hover me for a tooltip!</span> },
 ];
 
-const contentExamples = [{ label: 'Simple text', value: 'Hello World' }];
+const contentExamples = [
+  { label: 'Simple text', value: 'Hello World' },
+  {
+    label: 'Long text',
+    value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+  },
+];
+
+const skinExamples = Object.values(TooltipSkin);
 
 export default {
   category: 'Components',
@@ -24,6 +32,7 @@ export default {
   exampleProps: {
     children: childrenExamples,
     content: contentExamples,
+    skin: skinExamples,
     placement: [
       'auto-start',
       'auto',

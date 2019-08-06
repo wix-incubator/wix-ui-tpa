@@ -3,8 +3,14 @@
     -st-named: Tooltip;
 }
 
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
 .root {
     -st-extends: Tooltip;
+    -st-states: skin(enum(standard, error));
 }
 
 .root::popoverContent {
@@ -92,4 +98,13 @@
 .root::popover[data-placement].popoverAnimation-exit.popoverAnimation-exit-active {
     opacity: 0;
     transition: transform 80ms linear, applyOpacity 80ms linear;
+}
+
+.root:skin(error)::popoverContent {
+    background-color: value(errorColor);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.root:skin(error) .tpaArrow path {
+    fill: value(errorColor);
 }

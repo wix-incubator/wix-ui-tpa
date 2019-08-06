@@ -5,22 +5,25 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { tooltipTestkitFactory } from '../../testkit/protractor';
+import { testPropsList } from './docs/testProps';
 
 describe('Tooltip', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Tests',
     story: 'Tooltip',
     withExamples: true,
   });
-  const dataHook = 'story-tooltip';
 
   beforeEach(() => browser.get(storyUrl));
 
-  eyes.it('should render', async () => {
-    const driver = tooltipTestkitFactory({ dataHook });
-    await waitForVisibilityOf(driver.element(), 'Cannot find Tooltip');
-    expect(await driver.element().isDisplayed()).toBe(true);
-    await driver.mouseEnter();
-    expect(await driver.isContentElementExists()).toBeTruthy();
+  testPropsList.forEach(prop => {
+    const dataHook = prop['data-hook'];
+    eyes.it(`Visual test: ${dataHook}`, async () => {
+      const driver = tooltipTestkitFactory({ dataHook });
+      await waitForVisibilityOf(driver.element(), 'Cannot find Tooltip');
+      expect(await driver.element().isDisplayed()).toBe(true);
+      await driver.mouseEnter();
+      expect(await driver.isContentElementExists()).toBeTruthy();
+    });
   });
 });
