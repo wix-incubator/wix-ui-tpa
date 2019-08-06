@@ -1,5 +1,5 @@
-import { TOAST_SKIN } from '../Toast';
 import { skinMessages } from '../helpers';
+import { TOAST_SKIN } from '../types';
 
 export const importExample = `import { Toast, TOAST_SKIN } from 'wix-ui-tpa/Toast';`;
 

@@ -2,8 +2,9 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
-import { Toast, TOAST_SKIN, ToastProps } from './';
+import { Toast } from './';
 import { skinMessages } from './helpers';
+import { TOAST_SKIN, ToastProps } from './types';
 
 interface ToastVisualProps {
   mobile: boolean;

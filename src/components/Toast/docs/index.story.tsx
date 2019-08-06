@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toast, TOAST_SKIN } from '../';
+import { Toast } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -16,6 +16,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as Readme from '../README.md';
+import { TOAST_SKIN } from '../types';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });

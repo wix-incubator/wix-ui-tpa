@@ -5,9 +5,10 @@ import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
 import { toastDriverFactory } from './Toast.driver';
-import { Toast, TOAST_SKIN } from './';
+import { Toast } from './';
 import { toastTestkitFactory } from '../../testkit';
 import { toastTestkitFactory as enzymeToastTestkitFactory } from '../../testkit/enzyme';
+import { TOAST_SKIN } from './types';
 
 describe('Toast', () => {
   const createDriver = createUniDriverFactory(toastDriverFactory);

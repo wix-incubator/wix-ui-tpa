@@ -1,4 +1,4 @@
-import { TOAST_SKIN } from './Toast';
+import { TOAST_SKIN } from './types';
 
 export const skinMessages: { [skin in keyof typeof TOAST_SKIN]: string } = {
   [TOAST_SKIN.success]: '24 photos were uploaded successfully.',

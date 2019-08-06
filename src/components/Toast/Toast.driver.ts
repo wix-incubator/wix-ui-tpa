@@ -3,7 +3,7 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
-import { TOAST_SKIN } from './Toast';
+import { TOAST_SKIN } from './types';
 
 export interface ToastDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
