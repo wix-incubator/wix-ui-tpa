@@ -9,6 +9,7 @@ export class Toast extends React.Component<ToastProps> {
 
   static defaultProps: DefaultProps = {
     shouldShowCloseButton: false,
+    isShown: true,
   };
 
   handleOnCloseClick = (event: MouseEvent) => {
@@ -17,13 +18,24 @@ export class Toast extends React.Component<ToastProps> {
   };
 
   render() {
-    const { skin, shouldShowCloseButton, children, ...rest } = this.props;
+    const {
+      skin,
+      shouldShowCloseButton,
+      children,
+      shouldAnimate,
+      isShown,
+      ...rest
+    } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <div
-            {...styles('root', { mobile, rtl, skin }, rest)}
+            {...styles(
+              'root',
+              { mobile, rtl, skin, shouldAnimate, isShown },
+              rest,
+            )}
             role="alert"
             data-skin={skin}
             data-mobile={mobile}

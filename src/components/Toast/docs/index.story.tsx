@@ -35,6 +35,8 @@ export default {
   exampleProps: {
     skin: Object.values(TOAST_SKIN),
     shouldShowCloseButton: false,
+    shouldAnimate: false,
+    isShown: false,
   },
   dataHook: 'storybook-Toast',
   sections: [
