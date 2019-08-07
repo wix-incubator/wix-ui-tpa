@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styles from './Toast.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { CloseIconButton } from './CloseIconButton/CloseIconButton';
+import { CloseIconButton } from './CloseIconButton';
 import { DefaultProps, ToastProps } from './types';
 
 export class Toast extends React.Component<ToastProps> {
