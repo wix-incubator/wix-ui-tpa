@@ -1,6 +1,6 @@
 import * as React from 'react';
 import style from './TabsNavButton.st.css';
-import { isSelectKey } from '../utils';
+import { isSelectKey } from '../../../common/keyCodes';
 
 interface TabsNavButtonProps {
   onClick(): void;
