@@ -7,12 +7,12 @@ import {
 import styles from './Checkbox.st.css';
 
 export interface CheckboxProps {
+  onChange(value: boolean): void;
   checked?: boolean;
   disabled?: boolean;
   indeterminate?: boolean;
   label?: string;
   error?: boolean;
-  onChange(value: boolean): void;
 }
 
 interface DefaultProps {
