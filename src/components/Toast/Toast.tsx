@@ -31,11 +31,7 @@ export class Toast extends React.Component<ToastProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-            {...styles(
-              'root',
-              { mobile, skin, shouldAnimate, isShown },
-              rest,
-            )}
+            {...styles('root', { mobile, skin, shouldAnimate, isShown }, rest)}
             role="alert"
             data-skin={skin}
             data-mobile={mobile}
