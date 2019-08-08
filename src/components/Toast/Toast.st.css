@@ -13,14 +13,16 @@
     font-family: "HelveticaNeueW01-65Medi", "Arial", "sans-serif";
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
     opacity: 0;
+    transform: translateY(-50%);
 }
 
 .root:isShown {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .root:shouldAnimate {
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.4s ease;
 }
 
 .root:skin(success) {
