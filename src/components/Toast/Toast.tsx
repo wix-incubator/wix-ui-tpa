@@ -29,11 +29,11 @@ export class Toast extends React.Component<ToastProps> {
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile, rtl }) => (
+        {({ mobile }) => (
           <div
             {...styles(
               'root',
-              { mobile, rtl, skin, shouldAnimate, isShown },
+              { mobile, skin, shouldAnimate, isShown },
               rest,
             )}
             role="alert"
