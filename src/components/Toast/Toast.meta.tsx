@@ -18,7 +18,7 @@ Object.values(TOAST_SKIN).forEach(skin => {
   });
 
   ToastMetadata.addSim({
-    title:  skin,
+    title: skin,
     props: {
       skin,
       children: skinMessages[skin],

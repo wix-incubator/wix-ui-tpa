@@ -1,8 +1,6 @@
 import { skinMessages } from '../helpers';
 import { TOAST_SKIN } from '../types';
 
-export const importExample = `import { Toast, TOAST_SKIN } from 'wix-ui-tpa/Toast';`;
-
 export const example = Object.values(TOAST_SKIN).reduce(
   (acc, skin) => {
     return {

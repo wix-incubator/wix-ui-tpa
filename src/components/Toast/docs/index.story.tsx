@@ -46,9 +46,6 @@ export default {
         title: 'Usage',
         sections: [
           description(Readme),
-          importExample({
-            source: examples.importExample,
-          }),
 
           divider(),
 

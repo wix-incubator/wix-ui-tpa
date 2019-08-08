@@ -8,7 +8,7 @@ The Toast TPA implementations provides a few default fixed styles. It means none
 
 (Api docs)[https://wix-wix-ui-tpa.surge.sh/?activeTab=API&path=%2Fstory%2Fcomponents--toast]
 
-#### Just toast
+#### A toast
 
  ``` javascript
   import { Toast, TOAST_SKIN } from 'wix-ui-tpa/Toast';
@@ -16,7 +16,7 @@ The Toast TPA implementations provides a few default fixed styles. It means none
   <Toast skin="status">Toast message</Toast>;
 ```
 
-#### Animated toast
+#### An animated toast
 
  ``` javascript
   import { Toast, TOAST_SKIN } from 'wix-ui-tpa/Toast';
