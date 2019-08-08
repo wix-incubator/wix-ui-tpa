@@ -7,6 +7,6 @@ CheckboxMetadata.nonReactStrictModeCompliant = true;
 CheckboxMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });
