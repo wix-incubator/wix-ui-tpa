@@ -1,5 +1,5 @@
 ## Ratings
-An implementation of an Ratings for TPAs
+An implementation of a Ratings for TPAs
 
 
 ## Theme properties (All are optional)
