@@ -9,7 +9,7 @@ ToastMetadata.nonA11yCompliant = true;
 
 Object.values(TOAST_SKIN).forEach(skin => {
   ToastMetadata.addSim({
-    title: skin,
+    title: `${skin} with close`,
     props: {
       shouldShowCloseButton: true,
       skin,
@@ -18,7 +18,7 @@ Object.values(TOAST_SKIN).forEach(skin => {
   });
 
   ToastMetadata.addSim({
-    title: skin,
+    title:  skin,
     props: {
       skin,
       children: skinMessages[skin],
