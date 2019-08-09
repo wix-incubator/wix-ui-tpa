@@ -5,14 +5,19 @@ import {
   CheckboxIndeterminate,
 } from 'wix-ui-icons-common/system';
 import styles from './Checkbox.st.css';
+import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
 
+interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
+  checked: boolean;
+}
 export interface CheckboxProps {
-  onChange(value: boolean): void;
+  onChange(event: OnChangeEvent): void;
+  label: React.ReactNode | string;
   checked?: boolean;
   disabled?: boolean;
   indeterminate?: boolean;
-  label?: string;
   error?: boolean;
+  'data-hook'?: string;
 }
 
 interface DefaultProps {
@@ -29,31 +34,36 @@ export class Checkbox extends React.Component<CheckboxProps> {
   static defaultProps: DefaultProps = {
     checked: false,
     disabled: false,
-    label: 'Test test',
+    label: '',
     error: false,
     indeterminate: false,
   };
 
+  getDataAttributes() {
+    const { disabled, error, indeterminate, checked } = this.props;
+
+    return {
+      [CHEKCBOX_DATA_KEYS.Disabled]: disabled,
+      [CHEKCBOX_DATA_KEYS.Error]: error,
+      [CHEKCBOX_DATA_KEYS.Indeterminate]: indeterminate,
+      [CHEKCBOX_DATA_KEYS.Checked]: checked,
+    };
+  }
+
   _renderIcon = () => {
     const { checked, indeterminate, error } = this.props;
 
-    if (checked && !error) {
-      return (
-        <span className={styles.icon}>
+    return (
+      <span className={styles.icon} data-hook={CHECKBOX_DATA_HOOKS.IconWrapper}>
+        {checked && !error ? (
           <CheckboxChecked />
-        </span>
-      );
-    }
-
-    if (indeterminate && !error) {
-      return (
-        <span className={styles.icon}>
+        ) : indeterminate && !error ? (
           <CheckboxIndeterminate />
-        </span>
-      );
-    }
-
-    return <span className={styles.icon} />;
+        ) : (
+          ''
+        )}
+      </span>
+    );
   };
 
   render() {
@@ -71,14 +81,23 @@ export class Checkbox extends React.Component<CheckboxProps> {
     return (
       <CoreCheckbox
         {...styles('root', { checked, disabled, error }, rest)}
+        {...this.getDataAttributes()}
+        data-hook={
+          this.props['data-hook'] || CHECKBOX_DATA_HOOKS.CheckboxWrapper
+        }
         checkedIcon={iconContent}
         uncheckedIcon={iconContent}
         indeterminateIcon={iconContent}
         indeterminate={indeterminate}
         checked={checked}
-        onChange={() => onChange(!checked)}
+        onChange={onChange}
       >
-        {label && <div className={styles.label}>{label}</div>}
+        <div
+          data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
+          className={styles.label}
+        >
+          {label}
+        </div>
       </CoreCheckbox>
     );
   }

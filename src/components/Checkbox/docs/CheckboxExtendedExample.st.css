@@ -1,0 +1,12 @@
+:import {
+    -st-from: "../Checkbox.st.css";
+    -st-default: TPACheckbox;
+}
+
+.root {
+    -st-mixin: TPACheckbox(
+            TextColor '"--textColor"',
+            BorderColor '"--borderColor"',
+            IconColor '"--iconColor"'
+    );
+}

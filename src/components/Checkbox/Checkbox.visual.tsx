@@ -7,7 +7,7 @@ class CheckboxVisual extends React.Component<any> {
   render() {
     return (
       <VisualContainerElement>
-        <Checkbox {...this.props} />
+        <Checkbox {...this.props} onChange={() => {}} />
       </VisualContainerElement>
     );
   }
@@ -19,7 +19,34 @@ const tests = [
     its: [
       {
         it: 'default',
-        props: {},
+        props: {
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
+      {
+        it: 'error',
+        props: {
+          error: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
+      {
+        it: 'disbled',
+        props: {
+          disabled: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
+      {
+        it: 'checked',
+        props: {
+          checked: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
       },
     ],
   },

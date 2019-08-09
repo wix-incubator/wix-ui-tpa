@@ -5,8 +5,36 @@ const CheckboxMetadata = Registry.getComponentMetadata(Checkbox);
 CheckboxMetadata.nonReactStrictModeCompliant = true;
 
 CheckboxMetadata.addSim({
-  title: 'render',
+  title: 'default',
   props: {
-    buttonText: 'Click me!',
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});
+
+CheckboxMetadata.addSim({
+  title: 'checked',
+  props: {
+    checked: true,
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});
+
+CheckboxMetadata.addSim({
+  title: 'error',
+  props: {
+    error: true,
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});
+
+CheckboxMetadata.addSim({
+  title: 'indeterminate',
+  props: {
+    indeterminate: true,
+    onChange: () => {},
+    label: 'Amazing',
   },
 });
