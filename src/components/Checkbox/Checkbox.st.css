@@ -47,8 +47,6 @@
 
     box-sizing: border-box;
     vertical-align: middle;
-
-    transition: border-color .1s ease-in-out;
 }
 
 .icon svg {

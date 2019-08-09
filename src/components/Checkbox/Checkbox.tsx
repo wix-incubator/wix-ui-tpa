@@ -26,6 +26,7 @@ interface DefaultProps {
   label: string;
   error: false;
   indeterminate: boolean;
+  'data-hook': string;
 }
 
 /** An implementation of Checkbox for TPAs */
@@ -37,6 +38,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
     label: '',
     error: false,
     indeterminate: false,
+    'data-hook': CHECKBOX_DATA_HOOKS.CheckboxWrapper,
   };
 
   getDataAttributes() {
@@ -82,9 +84,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
       <CoreCheckbox
         {...styles('root', { checked, disabled, error }, rest)}
         {...this.getDataAttributes()}
-        data-hook={
-          this.props['data-hook'] || CHECKBOX_DATA_HOOKS.CheckboxWrapper
-        }
+        data-hook={this.props['data-hook']}
         checkedIcon={iconContent}
         uncheckedIcon={iconContent}
         indeterminateIcon={iconContent}
