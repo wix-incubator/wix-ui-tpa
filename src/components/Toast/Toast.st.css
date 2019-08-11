@@ -1,0 +1,67 @@
+:vars {
+    successColor: #57C487;
+    errorColor: #F64D43;
+    statusColor: #212121;
+}
+
+.root {
+    -st-states: mobile, shouldAnimate, isShown, skin(enum(success, error, status));
+    display: inline-flex;
+    color: #FFFFFF;
+    border-radius: 2px;
+    font-size: 14px;
+    font-family: "HelveticaNeueW01-65Medi", "Arial", "sans-serif";
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.root:isShown {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.root:shouldAnimate {
+    transition: opacity 0.2s ease, transform 0.4s ease;
+}
+
+.root:skin(success) {
+    background-color: value(successColor);
+}
+
+.root:skin(error) {
+    background-color: value(errorColor);
+}
+
+.root:skin(status) {
+    background-color: value(statusColor);
+}
+
+.gapBeforeMessage,
+.gapAfterMessage {
+    display: inline-block;
+    min-width: 12px;
+}
+
+.message {
+    margin: 16px 20px;
+    display: inline-block;
+    max-height: 40px;
+    line-height: 20px;
+    overflow: hidden;
+}
+
+.closeButtonWrapper {
+    padding: 14px 12px;
+    height: 24px;
+}
+
+.root:mobile .message {
+    margin-left: 0;
+    margin-right: 0;
+    max-height: 60px;
+}
+
+.root:mobile .gapBeforeMessage {
+    min-width: 20px;
+}

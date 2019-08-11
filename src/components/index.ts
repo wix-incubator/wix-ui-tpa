@@ -16,3 +16,4 @@ export { IconButton } from './IconButton';
 export * from './Ratings';
 export { AvatarGroup } from './AvatarGroup';
 export { Counter } from './Counter';
+export * from './Toast';

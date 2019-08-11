@@ -1,0 +1,10 @@
+:import {
+    -st-from: "../../IconButton/IconButton.st.css";
+    -st-default: TPAIconButton;
+}
+
+.root {
+    -st-mixin: TPAIconButton(
+            IconColor #FFFFFF
+    );
+}
