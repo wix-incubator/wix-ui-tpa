@@ -22,17 +22,18 @@ describe('Checkbox', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  /* it.only('should call onChange with correct "checked" value', async () => {
+  it('should call onChange with correct "checked" value', async () => {
     const onChangeSpy = jest.fn();
     const driver = createDriver(
-      <Checkbox data-hook="checkbox-wrapper" onChange={onChangeSpy} />,
+      <Checkbox label="Label" onChange={onChangeSpy} />,
     );
 
     await driver.clickOnCheckbox();
 
-    expect(onChangeSpy).toHaveBeenCalledWith(true);
+    expect(onChangeSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ checked: true }),
+    );
   });
- */
 
   it('should show error state', async () => {
     const driver = createDriver(<Checkbox error {...defProps} />);

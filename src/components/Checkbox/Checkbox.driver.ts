@@ -2,6 +2,7 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
+import { Simulate } from 'react-dom/test-utils';
 
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
@@ -16,7 +17,9 @@ export interface CheckboxDriver extends BaseUniDriver {
 }
 
 export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
-  const checkboxDatahook = `[data-hook="${CHECKBOX_DATA_HOOKS.IconWrapper}"]`;
+  const checkboxDatahook = `[data-hook="${
+    CHECKBOX_DATA_HOOKS.CheckboxWrapper
+  }"]`;
   const iconDatahook = `[data-hook="${CHECKBOX_DATA_HOOKS.IconWrapper}"]`;
 
   const getIcon = (): UniDriver => base.$(`${iconDatahook}`);
@@ -36,7 +39,9 @@ export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
       return (await base.attr(CHEKCBOX_DATA_KEYS.Checked)) === 'true';
     },
     async clickOnCheckbox() {
-      return base.$(checkboxDatahook).click();
+      const inputNative = await base.$(`${checkboxDatahook} input`).getNative();
+
+      return Simulate.change(inputNative);
     },
     async hoverCheckbox() {
       return base.$(checkboxDatahook).hover();
