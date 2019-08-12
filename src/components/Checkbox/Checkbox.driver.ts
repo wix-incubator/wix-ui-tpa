@@ -17,7 +17,9 @@ export interface CheckboxDriver extends BaseUniDriver {
 }
 
 export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
-  const checkboxDatahook = `[data-hook="${CHECKBOX_DATA_HOOKS.CheckboxWrapper}"]`;
+  const checkboxDatahook = `[data-hook="${
+    CHECKBOX_DATA_HOOKS.CheckboxWrapper
+  }"]`;
   const iconDatahook = `[data-hook="${CHECKBOX_DATA_HOOKS.IconWrapper}"]`;
 
   const getIcon = (): UniDriver => base.$(`${iconDatahook}`);
@@ -42,7 +44,7 @@ export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
       return Simulate.change(inputNative);
     },
     async hoverCheckbox() {
-      return base.$(checkboxDatahook).hover();
+      return base.$(`${iconDatahook}`).hover();
     },
     async getIconColor() {
       const icon = getIcon();
