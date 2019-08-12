@@ -13,7 +13,7 @@ export interface CheckboxDriver extends BaseUniDriver {
   hasChecked(): Promise<boolean>;
   clickOnCheckbox(): Promise<void>;
   hoverCheckbox(): Promise<void>;
-  getIconColor(): Promise<string>;
+  getBorderColor(): Promise<string>;
 }
 
 export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
@@ -46,7 +46,7 @@ export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
     async hoverCheckbox() {
       return base.$(`${iconDatahook}`).hover();
     },
-    async getIconColor() {
+    async getBorderColor() {
       const icon = getIcon();
       const native = await icon.getNative();
 

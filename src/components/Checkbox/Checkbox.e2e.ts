@@ -32,7 +32,7 @@ describe('checkbox', () => {
 
     await driver.hoverCheckbox();
 
-    expect(await driver.getIconColor()).toBe(hoveredColor);
+    expect(await driver.getBorderColor()).toBe(hoveredColor);
   });
 
   it('should show error border-color', async () => {
@@ -40,7 +40,7 @@ describe('checkbox', () => {
 
     await waitForVisibilityOf(await driver.element(), 'Cannot find Checkbox');
 
-    expect(await driver.getIconColor()).toBe(errorColor);
+    expect(await driver.getBorderColor()).toBe(errorColor);
   });
 
   it('should show hovered border with error state', async () => {
@@ -50,6 +50,6 @@ describe('checkbox', () => {
 
     await driver.hoverCheckbox();
 
-    expect(await driver.getIconColor()).toBe(hoveredColor);
+    expect(await driver.getBorderColor()).toBe(hoveredColor);
   });
 });
