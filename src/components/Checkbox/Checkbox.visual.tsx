@@ -48,6 +48,14 @@ const tests = [
           label: 'Amazing',
         },
       },
+      {
+        it: 'indeterminate',
+        props: {
+          indeterminate: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
     ],
   },
 ];

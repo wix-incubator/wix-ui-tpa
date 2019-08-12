@@ -4,6 +4,11 @@
 }
 
 :import {
+  -st-from: "wix-ui-core/index.st.css";
+  -st-named: Checkbox;
+}
+
+:import {
     -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
@@ -31,6 +36,7 @@
 }
 
 .root {
+    -st-extends: Checkbox;
     -st-states: checked, disabled, error;
 
     display: inline-flex;
