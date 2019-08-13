@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { onStyleProcessorDone } from './StyleProcessorUtil';
 
+interface VisualContainerElementProp {
+  hook?(): Promise<void>;
+}
+
 interface VisualContainerElementState {
   isReady: boolean;
 }
 
 export class VisualContainerElement extends React.Component<
-  any,
+  VisualContainerElementProp,
   VisualContainerElementState
 > {
   state = {
@@ -15,7 +19,12 @@ export class VisualContainerElement extends React.Component<
 
   componentDidMount(): void {
     onStyleProcessorDone()
-      .then(() => {
+      .then(async () => {
+        const { hook } = this.props;
+        if (hook) {
+          await hook();
+        }
+
         this.setState({ isReady: true });
       })
       .catch(() => {});
