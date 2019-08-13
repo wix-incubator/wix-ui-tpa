@@ -18,6 +18,7 @@ require('../src/components/Tooltip/docs/TooltipTestStory');
 require('../src/components/Tabs/docs/TabsTestStory');
 require('../src/components/Ratings/docs/RatingsTestStory');
 require('../src/components/Pagination/docs/index.story');
+require('../src/components/TextArea/docs/index.story');
 require('../src/components/Badge/docs/index.story');
 require('../src/components/Avatar/docs/index.story');
 require('../src/components/AvatarGroup/docs/index.story');
