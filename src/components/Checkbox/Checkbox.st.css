@@ -50,6 +50,7 @@
 
     border: 1px solid;
     border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-radius: 1px;
 
     box-sizing: border-box;
     vertical-align: middle;
