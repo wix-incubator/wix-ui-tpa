@@ -13,13 +13,7 @@ export interface DotNavigationDriver extends BaseUniDriver {
   getDot(index: number): UniDriver;
   getShowBorder(): Promise<boolean>;
   getTheme(): Promise<string>;
-  getCurrent(): Promise<number>;
-  getStart(): Promise<number>;
-  getAnimation(): Promise<string>;
-  getStartButton(): UniDriver;
-  getPreviousButton(): UniDriver;
-  getNextButton(): UniDriver;
-  getEndButton(): UniDriver;
+  getSavedCurrentIndex(): Promise<number>;
 }
 
 export const dotNavigationDriverFactory = (
@@ -33,17 +27,7 @@ export const dotNavigationDriverFactory = (
     getShowBorder: async () =>
       JSON.parse(await base.attr(DotNavigationDataKeys.ShowBorder)),
     getTheme: async () => base.attr(DotNavigationDataKeys.Theme),
-    getCurrent: async () =>
-      parseInt(await base.attr(DotNavigationDataKeys.Current), 10),
-    getStart: async () =>
-      parseInt(await base.attr(DotNavigationDataKeys.Start), 10),
-    getAnimation: async () => base.attr(DotNavigationDataKeys.Animation),
-    getStartButton: () =>
-      base.$(getByDataHook(DotNavigationDataHooks.StartButton)),
-    getPreviousButton: () =>
-      base.$(getByDataHook(DotNavigationDataHooks.PreviousButton)),
-    getNextButton: () =>
-      base.$(getByDataHook(DotNavigationDataHooks.NextButton)),
-    getEndButton: () => base.$(getByDataHook(DotNavigationDataHooks.EndButton)),
+    getSavedCurrentIndex: async () =>
+      parseInt(await base.attr(DotNavigationDataKeys.SavedCurrentIndex), 10),
   };
 };

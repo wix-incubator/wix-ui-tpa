@@ -57,7 +57,6 @@ export default {
           ...[
             { title: 'Default Example', source: examples.example },
             { title: 'Three Dot Example', source: examples.threeDotExamle },
-            { title: 'Six Dot Example', source: examples.sixDotExamle },
             {
               title: 'Ten Dot Example',
               source: examples.tenDotExamle,
@@ -68,7 +67,7 @@ export default {
               source: examples.lightExampleWithSafetyBorder,
             },
             {
-              title: 'Default Example with Set currentIndex Prop Equal to 2',
+              title: 'Default Example with currentIndex = 2',
               source: examples.defaultExampleWithCurrentIndex,
             },
           ].map(code),
@@ -85,7 +84,7 @@ export default {
             settingsPanel({
               example: (
                 <DotNavigationExtendedExample
-                  length={7}
+                  length={10}
                   showBorder
                   theme={Theme.Light}
                 />
@@ -97,12 +96,12 @@ export default {
                 colors: [
                   {
                     label: 'Selected Dot Color',
-                    wixParam: 'dotNavigationSelectedDotColor',
+                    wixParam: 'selectedDotColor',
                     defaultColor: 'color-1',
                   },
                   {
                     label: 'Selected Border Color',
-                    wixParam: 'dotNavigationSelectedBorderColor',
+                    wixParam: 'selectedBorderColor',
                     defaultColor: 'color-5',
                   },
                 ],

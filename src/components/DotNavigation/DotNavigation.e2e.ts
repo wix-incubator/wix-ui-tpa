@@ -4,13 +4,10 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { dotNavigationTestkitFactory } from '../../testkit/protractor';
-import * as eyes from 'eyes.it';
-
-const selectedDotColor = 'rgba(96, 96, 96, 1)';
 
 describe('DotNavigation', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Tests',
     story: 'DotNavigation',
     withExamples: true,
   });
@@ -18,47 +15,39 @@ describe('DotNavigation', () => {
 
   beforeEach(() => browser.get(storyUrl));
 
-  eyes.it(
-    'not selected dot color should change to selected while clicking it',
-    async () => {
-      const driver = dotNavigationTestkitFactory({ dataHook });
+  it('not selected dot color should change to selected while clicking it', async () => {
+    const driver = dotNavigationTestkitFactory({ dataHook });
 
-      await waitForVisibilityOf(
-        await driver.element(),
-        'Cannot find DotNavigation',
-      );
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find DotNavigation',
+    );
 
-      const firstDot = driver.getDot(1);
+    const firstDot = driver.getDot(1);
+    const native = await firstDot.getNative();
 
-      await firstDot.click();
+    expect(await native.getCssValue('opacity')).toBe('0.4');
 
-      const native = await firstDot.getNative();
+    await firstDot.click();
 
-      expect(await native.getCssValue('background-color')).toBe(
-        selectedDotColor,
-      );
-    },
-  );
+    expect(await native.getCssValue('opacity')).toBe('1');
+  });
 
-  eyes.it(
-    'not selected dot color should change to selected while hovering over it',
-    async () => {
-      const driver = dotNavigationTestkitFactory({ dataHook });
+  it('not selected dot color should change to selected while hovering over it', async () => {
+    const driver = dotNavigationTestkitFactory({ dataHook });
 
-      await waitForVisibilityOf(
-        await driver.element(),
-        'Cannot find DotNavigation',
-      );
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find DotNavigation',
+    );
 
-      const firstDot = driver.getDot(1);
+    const firstDot = driver.getDot(1);
+    const native = await firstDot.getNative();
 
-      await firstDot.hover();
+    expect(await native.getCssValue('opacity')).toBe('0.4');
 
-      const native = await firstDot.getNative();
+    await firstDot.hover();
 
-      expect(await native.getCssValue('background-color')).toBe(
-        selectedDotColor,
-      );
-    },
-  );
+    expect(await native.getCssValue('opacity')).toBe('1');
+  });
 });

@@ -1,10 +1,19 @@
 import * as React from 'react';
 import styles from './DotNavigation.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { RadioButton } from 'wix-ui-core/radio-button';
+import { RadioButton, RadioButtonKeyDownEvent } from 'wix-ui-core/radio-button';
 import { DotNavigationDataKeys, DotNavigationDataHooks } from './dataHooks';
+import classNames from 'classnames';
+import * as _ from 'lodash';
 
 const MAX_SHORT_LIST_LENGTH = 5;
+const NUM_OF_NAV_DOTS = 2;
+
+const enum Keys {
+  ArrowRight = 'ArrowRight',
+  ArrowLeft = 'ArrowLeft',
+  ArrowUp = 'ArrowUp',
+  ArrowDown = 'ArrowDown',
+}
 
 const enum Size {
   Normal = 'normal',
@@ -12,9 +21,35 @@ const enum Size {
   Tiny = 'tiny',
 }
 
+const START_SIZES = [
+  Size.Normal,
+  Size.Normal,
+  Size.Normal,
+  Size.Small,
+  Size.Tiny,
+];
+
+const MIDDLE_SIZES = [
+  Size.Tiny,
+  Size.Small,
+  Size.Normal,
+  Size.Small,
+  Size.Tiny,
+];
+
+const END_SIZES = [
+  Size.Tiny,
+  Size.Small,
+  Size.Normal,
+  Size.Normal,
+  Size.Normal,
+];
+
 export enum Animation {
   Back = 'back',
+  BackNext = 'back-next',
   Forward = 'forward',
+  ForwardNext = 'forward-next',
 }
 
 export enum Theme {
@@ -28,373 +63,257 @@ export interface DotNavigationProps {
   onSelect?(index: number): any;
   showBorder?: boolean;
   theme?: Theme;
-  ariaLabel?: string;
+  'aria-label'?: string;
+  noOpacityTransition?: boolean;
 }
 
 interface DotNavigationState {
-  current: number;
-  start: number;
+  savedCurrentIndex: number;
   animation: null | string;
-  longListKey: number;
 }
 
 interface RadioProps {
+  key?: number | string;
   checked: boolean;
   size: 'normal' | 'small' | 'tiny';
-  hidden: boolean;
-  dataHook: string;
+  fakeRadio?: boolean;
 }
 
 interface RadioButtonProps {
   key: number | string;
-  checked: boolean;
+  checked?: boolean;
   size: 'normal' | 'small' | 'tiny';
-  hidden: boolean;
   onChange: any;
-  dataHook: string;
+  onKeyDown?: any;
   ariaLabel: null | string;
 }
 
-const isNumber = (value: any) => typeof value === 'number' && !isNaN(value);
+const isNumber = (value: any) => _.isNumber(value) && !_.isNaN(value);
 
-const moveNumberToInterval = (value: number, start: number, end: number) =>
-  Math.max(start, Math.min(end, value));
+const getFiveFromStart = (start: number) => [
+  start,
+  start + 1,
+  start + 2,
+  start + 3,
+  start + 4,
+];
 
 export class DotNavigation extends React.Component<
   DotNavigationProps,
   DotNavigationState
 > {
+  state = {
+    savedCurrentIndex: 0,
+    animation: null,
+  };
+
   static displayName = 'DotNavigation';
 
   static defaultProps: DotNavigationProps = {
+    currentIndex: 0,
     length: MAX_SHORT_LIST_LENGTH,
     onSelect(index: number) {},
     showBorder: false,
     theme: Theme.Dark,
-    ariaLabel: 'DotNavigation',
+    'aria-label': 'Dot Navigation',
   };
 
-  static getAlmostCurrent = (current: number, length: number) => {
-    if (current === length - 1 || current === length - 2) {
-      return length - 3;
-    }
-    return current;
-  };
-
-  static moveStartIfInvisibleCurrent = (
-    start: number,
-    current: number,
+  static shouldAnimate = (
+    currentIndex: number,
+    savedCurrentIndex: number,
     length: number,
   ) =>
-    current < start || current > start + 2
-      ? DotNavigation.getAlmostCurrent(current, length)
-      : start;
+    (currentIndex > 2 && currentIndex < length - 3) ||
+    (currentIndex === 2 && currentIndex < savedCurrentIndex) ||
+    (currentIndex === length - 3 && currentIndex > savedCurrentIndex);
 
-  static getDerivedStateFromProps(
-    props: DotNavigationProps,
-    state: DotNavigationState,
-  ) {
-    if (!isNumber(props.length)) {
-      return state;
-    }
+  static hasCurrentIndexChanged = (
+    currentIndex: number,
+    savedCurrentIndex: number,
+    length: number,
+  ) =>
+    isNumber(currentIndex) &&
+    currentIndex >= 0 &&
+    currentIndex < length &&
+    currentIndex !== savedCurrentIndex;
 
-    const newCurrentRaw = isNumber(props.currentIndex)
-      ? props.currentIndex
-      : state.current;
-    const newCurrent = moveNumberToInterval(newCurrentRaw, 0, props.length - 1);
+  static getLongListAnimation = (
+    nextProps: DotNavigationProps,
+    prevState: DotNavigationState,
+  ) => {
+    const { currentIndex, length } = nextProps;
+    const { savedCurrentIndex } = prevState;
 
-    return {
-      ...state,
-      current: newCurrent,
-      start: DotNavigation.moveStartIfInvisibleCurrent(
-        state.start,
-        newCurrent,
-        props.length,
-      ),
-    };
-  }
-
-  state = {
-    current: 0,
-    start: 0,
-    animation: null,
-    longListKey: 0,
+    return DotNavigation.hasCurrentIndexChanged(
+      currentIndex,
+      savedCurrentIndex,
+      length,
+    )
+      ? {
+          ...prevState,
+          savedCurrentIndex: currentIndex,
+          ...(DotNavigation.shouldAnimate(
+            currentIndex,
+            savedCurrentIndex,
+            length,
+          ) && {
+            animation:
+              currentIndex < savedCurrentIndex
+                ? prevState.animation === Animation.Back
+                  ? Animation.BackNext
+                  : Animation.Back
+                : prevState.animation === Animation.Forward
+                ? Animation.ForwardNext
+                : Animation.Forward,
+          }),
+        }
+      : null;
   };
 
-  getUniqueLongListKey = () => {
-    let newLongListKey = Math.random();
+  static getDerivedStateFromProps = (
+    nextProps: DotNavigationProps,
+    prevState: DotNavigationState,
+  ) =>
+    nextProps.length <= MAX_SHORT_LIST_LENGTH
+      ? null
+      : DotNavigation.getLongListAnimation(nextProps, prevState);
 
-    while (newLongListKey === this.state.longListKey) {
-      newLongListKey = Math.random();
-    }
-    return newLongListKey;
-  };
-
-  getRadio = ({ checked, size, hidden, dataHook }: RadioProps) => (
+  getRadio = ({ checked, size, fakeRadio }: RadioProps) => (
     <div
-      {...styles('radio', {
-        checked,
-        hidden,
-      })}
-      data-hook={dataHook}
+      {...(fakeRadio && { tabIndex: -1, 'aria-hidden': true })}
+      className={classNames(styles.radio)}
     >
       <div
-        {...styles('dot', {
-          small: size === Size.Small,
-          tiny: size === Size.Tiny,
+        className={classNames(styles.dot, {
+          [styles.small]: size === Size.Small,
+          [styles.tiny]: size === Size.Tiny,
+          [styles.bordered]: this.props.showBorder === true,
+          [styles.light]: this.props.theme === Theme.Light,
+          [styles.checked]: checked,
+          [styles.noOpacityTransition]: this.props.noOpacityTransition,
         })}
-        data-hook={DotNavigationDataHooks.Dot}
+        data-hook={fakeRadio ? undefined : DotNavigationDataHooks.Dot}
       />
     </div>
   );
+
+  renderFakeRadio = () =>
+    this.getRadio({ checked: false, size: Size.Tiny, fakeRadio: true });
 
   renderRadioButton = ({
     key,
     checked,
     size,
-    hidden,
     onChange,
-    dataHook,
+    onKeyDown,
     ariaLabel,
   }: RadioButtonProps) => (
     <RadioButton
       key={key}
       checked={checked}
-      checkedIcon={this.getRadio({
-        checked,
-        size,
-        hidden,
-        dataHook,
-      })}
-      uncheckedIcon={this.getRadio({
-        checked: false,
-        size,
-        hidden,
-        dataHook,
-      })}
-      onChange={onChange ? onChange : undefined}
+      checkedIcon={this.getRadio({ checked, size })}
+      uncheckedIcon={this.getRadio({ checked: false, size })}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
       aria-label={ariaLabel}
+      {...{ className: styles.extendedRadioButton }}
     />
   );
 
-  move = (current: number, start: number, animation: null | string) => {
-    this.props.onSelect(current);
-    this.setState({
-      current,
-      start,
-      animation,
-      longListKey: this.getUniqueLongListKey(),
-    });
-  };
+  callOnSelect = (index: number) => () => this.props.onSelect(index);
 
-  moveToStart = () => this.move(0, 0, Animation.Back);
+  startKeyDownHandler = (event: RadioButtonKeyDownEvent) =>
+    (event.key === Keys.ArrowLeft || event.key === Keys.ArrowUp) &&
+    event.nativeEvent.preventDefault();
 
-  moveBack = () => {
-    const { current, start } = this.state;
-    const newCurrent = current - 1;
-    const newStart = newCurrent < start ? start - 1 : start;
-    const newAnimation = newCurrent < start ? Animation.Back : null;
+  endKeyDownHandler = (event: RadioButtonKeyDownEvent) =>
+    (event.key === Keys.ArrowRight || event.key === Keys.ArrowDown) &&
+    event.nativeEvent.preventDefault();
 
-    this.move(newCurrent, newStart, newAnimation);
-  };
+  getKeyDownHandler = (value: number) =>
+    value === 0
+      ? this.startKeyDownHandler
+      : value === this.props.length - 1
+      ? this.endKeyDownHandler
+      : undefined;
 
-  moveForward = () => {
-    const { current, start } = this.state;
-    const newCurrent = current + 1;
-    const newStart = newCurrent > start + 2 ? start + 1 : start;
-    const newAnimation = newCurrent > start + 2 ? Animation.Forward : null;
+  renderList = (values: number[], sizes: Size[]) =>
+    values.map((value, index) =>
+      this.renderRadioButton({
+        key: value,
+        checked: value === this.props.currentIndex,
+        size: sizes[index],
+        onChange: this.callOnSelect(value),
+        onKeyDown: this.getKeyDownHandler(value),
+        ariaLabel: `${this.props['aria-label']} ${value}`,
+      }),
+    );
 
-    this.move(newCurrent, newStart, newAnimation);
-  };
+  renderStartList = () => this.renderList(getFiveFromStart(0), START_SIZES);
 
-  moveToEnd = () =>
-    this.move(this.props.length - 1, this.props.length - 3, Animation.Forward);
+  renderEndList = () =>
+    this.renderList(getFiveFromStart(this.props.length - 5), END_SIZES);
 
-  select = (current: number) => () =>
-    this.move(current, this.state.start, null);
+  renderMiddleList = () =>
+    this.renderList(
+      getFiveFromStart(this.props.currentIndex - 2),
+      MIDDLE_SIZES,
+    );
 
-  renderEmptyButton = (key: number | string) =>
-    this.renderRadioButton({
-      key,
-      checked: false,
-      size: Size.Normal,
-      hidden: true,
-      onChange: null,
-      dataHook: null,
-      ariaLabel: null,
-    });
-
-  renderAdditionalStartButton = () =>
-    this.state.animation === Animation.Forward && this.state.start >= 3
-      ? this.renderRadioButton({
-          key: 0,
-          checked: false,
-          size: Size.Tiny,
-          hidden: false,
-          onChange: null,
-          dataHook: null,
-          ariaLabel: null,
-        })
-      : this.renderEmptyButton(0);
-
-  renderStartButton = () =>
-    this.state.start >= 2
-      ? this.renderRadioButton({
-          key: 1,
-          checked: false,
-          size: Size.Tiny,
-          hidden: false,
-          onChange: this.moveToStart,
-          dataHook: DotNavigationDataHooks.StartButton,
-          ariaLabel: `${this.props.ariaLabel} start`,
-        })
-      : this.renderEmptyButton(1);
-
-  renderPreviousButton = () =>
-    this.state.start >= 1
-      ? this.renderRadioButton({
-          key: 2,
-          checked: false,
-          size: Size.Small,
-          hidden: false,
-          onChange: this.moveBack,
-          dataHook: DotNavigationDataHooks.PreviousButton,
-          ariaLabel: `${this.props.ariaLabel} previous`,
-        })
-      : this.renderEmptyButton(2);
-
-  renderMiddleButton = (index: number) => {
-    const dotIndex = this.state.start + index;
-
-    return this.renderRadioButton({
-      key: index + 3,
-      checked: this.state.current === dotIndex,
-      size: Size.Normal,
-      hidden: false,
-      onChange: this.select(dotIndex),
-      dataHook: null,
-      ariaLabel: `${this.props.ariaLabel} ${dotIndex}`,
-    });
-  };
-
-  renderNextButton = () =>
-    this.state.start + 3 < this.props.length
-      ? this.renderRadioButton({
-          key: 6,
-          checked: false,
-          size: Size.Small,
-          hidden: false,
-          onChange: this.moveForward,
-          dataHook: DotNavigationDataHooks.NextButton,
-          ariaLabel: `${this.props.ariaLabel} next`,
-        })
-      : this.renderEmptyButton(6);
-
-  renderEndButton = () =>
-    this.state.start + 4 < this.props.length
-      ? this.renderRadioButton({
-          key: 7,
-          checked: false,
-          size: Size.Tiny,
-          hidden: false,
-          onChange: this.moveToEnd,
-          dataHook: DotNavigationDataHooks.EndButton,
-          ariaLabel: `${this.props.ariaLabel} end`,
-        })
-      : this.renderEmptyButton(7);
-
-  renderAdditionalEndButton = () =>
-    this.state.animation === Animation.Back &&
-    this.state.start + 5 < this.props.length
-      ? this.renderRadioButton({
-          key: 8,
-          checked: false,
-          size: Size.Tiny,
-          hidden: false,
-          onChange: null,
-          dataHook: null,
-          ariaLabel: null,
-        })
-      : this.renderEmptyButton(8);
-
-  renderLongList = () => (
+  renderLongVersion = () => (
     <div
-      {...styles('radioGroup', {
-        [Animation.Back]: this.state.animation === Animation.Back,
-        [Animation.Forward]: this.state.animation === Animation.Forward,
+      className={classNames(styles.radioGroup, {
+        [styles.back]: this.state.animation === Animation.Back,
+        [styles.forward]: this.state.animation === Animation.Forward,
+        [styles.backNext]: this.state.animation === Animation.BackNext,
+        [styles.forwardNext]: this.state.animation === Animation.ForwardNext,
       })}
-      key={this.state.longListKey}
     >
-      {...[
-        this.renderAdditionalStartButton(),
-        this.renderStartButton(),
-        this.renderPreviousButton(),
-        this.renderMiddleButton(0),
-        this.renderMiddleButton(1),
-        this.renderMiddleButton(2),
-        this.renderNextButton(),
-        this.renderEndButton(),
-        this.renderAdditionalEndButton(),
-      ]}
+      {this.renderFakeRadio()}
+      {!isNumber(this.props.currentIndex) ||
+      this.props.currentIndex < MAX_SHORT_LIST_LENGTH - NUM_OF_NAV_DOTS
+        ? this.renderStartList()
+        : this.props.currentIndex >=
+          this.props.length - (MAX_SHORT_LIST_LENGTH - NUM_OF_NAV_DOTS)
+        ? this.renderEndList()
+        : this.renderMiddleList()}
+      {this.renderFakeRadio()}
     </div>
   );
 
-  renderShortListButton = (index: number) =>
-    this.renderRadioButton({
-      key: index,
-      checked: index === this.state.current,
-      size: Size.Normal,
-      hidden: false,
-      onChange: this.select(index),
-      dataHook: null,
-      ariaLabel: `${this.props.ariaLabel} ${index}`,
-    });
+  renderShortVersion = () => {
+    let shortVersion = [];
 
-  renderShortList = () =>
-    new Array(this.props.length)
-      .fill(null)
-      .map((el, index) => this.renderShortListButton(index));
-
-  _getDataAttributes = () => {
-    const { showBorder, theme } = this.props;
-    const { current, start, animation } = this.state;
-
-    return {
-      [DotNavigationDataKeys.ShowBorder]: showBorder,
-      [DotNavigationDataKeys.Theme]: theme,
-      [DotNavigationDataKeys.Current]: current,
-      [DotNavigationDataKeys.Start]: start,
-      [DotNavigationDataKeys.Animation]: animation,
-    };
+    for (let index = 0; index < this.props.length; index++) {
+      shortVersion = [
+        ...shortVersion,
+        this.renderRadioButton({
+          key: index,
+          checked: index === this.props.currentIndex,
+          size: Size.Normal,
+          onChange: this.callOnSelect(index),
+          ariaLabel: `${this.props['aria-label']} ${index}`,
+        }),
+      ];
+    }
+    return shortVersion;
   };
 
+  _getDataAttributes = () => ({
+    [DotNavigationDataKeys.ShowBorder]: this.props.showBorder,
+    [DotNavigationDataKeys.Theme]: this.props.theme,
+    [DotNavigationDataKeys.SavedCurrentIndex]: this.state.savedCurrentIndex,
+  });
+
   render = () => {
-    const { length, showBorder, theme, ...rest } = this.props;
+    const { length, ...rest } = this.props;
 
-    if (!isNumber(length) || length <= 0) {
-      return null;
-    }
-
-    return (
-      <TPAComponentsConsumer>
-        {() => (
-          <div
-            {...styles(
-              'root',
-              {
-                bordered: showBorder === true,
-                light: theme === Theme.Light,
-              },
-              rest,
-            )}
-            {...this._getDataAttributes()}
-          >
-            {length <= MAX_SHORT_LIST_LENGTH
-              ? this.renderShortList()
-              : this.renderLongList()}
-          </div>
-        )}
-      </TPAComponentsConsumer>
-    );
+    return isNumber(length) && length > 0 ? (
+      <div {...styles('root', {}, rest)} {...this._getDataAttributes()}>
+        {length <= MAX_SHORT_LIST_LENGTH
+          ? this.renderShortVersion()
+          : this.renderLongVersion()}
+      </div>
+    ) : null;
   };
 }

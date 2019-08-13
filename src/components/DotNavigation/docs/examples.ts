@@ -4,8 +4,6 @@ export const example = `<DotNavigation />`;
 
 export const threeDotExamle = `<DotNavigation length={3} />`;
 
-export const sixDotExamle = `<DotNavigation length={6} />`;
-
 export const tenDotExamle = `<DotNavigation length={10} />`;
 
 export const lightExample = `<DotNavigation theme="light" />`;

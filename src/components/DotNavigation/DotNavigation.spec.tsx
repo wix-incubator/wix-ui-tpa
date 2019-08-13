@@ -9,7 +9,6 @@ import { dotNavigationTestkitFactory } from '../../testkit';
 import { dotNavigationTestkitFactory as enzymeDotNavigationTestkitFactory } from '../../testkit/enzyme';
 
 describe('DotNavigation', () => {
-  const LONG_COMPONENT_LENGTH = 10;
   const createDriver = createUniDriverFactory(dotNavigationDriverFactory);
 
   describe('general', () => {
@@ -17,13 +16,6 @@ describe('DotNavigation', () => {
       const driver = createDriver(<DotNavigation />);
 
       expect(await driver.exists()).toBe(true);
-    });
-
-    it('should render 5 dots by default', async () => {
-      const driver = createDriver(<DotNavigation />);
-      const dots = driver.getDots();
-
-      expect(await dots.count()).toBe(5);
     });
 
     it('should render no dots with negative length', async () => {
@@ -38,45 +30,6 @@ describe('DotNavigation', () => {
       const dots = driver.getDots();
 
       expect(await dots.get(0).exists()).toBe(false);
-    });
-
-    it('should render 4 dots with length equal to 4', async () => {
-      const driver = createDriver(<DotNavigation length={4} />);
-      const dots = driver.getDots();
-
-      expect(await dots.count()).toBe(4);
-    });
-
-    it('should render 9 dots with length greater than 5', async () => {
-      const driver = createDriver(<DotNavigation length={6} />);
-      const dots = driver.getDots();
-
-      expect(await dots.count()).toBe(9);
-    });
-
-    it('onSelect should be called once when dot is clicked', async () => {
-      const onSelect = jest.fn();
-      const driver = createDriver(<DotNavigation onSelect={onSelect} />);
-      const dot0 = driver.getDot(0);
-
-      await dot0.click();
-      expect(onSelect).toHaveBeenCalledTimes(1);
-    });
-
-    it('onSelect should be called with argument 4 when dot 4 is clicked', async () => {
-      const onSelect = jest.fn((index: number) => {});
-      const driver = createDriver(<DotNavigation onSelect={onSelect} />);
-      const dot4 = driver.getDot(4);
-
-      await dot4.click();
-      expect(onSelect).toHaveBeenCalledWith(4);
-    });
-
-    it('current = 0, start = 0 by default', async () => {
-      const driver = createDriver(<DotNavigation />);
-
-      expect(await driver.getCurrent()).toBe(0);
-      expect(await driver.getStart()).toBe(0);
     });
 
     it('showBorder = false by default', async () => {
@@ -102,200 +55,185 @@ describe('DotNavigation', () => {
 
       expect(await driver.getTheme()).toBe(Theme.Light);
     });
+
+    it('savedCurrentIndex = 0 by default', async () => {
+      const driver = createDriver(<DotNavigation />);
+
+      expect(await driver.getSavedCurrentIndex()).toBe(0);
+    });
   });
 
   describe('short DotNavigation', () => {
-    it('current = 3 when currentIndex prop is 3', async () => {
-      const driver = createDriver(<DotNavigation currentIndex={3} />);
+    it('should render 4 dots with length = 4', async () => {
+      const driver = createDriver(<DotNavigation length={4} />);
+      const dots = driver.getDots();
 
-      expect(await driver.getCurrent()).toBe(3);
+      expect(await dots.count()).toBe(4);
     });
 
-    it('current = 3 when dot 3 is clicked', async () => {
+    it('should render 5 dots with length = 5', async () => {
+      const driver = createDriver(<DotNavigation length={5} />);
+      const dots = driver.getDots();
+
+      expect(await dots.count()).toBe(5);
+    });
+
+    it('should render 5 dots by default', async () => {
       const driver = createDriver(<DotNavigation />);
-      const dot3 = driver.getDot(3);
+      const dots = driver.getDots();
 
-      await dot3.click();
+      expect(await dots.count()).toBe(5);
+    });
 
-      expect(await driver.getCurrent()).toBe(3);
+    it('onSelect should be called once when dot is clicked', async () => {
+      const onSelect = jest.fn();
+      const driver = createDriver(<DotNavigation onSelect={onSelect} />);
+
+      await driver.getDot(0).click();
+      expect(onSelect).toHaveBeenCalledTimes(1);
+    });
+
+    it('onSelect should be called with correct arguments', async () => {
+      const onSelect = jest.fn((index: number) => {});
+      const driver = createDriver(<DotNavigation onSelect={onSelect} />);
+
+      await driver.getDot(0).click();
+      expect(onSelect).toHaveBeenCalledWith(0);
+      await driver.getDot(1).click();
+      expect(onSelect).toHaveBeenCalledWith(1);
+      await driver.getDot(2).click();
+      expect(onSelect).toHaveBeenCalledWith(2);
+      await driver.getDot(3).click();
+      expect(onSelect).toHaveBeenCalledWith(3);
+      await driver.getDot(4).click();
+      expect(onSelect).toHaveBeenCalledWith(4);
+    });
+
+    it('savedCurrentIndex does not change when currentIndex changes', async () => {
+      const driver = createDriver(<DotNavigation currentIndex={1} />);
+
+      expect(await driver.getSavedCurrentIndex()).toBe(0);
     });
   });
 
-  describe(`long DotNavigation (length = ${LONG_COMPONENT_LENGTH})`, () => {
-    it('start = 0, current = 1, animation = null when next button is clicked after render', async () => {
+  describe('long DotNavigation', () => {
+    const LONG_COMPONENT_LENGTH = 10;
+
+    it('should render 5 dots with length > 5', async () => {
       const driver = createDriver(
         <DotNavigation length={LONG_COMPONENT_LENGTH} />,
       );
+      const dots = driver.getDots();
 
-      await driver.getNextButton().click();
-
-      expect(await driver.getStart()).toBe(0);
-      expect(await driver.getCurrent()).toBe(1);
-      expect(await driver.getAnimation()).toBe(null);
+      expect(await dots.count()).toBe(5);
     });
 
-    it('start = 1, current = 3, animation = forward when next button is clicked 3 times', async () => {
+    it('onSelect should be called once when dot is clicked', async () => {
+      const onSelect = jest.fn();
       const driver = createDriver(
-        <DotNavigation length={LONG_COMPONENT_LENGTH} />,
+        <DotNavigation length={LONG_COMPONENT_LENGTH} onSelect={onSelect} />,
       );
 
-      await driver.getNextButton().click();
-      await driver.getNextButton().click();
-      await driver.getNextButton().click();
-
-      expect(await driver.getStart()).toBe(1);
-      expect(await driver.getCurrent()).toBe(3);
-      expect(await driver.getAnimation()).toBe(Animation.Forward);
+      await driver.getDot(0).click();
+      expect(onSelect).toHaveBeenCalledTimes(1);
     });
 
-    it('start = 7, current = 9, animation = forward when end button is clicked', async () => {
+    it('onSelect should be called with correct arguments at the beginning of dot list', async () => {
+      const onSelect = jest.fn((index: number) => {});
       const driver = createDriver(
-        <DotNavigation length={LONG_COMPONENT_LENGTH} />,
+        <DotNavigation
+          currentIndex={0}
+          length={LONG_COMPONENT_LENGTH}
+          onSelect={onSelect}
+        />,
       );
 
-      await driver.getEndButton().click();
-
-      expect(await driver.getStart()).toBe(7);
-      expect(await driver.getCurrent()).toBe(9);
-      expect(await driver.getAnimation()).toBe(Animation.Forward);
+      await driver.getDot(0).click();
+      expect(onSelect).toHaveBeenCalledWith(0);
+      await driver.getDot(1).click();
+      expect(onSelect).toHaveBeenCalledWith(1);
+      await driver.getDot(2).click();
+      expect(onSelect).toHaveBeenCalledWith(2);
+      await driver.getDot(3).click();
+      expect(onSelect).toHaveBeenCalledWith(3);
+      await driver.getDot(4).click();
+      expect(onSelect).toHaveBeenCalledWith(4);
     });
 
-    it('start = 0, current = 0, animation = back when start button is clicked after end button is clicked', async () => {
+    it('onSelect should be called with correct arguments at the end of dot list', async () => {
+      const onSelect = jest.fn((index: number) => {});
       const driver = createDriver(
-        <DotNavigation length={LONG_COMPONENT_LENGTH} />,
+        <DotNavigation
+          currentIndex={LONG_COMPONENT_LENGTH - 1}
+          length={LONG_COMPONENT_LENGTH}
+          onSelect={onSelect}
+        />,
       );
 
-      await driver.getEndButton().click();
-      await driver.getStartButton().click();
-
-      expect(await driver.getStart()).toBe(0);
-      expect(await driver.getCurrent()).toBe(0);
-      expect(await driver.getAnimation()).toBe(Animation.Back);
+      await driver.getDot(0).click();
+      expect(onSelect).toHaveBeenCalledWith(LONG_COMPONENT_LENGTH - 5);
+      await driver.getDot(1).click();
+      expect(onSelect).toHaveBeenCalledWith(LONG_COMPONENT_LENGTH - 4);
+      await driver.getDot(2).click();
+      expect(onSelect).toHaveBeenCalledWith(LONG_COMPONENT_LENGTH - 3);
+      await driver.getDot(3).click();
+      expect(onSelect).toHaveBeenCalledWith(LONG_COMPONENT_LENGTH - 2);
+      await driver.getDot(4).click();
+      expect(onSelect).toHaveBeenCalledWith(LONG_COMPONENT_LENGTH - 1);
     });
 
-    it('start = 7, current = 8, animation = null when previous button is clicked after end button is clicked', async () => {
-      const driver = createDriver(
-        <DotNavigation length={LONG_COMPONENT_LENGTH} />,
-      );
-
-      await driver.getEndButton().click();
-      await driver.getPreviousButton().click();
-
-      expect(await driver.getStart()).toBe(7);
-      expect(await driver.getCurrent()).toBe(8);
-      expect(await driver.getAnimation()).toBe(null);
-    });
-
-    it('start = 6, current = 6, animation = back when previous button is clicked 3 times after end button is clicked', async () => {
-      const driver = createDriver(
-        <DotNavigation length={LONG_COMPONENT_LENGTH} />,
-      );
-
-      await driver.getEndButton().click();
-      await driver.getPreviousButton().click();
-      await driver.getPreviousButton().click();
-      await driver.getPreviousButton().click();
-
-      expect(await driver.getStart()).toBe(6);
-      expect(await driver.getCurrent()).toBe(6);
-      expect(await driver.getAnimation()).toBe(Animation.Back);
-    });
-
-    it('current = currentIndex, start = 0 when currentIndex prop is passed and currentIndex dot is visible', async () => {
+    it('onSelect should be called with correct arguments in the middle of dot list', async () => {
       const currentIndex = 2;
-      const driver = createDriver(
-        <DotNavigation currentIndex={currentIndex} />,
-      );
-
-      expect(await driver.getCurrent()).toBe(currentIndex);
-      expect(await driver.getStart()).toBe(0);
-    });
-
-    it('current = currentIndex, start = currentIndex when currentIndex prop is passed, currentIndex <= length - 3, currentIndex dot is not visible', async () => {
-      const currentIndex = 7;
+      const onSelect = jest.fn((index: number) => {});
       const driver = createDriver(
         <DotNavigation
           currentIndex={currentIndex}
           length={LONG_COMPONENT_LENGTH}
+          onSelect={onSelect}
         />,
       );
 
-      expect(await driver.getCurrent()).toBe(currentIndex);
-      expect(await driver.getStart()).toBe(currentIndex);
+      await driver.getDot(0).click();
+      expect(onSelect).toHaveBeenCalledWith(currentIndex - 2);
+      await driver.getDot(1).click();
+      expect(onSelect).toHaveBeenCalledWith(currentIndex - 1);
+      await driver.getDot(2).click();
+      expect(onSelect).toHaveBeenCalledWith(currentIndex);
+      await driver.getDot(3).click();
+      expect(onSelect).toHaveBeenCalledWith(currentIndex + 1);
+      await driver.getDot(4).click();
+      expect(onSelect).toHaveBeenCalledWith(currentIndex + 2);
     });
 
-    it(`current = currentIndex, start = length - 3 when currentIndex prop is passed, currentIndex = length - 2, currentIndex dot is not visible`, async () => {
-      const currentIndex = 8;
+    it('savedCurrentIndex does not change when currentIndex < 0', async () => {
+      const driver = createDriver(
+        <DotNavigation length={LONG_COMPONENT_LENGTH} currentIndex={-1} />,
+      );
+
+      expect(await driver.getSavedCurrentIndex()).toBe(0);
+    });
+
+    it('savedCurrentIndex does not change when currentIndex >= length', async () => {
       const driver = createDriver(
         <DotNavigation
-          currentIndex={currentIndex}
           length={LONG_COMPONENT_LENGTH}
+          currentIndex={LONG_COMPONENT_LENGTH}
         />,
       );
 
-      expect(await driver.getCurrent()).toBe(currentIndex);
-      expect(await driver.getStart()).toBe(LONG_COMPONENT_LENGTH - 3);
+      expect(await driver.getSavedCurrentIndex()).toBe(0);
     });
 
-    it(`current = currentIndex, start = length - 3 when currentIndex prop is passed, currentIndex = length - 1, currentIndex dot is not visible`, async () => {
-      const currentIndex = 9;
+    it('savedCurrentIndex = currentIndex when currentIndex is in [0, length - 1]', async () => {
+      const currentIndex = 1;
       const driver = createDriver(
         <DotNavigation
-          currentIndex={currentIndex}
           length={LONG_COMPONENT_LENGTH}
+          currentIndex={currentIndex}
         />,
       );
 
-      expect(await driver.getCurrent()).toBe(currentIndex);
-      expect(await driver.getStart()).toBe(LONG_COMPONENT_LENGTH - 3);
-    });
-  });
-
-  describe('with defined currentIndex prop and onSelect updating it', () => {
-    const CURRENT_INDEX = 3;
-
-    class Container extends React.Component<any, any> {
-      state = {
-        currentIndex: CURRENT_INDEX,
-      };
-
-      render = () => {
-        return (
-          <DotNavigation
-            length={LONG_COMPONENT_LENGTH}
-            currentIndex={this.state.currentIndex}
-            onSelect={(index: number) => this.setState({ currentIndex: index })}
-          />
-        );
-      };
-    }
-
-    it('current = currentIndex + 1 when next button is clicked', async () => {
-      const driver = createDriver(<Container />);
-
-      await driver.getNextButton().click();
-      expect(await driver.getCurrent()).toBe(4);
-    });
-
-    it('current = currentIndex - 1 when previous button is clicked', async () => {
-      const driver = createDriver(<Container />);
-
-      await driver.getPreviousButton().click();
-      expect(await driver.getCurrent()).toBe(2);
-    });
-
-    it('current = 0 when start is clicked', async () => {
-      const driver = createDriver(<Container />);
-
-      await driver.getStartButton().click();
-      expect(await driver.getCurrent()).toBe(0);
-    });
-
-    it('current = length - 1 when end is clicked', async () => {
-      const driver = createDriver(<Container />);
-
-      await driver.getEndButton().click();
-      expect(await driver.getCurrent()).toBe(9);
+      expect(await driver.getSavedCurrentIndex()).toBe(currentIndex);
     });
   });
 

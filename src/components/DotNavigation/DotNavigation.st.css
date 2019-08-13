@@ -1,6 +1,13 @@
+@namespace 'DotNavigation';
+
 :import {
   -st-from: '../../common/formatters.st';
   -st-named: color, fallback, value;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: RadioButton;
 }
 
 :vars {
@@ -13,24 +20,34 @@
 
 :vars {
   /*Overrides*/
-  DotNavigationSelectedDotColor: --overridable;
-  DotNavigationSelectedBorderColor: --overridable;
+  SelectedDotColor: --overridable;
+  SelectedBorderColor: --overridable;
 }
 
 :vars {
-  DotAmount: 7;
+  DotAmount: 5;
   Gap: 5px;
   RadioSize: calc(4 * value(Gap));
   DotSize: calc(2 * value(Gap));
   DotSizeSmall: calc(value(DotSize) - 2px);
   DotSizeTiny: calc(value(DotSizeSmall) - 2px);
-  SelectedDotColor: color(fallback(value(DotNavigationSelectedDotColor), value(DefaultSelectedDotColor)));
-  SelectedBorderColor: color(fallback(value(DotNavigationSelectedBorderColor), value(DefaultSelectedBorderColor)));
-  SelectedDotColorLight: color(fallback(value(DotNavigationSelectedDotColor), value(DefaultSelectedDotColorLight)));
-  SelectedBorderColorLight: color(fallback(value(DotNavigationSelectedBorderColor), value(DefaultSelectedBorderColorLight)));
+  CheckedDotColor: color(fallback(value(SelectedDotColor), value(DefaultSelectedDotColor)));
+  CheckedBorderColor: color(fallback(value(SelectedBorderColor), value(DefaultSelectedBorderColor)));
+  CheckedDotColorLight: color(fallback(value(SelectedDotColor), value(DefaultSelectedDotColorLight)));
+  CheckedBorderColorLight: color(fallback(value(SelectedBorderColor), value(DefaultSelectedBorderColorLight)));
 }
 
 @keyframes move-back {
+  from {
+    left: calc(-2 * value(RadioSize));
+  }
+
+  to {
+    left: calc(-1 * value(RadioSize));
+  }
+}
+
+@keyframes move-back-next {
   from {
     left: calc(-2 * value(RadioSize));
   }
@@ -50,46 +67,65 @@
   }
 }
 
+@keyframes move-forward-next {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(-1 * value(RadioSize));
+  }
+}
+
+@keyframes change-dot-opacity {
+  from {
+    opacity: 0.4
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .root {
-  -st-states: bordered, light;
   display: flex;
   position: relative;
   width: calc(value(DotAmount) * value(RadioSize));
   overflow: hidden;
 }
 
-.root:bordered .radio .dot {
-  box-shadow: 0 0 0 1px value(SelectedBorderColor);
-}
-
-.root:light .dot {
-  background-color: value(SelectedDotColorLight);
-}
-
-.root:bordered:light .radio .dot {
-  box-shadow: 0 0 0 1px value(SelectedBorderColorLight);
-}
-
 .radioGroup {
-  -st-states: back, forward;
   display: flex;
   align-items: center;
   position: relative;
   left: calc(-1 * value(RadioSize));
 }
 
-.radioGroup:back {
+.back {
   animation-duration: 0.2s;
   animation-name: move-back;
 }
 
-.radioGroup:forward {
+.backNext {
+  animation-duration: 0.2s;
+  animation-name: move-back-next;
+}
+
+.forward {
   animation-duration: 0.2s;
   animation-name: move-forward;
 }
 
+.forwardNext {
+  animation-duration: 0.2s;
+  animation-name: move-forward-next;
+}
+
+.extendedRadioButton {
+   -st-extends: RadioButton;
+}
+
 .radio {
-  -st-states: checked, hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -97,34 +133,47 @@
   height: value(RadioSize);
 }
 
-.radio:hidden {
-  visibility: hidden;
-}
-
-.radio:checked .dot {
-  opacity: 1;
-}
-
 .dot {
-   -st-states: small, tiny;
   width: value(DotSize);
   height: value(DotSize);
   border-radius: 100%;
-  background-color: value(SelectedDotColor);
+  background-color: value(CheckedDotColor);
   opacity: 0.4;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease, width 0.2s ease, height 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
-.dot:small {
+.noOpacityTransition {
+  transition: none;
+}
+
+.dot:hover {
+  opacity: 1;
+}
+
+.small {
   width: value(DotSizeSmall);
   height: value(DotSizeSmall);
 }
 
-.dot:tiny {
+.tiny {
   width: value(DotSizeTiny);
   height: value(DotSizeTiny);
 }
 
-.dot:hover {
+.bordered {
+  box-shadow: 0 0 0 1px value(CheckedBorderColor);
+}
+
+.light {
+  background-color: value(CheckedDotColorLight);
+}
+
+.bordered.light {
+  box-shadow: 0 0 0 1px value(CheckedBorderColorLight);
+}
+
+.checked {
+  animation-duration: 0.2s;
+  animation-name: change-dot-opacity;
   opacity: 1;
 }

@@ -5,8 +5,8 @@ An implementation of DotNavigation component for TPAs
 
 | propName | propType | description |
 |----------|----------|--------------|
-| DotNavigationSelectedDotColor | string | Dot color in :hover, :focus, :selected states |
-| DotNavigationSelectedBorderColor | string | Dot border color in :hover, :focus, :selected states |
+| SelectedDotColor | string | Dot color in :hover, :focus, :selected states |
+| SelectedBorderColor | string | Dot border color in :hover, :focus, :selected states |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC. Check the example in Settings Panel tab.
 
@@ -14,5 +14,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 |  | Dark theme (default) | Light theme |
 |----------|----------|--------------|
-| DotNavigationSelectedDotColor | color-5 | color-1 |
-| DotNavigationSelectedBorderColor | color-1 | color-5 |
+| SelectedDotColor | color-5 | color-1 |
+| SelectedBorderColor | color-1 | color-5 |

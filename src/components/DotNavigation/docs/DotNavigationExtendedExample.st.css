@@ -5,7 +5,7 @@
 
 .root {
   -st-mixin: DotNavigation(
-    DotNavigationSelectedDotColor '"--dotNavigationSelectedDotColor"',
-    DotNavigationSelectedBorderColor '"--dotNavigationSelectedBorderColor"'
+    SelectedDotColor '"--selectedDotColor"',
+    SelectedBorderColor '"--selectedBorderColor"'
   );
 }

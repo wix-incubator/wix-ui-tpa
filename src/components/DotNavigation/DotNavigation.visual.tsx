@@ -1,41 +1,40 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Theme, DotNavigation } from './DotNavigation';
 
 class DotNavigationVisual extends React.Component<any> {
-  static defaultProps = {
-    mobile: false,
-  };
-
   render() {
-    const { mobile } = this.props;
-
     return (
-      <TPAComponentsProvider value={{ mobile }}>
-        <VisualContainerElement>
-          <DotNavigation {...this.props} />
-        </VisualContainerElement>
-      </TPAComponentsProvider>
+      <VisualTestContainer>
+        <DotNavigation {...this.props} />
+      </VisualTestContainer>
     );
   }
 }
 
-const shortVersionCases = new Array(5).fill(null).map((el, index) => ({
-  it: `currentIndex = ${index}`,
-  props: {
-    currentIndex: index,
-  },
-}));
+const SHORT_COMPONENT_LENGTH = 5;
 
-const longVersionCases = new Array(10).fill(null).map((el, index) => ({
-  it: `length = 10, currentIndex = ${index}`,
-  props: {
-    length: 10,
-    currentIndex: index,
-  },
-}));
+const LONG_COMPONENT_LENGTH = 6;
+
+const shortComponentCases = new Array(SHORT_COMPONENT_LENGTH)
+  .fill(null)
+  .map((el, index) => ({
+    it: `currentIndex = ${index}`,
+    props: {
+      currentIndex: index,
+    },
+  }));
+
+const longComponentCases = new Array(LONG_COMPONENT_LENGTH)
+  .fill(null)
+  .map((el, index) => ({
+    it: `length = ${LONG_COMPONENT_LENGTH}, currentIndex = ${index}`,
+    props: {
+      length: LONG_COMPONENT_LENGTH,
+      currentIndex: index,
+    },
+  }));
 
 const tests = [
   {
@@ -58,9 +57,9 @@ const tests = [
         },
       },
       {
-        it: 'length > 5',
+        it: `length > ${SHORT_COMPONENT_LENGTH}`,
         props: {
-          length: 6,
+          length: LONG_COMPONENT_LENGTH,
         },
       },
       {
@@ -88,26 +87,26 @@ const tests = [
           currentIndex: -1,
         },
       },
-      ...shortVersionCases,
+      ...shortComponentCases,
       {
         it: 'currentIndex > length - 1',
         props: {
-          currentIndex: 5,
+          currentIndex: SHORT_COMPONENT_LENGTH,
         },
       },
       {
-        it: 'length = 10, currentIndex < 0',
+        it: `length = ${LONG_COMPONENT_LENGTH}, currentIndex < 0`,
         props: {
-          length: 10,
+          length: LONG_COMPONENT_LENGTH,
           currentIndex: -1,
         },
       },
-      ...longVersionCases,
+      ...longComponentCases,
       {
-        it: 'length = 10, currentIndex > length - 1',
+        it: `length = ${LONG_COMPONENT_LENGTH}, currentIndex > length - 1`,
         props: {
-          length: 10,
-          currentIndex: 10,
+          length: LONG_COMPONENT_LENGTH,
+          currentIndex: LONG_COMPONENT_LENGTH,
         },
       },
     ],
