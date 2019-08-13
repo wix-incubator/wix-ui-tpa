@@ -17,3 +17,4 @@ export * from './Ratings';
 export { AvatarGroup } from './AvatarGroup';
 export { Counter } from './Counter';
 export * from './Toast';
+export { ActionsMenu } from './ActionsMenu';

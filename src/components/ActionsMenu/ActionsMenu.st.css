@@ -1,0 +1,49 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultMenuBackgroundColor: color-1;
+    DefaultMenuBorderWidth: 1px;
+    DefaultMenuBorderColor: rgba(255, 255, 255, 0.4);
+}
+
+:vars {
+    /*Overrides*/
+    MenuBackgroundColor:  --overridable;
+    MenuBorderWidth:  --overridable;
+    MenuBorderColor:  --overridable;
+}
+
+:vars {
+    menuBackgroundColor: color(fallback(value(MenuBackgroundColor), value(DefaultMenuBackgroundColor)));
+    menuBorderWidth: fallback(value(MenuBorderWidth), value(DefaultMenuBorderWidth));
+    menuBorderColor: color(fallback(value(MenuBorderColor), value(DefaultMenuBorderColor)));
+}
+
+.root {
+    -st-states: mobile, alignment(enum(left, center, right));
+    padding: 12px 24px;
+    max-width: 320px;
+    background-color: value(menuBackgroundColor);
+    border-width: value(menuBorderWidth);
+    border-color: value(menuBorderColor);
+}
+
+.root:mobile {
+    width: 100%;
+}
+
+.root:alignment(left) {
+    text-align: left;
+}
+
+.root:alignment(center) {
+    text-align: center;
+}
+
+.root:alignment(right) {
+    text-align: right;
+}

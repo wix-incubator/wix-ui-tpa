@@ -1,0 +1,65 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+
+:vars {
+    /*Defaults*/
+    DefaultItemFont: color-1;
+    DefaultItemSubtitleFont: 1px;
+}
+
+:vars {
+    /*Overrides*/
+    ItemFont:  --overridable;
+    ItemSubtitleFont:  --overridable;
+}
+
+:vars {
+    itemFont: color(fallback(value(ItemFont), value(DefaultItemFont)));
+    itemSubtitleFont: fallback(value(ItemSubtitleFont), value(DefaultItemSubtitleFont));
+}
+
+.root {
+    -st-states: withIcon, disabled;
+    height: 40px;
+    padding: 8px 24px;
+    display: flex;
+    width: 100%;
+
+}
+
+.root:withIcon {
+
+}
+
+.root:mobile {
+    /*width: 100%;*/
+}
+
+.root:disabled {
+
+}
+
+.icon {
+
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    font: value(itemFont);
+}
+
+.subtitle {
+    font: value(itemSubtitleFont);
+}
+
+.spaceContainer {
+    width: 12px;
+    height: 100%;
+}
