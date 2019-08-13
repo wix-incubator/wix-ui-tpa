@@ -6,8 +6,8 @@
 
 :vars {
     /*Defaults*/
-    DefaultItemFont: color-1;
-    DefaultItemSubtitleFont: 1px;
+    DefaultItemFont: 16px Avenir;
+    DefaultItemSubtitleFont: 14px Avenir;
 }
 
 :vars {
@@ -27,7 +27,7 @@
     padding: 8px 24px;
     display: flex;
     width: 100%;
-
+    cursor: pointer;
 }
 
 .root:withIcon {
@@ -35,11 +35,19 @@
 }
 
 .root:mobile {
-    /*width: 100%;*/
+    width: 100%;
+}
+
+.root:hover {
+    background-color: rgba(0,0,0, 0.06);
 }
 
 .root:disabled {
+    opacity: 0.3;
+}
 
+.root:disabled:hover {
+    background-color: inherit;
 }
 
 .icon {
