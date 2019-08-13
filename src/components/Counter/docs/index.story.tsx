@@ -28,7 +28,7 @@ export default {
   componentPath: '../Counter.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Counter',
-    onChange: (val: string) => console.log(val),
+    onChange: () => {},
     value: 15,
     step: 1,
     max: null,
