@@ -1,15 +1,28 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { waitForVisibilityOf } from 'wix-ui-test-utils/protractor';
+import { ratingsTestkitFactory } from '../../testkit/protractor';
 import { Ratings, Mode, Size } from '.';
 
+const dataHook = 'ratings-datahook';
+
 class RatingsVisual extends React.Component<any> {
-  static defaultProps = {};
+  static defaultProps = {
+    hook: null,
+  };
+
+  async _visualHook() {
+    const { hook } = this.props;
+    await hook();
+  }
 
   render() {
+    const ratingsProps = { ...this.props };
+    delete ratingsProps.hook;
     return (
-      <VisualContainerElement>
-        <Ratings {...this.props} />
+      <VisualContainerElement hook={this._visualHook}>
+        <Ratings {...ratingsProps} data-hook={dataHook} />
       </VisualContainerElement>
     );
   }
@@ -74,6 +87,23 @@ const tests = [
           mode: Mode.Display,
           countDisplay: '150',
           ratingDisplay: '3.0',
+        },
+      },
+      {
+        it: 'count info & rating info',
+        props: {
+          value: 3,
+          mode: Mode.Input,
+          hook: async () => {
+            const driver = ratingsTestkitFactory({ dataHook });
+
+            await waitForVisibilityOf(
+              await driver.element(),
+              'Cannot find Ratings',
+            );
+
+            await driver.hoverStar(3);
+          },
         },
       },
     ],
