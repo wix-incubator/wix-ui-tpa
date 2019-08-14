@@ -4,6 +4,8 @@ export * from './components/Autocomplete';
 export * from './components/Button';
 export * from './components/TextButton';
 export * from './components/Card';
+export * from './components/Checkbox';
+export * from './components/Counter';
 export * from './components/Divider';
 export * from './components/Grid';
 export * from './components/Input';

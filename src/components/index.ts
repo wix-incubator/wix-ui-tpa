@@ -16,5 +16,6 @@ export * from './Avatar';
 export { IconButton } from './IconButton';
 export * from './Ratings';
 export { AvatarGroup } from './AvatarGroup';
-export { Counter } from './Counter';
 export * from './Toast';
+export * from './Counter';
+export * from './Checkbox';

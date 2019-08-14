@@ -64,8 +64,6 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     inputOptions: [],
   };
 
-  _hoverTimeout;
-
   state: RatingsState = {
     currentHovered: -1,
     currentFocus: -1,

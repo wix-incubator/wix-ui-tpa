@@ -1,0 +1,102 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:import {
+  -st-from: "wix-ui-core/index.st.css";
+  -st-named: Checkbox;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultTextColor: color-5;
+    DefaultBorderColor: color-5;
+    DefaultIconColor: color-8;
+    DisabledColor: color-3;
+    Font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+}
+
+:vars {
+    /*Overrides*/
+    TextColor: --overridable;
+    BorderColor: --overridable;
+    IconColor: color-8;
+}
+
+:vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root {
+    -st-extends: Checkbox;
+    -st-states: checked, disabled, error;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    border: 1px solid;
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-radius: 1px;
+
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.icon svg {
+    padding: 1px 3px;
+
+    width: 8px;
+    height: 7px;
+
+}
+
+.icon path {
+    fill: value(CurrentIconColor);
+}
+
+.label {
+    margin: 0 12px;
+
+    font: value(Font);
+    color: value(CurrentTextColor);
+}
+
+/* STATES */
+.root:hover .icon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.root:error:not(:hover) .icon {
+    border-color: color(value(errorColor));
+}
+
+.root:disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+.root:disabled .icon {
+    border-color: color(value(DisabledColor));
+}
+
+.root:disabled .label {
+    color: color(value(DisabledColor));
+}
+
+.root:disabled .icon path {
+    fill: color(value(DisabledColor));
+}
