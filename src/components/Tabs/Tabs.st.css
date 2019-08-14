@@ -36,6 +36,7 @@
     navBtnWidth: 35px;
     navBtnEase: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     calculatedBorderColor: color(fallback(value(IndicatorColor), applyOpacity(color(value(defaultIndicatorColor)), 0.2)));
+    calculatedSelectedBorderColor: color(fallback(value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)));
 }
 
 .root {
@@ -89,7 +90,7 @@
     -st-extends: Navigation;
     -st-mixin: Navigation(
         indicatorColor value(calculatedBorderColor),
-        selectedIndicatorColor color(fallback(value(SelectedTabIndicatorColor), value(defaultSelectedTabIndicatorColor)))
+        selectedIndicatorColor value(calculatedSelectedBorderColor)
     );
     position: absolute;
     top: 0;
