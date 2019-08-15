@@ -1,0 +1,38 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, font, fallback;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultLabelColor: color-5;
+    Font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+}
+
+:vars {
+    /*Overrides*/
+    LabelColor: --overridable;
+}
+
+:vars {
+    CurrentLabelColor: color(fallback(value(LabelColor), value(DefaultLabelColor)));
+}
+
+.root {
+    display: inline-flex;
+    margin: 0;
+    padding: 0;
+
+    border: none;
+}
+
+.root > * {
+    margin-top: 12px;
+}
+
+.label {
+    margin-bottom: 8px;
+
+    color: value(CurrentLabelColor);
+    font: value(Font);
+}
