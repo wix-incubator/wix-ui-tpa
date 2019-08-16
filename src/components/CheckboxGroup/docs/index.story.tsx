@@ -13,7 +13,11 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import * as ExtendedRawSource from '!raw-loader!./CheckboxGroupExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxGroupExtendedExample.st.css';
+import { CheckboxGroupExtendedExample } from './CheckboxGroupExtendedExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -44,14 +48,36 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Default', source: examples.example }].map(code),
+          ...[{ title: 'With label', source: examples.exampleWithLabel }].map(
+            code,
+          ),
         ],
       }),
 
       ...[
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Settings Panel',
+              example: <CheckboxGroupExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              params: {
+                colors: [
+                  {
+                    label: 'Label Color',
+                    wixParam: 'labelColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

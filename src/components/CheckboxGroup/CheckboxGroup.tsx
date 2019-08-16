@@ -1,32 +1,27 @@
 import * as React from 'react';
-import { Checkbox } from '../Checkbox';
 import styles from './CheckboxGroup.st.css';
 
 export interface CheckboxGroupProps {
-  groupName: string;
+  label?: string | React.ReactNode;
   className?: string;
-  label?: string;
-}
-
-interface DefaultProps {
-  groupName: string;
+  children?: any;
+  'data-hook'?: string;
 }
 
 export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   static displayName = 'CheckboxGroup';
-  static defaultProps: DefaultProps = {
-    groupName: 'Checkbox group',
-  };
 
   render() {
-    const { children, ...rest } = this.props;
+    const { label, children, ...rest } = this.props;
 
     return (
-      <fieldset {...styles('root', {}, rest)}>
-        <legend className={styles.label}>What fruits do you like?</legend>
-        <Checkbox onChange={() => {}} label="First checkbox" />
-        <Checkbox onChange={() => {}} label="Second checkbox" />
-        <Checkbox onChange={() => {}} label="Third checkbox" />
+      <fieldset
+        data-hook={this.props['data-hook']}
+        {...styles('root', {}, rest)}
+      >
+        {!!label && <legend className={styles.label}>{label}</legend>}
+
+        <div className={styles.wrapper}>{children}</div>
       </fieldset>
     );
   }

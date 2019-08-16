@@ -2,6 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 import { CheckboxGroup } from './';
+import { Checkbox } from '../Checkbox';
 
 class CheckboxGroupVisual extends React.Component<any> {
   render() {
@@ -13,13 +14,25 @@ class CheckboxGroupVisual extends React.Component<any> {
   }
 }
 
+const checkboxEl = (
+  <Checkbox key={1} checked={false} onChange={() => {}} label="hello" />
+);
+
 const tests = [
   {
     describe: 'basic',
     its: [
       {
         it: 'default',
-        props: {},
+        props: {
+          children: [checkboxEl],
+        },
+      },
+      {
+        it: 'with label',
+        props: {
+          children: [checkboxEl],
+        },
       },
     ],
   },

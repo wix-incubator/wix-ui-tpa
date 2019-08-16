@@ -19,20 +19,27 @@
 }
 
 .root {
-    display: inline-flex;
+    display: inline-block;
     margin: 0;
     padding: 0;
 
     border: none;
 }
 
-.root > * {
-    margin-top: 12px;
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: -12px;
+}
+
+.wrapper > * {
+    margin-bottom: 12px;
 }
 
 .label {
-    margin-bottom: 8px;
-
     color: value(CurrentLabelColor);
     font: value(Font);
+
+    margin-bottom: 20px;
 }
