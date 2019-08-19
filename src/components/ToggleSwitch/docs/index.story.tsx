@@ -15,6 +15,10 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import * as ExtendedRawSource from '!raw-loader!./ToggleSwitchExtensionExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ToggleSwitchExtensionExample.st.css';
+import { ToggleSwitchExtensionExample } from './ToggleSwitchExtensionExample';
 
 import * as Readme from '../README.md';
 
@@ -42,7 +46,11 @@ export default {
           importExample(examples.importExample),
           divider(),
           title('Examples'),
-          ...[{ title: 'Default', source: examples.defult }].map(code),
+          ...[
+            { title: 'Default', source: examples.defult },
+            { title: 'Checked', source: examples.checked },
+            { title: 'Disabled', source: examples.disabled },
+          ].map(code),
         ],
       }),
       tab({
@@ -56,6 +64,41 @@ export default {
       tab({
         title: 'Playground',
         sections: [playground()],
+      }),
+      tab({
+        title: 'Settings Panel',
+        sections: [
+          settingsPanel({
+            title: 'Settings Panel',
+            example: <ToggleSwitchExtensionExample />,
+            rawSource: ExtendedRawSource,
+            rawCSSSource: ExtendedCSSRawSource,
+            params: {
+              colors: [
+                {
+                  label: 'Base Color',
+                  wixParam: 'baseColor',
+                  defaultColor: 'color-5',
+                },
+                {
+                  label: 'Selected Color',
+                  wixParam: 'selectedColor',
+                  defaultColor: 'color-8',
+                },
+                {
+                  label: 'Knob Color',
+                  wixParam: 'knobColor',
+                  defaultColor: 'color-1',
+                },
+                {
+                  label: 'Disabled Color',
+                  wixParam: 'disabledColor',
+                  defaultColor: 'color-3',
+                },
+              ],
+            },
+          }),
+        ],
       }),
     ]),
   ],

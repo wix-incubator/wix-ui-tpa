@@ -4,13 +4,10 @@
 }
 
 .root {
-  --runtimeSettings1: '"color(color-2)"';
-  --runtimeSettings2: '"color(color-23)"';
-
-  -st-extends: ToggleSwitch;
-
   -st-mixin: ToggleSwitch(
-      BaseColor '"color(--runtimeSettings1)"',
-      SelectedColor '"opacity(color(--runtimeSettings2), 0.5)"'
+      BaseColor '"--baseColor"',
+      SelectedColor '"--selectedColor"',
+      KnobColor '"--knobColor"',
+      DisabledColor '"--disabledColor"'
   );
 }
