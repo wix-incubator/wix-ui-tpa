@@ -42,7 +42,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          //description(Readme),
+          description(Readme),
           importExample(examples.importExample),
           divider(),
           title('Examples'),
