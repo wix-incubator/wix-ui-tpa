@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, font, applyStyleMethod, applyOpacity;
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :import {
@@ -12,7 +12,7 @@
     DefaultBaseColor: color(color-5);
     DefaultSelectedColor: color(color-8);
     DefaultKnobColor: color(color-1);
-    DefaultDisabledColor: applyOpacity(applyStyleMethod(color, color-3), 0.9);
+    DefaultDisabledColor: applyOpacity(color(color-3), 0.9);
 }
 
 :vars {

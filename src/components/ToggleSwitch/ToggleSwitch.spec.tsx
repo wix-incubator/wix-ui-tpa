@@ -22,6 +22,8 @@ describe('ToggleSwitch', () => {
   it('should change state', async () => {
     const driver = createDriver(<ToggleSwitch />);
 
+    expect(await driver.isChecked()).toBeFalsy();
+
     await driver.click();
 
     expect(await driver.isChecked()).toBeTruthy();

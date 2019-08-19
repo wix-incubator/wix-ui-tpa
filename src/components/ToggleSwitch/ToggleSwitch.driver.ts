@@ -3,7 +3,6 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './ToggleSwitch.st.css';
 
 export interface ToggleSwitchDriver extends BaseUniDriver {
   click(): Promise<void>;
