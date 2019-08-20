@@ -18,7 +18,7 @@ class AvatarGroupVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer
-        hook={() => new Promise(res => setTimeout(res, 500))}
+        hook={() => new Promise(res => setTimeout(res, 1000))}
       >
         <AvatarGroup {...this.props} />
       </VisualTestContainer>
