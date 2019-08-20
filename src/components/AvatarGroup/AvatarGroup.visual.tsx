@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { DATA_IGNORE_HOOK } from '../../../test/visual/dataHooks';
 
 const items = [
   {},
@@ -62,8 +63,14 @@ function generateIts(size) {
 
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props, ignore }) => {
-    storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
-      <AvatarGroupVisual {...props} ignoreTest={ignore} />
-    ));
+    storiesOf(`AvatarGroup/${describe}`, module).add(
+      it,
+      () => <AvatarGroupVisual {...props} ignoreTest={ignore} />,
+      {
+        eyes: {
+          ignore: [{ selector: `[${DATA_IGNORE_HOOK}="true"]` }],
+        },
+      },
+    );
   });
 });
