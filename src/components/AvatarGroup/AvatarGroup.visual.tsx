@@ -2,9 +2,8 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 
-const IGNORE_HOOK = 'data-applitools-ignore';
 const items = [
   {},
   { name: 'anonymous' },
@@ -18,11 +17,11 @@ class AvatarGroupVisual extends React.Component<any> {
 
   render() {
     return (
-      <VisualContainerElement>
-        <div {...{ [IGNORE_HOOK]: this.props.ignore }}>
-          <AvatarGroup {...this.props} />
-        </div>
-      </VisualContainerElement>
+      <VisualTestContainer
+        hook={() => new Promise(res => setTimeout(res, 1000))}
+      >
+        <AvatarGroup {...this.props} />
+      </VisualTestContainer>
     );
   }
 }
@@ -47,7 +46,6 @@ function generateIts(size) {
       props: {
         size,
         items: [...items, ...items],
-        ignore: size === AvatarGroupSize.xxSmall,
       },
     },
     {
@@ -63,14 +61,8 @@ function generateIts(size) {
 
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props }) => {
-    storiesOf(`AvatarGroup/${describe}`, module).add(
-      it,
-      () => <AvatarGroupVisual {...props} />,
-      {
-        eyes: {
-          ignore: [{ selector: `[${IGNORE_HOOK}="true"]` }],
-        },
-      },
-    );
+    storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
+      <AvatarGroupVisual {...props} />
+    ));
   });
 });

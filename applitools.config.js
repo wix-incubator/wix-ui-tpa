@@ -1,6 +1,10 @@
 const { execSync } = require('child_process');
 const appName = require('./package.json').name;
 const merge = require('lodash/merge');
+const {
+  DATA_READY_HOOK,
+  DATA_IGNORE_HOOK,
+} = require('./test/visual/dataHooks');
 
 const PULL_REQUEST_PARENT_HASH_INDEX = 2;
 const HEAD_HASH_INDEX = 0;
@@ -46,7 +50,8 @@ module.exports = merge(
     batchId: getBatchId(),
     batchName: appName,
     exitcode: true,
-    waitBeforeScreenshots: '[data-test-ready="true"]',
+    waitBeforeScreenshots: `[${DATA_READY_HOOK}="true"]`,
+    ignore: [{ selector: `[${DATA_IGNORE_HOOK}="true"]` }],
   },
   privateConfig,
 );

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Ratings, Mode, Size } from '.';
 
 class RatingsVisual extends React.Component<any> {
@@ -12,9 +12,9 @@ class RatingsVisual extends React.Component<any> {
     const ratingsProps = { ...this.props };
     delete ratingsProps.hook;
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <Ratings {...ratingsProps} />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }

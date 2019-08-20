@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Toast } from './';
 import { skinMessages } from './helpers';
 import { TOAST_SKIN, ToastProps } from './types';
@@ -20,9 +20,9 @@ class ToastVisual extends React.Component<ToastVisualProps & ToastProps> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <VisualContainerElement>
+        <VisualTestContainer>
           <Toast {...this.props} />
-        </VisualContainerElement>
+        </VisualTestContainer>
       </TPAComponentsProvider>
     );
   }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ALIGNMENT, SKIN, Tabs, TabsProps, VARIANT } from '.';
 
 const kind = 'Tabs';
@@ -23,9 +23,9 @@ class TabsVisual extends React.Component<TabsVisualProps> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <VisualContainerElement>
+        <VisualTestContainer>
           <Tabs data-hook={'storybook-e2e-Tabs'} {...this.props} />
-        </VisualContainerElement>
+        </VisualTestContainer>
       </TPAComponentsProvider>
     );
   }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { TextArea, TextAreaProps, TextAreaTheme } from './';
 
 class TextAreaVisual extends React.Component<TextAreaProps> {
@@ -14,9 +14,9 @@ class TextAreaVisual extends React.Component<TextAreaProps> {
 
   render() {
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <TextArea {...this.props} />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }

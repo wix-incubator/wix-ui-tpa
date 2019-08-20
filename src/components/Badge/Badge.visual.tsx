@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Badge, BADGE_PRIORITY } from './';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 
 class BadgeVisual extends React.Component<any> {
   render() {
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <Badge {...this.props} />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { onStyleProcessorDone } from './StyleProcessorUtil';
+import { DATA_READY_HOOK, DATA_IGNORE_HOOK } from './dataHooks.js';
 
 interface VisualContainerElementProp {
+  ignore?: boolean;
   hook?(): Promise<void>;
 }
 
@@ -9,7 +11,7 @@ interface VisualContainerElementState {
   isReady: boolean;
 }
 
-export class VisualContainerElement extends React.Component<
+export class VisualTestContainer extends React.Component<
   VisualContainerElementProp,
   VisualContainerElementState
 > {
@@ -32,8 +34,12 @@ export class VisualContainerElement extends React.Component<
 
   render() {
     const { isReady } = this.state;
-    const { children } = this.props;
+    const { children, ignore } = this.props;
 
-    return <div data-test-ready={isReady}>{children}</div>;
+    return (
+      <div {...{ [DATA_IGNORE_HOOK]: ignore }}>
+        <div {...{ [DATA_READY_HOOK]: isReady }}>{children}</div>
+      </div>
+    );
   }
 }

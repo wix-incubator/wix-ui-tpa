@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Checkbox } from './';
 
 class CheckboxVisual extends React.Component<any> {
   render() {
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <Checkbox {...this.props} onChange={() => {}} />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }
