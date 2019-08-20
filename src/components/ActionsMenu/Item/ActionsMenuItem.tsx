@@ -32,13 +32,9 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
         {({ mobile }) => (
           <div
             key={content}
-            {...styles(
-              styles.root,
-              { mobile, disabled, withIcon: !!prefixIcon },
-              rest,
-            )}
+            {...styles(styles.root, { mobile, disabled }, rest)}
             role="button"
-            aria-pressed="false"
+            aria-disabled={disabled}
             onClick={onClick}
           >
             <div {...styles(styles.icon, {})}>{prefixIcon}</div>
