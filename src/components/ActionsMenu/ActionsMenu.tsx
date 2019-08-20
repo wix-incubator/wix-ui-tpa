@@ -3,6 +3,8 @@ import styles from './ActionsMenu.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuItem } from './Item/ActionsMenuItem';
 import { ActionsMenuDivider } from './Divider/Divider';
+import {TABS_DATA_KEYS} from "../Tabs/dataHooks";
+import {ACTIONS_MENU__DATA_KEYS} from "./dataHooks";
 
 export enum Alignment {
   left = 'left',
@@ -17,6 +19,12 @@ export interface ActionsMenuProps {
 
 interface DefaultProps {
   alignment: Alignment;
+}
+
+function getDataAttributes(mobile: boolean) {
+  return {
+    [ACTIONS_MENU__DATA_KEYS.mobile]: mobile,
+  };
 }
 
 /** ActionsMenu */
@@ -34,7 +42,7 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div key={alignment} {...styles('root', { mobile, alignment }, rest)}>
+          <div key={alignment} {...styles('root', { mobile, alignment }, rest)} {...getDataAttributes(mobile)}>
             {children}
           </div>
         )}

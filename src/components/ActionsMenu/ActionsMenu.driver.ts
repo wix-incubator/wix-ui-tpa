@@ -2,8 +2,8 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './ActionsMenu.st.css';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
+import { ACTIONS_MENU__DATA_KEYS } from "./dataHooks";
 
 export interface ActionsMenuDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
@@ -12,10 +12,8 @@ export interface ActionsMenuDriver extends BaseUniDriver {
 export const actionsMenuDriverFactory = (
   base: UniDriver,
 ): ActionsMenuDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
-
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
+    isMobile: async () => (await base.attr(ACTIONS_MENU__DATA_KEYS.mobile)) === 'true',
   };
 };
