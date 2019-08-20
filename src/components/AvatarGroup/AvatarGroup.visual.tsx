@@ -16,10 +16,10 @@ class AvatarGroupVisual extends React.Component<any> {
   };
 
   render() {
+    const { ignoreTest } = this.props;
+
     return (
-      <VisualTestContainer
-        hook={() => new Promise(res => setTimeout(res, 1000))}
-      >
+      <VisualTestContainer ignore={ignoreTest}>
         <AvatarGroup {...this.props} />
       </VisualTestContainer>
     );
@@ -47,6 +47,7 @@ function generateIts(size) {
         size,
         items: [...items, ...items],
       },
+      ignore: AvatarGroupSize.xxSmall === size,
     },
     {
       it: 'With 12 items and custom limit',
@@ -60,9 +61,9 @@ function generateIts(size) {
 }
 
 tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
+  its.forEach(({ it, props, ignore }) => {
     storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
-      <AvatarGroupVisual {...props} />
+      <AvatarGroupVisual {...props} ignoreTest={ignore} />
     ));
   });
 });
