@@ -11,6 +11,7 @@ export * from './LikeButton';
 export * from './Pagination';
 export * from './TextButton';
 export * from './TextArea';
+export * from './TextField';
 export * from './Badge';
 export * from './Avatar';
 export { IconButton } from './IconButton';

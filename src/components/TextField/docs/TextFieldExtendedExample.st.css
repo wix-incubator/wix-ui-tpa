@@ -1,0 +1,13 @@
+:import {
+  -st-from: "../TextField.st.css";
+  -st-default: TPATextField;
+}
+
+.root {
+  -st-mixin: TPATextField(
+      MainBackgroundColor '"--textFieldBackgroundColor"',
+      MainTextColor '"--textFieldTextColor"',
+      MainBorderColor '"--textFieldBorderColor"',
+      MainTextFont '"--textFont"'
+  );
+}

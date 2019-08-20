@@ -14,6 +14,7 @@ module.exports = {
   LikeButton: { legacyDriver: true },
   Pagination: { legacyDriver: true },
   Text: { legacyDriver: true },
+  TextField: { legacyDriver: true },
   ToggleSwitch: { legacyDriver: true, noTestkit: true },
   Tooltip: { legacyDriver: true },
 
