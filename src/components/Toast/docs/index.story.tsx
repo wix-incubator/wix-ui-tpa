@@ -30,7 +30,7 @@ export default {
     'data-hook': 'storybook-Toast',
     children: 'Hey, I am toast component',
     skin: TOAST_SKIN.success,
-    onClose: () => console.log('on close'),
+    onClose: () => {},
   }),
   exampleProps: {
     skin: Object.values(TOAST_SKIN),

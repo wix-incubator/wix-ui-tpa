@@ -17,7 +17,6 @@
     DefaultPlaceholderColor: color-3;
     DefaultFocusFontColor: color-1;
     DefaultDisabledBorderColor: color-3;
-    DefaultFocusFontColor: color-1;
     DefaultFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 
     /*Defaults params goes here*/
@@ -61,7 +60,7 @@
 
 .root:active,
 .root:hover,
-.root:focus-within
+.root:focus
 {
     border-color: value(borderColor);
 }
@@ -120,7 +119,7 @@
 }
 
 .root:hover:error,
-.root:focus-within:error
+.root:focus:error
 {
     border-color: value(errorBorderColor);
 }
@@ -138,7 +137,7 @@
 }
 
 .root:hover:success,
-.root:focus-within:success
+.root:focus:success
 {
     border-color: value(successBorderColor);
 }

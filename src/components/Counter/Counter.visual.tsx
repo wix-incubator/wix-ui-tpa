@@ -11,7 +11,7 @@ class CounterVisual extends React.Component<any> {
           inputAriaLabel={'amount'}
           incrementAriaLabel={'increment'}
           decrementAriaLabel={'decrement'}
-          onChange={val => console.log(val)}
+          onChange={() => {}}
           {...this.props}
         />
       </VisualContainerElement>

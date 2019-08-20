@@ -14,9 +14,7 @@ export class CounterExtendedExample extends React.Component<{}, State> {
     try {
       value = Number(num);
       this.setState({ value });
-    } catch (e) {
-      console.log(num);
-    }
+    } catch (e) {}
   };
 
   render = () => (

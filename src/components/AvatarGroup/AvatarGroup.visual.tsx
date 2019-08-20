@@ -4,6 +4,12 @@ import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
 import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
 
+const items = [
+  {},
+  { name: 'anonymous' },
+  { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
+];
+
 class AvatarGroupVisual extends React.Component<any> {
   static defaultProps = {
     items: [],
@@ -22,12 +28,6 @@ const tests = Object.keys(AvatarGroupSize).map(avatarSize => ({
   describe: `size: ${avatarSize}`,
   its: generateIts(avatarSize),
 }));
-
-const items = [
-  {},
-  { name: 'anonymous' },
-  { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
-];
 
 function generateIts(size) {
   return [
