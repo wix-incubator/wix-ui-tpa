@@ -2,17 +2,22 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './CheckboxGroup.st.css';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
+import { checkboxDriverFactory } from '../Checkbox/Checkbox.driver';
 
-export interface CheckboxGroupDriver extends BaseUniDriver {}
+export interface CheckboxGroupDriver extends BaseUniDriver {
+  isCheckboxesExist(): Promise<boolean>;
+}
 
 export const checkboxGroupDriverFactory = (
   base: UniDriver,
 ): CheckboxGroupDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
+  const checkboxDriver = checkboxDriverFactory(base);
 
   return {
     ...baseUniDriverFactory(base),
+    async isCheckboxesExist() {
+      return checkboxDriver.exists();
+    },
   };
 };

@@ -9,32 +9,23 @@ import { Checkbox } from '../Checkbox';
 import { checkboxGroupTestkitFactory } from '../../testkit';
 import { checkboxGroupTestkitFactory as enzymeCheckboxGroupTestkitFactory } from '../../testkit/enzyme';
 
+const noop = () => {};
 const el = (
   <CheckboxGroup>
-    <Checkbox
-      name="group1"
-      onChange={val => console.log(val)}
-      label="Checkbox 1️⃣"
-    />
-    <Checkbox
-      name="group1"
-      onChange={val => console.log(val)}
-      label="Checkbox 2️⃣"
-    />
-    <Checkbox
-      name="group1"
-      onChange={val => console.log(val)}
-      label="Checkbox 3️⃣"
-    />
+    <Checkbox name="group1" onChange={noop} label="Checkbox 1️⃣" />
+    <Checkbox name="group1" onChange={noop} label="Checkbox 2️⃣" />
+    <Checkbox name="group1" onChange={noop} label="Checkbox 3️⃣" />
   </CheckboxGroup>
 );
 
 describe('CheckboxGroup', () => {
   const createDriver = createUniDriverFactory(checkboxGroupDriverFactory);
 
-  it('should render', async () => {
+  it('should render with childrens', async () => {
     const driver = createDriver(el);
+
     expect(await driver.exists()).toBe(true);
+    expect(await driver.isCheckboxesExist()).toBeTruthy();
   });
 
   describe('testkit', () => {

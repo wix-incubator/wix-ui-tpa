@@ -32,6 +32,7 @@ const tests = [
         it: 'with label',
         props: {
           children: [checkboxEl],
+          label: "No worries. I'm a label.",
         },
       },
     ],
