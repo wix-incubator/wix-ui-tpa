@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ToggleSwitch } from '.';
 
 class ToggleSwitchVisual extends React.Component<any> {
@@ -8,9 +8,9 @@ class ToggleSwitchVisual extends React.Component<any> {
 
   render() {
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <ToggleSwitch {...this.props} />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }
