@@ -1,16 +1,20 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Ratings, Mode, Size } from '.';
 
 class RatingsVisual extends React.Component<any> {
-  static defaultProps = {};
+  static defaultProps = {
+    hook: null,
+  };
 
   render() {
+    const ratingsProps = { ...this.props };
+    delete ratingsProps.hook;
     return (
-      <VisualContainerElement>
-        <Ratings {...this.props} />
-      </VisualContainerElement>
+      <VisualTestContainer>
+        <Ratings {...ratingsProps} />
+      </VisualTestContainer>
     );
   }
 }

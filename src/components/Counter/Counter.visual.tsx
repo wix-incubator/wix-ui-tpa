@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Counter } from './';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 
 class CounterVisual extends React.Component<any> {
   render() {
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <Counter
           inputAriaLabel={'amount'}
           incrementAriaLabel={'increment'}
@@ -14,7 +14,7 @@ class CounterVisual extends React.Component<any> {
           onChange={() => {}}
           {...this.props}
         />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }
