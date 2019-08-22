@@ -13,6 +13,7 @@
     DefaultSelectedColor: color(color-8);
     DefaultKnobColor: color(color-1);
     DefaultDisabledColor: applyOpacity(color(color-3), 0.9);
+    DefaultTransitionDuration: .2s;
 }
 
 :vars {
@@ -35,14 +36,17 @@
 
     color: value(UsedBaseColor);
     opacity: .7;
+    transition: all value(DefaultTransitionDuration) ease;
 }
 
 .root::track {
     background-color: value(UsedBaseColor);
+    transition-duration: value(DefaultTransitionDuration);
 }
 
 .root::knob {
     background-color: value(UsedKnobColor);
+    transition-duration: value(DefaultTransitionDuration);
 }
 
 .root:hover {
@@ -72,4 +76,8 @@
 
 .root:disabled::track {
     background-color: value(UsedDisabledColor);
+}
+
+.root:disabled::knob {
+    background-color: applyOpacity(color(color-1), 0.6);
 }
