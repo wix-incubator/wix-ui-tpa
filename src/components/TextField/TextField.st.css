@@ -73,7 +73,7 @@
 
 .root {
     -st-extends: Input;
-    -st-states: error, success, theme(enum(line, box));
+    -st-states: error, success, theme(enum(line, box)), test;
     box-sizing: border-box;
     border-color: value(borderColor);
     border: value(border);
@@ -85,6 +85,14 @@
     display: flex;
     align-items: center;
     padding: 8px 12px;
+}
+
+.root:test {
+    transition: none;
+}
+
+.root:test::nativeInput {
+    caret-color: transparent;
 }
 
 .root:hover {

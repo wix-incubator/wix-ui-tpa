@@ -19,10 +19,24 @@ import { dataHooks } from './docs/testData';
     });
 
     dataHooks.forEach(dataHook => {
-      eyes.it(`${story}-${dataHook}-default-state`, async () => {
+      eyes.it(`${story}-${dataHook}-default`, async () => {
         const driver = textFieldTestkitFactory({ dataHook });
         await waitForVisibilityOf(driver.element(), 'Cannot find TextField');
         expect(await driver.element().isDisplayed()).toBe(true);
+      });
+
+      eyes.it(`${story}-${dataHook}-hover`, async () => {
+        const driver = textFieldTestkitFactory({ dataHook });
+        await waitForVisibilityOf(driver.element(), 'Cannot find TextField');
+        expect(await driver.element().isDisplayed()).toBe(true);
+        await driver.hover();
+      });
+
+      eyes.it(`${story}-${dataHook}-focus`, async () => {
+        const driver = textFieldTestkitFactory({ dataHook });
+        await waitForVisibilityOf(driver.element(), 'Cannot find TextField');
+        expect(await driver.element().isDisplayed()).toBe(true);
+        await driver.focus();
       });
     });
   });

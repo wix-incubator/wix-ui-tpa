@@ -1,7 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
-import { ChevronLeft, ChevronRight } from 'wix-ui-icons-common';
+import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
+import ChevronRight from 'wix-ui-icons-common/ChevronRight';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabItem } from './Tab';
 import { ScrollableTabs } from './ScrollableTabs';

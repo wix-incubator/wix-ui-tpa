@@ -56,11 +56,18 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
     [ERROR]: error,
     [EMPTY]: !props.value,
   };
-
+  const test = (props as any).test;
+  console.info(test);
   return (
     <CoreInput
       {...dataObject}
-      {...style('root', { error, theme, success, disabled })}
+      {...style('root', {
+        test, //needed for visual test. hides text caret removes transitions
+        error,
+        theme,
+        success,
+        disabled,
+      })}
       suffix={
         suffixToShow && (
           <div className={style.suffixWrapper}>

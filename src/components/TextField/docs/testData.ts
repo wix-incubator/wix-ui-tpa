@@ -10,14 +10,13 @@ export const cases: {
     {
       title: 'placeholder',
       props: {
-        placeholder:
-          'This is placeholder. Long. This is placeholder. Long. This is placeholder',
+        placeholder: 'This is placeholder.',
       },
     },
     {
       title: 'value',
       props: {
-        value: 'This is value. Long. This is value. Long. This is value',
+        value: 'This is value.',
       },
     },
   ],
