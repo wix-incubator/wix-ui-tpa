@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { CheckboxGroup } from '../';
+import { CheckboxGroup, Layout } from '../';
+import { Checkbox } from '../../Checkbox';
 import * as examples from './examples';
 import {
   header,
@@ -19,6 +20,13 @@ import * as ExtendedRawSource from '!raw-loader!./CheckboxGroupExtendedExample.t
 import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxGroupExtendedExample.st.css';
 import { CheckboxGroupExtendedExample } from './CheckboxGroupExtendedExample';
 
+const noop = () => {};
+const el = [
+  <Checkbox key={1} name="group1" onChange={noop} label="Checkbox 1" />,
+  <Checkbox key={2} name="group1" onChange={noop} label="Checkbox 2" />,
+  <Checkbox key={3} name="group1" onChange={noop} label="Checkbox 3" />,
+];
+
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
@@ -29,9 +37,10 @@ export default {
   componentPath: '../CheckboxGroup.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-CheckboxGroup',
+    children: el,
   }),
   exampleProps: {
-    //
+    layout: Object.values(Layout),
   },
   dataHook: 'storybook-CheckboxGroup',
   sections: [
@@ -48,16 +57,24 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Default', source: examples.example }].map(code),
-          ...[{ title: 'With label', source: examples.exampleWithLabel }].map(
-            code,
-          ),
+          ...[
+            { title: 'Default', source: examples.example },
+            { title: 'With label', source: examples.exampleWithLabel },
+            {
+              title: 'Layout="horizontal"',
+              source: examples.exampleHorizontal,
+            },
+            { title: 'Disabled', source: examples.exampleWithLabelDisabled },
+            { title: 'With Error', source: examples.exampleWithError },
+            { title: 'With Error Text', source: examples.exampleWithErrorText },
+          ].map(code),
         ],
       }),
 
       ...[
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

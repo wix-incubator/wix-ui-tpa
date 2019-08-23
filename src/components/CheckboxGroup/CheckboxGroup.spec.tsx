@@ -10,8 +10,8 @@ import { checkboxGroupTestkitFactory } from '../../testkit';
 import { checkboxGroupTestkitFactory as enzymeCheckboxGroupTestkitFactory } from '../../testkit/enzyme';
 
 const noop = () => {};
-const el = (
-  <CheckboxGroup>
+const TestComp: React.FunctionComponent<any> = props => (
+  <CheckboxGroup {...props}>
     <Checkbox name="group1" onChange={noop} label="Checkbox 1️⃣" />
     <Checkbox name="group1" onChange={noop} label="Checkbox 2️⃣" />
     <Checkbox name="group1" onChange={noop} label="Checkbox 3️⃣" />
@@ -22,10 +22,22 @@ describe('CheckboxGroup', () => {
   const createDriver = createUniDriverFactory(checkboxGroupDriverFactory);
 
   it('should render with childrens', async () => {
-    const driver = createDriver(el);
+    const driver = createDriver(<TestComp />);
 
     expect(await driver.exists()).toBe(true);
-    expect(await driver.isCheckboxesExist()).toBeTruthy();
+    expect(await driver.isCheckboxesExist()).toBe(true);
+  });
+
+  it('should disable all checkboxes with disabled prop', async () => {
+    const driver = createDriver(<TestComp disabled />);
+
+    expect(await driver.isCheckboxesDisabled()).toBe(true);
+  });
+
+  it('should show error state at all checkboxes with error prop', async () => {
+    const driver = createDriver(<TestComp error />);
+
+    expect(await driver.isCheckboxesErrored()).toBe(true);
   });
 
   describe('testkit', () => {

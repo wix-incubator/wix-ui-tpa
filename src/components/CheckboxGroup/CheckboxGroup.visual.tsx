@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { CheckboxGroup } from './';
+import { CheckboxGroup, Layout } from './';
 import { Checkbox } from '../Checkbox';
 
 class CheckboxGroupVisual extends React.Component<any> {
@@ -33,6 +33,39 @@ const tests = [
         props: {
           children: [checkboxEl],
           label: "No worries. I'm a label.",
+        },
+      },
+      {
+        it: 'with horizontal layout',
+        props: {
+          children: [checkboxEl],
+          label: "No worries. I'm a label.",
+          layout: Layout.Horizontal,
+        },
+      },
+      {
+        it: 'with disabled',
+        props: {
+          children: [checkboxEl],
+          label: "No worries. I'm a label.",
+          disabled: true,
+        },
+      },
+      {
+        it: 'with error',
+        props: {
+          children: [checkboxEl],
+          label: "No worries. I'm a label.",
+          error: true,
+        },
+      },
+      {
+        it: 'with error text',
+        props: {
+          children: [checkboxEl],
+          label: "No worries. I'm a label.",
+          error: true,
+          errorText: "I'm error text",
         },
       },
     ],

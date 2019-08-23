@@ -3,10 +3,17 @@
     -st-named: color, font, fallback;
 }
 
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
 :vars {
     /*Defaults*/
     DefaultLabelColor: color-5;
+    DisabledColor: color-3;
     Font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+    FontError: font("{theme: 'Body-M', size: '12px', lineHeight: '1.75em'}");
 }
 
 :vars {
@@ -19,7 +26,8 @@
 }
 
 .root {
-    display: inline-block;
+    -st-states: disabled, layout( enum(horizontal, vertical) );
+
     margin: 0;
     padding: 0;
 
@@ -28,7 +36,7 @@
 
 .wrapper {
     display: flex;
-    flex-direction: column;
+
 
     margin-bottom: -12px;
 }
@@ -38,8 +46,32 @@
 }
 
 .label {
+    margin-bottom: 20px;
+
     color: value(CurrentLabelColor);
     font: value(Font);
-
-    margin-bottom: 20px;
 }
+
+.error {
+    display: inline-block;
+    margin-top: 10px;
+
+    font: value(FontError);
+    color: color(value(errorColor));
+}
+
+/* ------ LAYOUT -------*/
+.root:layout(vertical) .wrapper {
+    flex-direction: column;
+}
+
+.root:layout(horizontal) .wrapper {
+    flex-direction: row;
+}
+/* ----- /LAYOUT  ------ */
+
+/* ------ STATES -------*/
+.root:disabled .label {
+    color: color(value(DisabledColor));
+}
+/* ------ /STATES -------*/
