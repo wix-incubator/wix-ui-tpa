@@ -10,7 +10,7 @@ const items = [
   {
     name: 'Eve',
     src:
-      'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_120,h_120/c78d05b79ede429fb77c9d8ec4443b93.jpg',
+      'https://static.wixstatic.com/media/11062b_c09ec4aab8204a38addeb492a8cb8c3e~mv2_d_1670_2299_s_2.jpg/v1/fill/w_120,h_120/11062b_c09ec4aab8204a38addeb492a8cb8c3e~mv2_d_1670_2299_s_2.jpg',
   },
 ];
 
