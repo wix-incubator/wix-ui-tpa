@@ -14,16 +14,22 @@ const items = [
   },
 ];
 
+const WAIT_TIMEOUT = 600;
+
 class AvatarGroupVisual extends React.Component<any> {
   static defaultProps = {
     items: [],
   };
 
-  render() {
-    const { ignoreTest } = this.props;
+  _waitForImages(): Promise<void> {
+    return new Promise(res => {
+      setTimeout(res, WAIT_TIMEOUT);
+    });
+  }
 
+  render() {
     return (
-      <VisualTestContainer ignore={ignoreTest}>
+      <VisualTestContainer hook={this._waitForImages}>
         <AvatarGroup {...this.props} />
       </VisualTestContainer>
     );
