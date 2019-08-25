@@ -3,12 +3,15 @@ import { storiesOf } from '@storybook/react';
 import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { DATA_IGNORE_HOOK } from '../../../test/visual/dataHooks';
 
 const items = [
   {},
   { name: 'anonymous' },
-  { name: 'Eve', src: 'https://randomuser.me/api/portraits/women/87.jpg' },
+  {
+    name: 'Eve',
+    src:
+      'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_120,h_120/c78d05b79ede429fb77c9d8ec4443b93.jpg',
+  },
 ];
 
 class AvatarGroupVisual extends React.Component<any> {
@@ -48,7 +51,6 @@ function generateIts(size) {
         size,
         items: [...items, ...items],
       },
-      ignore: AvatarGroupSize.xxSmall === size,
     },
     {
       it: 'With 12 items and custom limit',
@@ -62,15 +64,9 @@ function generateIts(size) {
 }
 
 tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, ignore }) => {
-    storiesOf(`AvatarGroup/${describe}`, module).add(
-      it,
-      () => <AvatarGroupVisual {...props} ignoreTest={ignore} />,
-      {
-        eyes: {
-          ignore: [{ selector: `[${DATA_IGNORE_HOOK}="true"]` }],
-        },
-      },
-    );
+  its.forEach(({ it, props }) => {
+    storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
+      <AvatarGroupVisual {...props} />
+    ));
   });
 });

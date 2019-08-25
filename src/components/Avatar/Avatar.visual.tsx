@@ -38,7 +38,8 @@ function generateIts(size) {
       props: {
         size,
         name: 'Eve',
-        src: 'https://randomuser.me/api/portraits/men/65.jpg',
+        src:
+          'https://static.wixstatic.com/media/c78d05b79ede429fb77c9d8ec4443b93.jpg/v1/fit/w_120,h_120/c78d05b79ede429fb77c9d8ec4443b93.jpg',
       },
     },
   ];
