@@ -36,12 +36,14 @@ export interface TabsProps {
 
 interface TabsState {
   navButtons?: NavButtonOptions;
-  firstRender: null | boolean; // used for ssr
+  animateIndicator: boolean;
+  selectedTab: number;
 }
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
   private _tabsRef: ScrollableTabs;
-  private _resizeTimer: number;
+  private _resizeTimer: NodeJS.Timeout;
+  private _indicatorTimer: NodeJS.Timeout;
 
   static defaultProps = {
     skin: SKIN.fullUnderline,
@@ -51,16 +53,17 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   state = {
     navButtons: NavButtonOptions.none,
-    firstRender: null,
+    animateIndicator: false,
+    selectedTab: this.props.activeTabIndex,
   };
 
   static getDerivedStateFromProps(props, state) {
     let newState = null;
 
-    if (state.firstRender !== false) {
+    if (state.selectedTab !== props.activeTabIndex) {
       newState = {
         navButtons: state.navButtons,
-        firstRender: state.firstRender === null,
+        animateIndicator: true,
       };
     }
 
@@ -72,7 +75,30 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   componentDidUpdate() {
+    const { selectedTab } = this.state;
+    const { activeTabIndex } = this.props;
+
+    clearTimeout(this._indicatorTimer);
+
+    if (selectedTab !== activeTabIndex) {
+      this.setState(
+        { selectedTab: activeTabIndex, animateIndicator: true },
+        () => {
+          this._indicatorTimer = setTimeout(() => {
+            this.setState({
+              animateIndicator: false,
+            });
+          }, 350);
+        },
+      );
+    }
+
     this._updateButtonsIfNeeded();
+  }
+
+  componentWillUnmount(): void {
+    clearTimeout(this._resizeTimer);
+    clearTimeout(this._indicatorTimer);
   }
 
   _onClickLeft = () => {
@@ -132,11 +158,9 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
     this._updateButtonsIfNeeded();
 
-    if (!this.state.firstRender) {
-      this._resizeTimer = window.setTimeout(() => {
-        this._tabsRef.updateIndicatorPosition();
-      }, 100);
-    }
+    this._resizeTimer = setTimeout(() => {
+      this._tabsRef.updateIndicatorPosition();
+    }, 100);
   };
 
   _tabsRefCallback = (el: ScrollableTabs) => {
@@ -155,8 +179,8 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   }
 
   render() {
-    const { navButtons, firstRender } = this.state;
-    const { items, alignment, skin, variant, activeTabIndex } = this.props;
+    const { navButtons, animateIndicator, selectedTab } = this.state;
+    const { items, alignment, skin, variant } = this.props;
 
     return (
       <TPAComponentsConsumer>
@@ -174,8 +198,8 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               className={style.navigation}
               onClickItem={this._onClickItem}
               onScroll={this._onScroll}
-              activeTabIndex={activeTabIndex}
-              animateIndicator={!firstRender}
+              activeTabIndex={selectedTab}
+              animateIndicator={animateIndicator}
               ref={this._tabsRefCallback}
             />
             <TabsNavButton
