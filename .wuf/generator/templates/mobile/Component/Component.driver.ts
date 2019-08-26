@@ -10,6 +10,6 @@ export interface {%ComponentName%}Driver extends BaseUniDriver {
 export const {%componentName%}DriverFactory = (base: UniDriver): {%ComponentName%}Driver => {
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => base.$('[data-mobile="true"]').exists(),
+    isMobile: async () => (await base.attr('data-mobile')) === 'true',
   };
 };
