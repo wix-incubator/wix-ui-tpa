@@ -196,7 +196,7 @@ export class ScrollableTabs extends React.Component<
           ))}
           <div
             className={style.selectedIndicator}
-            style={animateIndicator ? selectedIndicatorRect : null}
+            style={selectedIndicatorRect}
           />
         </nav>
         <div className={style.border} />
