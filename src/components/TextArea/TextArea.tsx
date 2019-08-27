@@ -12,8 +12,10 @@ import {
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextAreaTheme } from './TextAreaEnums';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { withForwardRef, WithForwardRefProps } from '../WithForwardRef';
 
-export interface TextAreaProps {
+export interface TextAreaProps
+  extends WithForwardRefProps<HTMLTextAreaElement> {
   value: string;
   error?: boolean;
   success?: boolean;
@@ -36,7 +38,7 @@ interface DefaultProps {
 }
 
 /** TextArea component */
-export class TextArea extends React.Component<TextAreaProps> {
+class TextAreaComponent extends React.Component<TextAreaProps> {
   static displayName = 'TextArea';
   static defaultProps: DefaultProps = {
     error: false,
@@ -68,6 +70,7 @@ export class TextArea extends React.Component<TextAreaProps> {
       onChange,
       placeholder,
       errorDescription,
+      innerRef,
       ...rest
     } = this.props;
     const dataObject = this._getDataAttributes();
@@ -92,6 +95,7 @@ export class TextArea extends React.Component<TextAreaProps> {
               )}
             >
               <textarea
+                ref={innerRef}
                 value={value}
                 disabled={disabled}
                 onChange={e => {
@@ -126,3 +130,7 @@ export class TextArea extends React.Component<TextAreaProps> {
     );
   }
 }
+
+export const TextArea = withForwardRef<HTMLTextAreaElement, TextAreaProps>(
+  TextAreaComponent,
+);

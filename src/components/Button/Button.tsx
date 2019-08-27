@@ -7,6 +7,8 @@ import {
   TPAComponentsConsumer,
 } from '../TPAComponentsConfig';
 
+import { withForwardRef, WithForwardRefProps } from '../WithForwardRef';
+
 export enum PRIORITY {
   basic = 'basic',
   primary = 'primary',
@@ -20,11 +22,12 @@ export enum SIZE {
   large = 'large',
 }
 
-export interface ButtonProps extends ButtonNextProps {
+export interface ButtonProps
+  extends ButtonNextProps,
+    WithForwardRefProps<HTMLButtonElement> {
   priority?: PRIORITY;
   size?: SIZE;
   fullWidth?: boolean;
-  innerRef?: React.RefObject<HTMLButtonElement>;
 }
 
 class ButtonComponent extends React.Component<ButtonProps> {
@@ -52,8 +55,6 @@ class ButtonComponent extends React.Component<ButtonProps> {
   }
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref: React.RefObject<HTMLButtonElement>) => (
-    <ButtonComponent {...props} innerRef={ref} />
-  ),
+export const Button = withForwardRef<HTMLButtonElement, ButtonProps>(
+  ButtonComponent,
 );
