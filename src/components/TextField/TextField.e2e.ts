@@ -19,12 +19,6 @@ import { dataHooks } from './docs/testData';
     });
 
     dataHooks.forEach(dataHook => {
-      eyes.it(`${story}-${dataHook}-default`, async () => {
-        const driver = textFieldTestkitFactory({ dataHook });
-        await waitForVisibilityOf(driver.element(), 'Cannot find TextField');
-        expect(await driver.element().isDisplayed()).toBe(true);
-      });
-
       eyes.it(`${story}-${dataHook}-hover`, async () => {
         const driver = textFieldTestkitFactory({ dataHook });
         await waitForVisibilityOf(driver.element(), 'Cannot find TextField');

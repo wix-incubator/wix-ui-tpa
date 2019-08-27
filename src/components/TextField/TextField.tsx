@@ -56,13 +56,11 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
     [ERROR]: error,
     [EMPTY]: !props.value,
   };
-  const test = (props as any).test;
-  console.info(test);
+
   return (
     <CoreInput
       {...dataObject}
       {...style('root', {
-        test, //needed for visual test. hides text caret removes transitions
         error,
         theme,
         success,

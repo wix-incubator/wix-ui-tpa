@@ -1,6 +1,4 @@
 import { inputDriverFactory as coreDriver } from 'wix-ui-core/drivers/vanilla';
-import { StylableDOMUtil } from '@stylable/dom-test-kit';
-import style from './TextField.st.css';
 import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME } from './dataKeys';
 
 export const textFieldDriverFactory = ({ element, eventTrigger }) => {

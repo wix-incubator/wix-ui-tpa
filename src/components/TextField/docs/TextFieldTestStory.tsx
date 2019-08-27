@@ -31,7 +31,6 @@ function renderTest(options?: { dir: 'rtl' | 'ltr' }) {
                               <label>
                                 {`${state.title} state with provided ${variant.title}`}
                                 <TextField
-                                  {...{ test: true }}
                                   data-hook={generateDataHook(
                                     theme,
                                     variant.title,
