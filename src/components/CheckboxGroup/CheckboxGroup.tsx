@@ -21,9 +21,6 @@ interface DefaultProps {
   layout: Layout;
 }
 
-const MIN_CHILD_WIDTH = 193; //px
-const GUTTER = 30; //px
-
 export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   static displayName = 'CheckboxGroup';
   static defaultProps: DefaultProps = {
