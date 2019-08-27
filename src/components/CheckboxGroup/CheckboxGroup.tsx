@@ -19,16 +19,15 @@ export interface CheckboxGroupProps {
 
 interface DefaultProps {
   layout: Layout;
-  /* label: string;
-  errorText: string; */
 }
+
+const MIN_CHILD_WIDTH = 193; //px
+const GUTTER = 30; //px
 
 export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   static displayName = 'CheckboxGroup';
   static defaultProps: DefaultProps = {
     layout: Layout.Vertical,
-    /* label: 'This is label',
-    errorText: 'This is error message', */
   };
 
   render() {
@@ -41,6 +40,9 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
       errorText,
       ...rest
     } = this.props;
+    const childLength = (children && children.length) || 0;
+    const minContainerWidth =
+      childLength * MIN_CHILD_WIDTH + GUTTER * (childLength - 1) - 18;
 
     return (
       <fieldset
@@ -49,7 +51,10 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
       >
         {!!label && <legend className={styles.label}>{label}</legend>}
 
-        <div className={styles.wrapper}>
+        <div
+          className={styles.wrapper}
+          /* style={{ minWidth: `${minContainerWidth}px` }} */
+        >
           {React.Children.map(
             this.props.children,
             (child: Checkbox, idx: number) => {
@@ -64,7 +69,9 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
             },
           )}
         </div>
-        {!!errorText && <span className={styles.error}>{errorText}</span>}
+        {!!errorText && !disabled && (
+          <span className={styles.error}>{errorText}</span>
+        )}
       </fieldset>
     );
   }

@@ -60,9 +60,22 @@ export default {
           ...[
             { title: 'Default', source: examples.example },
             { title: 'With label', source: examples.exampleWithLabel },
+            { title: 'With long text', source: examples.exampleWithLongText },
             {
               title: 'Layout="horizontal"',
               source: examples.exampleHorizontal,
+            },
+            {
+              title: 'Layout="horizontal" with long text & max width',
+              source: examples.exampleHorizontalWithLongText,
+            },
+            {
+              title: 'Layout="horizontal" with long text & min width',
+              source: examples.exampleHorizontalWithLongTextMinWidth,
+            },
+            {
+              title: 'Layout="horizontal" with error text',
+              source: examples.exampleHorizontalWithErrorText,
             },
             { title: 'Disabled', source: examples.exampleWithLabelDisabled },
             { title: 'With Error', source: examples.exampleWithError },

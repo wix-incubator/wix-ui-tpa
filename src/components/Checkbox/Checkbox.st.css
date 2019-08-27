@@ -40,7 +40,11 @@
     -st-states: checked, disabled, error;
 
     display: inline-flex;
-    align-items: center;
+    /* align-items: flex-start; */
+}
+
+.root::box {
+    padding-top: 4px;
 }
 
 .icon {
@@ -53,7 +57,7 @@
     border-radius: 1px;
 
     box-sizing: border-box;
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 
 .icon svg {

@@ -28,6 +28,7 @@
 .root {
     -st-states: disabled, layout( enum(horizontal, vertical) );
 
+    display: inline-block;
     margin: 0;
     padding: 0;
 
@@ -54,7 +55,7 @@
 
 .error {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 6px;
 
     font: value(FontError);
     color: color(value(errorColor));
@@ -65,9 +66,22 @@
     flex-direction: column;
 }
 
+.root:layout(vertical) .wrapper > * {
+    max-width: 328px;
+}
+
 .root:layout(horizontal) .wrapper {
     flex-direction: row;
+    margin: 0 -9px;
 }
+
+.root:layout(horizontal) .wrapper > * {
+    margin: 0 9px;
+
+    min-width: 170px;
+    max-width: 320px;
+}
+
 /* ----- /LAYOUT  ------ */
 
 /* ------ STATES -------*/

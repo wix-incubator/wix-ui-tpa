@@ -44,6 +44,16 @@ const tests = [
         },
       },
       {
+        it: 'with horizontal layout with error text',
+        props: {
+          children: [checkboxEl],
+          label: "No worries. I'm a label.",
+          layout: Layout.Horizontal,
+          errorText: "I'm an error",
+          error: true,
+        },
+      },
+      {
         it: 'with disabled',
         props: {
           children: [checkboxEl],

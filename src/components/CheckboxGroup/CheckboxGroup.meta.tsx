@@ -38,6 +38,16 @@ CheckboxGroupMetadata.addSim({
   },
 });
 CheckboxGroupMetadata.addSim({
+  title: 'with horizontal layout with error text',
+  props: {
+    children: [checkboxEl],
+    label: "No worries. I'm a label.",
+    layout: Layout.Horizontal,
+    error: true,
+    errorText: "I'm an error",
+  },
+});
+CheckboxGroupMetadata.addSim({
   title: 'with disabled',
   props: {
     label: 'Label',
