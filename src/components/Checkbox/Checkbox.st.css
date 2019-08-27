@@ -40,7 +40,6 @@
     -st-states: checked, disabled, error;
 
     display: inline-flex;
-    /* align-items: flex-start; */
 }
 
 .root::box {
@@ -57,7 +56,6 @@
     border-radius: 1px;
 
     box-sizing: border-box;
-    /* vertical-align: middle; */
 }
 
 .icon svg {

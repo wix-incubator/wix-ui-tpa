@@ -40,9 +40,6 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
       errorText,
       ...rest
     } = this.props;
-    const childLength = (children && children.length) || 0;
-    const minContainerWidth =
-      childLength * MIN_CHILD_WIDTH + GUTTER * (childLength - 1) - 18;
 
     return (
       <fieldset
@@ -51,10 +48,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
       >
         {!!label && <legend className={styles.label}>{label}</legend>}
 
-        <div
-          className={styles.wrapper}
-          /* style={{ minWidth: `${minContainerWidth}px` }} */
-        >
+        <div className={styles.wrapper}>
           {React.Children.map(
             this.props.children,
             (child: Checkbox, idx: number) => {
