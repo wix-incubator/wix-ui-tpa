@@ -33,16 +33,21 @@
     padding: 0;
 
     border: none;
+    max-width: 960px;
 }
 
 .wrapper {
     display: flex;
 
-
     margin-bottom: -12px;
 }
 
+.wrapper > * {
+    margin-bottom: 12px;
+}
+
 .label {
+    padding: 0;
     margin-bottom: 20px;
 
     color: value(CurrentLabelColor);
@@ -63,24 +68,30 @@
 }
 
 .root:layout(vertical) .wrapper > * {
-    margin-bottom: 12px;
     max-width: 328px;
 }
 
 .root:layout(horizontal) .wrapper {
     flex-direction: row;
-    margin: 0 -9px 20px;
-
-    max-width: 960px;
 }
 
 .root:layout(horizontal) .wrapper > * {
-    margin: 0 9px;
+    margin: 0 0 12px;
 
-    min-width: 170px;
     max-width: 300px;
+    min-width: 170px;
 }
 
+.root:layout(horizontal) .wrapper > .divider {
+    display: inline-block;
+    margin: 0;
+
+    width: 30px;
+    min-width: initial;
+    max-width: initial;
+
+    flex-shrink: 0;
+}
 /* ----- /LAYOUT  ------ */
 
 /* ------ STATES -------*/

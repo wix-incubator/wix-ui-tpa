@@ -52,11 +52,19 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
               if (!React.isValidElement(child)) {
                 return null;
               }
-              return React.cloneElement(child, {
-                key: idx,
-                error,
-                disabled,
-              });
+              return (
+                <>
+                  {React.cloneElement(child, {
+                    key: idx,
+                    error,
+                    disabled,
+                  })}
+                  {layout === Layout.Horizontal &&
+                    idx !== this.props.children.length - 1 && (
+                      <span className={styles.divider} />
+                    )}
+                </>
+              );
             },
           )}
         </div>

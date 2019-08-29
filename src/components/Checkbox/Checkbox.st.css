@@ -46,6 +46,10 @@
     padding-top: 4px;
 }
 
+.root::childContainer {
+    display: flex;
+}
+
 .icon {
     display: inline-block;
     width: 16px;
@@ -69,6 +73,8 @@
 .divider {
     display: inline-block;
     width: 12px;
+
+    flex-shrink: 0;
 }
 
 .icon path {
@@ -76,6 +82,8 @@
 }
 
 .label {
+    display: inline-block;
+
     font: value(Font);
     color: value(CurrentTextColor);
 }

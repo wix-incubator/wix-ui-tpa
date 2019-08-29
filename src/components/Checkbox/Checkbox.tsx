@@ -96,13 +96,15 @@ export class Checkbox extends React.Component<CheckboxProps> {
         onChange={onChange}
         name={name}
       >
-        <div
-          data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
-          className={styles.label}
-        >
+        <>
           {!!label && <span className={styles.divider}></span>}
-          {label}
-        </div>
+          <div
+            data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
+            className={styles.label}
+          >
+            {label}
+          </div>
+        </>
       </CoreCheckbox>
     );
   }
