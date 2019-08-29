@@ -70,6 +70,7 @@ export const exampleHorizontalWithLongText = `
         <Checkbox name="group1" onChange={val => console.log(val)} label="an option with a lot of text and a lot of text and too much text" />
         <Checkbox name="group1" onChange={val => console.log(val)} label="an option with a lot of text and a lot of text and too much text" />
         <Checkbox name="group1" onChange={val => console.log(val)} label="an option with a lot of text and a lot of text and too much text" />
+        <Checkbox name="group1" onChange={val => console.log(val)} label="an option with a lot of text and a lot of text and too much text" />
     </CheckboxGroup>
 </div>
 `;
@@ -77,7 +78,7 @@ export const exampleHorizontalWithLongText = `
 export const exampleHorizontalWithLongTextMinWidth = `
 <CheckboxGroup label="Well, hello. I'm checkbox group." layout="horizontal">
     <Checkbox name="group1" onChange={val => console.log(val)} label="It's amazing!" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="It's OK. You can make it better." />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="It's OK." />
     <Checkbox name="group1" onChange={val => console.log(val)} label="I did not like it." />
 </CheckboxGroup>
 `;

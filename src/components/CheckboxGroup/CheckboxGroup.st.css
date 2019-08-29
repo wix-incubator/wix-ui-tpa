@@ -33,7 +33,6 @@
     padding: 0;
 
     border: none;
-    max-width: 960px;
 }
 
 .wrapper {
@@ -73,25 +72,18 @@
 
 .root:layout(horizontal) .wrapper {
     flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -15px -12px;
+
+    max-width: 990px;
 }
 
 .root:layout(horizontal) .wrapper > * {
-    margin: 0 0 12px;
+    margin: 0 15px 12px;
 
     max-width: 300px;
-    min-width: 170px;
 }
 
-.root:layout(horizontal) .wrapper > .divider {
-    display: inline-block;
-    margin: 0;
-
-    width: 30px;
-    min-width: initial;
-    max-width: initial;
-
-    flex-shrink: 0;
-}
 /* ----- /LAYOUT  ------ */
 
 /* ------ STATES -------*/

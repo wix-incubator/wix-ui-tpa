@@ -59,10 +59,6 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
                     error,
                     disabled,
                   })}
-                  {layout === Layout.Horizontal &&
-                    idx !== this.props.children.length - 1 && (
-                      <span className={styles.divider} />
-                    )}
                 </>
               );
             },
