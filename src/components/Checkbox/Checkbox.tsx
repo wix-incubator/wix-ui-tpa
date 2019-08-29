@@ -6,7 +6,6 @@ import {
 } from 'wix-ui-icons-common/system';
 import styles from './Checkbox.st.css';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
-import { spawn } from 'child_process';
 
 interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
