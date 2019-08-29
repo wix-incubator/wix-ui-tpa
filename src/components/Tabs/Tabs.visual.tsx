@@ -76,6 +76,40 @@ const tests = [
   },
 ];
 
+const generateTest = (props = {}) => <TabsVisual {...props} />;
+
+const tempTests = {
+  Basic: [
+    {
+      label: 'default',
+      test: generateTest(),
+    },
+    {
+      label: 'mobile',
+      mobile: true,
+      test: generateTest(),
+    },
+  ],
+  Alignments: Object.values(ALIGNMENT).map(alignment => ({
+    label: alignment,
+    test: generateTest({
+      alignment,
+    }),
+  })),
+  Variants: Object.values(VARIANT).map(variant => ({
+    label: variant,
+    test: generateTest({
+      variant,
+    }),
+  })),
+  Skins: Object.values(SKIN).map(skin => ({
+    label: skin,
+    test: generateTest({
+      skin,
+    }),
+  })),
+};
+
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props }) => {
     storiesOf(`${kind}/${describe}`, module).add(it, () => (
