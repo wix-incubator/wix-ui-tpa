@@ -66,13 +66,16 @@
 
 }
 
+.divider {
+    display: inline-block;
+    width: 12px;
+}
+
 .icon path {
     fill: value(CurrentIconColor);
 }
 
 .label {
-    margin: 0 12px;
-
     font: value(Font);
     color: value(CurrentTextColor);
 }

@@ -10,9 +10,9 @@ export const example = `
 
 export const exampleWithLabel = `
 <CheckboxGroup label="Well, hello. I'm checkbox group.">
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3️⃣" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3" />
 </CheckboxGroup>
 `;
 
@@ -26,25 +26,25 @@ export const exampleWithLongText = `
 
 export const exampleWithLabelDisabled = `
 <CheckboxGroup label="Well, hello. I'm checkbox group." disabled>
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3️⃣" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3" />
 </CheckboxGroup>
 `;
 
 export const exampleWithError = `
 <CheckboxGroup label="Well, hello. I'm checkbox group." error>
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3️⃣" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3" />
 </CheckboxGroup>
 `;
 
 export const exampleWithErrorText = `
 <CheckboxGroup label="Well, hello. I'm checkbox group." error errorText="I'm an error. Fix me!">
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2️⃣" />
-    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3️⃣" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2" />
+    <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 3" />
 </CheckboxGroup>
 `;
 
