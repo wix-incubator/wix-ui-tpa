@@ -18,6 +18,7 @@
     defaultMainBorderColor: color-5;
     defaultMainBackgroundColor: color-1;
     defaultMainTextColor: color-5;
+    defaultLineThemeMainBackgroundColor: transparent;
     defaultMainTextFont: "{theme: 'Body-M', size: '16px'}";
 }
 
@@ -131,7 +132,7 @@
     border-left: none;
     border-right: none;
     padding: 8px 0;
-    background-color: transparent;
+    background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
 }
 
 .root::nativeInput {
