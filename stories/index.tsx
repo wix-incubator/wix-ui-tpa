@@ -20,6 +20,8 @@ require('../src/components/Ratings/docs/RatingsTestStory');
 require('../src/components/Checkbox/docs/CheckboxTestStory');
 require('../src/components/Pagination/docs/index.story');
 require('../src/components/TextArea/docs/index.story');
+require('../src/components/TextField/docs/index.story');
+require('../src/components/TextField/docs/TextFieldTestStory');
 require('../src/components/Badge/docs/index.story');
 require('../src/components/Avatar/docs/index.story');
 require('../src/components/AvatarGroup/docs/index.story');

@@ -19,6 +19,7 @@ export * from './components/StatesButton';
 export * from './components/StripCard';
 export * from './components/Tabs';
 export * from './components/Text';
+export * from './components/TextField';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 export * from './components/Pagination';
