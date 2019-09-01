@@ -12,7 +12,7 @@ class TabsVisual extends React.Component {
   };
 
   render() {
-    const { tabsProps, mobile } = (this.props as any);
+    const { tabsProps, mobile } = this.props as any;
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
