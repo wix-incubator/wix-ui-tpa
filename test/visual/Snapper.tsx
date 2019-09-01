@@ -7,7 +7,11 @@ interface VisualTestProps {
   timeout: number;
 }
 
-class VisualTest extends React.Component<VisualTestProps> {
+interface VisualTestState {
+  async: boolean;
+}
+
+class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   private _hookResolve = null;
   private readonly _hookPromise: Promise<void> = new Promise(res => {
     this._hookResolve = res;
@@ -19,15 +23,21 @@ class VisualTest extends React.Component<VisualTestProps> {
     timeout: 5000,
   };
 
+  state = {
+    async: this.props.children.length > 0,
+  };
+
   componentDidMount(): void {
-    if (this._isAsync()) {
+    const { async } = this.state;
+
+    if (async) {
       this._timeoutId = setTimeout(this._done, this.props.timeout);
     }
   }
 
-  _isAsync() {
-    const { children } = this.props;
-    return children.length > 0;
+  static getDerivedStateFromProps(props, state) {
+    const async = props.children.length > 0;
+    return state.async !== async ? async : null;
   }
 
   _done = () => {
@@ -40,10 +50,11 @@ class VisualTest extends React.Component<VisualTestProps> {
   };
 
   render() {
+    const { async } = this.state;
     const { children } = this.props;
 
     return (
-      <VisualTestContainer hook={this._isAsync() ? this._doneHook : undefined}>
+      <VisualTestContainer hook={async ? this._doneHook : undefined}>
         {children(this._done)}
       </VisualTestContainer>
     );
