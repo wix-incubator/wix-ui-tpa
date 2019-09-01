@@ -1,10 +1,55 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { TPAComponentsProvider } from '../../src/components/TPAComponentsConfig';
 import { VisualTestContainer } from './VisualTestContainer';
-import { Tabs } from '../../src/components/Tabs';
 
-const stories = {};
+interface VisualTestProps {
+  children(cb: () => void): React.ReactNode;
+  timeout: number;
+}
+
+class VisualTest extends React.Component<VisualTestProps> {
+  private _hookResolve = null;
+  private _hookPromise: Promise<void> = new Promise(res => {
+    this._hookResolve = res;
+  });
+  private _timeoutId: NodeJS.Timeout;
+
+  static defaultProps = {
+    children: () => {},
+    timeout: 5000,
+  };
+
+  componentDidMount(): void {
+    if (this._isAsync()) {
+      this._timeoutId = setTimeout(this._done, this.props.timeout);
+    }
+  }
+
+  _isAsync() {
+    const { children } = this.props;
+    return children.length > 0;
+  }
+
+  _done = () => {
+    clearTimeout(this._timeoutId);
+    this._hookResolve();
+  };
+
+  _doneHook = () => {
+    return this._hookPromise;
+  };
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <VisualTestContainer hook={this._isAsync() ? this._doneHook : undefined}>
+        {children(this._done)}
+      </VisualTestContainer>
+    );
+  }
+}
+
 let currentTest = [];
 
 export function visualize(visualName, tests) {
@@ -38,10 +83,10 @@ export function story(storyName, cb) {
 export function snap(snapshotName, cb) {
   const eyesStorybookOptions = {};
   const fullStoryName = [...currentTest].join('/');
-  console.log('adler', 'Snapper.tsx:42', fullStoryName, snapshotName);
+
   storiesOf(fullStoryName, module).add(
     snapshotName,
-    () => <VisualTestContainer>{cb()}</VisualTestContainer>,
+    () => <VisualTest>{cb}</VisualTest>,
     eyesStorybookOptions,
   );
 }
