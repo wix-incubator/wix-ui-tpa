@@ -17,6 +17,7 @@ export interface CheckboxProps {
   disabled?: boolean;
   indeterminate?: boolean;
   error?: boolean;
+  name?: string;
   'data-hook'?: string;
 }
 
@@ -76,6 +77,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
       error,
       indeterminate,
       onChange,
+      name,
       ...rest
     } = this.props;
     const iconContent = this._renderIcon();
@@ -91,13 +93,17 @@ export class Checkbox extends React.Component<CheckboxProps> {
         indeterminate={indeterminate}
         checked={checked}
         onChange={onChange}
+        name={name}
       >
-        <div
-          data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
-          className={styles.label}
-        >
-          {label}
-        </div>
+        <>
+          {!!label && <span className={styles.divider}></span>}
+          <div
+            data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
+            className={styles.label}
+          >
+            {label}
+          </div>
+        </>
       </CoreCheckbox>
     );
   }

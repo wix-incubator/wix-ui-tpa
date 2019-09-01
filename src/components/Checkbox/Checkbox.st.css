@@ -40,7 +40,14 @@
     -st-states: checked, disabled, error;
 
     display: inline-flex;
-    align-items: center;
+}
+
+.root::box {
+    padding-top: 4px;
+}
+
+.root::childContainer {
+    display: flex;
 }
 
 .icon {
@@ -53,7 +60,6 @@
     border-radius: 1px;
 
     box-sizing: border-box;
-    vertical-align: middle;
 }
 
 .icon svg {
@@ -64,12 +70,19 @@
 
 }
 
+.divider {
+    display: inline-block;
+    width: 12px;
+
+    flex-shrink: 0;
+}
+
 .icon path {
     fill: value(CurrentIconColor);
 }
 
 .label {
-    margin: 0 12px;
+    display: inline-block;
 
     font: value(Font);
     color: value(CurrentTextColor);

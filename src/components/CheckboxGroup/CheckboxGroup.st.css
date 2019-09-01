@@ -1,0 +1,93 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, font, fallback;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultLabelColor: color-5;
+    DisabledColor: color-3;
+    Font: font("{theme: 'Body-M', size: '14px', lineHeight: '1.5em'}");
+    FontError: font("{theme: 'Body-M', size: '12px', lineHeight: '1.75em'}");
+}
+
+:vars {
+    /*Overrides*/
+    LabelColor: --overridable;
+}
+
+:vars {
+    CurrentLabelColor: color(fallback(value(LabelColor), value(DefaultLabelColor)));
+}
+
+.root {
+    -st-states: disabled, layout( enum(horizontal, vertical) );
+
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+
+    border: none;
+}
+
+.wrapper {
+    display: flex;
+
+    margin-bottom: -12px;
+}
+
+.wrapper > * {
+    margin-bottom: 12px;
+}
+
+.label {
+    padding: 0;
+    margin-bottom: 20px;
+
+    color: value(CurrentLabelColor);
+    font: value(Font);
+}
+
+.error {
+    display: inline-block;
+    margin-top: 6px;
+
+    font: value(FontError);
+    color: color(value(errorColor));
+}
+
+/* ------ LAYOUT -------*/
+.root:layout(vertical) .wrapper {
+    flex-direction: column;
+}
+
+.root:layout(vertical) .wrapper > * {
+    max-width: 328px;
+}
+
+.root:layout(horizontal) .wrapper {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 -15px -12px;
+
+    max-width: 990px;
+}
+
+.root:layout(horizontal) .wrapper > * {
+    margin: 0 15px 12px;
+
+    max-width: 300px;
+}
+
+/* ----- /LAYOUT  ------ */
+
+/* ------ STATES -------*/
+.root:disabled .label {
+    color: color(value(DisabledColor));
+}
+/* ------ /STATES -------*/

@@ -20,3 +20,4 @@ export { AvatarGroup } from './AvatarGroup';
 export * from './Toast';
 export * from './Counter';
 export * from './Checkbox';
+export { CheckboxGroup, Layout, CheckboxGroupProps } from './CheckboxGroup';
