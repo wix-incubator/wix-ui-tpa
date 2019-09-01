@@ -48,6 +48,8 @@ export const Tab = React.forwardRef<HTMLDivElement, TabProps>((props, ref) => {
       onClick={onSelectTab}
       onKeyDown={onKeyDown}
       tabIndex={0}
+      role="tab"
+      aria-selected={isActive === true}
     >
       {title}
       <div className={style.focusIndicatorWrapper} tabIndex={-1}>

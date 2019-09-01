@@ -180,7 +180,7 @@ export class ScrollableTabs extends React.Component<
         {...this._getDataAttributes()}
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
-        <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
+        <nav role="tablist" className={style.nav} ref={this._navRef} onScroll={onScroll}>
           {items.map((item, index) => (
             <Tab
               key={`${item.title}-${index}`}
