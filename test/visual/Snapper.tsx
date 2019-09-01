@@ -9,7 +9,7 @@ interface VisualTestProps {
 
 class VisualTest extends React.Component<VisualTestProps> {
   private _hookResolve = null;
-  private _hookPromise: Promise<void> = new Promise(res => {
+  private readonly _hookPromise: Promise<void> = new Promise(res => {
     this._hookResolve = res;
   });
   private _timeoutId: NodeJS.Timeout;
