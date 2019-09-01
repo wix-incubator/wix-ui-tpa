@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from './VisualTestContainer';
+import { DATA_IGNORE_HOOK } from './dataHooks';
 
 interface VisualTestProps {
   children(cb: () => void): React.ReactNode;
   timeout: number;
+  ignore: boolean;
 }
 
 interface VisualTestState {
@@ -21,6 +23,7 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   static defaultProps = {
     children: () => {},
     timeout: 5000,
+    ignore: false,
   };
 
   state = {
@@ -51,10 +54,13 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
 
   render() {
     const { async } = this.state;
-    const { children } = this.props;
+    const { children, ignore } = this.props;
 
     return (
-      <VisualTestContainer hook={async ? this._doneHook : undefined}>
+      <VisualTestContainer
+        hook={async ? this._doneHook : undefined}
+        ignore={ignore}
+      >
         {children(this._done)}
       </VisualTestContainer>
     );
@@ -91,13 +97,27 @@ export function story(storyName, cb) {
   currentTest.pop();
 }
 
-export function snap(snapshotName, cb) {
+function runSnap(snapshotName, cb, ignore = false) {
   const eyesStorybookOptions = {};
   const fullStoryName = [...currentTest].join('/');
 
+  if (ignore) {
+    (eyesStorybookOptions as any).ignore = [
+      { selector: `[${DATA_IGNORE_HOOK}="true"]` },
+    ];
+  }
+
   storiesOf(fullStoryName, module).add(
     snapshotName,
-    () => <VisualTest>{cb}</VisualTest>,
-    eyesStorybookOptions,
+    () => <VisualTest ignore={ignore}>{cb}</VisualTest>,
+    { eyes: eyesStorybookOptions },
   );
+}
+
+export function snap(snapshotName, cb) {
+  runSnap(snapshotName, cb);
+}
+
+export function xsnap(snapshotName, cb) {
+  runSnap(snapshotName, cb, true);
 }
