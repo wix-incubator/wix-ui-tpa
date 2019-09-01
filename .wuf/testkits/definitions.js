@@ -20,6 +20,6 @@ module.exports = {
 
   Divider: {
     // component does not have a testkit at all
-    noTestkit: true
-  }
+    noTestkit: true,
+  },
 };
