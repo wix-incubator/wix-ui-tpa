@@ -8,6 +8,7 @@ export * from './StripCard';
 export * from './Grid';
 export * from './IconToggle';
 export * from './LikeButton';
+export * from './ToggleSwitch';
 export * from './Pagination';
 export * from './TextButton';
 export * from './TextArea';

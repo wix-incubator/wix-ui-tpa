@@ -12,7 +12,7 @@ require('../src/components/StripCard/docs/index.story');
 require('../src/components/Tabs/docs/index.story');
 require('../src/components/Text/docs/index.story');
 require('../src/components/Grid/docs/index.story');
-require('../src/components/ToggleSwitch/docs'); // TODO: convert to .story
+require('../src/components/ToggleSwitch/docs/index.story');
 require('../src/components/Tooltip/docs/index.story');
 require('../src/components/Tooltip/docs/TooltipTestStory');
 require('../src/components/Tabs/docs/TabsTestStory');
