@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from './VisualTestContainer';
-import { DATA_IGNORE_HOOK } from './dataHooks';
+
+type RenderFunction = (cb: () => void) => React.ReactNode;
+type ChildrenProp = React.ReactNode | RenderFunction;
 
 interface VisualTestProps {
-  children(cb: () => void): React.ReactNode;
+  children: ChildrenProp;
   timeout: number;
   ignore: boolean;
 }
@@ -12,6 +14,8 @@ interface VisualTestProps {
 interface VisualTestState {
   async: boolean;
 }
+
+const DATA_IGNORE_HOOK = 'data-test-ignore';
 
 class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   private _hookResolve = null;
@@ -21,14 +25,20 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   private _timeoutId: NodeJS.Timeout;
 
   static defaultProps = {
-    children: () => {},
+    children: null,
     timeout: 5000,
     ignore: false,
   };
 
   state = {
-    async: this.props.children.length > 0,
+    async: VisualTest.isAsync(this.props),
   };
+
+  static isAsync({ children }: { children: ChildrenProp }) {
+    return typeof children === 'function'
+      ? (children as RenderFunction).length > 0
+      : false;
+  }
 
   componentDidMount(): void {
     const { async } = this.state;
@@ -39,7 +49,7 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   }
 
   static getDerivedStateFromProps(props, state) {
-    const async = props.children.length > 0;
+    const async = VisualTest.isAsync(props);
     return state.async !== async ? async : null;
   }
 
@@ -52,16 +62,24 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
     return this._hookPromise;
   };
 
+  _getContent = () => {
+    const { children } = this.props;
+
+    return typeof children === 'function'
+      ? (children as RenderFunction)(this._done)
+      : children;
+  };
+
   render() {
     const { async } = this.state;
-    const { children, ignore } = this.props;
+    const { ignore } = this.props;
 
     return (
       <VisualTestContainer
         hook={async ? this._doneHook : undefined}
         ignore={ignore}
       >
-        {children(this._done)}
+        {this._getContent()}
       </VisualTestContainer>
     );
   }
@@ -97,7 +115,11 @@ export function story(storyName, cb) {
   currentTest.pop();
 }
 
-function runSnap(snapshotName, cb, ignore = false) {
+function runSnap(
+  snapshotName: string,
+  cb: ChildrenProp,
+  ignore: boolean = false,
+) {
   const eyesStorybookOptions = {};
   const fullStoryName = [...currentTest].join('/');
 
@@ -114,10 +136,10 @@ function runSnap(snapshotName, cb, ignore = false) {
   );
 }
 
-export function snap(snapshotName, cb) {
+export function snap(snapshotName: string, cb: ChildrenProp) {
   runSnap(snapshotName, cb);
 }
 
-export function xsnap(snapshotName, cb) {
+export function xsnap(snapshotName: string, cb: ChildrenProp) {
   runSnap(snapshotName, cb, true);
 }
