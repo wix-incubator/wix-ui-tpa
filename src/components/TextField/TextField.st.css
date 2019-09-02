@@ -1,0 +1,186 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: applyStyleMethod, fallback, applyOpacity, color, font;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Input;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor, successColor;
+}
+
+:vars {
+    /** defaults */
+    defaultMainBorderColor: color-5;
+    defaultMainBackgroundColor: color-1;
+    defaultMainTextColor: color-5;
+    defaultLineThemeMainBackgroundColor: transparent;
+    defaultMainTextFont: "{theme: 'Body-M', size: '16px'}";
+}
+
+:vars {
+    MainBorderColor: --overridable;
+    MainBackgroundColor: --overridable;
+    MainTextColor: --overridable;
+    MainTextFont: --overridable;
+}
+
+:vars {
+    mainBorderColor: color(fallback(value(MainBorderColor), value(defaultMainBorderColor)));
+    mainBackgroundColor: color(fallback(value(MainBackgroundColor), value(defaultMainBackgroundColor)));
+    mainTextColor: color(fallback(value(MainTextColor), value(defaultMainTextColor)));
+    mainTextFont: fallback(font(value(MainTextFont)), font(value(defaultMainTextFont)));
+}
+
+:vars {
+    /** default state */
+    textColor: value(mainTextColor);
+    colorPlaceholder: applyOpacity(value(mainTextColor), 0.6);
+    backgroundColor: value(mainBackgroundColor);
+    borderColor: value(mainBorderColor);
+    border: 1px solid applyOpacity(value(borderColor), 0.6);
+    successBorderColor: applyOpacity(value(successColor), 0.6);
+    errorBorderColor: applyOpacity(value(errorColor), 0.6);
+}
+
+:vars {
+    /*Hover*/
+    colorHover: value(mainTextColor);
+    backgroundColorHover: value(mainBackgroundColor);
+    borderColorHover: value(borderColor);
+    successBorderColorHover: value(successColor);
+    errorBorderColorHover: value(errorColor);
+}
+
+:vars {
+    /*Focus*/
+    colorFocus: value(mainTextColor);
+    backgroundColorFocus: value(mainBackgroundColor);
+    borderColorFocus: value(borderColor);
+    successBorderColorFocus: value(successColor);
+    errorBorderColorFocus: value(errorColor);
+}
+
+:vars {
+    /*Disabled*/
+    colorDisabled: applyOpacity(value(mainTextColor), 0.6);
+    backgroundColorDisabled: value(mainBackgroundColor);
+    borderColorDisabled: applyOpacity(value(mainBorderColor), 0.6);
+}
+
+.root {
+    -st-extends: Input;
+    -st-states: error, success, theme(enum(line, box));
+    box-sizing: border-box;
+    border-color: value(borderColor);
+    border: value(border);
+    border-radius: 0;
+    transition: border-color .1s ease-in;
+    background-color: value(mainBackgroundColor);
+    /* todo - Define fonts somewhere*/
+    font: value(mainTextFont);
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.root:hover {
+    border-color: value(borderColorHover);
+    background-color: value(backgroundColorHover);
+}
+
+.root:focus {
+    border-color: value(borderColorFocus);
+    background-color: value(backgroundColorFocus);
+}
+
+.root:disabled {
+    border-color: value(borderColorDisabled);
+    background-color: value(backgroundColorDisabled);
+}
+
+.root:success {
+    border-color: value(successBorderColor);
+}
+
+.root:hover:success {
+    border-color: value(successBorderColorHover);
+}
+
+.root:focus:success {
+    border-color: value(successBorderColorFocus);
+}
+
+.root:error {
+    border-color: value(errorBorderColor);
+}
+
+.root:hover:error {
+    border-color: value(errorBorderColorHover);
+}
+
+.root:focus:error {
+    border-color: value(errorBorderColorFocus);
+}
+
+.root:theme(line) {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 8px 0;
+    background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
+}
+
+.root::nativeInput {
+    width: 100%;
+    font: value(mainTextFont);
+    font-size: 16px;
+    line-height: 24px;
+    vertical-align: middle;
+    padding: 0;
+    border: 0;
+    color: value(textColor);
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.root:hover::nativeInput {
+    color: value(colorHover);
+}
+
+.root:disabled::nativeInput {
+    color: value(colorDisabled);
+}
+
+.root:focus::nativeInput {
+    outline: 0;
+    color: value(colorFocus);
+}
+
+.root::nativeInput::selection {
+    background: applyOpacity(value(mainTextColor), 0.2);
+}
+
+.suffixWrapper {
+    height: 24px;
+    display: flex;
+    margin: 0 -4px;
+    justify-content: flex-end;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.gap {
+    width: 10px;
+}
+
+/* Placeholder color */
+.root::nativeInput::-webkit-input-placeholder,
+.root::nativeInput::placeholder
+{
+    color: value(colorPlaceholder);
+}

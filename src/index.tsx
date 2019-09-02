@@ -5,6 +5,11 @@ export * from './components/Button';
 export * from './components/TextButton';
 export * from './components/Card';
 export * from './components/Checkbox';
+export {
+  CheckboxGroup,
+  Layout,
+  CheckboxGroupProps,
+} from './components/CheckboxGroup';
 export * from './components/Counter';
 export * from './components/Divider';
 export * from './components/Grid';
@@ -14,6 +19,7 @@ export * from './components/StatesButton';
 export * from './components/StripCard';
 export * from './components/Tabs';
 export * from './components/Text';
+export * from './components/TextField';
 export * from './components/ToggleSwitch';
 export * from './components/Tooltip';
 export * from './components/Pagination';

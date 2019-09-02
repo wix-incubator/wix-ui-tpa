@@ -19,7 +19,7 @@ Full list of supported props can be found [here](https://wix.github.io/wix-ui/?s
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with withStylable HOC:
 
-1. create an stylable file (e.g. InputExt.st.css)
+1. Create an stylable file (e.g. InputExt.st.css)
     ``` css
     :import {
         -st-from: "wix-ui-tpa/Input/Input.st.css";
@@ -32,7 +32,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
           MainTextColor '"--inputTextColor"',
           MainBorderColor '"--inputBorderColor"',
           MainTextFont '"--textFont"'
-);
+        );
     }
     ```
 

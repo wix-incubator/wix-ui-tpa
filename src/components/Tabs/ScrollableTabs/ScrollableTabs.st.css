@@ -43,8 +43,8 @@
 .selectedIndicator {
     position: absolute;
     bottom: 0;
-    border-bottom: 3px solid;
-    border-bottom-color: value(selectedIndicatorColor);
+    height: 0;
+    background-color: value(selectedIndicatorColor);
 }
 
 .border {
@@ -56,6 +56,7 @@
 }
 
 .root:animateIndicator .selectedIndicator {
+    height: 3px;
     transition: left .3s ease-in-out, width .3s ease-in-out;
 }
 
