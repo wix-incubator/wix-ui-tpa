@@ -1,0 +1,13 @@
+:import {
+  -st-from: "../ToggleSwitch.st.css";
+  -st-default: ToggleSwitch;
+}
+
+.root {
+  -st-mixin: ToggleSwitch(
+      BaseColor '"--baseColor"',
+      SelectedColor '"--selectedColor"',
+      KnobColor '"--knobColor"',
+      DisabledColor '"--disabledColor"'
+  );
+}
