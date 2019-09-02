@@ -1,40 +1,32 @@
 import * as React from 'react';
-import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
+import { mount } from 'enzyme';
 
-import { TextArea } from '../TextArea/TextArea';
-import { textAreaDriverFactory } from '../TextArea/TextArea.driver';
+import { withForwardRef, WithForwardRefProps } from './withForwardRef';
 
-import { Button } from '../Button/Button';
-import { buttonDriverFactory } from '../Button/Button.driver';
+interface TestInputProps {}
+class TestInputComponent extends React.Component<
+  TestInputProps & WithForwardRefProps<HTMLInputElement>
+> {
+  render() {
+    const { innerRef } = this.props;
+    return (
+      <div>
+        <input type="text" ref={innerRef} />
+      </div>
+    );
+  }
+}
+
+const TestInput = withForwardRef<HTMLInputElement, TestInputProps>(
+  TestInputComponent,
+);
 
 describe('withForwardRef', () => {
   it('forwards refs for TextArea component', () => {
-    const $textArea = React.createRef<HTMLTextAreaElement>();
+    const $input = React.createRef<HTMLInputElement>();
+    mount(<TestInput ref={$input} />);
 
-    createUniDriverFactory(textAreaDriverFactory)(
-      <TextArea
-        ref={$textArea}
-        ariaLabel={'test'}
-        value={'Test Text'}
-        onChange={jest.fn()}
-      />,
-    );
-
-    expect($textArea.current).toBeDefined();
-    expect($textArea.current).toBeInstanceOf(HTMLTextAreaElement);
-    expect($textArea.current.value).toEqual('Test Text');
-  });
-
-  it('forwards refs for Button component', () => {
-    const $button = React.createRef<HTMLButtonElement>();
-
-    createUniDriverFactory(buttonDriverFactory)(<Button ref={$button} />);
-
-    expect($button.current).toBeDefined();
-
-    $button.current.focus();
-    expect(document.activeElement).toEqual(
-      ($button.current as any).wrappedComponentRef.innerComponentRef,
-    );
+    expect($input.current).toBeDefined();
+    expect($input.current).toBeInstanceOf(HTMLInputElement);
   });
 });

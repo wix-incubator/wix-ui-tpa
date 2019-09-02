@@ -1,4 +1,4 @@
-import * as React from 'React';
+import * as React from 'react';
 
 export interface WithForwardRefProps<T extends HTMLElement = HTMLElement> {
   innerRef?: React.Ref<T>;

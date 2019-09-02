@@ -30,6 +30,15 @@ describe('Button', () => {
     expect(await driver.isMobile()).toEqual(true);
   });
 
+  it('should expose focus method using ref', async () => {
+    const ref = React.createRef<HTMLButtonElement>();
+    createDriver(<Button fullWidth ref={ref} />);
+    ref.current.focus();
+    expect(document.activeElement).toEqual(
+      (ref.current as any).wrappedComponentRef.innerComponentRef,
+    );
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
