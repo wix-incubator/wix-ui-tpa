@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../ColorPicker.st.css";
+    -st-default: TPAColorPicker;
+}
+
+.root {
+    -st-mixin: TPAColorPicker(
+            ItemSize '"--itemSize"',
+            BorderRadius '"unit(fallback(zeroAsTrue(--borderRadius), 12), px)"'
+    );
+}
