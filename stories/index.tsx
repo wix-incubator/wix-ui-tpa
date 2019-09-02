@@ -30,4 +30,5 @@ require('../src/components/IconButton/docs/index.story');
 require('../src/components/Counter/docs/index.story');
 require('../src/components/Ratings/docs/index.story');
 require('../src/components/Checkbox/docs/index.story');
+require('../src/components/ColorPicker/docs/index.story');
 require('../src/components/CheckboxGroup/docs/index.story');
