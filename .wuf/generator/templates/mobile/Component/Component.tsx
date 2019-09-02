@@ -35,7 +35,7 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
+          <div {...styles('root', { mobile }, rest)} data-mobile={mobile}>
             <Text {...styles('number', { even: isEven, odd: !isEven })}>
               You clicked this button {isEven ? 'even' : 'odd'} number ({count})
               of times

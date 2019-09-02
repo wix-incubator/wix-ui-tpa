@@ -1,16 +1,31 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
-import { ToggleSwitch } from './index';
+import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
+
+import { ToggleSwitch } from './';
+import { toggleSwitchDriverFactory } from './ToggleSwitch.driver';
 
 describe('ToggleSwitch', () => {
-  let wrapper;
+  const createDriver = createUniDriverFactory(toggleSwitchDriverFactory);
 
-  afterEach(() => wrapper.detach());
+  it('should be checked', async () => {
+    const driver = createDriver(<ToggleSwitch checked />);
 
-  it('should create an input element which represents the toggle', () => {
-    wrapper = mount(<ToggleSwitch onChange={() => null} />, {
-      attachTo: document.createElement('div'),
-    });
-    expect(wrapper.find('input').length).toBe(1);
+    expect(await driver.isChecked()).toBeTruthy();
+  });
+
+  it('should be disabled', async () => {
+    const driver = createDriver(<ToggleSwitch disabled />);
+
+    expect(await driver.isDisabled()).toBeTruthy();
+  });
+
+  it('should change state', async () => {
+    const driver = createDriver(<ToggleSwitch />);
+
+    expect(await driver.isChecked()).toBeFalsy();
+
+    await driver.click();
+
+    expect(await driver.isChecked()).toBeTruthy();
   });
 });

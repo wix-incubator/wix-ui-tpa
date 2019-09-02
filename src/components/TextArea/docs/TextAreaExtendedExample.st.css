@@ -13,6 +13,6 @@
         TextFont '"--textFont"',
         DisabledBorderColor '"--disabledBorderColor"',
         SuccessBorderColor '"--successBorderColor"',
-        ErrorBorderColor '"--errorBorderColor'
+        ErrorBorderColor '"--errorBorderColor"'
     );
 }

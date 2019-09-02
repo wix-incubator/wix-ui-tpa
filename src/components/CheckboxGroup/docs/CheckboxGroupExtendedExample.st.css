@@ -1,0 +1,10 @@
+:import {
+    -st-from: "../CheckboxGroup.st.css";
+    -st-default: TPACheckboxGroup;
+}
+
+.root {
+    -st-mixin: TPACheckboxGroup(
+            LabelColor '"--labelColor"'
+    );
+}
