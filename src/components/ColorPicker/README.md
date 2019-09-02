@@ -21,7 +21,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
         -st-extends: TPAColorPicker;
         -st-mixin: TPAColorPicker(
                     ItemSize '"--itemSize"',
-                    BorderRadius '"--borderRadius"'
+                    BorderRadius '"unit(fallback(zeroAsTrue(--borderRadius), 12), px)"'
             );
     }
 
