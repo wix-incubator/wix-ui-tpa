@@ -7,7 +7,14 @@ export interface WithForwardRefProps<T extends HTMLElement = HTMLElement> {
 export function withForwardRef<T extends HTMLElement, P = {}>(
   Component: React.ComponentType<P>,
 ) {
-  return React.forwardRef<T, P>((props, ref) => (
-    <Component innerRef={ref} {...props} />
-  ));
+  forwardRef.displayName = `withForwardRef(${Component.displayName ||
+    Component.name})`;
+
+  forwardRef.WrappedComponent = Component;
+
+  function forwardRef(props: P, ref: React.Ref<T>) {
+    return <Component {...props} innerRef={ref} />;
+  }
+
+  return React.forwardRef<T, P>(forwardRef);
 }

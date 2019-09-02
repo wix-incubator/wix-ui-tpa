@@ -3,16 +3,26 @@ import { mount } from 'enzyme';
 
 import { withForwardRef, WithForwardRefProps } from './withForwardRef';
 
-interface TestInputProps {}
+interface TestInputProps {
+  value: string;
+  handleChange(value: string): void;
+}
 class TestInputComponent extends React.Component<
   TestInputProps & WithForwardRefProps<HTMLInputElement>
 > {
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    this.props.handleChange(event.target.value);
+
   render() {
-    const { innerRef } = this.props;
+    const { innerRef, value } = this.props;
+
     return (
-      <div>
-        <input type="text" ref={innerRef} />
-      </div>
+      <input
+        type="text"
+        onChange={this.handleChange}
+        value={value}
+        ref={innerRef}
+      />
     );
   }
 }
@@ -22,11 +32,16 @@ const TestInput = withForwardRef<HTMLInputElement, TestInputProps>(
 );
 
 describe('withForwardRef', () => {
+  const $input = React.createRef<HTMLInputElement>();
   it('forwards refs for TextArea component', () => {
-    const $input = React.createRef<HTMLInputElement>();
-    mount(<TestInput ref={$input} />);
+    mount(
+      <>
+        <TestInput value="Test" handleChange={jest.fn()} ref={$input} />
+      </>,
+    );
 
     expect($input.current).toBeDefined();
     expect($input.current).toBeInstanceOf(HTMLInputElement);
+    expect($input.current.value).toEqual('Test');
   });
 });
