@@ -37,7 +37,7 @@ export class ScrollableTabs extends React.Component<
   ScrollableTabsState
 > {
   _navRef: React.RefObject<HTMLElement>;
-  _selectedTabRef: React.RefObject<HTMLDivElement>;
+  _selectedTabRef: React.RefObject<HTMLLIElement>;
 
   state = {
     selectedIndicatorRect: {
@@ -181,19 +181,21 @@ export class ScrollableTabs extends React.Component<
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
         <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
-          {items.map((item, index) => (
-            <Tab
-              key={`${item.title}-${index}`}
-              className={style.tab}
-              item={item}
-              index={index}
-              data-hook={`${TABS_DATA_HOOKS.tab}-${index}`}
-              isActive={activeTabIndex === index}
-              indicateActive={!animateIndicator}
-              ref={activeTabIndex === index ? this._selectedTabRef : null}
-              onClick={onClickItem}
-            />
-          ))}
+          <ul className={style.itemsList}>
+            {items.map((item, index) => (
+              <Tab
+                key={`${item.title}-${index}`}
+                className={style.tab}
+                item={item}
+                index={index}
+                data-hook={`${TABS_DATA_HOOKS.tab}-${index}`}
+                isActive={activeTabIndex === index}
+                indicateActive={!animateIndicator}
+                ref={activeTabIndex === index ? this._selectedTabRef : null}
+                onClick={onClickItem}
+              />
+            ))}
+          </ul>
           <div
             className={style.selectedIndicator}
             style={selectedIndicatorRect}
