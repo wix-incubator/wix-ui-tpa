@@ -1,85 +1,69 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import { ALIGNMENT, SKIN, Tabs, VARIANT } from '.';
+import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { ALIGNMENT, SKIN, Tabs, TabsProps, VARIANT } from '.';
+import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
-const kind = 'Tabs';
-const testItems = [0, 1, 2, 4].map(i => ({ title: `Title ${i}` }));
+const items = [0, 1, 2, 4].map(i => ({ title: `Title ${i}` }));
 
-interface TabsVisualProps extends TabsProps {
-  mobile?: boolean;
-}
-
-class TabsVisual extends React.Component<TabsVisualProps> {
+class TabsVisual extends React.Component {
   static defaultProps = {
-    items: testItems,
+    tabsProps: {},
     mobile: false,
-    activeTabIndex: 0,
+    onDone: () => {},
   };
 
+  componentDidMount(): void {
+    onStyleProcessorDone()
+      .then(() => {
+        const { onDone } = this.props as any;
+        onDone && onDone();
+      })
+      .catch(() => {});
+  }
+
   render() {
-    const { mobile } = this.props;
+    const { tabsProps, mobile } = this.props as any;
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <VisualTestContainer>
-          <Tabs data-hook={'storybook-e2e-Tabs'} {...this.props} />
-        </VisualTestContainer>
+        <Tabs
+          data-hook={'storybook-e2e-Tabs'}
+          items={items}
+          activeTabIndex={0}
+          {...tabsProps}
+        />
       </TPAComponentsProvider>
     );
   }
 }
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-      {
-        it: 'mobile',
-        props: {
-          mobile: true,
-        },
-      },
-    ],
-  },
-  {
-    describe: 'Alignments',
-    its: Object.values(ALIGNMENT).map(alignment => ({
-      it: alignment,
-      props: {
-        alignment,
-      },
-    })),
-  },
-  {
-    describe: 'Variants',
-    its: Object.values(VARIANT).map(variant => ({
-      it: variant,
-      props: {
-        variant,
-      },
-    })),
-  },
-  {
-    describe: 'Skins',
-    its: Object.values(SKIN).map(skin => ({
-      it: skin,
-      props: {
-        skin,
-      },
-    })),
-  },
-];
+visualize('Tabs', () => {
+  const renderTest = (props?: object, mobile?: boolean) => done => (
+    <TabsVisual tabsProps={props} mobile={mobile} onDone={done} />
+  );
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`${kind}/${describe}`, module).add(it, () => (
-      <TabsVisual {...props} />
-    ));
+  story('basic', () => {
+    snap('default', renderTest());
+
+    snap('mobile', renderTest({}, true));
+  });
+
+  story('Alignments', () => {
+    Object.values(ALIGNMENT).map(alignment => {
+      snap(alignment, renderTest({ alignment }));
+    });
+  });
+
+  story('Variants', () => {
+    Object.values(VARIANT).map(variant => {
+      snap(variant, renderTest({ variant }));
+    });
+  });
+
+  story('Skins', () => {
+    Object.values(SKIN).map(skin => {
+      snap(skin, renderTest({ skin }));
+    });
   });
 });

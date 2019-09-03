@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { onStyleProcessorDone } from './StyleProcessorUtil';
-import { DATA_READY_HOOK, DATA_IGNORE_HOOK } from './dataHooks.js';
+import { DATA_READY_HOOK } from './dataHooks.js';
 
 interface VisualContainerElementProp {
-  ignore?: boolean;
   hook?(): Promise<void>;
+  onDone?(): void;
 }
 
 interface VisualContainerElementState {
@@ -32,14 +32,15 @@ export class VisualTestContainer extends React.Component<
       .catch(() => {});
   }
 
+  componentDidUpdate(): void {
+    const { onDone } = this.props;
+    onDone && onDone();
+  }
+
   render() {
     const { isReady } = this.state;
-    const { children, ignore } = this.props;
+    const { children } = this.props;
 
-    return (
-      <div {...{ [DATA_IGNORE_HOOK]: ignore }}>
-        <div {...{ [DATA_READY_HOOK]: isReady }}>{children}</div>
-      </div>
-    );
+    return <div {...{ [DATA_READY_HOOK]: isReady }}>{children}</div>;
   }
 }
