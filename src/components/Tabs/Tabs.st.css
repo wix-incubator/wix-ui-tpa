@@ -161,7 +161,7 @@
     border-bottom: 1px solid value(calculatedBorderColor);
 }
 
-.root:mobile .navigation::nav {
+.root:mobile .navigation::itemsList {
     display: flex;
 }
 
