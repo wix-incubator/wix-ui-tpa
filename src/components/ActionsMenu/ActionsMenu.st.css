@@ -2,6 +2,10 @@
     -st-from: "../../common/formatters.st";
     -st-named: color, fallback;
 }
+:import {
+    -st-from: "./Item/ActionsMenuItem.st.css";
+    -st-default: ActionMenuItem;
+}
 
 :vars {
     /*Defaults*/
@@ -30,20 +34,26 @@
     background-color: value(menuBackgroundColor);
     border-width: value(menuBorderWidth);
     border-color: value(menuBorderColor);
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    -st-extends: ActionMenuItem;
 }
 
 .root:mobile {
     width: 100%;
 }
 
-.root:alignment(left) {
-    text-align: left;
+.root:alignment(left) .item {
+    justify-content: flex-start;
 }
 
-.root:alignment(center) {
-    text-align: center;
+.root:alignment(center) .item {
+    justify-content: center;
 }
 
-.root:alignment(right) {
-    text-align: right;
+.root:alignment(right) .item {
+    justify-content: flex-end;
 }

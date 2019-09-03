@@ -27,16 +27,17 @@
     cursor: pointer;
 }
 
-.root:mobile {
-    width: 100%;
-}
-
 .root:hover {
     background-color: rgba(0,0,0, 0.06);
 }
 
+.container {
+    display: flex;
+}
+
 .root:disabled {
     opacity: 0.3;
+    cursor: default;
 }
 
 .root:disabled:hover {
@@ -51,10 +52,12 @@
     display: flex;
     flex-direction: column;
     color: color(color-5);
+    width: 100%;
 }
 
 .content {
     font: fallback(font(value(ItemFont)), font(value(ItemFontDesktop)));
+    width: 100%;
 }
 
 .root:mobile .content {
@@ -64,6 +67,7 @@
 .subtitle {
     font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)));
     color: opacity(color(color-5), 0.6);
+    width: 100%;
 }
 
 .root:mobile .subtitle {

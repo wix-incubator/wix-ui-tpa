@@ -38,13 +38,15 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
             aria-disabled={disabled}
             onClick={onClick}
           >
-            <div {...styles(styles.icon, {})}>{prefixIcon}</div>
-            <div {...styles(styles.spaceContainer, {})} />
-            <div {...styles(styles.text, {})}>
-              <Text {...styles(styles.content, {})}>{content}</Text>
-              {subtitle && (
-                <Text {...styles(styles.subtitle, {})}>{subtitle}</Text>
-              )}
+            <div {...styles(styles.container, {})}>
+              <div {...styles(styles.icon, {})}>{prefixIcon}</div>
+              <div {...styles(styles.spaceContainer, {})} />
+              <div {...styles(styles.text, {})}>
+                <Text {...styles(styles.content, {})}>{content}</Text>
+                {subtitle && (
+                  <Text {...styles(styles.subtitle, {})}>{subtitle}</Text>
+                )}
+              </div>
             </div>
           </li>
         )}
