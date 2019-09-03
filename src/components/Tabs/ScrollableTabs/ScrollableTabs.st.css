@@ -75,3 +75,9 @@
 .root:variant(fullWidth) .tab {
     flex: 1;
 }
+
+.itemsList {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
