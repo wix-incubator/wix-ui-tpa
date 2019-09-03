@@ -60,15 +60,15 @@
     transition: left .3s ease-in-out, width .3s ease-in-out;
 }
 
-.root:alignment(left) .nav {
+.root:alignment(left) .itemsList {
     text-align: left;
 }
 
-.root:alignment(right) .nav {
+.root:alignment(right) .itemsList {
     text-align: right;
 }
 
-.root:variant(fullWidth) .nav {
+.root:variant(fullWidth) .itemsList {
     display: flex;
 }
 
