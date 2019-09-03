@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ActionsMenu, Alignment } from './';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 
@@ -15,15 +15,24 @@ class ActionsMenuVisual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <VisualContainerElement>
+        <VisualTestContainer>
           <ActionsMenu {...this.props}>{children}</ActionsMenu>
-        </VisualContainerElement>
+        </VisualTestContainer>
       </TPAComponentsProvider>
     );
   }
 }
 
-const onClick = () => alert('click');
+function generateItem(props) {
+  return (
+    <ActionsMenu.Item
+      key={props.content}
+      onClick={() => alert('click')}
+      {...props}
+    />
+  );
+}
+
 const tests = [
   {
     describe: 'basic',
@@ -31,45 +40,34 @@ const tests = [
       {
         it: 'default',
         props: {},
-        children: [
-          <ActionsMenu.Item key={1} onClick={onClick} content="item 1" />,
-        ],
+        children: [generateItem({ content: 'item 1' })],
       },
       {
         it: 'with subtitle',
         props: {},
         children: [
-          <ActionsMenu.Item
-            key={1}
-            onClick={onClick}
-            content="Content is here"
-            subtitle="Some subtitle"
-          />,
+          generateItem({
+            content: 'Content is here',
+            subtitle: 'Some subtitle',
+          }),
         ],
       },
       {
         it: 'with icon',
         props: {},
         children: [
-          <ActionsMenu.Item
-            key={1}
-            onClick={onClick}
-            content="item 1"
-            prefixIcon={<ShareIcon />}
-          />,
+          generateItem({ content: 'item 1', prefixIcon: <ShareIcon /> }),
         ],
       },
       {
         it: 'with icon and subtitle',
         props: {},
         children: [
-          <ActionsMenu.Item
-            key={1}
-            onClick={onClick}
-            content="item 1"
-            prefixIcon={<ShareIcon />}
-            subtitle="Subtitle"
-          />,
+          generateItem({
+            content: 'item 1',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
         ],
       },
       {
@@ -78,41 +76,31 @@ const tests = [
           alignment: Alignment.center,
         },
         children: [
-          <ActionsMenu.Item
-            key={1}
-            onClick={onClick}
-            content="item 1"
-            prefixIcon={<ShareIcon />}
-            subtitle="Subtitle"
-          />,
-          <ActionsMenu.Item
-            key={2}
-            onClick={onClick}
-            content="item 2"
-            prefixIcon={<ShareIcon />}
-            subtitle="Subtitle"
-          />,
-          <ActionsMenu.Item
-            key={3}
-            onClick={onClick}
-            content="item 3"
-            prefixIcon={<ShareIcon />}
-            subtitle="Subtitle"
-          />,
-          <ActionsMenu.Item
-            key={4}
-            onClick={onClick}
-            content="item 4"
-            prefixIcon={<ShareIcon />}
-            subtitle="Subtitle"
-          />,
-          <ActionsMenu.Item
-            key={5}
-            onClick={onClick}
-            content="item 5"
-            prefixIcon={<ShareIcon />}
-            subtitle="Subtitle"
-          />,
+          generateItem({
+            content: 'item 1',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 2',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 3',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 4',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 5',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
         ],
       },
       {

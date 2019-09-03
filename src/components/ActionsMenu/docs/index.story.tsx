@@ -19,7 +19,15 @@ import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
-const onClick = () => {};
+function generateItem(props) {
+  return (
+    <ActionsMenu.Item
+      key={props.content}
+      onClick={() => alert('click')}
+      {...props}
+    />
+  );
+}
 
 export default {
   category: 'Components',
@@ -29,35 +37,30 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-ActionsMenu',
     children: [
-      <ActionsMenu.Item key={1} onClick={onClick} content="item 1" />,
-      <ActionsMenu.Item
-        key={2}
-        onClick={onClick}
-        content="item 2"
-        subtitle="Subtitle"
-      />,
+      generateItem({
+        content: 'item 1',
+      }),
+      generateItem({
+        content: 'item 2',
+        subtitle: 'Subtitle',
+      }),
       <ActionsMenu.Divider key={2.5} />,
-      <ActionsMenu.Item
-        key={3}
-        onClick={onClick}
-        content="item 3"
-        prefixIcon={<ShareIcon />}
-        subtitle="Subtitle"
-      />,
-      <ActionsMenu.Item
-        key={4}
-        onClick={onClick}
-        content="item 4"
-        prefixIcon={<ShareIcon />}
-        subtitle="Subtitle"
-        disabled
-      />,
-      <ActionsMenu.Item
-        key={5}
-        onClick={onClick}
-        content="item 5"
-        prefixIcon={<ShareIcon />}
-      />,
+      generateItem({
+        content: 'item 3',
+        prefixIcon: <ShareIcon />,
+        subtitle: 'Subtitle',
+      }),
+      generateItem({
+        content: 'item 4',
+        prefixIcon: <ShareIcon />,
+        subtitle: 'Subtitle',
+        disabled: true,
+      }),
+      generateItem({
+        content: 'item 5',
+        prefixIcon: <ShareIcon />,
+        subtitle: 'Subtitle',
+      }),
     ],
   }),
   exampleProps: {

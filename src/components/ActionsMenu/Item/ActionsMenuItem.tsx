@@ -36,7 +36,7 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
             role="menuitem"
             tabIndex={-1}
             aria-disabled={disabled}
-            onClick={onClick}
+            onClick={disabled ? () => {} : onClick}
           >
             <div {...styles(styles.container, {})}>
               <div {...styles(styles.icon, {})}>{prefixIcon}</div>
