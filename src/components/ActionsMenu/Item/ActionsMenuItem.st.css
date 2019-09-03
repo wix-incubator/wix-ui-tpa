@@ -1,13 +1,15 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-named: color, fallback, font, value, opacity;
 }
 
 
 :vars {
     /*Defaults*/
-    DefaultItemFont: 16px Avenir;
-    DefaultItemSubtitleFont: 14px Avenir;
+    ItemFontDesktop: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+    ItemSubtitleFontDesktop: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    ItemFontMobile: "{theme: 'Body-M', size: '14px', lineHeight: '24px'}";
+    ItemSubtitleFontMobile: "{theme: 'Body-M', size: '12px', lineHeight: '20px'}";
 }
 
 :vars {
@@ -16,22 +18,13 @@
     ItemSubtitleFont:  --overridable;
 }
 
-:vars {
-    itemFont: color(fallback(value(ItemFont), value(DefaultItemFont)));
-    itemSubtitleFont: fallback(value(ItemSubtitleFont), value(DefaultItemSubtitleFont));
-}
-
 .root {
-    -st-states: withIcon, disabled;
+    -st-states: disabled;
     height: 40px;
     padding: 8px 24px;
     display: flex;
     width: 100%;
     cursor: pointer;
-}
-
-.root:withIcon {
-
 }
 
 .root:mobile {
@@ -57,14 +50,24 @@
 .text {
     display: flex;
     flex-direction: column;
+    color: color(color-5);
 }
 
 .content {
-    font: value(itemFont);
+    font: fallback(font(value(ItemFont)), font(value(ItemFontDesktop)));
+}
+
+.root:mobile .content {
+    font: fallback(font(value(ItemFont)), font(value(ItemFontMobile)));
 }
 
 .subtitle {
-    font: value(itemSubtitleFont);
+    font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)));
+    color: opacity(color(color-5), 0.6);
+}
+
+.root:mobile .subtitle {
+    font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)));
 }
 
 .spaceContainer {
