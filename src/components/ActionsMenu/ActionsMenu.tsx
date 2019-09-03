@@ -36,17 +36,18 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
   };
 
   render() {
-    const { onBlur, alignment, children, ...rest } = this.props;
+    const { alignment, children, ...rest } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div
+          <ul
             key={alignment}
             {...styles('root', { mobile, alignment }, rest)}
             {...getDataAttributes(mobile)}
+            tabIndex={-1}
           >
             {children}
-          </div>
+          </ul>
         )}
       </TPAComponentsConsumer>
     );

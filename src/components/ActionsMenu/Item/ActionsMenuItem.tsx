@@ -30,10 +30,11 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div
+          <li
             key={content}
             {...styles(styles.root, { mobile, disabled }, rest)}
-            role="button"
+            role="menuitem"
+            tabIndex={-1}
             aria-disabled={disabled}
             onClick={onClick}
           >
@@ -45,7 +46,7 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
                 <Text {...styles(styles.subtitle, {})}>{subtitle}</Text>
               )}
             </div>
-          </div>
+          </li>
         )}
       </TPAComponentsConsumer>
     );
