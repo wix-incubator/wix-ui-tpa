@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ALIGNMENT, SKIN, Tabs, VARIANT } from '.';
 import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
+import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 const items = [0, 1, 2, 4].map(i => ({ title: `Title ${i}` }));
 
@@ -9,7 +10,17 @@ class TabsVisual extends React.Component {
   static defaultProps = {
     tabsProps: {},
     mobile: false,
+    onDone: () => {},
   };
+
+  componentDidMount(): void {
+    onStyleProcessorDone()
+      .then(() => {
+        const { onDone } = this.props as any;
+        onDone && onDone();
+      })
+      .catch(() => {});
+  }
 
   render() {
     const { tabsProps, mobile } = this.props as any;
@@ -28,8 +39,8 @@ class TabsVisual extends React.Component {
 }
 
 visualize('Tabs', () => {
-  const renderTest = (props?: object, mobile?: boolean) => () => (
-    <TabsVisual tabsProps={props} mobile={mobile} />
+  const renderTest = (props?: object, mobile?: boolean) => done => (
+    <TabsVisual tabsProps={props} mobile={mobile} onDone={done} />
   );
 
   story('basic', () => {

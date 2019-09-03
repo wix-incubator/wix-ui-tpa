@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from './VisualTestContainer';
+import { DATA_IGNORE_HOOK, DATA_READY_HOOK } from './dataHooks';
 
 type RenderFunction = (cb: () => void) => React.ReactNode;
 type ChildrenProp = React.ReactNode | RenderFunction;
@@ -12,16 +12,10 @@ interface VisualTestProps {
 }
 
 interface VisualTestState {
-  async: boolean;
+  isReady: boolean;
 }
 
-const DATA_IGNORE_HOOK = 'data-test-ignore';
-
 class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
-  private _hookResolve = null;
-  private readonly _hookPromise: Promise<void> = new Promise(res => {
-    this._hookResolve = res;
-  });
   private _timeoutId: NodeJS.Timeout;
 
   static defaultProps = {
@@ -31,7 +25,7 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   };
 
   state = {
-    async: VisualTest.isAsync(this.props),
+    isReady: !VisualTest.isAsync(this.props),
   };
 
   static isAsync({ children }: { children: ChildrenProp }) {
@@ -41,25 +35,16 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   }
 
   componentDidMount(): void {
-    const { async } = this.state;
+    const { isReady } = this.state;
 
-    if (async) {
+    if (!isReady) {
       this._timeoutId = setTimeout(this._done, this.props.timeout);
     }
   }
 
-  static getDerivedStateFromProps(props, state) {
-    const async = VisualTest.isAsync(props);
-    return state.async !== async ? async : null;
-  }
-
   _done = () => {
     clearTimeout(this._timeoutId);
-    this._hookResolve();
-  };
-
-  _doneHook = () => {
-    return this._hookPromise;
+    this.setState({ isReady: true });
   };
 
   _getContent = () => {
@@ -71,16 +56,13 @@ class VisualTest extends React.Component<VisualTestProps, VisualTestState> {
   };
 
   render() {
-    const { async } = this.state;
+    const { isReady } = this.state;
     const { ignore } = this.props;
 
     return (
-      <VisualTestContainer
-        hook={async ? this._doneHook : undefined}
-        ignore={ignore}
-      >
-        {this._getContent()}
-      </VisualTestContainer>
+      <div {...{ [DATA_IGNORE_HOOK]: ignore }}>
+        <div {...{ [DATA_READY_HOOK]: isReady }}>{this._getContent()}</div>
+      </div>
     );
   }
 }
