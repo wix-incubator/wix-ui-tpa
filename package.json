@@ -58,7 +58,8 @@
     "autotools:a11y": "autotools-a11y",
     "postgenerate": "npm run update-components",
     "update-components": ".wuf/update-components.sh",
-    "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish"
+    "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
+    "version": "conventional-changelog -i CHANGELOG.md -s && git add CHANGELOG.md"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -86,6 +87,7 @@
     "@ui-autotools/registry": "^4.0.0",
     "@ui-autotools/sanity": "^2.8.2",
     "autoprefixer": "^9.5.1",
+    "conventional-changelog-cli": "^2.0.23",
     "core-js": "^2.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
