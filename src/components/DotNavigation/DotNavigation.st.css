@@ -1,0 +1,179 @@
+@namespace 'DotNavigation';
+
+:import {
+  -st-from: '../../common/formatters.st';
+  -st-named: color, fallback, value;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: RadioButton;
+}
+
+:vars {
+  /*Defaults*/
+  DefaultSelectedDotColor: color-5;
+  DefaultSelectedBorderColor: color-1;
+  DefaultSelectedDotColorLight: color-1;
+  DefaultSelectedBorderColorLight: color-5;
+}
+
+:vars {
+  /*Overrides*/
+  SelectedDotColor: --overridable;
+  SelectedBorderColor: --overridable;
+}
+
+:vars {
+  DotAmount: 5;
+  Gap: 5px;
+  RadioSize: calc(4 * value(Gap));
+  DotSize: calc(2 * value(Gap));
+  DotSizeSmall: calc(value(DotSize) - 2px);
+  DotSizeTiny: calc(value(DotSizeSmall) - 2px);
+  CheckedDotColor: color(fallback(value(SelectedDotColor), value(DefaultSelectedDotColor)));
+  CheckedBorderColor: color(fallback(value(SelectedBorderColor), value(DefaultSelectedBorderColor)));
+  CheckedDotColorLight: color(fallback(value(SelectedDotColor), value(DefaultSelectedDotColorLight)));
+  CheckedBorderColorLight: color(fallback(value(SelectedBorderColor), value(DefaultSelectedBorderColorLight)));
+}
+
+@keyframes move-back {
+  from {
+    left: calc(-2 * value(RadioSize));
+  }
+
+  to {
+    left: calc(-1 * value(RadioSize));
+  }
+}
+
+@keyframes move-back-next {
+  from {
+    left: calc(-2 * value(RadioSize));
+  }
+
+  to {
+    left: calc(-1 * value(RadioSize));
+  }
+}
+
+@keyframes move-forward {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(-1 * value(RadioSize));
+  }
+}
+
+@keyframes move-forward-next {
+  from {
+    left: 0;
+  }
+
+  to {
+    left: calc(-1 * value(RadioSize));
+  }
+}
+
+@keyframes change-dot-opacity {
+  from {
+    opacity: 0.4
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.root {
+  display: flex;
+  position: relative;
+  width: calc(value(DotAmount) * value(RadioSize));
+  overflow: hidden;
+}
+
+.radioGroup {
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: calc(-1 * value(RadioSize));
+}
+
+.back {
+  animation-duration: 0.2s;
+  animation-name: move-back;
+}
+
+.backNext {
+  animation-duration: 0.2s;
+  animation-name: move-back-next;
+}
+
+.forward {
+  animation-duration: 0.2s;
+  animation-name: move-forward;
+}
+
+.forwardNext {
+  animation-duration: 0.2s;
+  animation-name: move-forward-next;
+}
+
+.extendedRadioButton {
+   -st-extends: RadioButton;
+}
+
+.radio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: value(RadioSize);
+  height: value(RadioSize);
+}
+
+.dot {
+  width: value(DotSize);
+  height: value(DotSize);
+  border-radius: 100%;
+  background-color: value(CheckedDotColor);
+  opacity: 0.4;
+  transition: opacity 0.2s ease;
+}
+
+.noOpacityTransition {
+  transition: none;
+}
+
+.dot:hover {
+  opacity: 1;
+}
+
+.small {
+  width: value(DotSizeSmall);
+  height: value(DotSizeSmall);
+}
+
+.tiny {
+  width: value(DotSizeTiny);
+  height: value(DotSizeTiny);
+}
+
+.bordered {
+  box-shadow: 0 0 0 1px value(CheckedBorderColor);
+}
+
+.light {
+  background-color: value(CheckedDotColorLight);
+}
+
+.bordered.light {
+  box-shadow: 0 0 0 1px value(CheckedBorderColorLight);
+}
+
+.checked {
+  animation-duration: 0.2s;
+  animation-name: change-dot-opacity;
+  opacity: 1;
+}

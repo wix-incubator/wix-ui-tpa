@@ -1,0 +1,11 @@
+:import {
+  -st-from: "../DotNavigation.st.css";
+  -st-default: DotNavigation;
+}
+
+.root {
+  -st-mixin: DotNavigation(
+    SelectedDotColor '"--selectedDotColor"',
+    SelectedBorderColor '"--selectedBorderColor"'
+  );
+}

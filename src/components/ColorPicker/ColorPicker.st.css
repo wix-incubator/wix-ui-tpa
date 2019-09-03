@@ -1,0 +1,28 @@
+
+:import {
+    -st-from: '../../common/formatters.st';
+    -st-named: value;
+}
+
+:vars {
+    /*Overrides*/
+    ItemSize: --overridable;
+    BorderRadius: --overridable;
+}
+
+.root {
+    display: inline-flex;
+    margin: -4px;
+    flex-wrap: wrap;
+}
+
+:import {
+    -st-from: './ColorPickerItem/ColorPickerItem.st.css';
+    -st-default: ColorPickerItem;
+}
+
+.item {
+    -st-extends: ColorPickerItem;
+    -st-mixin: ColorPickerItem(Size value(ItemSize), Radius value(BorderRadius));
+}
+

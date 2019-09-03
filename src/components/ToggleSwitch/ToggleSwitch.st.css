@@ -1,154 +1,83 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: applyStyleMethod, applyOpacity;
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :import {
     -st-from: "wix-ui-core/index.st.css";
-    -st-named: ToggleSwitchStyle;
+    -st-named: ToggleSwitch, ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
 }
 
-:import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: ToggleSwitch;
-}
-
-:import {
-    -st-from: "../../common/variables.st.css";
-    -st-named: HighlightColor;
-}
-
-/* Recommended Variables */
 :vars {
-    MainColor: value(HighlightColor);
-    Selected: value(MainColor);
-    Hover: applyOpacity(value(MainColor), 0.7);
-    Muted: applyOpacity(value(MainColor), 0.3);
-    Disabled: applyOpacity(applyStyleMethod(color, color-5), 0.9);
+    DefaultBaseColor: color(color-5);
+    DefaultSelectedColor: color(color-8);
+    DefaultKnobColor: color(color-1);
+    DefaultDisabledColor: applyOpacity(color(color-3), 0.9);
+    DefaultTransitionDuration: .2s;
 }
 
-/* Extended Variables */
 :vars {
-    rootWidth: initial;
-    rootHeight: initial;
+    BaseColor: --overridable;
+    SelectedColor: --overridable;
+    KnobColor: --overridable;
+    DisabledColor: --overridable;
+}
 
-    transitionSpeed: 0.3s;
-    labelMovementRange: 23px;
-
-    outerLabelWidth: 45px;
-    outerLabelHeight: 24px;
-
-    borderRadius: 50px;
-    outerLabelBorderSize: 0;
-    outerLabelBorderSizeChecked: 0;
-    outerLabelBorderSizeDisabled: 0;
-    outerLabelBorderSizeHover: 0;
-    outerLabelBorderSizeHoverChecked: 0;
-
-    backgroundColor: value(Selected);
-    backgroundColorChecked: value(Selected);
-    backgroundColorDisabled: value(Disabled);
-    backgroundColorHover: value(Hover);
-    backgroundColorHoverChecked: value(Hover);
-    backgroundColorFocus: value(Hover);
-
-    outerLabelBorderColor: white;
-    outerLabelBorderColorChecked: white;
-    outerLabelBorderColorDisabled: value(Disabled);
-    outerLabelBorderColorHover: white;
-    outerLabelBorderColorHoverChecked: white;
-
-    innerLabelWidth: 21px;
-    innerLabelHeight: 22px;
-
-    innerLabelBorderRadius: 50px;
-    innerLabelBorderSize: 0;
-    innerLabelBorderSizeChecked: 0;
-    innerLabelBorderSizeDisabled: 0;
-    innerLabelBorderSizeHover: 0;
-    innerLabelBorderSizeHoverChecked: 0;
-
-    innerLabelBackgroundColor: white;
-    innerLabelBackgroundColorChecked: white;
-    innerLabelBackgroundColorDisabled: white;
-    innerLabelBackgroundColorHover: white;
-    innerLabelBackgroundColorHoverChecked: white;
-
-    color: white;
-    colorChecked: white;
-    colorDisabled: white;
-    colorCheckedDisabled:white;
-    colorHover: white;
-    colorHoverChecked: white;
-    colorFocus:  white;
-
-    innerLabelBorderColor: white;
-    innerLabelBorderColorChecked: white;
-    innerLabelBorderColorDisabled: white;
-    innerLabelBorderColorHover: white;
-    innerLabelBorderColorHoverChecked: white;
-
-    toggleIconWidth: 8px;
-    toggleIconHeight: 6px;
-    toggleIconDisplay: none;
-
-    focusOutline: none;
+:vars {
+    UsedBaseColor: color(fallback(value(BaseColor), value(DefaultBaseColor)));
+    UsedSelectedColor: color(fallback(value(SelectedColor), value(DefaultSelectedColor)));
+    UsedKnobColor: color(fallback(value(KnobColor), value(DefaultKnobColor)));
+    UsedDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
 }
 
 .root {
     -st-extends: ToggleSwitch;
-    -st-mixin: ToggleSwitchStyle(
-        rootWidth value(rootWidth),
-        rootHeight value(rootHeight),
-        transitionSpeed value(transitionSpeed),
-        labelMovementRange value(labelMovementRange),
-        outerLabelWidth value(outerLabelWidth),
-        outerLabelHeight value(outerLabelHeight),
-        borderRadius value(borderRadius),
-        outerLabelBorderSize value(outerLabelBorderSize),
-        outerLabelBorderSizeChecked value(outerLabelBorderSizeChecked),
-        outerLabelBorderSizeDisabled value(outerLabelBorderSizeDisabled),
-        outerLabelBorderSizeHover value(outerLabelBorderSizeHover),
-        outerLabelBorderSizeHoverChecked value(outerLabelBorderSizeHoverChecked),
-        backgroundColor value(backgroundColor),
-        backgroundColorChecked value(backgroundColorChecked),
-        backgroundColorDisabled value(backgroundColorDisabled),
-        backgroundColorHover value(backgroundColorHover),
-        backgroundColorHoverChecked value(backgroundColorHoverChecked),
-        backgroundColorFocus value(backgroundColorFocus),
-        outerLabelBorderColor value(outerLabelBorderColor),
-        outerLabelBorderColorChecked value(outerLabelBorderColorChecked),
-        outerLabelBorderColorDisabled value(outerLabelBorderColorDisabled),
-        outerLabelBorderColorHover value(outerLabelBorderColorHover),
-        outerLabelBorderColorHoverChecked value(outerLabelBorderColorHoverChecked),
-        innerLabelWidth value(innerLabelWidth),
-        innerLabelHeight value(innerLabelHeight),
-        innerLabelBorderRadius value(innerLabelBorderRadius),
-        innerLabelBorderSize value(innerLabelBorderSize),
-        innerLabelBorderSizeChecked value(innerLabelBorderSizeChecked),
-        innerLabelBorderSizeDisabled value(innerLabelBorderSizeDisabled),
-        innerLabelBorderSizeHover value(innerLabelBorderSizeHover),
-        innerLabelBorderSizeHoverChecked value(innerLabelBorderSizeHoverChecked),
-        innerLabelBackgroundColor value(innerLabelBackgroundColor),
-        innerLabelBackgroundColorChecked value(innerLabelBackgroundColorChecked),
-        innerLabelBackgroundColorDisabled value(innerLabelBackgroundColorDisabled),
-        innerLabelBackgroundColorHover value(innerLabelBackgroundColorHover),
-        innerLabelBackgroundColorHoverChecked value(innerLabelBackgroundColorHoverChecked),
-        color value(color),
-        colorChecked value(colorChecked),
-        colorDisabled value(colorDisabled),
-        colorCheckedDisabled value(colorCheckedDisabled),
-        colorHover value(colorHover),
-        colorHoverChecked value(colorHoverChecked),
-        colorFocus  value(colorFocus ),
-        innerLabelBorderColor value(innerLabelBorderColor),
-        innerLabelBorderColorChecked value(innerLabelBorderColorChecked),
-        innerLabelBorderColorDisabled value(innerLabelBorderColorDisabled),
-        innerLabelBorderColorHover value(innerLabelBorderColorHover),
-        innerLabelBorderColorHoverChecked value(innerLabelBorderColorHoverChecked),
-        toggleIconWidth value(toggleIconWidth),
-        toggleIconHeight value(toggleIconHeight),
-        toggleIconDisplay value(toggleIconDisplay),
-        focusOutline value(focusOutline)
-    );
+    -st-mixin: ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
+
+    color: value(UsedBaseColor);
+    opacity: .7;
+    transition: all value(DefaultTransitionDuration) ease;
+}
+
+.root::track {
+    background-color: value(UsedBaseColor);
+    transition-duration: value(DefaultTransitionDuration);
+}
+
+.root::knob {
+    background-color: value(UsedKnobColor);
+    transition-duration: value(DefaultTransitionDuration);
+}
+
+.root:hover {
+    opacity: 1;
+}
+
+.root:checked {
+    color: value(UsedSelectedColor);
+    opacity: 1;
+}
+
+.root:checked::track {
+    background-color: value(UsedSelectedColor);
+}
+
+.root:checked:hover {
+    opacity: .7;
+}
+
+.root:disabled,
+.root:disabled:hover,
+.root:disabled:checked,
+.root:disabled:checked:hover {
+    opacity: 1;
+    color: value(UsedDisabledColor);
+}
+
+.root:disabled::track {
+    background-color: value(UsedDisabledColor);
+}
+
+.root:disabled::knob {
+    background-color: applyOpacity(color(color-1), 0.6);
 }

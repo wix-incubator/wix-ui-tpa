@@ -43,8 +43,8 @@
 .selectedIndicator {
     position: absolute;
     bottom: 0;
-    border-bottom: 3px solid;
-    border-bottom-color: value(selectedIndicatorColor);
+    height: 0;
+    background-color: value(selectedIndicatorColor);
 }
 
 .border {
@@ -56,21 +56,28 @@
 }
 
 .root:animateIndicator .selectedIndicator {
+    height: 3px;
     transition: left .3s ease-in-out, width .3s ease-in-out;
 }
 
-.root:alignment(left) .nav {
+.root:alignment(left) .itemsList {
     text-align: left;
 }
 
-.root:alignment(right) .nav {
+.root:alignment(right) .itemsList {
     text-align: right;
 }
 
-.root:variant(fullWidth) .nav {
+.root:variant(fullWidth) .itemsList {
     display: flex;
 }
 
 .root:variant(fullWidth) .tab {
     flex: 1;
+}
+
+.itemsList {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }

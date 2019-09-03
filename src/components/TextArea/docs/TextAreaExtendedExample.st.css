@@ -1,0 +1,18 @@
+:import {
+    -st-from: "../TextArea.st.css";
+    -st-default: TPATextArea;
+}
+
+.textArea {
+    -st-mixin: TPATextArea(
+        BackgroundColor '"--backgroundColor"',
+        BorderColor '"--borderColor"',
+        TextColor '"--textColor"',
+        DisabledTextColor '"--disabledTextColor"',
+        PlaceholderColor '"--placeholderColor"',
+        TextFont '"--textFont"',
+        DisabledBorderColor '"--disabledBorderColor"',
+        SuccessBorderColor '"--successBorderColor"',
+        ErrorBorderColor '"--errorBorderColor"'
+    );
+}

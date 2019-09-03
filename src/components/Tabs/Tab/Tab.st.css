@@ -37,8 +37,8 @@
 }
 
 .root:isActive:indicateActive {
-    border-bottom: 3px solid;
-    border-bottom-color: color(value(activeIndicatorColor));
+    border-bottom: 3px solid !important;
+    border-bottom-color: color(value(activeIndicatorColor)) !important;
 }
 
 .root:focus,

@@ -1,11 +1,11 @@
 export const importExample = `import { Ratings } from 'wix-ui-tpa/Ratings';`;
 
 export const defult = `
-<Ratings onSelect={val => console.log(val)} value={0} size="large" />
+<Ratings onSelect={(() => {})} value={0} size="large" />
 `;
 
 export const inputWithValue = `
-<Ratings onSelect={val => console.log(val)} value={3} size="large" inputOptions={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']} />
+<Ratings onSelect={(() => {})} value={3} size="large" inputOptions={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']} />
 `;
 
 export const defaultDisplay = `

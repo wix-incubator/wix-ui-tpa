@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { {%ComponentName%} } from './';
 
 class {%ComponentName%}Visual extends React.Component<any> {
@@ -14,9 +14,9 @@ class {%ComponentName%}Visual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <VisualContainerElement>
+        <VisualTestContainer>
           <{%ComponentName%} {...this.props} />
-        </VisualContainerElement>
+        </VisualTestContainer>
       </TPAComponentsProvider>
     );
   }
