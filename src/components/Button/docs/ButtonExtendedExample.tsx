@@ -11,6 +11,14 @@ export const ButtonExtendedExample: React.FunctionComponent<
     </Button>
 
     <Button
+      priority={PRIORITY.basicSecondary}
+      {...props}
+      {...extendedStyles('root', {}, props)}
+    >
+      BASIC SECONDARY
+    </Button>
+
+    <Button
       priority={PRIORITY.primary}
       {...props}
       {...extendedStyles('root', {}, props)}
