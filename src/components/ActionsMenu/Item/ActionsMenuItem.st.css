@@ -1,5 +1,5 @@
 :import {
-    -st-from: "../../common/formatters.st";
+    -st-from: "../../../common/formatters.st";
     -st-named: color, fallback, font, value, opacity;
 }
 
