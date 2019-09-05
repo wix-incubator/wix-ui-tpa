@@ -11,6 +11,7 @@ export enum PRIORITY {
   basic = 'basic',
   primary = 'primary',
   secondary = 'secondary',
+  basicSecondary = 'basicSecondary',
 }
 
 export enum SIZE {

@@ -29,7 +29,7 @@
     MainTextColor: --overidable;
     MainBackgroundColor: --overidable;
     MainTextFont: --overidable;
-    MainBorderColor: value(PrimaryColor);
+    MainBorderColor: --overidable;
     MainBorderWidth: --overidable;
     MainBorderRadius: value(BorderRadius);
 }
@@ -37,16 +37,17 @@
 :vars {
     PrimaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
     PrimaryBorderWidth: fallback(value(MainBorderWidth), 0);
+    PrimaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
 }
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic)), size(enum(tiny, small, medium, large)), fullWidth, mobile;
+    -st-states: priority(enum(primary, secondary, basic, basicSecondary)), size(enum(tiny, small, medium, large)), fullWidth, mobile;
 
     min-width: value(MinWidth);
     border-style: solid;
     box-sizing: content-box;
-    border-color: color(value(MainBorderColor));
+    border-color: color(value(PrimaryBorderColor));
     border-radius: value(MainBorderRadius);
     transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
 }
@@ -79,6 +80,27 @@
 .root:priority(basic):focus,
 .root:priority(basic):hover {
     background-color: applyOpacity(value(BasicBackgroundColor), 0.8);
+}
+
+/*BasicSecondary*/
+
+:vars {
+    BasicSecondaryTextColor: color(fallback(value(MainTextColor), value(BasicColor)));
+    BasicSecondaryBorderColor: color(fallback(value(MainBorderColor), value(BasicColor)));
+}
+
+.root:priority(basicSecondary) {
+    color: value(BasicSecondaryTextColor);
+    background-color: color(fallback(value(MainBackgroundColor), transparent));
+    border-color: value(BasicSecondaryBorderColor);
+    border-width: fallback(value(MainBorderWidth), 1px);
+}
+
+.root:priority(basicSecondary):active,
+.root:priority(basicSecondary):focus,
+.root:priority(basicSecondary):hover {
+    color: applyOpacity(value(BasicSecondaryTextColor), 0.6);
+    border-color: applyOpacity(value(BasicSecondaryBorderColor), 0.6);
 }
 
 /*Primary*/
@@ -127,6 +149,7 @@
     background-color: color(value(DisabledColor));
 }
 
+.root:priority(basicSecondary):disabled,
 .root:priority(secondary):disabled {
     color: color(value(DisabledColor));
     border-color: color(value(DisabledColor));
