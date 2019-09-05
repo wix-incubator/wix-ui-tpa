@@ -108,6 +108,33 @@ const tests = [
         props: {
           mobile: true,
         },
+        children: [
+          generateItem({
+            content: 'item 1',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 2',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 3',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 4',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+          generateItem({
+            content: 'item 5',
+            subtitle: 'Subtitle',
+            prefixIcon: <ShareIcon />,
+          }),
+        ],
       },
     ],
   },
