@@ -15,6 +15,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
+import { settingsPanel } from "../../../../stories/utils/SettingsPanel";
+import * as ExtendedRawSource from '!raw-loader!./ActionsMenuExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuExtendedExample.st.css';
+import { ActionsMenuExtendedExample } from "./ActionsMenuExtendedExample";
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -82,7 +86,7 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
+            { title: 'Example', source: examples.ActionsMenuExample },
             { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
@@ -92,6 +96,51 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Settings Panel',
+              example: <ActionsMenuExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              params: {
+                numbers: [{
+                  label: 'Menu Border Width',
+                  wixParam: 'borderWidth',
+                  defaultNumber: 1,
+                  unit: 'px',
+                  min: 1,
+                  max: 20,
+                }],
+                colors: [
+                  {
+                    label: 'Menu Background Color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Menu Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Item Font',
+                    wixParam: 'itemFont',
+                    defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Item Subtitle Font',
+                    wixParam: 'itemSubtitleFont',
+                    defaultFont: 'arial',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

@@ -1,7 +1,7 @@
 export const importExample = `import { ActionsMenu } from 'wix-ui-tpa/ActionsMenu';`;
 
 const onClick = () => console.log('clicked');
-export const example = `
+export const ActionsMenuExample = `
 <ActionsMenu>
     <ActionsMenu.Item onClick={${onClick}} content="item 1"  />
     <ActionsMenu.Item onClick={${onClick}} content="item 2" subtitle="Subtitle" />

@@ -49,8 +49,8 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
           >
             {React.Children.map(children, (child: React.ReactElement) =>
               child.type === ActionsMenuItem
-                ? React.cloneElement(child, { ...styles(styles.item, {}) })
-                : child,
+                ? React.cloneElement(child, styles(styles.item, {}))
+                : React.cloneElement(child, styles(styles.divider, {})),
             )}
           </ul>
         )}

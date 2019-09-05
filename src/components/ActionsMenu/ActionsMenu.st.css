@@ -32,6 +32,7 @@
     padding: 12px 24px;
     max-width: 320px;
     background-color: value(menuBackgroundColor);
+    border-style: solid;
     border-width: value(menuBorderWidth);
     border-color: value(menuBorderColor);
     display: flex;
@@ -40,6 +41,10 @@
 
 .item {
     -st-extends: ActionMenuItem;
+}
+
+.divider {
+    margin: 10px 0 10px;
 }
 
 .root:mobile {
