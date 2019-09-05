@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ActionsMenu, Alignment } from './';
-import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
+import { DoubleChevronRight } from "../../assets/icons/DoubleChevronRight";
 
 class ActionsMenuVisual extends React.Component<any> {
   static defaultProps = {
@@ -56,7 +56,7 @@ const tests = [
         it: 'with icon',
         props: {},
         children: [
-          generateItem({ content: 'item 1', prefixIcon: <ShareIcon /> }),
+          generateItem({ content: 'item 1', prefixIcon: DoubleChevronRight }),
         ],
       },
       {
@@ -66,40 +66,22 @@ const tests = [
           generateItem({
             content: 'item 1',
             subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
+            prefixIcon: DoubleChevronRight,
           }),
         ],
       },
       {
-        it: 'many items with icon and subtitle',
+        it: 'many items with icon and subtitle with right alignment',
         props: {
-          alignment: Alignment.center,
+          alignment: Alignment.right,
         },
         children: [
           generateItem({
             content: 'item 1',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
-          }),
-          generateItem({
-            content: 'item 2',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
           }),
           generateItem({
             content: 'item 3',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
-          }),
-          generateItem({
-            content: 'item 4',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
-          }),
-          generateItem({
-            content: 'item 5',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
+            subtitle: 'Subtitle 2',
           }),
         ],
       },
@@ -111,28 +93,10 @@ const tests = [
         children: [
           generateItem({
             content: 'item 1',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
           }),
           generateItem({
             content: 'item 2',
             subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
-          }),
-          generateItem({
-            content: 'item 3',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
-          }),
-          generateItem({
-            content: 'item 4',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
-          }),
-          generateItem({
-            content: 'item 5',
-            subtitle: 'Subtitle',
-            prefixIcon: <ShareIcon />,
           }),
         ],
       },
