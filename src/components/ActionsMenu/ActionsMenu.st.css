@@ -35,12 +35,6 @@
     border-style: solid;
     border-width: value(menuBorderWidth);
     border-color: value(menuBorderColor);
-    display: flex;
-    flex-direction: column;
-}
-
-.item {
-    -st-extends: ActionMenuItem;
 }
 
 .divider {
@@ -51,14 +45,3 @@
     width: 100%;
 }
 
-.root:alignment(left) .item {
-    justify-content: flex-start;
-}
-
-.root:alignment(center) .item {
-    justify-content: center;
-}
-
-.root:alignment(right) .item {
-    justify-content: flex-end;
-}

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import styles from './ActionsMenuItem.st.css';
 import { Text } from '../../Text';
+import {Alignment} from "../ActionsMenu";
 
 export interface ActionsMenuItemProps {
   prefixIcon?: React.ReactNode;
@@ -14,7 +15,7 @@ export interface ActionsMenuItemProps {
 }
 
 /** ActionsMenu */
-export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
+export class ActionsMenuItem extends React.Component<ActionsMenuItemProps & { alignment: Alignment }> {
   static displayName = 'ActionsMenu.Item';
 
   render() {
@@ -24,6 +25,7 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
       subtitle,
       disabled,
       onClick,
+      alignment,
       ...rest
     } = this.props;
 
@@ -32,7 +34,7 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
         {({ mobile }) => (
           <li
             key={content}
-            {...styles(styles.root, { mobile, disabled }, rest)}
+            {...styles(styles.root, { mobile, disabled, alignment }, rest)}
             role="menuitem"
             tabIndex={-1}
             aria-disabled={disabled}
