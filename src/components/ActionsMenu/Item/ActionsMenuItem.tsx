@@ -2,7 +2,7 @@ import * as React from 'react';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import styles from './ActionsMenuItem.st.css';
 import { Text } from '../../Text';
-import {Alignment} from "../ActionsMenu";
+import { Alignment } from '../ActionsMenu';
 
 export interface ActionsMenuItemProps {
   prefixIcon?: React.ReactNode;
@@ -15,7 +15,9 @@ export interface ActionsMenuItemProps {
 }
 
 /** ActionsMenu */
-export class ActionsMenuItem extends React.Component<ActionsMenuItemProps & { alignment: Alignment }> {
+export class ActionsMenuItem extends React.Component<
+  ActionsMenuItemProps & { alignment: Alignment }
+> {
   static displayName = 'ActionsMenu.Item';
 
   render() {
