@@ -15,10 +15,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
-import { settingsPanel } from "../../../../stories/utils/SettingsPanel";
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as ExtendedRawSource from '!raw-loader!./ActionsMenuExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuExtendedExample.st.css';
-import { ActionsMenuExtendedExample } from "./ActionsMenuExtendedExample";
+import { ActionsMenuExtendedExample } from './ActionsMenuExtendedExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -105,14 +105,16 @@ export default {
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {
-                numbers: [{
-                  label: 'Menu Border Width',
-                  wixParam: 'borderWidth',
-                  defaultNumber: 1,
-                  unit: 'px',
-                  min: 1,
-                  max: 20,
-                }],
+                numbers: [
+                  {
+                    label: 'Menu Border Width',
+                    wixParam: 'borderWidth',
+                    defaultNumber: 1,
+                    unit: 'px',
+                    min: 1,
+                    max: 20,
+                  },
+                ],
                 colors: [
                   {
                     label: 'Menu Background Color',
