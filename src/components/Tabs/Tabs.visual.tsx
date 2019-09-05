@@ -1,69 +1,154 @@
 import * as React from 'react';
-import { ALIGNMENT, SKIN, Tabs, VARIANT } from '.';
+import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import { tabsDriverFactory, TabsDriver } from './Tabs.driver';
+import { ALIGNMENT, SKIN, Tabs, VARIANT, TabsProps, NavButtonOptions } from '.';
 import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 const items = [0, 1, 2, 4].map(i => ({ title: `Title ${i}` }));
+const createDriver = uniTestkitFactoryCreator(tabsDriverFactory);
+const dataHook = 'storybook-e2e-Tabs';
 
-class TabsVisual extends React.Component {
+interface TabsVisualProps {
+  tabsProps: TabsProps;
+  mobile: boolean;
+  onDone(TabsDriver): void;
+  compact?: boolean;
+}
+
+class TabsVisual extends React.Component<TabsVisualProps> {
   static defaultProps = {
     tabsProps: {},
     mobile: false,
     onDone: () => {},
   };
+  private driver: TabsDriver;
 
   componentDidMount(): void {
+    this.driver = createDriver({ wrapper: document.body, dataHook });
+
     onStyleProcessorDone()
-      .then(() => {
+      .then(async () => {
         const { onDone } = this.props as any;
-        onDone && onDone();
+        try {
+          onDone && (await onDone(this.driver));
+        } catch (e) {}
       })
       .catch(() => {});
   }
 
   render() {
-    const { tabsProps, mobile } = this.props as any;
+    const { tabsProps, mobile, compact } = this.props as any;
+    const style = compact ? { margin: '10px', maxWidth: 200 } : undefined;
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <Tabs
-          data-hook={'storybook-e2e-Tabs'}
-          items={items}
-          activeTabIndex={0}
-          {...tabsProps}
-        />
+        <div style={style}>
+          <Tabs data-hook={dataHook} {...tabsProps} />
+        </div>
       </TPAComponentsProvider>
     );
   }
 }
 
 visualize('Tabs', () => {
-  const renderTest = (props?: object, mobile?: boolean) => done => (
-    <TabsVisual tabsProps={props} mobile={mobile} onDone={done} />
-  );
+  const renderTest = (
+    renderProps?: any,
+    onDone?: (any?) => (TabsDriver) => void,
+  ) => {
+    const { props, mobile, compact } = renderProps;
+    return done => (
+      <TabsVisual
+        tabsProps={{
+          items,
+          activeTabIndex: 0,
+          ...props,
+        }}
+        compact={compact}
+        mobile={mobile}
+        onDone={onDone && onDone(done)}
+      />
+    );
+  };
 
   story('basic', () => {
     snap('default', renderTest());
 
-    snap('mobile', renderTest({}, true));
+    snap('mobile', renderTest({ mobile: true }));
   });
 
   story('Alignments', () => {
     Object.values(ALIGNMENT).map(alignment => {
-      snap(alignment, renderTest({ alignment }));
+      snap(alignment, renderTest({ props: { alignment } }));
     });
   });
 
   story('Variants', () => {
     Object.values(VARIANT).map(variant => {
-      snap(variant, renderTest({ variant }));
+      snap(variant, renderTest({ props: { variant } }));
     });
   });
 
   story('Skins', () => {
     Object.values(SKIN).map(skin => {
-      snap(skin, renderTest({ skin }));
+      snap(skin, renderTest({ props: { skin } }));
     });
+  });
+
+  const lotsItems = [
+    { title: 'Title 1' },
+    { title: 'Title 2' },
+    { title: 'Title 3' },
+    { title: 'Title 4' },
+    { title: 'Title 5' },
+    { title: 'Title 6' },
+    { title: 'Title 7' },
+    { title: 'Title 8' },
+    { title: 'Title 9' },
+    { title: 'Title 10' },
+  ];
+
+  story('Scroll', () => {
+    async function scrollToEnd(driver, direction) {
+      const navShown = await driver.getNavButtonsShown();
+      if (navShown === NavButtonOptions.both || navShown === direction) {
+        if (direction === NavButtonOptions.right) {
+          await driver.clickRightNavButton();
+        } else {
+          await driver.clickLeftNavButton();
+        }
+        setTimeout(async () => scrollToEnd(driver, direction), 400);
+      }
+    }
+
+    snap(
+      'left nav button',
+      renderTest({ compact: true, props: { items: lotsItems } }, done => {
+        return async () => {
+          done();
+        };
+      }),
+    );
+
+    snap(
+      'both nav buttons',
+      renderTest({ compact: true, props: { items: lotsItems } }, done => {
+        return async (driver: TabsDriver) => {
+          await driver.clickRightNavButton();
+          done();
+        };
+      }),
+    );
+
+    snap(
+      'scroll to right end',
+      renderTest({ compact: true, props: { items: lotsItems } }, done => {
+        return async (driver: TabsDriver) => {
+          await scrollToEnd(driver, NavButtonOptions.right);
+          done();
+        };
+      }),
+    );
   });
 });

@@ -84,7 +84,7 @@ export function visualize(visualName, tests) {
     tests();
   } catch (e) {}
 
-  currentTest = null;
+  currentTest = [];
 }
 
 export function story(storyName, cb) {
