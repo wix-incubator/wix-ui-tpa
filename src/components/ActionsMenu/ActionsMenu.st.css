@@ -37,11 +37,28 @@
     border-color: value(menuBorderColor);
 }
 
+.item {
+    -st-extends: ActionMenuItem;
+}
+
 .divider {
     margin: 10px 0 10px;
 }
 
 .root:mobile {
     width: 100%;
+}
+
+.root:alignment(left) .item::container {
+    left: 0;
+}
+
+.root:alignment(center) .item::container {
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.root:alignment(right) .item::container {
+    right: 0;
 }
 

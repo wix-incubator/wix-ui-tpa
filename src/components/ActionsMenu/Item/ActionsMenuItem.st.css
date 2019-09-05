@@ -19,7 +19,7 @@
 }
 
 .root {
-    -st-states: disabled, alignment(enum(left, center, right));
+    -st-states: disabled, mobile;
     height: 40px;
     padding: 8px 24px;
     display: flex;
@@ -35,19 +35,6 @@
     display: flex;
     flex: 1;
     position: absolute;
-}
-
-.root:alignment(left) .container {
-    left: 0;
-}
-
-.root:alignment(center) .container {
-    left: 50%;
-    transform: translate(-50%, 0);
-}
-
-.root:alignment(right) .container {
-    right: 0;
 }
 
 .root:disabled {

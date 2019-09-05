@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ActionsMenu, Alignment } from './';
-import { DoubleChevronRight } from "../../assets/icons/DoubleChevronRight";
+import { DoubleChevronRight } from '../../assets/icons/DoubleChevronRight';
 
 class ActionsMenuVisual extends React.Component<any> {
   static defaultProps = {

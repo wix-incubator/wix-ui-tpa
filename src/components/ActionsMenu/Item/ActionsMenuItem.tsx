@@ -2,7 +2,8 @@ import * as React from 'react';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import styles from './ActionsMenuItem.st.css';
 import { Text } from '../../Text';
-import { Alignment } from '../ActionsMenu';
+
+function noop() {}
 
 export interface ActionsMenuItemProps {
   prefixIcon?: React.ReactNode;
@@ -15,9 +16,7 @@ export interface ActionsMenuItemProps {
 }
 
 /** ActionsMenu */
-export class ActionsMenuItem extends React.Component<
-  ActionsMenuItemProps & { alignment: Alignment }
-> {
+export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
   static displayName = 'ActionsMenu.Item';
 
   render() {
@@ -27,7 +26,6 @@ export class ActionsMenuItem extends React.Component<
       subtitle,
       disabled,
       onClick,
-      alignment,
       ...rest
     } = this.props;
 
@@ -36,11 +34,11 @@ export class ActionsMenuItem extends React.Component<
         {({ mobile }) => (
           <li
             key={content}
-            {...styles(styles.root, { mobile, disabled, alignment }, rest)}
+            {...styles(styles.root, { mobile, disabled }, rest)}
             role="menuitem"
             tabIndex={-1}
             aria-disabled={disabled}
-            onClick={disabled ? () => {} : onClick}
+            onClick={disabled ? noop : onClick}
           >
             <div {...styles(styles.container, {})}>
               <div {...styles(styles.icon, {})}>{prefixIcon}</div>
