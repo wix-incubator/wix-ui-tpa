@@ -4,8 +4,12 @@ import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ActionsMenu, Alignment } from './';
 import { DoubleChevronRight } from '../../assets/icons/DoubleChevronRight';
+import { ActionsMenuProps } from './ActionsMenu';
+import { ActionsMenuItemProps } from './Item/ActionsMenuItem';
 
-class ActionsMenuVisual extends React.Component<any> {
+class ActionsMenuVisual extends React.Component<
+  ActionsMenuProps & { mobile?: boolean }
+> {
   static defaultProps = {
     mobile: false,
   };
@@ -23,7 +27,7 @@ class ActionsMenuVisual extends React.Component<any> {
   }
 }
 
-function generateItem(props) {
+function generateItem(props: Omit<ActionsMenuItemProps, 'onClick'>) {
   return (
     <ActionsMenu.Item
       key={props.content}
@@ -85,8 +89,13 @@ const tests = [
           }),
         ],
       },
+    ],
+  },
+  {
+    describe: 'mobile',
+    its: [
       {
-        it: 'mobile',
+        it: 'default',
         props: {
           mobile: true,
         },
@@ -95,8 +104,8 @@ const tests = [
             content: 'item 1',
           }),
           generateItem({
-            content: 'item 2',
-            subtitle: 'Subtitle',
+            content: 'item 1',
+            subtitle: 'Subtitle here',
           }),
         ],
       },
