@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { testkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import { textFieldDriverFactory } from './TextField.driver';
-import { TextField } from './TextField';
 import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 const dataHook = 'textfield-visual-test';
@@ -42,14 +41,6 @@ export class TextFieldAsyncVisual extends React.Component<
         await this._focusTest();
       }
     } catch (e) {}
-
-    console.log(
-      'adler',
-      'TextFieldAsyncVisual.tsx:102',
-      'hererer',
-      hover,
-      focus,
-    );
 
     onDone();
   }

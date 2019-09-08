@@ -54,11 +54,11 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     },
 
     hover() {
-      return Promise.resolve(eventTrigger.hover(inputDriver.getInput()));
+      return eventTrigger.mouseEnter(element);
     },
 
     focus() {
-      return Promise.resolve(inputDriver.getInput().focus());
+      return inputDriver.getInput().focus();
     },
   };
 };
