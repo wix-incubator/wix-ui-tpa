@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TextField, TextFieldProps } from './TextField';
-import { dataHooks } from './docs/testData';
 import { TextFieldAsyncVisual } from './TextFieldAsyncVisual';
+import { TextFieldTheme } from './TextFieldEnums';
 
 class TextFieldVisual extends React.Component<TextFieldProps> {
   static defaultProps: TextFieldProps = {
@@ -85,27 +85,59 @@ tests.forEach(({ describe, its }) => {
   });
 });
 
-['ltr', 'rtl'].forEach((dir: 'ltr' | 'rtl') => {
-  visualize('TextField', () => {
-    story(dir, () => {
-      dataHooks.forEach(dataHook => {
-        snap(`TextField${dir.toUpperCase()}-${dataHook}-hover`, done => (
-          <TextFieldAsyncVisual
-            dir={dir}
-            onDone={done}
-            hover
-            testDataHook={dataHook}
-          />
-        ));
+function snapTest({
+  theme,
+  mouseAction,
+  hover,
+  focus,
+  dir,
+  success = false,
+  error = false,
+}) {
+  snap(
+    `${theme}${success ? '/success' : ''}${
+      error ? '/error' : ''
+    }/${mouseAction}`,
+    done => (
+      <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
+        <TextField
+          theme={theme}
+          success={success}
+          error={error}
+          errorMessage={'This is an error message'}
+          value={'Some value'}
+        />
+      </TextFieldAsyncVisual>
+    ),
+  );
+}
 
-        snap(`TextField${dir.toUpperCase()}-${dataHook}-focus`, done => (
-          <TextFieldAsyncVisual
-            dir={dir}
-            onDone={done}
-            focus
-            testDataHook={dataHook}
-          />
-        ));
+visualize('TextField', () => {
+  ['ltr', 'rtl'].forEach((dir: 'ltr' | 'rtl') => {
+    story(dir, () => {
+      Object.values(TextFieldTheme).forEach(theme => {
+        ['hover', 'focus'].forEach(mouseAction => {
+          const hover = mouseAction === 'hover';
+          const focus = mouseAction === 'focus';
+
+          snapTest({ theme, mouseAction, focus, hover, dir });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            success: true,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            error: true,
+          });
+        });
       });
     });
   });
