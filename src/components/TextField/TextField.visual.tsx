@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TextField, TextFieldProps } from './TextField';
+import { dataHooks } from './docs/testData';
+import { TextFieldAsyncVisual } from './TextFieldAsyncVisual';
 
 class TextFieldVisual extends React.Component<TextFieldProps> {
   static defaultProps: TextFieldProps = {
@@ -79,5 +82,21 @@ tests.forEach(({ describe, its }) => {
     storiesOf(`TextField/${describe}`, module).add(it, () => (
       <TextFieldVisual {...props} />
     ));
+  });
+});
+
+['ltr', 'rtl'].forEach((dir: 'ltr' | 'rtl') => {
+  visualize('TextField', () => {
+    story(dir, () => {
+      dataHooks.forEach(dataHook => {
+        snap(`TextField${dir.toUpperCase()}-${dataHook}-hover`, done => (
+          <TextFieldAsyncVisual dir={dir} onDone={done} hover testDataHook={dataHook}/>
+        ));
+
+        snap(`TextField${dir.toUpperCase()}-${dataHook}-focus`, done => (
+          <TextFieldAsyncVisual dir={dir} onDone={done} focus testDataHook={dataHook}/>
+        ));
+      });
+    });
   });
 });
