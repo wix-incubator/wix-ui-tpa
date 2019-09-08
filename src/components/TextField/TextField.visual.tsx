@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TextField, TextFieldProps } from './TextField';
+import { TextFieldAsyncVisual } from './TextFieldAsyncVisual';
+import { TextFieldTheme } from './TextFieldEnums';
 
 class TextFieldVisual extends React.Component<TextFieldProps> {
   static defaultProps: TextFieldProps = {
@@ -79,5 +82,63 @@ tests.forEach(({ describe, its }) => {
     storiesOf(`TextField/${describe}`, module).add(it, () => (
       <TextFieldVisual {...props} />
     ));
+  });
+});
+
+function snapTest({
+  theme,
+  mouseAction,
+  hover,
+  focus,
+  dir,
+  success = false,
+  error = false,
+}) {
+  snap(
+    `${theme}${success ? '/success' : ''}${
+      error ? '/error' : ''
+    }/${mouseAction}`,
+    done => (
+      <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
+        <TextField
+          theme={theme}
+          success={success}
+          error={error}
+          errorMessage={'This is an error message'}
+          value={'Some value'}
+        />
+      </TextFieldAsyncVisual>
+    ),
+  );
+}
+
+visualize('TextField', () => {
+  ['ltr', 'rtl'].forEach((dir: 'ltr' | 'rtl') => {
+    story(dir, () => {
+      Object.values(TextFieldTheme).forEach(theme => {
+        ['hover', 'focus'].forEach(mouseAction => {
+          const hover = mouseAction === 'hover';
+          const focus = mouseAction === 'focus';
+
+          snapTest({ theme, mouseAction, focus, hover, dir });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            success: true,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            error: true,
+          });
+        });
+      });
+    });
   });
 });

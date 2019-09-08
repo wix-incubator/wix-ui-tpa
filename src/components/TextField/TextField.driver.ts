@@ -52,5 +52,13 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     hasErrorMessage() {
       return !!getErrorMessage();
     },
+
+    hover() {
+      return eventTrigger.mouseEnter(element);
+    },
+
+    focus() {
+      return inputDriver.getInput().focus();
+    },
   };
 };
