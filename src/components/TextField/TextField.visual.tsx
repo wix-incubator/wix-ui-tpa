@@ -90,11 +90,21 @@ tests.forEach(({ describe, its }) => {
     story(dir, () => {
       dataHooks.forEach(dataHook => {
         snap(`TextField${dir.toUpperCase()}-${dataHook}-hover`, done => (
-          <TextFieldAsyncVisual dir={dir} onDone={done} hover testDataHook={dataHook}/>
+          <TextFieldAsyncVisual
+            dir={dir}
+            onDone={done}
+            hover
+            testDataHook={dataHook}
+          />
         ));
 
         snap(`TextField${dir.toUpperCase()}-${dataHook}-focus`, done => (
-          <TextFieldAsyncVisual dir={dir} onDone={done} focus testDataHook={dataHook}/>
+          <TextFieldAsyncVisual
+            dir={dir}
+            onDone={done}
+            focus
+            testDataHook={dataHook}
+          />
         ));
       });
     });
