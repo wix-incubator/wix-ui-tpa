@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { visualize, story, snap } from 'storybook-snapper';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import { tabsDriverFactory, TabsDriver } from './Tabs.driver';
 import { ALIGNMENT, SKIN, Tabs, VARIANT, TabsProps, NavButtonOptions } from '.';
-import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
