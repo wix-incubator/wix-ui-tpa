@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './AvatarGroup.st.css';
 import { Avatar } from '../Avatar';
+import { TEXT_BUTTON_PRIORITY, TextButton } from '../TextButton';
 
 export interface AvatarGroupItem {
   name?: string;
@@ -22,6 +23,10 @@ export interface AvatarGroupProps {
   maxAmount?: number;
   /** Avatar's size. Optional. Dafaults to 'medium'. One of 'large' | 'medium' | 'small' | 'xSmall' | 'xxSmall'. */
   size?: AvatarGroupSize;
+  /** Optional text link content. */
+  textLink?: string;
+  /** Optional text link onClick callback. Needs textLink defined to show the text link itself. */
+  onClickTextLink?(): void;
 }
 
 interface DefaultProps {
@@ -40,7 +45,14 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
   };
 
   render() {
-    const { items, size, maxAmount, ...rest } = this.props;
+    const {
+      items,
+      size,
+      maxAmount,
+      textLink,
+      onClickTextLink,
+      ...rest
+    } = this.props;
 
     return (
       <div {...styles('root', { size }, rest)}>
@@ -54,6 +66,18 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
             />
           </div>
         ))}
+        {textLink ? (
+          <div className={styles.textLinkContainer}>
+            <TextButton
+              {...styles('textLink')}
+              data-hook="text-link"
+              priority={TEXT_BUTTON_PRIORITY.secondary}
+              onClick={onClickTextLink}
+            >
+              {textLink}
+            </TextButton>
+          </div>
+        ) : null}
       </div>
     );
   }

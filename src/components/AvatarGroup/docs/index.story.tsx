@@ -98,6 +98,18 @@ export default {
                     wixParam: 'AvatarBorderColor',
                     defaultColor: 'color-1',
                   },
+                  {
+                    label: 'Text Link Color',
+                    wixParam: 'TextLinkColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Text Link Font',
+                    wixParam: 'TextLinkFont',
+                    defaultFont: 'arial',
+                  },
                 ],
               },
             }),

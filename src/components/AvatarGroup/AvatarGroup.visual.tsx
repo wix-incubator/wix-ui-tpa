@@ -67,6 +67,10 @@ function generateIts(size) {
         size,
       },
     },
+    {
+      it: 'With optional text link',
+      props: { size, items: [...items], textLink: 'Some link' },
+    },
   ];
 }
 

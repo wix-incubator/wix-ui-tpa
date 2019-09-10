@@ -8,6 +8,11 @@
     -st-named: Avatar;
 }
 
+:import {
+    -st-from: "../TextButton/TextButton.st.css";
+    -st-default: TextButton;
+}
+
 :vars {
     /*Defaults*/
     DefaultAvatarBorderColor: color-1;
@@ -16,6 +21,8 @@
 :vars {
     /*Overrides*/
      AvatarBorderColor: --overridable;
+     TextLinkFont: --overridable;
+     TextLinkColor: --overridable;
 }
 
 :vars {
@@ -51,6 +58,8 @@
 .root .avatarContainer {
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .root:size(large) .avatarContainer {
@@ -121,4 +130,31 @@
     font-weight: 400;
     height: 16px;
     width: 16px;
+}
+
+/* Optional text link */
+.textLinkContainer {
+    display: flex;
+    align-items: center;
+}
+
+:size(large) .textLinkContainer,
+:size(medium) .textLinkContainer,
+:size(small) .textLinkContainer {
+    margin-left: 12px;
+}
+
+:size(xSmall) .textLinkContainer {
+    margin-left: 10px;
+}
+
+:size(xxSmall) .textLinkContainer {
+    margin-left: 8px;
+}
+
+.textLink {
+    -st-mixin: TextButton(
+       MainTextColor '"--TextLinkColor"',
+       MainTextFont '"--TextLinkFont"'
+    );
 }

@@ -62,4 +62,17 @@ describe('AvatarGroup', () => {
 
     expect(await driver.getAvatarCount()).toBe(9);
   });
+
+  it('should have optional text link', async () => {
+    const onClick = jest.fn();
+    const driver = createDriver(
+      <AvatarGroup
+        items={[...items]}
+        textLink="Some link"
+        onClickTextLink={onClick}
+      />,
+    );
+    await driver.textLink.click();
+    expect(onClick).toHaveBeenCalled();
+  });
 });
