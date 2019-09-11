@@ -1,52 +1,55 @@
+// import { Text } from '../Text';
+// import { Button } from '../Button';
+// import styles from './Calendar.st.css';
+
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
-import styles from './Calendar.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { Title, CALENDAR_TITLE_DISPLAY_NAME } from './Title/Title';
 
-export interface CalendarProps {
-  buttonText: string;
+interface DefaultCalendarProps {
+  calendarTitle: string;
 }
 
-interface DefaultProps {
-  buttonText: string;
-}
+export interface CalendarProps extends Partial<DefaultCalendarProps> {}
 
-interface State {
-  count: number;
+// TODO: remove this if unused
+export interface CalendarState {
+  // TODO: Not finished
 }
 
 /** Component for showing some events of a particular week */
-export class Calendar extends React.Component<
-  CalendarProps,
-  State
-> {
+export class Calendar extends React.Component<CalendarProps, CalendarState> {
   static displayName = 'Calendar';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
 
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
+  static defaultProps: DefaultCalendarProps = {
+    calendarTitle: '',
   };
 
-  render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+  static Title = Title;
 
+  // TODO: remove state if unused
+  state = {};
+
+  hasNode = (name: string) => {
+    let children: any = this.props.children || [];
+    children = children.length ? children : [children];
+
+    return Boolean(
+      children.find(child => child.type && child.type.displayName === name),
+    );
+  };
+
+  hasTitle = () => this.hasNode(CALENDAR_TITLE_DISPLAY_NAME);
+
+  render() {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)} data-mobile={mobile}>
-            <Text {...styles('number', { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-              of times
-            </Text>
-
-            <div className={styles.button}>
-              <Button onClick={this._handleClick}>{buttonText}</Button>
-            </div>
+          <div>
+            {this.hasTitle() ? null : (
+              <Calendar.Title>{this.props.calendarTitle}</Calendar.Title>
+            )}
+            {this.props.children}
           </div>
         )}
       </TPAComponentsConsumer>

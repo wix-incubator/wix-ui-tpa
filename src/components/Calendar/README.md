@@ -8,7 +8,7 @@ This Readme was auto-generated and needs to be filled manually
 
 ```javascript
   export enum CalendarLayouts {
-    weekly = 'weekly'
+    weekly = 'weekly',
     monthly = 'monthly'
   }
 
@@ -53,16 +53,7 @@ Minimal usage weekly:
     onClickPrev={prevClickHandler}
     onClickNext={nextClickHandler}
     onClickToday={todayClickHandler}
-  >
-    <Calendar.Popup
-      dayIndex={}
-      widthCells={}
-      heightCells={}
-      onClose={}
-    >
-      If popup is needed - show it here
-    </Calendar.Popup>
-  </Calendar>
+  />
 ```
 
 Minimal usage monthly:
@@ -77,16 +68,7 @@ Minimal usage monthly:
     onClickNext={nextClickHandler}
     onClickToday={todayClickHandler}
     onClickMore={moreClickHandler}
-  >
-    <Calendar.Popup
-      dayIndex={}
-      widthCells={}
-      heightCells={}
-      onClose={}
-    >
-      If popup is needed - show it here
-    </Calendar.Popup>
-  </Calendar>
+  />
 ```
 
 ### Partial customization example
@@ -147,26 +129,20 @@ Customized usage weekly:
                 >
                   {event.time}
                 </Calendar.EventTime>
-                <Calendar.EventTitle
-                  className={}
-                >
-                  {event.title}
-                </Calendar.EventTitle>
               </Calendar.Cell>
             }
           </Calendar.Events>
         }
       </Calendar.Day>
+      <Calendar.Popup
+        dayIndex={}
+        widthCells={}
+        heightCells={}
+        onClose={}
+      >
+        If popup is needed - show it here
+      </Calendar.Popup>
     </Calendar.Grid>
-
-    <Calendar.Popup
-      dayIndex={}
-      widthCells={}
-      heightCells={}
-      onClose={}
-    >
-      If popup is needed - show it here
-    </Calendar.Popup>
   </Calendar>
 ```
 
@@ -205,29 +181,17 @@ Customized usage monthly:
             >
               {day.events[0].time}
             </Calendar.EventTime>
-            <Calendar.EventTitle
-              className={}
-            >
-              {day.events[0].title}
-            </Calendar.EventTitle>
-            <Calendar.More
-              className={}
-              onClick={moreClickHandler}
-            >
-              + more {day.events.length}...
-            </Calendar.More>
           </Calendar.Cell>
         }
       </Calendar.Day>
+      <Calendar.Popup
+        dayIndex={}
+        widthCells={}
+        heightCells={}
+        onClose={}
+      >
+        If popup is needed - show it here
+      </Calendar.Popup>
     </Calendar.Grid>
-
-    <Calendar.Popup
-      dayIndex={}
-      widthCells={}
-      heightCells={}
-      onClose={}
-    >
-      If popup is needed - show it here
-    </Calendar.Popup>
   </Calendar>
 ```

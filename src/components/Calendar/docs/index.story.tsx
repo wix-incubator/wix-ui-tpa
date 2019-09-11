@@ -18,6 +18,12 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+// TODO: externalize into separate file
+export enum CalendarLayouts {
+  weekly = 'weekly',
+  monthly = 'monthly',
+}
+
 export default {
   category: 'Events',
   storyName: 'Calendar',
@@ -25,10 +31,12 @@ export default {
   componentPath: '../Calendar.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Calendar',
-    layout: 'weekly',
+    layout: CalendarLayouts.weekly,
+    calendarTitle: '',
   }),
   exampleProps: {
-    //
+    layout: Object.values(CalendarLayouts),
+    calendarTitle: 'Calendar',
   },
   dataHook: 'storybook-Calendar',
   sections: [
@@ -38,6 +46,7 @@ export default {
         title: 'Usage',
         sections: [
           importExample({
+            // TODO: import example should contain sub-elements
             source: examples.importExample,
           }),
 
@@ -45,9 +54,11 @@ export default {
 
           title('Examples'),
 
+          // TODO: examples are not finished
           ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'Default Layout Example', source: examples.simple },
+            { title: 'Custom Layout Example', source: examples.complex },
+            { title: 'Mobile Example', source: examples.mobile },
           ].map(code),
         ],
       }),
