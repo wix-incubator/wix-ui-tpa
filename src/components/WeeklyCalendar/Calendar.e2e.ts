@@ -3,28 +3,25 @@ import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
-import { weeklyCalendarTestkitFactory } from '../../testkit/protractor';
+import { calendarTestkitFactory } from '../../testkit/protractor';
 
 /**
  * For tests containing interactions.
  * Can be removed if not used.
  * */
-describe('weeklyCalendar', () => {
+describe('Calendar', () => {
   const storyUrl = createStoryUrl({
     kind: 'Components',
-    story: 'WeeklyCalendar',
+    story: 'Calendar',
     withExamples: true,
   });
-  const dataHook = 'storybook-WeeklyCalendar';
+  const dataHook = 'storybook-Calendar';
 
   beforeEach(() => browser.get(storyUrl));
 
   it('should render', async () => {
-    const driver = weeklyCalendarTestkitFactory({ dataHook });
-    await waitForVisibilityOf(
-      await driver.element(),
-      'Cannot find WeeklyCalendar',
-    );
+    const driver = calendarTestkitFactory({ dataHook });
+    await waitForVisibilityOf(await driver.element(), 'Cannot find Calendar');
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

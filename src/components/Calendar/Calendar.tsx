@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Text } from '../Text';
 import { Button } from '../Button';
-import styles from './WeeklyCalendar.st.css';
+import styles from './Calendar.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-export interface WeeklyCalendarProps {
+export interface CalendarProps {
   buttonText: string;
 }
 
@@ -17,11 +17,11 @@ interface State {
 }
 
 /** Component for showing some events of a particular week */
-export class WeeklyCalendar extends React.Component<
-  WeeklyCalendarProps,
+export class Calendar extends React.Component<
+  CalendarProps,
   State
 > {
-  static displayName = 'WeeklyCalendar';
+  static displayName = 'Calendar';
   static defaultProps: DefaultProps = { buttonText: 'Click me!' };
 
   state = { count: 0 };

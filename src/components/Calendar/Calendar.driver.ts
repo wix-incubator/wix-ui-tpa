@@ -4,13 +4,11 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 
-export interface WeeklyCalendarDriver extends BaseUniDriver {
+export interface CalendarDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
 }
 
-export const weeklyCalendarDriverFactory = (
-  base: UniDriver,
-): WeeklyCalendarDriver => {
+export const calendarDriverFactory = (base: UniDriver): CalendarDriver => {
   return {
     ...baseUniDriverFactory(base),
     isMobile: async () => (await base.attr('data-mobile')) === 'true',

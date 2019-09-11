@@ -4,22 +4,22 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
-import { weeklyCalendarDriverFactory } from './WeeklyCalendar.driver';
-import { WeeklyCalendar } from './';
-import { weeklyCalendarTestkitFactory } from '../../testkit';
-import { weeklyCalendarTestkitFactory as enzymeWeeklyCalendarTestkitFactory } from '../../testkit/enzyme';
+import { CalendarDriverFactory } from './Calendar.driver';
+import { Calendar } from './';
+import { CalendarTestkitFactory } from '../../testkit';
+import { CalendarTestkitFactory as enzymeCalendarTestkitFactory } from '../../testkit/enzyme';
 
-describe('WeeklyCalendar', () => {
-  const createDriver = createUniDriverFactory(weeklyCalendarDriverFactory);
+describe('Calendar', () => {
+  const createDriver = createUniDriverFactory(CalendarDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<WeeklyCalendar buttonText="Click Me" />);
+    const driver = createDriver(<Calendar buttonText="Click Me" />);
     expect(await driver.exists()).toBe(true);
   });
 
   it('should use mobile design', async () => {
     const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<WeeklyCalendar />),
+      TPAComponentsWrapper({ mobile: true })(<Calendar />),
     );
     expect(await driver.isMobile()).toBe(true);
   });
@@ -28,8 +28,8 @@ describe('WeeklyCalendar', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <WeeklyCalendar />,
-          weeklyCalendarTestkitFactory,
+          <Calendar />,
+          CalendarTestkitFactory,
           {
             dataHookPropName: 'data-hook',
           },
@@ -42,8 +42,8 @@ describe('WeeklyCalendar', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <WeeklyCalendar />,
-          enzymeWeeklyCalendarTestkitFactory,
+          <Calendar />,
+          enzymeCalendarTestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { WeeklyCalendar } from '../';
+import { Calendar } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -19,17 +19,18 @@ const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
-  storyName: 'WeeklyCalendar',
-  component: WeeklyCalendar,
-  componentPath: '../WeeklyCalendar.tsx',
+  category: 'Events',
+  storyName: 'Calendar',
+  component: Calendar,
+  componentPath: '../Calendar.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-WeeklyCalendar',
+    'data-hook': 'storybook-Calendar',
+    layout: 'weekly',
   }),
   exampleProps: {
     //
   },
-  dataHook: 'storybook-WeeklyCalendar',
+  dataHook: 'storybook-Calendar',
   sections: [
     header(),
     tabs([
