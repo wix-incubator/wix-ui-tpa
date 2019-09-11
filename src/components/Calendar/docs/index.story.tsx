@@ -14,15 +14,10 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { CalendarLayouts } from '../Calendar';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
-
-// TODO: externalize into separate file
-export enum CalendarLayouts {
-  weekly = 'weekly',
-  monthly = 'monthly',
-}
 
 export default {
   category: 'Events',
@@ -32,11 +27,10 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Calendar',
     layout: CalendarLayouts.weekly,
-    calendarTitle: '',
+    calendarTitle: 'Example Calendar',
   }),
   exampleProps: {
     layout: Object.values(CalendarLayouts),
-    calendarTitle: 'Calendar',
   },
   dataHook: 'storybook-Calendar',
   sections: [

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Text } from '../../Text';
 
 interface DefaultTitleProps {}
 export interface TitleProps extends Partial<DefaultTitleProps> {}
@@ -10,6 +11,6 @@ export class Title extends React.PureComponent<TitleProps> {
   static defaultProps: DefaultTitleProps = {};
 
   render() {
-    return this.props.children ? <div>{this.props.children}</div> : null;
+    return this.props.children ? <Text>{this.props.children}</Text> : null;
   }
 }
