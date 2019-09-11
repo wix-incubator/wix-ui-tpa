@@ -10,6 +10,7 @@
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",
+    "./node_modules/storybook-snapper/src/external-types.d.ts",
     "./src/**/*.tsx",
     "./src/components/**/*.ts",
     "./test/**/*.tsx",
