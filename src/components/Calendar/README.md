@@ -1,4 +1,4 @@
-## About
+## Calendar
 
 An implementation of an **Calendar** for TPAs.
 

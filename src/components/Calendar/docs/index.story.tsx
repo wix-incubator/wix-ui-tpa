@@ -45,10 +45,6 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
-
-          divider(),
-
           importExample({
             source: examples.importExample,
           }),
@@ -66,6 +62,10 @@ export default {
       }),
 
       ...[
+        {
+          title: 'About',
+          sections: [description(Readme)],
+        },
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
