@@ -1,6 +1,8 @@
 import * as React from 'react';
 import styles from './AvatarGroup.st.css';
 import { Avatar } from '../Avatar';
+import { AvatarGroupTextButton } from './AvatarGroupTextButton';
+import { TextButton } from '../TextButton';
 
 export interface AvatarGroupItem {
   name?: string;
@@ -38,9 +40,27 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     maxAmount: 5,
     size: AvatarGroupSize.medium,
   };
+  static TextButton = AvatarGroupTextButton;
+
+  getTextButton = () => {
+    const { children } = this.props;
+    const textButton = React.Children.toArray(children).find(
+      child =>
+        React.isValidElement(child) &&
+        (child.type === TextButton || child.type === AvatarGroupTextButton),
+    ) as React.ReactElement;
+    if (textButton) {
+      return React.cloneElement(textButton, {
+        className: `${textButton.props.className || ''} ${styles.textButton}`,
+        'data-hook': 'text-button',
+      });
+    }
+  };
 
   render() {
     const { items, size, maxAmount, ...rest } = this.props;
+
+    const textButton = this.getTextButton();
 
     return (
       <div {...styles('root', { size }, rest)}>
@@ -54,6 +74,9 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
             />
           </div>
         ))}
+        {textButton ? (
+          <div className={styles.textButtonContainer}>{textButton}</div>
+        ) : null}
       </div>
     );
   }

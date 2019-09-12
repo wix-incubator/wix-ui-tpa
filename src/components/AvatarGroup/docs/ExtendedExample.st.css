@@ -5,6 +5,8 @@
 
 .root {
     -st-mixin: AvatarGroup(
-        AvatarBorderColor '"--AvatarBorderColor"'
+        AvatarBorderColor '"--AvatarBorderColor"',
+        TextButtonColor '"--TextButtonColor"',
+        TextButtonFont '"--TextButtonFont'
     );
 }

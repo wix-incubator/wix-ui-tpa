@@ -29,9 +29,10 @@ class AvatarGroupVisual extends React.Component<any> {
   }
 
   render() {
+    const { children, ...rest } = this.props;
     return (
       <VisualTestContainer hook={this._waitForImages}>
-        <AvatarGroup {...this.props} />
+        <AvatarGroup {...rest}>{children}</AvatarGroup>
       </VisualTestContainer>
     );
   }
@@ -43,6 +44,9 @@ const tests = Object.keys(AvatarGroupSize).map(avatarSize => ({
 }));
 
 function generateIts(size) {
+  const Link = (
+    <AvatarGroup.TextButton key="textbutton">Click me</AvatarGroup.TextButton>
+  );
   return [
     {
       it: 'Empty',
@@ -65,6 +69,14 @@ function generateIts(size) {
         items: [...items, ...items, ...items, ...items],
         maxAmount: 9,
         size,
+      },
+    },
+    {
+      it: 'With optional text link',
+      props: {
+        size,
+        items: [...items],
+        children: Link,
       },
     },
   ];

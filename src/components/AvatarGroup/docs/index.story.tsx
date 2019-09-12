@@ -98,6 +98,18 @@ export default {
                     wixParam: 'AvatarBorderColor',
                     defaultColor: 'color-1',
                   },
+                  {
+                    label: 'Text Button Color',
+                    wixParam: 'TextButtonColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Text Button Font',
+                    wixParam: 'TextButtonFont',
+                    defaultFont: 'arial',
+                  },
                 ],
               },
             }),

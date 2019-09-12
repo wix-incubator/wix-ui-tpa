@@ -8,6 +8,11 @@
     -st-named: Avatar;
 }
 
+:import {
+    -st-from: "../TextButton/TextButton.st.css";
+    -st-default: TextButton;
+}
+
 :vars {
     /*Defaults*/
     DefaultAvatarBorderColor: color-1;
@@ -16,6 +21,8 @@
 :vars {
     /*Overrides*/
      AvatarBorderColor: --overridable;
+     TextButtonFont: --overridable;
+     TextButtonColor: --overridable;
 }
 
 :vars {
@@ -51,6 +58,8 @@
 .root .avatarContainer {
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .root:size(large) .avatarContainer {
@@ -121,4 +130,45 @@
     font-weight: 400;
     height: 16px;
     width: 16px;
+}
+
+/* Optional text link */
+:vars {
+    SmallerTextButtonFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}"
+}
+
+.textButtonContainer {
+    display: flex;
+    align-items: center;
+}
+
+:size(large) .textButtonContainer,
+:size(medium) .textButtonContainer,
+:size(small) .textButtonContainer {
+    margin-left: 12px;
+}
+
+:size(xSmall) .textButtonContainer {
+    margin-left: 10px;
+}
+
+:size(xxSmall) .textButtonContainer {
+    margin-left: 8px;
+}
+
+:size(large) .textButton,
+:size(medium) .textButton,
+:size(small) .textButton {
+    -st-mixin: TextButton(
+       MainTextColor '"--TextButtonColor"',
+       MainTextFont '"--TextButtonFont"'
+    );
+}
+
+:size(xSmall) .textButton,
+:size(xxSmall) .textButton {
+    -st-mixin: TextButton(
+        MainTextColor '"--TextButtonColor"',
+        MainTextFont '"fallback(font(--TextButtonFont), font(SmallerTextButtonFont))"'
+    );
 }

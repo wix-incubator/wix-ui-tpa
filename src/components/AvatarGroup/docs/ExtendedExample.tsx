@@ -18,7 +18,9 @@ export const ExtendedExample = props => (
         {...extendedStyles('root', {}, props)}
         items={[...items]}
         size={AvatarGroupSize.large}
-      />
+      >
+        <AvatarGroup.TextButton>Some link</AvatarGroup.TextButton>
+      </AvatarGroup>
     </div>
 
     <div>
@@ -26,7 +28,9 @@ export const ExtendedExample = props => (
         {...extendedStyles('root', {}, props)}
         items={[...items, ...items]}
         size={AvatarGroupSize.small}
-      />
+      >
+        <AvatarGroup.TextButton>Some link</AvatarGroup.TextButton>
+      </AvatarGroup>
     </div>
 
     <div>
@@ -35,7 +39,9 @@ export const ExtendedExample = props => (
         items={[...items, ...items, ...items]}
         maxAmount={9}
         size={AvatarGroupSize.xxSmall}
-      />
+      >
+        <AvatarGroup.TextButton>Some link</AvatarGroup.TextButton>
+      </AvatarGroup>
     </div>
   </div>
 );
