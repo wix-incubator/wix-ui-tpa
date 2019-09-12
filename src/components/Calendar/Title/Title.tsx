@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
 import { AllPropsRequired } from '../ts-helper';
 import { CalendarContext, CalendarContextStructure } from '../Calendar';
+import * as classNames from 'classnames';
+import styles from './Title.st.css';
 
 // Working-around missing props in typings
 const Text = TextTPA as any;
@@ -20,7 +22,7 @@ export class Title extends React.PureComponent<TitleProps> {
 
     return content ? (
       <Text
-        className={context.classNames.titleText}
+        className={classNames(context.classNames.titleText, styles.titleText)}
         typography={TYPOGRAPHY.largeTitle}
         data-hook="calendar-title"
       >

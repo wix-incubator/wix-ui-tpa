@@ -13,6 +13,10 @@
     TitleMainTextFont: --overridable;
 }
 
+.root {
+    margin: 20px;
+}
+
 .root .titleText {
     -st-mixin: titleTextMixin(
         TitleMainTextColor '"--TitleMainTextColor"',

@@ -24,3 +24,7 @@
     MainTextFont '"--TitleMainTextFont"'
   );
 }
+
+.titleText {
+  margin-top: 64px;
+}
