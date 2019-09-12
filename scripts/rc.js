@@ -1,7 +1,11 @@
-const chalk = require('chalk');
-const ctxLogger = new chalk.Instance({level: 1});
+const child_process = require('child_process');
+const logger = require('./logger');
 
-function throwIfNotMaster() {}
+const spawnSync = child_process.spawnSync;
+
+function throwIfNotMaster() {
+    spawnSync('');
+}
 
 function run() {
   throwIfNotMaster();
