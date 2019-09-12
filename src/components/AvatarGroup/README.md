@@ -10,8 +10,8 @@ By default the AvatarGroup will pull the theme from the site (site colors),
 | propName   | propType | defaultValue | description |
 |------------|----------|--------------|-------------|
 | AvatarBorderColor  | string   | color-1 | The color of Avatar border. |
-| TextLinkFont  | string   | Secondary text button | The font of text link. |
-| TextLinkColor  | string   | color-5 | The color of text link. |
+| TextButtonFont  | string   | Secondary text button | The font of text button. |
+| TextButtonColor  | string   | color-5 | The color of text button. |
 
 ## How to use
 

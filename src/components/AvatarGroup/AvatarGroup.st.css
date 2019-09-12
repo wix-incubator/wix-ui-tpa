@@ -21,8 +21,8 @@
 :vars {
     /*Overrides*/
      AvatarBorderColor: --overridable;
-     TextLinkFont: --overridable;
-     TextLinkColor: --overridable;
+     TextButtonFont: --overridable;
+     TextButtonColor: --overridable;
 }
 
 :vars {
@@ -133,28 +133,28 @@
 }
 
 /* Optional text link */
-.textLinkContainer {
+.textButtonContainer {
     display: flex;
     align-items: center;
 }
 
-:size(large) .textLinkContainer,
-:size(medium) .textLinkContainer,
-:size(small) .textLinkContainer {
+:size(large) .textButtonContainer,
+:size(medium) .textButtonContainer,
+:size(small) .textButtonContainer {
     margin-left: 12px;
 }
 
-:size(xSmall) .textLinkContainer {
+:size(xSmall) .textButtonContainer {
     margin-left: 10px;
 }
 
-:size(xxSmall) .textLinkContainer {
+:size(xxSmall) .textButtonContainer {
     margin-left: 8px;
 }
 
-.textLink {
+.textButton {
     -st-mixin: TextButton(
-       MainTextColor '"--TextLinkColor"',
-       MainTextFont '"--TextLinkFont"'
+       MainTextColor '"--TextButtonColor"',
+       MainTextFont '"--TextButtonFont"'
     );
 }

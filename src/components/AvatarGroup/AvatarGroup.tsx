@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styles from './AvatarGroup.st.css';
 import { Avatar } from '../Avatar';
-import { TEXT_BUTTON_PRIORITY, TextButton } from '../TextButton';
+import { AvatarGroupTextButton } from './AvatarGroupTextButton';
+import { TextButton } from '../TextButton';
 
 export interface AvatarGroupItem {
   name?: string;
@@ -23,10 +24,6 @@ export interface AvatarGroupProps {
   maxAmount?: number;
   /** Avatar's size. Optional. Dafaults to 'medium'. One of 'large' | 'medium' | 'small' | 'xSmall' | 'xxSmall'. */
   size?: AvatarGroupSize;
-  /** Optional text link content. */
-  textLink?: string;
-  /** Optional text link onClick callback. Needs textLink defined to show the text link itself. */
-  onClickTextLink?(): void;
 }
 
 interface DefaultProps {
@@ -43,16 +40,26 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     maxAmount: 5,
     size: AvatarGroupSize.medium,
   };
+  static TextButton = AvatarGroupTextButton;
+
+  textButton = () => {
+    const { children } = this.props;
+    const textButton = React.Children.toArray(children).find(
+      child =>
+        React.isValidElement(child) &&
+        (child.type === TextButton || child.type === AvatarGroupTextButton),
+    ) as React.ReactElement;
+    if (textButton) {
+      return React.cloneElement(textButton, {
+        ...styles('textButton', {}, this.props),
+      });
+    }
+  };
 
   render() {
-    const {
-      items,
-      size,
-      maxAmount,
-      textLink,
-      onClickTextLink,
-      ...rest
-    } = this.props;
+    const { items, size, maxAmount, ...rest } = this.props;
+
+    const textButton = this.textButton();
 
     return (
       <div {...styles('root', { size }, rest)}>
@@ -66,17 +73,8 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
             />
           </div>
         ))}
-        {textLink ? (
-          <div className={styles.textLinkContainer}>
-            <TextButton
-              {...styles('textLink')}
-              data-hook="text-link"
-              priority={TEXT_BUTTON_PRIORITY.secondary}
-              onClick={onClickTextLink}
-            >
-              {textLink}
-            </TextButton>
-          </div>
+        {textButton ? (
+          <div className={styles.textButtonContainer}>{textButton}</div>
         ) : null}
       </div>
     );

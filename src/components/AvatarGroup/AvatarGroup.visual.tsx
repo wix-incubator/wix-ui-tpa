@@ -42,6 +42,10 @@ const tests = Object.keys(AvatarGroupSize).map(avatarSize => ({
   its: generateIts(avatarSize),
 }));
 
+const Link = () => (
+  <AvatarGroup.TextButton key="textbutton">Click me</AvatarGroup.TextButton>
+);
+
 function generateIts(size) {
   return [
     {
@@ -69,7 +73,11 @@ function generateIts(size) {
     },
     {
       it: 'With optional text link',
-      props: { size, items: [...items], textLink: 'Some link' },
+      props: {
+        size,
+        items: [...items],
+        children: [Link()],
+      },
     },
   ];
 }

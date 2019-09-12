@@ -99,15 +99,15 @@ export default {
                     defaultColor: 'color-1',
                   },
                   {
-                    label: 'Text Link Color',
-                    wixParam: 'TextLinkColor',
+                    label: 'Text Button Color',
+                    wixParam: 'TextButtonColor',
                     defaultColor: 'color-5',
                   },
                 ],
                 fonts: [
                   {
-                    label: 'Text Link Font',
-                    wixParam: 'TextLinkFont',
+                    label: 'Text Button Font',
+                    wixParam: 'TextButtonFont',
                     defaultFont: 'arial',
                   },
                 ],

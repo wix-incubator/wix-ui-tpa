@@ -66,13 +66,11 @@ describe('AvatarGroup', () => {
   it('should have optional text link', async () => {
     const onClick = jest.fn();
     const driver = createDriver(
-      <AvatarGroup
-        items={[...items]}
-        textLink="Some link"
-        onClickTextLink={onClick}
-      />,
+      <AvatarGroup items={[...items]}>
+        <AvatarGroup.TextButton onClick={onClick}>Link</AvatarGroup.TextButton>
+      </AvatarGroup>,
     );
-    await driver.textLink.click();
+    await driver.textButton.click();
     expect(onClick).toHaveBeenCalled();
   });
 });

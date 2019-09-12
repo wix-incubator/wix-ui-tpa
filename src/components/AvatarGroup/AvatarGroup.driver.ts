@@ -10,17 +10,19 @@ import {
 
 export interface AvatarGroupDriver extends BaseUniDriver {
   getAvatarCount(): Promise<number>;
-  textLink: TextButtonDriver;
+  textButton: TextButtonDriver;
 }
 
 export const avatarGroupDriverFactory = (
   base: UniDriver,
 ): AvatarGroupDriver => {
   const getAvatarCount = () => base.$$(`[data-hook="avatar"]`).count();
-  const textLink = textButtonDriverFactory(base.$(`[data-hook="text-link"]`));
+  const textButton = textButtonDriverFactory(
+    base.$(`[data-hook="text-button"]`),
+  );
   return {
     ...baseUniDriverFactory(base),
     getAvatarCount,
-    textLink,
+    textButton,
   };
 };
