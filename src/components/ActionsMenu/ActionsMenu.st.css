@@ -29,7 +29,7 @@
 
 .root {
     -st-states: mobile, alignment(enum(left, center, right));
-    padding: 12px 24px;
+    padding: 12px 0;
     max-width: 320px;
     background-color: value(menuBackgroundColor);
     border-style: solid;
@@ -42,7 +42,7 @@
 }
 
 .divider {
-    margin: 10px 0 10px;
+    margin: 10px 13px;
 }
 
 .root:mobile {
@@ -50,7 +50,7 @@
 }
 
 .root:alignment(left) .item::container {
-    left: 0;
+    left: 24px;
 }
 
 .root:alignment(center) .item::container {
@@ -59,6 +59,6 @@
 }
 
 .root:alignment(right) .item::container {
-    right: 0;
+    right: 24px;
 }
 
