@@ -4,7 +4,7 @@ function log(...args) {
   console.log(chalk.green(...args));
 }
 
-function error() {
+function error(...args) {
   console.log(chalk.red(...args));
 }
 
