@@ -4,6 +4,7 @@ import { Title, CALENDAR_TITLE_DISPLAY_NAME } from './Title/Title';
 import { AllPropsRequired } from './ts-helper';
 import { Selector, CALENDAR_SELECTOR_DISPLAY_NAME } from './Selector/Selector';
 import { CustomizableComponent } from './CustomizableComponent';
+import { CALENDAR_GRID_DISPLAY_NAME, Grid } from './Grid/Grid';
 import {
   TodayButton,
   CALENDAR_TODAY_BUTTON_DISPLAY_NAME,
@@ -47,6 +48,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   static Title = Title;
   static Selector = Selector;
   static TodayButton = TodayButton;
+  static Grid = Grid;
 
   defaultElements = {
     [CALENDAR_TITLE_DISPLAY_NAME]: () => (
@@ -54,6 +56,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     ),
     [CALENDAR_SELECTOR_DISPLAY_NAME]: () => <Calendar.Selector />,
     [CALENDAR_TODAY_BUTTON_DISPLAY_NAME]: () => <Calendar.TodayButton />,
+    [CALENDAR_GRID_DISPLAY_NAME]: () => <Calendar.Grid />,
   };
 
   render() {

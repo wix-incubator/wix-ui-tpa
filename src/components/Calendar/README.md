@@ -17,7 +17,7 @@ This Readme was auto-generated and needs to be filled manually
     weekDays: [string, string, string, string, string, string, string]
   }
 
-  export enum CalendarDayFlag {
+  export enum CalendarDayCellFlag {
     today = 'today',
     past = 'past',
     future = 'future',
@@ -25,16 +25,20 @@ This Readme was auto-generated and needs to be filled manually
     active = 'active',
   }
 
+  export enum CalendarEventCellFlag {
+    active = 'active',
+  }
+
   export interface CalendarDay {
-    title: string,            // Day number or name
-    flags: CalendarDayFlag[], // Sets flags to determine how day needs to be displayed
+    title: string,                 // Day number or name
+    flags?: CalendarDayCellFlag[], // Sets flags to determine how day needs to be displayed
     events: CalendarEvent[]
   }
 
   export interface CalendarEvent {
     [custom: string]: any
-    title?: string
     time?: string
+    flags?: CalendarEventCellFlag[], // Sets flags to determine how day needs to be displayed
   }
 ```
 
@@ -119,21 +123,15 @@ Customized usage weekly:
       <Calendar.WeekDay>
         weekDay => weekDay.title
       </Calendar.WeekDay>
-      <Calendar.Day>
-        day => {
-          <Calendar.Events day={day}>
-            event => {
-              <Calendar.Cell onClick={}>
-                <Calendar.EventTime
-                  className={}
-                >
-                  {event.time}
-                </Calendar.EventTime>
-              </Calendar.Cell>
-            }
-          </Calendar.Events>
-        }
-      </Calendar.Day>
+      <Calendar.Item>
+        ({day, event}) => (
+          <Calendar.Cell onClick=()>
+            <Calendar.EventTime className={}>
+              {event.time}
+            </Calendar.EventTime>
+          </Calendar.Cell>
+        )
+      </Calendar.Item>
       <Calendar.Popup
         dayIndex={}
         widthCells={}
@@ -164,26 +162,22 @@ Customized usage monthly:
       >
         January, 2019
       </Calendar.Selector>
-      <Calendar.TodayButton
-        onClick={todayClickHandler}
-      />
+      <Calendar.TodayButton onClick={todayClickHandler} />
     </Calendar.Controls>
 
     <Calendar.Grid>
       <Calendar.WeekDay>
         weekDay => weekDay.title
       </Calendar.WeekDay>
-      <Calendar.Day>
-        day => {
+      <Calendar.Item>
+        ({day}) => (
           <Calendar.Cell onClick={}>
-            <Calendar.EventTime
-              className={}
-            >
+            <Calendar.EventTime className={}>
               {day.events[0].time}
             </Calendar.EventTime>
           </Calendar.Cell>
-        }
-      </Calendar.Day>
+        )
+      </Calendar.Item>
       <Calendar.Popup
         dayIndex={}
         widthCells={}
