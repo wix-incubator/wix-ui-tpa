@@ -15,6 +15,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { CalendarLayouts } from '../Calendar';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { ExtendedExample } from './ExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -59,6 +63,26 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Calendar',
+              example: <ExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              params: {
+                colors: [
+                  {
+                    label: 'Title Color',
+                    wixParam: 'TitleMainTextColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

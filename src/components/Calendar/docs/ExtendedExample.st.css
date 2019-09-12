@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../Calendar.st.css";
+    -st-default: Calendar;
+}
+
+.root {
+    -st-mixin: Calendar(
+        TitleMainTextColor '"--TitleMainTextColor"',
+        TitleMainTextFont '"--TitleMainTextFont"'
+    );
+}

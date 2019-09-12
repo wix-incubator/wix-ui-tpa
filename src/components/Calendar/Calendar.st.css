@@ -1,23 +1,21 @@
 :import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-from: "./Title/Title.st.css";
+    -st-named: titleTextMixin;
 }
 
 :vars {
     /*Defaults*/
-    /*Defaults params goes here*/
 }
 
 :vars {
     /*Overrides*/
-    /*Deceleration of overridable placeholders*/
+    TitleMainTextColor: --overridable;
+    TitleMainTextFont: --overridable;
 }
 
-.root {
-    -st-states: mobile;
-    /*css goes here*/
-}
-
-.root:mobile {
-    /*mobile css goes here*/
+.root .titleText {
+    -st-mixin: titleTextMixin(
+        TitleMainTextColor '"--TitleMainTextColor"',
+        TitleMainTextFont '"--TitleMainTextFont"'
+    );
 }

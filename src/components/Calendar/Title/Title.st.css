@@ -1,0 +1,26 @@
+/*
+  This file should be imported from Calendar.st.css - not from Title component
+  This is in order to make connection to settings simpler
+*/
+
+:import {
+  -st-from: "../../Text/Text.st.css";
+  -st-default: Text;
+}
+
+:vars {
+  /*Defaults*/
+}
+
+:vars {
+  /*Overrides*/
+  TitleMainTextColor: --overridable;
+  TitleMainTextFont: --overridable;
+}
+
+.titleTextMixin {
+  -st-mixin: Text(
+    MainTextColor '"--TitleMainTextColor"',
+    MainTextFont '"--TitleMainTextFont"'
+  );
+}

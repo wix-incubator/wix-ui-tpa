@@ -9,6 +9,7 @@ import {
   TodayButton,
   CALENDAR_TODAY_BUTTON_DISPLAY_NAME,
 } from './TodayButton/TodayButton';
+import styles from './Calendar.st.css';
 
 export enum CalendarLayouts {
   weekly = 'weekly',
@@ -28,13 +29,30 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
    * If <Calendar.Title> is used and it has children provided - this property will be completely ignored.
    */
   calendarTitle?: string;
+
+  /**
+   * Class name
+   */
+  className?: string;
 }
 
 type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
 
-export const CalendarContext = React.createContext<{ props: CalendarProps }>({
+export interface CalendarContextStructure {
+  props: CalendarProps;
+  classNames: { [className: string]: string };
+}
+
+const defaultContext: CalendarContextStructure = {
   props: {},
-});
+  classNames: {
+    titleText: styles.titleText,
+  },
+};
+
+export const CalendarContext = React.createContext<CalendarContextStructure>(
+  defaultContext,
+);
 
 /** Component for showing some events of a particular week */
 export class Calendar extends CustomizableComponent<CalendarProps> {
@@ -43,6 +61,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   static defaultProps: DefaultCalendarProps = {
     layout: CalendarLayouts.monthly,
     calendarTitle: '',
+    className: '',
   };
 
   static Title = Title;
@@ -67,8 +86,13 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div data-hook={this.props['data-hook']}>
-            <CalendarContext.Provider value={{ props: this.props }}>
+          <div
+            data-hook={this.props['data-hook']}
+            className={this.props.className}
+          >
+            <CalendarContext.Provider
+              value={{ ...defaultContext, props: this.props }}
+            >
               {this.getResolvedChildren()}
             </CalendarContext.Provider>
           </div>
