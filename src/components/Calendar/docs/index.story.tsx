@@ -79,6 +79,13 @@ export default {
                     defaultColor: 'color-5',
                   },
                 ],
+                fonts: [
+                  {
+                    label: 'Title Font',
+                    wixParam: 'TitleMainTextFont',
+                    defaultFont: 'arial',
+                  },
+                ],
               },
             }),
           ],

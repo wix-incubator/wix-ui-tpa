@@ -9,3 +9,8 @@
         TitleMainTextFont '"--TitleMainTextFont"'
     );
 }
+
+/* Used because settings panel playground enforces font size */
+.root span[data-hook="calendar-title"] {
+    font-size: 32px !important;
+}
