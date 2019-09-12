@@ -1,11 +1,13 @@
-// import { Text } from '../Text';
-// import { Button } from '../Button';
-// import styles from './Calendar.st.css';
-
 import * as React from 'react';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Title, CALENDAR_TITLE_DISPLAY_NAME } from './Title/Title';
 import { AllPropsRequired } from './ts-helper';
+import { Selector, CALENDAR_SELECTOR_DISPLAY_NAME } from './Selector/Selector';
+import { CustomizableComponent } from './CustomizableComponent';
+import {
+  TodayButton,
+  CALENDAR_TODAY_BUTTON_DISPLAY_NAME,
+} from './TodayButton/TodayButton';
 
 export enum CalendarLayouts {
   weekly = 'weekly',
@@ -28,35 +30,28 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
 
 type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
 
-// TODO: remove this if unused
-export interface CalendarState {
-  // TODO: Not finished
-}
+export const CalendarContext = React.createContext<CalendarProps>({});
 
 /** Component for showing some events of a particular week */
-export class Calendar extends React.Component<CalendarProps, CalendarState> {
+export class Calendar extends CustomizableComponent<CalendarProps> {
   static displayName = 'Calendar';
 
   static defaultProps: DefaultCalendarProps = {
     layout: CalendarLayouts.monthly,
-    calendarTitle: 'aaa',
+    calendarTitle: '',
   };
 
   static Title = Title;
+  static Selector = Selector;
+  static TodayButton = TodayButton;
 
-  // TODO: remove state if unused
-  state = {};
-
-  hasNode = (name: string) => {
-    let children: any = this.props.children || [];
-    children = children.length ? children : [children];
-
-    return Boolean(
-      children.find(child => child.type && child.type.displayName === name),
-    );
+  defaultElements = {
+    [CALENDAR_TITLE_DISPLAY_NAME]: () => (
+      <Calendar.Title>{this.props.calendarTitle}</Calendar.Title>
+    ),
+    [CALENDAR_SELECTOR_DISPLAY_NAME]: () => <Calendar.Selector />,
+    [CALENDAR_TODAY_BUTTON_DISPLAY_NAME]: () => <Calendar.TodayButton />,
   };
-
-  hasTitle = () => this.hasNode(CALENDAR_TITLE_DISPLAY_NAME);
 
   render() {
     if (this.props.layout !== CalendarLayouts.weekly) {
@@ -67,10 +62,9 @@ export class Calendar extends React.Component<CalendarProps, CalendarState> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div data-hook={this.props['data-hook']}>
-            {this.hasTitle() ? null : (
-              <Calendar.Title>{this.props.calendarTitle}</Calendar.Title>
-            )}
-            {this.props.children}
+            <CalendarContext.Provider value={this.props}>
+              {this.getResolvedChildren()}
+            </CalendarContext.Provider>
           </div>
         )}
       </TPAComponentsConsumer>

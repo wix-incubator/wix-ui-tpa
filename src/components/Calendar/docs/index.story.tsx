@@ -40,7 +40,6 @@ export default {
         title: 'Usage',
         sections: [
           importExample({
-            // TODO: import example should contain sub-elements
             source: examples.importExample,
           }),
 
@@ -48,7 +47,6 @@ export default {
 
           title('Examples'),
 
-          // TODO: examples are not finished
           ...[
             { title: 'Default Layout Example', source: examples.simple },
             { title: 'Custom Layout Example', source: examples.complex },
