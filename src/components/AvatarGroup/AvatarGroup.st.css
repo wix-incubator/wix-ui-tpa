@@ -133,6 +133,10 @@
 }
 
 /* Optional text link */
+:vars {
+    SmallerTextButtonFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}"
+}
+
 .textButtonContainer {
     display: flex;
     align-items: center;
@@ -152,9 +156,19 @@
     margin-left: 8px;
 }
 
-.textButton {
+:size(large) .textButton,
+:size(medium) .textButton,
+:size(small) .textButton {
     -st-mixin: TextButton(
        MainTextColor '"--TextButtonColor"',
        MainTextFont '"--TextButtonFont"'
+    );
+}
+
+:size(xSmall) .textButton,
+:size(xxSmall) .textButton {
+    -st-mixin: TextButton(
+        MainTextColor '"--TextButtonColor"',
+        MainTextFont '"fallback(font(--TextButtonFont), font(SmallerTextButtonFont))"'
     );
 }
