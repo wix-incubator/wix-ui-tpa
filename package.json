@@ -58,7 +58,7 @@
     "postgenerate": "npm run update-components",
     "update-components": ".wuf/update-components.sh",
     "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
-    "version": "conventional-changelog -i CHANGELOG.md -s && git add CHANGELOG.md"
+    "release-candidate": "node scripts/rc.js"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -86,7 +86,7 @@
     "@ui-autotools/registry": "^4.0.0",
     "@ui-autotools/sanity": "^2.8.2",
     "autoprefixer": "^9.5.1",
-    "conventional-changelog-cli": "^2.0.23",
+    "chalk": "^2.4.2",
     "core-js": "^2.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
@@ -102,6 +102,7 @@
     "raf": "^3.4.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "standard-version": "^7.0.0",
     "ts-jest": "^22.0.3",
     "typescript": "^3.2.4",
     "wix-base-ui": "3.203.0",
