@@ -1,6 +1,8 @@
-## Calendar
-An implementation of an Calendar for TPAs
-This Readme was auto-generated and needs to be filled manually
+## About
+
+An implementation of an **Calendar** for TPAs.
+
+Component is responsible for drawing visual elements but not for data. For example it does not have logic to determine what days belong to which months or weeks and similar.
 
 ## Temporary draft notes
 
@@ -107,17 +109,14 @@ Customized usage weekly:
       Some Title
     </Calendar.Title>
 
-    <Calendar.Controls>
-      <Calendar.Selector>
-        onClickPrev={prevClickHandler}
-        onClickNext={nextClickHandler}
-      >
-        01/01-07/01
-      </Calendar.Selector>
-      <Calendar.TodayButton
-        onClick={todayClickHandler}
-      />
-    </Calendar.Controls>
+    <Calendar.Selector>
+      onClickPrev={prevClickHandler}
+      onClickNext={nextClickHandler}
+    >
+      01/01-07/01
+    </Calendar.Selector>
+
+    <Calendar.TodayButton onClick={}/>
 
     <Calendar.Grid>
       <Calendar.WeekDay>
@@ -125,7 +124,7 @@ Customized usage weekly:
       </Calendar.WeekDay>
       <Calendar.Item>
         ({day, event}) => (
-          <Calendar.Cell onClick=()>
+          <Calendar.Cell onClick={}>
             <Calendar.EventTime className={}>
               {event.time}
             </Calendar.EventTime>
@@ -155,15 +154,13 @@ Customized usage monthly:
       Some Title
     </Calendar.Title>
 
-    <Calendar.Controls>
-      <Calendar.Selector>
-        onClickPrev={prevClickHandler}
-        onClickNext={nextClickHandler}
-      >
-        January, 2019
-      </Calendar.Selector>
-      <Calendar.TodayButton onClick={todayClickHandler} />
-    </Calendar.Controls>
+    <Calendar.Selector>
+      onClickPrev={prevClickHandler}
+      onClickNext={nextClickHandler}
+    >
+      January, 2019
+    </Calendar.Selector>
+    <Calendar.TodayButton onClick={todayClickHandler} />
 
     <Calendar.Grid>
       <Calendar.WeekDay>

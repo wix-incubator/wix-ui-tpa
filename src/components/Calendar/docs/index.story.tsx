@@ -5,6 +5,7 @@ import {
   header,
   api,
   divider,
+  description,
   importExample,
   playground,
   tab,
@@ -19,6 +20,7 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { ExtendedExample } from './ExtendedExample';
 import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
+import * as Readme from '../README.md';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -43,6 +45,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(Readme),
+
+          divider(),
+
           importExample({
             source: examples.importExample,
           }),
