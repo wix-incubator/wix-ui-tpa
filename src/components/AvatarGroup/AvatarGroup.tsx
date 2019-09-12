@@ -52,6 +52,7 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     if (textButton) {
       return React.cloneElement(textButton, {
         ...styles('textButton', {}, this.props),
+        'data-hook': 'text-button',
       });
     }
   };
