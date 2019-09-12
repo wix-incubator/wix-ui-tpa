@@ -16,21 +16,24 @@ export enum CalendarLayouts {
 
 export interface CalendarProps extends Partial<DefaultCalendarProps> {
   /**
-   * Calendar layout. <br />
+   * Calendar layout.<br /><br />
    * Even though default is CalendarLayouts.monthly, currently only CalendarLayouts.weekly is supported.
    */
   layout?: CalendarLayouts;
 
   /**
-   * Title for the whole calendar. <br />
-   * This property is completely ignored if custom <Calendar.Title> is used.
+   * Title for the whole calendar. <br /><br />
+   * If custom <Calendar.Title> is used without children - this property will replace them. It allows using <Calendar.Title> simply as a placeholder to define custom component's position.<br /><br />
+   * If <Calendar.Title> is used and it has children provided - this property will be completely ignored.
    */
   calendarTitle?: string;
 }
 
 type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
 
-export const CalendarContext = React.createContext<CalendarProps>({});
+export const CalendarContext = React.createContext<{ props: CalendarProps }>({
+  props: {},
+});
 
 /** Component for showing some events of a particular week */
 export class Calendar extends CustomizableComponent<CalendarProps> {
@@ -62,7 +65,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div data-hook={this.props['data-hook']}>
-            <CalendarContext.Provider value={this.props}>
+            <CalendarContext.Provider value={{ props: this.props }}>
               {this.getResolvedChildren()}
             </CalendarContext.Provider>
           </div>

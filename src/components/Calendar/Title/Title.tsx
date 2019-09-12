@@ -20,7 +20,7 @@ export class Title extends React.PureComponent<TitleProps> {
   render() {
     return (
       <CalendarContext.Consumer>
-        {calendarProps => this.renderComponent(calendarProps)}
+        {context => this.renderComponent(context.props)}
       </CalendarContext.Consumer>
     );
   }
