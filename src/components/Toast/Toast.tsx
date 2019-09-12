@@ -33,6 +33,7 @@ export class Toast extends React.Component<ToastProps> {
           <div
             {...styles('root', { mobile, skin, shouldAnimate, isShown }, rest)}
             role="alert"
+            data-is-shown={isShown}
             data-skin={skin}
             data-mobile={mobile}
           >

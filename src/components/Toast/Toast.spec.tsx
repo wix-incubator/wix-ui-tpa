@@ -37,6 +37,22 @@ describe('Toast', () => {
     expect(await messageDriver.text()).toBe(message);
   });
 
+  describe('Animated toast', () => {
+    it('should be visible', async () => {
+      const driver = createDriver(
+        <Toast skin={TOAST_SKIN.success} shouldAnimate isShown />,
+      );
+      expect(await driver.isShown()).toBeTruthy();
+    });
+
+    it('should be invisible', async () => {
+      const driver = createDriver(
+        <Toast skin={TOAST_SKIN.success} shouldAnimate isShown={false} />,
+      );
+      expect(await driver.isShown()).toBeFalsy();
+    });
+  });
+
   describe('Close button', () => {
     it('should render WITHOUT close button by default', async () => {
       const driver = createDriver(<Toast skin={TOAST_SKIN.success} />);
