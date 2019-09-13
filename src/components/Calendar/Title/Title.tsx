@@ -7,6 +7,7 @@ import { CalendarContext, CalendarContextStructure } from '../Calendar';
 const Text = TextTPA as any;
 
 export interface TitleProps {
+  style?: React.CSSProperties;
   className?: string;
 }
 
@@ -18,11 +19,12 @@ export class Title extends React.PureComponent<TitleProps> {
   static displayName = CALENDAR_TITLE_DISPLAY_NAME;
 
   static defaultProps: DefaultTitleProps = {
+    style: {},
     className: '',
   };
 
   renderComponent = (context: CalendarContextStructure) => {
-    const { children, className } = this.props;
+    const { children, className, style } = this.props;
 
     const content = children || context.props.calendarTitle;
     const classNames = [context.classNames.titleText];
@@ -35,6 +37,7 @@ export class Title extends React.PureComponent<TitleProps> {
 
     return content ? (
       <Text
+        style={style}
         className={classNames.join(' ')}
         typography={TYPOGRAPHY.largeTitle}
         data-hook="calendar-title"

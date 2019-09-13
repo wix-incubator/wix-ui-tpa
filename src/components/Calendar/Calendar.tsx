@@ -55,9 +55,19 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
   onClickNext?(): void;
 
   /**
-   * Class name
+   * Inline styles.
+   */
+  style?: React.CSSProperties;
+
+  /**
+   * Class name.
    */
   className?: string;
+
+  /**
+   * Data hook
+   */
+  'data-hook'?: string;
 }
 
 type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
@@ -89,7 +99,9 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     hideSelector: false,
     onClickPrev: null,
     onClickNext: null,
+    style: {},
     className: '',
+    'data-hook': '',
   };
 
   static Title = Title;
@@ -141,6 +153,8 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   };
 
   render() {
+    const { 'data-hook': dataHook, style, className } = this.props;
+
     if (this.props.layout !== CalendarLayouts.weekly) {
       return <div>Monthly Calendar layout is not yet implemented</div>;
     }
@@ -148,10 +162,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div
-            data-hook={this.props['data-hook']}
-            className={this.props.className}
-          >
+          <div data-hook={dataHook} style={style} className={className}>
             <CalendarContext.Provider
               value={{ ...defaultContext, props: this.props }}
             >

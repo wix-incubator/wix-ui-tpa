@@ -6,6 +6,7 @@ import * as classNames from 'classnames';
 import styles from './Selector.st.css';
 
 export interface SelectorProps {
+  style?: React.CSSProperties;
   className?: string;
   titleVisible: boolean;
   ariaLabelPrev?: string;
@@ -22,6 +23,7 @@ export class Selector extends React.PureComponent<SelectorProps> {
   static displayName = CALENDAR_SELECTOR_DISPLAY_NAME;
 
   static defaultProps: DefaultSelectorProps = {
+    style: {},
     className: '',
     titleVisible: true,
     ariaLabelPrev: null,
@@ -32,6 +34,7 @@ export class Selector extends React.PureComponent<SelectorProps> {
 
   render() {
     const {
+      style,
       className,
       titleVisible,
       ariaLabelPrev,
@@ -42,7 +45,10 @@ export class Selector extends React.PureComponent<SelectorProps> {
     } = this.props;
 
     return (
-      <div className={classNames(className, styles.monthControls)}>
+      <div
+        style={style}
+        className={classNames(className, styles.monthControls)}
+      >
         <button
           onClick={onClickPrev}
           type="button"
