@@ -71,7 +71,9 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
 
   defaultElements = {
     [CALENDAR_TITLE_DISPLAY_NAME]: () => (
-      <Calendar.Title>{this.props.calendarTitle}</Calendar.Title>
+      <Calendar.Title className="title">
+        {this.props.calendarTitle}
+      </Calendar.Title>
     ),
     [CALENDAR_SELECTOR_DISPLAY_NAME]: () => <Calendar.Selector />,
     [CALENDAR_TODAY_BUTTON_DISPLAY_NAME]: () => <Calendar.TodayButton />,

@@ -2,27 +2,38 @@ import * as React from 'react';
 import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
 import { AllPropsRequired } from '../ts-helper';
 import { CalendarContext, CalendarContextStructure } from '../Calendar';
-import * as classNames from 'classnames';
-import styles from './Title.st.css';
 
 // Working-around missing props in typings
 const Text = TextTPA as any;
 
-export interface TitleProps {}
+export interface TitleProps {
+  className?: string;
+}
+
 interface DefaultTitleProps extends AllPropsRequired<TitleProps> {}
 
 export const CALENDAR_TITLE_DISPLAY_NAME = 'Calendar.Title';
 
 export class Title extends React.PureComponent<TitleProps> {
   static displayName = CALENDAR_TITLE_DISPLAY_NAME;
-  static defaultProps: DefaultTitleProps = {};
+
+  static defaultProps: DefaultTitleProps = {
+    className: '',
+  };
 
   renderComponent = (context: CalendarContextStructure) => {
-    const content = this.props.children || context.props.calendarTitle;
+    const { children, className } = this.props;
+
+    const content = children || context.props.calendarTitle;
+    const classNames = [context.classNames.titleText];
+
+    if (className) {
+      classNames.push(className);
+    }
 
     return content ? (
       <Text
-        className={classNames(context.classNames.titleText, styles.titleText)}
+        className={classNames.join(' ')}
         typography={TYPOGRAPHY.largeTitle}
         data-hook="calendar-title"
       >

@@ -23,3 +23,7 @@
         TitleMainTextFont '"--TitleMainTextFont"'
     );
 }
+
+.defaultTitle {
+    margin-top: 64px;
+}
