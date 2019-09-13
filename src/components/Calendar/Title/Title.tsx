@@ -31,6 +31,8 @@ export class Title extends React.PureComponent<TitleProps> {
       classNames.push(className);
     }
 
+    // TODO: set 36px Heading5 color-5
+
     return content ? (
       <Text
         className={classNames.join(' ')}

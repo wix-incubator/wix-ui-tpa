@@ -10,6 +10,7 @@ import {
   CALENDAR_TODAY_BUTTON_DISPLAY_NAME,
 } from './TodayButton/TodayButton';
 import styles from './Calendar.st.css';
+import { Text, TYPOGRAPHY } from '../Text';
 
 export enum CalendarLayouts {
   weekly = 'weekly',
@@ -25,10 +26,33 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
 
   /**
    * Title for the whole calendar. <br /><br />
+   * If no title is provided, title will not occupy empty space. <br /><br />
    * If custom <Calendar.Title> is used without children - this property will replace them. It allows using <Calendar.Title> simply as a placeholder to define custom component's position.<br /><br />
    * If <Calendar.Title> is used and it has children provided - this property will be completely ignored.
    */
   calendarTitle?: string;
+
+  /**
+   * Title for describing current calendar time interval such as current month or week.<br /><br />
+   * If custom <Calendar.Selector> is used without children - this property will replace them wrapped into <Text>. It allows using <Calendar.Selector> simply as a placeholder to define custom component's position.<br /><br />
+   * If <Calendar.Selector> is used and it has children provided - this property will be completely ignored.
+   */
+  selectorTitle?: string;
+
+  /**
+   * Hides time frame selector when true.
+   */
+  hideSelector?: boolean;
+
+  /**
+   * Callback for handling previous time frame selection.
+   */
+  onClickPrev?(): void;
+
+  /**
+   * Callback for handling next time frame selection.
+   */
+  onClickNext?(): void;
 
   /**
    * Class name
@@ -61,6 +85,10 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   static defaultProps: DefaultCalendarProps = {
     layout: CalendarLayouts.monthly,
     calendarTitle: '',
+    selectorTitle: '',
+    hideSelector: false,
+    onClickPrev: null,
+    onClickNext: null,
     className: '',
   };
 
@@ -69,15 +97,47 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   static TodayButton = TodayButton;
   static Grid = Grid;
 
+  renderTitle = () => (
+    <Calendar.Title className={styles.defaultTitle}>
+      {this.props.calendarTitle}
+    </Calendar.Title>
+  );
+
+  renderSelector = () => {
+    const {
+      selectorTitle,
+      hideSelector,
+      onClickNext,
+      onClickPrev,
+    } = this.props;
+
+    if (hideSelector) {
+      return null;
+    }
+
+    return (
+      <Calendar.Selector
+        className={styles.defaultSelector}
+        onClickNext={onClickNext}
+        onClickPrev={onClickPrev}
+      >
+        {selectorTitle ? (
+          // TODO: set 18px Paragraph2 color-5
+          <Text typography={TYPOGRAPHY.smallTitle}>{selectorTitle}</Text>
+        ) : null}
+      </Calendar.Selector>
+    );
+  };
+
+  renderTodayButton = () => <Calendar.TodayButton />;
+
+  renderGrid = () => <Calendar.Grid />;
+
   defaultElements = {
-    [CALENDAR_TITLE_DISPLAY_NAME]: () => (
-      <Calendar.Title className="title">
-        {this.props.calendarTitle}
-      </Calendar.Title>
-    ),
-    [CALENDAR_SELECTOR_DISPLAY_NAME]: () => <Calendar.Selector />,
-    [CALENDAR_TODAY_BUTTON_DISPLAY_NAME]: () => <Calendar.TodayButton />,
-    [CALENDAR_GRID_DISPLAY_NAME]: () => <Calendar.Grid />,
+    [CALENDAR_TITLE_DISPLAY_NAME]: this.renderTitle,
+    [CALENDAR_SELECTOR_DISPLAY_NAME]: this.renderSelector,
+    [CALENDAR_TODAY_BUTTON_DISPLAY_NAME]: this.renderTodayButton,
+    [CALENDAR_GRID_DISPLAY_NAME]: this.renderGrid,
   };
 
   render() {
