@@ -18,6 +18,14 @@ function execute(cmd, withLog) {
   return spawnSync(cmdArr[0], cmdArr.slice(1), config);
 }
 
+function checkArgvs() {
+  if (process.argv.length > 3) {
+    eject(
+      'Too many arguments were passed to the command.\nSee https://docs.npmjs.com/cli/version for options.',
+    );
+  }
+}
+
 function throwIfNotCleanMaster() {
   let branchName = '';
   let isLocalDirty = false;
@@ -53,11 +61,11 @@ function throwIfNotCleanMaster() {
 }
 
 function bumpVersion() {
-  const versionArgs =
-    process.argv.length > 2 ? process.argv.slice(2).join(' ') : 'patch';
+  const versionArgs = process.argv[2] || 'patch';
 
   try {
-    execute(`npm --no-git-tag-version commit ${versionArgs}`, true);
+    const versionExec = execute(`npm --no-git-tag-version version ${versionArgs}`, true);
+    logger.log(`Bumping to ${versionArgs} version: ${versionExec.output[1].toString()}`);
   } catch (e) {
     eject(`Failed to bump version ${e}`);
   }
@@ -81,6 +89,7 @@ function createReleaseBranch() {
 }
 
 function run() {
+  checkArgvs();
   throwIfNotCleanMaster();
   bumpVersion();
   updateChangelog();
