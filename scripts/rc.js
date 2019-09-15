@@ -52,7 +52,7 @@ function bumpVersion() {
 
 function updateChangelog() {
   try {
-    spawnSync('conventional-changelog-cli', ['-i', 'CHANGELOG.md'], {
+    spawnSync('conventional-changelog', ['-i', 'CHANGELOG.md', '-s'], {
       stdio: 'inherit',
     });
   } catch (e) {
