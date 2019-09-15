@@ -19,7 +19,7 @@ function throwIfNotCleanMaster() {
       '--abbrev-ref',
       'HEAD',
     ]);
-    branchName = branchNameExec.output[1].toString();
+    branchName = branchNameExec.output[1].toString().trim();
   } catch (e) {
     logger.error(e);
   }
