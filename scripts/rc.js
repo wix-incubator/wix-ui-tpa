@@ -8,43 +8,56 @@ function eject(msg, code = 1) {
   process.exit(code);
 }
 
+function execute(cmd, withLog) {
+  const config = withLog
+    ? {
+        stdio: 'inherit',
+      }
+    : undefined;
+  const cmdArr = cmd.split(/\s+/);
+  return spawnSync(cmdArr[0], cmdArr.slice(1), config);
+}
+
 function throwIfNotCleanMaster() {
   let branchName = '';
-  let isAhead = false;
-  let isBehind = false;
+  let isLocalDirty = false;
 
   try {
-    const branchNameExec = spawnSync('git', [
-      'rev-parse',
-      '--abbrev-ref',
-      'HEAD',
-    ]);
+    const branchNameExec = execute('git rev-parse --abbrev-ref HEAD');
     branchName = branchNameExec.output[1].toString().trim();
   } catch (e) {
     logger.error(e);
   }
 
   if (branchName !== 'master') {
-    eject('Must be on master to create a release candidate');
+    eject('Must be on master branch to create a release candidate');
   }
 
   try {
-    isAhead = spawnSync('git', ['rev-list', 'origin..HEAD']);
-    isBehind = spawnSync('git', ['rev-list', 'HEAD..origin']);
+    execute('git fetch');
+  } catch (e) {
+    eject(`Couldn't fetch master`);
+  }
+
+  try {
+    isLocalDirty = execute('git diff @{upstream} --exit-code')
+      .output[1].toString()
+      .trim();
   } catch (e) {
     logger.error(e);
   }
 
-  if (isAhead || isBehind) {
+  if (isLocalDirty) {
     eject('local master branch is not aligned to origin');
   }
 }
 
 function bumpVersion() {
+  const versionArgs =
+    process.argv.length > 2 ? process.argv.slice(2).join(' ') : 'patch';
+
   try {
-    spawnSync('npm', ['version', ...process.argv.slice(2)], {
-      stdio: 'inherit',
-    });
+    execute(`npm --no-git-tag-version commit ${versionArgs}`, true);
   } catch (e) {
     eject(`Failed to bump version ${e}`);
   }
@@ -52,9 +65,7 @@ function bumpVersion() {
 
 function updateChangelog() {
   try {
-    spawnSync('conventional-changelog', ['-i', 'CHANGELOG.md', '-s'], {
-      stdio: 'inherit',
-    });
+    execute('conventional-changelog -i CHANGELOG.md -s', true);
   } catch (e) {
     eject(`standard-version failed with error\n ${e}`);
   }
@@ -63,7 +74,7 @@ function updateChangelog() {
 function createReleaseBranch() {
   try {
     const newVersion = require('../package').version;
-    spawnSync('git', ['checkout', '-b', `release/${newVersion}`]);
+    execute(`git checkout -b release/${newVersion}`);
   } catch (e) {
     eject(`couldn't create release branch`);
   }
