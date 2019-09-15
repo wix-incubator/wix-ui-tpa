@@ -92,7 +92,6 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
     "eyes.it": "^2.0.3",
-    "find-pkg": "^2.0.0",
     "gh-pages-auto-release": "latest",
     "husky": "^3.0.0",
     "identity-obj-proxy": "^3.0.0",

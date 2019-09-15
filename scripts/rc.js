@@ -1,4 +1,3 @@
-const findPkg = require('find-pkg');
 const child_process = require('child_process');
 const logger = require('./logger');
 
@@ -53,7 +52,7 @@ function bumpVersion() {
 
 function updateChangelog() {
   try {
-    spawnSync('conventional-changelog-cli', {
+    spawnSync('conventional-changelog-cli', ['-i', 'CHANGELOG.md'], {
       stdio: 'inherit',
     });
   } catch (e) {
@@ -63,7 +62,7 @@ function updateChangelog() {
 
 function createReleaseBranch() {
   try {
-    const newVersion = findPkg.sync('.').version;
+    const newVersion = require('../package').version;
     spawnSync('git', ['checkout', '-b', `release/${newVersion}`]);
   } catch (e) {
     eject(`couldn't create release branch`);
