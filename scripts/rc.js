@@ -1,3 +1,4 @@
+const findPkg = require('find-pkg');
 const child_process = require('child_process');
 const logger = require('./logger');
 
@@ -8,7 +9,7 @@ function eject(msg, code = 1) {
   process.exit(code);
 }
 
-function throwIfNotMaster() {
+function throwIfNotCleanMaster() {
   let branchName = '';
   let isAhead = false;
   let isBehind = false;
@@ -40,9 +41,19 @@ function throwIfNotMaster() {
   }
 }
 
-function runStandardVersion() {
+function bumpVersion() {
   try {
-    spawnSync('standard-version', process.argv.slice(2), {
+    spawnSync('npm', ['version', ...process.argv.slice(2)], {
+      stdio: 'inherit',
+    });
+  } catch (e) {
+    eject(`Failed to bump version ${e}`);
+  }
+}
+
+function updateChangelog() {
+  try {
+    spawnSync('conventional-changelog-cli', {
       stdio: 'inherit',
     });
   } catch (e) {
@@ -52,7 +63,7 @@ function runStandardVersion() {
 
 function createReleaseBranch() {
   try {
-    const newVersion = require('../package').version;
+    const newVersion = findPkg.sync('.').version;
     spawnSync('git', ['checkout', '-b', `release/${newVersion}`]);
   } catch (e) {
     eject(`couldn't create release branch`);
@@ -60,8 +71,9 @@ function createReleaseBranch() {
 }
 
 function run() {
-  throwIfNotMaster();
-  runStandardVersion();
+  throwIfNotCleanMaster();
+  bumpVersion();
+  updateChangelog();
   createReleaseBranch();
   logger.log('\nRelease branch created successfully!\n');
 }
