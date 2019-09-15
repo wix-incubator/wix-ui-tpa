@@ -2,7 +2,6 @@ const child_process = require('child_process');
 const logger = require('./logger');
 
 const spawnSync = child_process.spawnSync;
-const spawn = child_process.spawnSync;
 
 function eject(msg, code = 1) {
   logger.error(msg, '\n');
@@ -43,15 +42,28 @@ function throwIfNotMaster() {
 
 function runStandardVersion() {
   try {
-    spawn('standard-version', process.argv.slice(2), {
+    spawnSync('standard-version', process.argv.slice(2), {
       stdio: 'inherit',
     });
-  } catch (e) {}
+  } catch (e) {
+    eject(`standard-version failed with error\n ${e}`);
+  }
+}
+
+function createReleaseBranch() {
+  try {
+    const newVersion = require('../package').version;
+    spawnSync('git', ['checkout', '-b', `release/${newVersion}`]);
+  } catch (e) {
+    eject(`couldn't create release branch`);
+  }
 }
 
 function run() {
   throwIfNotMaster();
   runStandardVersion();
+  createReleaseBranch();
+  logger.log('\nRelease branch created successfully!\n');
 }
 
 run();
