@@ -47,7 +47,7 @@ function bumpVersion() {
   const versionArgs = process.argv[2] || 'patch';
 
   try {
-    const versionExec = execute(`npm --no-git-tag-version version ${versionArgs}`, true);
+    const versionExec = execute(`npm --no-git-tag-version version ${versionArgs}`);
     logger.log(`Bumping to ${versionArgs} version: ${versionExec.output[1].toString()}`);
   } catch (e) {
     eject(`Failed to bump version ${e}`);
