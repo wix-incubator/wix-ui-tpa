@@ -1,4 +1,4 @@
-import {configure} from '@storybook/react';
+import { configure } from '@storybook/react';
 import './stories.scss';
 import { init } from '../test/visual/StyleProcessorUtil';
 
@@ -10,6 +10,5 @@ function loadStories() {
 
   setTimeout(init);
 }
-
 
 configure(loadStories, module);
