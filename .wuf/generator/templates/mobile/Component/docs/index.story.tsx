@@ -55,6 +55,22 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: '{%ComponentName%} Panel',
+              example: <{%ComponentName%}WiringExample />,
+              rawSource: {%ComponentName%}WiringExampleRaw,
+              rawCSSSource: {%ComponentName%}WiringExampleCSSRaw,
+              params: {
+                colors: [],
+                fonts: [],
+                numbers: [],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

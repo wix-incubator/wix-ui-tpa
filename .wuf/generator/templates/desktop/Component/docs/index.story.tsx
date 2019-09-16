@@ -61,13 +61,13 @@ export default {
           sections: [
             settingsPanel({
               title: '{%ComponentName%} Panel',
-              example: <{%ComponentName%}WiringExample/>,
+              example: <{%ComponentName%}WiringExample />,
               rawSource: {%ComponentName%}WiringExampleRaw,
               rawCSSSource: {%ComponentName%}WiringExampleCSSRaw,
               params: {
                 colors: [],
                 fonts: [],
-                numbers: []
+                numbers: [],
               },
             }),
           ],
