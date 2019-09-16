@@ -4,16 +4,16 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
-import { CalendarDriverFactory } from './Calendar.driver';
+import { calendarDriverFactory } from './Calendar.driver';
 import { Calendar } from './';
-import { CalendarTestkitFactory } from '../../testkit';
-import { CalendarTestkitFactory as enzymeCalendarTestkitFactory } from '../../testkit/enzyme';
+import { calendarTestkitFactory } from '../../testkit';
+import { calendarTestkitFactory as enzymeCalendarTestkitFactory } from '../../testkit/enzyme';
 
 describe('Calendar', () => {
-  const createDriver = createUniDriverFactory(CalendarDriverFactory);
+  const createDriver = createUniDriverFactory(calendarDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Calendar buttonText="Click Me" />);
+    const driver = createDriver(<Calendar />);
     expect(await driver.exists()).toBe(true);
   });
 
@@ -27,13 +27,9 @@ describe('Calendar', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(
-          <Calendar />,
-          CalendarTestkitFactory,
-          {
-            dataHookPropName: 'data-hook',
-          },
-        ),
+        await isUniTestkitExists(<Calendar />, calendarTestkitFactory, {
+          dataHookPropName: 'data-hook',
+        }),
       ).toBe(true);
     });
   });

@@ -21,6 +21,6 @@
 .titleTextMixin {
   -st-mixin: Text(
     MainTextColor '"--TitleMainTextColor"',
-    MainTextFont '"--TitleMainTextFont"'
+    MainTextFont '"fallback(font(--TitleMainTextFont), font({theme: \'Heading-M\', size: \'36px\', lineHeight: \'1.44em\'}))"'
   );
 }

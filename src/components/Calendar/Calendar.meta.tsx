@@ -6,7 +6,5 @@ CalendarMetadata.nonReactStrictModeCompliant = true;
 
 CalendarMetadata.addSim({
   title: 'render',
-  props: {
-    buttonText: 'Click me!',
-  },
+  props: {},
 });

@@ -3,7 +3,7 @@ import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
-import { CalendarTestkitFactory } from '../../testkit/protractor';
+import { calendarTestkitFactory } from '../../testkit/protractor';
 
 /**
  * For tests containing interactions.
@@ -20,11 +20,8 @@ describe('Calendar', () => {
   beforeEach(() => browser.get(storyUrl));
 
   it('should render', async () => {
-    const driver = CalendarTestkitFactory({ dataHook });
-    await waitForVisibilityOf(
-      await driver.element(),
-      'Cannot find Calendar',
-    );
+    const driver = calendarTestkitFactory({ dataHook });
+    await waitForVisibilityOf(await driver.element(), 'Cannot find Calendar');
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

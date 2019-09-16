@@ -11,6 +11,7 @@ import {
 } from './TodayButton/TodayButton';
 import styles from './Calendar.st.css';
 import { Text, TYPOGRAPHY } from '../Text';
+import * as classNames from 'classnames';
 
 export enum CalendarLayouts {
   weekly = 'weekly',
@@ -162,7 +163,11 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div data-hook={dataHook} style={style} className={className}>
+          <div
+            data-hook={dataHook}
+            style={style}
+            className={classNames(className, styles.root)}
+          >
             <CalendarContext.Provider
               value={{ ...defaultContext, props: this.props }}
             >

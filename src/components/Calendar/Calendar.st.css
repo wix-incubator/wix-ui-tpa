@@ -17,11 +17,8 @@
     margin: 20px;
 }
 
-.root .titleText {
-    -st-mixin: titleTextMixin(
-        TitleMainTextColor '"--TitleMainTextColor"',
-        TitleMainTextFont '"--TitleMainTextFont"'
-    );
+.titleText {
+    -st-mixin: titleTextMixin;
 }
 
 .defaultTitle {
