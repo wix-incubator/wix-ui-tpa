@@ -44,6 +44,6 @@
     display: block;
 }
 
-.defaultSelector {
+.selector.defaultSelector {
     margin-top: 60px;
 }
