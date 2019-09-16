@@ -10,7 +10,6 @@ import {
   CALENDAR_TODAY_BUTTON_DISPLAY_NAME,
 } from './TodayButton/TodayButton';
 import styles from './Calendar.st.css';
-import { Text, TYPOGRAPHY } from '../Text';
 import * as classNames from 'classnames';
 
 export enum CalendarLayouts {
@@ -82,6 +81,8 @@ const defaultContext: CalendarContextStructure = {
   props: {},
   classNames: {
     titleText: styles.titleText,
+    selector: styles.selector,
+    periodText: styles.periodText,
   },
 };
 
@@ -117,12 +118,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   );
 
   renderSelector = () => {
-    const {
-      selectorTitle,
-      hideSelector,
-      onClickNext,
-      onClickPrev,
-    } = this.props;
+    const { hideSelector, onClickNext, onClickPrev } = this.props;
 
     if (hideSelector) {
       return null;
@@ -133,12 +129,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
         className={styles.defaultSelector}
         onClickNext={onClickNext}
         onClickPrev={onClickPrev}
-      >
-        {selectorTitle ? (
-          // TODO: set 18px Paragraph2 color-5
-          <Text typography={TYPOGRAPHY.smallTitle}>{selectorTitle}</Text>
-        ) : null}
-      </Calendar.Selector>
+      />
     );
   };
 

@@ -10,6 +10,7 @@ export const ExtendedExample = props => (
       {...styles('root', {}, props)}
       layout={CalendarLayouts.weekly}
       calendarTitle="Example"
+      selectorTitle="Time Period"
     />
   </div>
 );

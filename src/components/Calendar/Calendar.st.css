@@ -3,14 +3,22 @@
     -st-named: titleTextMixin;
 }
 
-:vars {
-    /*Defaults*/
+:import {
+    -st-from: "./Selector/Selector.st.css";
+    -st-named: selectorMixin, periodTextMixin;
+}
+
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
 }
 
 :vars {
     /*Overrides*/
     TitleMainTextColor: --overridable;
     TitleMainTextFont: --overridable;
+    SelectorMainTextColor: --overridable;
+    SelectorMainTextFont: --overridable;
 }
 
 .root {
@@ -19,6 +27,14 @@
 
 .titleText {
     -st-mixin: titleTextMixin;
+}
+
+.selector {
+    -st-mixin: selectorMixin;
+}
+
+.selector .periodText {
+    -st-mixin: periodTextMixin;
 }
 
 .defaultTitle {

@@ -84,11 +84,21 @@ export default {
                     wixParam: 'TitleMainTextColor',
                     defaultColor: 'color-5',
                   },
+                  {
+                    label: 'Selector Text Color',
+                    wixParam: 'SelectorMainTextColor',
+                    defaultColor: 'color-5',
+                  },
                 ],
                 fonts: [
                   {
                     label: 'Title Font',
                     wixParam: 'TitleMainTextFont',
+                    defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Selector Text Font',
+                    wixParam: 'SelectorMainTextFont',
                     defaultFont: 'arial',
                   },
                 ],

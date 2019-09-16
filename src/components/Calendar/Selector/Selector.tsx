@@ -4,11 +4,15 @@ import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
 import ChevronRight from 'wix-ui-icons-common/ChevronRight';
 import * as classNames from 'classnames';
 import styles from './Selector.st.css';
+import { CalendarContext, CalendarContextStructure } from '../Calendar';
+import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
+
+// Working-around missing props in typings
+const Text = TextTPA as any;
 
 export interface SelectorProps {
   style?: React.CSSProperties;
   className?: string;
-  titleVisible: boolean;
   ariaLabelPrev?: string;
   ariaLabelNext?: string;
   onClickPrev?(): void;
@@ -25,18 +29,16 @@ export class Selector extends React.PureComponent<SelectorProps> {
   static defaultProps: DefaultSelectorProps = {
     style: {},
     className: '',
-    titleVisible: true,
     ariaLabelPrev: null,
     ariaLabelNext: null,
     onClickPrev: null,
     onClickNext: null,
   };
 
-  render() {
+  renderComponent = (context: CalendarContextStructure) => {
     const {
       style,
       className,
-      titleVisible,
       ariaLabelPrev,
       ariaLabelNext,
       onClickPrev,
@@ -44,38 +46,56 @@ export class Selector extends React.PureComponent<SelectorProps> {
       children,
     } = this.props;
 
+    const { classNames: calendarClasses } = context;
+    const { selectorTitle } = context.props;
+
     return (
       <div
         style={style}
-        className={classNames(className, styles.monthControls)}
+        className={classNames(
+          className,
+          styles.selector,
+          calendarClasses.selector,
+        )}
       >
         <button
           onClick={onClickPrev}
           type="button"
-          className={styles.monthButton}
+          className={styles.button}
           data-hook="calendar-previous-button"
           aria-label={ariaLabelPrev}
         >
           <ChevronLeft size="1.5em" />
         </button>
-        <div
-          className={classNames(styles.month, {
-            [styles.loading]: !titleVisible,
-          })}
-          data-hook="calendar-selector-title"
-        >
-          {children}
+        <div className={styles.period} data-hook="calendar-selector-title">
+          {children || (
+            <Text
+              className={calendarClasses.periodText}
+              // typography={TYPOGRAPHY.smallTitle}
+              typography={TYPOGRAPHY.largeTitle}
+            >
+              {selectorTitle}
+            </Text>
+          )}
         </div>
         <button
           onClick={onClickNext}
           type="button"
-          className={styles.monthButton}
+          className={styles.button}
           data-hook="calendar-next-button"
           aria-label={ariaLabelNext}
         >
           <ChevronRight size="1.5em" />
         </button>
       </div>
+    );
+  };
+
+  render() {
+    return (
+      <CalendarContext.Consumer>
+        {context => this.renderComponent(context)}
+      </CalendarContext.Consumer>
     );
   }
 }
