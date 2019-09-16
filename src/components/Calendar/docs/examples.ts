@@ -4,7 +4,9 @@ export const simple = `
   <Calendar
     layout="weekly"
     calendarTitle="Default Calendar"
-    selectorTitle="Time Frame (default style)"
+    selectorTitle="Default Period"
+    onClickPrev={() => {alert('Clicked Prev')}}
+    onClickNext={() => {alert('Clicked Next')}}
   />
 `;
 
@@ -12,29 +14,36 @@ export const complex = `
   <Calendar
     layout="weekly"
   >
-    <Calendar.Title>
-      Custom Title
-    </ Calendar.Title>
-    <Calendar.Selector>
-      <div>
-        Time Frame (custom style)
+    <div style={{display: 'block', height: '60px'}}>
+      <div style={{display: 'inline-block', float: 'left'}}>
+        <Calendar.Title>
+          Custom Title
+        </ Calendar.Title>
       </div>
-    </Calendar.Selector>
+      <div style={{display: 'inline-block', float: 'right', marginTop: '15px'}}>
+        <Calendar.Selector
+          onClickPrev={() => {alert('Clicked Prev')}}
+          onClickNext={() => {alert('Clicked Next')}}
+        >
+          <span style={{textTransform: 'uppercase'}}>
+            Custom Period
+          </span>
+        </Calendar.Selector>
+      </div>
+    </div>
   </Calendar>
 `;
 
 export const placeholder = `
   <Calendar
     layout="weekly"
+    calendarTitle="Default Calendar"
+    selectorTitle="Default Period"
+    onClickPrev={() => {alert('Clicked Prev')}}
+    onClickNext={() => {alert('Clicked Next')}}
   >
-    <Calendar.Title>
-      Custom Title
-    </ Calendar.Title>
-    <Calendar.Selector>
-      <div>
-        Custom time frame text
-      </div>
-    </Calendar.Selector>
+    <Calendar.Selector style={{margin: 0}}/>
+    <Calendar.Title />
   </Calendar>
 `;
 
@@ -43,6 +52,9 @@ export const mobile = `
     <Calendar
       layout="weekly"
       calendarTitle="Mobile Calendar"
+      selectorTitle="Default Period"
+      onClickPrev={() => {alert('Clicked Prev')}}
+      onClickNext={() => {alert('Clicked Next')}}
     />
   </ExampleWithContextProps>
 `;

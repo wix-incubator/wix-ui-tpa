@@ -55,6 +55,18 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
   onClickNext?(): void;
 
   /**
+   * Aria label for previous time frame selection button.<br /><br />
+   * If custom <Calendar.Selector> has its own ariaLabelPrev property defined - this property is completely ignored.
+   */
+  ariaLabelPrev?: string;
+
+  /**
+   * Aria label for next time frame selection button.<br /><br />
+   * If custom <Calendar.Selector> has its own ariaLabelNext property defined - this property is completely ignored.
+   */
+  ariaLabelNext?: string;
+
+  /**
    * Inline styles.
    */
   style?: React.CSSProperties;
@@ -101,6 +113,8 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     hideSelector: false,
     onClickPrev: null,
     onClickNext: null,
+    ariaLabelPrev: null,
+    ariaLabelNext: null,
     style: {},
     className: '',
     'data-hook': '',

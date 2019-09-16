@@ -6,6 +6,7 @@ import * as classNames from 'classnames';
 import styles from './Selector.st.css';
 import { CalendarContext, CalendarContextStructure } from '../Calendar';
 import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
+import { CalendarComponent } from '../CalendarComponent';
 
 // Working-around missing props in typings
 const Text = TextTPA as any;
@@ -23,7 +24,7 @@ interface DefaultSelectorProps extends AllPropsRequired<SelectorProps> {}
 
 export const CALENDAR_SELECTOR_DISPLAY_NAME = 'Calendar.Selector';
 
-export class Selector extends React.PureComponent<SelectorProps> {
+export class Selector extends CalendarComponent<SelectorProps> {
   static displayName = CALENDAR_SELECTOR_DISPLAY_NAME;
 
   static defaultProps: DefaultSelectorProps = {
@@ -35,19 +36,31 @@ export class Selector extends React.PureComponent<SelectorProps> {
     onClickNext: null,
   };
 
-  renderComponent = (context: CalendarContextStructure) => {
+  renderWithContext = (context: CalendarContextStructure) => {
     const {
       style,
       className,
-      ariaLabelPrev,
-      ariaLabelNext,
-      onClickPrev,
-      onClickNext,
+      ariaLabelPrev: propAriaLabelPrev,
+      ariaLabelNext: propAriaLabelNext,
+      onClickPrev: propOnClickPrevProp,
+      onClickNext: propOnClickNextProp,
       children,
     } = this.props;
 
+    const {
+      selectorTitle,
+      onClickPrev: globalOnClickPrev,
+      onClickNext: globalOnClickNext,
+      ariaLabelPrev: globalAriaLabelPrev,
+      ariaLabelNext: globalAriaLabelNext,
+    } = context.props;
+
+    const onClickPrev = propOnClickPrevProp || globalOnClickPrev;
+    const onClickNext = propOnClickNextProp || globalOnClickNext;
+    const ariaLabelPrev = propAriaLabelPrev || globalAriaLabelPrev;
+    const ariaLabelNext = propAriaLabelNext || globalAriaLabelNext;
+
     const { classNames: calendarClasses } = context;
-    const { selectorTitle } = context.props;
 
     return (
       <div
@@ -71,8 +84,7 @@ export class Selector extends React.PureComponent<SelectorProps> {
           {children || (
             <Text
               className={calendarClasses.periodText}
-              // typography={TYPOGRAPHY.smallTitle}
-              typography={TYPOGRAPHY.largeTitle}
+              typography={TYPOGRAPHY.smallTitle}
             >
               {selectorTitle}
             </Text>
@@ -90,12 +102,4 @@ export class Selector extends React.PureComponent<SelectorProps> {
       </div>
     );
   };
-
-  render() {
-    return (
-      <CalendarContext.Consumer>
-        {context => this.renderComponent(context)}
-      </CalendarContext.Consumer>
-    );
-  }
 }

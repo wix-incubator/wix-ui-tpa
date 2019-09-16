@@ -10,6 +10,8 @@
 }
 
 .period {
+  text-align: center;
+  flex: 1;
   color: "fallback(color(--SelectorMainTextColor), color(color-5))";
   font: '"fallback(font(--SelectorMainTextFont), font({theme: \'Body-M\', size: \'18px\'}))"';
 }
@@ -24,7 +26,14 @@
 }
 
 .button {
-  /* TODO: Not finished */
+  cursor: pointer;
+  font-size: inherit;
+  background: none;
+  border: none;
+}
+
+[dir=rtl] .button {
+  transform: rotateY(180deg);
 }
 
 .selectorMixin svg {

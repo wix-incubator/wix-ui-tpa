@@ -34,6 +34,16 @@ export default {
     'data-hook': 'storybook-Calendar',
     layout: CalendarLayouts.weekly,
     calendarTitle: 'Example Calendar',
+    selectorTitle: 'Time Period',
+    hideSelector: false,
+    onClickPrev: () => {
+      alert('Clicked prev');
+    },
+    onClickNext: () => {
+      alert('Clicked next');
+    },
+    ariaLabelPrev: 'Previous time period',
+    ariaLabelNext: 'Next time period',
   }),
   exampleProps: {
     layout: Object.values(CalendarLayouts),
@@ -54,9 +64,13 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Default Layout Example', source: examples.simple },
-            { title: 'Custom Layout Example', source: examples.complex },
-            { title: 'Mobile Example', source: examples.mobile },
+            { title: 'Default Layout', source: examples.simple },
+            { title: 'Flexible Customization', source: examples.complex },
+            {
+              title: 'Re-ordering',
+              source: examples.placeholder,
+            },
+            { title: 'Mobile', source: examples.mobile },
           ].map(code),
         ],
       }),

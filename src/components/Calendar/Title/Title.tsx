@@ -3,6 +3,7 @@ import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
 import { AllPropsRequired } from '../ts-helper';
 import { CalendarContext, CalendarContextStructure } from '../Calendar';
 import * as classNames from 'classnames';
+import { CalendarComponent } from '../CalendarComponent';
 
 // Working-around missing props in typings
 const Text = TextTPA as any;
@@ -16,7 +17,7 @@ interface DefaultTitleProps extends AllPropsRequired<TitleProps> {}
 
 export const CALENDAR_TITLE_DISPLAY_NAME = 'Calendar.Title';
 
-export class Title extends React.PureComponent<TitleProps> {
+export class Title extends CalendarComponent<TitleProps> {
   static displayName = CALENDAR_TITLE_DISPLAY_NAME;
 
   static defaultProps: DefaultTitleProps = {
@@ -24,7 +25,7 @@ export class Title extends React.PureComponent<TitleProps> {
     className: '',
   };
 
-  renderComponent = (context: CalendarContextStructure) => {
+  renderWithContext = (context: CalendarContextStructure) => {
     const { children, className, style } = this.props;
     const content = children || context.props.calendarTitle;
 
@@ -41,12 +42,4 @@ export class Title extends React.PureComponent<TitleProps> {
       </Text>
     ) : null;
   };
-
-  render() {
-    return (
-      <CalendarContext.Consumer>
-        {context => this.renderComponent(context)}
-      </CalendarContext.Consumer>
-    );
-  }
 }

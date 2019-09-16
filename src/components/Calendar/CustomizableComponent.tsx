@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { CalendarComponent } from './CalendarComponent';
 
-/** Component for showing some events of a particular week */
-export class CustomizableComponent<P = null, S = null> extends React.Component<
-  P,
-  S
-> {
+export class CustomizableComponent<
+  P = null,
+  S = null
+> extends CalendarComponent<P, S> {
   defaultElements: { [type: string]: () => React.ReactNode } = {};
 
   isNodeOfType = (node: React.ReactNode, type: string | string[]) => {
@@ -39,19 +39,19 @@ export class CustomizableComponent<P = null, S = null> extends React.Component<
 
     return React.Children.toArray(this.props.children).map(node => ({
       node,
-      type: types.find(type => this.nodeHasType(node, type) || null),
+      types: types.filter(type => this.nodeHasType(node, type) || null),
     }));
   };
 
   getTypedDefaultChildren = (
     typedChildren: {
       node: React.ReactNode;
-      type: string;
+      types: string[];
     }[],
   ) =>
     Object.entries(this.defaultElements).map(([type, renderer]) => ({
       type,
-      renderer: typedChildren.find(child => child.type === type)
+      renderer: typedChildren.find(child => child.types.includes(type))
         ? () => null
         : renderer,
     }));
@@ -63,13 +63,13 @@ export class CustomizableComponent<P = null, S = null> extends React.Component<
     let resolvedChildren: React.ReactNode[] = [];
 
     typedChildren.forEach(child => {
-      if (!child.type) {
+      if (!child.types.length) {
         resolvedChildren.push(child.node);
         return;
       }
 
-      const defaultChildIndex = typedDefaultChildren.findIndex(
-        defaultChild => defaultChild.type === child.type,
+      const defaultChildIndex = typedDefaultChildren.findIndex(defaultChild =>
+        child.types.includes(defaultChild.type),
       );
 
       if (defaultChildIndex > 0) {
