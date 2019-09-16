@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { visualize, story, snap } from 'storybook-snapper';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { visualize, story, snap } from '../../../test/visual/Snapper';
 import { TextField, TextFieldProps } from './TextField';
 import { TextFieldAsyncVisual } from './TextFieldAsyncVisual';
 import { TextFieldTheme } from './TextFieldEnums';
