@@ -42,8 +42,7 @@
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
-    "release": "yoshi release",
-    "postpublish": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "postpublish": "node scripts/tag.js && npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "storybook": "start-storybook -p 6006 -s ./src/assets,./.storybook-test/public",
     "copy-styleable-ext": "cp src/common/formatters.st.js dist/src/common && cp src/common/formatters.st.js dist/es/src/common",
     "compile-base-ui": "node ./.storybook/base-ui-compiler.js",
@@ -58,7 +57,8 @@
     "autotools:a11y": "autotools-a11y",
     "postgenerate": "npm run update-components",
     "update-components": ".wuf/update-components.sh",
-    "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish"
+    "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
+    "release-candidate": "node scripts/rc.js"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^0.1.0",
@@ -86,6 +86,8 @@
     "@ui-autotools/registry": "^4.0.0",
     "@ui-autotools/sanity": "^2.8.2",
     "autoprefixer": "^9.5.1",
+    "chalk": "^2.4.2",
+    "conventional-changelog-cli": "^2.0.23",
     "core-js": "^2.6.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
