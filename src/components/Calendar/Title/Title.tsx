@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
 import { AllPropsRequired } from '../ts-helper';
-import { CalendarContext, CalendarContextStructure } from '../Calendar';
+import { CalendarContextStructure } from '../Calendar';
 import * as classNames from 'classnames';
 import { CalendarComponent } from '../CalendarComponent';
+import styles from './Title.st.css';
 
 // Working-around missing props in typings
 const Text = TextTPA as any;
@@ -32,7 +33,7 @@ export class Title extends CalendarComponent<TitleProps> {
     return content ? (
       <Text
         style={style}
-        className={classNames(context.classNames.titleText, {
+        className={classNames(styles.titleText, {
           [className]: className,
         })}
         typography={TYPOGRAPHY.largeTitle}

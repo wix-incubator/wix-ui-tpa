@@ -1,18 +1,3 @@
-:import {
-    -st-from: "./Title/Title.st.css";
-    -st-named: titleTextMixin;
-}
-
-:import {
-    -st-from: "./Selector/Selector.st.css";
-    -st-named: selectorMixin, periodTextMixin;
-}
-
-:import {
-  -st-from: "../Text/Text.st.css";
-  -st-default: Text;
-}
-
 :vars {
     /*Overrides*/
     TitleMainTextColor: --overridable;
@@ -25,18 +10,6 @@
     margin: 20px;
 }
 
-.titleText {
-    -st-mixin: titleTextMixin;
-}
-
-.selector {
-    -st-mixin: selectorMixin;
-}
-
-.selector .periodText {
-    -st-mixin: periodTextMixin;
-}
-
 .defaultTitle {
     margin-top: 64px;
     width: 100%;
@@ -44,7 +17,7 @@
     display: block;
 }
  
-.selector.defaultSelector {
+.defaultSelector {
     margin: auto;
     margin-top: 60px;
 }

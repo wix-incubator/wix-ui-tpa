@@ -60,17 +60,8 @@ export class Selector extends CalendarComponent<SelectorProps> {
     const ariaLabelPrev = propAriaLabelPrev || globalAriaLabelPrev;
     const ariaLabelNext = propAriaLabelNext || globalAriaLabelNext;
 
-    const { classNames: calendarClasses } = context;
-
     return (
-      <div
-        style={style}
-        className={classNames(
-          className,
-          styles.selector,
-          calendarClasses.selector,
-        )}
-      >
+      <div style={style} className={classNames(className, styles.selector)}>
         <button
           onClick={onClickPrev}
           type="button"
@@ -83,7 +74,7 @@ export class Selector extends CalendarComponent<SelectorProps> {
         <div className={styles.period} data-hook="calendar-selector-title">
           {children || (
             <Text
-              className={calendarClasses.periodText}
+              className={styles.periodText}
               typography={TYPOGRAPHY.smallTitle}
             >
               {selectorTitle}

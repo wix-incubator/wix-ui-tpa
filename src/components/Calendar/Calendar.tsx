@@ -86,16 +86,10 @@ type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
 
 export interface CalendarContextStructure {
   props: CalendarProps;
-  classNames: { [className: string]: string };
 }
 
 const defaultContext: CalendarContextStructure = {
   props: {},
-  classNames: {
-    titleText: styles.titleText,
-    selector: styles.selector,
-    periodText: styles.periodText,
-  },
 };
 
 export const CalendarContext = React.createContext<CalendarContextStructure>(

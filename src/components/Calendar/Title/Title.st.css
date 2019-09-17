@@ -4,16 +4,12 @@
 }
 
 :vars {
-  /*Defaults*/
-}
-
-:vars {
   /*Overrides*/
   TitleMainTextColor: --overridable;
   TitleMainTextFont: --overridable;
 }
 
-.titleTextMixin {
+.titleText {
   -st-mixin: Text(
     MainTextColor '"--TitleMainTextColor"',
     MainTextFont '"fallback(font(--TitleMainTextFont), font({theme: \'Heading-M\', size: \'36px\'}))"'

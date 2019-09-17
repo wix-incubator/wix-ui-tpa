@@ -35,11 +35,11 @@
   transform: rotateY(180deg);
 }
 
-.selectorMixin svg {
+.selector svg {
   fill: "fallback(color(--SelectorMainTextColor), color(color-5))";
 }
 
-.periodTextMixin {
+.periodText {
   -st-mixin: Text(
     MainTextColor '"--SelectorMainTextColor"',
     MainTextFont '"fallback(font(--SelectorMainTextFont), font({theme: \'Body-M\', size: \'18px\'}))"'
