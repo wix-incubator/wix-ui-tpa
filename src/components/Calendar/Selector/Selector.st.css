@@ -19,7 +19,6 @@
 .selector {
   display: flex;
   align-items: center;
-  margin: auto;
   width: 12.6em;
   min-width: 207px;
   line-height: 1.5 !important;

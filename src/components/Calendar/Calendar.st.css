@@ -45,5 +45,6 @@
 }
  
 .selector.defaultSelector {
+    margin: auto;
     margin-top: 60px;
 }
