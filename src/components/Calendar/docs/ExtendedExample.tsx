@@ -11,6 +11,16 @@ export const ExtendedExample = props => (
       layout={CalendarLayouts.weekly}
       calendarTitle="Example"
       selectorTitle="Time Period"
+      todayButtonText="Today"
+      onClickNext={() => {
+        alert('Clicked Next');
+      }}
+      onClickPrev={() => {
+        alert('Clicked Prev');
+      }}
+      onClickToday={() => {
+        alert('Clicked Today');
+      }}
     />
   </div>
 );

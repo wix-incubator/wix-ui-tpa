@@ -1,9 +1,18 @@
 :vars {
     /*Overrides*/
+    
     TitleMainTextColor: --overridable;
     TitleMainTextFont: --overridable;
+
     SelectorMainTextColor: --overridable;
     SelectorMainTextFont: --overridable;
+
+    TodayMainTextColor: --overridable;
+    TodayMainBackgroundColor: --overridable;
+    TodayMainTextFont: --overridable;
+    TodayMainBorderColor: --overridable;
+    TodayMainBorderWidth: --overridable;
+    TodayMainBorderRadius: --overridable;
 }
 
 .root {
@@ -17,7 +26,18 @@
     display: block;
 }
  
+.defaultControls {
+    position: relative;
+}
+
 .defaultSelector {
     margin: auto;
     margin-top: 60px;
+}
+
+.defaultTodayButtonPos {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
 }

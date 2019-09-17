@@ -4,7 +4,7 @@ import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
 import ChevronRight from 'wix-ui-icons-common/ChevronRight';
 import * as classNames from 'classnames';
 import styles from './Selector.st.css';
-import { CalendarContext, CalendarContextStructure } from '../Calendar';
+import { CalendarContextStructure } from '../Calendar';
 import { Text as TextTPA, TYPOGRAPHY } from '../../Text';
 import { CalendarComponent } from '../CalendarComponent';
 
@@ -40,25 +40,30 @@ export class Selector extends CalendarComponent<SelectorProps> {
     const {
       style,
       className,
-      ariaLabelPrev: propAriaLabelPrev,
-      ariaLabelNext: propAriaLabelNext,
-      onClickPrev: propOnClickPrevProp,
-      onClickNext: propOnClickNextProp,
+      ariaLabelPrev: ariaLabelPrevProp,
+      ariaLabelNext: ariaLabelNextProp,
+      onClickPrev: onClickPrevProp,
+      onClickNext: onClickNextProp,
       children,
     } = this.props;
 
     const {
       selectorTitle,
-      onClickPrev: globalOnClickPrev,
-      onClickNext: globalOnClickNext,
-      ariaLabelPrev: globalAriaLabelPrev,
-      ariaLabelNext: globalAriaLabelNext,
+      onClickPrev: onClickPrevGlobal,
+      onClickNext: onClickNextGlobal,
+      ariaLabelPrev: ariaLabelPrevGlobal,
+      ariaLabelNext: ariaLabelNextGlobal,
+      hideSelector,
     } = context.props;
 
-    const onClickPrev = propOnClickPrevProp || globalOnClickPrev;
-    const onClickNext = propOnClickNextProp || globalOnClickNext;
-    const ariaLabelPrev = propAriaLabelPrev || globalAriaLabelPrev;
-    const ariaLabelNext = propAriaLabelNext || globalAriaLabelNext;
+    if (hideSelector) {
+      return null;
+    }
+
+    const onClickPrev = onClickPrevProp || onClickPrevGlobal;
+    const onClickNext = onClickNextProp || onClickNextGlobal;
+    const ariaLabelPrev = ariaLabelPrevProp || ariaLabelPrevGlobal;
+    const ariaLabelNext = ariaLabelNextProp || ariaLabelNextGlobal;
 
     return (
       <div style={style} className={classNames(className, styles.selector)}>

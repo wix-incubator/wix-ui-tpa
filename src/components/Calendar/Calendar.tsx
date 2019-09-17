@@ -11,11 +11,14 @@ import {
 } from './TodayButton/TodayButton';
 import styles from './Calendar.st.css';
 import * as classNames from 'classnames';
+import { PRIORITY, SIZE } from '../Button';
 
 export enum CalendarLayouts {
   weekly = 'weekly',
   monthly = 'monthly',
 }
+
+export const CALENDAR_CONTROLS_DISPLAY_NAME = 'Calendar.Controls';
 
 export interface CalendarProps extends Partial<DefaultCalendarProps> {
   /**
@@ -45,14 +48,27 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
   hideSelector?: boolean;
 
   /**
-   * Callback for handling previous time frame selection.
+   * Hides today button when true.
+   */
+  hideTodayButton?: boolean;
+
+  /**
+   * Callback for handling previous time frame selection. <br /><br />
+   * This property is completely ignored if <Calendar.Selector> component is used with same property.
    */
   onClickPrev?(): void;
 
   /**
    * Callback for handling next time frame selection.
+   * This property is completely ignored if <Calendar.Selector> component is used with same property.
    */
   onClickNext?(): void;
+
+  /**
+   * Callback for handling current (today) time frame selection.
+   * This property is completely ignored if <Calendar.TodayButton> component is used with onClick property.
+   */
+  onClickToday?(): void;
 
   /**
    * Aria label for previous time frame selection button.<br /><br />
@@ -65,6 +81,24 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
    * If custom <Calendar.Selector> has its own ariaLabelNext property defined - this property is completely ignored.
    */
   ariaLabelNext?: string;
+
+  /**
+   * Text to be shown on "today" button. <br /><br />
+   * This property is completely ignored if <Calendar.TodayButton> is used with children.
+   */
+  todayButtonText?: string;
+
+  /**
+   * Priority style of "today" button. This is same as "priority" of <Button />.<br /><br />
+   * This property is completely ignored if <Calendar.TodayButton> with custom priority is used.
+   */
+  todayButtonPriority?: PRIORITY;
+
+  /**
+   * Size style of "today" button. This is same as "size" of <Button />.<br /><br />
+   * This property is completely ignored if <Calendar.TodayButton> with custom size is used.
+   */
+  todayButtonSize?: SIZE;
 
   /**
    * Inline styles.
@@ -86,10 +120,12 @@ type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
 
 export interface CalendarContextStructure {
   props: CalendarProps;
+  isMobile: boolean;
 }
 
 const defaultContext: CalendarContextStructure = {
   props: {},
+  isMobile: false,
 };
 
 export const CalendarContext = React.createContext<CalendarContextStructure>(
@@ -105,10 +141,15 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     calendarTitle: '',
     selectorTitle: '',
     hideSelector: false,
+    hideTodayButton: false,
     onClickPrev: null,
     onClickNext: null,
+    onClickToday: null,
     ariaLabelPrev: null,
     ariaLabelNext: null,
+    todayButtonText: '',
+    todayButtonPriority: PRIORITY.secondary,
+    todayButtonSize: SIZE.tiny,
     style: {},
     className: '',
     'data-hook': '',
@@ -119,34 +160,64 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   static TodayButton = TodayButton;
   static Grid = Grid;
 
+  useControlsWrapper = (customizedTypes: string[]) => {
+    const { hideSelector, hideTodayButton } = this.props;
+
+    const notCustomizedTypes = [
+      CALENDAR_SELECTOR_DISPLAY_NAME,
+      CALENDAR_TODAY_BUTTON_DISPLAY_NAME,
+    ];
+
+    if (customizedTypes.find(type => notCustomizedTypes.includes(type))) {
+      return false;
+    }
+
+    if (hideSelector || hideTodayButton) {
+      return false;
+    }
+
+    return true;
+  };
+
   renderTitle = () => (
     <Calendar.Title className={styles.defaultTitle}>
       {this.props.calendarTitle}
     </Calendar.Title>
   );
 
-  renderSelector = () => {
-    const { hideSelector, onClickNext, onClickPrev } = this.props;
+  renderControls = (customizedTypes: string[]) =>
+    this.useControlsWrapper(customizedTypes) ? (
+      <div className={styles.defaultControls}>
+        {this.renderSelector(customizedTypes, true)}
+        <div className={styles.defaultTodayButtonPos}>
+          {this.renderTodayButton(customizedTypes, true)}
+        </div>
+      </div>
+    ) : null;
 
-    if (hideSelector) {
-      return null;
-    }
-
-    return (
+  renderSelector = (customizedTypes: string[], forceShow = false) =>
+    forceShow || !this.useControlsWrapper(customizedTypes) ? (
       <Calendar.Selector
         className={styles.defaultSelector}
-        onClickNext={onClickNext}
-        onClickPrev={onClickPrev}
+        onClickNext={this.props.onClickNext}
+        onClickPrev={this.props.onClickPrev}
       />
-    );
-  };
+    ) : null;
 
-  renderTodayButton = () => <Calendar.TodayButton />;
+  renderTodayButton = (customizedTypes: string[], forceShow = false) =>
+    forceShow || !this.useControlsWrapper(customizedTypes) ? (
+      <Calendar.TodayButton />
+    ) : null;
 
   renderGrid = () => <Calendar.Grid />;
 
+  // TODO: if there is both today and selector, detailsElements
+  // should be modified by replacing them with controls.
+  // *Only if nothing is hidden
+
   defaultElements = {
     [CALENDAR_TITLE_DISPLAY_NAME]: this.renderTitle,
+    [CALENDAR_CONTROLS_DISPLAY_NAME]: this.renderControls,
     [CALENDAR_SELECTOR_DISPLAY_NAME]: this.renderSelector,
     [CALENDAR_TODAY_BUTTON_DISPLAY_NAME]: this.renderTodayButton,
     [CALENDAR_GRID_DISPLAY_NAME]: this.renderGrid,
@@ -168,7 +239,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
             className={classNames(className, styles.root)}
           >
             <CalendarContext.Provider
-              value={{ ...defaultContext, props: this.props }}
+              value={{ ...defaultContext, props: this.props, isMobile: mobile }}
             >
               {this.getResolvedChildren()}
             </CalendarContext.Provider>

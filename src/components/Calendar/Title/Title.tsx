@@ -10,7 +10,6 @@ import styles from './Title.st.css';
 const Text = TextTPA as any;
 
 export interface TitleProps {
-  style?: React.CSSProperties;
   className?: string;
 }
 
@@ -22,17 +21,15 @@ export class Title extends CalendarComponent<TitleProps> {
   static displayName = CALENDAR_TITLE_DISPLAY_NAME;
 
   static defaultProps: DefaultTitleProps = {
-    style: {},
     className: '',
   };
 
   renderWithContext = (context: CalendarContextStructure) => {
-    const { children, className, style } = this.props;
+    const { children, className } = this.props;
     const content = children || context.props.calendarTitle;
 
     return content ? (
       <Text
-        style={style}
         className={classNames(styles.titleText, {
           [className]: className,
         })}

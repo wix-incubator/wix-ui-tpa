@@ -1,0 +1,28 @@
+:import {
+  -st-from: "../../Button/Button.st.css";
+  -st-default: Button;
+}
+
+:vars {
+  /*Overrides*/
+  TodayMainTextColor: --overridable;
+  TodayMainBackgroundColor: --overridable;
+  TodayMainTextFont: --overridable;
+  TodayMainBorderColor: --overridable;
+  TodayMainBorderWidth: --overridable;
+  TodayMainBorderRadius: --overridable;
+}
+
+.button {
+  -st-mixin: Button(
+    MainTextColor '"--TodayMainTextColor"',
+    MainBackgroundColor '"--TodayMainBackgroundColor"',
+    MainTextFont '"fallback(font(--TodayMainTextFont), font({theme: \'Body-M\', size: \'14px\'}))"',
+    MainBorderColor '"--TodayMainBorderColor"',
+    MainBorderWidth '"unit(fallback(zeroAsTrue(--TodayMainBorderWidth), 1), px)"',
+    MainBorderRadius '"unit(fallback(zeroAsTrue(--TodayMainBorderRadius), 0), px)"'
+  );
+
+  background-clip: padding-box;
+  max-width: 148px;
+}

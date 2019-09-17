@@ -65,11 +65,11 @@ export default {
 
           ...[
             { title: 'Default Layout', source: examples.simple },
-            { title: 'Flexible Customization', source: examples.complex },
             {
-              title: 'Re-ordering',
+              title: 'Custom Layout',
               source: examples.placeholder,
             },
+            { title: 'Full Customization', source: examples.complex },
             { title: 'Mobile', source: examples.mobile },
           ].map(code),
         ],
@@ -103,6 +103,21 @@ export default {
                     wixParam: 'SelectorMainTextColor',
                     defaultColor: 'color-5',
                   },
+                  {
+                    label: 'Today Text Color',
+                    wixParam: 'TodayMainTextColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Today Background Color',
+                    wixParam: 'TodayMainBackgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Today Border Color',
+                    wixParam: 'TodayMainBorderColor',
+                    defaultColor: 'color-8',
+                  },
                 ],
                 fonts: [
                   {
@@ -114,6 +129,29 @@ export default {
                     label: 'Selector Text Font',
                     wixParam: 'SelectorMainTextFont',
                     defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Today Text Font',
+                    wixParam: 'TodayMainTextFont',
+                    defaultFont: 'arial',
+                  },
+                ],
+                numbers: [
+                  {
+                    label: 'Today Border Width',
+                    wixParam: 'TodayMainBorderWidth',
+                    defaultNumber: 1,
+                    unit: 'px',
+                    max: 10,
+                    min: 0,
+                  },
+                  {
+                    label: 'Today Border Radius',
+                    wixParam: 'TodayMainBorderRadius',
+                    defaultNumber: 0,
+                    unit: 'px',
+                    max: 100,
+                    min: 0,
                   },
                 ],
               },

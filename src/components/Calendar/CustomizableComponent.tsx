@@ -5,7 +5,9 @@ export class CustomizableComponent<
   P = null,
   S = null
 > extends CalendarComponent<P, S> {
-  defaultElements: { [type: string]: () => React.ReactNode } = {};
+  defaultElements: {
+    [type: string]: (customizedTypes: string[]) => React.ReactNode;
+  } = {};
 
   isNodeOfType = (node: React.ReactNode, type: string | string[]) => {
     const assumedElement = node as React.ReactElement<any, any>;
@@ -48,13 +50,24 @@ export class CustomizableComponent<
       node: React.ReactNode;
       types: string[];
     }[],
-  ) =>
-    Object.entries(this.defaultElements).map(([type, renderer]) => ({
-      type,
-      renderer: typedChildren.find(child => child.types.includes(type))
-        ? () => null
-        : renderer,
-    }));
+  ) => {
+    const customizedTypes = [];
+
+    return Object.entries(this.defaultElements).map(([type, renderer]) => {
+      const customized = typedChildren.find(child =>
+        child.types.includes(type),
+      );
+
+      if (customized) {
+        customizedTypes.push(type);
+      }
+
+      return {
+        type,
+        renderer: customized ? () => null : () => renderer(customizedTypes),
+      };
+    });
+  };
 
   getResolvedChildren = () => {
     const typedChildren = this.getTypedChildren();

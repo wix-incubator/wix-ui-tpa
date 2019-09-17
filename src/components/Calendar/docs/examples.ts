@@ -5,8 +5,10 @@ export const simple = `
     layout="weekly"
     calendarTitle="Default Calendar"
     selectorTitle="Default Period"
+    todayButtonText="Today"
     onClickPrev={() => {alert('Clicked Prev')}}
     onClickNext={() => {alert('Clicked Next')}}
+    onClickToday={() => {alert('Clicked Today')}}
   />
 `;
 
@@ -31,6 +33,9 @@ export const complex = `
         </Calendar.Selector>
       </div>
     </div>
+    <Calendar.TodayButton style={{margin: 'auto', marginTop: 10, display: 'block'}} priority="primary" onClick={() => {alert('Clicked Today')}}>
+      Now
+    </ Calendar.TodayButton>
   </Calendar>
 `;
 
@@ -39,11 +44,18 @@ export const placeholder = `
     layout="weekly"
     calendarTitle="Default Calendar"
     selectorTitle="Default Period"
+    todayButtonText="Today"
     onClickPrev={() => {alert('Clicked Prev')}}
     onClickNext={() => {alert('Clicked Next')}}
+    onClickToday={() => {alert('Clicked Today')}}
   >
-    <Calendar.Selector style={{margin: 0}}/>
-    <Calendar.Title />
+    <div style={{display: 'flex', justifyContent: 'space-between'}}>
+      <Calendar.TodayButton />
+      <Calendar.Selector style={{margin: 0}}/>
+    </div>
+    <div style={{marginTop: 10}}>
+      <Calendar.Title />
+    </div>
   </Calendar>
 `;
 
@@ -53,8 +65,10 @@ export const mobile = `
       layout="weekly"
       calendarTitle="Mobile Calendar"
       selectorTitle="Default Period"
+      todayButtonText="Today"
       onClickPrev={() => {alert('Clicked Prev')}}
       onClickNext={() => {alert('Clicked Next')}}
+      onClickToday={() => {alert('Clicked Today')}}
     />
   </ExampleWithContextProps>
 `;

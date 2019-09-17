@@ -8,6 +8,12 @@
         TitleMainTextColor '"--TitleMainTextColor"',
         TitleMainTextFont '"--TitleMainTextFont"',
         SelectorMainTextColor: '"--SelectorMainTextColor"',
-        SelectorMainTextFont: '"--SelectorMainTextFont"'
+        SelectorMainTextFont: '"--SelectorMainTextFont"',
+        TodayMainTextColor '"--TodayMainTextColor"',
+        TodayMainBackgroundColor '"--TodayMainBackgroundColor"',
+        TodayMainTextFont '"--TodayMainTextFont"',
+        TodayMainBorderColor '"--TodayMainBorderColor"',
+        TodayMainBorderWidth '"--TodayMainBorderWidth"',
+        TodayMainBorderRadius '"--TodayMainBorderRadius"'
     );
 }

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { CalendarContext } from './Calendar';
-import { CalendarContextStructure } from '../../../dist/es/src/components/Calendar/Calendar';
+import { CalendarContext, CalendarContextStructure } from './Calendar';
 
 export class CalendarComponent<P = null, S = null> extends React.Component<
   P,
