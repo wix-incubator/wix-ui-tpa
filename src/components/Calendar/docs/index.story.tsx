@@ -119,7 +119,7 @@ export default {
                 colors: [
                   {
                     label: 'Title Color',
-                    wixParam: 'Test',
+                    wixParam: 'SettingTitleMainTextColor',
                     defaultColor: 'color-5',
                   },
                   {
@@ -146,7 +146,7 @@ export default {
                 fonts: [
                   {
                     label: 'Title Font',
-                    wixParam: 'TitleMainTextFont',
+                    wixParam: 'SettingTitleMainTextFont',
                     defaultFont: 'arial',
                   },
                   {

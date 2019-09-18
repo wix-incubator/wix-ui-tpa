@@ -1,4 +1,9 @@
 :import {
+  -st-from: "../../../common/formatters.st";
+  -st-named: fallback;
+}
+
+:import {
   -st-from: "../../Text/Text.st.css";
   -st-default: Text;
 }
@@ -12,6 +17,6 @@
 .titleTextMixin {
   -st-mixin: Text(
     MainTextColor value(TitleMainTextColor),
-    MainTextFont '"fallback(font(--TitleMainTextFont), font({theme: \'Heading-M\', size: \'36px\'}))"'
+    MainTextFont fallback(value(TitleMainTextFont), 'font({theme: \'Heading-M\', size: \'36px\'})')
   );
 }

@@ -5,8 +5,8 @@
 
 .root {
     -st-mixin: Calendar(
-        TitleMainTextColor '"--Test"',
-        TitleMainTextFont '"--TitleMainTextFont"',
+        TitleMainTextColor '"--SettingTitleMainTextColor"',
+        TitleMainTextFont '"--SettingTitleMainTextFont"',
         SelectorMainTextColor: '"--SelectorMainTextColor"',
         SelectorMainTextFont: '"--SelectorMainTextFont"',
         TodayMainTextColor '"--TodayMainTextColor"',
