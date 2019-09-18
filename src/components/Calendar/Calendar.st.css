@@ -1,6 +1,11 @@
 :import {
   -st-from: "./Title/Title.st.css";
-  -st-named: titleTextMixin;
+  -st-default: Title;
+}
+
+:import {
+  -st-from: "./Selector/Selector.st.css";
+  -st-default: Selector;
 }
 
 :vars {
@@ -25,7 +30,7 @@
 }
 
 .titleText {
-    -st-mixin: titleTextMixin(
+    -st-mixin: Title(
         TitleMainTextColor value(TitleMainTextColor),
         TitleMainTextFont value(TitleMainTextFont)
     );
@@ -40,6 +45,13 @@
  
 .defaultControls {
     position: relative;
+}
+
+.selector {
+    -st-mixin: Selector(
+        SelectorMainTextColor value(SelectorMainTextColor),
+        SelectorMainTextFont value(SelectorMainTextFont)
+    );
 }
 
 .defaultSelector {

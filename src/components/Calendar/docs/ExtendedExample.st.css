@@ -7,8 +7,8 @@
     -st-mixin: Calendar(
         TitleMainTextColor '"--SettingTitleMainTextColor"',
         TitleMainTextFont '"--SettingTitleMainTextFont"',
-        SelectorMainTextColor: '"--SelectorMainTextColor"',
-        SelectorMainTextFont: '"--SelectorMainTextFont"',
+        SelectorMainTextColor '"--SettingSelectorMainTextColor"',
+        SelectorMainTextFont '"--SettingSelectorMainTextFont"',
         TodayMainTextColor '"--TodayMainTextColor"',
         TodayMainBackgroundColor '"--TodayMainBackgroundColor"',
         TodayMainTextFont '"--TodayMainTextFont"',

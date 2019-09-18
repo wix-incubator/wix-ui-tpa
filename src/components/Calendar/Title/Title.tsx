@@ -5,6 +5,7 @@ import { CalendarContextStructure } from '../Calendar';
 import * as classNames from 'classnames';
 import { CalendarComponent } from '../CalendarComponent';
 import styles from './Title.st.css';
+import { CalendarProps } from '../../../../dist/es/src/components/Calendar/Calendar';
 
 // Working-around missing props in typings
 const Text = TextTPA as any;

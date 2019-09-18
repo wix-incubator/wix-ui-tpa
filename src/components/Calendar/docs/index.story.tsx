@@ -124,7 +124,7 @@ export default {
                   },
                   {
                     label: 'Selector Text Color',
-                    wixParam: 'SelectorMainTextColor',
+                    wixParam: 'SettingSelectorMainTextColor',
                     defaultColor: 'color-5',
                   },
                   {
@@ -151,7 +151,7 @@ export default {
                   },
                   {
                     label: 'Selector Text Font',
-                    wixParam: 'SelectorMainTextFont',
+                    wixParam: 'SettingSelectorMainTextFont',
                     defaultFont: 'arial',
                   },
                   {

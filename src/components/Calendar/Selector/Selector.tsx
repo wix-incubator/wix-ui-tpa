@@ -66,7 +66,10 @@ export class Selector extends CalendarComponent<SelectorProps> {
     const ariaLabelNext = ariaLabelNextProp || ariaLabelNextGlobal;
 
     return (
-      <div style={style} className={classNames(className, styles.selector)}>
+      <div
+        style={style}
+        className={classNames(className, context.styles.selector)}
+      >
         <button
           onClick={onClickPrev}
           type="button"

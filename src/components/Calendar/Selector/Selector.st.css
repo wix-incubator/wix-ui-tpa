@@ -1,4 +1,9 @@
 :import {
+  -st-from: "../../../common/formatters.st";
+  -st-named: fallback, color;
+}
+
+:import {
   -st-from: "../../Text/Text.st.css";
   -st-default: Text;
 }
@@ -12,11 +17,11 @@
 .period {
   text-align: center;
   flex: 1;
-  color: "fallback(color(--SelectorMainTextColor), color(color-5))";
-  font: '"fallback(font(--SelectorMainTextFont), font({theme: \'Body-M\', size: \'18px\'}))"';
+  color: fallback(value(SelectorMainTextColor), 'color(color-5)');
+  font: fallback(value(SelectorMainTextFont), 'font({theme: \'Body-M\', size: \'18px\'})')
 }
 
-.selector {
+.root {
   display: flex;
   align-items: center;
   width: 12.6em;
@@ -35,13 +40,13 @@
   transform: rotateY(180deg);
 }
 
-.selector svg {
-  fill: "fallback(color(--SelectorMainTextColor), color(color-5))";
+.root svg {
+  fill: color(fallback(value(SelectorMainTextColor), color-5));
 }
 
 .periodText {
   -st-mixin: Text(
-    MainTextColor '"--SelectorMainTextColor"',
-    MainTextFont '"fallback(font(--SelectorMainTextFont), font({theme: \'Body-M\', size: \'18px\'}))"'
+    MainTextColor value(SelectorMainTextColor),
+    MainTextFont fallback(value(SelectorMainTextFont), 'font({theme: \'Body-M\', size: \'18px\'})')
   );
 }
