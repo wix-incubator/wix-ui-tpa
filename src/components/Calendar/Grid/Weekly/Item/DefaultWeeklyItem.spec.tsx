@@ -4,7 +4,7 @@ import * as React from 'react';
 // import { Item } from './Item';
 // import { DEFAULT_ROW_SPAN, DEFAULT_COLUMN_SPAN } from '../constants';
 
-describe('Calendar.WeeklyItem', () => {
+describe('Calendar.DefaultWeeklyItem', () => {
   // const createDriver = createUniDriverFactory(itemDriverFactory);
   // TODO: Not finished
   // it('should use default columnSpan', async () => {

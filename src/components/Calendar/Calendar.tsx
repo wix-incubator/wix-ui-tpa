@@ -51,7 +51,7 @@ export enum CalendarEventCellFlag {
 }
 
 export interface CalendarDay {
-  title: string;
+  title?: string;
   flags?: CalendarDayCellFlag[];
   events: CalendarEvent[];
 }
@@ -100,6 +100,11 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
    * Hides today button when true.
    */
   hideTodayButton?: boolean;
+
+  /**
+   * Hides week day titles when true.
+   */
+  hideWeekDayTitles?: boolean;
 
   /**
    * Callback for handling previous time frame selection. <br /><br />
@@ -203,6 +208,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     selectorTitle: '',
     hideSelector: false,
     hideTodayButton: false,
+    hideWeekDayTitles: false,
     onClickPrev: null,
     onClickNext: null,
     onClickToday: null,

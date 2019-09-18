@@ -51,6 +51,7 @@ export default {
     selectorTitle: 'Time Period',
     hideSelector: false,
     hideTodayButton: false,
+    hideWeekDayTitles: false,
     onClickPrev: () => {
       alert('Clicked Prev');
     },
@@ -118,7 +119,7 @@ export default {
                 colors: [
                   {
                     label: 'Title Color',
-                    wixParam: 'TitleMainTextColor',
+                    wixParam: 'Test',
                     defaultColor: 'color-5',
                   },
                   {

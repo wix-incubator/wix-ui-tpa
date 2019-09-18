@@ -1,8 +1,45 @@
 export const importExample = `import { Calendar } from 'wix-ui-tpa/Calendar';`;
+import { CalendarConfig } from '../Calendar';
+
+const weeklyConfig = JSON.stringify({
+  days: [
+    {
+      events: [{}],
+    },
+    {
+      events: [{}, {}],
+    },
+    {
+      events: [],
+    },
+    {
+      events: [{}, {}, {}],
+    },
+    {
+      events: [{}, {}],
+    },
+    {
+      events: [],
+    },
+    {
+      events: [{}, {}],
+    },
+  ],
+  weekDays: [
+    { title: 'Mon' },
+    { title: 'Tue' },
+    { title: 'Wed' },
+    { title: 'Thu' },
+    { title: 'Fri' },
+    { title: 'Sat' },
+    { title: 'Sun' },
+  ],
+} as CalendarConfig);
 
 export const simple = `
   <Calendar
     layout="weekly"
+    config={${weeklyConfig}}
     calendarTitle="Default Calendar"
     selectorTitle="Default Period"
     todayButtonText="Today"
@@ -15,6 +52,7 @@ export const simple = `
 export const complex = `
   <Calendar
     layout="weekly"
+    config={${weeklyConfig}}
   >
     <div style={{display: 'block', height: '60px'}}>
       <div style={{display: 'inline-block', float: 'left'}}>
@@ -42,6 +80,7 @@ export const complex = `
 export const placeholder = `
   <Calendar
     layout="weekly"
+    config={${weeklyConfig}}
     calendarTitle="Default Calendar"
     selectorTitle="Default Period"
     todayButtonText="Today"
@@ -63,6 +102,7 @@ export const mobile = `
   <ExampleWithContextProps mobile={true}>
     <Calendar
       layout="weekly"
+      config={${weeklyConfig}}
       calendarTitle="Mobile Calendar"
       selectorTitle="Default Period"
       todayButtonText="Today"
