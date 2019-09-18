@@ -30,12 +30,16 @@ export class WeeklyGrid extends CalendarComponent<WeeklyGridProps> {
 
   renderWithContext = (context: CalendarContextStructure) => {
     const { hideWeekDayTitles, renderWeekDay, renderItem } = this.props;
+
     const { days, weekDays } = context.props.config;
 
     if (days.length !== weekDays.length) {
-      throw new CalendarError(
-        'Amount of days and weekDays in configuration should match for weekly calendar layout.',
+      console.error(
+        new CalendarError(
+          'Amount of days and weekDays in configuration should match for weekly calendar layout.',
+        ),
       );
+      return null;
     }
 
     return (

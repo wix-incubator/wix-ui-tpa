@@ -6,6 +6,7 @@ import { CustomizableComponent } from '../CustomizableComponent';
 import { CALENDAR_WEEK_DAY_DISPLAY_NAME } from './WeekDay/WeekDay';
 import { CALENDAR_ITEM_DISPLAY_NAME } from './Item/Item';
 import { CALENDAR_POPUP_DISPLAY_NAME } from './Popup/popup';
+import { CalendarError } from '../CalendarError';
 
 export interface GridProps {
   hideWeekDayTitles?: boolean;
@@ -61,6 +62,13 @@ export class Grid extends CustomizableComponent<GridProps> {
   getPopup = () => this.getSubComponent(CALENDAR_POPUP_DISPLAY_NAME);
 
   renderWithContext = (context: CalendarContextStructure) => {
+    const { config } = context.props;
+
+    if (!config) {
+      console.error(new CalendarError('Config prop is required.'));
+      return null;
+    }
+
     const { hideWeekDayTitles: hideWeekDayTitleProp } = this.props;
 
     const {

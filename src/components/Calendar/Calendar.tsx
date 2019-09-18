@@ -74,7 +74,7 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
   /**
    * Calendar data object including all texts, days and events. <br /><br />
    */
-  config?: CalendarConfig;
+  config: CalendarConfig;
 
   /**
    * Title for the whole calendar. <br /><br />
@@ -178,7 +178,9 @@ export interface CalendarContextStructure {
 }
 
 const defaultContext: CalendarContextStructure = {
-  props: {},
+  props: {
+    config: null,
+  },
   isMobile: false,
 };
 
@@ -192,18 +194,7 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
 
   static defaultProps: DefaultCalendarProps = {
     layout: CalendarLayouts.monthly,
-    config: {
-      days: [],
-      weekDays: [
-        { title: '' },
-        { title: '' },
-        { title: '' },
-        { title: '' },
-        { title: '' },
-        { title: '' },
-        { title: '' },
-      ],
-    },
+    config: null,
     calendarTitle: '',
     selectorTitle: '',
     hideSelector: false,
