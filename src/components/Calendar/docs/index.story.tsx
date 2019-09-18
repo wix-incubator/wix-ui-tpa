@@ -21,6 +21,8 @@ import { ExtendedExample } from './ExtendedExample';
 import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
 import * as Readme from '../README.md';
+import { PRIORITY, SIZE } from '../../Button/Button';
+import { objectExpression } from '@babel/types';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -33,20 +35,41 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Calendar',
     layout: CalendarLayouts.weekly,
+    config: {
+      days: [],
+      weekDays: [
+        { title: 'Mon' },
+        { title: 'Tue' },
+        { title: 'Wed' },
+        { title: 'Thu' },
+        { title: 'Fri' },
+        { title: 'Sat' },
+        { title: 'Sun' },
+      ],
+    },
     calendarTitle: 'Example Calendar',
     selectorTitle: 'Time Period',
     hideSelector: false,
+    hideTodayButton: false,
     onClickPrev: () => {
-      alert('Clicked prev');
+      alert('Clicked Prev');
     },
     onClickNext: () => {
-      alert('Clicked next');
+      alert('Clicked Next');
+    },
+    onClickToday: () => {
+      alert('Clicked Today');
     },
     ariaLabelPrev: 'Previous time period',
     ariaLabelNext: 'Next time period',
+    todayButtonText: 'Today',
+    todayButtonPriority: PRIORITY.secondary,
+    todayButtonSize: SIZE.tiny,
   }),
   exampleProps: {
     layout: Object.values(CalendarLayouts),
+    todayButtonPriority: Object.values(PRIORITY),
+    todayButtonSize: Object.values(SIZE),
   },
   dataHook: 'storybook-Calendar',
   sections: [

@@ -16,7 +16,11 @@ Component is responsible for drawing visual elements but not for data. For examp
 
   export interface CalendarConfig {
     days: CalendarDay[]
-    weekDays: [string, string, string, string, string, string, string]
+    weekDays: [CalendarWeekDay, CalendarWeekDay, CalendarWeekDay, CalendarWeekDay, CalendarWeekDay, CalendarWeekDay, CalendarWeekDay]
+  }
+
+  export interface CalendarWeekDay {
+    title: string
   }
 
   export enum CalendarDayCellFlag {

@@ -12,10 +12,54 @@ import {
 import styles from './Calendar.st.css';
 import * as classNames from 'classnames';
 import { PRIORITY, SIZE } from '../Button';
+import { WeekDay } from './Grid/WeekDay/WeekDay';
+import { Item } from './Grid/Item/Item';
+import { Popup } from './Grid/Popup/popup';
 
 export enum CalendarLayouts {
   weekly = 'weekly',
   monthly = 'monthly',
+}
+
+export interface CalendarConfig {
+  days: CalendarDay[];
+  weekDays: [
+    CalendarWeekDay,
+    CalendarWeekDay,
+    CalendarWeekDay,
+    CalendarWeekDay,
+    CalendarWeekDay,
+    CalendarWeekDay,
+    CalendarWeekDay,
+  ];
+}
+
+export interface CalendarWeekDay {
+  title: string;
+}
+
+export enum CalendarDayCellFlag {
+  today = 'today',
+  past = 'past',
+  future = 'future',
+  context = 'context',
+  active = 'active',
+}
+
+export enum CalendarEventCellFlag {
+  active = 'active',
+}
+
+export interface CalendarDay {
+  title: string;
+  flags?: CalendarDayCellFlag[];
+  events: CalendarEvent[];
+}
+
+export interface CalendarEvent {
+  [custom: string]: any;
+  time?: string;
+  flags?: CalendarEventCellFlag[];
 }
 
 export const CALENDAR_CONTROLS_DISPLAY_NAME = 'Calendar.Controls';
@@ -26,6 +70,11 @@ export interface CalendarProps extends Partial<DefaultCalendarProps> {
    * Even though default is CalendarLayouts.monthly, currently only CalendarLayouts.weekly is supported.
    */
   layout?: CalendarLayouts;
+
+  /**
+   * Calendar data object including all texts, days and events. <br /><br />
+   */
+  config?: CalendarConfig;
 
   /**
    * Title for the whole calendar. <br /><br />
@@ -138,6 +187,18 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
 
   static defaultProps: DefaultCalendarProps = {
     layout: CalendarLayouts.monthly,
+    config: {
+      days: [],
+      weekDays: [
+        { title: '' },
+        { title: '' },
+        { title: '' },
+        { title: '' },
+        { title: '' },
+        { title: '' },
+        { title: '' },
+      ],
+    },
     calendarTitle: '',
     selectorTitle: '',
     hideSelector: false,
@@ -159,6 +220,9 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
   static Selector = Selector;
   static TodayButton = TodayButton;
   static Grid = Grid;
+  static WeekDay = WeekDay;
+  static Item = Item;
+  static Popup = Popup;
 
   useControlsWrapper = (customizedTypes: string[]) => {
     const { hideSelector, hideTodayButton } = this.props;
@@ -210,10 +274,6 @@ export class Calendar extends CustomizableComponent<CalendarProps> {
     ) : null;
 
   renderGrid = () => <Calendar.Grid />;
-
-  // TODO: if there is both today and selector, detailsElements
-  // should be modified by replacing them with controls.
-  // *Only if nothing is hidden
 
   defaultElements = {
     [CALENDAR_TITLE_DISPLAY_NAME]: this.renderTitle,
