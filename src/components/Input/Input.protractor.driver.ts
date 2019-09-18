@@ -1,4 +1,4 @@
 export {
   inputDriverFactory,
   InputDriver,
-} from 'wix-ui-core/drivers/protractor';
+} from 'wix-ui-core/dist/src/components/input/Input.protractor.driver';
