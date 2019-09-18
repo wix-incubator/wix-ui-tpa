@@ -3,12 +3,6 @@ import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import styles from './ActionsMenuItem.st.css';
 import { Text } from '../../Text';
 
-
-console.log('styles(styles.root)');
-console.log(styles(styles.root));
-console.log("styles('root')");
-console.log(styles('root'));
-
 function noop() {}
 
 export interface ActionsMenuItemProps {

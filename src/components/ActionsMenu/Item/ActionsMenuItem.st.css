@@ -45,7 +45,7 @@
     background-color: inherit;
 }
 
-.text {
+.root .text {
     display: flex;
     flex-direction: column;
     color: color(color-5);
@@ -61,7 +61,7 @@
     font: fallback(font(value(ItemFont)), font(value(ItemFontMobile)));
 }
 
-.subtitle {
+.root .subtitle {
     font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)));
     color: applyOpacity(color(color-5), 0.6);
     width: 100%;
@@ -71,7 +71,7 @@
     font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)));
 }
 
-.spaceContainer {
+.root .spaceContainer {
     width: 12px;
     height: 100%;
 }
