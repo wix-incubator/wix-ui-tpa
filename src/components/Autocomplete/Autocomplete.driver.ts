@@ -1,4 +1,4 @@
-import { autocompleteDriverFactory as coreAutocompleteDriverFactory } from 'wix-ui-core/drivers/vanilla';
+import { autocompleteDriverFactory as coreAutocompleteDriverFactory } from 'wix-ui-core/dist/src/components/autocomplete/Autocomplete.driver';
 import { errorMessageWrapperDriverFactory } from '../ErrorMessageWrapper/ErrorMessageWrapper.driver';
 
 export const autocompleteDriverFactory = ({ element, eventTrigger }) => {

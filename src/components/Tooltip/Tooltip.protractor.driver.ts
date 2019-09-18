@@ -1,7 +1,7 @@
 import {
   tooltipDriverFactory as coreDriver,
   TooltipDriver as coreTooltipDriver,
-} from 'wix-ui-core/drivers/protractor';
+} from 'wix-ui-core/dist/src/components/tooltip/Tooltip.protractor.driver';
 
 export interface TooltipProtractorDriver extends coreTooltipDriver {}
 

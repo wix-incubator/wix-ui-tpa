@@ -1,4 +1,4 @@
-import { checkboxDriverFactory as coreCheckboxDriverFactory } from 'wix-ui-core/drivers/vanilla';
+import { checkboxDriverFactory as coreCheckboxDriverFactory } from 'wix-ui-core/dist/src/components/checkbox/Checkbox.driver';
 import { StylableDOMUtil } from '@stylable/dom-test-kit';
 import style from './IconToggle.st.css';
 
