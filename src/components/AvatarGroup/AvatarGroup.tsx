@@ -42,14 +42,6 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
   };
   static TextButton = AvatarGroupTextButton;
 
-  getTextButtonClass = () => {
-    const { size } = this.props;
-    if (size === AvatarGroupSize.xSmall || size === AvatarGroupSize.xxSmall) {
-      return styles.smallTextButton;
-    }
-    return styles.textButton;
-  };
-
   getTextButton = () => {
     const { children } = this.props;
     const textButton = React.Children.toArray(children).find(
@@ -59,8 +51,7 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     ) as React.ReactElement;
     if (textButton) {
       return React.cloneElement(textButton, {
-        className: `${textButton.props.className ||
-          ''} ${this.getTextButtonClass()}`,
+        className: `${textButton.props.className || ''} ${styles.textButton}`,
         'data-hook': 'text-button',
       });
     }
