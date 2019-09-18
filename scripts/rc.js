@@ -56,7 +56,7 @@ function bumpVersion() {
 
 function updateChangelog() {
   try {
-    execute('conventional-changelog -i CHANGELOG.md -s', true);
+    execute('npm run changelog', true);
   } catch (e) {
     eject(`standard-version failed with error\n ${e}`);
   }
