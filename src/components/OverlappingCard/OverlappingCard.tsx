@@ -1,10 +1,11 @@
 import * as React from 'react';
 import style from './OverlappingCard.st.css';
 import { CardRatioOptions } from '../Card';
+import { TPAComponentProps } from '../../types';
 
 export { CardRatioOptions as OverlappingCardRatioOptions };
 
-export interface OverlappingCardProps {
+export interface OverlappingCardProps extends TPAComponentProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
   ratio?: CardRatioOptions;

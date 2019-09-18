@@ -5,8 +5,9 @@ import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
+import { TPAComponentProps } from '../../types';
 
-export interface TextProps {
+export interface TextProps extends TPAComponentProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
 }

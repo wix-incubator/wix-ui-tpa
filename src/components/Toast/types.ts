@@ -1,10 +1,12 @@
+import { TPAComponentProps } from '../../types';
+
 export enum TOAST_SKIN {
   status = 'status',
   success = 'success',
   error = 'error',
 }
 
-export interface ToastProps {
+export interface ToastProps extends TPAComponentProps {
   /** Define the styles for toast */
   skin: TOAST_SKIN;
   /** Is toast visible or not. For correct animation we should keep element in the DOM all time*/

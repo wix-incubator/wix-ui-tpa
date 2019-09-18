@@ -10,8 +10,9 @@ import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';
 import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME } from './dataKeys';
+import { TPAComponentProps } from '../../types';
 
-export interface TPATextFieldProps {
+export interface TPATextFieldProps extends TPAComponentProps {
   /** the error message to display */
   errorMessage?: string;
   /** possible values: 'line', 'box' */
@@ -33,6 +34,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
     disabled = false,
     theme = TextFieldTheme.Box,
     suffix,
+    className,
     ...coreInputProps
   } = props;
   let suffixToShow = suffix;
@@ -60,12 +62,16 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
   return (
     <CoreInput
       {...dataObject}
-      {...style('root', {
-        error,
-        theme,
-        success,
-        disabled,
-      })}
+      {...style(
+        'root',
+        {
+          error,
+          theme,
+          success,
+          disabled,
+        },
+        { className },
+      )}
       suffix={
         suffixToShow && (
           <div className={style.suffixWrapper}>

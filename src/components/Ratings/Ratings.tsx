@@ -4,6 +4,7 @@ import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
 import styles from './Ratings.st.css';
 import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
 import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
+import { TPAComponentProps } from '../../types';
 
 export enum Size {
   Small = 'small',
@@ -20,7 +21,7 @@ export enum Layout {
   Bottom = 'bottom',
 }
 
-export interface RatingsProps {
+export interface RatingsProps extends TPAComponentProps {
   value: number;
   mode: Mode;
   onSelect?(value: number): void;
@@ -33,7 +34,6 @@ export interface RatingsProps {
   countDisplay?: string;
   'data-hook'?: string;
   name?: string;
-  className?: string;
 }
 
 interface DefaultProps {

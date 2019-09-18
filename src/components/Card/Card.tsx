@@ -4,6 +4,7 @@ import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
+import { TPAComponentProps } from '../../types';
 
 export enum CardRatioOptions {
   RATIO_100 = '100',
@@ -12,7 +13,7 @@ export enum CardRatioOptions {
   RATIO_30_70 = '30',
 }
 
-export interface CardProps {
+export interface CardProps extends TPAComponentProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
   ratio?: CardRatioOptions;

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import style from './StatesButton.st.css';
-import { Button, ButtonProps, SIZE } from '../Button';
+import { Button, ButtonProps } from '../Button';
+import { TPAComponentProps } from '../../types';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
-export interface StatesButtonProps extends ButtonProps {
+export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
   disabled: boolean;
   text: string;
   dataHook?: string;
