@@ -17,7 +17,7 @@ Just as a reminder, the semver rules are:
 So what happens when we create a release?
 
 1. The version is updated in the `package.json` file (according to semver rules)
-2. A CHANGELOG file is generated from the latest commit messages (using [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog))
+2. A [CHANGELOG.md](#changelog) file is generated from the latest commit messages
 3. A git tag is created with the new version
 
 ## How to make a release
@@ -34,5 +34,11 @@ Go over the differences to see that all went well.
 Push and open a PR.
 5. Wait for the PR to pass all checks.
 6. Merge PR with the title: `release: version <version_number>`
+
+## CHANGELOG
+The `CHANGELOG.md` file is generated using the [conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) tool, which is used by Angular, among others.
+
+In order for the `CHANGELOG` file to be generated correctly, PR's should be merged with commit messages
+that follow the Angular [commit message guidelines](https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-guidelines).
 
 
