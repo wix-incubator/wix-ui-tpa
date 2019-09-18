@@ -30,7 +30,7 @@ export class Title extends CalendarComponent<TitleProps> {
 
     return content ? (
       <Text
-        className={classNames(styles.titleText, {
+        className={classNames(context.styles.titleText, {
           [className]: className,
         })}
         typography={TYPOGRAPHY.largeTitle}

@@ -9,9 +9,9 @@
   TitleMainTextFont: --overridable;
 }
 
-.titleText {
+.titleTextMixin {
   -st-mixin: Text(
-    MainTextColor '"--TitleMainTextColor"',
+    MainTextColor value(TitleMainTextColor),
     MainTextFont '"fallback(font(--TitleMainTextFont), font({theme: \'Heading-M\', size: \'36px\'}))"'
   );
 }

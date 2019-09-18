@@ -174,6 +174,7 @@ type DefaultCalendarProps = AllPropsRequired<CalendarProps>;
 
 export interface CalendarContextStructure {
   props: CalendarProps;
+  styles: { [name: string]: string };
   isMobile: boolean;
 }
 
@@ -181,6 +182,7 @@ const defaultContext: CalendarContextStructure = {
   props: {
     config: null,
   },
+  styles,
   isMobile: false,
 };
 
