@@ -156,19 +156,16 @@
     margin-left: 8px;
 }
 
-:size(large) .textButton,
-:size(medium) .textButton,
-:size(small) .textButton {
+.textButton {
     -st-mixin: TextButton(
-       MainTextColor '"--TextButtonColor"',
-       MainTextFont '"--TextButtonFont"'
+       MainTextColor value(TextButtonColor),
+       MainTextFont value(TextButtonFont)
     );
 }
 
-:size(xSmall) .textButton,
-:size(xxSmall) .textButton {
+.smallTextButton {
     -st-mixin: TextButton(
-        MainTextColor '"--TextButtonColor"',
-        MainTextFont '"fallback(font(--TextButtonFont), font(SmallerTextButtonFont))"'
+        MainTextColor value(TextButtonColor),
+        MainTextFont fallback(value(TextButtonFont), font(value(SmallerTextButtonFont)))
     );
 }
