@@ -42,15 +42,15 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
         {({ mobile }) => (
           <ul
             key={alignment}
-            {...styles(styles.root, { mobile, alignment }, rest)}
+            {...styles('root', { mobile, alignment }, rest)}
             {...getDataAttributes(mobile)}
             role="menu"
             tabIndex={-1}
           >
             {React.Children.map(children, (child: React.ReactElement) =>
               child.type === ActionsMenuItem
-                ? React.cloneElement(child, styles(styles.item))
-                : React.cloneElement(child, styles(styles.divider)),
+                ? React.cloneElement(child, { className: styles.item })
+                : React.cloneElement(child, { className: styles.divider }),
             )}
           </ul>
         )}

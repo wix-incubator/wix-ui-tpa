@@ -3,7 +3,6 @@
     -st-named: color, fallback, font, value, opacity;
 }
 
-
 :vars {
     /*Defaults*/
     ItemFontDesktop: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
@@ -31,7 +30,7 @@
     background-color: rgba(0,0,0, 0.06);
 }
 
-.container {
+.root .container {
     display: flex;
     flex: 1;
     position: absolute;
@@ -46,10 +45,6 @@
     background-color: inherit;
 }
 
-.icon {
-
-}
-
 .text {
     display: flex;
     flex-direction: column;
@@ -57,7 +52,7 @@
     width: 100%;
 }
 
-.content {
+.root .content {
     font: fallback(font(value(ItemFont)), font(value(ItemFontDesktop)));
     width: 100%;
 }
@@ -77,6 +72,7 @@
 }
 
 .spaceContainer {
+    background: red;
     width: 12px;
     height: 100%;
 }

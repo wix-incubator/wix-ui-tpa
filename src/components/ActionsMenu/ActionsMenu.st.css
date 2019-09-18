@@ -43,6 +43,7 @@
 
 .divider {
     margin: 10px 13px;
+    width: auto;
 }
 
 .root:mobile {

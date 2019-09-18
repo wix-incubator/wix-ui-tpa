@@ -9,6 +9,7 @@ import {
 export interface TextProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
+  className?: string;
 }
 
 export class Text extends React.Component<TextProps> {

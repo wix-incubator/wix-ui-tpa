@@ -34,19 +34,19 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
         {({ mobile }) => (
           <li
             key={content}
-            {...styles(styles.root, { mobile, disabled }, rest)}
+            {...styles('root', { mobile, disabled }, rest)}
             role="menuitem"
             tabIndex={-1}
             aria-disabled={disabled}
             onClick={disabled ? noop : onClick}
           >
-            <div {...styles(styles.container, {})}>
-              <div {...styles(styles.icon, {})}>{prefixIcon}</div>
-              <div {...styles(styles.spaceContainer, {})} />
-              <div {...styles(styles.text, {})}>
-                <Text {...styles(styles.content, {})}>{content}</Text>
+            <div className={styles.container}>
+              <div>{prefixIcon}</div>
+              <div className={styles.spaceContainer} />
+              <div className={styles.text}>
+                <Text className={styles.content}>{content}</Text>
                 {subtitle && (
-                  <Text {...styles(styles.subtitle, {})}>{subtitle}</Text>
+                  <Text className={styles.subtitle}>{subtitle}</Text>
                 )}
               </div>
             </div>
