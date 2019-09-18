@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../../common/formatters.st";
-    -st-named: color, fallback, font, value, opacity;
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :vars {
@@ -63,7 +63,7 @@
 
 .subtitle {
     font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)));
-    color: opacity(color(color-5), 0.6);
+    color: applyOpacity(color(color-5), 0.6);
     width: 100%;
 }
 
@@ -72,7 +72,6 @@
 }
 
 .spaceContainer {
-    background: red;
     width: 12px;
     height: 100%;
 }
