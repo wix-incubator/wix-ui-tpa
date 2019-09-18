@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { {%ComponentName%} } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -14,6 +13,11 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import * as {%ComponentName%}WiringExampleRaw from '!raw-loader!./{%ComponentName%}WiringExample.tsx';
+import * as {%ComponentName%}WiringExampleCSSRaw from '!raw-loader!./{%ComponentName%}WiringExample.st.css';
+import { {%ComponentName%}WiringExample } from './{%ComponentName%}WiringExample';
+import { {%ComponentName%} } from '../';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -55,6 +59,22 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: '{%ComponentName%} Panel',
+              example: <{%ComponentName%}WiringExample />,
+              rawSource: {%ComponentName%}WiringExampleRaw,
+              rawCSSSource: {%ComponentName%}WiringExampleCSSRaw,
+              params: {
+                colors: [],
+                fonts: [],
+                numbers: [],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

@@ -6,6 +6,7 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { TOAST_SKIN } from './types';
 
 export interface ToastDriver extends BaseUniDriver {
+  isShown(): Promise<boolean>;
   isMobile(): Promise<boolean>;
   isSuccess(): Promise<boolean>;
   isError(): Promise<boolean>;
@@ -23,6 +24,10 @@ const hasMobile = async (base: UniDriver): Promise<boolean> => {
   return hasDataAttr(base, 'mobile', 'true');
 };
 
+const hasIsShown = async (base: UniDriver): Promise<boolean> => {
+  return hasDataAttr(base, 'is-shown', 'true');
+};
+
 const hasDataAttr = async (
   base: UniDriver,
   field: string,
@@ -38,6 +43,8 @@ export const toastDriverFactory = (base: UniDriver): ToastDriver => {
 
   return {
     ...baseUniDriverFactory(base),
+    /* Shows is the animated toast visible at the moment ot not */
+    isShown: () => hasIsShown(base),
     isMobile: () => hasMobile(base),
     /* Shows is the toast render with "success" skin */
     isSuccess: () => hasSkin(base, TOAST_SKIN.success),

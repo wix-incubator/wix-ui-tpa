@@ -1,4 +1,9 @@
 # Contribution
+
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+
+We use [conventional commits](https://www.conventionalcommits.org) to create a readable CHANGELOG
+
 ## Adding a new component
 To add a new component start by running `npm run generate`.
 This will generate all the necessary files that are required for the new component, which includes:

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { onStyleProcessorDone } from './StyleProcessorUtil';
-import { DATA_READY_HOOK } from './dataHooks.js';
+import { DATA_READY_HOOK } from 'storybook-snapper';
 
 interface VisualContainerElementProp {
   hook?(): Promise<void>;

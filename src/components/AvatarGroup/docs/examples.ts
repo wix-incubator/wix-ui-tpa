@@ -37,5 +37,15 @@ function getAvatarGroups(size) {
         size="${size}"
       />
     </div>
+    
+    <div>
+      <AvatarGroup
+        items={[${items}${items}${items}]}
+        maxAmount={9}
+        size="${size}"
+      >
+        <AvatarGroup.TextButton onClick={() => console.log('Clicked some more')}>Some more</AvatarGroup.TextButton>
+      </AvatarGroup>
+    </div>
   </div>`;
 }
