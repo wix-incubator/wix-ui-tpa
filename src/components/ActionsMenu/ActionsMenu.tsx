@@ -3,7 +3,7 @@ import styles from './ActionsMenu.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuItem } from './Item/ActionsMenuItem';
 import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
-import { Divider } from '../Divider';
+import { ActionsMenuDivider } from "./Divider/Divider";
 
 export enum Alignment {
   left = 'left',
@@ -22,7 +22,7 @@ interface DefaultProps {
 /** ActionsMenu */
 export class ActionsMenu extends React.Component<ActionsMenuProps> {
   static Item = ActionsMenuItem;
-  static Divider = Divider;
+  static Divider = ActionsMenuDivider;
 
   static displayName = 'ActionsMenu';
   static defaultProps: DefaultProps = {
@@ -49,7 +49,7 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
             {React.Children.map(children, (child: React.ReactElement) =>
               child.type === ActionsMenuItem
                 ? React.cloneElement(child, { className: styles.item })
-                : React.cloneElement(child, { className: styles.divider }),
+                : child,
             )}
           </ul>
         )}
