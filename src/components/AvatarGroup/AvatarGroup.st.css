@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-named: color, fallback, font;
 }
 
 :import {
@@ -156,19 +156,19 @@
     margin-left: 8px;
 }
 
-:size(large) .textButton,
-:size(medium) .textButton,
-:size(small) .textButton {
+.root:size(large) .textButton,
+.root:size(medium) .textButton,
+.root:size(small) .textButton {
     -st-mixin: TextButton(
-       MainTextColor '"--TextButtonColor"',
-       MainTextFont '"--TextButtonFont"'
+       MainTextColor value(TextButtonColor),
+       MainTextFont value(TextButtonFont)
     );
 }
 
-:size(xSmall) .textButton,
-:size(xxSmall) .textButton {
+.root:size(xSmall) .textButton,
+.root:size(xxSmall) .textButton {
     -st-mixin: TextButton(
-        MainTextColor '"--TextButtonColor"',
-        MainTextFont '"fallback(font(--TextButtonFont), font(SmallerTextButtonFont))"'
+        MainTextColor value(TextButtonColor),
+        MainTextFont fallback(value(TextButtonFont), font(value(SmallerTextButtonFont)))
     );
 }
