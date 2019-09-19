@@ -34,8 +34,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
     disabled = false,
     theme = TextFieldTheme.Box,
     suffix,
-    className,
-    ...coreInputProps
+    ...restProps
   } = props;
   let suffixToShow = suffix;
 
@@ -70,7 +69,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
           success,
           disabled,
         },
-        { className },
+          restProps,
       )}
       suffix={
         suffixToShow && (
@@ -81,7 +80,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
         )
       }
       error={error}
-      {...coreInputProps}
+      {...restProps}
       disabled={disabled}
     />
   );

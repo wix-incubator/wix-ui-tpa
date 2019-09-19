@@ -6,7 +6,6 @@ import { TPAComponentProps } from '../../../types';
 interface TabsNavButtonProps extends TPAComponentProps {
   onClick(): void;
   tabIndex: number;
-  'data-hook': string;
 }
 
 export const TabsNavButton: React.FunctionComponent<

@@ -19,7 +19,6 @@ export interface CheckboxProps extends TPAComponentProps {
   indeterminate?: boolean;
   error?: boolean;
   name?: string;
-  'data-hook'?: string;
 }
 
 interface DefaultProps {

@@ -15,7 +15,6 @@ interface TabProps extends TPAComponentProps {
   isActive: boolean;
   indicateActive: boolean;
   onClick(index: number): void;
-  'data-hook': string;
 }
 
 export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
