@@ -36,6 +36,9 @@ function reconfigureStylable(config) {
     return config;
 }
 
+const makeTestkitTemplate = platform =>
+  `import { <%= utils.toCamel(component.displayName) %>TestkitFactory } from 'wix-ui-tpa/dist/src/testkit${platform}';`;
+
 module.exports = ({config}) => {
     const newConfig = reconfigureStylable(wixStorybookConfig(config));
 
@@ -56,7 +59,21 @@ module.exports = ({config}) => {
                         moduleName: 'wix-ui-tpa',
                         repoBaseURL: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/',
                         importFormat: "import {%componentName} from '%moduleName/%componentName'",
-                        issueURL: "https://github.com/wix/wix-ui-tpa/issues/new"
+                        issueURL: "https://github.com/wix/wix-ui-tpa/issues/new",
+                        testkits: {
+                          vanilla: {
+                            template: makeTestkitTemplate(''),
+                          },
+                          enzyme: {
+                            template: makeTestkitTemplate('/enzyme'),
+                          },
+                          puppeteer: {
+                            template: makeTestkitTemplate('/puppeteer'),
+                          },
+                          protractor: {
+                            template: makeTestkitTemplate('/protractor'),
+                          }
+                        }
                     }
                 }
             })
