@@ -3,6 +3,11 @@
     -st-named: color, fallback, font, applyOpacity;
 }
 
+:import {
+    -st-from: "../../Text/Text.st.css";
+    -st-default: Text;
+}
+
 :vars {
     /*Defaults*/
     ItemFontDesktop: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
@@ -46,29 +51,44 @@
 }
 
 .root .text {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextColor color(color-5)
+    );
     display: flex;
     flex-direction: column;
-    color: color(color-5);
     width: 100%;
 }
 
 .root .content {
-    font: fallback(font(value(ItemFont)), font(value(ItemFontDesktop)));
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
+    );
     width: 100%;
 }
 
 .root:mobile .content {
-    font: fallback(font(value(ItemFont)), font(value(ItemFontMobile)));
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
+    );
 }
 
 .root .subtitle {
-    font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)));
-    color: applyOpacity(color(color-5), 0.6);
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextColor applyOpacity(color(color-5), 0.6),
+        MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)))
+    );
     width: 100%;
 }
 
 .root:mobile .subtitle {
-    font: fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)));
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)))
+    );
 }
 
 .root .spaceContainer {

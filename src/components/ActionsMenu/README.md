@@ -12,7 +12,7 @@ The `ActionsMenu` implementation provides a few default overridable styles. By d
 | propName              | propType | description                                                |
 |-----------------------|----------|------------------------------------------------------------|
 | MenuBackgroundColor   | string   | The color of the background instead of the default color   |
-| MenuBorderWidth       | string   | The color of the menu width instead of the default one     |
+| MenuBorderWidth       | string   | The width of the menu border instead of the default one    |
 | MenuBorderColor       | string   | The color of the menu border instead of the default color  |
 
 
