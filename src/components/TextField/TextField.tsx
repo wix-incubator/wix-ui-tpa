@@ -69,7 +69,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
           success,
           disabled,
         },
-          restProps,
+        restProps,
       )}
       suffix={
         suffixToShow && (
