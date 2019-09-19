@@ -18,7 +18,7 @@
   text-align: center;
   flex: 1;
   color: fallback(value(SelectorMainTextColor), 'color(color-5)');
-  font: fallback(value(SelectorMainTextFont), 'font({theme: \'Body-M\', size: \'18px\'})')
+  font: fallback(value(SelectorMainTextFont), 'font({theme: \'Body-M\', size: \'18px\'})');
 }
 
 .root {

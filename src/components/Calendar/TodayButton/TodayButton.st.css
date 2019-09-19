@@ -13,6 +13,8 @@
   TodayMainBorderRadius: --overridable;
 }
 
+/* TODO: fix how variables are assigned (check title and selector) */
+
 .button {
   -st-mixin: Button(
     MainTextColor '"--TodayMainTextColor"',

@@ -65,7 +65,7 @@ export const complex = `
           onClickPrev={() => {alert('Clicked Prev')}}
           onClickNext={() => {alert('Clicked Next')}}
         >
-          <span style={{textTransform: 'uppercase'}}>
+          <span style={{textTransform: 'uppercase', fontSize: 14}}>
             Custom Period
           </span>
         </Calendar.Selector>
