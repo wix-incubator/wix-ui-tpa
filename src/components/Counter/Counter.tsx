@@ -4,8 +4,9 @@ import { Button } from 'wix-ui-core/button';
 import style from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
+import { TPAComponentProps } from '../../types';
 
-export interface CounterProps {
+export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
   incrementAriaLabel: string;
   decrementAriaLabel: string;

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import styles from './StripCard.st.css';
+import { TPAComponentProps } from '../../types';
 
 export const MIN_WIDTH = 700;
 
-export interface StripCardProps {
+export interface StripCardProps extends TPAComponentProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
   roundMedia?: boolean;

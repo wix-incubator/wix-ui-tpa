@@ -10,6 +10,7 @@ import { TabsNavButton } from './TabsNavButton';
 import { ALIGNMENT, SKIN, VARIANT } from './constants';
 import style from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
+import { TPAComponentProps } from '../../types';
 
 export const enum NavButtonOptions {
   both = 'both',
@@ -18,7 +19,7 @@ export const enum NavButtonOptions {
   none = 'none',
 }
 
-export interface TabsProps {
+export interface TabsProps extends TPAComponentProps {
   /** tabs to be displayed */
   items: TabItem[];
   /** callback function when tab is selected , returning the selected item index */

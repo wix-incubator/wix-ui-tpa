@@ -6,8 +6,9 @@ import {
   RadioButtonClickEvent,
 } from 'wix-ui-core/src/components/radio-button/RadioButton';
 import { colorPickerDataHook } from './dataHooks';
+import { TPAComponentProps } from '../../types';
 
-interface ColorPickerProps {
+interface ColorPickerProps extends TPAComponentProps {
   /** A callback to invoke on change */
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
 }
@@ -19,12 +20,12 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
   static Item = (props: ColorPickerItemProps) => <ColorPickerItem {...props} />;
 
   render() {
-    const { onChange } = this.props;
+    const { onChange, children, ...rest } = this.props;
 
     return (
-      <div {...styles('root', {}, { ...this.props })}>
+      <div {...styles('root', {}, rest)}>
         {React.Children.map(
-          this.props.children,
+          children,
           (item: ColorPickerItem, index: number) => {
             if (!React.isValidElement(item)) {
               return null;

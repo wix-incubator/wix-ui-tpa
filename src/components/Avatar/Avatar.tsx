@@ -4,6 +4,7 @@ import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 
 import styles from './Avatar.st.css';
 import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
+import { TPAComponentProps } from '../../types';
 
 export enum AvatarSize {
   xLarge = 'xLarge',
@@ -12,15 +13,13 @@ export enum AvatarSize {
   small = 'small',
 }
 
-export interface AvatarProps {
+export interface AvatarProps extends TPAComponentProps {
   /** User's name. Optional. Used in a case when avatar image src is missing or is invalid. */
   name?: string;
   /** Avatar's size. Optional. Defaults to 'medium'. One of 'xLarge' | 'large' | 'medium' | 'small'. */
   size?: AvatarSize;
   /** Avatar's image src. Optional. */
   src?: string;
-  /** Avatars's class name. Optional. */
-  className?: string;
 }
 
 interface DefaultProps {

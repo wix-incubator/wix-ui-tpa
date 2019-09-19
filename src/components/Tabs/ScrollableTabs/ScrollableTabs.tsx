@@ -6,6 +6,7 @@ import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateElementByProp } from '../../../common/animations';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from '../dataHooks';
 import style from './ScrollableTabs.st.css';
+import { TPAComponentProps } from '../../../types';
 
 export interface ScrollPosition {
   scrollLeft: number;
@@ -17,13 +18,12 @@ interface TabsUIRect {
   width: number;
 }
 
-interface ScrollableTabsProps {
+interface ScrollableTabsProps extends TPAComponentProps {
   items: TabItem[];
   alignment: Alignment;
   variant: Variant;
   onScroll(event: React.UIEvent): void;
   onClickItem(index: number): void;
-  className: string;
   activeTabIndex: number;
   animateIndicator?: boolean;
 }

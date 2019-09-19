@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
 import styles from './IconToggle.st.css';
+import { TPAComponentProps } from '../../types';
 
 export interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
@@ -11,7 +12,7 @@ export enum LabelPlacement {
   END = 'end',
 }
 
-export interface IconToggleProps {
+export interface IconToggleProps extends TPAComponentProps {
   icon: React.ReactNode;
   label: React.ReactNode | string;
   labelPlacement: LabelPlacement;

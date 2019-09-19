@@ -4,6 +4,7 @@ import { RadioButton, RadioButtonKeyDownEvent } from 'wix-ui-core/radio-button';
 import { DotNavigationDataKeys, DotNavigationDataHooks } from './dataHooks';
 import classNames from 'classnames';
 import * as _ from 'lodash';
+import { TPAComponentProps } from '../../types';
 
 const MAX_SHORT_LIST_LENGTH = 5;
 const NUM_OF_NAV_DOTS = 2;
@@ -57,7 +58,7 @@ export enum Theme {
   Dark = 'dark',
 }
 
-export interface DotNavigationProps {
+export interface DotNavigationProps extends TPAComponentProps {
   currentIndex?: number;
   length?: number;
   onSelect?(index: number): any;
@@ -102,7 +103,7 @@ export class DotNavigation extends React.Component<
   DotNavigationProps,
   DotNavigationState
 > {
-  state = {
+  state: DotNavigationState = {
     savedCurrentIndex: 0,
     animation: null,
   };

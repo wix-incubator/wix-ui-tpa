@@ -19,8 +19,9 @@ import {
 } from './constants';
 import { GridDataKeys, GridDataHooks } from './DataHooks';
 import { Item } from './Item/Item';
+import { TPAComponentProps } from '../../types';
 
-export interface GridProps {
+export interface GridProps extends TPAComponentProps {
   children?: React.ReactNode[];
   showRowDivider: boolean;
   uniformRowHeight: boolean;

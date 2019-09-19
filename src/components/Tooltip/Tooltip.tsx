@@ -7,6 +7,7 @@ import tooltipStyles from './Tooltip.st.css';
 import { getArrowByPlacement } from './Arrows';
 import { Placement } from 'wix-ui-core/popover';
 import { TooltipSkin } from './TooltipEnums';
+import { TPAComponentProps } from '../../types';
 
 function customArrow(placement: Placement, arrowProps) {
   const ArrowSvg = getArrowByPlacement(placement);
@@ -18,7 +19,7 @@ function customArrow(placement: Placement, arrowProps) {
   );
 }
 
-export interface TooltipProps extends CoreTooltipProps {
+export interface TooltipProps extends CoreTooltipProps, TPAComponentProps {
   /** Changes appearance of tooltip according to skin. Possible values: 'standard', 'error'*/
   skin?: TooltipSkin;
 }

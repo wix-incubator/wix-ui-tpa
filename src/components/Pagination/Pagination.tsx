@@ -13,8 +13,11 @@ import { ChevronRight } from '../../assets/icons/ChevronRight';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 import styles from './Pagination.st.css';
+import { TPAComponentProps } from '../../types';
 
-export interface PaginationProps extends CorePaginationProps {}
+export interface PaginationProps
+  extends CorePaginationProps,
+    TPAComponentProps {}
 
 /** Pagination component */
 export const Pagination: React.FunctionComponent<PaginationProps> = props => {

@@ -6,11 +6,12 @@ import {
 } from 'wix-ui-icons-common/system';
 import styles from './Checkbox.st.css';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
+import { TPAComponentProps } from '../../types';
 
 interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
 }
-export interface CheckboxProps {
+export interface CheckboxProps extends TPAComponentProps {
   onChange(event: OnChangeEvent): void;
   label: React.ReactNode | string;
   checked?: boolean;
@@ -18,7 +19,6 @@ export interface CheckboxProps {
   indeterminate?: boolean;
   error?: boolean;
   name?: string;
-  'data-hook'?: string;
 }
 
 interface DefaultProps {
@@ -96,7 +96,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
         name={name}
       >
         <>
-          {!!label && <span className={styles.divider}></span>}
+          {!!label && <span className={styles.divider} />}
           <div
             data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
             className={styles.label}
