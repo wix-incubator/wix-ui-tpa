@@ -19,12 +19,6 @@ interface DefaultProps {
   alignment: Alignment;
 }
 
-function getDataAttributes(mobile: boolean) {
-  return {
-    [ACTIONS_MENU_DATA_KEYS.mobile]: mobile,
-  };
-}
-
 /** ActionsMenu */
 export class ActionsMenu extends React.Component<ActionsMenuProps> {
   static Item = ActionsMenuItem;
@@ -35,15 +29,20 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
     alignment: Alignment.left,
   };
 
+  getDataAttributes(mobile: boolean) {
+    return {
+      [ACTIONS_MENU_DATA_KEYS.mobile]: mobile,
+    };
+  }
+
   render() {
     const { alignment, children, ...rest } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ul
-            key={alignment}
             {...styles('root', { mobile, alignment }, rest)}
-            {...getDataAttributes(mobile)}
+            {...this.getDataAttributes(mobile)}
             role="menu"
             tabIndex={-1}
           >
