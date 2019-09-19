@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './ActionsMenu.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuItem } from './Item/ActionsMenuItem';
-import { ACTIONS_MENU__DATA_KEYS } from './dataHooks';
+import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
 import { Divider } from '../Divider';
 
 export enum Alignment {
@@ -21,7 +21,7 @@ interface DefaultProps {
 
 function getDataAttributes(mobile: boolean) {
   return {
-    [ACTIONS_MENU__DATA_KEYS.mobile]: mobile,
+    [ACTIONS_MENU_DATA_KEYS.mobile]: mobile,
   };
 }
 

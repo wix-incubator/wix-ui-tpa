@@ -21,6 +21,18 @@ describe('ActionsMenu', () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should trigger onClick', async function() {
+    const onClick = jest.fn();
+    const driver = createDriver(
+      <ActionsMenu>
+        <ActionsMenu.Item onClick={onClick} content="test" />
+      </ActionsMenu>,
+    );
+
+    await driver.clickItem('test');
+    expect(onClick).toHaveBeenCalled();
+  });
+
   it('should use mobile design', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: true })(

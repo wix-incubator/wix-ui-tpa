@@ -2,8 +2,7 @@ import * as React from 'react';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import styles from './ActionsMenuItem.st.css';
 import { Text } from '../../Text';
-
-function noop() {}
+import { ACTIONS_MENU_ITEM_DATA_HOOK } from '../dataHooks';
 
 export interface ActionsMenuItemProps {
   prefixIcon?: React.ReactNode;
@@ -38,7 +37,9 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
             role="menuitem"
             tabIndex={-1}
             aria-disabled={disabled}
-            onClick={disabled ? noop : onClick}
+            data-hook={ACTIONS_MENU_ITEM_DATA_HOOK}
+            data-content={content}
+            onClick={disabled ? undefined : onClick}
           >
             <div className={styles.container}>
               <div>{prefixIcon}</div>
