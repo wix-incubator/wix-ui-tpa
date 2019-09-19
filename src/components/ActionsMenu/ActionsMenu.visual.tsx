@@ -89,6 +89,36 @@ const tests = [
           }),
         ],
       },
+      {
+        it: 'many items with icon and subtitle with center alignment',
+        props: {
+          alignment: Alignment.center,
+        },
+        children: [
+          generateItem({
+            content: 'item 1',
+          }),
+          generateItem({
+            content: 'item 3',
+            subtitle: 'Subtitle 2',
+          }),
+        ],
+      },
+      {
+        it: 'many items with icon and subtitle with right alignment',
+        props: {
+          alignment: Alignment.right,
+        },
+        children: [
+          generateItem({
+            content: 'item 1',
+          }),
+          generateItem({
+            content: 'item 3',
+            subtitle: 'Subtitle 2',
+          }),
+        ],
+      },
     ],
   },
   {
