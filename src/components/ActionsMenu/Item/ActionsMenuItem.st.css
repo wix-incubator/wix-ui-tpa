@@ -32,7 +32,7 @@
 }
 
 .root:hover {
-    background-color: rgba(0,0,0, 0.06);
+    background-color: applyOpacity(color(color-5), 0.06);
 }
 
 .root .container {
