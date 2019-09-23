@@ -11,7 +11,7 @@
 .root {
     -st-mixin: TPAActionsMenu(
         MenuBackgroundColor '"--backgroundColor"',
-        MenuBorderWidth '"--borderWidth"',
+        MenuBorderWidth '"unit(--borderWidth, px)"',
         MenuBorderColor '"--borderColor"'
     );
 }
