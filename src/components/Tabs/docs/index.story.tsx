@@ -12,8 +12,10 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
+import css from '!raw-loader!../Tabs.st.css';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { WiringTab } from '../../../../stories/utils/WiringTab';
 import * as TabsSource from '!raw-loader!../Tabs.tsx';
 import { Examples } from './examples';
 
@@ -32,32 +34,6 @@ const exampleItems = [
   { label: 'few items', value: items.slice(0, 4) },
   { label: 'many items', value: items },
 ];
-
-// export default {
-//   category: 'Components',
-//   storyName: 'Tabs',
-//   component: Tabs,
-//   source: TabsSource,
-//   componentPath: '../Tabs.tsx',
-//   componentProps: setState => ({
-//     dataHook: 'storybook-Tabs',
-//     items: exampleItems[1].value,
-//     onTabClick: selectedTabIndex => {
-//       setState({ activeTabIndex: selectedTabIndex });
-//     },
-//     activeTabIndex: 0,
-//     skin: SKIN.fullUnderline,
-//     alignment: ALIGNMENT.center,
-//     variant: VARIANT.fit,
-//   }),
-//   exampleProps: {
-//     skin: Object.keys(SKIN).map(key => SKIN[key]),
-//     alignment: Object.keys(ALIGNMENT).map(key => ALIGNMENT[key]),
-//     variant: Object.keys(VARIANT).map(key => VARIANT[key]),
-//     items: exampleItems,
-//   },
-//   examples: <Examples />,
-// };
 
 export default {
   category: 'Components',
@@ -88,9 +64,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          importExample({
-            source: Examples,
-          }),
+          importExample("import { Tabs } from 'wix-ui-tpa/Tabs';"),
 
           divider(),
 
@@ -104,6 +78,10 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Wiring',
+          sections: [WiringTab({ component: <Tabs items={[]} />, css })],
+        },
         {
           title: 'Settings Panel',
           sections: [
