@@ -20,11 +20,25 @@
     background-color: transparent;
 }
 
+.subtitle {
+    -st-extends: Input;
+    -st-mixin: TPAInput(
+        MainTextFont '"font({theme: \'Body-M\', size: \'14px\'})"'
+    );
+    margin-top: -15px;
+    border: 0;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.subtitle::nativeInput,
 .mainValue::nativeInput  {
      cursor: pointer;
      padding: 10px 10px 10px 24px;
  }
 
+.subtitle::nativeInput:hover,
 .mainValue::nativeInput:hover  {
     background-color: transparent;
 }
+

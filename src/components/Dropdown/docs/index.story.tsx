@@ -61,6 +61,7 @@ export default {
               source: examples.errorWithMessageExample,
             },
             { title: 'With label', source: examples.withLabelExample },
+            { title: 'With subtitles', source: examples.withSubtitlesExample },
             { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],

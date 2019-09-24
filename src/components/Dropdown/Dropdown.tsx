@@ -38,7 +38,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   static displayName = 'Dropdown';
   static defaultProps: DefaultProps = {
     placeholder: '',
-    options: []
+    options: [],
   };
 
   state = {
@@ -63,7 +63,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     const coreOptions = options.map(option => ({
       ...option,
-      render: () => <DropdownOption {...option} />
+      render: () => <DropdownOption {...option} />,
     }));
 
     return (

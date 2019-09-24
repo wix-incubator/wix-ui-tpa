@@ -1,14 +1,22 @@
 export const importExample = `import { Dropdown } from 'wix-ui-tpa/Dropdown';`;
 
-const options = JSON.stringify(new Array(5).fill(null).map((el, i) => {
-    const option = {
-        id: i,
-        value: `Input Text ${i + 1}`,
-        isDisabled: i > 2,
-        isSelectable: true,
-    };
-    return option;
-}));
+const baseOptions = new Array(5).fill(null).map((el, i) => {
+  const option = {
+    id: i,
+    value: `Input Text ${i + 1}`,
+    isDisabled: i > 2,
+    isSelectable: true,
+  };
+  return option;
+});
+
+const options = JSON.stringify(baseOptions);
+const optionsWithSubtitle = JSON.stringify(
+  baseOptions.map((option, i) => ({
+    ...option,
+    subtitle: `Subtitle Text ${i}`,
+  })),
+);
 
 export const example = `
     <Dropdown placeholder="Placeholder Text" options={${options}} />
@@ -28,6 +36,10 @@ export const errorWithMessageExample = `
 
 export const withLabelExample = `
     <Dropdown placeholder="Placeholder Text" label="Label Text" options={${options}}/>
+`;
+
+export const withSubtitlesExample = `
+    <Dropdown placeholder="Placeholder Text" options={${optionsWithSubtitle}} />
 `;
 
 export const mobileExample = `
