@@ -19,6 +19,12 @@
 }
 
 :import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColorHover;
+}
+
+:import {
     -st-from: "./DropdownInput.st.css";
     -st-default: DropdownInput;
     -st-named: inputHoverColor;
@@ -29,17 +35,7 @@
     -st-default: DropdownError;
 }
 
-:vars {
-    /*Defaults*/
-}
-
-:vars {
-    /*Overrides*/
-}
-
-.root {
-
-}
+.root {}
 
 .label {
     -st-mixin: TPAText(
@@ -91,9 +87,9 @@
 .dropdown::dropdownContent {
     padding: 12px 0;
 }
-/*.dropdown::dropdownContent::dropdownOption:hover {*/
-/*    background-color: initial;*/
-/*}*/
-/*.dropdown::dropdownContent::dropdownOption:selected {*/
-/*    background-color: red;*/
-/*}*/
+
+.dropdown::dropdownContent::dropdownOption:hovered,
+.dropdown::dropdownContent::dropdownOption:selected,
+.dropdown::dropdownContent::dropdownOption:selected:hovered {
+    background-color: value(backgroundColorHover);
+}

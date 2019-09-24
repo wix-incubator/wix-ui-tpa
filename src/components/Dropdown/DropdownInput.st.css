@@ -15,11 +15,11 @@
 }
 
 :vars {
-    InputHoverColor: color-5;
+    BorderHoverColor: color-5;
 }
 
 :vars {
-    inputHoverColor: color(value(InputHoverColor));
+    borderHoverColor: color(value(BorderHoverColor));
 }
 
 .root {
@@ -35,8 +35,8 @@
 }
 
 .root:hover {
-    color: value(inputHoverColor);
-    border-color: value(inputHoverColor);
+    color: value(borderHoverColor);
+    border-color: value(borderHoverColor);
 }
 
 .root:disabled {
@@ -60,7 +60,7 @@
 }
 
 .root:hover::nativeInput {
-    background-color: initial;
+    background-color: transparent;
 }
 
 .root:disabled::nativeInput {

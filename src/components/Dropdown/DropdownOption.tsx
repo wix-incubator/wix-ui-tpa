@@ -14,7 +14,7 @@ export const DropdownOption: React.FC<DropdownOptionProps> = props => {
   return (
     <div key={id} {...styles('root', {}, props)}>
       <Input
-        className={styles.option}
+        {...styles('mainValue', {}, props)}
         value={value}
         readOnly
         disabled={isDisabled}

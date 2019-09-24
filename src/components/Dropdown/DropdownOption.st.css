@@ -8,18 +8,23 @@
     -st-default: TPAInput;
 }
 
-.root {
-    /*-st-extends: DropdownOption;*/
-}
+.root {}
 
-.option {
+.mainValue {
     -st-extends: Input;
-    -st-mixin: TPAInput;
+    -st-mixin: TPAInput(
+        MainBackgroundColor 'transparent'
+    );
     border: 0;
     cursor: pointer;
+    background-color: transparent;
 }
 
-.option::nativeInput  {
-    cursor: pointer;
-    padding: 10px 10px 10px 24px;
+.mainValue::nativeInput  {
+     cursor: pointer;
+     padding: 10px 10px 10px 24px;
+ }
+
+.mainValue::nativeInput:hover  {
+    background-color: transparent;
 }
