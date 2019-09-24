@@ -18,6 +18,21 @@ const optionsWithSubtitle = JSON.stringify(
   })),
 );
 
+const optionsWithIcon = JSON.stringify(
+  baseOptions.map((option, i) => ({
+    ...option,
+    icon: true,
+  })),
+);
+
+const optionsWithIconAndSubtitles = JSON.stringify(
+  baseOptions.map((option, i) => ({
+    ...option,
+    subtitle: `Subtitle Text ${i}`,
+    icon: true,
+  })),
+);
+
 export const example = `
     <Dropdown placeholder="Placeholder Text" options={${options}} />
 `;
@@ -40,6 +55,14 @@ export const withLabelExample = `
 
 export const withSubtitlesExample = `
     <Dropdown placeholder="Placeholder Text" options={${optionsWithSubtitle}} />
+`;
+
+export const withIconsExample = `
+    <Dropdown placeholder="Placeholder Text" options={${optionsWithIcon}} />
+`;
+
+export const withIconsAndSubtitlesExample = `
+    <Dropdown placeholder="Placeholder Text" options={${optionsWithIconAndSubtitles}} />
 `;
 
 export const mobileExample = `
