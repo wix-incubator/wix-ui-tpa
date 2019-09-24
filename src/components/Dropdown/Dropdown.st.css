@@ -27,7 +27,7 @@
 :import {
     -st-from: "./DropdownInput.st.css";
     -st-default: DropdownInput;
-    -st-named: inputHoverColor;
+    -st-named: borderHoverColor;
 }
 
 :import {
@@ -63,8 +63,8 @@
 }
 
 .dropdown:content-visible .dropdownInput::root {
-    color: value(inputHoverColor);
-    border-color: value(inputHoverColor);
+    color: value(borderHoverColor);
+    border-color: value(borderHoverColor);
 }
 
 .dropdown:content-visible .dropdownInput::root:error {
