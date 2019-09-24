@@ -1,0 +1,77 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Input;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColor, colorDisabled, color as inputColor, errorColor;
+}
+
+:vars {
+    InputHoverColor: color-5;
+}
+
+:vars {
+    inputHoverColor: color(value(InputHoverColor));
+}
+
+.root {
+    -st-extends: Input;
+    -st-states: error;
+    -st-mixin: TPAInput;
+    display: flex;
+    align-items: center;
+    color: value(inputColor);
+    background-color: value(backgroundColor);
+    width: 100%;
+    cursor: pointer;
+}
+
+.root:hover {
+    color: value(inputHoverColor);
+    border-color: value(inputHoverColor);
+}
+
+.root:disabled {
+    color: value(colorDisabled);
+    cursor: none;
+}
+
+.root:disabled:hover {
+    color: value(colorDisabled);
+    border-color: value(colorDisabled);
+}
+
+.root:error:hover {
+    border-color: value(errorColor);
+}
+
+.root::nativeInput  {
+    cursor: pointer;
+    padding: 8px 0;
+    padding-inline-start: 12px;
+}
+
+.root:hover::nativeInput {
+    background-color: initial;
+}
+
+.root:disabled::nativeInput {
+    cursor: initial;
+}
+
+.arrowIcon {
+    padding-inline-end: 8px;
+}
+
+
+
+
+

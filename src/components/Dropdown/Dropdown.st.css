@@ -1,0 +1,99 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Dropdown;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+:import {
+    -st-from: "./DropdownInput.st.css";
+    -st-default: DropdownInput;
+    -st-named: inputHoverColor;
+}
+
+:import {
+    -st-from: "./DropdownError.st.css";
+    -st-default: DropdownError;
+}
+
+:vars {
+    /*Defaults*/
+}
+
+:vars {
+    /*Overrides*/
+}
+
+.root {
+
+}
+
+.label {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1.5em'}"
+    );
+    display: block;
+    margin-bottom: 8px;
+}
+
+.dropdownInput {
+    -st-extends: DropdownInput;
+}
+
+.dropdownError {
+    -st-extends: DropdownError;
+}
+
+.dropdown {
+    -st-states: mobile, disabled;
+    -st-extends: Dropdown;
+}
+
+.dropdown:mobile {
+    /*mobile css goes here*/
+}
+
+.dropdown:content-visible .dropdownInput::root {
+    color: value(inputHoverColor);
+    border-color: value(inputHoverColor);
+}
+
+.dropdown:content-visible .dropdownInput::root:error {
+    border-color: value(errorColor);
+}
+
+.dropdown:content-visible .dropdownInput::arrowIcon {
+    transform: rotate(180deg);
+    padding-inline-start: 8px;
+    padding-inline-end: 0;
+}
+
+.dropdown::popoverContent {
+    border-width: 0;
+    box-sizing: border-box;
+    /* Popover fix. For some reason popover has inline style with transform: translate3d(-1px, 42px, 0px); */
+    margin-left: 1px;
+}
+
+.dropdown::dropdownContent {
+    padding: 12px 0;
+}
+/*.dropdown::dropdownContent::dropdownOption:hover {*/
+/*    background-color: initial;*/
+/*}*/
+/*.dropdown::dropdownContent::dropdownOption:selected {*/
+/*    background-color: red;*/
+/*}*/

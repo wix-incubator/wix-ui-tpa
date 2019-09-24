@@ -24,3 +24,4 @@ export * from './Toast';
 export * from './Checkbox';
 export { DotNavigation } from './DotNavigation';
 export { CheckboxGroup, Layout, CheckboxGroupProps } from './CheckboxGroup';
+export { Dropdown } from './Dropdown';

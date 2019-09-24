@@ -1,0 +1,25 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Input;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+}
+
+.root {
+    /*-st-extends: DropdownOption;*/
+}
+
+.option {
+    -st-extends: Input;
+    -st-mixin: TPAInput;
+    border: 0;
+    cursor: pointer;
+}
+
+.option::nativeInput  {
+    cursor: pointer;
+    padding: 10px 10px 10px 24px;
+}
