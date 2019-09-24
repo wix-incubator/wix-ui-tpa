@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { VisualContainerElement } from '../../../test/visual/VisualContainerElement';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { NewCard } from './';
 
 class NewCardVisual extends React.Component<any> {
   render() {
     return (
-      <VisualContainerElement>
+      <VisualTestContainer>
         <NewCard {...this.props} />
-      </VisualContainerElement>
+      </VisualTestContainer>
     );
   }
 }
