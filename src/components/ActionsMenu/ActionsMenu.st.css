@@ -10,20 +10,17 @@
 :vars {
     /*Defaults*/
     DefaultMenuBackgroundColor: color-1;
-    DefaultMenuBorderWidth: 1px;
     DefaultMenuBorderColor: rgba(255, 255, 255, 0.4);
 }
 
 :vars {
     /*Overrides*/
     MenuBackgroundColor:  --overridable;
-    MenuBorderWidth:  --overridable;
     MenuBorderColor:  --overridable;
 }
 
 :vars {
     menuBackgroundColor: color(fallback(value(MenuBackgroundColor), value(DefaultMenuBackgroundColor)));
-    menuBorderWidth: fallback(value(MenuBorderWidth), value(DefaultMenuBorderWidth));
     menuBorderColor: color(fallback(value(MenuBorderColor), value(DefaultMenuBorderColor)));
 }
 
@@ -33,7 +30,7 @@
     max-width: 320px;
     background-color: value(menuBackgroundColor);
     border-style: solid;
-    border-width: value(menuBorderWidth);
+    border-width: 1px;
     border-color: value(menuBorderColor);
 }
 

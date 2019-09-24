@@ -105,26 +105,16 @@ export default {
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {
-                numbers: [
-                  {
-                    label: 'Menu Border Width',
-                    wixParam: 'borderWidth',
-                    defaultNumber: 1,
-                    unit: 'px',
-                    min: 1,
-                    max: 20,
-                  },
-                ],
                 colors: [
                   {
                     label: 'Menu Background Color',
                     wixParam: 'backgroundColor',
-                    defaultColor: 'color-1',
+                    defaultColor: 'color-6',
                   },
                   {
                     label: 'Menu Border Color',
                     wixParam: 'borderColor',
-                    defaultColor: 'color-1',
+                    defaultColor: 'color-2',
                   },
                 ],
                 fonts: [

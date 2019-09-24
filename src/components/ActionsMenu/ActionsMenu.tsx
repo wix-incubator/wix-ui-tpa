@@ -3,7 +3,7 @@ import styles from './ActionsMenu.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuItem } from './Item/ActionsMenuItem';
 import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
-import { ActionsMenuDivider } from "./Divider/Divider";
+import { ActionsMenuDivider } from './Divider/Divider';
 
 export enum Alignment {
   left = 'left',
