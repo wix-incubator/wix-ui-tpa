@@ -4,7 +4,7 @@ import { Input } from '../Input';
 import styles from './DropdownOption.st.css';
 
 interface DropdownOptionProps {
-  id: number;
+  id: any;
   value: string;
   isDisabled: boolean;
 }
