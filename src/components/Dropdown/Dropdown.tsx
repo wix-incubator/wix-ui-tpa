@@ -47,7 +47,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     options: [],
   };
 
-  static getDerivedStateFromProps(nextProps) {
+  static getDerivedStateFromProps(nextProps, state) {
+    if (state.selectedOption) return null;
     return {
       selectedOption:
         nextProps.options.find(
@@ -55,6 +56,10 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         ) || null,
     };
   }
+
+  state = {
+    selectedOption: null
+  };
 
   onSelect = (option: CoreDropdownOption) => {
     this.setState({ selectedOption: option });

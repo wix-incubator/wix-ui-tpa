@@ -75,7 +75,7 @@ export const minWidthExample = `
     <div style={{width: '0px'}}>
         <Dropdown options={${JSON.stringify(
           numberOptions,
-        )}} initialSelectedId={0}/>
+        )}} initialSelectedId={'0'}/>
     </div>
 `;
 

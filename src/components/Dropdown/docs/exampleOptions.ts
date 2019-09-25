@@ -56,7 +56,7 @@ export const optionsWithSections = [
 ];
 
 export const numberOptions = new Array(6).fill(null).map((el, i) => ({
-  id: 'i',
+  id: `${i}`,
   value: `0${i + 1}`,
   isSelectable: true,
 }));
