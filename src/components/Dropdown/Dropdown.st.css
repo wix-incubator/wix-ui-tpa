@@ -35,7 +35,14 @@
     -st-default: DropdownError;
 }
 
-.root {}
+:import {
+    -st-from: "./DropdownOption.st.css";
+    -st-default: DropdownOption;
+}
+
+.root {
+    -st-states: alignment(enum(center));
+}
 
 .label {
     -st-mixin: TPAText(
@@ -95,4 +102,13 @@
 .dropdown::dropdownContent::dropdownOption:selected,
 .dropdown::dropdownContent::dropdownOption:selected:hovered {
     background-color: value(backgroundColorHover);
+}
+
+.root:alignment(center),
+.root:alignment(center) .dropdownInput::nativeInput {
+    text-align: center;
+}
+
+.root:alignment(center) DropdownOption {
+    justify-content: center;
 }

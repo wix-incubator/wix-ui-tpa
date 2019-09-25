@@ -8,9 +8,13 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 import { DropdownInput } from './DropdownInput';
 import { DropdownError } from './DropdownError';
+import { DropdownOption } from './DropdownOption';
 
 import styles from './Dropdown.st.css';
-import { DropdownOption } from './DropdownOption';
+
+export enum DROPDOWN_ALIGNMENT {
+  center = 'center',
+}
 
 export interface DropdownProps {
   options: CoreDropdownProps['options'];
@@ -20,6 +24,7 @@ export interface DropdownProps {
   error?: boolean;
   errorMessage?: string;
   label?: string;
+  alignment: DROPDOWN_ALIGNMENT;
 }
 
 interface DefaultProps {
@@ -64,6 +69,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       errorMessage,
       label,
       options,
+      alignment,
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
@@ -76,7 +82,15 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', {}, rest)}>
+          <div
+            {...styles(
+              'root',
+              {
+                alignment,
+              },
+              rest,
+            )}
+          >
             {label && (
               <Text
                 {...styles('label', {}, rest)}

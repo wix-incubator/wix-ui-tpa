@@ -1,4 +1,6 @@
-export const importExample = `import { Dropdown } from 'wix-ui-tpa/Dropdown';`;
+import { DROPDOWN_ALIGNMENT } from '../Dropdown';
+
+export const importExample = `import { Dropdown, DROPDOWN_ALIGNMENT } from 'wix-ui-tpa/Dropdown';`;
 
 const baseOptions = new Array(5).fill(null).map((el, i) => {
   const option = {
@@ -81,6 +83,10 @@ export const example = `
 
 export const disabledExample = `
     <Dropdown placeholder="Placeholder Text" disabled options={${options}}/>
+`;
+
+export const alignmentExample = `
+    <Dropdown placeholder="Placeholder Text" options={${options}} alignment="${DROPDOWN_ALIGNMENT.center}" label="Label Text" />
 `;
 
 export const errorExample = `

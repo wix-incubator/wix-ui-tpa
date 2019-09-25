@@ -17,7 +17,7 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as DropdownWiringExampleRaw from '!raw-loader!./DropdownWiringExample.tsx';
 import * as DropdownWiringExampleCSSRaw from '!raw-loader!./DropdownWiringExample.st.css';
 import { DropdownWiringExample } from './DropdownWiringExample';
-import { Dropdown } from '../';
+import { Dropdown, DROPDOWN_ALIGNMENT } from '../';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -33,6 +33,7 @@ export default {
     disabled: false,
     error: false,
     errorMessage: '',
+    alignment: Object.values(DROPDOWN_ALIGNMENT),
   }),
   exampleProps: {
     //
@@ -55,12 +56,13 @@ export default {
           ...[
             { title: 'Example', source: examples.example },
             { title: 'Disabled', source: examples.disabledExample },
+            { title: 'w. label', source: examples.withLabelExample },
+            { title: 'Centered', source: examples.alignmentExample },
             { title: 'Error', source: examples.errorExample },
             {
               title: 'Error with message',
               source: examples.errorWithMessageExample,
             },
-            { title: 'w. label', source: examples.withLabelExample },
             { title: 'w. subtitles', source: examples.withSubtitlesExample },
             { title: 'Section title', source: examples.sectionTitleExample },
             { title: 'w. icons', source: examples.withIconsExample },
@@ -69,7 +71,7 @@ export default {
               title: 'w. icons + subtitles',
               source: examples.withIconsAndSubtitlesExample,
             },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            // { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),
