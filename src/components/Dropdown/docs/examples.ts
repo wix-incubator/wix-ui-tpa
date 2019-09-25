@@ -4,8 +4,7 @@ const baseOptions = new Array(5).fill(null).map((el, i) => {
   const option = {
     id: i,
     value: `Input Text ${i + 1}`,
-    isDisabled: i > 2,
-    isSelectable: true,
+    isSelectable: i < 3,
   };
   return option;
 });
@@ -38,7 +37,6 @@ const optionsWithSections = JSON.stringify([
     id: 0,
     value: 'Site Pages',
     isSectionTitle: true,
-    isDisabled: true,
     isSelectable: false,
   },
   {
@@ -60,7 +58,6 @@ const optionsWithSections = JSON.stringify([
     id: 4,
     value: 'Blog Posts',
     isSectionTitle: true,
-    isDisabled: true,
     isSelectable: false,
   },
   {

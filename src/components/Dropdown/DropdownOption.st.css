@@ -1,49 +1,39 @@
 :import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: Input;
+    -st-from: "../Input/Input.st.css";
+    -st-named: colorPlaceholder;
 }
 
 :import {
-    -st-from: "../Input/Input.st.css";
-    -st-default: TPAInput;
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
 }
 
-.root {}
+.root {
+    box-sizing: border-box;
+}
 
-.mainValue {
-    -st-extends: Input;
-    -st-states: sectionTitle;
-    -st-mixin: TPAInput(
-        MainBackgroundColor 'transparent'
+.title {
+    -st-states: selectable, sectionTitle;
+    display: inline-block;
+    padding: 8px 26px;
+}
+
+.title:not(:selectable) {
+    -st-mixin: TPAText(
+        MainTextColor 'value(colorPlaceholder)'
     );
-    border: 0;
-    cursor: pointer;
-    background-color: transparent;
+}
+
+.title:sectionTitle {
+    padding: 8px 14px;
 }
 
 .subtitle {
-    -st-extends: Input;
-    -st-mixin: TPAInput(
-        MainTextFont '"font({theme: \'Body-M\', size: \'14px\'})"'
+    -st-mixin: TPAText(
+        MainTextColor "value(colorPlaceholder)",
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1.5em'}"
     );
+    display: inline-block;
+    padding: 8px 26px;
     margin-top: -15px;
-    border: 0;
-    cursor: pointer;
-    background-color: transparent;
 }
-
-.subtitle::nativeInput,
-.mainValue::nativeInput  {
-     cursor: pointer;
-     padding: 10px 10px 10px 24px;
- }
-
-.mainValue:sectionTitle::nativeInput  {
-    padding: 0 14px;
-}
-
-.subtitle::nativeInput:hover,
-.mainValue::nativeInput:hover  {
-    background-color: transparent;
-}
-
