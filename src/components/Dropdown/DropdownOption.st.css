@@ -12,6 +12,7 @@
 
 .mainValue {
     -st-extends: Input;
+    -st-states: sectionTitle;
     -st-mixin: TPAInput(
         MainBackgroundColor 'transparent'
     );
@@ -36,6 +37,10 @@
      cursor: pointer;
      padding: 10px 10px 10px 24px;
  }
+
+.mainValue:sectionTitle::nativeInput  {
+    padding: 0 14px;
+}
 
 .subtitle::nativeInput:hover,
 .mainValue::nativeInput:hover  {

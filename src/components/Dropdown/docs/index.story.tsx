@@ -62,6 +62,7 @@ export default {
             },
             { title: 'w. label', source: examples.withLabelExample },
             { title: 'w. subtitles', source: examples.withSubtitlesExample },
+            { title: 'Section title', source: examples.sectionTitleExample },
             { title: 'w. icons', source: examples.withIconsExample },
             {
               title: 'w. icons + subtitles',

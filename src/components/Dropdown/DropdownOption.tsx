@@ -9,14 +9,15 @@ interface DropdownOptionProps {
   value: string;
   subtitle: string;
   isDisabled: boolean;
+  isSectionTitle: boolean;
 }
 
 export const DropdownOption: React.FC<any> = props => {
-  const { value, id, isDisabled, subtitle, icon } = props;
+  const { value, id, isDisabled, subtitle, icon, isSectionTitle } = props;
   return (
     <div key={id} {...styles('root', {}, props)}>
       <Input
-        {...styles('mainValue', {}, props)}
+        {...styles('mainValue', { sectionTitle: isSectionTitle }, props)}
         value={value}
         readOnly
         disabled={isDisabled}

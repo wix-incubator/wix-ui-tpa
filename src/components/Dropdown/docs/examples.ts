@@ -33,6 +33,43 @@ const optionsWithIconAndSubtitles = JSON.stringify(
   })),
 );
 
+const optionsWithSections = JSON.stringify([
+  {
+    id: 0,
+    value: 'Site Pages',
+    isSectionTitle: true,
+    isDisabled: true,
+    isSelectable: false,
+  },
+  {
+    id: 1,
+    value: 'Home',
+    isSelectable: true,
+  },
+  {
+    id: 2,
+    value: 'Shop',
+    isSelectable: true,
+  },
+  {
+    id: 3,
+    value: 'About',
+    isSelectable: true,
+  },
+  {
+    id: 4,
+    value: 'Blog Posts',
+    isSectionTitle: true,
+    isDisabled: true,
+    isSelectable: false,
+  },
+  {
+    id: 5,
+    value: '11 Proven Ways to Monetize a Website',
+    isSelectable: true,
+  },
+]);
+
 export const example = `
     <Dropdown placeholder="Placeholder Text" options={${options}} />
 `;
@@ -51,6 +88,10 @@ export const errorWithMessageExample = `
 
 export const withLabelExample = `
     <Dropdown placeholder="Placeholder Text" label="Label Text" options={${options}}/>
+`;
+
+export const sectionTitleExample = `
+    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${optionsWithSections}}/>
 `;
 
 export const withSubtitlesExample = `
