@@ -22,7 +22,7 @@ export const DropdownOption: React.FC<any> = props => {
           <Heart />
         </div>
       )}
-      <div className={styles.textWrapper}>
+      <div className={styles.contentWrapper}>
         <Text
           {...styles(
             'title',
