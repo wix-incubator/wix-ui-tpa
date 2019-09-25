@@ -18,13 +18,13 @@ export enum DROPDOWN_ALIGNMENT {
 
 export interface DropdownProps {
   options: CoreDropdownProps['options'];
-  initialSelectedId?: any;
+  initialSelectedId?: string;
   placeholder?: string;
   disabled?: boolean;
   error?: boolean;
   errorMessage?: string;
   label?: string;
-  alignment: DROPDOWN_ALIGNMENT;
+  alignment?: DROPDOWN_ALIGNMENT;
 }
 
 interface DefaultProps {
@@ -48,7 +48,9 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   };
 
   static getDerivedStateFromProps(nextProps, state) {
-    if (state.selectedOption) return null;
+    if (state.selectedOption) {
+      return null;
+    }
     return {
       selectedOption:
         nextProps.options.find(
@@ -58,7 +60,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   }
 
   state = {
-    selectedOption: null
+    selectedOption: null,
   };
 
   onSelect = (option: CoreDropdownOption) => {
