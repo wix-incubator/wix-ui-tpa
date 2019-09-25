@@ -9,7 +9,14 @@
 }
 
 .root {
+    -st-states: withIcon;
     box-sizing: border-box;
+    display: flex;
+}
+
+.root:withIcon .subtitle,
+.root:withIcon .title {
+    padding-inline-start: 0;
 }
 
 .title {
@@ -31,9 +38,14 @@
 .subtitle {
     -st-mixin: TPAText(
         MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1.5em'}"
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1em'}"
     );
     display: inline-block;
     padding: 8px 26px;
     margin-top: -15px;
+}
+
+.icon {
+    display: flex;
+    padding: 8px 12px;
 }

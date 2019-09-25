@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../Text';
 
 import styles from './DropdownOption.st.css';
+import { Heart } from 'wix-ui-icons-common/dist/src';
 
 interface DropdownOptionProps {
   id: any;
@@ -15,28 +16,35 @@ interface DropdownOptionProps {
 export const DropdownOption: React.FC<any> = props => {
   const { value, id, isSelectable, subtitle, icon, isSectionTitle } = props;
   return (
-    <div key={id} {...styles('root', {}, props)}>
-      <Text
-        {...styles(
-          'title',
-          {
-            sectionTitle: isSectionTitle,
-            selectable: isSelectable,
-          },
-          props,
-        )}
-        typography={TYPOGRAPHY.runningText}
-      >
-        {value}
-      </Text>
-      {subtitle && (
+    <div key={id} {...styles('root', { withIcon: icon }, props)}>
+      {icon && (
+        <div {...styles('icon')}>
+          <Heart />
+        </div>
+      )}
+      <div>
         <Text
-          {...styles('subtitle', {}, props)}
+          {...styles(
+            'title',
+            {
+              sectionTitle: isSectionTitle,
+              selectable: isSelectable,
+            },
+            props,
+          )}
           typography={TYPOGRAPHY.runningText}
         >
-          {subtitle}
+          {value}
         </Text>
-      )}
+        {subtitle && (
+          <Text
+            {...styles('subtitle', {}, props)}
+            typography={TYPOGRAPHY.runningText}
+          >
+            {subtitle}
+          </Text>
+        )}
+      </div>
     </div>
   );
 };
