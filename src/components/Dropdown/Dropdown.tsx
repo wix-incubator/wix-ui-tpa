@@ -14,6 +14,7 @@ import { DropdownOption } from './DropdownOption';
 
 export interface DropdownProps {
   options: CoreDropdownProps['options'];
+  initialSelectedId?: any;
   placeholder?: string;
   disabled?: boolean;
   error?: boolean;
@@ -23,11 +24,11 @@ export interface DropdownProps {
 
 interface DefaultProps {
   placeholder: string;
-  options: CoreDropdownProps['options'];
+  options: CoreDropdownOption[];
 }
 
 interface State {
-  selectedOption: CoreDropdownOption;
+  selectedOption: any;
 }
 
 /**
@@ -41,9 +42,15 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     options: [],
   };
 
-  state = {
-    selectedOption: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedOption:
+        this.props.options.find(
+          option => option.id === this.props.initialSelectedId,
+        ) || null,
+    };
+  }
 
   onSelect = (option: CoreDropdownOption) => {
     this.setState({ selectedOption: option });

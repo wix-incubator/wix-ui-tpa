@@ -67,6 +67,14 @@ const optionsWithSections = JSON.stringify([
   },
 ]);
 
+const numberOptions = JSON.stringify(
+  new Array(6).fill(null).map((el, i) => ({
+    id: i,
+    value: `0${i + 1}`,
+    isSelectable: true,
+  })),
+);
+
 export const example = `
     <Dropdown placeholder="Placeholder Text" options={${options}} />
 `;
@@ -103,8 +111,14 @@ export const withIconsAndSubtitlesExample = `
     <Dropdown placeholder="Placeholder Text" options={${optionsWithIconAndSubtitles}} />
 `;
 
+export const minWidthExample = `
+    <div style={{width: '0px'}}>
+        <Dropdown options={${numberOptions}} initialSelectedId={0}/>
+    </div>
+`;
+
 export const mobileExample = `
-<ExampleWithContextProps mobile={true}>
-  <Dropdown />
-</ExampleWithContextProps>
+    <ExampleWithContextProps mobile={true}>
+        <Dropdown />
+    </ExampleWithContextProps>
 `;

@@ -56,6 +56,8 @@
 .dropdown {
     -st-states: mobile, disabled;
     -st-extends: Dropdown;
+    width: 100%;
+    min-width: 68px;
 }
 
 .dropdown:mobile {

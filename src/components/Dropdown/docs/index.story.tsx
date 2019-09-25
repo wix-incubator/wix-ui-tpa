@@ -64,6 +64,7 @@ export default {
             { title: 'w. subtitles', source: examples.withSubtitlesExample },
             { title: 'Section title', source: examples.sectionTitleExample },
             { title: 'w. icons', source: examples.withIconsExample },
+            { title: 'Min Width', source: examples.minWidthExample },
             {
               title: 'w. icons + subtitles',
               source: examples.withIconsAndSubtitlesExample,
