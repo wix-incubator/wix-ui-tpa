@@ -57,7 +57,7 @@
     -st-states: mobile, disabled;
     -st-extends: Dropdown;
     width: 100%;
-    min-width: 68px;
+    min-width: 72px;
 }
 
 .dropdown:mobile {
@@ -84,6 +84,7 @@
     box-sizing: border-box;
     /* Popover fix. For some reason popover has inline style with transform: translate3d(-1px, 42px, 0px); */
     margin-left: 1px;
+    max-width: 100%;
 }
 
 .dropdown::dropdownContent {

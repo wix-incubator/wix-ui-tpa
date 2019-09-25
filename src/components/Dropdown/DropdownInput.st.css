@@ -68,6 +68,7 @@
 }
 
 .arrowIcon {
+    min-width: 24px;
     padding-inline-end: 8px;
 }
 
