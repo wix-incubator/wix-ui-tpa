@@ -47,12 +47,11 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     options: [],
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
+  static getDerivedStateFromProps(nextProps) {
+    return {
       selectedOption:
-        this.props.options.find(
-          option => option.id === this.props.initialSelectedId,
+        nextProps.options.find(
+          option => option.id === nextProps.initialSelectedId,
         ) || null,
     };
   }

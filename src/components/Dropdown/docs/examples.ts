@@ -1,125 +1,81 @@
 import { DROPDOWN_ALIGNMENT } from '../Dropdown';
 
+import {
+  baseOptions,
+  numberOptions,
+  optionsWithIcon,
+  optionsWithIconAndSubtitles,
+  optionsWithSections,
+  optionsWithSubtitle,
+} from './exampleOptions';
+
 export const importExample = `import { Dropdown, DROPDOWN_ALIGNMENT } from 'wix-ui-tpa/Dropdown';`;
 
-const baseOptions = new Array(5).fill(null).map((el, i) => {
-  const option = {
-    id: i,
-    value: `Input Text ${i + 1}`,
-    isSelectable: i < 3,
-  };
-  return option;
-});
-
-const options = JSON.stringify(baseOptions);
-const optionsWithSubtitle = JSON.stringify(
-  baseOptions.map((option, i) => ({
-    ...option,
-    subtitle: `Subtitle Text ${i}`,
-  })),
-);
-
-const optionsWithIcon = JSON.stringify(
-  baseOptions.map((option, i) => ({
-    ...option,
-    icon: true,
-  })),
-);
-
-const optionsWithIconAndSubtitles = JSON.stringify(
-  baseOptions.map((option, i) => ({
-    ...option,
-    subtitle: `Subtitle Text ${i}`,
-    icon: true,
-  })),
-);
-
-const optionsWithSections = JSON.stringify([
-  {
-    id: 0,
-    value: 'Site Pages',
-    isSectionTitle: true,
-    isSelectable: false,
-  },
-  {
-    id: 1,
-    value: 'Home',
-    isSelectable: true,
-  },
-  {
-    id: 2,
-    value: 'Shop',
-    isSelectable: true,
-  },
-  {
-    id: 3,
-    value: 'About',
-    isSelectable: true,
-  },
-  {
-    id: 4,
-    value: 'Blog Posts',
-    isSectionTitle: true,
-    isSelectable: false,
-  },
-  {
-    id: 5,
-    value: '11 Proven Ways to Monetize a Website',
-    isSelectable: true,
-  },
-]);
-
-const numberOptions = JSON.stringify(
-  new Array(6).fill(null).map((el, i) => ({
-    id: i,
-    value: `0${i + 1}`,
-    isSelectable: true,
-  })),
-);
-
 export const example = `
-    <Dropdown placeholder="Placeholder Text" options={${options}} />
+    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+      baseOptions,
+    )}} />
 `;
 
 export const disabledExample = `
-    <Dropdown placeholder="Placeholder Text" disabled options={${options}}/>
+    <Dropdown placeholder="Placeholder Text" disabled options={${JSON.stringify(
+      baseOptions,
+    )}}/>
 `;
 
 export const alignmentExample = `
-    <Dropdown placeholder="Placeholder Text" options={${options}} alignment="${DROPDOWN_ALIGNMENT.center}" label="Label Text" />
+    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+      baseOptions,
+    )}} alignment="${DROPDOWN_ALIGNMENT.center}" label="Label Text" />
 `;
 
 export const errorExample = `
-    <Dropdown placeholder="Placeholder Text" error={true} options={${options}}/>
+    <Dropdown placeholder="Placeholder Text" error={true} options={${JSON.stringify(
+      baseOptions,
+    )}}/>
 `;
 
 export const errorWithMessageExample = `
-    <Dropdown placeholder="Placeholder Text" error={true} errorMessage="The coupon code is not valid" options={${options}}/>
+    <Dropdown placeholder="Placeholder Text" error={true} errorMessage="The coupon code is not valid" options={${JSON.stringify(
+      baseOptions,
+    )}}/>
 `;
 
 export const withLabelExample = `
-    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${options}}/>
+    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
+      baseOptions,
+    )}}/>
 `;
 
 export const sectionTitleExample = `
-    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${optionsWithSections}}/>
+    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
+      optionsWithSections,
+    )}}/>
 `;
 
 export const withSubtitlesExample = `
-    <Dropdown placeholder="Placeholder Text" options={${optionsWithSubtitle}} />
+    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+      optionsWithSubtitle,
+    )}} />
 `;
 
 export const withIconsExample = `
-    <Dropdown placeholder="Placeholder Text" options={${optionsWithIcon}} />
+    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+      optionsWithIcon,
+    )}} />
 `;
 
 export const withIconsAndSubtitlesExample = `
-    <Dropdown placeholder="Placeholder Text" options={${optionsWithIconAndSubtitles}} />
+    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+      optionsWithIconAndSubtitles,
+    )}} />
 `;
 
 export const minWidthExample = `
     <div style={{width: '0px'}}>
-        <Dropdown options={${numberOptions}} initialSelectedId={0}/>
+        <Dropdown options={${JSON.stringify(
+          numberOptions,
+        )}} initialSelectedId={0}/>
     </div>
 `;
 
