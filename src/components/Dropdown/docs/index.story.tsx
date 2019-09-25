@@ -27,6 +27,7 @@ import {
   optionsWithSections,
   optionsWithSubtitle,
 } from './exampleOptions';
+import { Heart } from 'wix-ui-icons-common/dist/src';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -42,11 +43,17 @@ const options = [
   },
   {
     label: 'w. icon',
-    value: optionsWithIcon,
+    value: baseOptions.map(option => ({
+      ...option,
+      icon: <Heart />,
+    })),
   },
   {
     label: 'w. icon & subtitle',
-    value: optionsWithIconAndSubtitles,
+    value: optionsWithSubtitle.map(option => ({
+      ...option,
+      icon: <Heart />,
+    })),
   },
   {
     label: 'w. sections',
@@ -105,11 +112,11 @@ export default {
             { title: 'w. subtitles', source: examples.withSubtitlesExample },
             { title: 'Section title', source: examples.sectionTitleExample },
             { title: 'w. icons', source: examples.withIconsExample },
-            { title: 'Min Width', source: examples.minWidthExample },
             {
               title: 'w. icons + subtitles',
               source: examples.withIconsAndSubtitlesExample,
             },
+            { title: 'Min Width', source: examples.minWidthExample },
             // { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
