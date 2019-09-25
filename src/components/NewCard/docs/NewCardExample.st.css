@@ -68,7 +68,7 @@
 }
 
 :vars {
-    overlappingMargin: 80px;
+    overlappingMargin: 60px;
 }
 
 .overlapping.card, .overlapping.card * {
@@ -78,9 +78,11 @@
 .overlapping.card::container.media {
     display: flex;
     align-items: center;
+    padding: 30px;
 }
 .overlapping.card::container.info {
     border: none !important;
+    padding: 30px 0;
 }
 
 .overlapping.card::container:first-of-type {
