@@ -1,7 +1,8 @@
 import * as React from 'react';
 import styles from './NewCard.st.css';
+import { TPAComponentProps } from '../../types';
 
-export interface NewCardProps {
+export interface NewCardProps extends TPAComponentProps {
   stacked?: boolean;
 }
 
@@ -9,12 +10,13 @@ interface DefaultProps {
   stacked: boolean;
 }
 
-interface ContainerProps {
+interface ContainerProps extends TPAComponentProps {
   children?: React.ReactNode;
   minWidth?: number;
+  className?: string;
 }
 
-function Container({ className, children, minWidth = 0 }) {
+function Container({ className, children, minWidth = 0 }: ContainerProps) {
   const style = {} as any;
 
   if (minWidth) {
@@ -24,25 +26,17 @@ function Container({ className, children, minWidth = 0 }) {
   }
 
   return (
-    <div className={className} style={style}>
+    <div className={className + ' ' + styles.container} style={style}>
       {children}
     </div>
   );
 }
-function MediaContainer({ children, minWidth }: ContainerProps) {
-  return Container({ className: styles.media, children, minWidth });
-}
-function InfoContainer({ children, minWidth }: ContainerProps) {
-  return Container({ className: styles.info, children, minWidth });
-}
 
-/** The best card ever */
 export class NewCard extends React.Component<NewCardProps> {
   static displayName = 'NewCard';
   static defaultProps: DefaultProps = { stacked: false };
 
-  static InfoContainer = InfoContainer;
-  static MediaContainer = MediaContainer;
+  static Container = Container;
 
   render() {
     const { children, stacked, ...rest } = this.props;

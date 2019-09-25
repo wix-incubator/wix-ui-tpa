@@ -8,10 +8,6 @@
     flex-direction: column;
 }
 
-.media {
-
-}
-
-.info {
-
+.container {
+    max-height: 100%;
 }

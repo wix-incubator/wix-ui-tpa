@@ -3,51 +3,42 @@
     -st-default: NewCard;
 }
 
-.example1 {
+.root {
+    width: 100%;
+    height: 100%;
+}
+
+.card {
     -st-extends: NewCard;
 }
 
-.example1::info {
-    border: 1px solid black;
+.card::container {
     padding: 30px;
 }
 
-.example1::media {
-    padding: 30px;
+.card::container.media {
+    border: none;
     background-color: gray;
 }
 
-.example1::media img {
+.card::container.media img {
     vertical-align: middle;
     max-width: 100%;
 }
 
-.example2 {
-    -st-extends: NewCard;
-}
-
-.example2::info {
+.card::container.info {
     border: 1px solid black;
-    padding: 30px;
 }
 
-.example2::media {
-    padding: 30px;
-    background-color: gray;
+.root .example3, .root .example3 * {
+    box-sizing: border-box;
 }
 
-.example2::media img {
-    vertical-align: middle;
-    max-width: 100%;
-}
-
-.example3 {
-    -st-extends: NewCard;
+.root .example3 {
     height: 162px;
 }
 
-.example3::info {
-    border: 1px solid black;
+.root .example3.card::container.info {
     padding: 32px;
     height: 100%;
     min-width: 0;
@@ -55,12 +46,12 @@
     flex-grow: 1;
 }
 
-.example3::media {
+.root .example3.card::container.media {
     max-width: 236px;
     height: 100%;
 }
 
-.example3::media img {
+.root .example3.card::container.media img {
     vertical-align: middle;
     max-width: 100%;
     height: 100%;

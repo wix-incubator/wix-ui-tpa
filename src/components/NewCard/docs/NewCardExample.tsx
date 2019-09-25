@@ -19,12 +19,12 @@ const media = (
 export class NewCardExample extends React.Component {
   render() {
     return (
-      <div>
-        <NewCard {...styles('example1', {}, this.props)}>
-          <NewCard.MediaContainer minWidth={300}>
+      <div {...styles('root', {}, this.props)}>
+        <NewCard className={styles.card + ' ' + styles.example1}>
+          <NewCard.Container className={styles.media} minWidth={300}>
             {media}
-          </NewCard.MediaContainer>
-          <NewCard.InfoContainer minWidth={200}>
+          </NewCard.Container>
+          <NewCard.Container className={styles.info} minWidth={200}>
             <div>
               <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
               <br />
@@ -33,15 +33,36 @@ export class NewCardExample extends React.Component {
                 break when the total width is &lt; 500px
               </Text>
             </div>
-          </NewCard.InfoContainer>
+          </NewCard.Container>
         </NewCard>
 
         <br />
         <br />
 
-        <NewCard {...styles('example2', {}, this.props)} stacked>
-          <NewCard.MediaContainer>{media}</NewCard.MediaContainer>
-          <NewCard.InfoContainer>
+        <NewCard className={styles.card + ' ' + styles.example1}>
+          <NewCard.Container minWidth={200} className={styles.info}>
+            <div>
+              <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
+              <br />
+              <Text typography={TYPOGRAPHY.runningText}>
+                I have 200px min-width, and the media has 300px min-width, so I
+                break when the total width is &lt; 500px
+              </Text>
+            </div>
+          </NewCard.Container>
+          <NewCard.Container className={styles.media} minWidth={300}>
+            {media}
+          </NewCard.Container>
+        </NewCard>
+
+        <br />
+        <br />
+
+        <NewCard className={styles.card + ' ' + styles.example2} stacked>
+          <NewCard.Container className={styles.media}>
+            {media}
+          </NewCard.Container>
+          <NewCard.Container className={styles.info}>
             <div>
               <Text typography={TYPOGRAPHY.smallTitle}>Stacked</Text>
               <br />
@@ -49,21 +70,23 @@ export class NewCardExample extends React.Component {
                 My width can grow and shrink
               </Text>
             </div>
-          </NewCard.InfoContainer>
+          </NewCard.Container>
         </NewCard>
 
         <br />
         <br />
 
-        <NewCard {...styles('example3', {}, this.props)}>
-          <NewCard.MediaContainer>{media}</NewCard.MediaContainer>
-          <NewCard.InfoContainer>
+        <NewCard className={styles.card + ' ' + styles.example3}>
+          <NewCard.Container className={styles.media}>
+            {media}
+          </NewCard.Container>
+          <NewCard.Container className={styles.info}>
             <div>
               <Text typography={TYPOGRAPHY.smallTitle}>Strip card</Text>
               <br />
               <Text typography={TYPOGRAPHY.runningText}>Yes we can!</Text>
             </div>
-          </NewCard.InfoContainer>
+          </NewCard.Container>
         </NewCard>
       </div>
     );
