@@ -56,3 +56,44 @@
     max-width: 100%;
     height: 100%;
 }
+
+
+.dugma.card {
+    border: 1px solid black;
+}
+
+.dugma.card::container.info,
+.dugma.card::container.media {
+    border: none !important;
+}
+
+:vars {
+    overlappingMargin: 80px;
+}
+
+.overlapping.card, .overlapping.card * {
+    box-sizing: border-box;
+}
+
+.overlapping.card::container.media {
+    display: flex;
+    align-items: center;
+}
+.overlapping.card::container.info {
+    border: none !important;
+}
+
+.overlapping.card::container:first-of-type {
+    margin-right: calc(-1 * value(overlappingMargin) / 2);
+}
+.overlapping.card::container:last-of-type {
+    margin-left: calc(-1 * value(overlappingMargin) / 2);
+}
+
+.overlapping.card::container.info .overlapContent {
+    border: 1px solid black;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: value(overlappingMargin);
+}
