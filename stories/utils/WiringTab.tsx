@@ -10,6 +10,8 @@ export function WiringTab({ component, css }) {
       root,
     );
 
+    console.log('adler', 'WiringTab.tsx:13', meta);
+
     const styleParams = meta.vars.reduce(
       (acc, item) => {
         const { text, name } = item;
@@ -35,23 +37,24 @@ export function WiringTab({ component, css }) {
     const wixColorParams = styleParams.colors;
     const wixFontParams = styleParams.fonts;
 
-    return (
-      <div>
-        <div className="tpa-container">
-          <CodeExample
-            title={'foobar'}
-            // code={['//.st.css', css, '', '//.tsx',].join('\n')}
-          >
-            {component}
-          </CodeExample>
-        </div>
-        <MockSettings
-          wixNumberParams={wixNumberParams}
-          wixColorParams={wixColorParams}
-          wixFontParams={wixFontParams}
-        />
-      </div>
-    );
+    return 'Hello World';
+    // return (
+    //   {/*<div>*/}
+    //   {/*  <div className="tpa-container">*/}
+    //   {/*    <CodeExample*/}
+    //   {/*      title={'foobar'}*/}
+    //   {/*      // code={['//.st.css', css, '', '//.tsx',].join('\n')}*/}
+    //   {/*    >*/}
+    //   {/*      {component}*/}
+    //   {/*    </CodeExample>*/}
+    //   {/*  </div>*/}
+    //   {/*  <MockSettings*/}
+    //   {/*    wixNumberParams={wixNumberParams}*/}
+    //   {/*    wixColorParams={wixColorParams}*/}
+    //   {/*    wixFontParams={wixFontParams}*/}
+    //   {/*  />*/}
+    //   {/*</div>*/}
+    // );
   } catch (e) {
     console.log('adler', 'WiringTab.tsx:15', e);
   }

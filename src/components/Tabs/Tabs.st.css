@@ -23,9 +23,13 @@
 }
 
 :vars {
+    /* The tabs' text color @default(color-5) */
     MainTextColor: --overridable;
+    /* The tabs' text font @default({theme: 'Body-M', size: '16px', lineHeight: '24px'}) */
     MainTextFont: --overridable;
+    /* The selected border color @default(color-8) */
     SelectedTabIndicatorColor: --overridable;
+    /* The bottom border color @default(color-5) */
     IndicatorColor: --overridable;
 }
 

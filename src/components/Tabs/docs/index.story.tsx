@@ -15,7 +15,7 @@ import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
 import css from '!raw-loader!../Tabs.st.css';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { WiringTab } from '../../../../stories/utils/WiringTab';
+import { styleApi } from '../../../../stories/utils/StyleApi';
 import * as TabsSource from '!raw-loader!../Tabs.tsx';
 import { Examples } from './examples';
 
@@ -79,8 +79,8 @@ export default {
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {
-          title: 'Wiring',
-          sections: [WiringTab({ component: <Tabs items={[]} />, css })],
+          title: 'Style API',
+          sections: [styleApi({ css })],
         },
         {
           title: 'Settings Panel',
