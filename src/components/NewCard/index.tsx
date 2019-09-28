@@ -1,1 +1,1 @@
-export { NewCard, NewCardProps } from './NewCard';
+export * from './NewCard';
