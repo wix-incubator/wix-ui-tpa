@@ -30,7 +30,7 @@
 }
 
 .root {
-    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
+    -st-states: size(enum(large, medium, small, xSmall, xxSmall)), rtl;
     display: inline-flex;
     flex-direction: row;
 }
@@ -53,6 +53,31 @@
 
 .root:size(xxSmall) {
     padding-left: 4px;
+}
+
+.root:size(large):rtl {
+    padding-left: 0;
+    padding-right: 14px;
+}
+
+.root:size(medium):rtl {
+    padding-left: 0;
+    padding-right: 12px;
+}
+
+.root:size(small):rtl {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.root:size(xSmall):rtl {
+    padding-left: 0;
+    padding-right: 6px;
+}
+
+.root:size(xxSmall):rtl {
+    padding-left: 0;
+    padding-right: 4px;
 }
 
 .root .avatarContainer {
@@ -80,6 +105,31 @@
 
 .root:size(xxSmall) .avatarContainer {
     margin-left: -4px;
+}
+
+.root:size(large):rtl .avatarContainer {
+    margin-left: 0;
+    margin-right: -14px;
+}
+
+.root:size(medium):rtl .avatarContainer {
+    margin-left: 0;
+    margin-right: -12px;
+}
+
+.root:size(small):rtl .avatarContainer {
+    margin-left: 0;
+    margin-right: -10px;
+}
+
+.root:size(xSmall):rtl .avatarContainer {
+    margin-left: 0;
+    margin-right: -6px;
+}
+
+.root:size(xxSmall):rtl .avatarContainer {
+    margin-left: 0;
+    margin-right: -4px;
 }
 
 .avatar {
@@ -154,6 +204,23 @@
 
 :size(xxSmall) .textButtonContainer {
     margin-left: 8px;
+}
+
+:size(large):rtl .textButtonContainer,
+:size(medium):rtl .textButtonContainer,
+:size(small):rtl .textButtonContainer {
+    margin-left: 0;
+    margin-right: 12px;
+}
+
+:size(xSmall):rtl .textButtonContainer {
+    margin-left: 0;
+    margin-right: 10px;
+}
+
+:size(xxSmall):rtl .textButtonContainer {
+    margin-left: 0;
+    margin-right: 8px;
 }
 
 .root:size(large) .textButton,

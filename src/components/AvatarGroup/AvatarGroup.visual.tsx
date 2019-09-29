@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 const items = [
   {},
@@ -51,6 +52,7 @@ function generateIts(size) {
     {
       it: 'Empty',
       props: { size },
+      rtl: false,
     },
     {
       it: 'With 3 items and default limit',
@@ -62,6 +64,7 @@ function generateIts(size) {
         size,
         items: [...items, ...items],
       },
+      rtl: false,
     },
     {
       it: 'With 12 items and custom limit',
@@ -70,6 +73,7 @@ function generateIts(size) {
         maxAmount: 9,
         size,
       },
+      rtl: false,
     },
     {
       it: 'With optional text link',
@@ -78,14 +82,28 @@ function generateIts(size) {
         items: [...items],
         children: Link,
       },
+      rtl: false,
+    },
+    {
+      it: 'RTL',
+      props: {
+        size,
+        items: [...items],
+        children: Link,
+      },
+      rtl: true,
     },
   ];
 }
 
 tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
+  its.forEach(({ it, props, rtl }) => {
     storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
-      <AvatarGroupVisual {...props} />
+      <div dir={rtl ? 'rtl' : 'ltr'}>
+        <TPAComponentsProvider value={{ rtl, mobile: false }}>
+          <AvatarGroupVisual {...props} />
+        </TPAComponentsProvider>
+      </div>
     ));
   });
 });
