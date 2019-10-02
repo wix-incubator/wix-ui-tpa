@@ -4,7 +4,6 @@ import { Avatar } from '../Avatar';
 import { AvatarGroupTextButton } from './AvatarGroupTextButton';
 import { TextButton } from '../TextButton';
 import { TPAComponentProps } from '../../types';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface AvatarGroupItem {
   name?: string;
@@ -65,25 +64,23 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     const textButton = this.getTextButton();
 
     return (
-      <TPAComponentsConsumer>
-        {({ rtl }) => (
-          <div {...styles('root', { size, rtl }, rest)}>
-            {items.slice(0, maxAmount).map(({ name, src }, key) => (
-              <div className={styles.avatarContainer} key={key}>
-                <Avatar
-                  className={styles.avatar}
-                  data-hook="avatar"
-                  name={name}
-                  src={src}
-                />
-              </div>
-            ))}
-            {textButton ? (
-              <div className={styles.textButtonContainer}>{textButton}</div>
-            ) : null}
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <div {...styles('root', { size }, rest)}>
+        <div className={styles.avatars}>
+          {items.slice(0, maxAmount).map(({ name, src }, key) => (
+            <div className={styles.avatarContainer} key={key}>
+              <Avatar
+                className={styles.avatar}
+                data-hook="avatar"
+                name={name}
+                src={src}
+              />
+            </div>
+          ))}
+        </div>
+        {textButton ? (
+          <div className={styles.textButtonContainer}>{textButton}</div>
+        ) : null}
+      </div>
     );
   }
 }

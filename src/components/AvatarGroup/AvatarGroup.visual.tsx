@@ -100,9 +100,7 @@ tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props, rtl }) => {
     storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
       <div dir={rtl ? 'rtl' : 'ltr'}>
-        <TPAComponentsProvider value={{ rtl, mobile: false }}>
-          <AvatarGroupVisual {...props} />
-        </TPAComponentsProvider>
+        <AvatarGroupVisual {...props} />
       </div>
     ));
   });

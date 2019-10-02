@@ -3,7 +3,6 @@ import * as React from 'react';
 import { AvatarGroup } from '../index';
 import { AvatarGroupSize } from '../AvatarGroup';
 import extendedStyles from './ExtendedExample.st.css';
-import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 const items = [
   {},
@@ -45,16 +44,14 @@ export const ExtendedExample = props => (
       </AvatarGroup>
     </div>
     <div dir="rtl">
-      <TPAComponentsProvider value={{ rtl: true, mobile: false }}>
-        <AvatarGroup
-          {...extendedStyles('root', {}, props)}
-          items={[...items, ...items, ...items]}
-          maxAmount={9}
-          size={AvatarGroupSize.xxSmall}
-        >
-          <AvatarGroup.TextButton>RTL link</AvatarGroup.TextButton>
-        </AvatarGroup>
-      </TPAComponentsProvider>
+      <AvatarGroup
+        {...extendedStyles('root', {}, props)}
+        items={[...items, ...items, ...items]}
+        maxAmount={9}
+        size={AvatarGroupSize.xxSmall}
+      >
+        <AvatarGroup.TextButton>RTL link</AvatarGroup.TextButton>
+      </AvatarGroup>
     </div>
   </div>
 );

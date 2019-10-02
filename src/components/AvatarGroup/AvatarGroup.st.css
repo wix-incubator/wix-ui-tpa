@@ -30,34 +30,34 @@
 }
 
 .root {
-    -st-states: size(enum(large, medium, small, xSmall, xxSmall)), rtl;
+    -st-states: size(enum(large, medium, small, xSmall, xxSmall));
     display: inline-flex;
     flex-direction: row;
 }
 
-.root:size(large)::before {
-    content: '\00a0';
-    width: 14px;
+.avatars {
+    display: inline-flex;
+    flex-direction: row;
 }
 
-.root:size(medium)::before {
-    content: '\00a0';
-    width: 12px;
+.root:size(large) .avatars {
+    padding-left: 14px;
 }
 
-.root:size(small)::before {
-    content: '\00a0';
-    width: 10px;
+.root:size(medium) .avatars {
+    padding-left: 12px;
 }
 
-.root:size(xSmall)::before {
-    content: '\00a0';
-    width: 6px;
+.root:size(small) .avatars {
+    padding-left: 10px;
 }
 
-.root:size(xxSmall)::before {
-    content: '\00a0';
-    width: 4px;
+.root:size(xSmall) .avatars {
+    padding-left: 6px;
+}
+
+.root:size(xxSmall) .avatars {
+    padding-left: 4px;
 }
 
 .root .avatarContainer {
@@ -85,31 +85,6 @@
 
 .root:size(xxSmall) .avatarContainer {
     margin-left: -4px;
-}
-
-.root:size(large):rtl .avatarContainer {
-    margin-left: 0;
-    margin-right: -14px;
-}
-
-.root:size(medium):rtl .avatarContainer {
-    margin-left: 0;
-    margin-right: -12px;
-}
-
-.root:size(small):rtl .avatarContainer {
-    margin-left: 0;
-    margin-right: -10px;
-}
-
-.root:size(xSmall):rtl .avatarContainer {
-    margin-left: 0;
-    margin-right: -6px;
-}
-
-.root:size(xxSmall):rtl .avatarContainer {
-    margin-left: 0;
-    margin-right: -4px;
 }
 
 .avatar {
