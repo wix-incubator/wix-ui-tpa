@@ -6,10 +6,8 @@ try {
   privateConfig = require('./applitools.private.config.js');
 } catch (e) {}
 
-const finalConfig = applitoolsConfig({
+module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     serverUrl: process.env.APPLITOOLS_SERVER_URL,
   }),
 });
-
-module.exports = finalConfig;
