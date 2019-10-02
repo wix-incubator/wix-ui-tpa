@@ -35,49 +35,29 @@
     flex-direction: row;
 }
 
-.root:size(large) {
-    padding-left: 14px;
+.root:size(large)::before {
+    content: '\00a0';
+    width: 14px;
 }
 
-.root:size(medium) {
-    padding-left: 12px;
+.root:size(medium)::before {
+    content: '\00a0';
+    width: 12px;
 }
 
-.root:size(small) {
-    padding-left: 10px;
+.root:size(small)::before {
+    content: '\00a0';
+    width: 10px;
 }
 
-.root:size(xSmall) {
-    padding-left: 6px;
+.root:size(xSmall)::before {
+    content: '\00a0';
+    width: 6px;
 }
 
-.root:size(xxSmall) {
-    padding-left: 4px;
-}
-
-.root:size(large):rtl {
-    padding-left: 0;
-    padding-right: 14px;
-}
-
-.root:size(medium):rtl {
-    padding-left: 0;
-    padding-right: 12px;
-}
-
-.root:size(small):rtl {
-    padding-left: 0;
-    padding-right: 10px;
-}
-
-.root:size(xSmall):rtl {
-    padding-left: 0;
-    padding-right: 6px;
-}
-
-.root:size(xxSmall):rtl {
-    padding-left: 0;
-    padding-right: 4px;
+.root:size(xxSmall)::before {
+    content: '\00a0';
+    width: 4px;
 }
 
 .root .avatarContainer {
@@ -192,35 +172,21 @@
     align-items: center;
 }
 
-:size(large) .textButtonContainer,
-:size(medium) .textButtonContainer,
-:size(small) .textButtonContainer {
-    margin-left: 12px;
+:size(large) .textButtonContainer::before,
+:size(medium) .textButtonContainer::before,
+:size(small) .textButtonContainer::before {
+    content: '\00a0';
+    width: 12px;
 }
 
-:size(xSmall) .textButtonContainer {
-    margin-left: 10px;
+:size(xSmall) .textButtonContainer::before {
+    content: '\00a0';
+    width: 10px;
 }
 
-:size(xxSmall) .textButtonContainer {
-    margin-left: 8px;
-}
-
-:size(large):rtl .textButtonContainer,
-:size(medium):rtl .textButtonContainer,
-:size(small):rtl .textButtonContainer {
-    margin-left: 0;
-    margin-right: 12px;
-}
-
-:size(xSmall):rtl .textButtonContainer {
-    margin-left: 0;
-    margin-right: 10px;
-}
-
-:size(xxSmall):rtl .textButtonContainer {
-    margin-left: 0;
-    margin-right: 8px;
+:size(xxSmall) .textButtonContainer::before {
+    content: '\00a0';
+    width: 8px;
 }
 
 .root:size(large) .textButton,
