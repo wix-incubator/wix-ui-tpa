@@ -3,7 +3,6 @@ import { storiesOf } from '@storybook/react';
 import { AvatarGroup } from './';
 import { AvatarGroupSize } from './AvatarGroup';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 const items = [
   {},
