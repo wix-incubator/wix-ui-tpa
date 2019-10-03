@@ -12,7 +12,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
-import css from '!raw-loader!../Tabs.st.css';
+import * as css from '!raw-loader!../Tabs.st.css';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { styleApi } from '../../../../stories/utils/StyleApi/StyleApi';
