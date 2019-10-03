@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { safeParse, StylableProcessor, processNamespace } from '@stylable/core';
 import { StyleApiTable } from './StyleApiTable';
+
+// can't import using the `import` statement because of a tslint error in @stylable/core
+const {
+  safeParse,
+  StylableProcessor,
+  processNamespace,
+} = require('@stylable/core');
 
 const defaultValueRegex = /@default\(([^)]+)\)/;
 
