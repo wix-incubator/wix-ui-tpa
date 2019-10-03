@@ -15,7 +15,7 @@ import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
 import css from '!raw-loader!../Tabs.st.css';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { styleApi } from '../../../../stories/utils/StyleApi';
+import { styleApi } from '../../../../stories/utils/StyleApi/StyleApi';
 import * as TabsSource from '!raw-loader!../Tabs.tsx';
 import { Examples } from './examples';
 
@@ -70,18 +70,15 @@ export default {
 
           title('Examples'),
 
-          // ...[{ title: 'Example', source: Examples }].map(code),
+          code(<Examples />),
         ],
       }),
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [styleApi({ css })] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
-        {
-          title: 'Style API',
-          sections: [styleApi({ css })],
-        },
         {
           title: 'Settings Panel',
           sections: [
