@@ -1,34 +1,54 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { NewCard } from './';
+import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import { NewCardWiringExample } from './docs/NewCardWiringExample';
+import { visualize, story, snap } from 'storybook-snapper';
+import { newCardDriverFactory, NewCardDriver } from './NewCard.driver';
+import { NewCardProps } from '.';
+import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
-class NewCardVisual extends React.Component<any> {
+const createDriver = uniTestkitFactoryCreator(newCardDriverFactory);
+const dataHook = 'storybook-e2e-NewCard';
+
+interface NewCardVisualProps {
+  newCardProps: NewCardProps;
+  onDone(TabsDriver): void;
+}
+
+class NewCardVisual extends React.Component<NewCardVisualProps> {
+  static defaultProps = {
+    newCardProps: {},
+    onDone: () => {},
+  };
+  private driver: NewCardDriver;
+
+  componentDidMount(): void {
+    this.driver = createDriver({ wrapper: document.body, dataHook });
+
+    onStyleProcessorDone()
+      .then(async () => {
+        const { onDone } = this.props as any;
+        try {
+          onDone && (await onDone(this.driver));
+        } catch (e) {}
+      })
+      .catch(() => {});
+  }
+
   render() {
     return (
-      <VisualTestContainer>
-        <NewCard {...this.props} />
-      </VisualTestContainer>
+      <div>
+        <NewCardWiringExample />
+      </div>
     );
   }
 }
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-    ],
-  },
-];
+visualize('New Card', () => {
+  const renderTest = (onDone?: (any?) => (TabsDriver) => void) => {
+    return done => <NewCardVisual onDone={onDone && onDone(done)} />;
+  };
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`NewCard/${describe}`, module).add(it, () => (
-      <NewCardVisual {...props} />
-    ));
+  story('render', () => {
+    snap('all states', renderTest());
   });
 });

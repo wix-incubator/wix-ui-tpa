@@ -1,50 +1,65 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import styles from './NewCard.st.css';
-
-//based on https://zeroheight.com/7sjjzhgo2/p/19342a/b/10ada1/t/79b426
-//there is will be a more options for layout
-export const enum CardLayout {
-  Stacked = 'stacked',
-}
+import { NEWCARD_DATA_HOOKS, NEWCARD_DATA_KEYS } from './dataHooks';
 
 export interface NewCardProps {
-  layout: CardLayout;
+  stacked?: boolean;
   className?: string;
   'data-hook'?: string;
 }
 
-interface ContainerProps {
-  children?: React.ReactNode;
+export interface ContainerProps {
+  children: React.ReactNode;
   minWidth?: number;
   className?: string;
   'data-hook'?: string;
 }
 
 interface DefaultProps {
-  layout: CardLayout;
+  stacked: false;
+  'data-hook': string;
 }
 
 const Container: React.FunctionComponent<ContainerProps> = props => {
-  return <div data-hook={props['data-hook']}>dss</div>;
+  const { className, children, minWidth } = props;
+  return (
+    <div
+      style={{ flexBasis: `${minWidth}px` }}
+      className={classnames(styles.container, className)}
+      data-hook={props['data-hook'] || NEWCARD_DATA_HOOKS.NewCardContainer}
+    >
+      {children}
+    </div>
+  );
 };
 
 /** An implementation of NewCard for TPAs */
 export class NewCard extends React.Component<NewCardProps> {
   static displayName = 'NewCard';
   static defaultProps: DefaultProps = {
-    layout: CardLayout.Stacked,
+    stacked: false,
+    'data-hook': NEWCARD_DATA_HOOKS.NewCardRoot,
   };
 
   static Container = Container;
 
+  getDataAttributes() {
+    const { stacked } = this.props;
+
+    return {
+      [NEWCARD_DATA_KEYS.Stacked]: stacked,
+    };
+  }
+
   render() {
-    const { layout, children, className, ...rest } = this.props;
+    const { stacked, children, className, ...rest } = this.props;
 
     return (
       <section
         data-hook={this.props['data-hook']}
-        {...styles(classnames('root', className), { layout }, rest)}
+        {...this.getDataAttributes()}
+        {...styles(classnames('root', className), { stacked }, rest)}
       >
         {children}
       </section>

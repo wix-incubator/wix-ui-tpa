@@ -1,12 +1,10 @@
-import { NewCard } from '.';
+import { NewCardWiringExample } from './docs/NewCardWiringExample';
 import Registry from '@ui-autotools/registry';
 
-const NewCardMetadata = Registry.getComponentMetadata(NewCard);
+const NewCardMetadata = Registry.getComponentMetadata(NewCardWiringExample);
 NewCardMetadata.nonReactStrictModeCompliant = true;
 
 NewCardMetadata.addSim({
   title: 'render',
-  props: {
-    buttonText: 'Click me!',
-  },
+  props: {},
 });

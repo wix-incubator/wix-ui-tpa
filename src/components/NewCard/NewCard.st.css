@@ -1,18 +1,19 @@
-:import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
-}
-
-:vars {
-    /*Defaults*/
-    /*Defaults params goes here*/
-}
-
-:vars {
-    /*Overrides*/
-    /*Deceleration of overridable placeholders*/
-}
-
 .root {
-    /*css goes here*/
+    -st-states: stacked;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.root:stacked {
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    max-height: 100%;
+    box-sizing: border-box;
+}
+
+.container img {
+    max-width: 100%;
 }
