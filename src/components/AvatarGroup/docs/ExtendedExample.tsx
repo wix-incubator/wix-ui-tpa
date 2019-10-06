@@ -43,5 +43,15 @@ export const ExtendedExample = props => (
         <AvatarGroup.TextButton>Some link</AvatarGroup.TextButton>
       </AvatarGroup>
     </div>
+    <div dir="rtl">
+      <AvatarGroup
+        {...extendedStyles('root', {}, props)}
+        items={[...items, ...items, ...items]}
+        maxAmount={9}
+        size={AvatarGroupSize.xxSmall}
+      >
+        <AvatarGroup.TextButton>RTL link</AvatarGroup.TextButton>
+      </AvatarGroup>
+    </div>
   </div>
 );
