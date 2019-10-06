@@ -3,6 +3,7 @@
 
 ### Bug Fixes
 
+* Avatar Group rtl support fixed  ([f1fda04](https://github.com/wix/wix-ui-tpa/commit/f1fda04))
 * Avatar when no src is provided ([7f96819](https://github.com/wix/wix-ui-tpa/commit/7f96819))
 
 
@@ -10,7 +11,6 @@
 
 * All components' props to extend BaseProps ([1f5ce19](https://github.com/wix/wix-ui-tpa/commit/1f5ce19))
 * Add serverUrl to applitools config ([295945e](https://github.com/wix/wix-ui-tpa/commit/295945e))
-
 
 
 ## 1.1.1 (2019-09-19)
