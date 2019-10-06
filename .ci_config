@@ -1,4 +1,4 @@
 {
-  "pr_env_params" : {"APPLITOOLS_GITHUB_FT": "true"},
-  "env_params" : {"APPLITOOLS_GITHUB_FT": "true"}
+  "pr_env_params" : {"APPLITOOLS_GITHUB_FT": "true", "EYES_API_SERVER_URL": "https://wixeyesapi.applitools.com"},
+  "env_params" : {"APPLITOOLS_GITHUB_FT": "true", "EYES_API_SERVER_URL": "https://wixeyesapi.applitools.com"}
 }
