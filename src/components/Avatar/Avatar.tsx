@@ -45,7 +45,7 @@ export class Avatar extends React.Component<AvatarProps> {
     return (
       <CoreAvatar
         {...styles('root', { size }, rest)}
-        imgProps={{ src }}
+        imgProps={src ? { src } : undefined}
         placeholder={
           <Anonymous
             height={Avatar.dimmentionBySize[size]}
