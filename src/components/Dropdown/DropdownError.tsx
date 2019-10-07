@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatusAlertSmall } from 'wix-ui-icons-common/dist/src';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { Tooltip } from '../Tooltip';
-import { ICON_SIZE } from './constants';
+import {DATA_HOOKS, ICON_SIZE} from './constants';
 
 import styles from './DropdownError.st.css';
 
@@ -14,6 +14,7 @@ export const DropdownError: React.FC<DropdownErrorProps> = props => {
   return (
     <Tooltip
       {...styles('root', {}, props)}
+      data-hook={DATA_HOOKS.errorTooltip}
       placement="top-end"
       skin={TooltipSkin.Error}
       content={props.errorMessage}

@@ -12,6 +12,7 @@ import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 
 import styles from './Dropdown.st.css';
+import { DATA_HOOKS } from './constants';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -115,7 +116,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
             )}
             <CoreDropdown
               {...styles('dropdown', { mobile, disabled }, rest)}
-              data-hook="core-dropdown"
+              data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
               openTrigger={disabled ? 'none' : 'click'}
               options={coreOptions}

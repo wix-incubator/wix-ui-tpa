@@ -38,6 +38,26 @@ describe('Dropdown', () => {
     expect(await driver.getOptionsCount()).toBe(5);
   });
 
+  describe('error states', () => {
+    it('should have error', async () => {
+      const driver = createDriver(
+          <Dropdown options={[]} error />,
+      );
+      expect(await driver.hasError()).toBeTruthy();
+      expect(await driver.hasErrorMessage()).toBeFalsy();
+    });
+
+    it('should have error message', async () => {
+      const errorMessage = 'Ooops, something went wrong';
+      const driver = createDriver(
+          <Dropdown options={[]} error errorMessage={errorMessage} />,
+      );
+      expect(await driver.hasError()).toBeTruthy();
+      expect(await driver.hasErrorMessage()).toBeTruthy();
+      expect(await driver.getErrorMessageContent()).toMatch(errorMessage);
+    });
+  });
+
   describe('onChange', () => {
     let driver: DropdownDriver;
     let onChange: Mock;
