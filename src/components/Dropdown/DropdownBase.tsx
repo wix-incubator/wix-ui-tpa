@@ -3,9 +3,9 @@ import { ChevronDownSmall } from 'wix-ui-icons-common/dist/src';
 import { Input, InputProps } from '../Input';
 import { ICON_SIZE } from './constants';
 
-import styles from './DropdownInput.st.css';
+import styles from './DropdownBase.st.css';
 
-export const DropdownInput = (props: InputProps) => {
+export const DropdownBase = (props: InputProps) => {
   return (
     <Input
       {...props}

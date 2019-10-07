@@ -25,8 +25,8 @@
 }
 
 :import {
-    -st-from: "./DropdownInput.st.css";
-    -st-default: DropdownInput;
+    -st-from: "./DropdownBase.st.css";
+    -st-default: DropdownBase;
     -st-named: borderHoverColor;
 }
 
@@ -53,7 +53,7 @@
 }
 
 .dropdownInput {
-    -st-extends: DropdownInput;
+    -st-extends: DropdownBase;
 }
 
 .dropdownError {
@@ -71,16 +71,16 @@
     /*mobile css goes here*/
 }
 
-.dropdown:content-visible .dropdownInput::root {
+.dropdown:content-visible .dropdownBase::root {
     color: value(borderHoverColor);
     border-color: value(borderHoverColor);
 }
 
-.dropdown:content-visible .dropdownInput::root:error {
+.dropdown:content-visible .dropdownBase::root:error {
     border-color: value(errorColor);
 }
 
-.dropdown:content-visible .dropdownInput::arrowIcon {
+.dropdown:content-visible .dropdownBase::arrowIcon {
     transform: rotate(180deg);
     padding-inline-start: 8px;
     padding-inline-end: 0;
@@ -105,7 +105,7 @@
 }
 
 .root:alignment(center),
-.root:alignment(center) .dropdownInput::nativeInput {
+.root:alignment(center) .dropdownBase::nativeInput {
     text-align: center;
 }
 

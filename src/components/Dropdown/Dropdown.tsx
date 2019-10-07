@@ -4,7 +4,7 @@ import { DropdownOptionType as CoreDropdownOption } from 'wix-ui-core/dropdown-o
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
-import { DropdownInput } from './DropdownInput';
+import { DropdownBase } from './DropdownBase';
 import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 
@@ -112,8 +112,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               onSelect={this.onSelect}
               initialSelectedIds={selectedOption ? [selectedOption.id] : []}
             >
-              <DropdownInput
-                {...styles('dropdownInput', {}, rest)}
+              <DropdownBase
+                {...styles('dropdownBase', {}, rest)}
                 value={selectedOption ? selectedOption.value : ''}
                 placeholder={placeholder}
                 disabled={disabled}

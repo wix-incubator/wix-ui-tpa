@@ -3,8 +3,8 @@ import * as examples from './examples';
 import {
   header,
   api,
+  description,
   divider,
-  importExample,
   playground,
   tab,
   code as baseCode,
@@ -22,12 +22,11 @@ import { DROPDOWN_ALIGNMENT } from '../Dropdown';
 import {
   baseOptions,
   numberOptions,
-  optionsWithIcon,
-  optionsWithIconAndSubtitles,
   optionsWithSections,
   optionsWithSubtitle,
 } from './exampleOptions';
 import { Heart } from 'wix-ui-icons-common/dist/src';
+import * as Readme from "../../Dropdown/README.md";
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -91,9 +90,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          importExample({
-            source: examples.importExample,
-          }),
+          description(Readme),
 
           divider(),
 
