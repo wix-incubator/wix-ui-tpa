@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
+import { optionsWithSections, simpleOptions } from './helpers';
 
 class DropdownVisual extends React.Component<any> {
   static defaultProps = {
@@ -24,16 +25,32 @@ class DropdownVisual extends React.Component<any> {
 
 const tests = [
   {
-    describe: 'basic',
+    describe: 'desktop',
     its: [
       {
-        it: 'default',
-        props: {},
+        it: 'Simple',
+        props: {
+          placeholder: 'Placeholder text',
+          options: simpleOptions,
+        },
       },
       {
-        it: 'mobile',
+        it: 'Error',
         props: {
-          mobile: true,
+          placeholder: 'Placeholder text',
+          error: true,
+          errorMessage: 'The coupon code is not valid',
+          options: simpleOptions,
+        },
+      },
+      {
+        it: 'Complex',
+        props: {
+          placeholder: 'Placeholder text',
+          label: 'Label Text',
+          error: true,
+          errorMessage: 'The coupon code is not valid',
+          options: optionsWithSections,
         },
       },
     ],
