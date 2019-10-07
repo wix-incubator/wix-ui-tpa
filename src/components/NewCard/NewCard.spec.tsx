@@ -25,7 +25,7 @@ describe('NewCard', () => {
 
   it('should have stacked state', async () => {
     const driver = createDriver(<TestComp stacked />);
-    expect(await driver.hasStacked()).toBe(true);
+    expect(await driver.isStacked()).toBe(true);
   });
 
   describe('testkit', () => {

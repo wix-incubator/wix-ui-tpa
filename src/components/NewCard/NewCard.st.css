@@ -1,6 +1,6 @@
 .root {
     -st-states: stacked;
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
 }
 

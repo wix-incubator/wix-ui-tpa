@@ -1,24 +1,20 @@
 import * as React from 'react';
 import classnames from 'classnames';
+import { TPAComponentProps } from '../../types';
 import styles from './NewCard.st.css';
 import { NEWCARD_DATA_HOOKS, NEWCARD_DATA_KEYS } from './dataHooks';
 
-export interface NewCardProps {
+export interface NewCardProps extends TPAComponentProps {
   stacked?: boolean;
-  className?: string;
-  'data-hook'?: string;
 }
 
-export interface ContainerProps {
+export interface ContainerProps extends TPAComponentProps {
   children: React.ReactNode;
   minWidth?: number;
-  className?: string;
-  'data-hook'?: string;
 }
 
 interface DefaultProps {
   stacked: false;
-  'data-hook': string;
 }
 
 const Container: React.FunctionComponent<ContainerProps> = props => {
@@ -39,7 +35,6 @@ export class NewCard extends React.Component<NewCardProps> {
   static displayName = 'NewCard';
   static defaultProps: DefaultProps = {
     stacked: false,
-    'data-hook': NEWCARD_DATA_HOOKS.NewCardRoot,
   };
 
   static Container = Container;
