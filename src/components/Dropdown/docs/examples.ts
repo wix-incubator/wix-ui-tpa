@@ -9,7 +9,7 @@ import {
   optionsWithSubtitle,
 } from './exampleOptions';
 
-export const example = `
+export const simpleExample = `
     <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
       baseOptions,
     )}} />

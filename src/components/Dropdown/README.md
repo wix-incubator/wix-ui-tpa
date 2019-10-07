@@ -1,6 +1,6 @@
 ## Dropdown
 An implementation of an Dropdown for TPAs.
-Single selection dropdown.
+A Dropdown presents a list of options and allows a user to select one of the options.
 
 The Dropdown TPA implementation provides a few default styles. 
 By default site theme is used.

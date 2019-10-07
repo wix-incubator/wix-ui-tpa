@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-import { DropdownOptionType as CoreDropdownOption } from 'wix-ui-core/dropdown-option';
+import {
+  DropdownOptionType as CoreDropdownOption,
+  Option,
+} from 'wix-ui-core/dropdown-option';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
@@ -16,6 +19,7 @@ export enum DROPDOWN_ALIGNMENT {
 
 export interface DropdownProps {
   options: DropdownOptionProps[];
+  onChange?(selectedOption: DropdownOptionProps): void;
   initialSelectedId?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -61,8 +65,13 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     selectedOption: null,
   };
 
-  onSelect = (option: CoreDropdownOption) => {
-    this.setState({ selectedOption: option });
+  onSelect = (selectedOption: Option) => {
+    this.setState({ selectedOption });
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.options.find(({ id }) => selectedOption.id === id),
+      );
+    }
   };
 
   render() {
@@ -94,6 +103,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               },
               rest,
             )}
+            data-mobile={mobile}
           >
             {label && (
               <Text
@@ -105,6 +115,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
             )}
             <CoreDropdown
               {...styles('dropdown', { mobile, disabled }, rest)}
+              data-hook="core-dropdown"
               data-mobile={mobile}
               openTrigger={disabled ? 'none' : 'click'}
               options={coreOptions}

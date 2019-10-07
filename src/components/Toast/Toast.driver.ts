@@ -4,6 +4,7 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { TOAST_SKIN } from './types';
+import { hasDataAttr, hasMobile } from '../../test/utils';
 
 export interface ToastDriver extends BaseUniDriver {
   isShown(): Promise<boolean>;
@@ -20,21 +21,8 @@ const hasSkin = async (base: UniDriver, skin: TOAST_SKIN): Promise<boolean> => {
   return hasDataAttr(base, 'skin', skin);
 };
 
-const hasMobile = async (base: UniDriver): Promise<boolean> => {
-  return hasDataAttr(base, 'mobile', 'true');
-};
-
 const hasIsShown = async (base: UniDriver): Promise<boolean> => {
   return hasDataAttr(base, 'is-shown', 'true');
-};
-
-const hasDataAttr = async (
-  base: UniDriver,
-  field: string,
-  expectedValue: any,
-): Promise<boolean> => {
-  const fieldValue = await base.attr(`data-${field}`);
-  return fieldValue === expectedValue;
 };
 
 export const toastDriverFactory = (base: UniDriver): ToastDriver => {

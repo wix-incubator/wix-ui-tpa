@@ -7,12 +7,17 @@ import styles from './DropdownOption.st.css';
 export interface DropdownOptionProps {
   id: string;
   value: string;
-  subtitle: string;
-  isSelectable: boolean;
-  isSectionTitle: boolean;
-  icon: React.ReactNode;
+  subtitle?: string;
+  isSelectable?: boolean;
+  isSectionTitle?: boolean;
+  icon?: React.ReactNode;
 }
 
+/**
+ * asdfasdfasdf
+ * @param props
+ * @constructor
+ */
 export const DropdownOption: React.FC<DropdownOptionProps> = props => {
   const { value, id, isSelectable, subtitle, icon, isSectionTitle } = props;
   return (

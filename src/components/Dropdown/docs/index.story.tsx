@@ -26,7 +26,7 @@ import {
   optionsWithSubtitle,
 } from './exampleOptions';
 import { Heart } from 'wix-ui-icons-common/dist/src';
-import * as Readme from "../../Dropdown/README.md";
+import * as Readme from '../../Dropdown/README.md';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -82,6 +82,7 @@ export default {
     errorMessage: '',
     options,
     initialSelectedId: '',
+    onChange: option => console.log(option),
   },
   dataHook: 'storybook-Dropdown',
   sections: [
@@ -97,7 +98,7 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
+            { title: 'Simple', source: examples.simpleExample },
             { title: 'Disabled', source: examples.disabledExample },
             { title: 'w. label', source: examples.withLabelExample },
             { title: 'Centered', source: examples.alignmentExample },
@@ -123,22 +124,6 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
-        {
-          title: 'Settings Panel',
-          sections: [
-            settingsPanel({
-              title: 'Dropdown Panel',
-              example: <DropdownWiringExample />,
-              rawSource: DropdownWiringExampleRaw,
-              rawCSSSource: DropdownWiringExampleCSSRaw,
-              params: {
-                colors: [],
-                fonts: [],
-                numbers: [],
-              },
-            }),
-          ],
-        },
       ].map(tab),
     ]),
   ],
