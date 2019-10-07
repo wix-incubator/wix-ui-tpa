@@ -46,7 +46,7 @@
 .subtitle {
     -st-mixin: TPAText(
         MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1em'}"
+        MainTextFont "{theme: 'Body-M', size: '14px'}"
     );
     margin: -7px 26px 8px 26px;
     display: block;

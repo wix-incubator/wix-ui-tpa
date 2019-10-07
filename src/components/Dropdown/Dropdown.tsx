@@ -101,6 +101,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               'root',
               {
                 alignment,
+                mobile,
               },
               rest,
             )}

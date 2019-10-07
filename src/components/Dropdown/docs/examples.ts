@@ -9,11 +9,23 @@ import {
   optionsWithSubtitle,
 } from '../helpers';
 
-export const simpleExample = `
-    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
-      simpleOptions,
-    )}} />
+const wrap = example => `
+  <div>
+    <div>Desktop:</div>
+      ${example}
+      <br/>
+      <div>Mobile:</div>
+      <ExampleWithContextProps mobile={true}>
+        ${example}
+      </ExampleWithContextProps>
+  </div>
 `;
+
+export const simpleExample = wrap(`
+  <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+    simpleOptions,
+  )}} />
+`);
 
 export const disabledExample = `
     <Dropdown placeholder="Placeholder Text" disabled options={${JSON.stringify(
@@ -39,11 +51,11 @@ export const errorWithMessageExample = `
     )}}/>
 `;
 
-export const withLabelExample = `
+export const withLabelExample = wrap(`
     <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
       simpleOptions,
     )}}/>
-`;
+`);
 
 export const sectionTitleExample = `
     <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
@@ -75,6 +87,6 @@ export const minWidthExample = `
 
 export const mobileExample = `
     <ExampleWithContextProps mobile={true}>
-        <Dropdown />
+        {simpleExample}
     </ExampleWithContextProps>
 `;

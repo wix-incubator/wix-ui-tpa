@@ -11,14 +11,14 @@ The styles can NOT be overridable.
 | **Desktop** | **Component** | **Font Theme**  | **Size**    | **Color**  | **Opacity** |
 |-------------|---------------|-----------------|-------------|------------|-------------|
 |             | Background    |                 |             | Color 1    | 100%        |
-|             | Border        |                 | 1px (width) | #FFFFFF    | 40%         |
+|             | Border        |                 | 1px (width) | Color 5    | 40%         |
 |             | Input Text    | Paragraph 2     | 16px        | Color 5    | 100%        |
 |             | Subtitle Text | Paragraph 2     | 14px        | Color 5    | 60%         |
 |             | Section Title | Paragraph 2     | 16px        | Color 3    | 100%        |
 |             | Icon          |                 |             | Text Color | 100%        |
 |             | Hover BG      |                 |             | Color 5    | 6%          |
 | **Mobile**  | Background    |                 |             | Color 1    | 100%        |
-|             | Border        |                 | 1px (width) | #FFFFFF    | 40%         |
+|             | Border        |                 | 1px (width) | Color 5    | 40%         |
 |             | Input Text    | Paragraph 2     | 14px        | Color 5    | 100%        |
 |             | Subtitle Text | Paragraph 2     | 12px        | Color 5    | 60%         |
 |             | Section Title | Paragraph 2     | 14px        | Color 3    | 100%        |

@@ -41,19 +41,29 @@
 }
 
 .root {
-    -st-states: alignment(enum(center));
+    -st-states: alignment(enum(center)), mobile;
+}
+
+.root:mobile .label {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '12px'}"
+    );
 }
 
 .label {
     -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1.5em'}"
+        MainTextFont "{theme: 'Body-M', size: '14px'}"
     );
     display: block;
     margin-bottom: 8px;
 }
 
-.dropdownInput {
+.dropdownBase {
     -st-extends: DropdownBase;
+}
+
+.root:mobile .dropdownBase::nativeInput {
+    font-size: 14px;
 }
 
 .dropdownError {
