@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ChevronDownSmall } from 'wix-ui-icons-common/dist/src';
 import { Input, InputProps } from '../Input';
-import {DATA_HOOKS, ICON_SIZE} from './constants';
+import { DATA_HOOKS, ICON_SIZE } from './constants';
 
 import styles from './DropdownBase.st.css';
 

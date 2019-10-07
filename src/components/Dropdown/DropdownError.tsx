@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StatusAlertSmall } from 'wix-ui-icons-common/dist/src';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { Tooltip } from '../Tooltip';
-import {DATA_HOOKS, ICON_SIZE} from './constants';
+import { DATA_HOOKS, ICON_SIZE } from './constants';
 
 import styles from './DropdownError.st.css';
 

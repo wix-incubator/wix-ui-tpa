@@ -1,10 +1,10 @@
-export const baseOptions = new Array(5).fill(null).map((el, i) => ({
+export const simpleOptions = new Array(5).fill(null).map((el, i) => ({
   id: `${i}`,
   value: `Input Text ${i + 1}`,
   isSelectable: i < 3,
 }));
 
-export const optionsWithSubtitle = baseOptions.map((option, i) => ({
+export const optionsWithSubtitle = simpleOptions.map((option, i) => ({
   ...option,
   subtitle: `Subtitle Text ${i}`,
 }));

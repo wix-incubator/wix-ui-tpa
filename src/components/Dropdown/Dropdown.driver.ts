@@ -6,9 +6,9 @@ import { Simulate } from 'react-dom/test-utils';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { dropdownDriverFactory as coreDriverFactory } from 'wix-ui-core/dist/src/components/dropdown/Dropdown.driver';
 
-import {hasDataAttr, hasMobile} from '../../test/utils';
+import { hasDataAttr, hasMobile } from '../../test/utils';
 import { DATA_HOOKS } from './constants';
-import {tooltipDriverFactory} from "../Tooltip/Tooltip.driver";
+import { tooltipDriverFactory } from '../Tooltip/Tooltip.driver';
 
 export interface DropdownDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
@@ -31,7 +31,7 @@ const getDropdownCoreDriver = async (baseUniDriver: BaseUniDriver) => {
 
 const getTooltipDriver = async (baseUniDriver: BaseUniDriver) => {
   const element = (await baseUniDriver.element()).querySelector(
-      `[data-hook="${DATA_HOOKS.errorTooltip}"]`,
+    `[data-hook="${DATA_HOOKS.errorTooltip}"]`,
   );
   return tooltipDriverFactory({ element, eventTrigger: Simulate });
 };
@@ -53,8 +53,10 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     selectOptionAt: async (index: number) => {
       (await getDropdownCoreDriver(baseUniDriver)).optionAt(index).click();
     },
-    hasErrorMessage: async () => (await getTooltipDriver(baseUniDriver)).exists(),
-    hasError: async () => hasDataAttr(await getDropdownBase(), 'dropdown-base-error', 'true'),
+    hasErrorMessage: async () =>
+      (await getTooltipDriver(baseUniDriver)).exists(),
+    hasError: async () =>
+      hasDataAttr(await getDropdownBase(), 'dropdown-base-error', 'true'),
     getErrorMessageContent: async () => {
       const tooltipDriver = await getTooltipDriver(baseUniDriver);
       tooltipDriver.mouseEnter();

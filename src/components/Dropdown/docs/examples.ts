@@ -1,47 +1,47 @@
 import { DROPDOWN_ALIGNMENT } from '../Dropdown';
 
 import {
-  baseOptions,
+  simpleOptions,
   numberOptions,
   optionsWithIcon,
   optionsWithIconAndSubtitles,
   optionsWithSections,
   optionsWithSubtitle,
-} from './exampleOptions';
+} from '../helpers';
 
 export const simpleExample = `
     <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
-      baseOptions,
+      simpleOptions,
     )}} />
 `;
 
 export const disabledExample = `
     <Dropdown placeholder="Placeholder Text" disabled options={${JSON.stringify(
-      baseOptions,
+      simpleOptions,
     )}}/>
 `;
 
 export const alignmentExample = `
     <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
-      baseOptions,
+      simpleOptions,
     )}} alignment="${DROPDOWN_ALIGNMENT.center}" label="Label Text" />
 `;
 
 export const errorExample = `
     <Dropdown placeholder="Placeholder Text" error={true} options={${JSON.stringify(
-      baseOptions,
+      simpleOptions,
     )}}/>
 `;
 
 export const errorWithMessageExample = `
     <Dropdown placeholder="Placeholder Text" error={true} errorMessage="The coupon code is not valid" options={${JSON.stringify(
-      baseOptions,
+      simpleOptions,
     )}}/>
 `;
 
 export const withLabelExample = `
     <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
-      baseOptions,
+      simpleOptions,
     )}}/>
 `;
 

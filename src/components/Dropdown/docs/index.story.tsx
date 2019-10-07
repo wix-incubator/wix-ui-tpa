@@ -13,18 +13,14 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as DropdownWiringExampleRaw from '!raw-loader!./DropdownWiringExample.tsx';
-import * as DropdownWiringExampleCSSRaw from '!raw-loader!./DropdownWiringExample.st.css';
-import { DropdownWiringExample } from './DropdownWiringExample';
 import { Dropdown } from '../';
 import { DROPDOWN_ALIGNMENT } from '../Dropdown';
 import {
-  baseOptions,
+  simpleOptions,
   numberOptions,
   optionsWithSections,
   optionsWithSubtitle,
-} from './exampleOptions';
+} from '../helpers';
 import { Heart } from 'wix-ui-icons-common/dist/src';
 import * as Readme from '../../Dropdown/README.md';
 
@@ -34,7 +30,7 @@ const code = config =>
 const options = [
   {
     label: 'base options',
-    value: baseOptions,
+    value: simpleOptions,
   },
   {
     label: 'w. subtitle',
@@ -42,7 +38,7 @@ const options = [
   },
   {
     label: 'w. icon',
-    value: baseOptions.map(option => ({
+    value: simpleOptions.map(option => ({
       ...option,
       icon: <Heart />,
     })),
@@ -72,7 +68,7 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Dropdown',
     placeholder: 'Placeholder Text',
-    options: baseOptions,
+    options: simpleOptions,
   }),
   exampleProps: {
     label: '',
