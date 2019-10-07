@@ -65,16 +65,18 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
 
     return (
       <div {...styles('root', { size }, rest)}>
-        {items.slice(0, maxAmount).map(({ name, src }, key) => (
-          <div className={styles.avatarContainer} key={key}>
-            <Avatar
-              className={styles.avatar}
-              data-hook="avatar"
-              name={name}
-              src={src}
-            />
-          </div>
-        ))}
+        <div className={styles.avatars}>
+          {items.slice(0, maxAmount).map(({ name, src }, key) => (
+            <div className={styles.avatarContainer} key={key}>
+              <Avatar
+                className={styles.avatar}
+                data-hook="avatar"
+                name={name}
+                src={src}
+              />
+            </div>
+          ))}
+        </div>
         {textButton ? (
           <div className={styles.textButtonContainer}>{textButton}</div>
         ) : null}

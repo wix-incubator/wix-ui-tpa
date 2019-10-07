@@ -19,6 +19,8 @@
 }
 
 .nav {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     overflow: auto;
     height: 100%;
     width: 100%;

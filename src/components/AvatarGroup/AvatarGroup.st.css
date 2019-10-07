@@ -35,23 +35,28 @@
     flex-direction: row;
 }
 
-.root:size(large) {
+.avatars {
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.root:size(large) .avatars {
     padding-left: 14px;
 }
 
-.root:size(medium) {
+.root:size(medium) .avatars {
     padding-left: 12px;
 }
 
-.root:size(small) {
+.root:size(small) .avatars {
     padding-left: 10px;
 }
 
-.root:size(xSmall) {
+.root:size(xSmall) .avatars {
     padding-left: 6px;
 }
 
-.root:size(xxSmall) {
+.root:size(xxSmall) .avatars {
     padding-left: 4px;
 }
 
@@ -142,18 +147,21 @@
     align-items: center;
 }
 
-:size(large) .textButtonContainer,
-:size(medium) .textButtonContainer,
-:size(small) .textButtonContainer {
-    margin-left: 12px;
+:size(large) .textButtonContainer::before,
+:size(medium) .textButtonContainer::before,
+:size(small) .textButtonContainer::before {
+    content: '\00a0';
+    width: 12px;
 }
 
-:size(xSmall) .textButtonContainer {
-    margin-left: 10px;
+:size(xSmall) .textButtonContainer::before {
+    content: '\00a0';
+    width: 10px;
 }
 
-:size(xxSmall) .textButtonContainer {
-    margin-left: 8px;
+:size(xxSmall) .textButtonContainer::before {
+    content: '\00a0';
+    width: 8px;
 }
 
 .root:size(large) .textButton,
