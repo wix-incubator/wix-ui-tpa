@@ -13,6 +13,7 @@ export const DropdownBase = (props: InputProps) => {
       data-hook={DATA_HOOKS.base}
       data-dropdown-base-error={props.error}
       readOnly
+      aria-label="selected-value"
       suffix={
         <ChevronDownSmall
           className={styles.arrowIcon}
