@@ -48,12 +48,15 @@
         MainTextColor "value(colorPlaceholder)",
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1em'}"
     );
-    padding: 8px 26px;
-    margin-top: -15px;
+    margin: -7px 26px 8px 26px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-height: 14px;     /* fallback */
+    max-height: 28px;      /* fallback */
 }
 
 .icon {

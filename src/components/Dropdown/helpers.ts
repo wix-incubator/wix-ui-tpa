@@ -6,7 +6,10 @@ export const simpleOptions = new Array(5).fill(null).map((el, i) => ({
 
 export const optionsWithSubtitle = simpleOptions.map((option, i) => ({
   ...option,
-  subtitle: `Subtitle Text ${i}`,
+  subtitle:
+    i === 0
+      ? `The longest subtitle has 2 lines. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`
+      : `Subtitle Text ${i}`,
 }));
 
 export const optionsWithIcon = `[{

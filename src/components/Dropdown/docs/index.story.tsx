@@ -103,7 +103,10 @@ export default {
               title: 'Error with message',
               source: examples.errorWithMessageExample,
             },
-            { title: 'w. subtitles', source: examples.withSubtitlesExample },
+            {
+              title: 'w. subtitles (max 2 lines)',
+              source: examples.withSubtitlesExample,
+            },
             { title: 'Section title', source: examples.sectionTitleExample },
             { title: 'w. icons', source: examples.withIconsExample },
             {
