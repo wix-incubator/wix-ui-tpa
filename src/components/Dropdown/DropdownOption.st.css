@@ -18,6 +18,7 @@
 .root:withIcon .subtitle,
 .root:withIcon .title {
     padding-inline-start: 0;
+    margin-inline-start: 0;
 }
 
 .contentWrapper {
@@ -44,9 +45,10 @@
 }
 
 .subtitle {
+    -st-extends: TPAText;
     -st-mixin: TPAText(
         MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px'}"
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '14px'}"
     );
     margin: -7px 26px 8px 26px;
     display: block;
@@ -55,7 +57,6 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; /* number of lines to show */
-    line-height: 14px;     /* fallback */
     max-height: 28px;      /* fallback */
 }
 
