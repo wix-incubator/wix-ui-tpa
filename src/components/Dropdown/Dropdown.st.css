@@ -62,10 +62,6 @@
     -st-extends: DropdownBase;
 }
 
-.root:mobile .dropdownBase::nativeInput {
-    font-size: 14px;
-}
-
 .dropdownError {
     -st-extends: DropdownError;
 }
