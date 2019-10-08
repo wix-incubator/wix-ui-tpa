@@ -32,6 +32,7 @@ const tests = [
         props: {
           placeholder: 'Placeholder text',
           options: simpleOptions,
+          forceContentElementVisibility: true,
         },
       },
       {
@@ -41,6 +42,7 @@ const tests = [
           error: true,
           errorMessage: 'The coupon code is not valid',
           options: simpleOptions,
+          forceContentElementVisibility: true,
         },
       },
       {
@@ -51,6 +53,7 @@ const tests = [
           error: true,
           errorMessage: 'The coupon code is not valid',
           options: optionsWithSections,
+          forceContentElementVisibility: true,
         },
       },
     ],

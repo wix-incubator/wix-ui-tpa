@@ -28,6 +28,8 @@ export interface DropdownProps {
   errorMessage?: string;
   label?: string;
   alignment?: DROPDOWN_ALIGNMENT;
+  /* use for visual test */
+  forceContentElementVisibility?: boolean;
 }
 
 interface DefaultProps {
@@ -84,6 +86,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       label,
       options,
       alignment,
+      forceContentElementVisibility,
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
@@ -124,6 +127,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               onDeselect={this.onSelect}
               onSelect={this.onSelect}
               initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+              forceContentElementVisibility={forceContentElementVisibility}
             >
               <DropdownBase
                 {...styles('dropdownBase', {}, rest)}
