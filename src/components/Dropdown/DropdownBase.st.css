@@ -1,17 +1,17 @@
 :import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: Input;
-}
-
-:import {
     -st-from: "../../common/formatters.st";
     -st-named: color;
 }
 
 :import {
+    -st-from: "../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+:import {
     -st-from: "../Input/Input.st.css";
     -st-default: TPAInput;
-    -st-named: backgroundColor, colorDisabled, color as inputColor, errorColor;
+    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
 }
 
 :vars {
@@ -23,59 +23,64 @@
 }
 
 .root {
-    -st-extends: Input;
-    -st-states: error;
-    -st-mixin: TPAInput;
+    -st-extends: TPAButton;
+    -st-mixin: TPAButton(
+        MainBackgroundColor 'value(backgroundColor)',
+        MainBorderWidth '1px',
+        MainBorderColor 'value(borderColor)',
+        MainTextColor 'value(inputColor)'
+    );
+    -st-states: error, placeholder;
     display: flex;
-    align-items: center;
-    color: value(inputColor);
-    background-color: value(backgroundColor);
-    width: 100%;
+    justify-content: space-between;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
+.root:mobile:size(medium),
+.root:size(medium) {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-inline-start: 12px;
+    padding-inline-end: 7px;
+}
+
+.root::content {
+    margin: initial;
+}
+
+.root:focus,
 .root:hover {
     color: value(borderHoverColor);
     border-color: value(borderHoverColor);
 }
 
-.root:disabled {
-    color: value(colorDisabled);
-    cursor: none;
+.root:placeholder {
+    color: value(colorPlaceholder);
 }
 
-.root:disabled:hover {
+.root:priority(basic):disabled {
+    cursor: none;
+    background-color: value(backgroundColor);
     color: value(colorDisabled);
     border-color: value(colorDisabled);
 }
 
-.root:error:hover {
+.root:priority(basic):disabled:hover {
+    border-color: value(colorDisabled);
+}
+
+.root:error {
     border-color: value(errorColor);
 }
 
-.root::nativeInput  {
-    cursor: pointer;
-    padding: 8px 0;
-    padding-inline-start: 12px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.root:hover::nativeInput {
-    background-color: transparent;
-}
-
-.root:disabled::nativeInput {
-    cursor: initial;
-}
-
 .arrowIcon {
-    min-width: 24px;
-    padding-inline-end: 8px;
+    color: value(inputColor);
 }
 
-
+.root:priority(basic):disabled .arrowIcon {
+    color: value(colorDisabled);
+}
 
 
 

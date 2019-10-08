@@ -74,15 +74,14 @@
     -st-states: mobile, disabled;
     -st-extends: Dropdown;
     width: 100%;
+}
+
+.dropdown,
+.dropdownBase::root {
     min-width: 72px;
 }
 
-.dropdown:mobile {
-    /*mobile css goes here*/
-}
-
 .dropdown:content-visible .dropdownBase::root {
-    color: value(borderHoverColor);
     border-color: value(borderHoverColor);
 }
 
@@ -92,8 +91,6 @@
 
 .dropdown:content-visible .dropdownBase::arrowIcon {
     transform: rotate(180deg);
-    padding-inline-start: 8px;
-    padding-inline-end: 0;
 }
 
 .dropdown::popoverContent {
@@ -114,9 +111,12 @@
     background-color: value(backgroundColorHover);
 }
 
-.root:alignment(center),
-.root:alignment(center) .dropdownBase::nativeInput {
+.root:alignment(center) {
     text-align: center;
+}
+
+.root:alignment(center) .dropdownBase::root::content {
+    flex: 1;
 }
 
 .root:alignment(center) DropdownOption {
