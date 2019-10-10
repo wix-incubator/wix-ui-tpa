@@ -64,7 +64,7 @@
 .root:stacked:invertInfoPosition:mobile,
 .root:stacked:mobile,
 .root:stacked {
-    flex-direction: column;
+    display: block;
 }
 
 .root:invertInfoPosition {

@@ -165,7 +165,7 @@ export class Grid extends React.PureComponent<GridProps> {
                 className={styles.listWrapper}
                 style={{
                   gridTemplateColumns,
-                  gap: `${rowGapInPixels} ${columnGapInPixels}`,
+                  gridGap: `${rowGapInPixels} ${columnGapInPixels}`,
                 }}
                 {...this.getContainerDataAttributes({
                   itemMaxWidth,
