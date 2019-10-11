@@ -1,0 +1,98 @@
+:import {
+    -st-from: "../../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:import {
+    -st-from: "../../Text/Text.st.css";
+    -st-default: Text;
+}
+
+:vars {
+    /*Defaults*/
+    ItemFontDesktop: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+    ItemSubtitleFontDesktop: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    ItemFontMobile: "{theme: 'Body-M', size: '14px', lineHeight: '24px'}";
+    ItemSubtitleFontMobile: "{theme: 'Body-M', size: '12px', lineHeight: '20px'}";
+}
+
+:vars {
+    /*Overrides*/
+    ItemFont:  --overridable;
+    ItemSubtitleFont:  --overridable;
+}
+
+.root {
+    -st-states: disabled, mobile;
+    height: 40px;
+    padding: 8px 24px;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+}
+
+.root:hover {
+    background-color: applyOpacity(color(color-5), 0.06);
+}
+
+.root .container {
+    display: flex;
+    flex: 1;
+    position: absolute;
+}
+
+.root:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.root:disabled:hover {
+    background-color: inherit;
+}
+
+.root .text {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextColor color(color-5)
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.root .content {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
+    );
+    width: 100%;
+}
+
+.root:mobile .content {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
+    );
+}
+
+.root .subtitle {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextColor applyOpacity(color(color-5), 0.6),
+        MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)))
+    );
+    width: 100%;
+}
+
+.root:mobile .subtitle {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)))
+    );
+}
+
+.root .spaceContainer {
+    width: 12px;
+    height: 100%;
+}
