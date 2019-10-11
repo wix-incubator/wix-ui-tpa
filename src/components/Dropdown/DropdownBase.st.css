@@ -1,0 +1,86 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
+}
+
+:vars {
+    BorderHoverColor: color-5;
+}
+
+:vars {
+    borderHoverColor: color(value(BorderHoverColor));
+}
+
+.root {
+    -st-extends: TPAButton;
+    -st-mixin: TPAButton(
+        MainBackgroundColor 'value(backgroundColor)',
+        MainBorderWidth '1px',
+        MainBorderColor 'value(borderColor)',
+        MainTextColor 'value(inputColor)'
+    );
+    -st-states: error, placeholder;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.root:mobile:size(medium),
+.root:size(medium) {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-inline-start: 12px;
+    padding-inline-end: 7px;
+}
+
+.root::content {
+    margin: initial;
+}
+
+.root:focus,
+.root:hover {
+    color: value(borderHoverColor);
+    border-color: value(borderHoverColor);
+}
+
+.root:placeholder {
+    color: value(colorPlaceholder);
+}
+
+.root:priority(basic):disabled {
+    cursor: none;
+    background-color: value(backgroundColor);
+    color: value(colorDisabled);
+    border-color: value(colorDisabled);
+}
+
+.root:priority(basic):disabled:hover {
+    border-color: value(colorDisabled);
+}
+
+.root:error {
+    border-color: value(errorColor);
+}
+
+.arrowIcon {
+    color: value(inputColor);
+}
+
+.root:priority(basic):disabled .arrowIcon {
+    color: value(colorDisabled);
+}
+
+
+

@@ -21,7 +21,6 @@ import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx'
 import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
 import { IconButtonExtendedExample } from './IconButtonExtendedExample';
 import * as examples from './examples';
-import { SIZE } from '../../Button';
 ShareIcon.displayName = 'Share';
 HeartIcon.displayName = 'Heart';
 
