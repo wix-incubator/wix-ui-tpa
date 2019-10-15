@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-import {
-  Option,
-} from 'wix-ui-core/dropdown-option';
+import { Option } from 'wix-ui-core/dropdown-option';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
