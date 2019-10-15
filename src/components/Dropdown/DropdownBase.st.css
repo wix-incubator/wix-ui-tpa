@@ -32,10 +32,14 @@
     );
     -st-states: error, placeholder;
     display: flex;
-    justify-content: space-between;
     cursor: pointer;
     box-sizing: border-box;
     outline: none;
+}
+
+.root::content {
+    flex: 1;
+    text-align: start;
 }
 
 .root:mobile:size(medium),
@@ -83,5 +87,8 @@
     color: value(colorDisabled);
 }
 
-
+.optionIcon {
+    display: flex;
+    margin-inline-end: 12px;
+}
 

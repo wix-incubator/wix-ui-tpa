@@ -10,14 +10,9 @@ export interface DropdownOptionProps {
   subtitle?: string;
   isSelectable?: boolean;
   isSectionTitle?: boolean;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 }
 
-/**
- * asdfasdfasdf
- * @param props
- * @constructor
- */
 export const DropdownOption: React.FC<DropdownOptionProps> = props => {
   const { value, id, isSelectable, subtitle, icon, isSectionTitle } = props;
   return (
