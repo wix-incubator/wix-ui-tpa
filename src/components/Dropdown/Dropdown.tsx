@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-import { Option } from 'wix-ui-core/dropdown-option';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
@@ -35,7 +34,7 @@ interface DefaultProps {
 }
 
 interface State {
-  selectedOption: any;
+  selectedOption: DropdownOptionProps;
 }
 
 /**
@@ -65,7 +64,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     selectedOption: null,
   };
 
-  onSelect = (selectedOption: Option) => {
+  onSelect = (selectedOption: DropdownOptionProps) => {
     this.setState({ selectedOption });
     if (this.props.onChange) {
       this.props.onChange(
@@ -129,7 +128,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
             >
               <DropdownBase
                 {...styles('dropdownBase', {}, rest)}
-                value={selectedOption ? selectedOption.value : ''}
+                selectedOption={selectedOption}
                 placeholder={placeholder}
                 disabled={disabled}
                 error={error}
