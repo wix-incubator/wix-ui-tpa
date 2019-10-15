@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-import {
-  DropdownOptionType as CoreDropdownOption,
-  Option,
-} from 'wix-ui-core/dropdown-option';
+import { Option } from 'wix-ui-core/dropdown-option';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
@@ -120,6 +117,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
             )}
             <CoreDropdown
               {...styles('dropdown', { mobile, disabled }, rest)}
+              placement="auto"
               data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
               openTrigger={disabled ? 'none' : 'click'}
