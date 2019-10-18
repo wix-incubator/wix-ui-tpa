@@ -9,7 +9,7 @@ import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 
 import styles from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
-import {Placement} from "wix-ui-core/popover";
+import { Placement } from 'wix-ui-core/popover';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -34,7 +34,6 @@ interface DefaultProps {
   placeholder: string;
   options: DropdownOptionProps[];
   placement: Placement;
-
 }
 
 interface State {
@@ -50,7 +49,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   static defaultProps: DefaultProps = {
     placeholder: '',
     options: [],
-    placement: 'auto'
+    placement: 'auto',
   };
 
   static getDerivedStateFromProps(nextProps, state) {
