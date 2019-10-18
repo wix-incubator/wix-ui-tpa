@@ -9,6 +9,7 @@ import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 
 import styles from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
+import { Placement } from 'wix-ui-core/popover';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -24,6 +25,7 @@ export interface DropdownProps {
   errorMessage?: string;
   label?: string;
   alignment?: DROPDOWN_ALIGNMENT;
+  placement?: Placement;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
 }
@@ -31,6 +33,7 @@ export interface DropdownProps {
 interface DefaultProps {
   placeholder: string;
   options: DropdownOptionProps[];
+  placement: Placement;
 }
 
 interface State {
@@ -46,6 +49,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   static defaultProps: DefaultProps = {
     placeholder: '',
     options: [],
+    placement: 'auto',
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -83,6 +87,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       options,
       alignment,
       forceContentElementVisibility,
+      placement,
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
@@ -116,7 +121,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
             )}
             <CoreDropdown
               {...styles('dropdown', { mobile, disabled }, rest)}
-              placement="auto"
+              placement={placement}
               data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
               openTrigger={disabled ? 'none' : 'click'}
