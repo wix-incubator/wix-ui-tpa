@@ -1,18 +1,31 @@
 import * as React from 'react';
 import CodeExample from 'wix-storybook-utils/CodeExample';
-import { MockSettings } from '../helperComponents/MockSettings';
+import {
+  IWixColorParam,
+  IWixFontParam,
+  IWixNumberParam,
+  MockSettings,
+} from '../helperComponents/MockSettings';
+
+interface ISettingsPanelConfig {
+  example: JSX.Element;
+  params: {
+    numbers?: IWixNumberParam[];
+    colors?: IWixColorParam[];
+    fonts?: IWixFontParam[];
+  };
+  rawSource: typeof import('*.tsx');
+  rawCSSSource: typeof import('*.st.css');
+  title: string;
+}
 
 export function settingsPanel({
   example,
   rawSource,
   rawCSSSource,
   title,
-  params,
-}) {
-  const wixNumberParams = params.numbers || [];
-  const wixColorParams = params.colors || [];
-  const wixFontParams = params.fonts || [];
-
+  params: { colors = [], numbers = [], fonts = [] },
+}: ISettingsPanelConfig) {
   return (
     <div>
       <div className="tpa-container">
@@ -24,9 +37,9 @@ export function settingsPanel({
         </CodeExample>
       </div>
       <MockSettings
-        wixNumberParams={wixNumberParams}
-        wixColorParams={wixColorParams}
-        wixFontParams={wixFontParams}
+        wixNumberParams={numbers}
+        wixColorParams={colors}
+        wixFontParams={fonts}
       />
     </div>
   );

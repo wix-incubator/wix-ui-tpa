@@ -21,6 +21,7 @@ export { AvatarGroup } from './AvatarGroup';
 export { Counter } from './Counter';
 export { ColorPicker } from './ColorPicker';
 export * from './Toast';
+export { ActionsMenu } from './ActionsMenu';
 export * from './Checkbox';
 export { DotNavigation } from './DotNavigation';
 export { CheckboxGroup, Layout, CheckboxGroupProps } from './CheckboxGroup';
