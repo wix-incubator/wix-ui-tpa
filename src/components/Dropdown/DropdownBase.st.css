@@ -65,7 +65,7 @@
 }
 
 .root:priority(basic):disabled {
-    cursor: none;
+    cursor: default;
     background-color: value(backgroundColor);
     color: value(colorDisabled);
     border-color: value(colorDisabled);

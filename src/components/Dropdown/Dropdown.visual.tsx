@@ -23,40 +23,51 @@ class DropdownVisual extends React.Component<any> {
   }
 }
 
+function getTests(isMobile) {
+  return [
+    {
+      it: 'Simple',
+      props: {
+        placeholder: 'Placeholder text',
+        options: simpleOptions,
+        forceContentElementVisibility: true,
+        mobile: isMobile,
+      },
+    },
+    {
+      it: 'Error',
+      props: {
+        placeholder: 'Placeholder text',
+        error: true,
+        errorMessage: 'The coupon code is not valid',
+        options: simpleOptions,
+        forceContentElementVisibility: true,
+        mobile: isMobile,
+      },
+    },
+    {
+      it: 'Complex',
+      props: {
+        placeholder: 'Placeholder text',
+        label: 'Label Text',
+        error: true,
+        errorMessage: 'The coupon code is not valid',
+        options: optionsWithSections,
+        forceContentElementVisibility: true,
+        mobile: isMobile,
+      },
+    },
+  ];
+}
+
 const tests = [
   {
     describe: 'desktop',
-    its: [
-      {
-        it: 'Simple',
-        props: {
-          placeholder: 'Placeholder text',
-          options: simpleOptions,
-          forceContentElementVisibility: true,
-        },
-      },
-      {
-        it: 'Error',
-        props: {
-          placeholder: 'Placeholder text',
-          error: true,
-          errorMessage: 'The coupon code is not valid',
-          options: simpleOptions,
-          forceContentElementVisibility: true,
-        },
-      },
-      {
-        it: 'Complex',
-        props: {
-          placeholder: 'Placeholder text',
-          label: 'Label Text',
-          error: true,
-          errorMessage: 'The coupon code is not valid',
-          options: optionsWithSections,
-          forceContentElementVisibility: true,
-        },
-      },
-    ],
+    its: getTests(false),
+  },
+  {
+    describe: 'mobile',
+    its: getTests(true),
   },
 ];
 

@@ -21,7 +21,7 @@ import {
   optionsWithSections,
   optionsWithSubtitle,
 } from '../helpers';
-import { Heart } from 'wix-ui-icons-common/dist/src';
+import { Heart } from '../../../assets/icons';
 import * as Readme from '../../Dropdown/README.md';
 
 const code = config =>
@@ -114,7 +114,6 @@ export default {
               source: examples.withIconsAndSubtitlesExample,
             },
             { title: 'Min Width', source: examples.minWidthExample },
-            // { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),
