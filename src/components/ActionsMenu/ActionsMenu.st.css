@@ -34,6 +34,7 @@
     border-color: value(menuBorderColor);
     box-sizing: border-box;
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
+    list-style: none;
 }
 
 .root * {
@@ -47,18 +48,31 @@
 
 .item {
     -st-extends: ActionMenuItem;
+    text-align: initial;
 }
 
-.root:alignment(left) .item::container {
-    left: 24px;
+.root:alignment(left) .item {
+    text-align: left;
 }
 
-.root:alignment(center) .item::container {
-    left: 50%;
-    transform: translate(-50%, 0);
+.root:alignment(center) .item {
+    text-align: center;
 }
 
-.root:alignment(right) .item::container {
-    right: 24px;
+.root:alignment(right) .item {
+    text-align: right;
 }
+
+/*.root:alignment(left) .item::container {*/
+/*    left: 24px;*/
+/*}*/
+
+/*.root:alignment(center) .item::container {*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, 0);*/
+/*}*/
+
+/*.root:alignment(right) .item::container {*/
+/*    right: 24px;*/
+/*}*/
 

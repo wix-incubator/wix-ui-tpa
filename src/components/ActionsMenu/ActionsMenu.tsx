@@ -15,19 +15,12 @@ export interface ActionsMenuProps {
   alignment?: Alignment;
 }
 
-interface DefaultProps {
-  alignment: Alignment;
-}
-
 /** ActionsMenu */
 export class ActionsMenu extends React.Component<ActionsMenuProps> {
   static Item = ActionsMenuItem;
   static Divider = ActionsMenuDivider;
 
   static displayName = 'ActionsMenu';
-  static defaultProps: DefaultProps = {
-    alignment: Alignment.left,
-  };
 
   getDataAttributes(mobile: boolean) {
     return {

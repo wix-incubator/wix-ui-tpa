@@ -42,7 +42,11 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
             onClick={disabled ? undefined : onClick}
           >
             <div className={styles.container}>
-              {prefixIcon ? <div>{prefixIcon}</div> : null}
+              {prefixIcon ? (
+                <div className={styles.iconContainer}>
+                  <div className={styles.icon}>{prefixIcon}</div>
+                </div>
+              ) : null}
               <div className={styles.textContainer}>
                 <div className={styles.text}>
                   <Text className={styles.content}>{content}</Text>
