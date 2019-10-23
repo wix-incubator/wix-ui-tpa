@@ -1,150 +1,84 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ActionsMenu, Alignment } from './';
 import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
-import { ActionsMenuProps } from './ActionsMenu';
-import { ActionsMenuItemProps } from './Item/ActionsMenuItem';
 
-class ActionsMenuVisual extends React.Component<
-  ActionsMenuProps & { mobile?: boolean }
-> {
-  static defaultProps = {
-    mobile: false,
-  };
+function generateItems(props = {}) {
+  const { subtitle, prefixIcon } = props as any;
+  const list = [];
+  let itemCount = 0;
 
-  render() {
-    const { mobile, children } = this.props;
+  ['Item', 'Item', 'Divider', 'Item'].forEach((type, i) => {
+    const Component = ActionsMenu[type];
+    const count = type === 'Item' ? ++itemCount : undefined;
 
-    return (
-      <TPAComponentsProvider value={{ mobile }}>
-        <VisualTestContainer>
-          <ActionsMenu {...this.props}>{children}</ActionsMenu>
-        </VisualTestContainer>
-      </TPAComponentsProvider>
+    list.push(
+      <Component
+        disabled={i === 1}
+        content={`Item ${count}`}
+        subtitle={subtitle ? `Subtitle ${count}` : undefined}
+        prefixIcon={prefixIcon ? <Heart /> : undefined}
+        onClick={() => {}}
+      />,
     );
-  }
+  });
+
+  return list;
 }
 
-function generateItem(props: Omit<ActionsMenuItemProps, 'onClick'>) {
-  return (
-    <ActionsMenu.Item
-      key={props.content}
-      onClick={() => alert('click')}
-      {...props}
-    />
-  );
-}
+function testSuite(alignment) {
+  story(`Align ${alignment ? alignment : 'default'}`, () => {
+    snap('several item', () => (
+      <ActionsMenu alignment={alignment}>{generateItems()}</ActionsMenu>
+    ));
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-        children: [generateItem({ content: 'item 1' })],
-      },
-      {
-        it: 'with subtitle',
-        props: {},
-        children: [
-          generateItem({
-            content: 'Content is here',
-            subtitle: 'Some subtitle',
-          }),
-        ],
-      },
-      {
-        it: 'with icon',
-        props: {},
-        children: [generateItem({ content: 'item 1', prefixIcon: <Heart /> })],
-      },
-      {
-        it: 'with icon and subtitle',
-        props: {},
-        children: [
-          generateItem({
-            content: 'item 1',
-            subtitle: 'Subtitle',
-            prefixIcon: <Heart />,
-          }),
-        ],
-      },
-      {
-        it: 'many items with icon and subtitle with right alignment',
-        props: {
-          alignment: Alignment.right,
-        },
-        children: [
-          generateItem({
-            content: 'item 1',
-          }),
-          generateItem({
-            content: 'item 3',
-            subtitle: 'Subtitle 2',
-          }),
-        ],
-      },
-      {
-        it: 'many items with icon and subtitle with center alignment',
-        props: {
-          alignment: Alignment.center,
-        },
-        children: [
-          generateItem({
-            content: 'item 1',
-          }),
-          generateItem({
-            content: 'item 3',
-            subtitle: 'Subtitle 2',
-          }),
-        ],
-      },
-      {
-        it: 'many items with icon and subtitle with right alignment',
-        props: {
-          alignment: Alignment.right,
-        },
-        children: [
-          generateItem({
-            content: 'item 1',
-          }),
-          generateItem({
-            content: 'item 3',
-            subtitle: 'Subtitle 2',
-          }),
-        ],
-      },
-    ],
-  },
-  {
-    describe: 'mobile',
-    its: [
-      {
-        it: 'default',
-        props: {
-          mobile: true,
-        },
-        children: [
-          generateItem({
-            content: 'item 1',
-          }),
-          generateItem({
-            content: 'item 1',
-            subtitle: 'Subtitle here',
-          }),
-        ],
-      },
-    ],
-  },
-];
+    snap('with subtitle', () => (
+      <ActionsMenu alignment={alignment}>
+        {generateItems({ subtitle: true })}
+      </ActionsMenu>
+    ));
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, children }) => {
-    storiesOf(`ActionsMenu/${describe}`, module).add(it, () => (
-      <ActionsMenuVisual {...props}>{children}</ActionsMenuVisual>
+    snap('with icon', () => (
+      <ActionsMenu alignment={alignment}>
+        {generateItems({ prefixIcon: true })}
+      </ActionsMenu>
+    ));
+
+    snap('with subtitle & icon', () => (
+      <ActionsMenu alignment={alignment}>
+        {generateItems({ subtitle: true, prefixIcon: true })}
+      </ActionsMenu>
+    ));
+
+    snap('rtl', () => (
+      <div dir={'rtl'}>
+        <ActionsMenu alignment={alignment}>
+          {generateItems({ subtitle: true, prefixIcon: true })}
+        </ActionsMenu>
+      </div>
+    ));
+
+    snap('rtl', () => (
+      <div dir={'rtl'}>
+        <ActionsMenu alignment={alignment}>
+          {generateItems({ subtitle: true, prefixIcon: true })}
+        </ActionsMenu>
+      </div>
+    ));
+
+    snap('mobile', () => (
+      <TPAComponentsProvider value={{ mobile: true }}>
+        <ActionsMenu alignment={alignment}>
+          {generateItems({ subtitle: true, prefixIcon: true })}
+        </ActionsMenu>
+      </TPAComponentsProvider>
     ));
   });
+}
+
+visualize('ActionsMenu', () => {
+  testSuite(undefined);
+
+  Object.values(Alignment).forEach(testSuite);
 });
