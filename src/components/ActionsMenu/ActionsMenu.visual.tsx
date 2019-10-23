@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ActionsMenu, Alignment } from './';
-import { DoubleChevronRight } from '../../assets/icons/DoubleChevronRight';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 import { ActionsMenuProps } from './ActionsMenu';
 import { ActionsMenuItemProps } from './Item/ActionsMenuItem';
 
@@ -59,9 +59,7 @@ const tests = [
       {
         it: 'with icon',
         props: {},
-        children: [
-          generateItem({ content: 'item 1', prefixIcon: DoubleChevronRight }),
-        ],
+        children: [generateItem({ content: 'item 1', prefixIcon: <Heart /> })],
       },
       {
         it: 'with icon and subtitle',
@@ -70,7 +68,7 @@ const tests = [
           generateItem({
             content: 'item 1',
             subtitle: 'Subtitle',
-            prefixIcon: DoubleChevronRight,
+            prefixIcon: <Heart />,
           }),
         ],
       },

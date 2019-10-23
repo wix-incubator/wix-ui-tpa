@@ -38,7 +38,7 @@
     background-color: applyOpacity(color(color-5), 0.06);
 }
 
-.root .container {
+.container {
     display: flex;
     flex: 1;
 }
@@ -52,18 +52,14 @@
     background-color: inherit;
 }
 
-.root .text {
-    -st-extends: Text;
-    -st-mixin: Text(
-        MainTextColor color(color-5)
-    );
+.text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
 }
 
-.root .content {
+.content {
     -st-extends: Text;
     -st-mixin: Text(
         MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
@@ -72,13 +68,12 @@
 }
 
 .root:mobile .content {
-    -st-extends: Text;
     -st-mixin: Text(
         MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
     );
 }
 
-.root .subtitle {
+.subtitle {
     -st-extends: Text;
     -st-mixin: Text(
         MainTextColor applyOpacity(color(color-5), 0.6),
@@ -88,7 +83,6 @@
 }
 
 .root:mobile .subtitle {
-    -st-extends: Text;
     -st-mixin: Text(
         MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)))
     );
