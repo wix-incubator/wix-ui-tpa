@@ -32,10 +32,17 @@
     border-style: solid;
     border-width: 1px;
     border-color: value(menuBorderColor);
+    box-sizing: border-box;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
+}
+
+.root * {
+    box-sizing: border-box;
 }
 
 .root:mobile {
     width: 100%;
+    box-shadow: none;
 }
 
 .item {
