@@ -33,7 +33,7 @@
     "postbuild": "import-path --path src/components --dts",
     "pr-postbuild": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "pretest": "./scripts/ensure-build.sh",
-    "test": "npm run test:unit && npm run autotools && npm run test:e2e && npm run test:eyes-storybook",
+    "test": "npm run test:unit && npm run autotools && npm run test:e2e",
     "posttest": "npm run lint",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
