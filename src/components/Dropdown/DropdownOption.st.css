@@ -15,10 +15,14 @@
     width: 100%;
 }
 
-.root:withIcon .subtitle,
 .root:withIcon .title {
-    padding-inline-start: 0;
-    margin-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.root:withIcon .subtitle {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .contentWrapper {
@@ -50,7 +54,7 @@
         MainTextColor "value(colorPlaceholder)",
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '14px'}"
     );
-    margin: -7px 26px 8px 26px;
+    margin: -8px 26px 8px 26px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
