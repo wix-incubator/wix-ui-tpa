@@ -52,16 +52,16 @@
     -st-extends: TPAText;
     -st-mixin: TPAText(
         MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '14px'}"
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
     );
-    margin: -8px 26px 8px 26px;
+    margin: 6px 26px 8px 26px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; /* number of lines to show */
-    max-height: 28px;      /* fallback */
+    max-height: 40px;      /* fallback */
 }
 
 .icon {
