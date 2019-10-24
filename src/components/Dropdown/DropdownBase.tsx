@@ -27,9 +27,9 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       data-dropdown-base-error={error}
       disabled={disabled}
       prefixIcon={
-        selectedOption && (
+        selectedOption && selectedOption.icon ? (
           <div className={styles.optionIcon}>{selectedOption.icon}</div>
-        )
+        ) : null
       }
       suffixIcon={
         <ChevronDownSmall

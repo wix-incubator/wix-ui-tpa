@@ -62,12 +62,12 @@
 .root::content {
     margin: initial;
 }
-
-.root:focus,
-.root:hover {
-    color: value(borderHoverColor);
+.root:priority(basic):focus,
+.root:priority(basic):hover {
     border-color: value(borderHoverColor);
+    background-color: value(backgroundColor);
 }
+
 
 .root:placeholder {
     color: value(colorPlaceholder);
