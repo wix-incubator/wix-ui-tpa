@@ -38,13 +38,13 @@
     white-space: nowrap;
 }
 
-.title:not(:selectable) {
+.root:not(:selectable) .title {
     -st-mixin: TPAText(
         MainTextColor 'value(colorPlaceholder)'
     );
 }
 
-.title:sectionTitle {
+.root:sectionTitle .title {
     padding: 8px 14px;
 }
 
