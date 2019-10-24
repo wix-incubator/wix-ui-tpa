@@ -15,7 +15,7 @@ const items = [
   },
 ];
 
-const WAIT_TIMEOUT = 600;
+const WAIT_TIMEOUT = 800;
 
 class AvatarGroupVisual extends React.Component<any> {
   static defaultProps = {
