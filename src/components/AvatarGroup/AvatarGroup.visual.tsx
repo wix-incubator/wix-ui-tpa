@@ -15,7 +15,7 @@ const items = [
   },
 ];
 
-const WAIT_TIMEOUT = 800;
+const WAIT_TIMEOUT = 600;
 
 class AvatarGroupVisual extends React.Component<any> {
   static defaultProps = {
@@ -95,12 +95,12 @@ function generateIts(size) {
   ];
 }
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props, rtl }) => {
-    storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
-      <div dir={rtl ? 'rtl' : 'ltr'}>
-        <AvatarGroupVisual {...props} />
-      </div>
-    ));
-  });
-});
+// tests.forEach(({ describe, its }) => {
+//   its.forEach(({ it, props, rtl }) => {
+//     storiesOf(`AvatarGroup/${describe}`, module).add(it, () => (
+//       <div dir={rtl ? 'rtl' : 'ltr'}>
+//         <AvatarGroupVisual {...props} />
+//       </div>
+//     ));
+//   });
+// });

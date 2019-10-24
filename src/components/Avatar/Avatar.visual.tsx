@@ -45,10 +45,10 @@ function generateIts(size) {
   ];
 }
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`Avatar/${describe}`, module).add(it, () => (
-      <AvatarVisual {...props} />
-    ));
-  });
-});
+// tests.forEach(({ describe, its }) => {
+//   its.forEach(({ it, props }) => {
+//     storiesOf(`Avatar/${describe}`, module).add(it, () => (
+//       <AvatarVisual {...props} />
+//     ));
+//   });
+// });
