@@ -7,8 +7,8 @@ The Badge TPA implementation provides a few default overridable styles. By defau
 | propName          | propType | description                                                      |
 |-------------------|----------|------------------------------------------------------------------|
 | BadgeBgColor      | string   | The color of the badge background instead of the default color   |
-| BadgeTextColor    | string   | The color of the bade text instead of the default color          |
-| BadgeBorderColor  | string   | The color of the bade border instead of the default color        |
+| BadgeTextColor    | string   | The color of the badge text instead of the default color          |
+| BadgeBorderColor  | string   | The color of the badge border instead of the default color        |
 
 ## Default theme properties by badge type
 |Badge  |BadgeBgColor|BadgeBorderColor|BadgeTextColor|
