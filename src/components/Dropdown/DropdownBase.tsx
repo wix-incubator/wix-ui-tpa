@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChevronDownSmall } from 'wix-ui-icons-common/dist/src';
+import { ReactComponent as ArrowIcon } from '../../assets/icons/Down.svg';
 
 import { Button } from '../Button';
 import { TPAComponentProps } from '../../types';
@@ -32,7 +32,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
         ) : null
       }
       suffixIcon={
-        <ChevronDownSmall
+        <ArrowIcon
           className={styles.arrowIcon}
           width={ICON_SIZE}
           height={ICON_SIZE}

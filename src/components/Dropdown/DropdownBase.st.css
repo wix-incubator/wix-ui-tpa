@@ -68,6 +68,12 @@
     background-color: value(backgroundColor);
 }
 
+.root:error,
+.root:priority(basic):error:focus,
+.root:priority(basic):error:hover {
+    border-color: value(errorColor);
+}
+
 
 .root:placeholder {
     color: value(colorPlaceholder);
@@ -82,10 +88,6 @@
 
 .root:priority(basic):disabled:hover {
     border-color: value(colorDisabled);
-}
-
-.root:error {
-    border-color: value(errorColor);
 }
 
 .arrowIcon {
