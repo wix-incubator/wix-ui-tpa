@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StatusAlertSmall } from 'wix-ui-icons-common/dist/src';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { Tooltip } from '../Tooltip';
 import { TPAComponentProps } from '../../types';
@@ -21,7 +21,7 @@ export const DropdownError: React.FC<
       skin={TooltipSkin.Error}
       content={props.errorMessage}
     >
-      <StatusAlertSmall width={ICON_SIZE} height={ICON_SIZE} />
+      <ErrorIcon width={ICON_SIZE} height={ICON_SIZE} />
     </Tooltip>
   );
 };

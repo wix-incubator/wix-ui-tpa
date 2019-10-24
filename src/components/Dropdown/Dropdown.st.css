@@ -76,6 +76,10 @@
     min-width: 80px;
 }
 
+.dropdownBase::arrowIcon {
+    transition: all 200ms ease-in-out;
+}
+
 .dropdown:content-visible .dropdownBase::root {
     border-color: value(borderHoverColor);
 }

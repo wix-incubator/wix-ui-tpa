@@ -49,7 +49,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   static defaultProps: DefaultProps = {
     placeholder: '',
     options: [],
-    placement: 'auto',
+    placement: 'bottom',
   };
 
   static getDerivedStateFromProps(nextProps, state) {
