@@ -8,6 +8,7 @@ import { TPAComponentProps } from '../../types';
 export interface AvatarGroupItem {
   name?: string;
   src?: string;
+  onLoad?: React.EventHandler<React.SyntheticEvent>;
 }
 
 export enum AvatarGroupSize {
@@ -66,13 +67,14 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     return (
       <div {...styles('root', { size }, rest)}>
         <div className={styles.avatars}>
-          {items.slice(0, maxAmount).map(({ name, src }, key) => (
+          {items.slice(0, maxAmount).map(({ name, src, onLoad }, key) => (
             <div className={styles.avatarContainer} key={key}>
               <Avatar
                 className={styles.avatar}
                 data-hook="avatar"
                 name={name}
                 src={src}
+                onLoad={onLoad}
               />
             </div>
           ))}
