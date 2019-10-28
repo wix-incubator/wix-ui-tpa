@@ -73,7 +73,7 @@
 
 .dropdown,
 .dropdownBase::root {
-    min-width: 80px;
+    min-width: 68px;
 }
 
 .dropdown:content-visible .dropdownBase::root {

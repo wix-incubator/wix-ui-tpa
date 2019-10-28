@@ -30,7 +30,7 @@
 }
 
 .title {
-    padding: 8px 26px;
+    padding: 8px 24px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -53,7 +53,7 @@
         MainTextColor "value(colorPlaceholder)",
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
     );
-    margin: 6px 26px 8px 26px;
+    margin: 2px 24px 8px 24px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
