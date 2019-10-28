@@ -5,8 +5,11 @@ import style from './Input.st.css';
 export const inputDriverFactory = ({ element, eventTrigger }) => {
   const stylableDOMUtil = new StylableDOMUtil(style);
 
-  const getErrorMessageElement = () =>
-    element.querySelector(stylableDOMUtil.scopeSelector('.errorMessage'));
+  const getErrorMessageElement = () => {
+    return element.querySelector(
+      stylableDOMUtil.scopeSelector('.errorMessage'),
+    );
+  };
 
   const inputDriver = coreDriver({ element, eventTrigger });
 

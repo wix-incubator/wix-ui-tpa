@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TPAComponentsProvider } from '../components/TPAComponentsConfig';
+import { UniDriver } from '@unidriver/core';
 
 export const TPAComponentsWrapper = ({ mobile = false, rtl = false }) => {
   return Component => {
@@ -9,4 +10,17 @@ export const TPAComponentsWrapper = ({ mobile = false, rtl = false }) => {
       </TPAComponentsProvider>
     );
   };
+};
+
+export const hasDataAttr = async (
+  base: UniDriver,
+  field: string,
+  expectedValue: any,
+): Promise<boolean> => {
+  const fieldValue = await base.attr(`data-${field}`);
+  return fieldValue === expectedValue;
+};
+
+export const hasMobile = async (base: UniDriver): Promise<boolean> => {
+  return hasDataAttr(base, 'mobile', 'true');
 };

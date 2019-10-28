@@ -1,0 +1,71 @@
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-named: colorPlaceholder;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+.root {
+    -st-states: withIcon, selectable, sectionTitle;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+}
+
+.root:withIcon .title {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.root:withIcon .subtitle {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.contentWrapper {
+    max-width: 100%;
+}
+
+.title {
+    padding: 8px 24px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.root:not(:selectable) .title {
+    -st-mixin: TPAText(
+        MainTextColor 'value(colorPlaceholder)'
+    );
+}
+
+.root:sectionTitle .title {
+    padding: 8px 14px;
+}
+
+.subtitle {
+    -st-extends: TPAText;
+    -st-mixin: TPAText(
+        MainTextColor "value(colorPlaceholder)",
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
+    );
+    margin: 2px 24px 8px 24px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    max-height: 40px;      /* fallback */
+}
+
+.icon {
+    display: flex;
+    padding: 8px 12px;
+    align-items: center;
+    height: 24px;
+}
