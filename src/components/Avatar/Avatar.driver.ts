@@ -1,13 +1,22 @@
 import {
-  BaseUniDriver,
-  baseUniDriverFactory,
-} from 'wix-ui-test-utils/base-driver';
+  AvatarDriver as CoreAvatarDriver,
+  avatarDriverFactory as coreAvatarDriverFactory,
+} from 'wix-ui-core/dist/src/components/avatar/avatar.uni.driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
-export interface AvatarDriver extends BaseUniDriver {}
+export interface AvatarDriver extends CoreAvatarDriver {
+  src(): Promise<string>;
+}
 
 export const avatarDriverFactory = (base: UniDriver): AvatarDriver => {
   return {
-    ...baseUniDriverFactory(base),
+    ...coreAvatarDriverFactory(base),
+    src: async () => {
+      try {
+        return base.$('img').attr('src');
+      } catch (e) {}
+
+      return '';
+    },
   };
 };

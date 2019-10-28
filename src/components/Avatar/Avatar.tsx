@@ -20,6 +20,8 @@ export interface AvatarProps extends TPAComponentProps {
   size?: AvatarSize;
   /** Avatar's image src. Optional. */
   src?: string;
+  /** Avatar's image onLoad callback. Optional. */
+  onLoad?: React.EventHandler<React.SyntheticEvent>;
 }
 
 interface DefaultProps {
@@ -40,12 +42,12 @@ export class Avatar extends React.Component<AvatarProps> {
   };
 
   render() {
-    const { size, src, name, ...rest } = this.props;
+    const { size, src, name, onLoad, ...rest } = this.props;
 
     return (
       <CoreAvatar
         {...styles('root', { size }, rest)}
-        imgProps={src ? { src } : undefined}
+        imgProps={src ? { src, onLoad } : undefined}
         placeholder={
           <Anonymous
             height={Avatar.dimmentionBySize[size]}
