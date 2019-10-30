@@ -1,10 +1,16 @@
 import * as React from 'react';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
-import styles from './ActionsMenuItem.st.css';
+import styles from './ActionsMenuLayoutItem.st.css';
 import { Text } from '../../Text';
 import { ACTIONS_MENU_ITEM_DATA_HOOK } from '../dataHooks';
 
-export interface ActionsMenuItemProps {
+export enum Alignment {
+  left = 'left',
+  center = 'center',
+  right = 'right',
+}
+
+export interface ActionsMenuLayoutItemProps {
   prefixIcon?: React.ReactNode;
   /** the item's content */
   content: string;
@@ -12,11 +18,12 @@ export interface ActionsMenuItemProps {
   subtitle?: string;
   disabled?: boolean;
   onClick(): void;
+  alignment?: Alignment;
 }
 
-/** ActionsMenu */
-export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
-  static displayName = 'ActionsMenu.Item';
+/** ActionsMenuLayout */
+export class ActionsMenuLayoutItem extends React.Component<ActionsMenuLayoutItemProps> {
+  static displayName = 'ActionsMenuLayout.Item';
 
   render() {
     const {
@@ -25,15 +32,20 @@ export class ActionsMenuItem extends React.Component<ActionsMenuItemProps> {
       subtitle,
       disabled,
       onClick,
+      alignment,
       ...rest
     } = this.props;
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
+        {({ mobile, rtl }) => (
           <li
             key={content}
-            {...styles('root', { mobile, disabled }, rest)}
+            {...styles(
+              'root',
+              { mobile, rtl, disabled, alignment, withIcon: !!prefixIcon },
+              rest,
+            )}
             role="menuitem"
             tabIndex={-1}
             aria-disabled={disabled}

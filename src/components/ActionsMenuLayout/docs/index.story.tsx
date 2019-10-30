@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionsMenu, Alignment } from '../';
+import { ActionsMenuLayout, Alignment } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -16,16 +16,16 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as ExtendedRawSource from '!raw-loader!./ActionsMenuExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuExtendedExample.st.css';
-import { ActionsMenuExtendedExample } from './ActionsMenuExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';
+import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 function generateItem(props) {
   return (
-    <ActionsMenu.Item
+    <ActionsMenuLayout.Item
       key={props.content}
       onClick={() => alert('click')}
       {...props}
@@ -35,11 +35,11 @@ function generateItem(props) {
 
 export default {
   category: 'Components',
-  storyName: 'ActionsMenu',
-  component: ActionsMenu,
-  componentPath: '../ActionsMenu.tsx',
+  storyName: 'ActionsMenuLayout',
+  component: ActionsMenuLayout,
+  componentPath: '../ActionsMenuLayout.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-ActionsMenu',
+    'data-hook': 'storybook-ActionsMenuLayout',
     children: [
       generateItem({
         content: 'item 1',
@@ -48,7 +48,7 @@ export default {
         content: 'item 2',
         subtitle: 'Subtitle',
       }),
-      <ActionsMenu.Divider key={2.5} />,
+      <ActionsMenuLayout.Divider key={2.5} />,
       generateItem({
         content: 'item 3',
         prefixIcon: <ShareIcon />,
@@ -70,7 +70,7 @@ export default {
   exampleProps: {
     alignment: Object.values(Alignment),
   },
-  dataHook: 'storybook-ActionsMenu',
+  dataHook: 'storybook-ActionsMenuLayout',
   sections: [
     header(),
     tabs([
@@ -86,8 +86,9 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.ActionsMenuExample },
+            { title: 'Example', source: examples.ActionsMenuLayoutExample },
             { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'RTL Example', source: examples.rtlExample },
           ].map(code),
         ],
       }),
@@ -101,7 +102,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Settings Panel',
-              example: <ActionsMenuExtendedExample />,
+              example: <ActionsMenuLayoutExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

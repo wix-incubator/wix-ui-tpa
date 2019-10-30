@@ -23,7 +23,7 @@
 }
 
 .root {
-    -st-states: disabled, mobile;
+    -st-states: disabled, mobile, withIcon, rtl, alignment(enum(left, center, right));
     padding: 8px 24px;
     cursor: pointer;
     width: calc(100% + 2px);
@@ -108,4 +108,25 @@
 
 .textContainer {
     display: flex;
+}
+
+.root:alignment(left) {
+    text-align: left;
+}
+
+.root:alignment(center) {
+    text-align: center;
+}
+
+.root:alignment(right) {
+    text-align: right;
+}
+
+.root:alignment(center):withIcon .container {
+    margin-left: -36px;
+}
+
+.root:rtl:alignment(center):withIcon .container {
+    margin-left: unset;
+    margin-right: -36px;
 }

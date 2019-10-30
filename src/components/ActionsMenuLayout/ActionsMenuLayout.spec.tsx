@@ -4,19 +4,19 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { TPAComponentsWrapper } from '../../test/utils';
-import { actionsMenuDriverFactory } from './ActionsMenu.driver';
-import { ActionsMenu } from './';
-import { actionsMenuTestkitFactory } from '../../testkit';
-import { actionsMenuTestkitFactory as enzymeActionsMenuTestkitFactory } from '../../testkit/enzyme';
+import { actionsMenuLayoutDriverFactory } from './ActionsMenuLayout.driver';
+import { ActionsMenuLayout } from './';
+import { actionsMenuLayoutTestkitFactory } from '../../testkit';
+import { actionsMenuLayoutTestkitFactory as enzymeActionsMenuLayoutTestkitFactory } from '../../testkit/enzyme';
 
-describe('ActionsMenu', () => {
-  const createDriver = createUniDriverFactory(actionsMenuDriverFactory);
+describe('ActionsMenuLayout', () => {
+  const createDriver = createUniDriverFactory(actionsMenuLayoutDriverFactory);
 
   it('should render', async () => {
     const driver = createDriver(
-      <ActionsMenu>
-        <ActionsMenu.Item onClick={() => {}} content="test" />
-      </ActionsMenu>,
+      <ActionsMenuLayout>
+        <ActionsMenuLayout.Item onClick={() => {}} content="test" />
+      </ActionsMenuLayout>,
     );
     expect(await driver.exists()).toBe(true);
   });
@@ -24,9 +24,9 @@ describe('ActionsMenu', () => {
   it('should trigger onClick', async function() {
     const onClick = jest.fn();
     const driver = createDriver(
-      <ActionsMenu>
-        <ActionsMenu.Item onClick={onClick} content="test" />
-      </ActionsMenu>,
+      <ActionsMenuLayout>
+        <ActionsMenuLayout.Item onClick={onClick} content="test" />
+      </ActionsMenuLayout>,
     );
 
     await driver.clickItem('test');
@@ -36,9 +36,9 @@ describe('ActionsMenu', () => {
   it('should use mobile design', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: true })(
-        <ActionsMenu>
-          <ActionsMenu.Item onClick={() => {}} content="test" />
-        </ActionsMenu>,
+        <ActionsMenuLayout>
+          <ActionsMenuLayout.Item onClick={() => {}} content="test" />
+        </ActionsMenuLayout>,
       ),
     );
     expect(await driver.isMobile()).toBe(true);
@@ -48,10 +48,10 @@ describe('ActionsMenu', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <ActionsMenu>
-            <ActionsMenu.Item onClick={() => {}} content="test" />
-          </ActionsMenu>,
-          actionsMenuTestkitFactory,
+          <ActionsMenuLayout>
+            <ActionsMenuLayout.Item onClick={() => {}} content="test" />
+          </ActionsMenuLayout>,
+          actionsMenuLayoutTestkitFactory,
           {
             dataHookPropName: 'data-hook',
           },
@@ -64,10 +64,10 @@ describe('ActionsMenu', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <ActionsMenu>
-            <ActionsMenu.Item onClick={() => {}} content="test" />
-          </ActionsMenu>,
-          enzymeActionsMenuTestkitFactory,
+          <ActionsMenuLayout>
+            <ActionsMenuLayout.Item onClick={() => {}} content="test" />
+          </ActionsMenuLayout>,
+          enzymeActionsMenuLayoutTestkitFactory,
           mount,
           {
             dataHookPropName: 'data-hook',

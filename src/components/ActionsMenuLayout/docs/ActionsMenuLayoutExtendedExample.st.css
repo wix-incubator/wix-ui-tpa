@@ -1,0 +1,23 @@
+:import {
+    -st-from: "../ActionsMenuLayout.st.css";
+    -st-default: TPAActionsMenuLayout;
+}
+
+:import {
+    -st-from: "../Item/ActionsMenuLayoutItem.st.css";
+    -st-default: TPAActionsMenuLayoutItem;
+}
+
+.root {
+    -st-mixin: TPAActionsMenuLayout(
+        MenuBackgroundColor '"--backgroundColor"',
+        MenuBorderColor '"--borderColor"'
+    );
+}
+
+.item {
+    -st-mixin: TPAActionsMenuLayoutItem(
+        ItemFont '"--itemFont"',
+        ItemSubtitleFont  '"--itemSubtitleFont"'
+    );
+}

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface TPAComponentsConfig {
-  mobile: boolean;
+  mobile?: boolean;
   rtl?: boolean;
 }
 

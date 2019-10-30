@@ -1,26 +1,20 @@
 import * as React from 'react';
-import styles from './ActionsMenu.st.css';
+import styles from './ActionsMenuLayout.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { ActionsMenuItem } from './Item/ActionsMenuItem';
+import { ActionsMenuLayoutItem, Alignment } from './Item/ActionsMenuLayoutItem';
 import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
-import { ActionsMenuDivider } from './Divider/Divider';
+import { ActionsMenuLayoutDivider } from './Divider/Divider';
 
-export enum Alignment {
-  left = 'left',
-  center = 'center',
-  right = 'right',
-}
-
-export interface ActionsMenuProps {
+export interface ActionsMenuLayoutProps {
   alignment?: Alignment;
 }
 
-/** ActionsMenu */
-export class ActionsMenu extends React.Component<ActionsMenuProps> {
-  static Item = ActionsMenuItem;
-  static Divider = ActionsMenuDivider;
+/** ActionsMenuLayout */
+export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
+  static Item = ActionsMenuLayoutItem;
+  static Divider = ActionsMenuLayoutDivider;
 
-  static displayName = 'ActionsMenu';
+  static displayName = 'ActionsMenuLayout';
 
   getDataAttributes(mobile: boolean) {
     return {
@@ -34,14 +28,17 @@ export class ActionsMenu extends React.Component<ActionsMenuProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ul
-            {...styles('root', { mobile, alignment }, rest)}
+            {...styles('root', { mobile }, rest)}
             {...this.getDataAttributes(mobile)}
             role="menu"
             tabIndex={-1}
           >
             {React.Children.map(children, (child: React.ReactElement) =>
-              child.type === ActionsMenuItem
-                ? React.cloneElement(child, { className: styles.item })
+              child.type === ActionsMenuLayoutItem
+                ? React.cloneElement(child, {
+                    className: styles.item,
+                    alignment,
+                  })
                 : child,
             )}
           </ul>

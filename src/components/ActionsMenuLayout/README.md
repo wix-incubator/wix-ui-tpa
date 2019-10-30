@@ -1,12 +1,12 @@
-## ActionsMenu
-An implementation of an ActionsMenu for TPAs
+## ActionsMenuLayout
+An implementation of an ActionsMenuLayout for TPAs
 
 ActionMenu is just a popup you'll get when openin 3-dors Menu, Drodpowdn etc. It does not control it's position on screen on desktop, and will always open from the bottom of the screen with full width on mobile.
 
-Child of `ActionsMenu` must be either `Divider` or `ActionsMenuItem`, see Examples section for details.
+Child of `ActionsMenuLayout` must be either `Divider` or `ActionsMenuLayoutItem`, see Examples section for details.
 
 
-The `ActionsMenu` implementation provides a few default overridable styles. By default site theme is used.
+The `ActionsMenuLayout` implementation provides a few default overridable styles. By default site theme is used.
 
 ## Theme properties (all are optional)
 | propName              | propType | description                                                |
@@ -16,7 +16,7 @@ The `ActionsMenu` implementation provides a few default overridable styles. By d
 | MenuBorderColor       | string   | The color of the menu border instead of the default color  |
 
 
-Also, the `ActionsMenuItem` implementation provides a few default overridable styles. By default site theme is used.
+Also, the `ActionsMenuLayoutItem` implementation provides a few default overridable styles. By default site theme is used.
 
 ## Theme properties (all are optional)
 | propName         | propType | description                                               |

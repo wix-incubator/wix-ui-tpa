@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
-import { ActionsMenu, Alignment } from './';
+import { ActionsMenuLayout, Alignment } from './';
 import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 
 function generateItems(props = {}) {
@@ -10,7 +10,7 @@ function generateItems(props = {}) {
   let itemCount = 0;
 
   ['Item', 'Item', 'Divider', 'Item'].forEach((type, i) => {
-    const Component = ActionsMenu[type];
+    const Component = ActionsMenuLayout[type];
     const count = type === 'Item' ? ++itemCount : undefined;
 
     list.push(
@@ -30,54 +30,62 @@ function generateItems(props = {}) {
 function testSuite(alignment) {
   story(`Align ${alignment ? alignment : 'default'}`, () => {
     snap('several item', () => (
-      <ActionsMenu alignment={alignment}>{generateItems()}</ActionsMenu>
+      <ActionsMenuLayout alignment={alignment}>{generateItems()}</ActionsMenuLayout>
     ));
 
     snap('with subtitle', () => (
-      <ActionsMenu alignment={alignment}>
+      <ActionsMenuLayout alignment={alignment}>
         {generateItems({ subtitle: true })}
-      </ActionsMenu>
+      </ActionsMenuLayout>
     ));
 
     snap('with icon', () => (
-      <ActionsMenu alignment={alignment}>
+      <ActionsMenuLayout alignment={alignment}>
         {generateItems({ prefixIcon: true })}
-      </ActionsMenu>
+      </ActionsMenuLayout>
     ));
 
     snap('with subtitle & icon', () => (
-      <ActionsMenu alignment={alignment}>
+      <ActionsMenuLayout alignment={alignment}>
         {generateItems({ subtitle: true, prefixIcon: true })}
-      </ActionsMenu>
+      </ActionsMenuLayout>
     ));
 
     snap('rtl', () => (
       <div dir={'rtl'}>
-        <ActionsMenu alignment={alignment}>
+        <ActionsMenuLayout alignment={alignment}>
           {generateItems({ subtitle: true, prefixIcon: true })}
-        </ActionsMenu>
+        </ActionsMenuLayout>
       </div>
     ));
 
     snap('rtl', () => (
       <div dir={'rtl'}>
-        <ActionsMenu alignment={alignment}>
+        <ActionsMenuLayout alignment={alignment}>
           {generateItems({ subtitle: true, prefixIcon: true })}
-        </ActionsMenu>
+        </ActionsMenuLayout>
       </div>
     ));
 
     snap('mobile', () => (
       <TPAComponentsProvider value={{ mobile: true }}>
-        <ActionsMenu alignment={alignment}>
+        <ActionsMenuLayout alignment={alignment}>
           {generateItems({ subtitle: true, prefixIcon: true })}
-        </ActionsMenu>
+        </ActionsMenuLayout>
+      </TPAComponentsProvider>
+    ));
+
+    snap('RTL', () => (
+      <TPAComponentsProvider value={{ rtl: true }}>
+        <ActionsMenuLayout alignment={alignment}>
+          {generateItems({ subtitle: true, prefixIcon: true })}
+        </ActionsMenuLayout>
       </TPAComponentsProvider>
     ));
   });
 }
 
-visualize('ActionsMenu', () => {
+visualize('ActionsMenuLayout', () => {
   testSuite(undefined);
 
   Object.values(Alignment).forEach(testSuite);

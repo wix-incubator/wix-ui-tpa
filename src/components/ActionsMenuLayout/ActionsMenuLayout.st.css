@@ -3,7 +3,7 @@
     -st-named: color, fallback;
 }
 :import {
-    -st-from: "./Item/ActionsMenuItem.st.css";
+    -st-from: "./Item/ActionsMenuLayoutItem.st.css";
     -st-default: ActionMenuItem;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .root {
-    -st-states: mobile, alignment(enum(left, center, right));
+    -st-states: mobile;
     padding: 12px 0;
     max-width: 320px;
     background-color: value(menuBackgroundColor);
@@ -50,29 +50,3 @@
     -st-extends: ActionMenuItem;
     text-align: initial;
 }
-
-.root:alignment(left) .item {
-    text-align: left;
-}
-
-.root:alignment(center) .item {
-    text-align: center;
-}
-
-.root:alignment(right) .item {
-    text-align: right;
-}
-
-/*.root:alignment(left) .item::container {*/
-/*    left: 24px;*/
-/*}*/
-
-/*.root:alignment(center) .item::container {*/
-/*    left: 50%;*/
-/*    transform: translate(-50%, 0);*/
-/*}*/
-
-/*.root:alignment(right) .item::container {*/
-/*    right: 24px;*/
-/*}*/
-
