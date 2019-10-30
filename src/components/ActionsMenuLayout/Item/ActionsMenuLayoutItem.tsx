@@ -22,7 +22,9 @@ export interface ActionsMenuLayoutItemProps {
 }
 
 /** ActionsMenuLayout */
-export class ActionsMenuLayoutItem extends React.Component<ActionsMenuLayoutItemProps> {
+export class ActionsMenuLayoutItem extends React.Component<
+  ActionsMenuLayoutItemProps
+> {
   static displayName = 'ActionsMenuLayout.Item';
 
   render() {

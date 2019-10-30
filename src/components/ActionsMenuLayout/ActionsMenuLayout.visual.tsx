@@ -30,7 +30,9 @@ function generateItems(props = {}) {
 function testSuite(alignment) {
   story(`Align ${alignment ? alignment : 'default'}`, () => {
     snap('several item', () => (
-      <ActionsMenuLayout alignment={alignment}>{generateItems()}</ActionsMenuLayout>
+      <ActionsMenuLayout alignment={alignment}>
+        {generateItems()}
+      </ActionsMenuLayout>
     ));
 
     snap('with subtitle', () => (
