@@ -21,8 +21,9 @@ import {
   optionsWithSections,
   optionsWithSubtitle,
 } from '../helpers';
-import { Heart } from 'wix-ui-icons-common/dist/src';
+import { Heart } from '../../../assets/icons';
 import * as Readme from '../../Dropdown/README.md';
+import { Placement } from 'wix-ui-core/dist/src/components/popover/Popover';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -71,6 +72,7 @@ export default {
     options: simpleOptions,
   }),
   exampleProps: {
+    placement: ['auto', 'top', 'right', 'bottom', 'left'],
     label: '',
     disabled: false,
     error: false,
@@ -114,7 +116,6 @@ export default {
               source: examples.withIconsAndSubtitlesExample,
             },
             { title: 'Min Width', source: examples.minWidthExample },
-            // { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),

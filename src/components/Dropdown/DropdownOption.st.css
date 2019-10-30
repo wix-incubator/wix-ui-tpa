@@ -9,16 +9,20 @@
 }
 
 .root {
-    -st-states: withIcon;
+    -st-states: withIcon, selectable, sectionTitle;
     box-sizing: border-box;
     display: flex;
     width: 100%;
 }
 
-.root:withIcon .subtitle,
 .root:withIcon .title {
-    padding-inline-start: 0;
-    margin-inline-start: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.root:withIcon .subtitle {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .contentWrapper {
@@ -26,21 +30,20 @@
 }
 
 .title {
-    -st-states: selectable, sectionTitle;
-    padding: 8px 26px;
+    padding: 8px 24px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
 }
 
-.title:not(:selectable) {
+.root:not(:selectable) .title {
     -st-mixin: TPAText(
         MainTextColor 'value(colorPlaceholder)'
     );
 }
 
-.title:sectionTitle {
+.root:sectionTitle .title {
     padding: 8px 14px;
 }
 
@@ -48,19 +51,21 @@
     -st-extends: TPAText;
     -st-mixin: TPAText(
         MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '14px'}"
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
     );
-    margin: -7px 26px 8px 26px;
+    margin: 2px 24px 8px 24px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2; /* number of lines to show */
-    max-height: 28px;      /* fallback */
+    max-height: 40px;      /* fallback */
 }
 
 .icon {
     display: flex;
     padding: 8px 12px;
+    align-items: center;
+    height: 24px;
 }

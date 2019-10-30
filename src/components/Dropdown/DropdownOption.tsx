@@ -16,27 +16,25 @@ export interface DropdownOptionProps {
 export const DropdownOption: React.FC<DropdownOptionProps> = props => {
   const { value, id, isSelectable, subtitle, icon, isSectionTitle } = props;
   return (
-    <div key={id} {...styles('root', { withIcon: !!icon }, props)}>
-      {icon && <div {...styles('icon')}>{icon}</div>}
+    <div
+      key={id}
+      {...styles(
+        'root',
+        {
+          withIcon: !!icon,
+          sectionTitle: isSectionTitle,
+          selectable: isSelectable,
+        },
+        props,
+      )}
+    >
+      {icon && <div className={styles.icon}>{icon}</div>}
       <div className={styles.contentWrapper}>
-        <Text
-          {...styles(
-            'title',
-            {
-              sectionTitle: isSectionTitle,
-              selectable: isSelectable,
-            },
-            props,
-          )}
-          typography={TYPOGRAPHY.runningText}
-        >
+        <Text className={styles.title} typography={TYPOGRAPHY.runningText}>
           {value}
         </Text>
         {subtitle && (
-          <Text
-            {...styles('subtitle', {}, props)}
-            typography={TYPOGRAPHY.runningText}
-          >
+          <Text className={styles.subtitle} typography={TYPOGRAPHY.runningText}>
             {subtitle}
           </Text>
         )}

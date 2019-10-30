@@ -49,7 +49,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   static defaultProps: DefaultProps = {
     placeholder: '',
     options: [],
-    placement: 'auto',
+    placement: 'bottom',
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -113,14 +113,14 @@ export class Dropdown extends React.Component<DropdownProps, State> {
           >
             {label && (
               <Text
-                {...styles('label', {}, rest)}
+                className={styles.label}
                 typography={TYPOGRAPHY.runningText}
               >
                 {label}
               </Text>
             )}
             <CoreDropdown
-              {...styles('dropdown', { mobile, disabled }, rest)}
+              className={styles.dropdown}
               placement={placement}
               data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
@@ -132,7 +132,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               forceContentElementVisibility={forceContentElementVisibility}
             >
               <DropdownBase
-                {...styles('dropdownBase', {}, rest)}
+                className={styles.dropdownBase}
                 selectedOption={selectedOption}
                 placeholder={placeholder}
                 disabled={disabled}
@@ -140,7 +140,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               />
               {error && errorMessage && (
                 <DropdownError
-                  {...styles('dropdownError', {}, rest)}
+                  className={styles.dropdownError}
                   errorMessage={errorMessage}
                 />
               )}

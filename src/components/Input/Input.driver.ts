@@ -6,8 +6,6 @@ export const inputDriverFactory = ({ element, eventTrigger }) => {
   const stylableDOMUtil = new StylableDOMUtil(style);
 
   const getErrorMessageElement = () => {
-    console.log(element.innerHTML);
-    console.log(stylableDOMUtil.scopeSelector('.errorMessage'));
     return element.querySelector(
       stylableDOMUtil.scopeSelector('.errorMessage'),
     );

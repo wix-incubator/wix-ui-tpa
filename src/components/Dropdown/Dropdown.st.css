@@ -67,14 +67,13 @@
 }
 
 .dropdown {
-    -st-states: mobile, disabled;
     -st-extends: Dropdown;
     width: 100%;
 }
 
 .dropdown,
 .dropdownBase::root {
-    min-width: 72px;
+    min-width: 68px;
 }
 
 .dropdown:content-visible .dropdownBase::root {

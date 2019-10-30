@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { ChevronDownSmall } from 'wix-ui-icons-common/dist/src';
+import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
 
 import { Button } from '../Button';
+import { TPAComponentProps } from '../../types';
 
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { DropdownOptionProps } from './DropdownOption';
@@ -15,7 +16,7 @@ interface DropdownBaseProps {
   error: boolean;
 }
 
-export const DropdownBase = (props: DropdownBaseProps) => {
+export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
   const { selectedOption, placeholder, error, disabled } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
@@ -26,12 +27,12 @@ export const DropdownBase = (props: DropdownBaseProps) => {
       data-dropdown-base-error={error}
       disabled={disabled}
       prefixIcon={
-        selectedOption && (
+        selectedOption && selectedOption.icon ? (
           <div className={styles.optionIcon}>{selectedOption.icon}</div>
-        )
+        ) : null
       }
       suffixIcon={
-        <ChevronDownSmall
+        <ArrowIcon
           className={styles.arrowIcon}
           width={ICON_SIZE}
           height={ICON_SIZE}

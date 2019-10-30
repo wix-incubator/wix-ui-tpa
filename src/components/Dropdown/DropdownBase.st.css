@@ -44,28 +44,43 @@
 
 .root:mobile:size(medium),
 .root:size(medium) {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-inline-start: 12px;
-    padding-inline-end: 7px;
+    padding: 8px 0;
+}
+
+.root:mobile:size(medium)::before,
+.root:size(medium)::before {
+    width: 12px;
+    content: '';
+}
+
+.root:mobile:size(medium)::after,
+.root:size(medium)::after {
+    width: 7px;
+    content: '';
 }
 
 .root::content {
     margin: initial;
 }
-
-.root:focus,
-.root:hover {
-    color: value(borderHoverColor);
+.root:priority(basic):focus,
+.root:priority(basic):hover {
     border-color: value(borderHoverColor);
+    background-color: value(backgroundColor);
 }
+
+.root:error,
+.root:priority(basic):error:focus,
+.root:priority(basic):error:hover {
+    border-color: value(errorColor);
+}
+
 
 .root:placeholder {
     color: value(colorPlaceholder);
 }
 
 .root:priority(basic):disabled {
-    cursor: none;
+    cursor: default;
     background-color: value(backgroundColor);
     color: value(colorDisabled);
     border-color: value(colorDisabled);
@@ -73,10 +88,6 @@
 
 .root:priority(basic):disabled:hover {
     border-color: value(colorDisabled);
-}
-
-.root:error {
-    border-color: value(errorColor);
 }
 
 .arrowIcon {
@@ -89,6 +100,10 @@
 
 .optionIcon {
     display: flex;
-    margin-inline-end: 12px;
+}
+
+.optionIcon::after {
+    width: 12px;
+    content: '';
 }
 

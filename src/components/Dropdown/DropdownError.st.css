@@ -22,11 +22,15 @@
     top: 50%;
     transform: translate(0,-50%);
     width: 100%;
-    padding-inline-end: 32px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     cursor: pointer;
+}
+
+.root::after {
+    width: 32px;
+    content: '';
 }
 
 .root::popover {
@@ -36,3 +40,4 @@
 .root::popoverElement {
     display: flex; /* vertical center error icon */
 }
+
