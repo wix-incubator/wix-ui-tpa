@@ -98,6 +98,7 @@
         MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)))
     );
     width: 100%;
+    margin-top: 6px;
 }
 
 .root:mobile .subtitle {
