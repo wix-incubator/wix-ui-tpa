@@ -44,7 +44,7 @@
         MainTextColor "value(colorPlaceholder)",
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
     );
-    margin-top: 6px;
+    margin-top: 4px;
     padding: 0 12px;
     display: block;
     text-overflow: ellipsis;
