@@ -8,24 +8,24 @@ import {
   ACTIONS_MENU_ITEM_DATA_HOOK,
 } from './dataHooks';
 
-export interface ActionsMenuDriver extends BaseUniDriver {
+export interface ActionsMenuLayoutDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
   clickItem(content): Promise<any>;
 }
 
-function actionsMenuItem(base: UniDriver, content) {
+function actionsMenuLayoutItem(base: UniDriver, content) {
   return base.$(
     `[data-hook="${ACTIONS_MENU_ITEM_DATA_HOOK}"][data-content="${content}"]`,
   );
 }
 
-export const actionsMenuDriverFactory = (
+export const actionsMenuLayoutDriverFactory = (
   base: UniDriver,
-): ActionsMenuDriver => {
+): ActionsMenuLayoutDriver => {
   return {
     ...baseUniDriverFactory(base),
     isMobile: async () =>
       (await base.attr(ACTIONS_MENU_DATA_KEYS.mobile)) === 'true',
-    clickItem: content => actionsMenuItem(base, content).click(),
+    clickItem: content => actionsMenuLayoutItem(base, content).click(),
   };
 };

@@ -29,7 +29,7 @@ require('../src/components/Toast/docs/index.story');
 require('../src/components/IconButton/docs/index.story');
 require('../src/components/Counter/docs/index.story');
 require('../src/components/Ratings/docs/index.story');
-require('../src/components/ActionsMenu/docs/index.story');
+require('../src/components/ActionsMenuLayout/docs/index.story');
 require('../src/components/Checkbox/docs/index.story');
 require('../src/components/DotNavigation/docs/index.story');
 require('../src/components/DotNavigation/docs/DotNavigationTestStory');

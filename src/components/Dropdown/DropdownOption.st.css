@@ -13,16 +13,7 @@
     box-sizing: border-box;
     display: flex;
     width: 100%;
-}
-
-.root:withIcon .title {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-.root:withIcon .subtitle {
-    margin-left: 0;
-    margin-right: 0;
+    padding: 8px 12px;
 }
 
 .contentWrapper {
@@ -30,7 +21,7 @@
 }
 
 .title {
-    padding: 8px 24px;
+    padding: 0 12px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -44,7 +35,7 @@
 }
 
 .root:sectionTitle .title {
-    padding: 8px 14px;
+    padding: 0;
 }
 
 .subtitle {
@@ -53,7 +44,8 @@
         MainTextColor "value(colorPlaceholder)",
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
     );
-    margin: 2px 24px 8px 24px;
+    margin-top: 4px;
+    padding: 0 12px;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -65,7 +57,8 @@
 
 .icon {
     display: flex;
-    padding: 8px 12px;
+    justify-content: center;
     align-items: center;
     height: 24px;
+    width: 24px;
 }

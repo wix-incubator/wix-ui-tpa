@@ -23,22 +23,42 @@
 }
 
 .root {
-    -st-states: disabled, mobile;
-    height: 40px;
+    -st-states: disabled, mobile, withIcon, rtl, alignment(enum(left, center, right));
     padding: 8px 24px;
-    display: flex;
     cursor: pointer;
+    width: calc(100% + 2px);
     position: relative;
+    left: -1px;
+    right: -1px;
 }
 
 .root:hover {
     background-color: applyOpacity(color(color-5), 0.06);
 }
 
-.root .container {
+.container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.iconContainer {
     display: flex;
-    flex: 1;
-    position: absolute;
+    align-self: stretch;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+}
+
+.iconContainer::after {
+    content: '';
+    width: 12px;
+    height: 100%;
 }
 
 .root:disabled {
@@ -50,18 +70,14 @@
     background-color: inherit;
 }
 
-.root .text {
-    -st-extends: Text;
-    -st-mixin: Text(
-        MainTextColor color(color-5)
-    );
+.text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
 }
 
-.root .content {
+.content {
     -st-extends: Text;
     -st-mixin: Text(
         MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
@@ -70,29 +86,48 @@
 }
 
 .root:mobile .content {
-    -st-extends: Text;
     -st-mixin: Text(
         MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
     );
 }
 
-.root .subtitle {
+.subtitle {
     -st-extends: Text;
     -st-mixin: Text(
         MainTextColor applyOpacity(color(color-5), 0.6),
         MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)))
     );
     width: 100%;
+    margin-top: 4px;
 }
 
 .root:mobile .subtitle {
-    -st-extends: Text;
     -st-mixin: Text(
         MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)))
     );
 }
 
-.root .spaceContainer {
-    width: 12px;
-    height: 100%;
+.textContainer {
+    display: flex;
+}
+
+.root:alignment(left) {
+    text-align: left;
+}
+
+.root:alignment(center) {
+    text-align: center;
+}
+
+.root:alignment(right) {
+    text-align: right;
+}
+
+.root:alignment(center):withIcon .container {
+    margin-left: -36px;
+}
+
+.root:rtl:alignment(center):withIcon .container {
+    margin-left: unset;
+    margin-right: -36px;
 }
