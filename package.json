@@ -57,7 +57,7 @@
     "autotools:a11y": "autotools-a11y",
     "postgenerate": "npm run update-components",
     "update-components": ".wuf/update-components.sh",
-    "pr-release": "SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
+    "pr-release": "# SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
     "release-candidate": "node scripts/rc.js",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
