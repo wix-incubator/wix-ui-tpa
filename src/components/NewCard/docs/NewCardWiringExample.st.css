@@ -25,30 +25,3 @@
 .card::container img {
     vertical-align: middle;
 }
-
-.card.overlapped {
-    border: none;
-}
-
-:vars {
-    paddingValue: 30px;
-}
-
-.card.overlapped::container {
-    padding: value(paddingValue);
-}
-
-.card.overlapped::container.media {
-    background: gray;
-}
-
-.card.overlapped::container.info {
-    border: 1px solid #000;
-}
-
-.card.overlapped::container.info {
-    border: 1px solid #000;
-    background: #fff;
-
-    margin: value(paddingValue) 0  value(paddingValue) calc(-1 * value(paddingValue));
-}

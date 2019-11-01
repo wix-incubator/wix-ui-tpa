@@ -71,24 +71,6 @@ export const ExampleMinWidth = () => (
   </NewCard>
 );
 
-export const ExampleOverlapped = () => (
-  <NewCard className={`${styles.card} ${styles.overlapped}`}>
-    <NewCard.Container minWidth={300} className={styles.media}>
-      {mediaContainer}
-    </NewCard.Container>
-    <NewCard.Container minWidth={300} className={styles.info}>
-      <>
-        <Text typography={TYPOGRAPHY.smallTitle}>I'm overlapped</Text>
-        <br />
-        <Text typography={TYPOGRAPHY.runningText}>
-          I have minWidth={300} and media block have minWidth={300}
-          and I'm Overlapped!
-        </Text>
-      </>
-    </NewCard.Container>
-  </NewCard>
-);
-
 export const NewCardWiringExample = props => {
   return (
     <div {...styles('root', {}, props)}>
@@ -110,12 +92,6 @@ export const NewCardWiringExample = props => {
         <Text typography={TYPOGRAPHY.smallTitle}>Containers with minWidth</Text>
 
         <ExampleMinWidth />
-      </section>
-
-      <section className={styles.exampleSection}>
-        <Text typography={TYPOGRAPHY.smallTitle}>Overlapped</Text>
-
-        <ExampleOverlapped />
       </section>
     </div>
   );
