@@ -4,18 +4,13 @@
 ### Bug Fixes
 
 * ActionsMenu & Dropdown QA comments ([fd458bc](https://github.com/wix/wix-ui-tpa/commit/fd458bc6ed6722555a5208249c8b8c4a2c6f5a30))
-* Avatar Group rtl support fixed  ([f1fda04](https://github.com/wix/wix-ui-tpa/commit/f1fda040107946354f444d32a8ba9d5c718cf59d))
-* Avatar when no src is provided ([7f96819](https://github.com/wix/wix-ui-tpa/commit/7f9681918539521ef0f4ee04525faac0890ec5c9))
-* Tabs - hide scrollbars in FF and IE/edge ([4e3f087](https://github.com/wix/wix-ui-tpa/commit/4e3f08750703df54055c117f9645d7fa9471bca5))
 
 
 ### Features
 
 * **component:** Dropdown ([2bb9d62](https://github.com/wix/wix-ui-tpa/commit/2bb9d629be06df13d5e734d71838531638d95f2d))
 * **component:** ActionsMenu ([c277825](https://github.com/wix/wix-ui-tpa/commit/c27782508f5726d8f0c591b57dbfb9c094e1139d))
-* **core:** add serverUrl to applitools config ([295945e](https://github.com/wix/wix-ui-tpa/commit/295945e8fb1c029e5106d5b88bdc7dd1704107c4))
 * add onLoad prop to Avatar and AvatarGroup item ([f2c652a](https://github.com/wix/wix-ui-tpa/commit/f2c652ade99822b1f925233e9264f47fee203c0a))
-* All components' props to extend BaseProps ([1f5ce19](https://github.com/wix/wix-ui-tpa/commit/1f5ce19adcb485b4b8a43f044bfd1ec0b044ceda))
 
 
 
