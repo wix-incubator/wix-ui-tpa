@@ -1,4 +1,8 @@
 ## Card
+**Attention: The current API will be deprecated in the next major version.  
+Please use the `upgrade` prop in order to adapt to the new API.  
+For the new API see the [NewCard](../NewCard/NewCard.tsx) documentation**
+ 
 An implementation of an Card for TPAs,
 The TPA implementation provides few extendable theme properties with the ability to override the base properties as well,
 
@@ -42,5 +46,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import cardStylesExt from './CardExt.st.css';
 
-    const CardExt = (props) => <Card {...props} {...cardStylesExt('root', {}, props)}/>;
+    const CardExt = (props) => <Card upgrade {...props} {...cardStylesExt('root', {}, props)}/>;
     ```
