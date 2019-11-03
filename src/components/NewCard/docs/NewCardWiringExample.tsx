@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../../Text';
-import { NewCard } from '../';
+import { Card } from '../../Card';
 import styles from './NewCardWiringExample.st.css';
 
 const image = (
@@ -21,11 +21,9 @@ const mediaContainer = (
 );
 
 export const ExampleDefault = () => (
-  <NewCard className={styles.card}>
-    <NewCard.Container className={styles.media}>
-      {mediaContainer}
-    </NewCard.Container>
-    <NewCard.Container className={styles.info}>
+  <Card upgrade className={styles.card}>
+    <Card.Container className={styles.media}>{mediaContainer}</Card.Container>
+    <Card.Container className={styles.info}>
       <>
         <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
         <br />
@@ -33,16 +31,14 @@ export const ExampleDefault = () => (
           And boy, you got me walkin' side to side
         </Text>
       </>
-    </NewCard.Container>
-  </NewCard>
+    </Card.Container>
+  </Card>
 );
 
 export const ExampleStacked = () => (
-  <NewCard className={styles.card} stacked>
-    <NewCard.Container className={styles.media}>
-      {mediaContainer}
-    </NewCard.Container>
-    <NewCard.Container className={styles.info}>
+  <Card upgrade className={styles.card} stacked>
+    <Card.Container className={styles.media}>{mediaContainer}</Card.Container>
+    <Card.Container className={styles.info}>
       <>
         <Text typography={TYPOGRAPHY.smallTitle}>Stacked layout</Text>
         <br />
@@ -50,16 +46,16 @@ export const ExampleStacked = () => (
           And boy, you got me walkin' stacked to stacked
         </Text>
       </>
-    </NewCard.Container>
-  </NewCard>
+    </Card.Container>
+  </Card>
 );
 
 export const ExampleMinWidth = () => (
-  <NewCard className={styles.card}>
-    <NewCard.Container minWidth={300} className={styles.media}>
+  <Card upgrade className={styles.card}>
+    <Card.Container minWidth={300} className={styles.media}>
       {mediaContainer}
-    </NewCard.Container>
-    <NewCard.Container minWidth={300} className={styles.info}>
+    </Card.Container>
+    <Card.Container minWidth={300} className={styles.info}>
       <>
         <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
         <br />
@@ -67,8 +63,8 @@ export const ExampleMinWidth = () => (
           I have minWidth={300} and media block have minWidth={300}
         </Text>
       </>
-    </NewCard.Container>
-  </NewCard>
+    </Card.Container>
+  </Card>
 );
 
 export const NewCardWiringExample = props => {

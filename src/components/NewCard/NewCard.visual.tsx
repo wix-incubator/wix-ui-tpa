@@ -4,7 +4,6 @@ import { NewCardWiringExample } from './docs/NewCardWiringExample';
 import { visualize, story, snap } from 'storybook-snapper';
 import { newCardDriverFactory, NewCardDriver } from './NewCard.driver';
 import { NewCardProps } from '.';
-import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 const createDriver = uniTestkitFactoryCreator(newCardDriverFactory);
 const dataHook = 'storybook-e2e-NewCard';
