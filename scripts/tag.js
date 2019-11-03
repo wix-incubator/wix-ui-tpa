@@ -8,7 +8,7 @@ function run() {
       version = `${version.startsWith('v') ? '' : 'v'}${version}`;
 
       execute(`git tag -a ${version} -m "wix-ui-tpa version ${version}"`, true);
-      execute('git push --follow-tags', true);
+      execute('git push origin --follow-tags', true);
     } catch (e) {
       logger.error("Couldn't add a tag");
     }
