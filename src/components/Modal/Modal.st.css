@@ -1,0 +1,60 @@
+:vars {
+    width: 580px;
+    maxHeight: 620px;
+    minHeight: 350px;
+    paddingTobBottom: 80px;
+    paddingLeftRight: 32px;
+}
+
+.root {
+    -st-states: mobile, withBackground;
+}
+
+.root .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+.root:withBackground .overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.contentWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: value(paddingTobBottom) 0;
+    box-sizing: border-box;
+    width: value(width);
+    background-color: #ffffff;
+}
+
+
+.closeButtonWrapper {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.closeButton {
+    padding: 24px;
+}
+
+.content {
+    max-height: calc(value(maxHeight) - 2 * value(paddingTobBottom));
+    min-height: calc(value(minHeight) - 2 * value(paddingTobBottom));
+    padding: 0 value(paddingLeftRight);
+    overflow: auto;
+}
+
+.root:mobile {
+    /*mobile css goes here*/
+}
