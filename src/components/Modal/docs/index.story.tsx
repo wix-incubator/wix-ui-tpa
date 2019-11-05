@@ -52,8 +52,13 @@ export default {
             { title: 'Minimum height', source: examples.minHeightExample },
             { title: 'Maximum height', source: examples.maxHeightExample },
             { title: 'RTL example', source: examples.rtlExample },
-            { title: 'Without close button', source: examples.withoutCloseButton },
-            { title: 'Without background', source: examples.withoutBackground },
+            {
+              title: 'Without close button',
+              source: examples.withoutCloseButtonExample,
+            },
+            { title: 'Without background', source: examples.withoutBackgroundExample },
+            { title: 'In full screen', source: examples.inFullScreenExample },
+
             { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],

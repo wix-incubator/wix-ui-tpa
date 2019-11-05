@@ -7,6 +7,6 @@ ModalMetadata.nonReactStrictModeCompliant = true;
 ModalMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });

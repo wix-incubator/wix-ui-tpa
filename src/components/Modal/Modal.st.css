@@ -7,7 +7,7 @@
 }
 
 .root {
-    -st-states: mobile, withBackground;
+    -st-states: mobile, withBackground, inFullScreen;
 }
 
 .root .overlay {
@@ -23,7 +23,7 @@
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-.contentWrapper {
+.root .contentWrapper {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -32,6 +32,15 @@
     box-sizing: border-box;
     width: value(width);
     background-color: #ffffff;
+}
+
+.root:inFullScreen .contentWrapper {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: initial;
+    width: initial;
 }
 
 
@@ -48,9 +57,16 @@
     padding: 24px;
 }
 
-.content {
+.root:inFullScreen .content {
+    height: 100%;
+}
+
+.root:not(:inFullScreen) .content {
     max-height: calc(value(maxHeight) - 2 * value(paddingTobBottom));
     min-height: calc(value(minHeight) - 2 * value(paddingTobBottom));
+}
+
+.content {
     padding: 0 value(paddingLeftRight);
     overflow: auto;
 }
