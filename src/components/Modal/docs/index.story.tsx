@@ -56,10 +56,11 @@ export default {
               title: 'Without close button',
               source: examples.withoutCloseButtonExample,
             },
-            { title: 'Without background', source: examples.withoutBackgroundExample },
+            {
+              title: 'Without background',
+              source: examples.withoutBackgroundExample,
+            },
             { title: 'In full screen', source: examples.inFullScreenExample },
-
-            { title: 'Mobile Example', source: examples.mobileExample },
           ].map(code),
         ],
       }),

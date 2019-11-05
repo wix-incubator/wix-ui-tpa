@@ -47,27 +47,35 @@ Praesent sed rutrum turpis. Quisque consequat commodo magna, accumsan tempus nul
 Cras ut sem eu purus viverra luctus. Nunc egestas et sem nec bibendum. Donec tincidunt placerat est eu ornare. Phasellus molestie et nunc vitae ultrices. Nulla sed volutpat enim. Aenean non tortor laoreet, tempus leo quis, interdum sem. Phasellus sit amet velit ut metus dignissim laoreet ut imperdiet eros. Maecenas mollis metus at massa luctus, nec aliquam odio consectetur. Nullam sagittis purus vitae elit egestas, in faucibus dolor ornare. Donec ut commodo mi. Curabitur tincidunt ligula quis tincidunt pulvinar. Donec venenatis erat a aliquam vehicula. Nunc lobortis purus in urna scelerisque, sit amet ultrices tellus congue. Etiam vitae nisi interdum tellus mattis hendrerit sed iaculis orci. Integer venenatis diam sed leo volutpat, non tincidunt sapien elementum.
 </p></div>`;
 
-export const maxHeightExample = `
-<ExampleModalApp>${bigContent}</ExampleModalApp>
-`;
-
-export const minHeightExample = `<ExampleModalApp/>`;
-
-export const rtlExample = `
-<div dir="rtl">
-<ExampleWithContextProps rtl={true}>
-    <ExampleModalApp />
-</ExampleWithContextProps>
+const mobileDesktopWrapper = (component) => `
+<div style={{display: 'flex'}}>
+  <div>
+    <span>Desktop:</span>
+    ${component}
+  </div>
+  <div>
+    <span>Mobile:</span>
+    <ExampleWithContextProps mobile={true}>
+      ${component}
+    </ExampleWithContextProps>
+  </div>
 </div>
 `;
 
-export const withoutCloseButtonExample = `<ExampleModalApp withCloseButton={false}/>`;
-export const withoutBackgroundExample = `<ExampleModalApp withBackground={false}/>`;
-export const inFullScreenExample = `<ExampleModalApp inFullScreen={true}>${bigContent}</ExampleModalApp>`;
+export const maxHeightExample = mobileDesktopWrapper(`
+   <ExampleModalApp>${bigContent}</ExampleModalApp>
+`);
 
+export const minHeightExample = mobileDesktopWrapper(`<ExampleModalApp/>`);
 
-export const mobileExample = `
-<ExampleWithContextProps mobile={true}>
-  <ExampleModalApp />
+export const rtlExample = (`
+<div dir="rtl">
+<ExampleWithContextProps rtl={true}>
+    ${maxHeightExample}
 </ExampleWithContextProps>
-`;
+</div>
+`);
+
+export const withoutCloseButtonExample = mobileDesktopWrapper(`<ExampleModalApp withCloseButton={false}/>`);
+export const withoutBackgroundExample = mobileDesktopWrapper(`<ExampleModalApp withBackground={false}/>`);
+export const inFullScreenExample = mobileDesktopWrapper(`<ExampleModalApp inFullScreen={true}>${bigContent}</ExampleModalApp>`);

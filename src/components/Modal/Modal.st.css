@@ -1,7 +1,9 @@
 :vars {
     width: 580px;
-    maxHeight: 620px;
-    minHeight: 350px;
+    maxDesktopHeight: 620px;
+    minDesktopHeight: 350px;
+    maxMobileHeight: 468px;
+    minMobileHeight: 324px;
     paddingTobBottom: 80px;
     paddingLeftRight: 32px;
 }
@@ -34,6 +36,14 @@
     background-color: #ffffff;
 }
 
+.root:mobile .contentWrapper {
+    top: 36px;
+    left: 20px;
+    right: 20px;
+    transform: initial;
+    width: initial;
+}
+
 .root:inFullScreen .contentWrapper {
     top: 0;
     left: 0;
@@ -53,6 +63,15 @@
     left: 0;
 }
 
+.root:mobile .closeButton {
+    padding: 20px;
+}
+
+.root:mobile .closeButton svg {
+    width: 12px;
+    height: 12px;
+}
+
 .closeButton {
     padding: 24px;
 }
@@ -62,15 +81,16 @@
 }
 
 .root:not(:inFullScreen) .content {
-    max-height: calc(value(maxHeight) - 2 * value(paddingTobBottom));
-    min-height: calc(value(minHeight) - 2 * value(paddingTobBottom));
+    max-height: calc(value(maxDesktopHeight) - 2 * value(paddingTobBottom));
+    min-height: calc(value(minDesktopHeight) - 2 * value(paddingTobBottom));
+}
+
+.root:mobile:not(:inFullScreen) .content {
+    max-height: calc(value(maxMobileHeight) - 2 * value(paddingTobBottom));
+    min-height: calc(value(minMobileHeight) - 2 * value(paddingTobBottom));
 }
 
 .content {
     padding: 0 value(paddingLeftRight);
     overflow: auto;
-}
-
-.root:mobile {
-    /*mobile css goes here*/
 }
