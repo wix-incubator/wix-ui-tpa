@@ -1,5 +1,3 @@
-export const importExample = `import { Modal } from 'wix-ui-tpa/Modal';`;
-
 const bigContent = `<div>
 <p>
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi rhoncus, urna vel tempor pretium, neque odio rhoncus neque, at congue urna tellus et augue. Etiam ac semper purus, sit amet pellentesque arcu. Aliquam sagittis lectus in egestas sollicitudin. Suspendisse gravida eleifend ante non dignissim. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus ac semper sapien, sit amet viverra ipsum. Nam cursus, dui non varius auctor, mi lectus fermentum libero, aliquet posuere odio leo non nisl. Vivamus accumsan non leo a viverra. Pellentesque lorem nunc, efficitur a arcu eget, commodo feugiat purus. Etiam efficitur tortor ut tellus congue, sit amet tincidunt lorem tempus. Nam facilisis id eros non malesuada.
@@ -47,7 +45,7 @@ Praesent sed rutrum turpis. Quisque consequat commodo magna, accumsan tempus nul
 Cras ut sem eu purus viverra luctus. Nunc egestas et sem nec bibendum. Donec tincidunt placerat est eu ornare. Phasellus molestie et nunc vitae ultrices. Nulla sed volutpat enim. Aenean non tortor laoreet, tempus leo quis, interdum sem. Phasellus sit amet velit ut metus dignissim laoreet ut imperdiet eros. Maecenas mollis metus at massa luctus, nec aliquam odio consectetur. Nullam sagittis purus vitae elit egestas, in faucibus dolor ornare. Donec ut commodo mi. Curabitur tincidunt ligula quis tincidunt pulvinar. Donec venenatis erat a aliquam vehicula. Nunc lobortis purus in urna scelerisque, sit amet ultrices tellus congue. Etiam vitae nisi interdum tellus mattis hendrerit sed iaculis orci. Integer venenatis diam sed leo volutpat, non tincidunt sapien elementum.
 </p></div>`;
 
-const mobileDesktopWrapper = (component) => `
+const mobileDesktopWrapper = component => `
 <div style={{display: 'flex'}}>
   <div>
     <span>Desktop:</span>
@@ -68,14 +66,20 @@ export const maxHeightExample = mobileDesktopWrapper(`
 
 export const minHeightExample = mobileDesktopWrapper(`<ExampleModalApp/>`);
 
-export const rtlExample = (`
+export const rtlExample = `
 <div dir="rtl">
 <ExampleWithContextProps rtl={true}>
     ${maxHeightExample}
 </ExampleWithContextProps>
 </div>
-`);
+`;
 
-export const withoutCloseButtonExample = mobileDesktopWrapper(`<ExampleModalApp withCloseButton={false}/>`);
-export const withoutBackgroundExample = mobileDesktopWrapper(`<ExampleModalApp withBackground={false}/>`);
-export const inFullScreenExample = mobileDesktopWrapper(`<ExampleModalApp inFullScreen={true}>${bigContent}</ExampleModalApp>`);
+export const withoutCloseButtonExample = mobileDesktopWrapper(
+  `<ExampleModalApp withCloseButton={false}/>`,
+);
+export const withoutBackgroundExample = mobileDesktopWrapper(
+  `<ExampleModalApp withBackground={false}/>`,
+);
+export const inFullScreenExample = mobileDesktopWrapper(
+  `<ExampleModalApp inFullScreen={true}>${bigContent}</ExampleModalApp>`,
+);

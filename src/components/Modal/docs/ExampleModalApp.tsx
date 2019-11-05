@@ -6,21 +6,21 @@ export class ExampleModalApp extends React.Component<Partial<ModalProps>> {
     isModalOpened: false,
   };
 
-  handleOpenModal = () => {
+  openModal = () => {
     this.setState({ isModalOpened: true });
   };
 
-  handleCloseModal = () => {
+  closeModal = () => {
     this.setState({ isModalOpened: false });
   };
 
   render() {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Trigger Modal</button>
+        <button onClick={this.openModal}>Trigger Modal</button>
         <Modal
           isOpen={this.state.isModalOpened}
-          onRequestClose={this.handleCloseModal}
+          onRequestClose={this.closeModal}
           {...this.props}
         >
           {this.props.children}

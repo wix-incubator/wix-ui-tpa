@@ -3,6 +3,7 @@ import * as examples from './examples';
 import {
   header,
   api,
+  description,
   divider,
   importExample,
   playground,
@@ -18,6 +19,7 @@ import * as ModalWiringExampleRaw from '!raw-loader!./ModalWiringExample.tsx';
 import * as ModalWiringExampleCSSRaw from '!raw-loader!./ModalWiringExample.st.css';
 import { ModalWiringExample } from './ModalWiringExample';
 import { Modal } from '../';
+import * as Readme from "../../Modal/README.md";
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -40,9 +42,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          importExample({
-            source: examples.importExample,
-          }),
+          description(Readme),
+          // importExample({
+          //   source: examples.importExample,
+          // }),
 
           divider(),
 
