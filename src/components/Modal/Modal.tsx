@@ -80,6 +80,7 @@ export class Modal extends React.Component<ModalProps, State> {
                 className={styles.contentWrapper}
                 onClick={this.handleContentClick}
                 role="dialog"
+                aria-label="dialog-content"
               >
                 {withCloseButton ? (
                   <div className={styles.closeButtonWrapper}>
