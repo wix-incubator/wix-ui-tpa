@@ -10,7 +10,7 @@ export interface NewCardProps extends TPAComponentProps {
 
 export interface ContainerProps extends TPAComponentProps {
   children: React.ReactNode;
-  minWidth?: number;
+  minWidth?: number | string;
 }
 
 interface DefaultProps {
@@ -21,7 +21,7 @@ const Container: React.FunctionComponent<ContainerProps> = props => {
   const { className, children, minWidth } = props;
   return (
     <div
-      style={{ flexBasis: `${minWidth}px` }}
+      style={{ flexBasis: minWidth }}
       className={classnames(styles.container, className)}
       data-hook={props['data-hook'] || NEWCARD_DATA_HOOKS.NewCardContainer}
     >
