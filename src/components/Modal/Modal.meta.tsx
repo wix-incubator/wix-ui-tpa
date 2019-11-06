@@ -1,6 +1,6 @@
 import { Modal, ModalProps } from '.';
 import Registry from '@ui-autotools/registry';
-import {bigContent} from "./helpers";
+import { bigContent } from './helpers';
 
 const ModalMetadata = Registry.getComponentMetadata(Modal);
 ModalMetadata.nonReactStrictModeCompliant = true;
@@ -19,7 +19,7 @@ ModalMetadata.addSim({
   props: {
     isOpen: true,
     onRequestClose: () => {},
-    children: [bigContent],
+    children: ['a'],
   } as ModalProps,
 });
 
@@ -31,7 +31,6 @@ ModalMetadata.addSim({
     withCloseButton: false,
   } as ModalProps,
 });
-
 
 ModalMetadata.addSim({
   title: 'Without background',
