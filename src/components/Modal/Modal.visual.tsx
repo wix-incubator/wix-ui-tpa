@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Modal } from './';
+import {bigContent} from "./helpers";
 
 class ModalVisual extends React.Component<any> {
   static defaultProps = {
@@ -22,21 +23,54 @@ class ModalVisual extends React.Component<any> {
   }
 }
 
+function getTests(isMobile) {
+  return [
+    {
+      it: 'Minimal height',
+      props: {
+        isOpen: true,
+        onRequestClose: () => {},
+        mobile: isMobile,
+      }
+    },
+    {
+      it: 'Maximum height',
+      props: {
+        isOpen: true,
+        onRequestClose: () => {},
+        children: bigContent,
+        mobile: isMobile,
+      }
+    },
+    {
+      it: 'Without close button',
+      props: {
+        isOpen: true,
+        onRequestClose: () => {},
+        withCloseButton: false,
+        mobile: isMobile,
+      }
+    },
+    {
+      it: 'Without background',
+      props: {
+        isOpen: true,
+        onRequestClose: () => {},
+        withBackground: false,
+        mobile: isMobile,
+      }
+    }
+  ]
+}
+
 const tests = [
   {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-      {
-        it: 'mobile',
-        props: {
-          mobile: true,
-        },
-      },
-    ],
+    describe: 'desktop',
+    its: getTests(false),
+  },
+  {
+    describe: 'mobile',
+    its: getTests(true),
   },
 ];
 
