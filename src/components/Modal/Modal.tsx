@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import ReactModal from 'react-modal';
 
 import styles from './Modal.st.css';
 import { IconButton } from '../IconButton';
 import { Close } from '../../assets/icons';
+import { DATA_HOOKS } from './constants';
 
 export interface ModalProps {
   /**
@@ -13,7 +13,7 @@ export interface ModalProps {
   isOpen: boolean;
 
   /**
-   * Function that will be run when the modal is requested to be closed (either by clicking on overlay or pressing ESC)
+   * Function that will be run when the modal is requested to be closed (by clicking on overlay)
    * Note: It is not called if isOpen is changed by other means.
    */
   onRequestClose(): void;
@@ -50,7 +50,8 @@ export class Modal extends React.Component<ModalProps, State> {
     withCloseButton: true,
     withBackground: true,
   };
-  private readonly ref = React.createRef<HTMLDivElement>();
+
+  handleContentClick = event => event.stopPropagation();
 
   render() {
     const {
@@ -64,26 +65,26 @@ export class Modal extends React.Component<ModalProps, State> {
     } = this.props;
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div
-            {...styles('root', { mobile, withBackground, inFullScreen }, rest)}
-            ref={this.ref}
-          >
-            {this.ref.current ? (
-              <ReactModal
-                ariaHideApp={false}
-                parentSelector={() => {
-                  return this.ref.current;
-                }}
-                data-mobile={mobile}
-                isOpen={isOpen}
-                onRequestClose={onRequestClose}
-                overlayClassName={styles.overlay}
+        {({ mobile }) =>
+          isOpen ? (
+            <div
+              {...styles(
+                'root',
+                { mobile, withBackground, inFullScreen },
+                rest,
+              )}
+              data-mobile={mobile}
+              onClick={onRequestClose}
+            >
+              <div
                 className={styles.contentWrapper}
+                onClick={this.handleContentClick}
+                role="dialog"
               >
                 {withCloseButton ? (
                   <div className={styles.closeButtonWrapper}>
                     <IconButton
+                      data-hook={DATA_HOOKS.closeIconButton}
                       icon={<Close />}
                       className={styles.closeButton}
                       onClick={onRequestClose}
@@ -91,10 +92,10 @@ export class Modal extends React.Component<ModalProps, State> {
                   </div>
                 ) : null}
                 <div className={styles.content}>{children}</div>
-              </ReactModal>
-            ) : null}
-          </div>
-        )}
+              </div>
+            </div>
+          ) : null
+        }
       </TPAComponentsConsumer>
     );
   }

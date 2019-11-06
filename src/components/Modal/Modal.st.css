@@ -27,9 +27,6 @@
 
 .root {
     -st-states: mobile, withBackground, inFullScreen;
-}
-
-.root .overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +35,7 @@
     z-index: 1000;
 }
 
-.root:withBackground .overlay {
+.root:withBackground {
     background-color: rgba(0, 0, 0, 0.6);
 }
 

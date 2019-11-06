@@ -5,7 +5,6 @@ import {
   api,
   description,
   divider,
-  importExample,
   playground,
   tab,
   code as baseCode,
@@ -49,12 +48,7 @@ export default {
         title: 'Usage',
         sections: [
           description(Readme),
-          // importExample({
-          //   source: examples.importExample,
-          // }),
-
           divider(),
-
           title('Examples'),
 
           ...[
