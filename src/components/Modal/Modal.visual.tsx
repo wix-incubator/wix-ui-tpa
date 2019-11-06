@@ -2,10 +2,10 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import {Modal, ModalProps} from './';
+import { Modal, ModalProps } from './';
 import { bigContent } from './helpers';
 
-class ModalVisual extends React.Component<ModalProps & {mobile: boolean}> {
+class ModalVisual extends React.Component<ModalProps & { mobile: boolean }> {
   static defaultProps = {
     mobile: false,
   };
