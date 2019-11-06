@@ -10,7 +10,7 @@ ModalMetadata.addSim({
   props: {
     isOpen: true,
     onRequestClose: () => {},
-    children: ['Hello from modal'],
+    children: 'Hello from modal',
   } as ModalProps,
 });
 
@@ -19,7 +19,7 @@ ModalMetadata.addSim({
   props: {
     isOpen: true,
     onRequestClose: () => {},
-    children: [bigContent],
+    children: bigContent,
   } as ModalProps,
 });
 
@@ -29,7 +29,7 @@ ModalMetadata.addSim({
     isOpen: true,
     onRequestClose: () => {},
     withCloseButton: false,
-    children: ['Hello from modal'],
+    children: 'Hello from modal',
   } as ModalProps,
 });
 
@@ -40,6 +40,6 @@ ModalMetadata.addSim({
     isOpen: true,
     onRequestClose: () => {},
     withBackground: false,
-    children: ['Hello from modal'],
+    children: 'Hello from modal',
   } as ModalProps,
 });
