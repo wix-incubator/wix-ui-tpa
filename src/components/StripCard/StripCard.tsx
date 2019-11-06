@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from './StripCard.st.css';
 import { TPAComponentProps } from '../../types';
+import { deprecationLog } from '../../common/deprecationLog';
 
 export const MIN_WIDTH = 700;
 
@@ -23,6 +24,12 @@ export class StripCard extends React.Component<StripCardProps> {
     roundMedia: false,
     sidePadding: true,
   };
+
+  componentDidMount(): void {
+    deprecationLog(
+      'The current `Card` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.\nYou can view the new API here: https://wix-wix-ui-tpa.surge.sh/?path=/story/components--newcard',
+    );
+  }
 
   render() {
     const { media, info, roundMedia, sidePadding, ...rest } = this.props;
