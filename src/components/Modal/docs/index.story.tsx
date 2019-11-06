@@ -19,7 +19,7 @@ import * as ModalWiringExampleRaw from '!raw-loader!./ModalWiringExample.tsx';
 import * as ModalWiringExampleCSSRaw from '!raw-loader!./ModalWiringExample.st.css';
 import { ModalWiringExample } from './ModalWiringExample';
 import { Modal } from '../';
-import * as Readme from "../../Modal/README.md";
+import * as Readme from '../../Modal/README.md';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -34,6 +34,12 @@ export default {
   }),
   exampleProps: {
     isOpen: false,
+    inFullScreen: false,
+    withCloseButton: false,
+    withBackground: false,
+    onRequestClose: () => {
+      console.log('on request close');
+    },
   },
   dataHook: 'storybook-Modal',
   sections: [
@@ -81,7 +87,13 @@ export default {
               rawSource: ModalWiringExampleRaw,
               rawCSSSource: ModalWiringExampleCSSRaw,
               params: {
-                colors: [],
+                colors: [
+                  {
+                    label: 'Dialog background color',
+                    wixParam: 'dialogBgColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
                 fonts: [],
                 numbers: [],
               },

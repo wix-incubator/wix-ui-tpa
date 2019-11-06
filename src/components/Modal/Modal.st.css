@@ -1,3 +1,18 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultDialogBgColor: #ffffff;
+}
+
+:vars {
+    /*Overrides*/
+    DialogBgColor: --overridable;
+}
+
 :vars {
     width: 580px;
     maxDesktopHeight: 620px;
@@ -6,7 +21,9 @@
     minMobileHeight: 324px;
     paddingTobBottom: 80px;
     paddingLeftRight: 32px;
+    dialogBgColor: fallback(color(value(DialogBgColor)), value(DefaultDialogBgColor));
 }
+
 
 .root {
     -st-states: mobile, withBackground, inFullScreen;
@@ -33,7 +50,7 @@
     padding: value(paddingTobBottom) 0;
     box-sizing: border-box;
     width: value(width);
-    background-color: #ffffff;
+    background-color: value(dialogBgColor);
 }
 
 .root:mobile .contentWrapper {

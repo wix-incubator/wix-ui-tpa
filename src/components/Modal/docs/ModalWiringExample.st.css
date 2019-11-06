@@ -1,7 +1,10 @@
-.root {
-
+:import {
+    -st-from: "../Modal.st.css";
+    -st-default: TPAModal;
 }
 
-.component {
-    
+.root {
+    -st-mixin: TPAModal(
+            DialogBgColor '"color(--dialogBgColor)"'
+    );
 }

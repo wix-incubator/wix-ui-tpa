@@ -7,16 +7,35 @@ import { IconButton } from '../IconButton';
 import { Close } from '../../assets/icons';
 
 export interface ModalProps {
+  /**
+   * Describing if the modal should be shown or not.
+   */
   isOpen: boolean;
 
+  /**
+   * Function that will be run when the modal is requested to be closed (either by clicking on overlay or pressing ESC)
+   * Note: It is not called if isOpen is changed by other means.
+   */
   onRequestClose(): void;
 
+  /**
+   * Describing if the modal should be shown in full screen or not.
+   */
   inFullScreen?: boolean;
+
+  /**
+   * Describing if the modal should be shown with close button or not.
+   */
   withCloseButton?: boolean;
+
+  /**
+   * Describing if the modal should be shown with dark background overlay or not.
+   */
   withBackground?: boolean;
 }
 
 interface DefaultProps {
+  inFullScreen: boolean;
   withCloseButton: boolean;
   withBackground: boolean;
 }
@@ -27,6 +46,7 @@ interface State {}
 export class Modal extends React.Component<ModalProps, State> {
   static displayName = 'Modal';
   static defaultProps: DefaultProps = {
+    inFullScreen: false,
     withCloseButton: true,
     withBackground: true,
   };
