@@ -14,32 +14,32 @@ ModalMetadata.addSim({
   } as ModalProps,
 });
 
-ModalMetadata.addSim({
-  title: 'Maximum height',
-  props: {
-    isOpen: true,
-    onRequestClose: () => {},
-    children: bigContent,
-  } as ModalProps,
-});
-
-ModalMetadata.addSim({
-  title: 'Without button',
-  props: {
-    isOpen: true,
-    onRequestClose: () => {},
-    withCloseButton: false,
-    children: 'Hello from modal',
-  } as ModalProps,
-});
-
-// Wont pass a11y tests
-ModalMetadata.addSim({
-  title: 'Without background',
-  props: {
-    isOpen: true,
-    onRequestClose: () => {},
-    withBackground: false,
-    children: 'Hello from modal',
-  } as ModalProps,
-});
+// ModalMetadata.addSim({
+//   title: 'Maximum height',
+//   props: {
+//     isOpen: true,
+//     onRequestClose: () => {},
+//     children: bigContent,
+//   } as ModalProps,
+// });
+//
+// ModalMetadata.addSim({
+//   title: 'Without button',
+//   props: {
+//     isOpen: true,
+//     onRequestClose: () => {},
+//     withCloseButton: false,
+//     children: 'Hello from modal',
+//   } as ModalProps,
+// });
+//
+// // Wont pass a11y tests
+// ModalMetadata.addSim({
+//   title: 'Without background',
+//   props: {
+//     isOpen: true,
+//     onRequestClose: () => {},
+//     withBackground: false,
+//     children: 'Hello from modal',
+//   } as ModalProps,
+// });

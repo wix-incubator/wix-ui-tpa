@@ -63,10 +63,13 @@ export class Modal extends React.Component<ModalProps, State> {
       children,
       ...rest
     } = this.props;
+
+    if (!isOpen) return null;
+
     return (
       <TPAComponentsConsumer>
         {({ mobile }) =>
-          isOpen ? (
+          (
             <div
               {...styles(
                 'root',
@@ -80,7 +83,7 @@ export class Modal extends React.Component<ModalProps, State> {
                 className={styles.contentWrapper}
                 onClick={this.handleContentClick}
                 role="dialog"
-                aria-label="dialog-content"
+                aria-label="content"
               >
                 {withCloseButton ? (
                   <div className={styles.closeButtonWrapper}>
@@ -92,10 +95,12 @@ export class Modal extends React.Component<ModalProps, State> {
                     />
                   </div>
                 ) : null}
-                <div className={styles.content}>{children}</div>
+                <div className={styles.content}>
+                  {children}
+                </div>
               </div>
             </div>
-          ) : null
+          )
         }
       </TPAComponentsConsumer>
     );
