@@ -2,10 +2,10 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { Modal } from './';
-import {bigContent} from "./helpers";
+import {Modal, ModalProps} from './';
+import { bigContent } from './helpers';
 
-class ModalVisual extends React.Component<any> {
+class ModalVisual extends React.Component<ModalProps & {mobile: boolean}> {
   static defaultProps = {
     mobile: false,
   };
@@ -31,7 +31,7 @@ function getTests(isMobile) {
         isOpen: true,
         onRequestClose: () => {},
         mobile: isMobile,
-      }
+      },
     },
     {
       it: 'Maximum height',
@@ -40,7 +40,7 @@ function getTests(isMobile) {
         onRequestClose: () => {},
         children: bigContent,
         mobile: isMobile,
-      }
+      },
     },
     {
       it: 'Without close button',
@@ -49,7 +49,7 @@ function getTests(isMobile) {
         onRequestClose: () => {},
         withCloseButton: false,
         mobile: isMobile,
-      }
+      },
     },
     {
       it: 'Without background',
@@ -58,9 +58,9 @@ function getTests(isMobile) {
         onRequestClose: () => {},
         withBackground: false,
         mobile: isMobile,
-      }
-    }
-  ]
+      },
+    },
+  ];
 }
 
 const tests = [

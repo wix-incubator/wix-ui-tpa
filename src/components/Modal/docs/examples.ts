@@ -1,4 +1,4 @@
-import {bigContentString} from "../helpers";
+import { bigContentString } from '../helpers';
 
 const mobileDesktopWrapper = component => `
 <div style={{display: 'flex'}}>
