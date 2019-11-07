@@ -19,8 +19,8 @@
     minDesktopHeight: 350px;
     maxMobileHeight: 468px;
     minMobileHeight: 324px;
-    paddingTobBottom: 80px;
-    paddingLeftRight: 32px;
+    paddingDesktop: 80px;
+    paddingMobile: 32px;
     dialogBgColor: fallback(color(value(DialogBgColor)), value(DefaultDialogBgColor));
 }
 
@@ -44,7 +44,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: value(paddingTobBottom) 0;
+    padding: value(paddingDesktop) 0;
     box-sizing: border-box;
     width: value(width);
     background-color: value(dialogBgColor);
@@ -95,16 +95,23 @@
 }
 
 .root:not(:inFullScreen) .content {
-    max-height: calc(value(maxDesktopHeight) - 2 * value(paddingTobBottom));
-    min-height: calc(value(minDesktopHeight) - 2 * value(paddingTobBottom));
+    max-height: calc(value(maxDesktopHeight) - 2 * value(paddingDesktop));
+    min-height: calc(value(minDesktopHeight) - 2 * value(paddingDesktop));
 }
 
 .root:mobile:not(:inFullScreen) .content {
-    max-height: calc(value(maxMobileHeight) - 2 * value(paddingTobBottom));
-    min-height: calc(value(minMobileHeight) - 2 * value(paddingTobBottom));
+    max-height: calc(value(maxMobileHeight) - 2 * value(paddingMobile));
+    min-height: calc(value(minMobileHeight) - 2 * value(paddingMobile));
 }
 
 .content {
-    padding: 0 value(paddingLeftRight);
     overflow: auto;
+}
+
+.root .content {
+    padding: 0 value(paddingDesktop);
+}
+
+.root:mobile .content {
+    padding: 0 value(paddingMobile);
 }
