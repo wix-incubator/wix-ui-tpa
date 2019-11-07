@@ -86,7 +86,6 @@ export class Modal extends React.Component<ModalProps, State> {
             data-mobile={mobile}
             onClick={onRequestClose}
           >
-            <div tabIndex={0}></div>
             <div
               className={styles.contentWrapper}
               onClick={this.handleContentClick}
@@ -106,7 +105,6 @@ export class Modal extends React.Component<ModalProps, State> {
               ) : null}
               <div className={styles.content}>{children}</div>
             </div>
-            <div tabIndex={0}></div>
           </div>
         )}
       </TPAComponentsConsumer>
