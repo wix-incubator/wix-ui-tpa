@@ -62,6 +62,13 @@ export class Modal extends React.Component<ModalProps, State> {
 
   handleContentClick = event => event.stopPropagation();
 
+  handleKeyDown = event => {
+    if (event.key === 'Escape') {
+      event.stopPropagation();
+      this.props.onRequestClose();
+    }
+  };
+
   render() {
     const {
       isOpen,
@@ -89,6 +96,7 @@ export class Modal extends React.Component<ModalProps, State> {
             <div
               className={styles.contentWrapper}
               onClick={this.handleContentClick}
+              onKeyDown={this.handleKeyDown}
               role="dialog"
               aria-modal="true"
             >
