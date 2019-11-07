@@ -32,12 +32,18 @@ export interface ModalProps {
    * Describing if the modal should be shown with dark background overlay or not.
    */
   withBackground?: boolean;
+  aria?: {
+    labeledBy?: string;
+  };
 }
 
 interface DefaultProps {
   inFullScreen: boolean;
   withCloseButton: boolean;
   withBackground: boolean;
+  aria: {
+    labeledBy: string;
+  };
 }
 
 interface State {}
@@ -49,6 +55,9 @@ export class Modal extends React.Component<ModalProps, State> {
     inFullScreen: false,
     withCloseButton: true,
     withBackground: true,
+    aria: {
+      labeledBy: 'dialog-label',
+    },
   };
 
   handleContentClick = event => event.stopPropagation();
@@ -61,47 +70,45 @@ export class Modal extends React.Component<ModalProps, State> {
       withCloseButton,
       inFullScreen,
       children,
+      aria,
       ...rest
     } = this.props;
 
-    if (!isOpen) return null;
+    if (!isOpen) {
+      return null;
+    }
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) =>
-          (
+        {({ mobile }) => (
+          <div
+            {...styles('root', { mobile, withBackground, inFullScreen }, rest)}
+            data-mobile={mobile}
+            onClick={onRequestClose}
+          >
+            <div tabIndex={0}></div>
             <div
-              {...styles(
-                'root',
-                { mobile, withBackground, inFullScreen },
-                rest,
-              )}
-              data-mobile={mobile}
-              onClick={onRequestClose}
+              className={styles.contentWrapper}
+              onClick={this.handleContentClick}
+              role="dialog"
+              aria-modal="true"
             >
-              <div
-                className={styles.contentWrapper}
-                onClick={this.handleContentClick}
-                role="dialog"
-                aria-label="content"
-              >
-                {withCloseButton ? (
-                  <div className={styles.closeButtonWrapper}>
-                    <IconButton
-                      data-hook={DATA_HOOKS.closeIconButton}
-                      icon={<Close />}
-                      className={styles.closeButton}
-                      onClick={onRequestClose}
-                    />
-                  </div>
-                ) : null}
-                <div className={styles.content}>
-                  {children}
+              {withCloseButton ? (
+                <div className={styles.closeButtonWrapper}>
+                  <IconButton
+                    aria-label="Close the dialog window"
+                    data-hook={DATA_HOOKS.closeIconButton}
+                    icon={<Close />}
+                    className={styles.closeButton}
+                    onClick={onRequestClose}
+                  />
                 </div>
-              </div>
+              ) : null}
+              <div className={styles.content}>{children}</div>
             </div>
-          )
-        }
+            <div tabIndex={0}></div>
+          </div>
+        )}
       </TPAComponentsConsumer>
     );
   }
