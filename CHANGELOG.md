@@ -1,3 +1,13 @@
+# [1.3.0](https://github.com/wix/wix-ui-tpa/compare/v1.2.0...v1.3.0) (2019-11-04)
+
+
+### Features
+
+* component NewCard ([69c5d40](https://github.com/wix/wix-ui-tpa/commit/69c5d40e02cfc7037b88787a0005cd810927982a))
+* Starting deprecation of the current Card API ([f389a13](https://github.com/wix/wix-ui-tpa/commit/f389a138f58bb642a6b0f38688f0ef8d98d35bc1))
+
+
+
 # [1.2.0](https://github.com/wix/wix-ui-tpa/compare/v1.1.1...v1.2.0) (2019-10-31)
 
 

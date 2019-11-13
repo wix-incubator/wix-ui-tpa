@@ -12,6 +12,7 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { Text, TYPOGRAPHY } from '../../Text';
@@ -74,6 +75,12 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '**ATTENTION: The current API for this component will be deprecated on the next major version.<br>' +
+              'Please use the new API using the `upgrade` prop.<br>' +
+              'Refer to `<NewCard/>` documentation for the new API.**',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
