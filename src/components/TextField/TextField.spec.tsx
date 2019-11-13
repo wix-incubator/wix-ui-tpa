@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { textFieldDriverFactory } from './TextField.driver';
+import {
+  textFieldDriverFactory,
+  textFieldUniDriverFactory,
+} from './TextField.driver';
 import { TextField } from '.';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
@@ -8,9 +11,11 @@ import { mount } from 'enzyme';
 import { textFieldTestkitFactory } from '../../testkit';
 import { textFieldTestkitFactory as enzymeTextFieldTestkitFactory } from '../../testkit/enzyme';
 import { TextFieldTheme } from './TextFieldEnums';
+import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 
 describe('TextField', () => {
   const createDriver = createDriverFactory(textFieldDriverFactory);
+  const createUniDriver = createUniDriverFactory(textFieldUniDriverFactory);
 
   it('should render', () => {
     const value = 'hello!';
@@ -58,6 +63,14 @@ describe('TextField', () => {
     it('should isSuccess', function() {
       const driver = createDriver(<TextField success value={'Theme Test'} />);
       expect(driver.isSuccess()).toBe(true);
+    });
+
+    it('should isSuccess with success icon', async () => {
+      const driver = createUniDriver(
+        <TextField success successIcon value={'Theme Test'} />,
+      );
+      expect(await driver.isSuccess()).toEqual(true);
+      expect(await driver.isSuccessIconExist()).toEqual(true);
     });
 
     it('should getErrorMessage', function() {

@@ -12,9 +12,7 @@ export interface ErrorMessageWrapperProps {
   errorMessage: string;
 }
 
-export const ErrorMessageWrapper: React.FunctionComponent<
-  ErrorMessageWrapperProps
-> = props => {
+export const ErrorMessageWrapper: React.FunctionComponent<ErrorMessageWrapperProps> = props => {
   const { render, error, disabled, errorMessage } = props;
 
   const inErrorState = error && !disabled && !!errorMessage;

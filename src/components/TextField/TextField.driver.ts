@@ -1,5 +1,12 @@
 import { inputDriverFactory as coreDriver } from 'wix-ui-core/dist/src/components/input/Input.driver';
 import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME } from './dataKeys';
+import {
+  BaseUniDriver,
+  baseUniDriverFactory,
+  StylableUnidriverUtil,
+  UniDriver,
+} from 'wix-ui-test-utils/unidriver';
+import style from '../StatesButton/StatesButton.st.css';
 
 export const textFieldDriverFactory = ({ element, eventTrigger }) => {
   const inputDriver = coreDriver({ element, eventTrigger });
@@ -60,5 +67,20 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     focus() {
       return inputDriver.getInput().focus();
     },
+  };
+};
+
+export interface TextFieldDriver extends BaseUniDriver {
+  isSuccessIconExist(): Promise<boolean>;
+  isSuccess(): Promise<boolean>;
+}
+
+export const textFieldUniDriverFactory = (base: UniDriver): TextFieldDriver => {
+  const stylableUtil = new StylableUnidriverUtil(style);
+
+  return {
+    ...baseUniDriverFactory(base),
+    isSuccessIconExist: () => base.$('[data-hook="successIcon"]').exists(),
+    isSuccess: () => base.attr(SUCCESS).then(result => result === 'true'),
   };
 };

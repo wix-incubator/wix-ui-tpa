@@ -72,6 +72,10 @@ export default {
               source: examples.success,
             },
             {
+              title: 'Success value with icon',
+              source: examples.successWithIcon,
+            },
+            {
               title: 'Error value',
               source: examples.error,
             },
@@ -86,6 +90,10 @@ export default {
             {
               title: 'Line theme success',
               source: examples.lineThemeSuccess,
+            },
+            {
+              title: 'Line theme success with success icon',
+              source: examples.lineThemeSuccessWithIcon,
             },
             {
               title: 'Line theme error',
