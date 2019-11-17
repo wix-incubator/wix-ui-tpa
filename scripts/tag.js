@@ -10,7 +10,7 @@ function run() {
       execute(`git tag -a ${tagName} -m "wix-ui-tpa version ${tagName}"`, true);
       execute(`git push origin ${tagName}`, true);
     } catch (e) {
-      logger.error("Couldn't add a tag");
+      logger.error("Couldn't add a tag", e);
     }
   } else {
     logger.warn('Not in a CI agent. Git tagging is skipped.');
