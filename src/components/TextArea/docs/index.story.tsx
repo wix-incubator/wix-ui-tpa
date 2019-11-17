@@ -19,6 +19,7 @@ import * as extendedRawSource from '!raw-loader!./TextAreaExtendedExample.tsx';
 import * as extendedCSSRawSource from '!raw-loader!./TextAreaExtendedExample.st.css';
 import { TextAreaExtendedExample } from './TextAreaExtendedExample';
 import { TextAreaTheme } from '../TextAreaEnums';
+import { settingsApi } from '../../../../stories/utils/settingsApi';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -97,6 +98,21 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings API',
+          sections: [
+            settingsApi({
+              variables: [
+                {
+                  name: 'TestVariable',
+                  dataType: 'string',
+                  defaultValue: 'N/A',
+                  description: 'This is a test variable',
+                },
+              ],
+            }),
+          ],
+        },
         {
           title: 'Settings Panel',
           sections: [
