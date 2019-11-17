@@ -3,7 +3,7 @@ import styles from './ActionsMenuLayout.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuLayoutItem, Alignment } from './Item/ActionsMenuLayoutItem';
 import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
-import { ActionsMenuLayoutDivider } from './Divider/Divider';
+import { ActionsMenuLayoutDivider } from './ActionsMenuLayoutDivider/ActionsMenuLayoutDivider';
 
 export interface ActionsMenuLayoutProps {
   alignment?: Alignment;
