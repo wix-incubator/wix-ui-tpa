@@ -12,6 +12,10 @@ export const success = `
 <TextField success value="Test text" />
 `;
 
+export const successWithIcon = `
+<TextField success successIcon value="Test text" />
+`;
+
 export const error = `
 <TextField error value="Test text" />
 `;
@@ -26,6 +30,10 @@ export const lineTheme = `
 
 export const lineThemeSuccess = `
 <TextField success theme="line"  value="Test text" />
+`;
+
+export const lineThemeSuccessWithIcon = `
+<TextField success successIcon theme="line"  value="Test text" />
 `;
 
 export const lineThemeError = `

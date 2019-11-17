@@ -62,7 +62,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
-    "@stylable/dom-test-kit": "^1.0.7",
+    "@stylable/dom-test-kit": "^1.1.0",
     "classnames": "^2.2.6",
     "lodash": "^4.17.11",
     "react-resize-detector": "^4.1.3",

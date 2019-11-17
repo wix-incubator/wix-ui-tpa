@@ -32,6 +32,10 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     return getDataAttributeBooleanValue(EMPTY);
   }
 
+  function isSuccessIconExist() {
+    return !!element.querySelector('[data-hook="successIcon"]');
+  }
+
   return {
     ...inputDriver,
     getTheme() {
@@ -39,6 +43,9 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     },
     isSuccess() {
       return isSuccessValue();
+    },
+    isSuccessIconExist() {
+      return isSuccessIconExist();
     },
     isError() {
       return isErrorValue();

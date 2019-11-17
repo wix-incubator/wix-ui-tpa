@@ -111,7 +111,11 @@ export const quiltedRows = `
   width={500}
   rowGap={4}
   columnGap={4}>
-  ${generateCardItems(7, () => 1, index => [2, 1, 1, 1, 2, 1, 1][index])}
+  ${generateCardItems(
+    7,
+    () => 1,
+    index => [2, 1, 1, 1, 2, 1, 1][index],
+  )}
 </Grid>
 `;
 
@@ -122,7 +126,11 @@ export const quiltedColumns = `
   width={500}
   rowGap={4}
   columnGap={4}>
-  ${generateCardItems(6, index => [2, 1, 1, 1, 1, 2][index], () => 1)}
+  ${generateCardItems(
+    6,
+    index => [2, 1, 1, 1, 1, 2][index],
+    () => 1,
+  )}
 </Grid>
 `;
 

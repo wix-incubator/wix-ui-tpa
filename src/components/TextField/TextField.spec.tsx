@@ -60,6 +60,14 @@ describe('TextField', () => {
       expect(driver.isSuccess()).toBe(true);
     });
 
+    it('should isSuccess with success icon', async () => {
+      const driver = createDriver(
+        <TextField success successIcon value={'Theme Test'} />,
+      );
+      expect(driver.isSuccess()).toEqual(true);
+      expect(driver.isSuccessIconExist()).toEqual(true);
+    });
+
     it('should getErrorMessage', function() {
       const driver = createDriver(
         <TextField error errorMessage={'ErrorMessage'} value={'Theme Test'} />,

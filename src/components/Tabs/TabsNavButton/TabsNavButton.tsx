@@ -8,9 +8,7 @@ interface TabsNavButtonProps extends TPAComponentProps {
   tabIndex: number;
 }
 
-export const TabsNavButton: React.FunctionComponent<
-  TabsNavButtonProps
-> = props => {
+export const TabsNavButton: React.FunctionComponent<TabsNavButtonProps> = props => {
   const { onClick, children, tabIndex, className } = props;
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const keyCode = e.keyCode;

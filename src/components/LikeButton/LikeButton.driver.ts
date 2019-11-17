@@ -1,3 +1,1 @@
-export {
-  iconToggleDriverFactory as likeButtonDriverFactory,
-} from '../IconToggle/IconToggle.driver';
+export { iconToggleDriverFactory as likeButtonDriverFactory } from '../IconToggle/IconToggle.driver';

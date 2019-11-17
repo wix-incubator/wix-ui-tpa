@@ -6,6 +6,7 @@ import {
 import style from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
+import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';
@@ -19,6 +20,8 @@ export interface TPATextFieldProps extends TPAComponentProps {
   theme?: TextFieldTheme;
   /** apply success state */
   success?: boolean;
+  /** should display success icon */
+  successIcon?: boolean;
   /** apply error state*/
   error?: boolean;
 }
@@ -30,6 +33,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
   const {
     errorMessage,
     success = false,
+    successIcon = false,
     error = false,
     disabled = false,
     theme = TextFieldTheme.Box,
@@ -50,6 +54,11 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
       </Tooltip>
     );
   }
+
+  if (successIcon && success) {
+    suffixToShow = <SuccessIcon data-hook="successIcon" />;
+  }
+
   const dataObject = {
     [ERROR_MESSAGE]: errorMessage,
     [THEME]: theme,

@@ -2,9 +2,7 @@ import * as React from 'react';
 import { ButtonProps, Button, PRIORITY } from '..';
 import extendedStyles from './ButtonExtendedExample.st.css';
 
-export const ButtonExtendedExample: React.FunctionComponent<
-  ButtonProps
-> = props => (
+export const ButtonExtendedExample: React.FunctionComponent<ButtonProps> = props => (
   <div>
     <Button {...props} {...extendedStyles('root', {}, props)}>
       BASIC
