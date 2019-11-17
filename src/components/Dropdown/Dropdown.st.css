@@ -1,0 +1,121 @@
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Dropdown;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColorHover;
+}
+
+:import {
+    -st-from: "./DropdownBase.st.css";
+    -st-default: DropdownBase;
+    -st-named: borderHoverColor;
+}
+
+:import {
+    -st-from: "./DropdownError.st.css";
+    -st-default: DropdownError;
+}
+
+:import {
+    -st-from: "./DropdownOption.st.css";
+    -st-default: DropdownOption;
+}
+
+.root {
+    -st-states: alignment(enum(center)), mobile;
+}
+
+.root:mobile .label {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '12px'}"
+    );
+}
+
+.label {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '14px'}"
+    );
+    display: block;
+    margin-bottom: 8px;
+}
+
+.dropdownBase {
+    -st-extends: DropdownBase;
+}
+
+.dropdownError {
+    -st-extends: DropdownError;
+}
+
+.dropdown {
+    -st-extends: Dropdown;
+    width: 100%;
+}
+
+.dropdown,
+.dropdownBase::root {
+    min-width: 68px;
+}
+
+.dropdown:content-visible .dropdownBase::root {
+    border-color: value(borderHoverColor);
+}
+
+.dropdown:content-visible .dropdownBase::root:error {
+    border-color: value(errorColor);
+}
+
+.dropdown:content-visible .dropdownBase::arrowIcon {
+    transform: rotate(180deg);
+}
+
+.dropdown::popoverContent {
+    border-width: 0;
+    box-sizing: border-box;
+    /* Popover fix. For some reason popover has inline style with transform: translate3d(-1px, 42px, 0px); */
+    margin-left: 1px;
+    max-width: 100%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: "color(color-1)";
+}
+
+.dropdown::dropdownContent {
+    padding: 12px 0;
+}
+
+.dropdown::dropdownContent::dropdownOption:hovered,
+.dropdown::dropdownContent::dropdownOption:selected,
+.dropdown::dropdownContent::dropdownOption:selected:hovered {
+    background-color: value(backgroundColorHover);
+}
+
+.root:alignment(center) {
+    text-align: center;
+}
+
+.root:alignment(center) .dropdownBase::root::content {
+    flex: 1;
+}
+
+.root:alignment(center) DropdownOption {
+    justify-content: center;
+}

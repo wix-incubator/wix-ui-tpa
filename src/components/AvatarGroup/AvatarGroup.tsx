@@ -3,10 +3,12 @@ import styles from './AvatarGroup.st.css';
 import { Avatar } from '../Avatar';
 import { AvatarGroupTextButton } from './AvatarGroupTextButton';
 import { TextButton } from '../TextButton';
+import { TPAComponentProps } from '../../types';
 
 export interface AvatarGroupItem {
   name?: string;
   src?: string;
+  onLoad?: React.EventHandler<React.SyntheticEvent>;
 }
 
 export enum AvatarGroupSize {
@@ -17,7 +19,7 @@ export enum AvatarGroupSize {
   xxSmall = 'xxSmall',
 }
 
-export interface AvatarGroupProps {
+export interface AvatarGroupProps extends TPAComponentProps {
   /** Array of Avatar items. Optional. Avatar item structure: {name?: 'Username', src?: 'https://link-to-image'}. All fields are optional. */
   items?: AvatarGroupItem[];
   /** Max amount of items shown in summary. Optional. Defaults to 5. */
@@ -64,16 +66,19 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
 
     return (
       <div {...styles('root', { size }, rest)}>
-        {items.slice(0, maxAmount).map(({ name, src }, key) => (
-          <div className={styles.avatarContainer} key={key}>
-            <Avatar
-              className={styles.avatar}
-              data-hook="avatar"
-              name={name}
-              src={src}
-            />
-          </div>
-        ))}
+        <div className={styles.avatars}>
+          {items.slice(0, maxAmount).map(({ name, src, onLoad }, key) => (
+            <div className={styles.avatarContainer} key={key}>
+              <Avatar
+                className={styles.avatar}
+                data-hook="avatar"
+                name={name}
+                src={src}
+                onLoad={onLoad}
+              />
+            </div>
+          ))}
+        </div>
         {textButton ? (
           <div className={styles.textButtonContainer}>{textButton}</div>
         ) : null}

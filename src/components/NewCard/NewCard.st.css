@@ -1,0 +1,19 @@
+.root {
+    -st-states: stacked;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.root:stacked {
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+    max-height: 100%;
+    box-sizing: border-box;
+}
+
+.container img {
+    max-width: 100%;
+}

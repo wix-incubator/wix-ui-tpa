@@ -6,6 +6,7 @@ import {
   TPAComponentsContext,
   TPAComponentsConsumer,
 } from '../TPAComponentsConfig';
+import { TPAComponentProps } from '../../types';
 
 export enum PRIORITY {
   basic = 'basic',
@@ -21,7 +22,7 @@ export enum SIZE {
   large = 'large',
 }
 
-export interface ButtonProps extends ButtonNextProps {
+export interface ButtonProps extends ButtonNextProps, TPAComponentProps {
   priority?: PRIORITY;
   size?: SIZE;
   fullWidth?: boolean;

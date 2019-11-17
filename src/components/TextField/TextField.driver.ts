@@ -1,4 +1,4 @@
-import { inputDriverFactory as coreDriver } from 'wix-ui-core/drivers/vanilla';
+import { inputDriverFactory as coreDriver } from 'wix-ui-core/dist/src/components/input/Input.driver';
 import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME } from './dataKeys';
 
 export const textFieldDriverFactory = ({ element, eventTrigger }) => {

@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../../Divider/Divider.st.css";
+    -st-default: TPADivider;
+}
+
+.root {
+    st-extends: TPADivider;
+    margin: 10px 13px;
+    width: auto;
+    opacity: 0.2;
+}

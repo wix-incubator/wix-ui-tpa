@@ -4,11 +4,11 @@ const logger = require('./logger');
 function run() {
   if (process.env.IS_BUILD_AGENT) {
     try {
-      let version = process.env.npm_package_version;
-      version = `${version.startsWith('v') ? '' : 'v'}${version}`;
+      const version = process.env.npm_package_version;
+      const tagName = `${version.startsWith('v') ? '' : 'v'}${version}`;
 
-      execute(`git tag -a ${version} -m "wix-ui-tpa version ${version}"`, true);
-      execute('git push --follow-tags', true);
+      execute(`git tag -a ${tagName} -m "wix-ui-tpa version ${tagName}"`, true);
+      execute(`git push origin ${tagName}`, true);
     } catch (e) {
       logger.error("Couldn't add a tag");
     }

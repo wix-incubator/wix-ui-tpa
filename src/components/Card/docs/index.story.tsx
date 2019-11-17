@@ -9,6 +9,7 @@ import {
   code as baseCode,
   tabs,
   testkit,
+  description,
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
@@ -77,6 +78,11 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '**ATTENTION: The current API for this component will be deprecated on the next major version.<br>' +
+              'Please use the new API using the `upgrade` prop.<br>' +
+              'Refer to `<NewCard/>` documentation for the new API.**',
+          ),
           importExample(
             "import {Card} from 'wix-ui-tpa/dist/src/components/Card';",
           ),

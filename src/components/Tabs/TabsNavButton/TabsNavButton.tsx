@@ -1,12 +1,11 @@
 import * as React from 'react';
 import style from './TabsNavButton.st.css';
 import { isSelectKey } from '../../../common/keyCodes';
+import { TPAComponentProps } from '../../../types';
 
-interface TabsNavButtonProps {
+interface TabsNavButtonProps extends TPAComponentProps {
   onClick(): void;
-  className: string;
   tabIndex: number;
-  'data-hook': string;
 }
 
 export const TabsNavButton: React.FunctionComponent<

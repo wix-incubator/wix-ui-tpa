@@ -4,6 +4,9 @@ import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
+import { deprecationLog } from '../../common/deprecationLog';
+import { NewCard, NewCardProps } from '../NewCard';
+import { TPAComponentProps } from '../../types';
 
 export enum CardRatioOptions {
   RATIO_100 = '100',
@@ -12,7 +15,7 @@ export enum CardRatioOptions {
   RATIO_30_70 = '30',
 }
 
-export interface CardProps {
+export interface CardProps extends TPAComponentProps, NewCardProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
   ratio?: CardRatioOptions;
@@ -22,6 +25,8 @@ export interface CardProps {
   stacked?: boolean;
   /** puts the media slot on top of the info slot. disables the `ratio` behavior */
   mediaAspectRatio?: number;
+  /** Use new Card API */
+  upgrade?: boolean;
 }
 
 export class Card extends React.Component<CardProps> {
@@ -29,6 +34,7 @@ export class Card extends React.Component<CardProps> {
   static displayName = 'Card';
   static MIN_WIDTH = 700;
   static MIN_WIDTH_MOBILE = 130;
+  static Container = NewCard.Container;
 
   static defaultProps = {
     ratio: CardRatioOptions.RATIO_50_50,
@@ -36,6 +42,14 @@ export class Card extends React.Component<CardProps> {
     invertInfoPosition: false,
     stacked: false,
   };
+
+  componentDidMount(): void {
+    if (!this.props.upgrade) {
+      deprecationLog(
+        'The current `Card` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.\nYou can view the new API here: https://wix-wix-ui-tpa.surge.sh/?path=/story/components--newcard',
+      );
+    }
+  }
 
   private getRatio() {
     const { mediaAspectRatio, stacked } = this.props;
@@ -55,9 +69,12 @@ export class Card extends React.Component<CardProps> {
       flippedRatio,
       stacked,
       mediaAspectRatio,
+      upgrade,
       ...rest
     } = this.props;
-    return (
+    return upgrade ? (
+      <NewCard {...this.props} />
+    ) : (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div

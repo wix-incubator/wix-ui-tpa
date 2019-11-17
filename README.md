@@ -87,3 +87,6 @@ documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/usa
 
 ## Contributing
 Please refer to the [Contribution document](./docs/CONTRIBUTION.md).
+
+## Release Process
+Please refer to the [Version Release document](./docs/internal/VERSION_RELEASE.md).

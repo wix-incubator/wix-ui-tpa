@@ -4,8 +4,11 @@ import {
   ToggleSwitch as CoreToggleSwitch,
   ToggleSwitchProps as CoreToggleSwitchProps,
 } from 'wix-ui-core/toggle-switch';
+import { TPAComponentProps } from '../../types';
 
-export interface ToggleSwitchProps extends CoreToggleSwitchProps {}
+export interface ToggleSwitchProps
+  extends CoreToggleSwitchProps,
+    TPAComponentProps {}
 
 export class ToggleSwitch extends React.Component<ToggleSwitchProps> {
   static displayName = 'ToggleSwitch';

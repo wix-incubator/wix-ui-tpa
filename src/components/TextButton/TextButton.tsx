@@ -3,6 +3,7 @@ import style from './TextButton.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
+import { TPAComponentProps } from '../../types';
 
 export enum TEXT_BUTTON_PRIORITY {
   primary = 'primary',
@@ -10,7 +11,7 @@ export enum TEXT_BUTTON_PRIORITY {
   link = 'link',
 }
 
-export interface TextButtonProps extends ButtonNextProps {
+export interface TextButtonProps extends ButtonNextProps, TPAComponentProps {
   priority?: TEXT_BUTTON_PRIORITY;
 }
 

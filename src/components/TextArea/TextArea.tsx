@@ -12,8 +12,9 @@ import {
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextAreaTheme } from './TextAreaEnums';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { TPAComponentProps } from '../../types';
 
-export interface TextAreaProps {
+export interface TextAreaProps extends TPAComponentProps {
   value: string;
   error?: boolean;
   success?: boolean;

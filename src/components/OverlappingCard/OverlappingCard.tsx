@@ -1,10 +1,12 @@
 import * as React from 'react';
 import style from './OverlappingCard.st.css';
 import { CardRatioOptions } from '../Card';
+import { TPAComponentProps } from '../../types';
+import { deprecationLog } from '../../common/deprecationLog';
 
 export { CardRatioOptions as OverlappingCardRatioOptions };
 
-export interface OverlappingCardProps {
+export interface OverlappingCardProps extends TPAComponentProps {
   media?: React.ReactNode;
   info?: React.ReactNode;
   ratio?: CardRatioOptions;
@@ -20,6 +22,10 @@ const OverlappingCard = ({
   flippedRatio,
   ...rest
 }: OverlappingCardProps) => {
+  deprecationLog(
+    'The current `Card` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.\nYou can view the new API here: https://wix-wix-ui-tpa.surge.sh/?path=/story/components--newcard',
+  );
+
   return (
     <div
       {...style(

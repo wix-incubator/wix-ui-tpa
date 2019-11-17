@@ -1,4 +1,4 @@
 export {
   paginationDriverFactory,
   PaginationDriver,
-} from 'wix-ui-core/drivers/protractor';
+} from 'wix-ui-core/dist/src/components/pagination/Pagination.protractor.driver';

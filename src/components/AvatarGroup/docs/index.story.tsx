@@ -100,14 +100,14 @@ export default {
                   },
                   {
                     label: 'Text Button Color',
-                    wixParam: 'TextButtonColor',
+                    wixParam: 'AvatarTextButtonColor',
                     defaultColor: 'color-5',
                   },
                 ],
                 fonts: [
                   {
                     label: 'Text Button Font',
-                    wixParam: 'TextButtonFont',
+                    wixParam: 'AvatarTextButtonFont',
                     defaultFont: 'arial',
                   },
                 ],

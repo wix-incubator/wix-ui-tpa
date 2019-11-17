@@ -1,0 +1,64 @@
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-named: colorPlaceholder;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+.root {
+    -st-states: withIcon, selectable, sectionTitle;
+    box-sizing: border-box;
+    display: flex;
+    width: 100%;
+    padding: 8px 12px;
+}
+
+.contentWrapper {
+    max-width: 100%;
+}
+
+.title {
+    padding: 0 12px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.root:not(:selectable) .title {
+    -st-mixin: TPAText(
+        MainTextColor 'value(colorPlaceholder)'
+    );
+}
+
+.root:sectionTitle .title {
+    padding: 0;
+}
+
+.subtitle {
+    -st-extends: TPAText;
+    -st-mixin: TPAText(
+        MainTextColor "value(colorPlaceholder)",
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
+    );
+    margin-top: 4px;
+    padding: 0 12px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    max-height: 40px;      /* fallback */
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    width: 24px;
+}

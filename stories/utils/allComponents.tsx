@@ -9,7 +9,7 @@ import * as iconsScope from 'wix-ui-icons-common';
 export const allComponents = {
   ...componentsScope,
   Icons: iconsScope,
-  ExampleWithContextProps: ({ children, mobile = false, rtl = false }) => (
+  ExampleWithContextProps: ({ children, mobile, rtl }) => (
     <componentsScope.TPAComponentsProvider value={{ mobile, rtl }}>
       {children}
     </componentsScope.TPAComponentsProvider>

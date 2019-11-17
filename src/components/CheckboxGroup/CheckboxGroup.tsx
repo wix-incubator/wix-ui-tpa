@@ -1,14 +1,14 @@
 import * as React from 'react';
 import styles from './CheckboxGroup.st.css';
 import { Checkbox } from '../Checkbox';
+import { TPAComponentProps } from '../../types';
 
 export enum Layout {
   Horizontal = 'horizontal',
   Vertical = 'vertical',
 }
-export interface CheckboxGroupProps {
+export interface CheckboxGroupProps extends TPAComponentProps {
   label?: string | React.ReactNode;
-  className?: string;
   children?: any;
   layout?: Layout;
   error?: boolean;

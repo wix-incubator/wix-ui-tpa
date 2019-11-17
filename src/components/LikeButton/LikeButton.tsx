@@ -2,8 +2,9 @@ import * as React from 'react';
 import styles from './LikeButton.st.css';
 import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 import { IconToggle, LabelPlacement, OnChangeEvent } from '../IconToggle';
+import { TPAComponentProps } from '../../types';
 
-export interface LikeButtonProps {
+export interface LikeButtonProps extends TPAComponentProps {
   label: React.ReactNode | string;
   labelPlacement: LabelPlacement;
   checked: boolean;
@@ -31,7 +32,7 @@ export class LikeButton extends React.Component<LikeButtonProps, State> {
     disabled: false,
   };
 
-  state = { animated: false };
+  state: State = { animated: false };
 
   componentDidUpdate = prevProps => {
     const { checked } = this.props;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styles from './Badge.st.css';
+import { TPAComponentProps } from '../../types';
 
 export enum BADGE_PRIORITY {
   default = 'default',
@@ -7,7 +8,7 @@ export enum BADGE_PRIORITY {
   primary = 'primary',
 }
 
-export interface BadgeProps {
+export interface BadgeProps extends TPAComponentProps {
   /** define style preset */
   priority?: BADGE_PRIORITY;
 }

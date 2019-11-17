@@ -1,0 +1,52 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+:import {
+    -st-from: "./Item/ActionsMenuLayoutItem.st.css";
+    -st-default: ActionMenuItem;
+}
+
+:vars {
+    /*Defaults*/
+    DefaultMenuBackgroundColor: color-1;
+    DefaultMenuBorderColor: rgba(255, 255, 255, 0.4);
+}
+
+:vars {
+    /*Overrides*/
+    MenuBackgroundColor:  --overridable;
+    MenuBorderColor:  --overridable;
+}
+
+:vars {
+    menuBackgroundColor: color(fallback(value(MenuBackgroundColor), value(DefaultMenuBackgroundColor)));
+    menuBorderColor: color(fallback(value(MenuBorderColor), value(DefaultMenuBorderColor)));
+}
+
+.root {
+    -st-states: mobile;
+    padding: 12px 0;
+    max-width: 320px;
+    background-color: value(menuBackgroundColor);
+    border-style: solid;
+    border-width: 1px;
+    border-color: value(menuBorderColor);
+    box-sizing: border-box;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
+    list-style: none;
+}
+
+.root * {
+    box-sizing: border-box;
+}
+
+.root:mobile {
+    width: 100%;
+    box-shadow: none;
+}
+
+.item {
+    -st-extends: ActionMenuItem;
+    text-align: initial;
+}

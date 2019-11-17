@@ -1,0 +1,43 @@
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Tooltip;
+}
+
+:import {
+    -st-from: "../Tooltip/Tooltip.st.css";
+    -st-default: TPATooltip;
+}
+
+.root {
+    -st-extends: Tooltip;
+    -st-mixin: TPATooltip;
+    color: value(errorColor);
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    cursor: pointer;
+}
+
+.root::after {
+    width: 32px;
+    content: '';
+}
+
+.root::popover {
+    min-width: initial;
+}
+
+.root::popoverElement {
+    display: flex; /* vertical center error icon */
+}
+
