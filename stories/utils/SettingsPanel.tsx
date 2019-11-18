@@ -44,6 +44,18 @@ export function autoSettingsPanel(componentName: string) {
   const { variables } = componentManifest.stylable;
 
   // TODO: implement numbers
+
+  /*
+    {
+      label: 'Today Border Width',
+      wixParam: 'TodayMainBorderWidth',
+      defaultNumber: 1,
+      unit: 'px',
+      max: 10,
+      min: 0,
+    },
+  */
+
   const numbers = [];
 
   const fonts = Object.values(variables)
