@@ -4,6 +4,7 @@ const mkdirp = require('mkdirp')
 const getLogicSource = require('./templates/component-logic').useTemplate
 const getStyleSource = require('./templates/component-style').useTemplate
 
+const COMPONENT_MODULE_NAME = 'wix-ui-tpa'
 const MANIFEST_NAME = 'ui-tpa-manifest.json'
 const EXAMPLE_OUTPUT_PATH = path.resolve(__dirname, '../..', 'src', 'generated', 'examples')
 const COMPONENTS_PATH = '../../../components'
@@ -44,7 +45,8 @@ Object.entries(manifest).forEach(([componentName, componentManifest]) => {
       componentManifest.entries.component.exportName
     )
 
-    const logicFilePath = path.resolve(generatedComponentPath, `${componentName}.js`)
+    const logicFilePath = path.resolve(generatedComponentPath, `index.tsx`)
+    const logicExampleFilePath = path.resolve(generatedComponentPath, `index.example.tsx`)
 
     const styleSource = getStyleSource(
       getOriginalComponentStyleFile(componentManifest),
@@ -52,9 +54,17 @@ Object.entries(manifest).forEach(([componentName, componentManifest]) => {
     )
 
     const styleFilePath = path.resolve(generatedComponentPath, `${componentName}.st.css`)
+    const styleExampleFilePath = path.resolve(generatedComponentPath, `${componentName}.example.st.css`)
+
+    const examplePathReplacementRule = new RegExp(COMPONENTS_PATH.replace(/\./g, '\\.'), 'g')
+
+    const logicExampleSource = logicSource.replace(examplePathReplacementRule, COMPONENT_MODULE_NAME)
+    const styleExampleSource = styleSource.replace(examplePathReplacementRule, COMPONENT_MODULE_NAME)
 
     fs.writeFileSync(logicFilePath, logicSource, {encoding: 'utf8'})
     fs.writeFileSync(styleFilePath, styleSource, {encoding: 'utf8'})
+    fs.writeFileSync(logicExampleFilePath, logicExampleSource, {encoding: 'utf8'})
+    fs.writeFileSync(styleExampleFilePath, styleExampleSource, {encoding: 'utf8'})
 
     process.stdout.write(' Done!\n')
   }

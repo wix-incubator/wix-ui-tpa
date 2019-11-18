@@ -28,6 +28,7 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
+    "postinstall": "npm run generate-wrappers",
     "generate-wrappers": "node ./scripts/component-wrapper-generator/generate.js",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",

@@ -15,9 +15,9 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as extendedRawSource from '!raw-loader!./TextAreaExtendedExample.tsx';
-import * as extendedCSSRawSource from '!raw-loader!./TextAreaExtendedExample.st.css';
-import { TextAreaExtendedExample } from './TextAreaExtendedExample';
+import * as extendedRawSource from '!raw-loader!../../../generated/examples/TextArea/index.example.tsx';
+import * as extendedCSSRawSource from '!raw-loader!../../../generated/examples/TextArea/TextArea.example.st.css';
+import { TextAreaExt } from '../../../generated/examples/TextArea';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/settingsApi';
 
@@ -117,7 +117,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <TextAreaExtendedExample />,
+              example: <TextAreaExt />,
               rawSource: extendedRawSource,
               title: 'Text area preferences',
               rawCSSSource: extendedCSSRawSource,
