@@ -12,7 +12,7 @@ import Markdown from 'wix-storybook-utils/Markdown';
 const enum VariableType {
   color = 'color',
   font = 'font',
-  numnber = 'number',
+  number = 'number',
 }
 
 interface IVariableManifest {
@@ -43,20 +43,19 @@ export function autoSettingsPanel(componentName: string) {
 
   const { variables } = componentManifest.stylable;
 
-  // TODO: implement numbers
-
-  /*
-    {
-      label: 'Today Border Width',
-      wixParam: 'TodayMainBorderWidth',
-      defaultNumber: 1,
-      unit: 'px',
-      max: 10,
-      min: 0,
-    },
-  */
-
-  const numbers = [];
+  const numbers = Object.values(variables)
+    .filter(
+      (variableInfo: IVariableManifest) =>
+        variableInfo.type === VariableType.number,
+    )
+    .map((variableInfo: IVariableManifest) => ({
+      label: variableInfo.name,
+      wixParam: `${componentName}-${variableInfo.name}`,
+      defaultNumber: Number(variableInfo.defaultValue),
+      unit: '', // TODO: somehow gather this value dynamically
+      min: 0, // TODO: somehow gather this value dynamically
+      max: 100, // TODO: somehow gather this value dynamically
+    }));
 
   const fonts = Object.values(variables)
     .filter(
