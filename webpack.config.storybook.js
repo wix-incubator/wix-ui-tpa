@@ -2,6 +2,7 @@ const merge = require('lodash/merge');
 const path = require('path');
 const wixStorybookConfig = require('yoshi/config/webpack.config.storybook');
 const StylableWebpackPlugin = require('@stylable/webpack-plugin');
+const WebpackShellPlugin = require('webpack-shell-plugin')
 const project = require('yoshi-config');
 const { resolveNamespaceFactory } = require('@stylable/node');
 const autoprefixer = require('autoprefixer')({ grid: true, overrideBrowserslist: ['>1%'] });
@@ -42,7 +43,7 @@ const makeTestkitTemplate = platform =>
 module.exports = ({config}) => {
     const newConfig = reconfigureStylable(wixStorybookConfig(config));
 
-    return merge(newConfig, {
+    const result = merge(newConfig, {
         context: path.resolve(__dirname, './src/components'),
         resolve: {
             alias: {
@@ -79,4 +80,8 @@ module.exports = ({config}) => {
             })
         }
     });
+
+    result.plugins.push(new WebpackShellPlugin({onBuildStart: ['npm run generate-wrappers']}))
+
+    return result;
 };
