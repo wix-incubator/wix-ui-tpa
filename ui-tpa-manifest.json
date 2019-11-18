@@ -1,0 +1,29 @@
+{
+  "TextArea": {
+    "flags": {
+      "needExampleWrapper": true
+    },
+    "entries": {
+      "component": {
+        "module": "TextArea",
+        "exportName": "TextArea"
+      },
+      "style": {
+        "path": "TextArea/TextArea.st.css"
+      }
+    },
+    "stylable": {
+      "variables": [
+        {"name": "BorderColor"},
+        {"name": "BackgroundColor"},
+        {"name": "TextColor"},
+        {"name": "DisabledTextColor"},
+        {"name": "PlaceholderColor"},
+        {"name": "TextFont"},
+        {"name": "ErrorBorderColor"},
+        {"name": "SuccessBorderColor"},
+        {"name": "DisabledBorderColor"}
+      ]
+    }
+  }
+}
