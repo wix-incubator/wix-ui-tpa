@@ -1,9 +1,10 @@
-# [1.4.0](https://github.com/wix/wix-ui-tpa/compare/v1.3.0...v1.4.0) (2019-11-17)
+# [1.4.0](https://github.com/wix/wix-ui-tpa/compare/v1.3.0...v1.4.0) (2019-11-18)
 
 
 ### Bug Fixes
 
-* **infra:** fix tagging ([f47f35c](https://github.com/wix/wix-ui-tpa/commit/f47f35c25328e55187b4e866f5ad4dd8ebc7839a))
+* **CI:** fix tagging ([f47f35c](https://github.com/wix/wix-ui-tpa/commit/f47f35c25328e55187b4e866f5ad4dd8ebc7839a))
+* rename ActionsMenuLayout Divider ([9225b26](https://github.com/wix/wix-ui-tpa/commit/9225b267187dbed4e341a92aa5bb5322bbe6647f))
 
 
 ### Features
