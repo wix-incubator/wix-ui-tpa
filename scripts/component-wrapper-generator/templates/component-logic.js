@@ -1,9 +1,10 @@
 module.exports = {
-  useTemplate: (componentName, originalComponentModule, originalExportName) => `
-import React from 'react'
-import styles from './${componentName}.st.css'
-import {${originalExportName === componentName ? componentName : `${originalExportName} as ${componentName}`}} from '${originalComponentModule}'
+  useTemplate: (componentName, originalComponentModule, originalExportName) => `import * as React from 'react';
+import styles from './${componentName}.st.css';
+import { ${originalExportName} as ${componentName}Orig } from '${originalComponentModule}';
 
-export const ${componentName}Ext = props => <${componentName} {...props} {...styles('root', {}, props)} />
+export const ${componentName} = props => (
+  <${componentName}Orig {...props} {...styles('root', {}, props)} />
+);
 `
 }

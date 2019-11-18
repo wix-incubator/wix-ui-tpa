@@ -14,15 +14,15 @@
     },
     "stylable": {
       "variables": [
-        {"name": "BorderColor", "type": "color"},
-        {"name": "BackgroundColor", "type": "color"},
-        {"name": "TextColor", "type": "color"},
-        {"name": "DisabledTextColor", "type": "color"},
-        {"name": "PlaceholderColor", "type": "color"},
-        {"name": "TextFont", "type": "font"},
-        {"name": "ErrorBorderColor", "type": "color"},
-        {"name": "SuccessBorderColor", "type": "color"},
-        {"name": "DisabledBorderColor", "type": "color"}
+        {"name": "BorderColor", "type": "color", "defaultValue": "color-5", "description": "Border color"},
+        {"name": "BackgroundColor", "type": "color", "defaultValue": "color-1", "description": "Background color"},
+        {"name": "TextColor", "type": "color", "defaultValue": "color-5", "description": "Text color"},
+        {"name": "DisabledTextColor", "type": "color", "defaultValue": "color-3", "description": "Disabled text color"},
+        {"name": "PlaceholderColor", "type": "color", "defaultValue": "color-3", "description": "Placeholder color"},
+        {"name": "TextFont", "type": "font", "defaultValue": "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}", "description": "Text font"},
+        {"name": "ErrorBorderColor", "type": "color", "defaultValue": "color-13", "description": "Error border color"},
+        {"name": "SuccessBorderColor", "type": "color", "defaultValue": "color-18", "description": "Success border color"},
+        {"name": "DisabledBorderColor", "type": "color", "defaultValue": "color-3", "description": "Disabled border color"}
       ]
     }
   }
