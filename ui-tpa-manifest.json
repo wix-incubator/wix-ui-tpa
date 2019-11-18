@@ -14,15 +14,15 @@
     },
     "stylable": {
       "variables": [
-        {"name": "BorderColor"},
-        {"name": "BackgroundColor"},
-        {"name": "TextColor"},
-        {"name": "DisabledTextColor"},
-        {"name": "PlaceholderColor"},
-        {"name": "TextFont"},
-        {"name": "ErrorBorderColor"},
-        {"name": "SuccessBorderColor"},
-        {"name": "DisabledBorderColor"}
+        {"name": "BorderColor", "type": "color"},
+        {"name": "BackgroundColor", "type": "color"},
+        {"name": "TextColor", "type": "color"},
+        {"name": "DisabledTextColor", "type": "color"},
+        {"name": "PlaceholderColor", "type": "color"},
+        {"name": "TextFont", "type": "font"},
+        {"name": "ErrorBorderColor", "type": "color"},
+        {"name": "SuccessBorderColor", "type": "color"},
+        {"name": "DisabledBorderColor", "type": "color"}
       ]
     }
   }
