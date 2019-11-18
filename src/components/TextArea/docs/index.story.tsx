@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { TextArea } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -17,7 +16,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as extendedRawSource from '!raw-loader!../../../generated/examples/TextArea/index.example.tsx';
 import * as extendedCSSRawSource from '!raw-loader!../../../generated/examples/TextArea/TextArea.example.st.css';
-import { TextAreaExt } from '../../../generated/examples/TextArea';
+import { TextArea } from '../../../generated/examples/TextArea';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/settingsApi';
 
@@ -100,24 +99,13 @@ export default {
         { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings API',
-          sections: [
-            settingsApi({
-              variables: [
-                {
-                  name: 'TestVariable',
-                  dataType: 'string',
-                  defaultValue: 'N/A',
-                  description: 'This is a test variable',
-                },
-              ],
-            }),
-          ],
+          sections: [settingsApi('TextArea')],
         },
         {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <TextAreaExt />,
+              example: <TextArea />,
               rawSource: extendedRawSource,
               title: 'Text area preferences',
               rawCSSSource: extendedCSSRawSource,
