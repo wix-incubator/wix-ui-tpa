@@ -28,6 +28,7 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
+    "generate-wrappers": "node ./scripts/component-wrapper-generator/generate.js",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
@@ -81,6 +82,7 @@
     "@types/enzyme": "^3.1.8",
     "@types/jest": "^23.0.0",
     "@types/lodash": "^4.14.123",
+    "@types/mkdirp": "^0.5.2",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.3",
     "@types/storybook__react": "^4.0.1",
@@ -99,6 +101,7 @@
     "identity-obj-proxy": "^3.0.0",
     "import-path": "latest",
     "lint-staged": "^9.2.0",
+    "mkdirp": "^0.5.1",
     "node-sass-import-once": "^1.2.0",
     "prop-types": "^15.5.4",
     "protractor": "^5.3.0",
