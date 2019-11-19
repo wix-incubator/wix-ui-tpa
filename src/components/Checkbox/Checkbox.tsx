@@ -4,9 +4,9 @@ import {
   CheckboxChecked,
   CheckboxIndeterminate,
 } from 'wix-ui-icons-common/system';
-import styles from './Checkbox.st.css';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
+import styles from './Checkbox.st.css';
 
 interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;

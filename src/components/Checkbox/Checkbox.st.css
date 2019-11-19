@@ -19,7 +19,7 @@
     DefaultBorderColor: color-5;
     DefaultIconColor: color-8;
     DisabledColor: color-3;
-    Font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+    Font: font("{theme: 'Body-M', size: '16px', lineHeight: '24px'}");
 }
 
 :vars {
@@ -40,14 +40,22 @@
     -st-states: checked, disabled, error;
 
     display: inline-flex;
+    align-items: flex-start;
+    box-sizing: border-box;
+
+    font: value(Font);
 }
 
-.root::box {
-    padding-top: 4px;
+.root * {
+    box-sizing: inherit;
 }
 
 .root::childContainer {
     display: flex;
+}
+
+.root::box {
+    line-height: 20px;
 }
 
 .icon {
@@ -59,15 +67,16 @@
     border-color: applyOpacity(value(CurrentBorderColor), 0.6);
     border-radius: 1px;
 
-    box-sizing: border-box;
+    font-size: 13px;
+    line-height: 1.2;
+    vertical-align: middle;
 }
 
 .icon svg {
-    padding: 1px 3px;
+    margin: 1px 3px;
 
     width: 8px;
     height: 7px;
-
 }
 
 .divider {
@@ -83,8 +92,6 @@
 
 .label {
     display: inline-block;
-
-    font: value(Font);
     color: value(CurrentTextColor);
 }
 
