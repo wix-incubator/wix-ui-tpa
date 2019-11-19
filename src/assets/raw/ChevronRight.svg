@@ -1,14 +1,12 @@
-import * as React from 'react';
-
-export const ChevronRight = (
-  <svg
+<?xml version="1.0" encoding="utf-8"?>
+<svg
     version="1.1"
     xmlns="http://www.w3.org/2000/svg"
     x="0px"
     y="0px"
     viewBox="0 0 24 24"
-    enableBackground="new 0 0 200 200"
-    xmlSpace="preserve"
+    enable-background="new 0 0 200 200"
+    xml:space="preserve"
   >
     <g>
       <polygon
@@ -17,4 +15,3 @@ export const ChevronRight = (
       />
     </g>
   </svg>
-);

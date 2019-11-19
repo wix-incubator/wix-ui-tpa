@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
+import { CaretDown as ArrowIcon } from '../../assets/icons/components/CaretDown';
 
 import { Button } from '../Button';
 import { TPAComponentProps } from '../../types';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { IconToggle, LabelPlacement } from './';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { ReactComponent as Star } from '../../assets/icons/Star.svg';
+import { Star } from '../../assets/icons/components/Star';
 
 class IconToggleVisual extends React.Component<any> {
   render() {

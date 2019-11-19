@@ -8,7 +8,7 @@ import { iconButtonDriverFactory } from './IconButton.driver';
 import { IconButton } from './';
 import { iconButtonTestkitFactory } from '../../testkit';
 import { iconButtonTestkitFactory as enzymeIconButtonTestkitFactory } from '../../testkit/enzyme';
-import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
+import { StarIcon } from '../../assets/icons/components/Star';
 
 describe('IconButton', () => {
   const createDriver = createUniDriverFactory(iconButtonDriverFactory);

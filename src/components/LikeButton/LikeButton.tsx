@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './LikeButton.st.css';
-import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { Heart } from '../../assets/icons/components/Heart';
 import { IconToggle, LabelPlacement, OnChangeEvent } from '../IconToggle';
 import { TPAComponentProps } from '../../types';
 
