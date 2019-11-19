@@ -1,10 +1,8 @@
 import * as React from 'react';
-
 import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
-
-import styles from './Avatar.st.css';
-import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
+import { Anonymous } from '../../assets/icons/components/Anonymous';
 import { TPAComponentProps } from '../../types';
+import styles from './Avatar.st.css';
 
 export enum AvatarSize {
   xLarge = 'xLarge',

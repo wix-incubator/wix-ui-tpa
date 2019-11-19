@@ -1,7 +1,7 @@
 import { IconButton, Skins } from '.';
 import Registry from '@ui-autotools/registry';
 import * as React from 'react';
-import { ChevronLeft } from '../../assets/icons/ChevronLeft';
+import { ChevronLeft } from '../../assets/icons/components/ChevronLeft';
 
 const IconButtonMetadata = Registry.getComponentMetadata(IconButton);
 IconButtonMetadata.nonReactStrictModeCompliant = true;

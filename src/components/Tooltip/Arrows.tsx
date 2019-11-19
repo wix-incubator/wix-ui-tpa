@@ -1,8 +1,8 @@
 import { Placement } from 'wix-ui-core/popover';
-import { ReactComponent as right } from '../../assets/icons/ArrowRight.svg';
-import { ReactComponent as left } from '../../assets/icons/ArrowLeft.svg';
-import { ReactComponent as top } from '../../assets/icons/ArrowTop.svg';
-import { ReactComponent as bottom } from '../../assets/icons/ArrowBottom.svg';
+import { ArrowRight as right } from '../../assets/icons/components/ArrowRight';
+import { ArrowLeft as left } from '../../assets/icons/components/ArrowLeft';
+import { ArrowTop as top } from '../../assets/icons/components/ArrowTop';
+import { ArrowBottom as bottom } from '../../assets/icons/components/ArrowBottom';
 
 export function getArrowByPlacement(placement: Placement) {
   if (placement.indexOf('top') === 0) {

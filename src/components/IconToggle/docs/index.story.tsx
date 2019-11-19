@@ -12,8 +12,8 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
-import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
+import { Star as StarIcon } from '../../../assets/icons/components/Star';
+import { Heart as HeartIcon } from '../../../assets/icons/components/Heart';
 
 StarIcon.displayName = 'Star';
 HeartIcon.displayName = 'Heart';

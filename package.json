@@ -28,8 +28,9 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
-    "prebuild": "npm run update-components",
+    "prebuild": "npm run update-components && npm run build:icons",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
+    "build:icons": "svg2react-icon --typescript --named-export src/assets/raw ./src/assets/icons",
     "postbuild": "import-path --path src/components --dts",
     "pr-postbuild": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "pretest": "./scripts/ensure-build.sh",
@@ -41,6 +42,7 @@
     "test:eyes-storybook": "if test \"$EYES_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "lint": "yoshi lint --fix",
+    "prestart": "npm run build:icons",
     "start": "npm run storybook",
     "postpublish": "npm run git:tag && npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
     "git:tag": "node scripts/tag.js",
@@ -107,6 +109,7 @@
     "raw-loader": "^1.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
+    "svg2react-icon": "^3.0.213",
     "storybook-snapper": "^1.0.9",
     "ts-jest": "^22.0.3",
     "typescript": "^3.6.0",

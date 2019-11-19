@@ -7,7 +7,7 @@ import { iconToggleTestkitFactory } from '../../testkit';
 import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { iconToggleTestkitFactory as enzymeAutocompleteTestkitFactory } from '../../testkit/enzyme';
-import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { Heart } from '../../assets/icons/components/Heart';
 
 const ICON = <Heart />;
 const LABEL = 'Like';
