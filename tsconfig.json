@@ -17,7 +17,7 @@
     "./node_modules/yoshi/types.d.ts"
   ],
   "exclude": [
-    "./src/generated/**/*.example.tsx",
-    "./src/generated/**/*.example.st.css"
+    "./src/connected-components/**/*.example.tsx",
+    "./src/connected-components/**/*.example.st.css"
   ]
 }

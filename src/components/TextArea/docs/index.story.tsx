@@ -14,9 +14,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { TextArea } from '../../../generated/examples/TextArea';
+import { TextArea } from '../../../connected-components/TextArea';
 import { TextAreaTheme } from '../TextAreaEnums';
-import { settingsApi } from '../../../../stories/utils/settingsApi';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import manifest from './TextArea.manifest.json';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -96,11 +97,11 @@ export default {
         { title: 'TestKit', sections: [testkit()] },
         {
           title: 'Playground',
-          sections: [playground(), autoSettingsPanel('TextArea')],
+          sections: [playground(), autoSettingsPanel('TextArea', manifest)],
         },
         {
           title: 'Settings API',
-          sections: [settingsApi('TextArea')],
+          sections: [settingsApi(manifest)],
         },
       ].map(tab),
     ]),

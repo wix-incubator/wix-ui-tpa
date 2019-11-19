@@ -1,14 +1,8 @@
 import * as React from 'react';
-import { genericApiTable, IGenericApiItem } from './GenericApi';
-import manifest from '../../ui-tpa-manifest.json';
+import { genericApiTable } from './GenericApi';
+import { IComponentManifest } from './manifest.interface';
 
-export const settingsApi = (componentName: string) => {
-  const componentManifest = manifest[componentName];
-
-  if (!componentManifest) {
-    return 'Could not load Settings API';
-  }
-
+export const settingsApi = (componentManifest: IComponentManifest) => {
   const { variables } = componentManifest.stylable;
 
   return genericApiTable({
@@ -19,6 +13,6 @@ export const settingsApi = (componentName: string) => {
       defaultValue: 'Default value',
       description: 'Description',
     },
-    items: variables,
+    items: variables as any,
   });
 };

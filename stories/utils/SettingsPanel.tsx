@@ -6,21 +6,12 @@ import {
   IWixNumberParam,
   MockSettings,
 } from '../helperComponents/MockSettings';
-import manifest from '../../ui-tpa-manifest.json';
 import Markdown from 'wix-storybook-utils/Markdown';
-
-const enum VariableType {
-  color = 'color',
-  font = 'font',
-  number = 'number',
-}
-
-interface IVariableManifest {
-  name: string;
-  type: VariableType;
-  defaultValue: string;
-  description: string;
-}
+import {
+  IComponentManifest,
+  VariableType,
+  IVariableManifest,
+} from './manifest.interface';
 
 interface ISettingsPanelConfig {
   example: JSX.Element;
@@ -34,13 +25,10 @@ interface ISettingsPanelConfig {
   title: string;
 }
 
-export function autoSettingsPanel(componentName: string) {
-  const componentManifest = manifest[componentName];
-
-  if (!componentManifest) {
-    return 'Could not load Settings API';
-  }
-
+export function autoSettingsPanel(
+  componentName: string,
+  componentManifest: IComponentManifest,
+) {
   const { variables } = componentManifest.stylable;
 
   const numbers = Object.values(variables)
@@ -79,8 +67,8 @@ export function autoSettingsPanel(componentName: string) {
       defaultColor: variableInfo.defaultValue,
     }));
 
-  const styleExample = require(`!raw-loader!../../src/generated/examples/${componentName}/${componentName}.example.st.css`);
-  const logicExample = require(`!raw-loader!../../src/generated/examples/${componentName}/index.example.tsx`);
+  const styleExample = require(`!raw-loader!../../src/connected-components/${componentName}/${componentName}.example.st.css`);
+  const logicExample = require(`!raw-loader!../../src/connected-components/${componentName}/index.example.tsx`);
 
   return (
     <div>
