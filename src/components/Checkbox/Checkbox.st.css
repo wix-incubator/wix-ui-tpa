@@ -19,7 +19,7 @@
     DefaultBorderColor: color-5;
     DefaultIconColor: color-8;
     DisabledColor: color-3;
-    Font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+    Font: font("{theme: 'Body-M', size: '16px', lineHeight: '24px'}");
 }
 
 :vars {
@@ -42,18 +42,20 @@
     display: inline-flex;
     align-items: flex-start;
     box-sizing: border-box;
+
+    font: value(Font);
 }
 
 .root * {
     box-sizing: inherit;
 }
 
-.root::box {
-    padding-top: 3.3px;
-}
-
 .root::childContainer {
     display: flex;
+}
+
+.root::box {
+    line-height: 20px;
 }
 
 .icon {
@@ -90,8 +92,6 @@
 
 .label {
     display: inline-block;
-
-    font: value(Font);
     color: value(CurrentTextColor);
 }
 
