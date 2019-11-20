@@ -7,11 +7,7 @@ import {
   MockSettings,
 } from '../helperComponents/MockSettings';
 import Markdown from 'wix-storybook-utils/Markdown';
-import {
-  IComponentManifest,
-  VariableType,
-  IVariableManifest,
-} from './manifest.interface';
+import { VariableType, IVariableManifest } from './variableInfo.interface';
 import { plugin } from 'wix-storybook-utils/Sections';
 
 interface ISettingsPanelConfig {
@@ -26,12 +22,13 @@ interface ISettingsPanelConfig {
   title: string;
 }
 
-export const autoSettingsPanel = (componentManifest: IComponentManifest) =>
+export const autoSettingsPanel = () =>
   plugin({
     handler: (section, storyConfig) => {
       const componentName = storyConfig.storyName;
 
-      const { variables } = componentManifest.stylable;
+      const variables =
+        storyConfig.metadata.plugins.tpaStylable.overridableVars;
 
       const numbers = Object.values(variables)
         .filter(
@@ -42,9 +39,9 @@ export const autoSettingsPanel = (componentManifest: IComponentManifest) =>
           label: variableInfo.name,
           wixParam: `${componentName}-${variableInfo.name}`,
           defaultNumber: Number(variableInfo.defaultValue),
-          unit: '', // TODO: somehow gather this value dynamically
-          min: 0, // TODO: somehow gather this value dynamically
-          max: 100, // TODO: somehow gather this value dynamically
+          unit: variableInfo.unit || '',
+          min: Number(variableInfo.min) || 0,
+          max: Number(variableInfo.max) || 100,
         }));
 
       const fonts = Object.values(variables)
@@ -63,11 +60,16 @@ export const autoSettingsPanel = (componentManifest: IComponentManifest) =>
           (variableInfo: IVariableManifest) =>
             variableInfo.type === VariableType.color,
         )
-        .map((variableInfo: IVariableManifest) => ({
-          label: variableInfo.name,
-          wixParam: `${componentName}-${variableInfo.name}`,
-          defaultColor: variableInfo.defaultValue,
-        }));
+        .map((variableInfo: IVariableManifest) => {
+          const colorMatch = variableInfo.defaultValue.match(/color-[0-9]+/);
+          const defaultColor = colorMatch ? colorMatch[0] : 'color-1';
+
+          return {
+            label: variableInfo.name,
+            wixParam: `${componentName}-${variableInfo.name}`,
+            defaultColor,
+          };
+        });
 
       const styleExample = require(`!raw-loader!../../src/connected-components/${componentName}/${componentName}.example.st.css`);
       const logicExample = require(`!raw-loader!../../src/connected-components/${componentName}/index.example.tsx`);
@@ -95,74 +97,6 @@ export const autoSettingsPanel = (componentManifest: IComponentManifest) =>
       );
     },
   });
-
-export function autoSettingsPanelOld(
-  componentName: string,
-  componentManifest: IComponentManifest,
-) {
-  const { variables } = componentManifest.stylable;
-
-  const numbers = Object.values(variables)
-    .filter(
-      (variableInfo: IVariableManifest) =>
-        variableInfo.type === VariableType.number,
-    )
-    .map((variableInfo: IVariableManifest) => ({
-      label: variableInfo.name,
-      wixParam: `${componentName}-${variableInfo.name}`,
-      defaultNumber: Number(variableInfo.defaultValue),
-      unit: '', // TODO: somehow gather this value dynamically
-      min: 0, // TODO: somehow gather this value dynamically
-      max: 100, // TODO: somehow gather this value dynamically
-    }));
-
-  const fonts = Object.values(variables)
-    .filter(
-      (variableInfo: IVariableManifest) =>
-        variableInfo.type === VariableType.font,
-    )
-    .map((variableInfo: IVariableManifest) => ({
-      label: variableInfo.name,
-      wixParam: `${componentName}-${variableInfo.name}`,
-      defaultFont: 'arial',
-    }));
-
-  const colors = Object.values(variables)
-    .filter(
-      (variableInfo: IVariableManifest) =>
-        variableInfo.type === VariableType.color,
-    )
-    .map((variableInfo: IVariableManifest) => ({
-      label: variableInfo.name,
-      wixParam: `${componentName}-${variableInfo.name}`,
-      defaultColor: variableInfo.defaultValue,
-    }));
-
-  const styleExample = require(`!raw-loader!../../src/connected-components/${componentName}/${componentName}.example.st.css`);
-  const logicExample = require(`!raw-loader!../../src/connected-components/${componentName}/index.example.tsx`);
-
-  return (
-    <div>
-      <MockSettings
-        wixNumberParams={numbers}
-        wixColorParams={colors}
-        wixFontParams={fonts}
-      />
-      <Markdown
-        source={[
-          '#### .st.css',
-          '```css',
-          styleExample,
-          '```',
-          '#### .tsx',
-          '```javascript',
-          logicExample,
-          '```',
-        ].join('\n')}
-      />
-    </div>
-  );
-}
 
 export function settingsPanel({
   example,

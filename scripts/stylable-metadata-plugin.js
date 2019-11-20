@@ -107,7 +107,7 @@ const parseComment = comment => {
     }
   }
 
-  const supportedTags = ['type', 'default']
+  const supportedTags = ['type', 'default', 'min', 'max', 'unit']
   const commentParts = comment.split('@').map(part => part.trim())
 
   const description = commentParts.shift()

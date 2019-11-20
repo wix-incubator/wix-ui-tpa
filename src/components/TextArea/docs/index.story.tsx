@@ -17,7 +17,6 @@ import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { TextArea } from '../../../connected-components/TextArea';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import manifest from './TextArea.manifest.json';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -97,11 +96,11 @@ export default {
         { title: 'TestKit', sections: [testkit()] },
         {
           title: 'Playground',
-          sections: [playground(), autoSettingsPanel(manifest)],
+          sections: [playground(), autoSettingsPanel()],
         },
         {
           title: 'Settings API',
-          sections: [settingsApi(manifest)],
+          sections: [settingsApi()],
         },
       ].map(tab),
     ]),
