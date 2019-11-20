@@ -3,12 +3,11 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { iconButtonDriverFactory } from './IconButton.driver';
 import { IconButton } from './';
 import { iconButtonTestkitFactory } from '../../testkit';
 import { iconButtonTestkitFactory as enzymeIconButtonTestkitFactory } from '../../testkit/enzyme';
-import { StarIcon } from '../../assets/icons/components/Star';
+import { Star as StarIcon } from '../../assets/icons/components/Star';
 
 describe('IconButton', () => {
   const createDriver = createUniDriverFactory(iconButtonDriverFactory);
