@@ -9,7 +9,7 @@ IconButtonMetadata.nonReactStrictModeCompliant = true;
 IconButtonMetadata.addSim({
   title: 'render',
   props: {
-    icon: ChevronLeft,
+    icon: <ChevronLeft />,
     ['aria-label']: 'share',
     skin: Skins.Line,
   },
