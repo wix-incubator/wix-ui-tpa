@@ -97,7 +97,7 @@ export default {
         { title: 'TestKit', sections: [testkit()] },
         {
           title: 'Playground',
-          sections: [playground(), autoSettingsPanel('TextArea', manifest)],
+          sections: [playground(), autoSettingsPanel(manifest)],
         },
         {
           title: 'Settings API',

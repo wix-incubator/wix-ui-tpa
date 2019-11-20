@@ -12,6 +12,7 @@ import {
   VariableType,
   IVariableManifest,
 } from './manifest.interface';
+import { plugin } from 'wix-storybook-utils/Sections';
 
 interface ISettingsPanelConfig {
   example: JSX.Element;
@@ -25,7 +26,77 @@ interface ISettingsPanelConfig {
   title: string;
 }
 
-export function autoSettingsPanel(
+export const autoSettingsPanel = (componentManifest: IComponentManifest) =>
+  plugin({
+    handler: (section, storyConfig) => {
+      const componentName = storyConfig.storyName;
+
+      const { variables } = componentManifest.stylable;
+
+      const numbers = Object.values(variables)
+        .filter(
+          (variableInfo: IVariableManifest) =>
+            variableInfo.type === VariableType.number,
+        )
+        .map((variableInfo: IVariableManifest) => ({
+          label: variableInfo.name,
+          wixParam: `${componentName}-${variableInfo.name}`,
+          defaultNumber: Number(variableInfo.defaultValue),
+          unit: '', // TODO: somehow gather this value dynamically
+          min: 0, // TODO: somehow gather this value dynamically
+          max: 100, // TODO: somehow gather this value dynamically
+        }));
+
+      const fonts = Object.values(variables)
+        .filter(
+          (variableInfo: IVariableManifest) =>
+            variableInfo.type === VariableType.font,
+        )
+        .map((variableInfo: IVariableManifest) => ({
+          label: variableInfo.name,
+          wixParam: `${componentName}-${variableInfo.name}`,
+          defaultFont: 'arial',
+        }));
+
+      const colors = Object.values(variables)
+        .filter(
+          (variableInfo: IVariableManifest) =>
+            variableInfo.type === VariableType.color,
+        )
+        .map((variableInfo: IVariableManifest) => ({
+          label: variableInfo.name,
+          wixParam: `${componentName}-${variableInfo.name}`,
+          defaultColor: variableInfo.defaultValue,
+        }));
+
+      const styleExample = require(`!raw-loader!../../src/connected-components/${componentName}/${componentName}.example.st.css`);
+      const logicExample = require(`!raw-loader!../../src/connected-components/${componentName}/index.example.tsx`);
+
+      return (
+        <div>
+          <MockSettings
+            wixNumberParams={numbers}
+            wixColorParams={colors}
+            wixFontParams={fonts}
+          />
+          <Markdown
+            source={[
+              '#### .st.css',
+              '```css',
+              styleExample,
+              '```',
+              '#### .tsx',
+              '```javascript',
+              logicExample,
+              '```',
+            ].join('\n')}
+          />
+        </div>
+      );
+    },
+  });
+
+export function autoSettingsPanelOld(
   componentName: string,
   componentManifest: IComponentManifest,
 ) {
