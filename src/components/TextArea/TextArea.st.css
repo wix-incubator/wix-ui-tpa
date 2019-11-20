@@ -29,31 +29,31 @@
     BackgroundColor: --overridable;
 
     /* Color of value text */
-    TextColor: --overidable;
+    TextColor: --overridable;
 
     /* Color of value text when text area is disabled */
-    DisabledTextColor: --overidable;
+    DisabledTextColor: --overridable;
 
     /* Placeholder text color */
-    PlaceholderColor: --overidable;
+    PlaceholderColor: --overridable;
 
     /* Text font */
-    TextFont: --overidable;
+    TextFont: --overridable;
 
     /*
         Border color in case of error
         @default #f64d43
     */
-    ErrorBorderColor: --overidable;
+    ErrorBorderColor: --overridable;
 
     /*
         Border color in case of success
         @default #57C487
     */
-    SuccessBorderColor: --overidable;
+    SuccessBorderColor: --overridable;
 
     /* Border color when text area is disabled */
-    DisabledBorderColor: --overidable;
+    DisabledBorderColor: --overridable;
 }
 
 :vars {
