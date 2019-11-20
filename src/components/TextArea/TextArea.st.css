@@ -8,8 +8,8 @@
     -st-named: errorColor, successColor;
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     DefaultBorderColor: color-5;
     DefaultBackgroundColor: color-1;
     DefaultTextColor: color-5;
@@ -17,23 +17,43 @@
     DefaultPlaceholderColor: color-3;
     DefaultFocusFontColor: color-1;
     DefaultDisabledBorderColor: color-3;
-    DefaultFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-
-    /*Defaults params goes here*/
+    DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /* Border color */
     BorderColor: --overridable;
+
+    /* Background color */
     BackgroundColor: --overridable;
+
+    /* Color of value text */
     TextColor: --overidable;
+
+    /* Color of value text when text area is disabled */
     DisabledTextColor: --overidable;
+
+    /* Placeholder text color */
     PlaceholderColor: --overidable;
+
+    /* Text font */
     TextFont: --overidable;
+
+    /*
+        Border color in case of error
+        @default #f64d43
+    */
     ErrorBorderColor: --overidable;
+
+    /*
+        Border color in case of success
+        @default #57C487
+    */
     SuccessBorderColor: --overidable;
+
+    /* Border color when text area is disabled */
     DisabledBorderColor: --overidable;
-    /*Deceleration of overridable placeholders*/
 }
 
 :vars {
@@ -75,7 +95,7 @@
     padding: 0 12px;
     overflow: hidden;
     background-color: inherit;
-    font: fallback(font(value(TextFont)), font(value(DefaultFont)));
+    font: fallback(font(value(TextFont)), font(value(DefaultTextFont)));
     font-size: 16px;
 }
 
