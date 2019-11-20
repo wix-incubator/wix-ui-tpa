@@ -146,9 +146,9 @@ const getOverridableVars = ast => {
   return vars
 }
 
-module.exports = async function (source, metadata, context) {
+module.exports = async function ({source, metadata, basePath}) {
   const relativeComponentPath = await pathFinder(source)
-  const absoluteComponentPath = path.resolve(context, relativeComponentPath)
+  const absoluteComponentPath = path.resolve(basePath, relativeComponentPath)
 
   const componentSource = fs.readFileSync(absoluteComponentPath, {encoding: 'utf8'})
   const componentAst = parse(componentSource)
@@ -165,6 +165,11 @@ module.exports = async function (source, metadata, context) {
   const stylableAst = parseStylable(stylableSource)
 
   return {
-    overridableVars: getOverridableVars(stylableAst)
+    metadata: {
+      ...metadata,
+      stylable: {
+        overridableVars: getOverridableVars(stylableAst)
+      }
+    }
   }
 }

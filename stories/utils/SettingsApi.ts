@@ -4,8 +4,7 @@ import { plugin } from 'wix-storybook-utils/Sections';
 export const settingsApi = () =>
   plugin({
     handler: (section, storyConfig) => {
-      const variables =
-        storyConfig.metadata.plugins.tpaStylable.overridableVars;
+      const variables = storyConfig.metadata.stylable.overridableVars;
 
       return genericApiTable({
         title: 'Stylable Variables',

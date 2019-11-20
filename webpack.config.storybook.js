@@ -56,9 +56,9 @@ module.exports = ({config}) => {
                 loader: 'wix-storybook-utils/loader',
 
                 options: {
-                    metadataPlugins: {
-                        tpaStylable: stylableMetadataPlugin
-                    },
+                    plugins: [
+                        stylableMetadataPlugin
+                    ],
                     storyConfig: {
                         moduleName: 'wix-ui-tpa',
                         repoBaseURL: 'https://github.com/wix/wix-ui-tpa/tree/master/src/components/',

@@ -27,8 +27,7 @@ export const autoSettingsPanel = () =>
     handler: (section, storyConfig) => {
       const componentName = storyConfig.storyName;
 
-      const variables =
-        storyConfig.metadata.plugins.tpaStylable.overridableVars;
+      const variables = storyConfig.metadata.stylable.overridableVars;
 
       const numbers = Object.values(variables)
         .filter(
