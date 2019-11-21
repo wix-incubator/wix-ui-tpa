@@ -2,9 +2,12 @@ const path = require('path')
 const fs = require('fs')
 const pathFinder = require('react-autodocs-utils/src/path-finder');
 const types = require('@babel/types');
-const {safeParse, StylableProcessor, processNamespace} = require('@stylable/core')
+const {safeParse, StylableProcessor, processNamespace, Stylable} = require('@stylable/core')
 const traverse = require('@babel/traverse').default;
 const babelParser = require('@babel/parser');
+// const autoprefixer = require('autoprefixer')({ grid: true, overrideBrowserslist: ['>1%'] });
+// const postcss = require('postcss');
+// const autoprefixProcessor = postcss([autoprefixer]);
 
 const parse = source =>
   babelParser.parse(source, {
@@ -161,6 +164,38 @@ const getOverridableVars = ast => {
   return vars
 }
 
+// const compileStylable = (filePath, basePath, variables) => {
+//   const stylable = Stylable.create({
+//     projectRoot: basePath,
+//     fileSystem: fs,
+//     requireModule: require,
+//     resolveNamespace: (namespace) => namespace + 'TPA'
+//   })
+
+//   const overridesPath = path.resolve(
+//     '.',
+//     path.relative(
+//       path.resolve(__dirname, '..'),
+//       basePath
+//     ),
+//     'storybook-overrides.st.css'
+//   )
+
+//   const overrides = `
+//     :import {
+//       -st-from: "${filePath}";
+//       -st-default: TPAMixin;
+//     }
+//     .root {
+//       -st-mixin: TPAMixin(
+//     ${Object.entries(variables).map(([name, value]) => `      ${name} ${value}`).join(',\n')}
+//       );
+//     }
+//   `
+
+//   return stylable.transform(overrides, overridesPath)
+// }
+
 module.exports = async function ({source, metadata, basePath}) {
   const relativeComponentPath = await pathFinder(source)
   const absoluteComponentPath = path.resolve(basePath, relativeComponentPath)
@@ -179,11 +214,23 @@ module.exports = async function ({source, metadata, basePath}) {
   const stylableSource = fs.readFileSync(absoluteStylablePath, {encoding: 'utf8'})
   const stylableAst = parseStylable(stylableSource)
 
+  const overridableVars = getOverridableVars(stylableAst)
+
+  // const compiled = compileStylable(
+  //   relativeStylablePath,
+  //   path.dirname(absoluteComponentPath),
+  //   overridableVars.map(item => ({name: item.name, value: `-${metadata.displayName}-${item.name}`}))
+  // )
+
+  // autoprefixProcessor.process(compiled.meta.outputAst).sync();
+  // const css = compiled.meta.outputAst.toString()
+
   return {
     metadata: {
       ...metadata,
       stylable: {
-        overridableVars: getOverridableVars(stylableAst)
+        // css,
+        overridableVars,
       }
     }
   }

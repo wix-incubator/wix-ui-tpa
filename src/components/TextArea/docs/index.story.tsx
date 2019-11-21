@@ -15,8 +15,10 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { TextArea } from '../../../connected-components/TextArea';
+// import { TextArea } from '../../../components/TextArea';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
+// import { connectedComponent } from '../../../../stories/utils/ComponentWrapper';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -25,6 +27,7 @@ export default {
   category: 'Components',
   storyName: 'TextArea',
   component: TextArea,
+  // componentWrapper: connectedComponent,
   componentPath: '../TextArea.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-TextArea',

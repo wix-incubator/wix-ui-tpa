@@ -22,6 +22,7 @@ function reconfigureStylable(config) {
             runtimeStylesheetId: 'namespace',
         },
         resolveNamespace: resolveNamespaceFactory(project.name),
+        // resolveNamespace: (namespace) => namespace + 'TPA',
         transformHooks: {
             postProcessor: (stylableResult) => {
                 autoprefixProcessor.process(stylableResult.meta.outputAst).sync();
