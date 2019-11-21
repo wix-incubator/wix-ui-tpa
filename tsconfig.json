@@ -15,9 +15,5 @@
     "./test/**/*.tsx",
     "./src/external-types.d.ts", "src/common/utils.ts", "src/common/animations.ts",
     "./node_modules/yoshi/types.d.ts"
-  ],
-  "exclude": [
-    "./src/connected-components/**/*.example.tsx",
-    "./src/connected-components/**/*.example.st.css"
   ]
 }

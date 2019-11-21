@@ -1,6 +1,6 @@
 
 :import {
-  -st-from: "../../components/TextArea/TextArea.st.css";
+  -st-from: "../../TextArea.st.css";
   -st-default: TPAMixin;
 }
 

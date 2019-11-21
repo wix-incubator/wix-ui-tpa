@@ -14,7 +14,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { TextArea } from '../../../connected-components/TextArea';
+import { TextArea } from './connected';
 // import { TextArea } from '../../../components/TextArea';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';

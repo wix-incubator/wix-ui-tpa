@@ -70,8 +70,8 @@ export const autoSettingsPanel = () =>
           };
         });
 
-      const styleExample = require(`!raw-loader!../../src/connected-components/${componentName}/${componentName}.example.st.css`);
-      const logicExample = require(`!raw-loader!../../src/connected-components/${componentName}/index.example.tsx`);
+      // const styleExample = require(`!raw-loader!../../src/connected-components/${componentName}/${componentName}.example.st.css`);
+      // const logicExample = require(`!raw-loader!../../src/connected-components/${componentName}/index.example.tsx`);
 
       return (
         <div>
@@ -80,7 +80,7 @@ export const autoSettingsPanel = () =>
             wixColorParams={colors}
             wixFontParams={fonts}
           />
-          <Markdown
+          {/* <Markdown
             source={[
               '#### .st.css',
               '```css',
@@ -91,7 +91,7 @@ export const autoSettingsPanel = () =>
               logicExample,
               '```',
             ].join('\n')}
-          />
+          /> */}
         </div>
       );
     },
