@@ -43,12 +43,9 @@ const getImportedStylablePath = ast => new Promise(resolve => {
 })
 
 const extractStylableVarStructure = ast =>
-  [].concat.apply(
-    [],
-    ast.nodes.filter(node =>
-      node.type == 'rule' && node.selector == ':vars'
-    ).map(node => node.nodes)
-  )
+  ast.nodes.filter(node =>
+    node.type == 'rule' && node.selector == ':vars'
+  ).map(node => node.nodes).flat(1)
 
 const getAllStylableVars = ast => {
   const varStructure = extractStylableVarStructure(ast)
