@@ -1,16 +1,29 @@
 const path = require('path')
 const fs = require('fs')
 const pathFinder = require('react-autodocs-utils/src/path-finder');
-const parse = require('react-autodocs-utils/src/parser/parse');
-const visit = require('react-autodocs-utils/src/parser/visit');
 const types = require('@babel/types');
 const {safeParse, StylableProcessor, processNamespace} = require('@stylable/core')
+const traverse = require('@babel/traverse').default;
+const babelParser = require('@babel/parser');
+
+const parse = source =>
+  babelParser.parse(source, {
+    plugins: [
+      ['decorators', { decoratorsBeforeExport: true }],
+      'jsx',
+      'typescript',
+      'classProperties',
+      'objectRestSpread',
+      'dynamicImport',
+    ],
+    sourceType: 'module',
+  });
 
 const parseStylable = source =>
   new StylableProcessor(undefined, processNamespace).process(safeParse(source)).rawAst
 
 const getImportedStylablePath = ast => new Promise(resolve => {
-  visit(ast)({
+  traverse(ast, {
     enter(path) {
       if (types.isImportDeclaration(path.node)) {
         const source = path.node.source.value
@@ -127,21 +140,23 @@ const parseComment = comment => {
 
 const getOverridableVars = ast => {
   const allVars = getAllStylableVars(ast)
-  const vars = []
 
-  Object.entries(allVars).forEach(([name, info]) => {
-    if (info.value.startsWith('-')) {
-      const defaultValue = getDefaultValue(name, allVars)
-      const commentInfo = parseComment(info.comment)
+  const vars = Object.entries(allVars)
+    .reduce((result, [name, info]) => {
+      if (info.value.startsWith('-')) {
+        const defaultValue = getDefaultValue(name, allVars)
+        const commentInfo = parseComment(info.comment)
 
-      vars.push({
-        name,
-        type: commentInfo.type || guessVarType(name, info.value, defaultValue),
-        defaultValue: commentInfo.default || defaultValue,
-        description: commentInfo.description
-      })
-    }
-  })
+        result.push({
+          name,
+          type: commentInfo.type || guessVarType(name, info.value, defaultValue),
+          defaultValue: commentInfo.default || defaultValue,
+          description: commentInfo.description
+        })
+      }
+
+      return result
+    }, [])
 
   return vars
 }
