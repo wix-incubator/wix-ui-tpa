@@ -156,7 +156,7 @@ module.exports = async function ({source, metadata, basePath}) {
   const relativeStylablePath = await getImportedStylablePath(componentAst)
 
   if (!relativeStylablePath) {
-    return null
+    return {metadata}
   }
 
   const absoluteStylablePath = path.resolve(path.dirname(absoluteComponentPath), relativeStylablePath)
