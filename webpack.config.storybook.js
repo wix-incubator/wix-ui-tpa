@@ -7,7 +7,7 @@ const { resolveNamespaceFactory } = require('@stylable/node');
 const autoprefixer = require('autoprefixer')({ grid: true, overrideBrowserslist: ['>1%'] });
 const postcss = require('postcss');
 const autoprefixProcessor = postcss([autoprefixer]);
-const stylableMetadataPlugin = require('./scripts/stylable-metadata-plugin')
+const stylableMetadataPlugin = require('./.storybook/stylable-metadata-plugin')
 
 //TODO - this should be configured inside yoshi
 function reconfigureStylable(config) {
