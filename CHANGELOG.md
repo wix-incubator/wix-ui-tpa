@@ -1,3 +1,19 @@
+# [1.4.0](https://github.com/wix/wix-ui-tpa/compare/v1.3.0...v1.4.0) (2019-11-26)
+
+
+### Bug Fixes
+
+* **infra:** fix tagging ([f47f35c](https://github.com/wix/wix-ui-tpa/commit/f47f35c25328e55187b4e866f5ad4dd8ebc7839a))
+* checkbox box-sizing and line-height issues ([48bf606](https://github.com/wix/wix-ui-tpa/commit/48bf6065a71af1f23ae0e97bfa91ef5498ea9bba))
+* rename ActionsMenuLayout Divider ([9225b26](https://github.com/wix/wix-ui-tpa/commit/9225b267187dbed4e341a92aa5bb5322bbe6647f))
+
+
+### Features
+
+* add SuccessIcon to textField component ([4783b6f](https://github.com/wix/wix-ui-tpa/commit/4783b6f034b0ea13aa98ebc26796ceda22c2a55b))
+
+
+
 # [1.3.0](https://github.com/wix/wix-ui-tpa/compare/v1.2.0...v1.3.0) (2019-11-04)
 
 
