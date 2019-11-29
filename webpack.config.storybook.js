@@ -7,7 +7,6 @@ const { resolveNamespaceFactory } = require('@stylable/node');
 const autoprefixer = require('autoprefixer')({ grid: true, overrideBrowserslist: ['>1%'] });
 const postcss = require('postcss');
 const autoprefixProcessor = postcss([autoprefixer]);
-const stylableMetadataPlugin = require('./.storybook/stylable-metadata-plugin')
 
 //TODO - this should be configured inside yoshi
 function reconfigureStylable(config) {
@@ -58,7 +57,7 @@ module.exports = ({config}) => {
 
                 options: {
                     plugins: [
-                        stylableMetadataPlugin
+                        path.resolve(__dirname, '.storybook/stylable-metadata-plugin.js')
                     ],
                     storyConfig: {
                         moduleName: 'wix-ui-tpa',
