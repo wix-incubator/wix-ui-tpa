@@ -49,6 +49,7 @@ export const TextField: React.FunctionComponent<TextFieldProps> = (
         placement="top-end"
         skin={TooltipSkin.Error}
         content={errorMessage}
+        moveBy={{ x: 5, y: 0 }}
       >
         <ErrorIcon />
       </Tooltip>

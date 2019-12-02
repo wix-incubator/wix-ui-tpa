@@ -115,6 +115,7 @@ export class TextArea extends React.Component<TextAreaProps> {
                     appendTo={'scrollParent'}
                     skin={TooltipSkin.Error}
                     content={errorDescription}
+                    moveBy={{ x: 5, y: 0 }}
                   >
                     <ErrorIcon />
                   </Tooltip>
