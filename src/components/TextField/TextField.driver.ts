@@ -36,6 +36,10 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     return !!element.querySelector('[data-hook="successIcon"]');
   }
 
+  function isFocused() {
+    return inputDriver.getInput() === document.activeElement;
+  }
+
   return {
     ...inputDriver,
     getTheme() {
@@ -49,6 +53,9 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     },
     isError() {
       return isErrorValue();
+    },
+    isFocused() {
+      return isFocused();
     },
     getErrorMessage() {
       return getErrorMessage();

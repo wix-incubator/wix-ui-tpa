@@ -8,6 +8,10 @@ import { mount } from 'enzyme';
 import { textFieldTestkitFactory } from '../../testkit';
 import { textFieldTestkitFactory as enzymeTextFieldTestkitFactory } from '../../testkit/enzyme';
 import { TextFieldTheme } from './TextFieldEnums';
+import {
+  Input as CoreInput,
+  InputProps as CoreInputProps,
+} from 'wix-ui-core/input';
 
 describe('TextField', () => {
   const createDriver = createDriverFactory(textFieldDriverFactory);
@@ -66,6 +70,18 @@ describe('TextField', () => {
       );
       expect(driver.isSuccess()).toEqual(true);
       expect(driver.isSuccessIconExist()).toEqual(true);
+    });
+
+    it('should trigger focus', () => {
+      let ref: React.RefObject<TextField>;
+      ref = React.createRef();
+
+      const driver = createDriver(
+        <TextField ref={ref} success successIcon value={'Theme Test'} />,
+      );
+      expect(driver.isFocused()).toEqual(false);
+      ref.current.focus();
+      expect(driver.isFocused()).toEqual(true);
     });
 
     it('should getErrorMessage', function() {
