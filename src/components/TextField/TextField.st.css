@@ -85,7 +85,7 @@
     font: value(mainTextFont);
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 0;
 }
 
 .root:hover {
@@ -141,11 +141,11 @@
     font-size: 16px;
     line-height: 24px;
     vertical-align: middle;
-    padding: 0;
     border: 0;
     color: value(textColor);
     box-sizing: border-box;
     background-color: transparent;
+    padding: 8px 12px;
 }
 
 .root:hover::nativeInput {
@@ -172,6 +172,8 @@
     justify-content: flex-end;
     white-space: nowrap;
     vertical-align: middle;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 .gap {
