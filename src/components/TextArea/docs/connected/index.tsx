@@ -1,7 +1,10 @@
 import * as React from 'react';
 import styles from './TextAreaOverrides.st.css';
-import { TextArea as TextAreaOrig } from '../../TextArea';
+import { TextArea } from '../../TextArea';
 
-export const TextArea = props => (
-  <TextAreaOrig {...props} {...styles('root', {}, props)} />
+const TextAreaConnected = props => (
+  <TextArea {...props} {...styles('root', {}, props)} />
 );
+TextAreaConnected.displayName = 'TextArea';
+
+export { TextAreaConnected };

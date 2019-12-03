@@ -14,11 +14,9 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { TextArea } from './connected';
-// import { TextArea } from '../../../components/TextArea';
+import { TextAreaConnected as TextArea } from './connected';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-// import { connectedComponent } from '../../../../stories/utils/ComponentWrapper';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -27,7 +25,6 @@ export default {
   category: 'Components',
   storyName: 'TextArea',
   component: TextArea,
-  // componentWrapper: connectedComponent,
   componentPath: '../TextArea.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-TextArea',
