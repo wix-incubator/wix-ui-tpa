@@ -1,3 +1,13 @@
+## [1.4.1](https://github.com/wix/wix-ui-tpa/compare/v1.4.0...v1.4.1) (2019-12-03)
+
+
+### Bug Fixes
+
+* focus outline for TextField component ([4399fcf](https://github.com/wix/wix-ui-tpa/commit/4399fcf5ef8502304438dd8f0f93b86ad006dd9f))
+* TextArea and TextField error tooltip position ([ce9cccb](https://github.com/wix/wix-ui-tpa/commit/ce9cccb658ebb32047b5dbd39a61173d09606720))
+
+
+
 # [1.4.0](https://github.com/wix/wix-ui-tpa/compare/v1.3.0...v1.4.0) (2019-11-26)
 
 
