@@ -27,71 +27,90 @@ export interface TPATextFieldProps extends TPAComponentProps {
 }
 export type TextFieldProps = ErrorProps & TPATextFieldProps & CoreInputProps;
 
-export const TextField: React.FunctionComponent<TextFieldProps> = (
-  props: TextFieldProps,
-) => {
-  const {
-    errorMessage,
-    success = false,
-    successIcon = false,
-    error = false,
-    disabled = false,
-    theme = TextFieldTheme.Box,
-    suffix,
-    ...restProps
-  } = props;
-  let suffixToShow = suffix;
+export class TextField extends React.Component<TextFieldProps> {
+  public TextFieldRef = React.createRef<CoreInput>();
 
-  if (errorMessage && error) {
-    suffixToShow = (
-      <Tooltip
-        appendTo="scrollParent"
-        placement="top-end"
-        skin={TooltipSkin.Error}
-        content={errorMessage}
-        moveBy={{ x: 5, y: 0 }}
-      >
-        <ErrorIcon />
-      </Tooltip>
-    );
-  }
-
-  if (successIcon && success) {
-    suffixToShow = <SuccessIcon data-hook="successIcon" />;
-  }
-
-  const dataObject = {
-    [ERROR_MESSAGE]: errorMessage,
-    [THEME]: theme,
-    [SUCCESS]: success,
-    [ERROR]: error,
-    [EMPTY]: !props.value,
+  public focus = () => {
+    this.TextFieldRef.current.focus();
   };
 
-  return (
-    <CoreInput
-      {...dataObject}
-      {...style(
-        'root',
-        {
-          error,
-          theme,
-          success,
-          disabled,
-        },
-        restProps,
-      )}
-      suffix={
-        suffixToShow && (
-          <div className={style.suffixWrapper}>
-            <div className={style.gap} />
-            {suffixToShow}
-          </div>
-        )
-      }
-      error={error}
-      {...restProps}
-      disabled={disabled}
-    />
-  );
-};
+  getSuffix = () => {
+    const {
+      errorMessage,
+      success = false,
+      successIcon = false,
+      error = false,
+      suffix,
+    } = this.props;
+    let suffixToShow = suffix;
+
+    if (errorMessage && error) {
+      suffixToShow = (
+        <Tooltip
+          appendTo="scrollParent"
+          placement="top-end"
+          skin={TooltipSkin.Error}
+          content={errorMessage}
+          moveBy={{ x: 5, y: 0 }}
+        >
+          <ErrorIcon />
+        </Tooltip>
+      );
+    }
+
+    if (successIcon && success) {
+      suffixToShow = <SuccessIcon data-hook="successIcon" />;
+    }
+    return suffixToShow;
+  };
+
+  render() {
+    const {
+      errorMessage,
+      success = false,
+      successIcon = false,
+      error = false,
+      disabled = false,
+      theme = TextFieldTheme.Box,
+      suffix,
+      ...restProps
+    } = this.props;
+
+    const suffixToShow = this.getSuffix();
+    const dataObject = {
+      [ERROR_MESSAGE]: errorMessage,
+      [THEME]: theme,
+      [SUCCESS]: success,
+      [ERROR]: error,
+      [EMPTY]: !this.props.value,
+    };
+
+    return (
+      <CoreInput
+        {...dataObject}
+        {...style(
+          'root',
+          {
+            error,
+            theme,
+            success,
+            disabled,
+          },
+          restProps,
+        )}
+        ref={this.TextFieldRef}
+        suffix={
+          suffixToShow && (
+            <div className={style.suffixWrapper}>
+              <div className={style.gap} />
+              {suffixToShow}
+            </div>
+          )
+        }
+        error={error}
+        {...restProps}
+        disabled={disabled}
+      />
+    );
+  }
+}

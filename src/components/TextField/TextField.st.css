@@ -85,7 +85,7 @@
     font: value(mainTextFont);
     display: flex;
     align-items: center;
-    padding: 8px 12px;
+    padding: 0;
 }
 
 .root:hover {
@@ -131,7 +131,7 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    padding: 8px 0;
+    padding: 0;
     background-color: color(fallback(value(MainBackgroundColor), value(defaultLineThemeMainBackgroundColor)));
 }
 
@@ -141,11 +141,16 @@
     font-size: 16px;
     line-height: 24px;
     vertical-align: middle;
-    padding: 0;
     border: 0;
     color: value(textColor);
     box-sizing: border-box;
     background-color: transparent;
+    padding: 8px 12px;
+}
+
+.root:theme(line)::nativeInput {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .root:hover::nativeInput {
@@ -165,6 +170,14 @@
     background: applyOpacity(value(mainTextColor), 0.2);
 }
 
+.root:theme(line) .suffixWrapper {
+    padding: 0;
+}
+
+.root:theme(box) .suffixWrapper {
+    padding-left: 12px;
+    padding-right: 12px;
+}
 .suffixWrapper {
     height: 24px;
     display: flex;
