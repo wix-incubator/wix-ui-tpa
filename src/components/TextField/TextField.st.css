@@ -170,10 +170,14 @@
     background: applyOpacity(value(mainTextColor), 0.2);
 }
 
-.root:theme(line).suffixWrapper {
+.root:theme(line) .suffixWrapper {
     padding: 0;
 }
 
+.root:theme(box) .suffixWrapper {
+    padding-left: 12px;
+    padding-right: 12px;
+}
 .suffixWrapper {
     height: 24px;
     display: flex;
@@ -181,8 +185,6 @@
     justify-content: flex-end;
     white-space: nowrap;
     vertical-align: middle;
-    padding-left: 12px;
-    padding-right: 12px;
 }
 
 .gap {
