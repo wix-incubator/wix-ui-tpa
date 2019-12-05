@@ -1,0 +1,19 @@
+
+:import {
+  -st-from: "../../TextArea.st.css";
+  -st-default: TPAMixin;
+}
+
+.root {
+  -st-mixin: TPAMixin(
+      BorderColor --TextArea-BorderColor,
+      BackgroundColor --TextArea-BackgroundColor,
+      TextColor --TextArea-TextColor,
+      DisabledTextColor --TextArea-DisabledTextColor,
+      PlaceholderColor --TextArea-PlaceholderColor,
+      TextFont --TextArea-TextFont,
+      ErrorBorderColor --TextArea-ErrorBorderColor,
+      SuccessBorderColor --TextArea-SuccessBorderColor,
+      DisabledBorderColor --TextArea-DisabledBorderColor
+  );
+}
