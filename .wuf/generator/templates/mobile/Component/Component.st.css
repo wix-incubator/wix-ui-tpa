@@ -3,13 +3,13 @@
     -st-named: color;
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     /*Defaults params goes here*/
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
     /*Deceleration of overridable placeholders*/
 }
 
