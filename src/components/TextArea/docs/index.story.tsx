@@ -92,16 +92,16 @@ export default {
       }),
 
       ...[
-        { title: 'API', sections: [api()] },
-        { title: 'TestKit', sections: [testkit()] },
         {
           title: 'Playground',
           sections: [playground(), autoSettingsPanel()],
         },
+        { title: 'API', sections: [api()] },
         {
-          title: 'Settings API',
+          title: 'Style API',
           sections: [settingsApi()],
         },
+        { title: 'TestKit', sections: [testkit()] },
       ].map(tab),
     ]),
   ],
