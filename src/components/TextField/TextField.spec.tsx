@@ -84,6 +84,19 @@ describe('TextField', () => {
       expect(driver.isFocused()).toEqual(true);
     });
 
+    it('should trigger blur', () => {
+      let ref: React.RefObject<TextField>;
+      ref = React.createRef();
+
+      const driver = createDriver(
+        <TextField ref={ref} success successIcon value={'Theme Test'} />,
+      );
+      ref.current.focus();
+      expect(driver.isFocused()).toEqual(true);
+      ref.current.blur();
+      expect(driver.isFocused()).toEqual(false);
+    });
+
     it('should getErrorMessage', function() {
       const driver = createDriver(
         <TextField error errorMessage={'ErrorMessage'} value={'Theme Test'} />,

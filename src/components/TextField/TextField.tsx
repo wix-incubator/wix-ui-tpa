@@ -34,6 +34,10 @@ export class TextField extends React.Component<TextFieldProps> {
     this.TextFieldRef.current.focus();
   };
 
+  public blur = () => {
+    this.TextFieldRef.current.blur();
+  };
+
   getSuffix = () => {
     const {
       errorMessage,
