@@ -1,3 +1,12 @@
+## [1.4.2](https://github.com/wix/wix-ui-tpa/compare/v1.4.1...v1.4.2) (2019-12-11)
+
+
+### Features
+
+* Text field public blur method ([cc48d19](https://github.com/wix/wix-ui-tpa/commit/cc48d195512eea76a3634527b97a60375efd775b))
+
+
+
 ## [1.4.1](https://github.com/wix/wix-ui-tpa/compare/v1.4.0...v1.4.1) (2019-12-03)
 
 
