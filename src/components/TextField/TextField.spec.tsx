@@ -48,6 +48,9 @@ describe('TextField', () => {
   });
 
   describe('TextFieldTestKit', () => {
+    let ref: React.RefObject<TextField>;
+    ref = React.createRef();
+
     it('should getTheme', function() {
       const driverLine = createDriver(
         <TextField value={'Theme Test'} theme={TextFieldTheme.Line} />,
@@ -73,9 +76,6 @@ describe('TextField', () => {
     });
 
     it('should trigger focus', () => {
-      let ref: React.RefObject<TextField>;
-      ref = React.createRef();
-
       const driver = createDriver(
         <TextField ref={ref} success successIcon value={'Theme Test'} />,
       );
@@ -85,9 +85,6 @@ describe('TextField', () => {
     });
 
     it('should trigger blur', () => {
-      let ref: React.RefObject<TextField>;
-      ref = React.createRef();
-
       const driver = createDriver(
         <TextField ref={ref} success successIcon value={'Theme Test'} />,
       );
