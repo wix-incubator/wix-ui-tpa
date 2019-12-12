@@ -37,3 +37,4 @@ require('../src/components/ColorPicker/docs/index.story');
 require('../src/components/CheckboxGroup/docs/index.story');
 require('../src/components/Dropdown/docs/index.story');
 require('../src/components/NewCard/docs/index.story');
+require('../src/components/SocialBar/docs/index.story');
