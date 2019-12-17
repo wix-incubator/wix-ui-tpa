@@ -1,4 +1,4 @@
-import * as Icons from './assets/icons/index';
+import * as Icons from './assets/icons';
 export { Icons };
 export * from './components/Autocomplete';
 export * from './components/Button';
