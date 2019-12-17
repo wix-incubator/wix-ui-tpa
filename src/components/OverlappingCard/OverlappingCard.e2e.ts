@@ -8,7 +8,7 @@ import { cardTestkitFactory } from '../../testkit/protractor';
 
 describe('OverlappingCard', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Bookings',
     story: 'OverlappingCard',
     withExamples: true,
   });

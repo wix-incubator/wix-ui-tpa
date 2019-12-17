@@ -53,7 +53,7 @@ const infoExample = (
 );
 
 export default {
-  category: 'Components',
+  category: 'Bookings',
   storyName: 'StripCard',
 
   component: StripCard,

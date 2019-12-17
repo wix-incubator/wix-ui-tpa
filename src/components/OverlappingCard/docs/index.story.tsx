@@ -48,7 +48,7 @@ const infoExample = (
 );
 
 export default {
-  category: 'Components',
+  category: 'Bookings',
   storyName: 'OverlappingCard',
   component: OverlappingCard,
   componentPath: '../OverlappingCard.tsx',
