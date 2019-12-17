@@ -8,7 +8,7 @@ import { stripCardTestkitFactory } from '../../testkit/protractor';
 
 describe('stripCard', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Bookings',
     story: 'StripCard',
     withExamples: true,
   });
