@@ -6,7 +6,7 @@ function loadStories() {
   require('../mocks');
 
   const req = require.context('../src', true, /\.visual\.tsx$/);
-  req.keys().forEach(filename => req(filename));
+  req.keys().forEach(req);
 
   setTimeout(init);
 }

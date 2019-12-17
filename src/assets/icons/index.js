@@ -1,10 +1,23 @@
-export { ReactComponent as CaretDown } from './CaretDown.svg';
-export { ReactComponent as Check } from './Check.svg';
-export { ReactComponent as CheckSuccess } from './CheckSuccess.svg';
-export { ReactComponent as Close } from './Close.svg';
-export { ReactComponent as Error } from './Error.svg';
-export { ReactComponent as Heart } from './Heart.svg';
-export { ReactComponent as Minus } from './minus.svg';
-export { ReactComponent as Plus } from './plus.svg';
-export { ReactComponent as Share } from './Share.svg';
-export { ReactComponent as Star } from './Star.svg';
+const CaretDown = require('./CaretDown.svg').ReactComponent;
+const Check = require('./Check.svg').ReactComponent;
+const CheckSuccess = require('./CheckSuccess.svg').ReactComponent;
+const Close = require('./Close.svg').ReactComponent;
+const Error = require('./Error.svg').ReactComponent;
+const Heart = require('./Heart.svg').ReactComponent;
+const Minus = require('./minus.svg').ReactComponent;
+const Plus = require('./plus.svg').ReactComponent;
+const Share = require('./Share.svg').ReactComponent;
+const Star = require('./Star.svg').ReactComponent;
+
+module.exports = {
+  CaretDown,
+  Check,
+  CheckSuccess,
+  Close,
+  Error,
+  Heart,
+  Minus,
+  Plus,
+  Share,
+  Star,
+};
