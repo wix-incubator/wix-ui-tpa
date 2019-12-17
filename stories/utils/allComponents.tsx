@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as componentsScope from '../../src/components';
-import * as icons from '../../src/assets/icons';
+import * as icons from '../../src/assets/icons/index';
 import * as iconsScope from 'wix-ui-icons-common';
 
 /*

@@ -5,10 +5,10 @@ import {
   PaginationProps as CorePaginationProps,
 } from 'wix-ui-core/pagination';
 
-import { DoubleChevronLeft } from '../../assets/icons/DoubleChevronLeft';
-import { DoubleChevronRight } from '../../assets/icons/DoubleChevronRight';
-import { ChevronLeft } from '../../assets/icons/ChevronLeft';
-import { ChevronRight } from '../../assets/icons/ChevronRight';
+import { DoubleChevronLeft } from '../icons/DoubleChevronLeft';
+import { DoubleChevronRight } from '../icons/DoubleChevronRight';
+import { ChevronLeft } from '../icons/ChevronLeft';
+import { ChevronRight } from '../icons/ChevronRight';
 
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
