@@ -5,7 +5,7 @@
 }
 
 .root {
-    -st-states: mobile, shouldAnimate, isShown, skin(enum(success, error, status));
+    -st-states: mobile, shouldAnimate, isShown, skin(enum(success, error, status)), placement(enum(bottomFullWidth));
     display: inline-flex;
     color: #FFFFFF;
     border-radius: 2px;
@@ -35,6 +35,13 @@
 
 .root:skin(status) {
     background-color: value(statusColor);
+}
+
+.root:placement(bottomFullWidth) {
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
 }
 
 .gapBeforeMessage,

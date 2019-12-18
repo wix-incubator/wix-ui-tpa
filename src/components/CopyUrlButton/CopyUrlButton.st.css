@@ -1,0 +1,65 @@
+:import {
+  -st-from: "../SocialBar/SocialBar.st.css";
+  -st-named: themed-text;
+}
+/*Defaults*/
+:vars {
+  /*Defaults params goes here*/
+}
+
+/*Overrides*/
+:vars {
+  /*Deceleration of overridable placeholders*/
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce-in 0.5s ease 0s 1 normal;
+}
+
+.success-mobile {
+  display: flex;
+  align-items: center;
+}
+
+.success-text {
+  -st-extends: themed-text;
+  position: relative;
+  top: 14px;
+}
+
+.success-text-mobile {
+  padding-left: 10px;
+}
+
+.copy-input {
+  position: absolute;
+  left: -9999px;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  32% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+  68% {
+    transform: translateY(2px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

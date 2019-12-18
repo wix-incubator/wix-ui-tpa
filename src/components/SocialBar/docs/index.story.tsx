@@ -18,20 +18,56 @@ import * as SocialBarWiringExampleRaw from '!raw-loader!./SocialBarWiringExample
 import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExample.st.css';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { SocialBar } from '../';
+import { IconButton } from '../../IconButton';
+import { Share } from '../../../assets/icons';
+import { CopyUrlButton } from '../../CopyUrlButton';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: 'Components/Share',
   storyName: 'SocialBar',
   component: SocialBar,
   componentPath: '../SocialBar.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-SocialBar',
+    theme: 'light',
+    children: (
+      <>
+        <SocialBar.Icon tooltip="Facebook">
+          <IconButton
+            icon={<Share />}
+            as="a"
+            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+          />
+        </SocialBar.Icon>
+        <SocialBar.Icon tooltip="Twitter">
+          <IconButton
+            icon={<Share />}
+            as="a"
+            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+          />
+        </SocialBar.Icon>
+        <SocialBar.Icon tooltip="Github">
+          <IconButton
+            icon={<Share />}
+            as="a"
+            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+          />
+        </SocialBar.Icon>
+        <SocialBar.Icon>
+          <CopyUrlButton
+            tooltipText="Copy Link"
+            successText="Link Copied"
+            url="https://google.com"
+          />
+        </SocialBar.Icon>
+      </>
+    ),
   }),
   exampleProps: {
-    //
+    theme: ['light', 'dark'],
   },
   dataHook: 'storybook-SocialBar',
   sections: [
@@ -48,7 +84,10 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[
+            { title: 'Example', source: examples.example },
+            { title: 'Mobile', source: examples.mobileExample },
+          ].map(code),
         ],
       }),
 

@@ -1,47 +1,27 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
+import { SocialBarIcon } from './SocialBarIcon';
+
 import styles from './SocialBar.st.css';
 
+export type SocialBarTheme = 'light' | 'dark';
+
 export interface SocialBarProps {
-  buttonText: string;
+  theme?: SocialBarTheme;
 }
 
 interface DefaultProps {
-  buttonText: string;
-}
-
-interface State {
-  count: number;
+  theme: SocialBarTheme;
 }
 
 /** SocialBar */
-export class SocialBar extends React.Component<SocialBarProps, State> {
+export class SocialBar extends React.Component<SocialBarProps> {
+  static Icon = SocialBarIcon;
   static displayName = 'SocialBar';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
-
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
-  };
+  static defaultProps: DefaultProps = { theme: 'light' };
 
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+    const { theme, children, ...rest } = this.props;
 
-    return (
-      <div {...styles('root', {}, rest)}>
-        <Text {...styles('number', { even: isEven, odd: !isEven })}>
-          You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
-          times
-        </Text>
-
-        <div className={styles.button}>
-          <Button onClick={this._handleClick}>{buttonText}</Button>
-        </div>
-      </div>
-    );
+    return <div {...styles('root', { theme }, rest)}>{children}</div>;
   }
 }

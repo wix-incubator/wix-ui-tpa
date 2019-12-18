@@ -7,6 +7,6 @@ SocialBarMetadata.nonReactStrictModeCompliant = true;
 SocialBarMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
+    theme: 'light',
   },
 });

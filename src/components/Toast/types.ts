@@ -16,6 +16,7 @@ export interface ToastProps extends TPAComponentProps {
   shouldShowCloseButton?: boolean;
   /** Callback function, will be called when click on close button */
   onClose?(event: MouseEvent): void;
+  placement?: 'inline' | 'bottomFullWidth';
 }
 
 export interface DefaultProps {

@@ -1,18 +1,64 @@
 :import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
+  -st-from: "../../common/formatters.st";
+  -st-named: color;
+}
+
+:import {
+  -st-from: "../IconButton/IconButton.st.css";
+  -st-default: IconButton;
 }
 
 /*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+  /*Defaults params goes here*/
 }
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+  /*Deceleration of overridable placeholders*/
+}
+.root {
+  -st-states: theme(enum(light, dark));
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 50px;
 }
 
-.root {
-    /*css goes here*/
+/* imported */
+.themed-icon {
+
+}
+
+/* imported */
+.themed-text {
+
+}
+
+.root:theme(light) .themed-text {
+  color: black;
+}
+
+.root:theme(dark) .themed-text {
+  color: white;
+}
+
+.root:theme(light) .themed-icon path,
+.root:theme(light) .icon .IconButton path {
+  fill: black !important;
+  stroke: black !important;
+}
+
+
+.root:theme(dark) .themed-icon path,
+.root:theme(dark) .icon .IconButton path {
+  fill: white !important;
+  stroke: white !important;
+}
+
+.icon {
+  width: 76px;
+  justify-content: center;
+  display: flex;
 }
