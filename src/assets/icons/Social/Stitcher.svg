@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="10px" viewBox="0 0 24 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>🎨 Color</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M4,9 L4,17 L0,17 L0,9 L4,9 Z M14,9 L14,17 L10,17 L10,9 L14,9 Z M9,8 L9,16 L5,16 L5,8 L9,8 Z M19,7 L19,16 L15,16 L15,7 L19,7 Z M24,9 L24,15 L20,15 L20,9 L24,9 Z" id="path-1"></path>
+    </defs>
+    <g id="💟-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="09-Icons-/-Social-/-Stitcher" transform="translate(0.000000, -7.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="🎨-Color" fill="#000000" xlink:href="#path-1"></use>
+        </g>
+    </g>
+</svg>
