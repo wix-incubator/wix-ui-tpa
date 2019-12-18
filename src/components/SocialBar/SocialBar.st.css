@@ -47,18 +47,18 @@
 .root:theme(light) .themed-icon path,
 .root:theme(light) .icon .IconButton path {
   fill: black !important;
-  stroke: black !important;
+  stroke: none !important;
 }
 
 
 .root:theme(dark) .themed-icon path,
 .root:theme(dark) .icon .IconButton path {
   fill: white !important;
-  stroke: white !important;
+  stroke: none !important;
 }
 
 .icon {
-  width: 76px;
+  width: 72px;
   justify-content: center;
   display: flex;
 }

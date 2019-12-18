@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styles from './CopyUrlButton.st.css';
 import socialBarStyles from '../SocialBar/SocialBar.st.css';
-import { IconButton, IconButtonProps } from '../IconButton';
-import { Share, Check } from '../../assets/icons';
+import { IconButton, IconButtonProps, Skins } from '../IconButton';
+import { Check, SocialIcons } from '../../assets/icons';
 import { Tooltip } from '../Tooltip';
 import { TPAComponentProps } from '../../types';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
@@ -48,7 +48,7 @@ export class CopyUrlButton extends React.Component<
     }
     return (
       <div {...styles('success')}>
-        <Check {...socialBarStyles('themed-icon')} height={17} width={17} />
+        <Check {...socialBarStyles('themed-icon')} height={19} width={19} />
         <span {...styles('success-text')}>{successText}</span>
       </div>
     );
@@ -84,7 +84,12 @@ export class CopyUrlButton extends React.Component<
         placement="bottom"
         disabled={mobile}
       >
-        <IconButton as="button" icon={<Share />} onClick={this.onButtonClick} />
+        <IconButton
+          as="button"
+          skin={Skins.Full}
+          icon={<SocialIcons.CopyLink />}
+          onClick={this.onButtonClick}
+        />
       </Tooltip>
     );
   };

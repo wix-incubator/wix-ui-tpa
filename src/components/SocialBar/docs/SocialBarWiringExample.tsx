@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SocialBar } from '../';
 import styles from './SocialBarWiringExample.st.css';
 import { IconButton } from '../../IconButton';
-import { Share } from '../../../assets/icons';
+import { Share, SocialIcons } from '../../../assets/icons';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 export const SocialBarWiringExample = () => {
@@ -10,21 +10,35 @@ export const SocialBarWiringExample = () => {
     <SocialBar theme="light">
       <SocialBar.Icon tooltip="Facebook">
         <IconButton
-          icon={<Share />}
+          icon={<SocialIcons.Facebook />}
           as="a"
           href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
         />
       </SocialBar.Icon>
-      <SocialBar.Icon tooltip="Facebook">
+      <SocialBar.Icon tooltip="Instagram">
         <IconButton
-          icon={<Share />}
+          icon={<SocialIcons.Instagram />}
           as="a"
           href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
         />
       </SocialBar.Icon>
-      <SocialBar.Icon tooltip="Facebook">
+      <SocialBar.Icon tooltip="Linkedin">
         <IconButton
-          icon={<Share />}
+          icon={<SocialIcons.Linkedin />}
+          as="a"
+          href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+        />
+      </SocialBar.Icon>
+      <SocialBar.Icon tooltip="Tumblr">
+        <IconButton
+          icon={<SocialIcons.Tumblr />}
+          as="a"
+          href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+        />
+      </SocialBar.Icon>
+      <SocialBar.Icon tooltip="Pinterest">
+        <IconButton
+          icon={<SocialIcons.Pinterest />}
           as="a"
           href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
         />

@@ -8,3 +8,5 @@ export { ReactComponent as Minus } from './minus.svg';
 export { ReactComponent as Plus } from './plus.svg';
 export { ReactComponent as Share } from './Share.svg';
 export { ReactComponent as Star } from './Star.svg';
+import * as SocialIcons from './Social';
+export { SocialIcons };

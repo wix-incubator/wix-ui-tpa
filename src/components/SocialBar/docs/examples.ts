@@ -3,21 +3,35 @@ const socialBar = `
   <SocialBar>
     <SocialBar.Icon tooltip='Facebook'>
       <IconButton
-        icon={<Share/>}
-        as="a"
-        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-      />
-    </SocialBar.Icon>
-    <SocialBar.Icon tooltip='Twitter'>
-      <IconButton
-        icon={<Share/>}
+        icon={<SocialIcons.Facebook/>}
         as="a"
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />
     </SocialBar.Icon>
     <SocialBar.Icon tooltip='Instagram'>
       <IconButton
-        icon={<Share/>}
+        icon={<SocialIcons.Instagram />}
+        as="a"
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />
+    </SocialBar.Icon>
+    <SocialBar.Icon tooltip='Linkedin'>
+      <IconButton
+        icon={<SocialIcons.Linkedin/>}
+        as="a"
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />
+    </SocialBar.Icon>
+    <SocialBar.Icon tooltip='Tumblr'>
+      <IconButton
+        icon={<SocialIcons.Tumblr/>}
+        as="a"
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />
+    </SocialBar.Icon>
+    <SocialBar.Icon tooltip='Pinterest'>
+      <IconButton
+        icon={<SocialIcons.Pinterest/>}
         as="a"
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />

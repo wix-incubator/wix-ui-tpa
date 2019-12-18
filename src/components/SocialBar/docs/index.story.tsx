@@ -19,7 +19,7 @@ import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExam
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { SocialBar } from '../';
 import { IconButton } from '../../IconButton';
-import { Share } from '../../../assets/icons';
+import { Share, SocialIcons } from '../../../assets/icons';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 const code = config =>
@@ -37,21 +37,35 @@ export default {
       <>
         <SocialBar.Icon tooltip="Facebook">
           <IconButton
-            icon={<Share />}
+            icon={<SocialIcons.Facebook />}
             as="a"
             href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
           />
         </SocialBar.Icon>
-        <SocialBar.Icon tooltip="Twitter">
+        <SocialBar.Icon tooltip="Instagram">
           <IconButton
-            icon={<Share />}
+            icon={<SocialIcons.Instagram />}
             as="a"
             href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
           />
         </SocialBar.Icon>
-        <SocialBar.Icon tooltip="Github">
+        <SocialBar.Icon tooltip="Linkedin">
           <IconButton
-            icon={<Share />}
+            icon={<SocialIcons.Linkedin />}
+            as="a"
+            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+          />
+        </SocialBar.Icon>
+        <SocialBar.Icon tooltip="Tumblr">
+          <IconButton
+            icon={<SocialIcons.Tumblr />}
+            as="a"
+            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+          />
+        </SocialBar.Icon>
+        <SocialBar.Icon tooltip="Pinterest">
+          <IconButton
+            icon={<SocialIcons.Pinterest />}
             as="a"
             href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
           />
