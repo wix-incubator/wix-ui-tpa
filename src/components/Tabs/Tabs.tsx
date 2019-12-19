@@ -145,7 +145,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     if (newNavButtons !== navButtons) {
       this.setState({ navButtons: newNavButtons });
     }
-  }
+  };
 
   _onResize = () => {
     clearTimeout(this._resizeTimer);
