@@ -12,7 +12,7 @@ import style from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
-const SCROLL_EPSILON = 0.5;
+const SCROLL_EPSILON = 1;
 
 export const enum NavButtonOptions {
   both = 'both',
