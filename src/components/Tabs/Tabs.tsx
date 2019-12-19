@@ -12,6 +12,8 @@ import style from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
+const SCROLL_EPSILON = 1;
+
 export const enum NavButtonOptions {
   both = 'both',
   left = 'left',
@@ -118,24 +120,15 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     }
   };
 
-  _onScroll = () => {
-    const { navButtons } = this.state;
-    const newNavButtons = this._getNewNavButtons();
-
-    if (newNavButtons !== navButtons) {
-      this.setState({ navButtons: newNavButtons });
-    }
-  };
-
   _getNewNavButtons() {
     const scrollPosition = this._tabsRef.getNavScrollPosition();
     let newNavButtons = NavButtonOptions.none;
 
-    if (scrollPosition.scrollLeft) {
+    if (scrollPosition.scrollLeft >= SCROLL_EPSILON) {
       newNavButtons = NavButtonOptions.left;
     }
 
-    if (scrollPosition.scrollRight) {
+    if (scrollPosition.scrollRight >= SCROLL_EPSILON) {
       newNavButtons =
         newNavButtons === NavButtonOptions.none
           ? NavButtonOptions.right
@@ -145,14 +138,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     return newNavButtons;
   }
 
-  _updateButtonsIfNeeded() {
+  _updateButtonsIfNeeded = () => {
     const { navButtons } = this.state;
     const newNavButtons = this._getNewNavButtons();
 
     if (newNavButtons !== navButtons) {
       this.setState({ navButtons: newNavButtons });
     }
-  }
+  };
 
   _onResize = () => {
     clearTimeout(this._resizeTimer);
@@ -198,7 +191,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               items={items}
               className={style.navigation}
               onClickItem={this._onClickItem}
-              onScroll={this._onScroll}
+              onScroll={this._updateButtonsIfNeeded}
               activeTabIndex={selectedTab}
               animateIndicator={animateIndicator}
               ref={this._tabsRefCallback}
