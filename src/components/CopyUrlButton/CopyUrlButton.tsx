@@ -43,21 +43,21 @@ export class CopyUrlButton extends React.Component<
           shouldAnimate
           isShown
         >
-          <div {...styles('success-mobile')}>
+          <div className={styles.successMobile}>
             <Check height={13} width={13} />
-            <span {...styles('success-text-mobile')}>{successText}</span>
+            <span className={styles.successTextMobile}>{successText}</span>
           </div>
         </Toast>
       );
     }
     return (
-      <div {...styles('success')}>
+      <div className={styles.success}>
         <Check
-          {...styles('check-icon', { theme: socialBarTheme })}
+          {...styles('checkIcon', { theme: socialBarTheme })}
           height={19}
           width={19}
         />
-        <span {...styles('success-text', { theme: socialBarTheme })}>
+        <span {...styles('successText', { theme: socialBarTheme })}>
           {successText}
         </span>
       </div>
@@ -108,7 +108,7 @@ export class CopyUrlButton extends React.Component<
           {({ mobile }) => (
             <div {...styles('root', {}, oherProps)}>
               <input
-                {...styles('copy-input')}
+                className={styles.copyInput}
                 ref={this.inputRef}
                 value={url}
                 readOnly

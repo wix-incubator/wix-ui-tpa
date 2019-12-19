@@ -1,12 +1,3 @@
-:import {
-  -st-from: "../../common/formatters.st";
-  -st-named: color;
-}
-
-:import {
-  -st-from: "../IconButton/IconButton.st.css";
-  -st-default: IconButton;
-}
 
 /*Defaults*/
 :vars {

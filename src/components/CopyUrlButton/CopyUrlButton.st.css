@@ -15,16 +15,16 @@
 }
 
 
-.check-icon {
+.checkIcon {
   -st-states: theme(enum(light, dark));
 }
 
 
-.check-icon:theme(light) path {
+.checkIcon:theme(light) path {
   fill: black;
 }
 
-.check-icon:theme(dark) path {
+.checkIcon:theme(dark) path {
   fill: white;
 }
 
@@ -36,30 +36,30 @@
   animation: bounce-in 0.5s ease 0s 1 normal;
 }
 
-.success-mobile {
+.successMobile {
   display: flex;
   align-items: center;
 }
 
-.success-text {
+.successText {
   -st-states: theme(enum(light, dark));
   position: relative;
   top: 14px;
 }
 
-.success-text:theme(light) {
+.successText:theme(light) {
   color: black;
 }
 
-.success-text:theme(dark) {
+.successText:theme(dark) {
   color: white;
 }
 
-.success-text-mobile {
+.successTextMobile {
   padding-left: 10px;
 }
 
-.copy-input {
+.copyInput {
   position: absolute;
   left: -9999px;
 }
