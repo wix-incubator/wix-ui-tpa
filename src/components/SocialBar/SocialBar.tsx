@@ -13,6 +13,10 @@ interface DefaultProps {
   theme: SocialBarTheme;
 }
 
+export interface SocialBarInjectedProps {
+  socialBarTheme: SocialBarTheme;
+}
+
 /** SocialBar */
 export class SocialBar extends React.Component<SocialBarProps> {
   static Icon = SocialBarIcon;
@@ -22,6 +26,17 @@ export class SocialBar extends React.Component<SocialBarProps> {
   render() {
     const { theme, children, ...rest } = this.props;
 
-    return <div {...styles('root', { theme }, rest)}>{children}</div>;
+    const childProps: SocialBarInjectedProps = { socialBarTheme: theme };
+
+    return (
+      <div {...styles('root', { theme }, rest)}>
+        {React.Children.map(children, child => {
+          if (!React.isValidElement(child)) {
+            return child;
+          }
+          return React.cloneElement(child, childProps);
+        })}
+      </div>
+    );
   }
 }

@@ -17,47 +17,16 @@
 :vars {
   /*Deceleration of overridable placeholders*/
 }
-.root {
-  -st-states: theme(enum(light, dark));
 
+.root {
   display: flex;
   flex-direction: row;
   justify-content: center;
   height: 50px;
 }
 
-/* imported */
-.themed-icon {
 
-}
-
-/* imported */
-.themed-text {
-
-}
-
-.root:theme(light) .themed-text {
-  color: black;
-}
-
-.root:theme(dark) .themed-text {
-  color: white;
-}
-
-.root:theme(light) .themed-icon path,
-.root:theme(light) .icon .IconButton path {
-  fill: black !important;
-  stroke: none !important;
-}
-
-
-.root:theme(dark) .themed-icon path,
-.root:theme(dark) .icon .IconButton path {
-  fill: white !important;
-  stroke: none !important;
-}
-
-.icon {
+.root > * {
   width: 72px;
   justify-content: center;
   display: flex;

@@ -1,16 +1,18 @@
 import * as React from 'react';
 import styles from './CopyUrlButton.st.css';
-import socialBarStyles from '../SocialBar/SocialBar.st.css';
-import { IconButton, IconButtonProps, Skins } from '../IconButton';
+import { IconButtonProps } from '../IconButton';
 import { Check, SocialIcons } from '../../assets/icons';
-import { Tooltip } from '../Tooltip';
 import { TPAComponentProps } from '../../types';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN } from '../Toast';
+import { SocialBarInjectedProps } from '../SocialBar';
+import { SocialBarIcon } from '../SocialBar/SocialBarIcon';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
-export interface CopyUrlButtonProps extends TPAComponentProps {
+export interface CopyUrlButtonProps
+  extends TPAComponentProps,
+    SocialBarInjectedProps {
   url: string;
   successText: string;
   tooltipText: string;
@@ -25,11 +27,13 @@ export class CopyUrlButton extends React.Component<
   CopyUrlButtonProps,
   CopyUrlButtonState
 > {
+  static defaultProps = { socialBarTheme: 'light' };
+
   state: CopyUrlButtonState = { success: false };
   inputRef = React.createRef<HTMLInputElement>();
 
   renderSuccess = ({ mobile }: { mobile: boolean }) => {
-    const { successText } = this.props;
+    const { successText, socialBarTheme } = this.props;
 
     if (mobile) {
       return (
@@ -48,8 +52,14 @@ export class CopyUrlButton extends React.Component<
     }
     return (
       <div {...styles('success')}>
-        <Check {...socialBarStyles('themed-icon')} height={19} width={19} />
-        <span {...styles('success-text')}>{successText}</span>
+        <Check
+          {...styles('check-icon', { theme: socialBarTheme })}
+          height={19}
+          width={19}
+        />
+        <span {...styles('success-text', { theme: socialBarTheme })}>
+          {successText}
+        </span>
       </div>
     );
   };
@@ -71,26 +81,20 @@ export class CopyUrlButton extends React.Component<
 
   renderIconButton = ({ mobile }: { mobile: boolean }) => {
     const { success } = this.state;
-    const { tooltipText } = this.props;
+    const { tooltipText, socialBarTheme } = this.props;
 
     if (success && !mobile) {
       return null;
     }
 
     return (
-      <Tooltip
-        appendTo="scrollParent"
-        content={tooltipText}
-        placement="bottom"
-        disabled={mobile}
-      >
-        <IconButton
-          as="button"
-          skin={Skins.Full}
-          icon={<SocialIcons.CopyLink />}
-          onClick={this.onButtonClick}
-        />
-      </Tooltip>
+      <SocialBarIcon
+        tooltip={tooltipText}
+        socialBarTheme={socialBarTheme}
+        icon={<SocialIcons.CopyLink />}
+        onClick={this.onButtonClick}
+        as="button"
+      />
     );
   };
 
@@ -99,20 +103,22 @@ export class CopyUrlButton extends React.Component<
     const { url, ...oherProps } = this.props;
 
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div {...styles('root', {}, oherProps)}>
-            <input
-              {...styles('copy-input')}
-              ref={this.inputRef}
-              value={url}
-              readOnly
-            />
-            {this.renderIconButton({ mobile })}
-            {success && this.renderSuccess({ mobile })}
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <div>
+        <TPAComponentsConsumer>
+          {({ mobile }) => (
+            <div {...styles('root', {}, oherProps)}>
+              <input
+                {...styles('copy-input')}
+                ref={this.inputRef}
+                value={url}
+                readOnly
+              />
+              {this.renderIconButton({ mobile })}
+              {success && this.renderSuccess({ mobile })}
+            </div>
+          )}
+        </TPAComponentsConsumer>
+      </div>
     );
   }
 }

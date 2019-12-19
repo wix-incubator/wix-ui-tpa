@@ -1,1 +1,1 @@
-export { SocialBar, SocialBarProps } from './SocialBar';
+export { SocialBar, SocialBarProps, SocialBarInjectedProps } from './SocialBar';

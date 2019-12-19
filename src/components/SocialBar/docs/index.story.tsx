@@ -18,7 +18,6 @@ import * as SocialBarWiringExampleRaw from '!raw-loader!./SocialBarWiringExample
 import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExample.st.css';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { SocialBar } from '../';
-import { IconButton } from '../../IconButton';
 import { Share, SocialIcons } from '../../../assets/icons';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
@@ -33,52 +32,51 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-SocialBar',
     theme: 'light',
-    children: (
-      <>
-        <SocialBar.Icon tooltip="Facebook">
-          <IconButton
-            icon={<SocialIcons.Facebook />}
-            as="a"
-            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-          />
-        </SocialBar.Icon>
-        <SocialBar.Icon tooltip="Instagram">
-          <IconButton
-            icon={<SocialIcons.Instagram />}
-            as="a"
-            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-          />
-        </SocialBar.Icon>
-        <SocialBar.Icon tooltip="Linkedin">
-          <IconButton
-            icon={<SocialIcons.Linkedin />}
-            as="a"
-            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-          />
-        </SocialBar.Icon>
-        <SocialBar.Icon tooltip="Tumblr">
-          <IconButton
-            icon={<SocialIcons.Tumblr />}
-            as="a"
-            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-          />
-        </SocialBar.Icon>
-        <SocialBar.Icon tooltip="Pinterest">
-          <IconButton
-            icon={<SocialIcons.Pinterest />}
-            as="a"
-            href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-          />
-        </SocialBar.Icon>
-        <SocialBar.Icon>
-          <CopyUrlButton
-            tooltipText="Copy Link"
-            successText="Link Copied"
-            url="https://google.com"
-          />
-        </SocialBar.Icon>
-      </>
-    ),
+    children: [
+      /* tslint:disable */
+      <SocialBar.Icon
+        key={1}
+        tooltip="Facebook"
+        icon={
+          <SocialIcons.Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
+        }
+      />,
+      <SocialBar.Icon
+        key={2}
+        tooltip="Instagram"
+        icon={<SocialIcons.Instagram />}
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />,
+
+      <SocialBar.Icon
+        key={3}
+        tooltip="Linkedin"
+        icon={<SocialIcons.Linkedin />}
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />,
+
+      <SocialBar.Icon
+        key={4}
+        tooltip="Tumblr"
+        icon={<SocialIcons.Tumblr />}
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />,
+
+      <SocialBar.Icon
+        key={5}
+        tooltip="Pinterest"
+        icon={<SocialIcons.Pinterest />}
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />,
+
+      <CopyUrlButton
+        key={6}
+        tooltipText="Copy Link"
+        successText="Link Copied"
+        url="https://google.com"
+      />,
+      /* tslint:enable */
+    ],
   }),
   exampleProps: {
     theme: ['light', 'dark'],
