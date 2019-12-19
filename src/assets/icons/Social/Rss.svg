@@ -1,17 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
-    <title>🎨 Color</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M6.05737682e-13,8 C8.836556,8 16,15.163444 16,24 L16,24 L12,24 C12,17.372583 6.627417,12 6.05737682e-13,12 L6.05737682e-13,12 Z M0,0 C13.254834,0 24,10.745166 24,24 L24,24 L20,24 C20,18.6956702 17.8928632,13.6085919 14.1421356,9.85786438 C10.3914081,6.10713681 5.3043298,4 0,4 L0,4 Z M4,16 C6.209139,16 8,17.790861 8,20 C8,22.209139 6.209139,24 4,24 C1.790861,24 -6.06181771e-13,22.209139 -6.06181771e-13,20 C-6.06181771e-13,17.790861 1.790861,16 4,16 Z" id="path-1"></path>
-    </defs>
-    <g id="💟-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="09-Icons-/-Social-/-RSS">
-            <mask id="mask-2" fill="white">
-                <use xlink:href="#path-1"></use>
-            </mask>
-            <use id="🎨-Color" fill="#000000" xlink:href="#path-1"></use>
-        </g>
-    </g>
-</svg>
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M0 8c8.837 0 16 7.163 16 16h-4c0-6.627-5.373-12-12-12zm0-8c13.255 0 24 10.745 24 24h-4A20 20 0 000 4zm4 16a4 4 0 110 8 4 4 0 010-8z" id="a"/></defs><use fill="#000" xlink:href="#a" fill-rule="evenodd"/></svg>
