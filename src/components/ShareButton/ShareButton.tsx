@@ -1,12 +1,9 @@
 import * as React from 'react';
 import styles from './ShareButton.st.css';
-import { TPAComponentProps } from '../../types';
+import { ButtonProps } from '../Button';
+import { ButtonNext } from 'wix-ui-core/button-next';
 
-interface RenderButtonProps {
-  onClick: React.HTMLAttributes<HTMLButtonElement>['onClick'];
-}
-export interface ShareButtonProps extends TPAComponentProps {
-  renderButton(props: RenderButtonProps): JSX.Element;
+export interface ShareButtonProps extends Omit<ButtonProps, 'onClick'> {
   onClick(sharePromise: Promise<void> | undefined): void;
   url: string;
   text?: string;
@@ -23,7 +20,7 @@ declare global {
 export class ShareButton extends React.Component<ShareButtonProps> {
   static displayName = 'ShareButton';
 
-  onButtonClick: RenderButtonProps['onClick'] = () => {
+  onButtonClick: ButtonProps['onClick'] = () => {
     let sharePromise: Promise<void> | undefined;
     const { url, text, title } = this.props;
     const data = { url, text, title };
@@ -35,10 +32,13 @@ export class ShareButton extends React.Component<ShareButtonProps> {
   };
 
   render() {
-    const { renderButton, ...rest } = this.props;
-
-    const button = renderButton({ onClick: this.onButtonClick });
-
-    return <div {...styles('root', {}, rest)}>{button}</div>;
+    const { ...rest } = this.props;
+    return (
+      <ButtonNext
+        {...styles('root', {}, rest)}
+        {...rest}
+        onClick={this.onButtonClick}
+      />
+    );
   }
 }

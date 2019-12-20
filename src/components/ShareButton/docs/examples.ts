@@ -4,11 +4,11 @@ export const example = `
 <ShareButton
     title="Share title"
     url="https://wix.com"
-    renderButton={props => <IconButton {...props} icon={<Share />} />}
+    prefixIcon={<Share />}
     onClick={ sharePromise=>{
         if (!sharePromise) {
             alert('share clicked')
         }
     }}
-/>
+>Share</ShareButton>
 `;
