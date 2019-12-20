@@ -34,7 +34,11 @@ export class SocialBar extends React.Component<SocialBarProps> {
           if (!React.isValidElement(child)) {
             return child;
           }
-          return React.cloneElement(child, childProps);
+          return (
+            <div className={styles.item}>
+              {React.cloneElement(child, childProps)}
+            </div>
+          );
         })}
       </div>
     );

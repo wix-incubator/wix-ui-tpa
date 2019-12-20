@@ -103,22 +103,20 @@ export class CopyUrlButton extends React.Component<
     const { url, ...oherProps } = this.props;
 
     return (
-      <div>
-        <TPAComponentsConsumer>
-          {({ mobile }) => (
-            <div {...styles('root', {}, oherProps)}>
-              <input
-                className={styles.copyInput}
-                ref={this.inputRef}
-                value={url}
-                readOnly
-              />
-              {this.renderIconButton({ mobile })}
-              {success && this.renderSuccess({ mobile })}
-            </div>
-          )}
-        </TPAComponentsConsumer>
-      </div>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div {...styles('root', {}, oherProps)}>
+            <input
+              className={styles.copyInput}
+              ref={this.inputRef}
+              value={url}
+              readOnly
+            />
+            {this.renderIconButton({ mobile })}
+            {success && this.renderSuccess({ mobile })}
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }

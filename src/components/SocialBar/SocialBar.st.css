@@ -17,7 +17,7 @@
 }
 
 
-.root > * {
+.item {
   width: 72px;
   justify-content: center;
   display: flex;
