@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { ProGallery } from './';
+import {ProGallery, ProGalleryProps} from './';
+import {TextFieldProps} from '../TextField';
 
-class ProGalleryVisual extends React.Component<any> {
+class ProGalleryVisual extends React.Component<ProGalleryProps> {
+  static defaultProps: ProGalleryProps = {
+    width: 1000,
+    height:1000,
+    };
+
   render() {
     return (
       <VisualTestContainer>
@@ -12,14 +18,24 @@ class ProGalleryVisual extends React.Component<any> {
     );
   }
 }
+interface Test {
+  describe: string;
+  its: {
+    it: string;
+    props: Partial<ProGalleryProps>;
+  }[];
+}
 
-const tests = [
+const tests: Test[] = [
   {
     describe: 'basic',
     its: [
       {
         it: 'default',
-        props: {},
+        props: {
+          width: 300,
+          height: 300,
+        },
       },
     ],
   },

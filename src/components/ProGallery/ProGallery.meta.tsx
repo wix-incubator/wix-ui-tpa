@@ -7,6 +7,7 @@ ProGalleryMetadata.nonReactStrictModeCompliant = true;
 ProGalleryMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    width: 1000,
+    height: 1000,
   },
 });
