@@ -1,10 +1,4 @@
-import {
-  Alignment,
-  ImageMode,
-  ProGalleryLayout,
-  ProGalleryOptions,
-} from '../types';
-
+import { ProGalleryLayout, ProGalleryOptions } from '../types';
 export const importExample = `import { ProGallery } from 'wix-ui-tpa/ProGallery';`;
 export const style = { width: '500px', height: '500px' };
 export const proGalleryItems = [
@@ -350,52 +344,15 @@ export const columnOptions: ProGalleryOptions = {
   galleryLayout: ProGalleryLayout.Column,
 };
 
-export const CollageGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(collageOptions)}}/>
-`;
+export const eventsListener = (eventName, eventData) =>
+  console.log({ eventName, eventData });
 
-export const MasonryGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(masonryOptions)}}/>
+export const generateExample = (proGalleryOption: ProGalleryOptions) => {
+  return `
+<ProGallery width={1100} height={1100} items={${JSON.stringify(
+    proGalleryItems,
+  )}} options={${JSON.stringify(
+    proGalleryOption,
+  )}} scrollingElement={e => e.target.parentNode} eventsListener={${eventsListener}}/>
 `;
-
-export const GridGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(gridOptions)}}/>
-`;
-
-export const ThumbnailsGalleryExample = `
-<div style={${JSON.stringify(style)}}>
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(thumbnailsOptions)}}/>
-</div>
-`;
-
-export const SliderGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(sliderOptions)}}/>
-`;
-
-export const SlideShowGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(slideShowOptions)}}/>
-`;
-
-export const PanoramaGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(panoramaOptions)}}/>
-`;
-
-export const ColumnGalleryExample = `
-<ProGallery width={500} height={500} items={${JSON.stringify(
-  proGalleryItems,
-)}} options={${JSON.stringify(columnOptions)}}/>
-`;
+};

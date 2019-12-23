@@ -2,11 +2,8 @@ import * as React from 'react';
 import styles from './ProGallery.st.css';
 import { ProGallery as Gallery } from 'pro-gallery';
 // import 'pro-gallery/dist/statics/main.css';
-import {
-  ProGalleryItem,
-  ProGalleryLayout,
-  ProGalleryOptions,
-} from './types';
+
+import { ProGalleryItem, ProGalleryLayout, ProGalleryOptions } from './types';
 import {
   defaultCollageOptions,
   defaultColumnOptions,
@@ -18,12 +15,13 @@ import {
   defaultThumbnailsOptions,
 } from './defaultOptionByLayout';
 
-
 export interface ProGalleryProps {
   width: number;
   height: number;
   items: ProGalleryItem[];
   options: ProGalleryOptions;
+  scrollingElement: HTMLElement;
+  eventsListener: Function;
 }
 
 interface State {}
@@ -38,12 +36,7 @@ export class ProGallery extends React.Component<ProGalleryProps, State> {
       height: this.props.height,
     };
 
-    const eventsListener = (eventName, eventData) =>
-      console.log({ eventName, eventData });
-
-    const scrollingElement = window;
-
-    const { items, ...rest } = this.props;
+    const { items, scrollingElement, eventsListener, ...rest } = this.props;
     let { options } = this.props;
     switch (options.galleryLayout) {
       case ProGalleryLayout.Collage:
@@ -72,7 +65,7 @@ export class ProGallery extends React.Component<ProGalleryProps, State> {
     }
 
     return (
-      <div {...styles('root', {}, rest)} data-hook={'root'}>
+      <div {...styles('root', {}, rest)}>
         <Gallery
           items={items}
           options={options}

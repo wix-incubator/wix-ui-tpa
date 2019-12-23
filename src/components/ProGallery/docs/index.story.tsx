@@ -18,7 +18,18 @@ import * as ProGalleryWiringExampleRaw from '!raw-loader!./ProGalleryWiringExamp
 import * as ProGalleryWiringExampleCSSRaw from '!raw-loader!./ProGalleryWiringExample.st.css';
 import { ProGalleryWiringExample } from './ProGalleryWiringExample';
 import { ProGallery } from '../';
-import { proGalleryItems, proGalleryOptions } from './examples';
+import {
+  collageOptions,
+  columnOptions,
+  gridOptions,
+  masonryOptions,
+  panoramaOptions,
+  proGalleryItems,
+  proGalleryOptions,
+  sliderOptions,
+  slideShowOptions,
+  thumbnailsOptions,
+} from './examples';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -59,35 +70,35 @@ export default {
           ...[
             {
               title: 'ThumbnailsGalleryExample',
-              source: examples.ThumbnailsGalleryExample,
+              source: examples.generateExample(thumbnailsOptions),
             },
             {
               title: 'CollageGalleryExample',
-              source: examples.CollageGalleryExample,
+              source: examples.generateExample(collageOptions),
             },
             {
               title: 'MasonryGalleryExample',
-              source: examples.MasonryGalleryExample,
+              source: examples.generateExample(masonryOptions),
             },
             {
               title: 'GridGalleryExample',
-              source: examples.GridGalleryExample,
+              source: examples.generateExample(gridOptions),
             },
             {
               title: 'SliderGalleryExample',
-              source: examples.SliderGalleryExample,
+              source: examples.generateExample(sliderOptions),
             },
             {
               title: 'SlideShowGalleryExample',
-              source: examples.SlideShowGalleryExample,
+              source: examples.generateExample(slideShowOptions),
             },
             {
               title: 'PanoramaGalleryExample',
-              source: examples.PanoramaGalleryExample,
+              source: examples.generateExample(panoramaOptions),
             },
             {
               title: 'ColumnGalleryExample',
-              source: examples.ColumnGalleryExample,
+              source: examples.generateExample(columnOptions),
             },
           ].map(code),
         ],

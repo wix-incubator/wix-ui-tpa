@@ -26,9 +26,9 @@ export enum ProGalleryLayout {
   Column = 7,
 }
 
-export enum ImageMode {
-  Fill = 'fill',
-  Crop = 'crop',
+export enum ImageResize {
+  CROP = 'fill',
+  FIT = 'fit',
 }
 
 export enum Alignment {
@@ -38,9 +38,25 @@ export enum Alignment {
   Right = 'right',
 }
 
+export enum ScrollDirection {
+  Vertical = 0,
+  Horizontal = 1,
+}
+
+export enum GridStyle {
+  FitToScreen = 0,
+  SetItemsPerRow = 1,
+}
+
 export interface ProGalleryOptions {
   galleryLayout: ProGalleryLayout;
+  scrollDirection?:ScrollDirection;
+  gridStyle?:GridStyle;
+  allowLeanGallery?: boolean;
+  numberOfImagesPerRow?: number;
+  isVertical?: boolean;
   allowHover?: boolean;
+  isRTL?: boolean
   itemClick?: string;
   imageMargin?: number;
   collageDensity?: number;
@@ -48,7 +64,8 @@ export interface ProGalleryOptions {
   groupSize?: number;
   groupTypes?: string;
   enableInfiniteScroll?: boolean;
-  cubeType?: ImageMode;
+  cubeImages?: boolean;
+  cubeType?: ImageResize;
   loadMoreAmount?: string;
   cubeRatio?: number;
   galleryThumbnailsAlignment?: Alignment;
@@ -65,4 +82,7 @@ export interface ProGalleryOptions {
   videoLoop?: boolean;
   galleryMargin?: number;
   slideshowInfoSize?: number;
+  slideshowLoop?: boolean;
+  isAutoSlideshow?: boolean;
+  playButtonForAutoSlideShow?: boolean;
 }
