@@ -18,6 +18,7 @@ import * as ProGalleryWiringExampleRaw from '!raw-loader!./ProGalleryWiringExamp
 import * as ProGalleryWiringExampleCSSRaw from '!raw-loader!./ProGalleryWiringExample.st.css';
 import { ProGalleryWiringExample } from './ProGalleryWiringExample';
 import { ProGallery } from '../';
+import { proGalleryItems, proGalleryOptions } from './examples';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -29,9 +30,16 @@ export default {
   componentPath: '../ProGallery.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ProGallery',
+    width: 500,
+    height: 500,
+    items: proGalleryItems,
+    options: proGalleryOptions,
   }),
   exampleProps: {
-    //
+    width: 500,
+    height: 500,
+    items: proGalleryItems,
+    options: proGalleryOptions,
   },
   dataHook: 'storybook-ProGallery',
   sections: [
@@ -48,7 +56,40 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[
+            {
+              title: 'ThumbnailsGalleryExample',
+              source: examples.ThumbnailsGalleryExample,
+            },
+            {
+              title: 'CollageGalleryExample',
+              source: examples.CollageGalleryExample,
+            },
+            {
+              title: 'MasonryGalleryExample',
+              source: examples.MasonryGalleryExample,
+            },
+            {
+              title: 'GridGalleryExample',
+              source: examples.GridGalleryExample,
+            },
+            {
+              title: 'SliderGalleryExample',
+              source: examples.SliderGalleryExample,
+            },
+            {
+              title: 'SlideShowGalleryExample',
+              source: examples.SlideShowGalleryExample,
+            },
+            {
+              title: 'PanoramaGalleryExample',
+              source: examples.PanoramaGalleryExample,
+            },
+            {
+              title: 'ColumnGalleryExample',
+              source: examples.ColumnGalleryExample,
+            },
+          ].map(code),
         ],
       }),
 

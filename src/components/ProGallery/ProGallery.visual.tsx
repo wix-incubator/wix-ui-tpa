@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import {ProGallery, ProGalleryProps} from './';
-import {TextFieldProps} from '../TextField';
+import { ProGallery, ProGalleryProps } from './';
+import { proGalleryItems, proGalleryOptions } from './docs/examples';
 
 class ProGalleryVisual extends React.Component<ProGalleryProps> {
   static defaultProps: ProGalleryProps = {
     width: 1000,
-    height:1000,
-    };
+    height: 1000,
+    items: proGalleryItems,
+    options: proGalleryOptions,
+  };
 
   render() {
     return (
@@ -33,8 +35,10 @@ const tests: Test[] = [
       {
         it: 'default',
         props: {
-          width: 300,
-          height: 300,
+          width: 1000,
+          height: 1000,
+          items: proGalleryItems,
+          options: proGalleryOptions,
         },
       },
     ],
