@@ -2,8 +2,9 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { SocialBar } from './';
+import { SocialBarProps, SocialBarTheme } from './SocialBar';
 
-class SocialBarVisual extends React.Component<any> {
+class SocialBarVisual extends React.Component<SocialBarProps> {
   render() {
     return (
       <VisualTestContainer>
@@ -18,8 +19,12 @@ const tests = [
     describe: 'basic',
     its: [
       {
-        it: 'default',
-        props: {},
+        it: 'light',
+        props: { theme: 'light' as 'light' },
+      },
+      {
+        it: 'dark',
+        props: { theme: 'dark' as 'dark' },
       },
     ],
   },

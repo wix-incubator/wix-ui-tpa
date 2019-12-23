@@ -13,7 +13,7 @@ describe('SocialBar', () => {
   const createDriver = createUniDriverFactory(socialBarDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<SocialBar buttonText="Click Me" />);
+    const driver = createDriver(<SocialBar />);
     expect(await driver.exists()).toBe(true);
   });
 

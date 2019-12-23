@@ -2,8 +2,9 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { CopyUrlButton } from './';
+import { CopyUrlButtonProps } from './CopyUrlButton';
 
-class CopyUrlButtonVisual extends React.Component<any> {
+class CopyUrlButtonVisual extends React.Component<CopyUrlButtonProps> {
   render() {
     return (
       <VisualTestContainer>
@@ -15,11 +16,25 @@ class CopyUrlButtonVisual extends React.Component<any> {
 
 const tests = [
   {
-    describe: 'basic',
+    describe: 'light',
     its: [
       {
-        it: 'default',
-        props: {},
+        it: 'light',
+        props: {
+          url: 'wix.com',
+          tooltipText: 'Copy link',
+          successText: 'Link Copied',
+          socialBarTheme: 'light' as 'light',
+        },
+      },
+      {
+        it: 'dark',
+        props: {
+          url: 'wix.com',
+          tooltipText: 'Copy link',
+          successText: 'Link Copied',
+          socialBarTheme: 'dark' as 'dark',
+        },
       },
     ],
   },

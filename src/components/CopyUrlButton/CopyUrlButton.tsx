@@ -7,6 +7,7 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN } from '../Toast';
 import { SocialBarInjectedProps } from '../SocialBar';
 import { SocialBarIcon } from '../SocialBar/SocialBarIcon';
+import { SocialBarTheme } from '../SocialBar/SocialBar';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
@@ -23,11 +24,15 @@ interface CopyUrlButtonState {
   success: boolean;
 }
 
+interface DefaultProps {
+  socialBarTheme: SocialBarTheme;
+}
+
 export class CopyUrlButton extends React.Component<
   CopyUrlButtonProps,
   CopyUrlButtonState
 > {
-  static defaultProps = { socialBarTheme: 'light' };
+  static defaultProps: DefaultProps = { socialBarTheme: 'light' };
 
   state: CopyUrlButtonState = { success: false };
   inputRef = React.createRef<HTMLInputElement>();

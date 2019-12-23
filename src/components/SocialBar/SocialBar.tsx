@@ -14,7 +14,7 @@ interface DefaultProps {
 }
 
 export interface SocialBarInjectedProps {
-  socialBarTheme: SocialBarTheme;
+  socialBarTheme?: SocialBarTheme;
 }
 
 /** SocialBar */

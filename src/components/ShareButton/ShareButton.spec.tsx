@@ -9,20 +9,35 @@ import { ShareButton } from './';
 import { shareButtonTestkitFactory } from '../../testkit';
 import { shareButtonTestkitFactory as enzymeShareButtonTestkitFactory } from '../../testkit/enzyme';
 
+const testProps = {
+  title: 'Share title',
+  url: 'https://wix.com',
+  onClick: sharePromise => {
+    if (!sharePromise) {
+      alert('share clicked');
+    }
+  },
+  children: 'Share',
+};
+
 describe('ShareButton', () => {
   const createDriver = createUniDriverFactory(shareButtonDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<ShareButton buttonText="Click Me" />);
+    const driver = createDriver(<ShareButton {...testProps} />);
     expect(await driver.exists()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<ShareButton />, shareButtonTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <ShareButton {...testProps} />,
+          shareButtonTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -31,7 +46,7 @@ describe('ShareButton', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <ShareButton />,
+          <ShareButton {...testProps} />,
           enzymeShareButtonTestkitFactory,
           mount,
           {

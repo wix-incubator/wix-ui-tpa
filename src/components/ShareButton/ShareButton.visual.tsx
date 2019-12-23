@@ -2,8 +2,9 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ShareButton } from './';
+import { ShareButtonProps } from './ShareButton';
 
-class ShareButtonVisual extends React.Component<any> {
+class ShareButtonVisual extends React.Component<ShareButtonProps> {
   render() {
     return (
       <VisualTestContainer>
@@ -19,7 +20,16 @@ const tests = [
     its: [
       {
         it: 'default',
-        props: {},
+        props: {
+          title: 'Share title',
+          url: 'https://wix.com',
+          onClick: sharePromise => {
+            if (!sharePromise) {
+              alert('share clicked');
+            }
+          },
+          children: 'Share',
+        },
       },
     ],
   },

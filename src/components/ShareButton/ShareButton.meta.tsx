@@ -7,6 +7,13 @@ ShareButtonMetadata.nonReactStrictModeCompliant = true;
 ShareButtonMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
+    title: 'Share title',
+    url: 'https://wix.com',
+    onClick: sharePromise => {
+      if (!sharePromise) {
+        alert('share clicked');
+      }
+    },
+    children: 'Share',
   },
 });
