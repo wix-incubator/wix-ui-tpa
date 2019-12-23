@@ -11,7 +11,7 @@ import { socialBarTestkitFactory } from '../../testkit/protractor';
  * */
 describe('socialBar', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Components/Share',
     story: 'SocialBar',
     withExamples: true,
   });

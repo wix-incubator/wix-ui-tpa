@@ -21,7 +21,7 @@ import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedEx
 import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
 
 const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config, });
+  baseCode({ components: allComponents, compact: true, ...config });
 
 function generateItem(props) {
   return (

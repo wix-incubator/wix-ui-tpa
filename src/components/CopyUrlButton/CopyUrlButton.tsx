@@ -86,7 +86,13 @@ export class CopyUrlButton extends React.Component<
 
   renderIconButton = ({ mobile }: { mobile: boolean }) => {
     const { success } = this.state;
-    const { tooltipText, socialBarTheme } = this.props;
+    const {
+      tooltipText,
+      socialBarTheme,
+      url,
+      successText,
+      ...otherProps
+    } = this.props;
 
     if (success && !mobile) {
       return null;
@@ -97,8 +103,9 @@ export class CopyUrlButton extends React.Component<
         tooltip={tooltipText}
         socialBarTheme={socialBarTheme}
         icon={<SocialIcons.CopyLink />}
-        onClick={this.onButtonClick}
         as="button"
+        {...otherProps}
+        onClick={this.onButtonClick}
       />
     );
   };
@@ -116,6 +123,8 @@ export class CopyUrlButton extends React.Component<
               ref={this.inputRef}
               value={url}
               readOnly
+              aria-hidden="true"
+              tabIndex={-1}
             />
             {this.renderIconButton({ mobile })}
             {success && this.renderSuccess({ mobile })}

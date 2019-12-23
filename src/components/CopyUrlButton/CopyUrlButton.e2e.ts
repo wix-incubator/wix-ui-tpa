@@ -11,7 +11,7 @@ import { copyUrlButtonTestkitFactory } from '../../testkit/protractor';
  * */
 describe('copyUrlButton', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Components/Share',
     story: 'CopyUrlButton',
     withExamples: true,
   });

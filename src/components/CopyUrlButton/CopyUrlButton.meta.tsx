@@ -11,5 +11,7 @@ CopyUrlButtonMetadata.addSim({
     tooltipText: 'Copy link',
     successText: 'Link Copied',
     socialBarTheme: 'light',
+    //@ts-ignore
+    'aria-label': 'copy url',
   },
 });

@@ -11,7 +11,7 @@ import { shareButtonTestkitFactory } from '../../testkit/protractor';
  * */
 describe('shareButton', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Components/Share',
     story: 'ShareButton',
     withExamples: true,
   });
