@@ -14,7 +14,7 @@
     DefaultDisabledColor: color-3;
     DefaultErrorColor: value(errorColor);
     DefaultBackgroundColor: color-1;
-    DefaultWidth: 96;
+    DefaultWidth: 96px;
 }
 
 :vars {
@@ -27,7 +27,7 @@
 :vars {
     counterColor: color(fallback(value(MainColor), value(DefaultColor)));
     counterDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
-    counterWidth: applyUnit(fallback(value(MainWidth), value(DefaultWidth)), px)
+    counterWidth: fallback(value(MainWidth), value(DefaultWidth));
 }
 
 .root {
