@@ -1,6 +1,4 @@
 import { ProGalleryLayouts, ProGalleryOptions } from '../types';
-export const importExample = `import { ProGallery } from 'wix-ui-tpa/ProGallery';`;
-export const style = { width: '500px', height: '500px' };
 export const proGalleryItems = [
   {
     metadata: {
@@ -307,7 +305,7 @@ export const proGalleryItems = [
       'https://static.wixstatic.com/media/8bb438_738bb5f8a2be4021ae79cef00814347b.jpg',
   },
 ];
-
+export const domId = '82a8b97e-f6ea-430d-8538-30d34f100e7e';
 export const proGalleryOptions: ProGalleryOptions[] = [
   { galleryLayout: ProGalleryLayouts.Thumbnails },
   { galleryLayout: ProGalleryLayouts.Collage },
@@ -322,12 +320,30 @@ export const proGalleryOptions: ProGalleryOptions[] = [
 export const eventsListener = (eventName, eventData) =>
   console.log({ eventName, eventData });
 
-export const generateExample = (proGalleryOption: ProGalleryOptions) => {
+export const generateExample = (
+  proGalleryOption: ProGalleryOptions,
+  proGalleryDomId: number,
+) => {
   return `
-<ProGallery width={1100} height={1100} items={${JSON.stringify(
-    proGalleryItems,
-  )}} options={${JSON.stringify(
-    proGalleryOption,
-  )}} scrollingElement={e => e.target.parentNode} eventsListener={${eventsListener}}/>
+<ProGallery 
+    width={e => e.target.parentNode.clientWidth} 
+    height={1100} 
+    domId={${proGalleryDomId}} 
+    items={${JSON.stringify(proGalleryItems)}} 
+    options={${JSON.stringify(proGalleryOption)}} 
+    scrollingElement={e => e.target.parentNode} 
+    eventsListener={${eventsListener}}
+  />
 `;
 };
+export const importExample = `import { ProGallery } from 'wix-ui-tpa/ProGallery';
+
+<ProGallery 
+    width={1100} 
+    height={1100} 
+    domId={'82a8b97e-f6ea-430d-8538-30d34f100e7e'} 
+    items={${JSON.stringify(proGalleryItems.slice(0, 2))}} 
+    options={{ galleryLayout: ProGalleryLayouts.Thumbnails}} 
+    scrollingElement={e => e.target.parentNode} 
+    eventsListener={${eventsListener}}
+/>;`;

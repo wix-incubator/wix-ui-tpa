@@ -7,7 +7,7 @@ import { proGalleryDriverFactory } from './ProGallery.driver';
 import { ProGallery } from './';
 import { proGalleryTestkitFactory } from '../../testkit';
 import { proGalleryTestkitFactory as enzymeProGalleryTestkitFactory } from '../../testkit/enzyme';
-import { proGalleryItems, proGalleryOptions } from './docs/examples';
+import { domId, proGalleryItems, proGalleryOptions } from './docs/examples';
 import * as _ from 'lodash';
 
 describe('ProGallery', () => {
@@ -16,6 +16,7 @@ describe('ProGallery', () => {
   it('should render', async () => {
     const driver = createDriver(
       <ProGallery
+        domId={domId}
         scrollingElement={e => e.target.parentNode}
         eventsListener={_.noop}
         options={proGalleryOptions[0]}
@@ -32,6 +33,7 @@ describe('ProGallery', () => {
       expect(
         await isUniTestkitExists(
           <ProGallery
+            domId={domId}
             scrollingElement={e => e.target.parentNode}
             eventsListener={_.noop}
             options={proGalleryOptions[0]}
@@ -53,6 +55,7 @@ describe('ProGallery', () => {
       expect(
         await isUniEnzymeTestkitExists(
           <ProGallery
+            domId={domId}
             scrollingElement={e => e.target.parentNode}
             eventsListener={_.noop}
             options={proGalleryOptions[0]}

@@ -18,8 +18,8 @@ import * as ProGalleryWiringExampleRaw from '!raw-loader!./ProGalleryWiringExamp
 import * as ProGalleryWiringExampleCSSRaw from '!raw-loader!./ProGalleryWiringExample.st.css';
 import { ProGalleryWiringExample } from './ProGalleryWiringExample';
 import { ProGallery } from '../';
-
 import { ProGalleryLayouts } from '../types';
+import * as _ from 'lodash';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -31,16 +31,23 @@ export default {
   componentPath: '../ProGallery.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ProGallery',
-    width: 500,
-    height: 500,
+    width: 1000,
+    height: 1000,
     items: examples.proGalleryItems,
-    options: examples.proGalleryOptions,
+    options: examples.proGalleryOptions[0],
+    scrollingElement: e => e.target.parentElement,
+    eventsListener: _.noop,
+    domId: examples.domId,
   }),
   exampleProps: {
-    width: 500,
-    height: 500,
+    'data-hook': 'storybook-ProGallery',
+    width: 1000,
+    height: 1000,
     items: examples.proGalleryItems,
-    options: examples.proGalleryOptions,
+    options: examples.proGalleryOptions[0],
+    scrollingElement: e => e.target.parentElement,
+    eventsListener: _.noop,
+    domId: examples.domId,
   },
   dataHook: 'storybook-ProGallery',
   sections: [
@@ -55,16 +62,15 @@ export default {
           divider(),
           title('Examples'),
           ...examples.proGalleryOptions
-            .map(ProGalleryOption => {
+            .map((ProGalleryOption, index) => {
               return {
                 title: ProGalleryLayouts[ProGalleryOption.galleryLayout],
-                source: examples.generateExample(ProGalleryOption),
+                source: examples.generateExample(ProGalleryOption, index),
               };
             })
             .map(code),
         ],
       }),
-
       ...[
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },

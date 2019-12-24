@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ProGallery, ProGalleryProps } from './';
-import { proGalleryItems, proGalleryOptions } from './docs/examples';
+import { domId, proGalleryItems, proGalleryOptions } from './docs/examples';
 import * as _ from 'lodash';
 
 class ProGalleryVisual extends React.Component<ProGalleryProps> {
@@ -12,7 +12,8 @@ class ProGalleryVisual extends React.Component<ProGalleryProps> {
     items: proGalleryItems,
     options: proGalleryOptions[0],
     eventsListener: _.noop,
-    scrollingElement: e => e.target.parentElement
+    scrollingElement: e => e.target.parentElement,
+    domId,
   };
 
   render() {
@@ -43,7 +44,8 @@ const tests: Test[] = [
           items: proGalleryItems,
           options: proGalleryOptions[0],
           eventsListener: _.noop,
-          scrollingElement: e => e.target.parentElement
+          scrollingElement: e => e.target.parentElement,
+          domId: domId,
         },
       },
     ],

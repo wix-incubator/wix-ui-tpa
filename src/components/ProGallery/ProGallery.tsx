@@ -22,6 +22,7 @@ export interface ProGalleryProps {
   options: ProGalleryOptions;
   scrollingElement: any;
   eventsListener: Function;
+  domId: string;
 }
 
 interface State {}
@@ -36,7 +37,13 @@ export class ProGallery extends React.Component<ProGalleryProps, State> {
       height: this.props.height,
     };
 
-    const { items, scrollingElement, eventsListener, ...rest } = this.props;
+    const {
+      domId,
+      items,
+      scrollingElement,
+      eventsListener,
+      ...rest
+    } = this.props;
     let { options } = this.props;
     switch (options.galleryLayout) {
       case ProGalleryLayouts.Collage:
@@ -66,10 +73,10 @@ export class ProGallery extends React.Component<ProGalleryProps, State> {
       default:
         options = { ...defaultCollageOptions, ...options };
     }
-
     return (
       <div {...styles('root', {}, rest)}>
         <Gallery
+          domId={domId}
           items={items}
           options={options}
           container={container}
