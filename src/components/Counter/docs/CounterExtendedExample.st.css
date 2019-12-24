@@ -7,6 +7,6 @@
     -st-mixin: TPACounter(
             MainColor '"--mainColor"',
             DisabledColor '"--disabledColor"',
-            MainWidth '"--mainWidth"'
+            MainWidth '"unit(--mainWidth, px)"'
     );
 }
