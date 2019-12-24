@@ -1,23 +1,19 @@
 import * as React from 'react';
 import styles from './CopyUrlButton.st.css';
-import { IconButtonProps } from '../IconButton';
 import { Check, SocialIcons } from '../../assets/icons';
-import { TPAComponentProps } from '../../types';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN } from '../Toast';
-import { SocialBarInjectedProps } from '../SocialBar';
-import { SocialBarIcon } from '../SocialBar/SocialBarIcon';
+import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
 import { SocialBarTheme } from '../SocialBar/SocialBar';
+import { Omit } from '../../types';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 
-export interface CopyUrlButtonProps
-  extends TPAComponentProps,
-    SocialBarInjectedProps {
+export interface CopyUrlButtonProps extends Omit<SocialBarIconProps, 'icon'> {
+  icon?: SocialBarIconProps['icon']; //make it optional
   url: string;
   successText: string;
   tooltipText: string;
-  onClick?: IconButtonProps['onClick'];
 }
 
 interface CopyUrlButtonState {
@@ -38,7 +34,7 @@ export class CopyUrlButton extends React.Component<
   inputRef = React.createRef<HTMLInputElement>();
 
   renderSuccess = ({ mobile }: { mobile: boolean }) => {
-    const { successText, socialBarTheme } = this.props;
+    const { successText } = this.props;
 
     if (mobile) {
       return (
@@ -57,18 +53,12 @@ export class CopyUrlButton extends React.Component<
     }
     return (
       <div className={styles.success}>
-        <Check
-          {...styles('checkIcon', { theme: socialBarTheme })}
-          height={19}
-          width={19}
-        />
-        <span {...styles('successText', { theme: socialBarTheme })}>
-          {successText}
-        </span>
+        <Check className={styles.checkIcon} height={19} width={19} />
+        <span className={styles.successText}>{successText}</span>
       </div>
     );
   };
-  onButtonClick: IconButtonProps['onClick'] = async event => {
+  onButtonClick: SocialBarIconProps['onClick'] = async event => {
     if (!document.queryCommandSupported('copy')) {
       return;
     }
@@ -112,12 +102,12 @@ export class CopyUrlButton extends React.Component<
 
   render() {
     const { success } = this.state;
-    const { url, ...oherProps } = this.props;
+    const { url, socialBarTheme, ...oherProps } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', {}, oherProps)}>
+          <div {...styles('root', { theme: socialBarTheme }, oherProps)}>
             <input
               className={styles.copyInput}
               ref={this.inputRef}

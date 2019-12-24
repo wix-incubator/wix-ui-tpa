@@ -1,18 +1,14 @@
 
 .root {
-
-}
-
-.iconButton {
   -st-states: theme(enum(light, dark));
 }
 
-.iconButton:theme(light) path {
-  fill: black !important;
-  stroke: none !important;
+.root:theme(light) .iconButton path {
+  fill: black;
+  stroke: none;
 }
 
-.iconButton:theme(dark) path {
-  fill: white !important;
-  stroke: none !important;
+.root:theme(dark) .iconButton path {
+  fill: white;
+  stroke: none;
 }

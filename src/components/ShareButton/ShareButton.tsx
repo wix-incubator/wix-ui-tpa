@@ -2,8 +2,7 @@ import * as React from 'react';
 import styles from './ShareButton.st.css';
 import { ButtonProps } from '../Button';
 import { ButtonNext } from 'wix-ui-core/button-next';
-
-type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
+import { Omit } from '../../types';
 
 export interface ShareButtonProps extends Omit<ButtonProps, 'onClick'> {
   onClick(sharePromise: Promise<void> | undefined): void;

@@ -8,7 +8,7 @@ import { TPAComponentProps } from '../../types';
 import { IconButton, Skins } from '../IconButton';
 import { SocialBarInjectedProps } from './SocialBar';
 
-interface SocialBarIconProps
+export interface SocialBarIconProps
   extends ButtonProps,
     TPAComponentProps,
     SocialBarInjectedProps {
@@ -24,7 +24,7 @@ export class SocialBarIcon extends React.Component<SocialBarIconProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', {}, rest)}>
+          <div {...styles('root', { theme: socialBarTheme }, rest)}>
             <Tooltip
               appendTo={'scrollParent'}
               content={tooltip}
@@ -32,7 +32,7 @@ export class SocialBarIcon extends React.Component<SocialBarIconProps> {
               disabled={!tooltip || mobile}
             >
               <IconButton
-                {...styles('iconButton', { theme: socialBarTheme })}
+                className={styles.iconButton}
                 skin={Skins.Full}
                 as="a"
                 {...rest}

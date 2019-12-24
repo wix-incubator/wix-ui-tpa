@@ -9,25 +9,27 @@
 }
 
 .root {
+  -st-states: theme(enum(light, dark));
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-
-.checkIcon {
-  -st-states: theme(enum(light, dark));
-}
-
-
-.checkIcon:theme(light) path {
+.root:theme(light) .checkIcon path {
   fill: black;
 }
 
-.checkIcon:theme(dark) path {
+.root:theme(dark) .checkIcon path {
   fill: white;
 }
 
+.root:theme(light) .successText {
+  color: black;
+}
+
+.root:theme(dark) .successText {
+  color: white;
+}
 
 .success {
   display: flex;
@@ -42,18 +44,10 @@
 }
 
 .successText {
-  -st-states: theme(enum(light, dark));
   position: relative;
   top: 14px;
 }
 
-.successText:theme(light) {
-  color: black;
-}
-
-.successText:theme(dark) {
-  color: white;
-}
 
 .successTextMobile {
   padding-left: 10px;
