@@ -19,12 +19,21 @@ describe('copyUrlButton', () => {
 
   beforeEach(() => browser.get(storyUrl));
 
-  it('should render', async () => {
+  it('should copy text', async () => {
     const driver = copyUrlButtonTestkitFactory({ dataHook });
     await waitForVisibilityOf(
       await driver.element(),
       'Cannot find CopyUrlButton',
     );
-    expect((await driver.element()).isDisplayed()).toBe(true);
+
+    const buttonEl = await driver.element();
+
+    expect(buttonEl.isDisplayed()).toBe(true);
+
+    await buttonEl.click();
+    const text = await browser.executeAsyncScript(
+      'navigator.clipboard.readText().then(arguments[arguments.length - 1], arguments[arguments.length - 1])',
+    );
+    expect(text).toEqual('wix.com');
   });
 });
