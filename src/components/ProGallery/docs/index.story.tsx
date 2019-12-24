@@ -18,18 +18,8 @@ import * as ProGalleryWiringExampleRaw from '!raw-loader!./ProGalleryWiringExamp
 import * as ProGalleryWiringExampleCSSRaw from '!raw-loader!./ProGalleryWiringExample.st.css';
 import { ProGalleryWiringExample } from './ProGalleryWiringExample';
 import { ProGallery } from '../';
-import {
-  collageOptions,
-  columnOptions,
-  gridOptions,
-  masonryOptions,
-  panoramaOptions,
-  proGalleryItems,
-  proGalleryOptions,
-  sliderOptions,
-  slideShowOptions,
-  thumbnailsOptions,
-} from './examples';
+
+import { ProGalleryLayouts } from '../types';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -43,14 +33,14 @@ export default {
     'data-hook': 'storybook-ProGallery',
     width: 500,
     height: 500,
-    items: proGalleryItems,
-    options: proGalleryOptions,
+    items: examples.proGalleryItems,
+    options: examples.proGalleryOptions,
   }),
   exampleProps: {
     width: 500,
     height: 500,
-    items: proGalleryItems,
-    options: proGalleryOptions,
+    items: examples.proGalleryItems,
+    options: examples.proGalleryOptions,
   },
   dataHook: 'storybook-ProGallery',
   sections: [
@@ -62,45 +52,16 @@ export default {
           importExample({
             source: examples.importExample,
           }),
-
           divider(),
-
           title('Examples'),
-
-          ...[
-            {
-              title: 'ThumbnailsGalleryExample',
-              source: examples.generateExample(thumbnailsOptions),
-            },
-            {
-              title: 'CollageGalleryExample',
-              source: examples.generateExample(collageOptions),
-            },
-            {
-              title: 'MasonryGalleryExample',
-              source: examples.generateExample(masonryOptions),
-            },
-            {
-              title: 'GridGalleryExample',
-              source: examples.generateExample(gridOptions),
-            },
-            {
-              title: 'SliderGalleryExample',
-              source: examples.generateExample(sliderOptions),
-            },
-            {
-              title: 'SlideShowGalleryExample',
-              source: examples.generateExample(slideShowOptions),
-            },
-            {
-              title: 'PanoramaGalleryExample',
-              source: examples.generateExample(panoramaOptions),
-            },
-            {
-              title: 'ColumnGalleryExample',
-              source: examples.generateExample(columnOptions),
-            },
-          ].map(code),
+          ...examples.proGalleryOptions
+            .map(ProGalleryOption => {
+              return {
+                title: ProGalleryLayouts[ProGalleryOption.galleryLayout],
+                source: examples.generateExample(ProGalleryOption),
+              };
+            })
+            .map(code),
         ],
       }),
 

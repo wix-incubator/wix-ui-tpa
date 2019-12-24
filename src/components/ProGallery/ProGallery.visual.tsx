@@ -3,13 +3,16 @@ import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { ProGallery, ProGalleryProps } from './';
 import { proGalleryItems, proGalleryOptions } from './docs/examples';
+import * as _ from 'lodash';
 
 class ProGalleryVisual extends React.Component<ProGalleryProps> {
   static defaultProps: ProGalleryProps = {
     width: 1000,
     height: 1000,
     items: proGalleryItems,
-    options: proGalleryOptions,
+    options: proGalleryOptions[0],
+    eventsListener: _.noop,
+    scrollingElement: e => e.target.parentElement
   };
 
   render() {
@@ -38,7 +41,9 @@ const tests: Test[] = [
           width: 1000,
           height: 1000,
           items: proGalleryItems,
-          options: proGalleryOptions,
+          options: proGalleryOptions[0],
+          eventsListener: _.noop,
+          scrollingElement: e => e.target.parentElement
         },
       },
     ],

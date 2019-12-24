@@ -3,7 +3,7 @@ import styles from './ProGallery.st.css';
 import { ProGallery as Gallery } from 'pro-gallery';
 // import 'pro-gallery/dist/statics/main.css';
 
-import { ProGalleryItem, ProGalleryLayout, ProGalleryOptions } from './types';
+import { ProGalleryItem, ProGalleryLayouts, ProGalleryOptions } from './types';
 import {
   defaultCollageOptions,
   defaultColumnOptions,
@@ -20,7 +20,7 @@ export interface ProGalleryProps {
   height: number;
   items: ProGalleryItem[];
   options: ProGalleryOptions;
-  scrollingElement: HTMLElement;
+  scrollingElement: any;
   eventsListener: Function;
 }
 
@@ -39,29 +39,32 @@ export class ProGallery extends React.Component<ProGalleryProps, State> {
     const { items, scrollingElement, eventsListener, ...rest } = this.props;
     let { options } = this.props;
     switch (options.galleryLayout) {
-      case ProGalleryLayout.Collage:
+      case ProGalleryLayouts.Collage:
         options = { ...defaultCollageOptions, ...options };
         break;
-      case ProGalleryLayout.Column:
+      case ProGalleryLayouts.Column:
         options = { ...defaultColumnOptions, ...options };
         break;
-      case ProGalleryLayout.Grid:
+      case ProGalleryLayouts.Grid:
         options = { ...defaultGridOptions, ...options };
         break;
-      case ProGalleryLayout.Masonry:
+      case ProGalleryLayouts.Masonry:
         options = { ...defaultMasonryOptions, ...options };
         break;
-      case ProGalleryLayout.Panorama:
+      case ProGalleryLayouts.Panorama:
         options = { ...defaultPanoramaOptions, ...options };
         break;
-      case ProGalleryLayout.Slider:
+      case ProGalleryLayouts.Slider:
         options = { ...defaultSliderOptions, ...options };
         break;
-      case ProGalleryLayout.SlideShow:
+      case ProGalleryLayouts.SlideShow:
         options = { ...defaultSlideShowOptions, ...options };
         break;
-      case ProGalleryLayout.Thumbnails:
+      case ProGalleryLayouts.Thumbnails:
         options = { ...defaultThumbnailsOptions, ...options };
+        break;
+      default:
+        options = { ...defaultCollageOptions, ...options };
     }
 
     return (

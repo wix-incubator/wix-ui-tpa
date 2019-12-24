@@ -1,4 +1,4 @@
-import { ProGalleryLayout, ProGalleryOptions } from '../types';
+import { ProGalleryLayouts, ProGalleryOptions } from '../types';
 export const importExample = `import { ProGallery } from 'wix-ui-tpa/ProGallery';`;
 export const style = { width: '500px', height: '500px' };
 export const proGalleryItems = [
@@ -308,41 +308,16 @@ export const proGalleryItems = [
   },
 ];
 
-export const proGalleryOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Thumbnails,
-};
-
-export const collageOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Collage,
-};
-
-export const masonryOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Masonry,
-};
-
-export const gridOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Grid,
-};
-
-export const thumbnailsOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Thumbnails,
-};
-
-export const sliderOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Slider,
-};
-
-export const slideShowOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.SlideShow,
-};
-
-export const panoramaOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Panorama,
-};
-
-export const columnOptions: ProGalleryOptions = {
-  galleryLayout: ProGalleryLayout.Column,
-};
+export const proGalleryOptions: ProGalleryOptions[] = [
+  { galleryLayout: ProGalleryLayouts.Thumbnails },
+  { galleryLayout: ProGalleryLayouts.Collage },
+  { galleryLayout: ProGalleryLayouts.Masonry },
+  { galleryLayout: ProGalleryLayouts.Grid },
+  { galleryLayout: ProGalleryLayouts.Slider },
+  { galleryLayout: ProGalleryLayouts.SlideShow },
+  { galleryLayout: ProGalleryLayouts.Panorama },
+  { galleryLayout: ProGalleryLayouts.Column },
+];
 
 export const eventsListener = (eventName, eventData) =>
   console.log({ eventName, eventData });

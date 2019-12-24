@@ -15,7 +15,7 @@ export interface ProGalleryItem {
   itemId: string;
   url: string;
 }
-export enum ProGalleryLayout {
+export enum ProGalleryLayouts {
   Collage = 0,
   Masonry = 1,
   Grid = 2,
@@ -49,14 +49,14 @@ export enum GridStyle {
 }
 
 export interface ProGalleryOptions {
-  galleryLayout: ProGalleryLayout;
-  scrollDirection?:ScrollDirection;
-  gridStyle?:GridStyle;
+  galleryLayout: ProGalleryLayouts;
+  scrollDirection?: ScrollDirection;
+  gridStyle?: GridStyle;
   allowLeanGallery?: boolean;
   numberOfImagesPerRow?: number;
   isVertical?: boolean;
   allowHover?: boolean;
-  isRTL?: boolean
+  isRTL?: boolean;
   itemClick?: string;
   imageMargin?: number;
   collageDensity?: number;
