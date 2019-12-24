@@ -7,7 +7,7 @@ An implementation of an Counter for TPAs
 |------------|----------|--------------|-------------|
 | MainColor  | string   | color-5 | The color of border, buttons and input text |
 | DisabledColor  | string   | color-3 | The color of border, buttons and input text when component (or button) is disabled |
-| MainWidth  | number   | 96 | The width of Counter |
+| MainWidth  | string   | 96px | The width of Counter |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
@@ -17,7 +17,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
         -st-from: "wix-ui-tpa/Counter/Counter.st.css";
         -st-default: TPACounter;
     }
-    
+
     .root {
         -st-extends: TPACounter;
         -st-mixin: TPACounter(
