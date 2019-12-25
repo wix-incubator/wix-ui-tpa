@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './CopyUrlButton.st.css';
 import { Check, SocialIcons } from '../../assets/icons';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { Toast, TOAST_SKIN } from '../Toast';
+import { Toast, TOAST_SKIN, TOAST_PLACEMENT } from '../Toast';
 import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
 import { SocialBarTheme } from '../SocialBar/SocialBar';
 import { Omit } from '../../types';
@@ -40,7 +40,7 @@ export class CopyUrlButton extends React.Component<
       return (
         <Toast
           skin={TOAST_SKIN.success}
-          placement="bottomFullWidth"
+          placement={TOAST_PLACEMENT.bottomFullWidth}
           shouldAnimate
           isShown
         >
@@ -59,12 +59,10 @@ export class CopyUrlButton extends React.Component<
     );
   };
   onButtonClick: SocialBarIconProps['onClick'] = async event => {
-    if (!document.queryCommandSupported('copy')) {
-      return;
+    if (document.queryCommandSupported('copy')) {
+      this.inputRef.current.select();
+      document.execCommand('copy');
     }
-
-    this.inputRef.current.select();
-    document.execCommand('copy');
 
     if (this.props.onClick) {
       this.props.onClick(event);

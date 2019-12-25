@@ -1,6 +1,15 @@
 
+:import {
+  -st-from: "../IconButton/IconButton.st.css";
+  -st-default: IconButton;
+}
+
 .root {
   -st-states: theme(enum(light, dark));
+}
+
+.root .iconButton {
+  -st-extends: IconButton;
 }
 
 .root:theme(light) .iconButton path {
