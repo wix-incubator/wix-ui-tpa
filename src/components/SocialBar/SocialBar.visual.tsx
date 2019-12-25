@@ -1,39 +1,9 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { SocialBar } from './';
-import { SocialBarProps, SocialBarTheme } from './SocialBar';
+import { visualize, story, snap } from 'storybook-snapper';
+import { SocialBarWiringExample } from './docs/SocialBarWiringExample';
 
-class SocialBarVisual extends React.Component<SocialBarProps> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <SocialBar {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
-
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'light',
-        props: { theme: 'light' as 'light' },
-      },
-      {
-        it: 'dark',
-        props: { theme: 'dark' as 'dark' },
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`SocialBar/${describe}`, module).add(it, () => (
-      <SocialBarVisual {...props} />
-    ));
+visualize('SocialBar', () => {
+  story('render', () => {
+    snap('default', <SocialBarWiringExample />);
   });
 });

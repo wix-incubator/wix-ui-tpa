@@ -1,49 +1,22 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { visualize, story, snap } from 'storybook-snapper';
 import { CopyUrlButton } from './';
 import { CopyUrlButtonProps } from './CopyUrlButton';
 
-class CopyUrlButtonVisual extends React.Component<CopyUrlButtonProps> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <CopyUrlButton {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
+const CopyUrlButtonVisual = ({
+  socialBarTheme,
+}: Pick<CopyUrlButtonProps, 'socialBarTheme'>) => (
+  <CopyUrlButton
+    url="wix.com"
+    tooltipText="Copy link"
+    successText="Link Copied"
+    socialBarTheme={socialBarTheme}
+  />
+);
 
-const tests = [
-  {
-    describe: 'light',
-    its: [
-      {
-        it: 'light',
-        props: {
-          url: 'wix.com',
-          tooltipText: 'Copy link',
-          successText: 'Link Copied',
-          socialBarTheme: 'light' as 'light',
-        },
-      },
-      {
-        it: 'dark',
-        props: {
-          url: 'wix.com',
-          tooltipText: 'Copy link',
-          successText: 'Link Copied',
-          socialBarTheme: 'dark' as 'dark',
-        },
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`CopyUrlButton/${describe}`, module).add(it, () => (
-      <CopyUrlButtonVisual {...props} />
-    ));
+visualize('CopyUrlButton', () => {
+  story('render', () => {
+    snap('light', <CopyUrlButtonVisual socialBarTheme="light" />);
+    snap('dark', <CopyUrlButtonVisual socialBarTheme="dark" />);
   });
 });
