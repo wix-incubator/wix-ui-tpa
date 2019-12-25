@@ -9,9 +9,11 @@ import { shareButtonTestkitFactory } from '../../testkit';
 import { shareButtonTestkitFactory as enzymeShareButtonTestkitFactory } from '../../testkit/enzyme';
 
 const testProps = {
-  title: 'Share title',
-  url: 'https://wix.com',
-  text: 'some text',
+  shareData: {
+    title: 'Share title',
+    url: 'https://wix.com',
+    text: 'some text',
+  },
   onClick: sharePromise => {
     console.log(navigator.share);
     if (!sharePromise) {

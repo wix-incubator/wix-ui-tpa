@@ -1,14 +1,47 @@
 export const importExample = `import { ShareButton } from 'wix-ui-tpa/ShareButton';`;
 
-export const example = `
+export const exampleIconAndText = `
 <ShareButton
-    title="Share title"
-    url="https://wix.com"
-    prefixIcon={<Share />}
+    shareData={{
+      title: "Share title",
+      url: "https://wix.com"
+    }}
     onClick={ sharePromise=>{
         if (!sharePromise) {
             alert('share clicked')
         }
     }}
->Share</ShareButton>
+    withIcon
+    text='Share'
+/>
+`;
+
+export const exampleIcon = `
+<ShareButton
+    shareData={{
+      title: "Share title",
+      url: "https://wix.com"
+    }}
+    onClick={ sharePromise=>{
+        if (!sharePromise) {
+            alert('share clicked')
+        }
+    }}
+    withIcon
+/>
+`;
+
+export const exampleText = `
+<ShareButton
+    shareData={{
+      title: "Share title",
+      url: "https://wix.com"
+    }}
+    onClick={ sharePromise=>{
+        if (!sharePromise) {
+            alert('share clicked')
+        }
+    }}
+    text='Share'
+/>
 `;

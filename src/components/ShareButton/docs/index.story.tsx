@@ -18,8 +18,6 @@ import * as ShareButtonWiringExampleRaw from '!raw-loader!./ShareButtonWiringExa
 import * as ShareButtonWiringExampleCSSRaw from '!raw-loader!./ShareButtonWiringExample.st.css';
 import { ShareButtonWiringExample } from './ShareButtonWiringExample';
 import { ShareButton } from '../';
-import { IconButton } from '../../IconButton';
-import { Share } from '../../../assets/icons';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -31,18 +29,20 @@ export default {
   componentPath: '../ShareButton.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ShareButton',
-    title: 'Share title',
-    url: 'https://wix.com',
-    prefixIcon: <Share />,
+    shareData: {
+      title: 'Share title',
+      url: 'https://wix.com',
+    },
+    withIcon: true,
     onClick: sharePromise => {
       if (!sharePromise) {
         alert('share clicked');
       }
     },
-    children: 'Share',
+    text: 'Share',
   }),
   exampleProps: {
-    //
+    withIcon: false,
   },
   dataHook: 'storybook-ShareButton',
   sections: [
@@ -59,7 +59,11 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[
+            { title: 'Icon + Text', source: examples.exampleIconAndText },
+            { title: 'Icon', source: examples.exampleIcon },
+            { title: 'Text', source: examples.exampleText },
+          ].map(code),
         ],
       }),
 
