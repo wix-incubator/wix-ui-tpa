@@ -336,6 +336,7 @@ export const generateExample = (
   />
 `;
 };
+
 export const importExample = `import { ProGallery } from 'wix-ui-tpa/ProGallery';
 
 <ProGallery 

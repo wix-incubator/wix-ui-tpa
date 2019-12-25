@@ -47,8 +47,11 @@ export enum GridStyle {
   FitToScreen = 0,
   SetItemsPerRow = 1,
 }
-
 export interface ProGalleryOptions {
+  galleryLayout: ProGalleryLayouts;
+}
+
+export interface galleryOptions {
   galleryLayout: ProGalleryLayouts;
   scrollDirection?: ScrollDirection;
   gridStyle?: GridStyle;

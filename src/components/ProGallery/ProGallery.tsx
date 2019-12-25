@@ -1,9 +1,13 @@
 import * as React from 'react';
 import styles from './ProGallery.st.css';
 import { ProGallery as Gallery } from 'pro-gallery';
-// import 'pro-gallery/dist/statics/main.css';
 
-import { ProGalleryItem, ProGalleryLayouts, ProGalleryOptions } from './types';
+import {
+  galleryOptions,
+  ProGalleryItem,
+  ProGalleryLayouts,
+  ProGalleryOptions,
+} from './types';
 import {
   defaultCollageOptions,
   defaultColumnOptions,
@@ -78,7 +82,7 @@ export class ProGallery extends React.Component<ProGalleryProps, State> {
         <Gallery
           domId={domId}
           items={items}
-          options={options}
+          options={options as galleryOptions}
           container={container}
           eventsListener={eventsListener}
           scrollingElement={scrollingElement}

@@ -1,5 +1,6 @@
-import { Alignment, ImageResize, ProGalleryOptions } from './types';
-const defaultOptions: Partial<ProGalleryOptions> = {
+import { Alignment, galleryOptions, ImageResize } from './types';
+
+const defaultOptions: Partial<galleryOptions> = {
   overlayAnimation: 'NO_EFFECT',
   imageHoverAnimation: 'NO_EFFECT',
   imageLoadingMode: 'BLUR',
@@ -11,7 +12,7 @@ const defaultOptions: Partial<ProGalleryOptions> = {
   videoLoop: true,
 };
 
-export const defaultThumbnailsOptions: Partial<ProGalleryOptions> = {
+export const defaultThumbnailsOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   allowHover: true,
   itemClick: 'expand',
@@ -23,7 +24,7 @@ export const defaultThumbnailsOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultCollageOptions: Partial<ProGalleryOptions> = {
+export const defaultCollageOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   collageDensity: 0.8,
@@ -38,7 +39,7 @@ export const defaultCollageOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultMasonryOptions: Partial<ProGalleryOptions> = {
+export const defaultMasonryOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   gallerySize: 30,
@@ -49,7 +50,7 @@ export const defaultMasonryOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultGridOptions: Partial<ProGalleryOptions> = {
+export const defaultGridOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   cubeType: ImageResize.CROP,
@@ -62,7 +63,7 @@ export const defaultGridOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultSliderOptions: Partial<ProGalleryOptions> = {
+export const defaultSliderOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   cubeType: ImageResize.CROP,
@@ -72,7 +73,7 @@ export const defaultSliderOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultSlideShowOptions: Partial<ProGalleryOptions> = {
+export const defaultSlideShowOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   cubeType: ImageResize.CROP,
@@ -85,7 +86,7 @@ export const defaultSlideShowOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultPanoramaOptions: Partial<ProGalleryOptions> = {
+export const defaultPanoramaOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   allowHover: true,
@@ -95,7 +96,7 @@ export const defaultPanoramaOptions: Partial<ProGalleryOptions> = {
   galleryMargin: 0,
 };
 
-export const defaultColumnOptions: Partial<ProGalleryOptions> = {
+export const defaultColumnOptions: Partial<galleryOptions> = {
   ...defaultOptions,
   imageMargin: 10,
   allowHover: true,
