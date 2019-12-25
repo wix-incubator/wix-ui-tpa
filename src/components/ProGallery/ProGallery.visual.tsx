@@ -45,7 +45,7 @@ const tests: Test[] = [
           options: proGalleryOptions[0],
           eventsListener: _.noop,
           scrollingElement: e => e.target.parentElement,
-          domId: domId,
+          domId,
         },
       },
     ],
