@@ -12,6 +12,13 @@ const svgr = require('@svgr/core');
 const babelCore = require('@babel/core');
 
 require.extensions['.svg'] = mockSvg;
+require.extensions['.scss'] = mockScss;
+
+function mockScss(module) {
+  module.exports = {
+    default: '',
+  };
+}
 
 function mockSvg(module) {
   const filePathName = path.basename(module.filename);

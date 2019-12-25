@@ -7,13 +7,13 @@ import * as _ from 'lodash';
 export const ProGalleryWiringExample = () => {
   return (
     <ProGallery
+      options={proGalleryOptions[0]}
+      items={proGalleryItems}
       domId={domId}
       height={1000}
       width={1000}
-      items={proGalleryItems}
       eventsListener={_.noop}
       scrollingElement={e => e.target.parentElement}
-      options={proGalleryOptions[0]}
     />
   );
 };

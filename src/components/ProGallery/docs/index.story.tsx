@@ -12,17 +12,17 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {allComponents} from '../../../../stories/utils/allComponents';
+import {settingsPanel} from '../../../../stories/utils/SettingsPanel';
 import * as ProGalleryWiringExampleRaw from '!raw-loader!./ProGalleryWiringExample.tsx';
 import * as ProGalleryWiringExampleCSSRaw from '!raw-loader!./ProGalleryWiringExample.st.css';
-import { ProGalleryWiringExample } from './ProGalleryWiringExample';
-import { ProGallery } from '../';
-import { ProGalleryLayouts } from '../types';
+import {ProGalleryWiringExample} from './ProGalleryWiringExample';
+import {ProGallery} from '../';
+import {ProGalleryLayouts} from '../types';
 import * as _ from 'lodash';
 
 const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+  baseCode({components: allComponents, compact: true, ...config});
 
 export default {
   category: 'Components',
@@ -31,24 +31,21 @@ export default {
   componentPath: '../ProGallery.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ProGallery',
-    width: 1000,
-    height: 1000,
     items: examples.proGalleryItems,
     options: examples.proGalleryOptions[0],
+    width: 500,
+    height: 500,
     scrollingElement: e => e.target.parentElement,
     eventsListener: _.noop,
     domId: examples.domId,
   }),
-  exampleProps: {
-    'data-hook': 'storybook-ProGallery',
-    width: 1000,
-    height: 1000,
-    items: examples.proGalleryItems,
-    options: examples.proGalleryOptions[0],
-    scrollingElement: e => e.target.parentElement,
-    eventsListener: _.noop,
-    domId: examples.domId,
-  },
+  exampleProps:
+    {
+      items: [{value: examples.proGalleryItems, label: 'example'}],
+      options: examples.proGalleryOptions.map((option) => {
+        return {label: ProGalleryLayouts[option.galleryLayout], value: option};
+      }),
+    },
   dataHook: 'storybook-ProGallery',
   sections: [
     header(),
@@ -72,9 +69,9 @@ export default {
         ],
       }),
       ...[
-        { title: 'API', sections: [api()] },
-        { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        {title: 'API', sections: [api()]},
+        {title: 'TestKit', sections: [testkit()]},
+        {title: 'Playground', sections: [playground()]},
         {
           title: 'Settings Panel',
           sections: [
