@@ -1,3 +1,14 @@
+# [1.5.0](https://github.com/wix/wix-ui-tpa/compare/v1.4.2...v1.5.0) (2019-12-26)
+
+
+### Bug Fixes
+
+* accept any unit type for Counter's width ([02005b0](https://github.com/wix/wix-ui-tpa/commit/02005b05a0db7ce1865b0a9dd548530ed57d2fe5))
+* add pagination slash (separator) margin ([922cf1e](https://github.com/wix/wix-ui-tpa/commit/922cf1e0e99e225fc0e93e8bb214244510d7e1fd))
+* tabs scroll on mobile ([78ab774](https://github.com/wix/wix-ui-tpa/commit/78ab774661d7afbaa233cc34b0a599f571d858dd))
+
+
+
 ## [1.4.2](https://github.com/wix/wix-ui-tpa/compare/v1.4.1...v1.4.2) (2019-12-11)
 
 
