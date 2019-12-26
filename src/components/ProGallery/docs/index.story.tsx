@@ -30,7 +30,7 @@ export default {
   component: ProGallery,
   componentPath: '../ProGallery.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-ProGallery',
+    // 'data-hook': 'storybook-ProGallery',
     items: examples.proGalleryItems,
     options: examples.proGalleryOptions[0],
     width: 500,
@@ -45,7 +45,6 @@ export default {
       return { label: ProGalleryLayouts[option.galleryLayout], value: option };
     }),
   },
-  dataHook: 'storybook-ProGallery',
   sections: [
     header(),
     tabs([
