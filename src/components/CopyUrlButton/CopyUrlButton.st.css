@@ -1,6 +1,8 @@
 /*Defaults*/
 :vars {
   /*Defaults params goes here*/
+  CheckButtonHeight: 19px;
+  SuccessTextPadding: 10px;
 }
 
 /*Overrides*/
@@ -36,6 +38,7 @@
   flex-direction: column;
   align-items: center;
   animation: bounce-in 0.5s ease 0s 1 normal;
+  position: relative;
 }
 
 .successMobile {
@@ -44,8 +47,10 @@
 }
 
 .successText {
-  position: relative;
-  top: 14px;
+  position: absolute;
+  top: calc(value(CheckButtonHeight) + value(SuccessTextPadding));
+  text-align: center;
+  width: 100px;
 }
 
 

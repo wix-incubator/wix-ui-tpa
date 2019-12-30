@@ -28,7 +28,7 @@ export class SocialBarIcon extends React.Component<SocialBarIconProps> {
             <Tooltip
               appendTo={'scrollParent'}
               content={tooltip}
-              placement="bottom"
+              placement="top"
               disabled={!tooltip || mobile}
             >
               <IconButton
