@@ -6,7 +6,7 @@ export { ReactComponent as Linkedin } from './Linkedin.svg';
 export { ReactComponent as Pinterest } from './Pinterest.svg';
 export { ReactComponent as Podcast } from './Podcast.svg';
 export { ReactComponent as Rss } from './Rss.svg';
-export { ReactComponent as SoundCloud } from './SoundCloud.svg';
+export { ReactComponent as Soundcloud } from './Soundcloud.svg';
 export { ReactComponent as Spotify } from './Spotify.svg';
 export { ReactComponent as Stitcher } from './Stitcher.svg';
 export { ReactComponent as Tumblr } from './Tumblr.svg';
