@@ -24,6 +24,65 @@ import { CopyUrlButton } from '../../CopyUrlButton';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+  /* tslint:disable */
+
+const DEFAULT_CHILDREN = [
+  <SocialBar.Icon
+    key={1}
+    tooltip="Facebook"
+    icon={
+      <SocialIcons.Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
+    }
+  />,
+  <SocialBar.Icon
+    key={2}
+    tooltip="Instagram"
+    icon={<SocialIcons.Instagram />}
+    href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+  />,
+
+  <SocialBar.Icon
+    key={3}
+    tooltip="Linkedin"
+    icon={<SocialIcons.Linkedin />}
+    href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+  />,
+
+  <SocialBar.Icon
+    key={5}
+    tooltip="Pinterest"
+    icon={<SocialIcons.Pinterest />}
+    href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+  />,
+];
+
+const CHILDREN = [
+  {
+    label: 'with copy url button and tumblr',
+    value: [
+      ...DEFAULT_CHILDREN,
+      <SocialBar.Icon
+        key={4}
+        tooltip="Tumblr"
+        icon={<SocialIcons.Tumblr />}
+        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
+      />,
+      <CopyUrlButton
+        key={6}
+        tooltipText="Copy Link"
+        successText="Link Copied"
+        url="https://google.com"
+      />,
+    ],
+  },
+  {
+    label: 'without copy url button and tumblr',
+    value: [...DEFAULT_CHILDREN],
+  },
+];
+
+/* tslint:enable */
+
 export default {
   category: 'Components/Share',
   storyName: 'SocialBar',
@@ -32,54 +91,11 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-SocialBar',
     theme: 'light',
-    children: [
-      /* tslint:disable */
-      <SocialBar.Icon
-        key={1}
-        tooltip="Facebook"
-        icon={
-          <SocialIcons.Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
-        }
-      />,
-      <SocialBar.Icon
-        key={2}
-        tooltip="Instagram"
-        icon={<SocialIcons.Instagram />}
-        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-      />,
-
-      <SocialBar.Icon
-        key={3}
-        tooltip="Linkedin"
-        icon={<SocialIcons.Linkedin />}
-        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-      />,
-
-      <SocialBar.Icon
-        key={4}
-        tooltip="Tumblr"
-        icon={<SocialIcons.Tumblr />}
-        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-      />,
-
-      <SocialBar.Icon
-        key={5}
-        tooltip="Pinterest"
-        icon={<SocialIcons.Pinterest />}
-        href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
-      />,
-
-      <CopyUrlButton
-        key={6}
-        tooltipText="Copy Link"
-        successText="Link Copied"
-        url="https://google.com"
-      />,
-      /* tslint:enable */
-    ],
+    children: CHILDREN[0].value,
   }),
   exampleProps: {
     theme: ['light', 'dark'],
+    children: CHILDREN,
   },
   dataHook: 'storybook-SocialBar',
   sections: [
