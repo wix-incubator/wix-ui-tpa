@@ -6,6 +6,11 @@ export enum TOAST_SKIN {
   error = 'error',
 }
 
+export enum TOAST_PLACEMENT {
+  inline = 'inline',
+  bottomFullWidth = 'bottomFullWidth',
+}
+
 export interface ToastProps extends TPAComponentProps {
   /** Define the styles for toast */
   skin: TOAST_SKIN;
@@ -16,6 +21,7 @@ export interface ToastProps extends TPAComponentProps {
   shouldShowCloseButton?: boolean;
   /** Callback function, will be called when click on close button */
   onClose?(event: MouseEvent): void;
+  placement?: TOAST_PLACEMENT;
 }
 
 export interface DefaultProps {

@@ -1,0 +1,47 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback
+}
+
+:vars {
+    /*Defaults*/
+    DefaultColor: color-5;
+}
+
+:vars {
+    /*Overrides*/
+    IconColor: --overridable;
+}
+
+.root {
+    -st-states: withIcon, withText;
+}
+
+.root:hover .icon {
+    opacity: 0.6;
+}
+
+.root:withIcon .text {
+    padding-left: 8px;
+}
+
+.root:withText .icon {
+    opacity: 0.6;
+}
+
+.root:hover:withText .icon {
+    opacity: 0.4;
+}
+
+.text {
+
+}
+
+.icon {
+
+}
+
+.icon path {
+    fill: none;
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+}

@@ -1,0 +1,15 @@
+export { ReactComponent as CopyLink } from './CopyLink.svg';
+export { ReactComponent as Facebook } from './Facebook.svg';
+export { ReactComponent as GooglePodcast } from './GooglePodcast.svg';
+export { ReactComponent as Instagram } from './Instagram.svg';
+export { ReactComponent as Linkedin } from './Linkedin.svg';
+export { ReactComponent as Pinterest } from './Pinterest.svg';
+export { ReactComponent as Podcast } from './Podcast.svg';
+export { ReactComponent as Rss } from './Rss.svg';
+export { ReactComponent as Soundcloud } from './Soundcloud.svg';
+export { ReactComponent as Spotify } from './Spotify.svg';
+export { ReactComponent as Stitcher } from './Stitcher.svg';
+export { ReactComponent as Tumblr } from './Tumblr.svg';
+export { ReactComponent as Twitter } from './Twitter.svg';
+export { ReactComponent as Vimeo } from './Vimeo.svg';
+export { ReactComponent as Youtube } from './Youtube.svg';

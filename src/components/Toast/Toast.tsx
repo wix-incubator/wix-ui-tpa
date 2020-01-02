@@ -24,6 +24,7 @@ export class Toast extends React.Component<ToastProps> {
       children,
       shouldAnimate,
       isShown,
+      placement,
       ...rest
     } = this.props;
 
@@ -31,7 +32,11 @@ export class Toast extends React.Component<ToastProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-            {...styles('root', { mobile, skin, shouldAnimate, isShown }, rest)}
+            {...styles(
+              'root',
+              { mobile, skin, shouldAnimate, isShown, placement },
+              rest,
+            )}
             role="alert"
             data-is-shown={isShown}
             data-skin={skin}

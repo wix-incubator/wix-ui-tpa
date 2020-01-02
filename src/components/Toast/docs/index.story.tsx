@@ -16,7 +16,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as Readme from '../README.md';
-import { TOAST_SKIN } from '../types';
+import { TOAST_SKIN, TOAST_PLACEMENT } from '../types';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -34,6 +34,7 @@ export default {
   }),
   exampleProps: {
     skin: Object.values(TOAST_SKIN),
+    placement: Object.values(TOAST_PLACEMENT),
     shouldShowCloseButton: false,
     shouldAnimate: false,
     isShown: false,

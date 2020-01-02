@@ -27,3 +27,6 @@ export { DotNavigation } from './DotNavigation';
 export { CheckboxGroup, Layout, CheckboxGroupProps } from './CheckboxGroup';
 export * from './Dropdown';
 export * from './NewCard';
+export { SocialBar } from './SocialBar';
+export { ShareButton } from './ShareButton';
+export { CopyUrlButton } from './CopyUrlButton';

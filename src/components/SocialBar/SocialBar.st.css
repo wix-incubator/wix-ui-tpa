@@ -1,0 +1,36 @@
+
+
+/*Defaults*/
+:vars {
+  IconWidth: 24px;
+  IconsGap: 40px;
+  /*Defaults params goes here*/
+}
+
+/*Overrides*/
+:vars {
+  /*Deceleration of overridable placeholders*/
+}
+
+.root {
+  -st-states: mobile;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px 0; /* reserving space for copy url success text */
+}
+
+.root:mobile {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.root:mobile .item {
+  flex-shrink: 0;
+}
+
+.item {
+  width: calc(value(IconWidth) + value(IconsGap));
+  justify-content: center;
+  display: flex;
+}
