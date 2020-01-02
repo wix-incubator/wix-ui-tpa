@@ -1,0 +1,115 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: value, color, fallback, applyOpacity;
+}
+
+/*Defaults*/
+:vars {
+    BorderRadius: 2px;
+    BorderWidth: 1px;
+
+    MainPadding: 16px;
+    ContentPadding: 8px;
+
+    TextMinWidth: 200px;
+    DefaultTextColor: color(color-5);
+    FontSize: 14px;
+
+    DefaultBackgroundColor: applyOpacity(color(color-5), 0.05);
+    ErrorBackgroundColor: applyOpacity(#F64D43, 0.1);
+}
+
+/*Overrides*/
+:vars {
+    BackgroundColor: --overridable;
+    TextColor: --overridable;
+}
+
+:vars {
+    MainBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    MainTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root {
+    -st-states: rtl, mobile, error;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: value(BorderRadius);
+}
+
+.root:error::main {
+    background-color: value(ErrorBackgroundColor);
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    /* is used to allow controls to wrap on the next line when available width is not enough */
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: value(MainPadding);
+    background-color: value(MainBackgroundColor);
+    border: value(BorderWidth) solid applyOpacity(#FFFFFF, 0.4);
+    border-radius: value(BorderRadius);
+
+    color: value(MainTextColor);
+    font-family: "HelveticaNeueW01-55Roma", "Arial", "sans-serif";
+    font-size: value(FontSize);
+}
+
+.textWrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.icon {
+    margin-left: 0;
+    margin-right: value(ContentPadding);
+}
+
+
+.text {
+    flex: 1;
+    min-width: value(TextMinWidth);
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: value(ContentPadding);
+}
+
+
+.icon:empty,
+.controls:empty {
+    display: none;
+}
+
+/* RTL styles */
+.root:rtl::icon {
+    margin-left: value(ContentPadding);
+    margin-right: 0;
+    margin-top: 0;
+}
+.root:rtl::controls {
+    margin-right: value(ContentPadding);
+    margin-top: 0;
+    margin-left: 0;
+}
+
+/* Mobile styles */
+.root:mobile::controls {
+    margin-top: value(ContentPadding);
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.root:mobile::main {
+    flex-direction: column;
+}
