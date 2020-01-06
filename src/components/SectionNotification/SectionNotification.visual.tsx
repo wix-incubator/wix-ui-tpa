@@ -9,7 +9,6 @@ import { NOTIFICATION_TYPE } from './types';
 
 interface SectionNotificationVisualProps {
   mobile: boolean;
-  rtl: boolean;
 }
 
 class SectionNotificationVisual extends React.Component<
@@ -17,14 +16,13 @@ class SectionNotificationVisual extends React.Component<
 > {
   static defaultProps = {
     mobile: false,
-    rtl: false,
   };
 
   render() {
-    const { mobile, rtl, ...componentProps } = this.props;
+    const { mobile, ...componentProps } = this.props;
 
     return (
-      <TPAComponentsProvider value={{ mobile, rtl }}>
+      <TPAComponentsProvider value={{ mobile }}>
         <VisualTestContainer>
           <SectionNotification {...componentProps} />
         </VisualTestContainer>
@@ -38,12 +36,11 @@ const textSamples = {
   long: `We're having some trouble authorizing and charging your card. Please make sure it's valid or try a different payment method.`,
 };
 
-function getTests({ isMobile = false, isRTL = false, text }) {
+function getTests({ isMobile = false, text }) {
   return Object.values(NOTIFICATION_TYPE).map(type => ({
     it: type,
     props: {
       mobile: isMobile,
-      rtl: isRTL,
       type,
       text,
       icon: <ErrorIcon />,
@@ -65,13 +62,6 @@ const tests = [
     its: [
       ...getTests({ text: textSamples.short, isMobile: true }),
       ...getTests({ text: textSamples.long, isMobile: true }),
-    ],
-  },
-  {
-    describe: 'rtl',
-    its: [
-      ...getTests({ text: textSamples.short, isRTL: true }),
-      ...getTests({ text: textSamples.long, isRTL: true }),
     ],
   },
 ];

@@ -25,13 +25,13 @@ export class SectionNotification extends React.Component<
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile, rtl }) => (
+        {({ mobile }) => (
           <div
             {...styles('root', {
               error: isError,
-              mobile,
-              rtl,
             })}
+            data-error={isError}
+            data-mobile={mobile}
             data-hook={this.props['data-hook']}
             aria-live="assertive"
           >
