@@ -1,3 +1,12 @@
+# [1.6.0](https://github.com/wix/wix-ui-tpa/compare/v1.5.0...v1.6.0) (2020-01-12)
+
+
+### Features
+
+* Social Share ([ea16856](https://github.com/wix/wix-ui-tpa/commit/ea1685638e03e0d9a401285453c59106b1dfb8c1))
+
+
+
 # [1.5.0](https://github.com/wix/wix-ui-tpa/compare/v1.4.2...v1.5.0) (2019-12-26)
 
 
