@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Button, ButtonProps } from '../../Button';
 import { TextButton, TextButtonProps } from '../../TextButton';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
-import { BUTTON_TYPE, SectionNotificationButtonProps } from '../types';
 import styles from '../SectionNotification.st.css';
+import { BUTTON_TYPE, SectionNotificationButtonProps } from '../types';
 
 export class SectionNotificationButton extends React.Component<
   SectionNotificationButtonProps | (ButtonProps & TextButtonProps)
@@ -16,7 +16,9 @@ export class SectionNotificationButton extends React.Component<
 
   render() {
     const { children, type, ...buttonProps } = this.props;
-    const ButtonComponent = type === BUTTON_TYPE.text ? TextButton : Button;
+    const ButtonComponent = (type === BUTTON_TYPE.text
+      ? TextButton
+      : Button) as React.ComponentClass;
 
     return (
       <div className={styles.button}>

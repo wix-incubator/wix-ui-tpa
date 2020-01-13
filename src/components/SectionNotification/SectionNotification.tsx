@@ -32,7 +32,7 @@ export class SectionNotification extends React.Component<
     const buttons = [];
 
     React.Children.forEach(children, (child: React.ReactElement) => {
-      if (child.type === SectionNotificationButton) {
+      if (child && child.type === SectionNotificationButton) {
         buttons.push(child);
       } else {
         contents.push(child);

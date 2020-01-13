@@ -46,18 +46,20 @@ class SectionNotificationVisual extends React.Component<
   }
 }
 
-const textSamples = {
-  short: `You will be redirected to the payment provider's page.`,
-  long: `We're having some trouble authorizing and charging your card. Please make sure it's valid or try a different payment method.`,
-};
+const textSample = `We're having some trouble authorizing and charging your card. Please make sure it's valid or try a different payment method.`;
 
-function getTests({ text, icon = null, buttons = [], isMobile = false }) {
+function getTests({
+  description,
+  icon = null,
+  buttons = [],
+  isMobile = false,
+}) {
   return Object.values(NOTIFICATION_TYPE).map(type => ({
-    it: type,
+    it: `${description} - ${type}`,
     props: {
       mobile: isMobile,
       type,
-      text,
+      text: textSample,
       icon,
       buttons,
     },
@@ -68,23 +70,11 @@ const tests = [
   {
     describe: 'desktop',
     its: [
-      ...getTests({ text: textSamples.short }),
-      ...getTests({ text: textSamples.short, icon: <ErrorIcon /> }),
+      ...getTests({ description: 'Basic' }),
+      ...getTests({ description: 'With icon', icon: <ErrorIcon /> }),
+      ...getTests({ description: 'With button', buttons: ['Approve'] }),
       ...getTests({
-        text: textSamples.short,
-        icon: <ErrorIcon />,
-        buttons: ['Approve'],
-      }),
-      ...getTests({
-        text: textSamples.short,
-        icon: <ErrorIcon />,
-        buttons: ['Approve', 'Decline'],
-      }),
-      ...getTests({ text: textSamples.long }),
-      ...getTests({ text: textSamples.long, icon: <ErrorIcon /> }),
-      ...getTests({ text: textSamples.long, buttons: ['Approve'] }),
-      ...getTests({
-        text: textSamples.long,
+        description: 'With icon and two buttons',
         icon: <ErrorIcon />,
         buttons: ['Approve', 'Decline'],
       }),
@@ -93,37 +83,19 @@ const tests = [
   {
     describe: 'mobile',
     its: [
-      ...getTests({ text: textSamples.short, isMobile: true }),
+      ...getTests({ description: 'Basic', isMobile: true }),
       ...getTests({
-        text: textSamples.short,
+        description: 'With icon',
         icon: <ErrorIcon />,
         isMobile: true,
       }),
       ...getTests({
-        text: textSamples.short,
-        icon: <ErrorIcon />,
+        description: 'With button',
         buttons: ['Approve'],
         isMobile: true,
       }),
       ...getTests({
-        text: textSamples.short,
-        icon: <ErrorIcon />,
-        buttons: ['Approve', 'Decline'],
-        isMobile: true,
-      }),
-      ...getTests({ text: textSamples.long, isMobile: true }),
-      ...getTests({
-        text: textSamples.long,
-        icon: <ErrorIcon />,
-        isMobile: true,
-      }),
-      ...getTests({
-        text: textSamples.long,
-        buttons: ['Approve'],
-        isMobile: true,
-      }),
-      ...getTests({
-        text: textSamples.long,
+        description: 'With icon and two buttons',
         icon: <ErrorIcon />,
         buttons: ['Approve', 'Decline'],
         isMobile: true,
