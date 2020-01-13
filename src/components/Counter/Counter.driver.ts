@@ -4,7 +4,7 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import style from './Counter.st.css';
-
+import { tooltipDriverFactory as tooltipDriver } from '../Tooltip/Tooltip.driver';
 export interface CounterDriver extends BaseUniDriver {
   isCounterComponentDisabled(): Promise<boolean>;
   isInputComponentDisabled(): Promise<boolean>;
@@ -16,6 +16,7 @@ export interface CounterDriver extends BaseUniDriver {
   pressPlus(): Promise<void>;
   getCounterAriaLabel(): Promise<string>;
   getCounterAriaLabellledby(): Promise<string>;
+  isTooltipExists(): Promise<boolean>;
 }
 
 export const counterDriverFactory = (base: UniDriver): CounterDriver => {
@@ -40,5 +41,8 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
     pressPlus: async () => getPlusButton().click(),
     getCounterAriaLabel: async () => getAriaLabel('label'),
     getCounterAriaLabellledby: async () => getAriaLabel('labelledby'),
+    isTooltipExists: async () => {
+      return base.$('[data-hook="popover-element"]').exists();
+    },
   };
 };

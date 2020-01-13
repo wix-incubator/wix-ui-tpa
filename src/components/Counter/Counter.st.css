@@ -77,6 +77,10 @@
     color: color(value(counterDisabledColor));
 }
 
+.root:error svg {
+    color: value(DefaultErrorColor);
+}
+
 .root input {
     background: color(value(DefaultBackgroundColor));
     padding: 0;

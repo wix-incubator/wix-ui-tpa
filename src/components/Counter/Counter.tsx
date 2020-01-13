@@ -5,6 +5,9 @@ import style from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
 import { TPAComponentProps } from '../../types';
+import { Tooltip } from '../Tooltip';
+import { TooltipSkin } from '../Tooltip/TooltipEnums';
+import StatusAlertSmall from 'wix-ui-icons-common/StatusAlertSmall';
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
@@ -19,6 +22,7 @@ export interface CounterProps extends TPAComponentProps {
   max?: number;
   error?: boolean;
   disabled?: boolean;
+  errorMessage?: string;
 }
 
 interface DefaultProps {
@@ -67,6 +71,7 @@ export class Counter extends React.Component<CounterProps> {
       onChange,
       value,
       error,
+      errorMessage,
       ...rest
     } = this.props;
 
@@ -95,8 +100,21 @@ export class Counter extends React.Component<CounterProps> {
           min={min}
           max={max}
           step={step}
+          error={error}
           value={value.toString()}
         />
+
+        {errorMessage && (
+          <Tooltip
+            content={errorMessage}
+            placement="top"
+            appendTo="viewport"
+            skin={TooltipSkin.Error}
+          >
+            <StatusAlertSmall className={style.error} />
+          </Tooltip>
+        )}
+
         <Button
           aria-label={decrementAriaLabel}
           className={style.btn}
