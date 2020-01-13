@@ -71,7 +71,7 @@ export default {
             { title: 'Disabled', source: `<Counter disabled={true} />` },
             {
               title: 'Error',
-              source: `<Counter error={true} errorMessage="I'm am error message"/>`,
+              source: `<Counter error={true} errorMessage="Something is fishy here..."/>`,
             },
           ].map(code),
         ],
