@@ -15,8 +15,6 @@ import {
 import { NOTIFICATION_TYPE, SectionNotification } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
-import { Button, PRIORITY } from '../../Button';
-import * as Readme from '../README.md';
 import * as examples from './examples';
 
 const code = config =>
@@ -30,18 +28,18 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-SectionNotification',
     type: NOTIFICATION_TYPE.default,
-    icon: <ErrorIcon />,
-    text: 'This group will only be created after you approve it.',
-    controls: (
-      <>
-        <Button key="1" priority={PRIORITY.basicSecondary}>
-          Decline
-        </Button>
-        <Button key="2" priority={PRIORITY.basic}>
-          Approve
-        </Button>
-      </>
-    ),
+    children: [
+      <SectionNotification.Icon icon={<ErrorIcon />} key="icon" />,
+      <SectionNotification.Text key="text">
+        This group will only be created after you approve it.
+      </SectionNotification.Text>,
+      <SectionNotification.Button key="decline">
+        Decline
+      </SectionNotification.Button>,
+      <SectionNotification.Button key="approve">
+        Approve
+      </SectionNotification.Button>,
+    ],
   }),
   exampleProps: {
     type: Object.values(NOTIFICATION_TYPE),
@@ -53,8 +51,6 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
-
           divider(),
 
           importExample({

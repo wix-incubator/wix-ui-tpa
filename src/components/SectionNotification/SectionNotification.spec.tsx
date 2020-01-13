@@ -14,58 +14,55 @@ const props = {
   icon: <svg>ErrorIcon</svg>,
   text: `You will be redirected to payment provider's page.`,
   type: NOTIFICATION_TYPE.default,
-  controls: <button>Proceed</button>,
+  buttonTitle: 'Proceed',
 };
 
 describe('SectionNotification', () => {
   const createDriver = createUniDriverFactory(sectionNotificationDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<SectionNotification text={props.text} />);
+    const driver = createDriver(
+      <SectionNotification>
+        <SectionNotification.Text>{props.text}</SectionNotification.Text>
+      </SectionNotification>,
+    );
 
     expect(await driver.exists()).toBe(true);
   });
 
   it('should render notification with content', async () => {
-    const driver = createDriver(<SectionNotification {...props} />);
+    const driver = createDriver(
+      <SectionNotification>
+        <SectionNotification.Icon icon={props.icon} />
+        <SectionNotification.Text>{props.text}</SectionNotification.Text>
+        <SectionNotification.Button>
+          {props.buttonTitle}
+        </SectionNotification.Button>
+      </SectionNotification>,
+    );
 
     expect(await driver.getText()).toEqual(props.text);
-    expect(await driver.hasControls()).toBe(true);
+    expect(await driver.hasButtons()).toBe(true);
     expect(await driver.hasIcon()).toBe(true);
   });
 
   it('should render notification of type Error', async () => {
     const driver = createDriver(
-      <SectionNotification {...props} type={NOTIFICATION_TYPE.error} />,
+      <SectionNotification type={NOTIFICATION_TYPE.error}>
+        <SectionNotification.Text>{props.text}</SectionNotification.Text>
+      </SectionNotification>,
     );
 
     expect(await driver.isError()).toBe(true);
-  });
-
-  it('should not render controls for type Error', async () => {
-    const driver = createDriver(
-      <SectionNotification {...props} type={NOTIFICATION_TYPE.error} />,
-    );
-
-    expect(await driver.isError()).toBe(true);
-    expect(await driver.hasControls()).toBe(false);
-  });
-
-  it('should render notification for Mobile', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(
-        <SectionNotification {...props} />,
-      ),
-    );
-
-    expect(await driver.isMobile()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <SectionNotification {...props} />,
+          <SectionNotification>
+            <SectionNotification.Text>{props.text}</SectionNotification.Text>
+          </SectionNotification>,
           sectionNotificationTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -79,7 +76,9 @@ describe('SectionNotification', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <SectionNotification {...props} />,
+          <SectionNotification>
+            <SectionNotification.Text>{props.text}</SectionNotification.Text>
+          </SectionNotification>,
           enzymeSectionNotificationTestkitFactory,
           mount,
           {

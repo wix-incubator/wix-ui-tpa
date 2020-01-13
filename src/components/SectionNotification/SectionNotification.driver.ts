@@ -1,24 +1,27 @@
-import { BaseUniDriver, baseUniDriverFactory } from 'wix-ui-test-utils/base-driver';
+import {
+  BaseUniDriver,
+  baseUniDriverFactory,
+} from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
-import { hasDataAttr, hasMobile } from '../../test/utils';
+import { UniDriverList } from '@unidriver/core';
+import { hasDataAttr } from '../../test/utils';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from './dataHooks';
 
 export interface SectionNotificationDriver extends BaseUniDriver {
   isError(): Promise<boolean>;
-  isMobile(): Promise<boolean>;
   hasIcon(): Promise<boolean>;
-  hasControls(): Promise<boolean>;
+  hasButtons(): Promise<boolean>;
   getText(): Promise<string>;
   getIconContainer(): UniDriver;
-  getControlsContainer(): UniDriver;
+  getButtons(): UniDriverList;
 }
 
 const getIconContainer = base =>
-  base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.iconWrapper}"]`);
+  base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.icon}"]`);
 const getTextContainer = base =>
-  base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.textWrapper}"]`);
-const getControlsContainer = base =>
-  base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.controlsWrapper}"]`);
+  base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.text}"]`);
+const getButtons = base =>
+  base.$$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.button}"]`);
 
 export const sectionNotificationDriverFactory = (
   base: UniDriver,
@@ -26,11 +29,10 @@ export const sectionNotificationDriverFactory = (
   return {
     ...baseUniDriverFactory(base),
     isError: () => hasDataAttr(base, 'error', 'true'),
-    isMobile: () => hasMobile(base),
     hasIcon: () => getIconContainer(base).exists(),
-    hasControls: () => getControlsContainer(base).exists(),
+    hasButtons: async () => (await getButtons(base).count()) > -1,
     getText: () => getTextContainer(base).text(),
     getIconContainer: () => getIconContainer(base),
-    getControlsContainer: () => getControlsContainer(base),
+    getButtons: () => getButtons(base),
   };
 };

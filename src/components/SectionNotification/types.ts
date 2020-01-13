@@ -1,17 +1,32 @@
-export interface SectionNotificationProps {
-  type?: string;
-  icon?: React.ReactNode;
-  text: string;
-  controls?: /* supported only for type "default" */
-  React.ReactNode | React.ReactNode[];
-}
+import { TPAComponentProps } from '../../types';
 
-export enum NOTIFICATION_TYPE {
-  default = 'default',
-  error = 'error',
+export interface SectionNotificationProps extends TPAComponentProps {
+  type?: string;
+  children?: React.ReactNode;
 }
 
 export interface SectionNotificationDefaultProps {
   type: string;
   'data-hook'?: string;
+}
+
+export interface SectionNotificationIconProps extends TPAComponentProps {
+  icon?: React.ReactNode;
+}
+
+export interface SectionNotificationTextProps extends TPAComponentProps {}
+
+export interface SectionNotificationButtonProps extends TPAComponentProps {
+  type?: string;
+  children?: React.ReactNode;
+}
+
+export enum BUTTON_TYPE {
+  default = 'default',
+  text = 'text',
+}
+
+export enum NOTIFICATION_TYPE {
+  default = 'default',
+  error = 'error',
 }

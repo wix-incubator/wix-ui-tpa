@@ -33,28 +33,31 @@ function getSectionNotification(
   isMobile?: boolean,
 ): string {
   const sectionNotifications = `
-    <SectionNotification type="${type}" text="${exampleText.notification}" />
+    <SectionNotification type="${type}">
+      <SectionNotification.Text>${
+        exampleText.notification
+      }</SectionNotification.Text>
+    </SectionNotification>
+
     <br/>
-    <SectionNotification type="${type}" icon={${errorIcon}} text="${
-    exampleText.error
-  }" />
+
+    <SectionNotification type="${type}">
+      <SectionNotification.Icon icon={${errorIcon}} />
+      <SectionNotification.Text>${exampleText.error}</SectionNotification.Text>
+    </SectionNotification>
+
+
     ${
       type !== NOTIFICATION_TYPE.error
         ? `
         <br/>
-        <SectionNotification
-          type="${type}"
-          icon={${errorIcon}}
-          text="${exampleText.confrirmation}"
-          controls={[
-            <Button key="secondary" size={SIZE.tiny} priority={PRIORITY.basicSecondary}>
-              Decline
-            </Button>,
-            <Button key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>
-              Approve
-            </Button>,
-          ]}
-      />`
+        <SectionNotification type="${type}">
+          <SectionNotification.Icon icon={${errorIcon}} />
+          <SectionNotification.Text>${exampleText.confrirmation}</SectionNotification.Text>
+          <SectionNotification.Button type="text" key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>Decline</SectionNotification.Button>
+          <SectionNotification.Button type="default" key="secondary" size={SIZE.tiny} priority={PRIORITY.basicSecondary}>Approve</SectionNotification.Button>
+        </SectionNotification>
+        `
         : ''
     }
   `;

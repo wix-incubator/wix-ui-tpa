@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { TPAComponentProps } from '../../types';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from './dataHooks';
-import styles from './SectionNotification.st.css';
 import {
   NOTIFICATION_TYPE,
   SectionNotificationDefaultProps,
   SectionNotificationProps,
 } from './types';
+import { SectionNotificationButton } from './Button/SectionNotificationButton';
+import { SectionNotificationText } from './Text/SectionNotificationText';
+import { SectionNotificationIcon } from './Icon/SectionNotificationIcon';
+import styles from './SectionNotification.st.css';
 
 /** Section notification displays an important, succinct message, and provides actions for users to address and can not be dismissed.  */
 export class SectionNotification extends React.Component<
-  SectionNotificationProps & TPAComponentProps
+  SectionNotificationProps
 > {
   static displayName = 'SectionNotification';
   static defaultProps: SectionNotificationDefaultProps = {
@@ -19,49 +20,39 @@ export class SectionNotification extends React.Component<
     'data-hook': SECTION_NOTIFICATION_DATA_HOOKS.root,
   };
 
+  static Text = SectionNotificationText;
+  static Icon = SectionNotificationIcon;
+  static Button = SectionNotificationButton;
+
   render() {
-    const { icon, text, controls, type } = this.props;
+    const { children, type } = this.props;
     const isError = type === NOTIFICATION_TYPE.error;
 
+    const contents = [];
+    const buttons = [];
+
+    React.Children.forEach(children, (child: React.ReactElement) => {
+      if (child.type === SectionNotificationButton) {
+        buttons.push(child);
+      } else {
+        contents.push(child);
+      }
+    });
+
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div
-            {...styles('root', {
-              error: isError,
-            })}
-            data-error={isError}
-            data-mobile={mobile}
-            data-hook={this.props['data-hook']}
-            aria-live="assertive"
-          >
-            <div className={styles.main}>
-              <div className={styles.textWrapper}>
-                <div
-                  className={styles.icon}
-                  data-hook={SECTION_NOTIFICATION_DATA_HOOKS.iconWrapper}
-                >
-                  {icon}
-                </div>
-                <div
-                  className={styles.text}
-                  data-hook={SECTION_NOTIFICATION_DATA_HOOKS.textWrapper}
-                >
-                  {text}
-                </div>
-              </div>
-              {!isError && controls ? (
-                <div
-                  className={styles.controls}
-                  data-hook={SECTION_NOTIFICATION_DATA_HOOKS.controlsWrapper}
-                >
-                  {controls}
-                </div>
-              ) : null}
-            </div>
-          </div>
-        )}
-      </TPAComponentsConsumer>
+      <div
+        {...styles('root', {
+          error: isError,
+        })}
+        data-error={isError}
+        data-hook={this.props['data-hook']}
+        aria-live="assertive"
+      >
+        <div className={styles.main}>
+          <div className={styles.contentsWrapper}>{contents}</div>
+          <div className={styles.buttonsWrapper}>{buttons}</div>
+        </div>
+      </div>
     );
   }
 }
