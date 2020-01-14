@@ -6,7 +6,11 @@
     "moduleResolution": "node",
     "target": "es5",
     "jsx": "react",
-    "lib": ["dom", "es2016"]
+    "lib": ["es2016","dom"],
+    "baseUrl": ".",
+    "paths": {
+      "protractor": ["test/protractor.d.ts"]
+    }
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",
