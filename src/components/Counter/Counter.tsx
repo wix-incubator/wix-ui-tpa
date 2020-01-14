@@ -75,6 +75,7 @@ export class Counter extends React.Component<CounterProps> {
       ...rest
     } = this.props;
 
+    const shouldShowErrorMessageTooltip = error && errorMessage;
     return (
       <div
         {...style('root', { disabled, error }, rest)}
@@ -104,7 +105,7 @@ export class Counter extends React.Component<CounterProps> {
           value={value.toString()}
         />
 
-        {errorMessage && (
+        {shouldShowErrorMessageTooltip && (
           <Tooltip
             content={errorMessage}
             placement="top"

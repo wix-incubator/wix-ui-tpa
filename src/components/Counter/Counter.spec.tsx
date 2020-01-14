@@ -166,6 +166,22 @@ describe('Counter', () => {
     expect(await driver.isTooltipExists()).toBeTruthy();
   });
 
+  it('should NOT render tooltip compoent if error messsage is defined but not in error state', async () => {
+    const value = 10;
+    const driver = createDriver(
+      <Counter
+        inputAriaLabel={'amount'}
+        incrementAriaLabel={'increment'}
+        decrementAriaLabel={'decrement'}
+        errorMessage="something here is not ok"
+        onChange={() => {}}
+        value={value}
+      />,
+    );
+    expect(await driver.hasCounterComponentError()).toBeFalsy();
+    expect(await driver.isTooltipExists()).toBeFalsy();
+  });
+
   it('should be in error state without tooltip if there is no error message', async () => {
     const value = 10;
     const driver = createDriver(
