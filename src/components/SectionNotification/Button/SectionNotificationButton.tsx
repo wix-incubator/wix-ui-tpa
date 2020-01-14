@@ -11,7 +11,6 @@ export class SectionNotificationButton extends React.Component<
   static displayName = 'SectionNotification.Button';
   static defaultProps = {
     type: BUTTON_TYPE.default,
-    'data-hook': SECTION_NOTIFICATION_DATA_HOOKS.button,
   };
 
   render() {
@@ -21,10 +20,11 @@ export class SectionNotificationButton extends React.Component<
       : Button) as React.ComponentClass;
 
     return (
-      <div className={styles.button}>
-        <ButtonComponent data-hook={this.props['data-hook']} {...buttonProps}>
-          {children}
-        </ButtonComponent>
+      <div
+        className={styles.button}
+        data-hook={SECTION_NOTIFICATION_DATA_HOOKS.button}
+      >
+        <ButtonComponent {...buttonProps}>{children}</ButtonComponent>
       </div>
     );
   }

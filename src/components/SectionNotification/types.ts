@@ -1,22 +1,24 @@
 import { TPAComponentProps } from '../../types';
 
-export interface SectionNotificationProps extends TPAComponentProps {
+export interface SectionNotificationProps {
   type?: string;
   children?: React.ReactNode;
 }
 
 export interface SectionNotificationDefaultProps {
   type: string;
-  'data-hook'?: string;
 }
 
-export interface SectionNotificationIconProps extends TPAComponentProps {
+export interface SectionNotificationIconProps {
   icon?: React.ReactNode;
+  className?: string;
 }
 
-export interface SectionNotificationTextProps extends TPAComponentProps {}
+export interface SectionNotificationTextProps {
+  className?: string;
+}
 
-export interface SectionNotificationButtonProps extends TPAComponentProps {
+export interface SectionNotificationButtonProps {
   type?: string;
   children?: React.ReactNode;
 }

@@ -8,15 +8,12 @@ export class SectionNotificationIcon extends React.Component<
   SectionNotificationIconProps
 > {
   static displayName = 'SectionNotification.Icon';
-  static defaultProps = {
-    'data-hook': SECTION_NOTIFICATION_DATA_HOOKS.icon,
-  };
 
   render() {
     return (
       <div
         className={classNames(styles.icon, this.props.className)}
-        data-hook={this.props['data-hook']}
+        data-hook={SECTION_NOTIFICATION_DATA_HOOKS.icon}
       >
         {this.props.icon}
       </div>

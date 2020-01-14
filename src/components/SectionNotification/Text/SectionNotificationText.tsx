@@ -8,15 +8,12 @@ export class SectionNotificationText extends React.Component<
   SectionNotificationTextProps
 > {
   static displayName = 'SectionNotification.Text';
-  static defaultProps = {
-    'data-hook': SECTION_NOTIFICATION_DATA_HOOKS.text,
-  };
 
   render() {
     return (
       <div
         className={classNames(styles.text, this.props.className)}
-        data-hook={this.props['data-hook']}
+        data-hook={SECTION_NOTIFICATION_DATA_HOOKS.text}
       >
         {this.props.children}
       </div>

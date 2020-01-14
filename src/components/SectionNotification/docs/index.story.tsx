@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   api,
   code as baseCode,
-  description,
   divider,
   header,
   importExample,
@@ -25,6 +24,7 @@ export default {
   storyName: 'SectionNotification',
   component: SectionNotification,
   componentPath: '../SectionNotification.tsx',
+  // tslint:disable:jsx-wrap-multiline
   componentProps: () => ({
     'data-hook': 'storybook-SectionNotification',
     type: NOTIFICATION_TYPE.default,

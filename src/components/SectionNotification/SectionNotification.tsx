@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SECTION_NOTIFICATION_DATA_HOOKS } from './dataHooks';
 import {
   NOTIFICATION_TYPE,
   SectionNotificationDefaultProps,
@@ -17,7 +16,6 @@ export class SectionNotification extends React.Component<
   static displayName = 'SectionNotification';
   static defaultProps: SectionNotificationDefaultProps = {
     type: NOTIFICATION_TYPE.default,
-    'data-hook': SECTION_NOTIFICATION_DATA_HOOKS.root,
   };
 
   static Text = SectionNotificationText;
@@ -41,11 +39,8 @@ export class SectionNotification extends React.Component<
 
     return (
       <div
-        {...styles('root', {
-          error: isError,
-        })}
+        {...styles('root', { error: isError }, this.props)}
         data-error={isError}
-        data-hook={this.props['data-hook']}
         aria-live="assertive"
       >
         <div className={styles.main}>
