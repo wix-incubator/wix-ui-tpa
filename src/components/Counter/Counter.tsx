@@ -93,23 +93,24 @@ export class Counter extends React.Component<CounterProps> {
         >
           <Plus />
         </Button>
-        <Input
-          aria-label={inputAriaLabel}
-          onChange={ev => onChange(ev.target.value)}
-          type="number"
-          disabled={disabled}
-          min={min}
-          max={max}
-          step={step}
-          error={error}
-          value={value.toString()}
-        />
-
+        <div className={style.inputWrapper}>
+          <Input
+            aria-label={inputAriaLabel}
+            onChange={ev => onChange(ev.target.value)}
+            type="number"
+            disabled={disabled}
+            min={min}
+            max={max}
+            step={step}
+            error={error}
+            value={value.toString()}
+          />
+        </div>
         {shouldShowErrorMessageTooltip && (
           <Tooltip
             content={errorMessage}
             placement="top"
-            appendTo="viewport"
+            appendTo="window"
             skin={TooltipSkin.Error}
           >
             <StatusAlertSmall className={style.error} />

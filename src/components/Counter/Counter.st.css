@@ -81,6 +81,10 @@
     color: value(DefaultErrorColor);
 }
 
+.root .inputWrapper {
+    flex-grow: 1;
+}
+
 .root input {
     background: color(value(DefaultBackgroundColor));
     padding: 0;
