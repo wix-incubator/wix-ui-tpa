@@ -14,5 +14,7 @@ CounterMetadata.addSim({
     inputAriaLabel: 'amount',
     incrementAriaLabel: 'increment',
     decrementAriaLabel: 'decrement',
+    'aria-labelledby': 'One Ring to rule them all',
+    'aria-label': ' One Ring to find them,',
   },
 });

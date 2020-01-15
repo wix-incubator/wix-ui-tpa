@@ -136,8 +136,8 @@ describe('Counter', () => {
         inputAriaLabel={'amount'}
         incrementAriaLabel={'increment'}
         decrementAriaLabel={'decrement'}
-        counterAriaLabel={counterAriaLabel}
-        counterAriaLabelledBy={counterAriaLabelledBy}
+        aria-label={counterAriaLabel}
+        aria-labelledby={counterAriaLabelledBy}
         onChange={() => {}}
         value={value}
       />,

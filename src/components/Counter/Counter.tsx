@@ -11,8 +11,8 @@ export interface CounterProps extends TPAComponentProps {
   incrementAriaLabel: string;
   decrementAriaLabel: string;
   inputAriaLabel: string;
-  counterAriaLabelledBy?: string;
-  counterAriaLabel?: string;
+  'aria-abelledby'?: string;
+  'aria-label'?: string;
   value: number;
   step: number;
   min?: number;
@@ -67,8 +67,6 @@ export class Counter extends React.Component<CounterProps> {
       onChange,
       value,
       error,
-      counterAriaLabel,
-      counterAriaLabelledBy,
       ...rest
     } = this.props;
 
@@ -77,8 +75,8 @@ export class Counter extends React.Component<CounterProps> {
         {...style('root', { disabled, error }, rest)}
         dir="ltr"
         role="region"
-        aria-labelledby={counterAriaLabelledBy}
-        aria-label={counterAriaLabel}
+        aria-labelledby={this.props['aria-labelledby']}
+        aria-label={this.props['aria-label']}
       >
         <Button
           aria-label={incrementAriaLabel}
