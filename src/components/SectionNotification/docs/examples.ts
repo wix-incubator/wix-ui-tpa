@@ -54,8 +54,15 @@ function getSectionNotification(
         <SectionNotification type="${type}">
           <SectionNotification.Icon icon={${errorIcon}} />
           <SectionNotification.Text>${exampleText.confrirmation}</SectionNotification.Text>
-          <SectionNotification.Button type="text" key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>Decline</SectionNotification.Button>
-          <SectionNotification.Button type="default" key="secondary" size={SIZE.tiny} priority={PRIORITY.basicSecondary}>Approve</SectionNotification.Button>
+          <SectionNotification.Button type="text" key="secondary" size={SIZE.tiny} priority={PRIORITY.basic}>Text Button</SectionNotification.Button>
+          <SectionNotification.Button type="default" key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>Regular Button</SectionNotification.Button>
+        </SectionNotification>
+        <br/>
+        <SectionNotification type="${type}">
+          <SectionNotification.Icon icon={${errorIcon}} />
+          <SectionNotification.Text>${exampleText.confrirmation}</SectionNotification.Text>
+          <SectionNotification.Button type="default" key="secondary" size={SIZE.tiny} priority={PRIORITY.basicSecondary}>Decline</SectionNotification.Button>
+          <SectionNotification.Button type="default" key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>Approve</SectionNotification.Button>
         </SectionNotification>
         `
         : ''
