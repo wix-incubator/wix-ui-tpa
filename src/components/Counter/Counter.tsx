@@ -108,6 +108,7 @@ export class Counter extends React.Component<CounterProps> {
         </div>
         {shouldShowErrorMessageTooltip && (
           <Tooltip
+            data-hook="dropdown-error-tooltip"
             content={errorMessage}
             placement="top"
             appendTo="window"

@@ -148,7 +148,7 @@ describe('Counter', () => {
     );
   });
 
-  it('should render tooltip component if error messsage is defined', async () => {
+  it('should render tooltip component if in error state and error messsage is defined', async () => {
     const value = 10;
     const driver = createDriver(
       <Counter
@@ -164,6 +164,9 @@ describe('Counter', () => {
 
     expect(await driver.hasCounterComponentError()).toBeTruthy();
     expect(await driver.isTooltipExists()).toBeTruthy();
+    expect(await driver.getErrorMessageContent()).toContain(
+      'something here is not ok',
+    );
   });
 
   it('should NOT render tooltip compoent if error messsage is defined but not in error state', async () => {
