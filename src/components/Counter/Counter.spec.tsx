@@ -163,7 +163,7 @@ describe('Counter', () => {
     );
 
     expect(await driver.hasCounterComponentError()).toBeTruthy();
-    expect(await driver.isTooltipExists()).toBeTruthy();
+    expect(await driver.isErrorTooltipExists()).toBeTruthy();
     expect(await driver.getErrorMessageContent()).toContain(
       'something here is not ok',
     );
@@ -182,7 +182,7 @@ describe('Counter', () => {
       />,
     );
     expect(await driver.hasCounterComponentError()).toBeFalsy();
-    expect(await driver.isTooltipExists()).toBeFalsy();
+    expect(await driver.isErrorTooltipExists()).toBeFalsy();
   });
 
   it('should be in error state without tooltip if there is no error message', async () => {
@@ -198,7 +198,7 @@ describe('Counter', () => {
       />,
     );
     expect(await driver.hasCounterComponentError()).toBeTruthy();
-    expect(await driver.isTooltipExists()).toBeFalsy();
+    expect(await driver.isErrorTooltipExists()).toBeFalsy();
   });
 
   describe('testkit', () => {

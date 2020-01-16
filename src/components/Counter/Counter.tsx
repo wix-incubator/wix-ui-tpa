@@ -93,6 +93,17 @@ export class Counter extends React.Component<CounterProps> {
         >
           <Plus />
         </Button>
+        {shouldShowErrorMessageTooltip && (
+          <Tooltip
+            data-hook="dropdown-error-tooltip"
+            content={errorMessage}
+            placement="top"
+            appendTo="window"
+            skin={TooltipSkin.Error}
+          >
+            <StatusAlertSmall className={style.error} />
+          </Tooltip>
+        )}
         <div className={style.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
@@ -106,18 +117,6 @@ export class Counter extends React.Component<CounterProps> {
             value={value.toString()}
           />
         </div>
-        {shouldShowErrorMessageTooltip && (
-          <Tooltip
-            data-hook="dropdown-error-tooltip"
-            content={errorMessage}
-            placement="top"
-            appendTo="window"
-            skin={TooltipSkin.Error}
-          >
-            <StatusAlertSmall className={style.error} />
-          </Tooltip>
-        )}
-
         <Button
           aria-label={decrementAriaLabel}
           className={style.btn}

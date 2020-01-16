@@ -18,7 +18,7 @@ export interface CounterDriver extends BaseUniDriver {
   pressPlus(): Promise<void>;
   getCounterAriaLabel(): Promise<string>;
   getCounterAriaLabellledby(): Promise<string>;
-  isTooltipExists(): Promise<boolean>;
+  isErrorTooltipExists(): Promise<boolean>;
   getErrorMessageContent(): Promise<void>;
 }
 
@@ -57,7 +57,7 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
     pressPlus: async () => getPlusButton().click(),
     getCounterAriaLabel: async () => getAriaLabel('label'),
     getCounterAriaLabellledby: async () => getAriaLabel('labelledby'),
-    isTooltipExists: async () => {
+    isErrorTooltipExists: async () => {
       return base.$('[data-hook="popover-element"]').exists();
     },
   };
