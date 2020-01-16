@@ -33,6 +33,7 @@
 .root {
     -st-states: error, disabled;
     display: inline-flex;
+    flex-flow: row-reverse;
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;

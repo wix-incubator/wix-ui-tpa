@@ -14,5 +14,6 @@ CounterMetadata.addSim({
     inputAriaLabel: 'amount',
     incrementAriaLabel: 'increment',
     decrementAriaLabel: 'decrement',
+    'aria-label': ' One Ring to find them,',
   },
 });

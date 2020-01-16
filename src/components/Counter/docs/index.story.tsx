@@ -38,6 +38,7 @@ export default {
     incrementAriaLabel: 'increment',
     decrementAriaLabel: 'decrement',
     inputAriaLabel: 'amount',
+    counterAriaLabel: 'I am an amount counter',
   }),
   exampleProps: {
     value: [5, 10, 100, 1000],

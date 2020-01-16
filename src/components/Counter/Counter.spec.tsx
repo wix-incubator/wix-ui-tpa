@@ -127,6 +127,27 @@ describe('Counter', () => {
     expect(acc).toEqual(value + step);
   });
 
+  it('should have default role attribute and aria-labelledby attribute', async () => {
+    const value = 10;
+    const counterAriaLabelledBy = 'labelled by testy test';
+    const counterAriaLabel = 'testy test';
+    const driver = createDriver(
+      <Counter
+        inputAriaLabel={'amount'}
+        incrementAriaLabel={'increment'}
+        decrementAriaLabel={'decrement'}
+        aria-label={counterAriaLabel}
+        aria-labelledby={counterAriaLabelledBy}
+        onChange={() => {}}
+        value={value}
+      />,
+    );
+    expect(await driver.getCounterAriaLabel()).toEqual(counterAriaLabel);
+    expect(await driver.getCounterAriaLabellledby()).toEqual(
+      counterAriaLabelledBy,
+    );
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

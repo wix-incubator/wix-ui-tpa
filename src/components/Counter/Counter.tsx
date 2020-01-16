@@ -11,6 +11,8 @@ export interface CounterProps extends TPAComponentProps {
   incrementAriaLabel: string;
   decrementAriaLabel: string;
   inputAriaLabel: string;
+  ['aria-abelledby']?: string;
+  ['aria-label']?: string;
   value: number;
   step: number;
   min?: number;
@@ -69,15 +71,21 @@ export class Counter extends React.Component<CounterProps> {
     } = this.props;
 
     return (
-      <div {...style('root', { disabled, error }, rest)} dir="ltr">
+      <div
+        {...style('root', { disabled, error }, rest)}
+        dir="ltr"
+        role="region"
+        aria-labelledby={this.props['aria-labelledby']}
+        aria-label={this.props['aria-label']}
+      >
         <Button
-          aria-label={decrementAriaLabel}
+          aria-label={incrementAriaLabel}
           className={style.btn}
-          onClick={this._onDecrement}
-          name="decrement"
-          disabled={disabled || value - step < min}
+          onClick={this._onIncrement}
+          name="increment"
+          disabled={disabled || (max && value + step > max)}
         >
-          <Minus />
+          <Plus />
         </Button>
         <Input
           aria-label={inputAriaLabel}
@@ -90,13 +98,13 @@ export class Counter extends React.Component<CounterProps> {
           value={value.toString()}
         />
         <Button
-          aria-label={incrementAriaLabel}
+          aria-label={decrementAriaLabel}
           className={style.btn}
-          onClick={this._onIncrement}
-          name="increment"
-          disabled={disabled || (max && value + step > max)}
+          onClick={this._onDecrement}
+          name="decrement"
+          disabled={disabled || value - step < min}
         >
-          <Plus />
+          <Minus />
         </Button>
       </div>
     );
