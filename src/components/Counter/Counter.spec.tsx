@@ -143,7 +143,7 @@ describe('Counter', () => {
       />,
     );
     expect(await driver.getCounterAriaLabel()).toEqual(counterAriaLabel);
-    expect(await driver.getCounterAriaLabellledBy()).toEqual(
+    expect(await driver.getCounterAriaLabellledby()).toEqual(
       counterAriaLabelledBy,
     );
   });

@@ -11,8 +11,8 @@ export interface CounterProps extends TPAComponentProps {
   incrementAriaLabel: string;
   decrementAriaLabel: string;
   inputAriaLabel: string;
-  'aria-abelledby'?: string;
-  'aria-label'?: string;
+  ['aria-abelledby']?: string;
+  ['aria-label']?: string;
   value: number;
   step: number;
   min?: number;

@@ -15,7 +15,7 @@ export interface CounterDriver extends BaseUniDriver {
   pressMinus(): Promise<void>;
   pressPlus(): Promise<void>;
   getCounterAriaLabel(): Promise<string>;
-  getCounterAriaLabellledBy(): Promise<string>;
+  getCounterAriaLabellledby(): Promise<string>;
 }
 
 export const counterDriverFactory = (base: UniDriver): CounterDriver => {
@@ -39,6 +39,6 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
     pressMinus: async () => getMinusButton().click(),
     pressPlus: async () => getPlusButton().click(),
     getCounterAriaLabel: async () => getAriaLabel('label'),
-    getCounterAriaLabellledBy: async () => getAriaLabel('labelledby'),
+    getCounterAriaLabellledby: async () => getAriaLabel('labelledby'),
   };
 };
