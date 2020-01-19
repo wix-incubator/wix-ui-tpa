@@ -7,7 +7,7 @@ import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
 import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
-import StatusAlertSmall from 'wix-ui-icons-common/StatusAlertSmall';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
@@ -101,7 +101,7 @@ export class Counter extends React.Component<CounterProps> {
             appendTo="window"
             skin={TooltipSkin.Error}
           >
-            <StatusAlertSmall className={style.error} />
+            <ErrorIcon className={style.error} />
           </Tooltip>
         )}
         <div className={style.inputWrapper}>
