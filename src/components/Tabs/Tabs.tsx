@@ -7,19 +7,12 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabItem } from './Tab';
 import { ScrollableTabs } from './ScrollableTabs';
 import { TabsNavButton } from './TabsNavButton';
-import { ALIGNMENT, SKIN, VARIANT } from './constants';
+import { ALIGNMENT, NavButtonOptions, SKIN, VARIANT } from './constants';
 import style from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
 const SCROLL_EPSILON = 1;
-
-export const enum NavButtonOptions {
-  both = 'both',
-  left = 'left',
-  right = 'right',
-  none = 'none',
-}
 
 export interface TabsProps extends TPAComponentProps {
   /** tabs to be displayed */

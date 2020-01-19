@@ -4,7 +4,7 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { tabsTestkitFactory } from '../../testkit/protractor';
-import { NavButtonOptions } from './Tabs';
+import { NavButtonOptions } from './constants';
 
 describe('Tabs', () => {
   const storyUrl = createStoryUrl({
