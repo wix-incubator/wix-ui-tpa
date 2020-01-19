@@ -44,7 +44,9 @@ export class ScrollableTabs extends React.Component<
   ScrollableTabsState
 > {
   _navRef: React.RefObject<HTMLElement>;
+  _listRef: React.RefObject<HTMLUListElement>;
   _selectedTabRef: React.RefObject<HTMLLIElement>;
+  private _totalScrollWidth: number;
   private _updateAnimation: (newAmount: number) => void;
   private _cancelAnimation: () => void;
 
@@ -66,6 +68,7 @@ export class ScrollableTabs extends React.Component<
     super(props);
 
     this._navRef = React.createRef();
+    this._listRef = React.createRef();
     this._selectedTabRef = React.createRef();
   }
 
@@ -147,18 +150,45 @@ export class ScrollableTabs extends React.Component<
         currentTabElement.offsetLeft +
         currentTabElement.clientWidth -
         rightLimit;
-      const gap = rtl ? right : left;
+      const buttonGap = rtl ? right : left;
+      let scrollAmount = currentTabElement.offsetLeft - buttonGap;
+
+      if (rtl) {
+        scrollAmount =
+          this._getTotalScrollWidth() -
+          (tabsElement.offsetWidth -
+            (currentTabElement.offsetLeft +
+              buttonGap +
+              currentTabElement.offsetWidth)) -
+          tabsElement.offsetWidth;
+      }
 
       if (newSelectedTab || leftDelta < 0 || rightDelta > 0) {
-        this._animateScroll(currentTabElement.offsetLeft - gap);
+        this._animateScroll(scrollAmount);
       }
     }
   };
+
+  _getTotalScrollWidth() {
+    const listElement = this._listRef.current;
+
+    if (!this._totalScrollWidth && listElement) {
+      this._totalScrollWidth = Array.prototype.slice
+        .call(listElement.children)
+        .reduce((acc, child) => {
+          acc += child.offsetWidth;
+          return acc;
+        }, 0);
+    }
+
+    return this._totalScrollWidth;
+  }
 
   _animateScroll(scrollLeft: number) {
     if (this._cancelAnimation) {
       this._cancelAnimation();
     }
+
     const { update, cancel, done } = animateElementByProp({
       propToAnimate: 'scrollLeft',
       element: this._navRef.current,
@@ -237,7 +267,7 @@ export class ScrollableTabs extends React.Component<
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
         <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
-          <ul className={style.itemsList}>
+          <ul className={style.itemsList} ref={this._listRef}>
             {items.map((item, index) => (
               <Tab
                 key={`${item.title}-${index}`}

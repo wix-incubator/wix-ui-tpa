@@ -171,13 +171,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this._rightButtonRef = el;
   };
 
-  _getDataAttributes(mobile) {
+  _getDataAttributes(mobile, rtl) {
     const { navButtons } = this.state;
     const { skin } = this.props;
 
     return {
       [TABS_DATA_KEYS.skin]: skin,
       [TABS_DATA_KEYS.mobile]: mobile,
+      [TABS_DATA_KEYS.rtl]: rtl,
       [TABS_DATA_KEYS.navButtons]: navButtons,
     };
   }
@@ -197,7 +198,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
         {({ mobile, rtl }) => (
           <div
             {...style('root', { skin, navButtons, mobile }, this.props)}
-            {...this._getDataAttributes(mobile)}
+            {...this._getDataAttributes(mobile, rtl)}
             data-hook={this.props['data-hook']}
           >
             <ReactResizeDetector handleWidth onResize={this._onResize} />

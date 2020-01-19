@@ -35,7 +35,6 @@ export function animateElementByProp({
   };
 
   const update = (newAmount: number) => {
-    console.log('adler', 'animations.ts:38', newAmount);
     amountToMove += newAmount;
   };
 
