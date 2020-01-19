@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
-import ChevronLeft from 'wix-ui-icons-common/ChevronLeft';
-import ChevronRight from 'wix-ui-icons-common/ChevronRight';
+import { ReactComponent as ChevronLeft } from '../../assets/icons/ChevronLeft.svg';
+import { ReactComponent as ChevronRight } from '../../assets/icons/ChevronRight.svg';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabItem } from './Tab';
 import { ScrollableTabs } from './ScrollableTabs';
@@ -45,6 +45,8 @@ interface TabsState {
 
 export class Tabs extends React.Component<TabsProps, TabsState> {
   private _tabsRef: ScrollableTabs;
+  private _leftButtonRef: TabsNavButton;
+  private _rightButtonRef: TabsNavButton;
   private _resizeTimer: NodeJS.Timeout;
   private _indicatorTimer: NodeJS.Timeout;
 
@@ -161,6 +163,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     this._tabsRef = el;
   };
 
+  _leftButtonRefCallback = (el: TabsNavButton) => {
+    this._leftButtonRef = el;
+  };
+
+  _rightButtonRefCallback = (el: TabsNavButton) => {
+    this._rightButtonRef = el;
+  };
+
   _getDataAttributes(mobile) {
     const { navButtons } = this.state;
     const { skin } = this.props;
@@ -175,10 +185,16 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
   render() {
     const { navButtons, animateIndicator, selectedTab } = this.state;
     const { items, alignment, skin, variant } = this.props;
+    const leftButtonWidth = this._leftButtonRef
+      ? this._leftButtonRef.width()
+      : 0;
+    const rightButtonWidth = this._rightButtonRef
+      ? this._rightButtonRef.width()
+      : 0;
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
+        {({ mobile, rtl }) => (
           <div
             {...style('root', { skin, navButtons, mobile }, this.props)}
             {...this._getDataAttributes(mobile)}
@@ -195,12 +211,18 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               activeTabIndex={selectedTab}
               animateIndicator={animateIndicator}
               ref={this._tabsRefCallback}
+              rtl={rtl}
+              scrollButtons={{
+                left: leftButtonWidth,
+                right: rightButtonWidth,
+              }}
             />
             <TabsNavButton
               onClick={this._onClickLeft}
               className={classnames(style.navBtn, style.navBtnLeft)}
               tabIndex={NavButtonOptions.right ? -1 : 0}
               data-hook={TABS_DATA_HOOKS.leftNavButton}
+              ref={this._rightButtonRefCallback}
             >
               <ChevronLeft />
             </TabsNavButton>
@@ -209,6 +231,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               className={classnames(style.navBtn, style.navBtnRight)}
               tabIndex={NavButtonOptions.left ? -1 : 0}
               data-hook={TABS_DATA_HOOKS.rightNavButton}
+              ref={this._leftButtonRefCallback}
             >
               <ChevronRight />
             </TabsNavButton>

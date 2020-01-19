@@ -8,9 +8,15 @@ interface TabsNavButtonProps extends TPAComponentProps {
   tabIndex: number;
 }
 
-export const TabsNavButton: React.FunctionComponent<TabsNavButtonProps> = props => {
-  const { onClick, children, tabIndex, className } = props;
-  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+export class TabsNavButton extends React.Component<TabsNavButtonProps> {
+  private _rootRef: HTMLDivElement;
+
+  width() {
+    return this._rootRef ? this._rootRef.offsetWidth : 0;
+  }
+
+  _onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const { onClick } = this.props;
     const keyCode = e.keyCode;
 
     if (isSelectKey(keyCode)) {
@@ -19,16 +25,25 @@ export const TabsNavButton: React.FunctionComponent<TabsNavButtonProps> = props 
     }
   };
 
-  return (
-    <div
-      {...style('root', {}, { className })}
-      onClick={onClick}
-      onKeyDown={onKeyDown}
-      tabIndex={tabIndex}
-      data-hook={props['data-hook']}
-    >
-      {children}
-      <div className={style.border} />
-    </div>
-  );
-};
+  _rootRefCallback = (el: HTMLDivElement) => {
+    this._rootRef = el;
+  };
+
+  render() {
+    const { onClick, children, tabIndex, className } = this.props;
+
+    return (
+      <div
+        {...style('root', {}, { className })}
+        onClick={onClick}
+        onKeyDown={this._onKeyDown}
+        tabIndex={tabIndex}
+        data-hook={this.props['data-hook']}
+        ref={this._rootRefCallback}
+      >
+        {children}
+        <div className={style.border} />
+      </div>
+    );
+  }
+}

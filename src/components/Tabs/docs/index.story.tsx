@@ -3,7 +3,7 @@ import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
 import * as TabsSource from '!raw-loader!../Tabs.tsx';
 import { Examples } from './examples';
 
-const items = Array(10)
+const items = Array(20)
   .fill('')
   .map((item, index) => ({ title: `Title ${index + 1}` }));
 

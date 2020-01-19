@@ -2,19 +2,41 @@ const easeInOutSin = (time: number): number => {
   return (1 + Math.sin(Math.PI * time - Math.PI / 2)) / 2;
 };
 
-export const animateElementByProp = (
-  propToAnimate: string,
-  element: Element,
-  amountToMove: number,
-) => {
+interface AnimateElementByPropArgs {
+  propToAnimate: string;
+  element: Element;
+  amountToMove: number;
+  duration?: number;
+}
+
+interface AnimateElementByPropReturnValue {
+  cancel(): void;
+  update(number): void;
+  done: Promise<void>;
+}
+
+export function animateElementByProp({
+  propToAnimate,
+  element,
+  amountToMove,
+  duration = 700,
+}: AnimateElementByPropArgs): AnimateElementByPropReturnValue {
   const ease = easeInOutSin;
-  const duration = 700;
   const startPoint: number = element[propToAnimate];
   let start: number = null;
   let cancelled: boolean = false;
+  let doneResolve;
+  const done: Promise<void> = new Promise(res => {
+    doneResolve = res;
+  });
 
   const cancel = () => {
     cancelled = true;
+  };
+
+  const update = (newAmount: number) => {
+    console.log('adler', 'animations.ts:38', newAmount);
+    amountToMove += newAmount;
   };
 
   const step = timestamp => {
@@ -30,16 +52,15 @@ export const animateElementByProp = (
       ease(time) * (amountToMove - startPoint) + startPoint;
 
     if (time >= 1) {
-      return;
+      return doneResolve();
     }
 
     requestAnimationFrame(step);
   };
 
-  if (startPoint === amountToMove) {
-    return cancel;
+  if (startPoint !== amountToMove) {
+    requestAnimationFrame(step);
   }
 
-  requestAnimationFrame(step);
-  return cancel;
-};
+  return { cancel, update, done } as AnimateElementByPropReturnValue;
+}
