@@ -193,6 +193,7 @@ export class ScrollableTabs extends React.Component<
       propToAnimate: 'scrollLeft',
       element: this._navRef.current,
       amountToMove: scrollLeft,
+      duration: 400,
     });
 
     this._updateAnimation = update;
