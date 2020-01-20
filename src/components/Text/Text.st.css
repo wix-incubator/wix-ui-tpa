@@ -23,6 +23,7 @@
 
 .root {
     -st-states: typography(enum(smallTitle, runningText, listText, largeTitle)), mobile;
+    word-break: break-word;
 }
 
 .root:typography(smallTitle) {
