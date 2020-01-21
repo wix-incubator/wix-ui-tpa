@@ -14,7 +14,7 @@
     DefaultDisabledColor: color-3;
     DefaultErrorColor: value(errorColor);
     DefaultBackgroundColor: color-1;
-    DefaultWidth: 96px;
+    DefaultWidth: 104px;
 }
 
 :vars {
