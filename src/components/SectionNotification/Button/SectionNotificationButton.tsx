@@ -6,11 +6,16 @@ import {
   TEXT_BUTTON_PRIORITY,
 } from '../../TextButton';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
-import { BUTTON_TYPE, SectionNotificationButtonProps } from '../types';
 import parentStyles from '../SectionNotification.st.css';
+import { SectionNotificationButtonProps } from '../types';
 import styles from './SectionNotificationButton.st.css';
 
-export { TEXT_BUTTON_PRIORITY, PRIORITY as BUTTON_PRIORITY };
+export { TEXT_BUTTON_PRIORITY, PRIORITY as BUTTON_PRIORITY, BUTTON_TYPE };
+
+enum BUTTON_TYPE {
+  default = 'default',
+  text = 'text',
+}
 
 type TPAButtonProps = ButtonProps | TextButtonProps;
 export class SectionNotificationButton extends React.Component<

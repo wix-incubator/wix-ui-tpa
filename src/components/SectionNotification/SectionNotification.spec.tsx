@@ -3,7 +3,6 @@ import * as React from 'react';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { sectionNotificationTestkitFactory } from '../../testkit';
 import { sectionNotificationTestkitFactory as enzymeSectionNotificationTestkitFactory } from '../../testkit/enzyme';
 import { SectionNotification } from './';

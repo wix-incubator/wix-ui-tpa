@@ -1,18 +1,3 @@
-export {
-  BUTTON_PRIORITY,
-  TEXT_BUTTON_PRIORITY,
-} from './Button/SectionNotificationButton';
-
-export enum BUTTON_TYPE {
-  default = 'default',
-  text = 'text',
-}
-
-export enum NOTIFICATION_TYPE {
-  default = 'default',
-  error = 'error',
-}
-
 export interface SectionNotificationProps {
   type?: string;
   children?: React.ReactNode;
@@ -35,3 +20,14 @@ export interface SectionNotificationButtonProps {
   type?: string;
   children?: React.ReactNode;
 }
+
+export enum NOTIFICATION_TYPE {
+  default = 'default',
+  error = 'error',
+}
+
+export {
+  BUTTON_PRIORITY,
+  TEXT_BUTTON_PRIORITY,
+  BUTTON_TYPE,
+} from './Button/SectionNotificationButton';
