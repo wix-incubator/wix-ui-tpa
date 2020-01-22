@@ -1,10 +1,12 @@
 export const importExample = `
   import { SectionNotification } from 'wix-ui-tpa/dist/src/components/SectionNotification';
 `;
-
 import { NOTIFICATION_TYPE } from '../types';
+import * as styles from './examples.scss';
 
 const errorIcon = `<Error />`;
+const infoIcon = `<Error className="${styles.infoIcon}"/>`;
+
 const exampleText = {
   error: `We're having some trouble authorizing and charging your card. Please make sure it's valid or try a different payment method.`,
   notification: `You will be redirected to the payment provider's page.`,
@@ -32,6 +34,7 @@ function getSectionNotification(
   type: NOTIFICATION_TYPE,
   isMobile?: boolean,
 ): string {
+  const icon = type === NOTIFICATION_TYPE.error ? errorIcon : infoIcon;
   const sectionNotifications = `
     <SectionNotification type="${type}">
       <SectionNotification.Text>${
@@ -42,7 +45,7 @@ function getSectionNotification(
     <br/>
 
     <SectionNotification type="${type}">
-      <SectionNotification.Icon icon={${errorIcon}} />
+      <SectionNotification.Icon icon={${icon}} />
       <SectionNotification.Text>${exampleText.error}</SectionNotification.Text>
     </SectionNotification>
 
@@ -52,14 +55,14 @@ function getSectionNotification(
         ? `
         <br/>
         <SectionNotification type="${type}">
-          <SectionNotification.Icon icon={${errorIcon}} />
+          <SectionNotification.Icon icon={${icon}} />
           <SectionNotification.Text>${exampleText.confrirmation}</SectionNotification.Text>
           <SectionNotification.Button type="text" key="secondary" size={SIZE.tiny} priority={PRIORITY.basic}>Text Button</SectionNotification.Button>
           <SectionNotification.Button type="default" key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>Regular Button</SectionNotification.Button>
         </SectionNotification>
         <br/>
         <SectionNotification type="${type}">
-          <SectionNotification.Icon icon={${errorIcon}} />
+          <SectionNotification.Icon icon={${icon}} />
           <SectionNotification.Text>${exampleText.confrirmation}</SectionNotification.Text>
           <SectionNotification.Button type="default" key="secondary" size={SIZE.tiny} priority={PRIORITY.basicSecondary}>Decline</SectionNotification.Button>
           <SectionNotification.Button type="default" key="primary" size={SIZE.tiny} priority={PRIORITY.basic}>Approve</SectionNotification.Button>

@@ -12,10 +12,11 @@
     ContentPadding: 8px;
 
     TextMinWidth: 200px;
-    DefaultTextColor: color(color-5);
+    DefaultTextColor: #000000;
     FontSize: 14px;
+    LineHeight: 20px;
 
-    DefaultBackgroundColor: applyOpacity(color(color-5), 0.05);
+    DefaultBackgroundColor: applyOpacity(#000000, 0.05);
     ErrorBackgroundColor: applyOpacity(#F64D43, 0.1);
 }
 
@@ -80,16 +81,21 @@
     display: none;
 }
 
+.icon svg {
+    height: value(LineHeight);
+}
+
 .text {
     flex: 1;
     min-width: value(TextMinWidth);
     margin: 0 value(ContentPadding);
+    line-height: value(LineHeight);
 }
 
 .text:first-child {
     margin: 0;
 }
 
-.button  {
+.button {
     margin: 0 calc(value(ContentPadding) / 2);
 }

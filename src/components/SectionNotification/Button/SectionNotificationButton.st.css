@@ -1,0 +1,40 @@
+:vars {
+  FontSize: 14px;
+
+  TextButtonColor: #000000;
+
+  BasicButtonTextColor: #FFFFFF;
+  BasicButtonBackgroundColor: #000000;
+  BasicButtonBorderColor: #000000;
+
+  SecondaryButtonTextColor: #000000;
+  SecondaryButtonBorderColor: #000000;
+}
+
+.root {
+  -st-states: type(enum(default, text));
+}
+
+.button {
+  -st-states: priority(enum(primary, basic, basicSecondary));
+}
+
+.root .button {
+  font-size: value(FontSize);
+}
+
+.root:type(default) .button:priority(basic) {
+  color: value(BasicButtonTextColor);
+  background-color: value(BasicButtonBackgroundColor);
+  border-color: value(BasicButtonBorderColor);
+}
+
+.root:type(default) .button:priority(basicSecondary) {
+  color: value(SecondaryButtonTextColor);
+  border-color: value(SecondaryButtonBorderColor);
+}
+
+.root:type(text) .button:priority(primary) {
+  color: value(TextButtonColor);
+}
+

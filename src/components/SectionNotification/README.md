@@ -38,7 +38,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
     import * as React from 'react';
     import extendedStyles from './SectionNotificationExt.st.css';
     import { ReactComponent as ErrorIcon } from './Error.svg';
-    import { SectionNotification, BUTTON_TYPE, NOTIFICATION_TYPE } from 'wix-ui-tpa/SectionNotification';
+    import { SectionNotification, BUTTON_TYPE, BUTTON_PRIORITY, NOTIFICATION_TYPE } from 'wix-ui-tpa/SectionNotification';
 
     export class IconButtonExtendedExample extends React.Component {
       render = () => (
@@ -48,8 +48,18 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
         >
           <SectionNotification.Icon icon={<ErrorIcon />} />
           <SectionNotification.Text>Notification text</SectionNotification.Text>
-          <SectionNotification.Button type={BUTTON_TYPE.text}>Decline</SectionNotification.Button>
-          <SectionNotification.Button type={BUTTON_TYPE.text}>Approve</SectionNotification.Button>
+          <SectionNotification.Button
+            type={BUTTON_TYPE.text}
+            priority={BUTTON_PRIORITY.basicSecondary}
+          >
+            Decline
+          </SectionNotification.Button>
+          <SectionNotification.Button
+            type={BUTTON_TYPE.text}
+            priority={BUTTON_PRIORITY.basic}
+          >
+            Approve
+          </SectionNotification.Button>
         </SectionNotification>
       );
     }

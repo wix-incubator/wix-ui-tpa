@@ -11,7 +11,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { NOTIFICATION_TYPE, SectionNotification } from '../';
+import { BUTTON_PRIORITY, NOTIFICATION_TYPE, SectionNotification } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
 import * as examples from './examples';
@@ -33,10 +33,16 @@ export default {
       <SectionNotification.Text key="text">
         This group will only be created after you approve it.
       </SectionNotification.Text>,
-      <SectionNotification.Button key="decline">
+      <SectionNotification.Button
+        key="decline"
+        priority={BUTTON_PRIORITY.basicSecondary}
+      >
         Decline
       </SectionNotification.Button>,
-      <SectionNotification.Button key="approve">
+      <SectionNotification.Button
+        key="approve"
+        priority={BUTTON_PRIORITY.basic}
+      >
         Approve
       </SectionNotification.Button>,
     ],

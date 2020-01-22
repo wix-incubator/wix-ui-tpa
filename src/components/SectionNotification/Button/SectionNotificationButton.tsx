@@ -1,16 +1,33 @@
 import * as React from 'react';
-import { Button, ButtonProps } from '../../Button';
-import { TextButton, TextButtonProps } from '../../TextButton';
+import { Button, ButtonProps, PRIORITY, SIZE } from '../../Button';
+import {
+  TextButton,
+  TextButtonProps,
+  TEXT_BUTTON_PRIORITY,
+} from '../../TextButton';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
-import styles from '../SectionNotification.st.css';
 import { BUTTON_TYPE, SectionNotificationButtonProps } from '../types';
+import parentStyles from '../SectionNotification.st.css';
+import styles from './SectionNotificationButton.st.css';
 
+export { TEXT_BUTTON_PRIORITY, PRIORITY as BUTTON_PRIORITY };
+
+type TPAButtonProps = ButtonProps | TextButtonProps;
 export class SectionNotificationButton extends React.Component<
-  SectionNotificationButtonProps | (ButtonProps & TextButtonProps)
+  SectionNotificationButtonProps | TPAButtonProps
 > {
   static displayName = 'SectionNotification.Button';
   static defaultProps = {
     type: BUTTON_TYPE.default,
+  };
+
+  textButtonDefaultProps = {
+    priority: TEXT_BUTTON_PRIORITY.primary,
+  };
+
+  buttonDefaultProps = {
+    priority: PRIORITY.basic,
+    size: SIZE.tiny,
   };
 
   render() {
@@ -19,12 +36,31 @@ export class SectionNotificationButton extends React.Component<
       ? TextButton
       : Button) as React.ComponentClass;
 
+    const defaultButtonProps: TPAButtonProps =
+      type === BUTTON_TYPE.text
+        ? this.textButtonDefaultProps
+        : this.buttonDefaultProps;
+
     return (
       <div
-        className={styles.button}
+        {...styles('root', { type }, { className: parentStyles.button })}
         data-hook={SECTION_NOTIFICATION_DATA_HOOKS.button}
       >
-        <ButtonComponent {...buttonProps}>{children}</ButtonComponent>
+        <ButtonComponent
+          {...defaultButtonProps}
+          {...buttonProps}
+          {...styles(
+            'button',
+            {
+              priority:
+                (buttonProps as TPAButtonProps).priority ||
+                defaultButtonProps.priority,
+            },
+            buttonProps,
+          )}
+        >
+          {children}
+        </ButtonComponent>
       </div>
     );
   }
