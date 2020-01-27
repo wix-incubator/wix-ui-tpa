@@ -5,6 +5,9 @@ import style from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
 import { TPAComponentProps } from '../../types';
+import { Tooltip } from '../Tooltip';
+import { TooltipSkin } from '../Tooltip/TooltipEnums';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
@@ -19,6 +22,7 @@ export interface CounterProps extends TPAComponentProps {
   max?: number;
   error?: boolean;
   disabled?: boolean;
+  errorMessage?: string;
 }
 
 interface DefaultProps {
@@ -67,9 +71,11 @@ export class Counter extends React.Component<CounterProps> {
       onChange,
       value,
       error,
+      errorMessage,
       ...rest
     } = this.props;
 
+    const shouldShowErrorMessageTooltip = error && errorMessage;
     return (
       <div
         {...style('root', { disabled, error }, rest)}
@@ -87,16 +93,30 @@ export class Counter extends React.Component<CounterProps> {
         >
           <Plus />
         </Button>
-        <Input
-          aria-label={inputAriaLabel}
-          onChange={ev => onChange(ev.target.value)}
-          type="number"
-          disabled={disabled}
-          min={min}
-          max={max}
-          step={step}
-          value={value.toString()}
-        />
+        {shouldShowErrorMessageTooltip && (
+          <Tooltip
+            data-hook="dropdown-error-tooltip"
+            content={errorMessage}
+            placement="top"
+            appendTo="window"
+            skin={TooltipSkin.Error}
+          >
+            <ErrorIcon className={style.error} />
+          </Tooltip>
+        )}
+        <div className={style.inputWrapper}>
+          <Input
+            aria-label={inputAriaLabel}
+            onChange={ev => onChange(ev.target.value)}
+            type="number"
+            disabled={disabled}
+            min={min}
+            max={max}
+            step={step}
+            error={error}
+            value={value.toString()}
+          />
+        </div>
         <Button
           aria-label={decrementAriaLabel}
           className={style.btn}

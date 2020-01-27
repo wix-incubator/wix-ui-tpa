@@ -14,7 +14,7 @@
     DefaultDisabledColor: color-3;
     DefaultErrorColor: value(errorColor);
     DefaultBackgroundColor: color-1;
-    DefaultWidth: 96px;
+    DefaultWidth: 104px;
 }
 
 :vars {
@@ -75,6 +75,14 @@
 
 .root:disabled .btn {
     color: color(value(counterDisabledColor));
+}
+
+.root:error svg {
+    color: value(DefaultErrorColor);
+}
+
+.root .inputWrapper {
+    flex-grow: 1;
 }
 
 .root input {

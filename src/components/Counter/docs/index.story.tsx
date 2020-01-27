@@ -69,7 +69,10 @@ export default {
           ...[
             { title: 'Regular', source: `<Counter />` },
             { title: 'Disabled', source: `<Counter disabled={true} />` },
-            { title: 'Error', source: `<Counter error={true} />` },
+            {
+              title: 'Error',
+              source: `<Counter error={true} errorMessage="This is an error message"/>`,
+            },
           ].map(code),
         ],
       }),
