@@ -47,7 +47,6 @@ export class ScrollableTabs extends React.Component<
   _listRef: React.RefObject<HTMLUListElement>;
   _selectedTabRef: React.RefObject<HTMLLIElement>;
   private _totalScrollWidth: number;
-  private _updateAnimation: (newAmount: number) => void;
   private _cancelAnimation: () => void;
 
   static defaultProps = {
@@ -80,13 +79,6 @@ export class ScrollableTabs extends React.Component<
     prevProps: ScrollableTabsProps,
     prevState: ScrollableTabsState,
   ) {
-    if (
-      this._updateAnimation &&
-      !isEqual(prevProps.scrollButtons, this.props.scrollButtons)
-    ) {
-      this._updateScrollAnimationPosition();
-    }
-
     if (
       prevProps.activeTabIndex !== this.props.activeTabIndex ||
       !isEqual(prevProps.items, this.props.items) ||
@@ -126,25 +118,15 @@ export class ScrollableTabs extends React.Component<
     }
   }
 
-  _updateScrollAnimationPosition() {
-    const { rtl, scrollButtons } = this.props;
-    const { left, right } = scrollButtons;
-
-    if (this._updateAnimation) {
-      const gap = rtl ? right : left;
-      this._updateAnimation(-gap);
-    }
-  }
-
   _scrollToViewIfNeeded = (newSelectedTab: boolean) => {
     const { rtl, scrollButtons } = this.props;
     const { left, right } = scrollButtons;
 
     if (this._selectedTabRef && this._selectedTabRef.current) {
       const currentTabElement = this._selectedTabRef.current;
-      const tabsElement = this._navRef.current;
-      const leftLimit = tabsElement.scrollLeft;
-      const rightLimit = leftLimit + tabsElement.clientWidth;
+      const navElement = this._navRef.current;
+      const leftLimit = navElement.scrollLeft;
+      const rightLimit = leftLimit + navElement.clientWidth;
       const leftDelta = currentTabElement.offsetLeft - leftLimit;
       const rightDelta =
         currentTabElement.offsetLeft +
@@ -155,12 +137,12 @@ export class ScrollableTabs extends React.Component<
 
       if (rtl) {
         scrollAmount =
-          this._getTotalScrollWidth() -
-          (tabsElement.offsetWidth -
+          navElement.scrollWidth -
+          (navElement.offsetWidth -
             (currentTabElement.offsetLeft +
               buttonGap +
               currentTabElement.offsetWidth)) -
-          tabsElement.offsetWidth;
+          navElement.offsetWidth;
       }
 
       if (newSelectedTab || leftDelta < 0 || rightDelta > 0) {
@@ -169,19 +151,13 @@ export class ScrollableTabs extends React.Component<
     }
   };
 
-  _getTotalScrollWidth() {
-    const listElement = this._listRef.current;
+  _getMaxMinScroll() {
+    const navElement = this._navRef.current;
 
-    if (!this._totalScrollWidth && listElement) {
-      this._totalScrollWidth = Array.prototype.slice
-        .call(listElement.children)
-        .reduce((acc, child) => {
-          acc += child.offsetWidth;
-          return acc;
-        }, 0);
-    }
-
-    return this._totalScrollWidth;
+    return {
+      max: navElement.scrollWidth - navElement.offsetWidth,
+      min: 0,
+    };
   }
 
   _animateScroll(scrollLeft: number) {
@@ -189,19 +165,19 @@ export class ScrollableTabs extends React.Component<
       this._cancelAnimation();
     }
 
-    const { update, cancel, done } = animateElementByProp({
+    const { min, max } = this._getMaxMinScroll();
+    const moveTo = Math.min(Math.max(scrollLeft, min), max);
+    const { cancel, done } = animateElementByProp({
       propToAnimate: 'scrollLeft',
       element: this._navRef.current,
-      amountToMove: scrollLeft,
+      moveTo,
       duration: 400,
     });
 
-    this._updateAnimation = update;
     this._cancelAnimation = cancel;
 
     done
       .then(() => {
-        this._updateAnimation = null;
         this._cancelAnimation = null;
       })
       .catch(() => {});
@@ -216,11 +192,9 @@ export class ScrollableTabs extends React.Component<
   }
 
   _scrollToSide(scrollDirection: number) {
-    const scrollWidth = this._navRef.current.scrollWidth;
     const scrollLeft = this._navRef.current.scrollLeft;
     const clientWidth = this._navRef.current.clientWidth;
-    const scrollDistance =
-      scrollDirection * (Math.min(scrollWidth - scrollLeft, clientWidth) / 2);
+    const scrollDistance = scrollDirection * (clientWidth / 2);
 
     this._animateScroll(scrollLeft + scrollDistance);
   }
