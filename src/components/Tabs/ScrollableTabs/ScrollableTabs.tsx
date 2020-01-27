@@ -46,7 +46,6 @@ export class ScrollableTabs extends React.Component<
   _navRef: React.RefObject<HTMLElement>;
   _listRef: React.RefObject<HTMLUListElement>;
   _selectedTabRef: React.RefObject<HTMLLIElement>;
-  private _totalScrollWidth: number;
   private _cancelAnimation: () => void;
 
   static defaultProps = {
