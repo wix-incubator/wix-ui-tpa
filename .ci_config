@@ -1,7 +1,7 @@
 {
   "pr_env_params" : {
     "APPLITOOLS_GITHUB_FT": "true",
-    'node.publish`: ''
+    "node.publish": ""
   },
   "env_params" : {"APPLITOOLS_GITHUB_FT": "true"},
   "publishOnPr": "true"
