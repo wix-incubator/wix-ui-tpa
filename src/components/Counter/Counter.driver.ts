@@ -8,18 +8,19 @@ import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/To
 import { Simulate } from 'react-dom/test-utils';
 
 export interface CounterDriver extends BaseUniDriver {
-  isCounterComponentDisabled(): Promise<boolean>;
-  isInputComponentDisabled(): Promise<boolean>;
-  hasCounterComponentError(): Promise<boolean>;
-  isMinusButtonDisabled(): Promise<boolean>;
-  isPlusButtonDisabled(): Promise<boolean>;
-  isInputValueEqualTo(val: number): Promise<boolean>;
-  pressMinus(): Promise<void>;
-  pressPlus(): Promise<void>;
+  enterValue(val: string): Promise<void>;
   getCounterAriaLabel(): Promise<string>;
   getCounterAriaLabellledby(): Promise<string>;
-  isErrorTooltipExists(): Promise<boolean>;
   getErrorMessageContent(): Promise<void>;
+  hasCounterComponentError(): Promise<boolean>;
+  isCounterComponentDisabled(): Promise<boolean>;
+  isErrorTooltipExists(): Promise<boolean>;
+  isInputComponentDisabled(): Promise<boolean>;
+  isInputValueEqualTo(val: number): Promise<boolean>;
+  isMinusButtonDisabled(): Promise<boolean>;
+  isPlusButtonDisabled(): Promise<boolean>;
+  pressMinus(): Promise<void>;
+  pressPlus(): Promise<void>;
 }
 
 export const counterDriverFactory = (base: UniDriver): CounterDriver => {
@@ -59,6 +60,9 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
     getCounterAriaLabellledby: async () => getAriaLabel('labelledby'),
     isErrorTooltipExists: async () => {
       return base.$('[data-hook="popover-element"]').exists();
+    },
+    enterValue: async (val: string) => {
+      return getInput().enterValue(val);
     },
   };
 };
