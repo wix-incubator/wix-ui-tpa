@@ -18,6 +18,11 @@ interface TabsUIRect {
   width: number;
 }
 
+interface ScrollButtons {
+  left: number;
+  right: number;
+}
+
 interface ScrollableTabsProps extends TPAComponentProps {
   items: TabItem[];
   alignment: Alignment;
@@ -26,6 +31,8 @@ interface ScrollableTabsProps extends TPAComponentProps {
   onClickItem(index: number): void;
   activeTabIndex: number;
   animateIndicator?: boolean;
+  scrollButtons: ScrollButtons;
+  rtl: boolean;
 }
 
 interface ScrollableTabsState {
@@ -37,7 +44,16 @@ export class ScrollableTabs extends React.Component<
   ScrollableTabsState
 > {
   _navRef: React.RefObject<HTMLElement>;
+  _listRef: React.RefObject<HTMLUListElement>;
   _selectedTabRef: React.RefObject<HTMLLIElement>;
+  private _cancelAnimation: () => void;
+
+  static defaultProps = {
+    scrollButtons: {
+      left: 0,
+      right: 0,
+    },
+  };
 
   state = {
     selectedIndicatorRect: {
@@ -50,6 +66,7 @@ export class ScrollableTabs extends React.Component<
     super(props);
 
     this._navRef = React.createRef();
+    this._listRef = React.createRef();
     this._selectedTabRef = React.createRef();
   }
 
@@ -67,7 +84,9 @@ export class ScrollableTabs extends React.Component<
       prevProps.alignment !== this.props.alignment ||
       prevProps.variant !== this.props.variant
     ) {
-      this._updateComponent();
+      this._updateComponent(
+        prevProps.activeTabIndex !== this.props.activeTabIndex,
+      );
     }
   }
 
@@ -75,9 +94,9 @@ export class ScrollableTabs extends React.Component<
     this._updateIndicatorPosition();
   }
 
-  _updateComponent() {
+  _updateComponent(newSelectedTab = false) {
     this._updateIndicatorPosition();
-    this._scrollToViewIfNeeded();
+    this._scrollToViewIfNeeded(newSelectedTab);
   }
 
   _updateIndicatorPosition() {
@@ -98,26 +117,69 @@ export class ScrollableTabs extends React.Component<
     }
   }
 
-  _scrollToViewIfNeeded = () => {
+  _scrollToViewIfNeeded = (newSelectedTab: boolean) => {
+    const { rtl, scrollButtons } = this.props;
+    const { left, right } = scrollButtons;
+
     if (this._selectedTabRef && this._selectedTabRef.current) {
       const currentTabElement = this._selectedTabRef.current;
-      const tabsElement = this._navRef.current;
-      const leftLimit = tabsElement.scrollLeft;
-      const rightLimit = leftLimit + tabsElement.clientWidth;
+      const navElement = this._navRef.current;
+      const leftLimit = navElement.scrollLeft;
+      const rightLimit = leftLimit + navElement.clientWidth;
       const leftDelta = currentTabElement.offsetLeft - leftLimit;
       const rightDelta =
         currentTabElement.offsetLeft +
         currentTabElement.clientWidth -
         rightLimit;
+      const buttonGap = rtl ? right : left;
+      let scrollAmount = currentTabElement.offsetLeft - buttonGap;
 
-      if (leftDelta < 0 || rightDelta > 0) {
-        this._animateScroll(currentTabElement.offsetLeft);
+      if (rtl) {
+        scrollAmount =
+          navElement.scrollWidth -
+          (navElement.offsetWidth -
+            (currentTabElement.offsetLeft +
+              buttonGap +
+              currentTabElement.offsetWidth)) -
+          navElement.offsetWidth;
+      }
+
+      if (newSelectedTab || leftDelta < 0 || rightDelta > 0) {
+        this._animateScroll(scrollAmount);
       }
     }
   };
 
+  _getMaxMinScroll() {
+    const navElement = this._navRef.current;
+
+    return {
+      max: navElement.scrollWidth - navElement.offsetWidth,
+      min: 0,
+    };
+  }
+
   _animateScroll(scrollLeft: number) {
-    animateElementByProp('scrollLeft', this._navRef.current, scrollLeft);
+    if (this._cancelAnimation) {
+      this._cancelAnimation();
+    }
+
+    const { min, max } = this._getMaxMinScroll();
+    const moveTo = Math.min(Math.max(scrollLeft, min), max);
+    const { cancel, done } = animateElementByProp({
+      propToAnimate: 'scrollLeft',
+      element: this._navRef.current,
+      moveTo,
+      duration: 400,
+    });
+
+    this._cancelAnimation = cancel;
+
+    done
+      .then(() => {
+        this._cancelAnimation = null;
+      })
+      .catch(() => {});
   }
 
   scrollLeft() {
@@ -129,11 +191,9 @@ export class ScrollableTabs extends React.Component<
   }
 
   _scrollToSide(scrollDirection: number) {
-    const scrollWidth = this._navRef.current.scrollWidth;
     const scrollLeft = this._navRef.current.scrollLeft;
     const clientWidth = this._navRef.current.clientWidth;
-    const scrollDistance =
-      scrollDirection * Math.min(scrollWidth - scrollLeft, clientWidth);
+    const scrollDistance = scrollDirection * (clientWidth / 2);
 
     this._animateScroll(scrollLeft + scrollDistance);
   }
@@ -181,7 +241,7 @@ export class ScrollableTabs extends React.Component<
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
         <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
-          <ul className={style.itemsList}>
+          <ul className={style.itemsList} ref={this._listRef}>
             {items.map((item, index) => (
               <Tab
                 key={`${item.title}-${index}`}

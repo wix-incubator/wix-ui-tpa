@@ -14,3 +14,10 @@ export enum VARIANT {
   fullWidth = 'fullWidth',
   fit = 'fit',
 }
+
+export const enum NavButtonOptions {
+  both = 'both',
+  left = 'left',
+  right = 'right',
+  none = 'none',
+}

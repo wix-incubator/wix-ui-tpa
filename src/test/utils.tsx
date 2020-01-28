@@ -24,3 +24,5 @@ export const hasDataAttr = async (
 export const hasMobile = async (base: UniDriver): Promise<boolean> => {
   return hasDataAttr(base, 'mobile', 'true');
 };
+
+export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));

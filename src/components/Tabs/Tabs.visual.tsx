@@ -5,6 +5,7 @@ import { tabsDriverFactory, TabsDriver } from './Tabs.driver';
 import { ALIGNMENT, SKIN, Tabs, VARIANT, TabsProps, NavButtonOptions } from '.';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
+import { delay } from '../../test/utils';
 
 const items = [0, 1, 2, 4].map(i => ({ title: `Title ${i}` }));
 const createDriver = uniTestkitFactoryCreator(tabsDriverFactory);
@@ -118,7 +119,8 @@ visualize('Tabs', () => {
         } else {
           await driver.clickLeftNavButton();
         }
-        setTimeout(async () => scrollToEnd(driver, direction), 400);
+        await delay(500);
+        return scrollToEnd(driver, direction);
       }
     }
 
@@ -146,6 +148,7 @@ visualize('Tabs', () => {
       renderTest({ compact: true, props: { items: lotsItems } }, done => {
         return async (driver: TabsDriver) => {
           await scrollToEnd(driver, NavButtonOptions.right);
+          await delay(500);
           done();
         };
       }),

@@ -11,6 +11,7 @@ export enum TABS_DATA_KEYS {
   skin = 'data-skin',
   navButtons = 'data-navbuttons',
   mobile = 'data-mobile',
+  rtl = 'data-rtl',
   tabIndex = 'data-tab-index',
   tabIsActive = 'data-tab-active',
 }

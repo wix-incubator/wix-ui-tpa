@@ -9,6 +9,10 @@
 }
 
 :vars {
+    scrollAnimationDuration: .4s;
+}
+
+:vars {
     selectedIndicatorColor: --overridable;
 }
 
@@ -59,7 +63,7 @@
 
 .root:animateIndicator .selectedIndicator {
     height: 3px;
-    transition: left .3s ease-in-out, width .3s ease-in-out;
+    transition: left value(scrollAnimationDuration) ease-in-out, width value(scrollAnimationDuration) ease-in-out;
 }
 
 .root:alignment(left) .itemsList {
