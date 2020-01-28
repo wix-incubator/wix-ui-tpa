@@ -20,7 +20,7 @@ export interface CounterDriver extends BaseUniDriver {
   isPlusButtonDisabled(): Promise<boolean>;
   pressMinus(): Promise<void>;
   pressPlus(): Promise<void>;
-  typeValue(value: string): Promise<void>;
+  enterValue(val: string): Promise<void>;
 }
 
 export const counterDriverFactory = (base: UniDriver): CounterDriver => {
@@ -61,8 +61,8 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
     isErrorTooltipExists: async () => {
       return base.$('[data-hook="popover-element"]').exists();
     },
-    typeValue: async (value: string) => {
-      return getInput().enterValue(value);
+    enterValue: async (val: string) => {
+      return getInput().enterValue(val);
     },
   };
 };

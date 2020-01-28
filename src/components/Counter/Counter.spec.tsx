@@ -140,7 +140,7 @@ describe('Counter', () => {
       />,
     );
 
-    await driver.typeValue('10');
+    await driver.enterValue('10');
     expect(onChange).toHaveBeenCalledWith('10');
   });
 
