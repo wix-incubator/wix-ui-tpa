@@ -30,3 +30,4 @@ export * from './NewCard';
 export { SocialBar } from './SocialBar';
 export { ShareButton } from './ShareButton';
 export { CopyUrlButton } from './CopyUrlButton';
+export { SectionNotification } from './SectionNotification';

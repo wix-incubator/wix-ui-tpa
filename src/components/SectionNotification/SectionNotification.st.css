@@ -1,0 +1,101 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: value, color, fallback, applyOpacity;
+}
+
+/*Defaults*/
+:vars {
+    BorderRadius: 2px;
+    BorderWidth: 1px;
+
+    MainPadding: 16px;
+    ContentPadding: 8px;
+
+    TextMinWidth: 200px;
+    DefaultTextColor: #000000;
+    FontSize: 14px;
+    LineHeight: 20px;
+
+    DefaultBackgroundColor: applyOpacity(#000000, 0.05);
+    ErrorBackgroundColor: applyOpacity(#F64D43, 0.1);
+}
+
+/*Overrides*/
+:vars {
+    BackgroundColor: --overridable;
+    TextColor: --overridable;
+}
+
+:vars {
+    MainBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    MainTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root {
+    -st-states: error;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #FFFFFF;
+    border-radius: value(BorderRadius);
+}
+
+.root:error::main {
+    background-color: value(ErrorBackgroundColor);
+}
+
+.main {
+    display: flex;
+    flex: 1;
+    /* is used to allow controls to wrap on the next line when available width is not enough */
+    flex-wrap: wrap;
+    justify-content: center;
+
+    padding: calc(value(MainPadding) / 2);
+
+    background-color: value(MainBackgroundColor);
+    border: value(BorderWidth) solid applyOpacity(#FFFFFF, 0.4);
+    border-radius: value(BorderRadius);
+
+    color: value(MainTextColor);
+    font-family: "HelveticaNeueW01-55Roma", "Arial", "sans-serif";
+    font-size: value(FontSize);
+}
+
+.contentsWrapper {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    padding: calc(value(MainPadding) / 2);
+}
+
+.buttonsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: calc(value(MainPadding) / 2) calc(value(ContentPadding) / 2);
+}
+
+.buttonsWrapper:empty {
+    display: none;
+}
+
+.icon svg {
+    height: value(LineHeight);
+}
+
+.text {
+    flex: 1;
+    min-width: value(TextMinWidth);
+    margin: 0 value(ContentPadding);
+    line-height: value(LineHeight);
+}
+
+.text:first-child {
+    margin: 0;
+}
+
+.button {
+    margin: 0 calc(value(ContentPadding) / 2);
+}
