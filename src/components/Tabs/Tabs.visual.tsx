@@ -119,7 +119,7 @@ visualize('Tabs', () => {
         } else {
           await driver.clickLeftNavButton();
         }
-        await delay(400);
+        await delay(500);
         return scrollToEnd(driver, direction);
       }
     }
