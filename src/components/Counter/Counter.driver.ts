@@ -8,6 +8,7 @@ import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/To
 import { Simulate } from 'react-dom/test-utils';
 
 export interface CounterDriver extends BaseUniDriver {
+  enterValue(val: string): Promise<void>;
   getCounterAriaLabel(): Promise<string>;
   getCounterAriaLabellledby(): Promise<string>;
   getErrorMessageContent(): Promise<void>;
@@ -20,7 +21,6 @@ export interface CounterDriver extends BaseUniDriver {
   isPlusButtonDisabled(): Promise<boolean>;
   pressMinus(): Promise<void>;
   pressPlus(): Promise<void>;
-  enterValue(val: string): Promise<void>;
 }
 
 export const counterDriverFactory = (base: UniDriver): CounterDriver => {
