@@ -8,7 +8,8 @@
     BorderRadius: 2px;
     BorderWidth: 1px;
 
-    MainPadding: 16px;
+    MainVerticalPadding: 16px;
+    MainHorizontalPadding: 12px;
     ContentPadding: 8px;
 
     TextMinWidth: 200px;
@@ -40,10 +41,6 @@
     border-radius: value(BorderRadius);
 }
 
-.root:error::main {
-    background-color: value(ErrorBackgroundColor);
-}
-
 .main {
     display: flex;
     flex: 1;
@@ -51,7 +48,7 @@
     flex-wrap: wrap;
     justify-content: center;
 
-    padding: calc(value(MainPadding) / 2);
+    padding: calc(value(MainVerticalPadding) / 2) calc(value(MainHorizontalPadding) / 2);
 
     background-color: value(MainBackgroundColor);
     border: value(BorderWidth) solid applyOpacity(#FFFFFF, 0.4);
@@ -66,7 +63,7 @@
     display: flex;
     flex-direction: row;
     flex: 1;
-    padding: calc(value(MainPadding) / 2);
+    padding: calc(value(MainVerticalPadding) / 2) calc(value(MainHorizontalPadding) / 2);
 }
 
 .buttonsWrapper {
@@ -74,11 +71,15 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: calc(value(MainPadding) / 2) calc(value(ContentPadding) / 2);
+    margin: calc(value(MainVerticalPadding) / 2) calc(value(ContentPadding) / 2);
 }
 
 .buttonsWrapper:empty {
     display: none;
+}
+
+.icon {
+    transform: translateX(calc(-1 * (value(ContentPadding) / 2)));
 }
 
 .icon svg {
@@ -88,7 +89,7 @@
 .text {
     flex: 1;
     min-width: value(TextMinWidth);
-    margin: 0 value(ContentPadding);
+    margin: 0;
     line-height: value(LineHeight);
 }
 
@@ -98,4 +99,8 @@
 
 .button {
     margin: 0 calc(value(ContentPadding) / 2);
+}
+
+.root:error .main {
+    background-color: value(ErrorBackgroundColor);
 }

@@ -19,6 +19,49 @@ import * as examples from './examples';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+const childrenProps = {
+  icon: <SectionNotification.Icon icon={<ErrorIcon />} key="icon" />,
+  text: (
+    <SectionNotification.Text key="text">
+      This group will only be created after you approve it.
+    </SectionNotification.Text>
+  ),
+  secondaryButton: (
+    <SectionNotification.Button
+      key="decline"
+      priority={BUTTON_PRIORITY.basicSecondary}
+    >
+      Decline
+    </SectionNotification.Button>
+  ),
+  basicButton: (
+    <SectionNotification.Button key="approve" priority={BUTTON_PRIORITY.basic}>
+      Approve
+    </SectionNotification.Button>
+  ),
+};
+
+const children = [
+  { label: 'Only Text', value: [childrenProps.text] },
+  {
+    label: 'Text & Buttons',
+    value: [
+      childrenProps.text,
+      childrenProps.secondaryButton,
+      childrenProps.basicButton,
+    ],
+  },
+  {
+    label: 'Icon, Text & Buttons',
+    value: [
+      childrenProps.icon,
+      childrenProps.text,
+      childrenProps.secondaryButton,
+      childrenProps.basicButton,
+    ],
+  },
+];
+
 export default {
   category: 'Components',
   storyName: 'SectionNotification',
@@ -28,27 +71,11 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-SectionNotification',
     type: NOTIFICATION_TYPE.default,
-    children: [
-      <SectionNotification.Icon icon={<ErrorIcon />} key="icon" />,
-      <SectionNotification.Text key="text">
-        This group will only be created after you approve it.
-      </SectionNotification.Text>,
-      <SectionNotification.Button
-        key="decline"
-        priority={BUTTON_PRIORITY.basicSecondary}
-      >
-        Decline
-      </SectionNotification.Button>,
-      <SectionNotification.Button
-        key="approve"
-        priority={BUTTON_PRIORITY.basic}
-      >
-        Approve
-      </SectionNotification.Button>,
-    ],
+    children: children[2].value,
   }),
   exampleProps: {
     type: Object.values(NOTIFICATION_TYPE),
+    children,
   },
   dataHook: 'storybook-SectionNotification',
   sections: [
