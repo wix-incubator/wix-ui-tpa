@@ -1,3 +1,19 @@
+# [1.7.0](https://github.com/wix/wix-ui-tpa/compare/v1.6.0...v1.7.0) (2020-01-28)
+
+
+### Bug Fixes
+
+* a more mobile-friendly Tabs component  ([1f12ca7](https://github.com/wix/wix-ui-tpa/commit/1f12ca73f4e3e8daf6bc3026f21b8d239b0b0d69))
+* Improve Counter component aria UX ([d0882a4](https://github.com/wix/wix-ui-tpa/commit/d0882a404ae09a8c9e771c32df70cca63fd99b18))
+
+
+### Features
+
+* Counter Component Error Icon and tooltip ([952d04e](https://github.com/wix/wix-ui-tpa/commit/952d04edca0b8b7fb7a0c3c13d1d7404477f8db7))
+* SectionNotification component ([48deace](https://github.com/wix/wix-ui-tpa/commit/48deacef337b3e4290b05f7445b5a006c771fbc5))
+
+
+
 # [1.6.0](https://github.com/wix/wix-ui-tpa/compare/v1.5.0...v1.6.0) (2020-01-12)
 
 
