@@ -148,6 +148,7 @@ visualize('Tabs', () => {
       renderTest({ compact: true, props: { items: lotsItems } }, done => {
         return async (driver: TabsDriver) => {
           await scrollToEnd(driver, NavButtonOptions.right);
+          await delay(500);
           done();
         };
       }),
