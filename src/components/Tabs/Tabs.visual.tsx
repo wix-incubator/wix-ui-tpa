@@ -112,6 +112,7 @@ visualize('Tabs', () => {
 
   story('Scroll', () => {
     async function scrollToEnd(driver, direction) {
+      await delay(500);
       const navShown = await driver.getNavButtonsShown();
       if (navShown === NavButtonOptions.both || navShown === direction) {
         if (direction === NavButtonOptions.right) {
@@ -119,7 +120,6 @@ visualize('Tabs', () => {
         } else {
           await driver.clickLeftNavButton();
         }
-        await delay(500);
         return scrollToEnd(driver, direction);
       }
     }
@@ -138,6 +138,7 @@ visualize('Tabs', () => {
       renderTest({ compact: true, props: { items: lotsItems } }, done => {
         return async (driver: TabsDriver) => {
           await driver.clickRightNavButton();
+          await delay(500);
           done();
         };
       }),
@@ -148,7 +149,6 @@ visualize('Tabs', () => {
       renderTest({ compact: true, props: { items: lotsItems } }, done => {
         return async (driver: TabsDriver) => {
           await scrollToEnd(driver, NavButtonOptions.right);
-          await delay(500);
           done();
         };
       }),
