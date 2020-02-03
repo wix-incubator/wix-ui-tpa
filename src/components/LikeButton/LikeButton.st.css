@@ -47,6 +47,11 @@
     );
 }
 
+.root::spacer,
+.root:checked::spacer {
+    width: 3px;
+}
+
 @keyframes pop-in {
     0% {
         transform: scale(0.9);
