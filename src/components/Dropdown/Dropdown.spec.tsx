@@ -89,6 +89,13 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('disabled', () => {
+    it('should be disabled', async () => {
+      const driver = createDriver(<Dropdown options={[]} disabled />);
+      expect(await driver.isDisabled()).toBe(true);
+    });
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

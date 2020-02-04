@@ -12,6 +12,7 @@ import { tooltipDriverFactory } from '../Tooltip/Tooltip.driver';
 
 export interface DropdownDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
+  isDisabled(): Promise<boolean>;
   areOptionsShown(): Promise<boolean>;
   getOptionsCount(): Promise<number>;
   selectOptionAt(index: number): Promise<void>;
@@ -45,6 +46,8 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
   return {
     ...baseUniDriver,
     isMobile: () => hasMobile(base),
+    isDisabled: async () =>
+      (await (await getDropdownBase()).attr('disabled')) !== null,
     click: async () => (await getDropdownCoreDriver(baseUniDriver)).click(),
     areOptionsShown: async () =>
       (await getDropdownCoreDriver(baseUniDriver)).isContentElementExists(),
