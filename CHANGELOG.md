@@ -1,3 +1,17 @@
+# [1.8.0](https://github.com/wix/wix-ui-tpa/compare/v1.7.0...v1.8.0) (2020-02-04)
+
+
+### Bug Fixes
+
+* update heart icon asset ([8edccf9](https://github.com/wix/wix-ui-tpa/commit/8edccf99be086baeba9bdea229df367e2f977b69))
+
+
+### BREAKING CHANGES
+
+* the size of the Heart svg has changed, which might affect consumers' alignment 
+
+
+
 # [1.7.0](https://github.com/wix/wix-ui-tpa/compare/v1.6.0...v1.7.0) (2020-01-28)
 
 
