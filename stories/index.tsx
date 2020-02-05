@@ -41,4 +41,5 @@
 // require('../src/components/ShareButton/docs/index.story');
 // require('../src/components/CopyUrlButton/docs/index.story');
 // require('../src/components/SectionNotification/docs/index.story');
-require('./proGallery');
+require('./proGalleryStores');
+require('./proGallery2');
