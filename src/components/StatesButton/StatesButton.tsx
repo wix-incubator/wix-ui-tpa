@@ -37,9 +37,11 @@ export class StatesButton extends React.Component<
   }
 
   private renderCheck() {
-    return <div className={classNames(style.text, style.successIcon)}>
-      <Check size="1em" data-hook={'checkIcon'}/>
-    </div>;
+    return (
+      <div className={classNames(style.text, style.successIcon)}>
+        <Check size="1em" data-hook={'checkIcon'} />
+      </div>
+    );
   }
 
   public render() {
