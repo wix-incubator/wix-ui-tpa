@@ -5,6 +5,7 @@ import 'pro-gallery/dist/statics/main.css';
 import { Button, PRIORITY } from '../src/components/Button';
 import styles from './stores.st.css';
 
+const GALLERY_ID = 'myGallery';
 const imageSize = 200;
 
 const items = [1, 2, 3, 4, 5, 6, 7, 8].map(id => ({
@@ -263,54 +264,42 @@ const styleParamsByLayout = () => ({
   },
 });
 
-storiesOf('pro-gallery', module).add('Stores', () => {
-  const options = {
-    galleryLayout: 5,
-    imageMargin: 10,
-    slideshowInfoSize: 200,
-    enableInfiniteScroll: true,
-    hoveringBehaviour: 'APPEARS',
-    itemClick: 'expand',
-    arrowsSize: 23,
-    imageLoadingMode: 'BLUR',
-    scrollAnimation: 'NO_EFFECT',
-    imageQuality: 90,
-    videoPlay: 'hover',
-    videoSpeed: '1',
-    videoLoop: true,
-  };
-  return <MyGallery columns={4}/>;
-});
-
 function calculateMaxWidth(columns) {
   return columns
     ? 234 * columns + 24 * (columns - 1)
     : Number.POSITIVE_INFINITY;
 }
 
-class MyGallery extends React.Component {
+class MyGallery extends React.Component<{ columns?: number }> {
   state = {
-    container: {
-      width: Math.min(window.innerWidth, calculateMaxWidth(this.props.columns)),
-      height: window.innerHeight,
-    },
+    container: this._getContainer(),
     hovered: -1,
   };
   private _myTimeout: number;
 
   componentDidMount() {
     window.addEventListener('resize', this._handleResize);
+    this.setState({
+      container: this._getContainer(),
+    });
+  }
+
+  _getContainer() {
+    const wrapper = document.querySelector(`#${GALLERY_ID}`) || window;
+    console.log('adler', 'proGalleryStores.tsx:289', wrapper);
+
+    return {
+      width: Math.min(
+        (wrapper as any).innerWidth,
+        calculateMaxWidth(this.props.columns),
+      ),
+      height: (wrapper as any).innerHeight,
+    };
   }
 
   _handleResize = () => {
     this.setState({
-      container: {
-        width: Math.min(
-          window.innerWidth,
-          calculateMaxWidth(this.props.columns),
-        ),
-        height: window.innerHeight,
-      },
+      container: this._getContainer(),
     });
   };
 
@@ -333,12 +322,14 @@ class MyGallery extends React.Component {
         items={items}
         options={{
           ...styleParamsByLayout().grid,
+          fixedColumns: !!this.props.columns,
           imageMargin: 24,
-          gridStyle: 1,
+          // tslint:disable-next-line:no-extra-boolean-cast
+          gridStyle: !!this.props.columns ? 1 : 0,
           titlePlacement: GALLERY_CONSTS.placements.SHOW_BELOW,
           textBoxHeight: 132,
           calculateTextBoxHeightMode: GALLERY_CONSTS.calculationOptions.MANUAL,
-          numberOfImagesPerCol: this.props.columns,
+          numberOfImagesPerRow: this.props.columns,
           hoveringBehaviour: GALLERY_CONSTS.infoBehaviourOnHover.NEVER_SHOW,
           allowSocial: false,
           loveButton: false,
@@ -370,3 +361,51 @@ class ProductInfo extends React.Component<any, any> {
     );
   }
 }
+
+function StoresStory() {
+  const [isResponsive, setResponsive] = React.useState(true);
+  const [colNum, setColNum] = React.useState(1);
+
+  return (
+    <div style={{ display: 'flex', maxWidth: '100%' }}>
+      <div
+        style={{
+          width: 200,
+          borderRight: '1px solid #ddd',
+          marginRight: 30,
+          flexShrink: 0,
+        }}
+      >
+        <input
+          type="checkbox"
+          id="responsive"
+          checked={isResponsive}
+          onChange={() => setResponsive(!isResponsive)}
+        />
+        <label htmlFor="responsive">Fit to screen</label>
+        <br />
+        <br />
+        <label
+          htmlFor="colNum"
+          style={{ display: 'inline-block', marginBottom: 6 }}
+        >
+          Number of Columns: {isResponsive ? '--' : colNum}
+        </label>
+        <br />
+        <input
+          type="range"
+          min={1}
+          max={5}
+          disabled={isResponsive}
+          value={colNum}
+          onInput={e => setColNum((e.target as any).value)}
+        />
+      </div>
+      <div id={GALLERY_ID} style={{ flex: '1 1 auto', minWidth: 0 }}>
+        <MyGallery columns={isResponsive ? undefined : colNum} />
+      </div>
+    </div>
+  );
+}
+
+storiesOf('pro-gallery', module).add('Stores', () => <StoresStory />);
