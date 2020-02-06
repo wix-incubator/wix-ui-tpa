@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { GALLERY_CONSTS, ProGallery } from 'pro-gallery';
 import 'pro-gallery/dist/statics/main.css';
 import { Button, PRIORITY } from '../src/components/Button';
+// @ts-ignore
 import styles from './stores.st.css';
 
 const GALLERY_ID = 'myGallery';
@@ -264,13 +265,16 @@ const styleParamsByLayout = () => ({
   },
 });
 
-function calculateMaxWidth(columns) {
+function calculateMaxWidth({ columns, itemMaxWidth }) {
   return columns
-    ? 234 * columns + 24 * (columns - 1)
+    ? itemMaxWidth * columns + 24 * (columns - 1)
     : Number.POSITIVE_INFINITY;
 }
 
-class MyGallery extends React.Component<{ columns?: number }> {
+class MyGallery extends React.Component<{
+  columns?: number;
+  itemMaxWidth?: number;
+}> {
   state = {
     container: this._getContainer(),
     hovered: -1,
@@ -284,16 +288,30 @@ class MyGallery extends React.Component<{ columns?: number }> {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (
+      prevProps.columns !== this.props.columns ||
+      prevProps.itemMaxWidth !== this.props.itemMaxWidth
+    ) {
+      this.setState({
+        container: this._getContainer(),
+      });
+    }
+  }
+
   _getContainer() {
-    const wrapper = document.querySelector(`#${GALLERY_ID}`) || window;
-    console.log('adler', 'proGalleryStores.tsx:289', wrapper);
+    const wrapper = document.querySelector(`#${GALLERY_ID}`);
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    if (wrapper) {
+      width = wrapper.clientWidth;
+      height = wrapper.clientHeight;
+    }
 
     return {
-      width: Math.min(
-        (wrapper as any).innerWidth,
-        calculateMaxWidth(this.props.columns),
-      ),
-      height: (wrapper as any).innerHeight,
+      width: Math.min(width, calculateMaxWidth(this.props as any)),
+      height,
     };
   }
 
@@ -365,6 +383,7 @@ class ProductInfo extends React.Component<any, any> {
 function StoresStory() {
   const [isResponsive, setResponsive] = React.useState(true);
   const [colNum, setColNum] = React.useState(1);
+  const [itemMaxWidth, setItemMaxWidth] = React.useState(234);
 
   return (
     <div style={{ display: 'flex', maxWidth: '100%' }}>
@@ -385,24 +404,46 @@ function StoresStory() {
         <label htmlFor="responsive">Fit to screen</label>
         <br />
         <br />
-        <label
-          htmlFor="colNum"
-          style={{ display: 'inline-block', marginBottom: 6 }}
-        >
-          Number of Columns: {isResponsive ? '--' : colNum}
-        </label>
-        <br />
-        <input
-          type="range"
-          min={1}
-          max={5}
-          disabled={isResponsive}
-          value={colNum}
-          onInput={e => setColNum((e.target as any).value)}
-        />
+        <div style={{ opacity: isResponsive ? 0.5 : 1 }}>
+          <label
+            htmlFor="colNum"
+            style={{ display: 'inline-block', marginBottom: 6 }}
+          >
+            Number of Columns: {isResponsive ? '--' : colNum}
+          </label>
+          <br />
+          <input
+            id="colNum"
+            type="range"
+            min={1}
+            max={5}
+            disabled={isResponsive}
+            value={colNum}
+            onInput={e => setColNum((e.target as any).value)}
+          />
+          <br />
+          <br />
+          <label
+            htmlFor="itemMaxWidth"
+            style={{ display: 'inline-block', marginBottom: 6 }}
+          >
+            Item Max Width: {isResponsive ? '--' : itemMaxWidth}
+          </label>
+          <br />
+          <input
+            id="itemMaxWidth"
+            type="number"
+            disabled={isResponsive}
+            value={isResponsive ? undefined : itemMaxWidth}
+            onInput={e => setItemMaxWidth((e.target as any).value)}
+          />
+        </div>
       </div>
       <div id={GALLERY_ID} style={{ flex: '1 1 auto', minWidth: 0 }}>
-        <MyGallery columns={isResponsive ? undefined : colNum} />
+        <MyGallery
+          columns={isResponsive ? undefined : colNum}
+          itemMaxWidth={itemMaxWidth}
+        />
       </div>
     </div>
   );
