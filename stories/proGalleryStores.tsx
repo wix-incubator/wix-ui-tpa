@@ -2,9 +2,8 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { GALLERY_CONSTS, ProGallery } from 'pro-gallery';
 import 'pro-gallery/dist/statics/main.css';
-import { Button } from '../src/components/Button';
-import { Text, TYPOGRAPHY } from '../src/components/Text';
-import Timeout = NodeJS.Timeout;
+import { Button, PRIORITY } from '../src/components/Button';
+import styles from './stores.st.css';
 
 const imageSize = 200;
 
@@ -280,18 +279,24 @@ storiesOf('pro-gallery', module).add('Stores', () => {
     videoSpeed: '1',
     videoLoop: true,
   };
-  return <MyGallery />;
+  return <MyGallery columns={4}/>;
 });
+
+function calculateMaxWidth(columns) {
+  return columns
+    ? 234 * columns + 24 * (columns - 1)
+    : Number.POSITIVE_INFINITY;
+}
 
 class MyGallery extends React.Component {
   state = {
     container: {
-      width: window.innerWidth,
+      width: Math.min(window.innerWidth, calculateMaxWidth(this.props.columns)),
       height: window.innerHeight,
     },
     hovered: -1,
   };
-  private _myTimeout: Timeout;
+  private _myTimeout: number;
 
   componentDidMount() {
     window.addEventListener('resize', this._handleResize);
@@ -300,7 +305,10 @@ class MyGallery extends React.Component {
   _handleResize = () => {
     this.setState({
       container: {
-        width: window.innerWidth,
+        width: Math.min(
+          window.innerWidth,
+          calculateMaxWidth(this.props.columns),
+        ),
         height: window.innerHeight,
       },
     });
@@ -309,6 +317,7 @@ class MyGallery extends React.Component {
   _eventHandler = (eName, eData) => {
     clearTimeout(this._myTimeout);
     if (eName === 'HOVER_SET') {
+      // @ts-ignore
       this._myTimeout = setTimeout(() => {
         this.setState({ hovered: eData });
       }, 10);
@@ -324,12 +333,12 @@ class MyGallery extends React.Component {
         items={items}
         options={{
           ...styleParamsByLayout().grid,
-          imageMargin: 12,
+          imageMargin: 24,
           gridStyle: 1,
           titlePlacement: GALLERY_CONSTS.placements.SHOW_BELOW,
-          textBoxHeight: 150,
+          textBoxHeight: 132,
           calculateTextBoxHeightMode: GALLERY_CONSTS.calculationOptions.MANUAL,
-          numberOfImagesPerCol: 4,
+          numberOfImagesPerCol: this.props.columns,
           hoveringBehaviour: GALLERY_CONSTS.infoBehaviourOnHover.NEVER_SHOW,
           allowSocial: false,
           loveButton: false,
@@ -337,7 +346,7 @@ class MyGallery extends React.Component {
         container={container}
         scrollingElement={() => document.getElementById('gallery') || window}
         eventsListener={this._eventHandler}
-        customHoverRenderer={() => <div>HELLO WORLD</div>}
+        customHoverRenderer={() => null}
         customInfoRenderer={itemProps => (
           <ProductInfo {...itemProps} showButtons={hovered === itemProps.idx} />
         )}
@@ -349,15 +358,14 @@ class MyGallery extends React.Component {
 class ProductInfo extends React.Component<any, any> {
   render() {
     return (
-      <div>
-        <div>
-          <Text typography={TYPOGRAPHY.listText}>{this.props.title}</Text>
-        </div>
-        <div>
-          <Text typography={TYPOGRAPHY.runningText}>{`$${50 +
-            this.props.id}`}</Text>
-        </div>
-        {this.props.showButtons ? <Button>Add to Cart</Button> : null}
+      <div {...styles('root', {})}>
+        <div className={styles.title}>{this.props.title}</div>
+        <div className={styles.price}>{`$${50 + this.props.id}`}</div>
+        {this.props.showButtons ? (
+          <Button className={styles.button} priority={PRIORITY.primary}>
+            Add to Cart
+          </Button>
+        ) : null}
       </div>
     );
   }

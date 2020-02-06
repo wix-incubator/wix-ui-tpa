@@ -337,7 +337,7 @@ class MyGallery extends React.Component {
         container={container}
         scrollingElement={() => document.getElementById('gallery') || window}
         eventsListener={this._eventHandler}
-        customHoverRenderer={() => <div>HELLO WORLD</div>}
+        customHoverRenderer={() => null}
         customInfoRenderer={itemProps => (
           <ProductInfo {...itemProps} showButtons={hovered === itemProps.idx} />
         )}
