@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/wix/wix-ui-tpa/compare/v1.8.0...v1.8.1) (2020-02-10)
+
+
+### Bug Fixes
+
+* dropdown error when no selected option ([f2a205a](https://github.com/wix/wix-ui-tpa/commit/f2a205ac5663c32badff15a7db0f54f7e726b460))
+
+
+
 # [1.8.0](https://github.com/wix/wix-ui-tpa/compare/v1.7.0...v1.8.0) (2020-02-04)
 
 
