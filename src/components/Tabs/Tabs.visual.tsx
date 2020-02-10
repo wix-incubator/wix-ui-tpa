@@ -59,6 +59,7 @@ visualize('Tabs', () => {
     onDone?: (any?) => (TabsDriver) => void,
   ) => {
     const { props, mobile, compact } = renderProps;
+    onDone = onDone || (d => () => d());
     return done => (
       <TabsVisual
         tabsProps={{
@@ -68,7 +69,7 @@ visualize('Tabs', () => {
         }}
         compact={compact}
         mobile={mobile}
-        onDone={onDone && onDone(done)}
+        onDone={onDone(done)}
       />
     );
   };
