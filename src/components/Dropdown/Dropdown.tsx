@@ -69,6 +69,9 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   };
 
   onSelect = (selectedOption: DropdownOptionProps) => {
+    if (!selectedOption) {
+      return;
+    }
     this.setState({ selectedOption });
     if (this.props.onChange) {
       this.props.onChange(
