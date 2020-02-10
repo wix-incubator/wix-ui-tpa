@@ -59,6 +59,7 @@ visualize('Tabs', () => {
     onDone?: (any?) => (TabsDriver) => void,
   ) => {
     const { props, mobile, compact } = renderProps;
+    onDone = onDone || (d => () => d());
     return done => (
       <TabsVisual
         tabsProps={{
@@ -68,7 +69,7 @@ visualize('Tabs', () => {
         }}
         compact={compact}
         mobile={mobile}
-        onDone={onDone && onDone(done)}
+        onDone={onDone(done)}
       />
     );
   };
@@ -113,13 +114,16 @@ visualize('Tabs', () => {
   story('Scroll', () => {
     async function scrollToEnd(driver, direction) {
       const navShown = await driver.getNavButtonsShown();
+
       if (navShown === NavButtonOptions.both || navShown === direction) {
         if (direction === NavButtonOptions.right) {
           await driver.clickRightNavButton();
         } else {
           await driver.clickLeftNavButton();
         }
-        await delay(500);
+
+        await delay(600);
+
         return scrollToEnd(driver, direction);
       }
     }
@@ -138,6 +142,7 @@ visualize('Tabs', () => {
       renderTest({ compact: true, props: { items: lotsItems } }, done => {
         return async (driver: TabsDriver) => {
           await driver.clickRightNavButton();
+          await delay(500);
           done();
         };
       }),

@@ -30,14 +30,8 @@ visualize('AvatarGroup', () => {
       ));
 
       snap('With 6 items and default limit', done => {
-        let count = 0;
-
         function onLoad() {
-          count += 1;
-
-          if (count === 2) {
-            done();
-          }
+          done();
         }
 
         return (
