@@ -36,6 +36,14 @@ export class StatesButton extends React.Component<
     this.setState({ success: false });
   }
 
+  private renderCheck() {
+    return (
+      <div className={classNames(style.successIcon)}>
+        <Check size="1em" data-hook={'checkIcon'} />
+      </div>
+    );
+  }
+
   public render() {
     const { text, disabled, dataHook, ...rest } = this.props;
     const { success } = this.state;
@@ -47,18 +55,7 @@ export class StatesButton extends React.Component<
         ref={this.buttonRef}
         {...style('root', {}, this.props)}
       >
-        <div
-          className={classNames(style.text, {
-            [style.hideText]: success,
-          })}
-        >
-          {text}
-        </div>
-        {success && (
-          <div className={classNames(style.text, style.successIcon)}>
-            <Check size="1em" data-hook={'checkIcon'} />
-          </div>
-        )}
+        {success ? this.renderCheck() : text}
       </Button>
     );
   }
