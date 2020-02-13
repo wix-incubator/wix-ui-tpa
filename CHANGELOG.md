@@ -1,3 +1,12 @@
+## [1.8.2](https://github.com/wix/wix-ui-tpa/compare/v1.8.1...v1.8.2) (2020-02-12)
+
+
+### Bug Fixes
+
+* StatesButton expose text style to consumers ([01ae9f0](https://github.com/wix/wix-ui-tpa/commit/01ae9f04dc73fb66c97e9a1589f0cc1980299ff3))
+
+
+
 ## [1.8.1](https://github.com/wix/wix-ui-tpa/compare/v1.8.0...v1.8.1) (2020-02-10)
 
 
