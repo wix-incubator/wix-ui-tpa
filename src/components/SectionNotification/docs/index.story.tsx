@@ -13,7 +13,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { BUTTON_PRIORITY, NOTIFICATION_TYPE, SectionNotification } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { ErrorIcon } from '../../Icons/components/Error';
+import { Error as ErrorIcon } from '../../Icons/components/Error';
 import * as examples from './examples';
 
 const code = config =>
