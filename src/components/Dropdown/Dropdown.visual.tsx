@@ -4,6 +4,7 @@ import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
 import { optionsWithSections, simpleOptions } from './helpers';
+import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 class DropdownVisual extends React.Component<any> {
   static defaultProps = {
@@ -15,9 +16,7 @@ class DropdownVisual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <VisualTestContainer>
-          <Dropdown {...this.props} />
-        </VisualTestContainer>
+        <Dropdown {...this.props} />
       </TPAComponentsProvider>
     );
   }
@@ -29,9 +28,13 @@ class AsyncDropdownVisual extends React.Component<any> {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      this.setState({ newOptions: true }, this.props.done);
-    }, 1000);
+    onStyleProcessorDone()
+      .then(() => {
+        setTimeout(() => {
+          this.setState({ newOptions: true }, this.props.done);
+        }, 1000);
+      })
+      .catch(() => {});
   }
 
   render() {
