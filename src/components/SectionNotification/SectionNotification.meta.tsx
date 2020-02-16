@@ -1,7 +1,7 @@
 import Registry from '@ui-autotools/registry';
 import * as React from 'react';
 import { NOTIFICATION_TYPE, SectionNotification } from '.';
-import { ReactComponent as ErrorIcon } from '../Icons/assets/Icons/Error.svg';
+import { Error as ErrorIcon } from '../Icons/components/Error';
 
 const SectionNotificationMetadata = Registry.getComponentMetadata(
   SectionNotification,
