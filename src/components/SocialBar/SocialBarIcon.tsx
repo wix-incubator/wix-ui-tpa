@@ -21,6 +21,7 @@ export class SocialBarIcon extends React.Component<SocialBarIconProps> {
 
   render() {
     const { children, tooltip, socialBarTheme, ...rest } = this.props;
+
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
