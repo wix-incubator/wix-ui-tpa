@@ -27,5 +27,4 @@ index.st.css
 applitools.private.config.js
 
 src/testkit/*
-src/assets/icons/components
-src/assets/icons/index.ts
+src/components/Icons

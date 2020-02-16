@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { SocialBar } from '../';
-import { SocialIcons } from '../../../assets/icons';
+import { Facebook } from '../../Icons/components/Facebook';
+import { Instagram } from '../../Icons/components/Instagram';
+import { Linkedin } from '../../Icons/components/Linkedin';
+import { Tumblr } from '../../Icons/components/Tumblr';
+import { Pinterest } from '../../Icons/components/Pinterest';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 export const SocialBarWiringExample = () => {
@@ -9,31 +13,31 @@ export const SocialBarWiringExample = () => {
       <SocialBar.Icon
         tooltip="Facebook"
         icon={
-          <SocialIcons.Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
+          <Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
         }
       />
 
       <SocialBar.Icon
         tooltip="Instagram"
-        icon={<SocialIcons.Instagram />}
+        icon={<Instagram />}
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />
 
       <SocialBar.Icon
         tooltip="Linkedin"
-        icon={<SocialIcons.Linkedin />}
+        icon={<Linkedin />}
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />
 
       <SocialBar.Icon
         tooltip="Tumblr"
-        icon={<SocialIcons.Tumblr />}
+        icon={<Tumblr />}
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />
 
       <SocialBar.Icon
         tooltip="Pinterest"
-        icon={<SocialIcons.Pinterest />}
+        icon={<Pinterest />}
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />
 

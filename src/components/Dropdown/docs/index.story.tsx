@@ -21,9 +21,8 @@ import {
   optionsWithSections,
   optionsWithSubtitle,
 } from '../helpers';
-import { Heart } from '../../../assets/icons';
+import { Heart } from '../../Icons/components/Heart';
 import * as Readme from '../../Dropdown/README.md';
-import { Placement } from 'wix-ui-core/dist/src/components/popover/Popover';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });

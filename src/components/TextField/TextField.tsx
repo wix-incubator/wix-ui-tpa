@@ -5,8 +5,8 @@ import {
 } from 'wix-ui-core/input';
 import style from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
-import { Error as ErrorIcon } from '../../assets/icons/components/Error';
-import { CheckSuccess as SuccessIcon } from '../../assets/icons/components/CheckSuccess';
+import { Error as ErrorIcon } from '../Icons/components/Error';
+import { CheckSuccess as SuccessIcon } from '../Icons/components/CheckSuccess';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';

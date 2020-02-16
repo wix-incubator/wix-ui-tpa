@@ -14,7 +14,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { Share as ShareIcon } from '../../../assets/icons/components/Share';
+import { Share as ShareIcon } from '../../Icons/components/Share';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';

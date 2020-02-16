@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
-import { ReactComponent as ChevronLeft } from '../../assets/icons/ChevronLeft.svg';
-import { ReactComponent as ChevronRight } from '../../assets/icons/ChevronRight.svg';
+import { ChevronLeft } from '../Icons/components/ChevronLeft';
+import { ChevronRight } from '../Icons/components/ChevronRight';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabItem } from './Tab';
 import { ScrollableTabs } from './ScrollableTabs';
