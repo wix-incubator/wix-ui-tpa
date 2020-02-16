@@ -18,7 +18,11 @@ import * as SocialBarWiringExampleRaw from '!raw-loader!./SocialBarWiringExample
 import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExample.st.css';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { SocialBar } from '../';
-import { Share, SocialIcons } from '../../../assets/icons';
+import { Facebook } from '../../Icons/components/Facebook';
+import { Instagram } from '../../Icons/components/Instagram';
+import { Linkedin } from '../../Icons/components/Linkedin';
+import { Pinterest } from '../../Icons/components/Pinterest';
+import { Tumblr } from '../../Icons/components/Tumblr';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 const code = config =>
@@ -31,27 +35,27 @@ const DEFAULT_CHILDREN = [
     key={1}
     tooltip="Facebook"
     icon={
-      <SocialIcons.Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
+      <Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
     }
   />,
   <SocialBar.Icon
     key={2}
     tooltip="Instagram"
-    icon={<SocialIcons.Instagram />}
+    icon={<Instagram />}
     href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
   />,
 
   <SocialBar.Icon
     key={3}
     tooltip="Linkedin"
-    icon={<SocialIcons.Linkedin />}
+    icon={<Linkedin />}
     href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
   />,
 
   <SocialBar.Icon
     key={5}
     tooltip="Pinterest"
-    icon={<SocialIcons.Pinterest />}
+    icon={<Pinterest />}
     href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
   />,
 ];
@@ -64,7 +68,7 @@ const CHILDREN = [
       <SocialBar.Icon
         key={4}
         tooltip="Tumblr"
-        icon={<SocialIcons.Tumblr />}
+        icon={<Tumblr />}
         href="https://www.facebook.com/sharer/sharer.php?u=wix.com"
       />,
       <CopyUrlButton

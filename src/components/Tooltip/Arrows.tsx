@@ -1,8 +1,8 @@
 import { Placement } from 'wix-ui-core/popover';
-import { ArrowRight as right } from '../../assets/icons/components/ArrowRight';
-import { ArrowLeft as left } from '../../assets/icons/components/ArrowLeft';
-import { ArrowTop as top } from '../../assets/icons/components/ArrowTop';
-import { ArrowBottom as bottom } from '../../assets/icons/components/ArrowBottom';
+import { ArrowRight as right } from '../Icons/components/ArrowRight';
+import { ArrowLeft as left } from '../Icons/components/ArrowLeft';
+import { ArrowTop as top } from '../Icons/components/ArrowTop';
+import { ArrowBottom as bottom } from '../Icons/components/ArrowBottom';
 
 export function getArrowByPlacement(placement: Placement) {
   if (placement.indexOf('top') === 0) {

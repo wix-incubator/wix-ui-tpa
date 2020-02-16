@@ -14,8 +14,8 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 
-import { Share as ShareIcon } from '../../../assets/icons/components/Share';
-import { Heart as HeartIcon } from '../../../assets/icons/components/Heart';
+import { Share as ShareIcon } from '../../Icons/components/Share';
+import { Heart as HeartIcon } from '../../Icons/components/Heart';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
