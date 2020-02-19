@@ -87,6 +87,9 @@
     height: value(navBtnSVGWidth);
     flex-shrink: 0;
 }
+.navBtn svg path {
+    fill: currentColor;
+}
 
 .navBtn.navBtnLeft svg {
     margin-left: calculate("-", value(navBtnWidth), value(navBtnSVGWidth));
