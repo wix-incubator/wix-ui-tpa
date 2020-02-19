@@ -1,3 +1,12 @@
+## [1.8.3](https://github.com/wix/wix-ui-tpa/compare/v1.8.2...v1.8.3) (2020-02-19)
+
+
+### Bug Fixes
+
+* (Tabs) changed the svg fill role from black to currentColor ([5c4fb55](https://github.com/wix/wix-ui-tpa/commit/5c4fb5507c736896301f1b27b2194fc89c8f2344))
+
+
+
 ## [1.8.2](https://github.com/wix/wix-ui-tpa/compare/v1.8.1...v1.8.2) (2020-02-12)
 
 
