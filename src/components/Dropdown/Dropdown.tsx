@@ -28,6 +28,7 @@ export interface DropdownProps {
   placement?: Placement;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
+  className?: string;
 }
 
 interface DefaultProps {
@@ -91,6 +92,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       alignment,
       forceContentElementVisibility,
       placement,
+      className,
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
@@ -112,6 +114,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               },
               rest,
             )}
+            className={className}
             data-mobile={mobile}
           >
             {label && (

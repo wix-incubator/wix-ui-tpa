@@ -92,6 +92,7 @@
 
 .arrowIcon {
     color: value(inputColor);
+    fill: value(inputColor);
 }
 
 .root:priority(basic):disabled .arrowIcon {
