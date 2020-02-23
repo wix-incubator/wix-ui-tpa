@@ -140,7 +140,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
             >
               <DropdownBase
                 aria-label={ariaLabel}
-                aria-labelledBy={ariaLabelledBy}
+                aria-labelledby={ariaLabelledBy}
                 className={styles.dropdownBase}
                 selectedOption={selectedOption}
                 placeholder={placeholder}

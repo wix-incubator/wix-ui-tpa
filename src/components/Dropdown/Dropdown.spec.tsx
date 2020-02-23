@@ -61,7 +61,7 @@ describe('Dropdown', () => {
 
   it('should have aria-labelledby attribute when received by props', async () => {
     const ariaLabelledByContent = 'Wubba lubba';
-    const driver = createDriver(<Dropdown aria-labelledBy={ariaLabelledByContent} options={[]} />);
+    const driver = createDriver(<Dropdown aria-labelledby={ariaLabelledByContent} options={[]} />);
     expect(await driver.getAriaLabelledBy()).toBe(ariaLabelledByContent);
   });
 
