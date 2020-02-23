@@ -1,0 +1,31 @@
+:import {
+    -st-from: "../Tags.st.css";
+    -st-default: Tags;
+}
+
+.root {
+}
+
+.solid {
+    -st-mixin: Tags(
+            MainTextFont '"--textFont"',
+            MainTextColor '"--textColor"',
+            MainSelectedTextColor '"--selectedTextColor"',
+            MainBackgroundColor '"--bgColor"',
+            MainBorderColor '"--borderColor"',
+            MainBorderWidth '"unit(fallback(--solidBorderWidth, 0), px)"',
+            MainBorderRadius '"unit(--borderRadius, px)"'
+    );
+}
+
+.light {
+    -st-mixin: Tags(
+            MainTextFont '"--textFont"',
+            MainTextColor '"--textColor"',
+            MainSelectedTextColor '"--selectedTextColor"',
+            MainBackgroundColor '"--bgColor"',
+            MainBorderColor '"--borderColor"',
+            MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
+            MainBorderRadius '"unit(--borderRadius, px)"'
+    );
+}

@@ -1,0 +1,140 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, font, fallback;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: TagsList, Tag;
+}
+
+/*Defaults*/
+:vars {
+    /*Defaults params goes here*/
+    defaultTagInnerPadding: 12px;
+    defaultMaxWidth: 220px;
+    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '24px'}";
+    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '32px'}";
+    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '36px'}";
+    defaultTagVerticalSpacing: 4px;
+    defaultTagHorizontalSpacing: 4px;
+
+    lightBorderWidth: 1px;
+    lightBorderRadius: 0px;
+    solidBorderWidth: 0px;
+    solidBorderRadius: 0px;
+    defaultTextColor: color-5;
+
+    lightDefaultBackgroundColor: color-1;
+    lightDefaultBorderColor: applyOpacity(color("color-5"), 0.2);
+    lightHoverBorderColor: applyOpacity(color("color-5"), 0.6);
+
+    solidDefaultBackgroundColor: applyOpacity(color("color-5"), 0.1);
+    solidDefaultBorderColor: color-9;
+    solidHoverBackgroundColor: applyOpacity(color("color-5"), 0.2);
+
+    selectedBackgroundColor: color-8;
+    selectedBorderColor: color-5;
+    selectedTextColor: color-1;
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+    MainTextColor: --overridable;
+    MainTextFont: --overridable;
+    MainBackgroundColor: --overridable;
+    MainBorderColor: --overridable;
+    MainBorderWidth: --overridable;
+    MainBorderRadius: --overridable;
+
+    MainSelectedTextColor: --overridable;
+    MainSelectedBackgroundColor: --overridable;
+    MainSelectedBorderColor: --overridable;
+    MainSelectedBorderWidth: --overridable;
+    MainSelectedBorderRadius: --overridable;
+
+    HoverBackgroundColor: --overridable;
+    HoverBorderColor: --overridable;
+}
+
+.root {
+    -st-states: alignment(enum(center, left, right)),
+                size(enum(small, medium, large)),
+                skin(enum(light, solid)),
+                mobile,
+                rtl;
+    -st-extends: TagsList;
+}
+
+.root:alignment(center) {
+    justify-content: center;
+}
+
+.root:alignment(right):rtl,
+.root:alignment(left) {
+    justify-content: flex-start;
+}
+
+.root:alignment(left):rtl,
+.root:alignment(right) {
+    justify-content: flex-end;
+}
+
+.tag {
+    -st-states: selected;
+
+    padding: 0 value(defaultTagInnerPadding);
+    max-width: value(defaultMaxWidth);
+    border-style: solid;
+    margin: value(defaultTagVerticalSpacing) value(defaultTagHorizontalSpacing);
+    transition: all .2s ease-in-out;
+    background-clip: padding-box;
+}
+
+.root:size(small) .tag {
+    font: fallback(font(value(MainTextFont)), font(value(defaultSmallFont)));
+}
+
+.root:size(medium) .tag {
+    font: fallback(font(value(MainTextFont)), font(value(defaultMediumFont)));
+}
+
+.root:size(large) .tag {
+    font: fallback(font(value(MainTextFont)), font(value(defaultLargeFont)));
+}
+
+.root:skin(light) .tag {
+    background-color: color(fallback(value(MainBackgroundColor), value(lightDefaultBackgroundColor)));
+    border-color: color(fallback(value(MainBorderColor), value(lightDefaultBorderColor)));
+    border-width: fallback(value(MainBorderWidth), value(lightBorderWidth));
+    border-radius: fallback(value(MainBorderRadius), value(lightBorderRadius));
+}
+
+.root:skin(light) .tag:hover {
+    border-color: color(value(lightHoverBorderColor));
+}
+
+.root:skin(solid) .tag {
+    background-color: color(fallback(value(MainBackgroundColor), value(solidDefaultBackgroundColor)));
+    border-color: color(fallback(value(MainBorderColor), value(solidDefaultBorderColor)));
+    border-width: fallback(value(MainBorderWidth), value(solidBorderWidth));
+    border-radius: fallback(value(MainBorderRadius), value(solidBorderRadius));
+}
+
+.root:skin(solid) .tag:hover {
+    background-color: color(fallback(value(HoverBackgroundColor), value(solidHoverBackgroundColor)));
+    border-color: color(value(HoverBorderColor));
+}
+
+.root:skin(light) .tag,
+.root:skin(solid) .tag {
+    color: color(fallback(value(MainTextColor), value(defaultTextColor)));
+}
+
+.root:skin(light) .tag:selected,
+.root:skin(solid) .tag:selected {
+    background-color: color(value(selectedBackgroundColor));
+    border-color: color(value(selectedBorderColor));
+    color: color(fallback(value(MainSelectedTextColor), value(selectedTextColor)));
+}
