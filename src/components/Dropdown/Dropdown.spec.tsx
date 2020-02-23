@@ -38,6 +38,33 @@ describe('Dropdown', () => {
     expect(await driver.getOptionsCount()).toBe(5);
   });
 
+  it('should have aria-haspopup attribute', async () => {
+    const driver = createDriver(<Dropdown options={[]} />);
+    expect(await driver.hasAriaHasPopup()).toBe(true);
+  });
+
+  it('should not have aria-label attribute when not received by props', async () => {
+    const driver = createDriver(<Dropdown options={[]} />);
+    expect(await driver.getAriaLabel()).toBe(null);
+  });
+
+  it('should have aria-label attribute when received by props', async () => {
+    const ariaLabelContent = 'Wubba lubba';
+    const driver = createDriver(<Dropdown aria-label={ariaLabelContent} options={[]} />);
+    expect(await driver.getAriaLabel()).toBe(ariaLabelContent);
+  });
+
+  it('should not have aria-labelledby attribute when not received by props', async () => {
+    const driver = createDriver(<Dropdown options={[]} />);
+    expect(await driver.getAriaLabelledBy()).toBe(null);
+  });
+
+  it('should have aria-labelledby attribute when received by props', async () => {
+    const ariaLabelledByContent = 'Wubba lubba';
+    const driver = createDriver(<Dropdown aria-labelledby={ariaLabelledByContent} options={[]} />);
+    expect(await driver.getAriaLabelledBy()).toBe(ariaLabelledByContent);
+  });
+
   describe('error states', () => {
     it('should have error', async () => {
       const driver = createDriver(<Dropdown options={[]} error />);

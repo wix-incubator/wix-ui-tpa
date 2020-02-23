@@ -26,6 +26,8 @@ export interface DropdownProps {
   label?: string;
   alignment?: DROPDOWN_ALIGNMENT;
   placement?: Placement;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
 }
@@ -91,6 +93,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       alignment,
       forceContentElementVisibility,
       placement,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
@@ -135,6 +139,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               forceContentElementVisibility={forceContentElementVisibility}
             >
               <DropdownBase
+                aria-label={ariaLabel}
+                aria-labelledby={ariaLabelledBy}
                 className={styles.dropdownBase}
                 selectedOption={selectedOption}
                 placeholder={placeholder}

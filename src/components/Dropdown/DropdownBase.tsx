@@ -14,10 +14,12 @@ interface DropdownBaseProps {
   placeholder: string;
   disabled: boolean;
   error: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
-  const { selectedOption, placeholder, error, disabled } = props;
+  const { selectedOption, placeholder, error, disabled, ['aria-label']: ariaLabel, ['aria-labelledby']: ariaLabelledBy } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
     <Button
@@ -26,6 +28,9 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       data-hook={DATA_HOOKS.base}
       data-dropdown-base-error={error}
       disabled={disabled}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
+      aria-haspopup
       prefixIcon={
         selectedOption && selectedOption.icon ? (
           <div className={styles.optionIcon}>{selectedOption.icon}</div>
