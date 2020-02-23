@@ -50,7 +50,7 @@ describe('Dropdown', () => {
 
   it('should have aria-label attribute when received by props', async () => {
     const ariaLabelContent = 'Wubba lubba';
-    const driver = createDriver(<Dropdown ariaLabel={ariaLabelContent} options={[]} />);
+    const driver = createDriver(<Dropdown aria-label={ariaLabelContent} options={[]} />);
     expect(await driver.getAriaLabel()).toBe(ariaLabelContent);
   });
 
@@ -61,7 +61,7 @@ describe('Dropdown', () => {
 
   it('should have aria-labelledby attribute when received by props', async () => {
     const ariaLabelledByContent = 'Wubba lubba';
-    const driver = createDriver(<Dropdown ariaLabelledBy={ariaLabelledByContent} options={[]} />);
+    const driver = createDriver(<Dropdown aria-labelledBy={ariaLabelledByContent} options={[]} />);
     expect(await driver.getAriaLabelledBy()).toBe(ariaLabelledByContent);
   });
 

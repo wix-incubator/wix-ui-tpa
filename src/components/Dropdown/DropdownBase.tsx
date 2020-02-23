@@ -14,12 +14,12 @@ interface DropdownBaseProps {
   placeholder: string;
   disabled: boolean;
   error: boolean;
-  ariaLabel?: string;
-  ariaLabelledBy?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
-  const { selectedOption, placeholder, error, disabled, ariaLabel, ariaLabelledBy } = props;
+  const { selectedOption, placeholder, error, disabled, ['aria-label']: ariaLabel, ['aria-labelledby']: ariaLabelledBy } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
     <Button
