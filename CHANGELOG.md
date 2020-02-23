@@ -1,3 +1,12 @@
+## [1.8.4](https://github.com/wix/wix-ui-tpa/compare/v1.8.3...v1.8.4) (2020-02-23)
+
+
+### Features
+
+* **a11y:** add a11y aria attributes to dropdown ([047f494](https://github.com/wix/wix-ui-tpa/commit/047f4943023685e0fe9b414ee72564b616f14b06))
+
+
+
 ## [1.8.3](https://github.com/wix/wix-ui-tpa/compare/v1.8.2...v1.8.3) (2020-02-19)
 
 
