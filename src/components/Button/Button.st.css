@@ -79,7 +79,8 @@
 .root:priority(basic):active,
 .root:priority(basic):focus,
 .root:priority(basic):hover {
-    background-color: applyOpacity(value(BasicBackgroundColor), 0.8);
+    background-color: applyOpacity(value(BasicBackgroundColor), 0.7);
+    color: applyOpacity(value(PrimaryTextColor), 0.7);
 }
 
 /*BasicSecondary*/
@@ -99,8 +100,8 @@
 .root:priority(basicSecondary):active,
 .root:priority(basicSecondary):focus,
 .root:priority(basicSecondary):hover {
-    color: applyOpacity(value(BasicSecondaryTextColor), 0.6);
-    border-color: applyOpacity(value(BasicSecondaryBorderColor), 0.6);
+    color: applyOpacity(value(BasicSecondaryTextColor), 0.7);
+    border-color: applyOpacity(value(BasicSecondaryBorderColor), 0.7);
 }
 
 /*Primary*/
@@ -118,7 +119,8 @@
 .root:priority(primary):active,
 .root:priority(primary):focus,
 .root:priority(primary):hover {
-    background-color: applyOpacity(value(PrimaryBackgroundColor), 0.8);
+    background-color: applyOpacity(value(PrimaryBackgroundColor), 0.7);
+    color: applyOpacity(value(PrimaryTextColor), 0.7);
 }
 
 /*Secondary*/
@@ -138,8 +140,8 @@
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
-    color: applyOpacity(value(SecondaryTextColor), 0.6);
-    border-color: applyOpacity(value(SecondaryBorderColor), 0.6);
+    color: applyOpacity(value(SecondaryTextColor), 0.7);
+    border-color: applyOpacity(value(SecondaryBorderColor), 0.7);
 }
 
 /*Disabled*/
