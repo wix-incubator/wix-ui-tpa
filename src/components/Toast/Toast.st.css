@@ -1,6 +1,6 @@
 :vars {
-    successColor: #57C487;
-    errorColor: #F64D43;
+    successColor: #008250;
+    errorColor: #DF3131;
     statusColor: #212121;
 }
 
@@ -9,6 +9,7 @@
     display: inline-flex;
     color: #FFFFFF;
     border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.4);
     font-size: 14px;
     font-family: "HelveticaNeueW01-65Medi", "Arial", "sans-serif";
     box-shadow: 0 0 4px 0 rgba(0,0,0,0.10), 0 4px 8px 0 rgba(0,0,0,0.10);
