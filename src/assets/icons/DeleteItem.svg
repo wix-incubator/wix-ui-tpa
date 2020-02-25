@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>09 Icons / Delete item</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-7.5%" y="-7.5%" width="115.0%" height="115.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.198171422 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g stroke-width="1" fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <circle fill="black" fill-opacity="1" filter="url(#filter-2)" cx="10" cy="10" r="10"></circle>
+                <circle fill="#FFFFFF" fill-rule="evenodd" cx="10" cy="10" r="10"></circle>
+            </g>
+        </g>
+        <g fill="#000000">
+            <path d="M13.3846154,6 L14,6.61538462 L10.615,10 L14,13.3846154 L13.3846154,14 L10,10.615 L6.61538462,14 L6,13.3846154 L9.384,10 L6,6.61538462 L6.61538462,6 L10,9.385 L13.3846154,6 Z"></path>
+        </g>
+    </g>
+</svg>
+<!-- <circle fill="black" fill-opacity="1" filter="url(#filter-2)" cx="10" cy="10" r="10"></circle> -->

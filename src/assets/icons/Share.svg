@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    <path d="M14.2736842,7.11666667 C12.1894737,7.21111111 3.66315789,8.62777778 3,21 C4.51578947,17.2222222 8.11578947,14.6722222 12.1894737,14.6722222 C12.8526316,14.6722222 13.5157895,14.7666667 14.2736842,14.8611111 L14.2736842,18.1666667 L21,11.0833333 L14.2736842,4 L14.2736842,7.11666667 Z"/>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56 (81588) - https://sketch.com -->
+    <title>09 Icons / Share Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M15.2,6.4 L19.7,11.1 L15.2,15.8 L15.2,14.9 L15.2,14.1 L14.4,13.9 C13.6,13.7 12.9,13.6 12.1,13.6 C9.2,13.6 6.4,14.8 4.4,16.8 C6.6,8.5 13.3,8 14.2,8 L15.1,8 L15.1,7.1 L15.1,6.4 L15.2,6.4 Z M14.3,7.1 C12.2,7.2 3.7,8.6 3,21 C4.5,17.2 8.1,14.7 12.2,14.7 C12.9,14.7 13.5,14.8 14.3,14.9 L14.3,18.2 L21,11.1 L14.3,4 L14.3,7.1 Z" stroke="#000000" stroke-width="0.1" fill="#000000" fill-rule="nonzero"></path>
+    </g>
 </svg>

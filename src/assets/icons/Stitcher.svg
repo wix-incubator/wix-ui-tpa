@@ -1,1 +1,10 @@
-<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M4 9v8H0V9h4zm10 0v8h-4V9h4zM9 8v8H5V8h4zm10-1v9h-4V7h4zm5 2v6h-4V9h4z" /></defs><use fill="#000" xlink:href="#a" fill-rule="evenodd"/></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>09 Icons / Social / Stitcher</title>
+    <desc>Created with Sketch.</desc>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path fill="white" d="M4,9 L4,17 L0,17 L0,9 L4,9 Z M14,9 L14,17 L10,17 L10,9 L14,9 Z M9,8 L9,16 L5,16 L5,8 L9,8 Z M19,7 L19,16 L15,16 L15,7 L19,7 Z M24,9 L24,15 L20,15 L20,9 L24,9 Z"></path>
+        <path fill="#000000" d="M4,9 L4,17 L0,17 L0,9 L4,9 Z M14,9 L14,17 L10,17 L10,9 L14,9 Z M9,8 L9,16 L5,16 L5,8 L9,8 Z M19,7 L19,16 L15,16 L15,7 L19,7 Z M24,9 L24,15 L20,15 L20,9 L24,9 Z"></path>
+    </g>
+</svg>
