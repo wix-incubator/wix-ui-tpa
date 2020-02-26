@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
 import { Button } from 'wix-ui-core/button';
 import style from './Counter.st.css';
-import { Plus } from '../Icons/components/Plus';
-import { Minus } from '../Icons/components/Minus';
+import { Plus_S } from '../Icons/components/Plus_S';
+import { Minus_S } from '../Icons/components/Minus_S';
 import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
@@ -91,7 +91,7 @@ export class Counter extends React.Component<CounterProps> {
           name="increment"
           disabled={disabled || (max && value + step > max)}
         >
-          <Plus />
+          <Plus_S />
         </Button>
         {shouldShowErrorMessageTooltip && (
           <Tooltip
@@ -124,7 +124,7 @@ export class Counter extends React.Component<CounterProps> {
           name="decrement"
           disabled={disabled || value - step < min}
         >
-          <Minus />
+          <Minus_S />
         </Button>
       </div>
     );
