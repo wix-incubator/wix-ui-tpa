@@ -6,7 +6,7 @@
     <g stroke-width="1" fill="none" fill-rule="evenodd">
         <g>
             <g>
-                <circle fill="black" fill-opacity="1" cx="10" cy="10" r="10"></circle>
+                <circle fill-opacity="1" cx="10" cy="10" r="10"></circle>
                 <circle fill="#FFFFFF" fill-rule="evenodd" cx="10" cy="10" r="10"></circle>
             </g>
         </g>
