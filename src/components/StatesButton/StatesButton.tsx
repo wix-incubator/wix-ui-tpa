@@ -3,38 +3,59 @@ import * as classNames from 'classnames';
 import style from './StatesButton.st.css';
 import { Button, ButtonProps } from '../Button';
 import { TPAComponentProps } from '../../types';
-
-const delay = time => new Promise(resolve => setTimeout(resolve, time));
+import { BUTTON_STATES } from './constants';
+import Timeout = NodeJS.Timeout;
 
 export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
+  state: BUTTON_STATES;
   disabled: boolean;
-  text: string;
+  idleContent: string | React.ReactElement;
+  failureContent?: string | React.ReactElement;
+  inProgressContent?: string | React.ReactElement;
+  successContent?: string | React.ReactElement;
+  onSuccessEnd?: Function;
   dataHook?: string;
 }
 
-interface StatesButtonState {
-  success: boolean;
-}
+export class StatesButton extends React.Component<StatesButtonProps> {
+  private timer: Timeout;
 
-export class StatesButton extends React.Component<
-  StatesButtonProps,
-  StatesButtonState
-> {
+  public ComponentDidUpdate({ state: prevState }: StatesButtonProps) {
+    const { state: currentState, onSuccessEnd } = this.props;
+
+    if (currentState !== prevState) {
+      clearTimeout(this.timer);
+    }
+
+    if (
+      currentState === BUTTON_STATES.SUCCESS &&
+      prevState !== BUTTON_STATES.SUCCESS
+    ) {
+      this.timer = setTimeout(() => onSuccessEnd && onSuccessEnd(), 2000);
+    }
+  }
+
   public buttonRef = React.createRef<HTMLButtonElement>();
-
-  public state = {
-    success: false,
-  };
 
   public focus = () => {
     this.buttonRef.current.focus();
   };
 
-  public async onProgressReset() {
-    this.setState({ success: true });
-    await delay(2000);
-    this.setState({ success: false });
+  private isDisabled(): boolean {
+    return (
+      this.props.state === BUTTON_STATES.IN_PROGRESS || this.props.disabled
+    );
   }
+
+  private readonly debounceOnClick = e => {
+    const { state, onClick } = this.props;
+    if (
+      state !== BUTTON_STATES.SUCCESS &&
+      state !== BUTTON_STATES.IN_PROGRESS
+    ) {
+      onClick(e);
+    }
+  };
 
   private renderCheck() {
     return (
@@ -44,18 +65,56 @@ export class StatesButton extends React.Component<
     );
   }
 
+  private renderContent(): React.ReactElement | string {
+    const {
+      state,
+      idleContent,
+      inProgressContent,
+      failureContent,
+      successContent,
+    } = this.props;
+
+    switch (state) {
+      case BUTTON_STATES.IDLE:
+        return idleContent;
+      case BUTTON_STATES.IN_PROGRESS:
+        return inProgressContent;
+      case BUTTON_STATES.FAILURE:
+        return failureContent;
+      case BUTTON_STATES.SUCCESS:
+        return successContent ? successContent : this.renderCheck();
+      default:
+        return idleContent;
+    }
+  }
+
   public render() {
-    const { text, disabled, dataHook, ...rest } = this.props;
-    const { success } = this.state;
+    const {
+      state,
+      disabled,
+      dataHook,
+      onClick,
+      idleContent,
+      inProgressContent,
+      failureContent,
+      successContent,
+      onSuccessEnd,
+      ...rest
+    } = this.props;
+    const inProgress = state === BUTTON_STATES.IN_PROGRESS;
+
     return (
       <Button
         data-hook={dataHook}
-        disabled={disabled}
-        {...rest}
+        disabled={this.isDisabled()}
+        onClick={this.debounceOnClick}
         ref={this.buttonRef}
+        {...(!inProgress && { 'aria-live': 'polite' })}
+        {...(inProgress && { 'aria-busy': true })}
+        {...rest}
         {...style('root', {}, this.props)}
       >
-        {success ? this.renderCheck() : text}
+        {this.renderContent()}
       </Button>
     );
   }

@@ -1,0 +1,6 @@
+export enum BUTTON_STATES {
+  IDLE,
+  IN_PROGRESS,
+  SUCCESS,
+  FAILURE,
+}
