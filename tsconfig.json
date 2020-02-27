@@ -13,7 +13,6 @@
     }
   },
   "include": [
-    "./node_modules/wix-ui-core/dist/src/globals.d.ts",
     "./src/**/*.tsx",
     "./src/components/**/*.ts",
     "./test/**/*.tsx",
