@@ -106,7 +106,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
         disabled={this.isDisabled()}
         onClick={this.debounceOnClick}
         ref={this.buttonRef}
-        aria-live='assertive'
+        aria-live="assertive"
         {...(inProgress && { 'aria-busy': true })}
         {...rest}
         {...style('root', {}, this.props)}
