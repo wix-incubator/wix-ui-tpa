@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
-import { Anonymous } from '../Icons/components/Anonymous';
+import { Anonymous } from '../Icons/Anonymous';
 import { TPAComponentProps } from '../../types';
 import styles from './Avatar.st.css';
 

@@ -7,7 +7,7 @@ import {
   TextButtonProps,
   TEXT_BUTTON_PRIORITY,
 } from '../TextButton';
-import { Share } from '../Icons/components/Share';
+import { Share } from '../Icons/Share';
 
 interface ShareData {
   url: string;

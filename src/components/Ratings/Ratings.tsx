@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
 import styles from './Ratings.st.css';
-import { Star as StarIcon } from '../Icons/components/Star';
+import { Star as StarIcon } from '../Icons/Star';
 import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 

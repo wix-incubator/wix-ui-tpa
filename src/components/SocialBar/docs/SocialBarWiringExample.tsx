@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { SocialBar } from '../';
-import { Facebook } from '../../Icons/components/Facebook';
-import { Tumblr } from '../../Icons/components/Tumblr';
-import { Instagram } from '../../Icons/components/Instagram';
-import { Linkedin } from '../../Icons/components/Linkedin';
-import { Pinterest } from '../../Icons/components/Pinterest';
+import { Facebook } from '../../Icons/Facebook';
+import { Tumblr } from '../../Icons/Tumblr';
+import { Instagram } from '../../Icons/Instagram';
+import { Linkedin } from '../../Icons/Linkedin';
+import { Pinterest } from '../../Icons/Pinterest';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 export const SocialBarWiringExample = () => {

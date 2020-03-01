@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
 import { Button } from 'wix-ui-core/button';
 import style from './Counter.st.css';
-import { Plus_S } from '../Icons/components/Plus_S';
-import { Minus_S } from '../Icons/components/Minus_S';
+import { Plus_S } from '../Icons/Plus_S';
+import { Minus_S } from '../Icons/Minus_S';
 import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
-import { Error as ErrorIcon } from '../Icons/components/Error';
+import { Error as ErrorIcon } from '../Icons/Error';
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
