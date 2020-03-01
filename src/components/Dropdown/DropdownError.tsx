@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Error as ErrorIcon } from '../Icons/Error';
+import { Error as ErrorIcon } from '../Icons/components/Error';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { Tooltip } from '../Tooltip';
 import { TPAComponentProps } from '../../types';

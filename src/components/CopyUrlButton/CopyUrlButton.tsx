@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styles from './CopyUrlButton.st.css';
-import { Check } from '../Icons/Check';
+import { Check } from '../Icons/components/Check';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN, TOAST_PLACEMENT } from '../Toast';
 import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
 import { SocialBarTheme } from '../SocialBar/SocialBar';
 import { Omit } from '../../types';
-import { CopyLink } from '../Icons/CopyLink';
+import { CopyLink } from '../Icons/components/CopyLink';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { IconButton, Skins } from './';
-import { Share as ShareIcon } from '../Icons/Share';
+import { Share as ShareIcon } from '../Icons/components/Share';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 
 class IconButtonVisual extends React.Component<any> {

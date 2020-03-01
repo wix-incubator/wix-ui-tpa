@@ -1,8 +1,8 @@
 import { Placement } from 'wix-ui-core/popover';
-import { TooltipArrowRight as right } from '../Icons/TooltipArrowRight';
-import { TooltipArrowLeft as left } from '../Icons/TooltipArrowLeft';
-import { TooltipArrowTop as top } from '../Icons/TooltipArrowTop';
-import { TooltipArrowBottom as bottom } from '../Icons/TooltipArrowBottom';
+import { TooltipArrowRight as right } from '../Icons/components/TooltipArrowRight';
+import { TooltipArrowLeft as left } from '../Icons/components/TooltipArrowLeft';
+import { TooltipArrowTop as top } from '../Icons/components/TooltipArrowTop';
+import { TooltipArrowBottom as bottom } from '../Icons/components/TooltipArrowBottom';
 
 export function getArrowByPlacement(placement: Placement) {
   if (placement.indexOf('top') === 0) {

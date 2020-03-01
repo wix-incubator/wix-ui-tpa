@@ -1,8 +1,8 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import ReactResizeDetector from 'react-resize-detector';
-import { Arrow_Left_Center as ChevronLeft } from '../Icons/Arrow_Left_Center';
-import { Arrow_Right_Center as ChevronRight } from '../Icons/Arrow_Right_Center';
+import { Arrow_Left_Center as ChevronLeft } from '../Icons/components/Arrow_Left_Center';
+import { Arrow_Right_Center as ChevronRight } from '../Icons/components/Arrow_Right_Center';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TabItem } from './Tab';
 import { ScrollableTabs } from './ScrollableTabs';
