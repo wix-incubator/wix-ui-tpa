@@ -39,7 +39,7 @@ class StatesButtonVisual extends React.Component<
 
   private readonly act = async () => {
     await this.driver.click();
-    await delay(2000);
+    await delay(2600);
     this.props.done();
   };
 

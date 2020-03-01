@@ -20,7 +20,7 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
 export class StatesButton extends React.Component<StatesButtonProps> {
   private timer: Timeout;
 
-  public ComponentDidUpdate({ state: prevState }: StatesButtonProps) {
+  componentDidUpdate = ({ state: prevState }: StatesButtonProps) => {
     const { state: currentState, onSuccessEnd } = this.props;
 
     if (currentState !== prevState) {
@@ -33,7 +33,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
     ) {
       this.timer = setTimeout(() => onSuccessEnd && onSuccessEnd(), 2000);
     }
-  }
+  };
 
   public buttonRef = React.createRef<HTMLButtonElement>();
 
