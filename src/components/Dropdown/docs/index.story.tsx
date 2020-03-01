@@ -21,7 +21,7 @@ import {
   optionsWithSections,
   optionsWithSubtitle,
 } from '../helpers';
-import { Heart } from '../../Icons/components/Heart';
+import { Heart } from '../../Icons/Heart';
 import * as Readme from '../../Dropdown/README.md';
 
 const code = config =>

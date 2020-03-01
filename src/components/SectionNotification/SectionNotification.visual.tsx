@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { Error as ErrorIcon } from '../Icons/components/Error';
+import { Error as ErrorIcon } from '../Icons/Error';
 import { SectionNotification, SectionNotificationProps } from './';
 import { NOTIFICATION_TYPE } from './types';
 

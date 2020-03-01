@@ -7,7 +7,7 @@ import { likeButtonTestkitFactory } from '../../testkit';
 import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { likeButtonTestkitFactory as enzymeAutocompleteTestkitFactory } from '../../testkit/enzyme';
-import { Heart } from '../Icons/components/Heart';
+import { Heart } from '../Icons/Heart';
 
 describe('LikeButton', () => {
   const createDriver = createDriverFactory(likeButtonDriverFactory);

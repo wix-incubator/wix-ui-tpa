@@ -7,7 +7,7 @@ import { iconButtonDriverFactory } from './IconButton.driver';
 import { IconButton } from './';
 import { iconButtonTestkitFactory } from '../../testkit';
 import { iconButtonTestkitFactory as enzymeIconButtonTestkitFactory } from '../../testkit/enzyme';
-import { Star as StarIcon } from '../Icons/components/Star';
+import { Star as StarIcon } from '../Icons/Star';
 
 describe('IconButton', () => {
   const createDriver = createUniDriverFactory(iconButtonDriverFactory);

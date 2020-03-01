@@ -1,6 +1,6 @@
 import * as React from 'react';
 import extendedStyles from './IconButtonExtendedExample.st.css';
-import { Share as ShareIcon } from '../../Icons/components/Share';
+import { Share as ShareIcon } from '../../Icons/Share';
 import { IconButton, Skins } from '../IconButton';
 
 export class IconButtonExtendedExample extends React.Component {

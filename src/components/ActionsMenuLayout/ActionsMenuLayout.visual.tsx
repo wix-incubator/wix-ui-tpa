@@ -2,7 +2,7 @@ import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { ActionsMenuLayout, Alignment } from './';
-import { Heart } from '../Icons/components/Heart';
+import { Heart } from '../Icons/Heart';
 
 function generateItems(props = {}) {
   const { subtitle, prefixIcon } = props as any;

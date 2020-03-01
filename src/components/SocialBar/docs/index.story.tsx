@@ -18,11 +18,11 @@ import * as SocialBarWiringExampleRaw from '!raw-loader!./SocialBarWiringExample
 import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExample.st.css';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { SocialBar } from '../';
-import { Facebook } from '../../Icons/components/Facebook';
-import { Instagram } from '../../Icons/components/Instagram';
-import { Linkedin } from '../../Icons/components/Linkedin';
-import { Pinterest } from '../../Icons/components/Pinterest';
-import { Tumblr } from '../../Icons/components/Tumblr';
+import { Facebook } from '../../Icons/Facebook';
+import { Instagram } from '../../Icons/Instagram';
+import { Linkedin } from '../../Icons/Linkedin';
+import { Pinterest } from '../../Icons/Pinterest';
+import { Tumblr } from '../../Icons/Tumblr';
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 const code = config =>

@@ -12,8 +12,8 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { Star as StarIcon } from '../../Icons/components/Star';
-import { Heart as HeartIcon } from '../../Icons/components/Heart';
+import { Star as StarIcon } from '../../Icons/Star';
+import { Heart as HeartIcon } from '../../Icons/Heart';
 
 StarIcon.displayName = 'Star';
 HeartIcon.displayName = 'Heart';

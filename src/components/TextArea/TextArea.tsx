@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './TextArea.st.css';
 import { TEXT_AREA_DATA_HOOK, TEXT_AREA_ERROR_DATA_HOOK } from './dataHooks';
 import { Tooltip } from '../Tooltip';
-import { Error as ErrorIcon } from '../Icons/components/Error';
+import { Error as ErrorIcon } from '../Icons/Error';
 import {
   TEXT_AREA_DISABLED,
   TEXT_AREA_ERROR,
