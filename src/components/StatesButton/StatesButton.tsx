@@ -49,10 +49,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
 
   private readonly debounceOnClick = e => {
     const { state, onClick } = this.props;
-    if (
-      state !== BUTTON_STATES.SUCCESS &&
-      state !== BUTTON_STATES.IN_PROGRESS
-    ) {
+    if (state !== BUTTON_STATES.SUCCESS) {
       onClick(e);
     }
   };
@@ -109,7 +106,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
         disabled={this.isDisabled()}
         onClick={this.debounceOnClick}
         ref={this.buttonRef}
-        {...(!inProgress && { 'aria-live': 'polite' })}
+        aria-live='assertive'
         {...(inProgress && { 'aria-busy': true })}
         {...rest}
         {...style('root', {}, this.props)}
