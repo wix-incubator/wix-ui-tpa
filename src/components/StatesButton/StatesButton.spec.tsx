@@ -44,7 +44,7 @@ describe('StatesButton', () => {
 
     it('should have aria-live attribute and not aria-busy', async () => {
       expect((await driver.element()).getAttribute('aria-live')).toEqual(
-        'polite',
+        'assertive',
       );
       expect((await driver.element()).getAttribute('aria-busy')).toBeNull();
     });
@@ -88,7 +88,9 @@ describe('StatesButton', () => {
         expect((await driver.element()).getAttribute('aria-busy')).toEqual(
           'true',
         );
-        expect((await driver.element()).getAttribute('aria-live')).toBeNull();
+        expect((await driver.element()).getAttribute('aria-live')).toEqual(
+            'assertive',
+        );
       });
     });
 
@@ -115,7 +117,7 @@ describe('StatesButton', () => {
 
       it('should have aria-live attribute and not aria-busy', async () => {
         expect((await driver.element()).getAttribute('aria-live')).toEqual(
-          'polite',
+          'assertive',
         );
         expect((await driver.element()).getAttribute('aria-busy')).toBeNull();
       });
@@ -159,7 +161,7 @@ describe('StatesButton', () => {
 
       it('should have aria-live attribute and not aria-busy', async () => {
         expect((await driver.element()).getAttribute('aria-live')).toEqual(
-          'polite',
+          'assertive',
         );
         expect((await driver.element()).getAttribute('aria-busy')).toBeNull();
       });
