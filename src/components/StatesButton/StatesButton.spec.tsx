@@ -23,7 +23,6 @@ describe('StatesButton', () => {
       idleContent: 'idle',
       inProgressContent: 'loading',
       successContent: 'success',
-      failureContent: 'failure',
       onClick: onClickSpy,
       disabled: false,
     };
@@ -89,37 +88,8 @@ describe('StatesButton', () => {
           'true',
         );
         expect((await driver.element()).getAttribute('aria-live')).toEqual(
-            'assertive',
-        );
-      });
-    });
-
-    describe('failure', () => {
-      beforeEach(() => {
-        onClickSpy = jest.fn();
-        driver = createDriver(
-          <StatesButton
-            {...defaultProps}
-            state={BUTTON_STATES.FAILURE}
-            onClick={onClickSpy}
-          />,
-        );
-      });
-
-      it('should render failure content', async () => {
-        expect(await driver.getButtonTextContent()).toEqual('failure');
-      });
-
-      it('should invoke on click', async () => {
-        await driver.click();
-        expect(onClickSpy).toHaveBeenCalled();
-      });
-
-      it('should have aria-live attribute and not aria-busy', async () => {
-        expect((await driver.element()).getAttribute('aria-live')).toEqual(
           'assertive',
         );
-        expect((await driver.element()).getAttribute('aria-busy')).toBeNull();
       });
     });
 
