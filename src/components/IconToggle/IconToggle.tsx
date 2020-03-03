@@ -19,6 +19,7 @@ export interface IconToggleProps extends TPAComponentProps {
   onChange?(event: OnChangeEvent): void;
   checked: boolean;
   disabled: boolean;
+  animation: boolean;
 }
 
 interface DefaultProps {
@@ -26,15 +27,37 @@ interface DefaultProps {
   labelPlacement: LabelPlacement;
   checked: boolean;
   disabled: boolean;
+  animation: boolean;
 }
 
-export class IconToggle extends React.Component<IconToggleProps> {
+interface State {
+  animated: boolean;
+}
+
+export class IconToggle extends React.Component<IconToggleProps, State> {
   static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {
     label: '',
     labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
+    animation: false,
+  };
+
+  state: State = { animated: false };
+
+  componentDidUpdate = prevProps => {
+    const { checked } = this.props;
+
+    if (checked && checked !== prevProps.checked) {
+      this.setState({ animated: true });
+    } else if (!checked && checked !== prevProps.checked) {
+      this.setState({ animated: false });
+    }
+  };
+
+  _handleHoverOff = () => {
+    this.state.animated && this.setState({ animated: false });
   };
 
   _getContent = () => {
@@ -50,12 +73,16 @@ export class IconToggle extends React.Component<IconToggleProps> {
   };
 
   render() {
-    const { labelPlacement, onChange, checked, disabled, ...rest } = this.props;
+    const { labelPlacement, onChange, checked, disabled, animation, ...rest } = this.props;
+
+    const { animated } = this.state;
 
     const content = this._getContent();
 
+    const shouldAnimate = animated&&animation;
+    
     return (
-      <span {...styles('root', { checked, disabled, labelPlacement }, rest)}>
+      <span {...styles('root', { checked, disabled, labelPlacement, shouldAnimate }, rest)} onMouseLeave={this._handleHoverOff}>
         <CoreCheckbox
           uncheckedIcon={content}
           checkedIcon={content}
