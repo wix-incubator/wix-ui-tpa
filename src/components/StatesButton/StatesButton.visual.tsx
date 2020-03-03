@@ -50,6 +50,7 @@ class StatesButtonVisual extends React.Component<
         state={this.state.buttonState}
         idleContent="Idle state"
         inProgressContent="Loading..."
+        failureContent="Try Again"
         dataHook={dataHook}
         onClick={() => {
           this.setState({ buttonState: BUTTON_STATES.SUCCESS });
@@ -71,6 +72,7 @@ visualize('StatesButton', () => {
         idleContent={'My States Button'}
         successContent={'Success'}
         inProgressContent={'Loading...'}
+        failureContent={'Try Again'}
       />
     ));
   });

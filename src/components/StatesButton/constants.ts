@@ -2,4 +2,5 @@ export enum BUTTON_STATES {
   IDLE = 'IDLE',
   IN_PROGRESS = 'IN_PROGRESS',
   SUCCESS = 'SUCCESS',
+  FAILURE = 'FAILURE',
 }

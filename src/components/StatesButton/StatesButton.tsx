@@ -10,6 +10,7 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
   state: BUTTON_STATES;
   disabled: boolean;
   idleContent: string | React.ReactElement;
+  failureContent?: string | React.ReactElement;
   inProgressContent?: string | React.ReactElement;
   successContent?: string | React.ReactElement;
   onSuccessEnd?: Function;
@@ -66,6 +67,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
       state,
       idleContent,
       inProgressContent,
+      failureContent,
       successContent,
     } = this.props;
 
@@ -74,6 +76,8 @@ export class StatesButton extends React.Component<StatesButtonProps> {
         return idleContent;
       case BUTTON_STATES.IN_PROGRESS:
         return inProgressContent;
+      case BUTTON_STATES.FAILURE:
+        return failureContent;
       case BUTTON_STATES.SUCCESS:
         return successContent ? successContent : this.renderCheck();
       default:
@@ -89,6 +93,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
       onClick,
       idleContent,
       inProgressContent,
+      failureContent,
       successContent,
       onSuccessEnd,
       ...rest

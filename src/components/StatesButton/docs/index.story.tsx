@@ -12,6 +12,7 @@ const defaultProps: StatesButtonProps = {
   state: BUTTON_STATES.IDLE,
   idleContent: 'Idle state',
   inProgressContent: 'Loading...',
+  failureContent: 'Try Again',
   size: SIZE.large,
 };
 
@@ -26,6 +27,7 @@ export default {
     onClick: () => {},
     idleContent: 'My States Button',
     inProgressContent: 'Loading...',
+    failureContent: 'Try Again',
   },
   exampleProps: {
     state: Object.keys(BUTTON_STATES),
