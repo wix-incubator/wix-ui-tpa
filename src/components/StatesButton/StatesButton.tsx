@@ -13,6 +13,7 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
   failureContent?: string | React.ReactElement;
   inProgressContent?: string | React.ReactElement;
   successContent?: string | React.ReactElement;
+  /** A callback that will run 2 seconds after entering success/failure mode. This is usually used to trigger a change back to idle state. */
   onNotificationEnd?: Function;
 }
 
