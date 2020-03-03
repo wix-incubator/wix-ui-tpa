@@ -13,24 +13,29 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
   failureContent?: string | React.ReactElement;
   inProgressContent?: string | React.ReactElement;
   successContent?: string | React.ReactElement;
-  onSuccessEnd?: Function;
+  onNotificationEnd?: Function;
 }
 
 export class StatesButton extends React.Component<StatesButtonProps> {
   private timer: Timeout;
 
   componentDidUpdate = ({ state: prevState }: StatesButtonProps) => {
-    const { state: currentState, onSuccessEnd } = this.props;
+    const { state: currentState, onNotificationEnd } = this.props;
 
     if (currentState !== prevState) {
       clearTimeout(this.timer);
     }
 
     if (
-      currentState === BUTTON_STATES.SUCCESS &&
-      prevState !== BUTTON_STATES.SUCCESS
+      (currentState === BUTTON_STATES.SUCCESS &&
+        prevState !== BUTTON_STATES.SUCCESS) ||
+      (currentState === BUTTON_STATES.FAILURE &&
+        prevState !== BUTTON_STATES.FAILURE)
     ) {
-      this.timer = setTimeout(() => onSuccessEnd && onSuccessEnd(), 2000);
+      this.timer = setTimeout(
+        () => onNotificationEnd && onNotificationEnd(),
+        2000,
+      );
     }
   };
 
@@ -40,15 +45,9 @@ export class StatesButton extends React.Component<StatesButtonProps> {
     this.buttonRef.current.focus();
   };
 
-  private isDisabled(): boolean {
-    return (
-      this.props.state === BUTTON_STATES.IN_PROGRESS || this.props.disabled
-    );
-  }
-
   private readonly debounceOnClick = e => {
     const { state, onClick } = this.props;
-    if (state !== BUTTON_STATES.SUCCESS) {
+    if (state === BUTTON_STATES.IDLE) {
       onClick(e);
     }
   };
@@ -93,14 +92,14 @@ export class StatesButton extends React.Component<StatesButtonProps> {
       inProgressContent,
       failureContent,
       successContent,
-      onSuccessEnd,
+      onNotificationEnd,
       ...rest
     } = this.props;
     const inProgress = state === BUTTON_STATES.IN_PROGRESS;
 
     return (
       <Button
-        disabled={this.isDisabled()}
+        disabled={disabled}
         onClick={this.debounceOnClick}
         ref={this.buttonRef}
         aria-live="assertive"

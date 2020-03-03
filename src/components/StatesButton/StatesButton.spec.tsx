@@ -80,10 +80,6 @@ describe('StatesButton', () => {
         expect(onClickSpy).not.toHaveBeenCalled();
       });
 
-      it('should be disabled', async () => {
-        expect(await driver.isButtonDisabled()).toEqual(true);
-      });
-
       it('should have aria-busy attribute and not aria-live', async () => {
         expect((await driver.element()).getAttribute('aria-busy')).toEqual(
           'true',
@@ -95,16 +91,16 @@ describe('StatesButton', () => {
     });
 
     describe('success', () => {
-      let onSuccessEndSpy;
+      let onNotificationEndSpy;
       beforeEach(() => {
-        onSuccessEndSpy = jest.fn();
+        onNotificationEndSpy = jest.fn();
         onClickSpy = jest.fn();
         driver = createDriver(
           <StatesButton
             {...defaultProps}
             state={BUTTON_STATES.SUCCESS}
             onClick={onClickSpy}
-            onSuccessEnd={onSuccessEndSpy}
+            onNotificationEnd={onNotificationEndSpy}
           />,
         );
       });
