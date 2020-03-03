@@ -14,7 +14,6 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
   inProgressContent?: string | React.ReactElement;
   successContent?: string | React.ReactElement;
   onSuccessEnd?: Function;
-  dataHook?: string;
 }
 
 export class StatesButton extends React.Component<StatesButtonProps> {
@@ -89,7 +88,6 @@ export class StatesButton extends React.Component<StatesButtonProps> {
     const {
       state,
       disabled,
-      dataHook,
       onClick,
       idleContent,
       inProgressContent,
@@ -102,7 +100,6 @@ export class StatesButton extends React.Component<StatesButtonProps> {
 
     return (
       <Button
-        data-hook={dataHook}
         disabled={this.isDisabled()}
         onClick={this.debounceOnClick}
         ref={this.buttonRef}

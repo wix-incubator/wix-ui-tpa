@@ -6,7 +6,7 @@ import {
   statesButtonDriverFactory,
 } from './StatesButton.driver';
 import { BUTTON_STATES } from './constants';
-//file.only
+
 jest.useFakeTimers();
 
 describe('StatesButton', () => {
@@ -89,37 +89,8 @@ describe('StatesButton', () => {
           'true',
         );
         expect((await driver.element()).getAttribute('aria-live')).toEqual(
-            'assertive',
-        );
-      });
-    });
-
-    describe('failure', () => {
-      beforeEach(() => {
-        onClickSpy = jest.fn();
-        driver = createDriver(
-          <StatesButton
-            {...defaultProps}
-            state={BUTTON_STATES.FAILURE}
-            onClick={onClickSpy}
-          />,
-        );
-      });
-
-      it('should render failure content', async () => {
-        expect(await driver.getButtonTextContent()).toEqual('failure');
-      });
-
-      it('should invoke on click', async () => {
-        await driver.click();
-        expect(onClickSpy).toHaveBeenCalled();
-      });
-
-      it('should have aria-live attribute and not aria-busy', async () => {
-        expect((await driver.element()).getAttribute('aria-live')).toEqual(
           'assertive',
         );
-        expect((await driver.element()).getAttribute('aria-busy')).toBeNull();
       });
     });
 
@@ -178,14 +149,5 @@ describe('StatesButton', () => {
       <StatesButton {...defaultProps} disabled={false} />,
     );
     expect(await driver.isButtonDisabled()).toEqual(false);
-  });
-
-  it('should be able to pass dataHook as prop', async () => {
-    const driver = createDriver(
-      <StatesButton {...defaultProps} dataHook={'myDataHook'} />,
-    );
-    expect((await driver.element()).getAttribute('data-hook')).toContain(
-      'myDataHook',
-    );
   });
 });
