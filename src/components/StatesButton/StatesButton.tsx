@@ -3,38 +3,55 @@ import * as classNames from 'classnames';
 import style from './StatesButton.st.css';
 import { Button, ButtonProps } from '../Button';
 import { TPAComponentProps } from '../../types';
-
-const delay = time => new Promise(resolve => setTimeout(resolve, time));
+import { BUTTON_STATES } from './constants';
+import Timeout = NodeJS.Timeout;
 
 export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
+  state: BUTTON_STATES;
   disabled: boolean;
-  text: string;
-  dataHook?: string;
+  idleContent: string | React.ReactElement;
+  failureContent?: string | React.ReactElement;
+  inProgressContent?: string | React.ReactElement;
+  successContent?: string | React.ReactElement;
+  /** A callback that will run 2 seconds after entering success/failure mode. This is usually used to trigger a change back to idle state. */
+  onNotificationEnd?: Function;
 }
 
-interface StatesButtonState {
-  success: boolean;
-}
+export class StatesButton extends React.Component<StatesButtonProps> {
+  private timer: Timeout;
 
-export class StatesButton extends React.Component<
-  StatesButtonProps,
-  StatesButtonState
-> {
-  public buttonRef = React.createRef<HTMLButtonElement>();
+  componentDidUpdate = ({ state: prevState }: StatesButtonProps) => {
+    const { state: currentState, onNotificationEnd } = this.props;
 
-  public state = {
-    success: false,
+    if (currentState !== prevState) {
+      clearTimeout(this.timer);
+    }
+
+    if (
+      (currentState === BUTTON_STATES.SUCCESS &&
+        prevState !== BUTTON_STATES.SUCCESS) ||
+      (currentState === BUTTON_STATES.FAILURE &&
+        prevState !== BUTTON_STATES.FAILURE)
+    ) {
+      this.timer = setTimeout(
+        () => onNotificationEnd && onNotificationEnd(),
+        2000,
+      );
+    }
   };
+
+  public buttonRef = React.createRef<HTMLButtonElement>();
 
   public focus = () => {
     this.buttonRef.current.focus();
   };
 
-  public async onProgressReset() {
-    this.setState({ success: true });
-    await delay(2000);
-    this.setState({ success: false });
-  }
+  private readonly debounceOnClick = e => {
+    const { state, onClick } = this.props;
+    if (state === BUTTON_STATES.IDLE) {
+      onClick(e);
+    }
+  };
 
   private renderCheck() {
     return (
@@ -44,18 +61,54 @@ export class StatesButton extends React.Component<
     );
   }
 
+  private renderContent(): React.ReactElement | string {
+    const {
+      state,
+      idleContent,
+      inProgressContent,
+      failureContent,
+      successContent,
+    } = this.props;
+
+    switch (state) {
+      case BUTTON_STATES.IDLE:
+        return idleContent;
+      case BUTTON_STATES.IN_PROGRESS:
+        return inProgressContent;
+      case BUTTON_STATES.FAILURE:
+        return failureContent;
+      case BUTTON_STATES.SUCCESS:
+        return successContent ? successContent : this.renderCheck();
+      default:
+        return idleContent;
+    }
+  }
+
   public render() {
-    const { text, disabled, dataHook, ...rest } = this.props;
-    const { success } = this.state;
+    const {
+      state,
+      disabled,
+      onClick,
+      idleContent,
+      inProgressContent,
+      failureContent,
+      successContent,
+      onNotificationEnd,
+      ...rest
+    } = this.props;
+    const inProgress = state === BUTTON_STATES.IN_PROGRESS;
+
     return (
       <Button
-        data-hook={dataHook}
         disabled={disabled}
-        {...rest}
+        onClick={this.debounceOnClick}
         ref={this.buttonRef}
+        aria-live="assertive"
+        {...(inProgress && { 'aria-busy': true })}
+        {...rest}
         {...style('root', {}, this.props)}
       >
-        {success ? this.renderCheck() : text}
+        {this.renderContent()}
       </Button>
     );
   }

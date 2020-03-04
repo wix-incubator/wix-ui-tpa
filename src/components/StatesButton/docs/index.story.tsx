@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { StatesButton } from '..';
+import { StatesButton, StatesButtonProps } from '..';
 import extendedStyles from './StatesButtonExample.st.css';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 import { SIZE } from '../../Button';
+import { BUTTON_STATES } from '../constants';
 
 const ref: React.RefObject<StatesButton> = React.createRef();
 
-const defaultProps = {
+const defaultProps: StatesButtonProps = {
   disabled: false,
-  onClick: () => {
-    // tslint:disable-next-line:no-floating-promises
-    ref.current.onProgressReset();
-  },
+  state: BUTTON_STATES.IDLE,
+  idleContent: 'Idle state',
+  inProgressContent: 'Loading...',
+  failureContent: 'Try Again',
   size: SIZE.large,
-  text: 'My States Button',
 };
 
 export default {
@@ -25,9 +25,13 @@ export default {
   componentProps: {
     disabled: false,
     onClick: () => {},
-    text: 'My States Button',
+    idleContent: 'My States Button',
+    inProgressContent: 'Loading...',
+    failureContent: 'Try Again',
   },
-  exampleProps: {},
+  exampleProps: {
+    state: Object.keys(BUTTON_STATES),
+  },
   examples: (
     <>
       <StatesButton
