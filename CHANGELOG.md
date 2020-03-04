@@ -1,3 +1,23 @@
+## [1.8.5](https://github.com/wix/wix-ui-tpa/compare/v1.8.4...v1.8.5) (2020-03-04)
+
+
+### Bug Fixes
+
+* <Toast/> - change colors to be more accessible ([#290](https://github.com/wix/wix-ui-tpa/issues/290)) ([909f1e5](https://github.com/wix/wix-ui-tpa/commit/909f1e5426567bf4c7416489b3b9d5ee1758ad6d))
+* Button hover opacity changed to 0.7 ([8ac0fb2](https://github.com/wix/wix-ui-tpa/commit/8ac0fb2280b50084b9f56e04c0db37e9c9dafa22))
+
+
+### Features
+
+* States button refactor ([8fd81ef](https://github.com/wix/wix-ui-tpa/commit/8fd81efb62f673c8d43b86b91dd42ca6bc1b6a3a))
+
+
+### BREAKING CHANGES
+
+* States button api has changed. Change states by prop instead of public method.
+
+
+
 ## [1.8.4](https://github.com/wix/wix-ui-tpa/compare/v1.8.3...v1.8.4) (2020-02-23)
 
 
