@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { snap, visualize } from 'storybook-snapper';
+import { DATA_READY_HOOK, snap, visualize } from 'storybook-snapper';
 import { BUTTON_STATES } from './constants';
 import { StatesButton } from './StatesButton';
 import { delay } from '../../test/utils';
@@ -38,10 +38,24 @@ class StatesButtonVisual extends React.Component<
       .catch(() => {});
   }
 
+  async componentDidUpdate(
+    prevProps: Readonly<StatesButtonVisualProps>,
+    prevState: Readonly<StatesButtonVisualState>,
+  ) {
+    const { buttonState } = this.state;
+
+    if (
+      buttonState === BUTTON_STATES.IDLE &&
+      prevState.buttonState !== buttonState
+    ) {
+      await delay(500);
+      this.props.done();
+    }
+  }
+
   private readonly act = async () => {
+    await delay(500);
     await this.driver.click();
-    await delay(2600);
-    this.props.done();
   };
 
   render() {
