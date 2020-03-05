@@ -77,7 +77,7 @@
     "yoshi-style-dependencies": "^4.6.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "^2.7.28",
+    "@applitools/eyes-storybook": "^3.0.0",
     "@storybook/addon-links": "^5.0.9",
     "@storybook/react": "^5.0.9",
     "@stylable/cli": "^3.5.0",
