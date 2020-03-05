@@ -1,11 +1,14 @@
 import * as React from 'react';
-import {snap, visualize} from 'storybook-snapper';
-import {BUTTON_STATES} from './constants';
-import {StatesButton} from './StatesButton';
-import {delay} from '../../test/utils';
-import {uniTestkitFactoryCreator} from 'wix-ui-test-utils/vanilla';
-import {StatesButtonDriver, statesButtonDriverFactory,} from './StatesButton.driver';
-import {onStyleProcessorDone} from '../../../test/visual/StyleProcessorUtil';
+import { snap, visualize } from 'storybook-snapper';
+import { BUTTON_STATES } from './constants';
+import { StatesButton } from './StatesButton';
+import { delay } from '../../test/utils';
+import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
+import {
+  StatesButtonDriver,
+  statesButtonDriverFactory,
+} from './StatesButton.driver';
+import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 interface StatesButtonVisualProps {
   done(): void;
@@ -77,7 +80,7 @@ visualize('StatesButton', () => {
     ));
   });
 
-  snap('State change to success and back', done => <StatesButtonVisual done={done} onClickState={BUTTON_STATES.SUCCESS} />);
-
-  snap('State change to failure and back', done => <StatesButtonVisual done={done} onClickState={BUTTON_STATES.FAILURE} />);
+  // snap('State change to success and back', done => <StatesButtonVisual done={done} onClickState={BUTTON_STATES.SUCCESS} />);
+  //
+  // snap('State change to failure and back', done => <StatesButtonVisual done={done} onClickState={BUTTON_STATES.FAILURE} />);
 });

@@ -111,52 +111,52 @@ visualize('Tabs', () => {
     { title: 'Title 10' },
   ];
 
-  story('Scroll', () => {
-    async function scrollToEnd(driver, direction) {
-      const navShown = await driver.getNavButtonsShown();
-
-      if (navShown === NavButtonOptions.both || navShown === direction) {
-        if (direction === NavButtonOptions.right) {
-          await driver.clickRightNavButton();
-        } else {
-          await driver.clickLeftNavButton();
-        }
-
-        await delay(600);
-
-        return scrollToEnd(driver, direction);
-      }
-    }
-
-    snap(
-      'left nav button',
-      renderTest({ compact: true, props: { items: lotsItems } }, done => {
-        return async () => {
-          done();
-        };
-      }),
-    );
-
-    snap(
-      'both nav buttons',
-      renderTest({ compact: true, props: { items: lotsItems } }, done => {
-        return async (driver: TabsDriver) => {
-          await driver.clickRightNavButton();
-          await delay(500);
-          done();
-        };
-      }),
-    );
-
-    snap(
-      'scroll to right end',
-      renderTest({ compact: true, props: { items: lotsItems } }, done => {
-        return async (driver: TabsDriver) => {
-          await scrollToEnd(driver, NavButtonOptions.right);
-          await delay(500);
-          done();
-        };
-      }),
-    );
-  });
+  // story('Scroll', () => {
+  //   async function scrollToEnd(driver, direction) {
+  //     const navShown = await driver.getNavButtonsShown();
+  //
+  //     if (navShown === NavButtonOptions.both || navShown === direction) {
+  //       if (direction === NavButtonOptions.right) {
+  //         await driver.clickRightNavButton();
+  //       } else {
+  //         await driver.clickLeftNavButton();
+  //       }
+  //
+  //       await delay(600);
+  //
+  //       return scrollToEnd(driver, direction);
+  //     }
+  //   }
+  //
+  //   snap(
+  //     'left nav button',
+  //     renderTest({ compact: true, props: { items: lotsItems } }, done => {
+  //       return async () => {
+  //         done();
+  //       };
+  //     }),
+  //   );
+  //
+  //   snap(
+  //     'both nav buttons',
+  //     renderTest({ compact: true, props: { items: lotsItems } }, done => {
+  //       return async (driver: TabsDriver) => {
+  //         await driver.clickRightNavButton();
+  //         await delay(500);
+  //         done();
+  //       };
+  //     }),
+  //   );
+  //
+  //   snap(
+  //     'scroll to right end',
+  //     renderTest({ compact: true, props: { items: lotsItems } }, done => {
+  //       return async (driver: TabsDriver) => {
+  //         await scrollToEnd(driver, NavButtonOptions.right);
+  //         await delay(500);
+  //         done();
+  //       };
+  //     }),
+  //   );
+  // });
 });
