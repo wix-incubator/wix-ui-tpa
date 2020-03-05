@@ -80,7 +80,11 @@ visualize('StatesButton', () => {
     ));
   });
 
-  // snap('State change to success and back', done => <StatesButtonVisual done={done} onClickState={BUTTON_STATES.SUCCESS} />);
-  //
-  // snap('State change to failure and back', done => <StatesButtonVisual done={done} onClickState={BUTTON_STATES.FAILURE} />);
+  snap('State change to success and back', done => (
+    <StatesButtonVisual done={done} onClickState={BUTTON_STATES.SUCCESS} />
+  ));
+
+  snap('State change to failure and back', done => (
+    <StatesButtonVisual done={done} onClickState={BUTTON_STATES.FAILURE} />
+  ));
 });
