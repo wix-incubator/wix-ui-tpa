@@ -13,8 +13,8 @@ export interface BadgeProps extends TPAComponentProps {
   priority?: BADGE_PRIORITY;
 }
 
-export interface DefaultProps{
-  priority: BADGE_PRIORITY,
+interface DefaultProps{
+  priority: BADGE_PRIORITY;
 }
 
 class Badge extends React.Component<BadgeProps> {
