@@ -27,7 +27,7 @@ export interface ButtonProps extends ButtonNextProps, TPAComponentProps {
   size?: SIZE;
   fullWidth?: boolean;
   innerRef?: React.RefObject<HTMLButtonElement>;
-  upgrade: boolean;
+  upgrade?: boolean;
 }
 
 class ButtonComponent extends React.Component<ButtonProps> {
