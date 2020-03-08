@@ -10,7 +10,6 @@ export interface LikeButtonProps extends TPAComponentProps {
   checked: boolean;
   onChange?(event: OnChangeEvent): void;
   disabled: boolean;
-  animation: boolean;
 }
 
 interface DefaultProps {
@@ -18,7 +17,6 @@ interface DefaultProps {
   labelPlacement: LabelPlacement;
   checked: boolean;
   disabled: boolean;
-  animation: boolean;
 }
 
 export class LikeButton extends React.Component<LikeButtonProps> {
@@ -28,7 +26,6 @@ export class LikeButton extends React.Component<LikeButtonProps> {
     labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
-    animation: true,
   };
 
   render() {
@@ -38,7 +35,6 @@ export class LikeButton extends React.Component<LikeButtonProps> {
       onChange,
       checked,
       disabled,
-      animation,
       ...rest
     } = this.props;
 
@@ -52,7 +48,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
           onChange={onChange}
           checked={checked}
           labelPlacement={labelPlacement}
-          animation={animation}
+          animation
         />
       </div>
     );

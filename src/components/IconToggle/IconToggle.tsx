@@ -44,18 +44,6 @@ export class IconToggle extends React.Component<IconToggleProps, State> {
     animation: false,
   };
 
-  state: State = { animated: false };
-
-  componentDidUpdate = prevProps => {
-    const { checked } = this.props;
-
-    if (checked && checked !== prevProps.checked) {
-      this.setState({ animated: true });
-    } else if (!checked && checked !== prevProps.checked) {
-      this.setState({ animated: false });
-    }
-  };
-
   _handleHoverOff = () => {
     this.state.animated && this.setState({ animated: false });
   };
@@ -75,14 +63,10 @@ export class IconToggle extends React.Component<IconToggleProps, State> {
   render() {
     const { labelPlacement, onChange, checked, disabled, animation, ...rest } = this.props;
 
-    const { animated } = this.state;
-
     const content = this._getContent();
-
-    const shouldAnimate = animated&&animation;
     
     return (
-      <span {...styles('root', { checked, disabled, labelPlacement, shouldAnimate }, rest)} onMouseLeave={this._handleHoverOff}>
+      <span {...styles('root', { checked, disabled, labelPlacement, animation }, rest)} onMouseLeave={this._handleHoverOff}>
         <CoreCheckbox
           uncheckedIcon={content}
           checkedIcon={content}
