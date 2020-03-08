@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, font, applyOpacity;
+    -st-named: color, fallback, calculate, font, applyOpacity;
 }
 
 :vars {
@@ -203,24 +203,44 @@
 
 /*upgrade tiny*/
 .root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny){
-    padding-top: calc(6px - value(secondaryBorderWidth));
-    padding-bottom: calc(6px - value(secondaryBorderWidth));
+    padding-top: "calculate(-, 6px, value(secondaryBorderWidth))";
+    padding-bottom: "calculate(-, 6px, value(secondaryBorderWidth))";
+}
+
+.root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
+    padding-top: "calculate(-, 6px, value(primaryBorderWidth))";
+    padding-bottom: "calculate(-, 6px, value(primaryBorderWidth))";
 }
 
 /*upgrade small*/
 .root:upgrade:priority(secondary):size(small), .root:upgrade:priority(basicSecondary):size(small){
-    padding-top: calc(7px - value(secondaryBorderWidth));
-    padding-bottom: calc(7px - value(secondaryBorderWidth));
+    padding-top: "calculate(-, 7px, value(secondaryBorderWidth))";
+    padding-bottom: "calculate(-, 7px, value(secondaryBorderWidth))";
+}
+
+.root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
+    padding-top: "calculate(-, 7px, value(primaryBorderWidth))";
+    padding-bottom: "calculate(-, 7px, value(primaryBorderWidth))";
 }
 
 /*upgrade medium*/
 .root:upgrade:priority(secondary):size(medium), .root:upgrade:priority(basicSecondary):size(medium){
-    padding-top: calc(8px - value(secondaryBorderWidth));
-    padding-bottom: calc(8px - value(secondaryBorderWidth));
+    padding-top: "calculate(-, 8px, value(secondaryBorderWidth))";
+    padding-bottom: "calculate(-, 8px, value(secondaryBorderWidth))";
+}
+
+.root:priority(primary):upgrade:size(medium), .root:priority(basic):upgrade:size(medium){
+    padding-top: "calculate(-, 8px, value(primaryBorderWidth))";
+    padding-bottom: "calculate(-, 8px, value(primaryBorderWidth))";
 }
 
 /*upgrade large*/
 .root:size(large):upgrade:priority(secondary), .root:size(large):upgrade:priority(basicSecondary){
-    padding-top: calc(10px - value(secondaryBorderWidth));
-    padding-bottom: calc(10px - value(secondaryBorderWidth));
+    padding-top: "calculate(-, 10px, value(secondaryBorderWidth))";
+    padding-bottom: "calculate(-, 10px, value(secondaryBorderWidth))";
+}
+
+.root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
+    padding-top: "calculate(-, 10px, value(primaryBorderWidth))";
+    padding-bottom: "calculate(-, 10px, value(primaryBorderWidth))";
 }
