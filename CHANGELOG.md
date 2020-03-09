@@ -1,3 +1,12 @@
+## [1.8.6](https://github.com/wix/wix-ui-tpa/compare/v1.8.5...v1.8.6) (2020-03-09)
+
+
+### Bug Fixes
+
+* Tabs Edge and IE breaking bug ([a796168](https://github.com/wix/wix-ui-tpa/commit/a796168696412926c3dd36f9a5287161284c90fd))
+
+
+
 ## [1.8.5](https://github.com/wix/wix-ui-tpa/compare/v1.8.4...v1.8.5) (2020-03-04)
 
 
