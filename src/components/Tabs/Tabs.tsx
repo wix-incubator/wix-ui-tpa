@@ -12,7 +12,7 @@ import style from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
-const SCROLL_EPSILON = 1;
+const SCROLL_EPSILON = 15;
 
 export interface TabsProps extends TPAComponentProps {
   /** tabs to be displayed */
