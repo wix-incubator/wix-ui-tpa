@@ -1,3 +1,12 @@
+## [1.8.7](https://github.com/wix/wix-ui-tpa/compare/v1.8.6...v1.8.7) (2020-03-10)
+
+
+### BREAKING CHANGES
+
+* StatesButton remove unnecessary padding ([250a5b3](https://github.com/wix/wix-ui-tpa/commit/250a5b3ff270fcc889bc7ad7a16b08d3cc76fa2e))
+
+
+
 ## [1.8.6](https://github.com/wix/wix-ui-tpa/compare/v1.8.5...v1.8.6) (2020-03-09)
 
 
