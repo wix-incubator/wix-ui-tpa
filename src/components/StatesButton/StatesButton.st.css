@@ -19,7 +19,6 @@
 .root::content {
     line-height: 1.5;
     display: block;
-    padding: 3px;
 }
 
 .successIcon {
