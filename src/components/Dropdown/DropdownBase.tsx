@@ -19,7 +19,14 @@ interface DropdownBaseProps {
 }
 
 export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
-  const { selectedOption, placeholder, error, disabled, ['aria-label']: ariaLabel, ['aria-labelledby']: ariaLabelledBy } = props;
+  const {
+    selectedOption,
+    placeholder,
+    error,
+    disabled,
+    ['aria-label']: ariaLabel,
+    ['aria-labelledby']: ariaLabelledBy,
+  } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
     <Button

@@ -23,7 +23,7 @@ export interface DropdownDriver extends BaseUniDriver {
   getTooltipDriver(baseUniDriver: BaseUniDriver);
   hasAriaHasPopup(): Promise<boolean>;
   getAriaLabel(): Promise<string | null>;
-  getAriaLabelledBy(): Promise<string | null >;
+  getAriaLabelledBy(): Promise<string | null>;
 }
 
 const getDropdownCoreDriver = async (baseUniDriver: BaseUniDriver) => {
@@ -52,11 +52,10 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     isDisabled: async () =>
       (await (await getDropdownBase()).attr('disabled')) !== null,
     hasAriaHasPopup: async () =>
-        (await (await getDropdownBase()).attr('aria-haspopup')) !== null,
-    getAriaLabel: async () =>
-        (await (await getDropdownBase()).attr('aria-label')),
+      (await (await getDropdownBase()).attr('aria-haspopup')) !== null,
+    getAriaLabel: async () => (await getDropdownBase()).attr('aria-label'),
     getAriaLabelledBy: async () =>
-        (await (await getDropdownBase()).attr('aria-labelledby')),
+      (await getDropdownBase()).attr('aria-labelledby'),
     click: async () => (await getDropdownCoreDriver(baseUniDriver)).click(),
     areOptionsShown: async () =>
       (await getDropdownCoreDriver(baseUniDriver)).isContentElementExists(),
