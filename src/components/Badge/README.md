@@ -14,5 +14,5 @@ The Badge TPA implementation provides a few default overridable styles. By defau
 |Badge  |BadgeBgColor|BadgeBorderColor|BadgeTextColor|
 |-------|------------|----------------|--------------|
 |Default|color-5(10%)|-               |color-5       |
-|Light  |color-1     |color-5(15%)    |color-5       |
+|Light  |color-1     |color-5(10%)    |color-5       |
 |Primary|color-8     |-               |color-1       |

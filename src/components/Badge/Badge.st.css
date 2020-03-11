@@ -25,7 +25,7 @@
     badgeBgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(value(DefaultBgColor)), 0.1)));
     badgeTextColor: color(fallback(value(BadgeTextColor), value(DefaultTextColor)));
     badgeBorderColor: color(fallback(value(BadgeBorderColor), transparent));
-    lightBorderColor: applyOpacity(color(value(LightBorderColor)), 0.15);
+    lightBorderColor: applyOpacity(color(value(LightBorderColor)), 0.10);
 }
 
 .root {
