@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DATA_READY_HOOK, snap, visualize } from 'storybook-snapper';
+import { snap, visualize } from 'storybook-snapper';
 import { BUTTON_STATES } from './constants';
 import { StatesButton } from './StatesButton';
 import { delay } from '../../test/utils';
