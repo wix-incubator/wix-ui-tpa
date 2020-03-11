@@ -49,6 +49,7 @@
     background-color: color(value(LightBgColor));
     color: color(value(LightTextColor));
     border-color: value(lightBorderColor);
+    box-sizing: border-box;
 }
 
 .root:priority(primary) {
