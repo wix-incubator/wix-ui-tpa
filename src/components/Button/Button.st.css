@@ -208,8 +208,8 @@
 }
 
 .root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
-    padding-top: "calculate(-, 6px, value(primaryBorderWidth))";
-    padding-bottom: "calculate(-, 6px, value(primaryBorderWidth))";
+    padding-top: "calculate(-, 6px, value(PrimaryBorderWidth))";
+    padding-bottom: "calculate(-, 6px, value(PrimaryBorderWidth))";
 }
 
 /*upgrade small*/
@@ -219,8 +219,8 @@
 }
 
 .root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
-    padding-top: "calculate(-, 7px, value(primaryBorderWidth))";
-    padding-bottom: "calculate(-, 7px, value(primaryBorderWidth))";
+    padding-top: "calculate(-, 7px, value(PrimaryBorderWidth))";
+    padding-bottom: "calculate(-, 7px, value(PrimaryBorderWidth))";
 }
 
 /*upgrade medium*/
@@ -230,8 +230,8 @@
 }
 
 .root:priority(primary):upgrade:size(medium), .root:priority(basic):upgrade:size(medium){
-    padding-top: "calculate(-, 8px, value(primaryBorderWidth))";
-    padding-bottom: "calculate(-, 8px, value(primaryBorderWidth))";
+    padding-top: "calculate(-, 8px, value(PrimaryBorderWidth))";
+    padding-bottom: "calculate(-, 8px, value(PrimaryBorderWidth))";
 }
 
 /*upgrade large*/
@@ -241,6 +241,6 @@
 }
 
 .root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
-    padding-top: "calculate(-, 10px, value(primaryBorderWidth))";
-    padding-bottom: "calculate(-, 10px, value(primaryBorderWidth))";
+    padding-top: "calculate(-, 10px, value(PrimaryBorderWidth))";
+    padding-bottom: "calculate(-, 10px, value(PrimaryBorderWidth))";
 }
