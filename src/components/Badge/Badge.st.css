@@ -18,13 +18,11 @@
     /*Overrides*/
     BadgeBgColor: --overridable;
     BadgeTextColor: --overridable;
-    BadgeBorderColor: --overridable;
 }
 
 :vars {
     badgeBgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(value(DefaultBgColor)), 0.1)));
     badgeTextColor: color(fallback(value(BadgeTextColor), value(DefaultTextColor)));
-    badgeBorderColor: color(fallback(value(BadgeBorderColor), transparent));
     lightBorderColor: applyOpacity(color(value(LightBorderColor)), 0.10);
 }
 
@@ -35,14 +33,12 @@
     padding: 0 12px;
     line-height: 20px;
     font-size: 12px;
-    border-width: 1px;
-    border-style: solid;
 }
 
 .root:priority(default) {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
-    border-color: value(badgeBorderColor);
+    border: none;
 }
 
 .root:priority(light) {
@@ -50,6 +46,8 @@
     color: color(value(LightTextColor));
     border-color: value(lightBorderColor);
     box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .root:priority(primary) {
