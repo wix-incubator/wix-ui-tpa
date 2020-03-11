@@ -36,7 +36,7 @@
 
 :vars {
     PrimaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
-    PrimaryBorderWidth: fallback(value(MainBorderWidth), 0);
+    PrimaryBorderWidth: fallback(value(MainBorderWidth), 0px);
     PrimaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
 }
 
@@ -197,50 +197,40 @@
 /*upgrage*/
 .root:upgrade{
     box-sizing: border-box;
-    padding-left: 16px;
-    padding-right: 16px;
 }
 
 /*upgrade tiny*/
 .root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny){
-    padding-top: "calculate(-, 6px, value(secondaryBorderWidth))";
-    padding-bottom: "calculate(-, 6px, value(secondaryBorderWidth))";
+    padding: calculate(-, 6px, value(secondaryBorderWidth)) calculate(-, 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
-    padding-top: "calculate(-, 6px, value(PrimaryBorderWidth))";
-    padding-bottom: "calculate(-, 6px, value(PrimaryBorderWidth))";
+    padding: calculate(-, 6px, value(PrimaryBorderWidth)) calculate(-, 16px, value(PrimaryBorderWidth));
 }
 
 /*upgrade small*/
 .root:upgrade:priority(secondary):size(small), .root:upgrade:priority(basicSecondary):size(small){
-    padding-top: "calculate(-, 7px, value(secondaryBorderWidth))";
-    padding-bottom: "calculate(-, 7px, value(secondaryBorderWidth))";
+    padding: calculate(-, 7px, value(secondaryBorderWidth)) calculate(-, 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
-    padding-top: "calculate(-, 7px, value(PrimaryBorderWidth))";
-    padding-bottom: "calculate(-, 7px, value(PrimaryBorderWidth))";
+    padding: calculate(-, 7px, value(PrimaryBorderWidth)) calculate(-, 16px, value(PrimaryBorderWidth));
 }
 
 /*upgrade medium*/
 .root:upgrade:priority(secondary):size(medium), .root:upgrade:priority(basicSecondary):size(medium){
-    padding-top: "calculate(-, 8px, value(secondaryBorderWidth))";
-    padding-bottom: "calculate(-, 8px, value(secondaryBorderWidth))";
+    padding: calculate(-, 8px, value(secondaryBorderWidth)) calculate(-, 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(medium), .root:priority(basic):upgrade:size(medium){
-    padding-top: "calculate(-, 8px, value(PrimaryBorderWidth))";
-    padding-bottom: "calculate(-, 8px, value(PrimaryBorderWidth))";
+    padding: calculate(-, 8px, value(PrimaryBorderWidth)) calculate(-, 16px, value(PrimaryBorderWidth));
 }
 
 /*upgrade large*/
 .root:size(large):upgrade:priority(secondary), .root:size(large):upgrade:priority(basicSecondary){
-    padding-top: "calculate(-, 10px, value(secondaryBorderWidth))";
-    padding-bottom: "calculate(-, 10px, value(secondaryBorderWidth))";
+    padding: calculate(-, 10px, value(secondaryBorderWidth)) calculate(-, 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
-    padding-top: "calculate(-, 10px, value(PrimaryBorderWidth))";
-    padding-bottom: "calculate(-, 10px, value(PrimaryBorderWidth))";
+    padding: calculate(-, 10px, value(PrimaryBorderWidth)) calculate(-, 16px, value(PrimaryBorderWidth));
 }
