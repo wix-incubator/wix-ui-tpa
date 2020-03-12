@@ -4,7 +4,7 @@ import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import { MockSettings } from '../../../../stories/utils/MockSettings';
 import { IconToggleExtendedExample } from './IconToggleExtendedExample';
 
 export default () => (

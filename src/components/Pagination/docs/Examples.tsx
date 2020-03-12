@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import { MockSettings } from '../../../../stories/utils/MockSettings';
 
 import * as ExtendedRawSource from '!raw-loader!./PaginationExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./PaginationExtendedExample.st.css';

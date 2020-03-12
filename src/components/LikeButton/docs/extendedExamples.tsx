@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import { MockSettings } from '../../../../stories/utils/MockSettings';
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import * as ExtendedRawSource from '!raw-loader!./LikeButtonExtendedExample.tsx';

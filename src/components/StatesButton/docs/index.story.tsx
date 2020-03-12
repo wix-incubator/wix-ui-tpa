@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StatesButton, StatesButtonProps } from '..';
 import extendedStyles from './StatesButtonExample.st.css';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import { MockSettings } from '../../../../stories/utils/MockSettings';
 import { SIZE } from '../../Button';
 import { BUTTON_STATES } from '../constants';
 

@@ -5,7 +5,7 @@ import {
   IWixFontParam,
   IWixNumberParam,
   MockSettings,
-} from '../helperComponents/MockSettings';
+} from './MockSettings';
 import Markdown from 'wix-storybook-utils/Markdown';
 import { VariableType, IVariableManifest } from './variableInfo.interface';
 import { plugin } from 'wix-storybook-utils/Sections';

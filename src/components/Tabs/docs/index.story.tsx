@@ -3,6 +3,7 @@ import { Tabs, SKIN, ALIGNMENT, VARIANT } from '..';
 import * as TabsSource from '!raw-loader!../Tabs.tsx';
 import { Examples } from './examples';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
+import { TPAComponentsStorybookProvider } from '../../../../stories/utils/TPAComponentsStorybookProvider';
 
 const items = Array(20)
   .fill('')
@@ -14,35 +15,10 @@ const exampleItems = [
 ];
 
 function ExampleTabs(props) {
-  const [rtl, setRtl] = React.useState(false);
-  const rootRef = React.useRef<HTMLDivElement>();
-
-  React.useEffect(() => {
-    if (rootRef && rootRef.current) {
-      const observer = new MutationObserver(mutationsList => {
-        mutationsList.map(mutation => {
-          if (mutation.attributeName === 'dir') {
-            setRtl(
-              (rootRef.current.parentNode as any).getAttribute('dir') === 'rtl',
-            );
-          }
-        });
-      });
-
-      observer.observe(rootRef.current.parentNode, { attributes: true });
-
-      return function cleanup() {
-        observer.disconnect();
-      };
-    }
-  }, [rootRef]);
-
   return (
-    <div ref={rootRef}>
-      <TPAComponentsProvider value={{ mobile: false, rtl }}>
-        <Tabs {...props} />
-      </TPAComponentsProvider>
-    </div>
+    <TPAComponentsStorybookProvider>
+      <Tabs {...props} />
+    </TPAComponentsStorybookProvider>
   );
 }
 

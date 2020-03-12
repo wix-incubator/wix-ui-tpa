@@ -10,7 +10,7 @@ import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWith
 
 import { ButtonExtendedExample } from './ButtonExtendedExample';
 import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
+import { MockSettings } from '../../../../stories/utils/MockSettings';
 
 export const Examples = () => (
   <div>
