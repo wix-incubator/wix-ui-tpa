@@ -90,34 +90,52 @@ export default {
                     defaultColor: 'color-5',
                   },
                   {
+                    label: 'Background Color',
+                    wixParam: 'bgColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Hover Text Color',
+                    wixParam: 'hoverTextColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Hover Background Color',
+                    wixParam: 'hoverBgColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Hover Border Color',
+                    wixParam: 'hoverBorderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
                     label: 'Selected Text Color',
                     wixParam: 'selectedTextColor',
                     defaultColor: 'color-1',
                   },
                   {
-                    label: 'Background Color',
-                    wixParam: 'bgColor',
-                    defaultColor: 'color-1',
+                    label: 'Selected Background Color',
+                    wixParam: 'selectedBgColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Selected Border Color',
+                    wixParam: 'selectedBorderColor',
+                    defaultColor: 'color-5',
                   },
                 ],
-                fonts: [
-                  {
-                    label: 'Text Font',
-                    wixParam: 'textFont',
-                    defaultFont: 'arial',
-                  }
-                ],
+                fonts: [],
                 numbers: [
                   {
                     label: 'Border Width',
                     wixParam: 'borderWidth',
                     defaultNumber: 1,
-                    unit: 'px'
-                  },
-                  {
-                    label: 'Solid Border Width',
-                    wixParam: 'solidBorderWidth',
-                    defaultNumber: 0,
                     unit: 'px'
                   },
                   {

@@ -8,24 +8,28 @@
 
 .solid {
     -st-mixin: Tags(
-            MainTextFont '"--textFont"',
+            MainBorderRadius '"unit(--borderRadius, px)"',
             MainTextColor '"--textColor"',
-            MainSelectedTextColor '"--selectedTextColor"',
             MainBackgroundColor '"--bgColor"',
-            MainBorderColor '"--borderColor"',
-            MainBorderWidth '"unit(fallback(--solidBorderWidth, 0), px)"',
-            MainBorderRadius '"unit(--borderRadius, px)"'
+            HoverTextColor '"--hoverTextColor"',
+            HoverBackgroundColor '"--hoverBgColor"',
+            SelectedTextColor '"--selectedTextColor"',
+            SelectedBackgroundColor '"--selectedBgColor"'
     );
 }
 
 .light {
     -st-mixin: Tags(
-            MainTextFont '"--textFont"',
+            MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
+            MainBorderRadius '"unit(--borderRadius, px)"',
             MainTextColor '"--textColor"',
-            MainSelectedTextColor '"--selectedTextColor"',
             MainBackgroundColor '"--bgColor"',
             MainBorderColor '"--borderColor"',
-            MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
-            MainBorderRadius '"unit(--borderRadius, px)"'
+            HoverTextColor '"--hoverTextColor"',
+            HoverBackgroundColor '"--hoverBgColor"',
+            HoverBorderColor '"--hoverBorderColor"',
+            SelectedTextColor '"--selectedTextColor"',
+            SelectedBackgroundColor '"--selectedBgColor"',
+            SelectedBorderColor '"--selectedBorderColor"'
     );
 }

@@ -3,6 +3,7 @@ import {ALIGNMENT, SIZE, SKIN} from './constants';
 import {TPAComponentsConsumer} from '../TPAComponentsConfig';
 import {Tag as CoreTag, TagsList as CoreTagList} from 'wix-ui-core/tags-list';
 import styles from './Tags.st.css';
+import {TAGS_DATA_HOOKS, TAGS_DATA_KEYS} from './dataHooks';
 
 interface TagItem {
   title: string;
@@ -33,14 +34,43 @@ export class Tags extends React.Component<TagsProps> {
     skin: SKIN.solid,
   };
 
+  private getTagDataAttributes({
+                                 isActive,
+                                 index
+                               }) {
+    return {
+      [TAGS_DATA_KEYS.tabIsActive]: isActive,
+      [TAGS_DATA_KEYS.index]: index,
+    };
+  }
+
+  private getTagsListDataAttributes({
+                                      alignment,
+                                      skin,
+                                      size,
+                                      rtl,
+                                     }) {
+    return {
+      [TAGS_DATA_KEYS.alignment]: alignment,
+      [TAGS_DATA_KEYS.skin]: skin,
+      [TAGS_DATA_KEYS.size]: size,
+      [TAGS_DATA_KEYS.rtl]: rtl,
+    };
+  }
+
   generateTagItems() {
     const {items, onClick} = this.props;
-    return items.map((item) => (
+    return items.map((item, index) => (
       <CoreTag key={item.value}
                checked={item.checked}
                onChange={() => onClick(item)}
                value={item.value}
                className={styles.tag}
+               data-hook={`${TAGS_DATA_HOOKS.tag}-${index}`}
+               {...this.getTagDataAttributes({
+                 isActive: item.checked,
+                 index,
+               })}
                {...styles('tag', {selected: item.checked})}>
         {item.title}
       </CoreTag>
@@ -52,7 +82,14 @@ export class Tags extends React.Component<TagsProps> {
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => (
-          <CoreTagList {...styles(
+          <CoreTagList
+            {...this.getTagsListDataAttributes({
+              alignment,
+              skin,
+              size,
+              rtl,
+            })}
+            {...styles(
             'root',
             {
               alignment,

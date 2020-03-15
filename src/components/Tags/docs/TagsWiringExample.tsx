@@ -9,8 +9,8 @@ export const TagsWiringExample = (props) => {
     .map((item, index) => ({ title: `Title ${index + 1}`, checked: index % 3 === 0, value: `value ${index + 1}` }));
   return <div>
     Solid:
-    <Tags skin={SKIN.solid} items={items} onClick={console.log} {...extendedStyles('solid', {}, props)} />
+    <Tags key='solid' skin={SKIN.solid} items={items} onClick={console.log} {...extendedStyles('solid', {}, props)} />
     Light:
-    <Tags skin={SKIN.light} items={items} onClick={console.log} {...extendedStyles('light', {}, props)} />
+    <Tags key='light' skin={SKIN.light} items={items} onClick={console.log} {...extendedStyles('light', {}, props)} />
   </div>;
 };
