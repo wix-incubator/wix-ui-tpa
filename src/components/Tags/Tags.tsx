@@ -1,9 +1,9 @@
 import * as React from 'react';
-import {ALIGNMENT, SIZE, SKIN} from './constants';
-import {TPAComponentsConsumer} from '../TPAComponentsConfig';
-import {Tag as CoreTag, TagsList as CoreTagList} from 'wix-ui-core/tags-list';
+import { ALIGNMENT, SIZE, SKIN } from './constants';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { Tag as CoreTag, TagsList as CoreTagList } from 'wix-ui-core/tags-list';
 import styles from './Tags.st.css';
-import {TAGS_DATA_HOOKS, TAGS_DATA_KEYS} from './dataHooks';
+import { TAGS_DATA_HOOKS, TAGS_DATA_KEYS } from './dataHooks';
 
 interface TagItem {
   title: string;
@@ -34,22 +34,14 @@ export class Tags extends React.Component<TagsProps> {
     skin: SKIN.solid,
   };
 
-  private getTagDataAttributes({
-                                 isActive,
-                                 index
-                               }) {
+  private getTagDataAttributes({ isActive, index }) {
     return {
       [TAGS_DATA_KEYS.tabIsActive]: isActive,
       [TAGS_DATA_KEYS.index]: index,
     };
   }
 
-  private getTagsListDataAttributes({
-                                      alignment,
-                                      skin,
-                                      size,
-                                      rtl,
-                                     }) {
+  private getTagsListDataAttributes({ alignment, skin, size, rtl }) {
     return {
       [TAGS_DATA_KEYS.alignment]: alignment,
       [TAGS_DATA_KEYS.skin]: skin,
@@ -59,26 +51,28 @@ export class Tags extends React.Component<TagsProps> {
   }
 
   generateTagItems() {
-    const {items, onClick} = this.props;
+    const { items, onClick } = this.props;
     return items.map((item, index) => (
-      <CoreTag key={item.value}
-               checked={item.checked}
-               onChange={() => onClick(item)}
-               value={item.value}
-               className={styles.tag}
-               data-hook={`${TAGS_DATA_HOOKS.tag}-${index}`}
-               {...this.getTagDataAttributes({
-                 isActive: item.checked,
-                 index,
-               })}
-               {...styles('tag', {selected: item.checked})}>
+      <CoreTag
+        key={item.value}
+        checked={item.checked}
+        onChange={() => onClick(item)}
+        value={item.value}
+        className={styles.tag}
+        data-hook={`${TAGS_DATA_HOOKS.tag}-${index}`}
+        {...this.getTagDataAttributes({
+          isActive: item.checked,
+          index,
+        })}
+        {...styles('tag', { selected: item.checked })}
+      >
         {item.title}
       </CoreTag>
     ));
   }
 
   render() {
-    const {alignment, size, skin, ...rest} = this.props;
+    const { alignment, size, skin, ...rest } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => (
@@ -90,15 +84,16 @@ export class Tags extends React.Component<TagsProps> {
               rtl,
             })}
             {...styles(
-            'root',
-            {
-              alignment,
-              skin,
-              size,
-              rtl,
-            },
-            rest,
-          )}>
+              'root',
+              {
+                alignment,
+                skin,
+                size,
+                rtl,
+              },
+              rest,
+            )}
+          >
             {this.generateTagItems()}
           </CoreTagList>
         )}

@@ -11,11 +11,11 @@ import { tagsTestkitFactory } from '../../testkit/protractor';
  * */
 describe('tags', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: 'Tests',
     story: 'Tags',
     withExamples: true,
   });
-  const dataHook = 'storybook-Tags';
+  const dataHook = 'storybook-e2e-Tags';
 
   beforeEach(() => browser.get(storyUrl));
 

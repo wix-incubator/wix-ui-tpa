@@ -25,7 +25,11 @@ const code = config =>
 
 const items = Array(20)
   .fill('')
-  .map((item, index) => ({ title: `Title ${index + 1}`, checked: index % 3 === 0, value: `value ${index + 1}` }));
+  .map((item, index) => ({
+    title: `Title ${index + 1}`,
+    checked: index % 3 === 0,
+    value: `value ${index + 1}`,
+  }));
 
 const exampleItems = [
   { label: 'few items', value: items.slice(0, 4) },
@@ -136,14 +140,14 @@ export default {
                     label: 'Border Width',
                     wixParam: 'borderWidth',
                     defaultNumber: 1,
-                    unit: 'px'
+                    unit: 'px',
                   },
                   {
                     label: 'Border Radius',
                     wixParam: 'borderRadius',
                     defaultNumber: 0,
-                    unit: 'px'
-                  }
+                    unit: 'px',
+                  },
                 ],
               },
             }),

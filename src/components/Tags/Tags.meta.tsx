@@ -7,6 +7,10 @@ TagsMetadata.nonReactStrictModeCompliant = true;
 TagsMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    items: [
+      { title: 'first tag', value: 'first', checked: true },
+      { title: 'second tag', value: 'second', checked: false },
+    ],
+    onClick: () => {},
   },
 });

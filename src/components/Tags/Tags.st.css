@@ -32,6 +32,7 @@
 
     selectedBackgroundColor: color-8;
     selectedTextColor: color-1;
+    selectedBorderColor: applyOpacity(color("color-5"), 0.0);
 }
 
 /*Overrides*/
@@ -133,6 +134,6 @@
 .root:skin(light) .tag:selected,
 .root:skin(solid) .tag:selected {
     background-color: color(fallback(value(SelectedBackgroundColor), value(selectedBackgroundColor)));
-    border-color: color(fallback(value(SelectedBorderColor), value(selectedBackgroundColor)));
+    border-color: color(fallback(value(SelectedBorderColor), value(selectedBorderColor)));
     color: color(fallback(value(SelectedTextColor), value(selectedTextColor)));
 }

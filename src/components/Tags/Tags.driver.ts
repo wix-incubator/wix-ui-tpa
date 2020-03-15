@@ -19,8 +19,12 @@ const getTag: any = (base: UniDriver, index: number) =>
 export const tagsDriverFactory = (base: UniDriver): TagsDriver => {
   return {
     ...makeTagsListUniDriver(base),
-    clickTagAt: index => getTag(base, index).$([`[data-hook="${TAGS_DATA_HOOKS.tagInput}"]`]).click(),
-    isTagActiveAt: index => getTag(base, index).attr(TAGS_DATA_KEYS.tabIsActive),
+    clickTagAt: index =>
+      getTag(base, index)
+        .$([`[data-hook="${TAGS_DATA_HOOKS.tagInput}"]`])
+        .click(),
+    isTagActiveAt: index =>
+      getTag(base, index).attr(TAGS_DATA_KEYS.tabIsActive),
     getSkin: () => base.attr(TAGS_DATA_KEYS.skin),
     getAlignment: () => base.attr(TAGS_DATA_KEYS.alignment),
     getSize: () => base.attr(TAGS_DATA_KEYS.size),
