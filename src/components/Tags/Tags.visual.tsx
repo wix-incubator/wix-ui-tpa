@@ -48,16 +48,20 @@ const tests = [
       {
         it: 'default',
         props: {
-          items,
-          onClick: () => {},
+          tagsProps: {
+            items,
+            onClick: () => {},
+          },
         },
       },
       {
         it: 'rtl',
         props: {
           rtl: true,
-          items,
-          onClick: () => {},
+          tagsProps: {
+            items,
+            onClick: () => {},
+          },
         },
       },
     ],
