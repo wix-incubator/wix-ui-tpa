@@ -36,7 +36,7 @@ export class Tags extends React.Component<TagsProps> {
 
   private getTagDataAttributes({ isActive, index }) {
     return {
-      [TAGS_DATA_KEYS.tabIsActive]: isActive,
+      [TAGS_DATA_KEYS.tagIsChecked]: isActive,
       [TAGS_DATA_KEYS.index]: index,
     };
   }

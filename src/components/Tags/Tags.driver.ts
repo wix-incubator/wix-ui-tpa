@@ -24,7 +24,7 @@ export const tagsDriverFactory = (base: UniDriver): TagsDriver => {
         .$([`[data-hook="${TAGS_DATA_HOOKS.tagInput}"]`])
         .click(),
     isTagActiveAt: index =>
-      getTag(base, index).attr(TAGS_DATA_KEYS.tabIsActive),
+      getTag(base, index).attr(TAGS_DATA_KEYS.tagIsChecked),
     getSkin: () => base.attr(TAGS_DATA_KEYS.skin),
     getAlignment: () => base.attr(TAGS_DATA_KEYS.alignment),
     getSize: () => base.attr(TAGS_DATA_KEYS.size),
