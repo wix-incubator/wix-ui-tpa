@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tags } from './';
-import { ALIGNMENT } from './constants';
+import { ALIGNMENT, SIZE, SKIN } from './constants';
 import { snap, story, visualize } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
@@ -15,7 +15,7 @@ function generateItems(amount) {
   }));
 }
 
-function testSuite(alignment?) {
+function alignmentTestSuite(alignment?) {
   story(`Align ${alignment ? alignment : 'default'}`, () => {
     snap('many item', () => (
       <Tags
@@ -55,8 +55,37 @@ function testSuite(alignment?) {
   });
 }
 
-visualize('Tags', () => {
-  testSuite(undefined);
+function sizeTestSuite(size?) {
+  story(`Size ${size ? size : 'default'}`, () => {
+    snap('several item', () => (
+      <Tags
+        items={generateItems(FEW_ITEMS_COUNT)}
+        onClick={() => {}}
+        size={size}
+      />
+    ));
+  });
+}
 
-  Object.values(ALIGNMENT).forEach(testSuite);
+function skinTestSuite(skin?) {
+  story(`Size ${skin ? skin : 'default'}`, () => {
+    snap('several item', () => (
+      <Tags
+        items={generateItems(FEW_ITEMS_COUNT)}
+        onClick={() => {}}
+        size={skin}
+      />
+    ));
+  });
+}
+
+visualize('Tags', () => {
+  alignmentTestSuite();
+  Object.values(ALIGNMENT).forEach(alignmentTestSuite);
+
+  skinTestSuite();
+  Object.values(SIZE).forEach(sizeTestSuite);
+
+  sizeTestSuite();
+  Object.values(SKIN).forEach(skinTestSuite);
 });
