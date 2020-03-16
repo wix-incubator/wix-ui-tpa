@@ -36,7 +36,7 @@ describe('Tags', () => {
       <Tags items={activeItems} onClick={jest.fn()} />,
     );
 
-    expect(await driver.isTagCheckedAt(0)).toBe(true);
+    expect(await driver.getTagByIndex(0).isChecked()).toBe(true);
   });
 
   it('should set default states stylable states', async () => {
