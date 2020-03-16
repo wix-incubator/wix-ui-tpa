@@ -8,7 +8,7 @@ const MANY_ITEMS_COUNT = 20;
 const FEW_ITEMS_COUNT = 3;
 
 function generateItems(amount) {
-  return new Array(amount).map(i => ({
+  return new Array(amount).fill(0).map(i => ({
     title: `Title ${i}`,
     value: `value ${i}`,
     checked: i % 3 === 0,
