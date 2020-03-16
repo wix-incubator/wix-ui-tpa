@@ -68,7 +68,7 @@ function sizeTestSuite(size?) {
 }
 
 function skinTestSuite(skin?) {
-  story(`Size ${skin ? skin : 'default'}`, () => {
+  story(`Skin ${skin ? skin : 'default'}`, () => {
     snap('several item', () => (
       <Tags
         items={generateItems(FEW_ITEMS_COUNT)}
