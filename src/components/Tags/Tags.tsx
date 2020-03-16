@@ -4,7 +4,7 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Tag as CoreTag, TagsList as CoreTagList } from 'wix-ui-core/tags-list';
 import styles from './Tags.st.css';
 import * as classNames from 'classnames';
-import { TAGS_DATA_HOOKS, TAGS_DATA_KEYS } from './dataHooks';
+import { TAGS_DATA_KEYS } from './dataHooks';
 
 interface TagItem {
   title: string;
@@ -66,7 +66,6 @@ export class Tags extends React.Component<TagsProps> {
         rel={item.rel}
         value={item.value}
         className={classNames(styles.tag, { [styles.checked]: item.checked })}
-        data-hook={`${TAGS_DATA_HOOKS.tag}-${index}`}
         {...this.getTagDataAttributes({
           isChecked: item.checked,
           index,

@@ -25,7 +25,7 @@ describe('Tags', () => {
     const onClickSpy = jest.fn();
     const driver = createDriver(<Tags items={items} onClick={onClickSpy} />);
 
-    await driver.clickTagAt(0);
+    await driver.clickOnTagByIndex(0);
 
     expect(onClickSpy).toBeCalledWith(items[0]);
   });
@@ -36,7 +36,7 @@ describe('Tags', () => {
       <Tags items={activeItems} onClick={jest.fn()} />,
     );
 
-    expect(await driver.isTagActiveAt(0)).toBe('true');
+    expect(await driver.isTagCheckedAt(0)).toBe(true);
   });
 
   it('should set default states stylable states', async () => {
