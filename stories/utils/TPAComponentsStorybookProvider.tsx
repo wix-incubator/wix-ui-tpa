@@ -17,7 +17,7 @@ export class TPAComponentsStorybookProvider extends React.Component<
   state = {
     rtl: false,
   };
-  private rootRef: React.RefObject<HTMLDivElement>;
+  private readonly rootRef: React.RefObject<HTMLDivElement>;
   private observer: MutationObserver;
 
   constructor() {
