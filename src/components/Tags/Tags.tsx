@@ -3,12 +3,16 @@ import { ALIGNMENT, SIZE, SKIN } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Tag as CoreTag, TagsList as CoreTagList } from 'wix-ui-core/tags-list';
 import styles from './Tags.st.css';
+import * as classNames from 'classnames';
 import { TAGS_DATA_HOOKS, TAGS_DATA_KEYS } from './dataHooks';
 
 interface TagItem {
   title: string;
   checked?: boolean;
+  disabled?: boolean;
   value: string;
+  link?: string;
+  rel?: string;
 }
 
 export interface TagsProps {
@@ -34,9 +38,9 @@ export class Tags extends React.Component<TagsProps> {
     skin: SKIN.solid,
   };
 
-  private getTagDataAttributes({ isActive, index }) {
+  private getTagDataAttributes({ isChecked, index }) {
     return {
-      [TAGS_DATA_KEYS.tagIsChecked]: isActive,
+      [TAGS_DATA_KEYS.tagIsChecked]: isChecked,
       [TAGS_DATA_KEYS.index]: index,
     };
   }
@@ -57,14 +61,16 @@ export class Tags extends React.Component<TagsProps> {
         key={item.value}
         checked={item.checked}
         onChange={() => onClick(item)}
+        disabled={item.disabled}
+        link={item.link}
+        rel={item.rel}
         value={item.value}
-        className={styles.tag}
+        className={classNames(styles.tag, { [styles.checked]: item.checked })}
         data-hook={`${TAGS_DATA_HOOKS.tag}-${index}`}
         {...this.getTagDataAttributes({
-          isActive: item.checked,
+          isChecked: item.checked,
           index,
         })}
-        {...styles('tag', { selected: item.checked })}
       >
         {item.title}
       </CoreTag>

@@ -30,9 +30,9 @@
     lightHoverBorderColor: applyOpacity(color("color-5"), 0.6);
     solidHoverBackgroundColor: applyOpacity(color("color-5"), 0.2);
 
-    selectedBackgroundColor: color-8;
-    selectedTextColor: color-1;
-    selectedBorderColor: applyOpacity(color("color-5"), 0.0);
+    checkedBackgroundColor: color-8;
+    checkedTextColor: color-1;
+    checkedBorderColor: applyOpacity(color("color-5"), 0.0);
 }
 
 /*Overrides*/
@@ -49,16 +49,15 @@
     HoverBackgroundColor: --overridable;
     HoverBorderColor: --overridable;
 
-    SelectedTextColor: --overridable;
-    SelectedBackgroundColor: --overridable;
-    SelectedBorderColor: --overridable;
+    CheckedTextColor: --overridable;
+    CheckedBackgroundColor: --overridable;
+    CheckedBorderColor: --overridable;
 }
 
 .root {
     -st-states: alignment(enum(center, left, right)),
                 size(enum(small, medium, large)),
                 skin(enum(light, solid)),
-                mobile,
                 rtl;
     -st-extends: TagsList;
 }
@@ -78,8 +77,6 @@
 }
 
 .tag {
-    -st-states: selected;
-
     padding: 0 value(defaultTagInnerPadding);
     max-width: value(defaultMaxWidth);
     border-style: solid;
@@ -131,9 +128,9 @@
     color: color(fallback(value(HoverTextColor), value(defaultTextColor)));
 }
 
-.root:skin(light) .tag:selected,
-.root:skin(solid) .tag:selected {
-    background-color: color(fallback(value(SelectedBackgroundColor), value(selectedBackgroundColor)));
-    border-color: color(fallback(value(SelectedBorderColor), value(selectedBorderColor)));
-    color: color(fallback(value(SelectedTextColor), value(selectedTextColor)));
+.root:skin(light) .tag.checked,
+.root:skin(solid) .tag.checked {
+    background-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
+    border-color: color(fallback(value(CheckedBorderColor), value(checkedBorderColor)));
+    color: color(fallback(value(CheckedTextColor), value(checkedTextColor)));
 }
