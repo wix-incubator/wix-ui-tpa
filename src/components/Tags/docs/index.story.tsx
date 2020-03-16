@@ -37,7 +37,7 @@ const exampleItems = [
   { label: 'many items', value: items },
 ];
 
-function ExampleTabs(props) {
+function ExampleTags(props) {
   const [rtl, setRtl] = React.useState(false);
   const rootRef = React.useRef<HTMLDivElement>();
 
@@ -73,7 +73,7 @@ function ExampleTabs(props) {
 export default {
   category: 'Components',
   storyName: 'Tags',
-  component: ExampleTabs,
+  component: ExampleTags,
   componentPath: '../Tags.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Tags',
