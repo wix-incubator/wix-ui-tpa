@@ -88,6 +88,10 @@
     transform: rotate(180deg);
 }
 
+.dropdown .dropdownBase::arrowIcon path {
+    fill: currentColor;
+}
+
 .dropdown::popoverContent {
     border-width: 0;
     box-sizing: border-box;
