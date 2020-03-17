@@ -17,12 +17,11 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.tsx';
 import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.st.css';
 
-import { ButtonExtendedExample } from './ButtonExtendedExample';
+import { examples } from './examples';
 import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 
 import { Button, PRIORITY, SIZE } from '..';
-import { Examples } from './examples';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -62,7 +61,7 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Extended Button', source: '<ButtonExtendedExample/>' },
+            { title: 'Extended Button', source: examples },
           ].map(code),
         ],
       }),
