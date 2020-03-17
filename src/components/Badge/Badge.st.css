@@ -48,6 +48,7 @@
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
+    line-height: 18px;
 }
 
 .root:priority(primary) {
