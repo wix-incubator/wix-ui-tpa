@@ -27,7 +27,6 @@ import { Examples } from './examples';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
-
 export default {
   category: 'Components',
   storyName: 'Button',
@@ -45,7 +44,7 @@ export default {
     priority: Object.values(PRIORITY),
     size: Object.values(SIZE),
   },
-  
+
   sections: [
     header(),
     tabs([
@@ -56,9 +55,7 @@ export default {
             '**ATTENTION: The current API for this component will be deprecated on the next major version.<br>' +
               'Please use the new API using the `upgrade` prop.<br>**',
           ),
-          importExample(
-            "import {Button} from 'wix-ui-tpa/Button';",
-          ),
+          importExample("import {Button} from 'wix-ui-tpa/Button';"),
 
           divider(),
 
