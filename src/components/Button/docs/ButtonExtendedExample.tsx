@@ -4,11 +4,12 @@ import extendedStyles from './ButtonExtendedExample.st.css';
 
 export const ButtonExtendedExample: React.FunctionComponent<ButtonProps> = props => (
   <div>
-    <Button {...props} {...extendedStyles('root', {}, props)}>
+    <Button upgrade {...props} {...extendedStyles('root', {}, props)}>
       BASIC
     </Button>
 
     <Button
+      upgrade
       priority={PRIORITY.basicSecondary}
       {...props}
       {...extendedStyles('root', {}, props)}
@@ -17,6 +18,7 @@ export const ButtonExtendedExample: React.FunctionComponent<ButtonProps> = props
     </Button>
 
     <Button
+      upgrade
       priority={PRIORITY.primary}
       {...props}
       {...extendedStyles('root', {}, props)}
@@ -25,6 +27,7 @@ export const ButtonExtendedExample: React.FunctionComponent<ButtonProps> = props
     </Button>
 
     <Button
+      upgrade
       priority={PRIORITY.secondary}
       {...props}
       {...extendedStyles('root', {}, props)}
