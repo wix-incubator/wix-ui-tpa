@@ -32,7 +32,6 @@
 
     checkedBackgroundColor: color-8;
     checkedTextColor: color-1;
-    checkedBorderColor: applyOpacity(color("color-5"), 0.0);
 }
 
 /*Overrides*/
@@ -130,6 +129,6 @@
 .root:skin(light) .tag.checked,
 .root:skin(solid) .tag.checked {
     background-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
-    border-color: color(fallback(value(CheckedBorderColor), value(checkedBorderColor)));
+    border-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
     color: color(fallback(value(CheckedTextColor), value(checkedTextColor)));
 }
