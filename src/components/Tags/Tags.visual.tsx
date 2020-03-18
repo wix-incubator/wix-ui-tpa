@@ -35,22 +35,14 @@ function alignmentTestSuite(alignment?) {
 
     snap('rtl', () => (
       <div dir={'rtl'}>
-        <Tags
-          items={generateItems(FEW_ITEMS_COUNT)}
-          onClick={() => {}}
-          alignment={alignment}
-        />
+        <TPAComponentsProvider value={{ rtl: true }}>
+          <Tags
+            items={generateItems(FEW_ITEMS_COUNT)}
+            onClick={() => {}}
+            alignment={alignment}
+          />
+        </TPAComponentsProvider>
       </div>
-    ));
-
-    snap('RTL', () => (
-      <TPAComponentsProvider value={{ rtl: true }}>
-        <Tags
-          items={generateItems(FEW_ITEMS_COUNT)}
-          onClick={() => {}}
-          alignment={alignment}
-        />
-      </TPAComponentsProvider>
     ));
   });
 }
