@@ -13,9 +13,9 @@ const items = Array(20)
 
 export const TagsWiringExample = props => {
   const [update, forceUpdate] = React.useState(false);
-  const onClick = (item) => {
+  const onClick = item => {
     item.checked = !item.checked;
-    forceUpdate(!update)
+    forceUpdate(!update);
   };
   return (
     <div>

@@ -81,7 +81,6 @@
     max-width: value(defaultMaxWidth);
     border-style: solid;
     margin: value(defaultTagVerticalSpacing) value(defaultTagHorizontalSpacing);
-    transition: all .2s ease-in-out;
     background-clip: padding-box;
 }
 

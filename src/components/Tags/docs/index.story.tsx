@@ -65,11 +65,13 @@ function ExampleTags(props) {
   return (
     <div ref={rootRef}>
       <TPAComponentsProvider value={{ mobile: false, rtl }}>
-        <Tags {...props}
-              onClick={(item) => {
-                item.checked = !item.checked;
-                forceUpdate(!update)
-              }}/>
+        <Tags
+          {...props}
+          onClick={item => {
+            item.checked = !item.checked;
+            forceUpdate(!update);
+          }}
+        />
       </TPAComponentsProvider>
     </div>
   );
