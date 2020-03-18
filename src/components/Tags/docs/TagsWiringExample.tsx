@@ -3,14 +3,20 @@ import { Tags } from '../';
 import extendedStyles from './TagsWiringExample.st.css';
 import { SKIN } from '../constants';
 
+const items = Array(20)
+  .fill('')
+  .map((item, index) => ({
+    title: `Title ${index + 1}`,
+    checked: index % 3 === 0,
+    value: `value ${index + 1}`,
+  }));
+
 export const TagsWiringExample = props => {
-  const items = Array(20)
-    .fill('')
-    .map((item, index) => ({
-      title: `Title ${index + 1}`,
-      checked: index % 3 === 0,
-      value: `value ${index + 1}`,
-    }));
+  const [update, forceUpdate] = React.useState(false);
+  const onClick = (item) => {
+    item.checked = !item.checked;
+    forceUpdate(!update)
+  };
   return (
     <div>
       Solid:
@@ -18,7 +24,7 @@ export const TagsWiringExample = props => {
         key="solid"
         skin={SKIN.solid}
         items={items}
-        onClick={console.log}
+        onClick={onClick}
         {...extendedStyles('solid', {}, props)}
       />
       Light:
@@ -26,7 +32,7 @@ export const TagsWiringExample = props => {
         key="light"
         skin={SKIN.light}
         items={items}
-        onClick={console.log}
+        onClick={onClick}
         {...extendedStyles('light', {}, props)}
       />
     </div>

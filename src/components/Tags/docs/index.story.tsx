@@ -39,6 +39,7 @@ const exampleItems = [
 
 function ExampleTags(props) {
   const [rtl, setRtl] = React.useState(false);
+  const [update, forceUpdate] = React.useState(false);
   const rootRef = React.useRef<HTMLDivElement>();
 
   React.useEffect(() => {
@@ -64,7 +65,11 @@ function ExampleTags(props) {
   return (
     <div ref={rootRef}>
       <TPAComponentsProvider value={{ mobile: false, rtl }}>
-        <Tags {...props} />
+        <Tags {...props}
+              onClick={(item) => {
+                item.checked = !item.checked;
+                forceUpdate(!update)
+              }}/>
       </TPAComponentsProvider>
     </div>
   );
@@ -81,7 +86,6 @@ export default {
     alignment: ALIGNMENT.center,
     size: SIZE.medium,
     skin: SKIN.solid,
-    onClick: item => (item.checked = !item.checked),
   }),
   exampleProps: {
     items: exampleItems,
