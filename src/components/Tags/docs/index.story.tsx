@@ -175,6 +175,7 @@ export default {
                     wixParam: 'borderWidth',
                     defaultNumber: 1,
                     unit: 'px',
+                    max: 10,
                   },
                   {
                     label: 'Border Radius',
