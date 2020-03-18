@@ -112,15 +112,19 @@
     color: color(fallback(value(MainTextColor), value(defaultTextColor)));
 }
 
+.root:skin(light) .tag:focus,
 .root:skin(light) .tag:hover {
     background-color: color(fallback(value(HoverBackgroundColor), value(lightDefaultBackgroundColor)));
     border-color: color(fallback(value(HoverBorderColor), value(lightHoverBorderColor)));
 }
 
+.root:skin(solid) .tag:focus,
 .root:skin(solid) .tag:hover {
     background-color: color(fallback(value(HoverBackgroundColor), value(solidHoverBackgroundColor)));
 }
 
+.root:skin(light) .tag:focus,
+.root:skin(solid) .tag:focus,
 .root:skin(light) .tag:hover,
 .root:skin(solid) .tag:hover {
     color: color(fallback(value(HoverTextColor), value(defaultTextColor)));
