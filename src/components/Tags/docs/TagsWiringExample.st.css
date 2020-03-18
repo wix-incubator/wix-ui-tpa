@@ -13,8 +13,8 @@
             MainBackgroundColor '"--bgColor"',
             HoverTextColor '"--hoverTextColor"',
             HoverBackgroundColor '"--hoverBgColor"',
-            SelectedTextColor '"--selectedTextColor"',
-            SelectedBackgroundColor '"--selectedBgColor"'
+            CheckedTextColor '"--checkedTextColor"',
+            CheckedBackgroundColor '"--checkedBgColor"'
     );
 }
 
@@ -28,8 +28,7 @@
             HoverTextColor '"--hoverTextColor"',
             HoverBackgroundColor '"--hoverBgColor"',
             HoverBorderColor '"--hoverBorderColor"',
-            SelectedTextColor '"--selectedTextColor"',
-            SelectedBackgroundColor '"--selectedBgColor"',
-            SelectedBorderColor '"--selectedBorderColor"'
+            CheckedTextColor '"--checkedTextColor"',
+            CheckedBackgroundColor '"--checkedBgColor"'
     );
 }

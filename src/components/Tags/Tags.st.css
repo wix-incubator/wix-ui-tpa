@@ -80,7 +80,7 @@
     max-width: value(defaultMaxWidth);
     border-style: solid;
     margin: value(defaultTagVerticalSpacing) value(defaultTagHorizontalSpacing);
-    background-clip: padding-box;
+    box-sizing: content-box;
 }
 
 .root:size(small) .tag {

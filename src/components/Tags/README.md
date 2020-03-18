@@ -17,9 +17,8 @@ By default the properties will pull the theme from the site (site colors/fonts),
 | HoverTextColor | string   | Palette color-5 | The color of the tag text on hover instead of the default color |
 | HoverBackgroundColor | string   | Palette color-1 or color-5 with opacity 0.2 | Depends on the skin prop, The color of the tab background on hover instead of the default color |
 | HoverBorderColor | string   | Palette color-5 with opacity 0.6 | Depends on the skin prop, The color of the tab border on hover instead of the default color |
-| SelectedTextColor | string   | Palette color-1 | The color of the tag text on selected instead of the default color |
-| SelectedBackgroundColor | string   | Palette color-8 | The color of the tab background on selected instead of the default color |
-| SelectedBorderColor | string   | Palette color-5 with opacity 0.0 | The color of the tab border on selected instead of the default color |
+| CheckedTextColor | string   | Palette color-1 | The color of the tag text on selected instead of the default color |
+| CheckedBackgroundColor | string   | Palette color-8 | The color of the tab background on selected instead of the default color |
 
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 

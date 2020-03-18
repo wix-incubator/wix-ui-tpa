@@ -160,18 +160,13 @@ export default {
                   },
                   {
                     label: 'Selected Text Color',
-                    wixParam: 'selectedTextColor',
+                    wixParam: 'checkedTextColor',
                     defaultColor: 'color-1',
                   },
                   {
                     label: 'Selected Background Color',
-                    wixParam: 'selectedBgColor',
+                    wixParam: 'checkedBgColor',
                     defaultColor: 'color-8',
-                  },
-                  {
-                    label: 'Selected Border Color',
-                    wixParam: 'selectedBorderColor',
-                    defaultColor: 'color-5',
                   },
                 ],
                 fonts: [],
