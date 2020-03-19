@@ -43,6 +43,8 @@
     MainTextColor: --overridable;
     MainBackgroundColor: --overridable;
     MainBorderColor: --overridable;
+    MainVerticalSpacing: --overridable;
+    MainHorizontalSpacing: --overridable;
 
     HoverTextColor: --overridable;
     HoverBackgroundColor: --overridable;
@@ -79,7 +81,7 @@
     padding: 0 value(defaultTagInnerPadding);
     max-width: value(defaultMaxWidth);
     border-style: solid;
-    margin: value(defaultTagVerticalSpacing) value(defaultTagHorizontalSpacing);
+    margin: fallback(value(MainVerticalSpacing), value(defaultTagVerticalSpacing)) fallback(value(MainHorizontalSpacing), value(defaultTagHorizontalSpacing));
     box-sizing: content-box;
 }
 

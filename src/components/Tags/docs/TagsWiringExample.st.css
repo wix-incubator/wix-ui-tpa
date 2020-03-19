@@ -9,6 +9,8 @@
 .solid {
     -st-mixin: Tags(
             MainBorderRadius '"unit(--borderRadius, px)"',
+            MainVerticalSpacing '"unit(fallback(zeroAsTrue(--verticalSpacing), 4), px)"',
+            MainHorizontalSpacing '"unit(fallback(zeroAsTrue(--horizontalSpacing), 4), px)"',
             MainTextColor '"--textColor"',
             MainBackgroundColor '"--bgColor"',
             HoverTextColor '"--hoverTextColor"',
@@ -22,6 +24,8 @@
     -st-mixin: Tags(
             MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
             MainBorderRadius '"unit(--borderRadius, px)"',
+            MainVerticalSpacing '"unit(fallback(zeroAsTrue(--verticalSpacing), 4), px)"',
+            MainHorizontalSpacing '"unit(fallback(zeroAsTrue(--horizontalSpacing), 4), px)"',
             MainTextColor '"--textColor"',
             MainBackgroundColor '"--bgColor"',
             MainBorderColor '"--borderColor"',

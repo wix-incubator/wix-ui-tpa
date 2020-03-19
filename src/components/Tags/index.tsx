@@ -1,1 +1,1 @@
-export { Tags, TagsProps } from './Tags';
+export { Tags, TagsProps, TagItem } from './Tags';

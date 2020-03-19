@@ -172,6 +172,20 @@ export default {
                 fonts: [],
                 numbers: [
                   {
+                    label: 'Vertical Spacing',
+                    wixParam: 'verticalSpacing',
+                    defaultNumber: 4,
+                    unit: 'px',
+                    max: 30,
+                  },
+                  {
+                    label: 'Horizontal Spacing',
+                    wixParam: 'horizontalSpacing',
+                    defaultNumber: 4,
+                    unit: 'px',
+                    max: 30,
+                  },
+                  {
                     label: 'Border Width',
                     wixParam: 'borderWidth',
                     defaultNumber: 1,
