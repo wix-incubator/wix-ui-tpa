@@ -31,3 +31,4 @@ export { SocialBar } from './SocialBar';
 export { ShareButton } from './ShareButton';
 export { CopyUrlButton } from './CopyUrlButton';
 export { SectionNotification } from './SectionNotification';
+export { Tags } from './Tags';

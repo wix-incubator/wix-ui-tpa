@@ -1,0 +1,34 @@
+:import {
+    -st-from: "../Tags.st.css";
+    -st-default: Tags;
+}
+
+.root {
+}
+
+.solid {
+    -st-mixin: Tags(
+            MainBorderRadius '"unit(--borderRadius, px)"',
+            MainTextColor '"--textColor"',
+            MainBackgroundColor '"--bgColor"',
+            HoverTextColor '"--hoverTextColor"',
+            HoverBackgroundColor '"--hoverBgColor"',
+            CheckedTextColor '"--checkedTextColor"',
+            CheckedBackgroundColor '"--checkedBgColor"'
+    );
+}
+
+.light {
+    -st-mixin: Tags(
+            MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
+            MainBorderRadius '"unit(--borderRadius, px)"',
+            MainTextColor '"--textColor"',
+            MainBackgroundColor '"--bgColor"',
+            MainBorderColor '"--borderColor"',
+            HoverTextColor '"--hoverTextColor"',
+            HoverBackgroundColor '"--hoverBgColor"',
+            HoverBorderColor '"--hoverBorderColor"',
+            CheckedTextColor '"--checkedTextColor"',
+            CheckedBackgroundColor '"--checkedBgColor"'
+    );
+}

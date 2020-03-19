@@ -1,0 +1,138 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, font, fallback;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: TagsList, Tag;
+}
+
+/*Defaults*/
+:vars {
+    /*Defaults params goes here*/
+    defaultTagInnerPadding: 12px;
+    defaultMaxWidth: 220px;
+    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '24px'}";
+    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '32px'}";
+    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '36px'}";
+    defaultTagVerticalSpacing: 4px;
+    defaultTagHorizontalSpacing: 4px;
+
+    defaultBorderRadius: 0px;
+    defaultTextColor: color-5;
+
+    lightBorderWidth: 1px;
+    lightDefaultBackgroundColor: color-1;
+    lightDefaultBorderColor: applyOpacity(color("color-5"), 0.2);
+    solidDefaultBackgroundColor: applyOpacity(color("color-5"), 0.1);
+
+    lightHoverBorderColor: applyOpacity(color("color-5"), 0.6);
+    solidHoverBackgroundColor: applyOpacity(color("color-5"), 0.2);
+
+    checkedBackgroundColor: color-8;
+    checkedTextColor: color-1;
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+    MainTextFont: --overridable;
+    MainBorderWidth: --overridable;
+    MainBorderRadius: --overridable;
+    MainTextColor: --overridable;
+    MainBackgroundColor: --overridable;
+    MainBorderColor: --overridable;
+
+    HoverTextColor: --overridable;
+    HoverBackgroundColor: --overridable;
+    HoverBorderColor: --overridable;
+
+    CheckedTextColor: --overridable;
+    CheckedBackgroundColor: --overridable;
+    CheckedBorderColor: --overridable;
+}
+
+.root {
+    -st-states: alignment(enum(center, left, right)),
+                size(enum(small, medium, large)),
+                skin(enum(light, solid)),
+                rtl;
+    -st-extends: TagsList;
+}
+
+.root:alignment(center) {
+    justify-content: center;
+}
+
+.root:alignment(right):rtl,
+.root:alignment(left) {
+    justify-content: flex-start;
+}
+
+.root:alignment(left):rtl,
+.root:alignment(right) {
+    justify-content: flex-end;
+}
+
+.tag {
+    padding: 0 value(defaultTagInnerPadding);
+    max-width: value(defaultMaxWidth);
+    border-style: solid;
+    margin: value(defaultTagVerticalSpacing) value(defaultTagHorizontalSpacing);
+    box-sizing: content-box;
+}
+
+.root:size(small) .tag {
+    font: fallback(font(value(MainTextFont)), font(value(defaultSmallFont)));
+}
+
+.root:size(medium) .tag {
+    font: fallback(font(value(MainTextFont)), font(value(defaultMediumFont)));
+}
+
+.root:size(large) .tag {
+    font: fallback(font(value(MainTextFont)), font(value(defaultLargeFont)));
+}
+
+.root:skin(light) .tag {
+    background-color: color(fallback(value(MainBackgroundColor), value(lightDefaultBackgroundColor)));
+    border-color: color(fallback(value(MainBorderColor), value(lightDefaultBorderColor)));
+    border-width: fallback(value(MainBorderWidth), value(lightBorderWidth));
+}
+
+.root:skin(solid) .tag {
+    background-color: color(fallback(value(MainBackgroundColor), value(solidDefaultBackgroundColor)));
+    border: none;
+}
+
+.root:skin(light) .tag,
+.root:skin(solid) .tag {
+    border-radius: fallback(value(MainBorderRadius), value(defaultBorderRadius));
+    color: color(fallback(value(MainTextColor), value(defaultTextColor)));
+}
+
+.root:skin(light) .tag:focus,
+.root:skin(light) .tag:hover {
+    background-color: color(fallback(value(HoverBackgroundColor), value(lightDefaultBackgroundColor)));
+    border-color: color(fallback(value(HoverBorderColor), value(lightHoverBorderColor)));
+}
+
+.root:skin(solid) .tag:focus,
+.root:skin(solid) .tag:hover {
+    background-color: color(fallback(value(HoverBackgroundColor), value(solidHoverBackgroundColor)));
+}
+
+.root:skin(light) .tag:focus,
+.root:skin(solid) .tag:focus,
+.root:skin(light) .tag:hover,
+.root:skin(solid) .tag:hover {
+    color: color(fallback(value(HoverTextColor), value(defaultTextColor)));
+}
+
+.root:skin(light) .tag.checked,
+.root:skin(solid) .tag.checked {
+    background-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
+    border-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
+    color: color(fallback(value(CheckedTextColor), value(checkedTextColor)));
+}
