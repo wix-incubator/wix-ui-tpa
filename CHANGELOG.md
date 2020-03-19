@@ -1,3 +1,17 @@
+# [1.9.0](https://github.com/wix/wix-ui-tpa/compare/v1.8.7...v1.9.0) (2020-03-19)
+
+
+### Bug Fixes
+
+* Dropdown arrow SVG to receive `currentColor` ([2c2983f](https://github.com/wix/wix-ui-tpa/commit/2c2983fca6bb45e596686822c9de31f3413e01fd))
+
+
+### Features
+
+* Tags component ([2628bd8](https://github.com/wix/wix-ui-tpa/commit/2628bd80495a3870744c42003429aae0c110fc4f))
+
+
+
 ## [1.8.7](https://github.com/wix/wix-ui-tpa/compare/v1.8.6...v1.8.7) (2020-03-10)
 
 
