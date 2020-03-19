@@ -10,6 +10,8 @@ By default the properties will pull the theme from the site (site colors/fonts),
 |------------|----------|--------------|-------------|
 | MainTextFont  | string   | Palette Body-M | Font size depends on the size prop, The font of the tag text instead of the default font |
 | MainBorderWidth  | string   | 1px or 0px | Depends on the skin prop, The border width of the tag component instead of the default width |
+| MainVerticalSpacing  | string   | 4px | The vertical spacing between tags component instead of the default spacing |
+| MainHorizontalSpacing  | string   | 4px | The horizontal spacing between tags component instead of the default spacing |
 | MainBorderRadius  | string   | 0px | The border radius of the tag component instead of the default radius |
 | MainTextColor | string   | Palette color-5 | The color of the tag text instead of the default color |
 | MainBackgroundColor | string   | Palette color-1 or color-5 with opacity 0.1 | Depends on the skin prop, The color of the tab background instead of the default color |
