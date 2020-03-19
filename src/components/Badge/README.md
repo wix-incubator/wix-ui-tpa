@@ -13,6 +13,6 @@ The Badge TPA implementation provides a few default overridable styles. By defau
 ## Default theme properties by badge type
 |Badge  |BadgeBgColor|BadgeBorderColor|BadgeTextColor|
 |-------|------------|----------------|--------------|
-|Default|color-5(40%)|-               |color-1       |
-|Light  |color-1     |color-5(15%)    |color-5       |
+|Default|color-5(10%)|-               |color-5       |
+|Light  |color-1     |color-5(10%)    |color-5       |
 |Primary|color-8     |-               |color-1       |
