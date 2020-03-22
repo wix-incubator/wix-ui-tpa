@@ -60,9 +60,7 @@ export default {
 
           title('Examples'),
 
-          ...[
-            { title: 'Extended Button', source: examples },
-          ].map(code),
+          ...[{ title: 'Extended Button', source: examples }].map(code),
         ],
       }),
 
