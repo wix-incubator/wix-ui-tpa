@@ -35,7 +35,6 @@ export interface IWixFontParam {
   wixParam: string;
   defaultFont: string;
   size?: number;
-  lineHeight?: number;
 }
 
 export interface IWixColorParam {
