@@ -30,11 +30,7 @@ interface DefaultProps {
   animation: boolean;
 }
 
-interface State {
-  animated: boolean;
-}
-
-export class IconToggle extends React.Component<IconToggleProps, State> {
+export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {
     label: '',
@@ -42,10 +38,6 @@ export class IconToggle extends React.Component<IconToggleProps, State> {
     checked: false,
     disabled: false,
     animation: false,
-  };
-
-  _handleHoverOff = () => {
-    this.state.animated && this.setState({ animated: false });
   };
 
   _getContent = () => {
@@ -66,7 +58,7 @@ export class IconToggle extends React.Component<IconToggleProps, State> {
     const content = this._getContent();
     
     return (
-      <span {...styles('root', { checked, disabled, labelPlacement, animation }, rest)} onMouseLeave={this._handleHoverOff}>
+      <span {...styles('root', { checked, disabled, labelPlacement, animation }, rest)}>
         <CoreCheckbox
           uncheckedIcon={content}
           checkedIcon={content}
