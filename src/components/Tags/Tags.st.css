@@ -12,11 +12,10 @@
 :vars {
     /*Defaults params goes here*/
     defaultTagInnerPadding: 12px;
-    defaultMaxBorderWidth: 10px;
     defaultMaxWidth: 220px;
-    defaultSmallFont: "{theme: 'Body-M', size: '12px'}";
-    defaultMediumFont: "{theme: 'Body-M', size: '14px'}";
-    defaultLargeFont: "{theme: 'Body-M', size: '16px'}";
+    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '24px'}";
+    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '32px'}";
+    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '36px'}";
     defaultTagVerticalSpacing: 4px;
     defaultTagHorizontalSpacing: 4px;
 
