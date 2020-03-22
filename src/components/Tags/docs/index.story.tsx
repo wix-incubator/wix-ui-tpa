@@ -169,7 +169,14 @@ export default {
                     defaultColor: 'color-8',
                   },
                 ],
-                fonts: [],
+                fonts: [
+                  {
+                    label: 'Font',
+                    wixParam: 'textFont',
+                    defaultFont: 'arial',
+                    size: 16,
+                  },
+                ],
                 numbers: [
                   {
                     label: 'Vertical Spacing',
