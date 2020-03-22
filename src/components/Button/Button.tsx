@@ -44,13 +44,20 @@ class ButtonComponent extends React.Component<ButtonProps> {
     const { fullWidth } = this.props;
 
     return {
-      ['data-fullWidth']: fullWidth,
+      ['data-fullwidth']: fullWidth,
       ['data-mobile']: mobile,
     };
   }
 
   render() {
-    const { priority, size, fullWidth, innerRef, upgrade, ...rest } = this.props;
+    const {
+      priority,
+      size,
+      fullWidth,
+      innerRef,
+      upgrade,
+      ...rest
+    } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
@@ -58,7 +65,11 @@ class ButtonComponent extends React.Component<ButtonProps> {
             {...this._getDataAttributes(mobile)}
             ref={innerRef}
             {...rest}
-            {...style('root', { priority, size, fullWidth, mobile, upgrade }, rest)}
+            {...style(
+              'root',
+              { priority, size, fullWidth, mobile, upgrade },
+              rest,
+            )}
           />
         )}
       </TPAComponentsConsumer>
