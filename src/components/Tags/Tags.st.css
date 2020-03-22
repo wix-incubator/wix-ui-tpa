@@ -12,6 +12,7 @@
 :vars {
     /*Defaults params goes here*/
     defaultTagInnerPadding: 12px;
+    defaultMaxBorderWidth: 10px;
     defaultMaxWidth: 220px;
     defaultSmallFont: "{theme: 'Body-M', size: '12px'}";
     defaultMediumFont: "{theme: 'Body-M', size: '14px'}";
@@ -83,7 +84,7 @@
     margin: fallback(value(MainVerticalSpacing), value(defaultTagVerticalSpacing)) fallback(value(MainHorizontalSpacing), value(defaultTagHorizontalSpacing));
     display: flex;
     align-items: center;
-    box-sizing: border-box;
+    box-sizing: content-box;
 }
 
 .root:size(small) .tag {
