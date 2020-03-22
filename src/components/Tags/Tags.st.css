@@ -88,17 +88,14 @@
 
 .root:size(small) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultSmallFont)));
-    min-height: 24px;
 }
 
 .root:size(medium) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultMediumFont)));
-    min-height: 32px;
 }
 
 .root:size(large) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultLargeFont)));
-    min-height: 36px;
 }
 
 .root:skin(light) .tag {
