@@ -1,5 +1,4 @@
-export const examples = 
-`<div style={{display: 'flex'}}>
+export const examples = `<div style={{display: 'flex'}}>
     <Button upgrade >
       BASIC
     </Button>
@@ -27,5 +26,4 @@ export const examples =
     >
       SECONDARY
     </Button>
-</div>`
-
+</div>`;
