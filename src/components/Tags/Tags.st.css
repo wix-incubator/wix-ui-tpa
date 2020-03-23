@@ -89,17 +89,17 @@
 
 .root:size(small) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultSmallFont)));
-    padding:  value(defaultSmallTagInnerPadding) value(defaultTagInnerSidePadding);
+    padding: value(defaultSmallTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:size(medium) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultMediumFont)));
-    padding:  value(defaultMediumTagInnerPadding) value(defaultTagInnerSidePadding);
+    padding: value(defaultMediumTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:size(large) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultLargeFont)));
-    padding:  value(defaultLargeTagInnerPadding) value(defaultTagInnerSidePadding);
+    padding: value(defaultLargeTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:skin(light) .tag {
