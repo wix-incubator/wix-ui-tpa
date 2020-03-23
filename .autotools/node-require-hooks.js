@@ -1,6 +1,6 @@
 const { resolveNamespaceFactory } = require('@stylable/node');
 const project = require('yoshi-config');
-require('yoshi-common/build/require-hooks').setupRequireHooks();
+require('yoshi-helpers/require-hooks').setupRequireHooks();
 require('@stylable/node').attachHook({
   stylableConfig: {
     resolveNamespace: resolveNamespaceFactory(project.name),
