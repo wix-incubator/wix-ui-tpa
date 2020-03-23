@@ -11,11 +11,14 @@
 /*Defaults*/
 :vars {
     /*Defaults params goes here*/
-    defaultTagInnerPadding: 12px;
+    defaultTagInnerSidePadding: 12px;
+    defaultSmallTagInnerPadding: 4px;
+    defaultMediumTagInnerPadding: 6px;
+    defaultLargeTagInnerPadding: 7px;
     defaultMaxWidth: 220px;
-    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '24px'}";
-    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '32px'}";
-    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '36px'}";
+    defaultSmallFont: "{theme: 'Body-M', size: '12px'}";
+    defaultMediumFont: "{theme: 'Body-M', size: '14px'}";
+    defaultLargeFont: "{theme: 'Body-M', size: '16px'}";
     defaultTagVerticalSpacing: 4px;
     defaultTagHorizontalSpacing: 4px;
 
@@ -78,42 +81,31 @@
 }
 
 .tag {
-    padding: 0 value(defaultTagInnerPadding);
     max-width: value(defaultMaxWidth);
     margin: fallback(value(MainVerticalSpacing), value(defaultTagVerticalSpacing)) fallback(value(MainHorizontalSpacing), value(defaultTagHorizontalSpacing));
-    display: flex;
-    align-items: center;
+    border-style: solid;
     box-sizing: content-box;
 }
 
 .root:size(small) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultSmallFont)));
+    padding:  value(defaultSmallTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:size(medium) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultMediumFont)));
+    padding:  value(defaultMediumTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:size(large) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultLargeFont)));
+    padding:  value(defaultLargeTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:skin(light) .tag {
     background-color: color(fallback(value(MainBackgroundColor), value(lightDefaultBackgroundColor)));
-    position: relative;
-}
-
-.root:skin(light) .tag:not(.checked):after {
     border-color: color(fallback(value(MainBorderColor), value(lightDefaultBorderColor)));
     border-width: fallback(value(MainBorderWidth), value(lightBorderWidth));
-    border-radius: fallback(value(MainBorderRadius), value(defaultBorderRadius));
-    border-style: solid;
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 }
 
 .root:skin(solid) .tag {
@@ -127,14 +119,10 @@
     color: color(fallback(value(MainTextColor), value(defaultTextColor)));
 }
 
-.root:skin(light) .tag:focus:after,
-.root:skin(light) .tag:hover:after {
-    border-color: color(fallback(value(HoverBorderColor), value(lightHoverBorderColor)));
-}
-
 .root:skin(light) .tag:focus,
 .root:skin(light) .tag:hover {
     background-color: color(fallback(value(HoverBackgroundColor), value(lightDefaultBackgroundColor)));
+    border-color: color(fallback(value(HoverBorderColor), value(lightHoverBorderColor)));
 }
 
 .root:skin(solid) .tag:focus,
@@ -152,6 +140,6 @@
 .root:skin(light) .tag.checked,
 .root:skin(solid) .tag.checked {
     background-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
-    border-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
+    border-color: color(fallback(value(CheckedBorderColor), value(checkedBackgroundColor)));
     color: color(fallback(value(CheckedTextColor), value(checkedTextColor)));
 }

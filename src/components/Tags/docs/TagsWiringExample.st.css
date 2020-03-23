@@ -16,7 +16,7 @@
             HoverTextColor '"--hoverTextColor"',
             HoverBackgroundColor '"--hoverBgColor"',
             CheckedTextColor '"--checkedTextColor"',
-            CheckedBackgroundColor '"--checkedBgColor"'
+            CheckedBackgroundColor '"--checkedBgColor"',
             MainTextFont '"--textFont"'
     );
 }
