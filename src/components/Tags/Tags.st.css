@@ -14,11 +14,11 @@
     defaultTagInnerSidePadding: 12px;
     defaultSmallTagInnerPadding: 4px;
     defaultMediumTagInnerPadding: 6px;
-    defaultLargeTagInnerPadding: 7px;
+    defaultLargeTagInnerPadding: 6px;
     defaultMaxWidth: 220px;
-    defaultSmallFont: "{theme: 'Body-M', size: '12px'}";
-    defaultMediumFont: "{theme: 'Body-M', size: '14px'}";
-    defaultLargeFont: "{theme: 'Body-M', size: '16px'}";
+    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
     defaultTagVerticalSpacing: 4px;
     defaultTagHorizontalSpacing: 4px;
 
