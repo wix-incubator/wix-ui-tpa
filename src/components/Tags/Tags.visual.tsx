@@ -65,7 +65,7 @@ function skinTestSuite(skin?) {
       <Tags
         items={generateItems(FEW_ITEMS_COUNT)}
         onClick={() => {}}
-        size={skin}
+        skin={skin}
       />
     ));
   });

@@ -11,11 +11,14 @@
 /*Defaults*/
 :vars {
     /*Defaults params goes here*/
-    defaultTagInnerPadding: 12px;
+    defaultTagInnerSidePadding: 12px;
+    defaultSmallTagInnerPadding: 4px;
+    defaultMediumTagInnerPadding: 6px;
+    defaultLargeTagInnerPadding: 6px;
     defaultMaxWidth: 220px;
-    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '24px'}";
-    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '32px'}";
-    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '36px'}";
+    defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+    defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
     defaultTagVerticalSpacing: 4px;
     defaultTagHorizontalSpacing: 4px;
 
@@ -43,6 +46,8 @@
     MainTextColor: --overridable;
     MainBackgroundColor: --overridable;
     MainBorderColor: --overridable;
+    MainVerticalSpacing: --overridable;
+    MainHorizontalSpacing: --overridable;
 
     HoverTextColor: --overridable;
     HoverBackgroundColor: --overridable;
@@ -76,23 +81,25 @@
 }
 
 .tag {
-    padding: 0 value(defaultTagInnerPadding);
     max-width: value(defaultMaxWidth);
+    margin: fallback(value(MainVerticalSpacing), value(defaultTagVerticalSpacing)) fallback(value(MainHorizontalSpacing), value(defaultTagHorizontalSpacing));
     border-style: solid;
-    margin: value(defaultTagVerticalSpacing) value(defaultTagHorizontalSpacing);
     box-sizing: content-box;
 }
 
 .root:size(small) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultSmallFont)));
+    padding: value(defaultSmallTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:size(medium) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultMediumFont)));
+    padding: value(defaultMediumTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:size(large) .tag {
     font: fallback(font(value(MainTextFont)), font(value(defaultLargeFont)));
+    padding: value(defaultLargeTagInnerPadding) value(defaultTagInnerSidePadding);
 }
 
 .root:skin(light) .tag {
@@ -133,6 +140,6 @@
 .root:skin(light) .tag.checked,
 .root:skin(solid) .tag.checked {
     background-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
-    border-color: color(fallback(value(CheckedBackgroundColor), value(checkedBackgroundColor)));
+    border-color: color(fallback(value(CheckedBorderColor), value(checkedBackgroundColor)));
     color: color(fallback(value(CheckedTextColor), value(checkedTextColor)));
 }

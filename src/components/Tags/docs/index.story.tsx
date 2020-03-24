@@ -169,8 +169,29 @@ export default {
                     defaultColor: 'color-8',
                   },
                 ],
-                fonts: [],
+                fonts: [
+                  {
+                    label: 'Font',
+                    wixParam: 'textFont',
+                    defaultFont: 'arial',
+                    size: 16,
+                  },
+                ],
                 numbers: [
+                  {
+                    label: 'Vertical Spacing',
+                    wixParam: 'verticalSpacing',
+                    defaultNumber: 4,
+                    unit: 'px',
+                    max: 20,
+                  },
+                  {
+                    label: 'Horizontal Spacing',
+                    wixParam: 'horizontalSpacing',
+                    defaultNumber: 4,
+                    unit: 'px',
+                    max: 20,
+                  },
                   {
                     label: 'Border Width',
                     wixParam: 'borderWidth',

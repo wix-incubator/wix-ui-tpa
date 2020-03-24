@@ -6,7 +6,7 @@ import styles from './Tags.st.css';
 import * as classNames from 'classnames';
 import { TAGS_DATA_KEYS } from './dataHooks';
 
-interface TagItem {
+export interface TagItem {
   title: string;
   checked?: boolean;
   disabled?: boolean;

@@ -34,6 +34,7 @@ export interface IWixFontParam {
   label: string;
   wixParam: string;
   defaultFont: string;
+  size?: number;
 }
 
 export interface IWixColorParam {
@@ -256,14 +257,15 @@ export class MockSettings extends React.PureComponent<
           const font = this.getFontByFontFamily(
             this.state.selectedFont[item.wixParam].value,
           );
+          const size = item.size || 30;
           obj[item.wixParam] = {
             cssFontFamily: font.cssFontFamily,
             family: font.fontFamily,
             fontParam: true,
             index: font.spriteIndex,
-            size: 30,
+            size,
             style: { bold: false, italic: false, underline: false },
-            value: `font:normal normal normal 30px/1.4em ${font.cssFontFamily};`,
+            value: `font:normal normal normal ${size}px/1.4em ${font.cssFontFamily};`,
           };
           return obj;
         },
