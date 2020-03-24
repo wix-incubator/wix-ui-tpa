@@ -23,7 +23,7 @@ export interface CounterProps extends TPAComponentProps {
   error?: boolean;
   disabled?: boolean;
   errorMessage?: string;
-  inputType: 'number' | 'text';
+  inputType?: 'number' | 'text';
 }
 
 interface DefaultProps {
