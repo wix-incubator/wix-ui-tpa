@@ -183,14 +183,14 @@ export default {
                     wixParam: 'verticalSpacing',
                     defaultNumber: 4,
                     unit: 'px',
-                    max: 30,
+                    max: 20,
                   },
                   {
                     label: 'Horizontal Spacing',
                     wixParam: 'horizontalSpacing',
                     defaultNumber: 4,
                     unit: 'px',
-                    max: 30,
+                    max: 20,
                   },
                   {
                     label: 'Border Width',
