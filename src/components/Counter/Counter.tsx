@@ -23,11 +23,13 @@ export interface CounterProps extends TPAComponentProps {
   error?: boolean;
   disabled?: boolean;
   errorMessage?: string;
+  inputType: 'number' | 'text';
 }
 
 interface DefaultProps {
   step: number;
   value: number;
+  inputType: 'number' | 'text';
 }
 
 /** Counter */
@@ -36,6 +38,7 @@ export class Counter extends React.Component<CounterProps> {
   static defaultProps: DefaultProps = {
     step: 1,
     value: 0,
+    inputType: 'number',
   };
 
   _onDecrement = () => {
@@ -64,6 +67,7 @@ export class Counter extends React.Component<CounterProps> {
       incrementAriaLabel,
       decrementAriaLabel,
       inputAriaLabel,
+      inputType,
       min,
       max,
       step,
@@ -107,9 +111,8 @@ export class Counter extends React.Component<CounterProps> {
         <div className={style.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
-            onChange={ev => onChange(ev.target.value.replace(/\D/g, ''))}
-            type="text"
-            pattern="[0-9]"
+            onChange={ev => onChange(ev.target.value)}
+            type={inputType}
             disabled={disabled}
             min={min}
             max={max}

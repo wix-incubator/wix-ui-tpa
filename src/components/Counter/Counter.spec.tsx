@@ -144,23 +144,6 @@ describe('Counter', () => {
     expect(onChange).toHaveBeenCalledWith('10');
   });
 
-  it('should sanitize a typed input', async () => {
-    const onChange = jest.fn();
-    const driver = createDriver(
-      <Counter
-        inputAriaLabel={'amount'}
-        incrementAriaLabel={'increment'}
-        decrementAriaLabel={'decrement'}
-        onChange={onChange}
-        step={1}
-        value={0}
-      />,
-    );
-
-    await driver.enterValue('10.');
-    expect(onChange).toHaveBeenCalledWith('10');
-  });
-
   it('should have default role attribute and aria-labelledby attribute', async () => {
     const value = 10;
     const counterAriaLabelledBy = 'labelled by testy test';
