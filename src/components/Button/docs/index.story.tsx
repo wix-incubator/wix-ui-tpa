@@ -83,6 +83,7 @@ export default {
                     wixParam: 'borderWidth',
                     defaultNumber: 0,
                     unit: 'px',
+                    max: 10,
                   },
                   {
                     label: 'Border Radius',
