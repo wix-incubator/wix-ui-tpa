@@ -7,6 +7,7 @@ import {
   TPAComponentsConsumer,
 } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
+import { deprecationLog } from '../../common/deprecationLog';
 
 export enum PRIORITY {
   basic = 'basic',
@@ -40,12 +41,20 @@ class ButtonComponent extends React.Component<ButtonProps> {
     upgrade: false,
   };
 
+  componentDidMount(): void {
+    if (!this.props.upgrade) {
+      deprecationLog(
+        'The current `Button` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
+      );
+    }
+  }
+
   _getDataAttributes(mobile) {
     const { fullWidth } = this.props;
 
     return {
-      ['data-fullwidth']: fullWidth,
-      ['data-mobile']: mobile,
+      'data-fullwidth': fullWidth,
+      'data-mobile': mobile,
     };
   }
 

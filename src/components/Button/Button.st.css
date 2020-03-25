@@ -17,11 +17,11 @@
     DisabledColor: color-3;
     BorderWidth: 1;
     BorderRadius: 0;
-    TinyFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.43em'}";
-    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-    LargeFont: "{theme: 'Body-M', size: '20px', lineHeight: '1.5em'}";
-    MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
+    TinyFont: "{theme: 'Body-M', size: '14px', lineHeight: '1'}";
+    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1'}";
+    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1'}";
+    LargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '1'}";
+    MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1'}";
 }
 
 :vars {
@@ -157,37 +157,57 @@
     border-color: color(value(DisabledColor));
 }
 
+:vars {
+    mobileFont: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)))
+}
+
+.root:mobile{
+    font: value(mobileFont);
+    line-height: 1;
+}
+
 /*Tiny*/
 
 .root:size(tiny) {
-    padding: 6px 16px;
+    padding: 9px 16px;
     font: fallback(font(value(MainTextFont)), font(value(TinyFont)));
+    line-height: 1;
 }
 
 /*Small*/
 
 .root:size(small) {
-    padding: 7px 16px;
+    padding: 10px 16px;
     font: fallback(font(value(MainTextFont)), font(value(SmallFont)));
+    line-height: 1;
+}
+
+.root:mobile:size(small) {
+    padding: 11px 16px;
 }
 
 /*Medium*/
 
 .root:size(medium) {
-    padding: 8px 16px;
+    padding: 12px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
+    line-height: 1;
 }
 
 .root:mobile:size(medium) {
-    padding: 10px 16px;
-    font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
+    padding: 13px 16px;
 }
 
 /*Large*/
 
 .root:size(large) {
-    padding: 10px 16px;
+    padding: 16px;
     font: fallback(font(value(MainTextFont)), font(value(LargeFont)));
+    line-height: 1;
+}
+
+.root:mobile:size(large) {
+    padding: 17px 16px;
 }
 
 :vars{
@@ -201,36 +221,63 @@
 
 /*upgrade tiny*/
 .root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny){
-    padding: calculate(string(-), 6px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+    padding: calculate(string(-), 9px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
-    padding: calculate(string(-), 6px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
+    padding: calculate(string(-), 9px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
 }
 
 /*upgrade small*/
 .root:upgrade:priority(secondary):size(small), .root:upgrade:priority(basicSecondary):size(small){
-    padding: calculate(string(-), 7px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+    padding: calculate(string(-), 10px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
-    padding: calculate(string(-), 7px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
+    padding: calculate(string(-), 10px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
+}
+/*upgrade small mobile*/
+
+.root:upgrade:priority(secondary):size(small):mobile, .root:upgrade:priority(basicSecondary):size(small):mobile{
+    padding: calculate(string(-), 11px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+}
+
+.root:priority(primary):upgrade:size(small):mobile, .root:priority(basic):upgrade:size(small):mobile{
+    padding: calculate(string(-), 11px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
 }
 
 /*upgrade medium*/
 .root:upgrade:priority(secondary):size(medium), .root:upgrade:priority(basicSecondary):size(medium){
-    padding: calculate(string(-), 8px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+    padding: calculate(string(-), 12px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(medium), .root:priority(basic):upgrade:size(medium){
-    padding: calculate(string(-), 8px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
+    padding: calculate(string(-), 12px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
+}
+
+/*upgrade medium mobile*/
+.root:upgrade:priority(secondary):size(medium):mobile, .root:upgrade:priority(basicSecondary):size(medium):mobile{
+    padding: calculate(string(-), 13px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+}
+
+.root:priority(primary):upgrade:size(medium):mobile, .root:priority(basic):upgrade:size(medium):mobile{
+    padding: calculate(string(-), 13px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
 }
 
 /*upgrade large*/
 .root:size(large):upgrade:priority(secondary), .root:size(large):upgrade:priority(basicSecondary){
-    padding: calculate(string(-), 10px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+    padding: calculate(string(-), 16px, value(secondaryBorderWidth));
 }
 
 .root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
-    padding: calculate(string(-), 10px, value(PrimaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
+    padding: calculate(string(-), 16px, value(PrimaryBorderWidth));
+}
+
+/*upgrade large mobile*/
+.root:size(large):upgrade:priority(secondary):mobile, .root:size(large):upgrade:priority(basicSecondary):mobile{
+    padding: calculate(string(-), 17px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));
+}
+
+.root:priority(primary):upgrade:size(large):mobile, .root:priority(basic):upgrade:size(large):mobile{
+    padding: calculate(string(-), 17px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(PrimaryBorderWidth));
 }
