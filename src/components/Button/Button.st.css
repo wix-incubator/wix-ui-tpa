@@ -219,6 +219,10 @@
     box-sizing: border-box;
 }
 
+.root:upgrade::content{
+    overflow: unset;
+}
+
 /*upgrade tiny*/
 .root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny){
     padding: calculate(string(-), 9px, value(secondaryBorderWidth)) calculate(string(-), 16px, value(secondaryBorderWidth));

@@ -25,18 +25,24 @@ function upgradeTestSuite() {
   story(`Upgrade`, () => {
     story(`Size`, () => {
       Object.values(SIZE).forEach(size => {
-        snap(`${size}`, () => <Button upgrade size={size}>{size}</Button>);
+        snap(`${size}`, () => (
+          <Button upgrade size={size}>
+            {size}
+          </Button>
+        ));
       });
     });
     story(`Priority`, () => {
       Object.values(PRIORITY).forEach(priority => {
         snap(`${priority}`, () => (
-          <Button upgrade priority={priority}>{priority}</Button>
+          <Button upgrade priority={priority}>
+            {priority}
+          </Button>
         ));
       });
     });
-  }
-)};
+  });
+}
 
 visualize('Button', () => {
   priorityTestSuite();
