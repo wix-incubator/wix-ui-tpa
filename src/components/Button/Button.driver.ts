@@ -14,11 +14,11 @@ export const buttonDriverFactory = (base: UniDriver): ButtonDriver => {
     ...buttonNextDriverFactory(base),
     isFullWidth: async () => {
       const attr = await base.attr('data-fullwidth');
-      return attr === 'true' ? true : false;
+      return attr === 'true';
     },
     isMobile: async () => {
       const attr = await base.attr('data-mobile');
-      return attr === 'true' ? true : false;
+      return attr === 'true';
     },
   };
 };
