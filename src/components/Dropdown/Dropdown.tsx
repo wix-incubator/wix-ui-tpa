@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import {
+  TPAComponentsConsumer,
+  TPAComponentsContext,
+} from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
 import { DropdownBase } from './DropdownBase';
@@ -31,6 +34,7 @@ export interface DropdownProps {
   'aria-labelledby'?: string;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
+  shouldRenderNativeSelectOnMobile?: boolean;
   upgrade?: boolean;
 }
 
@@ -38,6 +42,7 @@ interface DefaultProps {
   placeholder: string;
   options: DropdownOptionProps[];
   placement: Placement;
+  shouldRenderNativeOnMobile: boolean;
   upgrade: boolean;
 }
 
@@ -51,11 +56,13 @@ interface State {
  * */
 export class Dropdown extends React.Component<DropdownProps, State> {
   static displayName = 'Dropdown';
+  static contextType = TPAComponentsContext;
   static defaultProps: DefaultProps = {
     placeholder: '',
     options: [],
     placement: 'bottom',
     upgrade: false,
+    shouldRenderNativeOnMobile: false,
   };
   constructor(props) {
     super(props);
@@ -88,16 +95,116 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     selectedOption: null,
   };
 
-  onSelect = (selectedOption: DropdownOptionProps) => {
+  private isNativeSelect() {
+    const { mobile: isMobile } = this.context;
+    return this.props.shouldRenderNativeSelectOnMobile && isMobile;
+  }
+
+  private getOptionData(
+    selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
+  ) {
+    if (this.isNativeSelect()) {
+      const index = (selectedOption as React.FormEvent<HTMLSelectElement>)
+        .currentTarget.value;
+      return this.props.options[index];
+    }
+    return selectedOption;
+  }
+
+  private readonly onSelect = (
+    selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
+  ) => {
     if (!selectedOption) {
       return;
     }
-    this.setState({ selectedOption });
-    if (this.props.onChange) {
-      this.props.onChange(
-        this.props.options.find(({ id }) => selectedOption.id === id),
-      );
+
+    const { onChange, options } = this.props;
+    const selectedOptionData = this.getOptionData(selectedOption);
+    this.setState({ selectedOption: selectedOptionData });
+    if (onChange) {
+      onChange(options.find(({ id }) => selectedOptionData.id === id));
     }
+  };
+
+  private readonly renderNativeSelect = () => {
+    const {
+      options,
+      placeholder,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
+    } = this.props;
+    return (
+      <select
+        data-hook="native-select"
+        className={styles.dropdownBase}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+      >
+        <option value="-1" disabled>
+          {placeholder}
+        </option>
+        {options.map((option, i) => (
+          <option key={i} value={i} disabled={option.isSelectable}>
+            {option.value}
+          </option>
+        ))}
+      </select>
+    );
+  };
+
+  private readonly renderCoreDropdown = () => {
+    const {
+      placeholder,
+      disabled,
+      error,
+      errorMessage,
+      options,
+      alignment,
+      upgrade,
+      forceContentElementVisibility,
+      placement,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
+    } = this.props;
+
+    const { mobile: isMobile } = this.context;
+    const { selectedOption } = this.state;
+
+    const coreOptions = options.map(option => ({
+      ...option,
+      render: () => <DropdownOption {...option} />,
+    }));
+
+    return (
+      <CoreDropdown
+        className={styles.dropdown}
+        placement={placement}
+        data-hook={DATA_HOOKS.coreDropdown}
+        data-mobile={isMobile}
+        openTrigger={disabled ? 'none' : 'click'}
+        options={coreOptions}
+        onDeselect={this.onSelect}
+        onSelect={this.onSelect}
+        initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+        forceContentElementVisibility={forceContentElementVisibility}
+      >
+        <DropdownBase
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          className={styles.dropdownBase}
+          selectedOption={selectedOption}
+          placeholder={placeholder}
+          disabled={disabled}
+          error={error}
+        />
+        {error && errorMessage && (
+          <DropdownError
+            className={styles.dropdownError}
+            errorMessage={errorMessage}
+          />
+        )}
+      </CoreDropdown>
+    );
   };
 
   render() {
@@ -109,23 +216,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       label,
       options,
       alignment,
-      upgrade,
       forceContentElementVisibility,
       placement,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       ...rest
     } = this.props;
-    const { selectedOption } = this.state;
-
-    const coreOptions = options.map(option => ({
-      ...option,
-      render: () => <DropdownOption {...option} />,
-    }));
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile, rtl }) => (
+        {({ mobile }) => (
           <div
             {...styles(
               'root',
@@ -145,36 +245,9 @@ export class Dropdown extends React.Component<DropdownProps, State> {
                 {label}
               </Text>
             )}
-            <CoreDropdown
-              className={styles.dropdown}
-              placement={placement}
-              data-hook={DATA_HOOKS.coreDropdown}
-              data-mobile={mobile}
-              openTrigger={disabled ? 'none' : 'click'}
-              options={coreOptions}
-              onDeselect={this.onSelect}
-              onSelect={this.onSelect}
-              initialSelectedIds={selectedOption ? [selectedOption.id] : []}
-              forceContentElementVisibility={forceContentElementVisibility}
-            >
-              <DropdownBase
-                upgrade={upgrade}
-                aria-label={ariaLabel}
-                aria-labelledby={ariaLabelledBy}
-                className={styles.dropdownBase}
-                selectedOption={selectedOption}
-                placeholder={placeholder}
-                disabled={disabled}
-                error={error}
-                rtl={rtl}
-              />
-              {error && errorMessage && (
-                <DropdownError
-                  className={styles.dropdownError}
-                  errorMessage={errorMessage}
-                />
-              )}
-            </CoreDropdown>
+            {this.isNativeSelect()
+              ? this.renderNativeSelect()
+              : this.renderCoreDropdown()}
           </div>
         )}
       </TPAComponentsConsumer>
