@@ -16,6 +16,7 @@ interface DropdownBaseProps {
   error: boolean;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  upgrade: boolean;
 }
 
 export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
@@ -24,12 +25,14 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
     placeholder,
     error,
     disabled,
+    upgrade,
     ['aria-label']: ariaLabel,
     ['aria-labelledby']: ariaLabelledBy,
   } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
     <Button
+      upgrade={upgrade}
       fullWidth
       {...styles('root', { error, placeholder: hasPlaceholder }, props)}
       data-hook={DATA_HOOKS.base}

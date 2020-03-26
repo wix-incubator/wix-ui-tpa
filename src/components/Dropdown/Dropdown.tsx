@@ -10,6 +10,7 @@ import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 import styles from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
 import { Placement } from 'wix-ui-core/popover';
+import { deprecationLog } from '../../common/deprecationLog';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -30,12 +31,14 @@ export interface DropdownProps {
   'aria-labelledby'?: string;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
+  upgrade?: boolean;
 }
 
 interface DefaultProps {
   placeholder: string;
   options: DropdownOptionProps[];
   placement: Placement;
+  upgrade: boolean;
 }
 
 interface State {
@@ -52,7 +55,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placeholder: '',
     options: [],
     placement: 'bottom',
+    upgrade: false,
   };
+
+  componentDidMount(): void {
+    if (!this.props.upgrade) {
+      deprecationLog(
+        'The current `Dropdown` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
+      );
+    }
+  }
 
   static getDerivedStateFromProps(nextProps, state) {
     if (state.selectedOption) {
@@ -91,6 +103,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       label,
       options,
       alignment,
+      upgrade,
       forceContentElementVisibility,
       placement,
       ['aria-label']: ariaLabel,
@@ -139,6 +152,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               forceContentElementVisibility={forceContentElementVisibility}
             >
               <DropdownBase
+                upgrade={upgrade}
                 aria-label={ariaLabel}
                 aria-labelledby={ariaLabelledBy}
                 className={styles.dropdownBase}
