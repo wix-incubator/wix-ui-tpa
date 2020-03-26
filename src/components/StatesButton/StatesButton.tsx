@@ -4,6 +4,7 @@ import style from './StatesButton.st.css';
 import { Button, ButtonProps } from '../Button';
 import { TPAComponentProps } from '../../types';
 import { BUTTON_STATES } from './constants';
+import { deprecationLog } from '../../common/deprecationLog';
 import Timeout = NodeJS.Timeout;
 
 export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
@@ -19,6 +20,14 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
 
 export class StatesButton extends React.Component<StatesButtonProps> {
   private timer: Timeout;
+
+  componentDidMount(): void {
+    if (!this.props.upgrade) {
+      deprecationLog(
+        'The current `StatesButton` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
+      );
+    }
+  }
 
   componentDidUpdate = ({ state: prevState }: StatesButtonProps) => {
     const { state: currentState, onNotificationEnd } = this.props;
@@ -94,12 +103,14 @@ export class StatesButton extends React.Component<StatesButtonProps> {
       failureContent,
       successContent,
       onNotificationEnd,
+      upgrade,
       ...rest
     } = this.props;
     const inProgress = state === BUTTON_STATES.IN_PROGRESS;
 
     return (
       <Button
+        upgrade={upgrade}
         disabled={disabled}
         onClick={this.debounceOnClick}
         ref={this.buttonRef}
