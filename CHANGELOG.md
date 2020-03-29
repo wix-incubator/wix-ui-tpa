@@ -1,3 +1,12 @@
+## [1.9.1](https://github.com/wix/wix-ui-tpa/compare/v1.9.0...v1.9.1) (2020-03-29)
+
+
+### Bug Fixes
+
+* Tags add margin customization + fix sizes ([8bb2bdc](https://github.com/wix/wix-ui-tpa/commit/8bb2bdcca27849985e1b09d74d8cdef5c961ae3d))
+
+
+
 # [1.9.0](https://github.com/wix/wix-ui-tpa/compare/v1.8.7...v1.9.0) (2020-03-19)
 
 
