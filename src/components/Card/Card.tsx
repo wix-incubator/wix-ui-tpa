@@ -46,6 +46,7 @@ export class Card extends React.Component<CardProps> {
   componentDidMount(): void {
     if (!this.props.upgrade) {
       deprecationLog(
+        'Card',
         'The current `Card` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.\nYou can view the new API here: https://wix-wix-ui-tpa.surge.sh/?path=/story/components--newcard',
       );
     }

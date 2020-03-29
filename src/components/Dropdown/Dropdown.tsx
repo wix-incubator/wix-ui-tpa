@@ -10,7 +10,7 @@ import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 import styles from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
 import { Placement } from 'wix-ui-core/popover';
-import { deprecationLog } from '../../common/deprecationLog';
+import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -57,12 +57,18 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placement: 'bottom',
     upgrade: false,
   };
+  constructor(props) {
+    super(props);
+    wrap('Button');
+  }
 
   componentDidMount(): void {
     if (!this.props.upgrade) {
       deprecationLog(
+        'Dropdown',
         'The current `Dropdown` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
       );
+      unwrap('Button');
     }
   }
 

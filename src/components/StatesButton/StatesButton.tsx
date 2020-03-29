@@ -4,7 +4,7 @@ import style from './StatesButton.st.css';
 import { Button, ButtonProps } from '../Button';
 import { TPAComponentProps } from '../../types';
 import { BUTTON_STATES } from './constants';
-import { deprecationLog } from '../../common/deprecationLog';
+import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import Timeout = NodeJS.Timeout;
 
 export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
@@ -21,11 +21,18 @@ export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
 export class StatesButton extends React.Component<StatesButtonProps> {
   private timer: Timeout;
 
+  constructor(props) {
+    super(props);
+    wrap('Button');
+  }
+
   componentDidMount(): void {
     if (!this.props.upgrade) {
       deprecationLog(
+        'StatesButton',
         'The current `StatesButton` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
       );
+      unwrap('Button');
     }
   }
 

@@ -44,6 +44,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
   componentDidMount(): void {
     if (!this.props.upgrade) {
       deprecationLog(
+        'Button',
         'The current `Button` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
       );
     }
