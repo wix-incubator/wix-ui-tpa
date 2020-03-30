@@ -21,7 +21,10 @@ describe('floatingDropdown', () => {
 
   it('should render', async () => {
     const driver = floatingDropdownTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find FloatingDropdown');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find FloatingDropdown',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

@@ -20,9 +20,13 @@ describe('FloatingDropdown', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<FloatingDropdown />, floatingDropdownTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <FloatingDropdown />,
+          floatingDropdownTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });

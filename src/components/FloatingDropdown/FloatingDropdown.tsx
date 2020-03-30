@@ -16,7 +16,10 @@ interface State {
 }
 
 /** Dropdown component for sort. */
-export class FloatingDropdown extends React.Component<FloatingDropdownProps, State> {
+export class FloatingDropdown extends React.Component<
+  FloatingDropdownProps,
+  State
+> {
   static displayName = 'FloatingDropdown';
   static defaultProps: DefaultProps = { buttonText: 'Click me!' };
 
