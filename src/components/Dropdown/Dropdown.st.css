@@ -27,6 +27,11 @@
 :import {
     -st-from: "./DropdownBase.st.css";
     -st-default: DropdownBase;
+}
+
+:import {
+    -st-from: "./DropdownNativeSelect.st.css";
+    -st-default: DropdownNativeSelect;
     -st-named: borderHoverColor;
 }
 
@@ -62,6 +67,10 @@
     -st-extends: DropdownBase;
 }
 
+.dropdownNativeSelect {
+    -st-extends: DropdownNativeSelect;
+}
+
 .dropdownError {
     -st-extends: DropdownError;
 }
@@ -72,7 +81,8 @@
 }
 
 .dropdown,
-.dropdownBase::root {
+.dropdownBase::root,
+.dropdownNativeSelect::root {
     min-width: 68px;
 }
 

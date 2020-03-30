@@ -1,0 +1,147 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Tooltip;
+}
+
+:import {
+    -st-from: "../Tooltip/Tooltip.st.css";
+    -st-default: TPATooltip;
+}
+
+:vars {
+    BorderHoverColor: color-5;
+}
+
+:vars {
+    borderHoverColor: color(value(BorderHoverColor));
+}
+
+.wrapper {
+    position: relative;
+    min-width: 68px;
+    background-color: value(backgroundColor);
+}
+
+.root {
+    -st-extends: TPAButton;
+    -st-mixin: TPAButton(
+            MainBackgroundColor 'value(backgroundColor)',
+            MainBorderWidth '1px',
+            MainBorderColor 'value(borderColor)',
+            MainTextColor 'value(inputColor)'
+    );
+    -st-states: error, placeholder, rtl;
+    display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+}
+
+.root:mobile:size(medium) {
+    padding: 8px 12px;
+    background-color: transparent;
+}
+
+.root:mobile:rtl {
+    /*background: value(backgroundColor) no-repeat right 13px center url("../../assets/icons/CaretDown.svg");*/
+    background-image: url("../../assets/icons/CaretDown.svg");
+}
+
+.root:priority(basic):focus {
+    border-color: value(borderHoverColor);
+    background-color: value(backgroundColor);
+}
+
+.root:error,
+.root:priority(basic):error:focus {
+    border-color: value(errorColor);
+}
+
+
+.root:placeholder {
+    color: value(colorPlaceholder);
+}
+
+.root:priority(basic):disabled {
+    cursor: default;
+    background-color: value(backgroundColor);
+    color: value(colorDisabled);
+    border-color: value(colorDisabled);
+}
+
+.root:priority(basic):disabled:hover {
+    border-color: value(colorDisabled);
+}
+
+.arrowIcon {
+    color: value(inputColor);
+    position: absolute;
+    top: 8px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.errorIcon {
+    -st-extends: Tooltip;
+    -st-mixin: TPATooltip;
+    color: value(errorColor);
+    box-sizing: border-box;
+    position: absolute;
+    top: 8px;
+    background-color: transparent;
+}
+
+.errorIcon::popover {
+    min-width: initial;
+}
+
+.errorIcon::popoverElement {
+    display: flex; /* vertical center error icon */
+}
+
+.root:rtl ~ .arrowIcon {
+    left: 7px;
+}
+
+.root:not(:rtl) ~ .arrowIcon {
+    right: 7px;
+}
+
+.root:rtl ~ .errorIcon {
+    left: 32px;
+}
+
+.root:not(:rtl) ~ .errorIcon {
+    right: 32px;
+}
+
+.root:priority(basic):disabled .arrowIcon {
+    color: value(colorDisabled);
+}
+
+.optionIcon {
+    display: flex;
+}
+
+.optionIcon::after {
+    width: 12px;
+    content: '';
+}
+
