@@ -96,7 +96,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     selectedOption: null,
   };
 
-  private isNativeSelect() {
+  private shouldRenderNativeSelect() {
     const { mobile: isMobile } = this.context;
     return this.props.shouldRenderNativeSelectOnMobile && isMobile;
   }
@@ -104,7 +104,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   private getOptionData(
     selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
   ) {
-    if (this.isNativeSelect()) {
+    if (this.shouldRenderNativeSelect()) {
       const index = (selectedOption as React.FormEvent<HTMLSelectElement>)
         .currentTarget.value;
       return this.props.options[index];
@@ -246,7 +246,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
                 {label}
               </Text>
             )}
-            {this.isNativeSelect()
+            {this.shouldRenderNativeSelect()
               ? this.renderNativeSelect()
               : this.renderCoreDropdown()}
           </div>
