@@ -5,7 +5,7 @@ import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import styles from './FloatingDropdown.st.css';
 import { DropdownOption } from '../Dropdown/DropdownOption';
-import { DropdownBase } from './DropdownBase';
+import { FloatingDropdownBase } from './FloatingDropdownBase';
 import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 
@@ -19,7 +19,7 @@ export interface FloatingDropdownProps {
   value?: any;
 }
 
-type DefaultProps = Required<Pick<FloatingDropdownProps, 'disabled'>>;
+type DefaultProps = Required<Pick<FloatingDropdownProps, 'disabled' | 'options'>>;
 
 interface State {
   selectedOption: FloatingDropdownOptionProps;
@@ -31,9 +31,9 @@ export class FloatingDropdown extends React.Component<
   State
 > {
   static displayName = 'FloatingDropdown';
-  static defaultProps: DefaultProps = { disabled: false };
+  static defaultProps: DefaultProps = { disabled: false, options: []};
 
-  state = { selectedOption: null, options: [] };
+  state = { selectedOption: null };
 
   onSelect = (selectedOption: FloatingDropdownOptionProps) => {
     if (!selectedOption) {
@@ -88,7 +88,7 @@ export class FloatingDropdown extends React.Component<
               onSelect={this.onSelect}
               initialSelectedIds={selectedOption ? [selectedOption.id] : []}
             >
-              <DropdownBase
+              <FloatingDropdownBase
                 error={false}
                 aria-labelledby={ariaLabelledBy}
                 className={styles.dropdownBase}

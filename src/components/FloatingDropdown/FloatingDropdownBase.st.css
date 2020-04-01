@@ -11,26 +11,15 @@
 :import {
     -st-from: "../Input/Input.st.css";
     -st-default: TPAInput;
-    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
-}
-
-:vars {
-    BorderHoverColor: color-5;
-}
-
-:vars {
-    borderHoverColor: color(value(BorderHoverColor));
+    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor;
 }
 
 .root {
     -st-extends: TPAButton;
     -st-mixin: TPAButton(
         MainBackgroundColor 'value(backgroundColor)',
-        MainBorderWidth '1px',
-        MainBorderColor 'value(borderColor)',
         MainTextColor 'value(inputColor)'
     );
-    -st-states: error, placeholder;
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
@@ -64,19 +53,7 @@
 }
 .root:priority(basic):focus,
 .root:priority(basic):hover {
-    border-color: value(borderHoverColor);
     background-color: value(backgroundColor);
-}
-
-.root:error,
-.root:priority(basic):error:focus,
-.root:priority(basic):error:hover {
-    border-color: value(errorColor);
-}
-
-
-.root:placeholder {
-    color: value(colorPlaceholder);
 }
 
 .root:priority(basic):disabled {
@@ -89,21 +66,3 @@
 .root:priority(basic):disabled:hover {
     border-color: value(colorDisabled);
 }
-
-.arrowIcon {
-    color: value(inputColor);
-}
-
-.root:priority(basic):disabled .arrowIcon {
-    color: value(colorDisabled);
-}
-
-.optionIcon {
-    display: flex;
-}
-
-.optionIcon::after {
-    width: 12px;
-    content: '';
-}
-
