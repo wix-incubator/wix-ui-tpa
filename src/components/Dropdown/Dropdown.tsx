@@ -125,7 +125,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
+        {({ mobile, rtl }) => (
           <div
             {...styles(
               'root',
@@ -166,6 +166,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
                 placeholder={placeholder}
                 disabled={disabled}
                 error={error}
+                rtl={rtl}
               />
               {error && errorMessage && (
                 <DropdownError
