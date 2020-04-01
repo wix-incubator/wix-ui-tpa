@@ -30,6 +30,17 @@
     color: value(inputColor);
 }
 
+.text {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '16px'}"
+    );
+}
+
+.label {
+    margin-right: 4px;
+    opacity: 0.6;
+}
+
 .root::content {
     flex: 1;
     text-align: start;

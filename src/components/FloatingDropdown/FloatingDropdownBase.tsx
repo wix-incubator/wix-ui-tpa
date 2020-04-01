@@ -45,7 +45,7 @@ export const FloatingDropdownBase = (
         />
       }
     >
-      {label} {(selectedOption && selectedOption.value) || placeholder}
+      <div className={styles.text}><span className={styles.label}>{label}</span>{(selectedOption && selectedOption.value) || placeholder}</div>
     </Button>
   );
 };
