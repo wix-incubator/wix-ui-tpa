@@ -1,18 +1,28 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
+
+import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
+
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import styles from './FloatingDropdown.st.css';
+import { DropdownOption } from '../Dropdown/DropdownOption';
+import { DropdownBase } from './DropdownBase';
+import { DATA_HOOKS } from './constants';
+import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 
 export interface FloatingDropdownProps {
-  buttonText: string;
+  'aria-labelledby'?: string;
+  disabled?: boolean;
+  label?: string;
+  onChange?(selectedOption: FloatingDropdownOptionProps): void;
+  options?: FloatingDropdownOptionProps[];
+  placeholder?: string;
+  value?: any;
 }
 
-interface DefaultProps {
-  buttonText: string;
-}
+type DefaultProps = Required<Pick<FloatingDropdownProps, 'disabled'>>;
 
 interface State {
-  count: number;
+  selectedOption: FloatingDropdownOptionProps;
 }
 
 /** Dropdown component for sort. */
@@ -21,30 +31,75 @@ export class FloatingDropdown extends React.Component<
   State
 > {
   static displayName = 'FloatingDropdown';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
+  static defaultProps: DefaultProps = { disabled: false };
 
-  state = { count: 0 };
+  state = { selectedOption: null, options: [] };
 
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
+  onSelect = (selectedOption: FloatingDropdownOptionProps) => {
+    if (!selectedOption) {
+      return;
+    }
+    this.setState({ selectedOption });
+    if (this.props.onChange) {
+      this.props.onChange(
+        this.props.options.find(({ id }) => selectedOption.id === id),
+      );
+    }
   };
 
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+    const {
+      placeholder,
+      disabled,
+      options,
+      ['aria-labelledby']: ariaLabelledBy,
+      ...rest
+    } = this.props;
+    const { selectedOption } = this.state;
+
+    console.log(this.props);
+
+    const coreOptions = options.map(option => ({
+      ...option,
+      render: () => <DropdownOption {...option} />,
+    }));
 
     return (
-      <div {...styles('root', {}, rest)}>
-        <Text {...styles('number', { even: isEven, odd: !isEven })}>
-          You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
-          times
-        </Text>
-
-        <div className={styles.button}>
-          <Button onClick={this._handleClick}>{buttonText}</Button>
-        </div>
-      </div>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div
+            {...styles(
+              'root',
+              {
+                mobile,
+              },
+              rest,
+            )}
+            data-mobile={mobile}
+          >
+            {' '}
+            <CoreDropdown
+              className={styles.dropdown}
+              data-hook={DATA_HOOKS.coreDropdown}
+              data-mobile={mobile}
+              openTrigger={disabled ? 'none' : 'click'}
+              options={coreOptions}
+              onDeselect={this.onSelect}
+              onSelect={this.onSelect}
+              initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+            >
+              <DropdownBase
+                error={false}
+                aria-labelledby={ariaLabelledBy}
+                className={styles.dropdownBase}
+                selectedOption={selectedOption}
+                placeholder={placeholder}
+                disabled={disabled}
+              />
+            </CoreDropdown>
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }
