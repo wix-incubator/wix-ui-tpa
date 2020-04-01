@@ -1,0 +1,109 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
+}
+
+:vars {
+    BorderHoverColor: color-5;
+}
+
+:vars {
+    borderHoverColor: color(value(BorderHoverColor));
+}
+
+.root {
+    -st-extends: TPAButton;
+    -st-mixin: TPAButton(
+        MainBackgroundColor 'value(backgroundColor)',
+        MainBorderWidth '1px',
+        MainBorderColor 'value(borderColor)',
+        MainTextColor 'value(inputColor)'
+    );
+    -st-states: error, placeholder;
+    display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.root::content {
+    flex: 1;
+    text-align: start;
+}
+
+.root:mobile:size(medium),
+.root:size(medium) {
+    padding: 8px 0;
+}
+
+.root:mobile:size(medium)::before,
+.root:size(medium)::before {
+    width: 12px;
+    content: '';
+}
+
+.root:mobile:size(medium)::after,
+.root:size(medium)::after {
+    width: 7px;
+    content: '';
+}
+
+.root::content {
+    margin: initial;
+}
+.root:priority(basic):focus,
+.root:priority(basic):hover {
+    border-color: value(borderHoverColor);
+    background-color: value(backgroundColor);
+}
+
+.root:error,
+.root:priority(basic):error:focus,
+.root:priority(basic):error:hover {
+    border-color: value(errorColor);
+}
+
+
+.root:placeholder {
+    color: value(colorPlaceholder);
+}
+
+.root:priority(basic):disabled {
+    cursor: default;
+    background-color: value(backgroundColor);
+    color: value(colorDisabled);
+    border-color: value(colorDisabled);
+}
+
+.root:priority(basic):disabled:hover {
+    border-color: value(colorDisabled);
+}
+
+.arrowIcon {
+    color: value(inputColor);
+}
+
+.root:priority(basic):disabled .arrowIcon {
+    color: value(colorDisabled);
+}
+
+.optionIcon {
+    display: flex;
+}
+
+.optionIcon::after {
+    width: 12px;
+    content: '';
+}
+
