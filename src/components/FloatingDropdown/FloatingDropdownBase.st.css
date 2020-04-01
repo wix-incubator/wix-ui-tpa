@@ -26,6 +26,10 @@
     outline: none;
 }
 
+.arrowIcon {
+    color: value(inputColor);
+}
+
 .root::content {
     flex: 1;
     text-align: start;

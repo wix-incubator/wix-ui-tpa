@@ -1,6 +1,16 @@
 :import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Dropdown;
+}
+
+:import {
     -st-from: "../../common/formatters.st";
     -st-named: color;
+}
+
+:import {
+    -st-from: "./FloatingDropdownBase.st.css";
+    -st-default: FloatingDropdownBase;
 }
 
 /*Defaults*/
@@ -15,4 +25,16 @@
 
 .root {
     /*css goes here*/
+}
+
+.dropdown {
+    -st-extends: Dropdown;
+}
+
+.floatingDropdownBase {
+    -st-extends: FloatingDropdownBase;
+}
+
+.dropdown:content-visible .floatingDropdownBase::arrowIcon {
+    transform: rotate(180deg);
 }

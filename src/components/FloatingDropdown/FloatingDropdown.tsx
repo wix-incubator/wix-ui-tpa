@@ -12,14 +12,16 @@ import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 export interface FloatingDropdownProps {
   'aria-labelledby'?: string;
   disabled?: boolean;
-  label?: string;
+  label: string;
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
-  options?: FloatingDropdownOptionProps[];
+  options: FloatingDropdownOptionProps[];
   placeholder?: string;
-  value?: any;
+  value?: FloatingDropdownOptionProps;
 }
 
-type DefaultProps = Required<Pick<FloatingDropdownProps, 'disabled' | 'options'>>;
+type DefaultProps = Required<
+  Pick<FloatingDropdownProps, 'disabled' | 'options'>
+>;
 
 interface State {
   selectedOption: FloatingDropdownOptionProps;
@@ -31,7 +33,7 @@ export class FloatingDropdown extends React.Component<
   State
 > {
   static displayName = 'FloatingDropdown';
-  static defaultProps: DefaultProps = { disabled: false, options: []};
+  static defaultProps: DefaultProps = { disabled: false, options: [] };
 
   state = { selectedOption: null };
 
@@ -52,6 +54,7 @@ export class FloatingDropdown extends React.Component<
       placeholder,
       disabled,
       options,
+      label,
       ['aria-labelledby']: ariaLabelledBy,
       ...rest
     } = this.props;
@@ -82,19 +85,19 @@ export class FloatingDropdown extends React.Component<
               className={styles.dropdown}
               data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
-              openTrigger={disabled ? 'none' : 'click'}
-              options={coreOptions}
+              initialSelectedIds={selectedOption ? [selectedOption.id] : []}
               onDeselect={this.onSelect}
               onSelect={this.onSelect}
-              initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+              openTrigger={disabled ? 'none' : 'click'}
+              options={coreOptions}
             >
               <FloatingDropdownBase
-                error={false}
                 aria-labelledby={ariaLabelledBy}
-                className={styles.dropdownBase}
-                selectedOption={selectedOption}
-                placeholder={placeholder}
+                className={styles.floatingDropdownBase}
                 disabled={disabled}
+                label={label}
+                placeholder={placeholder}
+                selectedOption={selectedOption}
               />
             </CoreDropdown>
           </div>
