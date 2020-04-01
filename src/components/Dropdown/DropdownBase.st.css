@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback, calculate, string;
 }
 
 :import {
@@ -30,7 +30,7 @@
         MainBorderColor 'value(borderColor)',
         MainTextColor 'value(inputColor)'
     );
-    -st-states: error, placeholder;
+    -st-states: error, placeholder, rtl;
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
@@ -107,3 +107,32 @@
     content: '';
 }
 
+/*--------------------upgrade------------------------*/
+
+:vars {
+    DefaultBorderWidth: 1px;
+    MainBorderWidth: --overridable;
+    BorderWidth: fallback(value(MainBorderWidth), value(DefaultBorderWidth));
+}
+
+.root:mobile:size(medium):upgrade::before,
+.root:size(medium):upgrade::before {
+    width: 0px;
+    content: '';
+}
+
+.root:mobile:size(medium):upgrade::after,
+.root:size(medium):upgrade::after {
+    width: 0px;
+    content: '';
+}
+
+.root:mobile:upgrade:size(medium):priority(basic),
+.root:upgrade:size(medium):priority(basic) {
+    padding: calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 7px, value(BorderWidth)) calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 12px, value(BorderWidth));
+}
+
+.root:mobile:upgrade:size(medium):priority(basic):rtl,
+.root:upgrade:size(medium):priority(basic):rtl {
+    padding: calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 12px, value(BorderWidth)) calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 7px, value(BorderWidth));
+}
