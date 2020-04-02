@@ -50,8 +50,8 @@ export default {
 
           ...[
             { title: 'Example', source: examples.example },
-            {title: 'MinWidth', source: examples.minWidth},
-            {title: 'MaxWidth', source: examples.maxWidth}
+            { title: 'MinWidth', source: examples.minWidth },
+            { title: 'MaxWidth', source: examples.maxWidth },
           ].map(code),
         ],
       }),

@@ -9,6 +9,11 @@
 }
 
 :import {
+    -st-from: "../Dropdown/DropdownOption.st.css";
+    -st-default: DropdownOption;
+}
+
+:import {
     -st-from: "../Dropdown/Dropdown.st.css";
     -st-named: dropdown;
 }
@@ -32,4 +37,8 @@
 
 .root .dropdown:content-visible .floatingDropdownBase::root {
     background: transparent;
+}
+
+.root .dropdown DropdownOption::title {
+    white-space: initial;
 }
