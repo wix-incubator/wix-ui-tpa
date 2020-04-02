@@ -27,6 +27,11 @@
     /*css goes here*/
 }
 
+.root .dropdown {
+    min-width: 220px;
+    max-width: 272px;
+}
+
 .floatingDropdownBase {
     -st-extends: FloatingDropdownBase;
 }
