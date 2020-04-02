@@ -13,6 +13,11 @@
     -st-default: FloatingDropdownBase;
 }
 
+:import {
+    -st-from: "../Dropdown/Dropdown.st.css";
+    -st-named: dropdown;
+}
+
 /*Defaults*/
 :vars {
     /*Defaults params goes here*/
@@ -27,14 +32,14 @@
     /*css goes here*/
 }
 
-.dropdown {
-    -st-extends: Dropdown;
+.floatingDropdown {
+    -st-extends: dropdown;
 }
 
 .floatingDropdownBase {
     -st-extends: FloatingDropdownBase;
 }
 
-.dropdown:content-visible .floatingDropdownBase::arrowIcon {
+.floatingDropdown:content-visible .floatingDropdownBase::arrowIcon {
     transform: rotate(180deg);
 }
