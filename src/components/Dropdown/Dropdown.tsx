@@ -80,7 +80,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
   private shouldRenderNativeSelect() {
     const { mobile: isMobile } = this.context;
-    return false;
+    return true;
     //return this.props.shouldRenderNativeSelectOnMobile && isMobile;
   }
 
@@ -125,13 +125,14 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       <DropdownNativeSelect
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
-        selectedOption={this.state.selectedOption}
-        options={options}
-        placeholder={placeholder}
         disabled={disabled}
+        className={styles.dropdownNativeSelect}
         error={error}
         errorMessage={errorMessage}
-        className={styles.dropdownNativeSelect}
+        options={options}
+        onSelect={this.onSelect}
+        placeholder={placeholder}
+        selectedOption={this.state.selectedOption}
       />
     );
   };
