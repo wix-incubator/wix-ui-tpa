@@ -38,6 +38,7 @@ export class FloatingDropdown extends React.Component<
   state = { selectedOption: null };
 
   onSelect = (selectedOption: FloatingDropdownOptionProps) => {
+    console.log('onSelect', selectedOption)
     if (!selectedOption) {
       return;
     }
@@ -51,11 +52,11 @@ export class FloatingDropdown extends React.Component<
 
   render() {
     const {
-      placeholder,
-      disabled,
-      options,
-      label,
       ['aria-labelledby']: ariaLabelledBy,
+      disabled,
+      label,
+      options,
+      placeholder,
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
@@ -64,7 +65,7 @@ export class FloatingDropdown extends React.Component<
 
     const coreOptions = options.map(option => ({
       ...option,
-      render: () => <DropdownOption {...option} />,
+      render: () => <DropdownOption {...option} isSelectable={true} />,
     }));
 
     return (
@@ -80,9 +81,8 @@ export class FloatingDropdown extends React.Component<
             )}
             data-mobile={mobile}
           >
-            {' '}
             <CoreDropdown
-              className={styles.dropdown}
+              className={styles.floatingDropdown}
               data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
               initialSelectedIds={selectedOption ? [selectedOption.id] : []}
