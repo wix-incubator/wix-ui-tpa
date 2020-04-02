@@ -48,7 +48,11 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[
+            { title: 'Example', source: examples.example },
+            {title: 'MinWidth', source: examples.minWidth},
+            {title: 'MaxWidth', source: examples.maxWidth}
+          ].map(code),
         ],
       }),
 
