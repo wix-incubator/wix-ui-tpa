@@ -129,10 +129,10 @@
 
 .root:mobile:upgrade:size(medium):priority(basic),
 .root:upgrade:size(medium):priority(basic) {
-    padding: calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 7px, value(BorderWidth)) calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 12px, value(BorderWidth));
+    padding: calculate(string(-), 8px, value(BorderWidth)) 7px calculate(string(-), 8px, value(BorderWidth)) 12px;
 }
 
 .root:mobile:upgrade:size(medium):priority(basic):rtl,
 .root:upgrade:size(medium):priority(basic):rtl {
-    padding: calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 12px, value(BorderWidth)) calculate(string(-), 8px, value(BorderWidth)) calculate(string(-), 7px, value(BorderWidth));
+    padding: calculate(string(-), 8px, value(BorderWidth)) 12px calculate(string(-), 8px, value(BorderWidth)) 7px;
 }

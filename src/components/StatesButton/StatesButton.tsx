@@ -124,7 +124,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
         aria-live="assertive"
         {...(inProgress && { 'aria-busy': true })}
         {...rest}
-        {...style('root', {upgrade}, this.props)}
+        {...style('root', { upgrade }, this.props)}
       >
         {this.renderContent()}
       </Button>

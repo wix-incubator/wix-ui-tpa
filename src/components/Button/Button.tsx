@@ -66,6 +66,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
       fullWidth,
       innerRef,
       upgrade,
+      children,
       ...rest
     } = this.props;
     return (
@@ -75,6 +76,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
             {...this._getDataAttributes(mobile)}
             ref={innerRef}
             {...rest}
+            children={<span className={style.childrenWrapper}>{children}</span>}
             {...style(
               'root',
               { priority, size, fullWidth, mobile, upgrade },
