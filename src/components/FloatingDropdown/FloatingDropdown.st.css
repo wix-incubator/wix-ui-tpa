@@ -15,12 +15,12 @@
 
 /*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+    BorderHoverColor: color-5;
 }
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    borderHoverColor: color(value(BorderHoverColor));
 }
 
 .root {
@@ -38,4 +38,8 @@
 
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
     transform: rotate(180deg);
+}
+
+.root .dropdown:content-visible .floatingDropdownBase::root {
+    border-color: value(borderHoverColor);
 }
