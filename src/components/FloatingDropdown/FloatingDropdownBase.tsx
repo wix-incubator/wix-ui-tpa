@@ -37,17 +37,15 @@ export const FloatingDropdownBase = (
       aria-labelledby={ariaLabelledBy}
       data-hook={DATA_HOOKS.base}
       disabled={disabled}
-      suffixIcon={
+    >
+      <div className={styles.text}>
+        <span className={styles.label}>{label}</span>
+        {(selectedOption && selectedOption.value) || placeholder}
         <ArrowIcon
           className={styles.arrowIcon}
           width={ICON_SIZE}
           height={ICON_SIZE}
         />
-      }
-    >
-      <div className={styles.text}>
-        <span className={styles.label}>{label}</span>
-        {(selectedOption && selectedOption.value) || placeholder}
       </div>
     </Button>
   );
