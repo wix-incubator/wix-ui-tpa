@@ -6,9 +6,14 @@ export const example = `
     {id: '1', value: 'Most recent', isSelectable: true},
     {id: '2', value: 'Most viewed', isSelectable: true},
     {id: '3', value: 'Most liked', isSelectable: true},
-    {id: '4', value: 'Most comments', isSelectable: true}
+    {id: '4', value: 'Most comments', isSelectable: true},
+    {id: '5', value: 'Most recent posts in the whole galaxy', isSelectable: true},
   ]}
   label="Sort by:"
   placeholder="Most recent"
 />
 `;
+
+export const maxWidth = `<div style={{ width: '100%' }}>${example}</div>`;
+
+export const minWidth = `<div style={{ width: '0px' }}>${example}</div>`;
