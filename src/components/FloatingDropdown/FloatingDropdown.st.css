@@ -42,4 +42,5 @@
 
 .root .dropdown:content-visible .floatingDropdownBase::root {
     border-color: value(borderHoverColor);
+    background: transparent;
 }
