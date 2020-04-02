@@ -4,6 +4,11 @@
 }
 
 :import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+:import {
     -st-from: "../Button/Button.st.css";
     -st-default: TPAButton;
 }
@@ -52,22 +57,6 @@
     padding: 8px 0;
 }
 
-.root:mobile:size(medium)::before,
-.root:size(medium)::before {
-    width: 12px;
-    content: '';
-}
-
-.root:mobile:size(medium)::after,
-.root:size(medium)::after {
-    width: 7px;
-    content: '';
-}
-
-.root::content {
-    margin: initial;
-}
-
 .root:priority(basic),
 .root:priority(basic):hover,
 .root:priority(basic):focus {
@@ -78,9 +67,5 @@
 .root:priority(basic):disabled {
     cursor: default;
     color: value(colorDisabled);
-    border-color: value(colorDisabled);
-}
-
-.root:priority(basic):disabled:hover {
     border-color: value(colorDisabled);
 }

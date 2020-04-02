@@ -13,16 +13,6 @@
     -st-named: dropdown;
 }
 
-/*Defaults*/
-:vars {
-    BorderHoverColor: color-5;
-}
-
-/*Overrides*/
-:vars {
-    borderHoverColor: color(value(BorderHoverColor));
-}
-
 .root {
     /*css goes here*/
 }
@@ -41,6 +31,5 @@
 }
 
 .root .dropdown:content-visible .floatingDropdownBase::root {
-    border-color: value(borderHoverColor);
     background: transparent;
 }
