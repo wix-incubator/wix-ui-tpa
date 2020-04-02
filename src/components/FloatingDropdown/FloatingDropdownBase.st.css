@@ -11,19 +11,20 @@
 :import {
     -st-from: "../Input/Input.st.css";
     -st-default: TPAInput;
-    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor;
+    -st-named: colorDisabled, colorPlaceholder, color as inputColor;
 }
 
 .root {
     -st-extends: TPAButton;
     -st-mixin: TPAButton(
-        MainBackgroundColor 'value(backgroundColor)',
         MainTextColor 'value(inputColor)'
     );
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
     outline: none;
+    background-color: unset;
+    background: transparent;
 }
 
 .arrowIcon {
@@ -66,14 +67,14 @@
 .root::content {
     margin: initial;
 }
-.root:priority(basic):focus,
+
+.root:priority(basic),
 .root:priority(basic):hover {
-    background-color: value(backgroundColor);
+    background: transparent;
 }
 
 .root:priority(basic):disabled {
     cursor: default;
-    background-color: value(backgroundColor);
     color: value(colorDisabled);
     border-color: value(colorDisabled);
 }
