@@ -14,6 +14,9 @@ import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { Tooltip } from '../Tooltip';
 
 interface DropdownNativeSelectProps {
+  onSelect?(
+    selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
+  ): void;
   selectedOption: DropdownOptionProps;
   options: DropdownOptionProps[];
   placeholder: string;
@@ -28,8 +31,10 @@ export const DropdownNativeSelect = (
   props: DropdownNativeSelectProps & TPAComponentProps,
 ) => {
   const {
+    disabled,
     selectedOption,
     options,
+    onSelect,
     placeholder,
     error,
     errorMessage,
@@ -38,14 +43,12 @@ export const DropdownNativeSelect = (
   } = props;
 
   const hasPlaceholder = !selectedOption || !selectedOption.value;
+  const shouldRenderIcon = selectedOption && !!selectedOption.icon;
 
   return (
     <TPAComponentsConsumer>
       {({ rtl }) => (
         <div className={styles.wrapper}>
-          {selectedOption && selectedOption.icon ? (
-            <div className={styles.optionIcon}>{selectedOption.icon}</div>
-          ) : null}
           <select
             {...buttonStyles(
               'root',
@@ -57,7 +60,18 @@ export const DropdownNativeSelect = (
               },
               {},
             )}
-            {...styles('root', { error, placeholder: hasPlaceholder, rtl }, {})}
+            {...styles(
+              'root',
+              {
+                error,
+                disabled,
+                placeholder: hasPlaceholder,
+                icon: shouldRenderIcon,
+                rtl,
+              },
+              {},
+            )}
+            onChange={e => onSelect(e)}
             data-hook="native-select"
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
@@ -66,6 +80,7 @@ export const DropdownNativeSelect = (
               buttonStyles.root,
               dropdownStyles.dropdownNativeSelect,
             )}
+            disabled={disabled}
           >
             {hasPlaceholder && (
               <option value="" selected disabled>
@@ -73,21 +88,27 @@ export const DropdownNativeSelect = (
               </option>
             )}
             {options.map((option, i) => (
-              <option key={i} value={i} disabled={!option.isSelectable}>
+              <option key={i} value={option.id} disabled={!option.isSelectable}>
                 {option.value}
               </option>
             ))}
           </select>
+          {shouldRenderIcon ? (
+            <div className={styles.optionIcon}>{selectedOption.icon}</div>
+          ) : null}
           {error && errorMessage && (
-            <Tooltip
-              className={styles.errorIcon}
-              data-hook={DATA_HOOKS.errorTooltip}
-              placement="top-end"
-              skin={TooltipSkin.Error}
-              content={props.errorMessage}
-            >
-              <ErrorIcon width={ICON_SIZE} height={ICON_SIZE} />
-            </Tooltip>
+            <div className={styles.errorIconWrapper}>
+              <Tooltip
+                className={styles.errorIcon}
+                data-hook={DATA_HOOKS.errorTooltip}
+                placement="top-end"
+                skin={TooltipSkin.Error}
+                content={props.errorMessage}
+                appendTo={'scrollParent'}
+              >
+                <ErrorIcon width={ICON_SIZE} height={ICON_SIZE} />
+              </Tooltip>
+            </div>
           )}
           <ArrowIcon
             className={styles.arrowIcon}

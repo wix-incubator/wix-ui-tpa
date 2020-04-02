@@ -33,6 +33,7 @@ export interface DropdownProps {
   placement?: Placement;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  shouldRenderNativeSelectOnMobile?: boolean;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
   shouldRenderNativeSelectOnMobile?: boolean;
@@ -140,15 +141,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     return (
       <DropdownNativeSelect
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
-        selectedOption={this.state.selectedOption}
-        options={options}
-        placeholder={placeholder}
-        disabled={disabled}
-        error={error}
-        errorMessage={errorMessage}
-        className={styles.dropdownNativeSelect}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          disabled={disabled}
+          className={styles.dropdownNativeSelect}
+          error={error}
+          errorMessage={errorMessage}
+          options={options}
+          onSelect={this.onSelect}
+          placeholder={placeholder}
+          selectedOption={this.state.selectedOption}
       />
     );
   };

@@ -46,7 +46,7 @@
             MainBorderColor 'value(borderColor)',
             MainTextColor 'value(inputColor)'
     );
-    -st-states: error, placeholder, rtl;
+    -st-states: disabled, error, placeholder, rtl, icon;
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
@@ -57,6 +57,10 @@
 .root:mobile:size(medium) {
     padding: 8px 12px;
     background-color: transparent;
+}
+
+.root:mobile:size(medium):icon {
+    padding: 8px 36px;
 }
 
 .root:mobile:rtl {
@@ -90,22 +94,27 @@
     border-color: value(colorDisabled);
 }
 
+.root:priority(basic):disabled ~ .arrowIcon {
+    color: value(colorDisabled);
+}
+
 .arrowIcon {
     color: value(inputColor);
     position: absolute;
-    top: 8px;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 0;
     pointer-events: none;
+}
+
+.arrowIcon path {
+    fill: currentColor;
 }
 
 .errorIcon {
     -st-extends: Tooltip;
     -st-mixin: TPATooltip;
     color: value(errorColor);
-    box-sizing: border-box;
-    position: absolute;
-    top: 8px;
-    background-color: transparent;
 }
 
 .errorIcon::popover {
@@ -124,24 +133,33 @@
     right: 7px;
 }
 
-.root:rtl ~ .errorIcon {
+.root:rtl ~ .errorIconWrapper {
     left: 32px;
 }
 
-.root:not(:rtl) ~ .errorIcon {
+.root:not(:rtl) ~ .errorIconWrapper {
     right: 32px;
 }
 
-.root:priority(basic):disabled .arrowIcon {
-    color: value(colorDisabled);
-}
-
 .optionIcon {
+    position: absolute;
     display: flex;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-.optionIcon::after {
-    width: 12px;
-    content: '';
+.root:rtl ~ .optionIcon {
+    right: 7px;
 }
 
+.root:not(:rtl) ~ .optionIcon {
+    left: 7px;
+}
+
+.errorIconWrapper {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    top: 0;
+    align-items: center;
+}
