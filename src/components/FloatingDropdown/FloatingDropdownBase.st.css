@@ -23,8 +23,7 @@
     cursor: pointer;
     box-sizing: border-box;
     outline: none;
-    background-color: unset;
-    background: transparent;
+    transition: none;
 }
 
 .arrowIcon {
@@ -35,6 +34,7 @@
     -st-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '16px'}"
     );
+    display: flex;
 }
 
 .label {
@@ -69,8 +69,10 @@
 }
 
 .root:priority(basic),
-.root:priority(basic):hover {
+.root:priority(basic):hover,
+.root:priority(basic):focus {
     background: transparent;
+    transition: none;
 }
 
 .root:priority(basic):disabled {
