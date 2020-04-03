@@ -41,16 +41,16 @@
     transition: none;
 }
 
-.arrowIcon {
-    color: value(inputColor);
-}
-
 .text {
     -st-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '16px'}"
     );
     display: flex;
-    color: value(textColor)
+    color: value(textColor);
+}
+
+.arrowIcon path {
+    fill: value(textColor);
 }
 
 .label {
@@ -84,4 +84,8 @@
 .root:priority(basic):disabled .text {
     opacity: 1;
     color: value(disabledTextColor);
+}
+
+.root:priority(basic):disabled .arrowIcon path {
+    fill: value(disabledTextColor);
 }
