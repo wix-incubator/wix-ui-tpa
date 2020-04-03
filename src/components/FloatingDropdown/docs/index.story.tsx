@@ -30,7 +30,7 @@ export default {
   componentPath: '../FloatingDropdown.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-FloatingDropdown',
-    ...getFloatingDropdownTestProps()
+    ...getFloatingDropdownTestProps(),
   }),
   exampleProps: {
     //
