@@ -13,12 +13,6 @@
     -st-default: TPAButton;
 }
 
-:import {
-    -st-from: "../Input/Input.st.css";
-    -st-default: TPAInput;
-    -st-named: colorDisabled, colorPlaceholder, color as inputColor;
-}
-
 :vars {
     TextColor: color-5;
     DisabledTextColor: color-3;
@@ -31,9 +25,6 @@
 
 .root {
     -st-extends: TPAButton;
-    -st-mixin: TPAButton(
-        MainTextColor 'value(inputColor)'
-    );
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
@@ -41,7 +32,7 @@
     transition: none;
 }
 
-.text {
+.root:priority(basic) .text {
     -st-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '16px'}"
     );
