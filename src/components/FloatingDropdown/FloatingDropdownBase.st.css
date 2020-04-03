@@ -59,7 +59,8 @@
 
 .root:priority(basic),
 .root:priority(basic):hover,
-.root:priority(basic):focus {
+.root:priority(basic):focus,
+.root:priority(basic):disabled {
     background: transparent;
     transition: none;
 }
@@ -67,5 +68,4 @@
 .root:priority(basic):disabled {
     cursor: default;
     color: value(colorDisabled);
-    border-color: value(colorDisabled);
 }
