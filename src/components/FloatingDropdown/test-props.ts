@@ -1,6 +1,8 @@
 import { FloatingDropdownProps } from './FloatingDropdown';
 
-export function getFloatingDropdownTestProps(): FloatingDropdownProps {
+export function getFloatingDropdownTestProps(
+  overrides: Partial<FloatingDropdownProps> = {},
+): FloatingDropdownProps {
   return {
     options: [
       { id: '1', value: 'Most recent', isSelectable: true },
@@ -15,5 +17,7 @@ export function getFloatingDropdownTestProps(): FloatingDropdownProps {
     ],
     label: 'Sort by:',
     placeholder: 'Most recent',
+
+    ...overrides,
   };
 }
