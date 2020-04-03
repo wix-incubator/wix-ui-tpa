@@ -16,7 +16,7 @@ export interface FloatingDropdownProps {
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
   options: FloatingDropdownOptionProps[];
   placeholder?: string;
-  value?: FloatingDropdownOptionProps;
+  value?: string;
   /* use for visual test */
   forceContentElementVisibility?: boolean;
 }
@@ -36,6 +36,19 @@ export class FloatingDropdown extends React.Component<
 > {
   static displayName = 'FloatingDropdown';
   static defaultProps: DefaultProps = { disabled: false, options: [] };
+
+  static getDerivedStateFromProps(
+    nextProps: FloatingDropdownProps,
+    state: State,
+  ) {
+    if (state.selectedOption) {
+      return null;
+    }
+    return {
+      selectedOption:
+        nextProps.options.find(option => option.id === nextProps.value) || null,
+    };
+  }
 
   state = { selectedOption: null };
 
