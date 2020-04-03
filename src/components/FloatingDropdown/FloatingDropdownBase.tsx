@@ -30,21 +30,23 @@ export const FloatingDropdownBase = (
   } = props;
   return (
     <Button
-      fullWidth
       {...styles('root', {}, props)}
       aria-haspopup
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       data-hook={DATA_HOOKS.base}
       disabled={disabled}
+      fullWidth
     >
       <div className={styles.text}>
-        <span className={styles.label}>{label}</span>
-        {(selectedOption && selectedOption.value) || placeholder}
+        <span className={styles.textContent}>
+          <span className={styles.label}>{label}</span>
+          {(selectedOption && selectedOption.value) || placeholder}
+        </span>
         <ArrowIcon
           className={styles.arrowIcon}
-          width={ICON_SIZE}
           height={ICON_SIZE}
+          width={ICON_SIZE}
         />
       </div>
     </Button>
