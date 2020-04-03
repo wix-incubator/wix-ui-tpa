@@ -10,14 +10,23 @@ import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 
 export interface FloatingDropdownProps {
+  /** Defines a string value that labels the current element. Optional. */
+  'aria-label'?: string;
+  /** Identifies the element (or elements) that labels the current element. Optional. */
   'aria-labelledby'?: string;
+  /** Applies disabled styles. Optional. Boolean. */
   disabled?: boolean;
+  /** Label string value. Required. */
   label: string;
+  /** Callback which is being called when value changes. Function. Optional. */
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
+  /** An array of dropdown option items. Option item structure: { id: string; value: string; isSelectable: boolean; } */
   options: FloatingDropdownOptionProps[];
+  /** A placeholder which is being displayed when no value is selected. String. Optional. */
   placeholder?: string;
+  /** An id of initially selected item. String. Optional. */
   value?: string;
-  /* use for visual test */
+  /** Force dropdown open. Use for visual test. Optional. Boolean. */
   forceContentElementVisibility?: boolean;
 }
 
@@ -66,6 +75,7 @@ export class FloatingDropdown extends React.Component<
 
   render() {
     const {
+      ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       disabled,
       forceContentElementVisibility,
@@ -106,6 +116,7 @@ export class FloatingDropdown extends React.Component<
               options={coreOptions}
             >
               <FloatingDropdownBase
+                aria-label={ariaLabel}
                 aria-labelledby={ariaLabelledBy}
                 className={styles.floatingDropdownBase}
                 disabled={disabled}
