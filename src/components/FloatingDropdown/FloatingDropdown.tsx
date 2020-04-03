@@ -38,7 +38,6 @@ export class FloatingDropdown extends React.Component<
   state = { selectedOption: null };
 
   onSelect = (selectedOption: FloatingDropdownOptionProps) => {
-    console.log('onSelect', selectedOption);
     if (!selectedOption) {
       return;
     }
@@ -60,8 +59,6 @@ export class FloatingDropdown extends React.Component<
       ...rest
     } = this.props;
     const { selectedOption } = this.state;
-
-    console.log(this.props);
 
     const coreOptions = options.map(option => ({
       ...option,
