@@ -78,9 +78,10 @@
 
 .root:priority(basic):disabled {
     cursor: default;
-    color: value(disabledTextColor);
 }
 
-.root:priority(basic):disabled .label {
+.root:priority(basic):disabled .label,
+.root:priority(basic):disabled .text {
     opacity: 1;
+    color: value(disabledTextColor);
 }
