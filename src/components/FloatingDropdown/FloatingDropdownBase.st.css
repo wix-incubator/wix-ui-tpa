@@ -38,6 +38,7 @@
 .textContent {
     max-width: calc(value(maxWidth) - value(iconWith));
     overflow: hidden;
+    display: flex;
 }
 
 .root:priority(basic) .content {
