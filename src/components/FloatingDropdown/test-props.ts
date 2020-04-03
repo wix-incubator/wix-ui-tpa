@@ -1,4 +1,4 @@
-import { FloatingDropdownProps } from "./FloatingDropdown";
+import { FloatingDropdownProps } from './FloatingDropdown';
 
 export function getFloatingDropdownTestProps(): FloatingDropdownProps {
   return {
