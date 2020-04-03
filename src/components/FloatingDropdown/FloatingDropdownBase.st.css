@@ -19,6 +19,16 @@
     -st-named: colorDisabled, colorPlaceholder, color as inputColor;
 }
 
+:vars {
+    TextColor: color-5;
+    DisabledTextColor: color-3;
+}
+
+:vars {
+    textColor: color(value(TextColor));
+    disabledTextColor: color(value(DisabledTextColor));
+}
+
 .root {
     -st-extends: TPAButton;
     -st-mixin: TPAButton(
@@ -40,6 +50,7 @@
         MainTextFont "{theme: 'Body-M', size: '16px'}"
     );
     display: flex;
+    color: value(textColor)
 }
 
 .label {
@@ -67,5 +78,9 @@
 
 .root:priority(basic):disabled {
     cursor: default;
-    color: value(colorDisabled);
+    color: value(disabledTextColor);
+}
+
+.root:priority(basic):disabled .label {
+    opacity: 1;
 }
