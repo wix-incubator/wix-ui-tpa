@@ -38,7 +38,7 @@ export const FloatingDropdownBase = (
       disabled={disabled}
       fullWidth
     >
-      <div className={styles.text}>
+      <div className={styles.content}>
         <span className={styles.textContent}>
           <span className={styles.label}>{label}</span>
           {(selectedOption && selectedOption.value) || placeholder}

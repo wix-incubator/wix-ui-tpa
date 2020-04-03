@@ -40,7 +40,7 @@
     overflow: hidden;
 }
 
-.root:priority(basic) .text {
+.root:priority(basic) .content {
     -st-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '16px'}"
     );
@@ -80,7 +80,7 @@
 }
 
 .root:priority(basic):disabled .label,
-.root:priority(basic):disabled .text {
+.root:priority(basic):disabled .content {
     opacity: 1;
     color: value(disabledTextColor);
 }
