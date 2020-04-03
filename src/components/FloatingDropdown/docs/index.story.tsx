@@ -18,6 +18,7 @@ import * as FloatingDropdownWiringExampleRaw from '!raw-loader!./FloatingDropdow
 import * as FloatingDropdownWiringExampleCSSRaw from '!raw-loader!./FloatingDropdownWiringExample.st.css';
 import { FloatingDropdownWiringExample } from './FloatingDropdownWiringExample';
 import { FloatingDropdown } from '../';
+import { getFloatingDropdownTestProps } from '../test-props';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -29,6 +30,7 @@ export default {
   componentPath: '../FloatingDropdown.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-FloatingDropdown',
+    ...getFloatingDropdownTestProps()
   }),
   exampleProps: {
     //
