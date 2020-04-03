@@ -6,6 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
+    -st-named: minWidth, maxWidth;
 }
 
 :import {
@@ -23,8 +24,8 @@
 }
 
 .root .dropdown {
-    min-width: 220px;
-    max-width: 272px;
+    min-width: value(minWidth);
+    max-width: value(maxWidth);
 }
 
 .floatingDropdownBase {

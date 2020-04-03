@@ -19,8 +19,11 @@
 }
 
 :vars {
-    textColor: color(value(TextColor));
     disabledTextColor: color(value(DisabledTextColor));
+    iconWith: 24px;
+    maxWidth: 272px;
+    minWidth: 220px;
+    textColor: color(value(TextColor));
 }
 
 .root {
@@ -30,6 +33,11 @@
     box-sizing: border-box;
     outline: none;
     transition: none;
+}
+
+.textContent {
+    max-width: calc(value(maxWidth) - value(iconWith));
+    overflow: hidden;
 }
 
 .root:priority(basic) .text {
