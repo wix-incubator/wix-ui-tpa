@@ -50,6 +50,7 @@ export default {
 
           ...[
             { title: 'Example', source: examples.example },
+            { title: 'Preselected', source: examples.preselected },
             { title: 'MinWidth', source: examples.minWidth },
             { title: 'MaxWidth', source: examples.maxWidth },
             { title: 'Disabled', source: examples.disabled },
