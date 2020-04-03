@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "paths": {
       "protractor": ["test/protractor.d.ts"]
-    },
+    }
   },
   "include": [
     "./node_modules/wix-ui-core/dist/src/globals.d.ts",
