@@ -8,12 +8,16 @@ import { floatingDropdownDriverFactory } from './FloatingDropdown.driver';
 import { FloatingDropdown } from './';
 import { floatingDropdownTestkitFactory } from '../../testkit';
 import { floatingDropdownTestkitFactory as enzymeFloatingDropdownTestkitFactory } from '../../testkit/enzyme';
+import { FloatingDropdownProps } from './FloatingDropdown';
+import { getFloatingDropdownTestProps } from './test-props';
 
 describe('FloatingDropdown', () => {
   const createDriver = createUniDriverFactory(floatingDropdownDriverFactory);
 
+  const testProps = getFloatingDropdownTestProps();
+
   it('should render', async () => {
-    const driver = createDriver(<FloatingDropdown buttonText="Click Me" />);
+    const driver = createDriver(<FloatingDropdown {...testProps} />);
     expect(await driver.exists()).toBe(true);
   });
 
@@ -21,7 +25,7 @@ describe('FloatingDropdown', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <FloatingDropdown />,
+          <FloatingDropdown {...testProps} />,
           floatingDropdownTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -35,7 +39,7 @@ describe('FloatingDropdown', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <FloatingDropdown />,
+          <FloatingDropdown {...testProps} />,
           enzymeFloatingDropdownTestkitFactory,
           mount,
           {
