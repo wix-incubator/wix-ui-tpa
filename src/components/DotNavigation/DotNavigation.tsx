@@ -3,8 +3,10 @@ import styles from './DotNavigation.st.css';
 import { RadioButton, RadioButtonKeyDownEvent } from 'wix-ui-core/radio-button';
 import { DotNavigationDataKeys, DotNavigationDataHooks } from './dataHooks';
 import classNames from 'classnames';
-import isNaN from 'lodash/isNaN';
-import isNumber from 'lodash/isNumber';
+
+const isNan = require('lodash/isNan');
+const isNumber = require('lodash/isNumber');
+
 import { TPAComponentProps } from '../../types';
 
 const MAX_SHORT_LIST_LENGTH = 5;
