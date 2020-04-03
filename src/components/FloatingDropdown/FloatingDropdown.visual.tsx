@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
+
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { FloatingDropdown } from './';
+import { getFloatingDropdownTestProps } from './test-props';
 
 class FloatingDropdownVisual extends React.Component<any> {
+  props = getFloatingDropdownTestProps();
   render() {
     return (
       <VisualTestContainer>
@@ -19,7 +22,7 @@ const tests = [
     its: [
       {
         it: 'default',
-        props: {},
+        props: getFloatingDropdownTestProps(),
       },
     ],
   },
