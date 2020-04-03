@@ -43,5 +43,5 @@ options={[
 ]}
 label="Sort by:"
 placeholder="Most recent"
-value={{id: '3', value: 'Most liked', isSelectable: true}}
+value="3"
 />`;
