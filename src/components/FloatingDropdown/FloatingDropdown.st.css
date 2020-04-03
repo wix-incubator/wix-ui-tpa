@@ -19,9 +19,7 @@
     -st-named: dropdown;
 }
 
-.root {
-    /*css goes here*/
-}
+.root {}
 
 .root .dropdown {
     min-width: value(minWidth);

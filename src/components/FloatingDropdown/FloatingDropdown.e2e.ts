@@ -5,10 +5,6 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { floatingDropdownTestkitFactory } from '../../testkit/protractor';
 
-/**
- * For tests containing interactions.
- * Can be removed if not used.
- * */
 describe('floatingDropdown', () => {
   const storyUrl = createStoryUrl({
     kind: 'Components',
