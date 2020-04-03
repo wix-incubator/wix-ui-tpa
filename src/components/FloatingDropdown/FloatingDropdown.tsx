@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 
+import { DropdownOption } from '../Dropdown/DropdownOption';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import styles from './FloatingDropdown.st.css';
-import { DropdownOption } from '../Dropdown/DropdownOption';
 import { FloatingDropdownBase } from './FloatingDropdownBase';
 import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
@@ -17,6 +17,8 @@ export interface FloatingDropdownProps {
   options: FloatingDropdownOptionProps[];
   placeholder?: string;
   value?: FloatingDropdownOptionProps;
+  /* use for visual test */
+  forceContentElementVisibility?: boolean;
 }
 
 type DefaultProps = Required<
@@ -53,6 +55,7 @@ export class FloatingDropdown extends React.Component<
     const {
       ['aria-labelledby']: ariaLabelledBy,
       disabled,
+      forceContentElementVisibility,
       label,
       options,
       placeholder,
@@ -82,6 +85,7 @@ export class FloatingDropdown extends React.Component<
               className={styles.dropdown}
               data-hook={DATA_HOOKS.coreDropdown}
               data-mobile={mobile}
+              forceContentElementVisibility={forceContentElementVisibility}
               initialSelectedIds={selectedOption ? [selectedOption.id] : []}
               onDeselect={this.onSelect}
               onSelect={this.onSelect}
