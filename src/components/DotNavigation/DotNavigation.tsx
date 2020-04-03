@@ -4,7 +4,7 @@ import { RadioButton, RadioButtonKeyDownEvent } from 'wix-ui-core/radio-button';
 import { DotNavigationDataKeys, DotNavigationDataHooks } from './dataHooks';
 import classNames from 'classnames';
 
-const isNan = require('lodash/isNan');
+const isNaN = require('lodash/isNaN');
 const isNumber = require('lodash/isNumber');
 
 import { TPAComponentProps } from '../../types';
