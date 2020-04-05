@@ -204,16 +204,13 @@
     mobileFont: fallback(font(value(MainTextFont)), font(value(UpgradeMobileMediumFont)));
     secondaryBorderWidth: fallback(value(MainBorderWidth), 1px);
 }
-
-
-.root::content {
-    display: inline-block;
-    height: 100%;
+.root:upgrade{
+    line-height: 1;
 }
 
 .root:mobile:upgrade .childrenWrapper{
-    line-height: 1;
     font: value(mobileFont);
+    line-height: 1;
 }
 
 /* upgrade Tiny*/
