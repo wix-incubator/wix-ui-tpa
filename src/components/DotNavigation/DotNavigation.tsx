@@ -3,7 +3,10 @@ import styles from './DotNavigation.st.css';
 import { RadioButton, RadioButtonKeyDownEvent } from 'wix-ui-core/radio-button';
 import { DotNavigationDataKeys, DotNavigationDataHooks } from './dataHooks';
 import classNames from 'classnames';
-import * as _ from 'lodash';
+
+const isNaN = require('lodash/isNaN');
+const isNumber = require('lodash/isNumber');
+
 import { TPAComponentProps } from '../../types';
 
 const MAX_SHORT_LIST_LENGTH = 5;
@@ -89,7 +92,7 @@ interface RadioButtonProps {
   ariaLabel: null | string;
 }
 
-const isNumber = (value: any) => _.isNumber(value) && !_.isNaN(value);
+const _isNumber = (value: any) => isNumber(value) && !isNaN(value);
 
 const getFiveFromStart = (start: number) => [
   start,
@@ -133,7 +136,7 @@ export class DotNavigation extends React.Component<
     savedCurrentIndex: number,
     length: number,
   ) =>
-    isNumber(currentIndex) &&
+    _isNumber(currentIndex) &&
     currentIndex >= 0 &&
     currentIndex < length &&
     currentIndex !== savedCurrentIndex;
@@ -271,7 +274,7 @@ export class DotNavigation extends React.Component<
       })}
     >
       {this.renderFakeRadio()}
-      {!isNumber(this.props.currentIndex) ||
+      {!_isNumber(this.props.currentIndex) ||
       this.props.currentIndex < MAX_SHORT_LIST_LENGTH - NUM_OF_NAV_DOTS
         ? this.renderStartList()
         : this.props.currentIndex >=
@@ -309,7 +312,7 @@ export class DotNavigation extends React.Component<
   render = () => {
     const { length, ...rest } = this.props;
 
-    return isNumber(length) && length > 0 ? (
+    return _isNumber(length) && length > 0 ? (
       <div {...styles('root', {}, rest)} {...this._getDataAttributes()}>
         {length <= MAX_SHORT_LIST_LENGTH
           ? this.renderShortVersion()

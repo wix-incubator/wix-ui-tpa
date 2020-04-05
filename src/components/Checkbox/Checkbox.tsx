@@ -1,9 +1,7 @@
 import * as React from 'react';
 import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
-import {
-  CheckboxChecked,
-  CheckboxIndeterminate,
-} from 'wix-ui-icons-common/system';
+import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
+import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 import styles from './Checkbox.st.css';
