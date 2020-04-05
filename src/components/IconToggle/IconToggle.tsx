@@ -19,6 +19,7 @@ export interface IconToggleProps extends TPAComponentProps {
   onChange?(event: OnChangeEvent): void;
   checked: boolean;
   disabled: boolean;
+  animation: boolean;
 }
 
 interface DefaultProps {
@@ -26,6 +27,7 @@ interface DefaultProps {
   labelPlacement: LabelPlacement;
   checked: boolean;
   disabled: boolean;
+  animation: boolean;
 }
 
 export class IconToggle extends React.Component<IconToggleProps> {
@@ -35,6 +37,7 @@ export class IconToggle extends React.Component<IconToggleProps> {
     labelPlacement: LabelPlacement.END,
     checked: false,
     disabled: false,
+    animation: false,
   };
 
   _getContent = () => {
@@ -50,12 +53,12 @@ export class IconToggle extends React.Component<IconToggleProps> {
   };
 
   render() {
-    const { labelPlacement, onChange, checked, disabled, ...rest } = this.props;
+    const { labelPlacement, onChange, checked, disabled, animation, ...rest } = this.props;
 
     const content = this._getContent();
-
+    
     return (
-      <span {...styles('root', { checked, disabled, labelPlacement }, rest)}>
+      <span {...styles('root', { checked, disabled, labelPlacement, animation }, rest)}>
         <CoreCheckbox
           uncheckedIcon={content}
           checkedIcon={content}
