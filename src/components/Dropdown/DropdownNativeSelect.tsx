@@ -41,7 +41,7 @@ export class DropdownNativeSelect extends React.Component<
     return (
       <>
         {hasPlaceholder && (
-          <option value="" selected disabled>
+          <option value="" disabled>
             {placeholder}
           </option>
         )}
@@ -119,16 +119,17 @@ export class DropdownNativeSelect extends React.Component<
         <select
           {...componentStyles}
           {...buttonStyle}
+          defaultValue={''}
           onChange={e => this.onSelect(e)}
           data-hook="native-select"
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
+          disabled={disabled}
           className={classNames(
             styles.root,
             buttonStyles.root,
             dropdownStyles.dropdownNativeSelect,
           )}
-          disabled={disabled}
         >
           {this.renderOptions(hasPlaceholder)}
         </select>
