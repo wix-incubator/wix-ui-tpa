@@ -18,7 +18,7 @@
 }
 
 .root {
-    -st-states: checked, disabled, labelPlacement( enum(start, end) );
+    -st-states: checked, disabled, labelPlacement( enum(start, end) ), animation;
     display: inline-block;
     padding: 0;
     margin: 0;
@@ -46,9 +46,19 @@
 
 .root:hover .icon {
     opacity: 0.6;
+    transition: opacity 0.2s cubic-bezier(.39,.11,.37,.99);
+}
+
+.root:hover .label {
+    opacity: 0.6;
+    transition: opacity 0.2s cubic-bezier(.39,.11,.37,.99);
 }
 
 .root:disabled:hover .icon {
+    opacity: 1;
+}
+
+.root:disabled:hover .label {
     opacity: 1;
 }
 
@@ -72,8 +82,29 @@
 .label {
     color: color(fallback(value(LabelColor), value(DefaultColor)));
     font: fallback(font(value(LabelFont)), font(value(DefaultFont)));
+    font-size: 12px;
 }
 
 .root:disabled .label {
     color: color(value(DisabledColor));
+}
+
+@keyframes pop-in {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.03);
+        opacity: 0.32;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.root:animation:checked .icon {
+   animation: pop-in 0.2s ease 0s 1 normal;
+   animation-fill-mode: forwards;
 }
