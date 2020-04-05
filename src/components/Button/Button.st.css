@@ -204,18 +204,26 @@
     mobileFont: fallback(font(value(MainTextFont)), font(value(UpgradeMobileMediumFont)));
     secondaryBorderWidth: fallback(value(MainBorderWidth), 1px);
 }
-.root:upgrade{
-    line-height: 1;
+
+.root:upgrade::content {
+    overflow: visible;
 }
 
-.root:mobile:upgrade .childrenWrapper{
+.root:upgrade{
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.root:mobile:upgrade{
     font: value(mobileFont);
     line-height: 1;
 }
 
 /* upgrade Tiny*/
 
-.root:size(tiny):upgrade .childrenWrapper{
+.root:size(tiny):upgrade{
     font: fallback(font(value(MainTextFont)), font(value(UpgradeTinyFont)));
     line-height: 1;
 }
@@ -230,7 +238,7 @@
 
 /* upgrade Small*/
 
-.root:size(small):upgrade:not(mobile) .childrenWrapper{
+.root:size(small):upgrade:not(mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeSmallFont)));
     line-height: 1;
 }
@@ -253,7 +261,7 @@
 
 /* upgrade Medium*/
 
-.root:size(medium):upgrade:not(mobile) .childrenWrapper{
+.root:size(medium):upgrade:not(mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeMediumFont)));
     line-height: 1;
 }
@@ -277,7 +285,7 @@
 
 /* upgrade Large*/
 
-.root:size(large):upgrade:not(mobile) .childrenWrapper{
+.root:size(large):upgrade:not(mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeLargeFont)));
     line-height: 1;
 }
