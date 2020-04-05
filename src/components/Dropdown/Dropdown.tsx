@@ -35,8 +35,7 @@ export interface DropdownProps {
   'aria-labelledby'?: string;
   shouldRenderNativeSelectOnMobile?: boolean;
   /* use for visual test */
-  forceContentElementVisibility?: boolean;
-  shouldRenderNativeSelectOnMobile?: boolean;
+  forceContentElementVisibility?: boolean;houldRenderNativeSelectOnMobile?: boolean;
   upgrade?: boolean;
 }
 
@@ -102,29 +101,15 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     return this.props.shouldRenderNativeSelectOnMobile && isMobile;
   }
 
-  private getOptionData(
-    selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
-  ) {
-    if (this.shouldRenderNativeSelect()) {
-      const index = (selectedOption as React.FormEvent<HTMLSelectElement>)
-        .currentTarget.value;
-      return this.props.options[index];
-    }
-    return selectedOption;
-  }
-
-  private readonly onSelect = (
-    selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
-  ) => {
+  private readonly onSelect = (selectedOption: DropdownOptionProps) => {
     if (!selectedOption) {
       return;
     }
 
-    const { onChange, options } = this.props;
-    const selectedOptionData = this.getOptionData(selectedOption);
-    this.setState({ selectedOption: selectedOptionData });
+    const { onChange } = this.props;
+    this.setState({ selectedOption });
     if (onChange) {
-      onChange(options.find(({ id }) => selectedOptionData.id === id));
+      onChange(selectedOption);
     }
   };
 
@@ -141,16 +126,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     return (
       <DropdownNativeSelect
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledBy}
-          disabled={disabled}
-          className={styles.dropdownNativeSelect}
-          error={error}
-          errorMessage={errorMessage}
-          options={options}
-          onSelect={this.onSelect}
-          placeholder={placeholder}
-          selectedOption={this.state.selectedOption}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        disabled={disabled}
+        className={styles.dropdownNativeSelect}
+        error={error}
+        errorMessage={errorMessage}
+        options={options}
+        onSelect={selectedOption => this.onSelect(selectedOption)}
+        placeholder={placeholder}
+        selectedOption={this.state.selectedOption}
       />
     );
   };
@@ -162,8 +147,6 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       error,
       errorMessage,
       options,
-      alignment,
-      upgrade,
       forceContentElementVisibility,
       placement,
       ['aria-label']: ariaLabel,
@@ -226,34 +209,29 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       ...rest
     } = this.props;
 
+    const { mobile } = this.context;
+
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <div
-            {...styles(
-              'root',
-              {
-                alignment,
-                mobile,
-              },
-              rest,
-            )}
-            data-mobile={mobile}
-          >
-            {label && (
-              <Text
-                className={styles.label}
-                typography={TYPOGRAPHY.runningText}
-              >
-                {label}
-              </Text>
-            )}
-            {this.shouldRenderNativeSelect()
-              ? this.renderNativeSelect()
-              : this.renderCoreDropdown()}
-          </div>
+      <div
+        {...styles(
+          'root',
+          {
+            alignment,
+            mobile,
+          },
+          rest,
         )}
-      </TPAComponentsConsumer>
+        data-mobile={mobile}
+      >
+        {label && (
+          <Text className={styles.label} typography={TYPOGRAPHY.runningText}>
+            {label}
+          </Text>
+        )}
+        {this.shouldRenderNativeSelect()
+          ? this.renderNativeSelect()
+          : this.renderCoreDropdown()}
+      </div>
     );
   }
 }
