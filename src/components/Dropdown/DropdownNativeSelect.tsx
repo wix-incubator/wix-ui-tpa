@@ -7,16 +7,14 @@ import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
 import { PRIORITY, SIZE } from '../Button';
 import classNames from 'classnames';
 import { DropdownOptionProps } from './DropdownOption';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { TPAComponentsContext } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { Tooltip } from '../Tooltip';
 
 interface DropdownNativeSelectProps {
-  onSelect?(
-    selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>,
-  ): void;
+  onSelect(selectedOption: DropdownOptionProps): void;
   selectedOption: DropdownOptionProps;
   options: DropdownOptionProps[];
   placeholder: string;
@@ -27,96 +25,121 @@ interface DropdownNativeSelectProps {
   'aria-labelledby'?: string;
 }
 
-export const DropdownNativeSelect = (
-  props: DropdownNativeSelectProps & TPAComponentProps,
-) => {
-  const {
-    disabled,
-    selectedOption,
-    options,
-    onSelect,
-    placeholder,
-    error,
-    errorMessage,
-    ['aria-label']: ariaLabel,
-    ['aria-labelledby']: ariaLabelledBy,
-  } = props;
+export class DropdownNativeSelect extends React.Component<
+  DropdownNativeSelectProps & TPAComponentProps
+> {
+  static contextType = TPAComponentsContext;
 
-  const hasPlaceholder = !selectedOption || !selectedOption.value;
-  const shouldRenderIcon = selectedOption && !!selectedOption.icon;
+  private onSelect(e: React.FormEvent<HTMLSelectElement>) {
+    const optionId = e.currentTarget.value;
+    const selectedOption = this.props.options.find(({ id }) => id === optionId);
+    this.props.onSelect(selectedOption);
+  }
 
-  return (
-    <TPAComponentsConsumer>
-      {({ rtl }) => (
-        <div className={styles.wrapper}>
-          <select
-            {...buttonStyles(
-              'root',
-              {
-                priority: PRIORITY.basic,
-                size: SIZE.medium,
-                fullWidth: true,
-                mobile: true,
-              },
-              {},
-            )}
-            {...styles(
-              'root',
-              {
-                error,
-                disabled,
-                placeholder: hasPlaceholder,
-                icon: shouldRenderIcon,
-                rtl,
-              },
-              {},
-            )}
-            onChange={e => onSelect(e)}
-            data-hook="native-select"
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-            className={classNames(
-              styles.root,
-              buttonStyles.root,
-              dropdownStyles.dropdownNativeSelect,
-            )}
-            disabled={disabled}
-          >
-            {hasPlaceholder && (
-              <option value="" selected disabled>
-                {placeholder}
-              </option>
-            )}
-            {options.map((option, i) => (
-              <option key={i} value={option.id} disabled={!option.isSelectable}>
-                {option.value}
-              </option>
-            ))}
-          </select>
-          {shouldRenderIcon ? (
-            <div className={styles.optionIcon}>{selectedOption.icon}</div>
-          ) : null}
-          {error && errorMessage && (
-            <div className={styles.errorIconWrapper}>
-              <Tooltip
-                className={styles.errorIcon}
-                data-hook={DATA_HOOKS.errorTooltip}
-                placement="top-end"
-                skin={TooltipSkin.Error}
-                content={props.errorMessage}
-                appendTo={'scrollParent'}
-              >
-                <ErrorIcon width={ICON_SIZE} height={ICON_SIZE} />
-              </Tooltip>
-            </div>
+  private renderOptions(hasPlaceholder: boolean) {
+    const { placeholder, options } = this.props;
+    return (
+      <>
+        {hasPlaceholder && (
+          <option value="" selected disabled>
+            {placeholder}
+          </option>
+        )}
+        {options.map((option, i) => (
+          <option key={i} value={option.id} disabled={!option.isSelectable}>
+            {option.value}
+          </option>
+        ))}
+      </>
+    );
+  }
+
+  private renderErrorIcon() {
+    return (
+      <div className={styles.errorIconWrapper}>
+        <Tooltip
+          className={styles.errorIcon}
+          data-hook={DATA_HOOKS.errorTooltip}
+          placement="top-end"
+          skin={TooltipSkin.Error}
+          content={this.props.errorMessage}
+          appendTo={'scrollParent'}
+        >
+          <ErrorIcon width={ICON_SIZE} height={ICON_SIZE} />
+        </Tooltip>
+      </div>
+    );
+  }
+
+  private renderOptionIcon() {
+    return (
+      <div className={styles.optionIcon}>{this.props.selectedOption.icon}</div>
+    );
+  }
+
+  render() {
+    const {
+      disabled,
+      selectedOption,
+      error,
+      errorMessage,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
+    } = this.props;
+    const { rtl } = this.context;
+
+    const hasPlaceholder = !selectedOption || !selectedOption.value;
+    const shouldRenderIcon = selectedOption && !!selectedOption.icon;
+
+    const buttonStyle = buttonStyles(
+      'root',
+      {
+        priority: PRIORITY.basic,
+        size: SIZE.medium,
+        fullWidth: true,
+        mobile: true,
+      },
+      {},
+    );
+
+    const componentStyles = styles(
+      'root',
+      {
+        error,
+        disabled,
+        placeholder: hasPlaceholder,
+        icon: shouldRenderIcon,
+        rtl,
+      },
+      {},
+    );
+
+    return (
+      <div className={styles.wrapper}>
+        <select
+          {...componentStyles}
+          {...buttonStyle}
+          onChange={e => this.onSelect(e)}
+          data-hook="native-select"
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          className={classNames(
+            styles.root,
+            buttonStyles.root,
+            dropdownStyles.dropdownNativeSelect,
           )}
-          <ArrowIcon
-            className={styles.arrowIcon}
-            width={ICON_SIZE}
-            height={ICON_SIZE}
-          />
-        </div>
-      )}
-    </TPAComponentsConsumer>
-  );
-};
+          disabled={disabled}
+        >
+          {this.renderOptions(hasPlaceholder)}
+        </select>
+        {shouldRenderIcon ? this.renderOptionIcon() : null}
+        {error && errorMessage && this.renderErrorIcon()}
+        <ArrowIcon
+          className={styles.arrowIcon}
+          width={ICON_SIZE}
+          height={ICON_SIZE}
+        />
+      </div>
+    );
+  }
+}
