@@ -31,8 +31,6 @@ addParameters({
     storySort: (a, b) => {
       const kind = 'Components';
 
-      console.log('adler', 'config.js:34', a, b);
-
       if (a[1].kind !== b[1].kind) {
         if (a[1].kind.startsWith(kind)) {
           return -1;
