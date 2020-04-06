@@ -41,7 +41,9 @@ export const FloatingDropdownBase = (
       <div className={styles.content}>
         <span className={styles.textContent}>
           <div className={styles.label}>{label}</div>
-          <div className={styles.selectedValue}>{(selectedOption && selectedOption.value) || placeholder}</div>
+          <div className={styles.selectedValue}>
+            {(selectedOption && selectedOption.value) || placeholder}
+          </div>
         </span>
         <ArrowIcon
           className={styles.arrowIcon}
