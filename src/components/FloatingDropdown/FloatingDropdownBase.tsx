@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
-import { Button } from '../Button';
+import { TextButton, TEXT_BUTTON_PRIORITY } from '../TextButton';
 import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
@@ -29,14 +29,14 @@ export const FloatingDropdownBase = (
     selectedOption,
   } = props;
   return (
-    <Button
+    <TextButton
       {...styles('root', {}, props)}
       aria-haspopup
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       data-hook={DATA_HOOKS.base}
       disabled={disabled}
-      fullWidth
+      priority={TEXT_BUTTON_PRIORITY.secondary}
     >
       <div className={styles.content}>
         <span className={styles.textContent}>
@@ -49,6 +49,6 @@ export const FloatingDropdownBase = (
           width={ICON_SIZE}
         />
       </div>
-    </Button>
+    </TextButton>
   );
 };

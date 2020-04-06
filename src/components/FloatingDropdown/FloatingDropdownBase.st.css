@@ -9,7 +9,7 @@
 }
 
 :import {
-    -st-from: "../Button/Button.st.css";
+    -st-from: "../TextButton/TextButton.st.css";
     -st-default: TPAButton;
 }
 
@@ -41,7 +41,7 @@
     display: flex;
 }
 
-.root:priority(basic) .content {
+.root .content {
     -st-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '16px'}"
     );
@@ -63,29 +63,21 @@
     text-align: start;
 }
 
-.root:mobile:size(medium),
-.root:size(medium) {
+.root:mobile,
+.root {
     padding: 8px 0;
 }
 
-.root:priority(basic),
-.root:priority(basic):hover,
-.root:priority(basic):focus,
-.root:priority(basic):disabled {
-    background: transparent;
-    transition: none;
-}
-
-.root:priority(basic):disabled {
+.root:disabled {
     cursor: default;
 }
 
-.root:priority(basic):disabled .label,
-.root:priority(basic):disabled .content {
+.root:disabled .label,
+.root:disabled .content {
     opacity: 1;
     color: value(disabledTextColor);
 }
 
-.root:priority(basic):disabled .arrowIcon path {
+.root:disabled .arrowIcon path {
     fill: value(disabledTextColor);
 }
