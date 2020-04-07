@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { visualize, story, snap } from 'storybook-snapper';
+import { storiesOf } from '@storybook/react';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
 import { optionsWithSections, simpleOptions } from './helpers';
-import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 class DropdownVisual extends React.Component<any> {
   static defaultProps = {
@@ -16,39 +15,11 @@ class DropdownVisual extends React.Component<any> {
 
     return (
       <TPAComponentsProvider value={{ mobile }}>
-        <Dropdown {...this.props} />
+        <VisualTestContainer>
+          <Dropdown {...this.props} />
+        </VisualTestContainer>
       </TPAComponentsProvider>
     );
-  }
-}
-
-class AsyncDropdownVisual extends React.Component<any> {
-  state = {
-    newOptions: false,
-  };
-
-  componentDidMount() {
-    onStyleProcessorDone()
-      .then(() => {
-        setTimeout(() => {
-          this.setState({ newOptions: true }, this.props.done);
-        }, 1000);
-      })
-      .catch(() => {});
-  }
-
-  render() {
-    const { newOptions } = this.state;
-    let options = this.props.options;
-
-    if (newOptions) {
-      options = options.map(option => ({
-        ...option,
-        value: `Async Option ${option.id}`,
-      }));
-    }
-
-    return <DropdownVisual {...this.props} options={options} />;
   }
 }
 
@@ -89,31 +60,21 @@ function getTests(isMobile) {
   ];
 }
 
-visualize('Dropdown', () => {
-  story('desktop', () => {
-    getTests(false).forEach(test => {
-      snap(test.it, <DropdownVisual {...test.props} />);
-    });
-  });
+const tests = [
+  {
+    describe: 'desktop',
+    its: getTests(false),
+  },
+  {
+    describe: 'mobile',
+    its: getTests(true),
+  },
+];
 
-  story('mobile', () => {
-    getTests(true).forEach(test => {
-      snap(test.it, <DropdownVisual {...test.props} />);
-    });
-  });
-
-  story('logic', () => {
-    const props = {
-      placeholder: 'Placeholder text',
-      label:
-        'Selected value should change when programmatically changing the options',
-      options: simpleOptions,
-      forceContentElementVisibility: true,
-      mobile: false,
-      initialSelectedId: simpleOptions[0].id,
-    };
-    snap('Change value on options change', done => (
-      <AsyncDropdownVisual {...props} done={done} />
+tests.forEach(({ describe, its }) => {
+  its.forEach(({ it, props }) => {
+    storiesOf(`Dropdown/${describe}`, module).add(it, () => (
+      <DropdownVisual {...props} />
     ));
   });
 });

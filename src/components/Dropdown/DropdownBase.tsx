@@ -5,12 +5,12 @@ import { Button } from '../Button';
 import { TPAComponentProps } from '../../types';
 
 import { DATA_HOOKS, ICON_SIZE } from './constants';
+import { DropdownOptionProps } from './DropdownOption';
 
 import styles from './DropdownBase.st.css';
 
 interface DropdownBaseProps {
-  value?: string;
-  icon?: React.ReactNode;
+  selectedOption: DropdownOptionProps;
   placeholder: string;
   disabled: boolean;
   error: boolean;
@@ -20,15 +20,14 @@ interface DropdownBaseProps {
 
 export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
   const {
-    value,
-    icon,
+    selectedOption,
     placeholder,
     error,
     disabled,
     ['aria-label']: ariaLabel,
     ['aria-labelledby']: ariaLabelledBy,
   } = props;
-  const hasPlaceholder = !value;
+  const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
     <Button
       fullWidth
@@ -39,7 +38,11 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
       aria-haspopup
-      prefixIcon={icon ? <div className={styles.optionIcon}>{icon}</div> : null}
+      prefixIcon={
+        selectedOption && selectedOption.icon ? (
+          <div className={styles.optionIcon}>{selectedOption.icon}</div>
+        ) : null
+      }
       suffixIcon={
         <ArrowIcon
           className={styles.arrowIcon}
@@ -48,7 +51,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
         />
       }
     >
-      {value || placeholder}
+      {(selectedOption && selectedOption.value) || placeholder}
     </Button>
   );
 };
