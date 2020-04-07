@@ -16,37 +16,15 @@ describe('FloatingDropdown', () => {
 
   const testProps = getFloatingDropdownTestProps();
 
-  it('should render', async () => {
+  it('should expand dropdown after click on enabled dropdownBase', async () => {
     const driver = createDriver(<FloatingDropdown {...testProps} />);
-    expect(await driver.exists()).toBe(true);
+    await driver.clickOnDropdownBase();
+    expect(await driver.dropdownContentDisplayed()).toBe(true);
   });
 
-  describe('testkit', () => {
-    it('should exist', async () => {
-      expect(
-        await isUniTestkitExists(
-          <FloatingDropdown {...testProps} />,
-          floatingDropdownTestkitFactory,
-          {
-            dataHookPropName: 'data-hook',
-          },
-        ),
-      ).toBe(true);
-    });
-  });
-
-  describe('enzyme testkit', () => {
-    it('should exist', async () => {
-      expect(
-        await isUniEnzymeTestkitExists(
-          <FloatingDropdown {...testProps} />,
-          enzymeFloatingDropdownTestkitFactory,
-          mount,
-          {
-            dataHookPropName: 'data-hook',
-          },
-        ),
-      ).toBe(true);
-    });
+  it('should not expand dropdown after click on disabled dropdownBase', async () => {
+    const driver = createDriver(<FloatingDropdown {...testProps} disabled />);
+    await driver.clickOnDropdownBase();
+    expect(await driver.dropdownContentDisplayed()).toBe(false);
   });
 });
