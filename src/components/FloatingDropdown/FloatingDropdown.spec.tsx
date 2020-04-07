@@ -22,6 +22,12 @@ describe('FloatingDropdown', () => {
     expect(await driver.dropdownContentDisplayed()).toBe(true);
   });
 
+  it('should properly display selected value', async () => {
+    const { value, id } = testProps.options[0];
+    const driver = createDriver(<FloatingDropdown {...testProps} value={id} />);
+    expect(await driver.getBaseSelectedValue()).toBe(value);
+  });
+
   it('should not expand dropdown after click on disabled dropdownBase', async () => {
     const driver = createDriver(<FloatingDropdown {...testProps} disabled />);
     await driver.clickOnDropdownBase();
