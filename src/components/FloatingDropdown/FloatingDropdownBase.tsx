@@ -14,7 +14,7 @@ interface FloatingDropdownBaseProps {
   disabled: boolean;
   label: string;
   placeholder: string;
-  selectedOption: FloatingDropdownOptionProps;
+  value: string;
 }
 
 export const FloatingDropdownBase = (
@@ -26,7 +26,7 @@ export const FloatingDropdownBase = (
     disabled,
     label,
     placeholder,
-    selectedOption,
+    value,
   } = props;
   return (
     <TextButton
@@ -45,7 +45,7 @@ export const FloatingDropdownBase = (
             className={styles.selectedValue}
             data-hook={DATA_HOOKS.baseSelectedValue}
           >
-            {(selectedOption && selectedOption.value) || placeholder}
+            {value || placeholder}
           </div>
         </span>
         <ArrowIcon

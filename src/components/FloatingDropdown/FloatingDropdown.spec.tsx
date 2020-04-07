@@ -1,15 +1,10 @@
 import * as React from 'react';
+
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
-import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
-import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
+
 import { floatingDropdownDriverFactory } from './FloatingDropdown.driver';
-import { FloatingDropdown } from './';
-import { floatingDropdownTestkitFactory } from '../../testkit';
-import { floatingDropdownTestkitFactory as enzymeFloatingDropdownTestkitFactory } from '../../testkit/enzyme';
-import { FloatingDropdownProps } from './FloatingDropdown';
 import { getFloatingDropdownTestProps } from './test-props';
+import { FloatingDropdown } from './FloatingDropdown';
 
 describe('FloatingDropdown', () => {
   const createDriver = createUniDriverFactory(floatingDropdownDriverFactory);
