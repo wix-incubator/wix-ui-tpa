@@ -5,7 +5,6 @@ import {
 import { Simulate } from 'react-dom/test-utils';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { dropdownDriverFactory as coreDriverFactory } from 'wix-ui-core/dist/src/components/dropdown/Dropdown.driver';
-
 import { hasDataAttr, hasMobile } from '../../test/utils';
 import { DATA_HOOKS } from './constants';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.driver';
@@ -24,6 +23,7 @@ export interface DropdownDriver extends BaseUniDriver {
   hasAriaHasPopup(): Promise<boolean>;
   getAriaLabel(): Promise<string | null>;
   getAriaLabelledBy(): Promise<string | null>;
+  getDisplayedSelectedValue(): Promise<string>;
 }
 
 const getDropdownCoreDriver = async (baseUniDriver: BaseUniDriver) => {
@@ -43,7 +43,7 @@ const getTooltipDriver = async (baseUniDriver: BaseUniDriver) => {
 export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
   const baseUniDriver = baseUniDriverFactory(base);
   const getDropdownBase = async () => {
-    return base.$$(`[data-hook="${DATA_HOOKS.base}"]`).get(0);
+    return base.$(`[data-hook="${DATA_HOOKS.base}"]`);
   };
 
   return {
@@ -75,5 +75,8 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     },
     getTooltipDriver,
     getDropdownCoreDriver,
+    getDisplayedSelectedValue: async () => {
+      return (await getDropdownBase()).text();
+    },
   };
 };

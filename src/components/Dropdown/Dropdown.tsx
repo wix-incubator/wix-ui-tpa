@@ -38,15 +38,11 @@ interface DefaultProps {
   placement: Placement;
 }
 
-interface State {
-  selectedOption: DropdownOptionProps;
-}
-
 /**
  * A dropdown allows a user to select a value from a series of options.
  * Single selection dropdown.
  * */
-export class Dropdown extends React.Component<DropdownProps, State> {
+export class Dropdown extends React.Component<DropdownProps> {
   static displayName = 'Dropdown';
   static defaultProps: DefaultProps = {
     placeholder: '',
@@ -54,33 +50,39 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placement: 'bottom',
   };
 
-  static getDerivedStateFromProps(nextProps, state) {
-    if (state.selectedOption) {
-      return null;
-    }
-    return {
-      selectedOption:
-        nextProps.options.find(
-          option => option.id === nextProps.initialSelectedId,
-        ) || null,
-    };
-  }
-
-  state = {
-    selectedOption: null,
-  };
-
   onSelect = (selectedOption: DropdownOptionProps) => {
     if (!selectedOption) {
       return;
     }
-    this.setState({ selectedOption });
+
     if (this.props.onChange) {
       this.props.onChange(
         this.props.options.find(({ id }) => selectedOption.id === id),
       );
     }
   };
+
+  _generateCoreOptions() {
+    const { options, initialSelectedId } = this.props;
+    const coreOptions = [];
+    let selectedOption = null;
+
+    for (const option of options) {
+      coreOptions.push({
+        ...option,
+        render: () => <DropdownOption {...option} />,
+      });
+
+      if (option && initialSelectedId === option.id) {
+        selectedOption = option;
+      }
+    }
+
+    return {
+      coreOptions,
+      selectedOption,
+    };
+  }
 
   render() {
     const {
@@ -93,16 +95,12 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       alignment,
       forceContentElementVisibility,
       placement,
+      initialSelectedId,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       ...rest
     } = this.props;
-    const { selectedOption } = this.state;
-
-    const coreOptions = options.map(option => ({
-      ...option,
-      render: () => <DropdownOption {...option} />,
-    }));
+    const { selectedOption, coreOptions } = this._generateCoreOptions();
 
     return (
       <TPAComponentsConsumer>
@@ -135,14 +133,15 @@ export class Dropdown extends React.Component<DropdownProps, State> {
               options={coreOptions}
               onDeselect={this.onSelect}
               onSelect={this.onSelect}
-              initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+              initialSelectedIds={initialSelectedId ? [initialSelectedId] : []}
               forceContentElementVisibility={forceContentElementVisibility}
             >
               <DropdownBase
                 aria-label={ariaLabel}
                 aria-labelledby={ariaLabelledBy}
                 className={styles.dropdownBase}
-                selectedOption={selectedOption}
+                value={selectedOption && selectedOption.value}
+                icon={selectedOption && selectedOption.icon}
                 placeholder={placeholder}
                 disabled={disabled}
                 error={error}
