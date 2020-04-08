@@ -45,8 +45,7 @@ export const floatingDropdownDriverFactory = (
     },
     getBaseSelectedValue: async () => {
       return (await getDropdownBase())
-        .$$(selectorFromDataHook(DATA_HOOKS.baseSelectedValue))
-        .get(0)
+        .$(selectorFromDataHook(DATA_HOOKS.baseSelectedValue))
         .text();
     },
   };
