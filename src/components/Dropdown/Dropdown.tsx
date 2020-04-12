@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-import {
-  TPAComponentsConsumer,
-  TPAComponentsContext,
-} from '../TPAComponentsConfig';
+import { TPAComponentsContext } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
 
 import { DropdownBase } from './DropdownBase';
@@ -43,8 +40,8 @@ interface DefaultProps {
   placeholder: string;
   options: DropdownOptionProps[];
   placement: Placement;
-  shouldRenderNativeOnMobile: boolean;
   upgrade: boolean;
+  shouldRenderNativeSelectOnMobile: boolean;
 }
 
 interface State {
@@ -62,8 +59,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placeholder: '',
     options: [],
     placement: 'bottom',
+    shouldRenderNativeSelectOnMobile: false,
     upgrade: false,
-    shouldRenderNativeOnMobile: false,
   };
   constructor(props) {
     super(props);
@@ -108,9 +105,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     const { onChange } = this.props;
     this.setState({ selectedOption });
-    if (onChange) {
-      onChange(selectedOption);
-    }
+    onChange &&
+      onChange(this.props.options.find(({ id }) => selectedOption.id === id));
   };
 
   private readonly renderNativeSelect = () => {

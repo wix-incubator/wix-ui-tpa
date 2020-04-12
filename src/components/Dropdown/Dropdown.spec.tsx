@@ -113,7 +113,6 @@ describe('Dropdown', () => {
     });
 
     it('should not be called when re-selecting a selected item', async () => {
-      expect(await driver.areOptionsShown()).toBe(true);
       await driver.selectOptionAt(0);
       await driver.click(); // open
       await driver.selectOptionAt(0);
@@ -212,39 +211,6 @@ describe('Native Dropdown', () => {
     expect(await driver.getAriaLabelledBy()).toBe(ariaLabelledByContent);
   });
 
-  describe('onChange', () => {
-    let driver: DropdownDriver;
-    let onChange: Mock;
-    const options = new Array(5).fill(null).map((el, i) => ({
-      id: `${i}`,
-      value: `value-${i}`,
-      isSelectable: i < 3,
-    }));
-
-    beforeEach(async () => {
-      onChange = jest.fn();
-      driver = createDriver(
-        <NativeConfiguredDropdown options={options} onChange={onChange} />,
-      );
-    });
-
-    it('should be called when selection changed', async () => {
-      await driver.selectOptionAt(2);
-      expect(onChange).toHaveBeenCalledWith(options[2]);
-    });
-
-    it('should not be called when selecting disabled item', async () => {
-      await driver.selectOptionAt(4);
-      expect(onChange).not.toHaveBeenCalled();
-    });
-
-    it('should not be called when re-selecting a selected item', async () => {
-      await driver.selectOptionAt(0);
-      await driver.selectOptionAt(0);
-      expect(onChange).toHaveBeenCalledTimes(1);
-    });
-  });
-
   describe('error states', () => {
     it('should have error', async () => {
       const driver = createDriver(
@@ -288,6 +254,11 @@ describe('Native Dropdown', () => {
     it('click', async () => {
       const driver = createDriver(<NativeConfiguredDropdown />);
       expect(await driver.click()).toBe(null);
+    });
+
+    it('selectOptionAt', async () => {
+      const driver = createDriver(<NativeConfiguredDropdown />);
+      expect(await driver.selectOptionAt(0)).toBe(null);
     });
   });
 });
