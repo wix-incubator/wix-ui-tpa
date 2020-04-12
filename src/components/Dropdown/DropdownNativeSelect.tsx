@@ -30,8 +30,12 @@ export class DropdownNativeSelect extends React.Component<
 > {
   static contextType = TPAComponentsContext;
 
-  private onSelect(e: React.FormEvent<HTMLSelectElement>) {
-    const optionId = e.currentTarget.value;
+  private onSelect(e) {
+    const { selectedOption: prevSelectedOption } = this.props;
+    const optionId = e.target.value;
+    if ((prevSelectedOption && prevSelectedOption.id) === optionId) {
+      return;
+    }
     const selectedOption = this.props.options.find(({ id }) => id === optionId);
     this.props.onSelect(selectedOption);
   }
