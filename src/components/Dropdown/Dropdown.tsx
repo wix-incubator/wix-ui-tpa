@@ -38,7 +38,7 @@ interface DefaultProps {
   placeholder: string;
   options: DropdownOptionProps[];
   placement: Placement;
-  shouldRenderNativeOnMobile: boolean;
+  shouldRenderNativeSelectOnMobile: boolean;
 }
 
 interface State {
@@ -56,7 +56,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placeholder: '',
     options: [],
     placement: 'bottom',
-    shouldRenderNativeOnMobile: false,
+    shouldRenderNativeSelectOnMobile: false,
   };
 
   static getDerivedStateFromProps(nextProps, state) {
@@ -77,8 +77,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
   private shouldRenderNativeSelect() {
     const { mobile: isMobile } = this.context;
-    return true;
-    //return this.props.shouldRenderNativeSelectOnMobile && isMobile;
+    return this.props.shouldRenderNativeSelectOnMobile && isMobile;
   }
 
   private readonly onSelect = (selectedOption: DropdownOptionProps) => {
@@ -88,9 +87,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     const { onChange } = this.props;
     this.setState({ selectedOption });
-    if (onChange) {
-      onChange(selectedOption);
-    }
+    onChange &&
+      onChange(this.props.options.find(({ id }) => selectedOption.id === id));
   };
 
   private readonly renderNativeSelect = () => {
