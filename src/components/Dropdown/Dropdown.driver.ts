@@ -100,8 +100,11 @@ const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
     hasAriaHasPopup: async () => warnUnsupportedFunction('hasAriaHasPopup'),
     click: async () => warnUnsupportedFunction('click'),
     areOptionsShown: async () => warnUnsupportedFunction('areOptionsShown'),
-    selectOptionAt: async (index: number) =>
-      warnUnsupportedFunction('selectOptionAt'),
+    selectOptionAt: async (index: number) => {
+      const option = getNativeOptions().get(index);
+      const isDisabled = (await option.attr('disabled')) !== null;
+      !isDisabled && Simulate.change(await option.getNative());
+    },
     getOptionsCount: async () => getNativeOptions().count(),
     hasErrorMessage: async () =>
       (await getTooltipDriver(baseUniDriver)).exists(),
