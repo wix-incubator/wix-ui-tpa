@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './DropdownNativeSelect.st.css';
 import dropdownStyles from './Dropdown.st.css';
 import buttonStyles from '../Button/Button.st.css';
-import { DATA_HOOKS, ICON_SIZE } from './constants';
+import { DATA_ATTRIBUTES, DATA_HOOKS, ICON_SIZE } from './constants';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
 import { PRIORITY, SIZE } from '../Button';
 import classNames from 'classnames';
@@ -81,7 +81,15 @@ export class DropdownNativeSelect extends React.Component<
     );
   }
 
+  private getDataAttributes() {
+    const { error } = this.props;
+    return {
+      [DATA_ATTRIBUTES.error]: error,
+    };
+  }
+
   render() {
+    const { rtl } = this.context;
     const {
       disabled,
       selectedOption,
@@ -90,7 +98,6 @@ export class DropdownNativeSelect extends React.Component<
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
-    const { rtl } = this.context;
 
     const hasPlaceholder = !selectedOption || !selectedOption.value;
     const shouldRenderIcon = selectedOption && !!selectedOption.icon;
@@ -123,6 +130,7 @@ export class DropdownNativeSelect extends React.Component<
         <select
           {...componentStyles}
           {...buttonStyle}
+          {...this.getDataAttributes()}
           defaultValue={''}
           onChange={e => this.onSelect(e)}
           data-hook={DATA_HOOKS.nativeSelect}

@@ -7,3 +7,7 @@ export const DATA_HOOKS = {
   placeholderOption: 'placeholder-option',
   errorTooltip: 'dropdown-error-tooltip',
 };
+
+export const DATA_ATTRIBUTES = {
+  error: 'data-error',
+};

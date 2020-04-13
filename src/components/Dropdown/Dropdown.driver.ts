@@ -3,11 +3,11 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { Simulate } from 'react-dom/test-utils';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { dropdownDriverFactory as coreDriverFactory } from 'wix-ui-core/dist/src/components/dropdown/Dropdown.driver';
 
 import { hasDataAttr, hasMobile } from '../../test/utils';
-import { DATA_HOOKS } from './constants';
+import { DATA_ATTRIBUTES, DATA_HOOKS } from './constants';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.driver';
 import nativeStyle from './DropdownNativeSelect.st.css';
 
@@ -80,7 +80,6 @@ const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
 };
 
 const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
-  const stylableUtil = new StylableUnidriverUtil(nativeStyle);
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
   const warnUnsupportedFunction = (fnName: string) => {
@@ -109,7 +108,9 @@ const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
     hasErrorMessage: async () =>
       (await getTooltipDriver(baseUniDriver)).exists(),
     hasError: async () =>
-      stylableUtil.hasStyleState(await getDropdownNativeSelect(base), 'error'),
+      (await (await getDropdownNativeSelect(base)).attr(
+        DATA_ATTRIBUTES.error,
+      )) !== null,
     getErrorMessageContent: async () => {
       const tooltipDriver = await getTooltipDriver(baseUniDriver);
       tooltipDriver.mouseEnter();
