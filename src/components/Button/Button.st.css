@@ -212,6 +212,7 @@
 }
 
 .root:upgrade{
+    box-sizing: border-box;
     line-height: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
