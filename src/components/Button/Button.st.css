@@ -207,6 +207,8 @@
 
 .root:upgrade::content {
     overflow: visible;
+    text-overflow: unset;
+    white-space: unset;
 }
 
 .root:upgrade{
@@ -214,6 +216,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    display: inline-block;
 }
 
 .root:mobile:upgrade{

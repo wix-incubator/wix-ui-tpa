@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, calculate, string;
+    -st-named: color;
 }
 
 :import {
@@ -107,18 +107,34 @@
     content: '';
 }
 
+.root .childrenWrapper{
+    display: inline-block;
+}
+
 /*--------------------upgrade------------------------*/
 
 :vars {
     DefaultBorderWidth: 1px;
-    MainBorderWidth: --overridable;
-    BorderWidth: fallback(value(MainBorderWidth), value(DefaultBorderWidth));
 }
 
 .root:mobile:size(medium):upgrade::before,
 .root:size(medium):upgrade::before {
     width: 0px;
     content: '';
+}
+.root:upgrade{
+    display: flex;
+}
+
+.root:upgrade::content{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.root:upgrade .childrenWrapper{
+    overflow: visible;
 }
 
 .root:mobile:size(medium):upgrade::after,
@@ -129,10 +145,10 @@
 
 .root:mobile:upgrade:size(medium):priority(basic),
 .root:upgrade:size(medium):priority(basic) {
-    padding: calculate(string(-), 8px, value(BorderWidth)) 7px calculate(string(-), 8px, value(BorderWidth)) 12px;
+    padding: 7px 7px 7px 12px;
 }
 
 .root:mobile:upgrade:size(medium):priority(basic):rtl,
 .root:upgrade:size(medium):priority(basic):rtl {
-    padding: calculate(string(-), 8px, value(BorderWidth)) 12px calculate(string(-), 8px, value(BorderWidth)) 7px;
+    padding: 7px 12px 7px 7px;
 }
