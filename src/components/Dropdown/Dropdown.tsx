@@ -42,7 +42,7 @@ interface DefaultProps {
 }
 
 interface State {
-  selectedOption: DropdownOptionProps | React.FormEvent<HTMLSelectElement>;
+  selectedOption: DropdownOptionProps;
 }
 
 /**

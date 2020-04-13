@@ -288,10 +288,5 @@ describe('Native Dropdown', () => {
       const driver = createDriver(<NativeConfiguredDropdown />);
       expect(await driver.click()).toBe(null);
     });
-
-    // it('selectOptionAt', async () => {
-    //   const driver = createDriver(<NativeConfiguredDropdown />);
-    //   expect(await driver.selectOptionAt(0)).toBe(null);
-    // });
   });
 });
