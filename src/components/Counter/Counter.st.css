@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: applyUnit, color, fallback, font, value;
+    -st-named: applyUnit, color, fallback, font, value, applyOpacity;
 }
 
 :import {
@@ -43,11 +43,16 @@
     background: color(value(DefaultBackgroundColor));
     border-width: 1px;
     border-style: solid;
-    border-color: color(value(counterColor));
+    border-color: applyOpacity(value(counterColor), 0.6);
 }
 
 .root:error {
     border-color: value(DefaultErrorColor);
+}
+
+.root:hover:not(:disabled),
+.root:focus:not(:disabled){
+    border-color: value(counterColor);
 }
 
 .root:disabled {
