@@ -1,84 +1,29 @@
-import * as React from 'react';
+export const examples = `<div style={{display: 'flex'}}>
+    <Button upgrade >
+      BASIC
+    </Button>
 
-import CodeExample from 'wix-storybook-utils/CodeExample';
+    <Button
+      upgrade
+      priority={PRIORITY.basicSecondary}
+      style={{marginLeft: '10px'}}
+    >
+      BASIC SECONDARY
+    </Button>
 
-import * as ExtendedRaw from '!raw-loader!./ButtonExtendedExample.tsx';
-import * as ExtendedRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.tsx';
+    <Button
+      upgrade
+      priority={PRIORITY.primary}
+      style={{marginLeft: '10px'}}
+    >
+      PRIMARY
+    </Button>
 
-import * as ExtendedCSSRaw from '!raw-loader!./ButtonExtendedExample.st.css';
-import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.st.css';
-
-import { ButtonExtendedExample } from './ButtonExtendedExample';
-import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
-
-export const Examples = () => (
-  <div>
-    <div className="tpa-container">
-      <CodeExample
-        title="Button Extended"
-        code={['//.st.css', ExtendedCSSRaw, '', '//.tsx', ExtendedRaw].join(
-          '\n',
-        )}
-      >
-        <ButtonExtendedExample>some text</ButtonExtendedExample>
-      </CodeExample>
-    </div>
-    <div className="tpa-container">
-      <CodeExample
-        title="Button with style params"
-        code={[
-          '//.st.css',
-          ExtendedCSSRawWithStyleParams,
-          '',
-          '//.tsx',
-          ExtendedRawWithStyleParams,
-        ].join('\n')}
-      >
-        <ButtonExtendedWithStyleParamsExample>
-          some text
-        </ButtonExtendedWithStyleParamsExample>
-      </CodeExample>
-    </div>
-    <MockSettings
-      wixNumberParams={[
-        {
-          label: 'Border Width',
-          wixParam: 'borderWidth',
-          defaultNumber: 0,
-          unit: 'px',
-        },
-        {
-          label: 'Border Radius',
-          wixParam: 'borderRadius',
-          defaultNumber: 0,
-          unit: 'px',
-        },
-      ]}
-      wixFontParams={[
-        {
-          label: 'Font',
-          wixParam: 'buttonTextFont',
-          defaultFont: 'arial',
-        },
-      ]}
-      wixColorParams={[
-        {
-          label: 'Text Color',
-          wixParam: 'buttonTextColor',
-          defaultColor: 'color-1',
-        },
-        {
-          label: 'Background Color',
-          wixParam: 'buttonBackgroundColor',
-          defaultColor: 'color-5',
-        },
-        {
-          label: 'Border Color',
-          wixParam: 'borderColor',
-          defaultColor: 'color-8',
-        },
-      ]}
-    />
-  </div>
-);
+    <Button
+      upgrade
+      priority={PRIORITY.secondary}
+      style={{marginLeft: '10px'}}
+    >
+      SECONDARY
+    </Button>
+</div>`;
