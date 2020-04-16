@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { FloatingDropdown } from '../';
-import styles from './FloatingDropdownWiringExample.st.css';
 import { getFloatingDropdownTestProps } from '../test-props';
+import { FloatingDropdown } from '..';
 
 export const FloatingDropdownWiringExample = () => {
-  return <FloatingDropdown {...getFloatingDropdownTestProps()} />;
+  const props = getFloatingDropdownTestProps();
+  const [selected, setSelected] = React.useState(props.options[0].value);
+  return (
+    <FloatingDropdown
+      {...props}
+      onChange={({ id }) => {
+        setSelected(id);
+      }}
+      value={selected}
+    />
+  );
 };
