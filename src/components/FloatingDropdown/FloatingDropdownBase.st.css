@@ -21,6 +21,7 @@
 :vars {
     disabledTextColor: color(value(DisabledTextColor));
     iconWith: 24px;
+    iconHeight: 24px;
     maxWidth: 272px;
     minWidth: 220px;
     textColor: color(value(TextColor));
@@ -37,6 +38,7 @@
 
 .textContent {
     max-width: calc(value(maxWidth) - value(iconWith));
+    max-height: value(iconHeight);
     overflow: hidden;
     display: flex;
 }
@@ -56,6 +58,7 @@
 .label {
     display: flex;
     opacity: 0.6;
+    white-space: nowrap;
 }
 
 .label::after {
