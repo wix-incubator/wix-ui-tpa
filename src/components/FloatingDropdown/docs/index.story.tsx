@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
   divider,
+  header,
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
