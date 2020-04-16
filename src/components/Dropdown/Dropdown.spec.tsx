@@ -10,7 +10,7 @@ import { dropdownTestkitFactory } from '../../testkit';
 import { dropdownTestkitFactory as enzymeDropdownTestkitFactory } from '../../testkit/enzyme';
 import { DropdownOptionProps } from './DropdownOption';
 import Mock = jest.Mock;
-//file.only
+
 describe('Dropdown', () => {
   const createDriver = createUniDriverFactory(dropdownDriverFactory);
 
@@ -113,6 +113,7 @@ describe('Dropdown', () => {
     });
 
     it('should not be called when re-selecting a selected item', async () => {
+      expect(await driver.areOptionsShown()).toBe(true);
       await driver.selectOptionAt(0);
       await driver.click(); // open
       await driver.selectOptionAt(0);

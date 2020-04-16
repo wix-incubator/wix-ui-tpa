@@ -9,20 +9,23 @@ import { dropdownDriverFactory as coreDriverFactory } from 'wix-ui-core/dist/src
 import { hasDataAttr, hasMobile } from '../../test/utils';
 import { DATA_ATTRIBUTES, DATA_HOOKS } from './constants';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.driver';
-import nativeStyle from './DropdownNativeSelect.st.css';
 
-export interface DropdownDriver extends BaseUniDriver {
+export interface DropdownDriver extends BaseDropdownDriver, BaseUniDriver {
   isMobile(): Promise<boolean>;
-  isDisabled(): Promise<boolean>;
   isNativeSelect(): Promise<boolean>;
+  getDropdownCoreDriver(baseUniDriver: BaseUniDriver);
+  getTooltipDriver(baseUniDriver: BaseUniDriver);
+}
+
+interface BaseDropdownDriver {
+  isDisabled(): Promise<boolean>;
   areOptionsShown(): Promise<boolean>;
   getOptionsCount(): Promise<number>;
   selectOptionAt(index: number): Promise<void>;
   hasError(): Promise<boolean>;
   hasErrorMessage(): Promise<boolean>;
   getErrorMessageContent(): Promise<string>;
-  getDropdownCoreDriver(baseUniDriver: BaseUniDriver);
-  getTooltipDriver(baseUniDriver: BaseUniDriver);
+  click(): Promise<void>;
   hasAriaHasPopup(): Promise<boolean>;
   getAriaLabel(): Promise<string | null>;
   getAriaLabelledBy(): Promise<string | null>;
@@ -46,7 +49,7 @@ const getDropdownNativeSelect = async (base: UniDriver) => {
   return base.$(`[data-hook="${DATA_HOOKS.nativeSelect}"]`);
 };
 
-const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
+const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver): BaseDropdownDriver => {
   const getDropdownBase = async () => {
     return base.$(`[data-hook="${DATA_HOOKS.base}"]`);
   };
@@ -79,7 +82,7 @@ const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
   };
 };
 
-const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
+const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) : BaseDropdownDriver  => {
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
   const warnUnsupportedFunction = (fnName: string) => {
