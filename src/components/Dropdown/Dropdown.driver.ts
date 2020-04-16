@@ -49,7 +49,10 @@ const getDropdownNativeSelect = async (base: UniDriver) => {
   return base.$(`[data-hook="${DATA_HOOKS.nativeSelect}"]`);
 };
 
-const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver): BaseDropdownDriver => {
+const regularDriver = (
+  base: UniDriver,
+  baseUniDriver: BaseUniDriver,
+): BaseDropdownDriver => {
   const getDropdownBase = async () => {
     return base.$(`[data-hook="${DATA_HOOKS.base}"]`);
   };
@@ -82,7 +85,10 @@ const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver): BaseDropd
   };
 };
 
-const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) : BaseDropdownDriver  => {
+const nativeDriver = (
+  base: UniDriver,
+  baseUniDriver: BaseUniDriver,
+): BaseDropdownDriver => {
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
   const warnUnsupportedFunction = (fnName: string) => {
