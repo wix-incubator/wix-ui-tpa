@@ -1,9 +1,8 @@
 import {
-  ButtonNextDriver,
-  buttonNextDriverFactory,
+  ButtonNextDriver, //instead of BaseUniDriver
+  buttonNextDriverFactory, //instead of baseUniDriverFactory
 } from 'wix-ui-core/dist/src/components/button-next/button-next.uni.driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Button.st.css';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
 export interface ButtonDriver extends ButtonNextDriver {
   isFullWidth(): Promise<boolean>;
@@ -11,11 +10,15 @@ export interface ButtonDriver extends ButtonNextDriver {
 }
 
 export const buttonDriverFactory = (base: UniDriver): ButtonDriver => {
-  const stylableUtil = new StylableUnidriverUtil(style);
-
   return {
     ...buttonNextDriverFactory(base),
-    isFullWidth: async () => stylableUtil.hasStyleState(base, 'fullWidth'),
-    isMobile: async () => stylableUtil.hasStyleState(base, 'mobile'),
+    isFullWidth: async () => {
+      const attr = await base.attr('data-fullwidth');
+      return attr === 'true';
+    },
+    isMobile: async () => {
+      const attr = await base.attr('data-mobile');
+      return attr === 'true';
+    },
   };
 };

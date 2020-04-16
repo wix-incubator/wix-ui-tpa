@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, font, applyOpacity;
+    -st-named: color, fallback, calculate, font, applyOpacity, string;
 }
 
 :vars {
@@ -18,8 +18,8 @@
     BorderWidth: 1;
     BorderRadius: 0;
     TinyFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.43em'}";
-    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";	
+    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";	 
     LargeFont: "{theme: 'Body-M', size: '20px', lineHeight: '1.5em'}";
     MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
@@ -36,13 +36,13 @@
 
 :vars {
     PrimaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
-    PrimaryBorderWidth: fallback(value(MainBorderWidth), 0);
+    PrimaryBorderWidth: fallback(value(MainBorderWidth), 0px);
     PrimaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
 }
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic, basicSecondary)), size(enum(tiny, small, medium, large)), fullWidth, mobile;
+    -st-states: priority(enum(primary, secondary, basic, basicSecondary)), size(enum(tiny, small, medium, large)), fullWidth, mobile, upgrade;
 
     min-width: value(MinWidth);
     border-style: solid;
@@ -159,33 +159,154 @@
 
 /*Tiny*/
 
-.root:size(tiny) {
+.root:size(tiny){
     padding: 6px 16px;
     font: fallback(font(value(MainTextFont)), font(value(TinyFont)));
 }
 
 /*Small*/
 
-.root:size(small) {
+.root:size(small){
     padding: 7px 16px;
     font: fallback(font(value(MainTextFont)), font(value(SmallFont)));
 }
 
 /*Medium*/
 
-.root:size(medium) {
+.root:size(medium){
     padding: 8px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
 }
 
-.root:mobile:size(medium) {
+.root:mobile:size(medium){
     padding: 10px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
 }
 
 /*Large*/
 
-.root:size(large) {
+.root:size(large){
     padding: 10px 16px;
     font: fallback(font(value(MainTextFont)), font(value(LargeFont)));
+}
+
+/*-------------------------------------upgrage-------------------------------------*/
+
+:vars {
+    UpgradeTinyFont: "{theme: 'Body-M', size: '14px', lineHeight: '1'}";
+    UpgradeSmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1'}";
+    UpgradeMediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1'}";
+    UpgradeLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '1'}";
+    UpgradeMobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1'}";
+}
+
+:vars {
+    mobileFont: fallback(font(value(MainTextFont)), font(value(UpgradeMobileMediumFont)));
+    secondaryBorderWidth: fallback(value(MainBorderWidth), 1px);
+}
+
+.root:upgrade::content {
+    overflow: visible;
+    text-overflow: unset;
+    white-space: unset;
+}
+
+.root:upgrade{
+    box-sizing: border-box;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.root:mobile:upgrade{
+    font: value(mobileFont);
+    line-height: 1;
+}
+
+/* upgrade Tiny*/
+
+.root:size(tiny):upgrade{
+    font: fallback(font(value(MainTextFont)), font(value(UpgradeTinyFont)));
+    line-height: 1;
+}
+
+.root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny){
+    padding: calculate(string(-), 9px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
+    padding: calculate(string(-), 9px, value(PrimaryBorderWidth)) 16px;
+}
+
+/* upgrade Small*/
+
+.root:size(small):upgrade:not(mobile){
+    font: fallback(font(value(MainTextFont)), font(value(UpgradeSmallFont)));
+    line-height: 1;
+}
+
+.root:upgrade:priority(secondary):size(small), .root:upgrade:priority(basicSecondary):size(small){
+    padding: calculate(string(-), 10px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
+    padding: calculate(string(-), 10px, value(PrimaryBorderWidth)) 16px;
+}
+ /*upgrade small mobile*/
+.root:upgrade:priority(secondary):size(small):mobile, .root:upgrade:priority(basicSecondary):size(small):mobile{
+    padding: calculate(string(-), 11px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(small):mobile, .root:priority(basic):upgrade:size(small):mobile{
+    padding: calculate(string(-), 11px, value(PrimaryBorderWidth)) 16px;
+}
+
+/* upgrade Medium*/
+
+.root:size(medium):upgrade:not(mobile){
+    font: fallback(font(value(MainTextFont)), font(value(UpgradeMediumFont)));
+    line-height: 1;
+}
+
+.root:upgrade:priority(secondary):size(medium), .root:upgrade:priority(basicSecondary):size(medium){
+    padding: calculate(string(-), 12px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(medium), .root:priority(basic):upgrade:size(medium){
+    padding: calculate(string(-), 12px, value(PrimaryBorderWidth)) 16px;
+}
+
+/*upgrade mobile medium*/
+.root:upgrade:priority(secondary):size(medium):mobile, .root:upgrade:priority(basicSecondary):size(medium):mobile{
+    padding: calculate(string(-), 13px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(medium):mobile, .root:priority(basic):upgrade:size(medium):mobile{
+    padding: calculate(string(-), 13px, value(PrimaryBorderWidth)) 16px;
+}
+
+/* upgrade Large*/
+
+.root:size(large):upgrade:not(mobile){
+    font: fallback(font(value(MainTextFont)), font(value(UpgradeLargeFont)));
+    line-height: 1;
+}
+
+.root:size(large):upgrade:priority(secondary), .root:size(large):upgrade:priority(basicSecondary){
+    padding: calculate(string(-), 16px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
+    padding: calculate(string(-), 16px, value(PrimaryBorderWidth)) 16px;
+}
+
+/*upgrade large mobile*/
+.root:size(large):upgrade:priority(secondary):mobile, .root:size(large):upgrade:priority(basicSecondary):mobile{
+    padding: calculate(string(-), 17px, value(secondaryBorderWidth)) 16px;
+}
+
+.root:priority(primary):upgrade:size(large):mobile, .root:priority(basic):upgrade:size(large):mobile{
+    padding: calculate(string(-), 17px, value(secondaryBorderWidth)) 16px;
 }

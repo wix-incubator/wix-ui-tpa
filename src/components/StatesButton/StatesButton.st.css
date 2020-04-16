@@ -5,6 +5,7 @@
 
 .root {
     -st-extends: TPAButton;
+    -st-states: upgrade;
     position: relative;
     cursor: pointer;
     display: block;
@@ -19,6 +20,11 @@
 .root::content {
     line-height: 1.5;
     display: block;
+}
+
+.root:upgrade::content{
+    line-height: 1;
+    display: inline-block;
 }
 
 .successIcon {

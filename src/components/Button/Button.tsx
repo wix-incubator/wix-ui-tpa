@@ -7,6 +7,7 @@ import {
   TPAComponentsConsumer,
 } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
+import { deprecationLog } from '../../common/deprecationLog';
 
 export enum PRIORITY {
   basic = 'basic',
@@ -27,6 +28,7 @@ export interface ButtonProps extends ButtonNextProps, TPAComponentProps {
   size?: SIZE;
   fullWidth?: boolean;
   innerRef?: React.RefObject<HTMLButtonElement>;
+  upgrade?: boolean;
 }
 
 class ButtonComponent extends React.Component<ButtonProps> {
@@ -36,17 +38,50 @@ class ButtonComponent extends React.Component<ButtonProps> {
     priority: PRIORITY.basic,
     size: SIZE.medium,
     fullWidth: false,
+    upgrade: false,
   };
 
+  componentDidMount(): void {
+    if (!this.props.upgrade) {
+      deprecationLog(
+        'Button',
+        'The current `Button` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
+      );
+    }
+  }
+
+  _getDataAttributes(mobile) {
+    const { fullWidth } = this.props;
+
+    return {
+      'data-fullwidth': fullWidth,
+      'data-mobile': mobile,
+    };
+  }
+
   render() {
-    const { priority, size, fullWidth, innerRef, ...rest } = this.props;
+    const {
+      priority,
+      size,
+      fullWidth,
+      innerRef,
+      upgrade,
+      children,
+      ...rest
+    } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ButtonNext
+            {...this._getDataAttributes(mobile)}
             ref={innerRef}
             {...rest}
-            {...style('root', { priority, size, fullWidth, mobile }, rest)}
+            children={children}
+            {...style(
+              'root',
+              { priority, size, fullWidth, mobile, upgrade },
+              rest,
+            )}
           />
         )}
       </TPAComponentsConsumer>

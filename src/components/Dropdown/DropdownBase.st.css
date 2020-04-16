@@ -30,7 +30,7 @@
         MainBorderColor 'value(borderColor)',
         MainTextColor 'value(inputColor)'
     );
-    -st-states: error, placeholder;
+    -st-states: error, placeholder, rtl;
     display: flex;
     cursor: pointer;
     box-sizing: border-box;
@@ -107,3 +107,48 @@
     content: '';
 }
 
+.root .childrenWrapper{
+    display: inline-block;
+}
+
+/*--------------------upgrade------------------------*/
+
+:vars {
+    DefaultBorderWidth: 1px;
+}
+
+.root:mobile:size(medium):upgrade::before,
+.root:size(medium):upgrade::before {
+    width: 0px;
+    content: '';
+}
+.root:upgrade{
+    display: flex;
+}
+
+.root:upgrade::content{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.root:upgrade .childrenWrapper{
+    overflow: visible;
+}
+
+.root:mobile:size(medium):upgrade::after,
+.root:size(medium):upgrade::after {
+    width: 0px;
+    content: '';
+}
+
+.root:mobile:upgrade:size(medium):priority(basic),
+.root:upgrade:size(medium):priority(basic) {
+    padding: 7px 7px 7px 12px;
+}
+
+.root:mobile:upgrade:size(medium):priority(basic):rtl,
+.root:upgrade:size(medium):priority(basic):rtl {
+    padding: 7px 12px 7px 7px;
+}
