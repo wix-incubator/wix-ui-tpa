@@ -311,9 +311,10 @@ export class DotNavigation extends React.Component<
 
   render = () => {
     const { length, ...rest } = this.props;
+    let short = length <= MAX_SHORT_LIST_LENGTH;
 
     return _isNumber(length) && length > 0 ? (
-      <div {...styles('root', {}, rest)} {...this._getDataAttributes()}>
+      <div {...styles('root', {short}, rest)} {...this._getDataAttributes()}>
         {length <= MAX_SHORT_LIST_LENGTH
           ? this.renderShortVersion()
           : this.renderLongVersion()}

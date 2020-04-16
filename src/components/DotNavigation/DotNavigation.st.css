@@ -26,7 +26,7 @@
 
 :vars {
   DotAmount: 5;
-  Gap: 5px;
+  Gap: 4px;
   RadioSize: calc(4 * value(Gap));
   DotSize: calc(2 * value(Gap));
   DotSizeSmall: calc(value(DotSize) - 2px);
@@ -88,10 +88,15 @@
 }
 
 .root {
+  -st-states: short;
   display: flex;
   position: relative;
   width: calc(value(DotAmount) * value(RadioSize));
   overflow: hidden;
+}
+
+.root:short{
+  justify-content: center;
 }
 
 .radioGroup {
