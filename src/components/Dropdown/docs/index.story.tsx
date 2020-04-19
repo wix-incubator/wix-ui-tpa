@@ -102,6 +102,7 @@ export default {
 
           ...[
             { title: 'Simple', source: examples.simpleExample },
+            { title: 'Native', source: examples.simpleNativeExample },
             { title: 'Disabled', source: examples.disabledExample },
             { title: 'w. label', source: examples.withLabelExample },
             { title: 'Centered', source: examples.alignmentExample },

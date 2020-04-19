@@ -226,7 +226,6 @@ export class Dropdown extends React.Component<DropdownProps, State> {
           <Text className={styles.label} typography={TYPOGRAPHY.runningText}>
             {label}
           </Text>
-
         )}
         {this.shouldRenderNativeSelect()
           ? this.renderNativeSelect()
