@@ -63,11 +63,6 @@
     padding: 8px 36px;
 }
 
-.root:mobile:rtl {
-    /*background: value(backgroundColor) no-repeat right 13px center url("../../assets/icons/CaretDown.svg");*/
-    background-image: url("../../assets/icons/CaretDown.svg");
-}
-
 .root:priority(basic):focus {
     border-color: value(borderHoverColor);
     background-color: value(backgroundColor);

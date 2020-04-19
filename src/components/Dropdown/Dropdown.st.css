@@ -27,12 +27,12 @@
 :import {
     -st-from: "./DropdownBase.st.css";
     -st-default: DropdownBase;
+    -st-named: borderHoverColor;
 }
 
 :import {
     -st-from: "./DropdownNativeSelect.st.css";
     -st-default: DropdownNativeSelect;
-    -st-named: borderHoverColor;
 }
 
 :import {
