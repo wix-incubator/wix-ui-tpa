@@ -36,11 +36,6 @@
 }
 
 :import {
-    -st-from: "./DropdownNativeSelect.st.css";
-    -st-default: DropdownNativeSelect;
-}
-
-:import {
     -st-from: "./DropdownError.st.css";
     -st-default: DropdownError;
 }

@@ -132,6 +132,7 @@ export class DropdownNativeSelect extends React.Component<
           {...buttonStyle}
           {...this.getDataAttributes()}
           defaultValue={''}
+          {...(selectedOption && { value: selectedOption.id })}
           onChange={e => this.onSelect(e)}
           data-hook={DATA_HOOKS.nativeSelect}
           aria-label={ariaLabel}
