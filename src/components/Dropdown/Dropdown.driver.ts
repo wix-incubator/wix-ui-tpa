@@ -3,26 +3,29 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { Simulate } from 'react-dom/test-utils';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { dropdownDriverFactory as coreDriverFactory } from 'wix-ui-core/dist/src/components/dropdown/Dropdown.driver';
 
 import { hasDataAttr, hasMobile } from '../../test/utils';
-import { DATA_HOOKS } from './constants';
+import { DATA_ATTRIBUTES, DATA_HOOKS } from './constants';
 import { tooltipDriverFactory } from '../Tooltip/Tooltip.driver';
-import nativeStyle from './DropdownNativeSelect.st.css';
 
-export interface DropdownDriver extends BaseUniDriver {
+export interface DropdownDriver extends BaseDropdownDriver, BaseUniDriver {
   isMobile(): Promise<boolean>;
-  isDisabled(): Promise<boolean>;
   isNativeSelect(): Promise<boolean>;
+  getDropdownCoreDriver(baseUniDriver: BaseUniDriver);
+  getTooltipDriver(baseUniDriver: BaseUniDriver);
+}
+
+interface BaseDropdownDriver {
+  isDisabled(): Promise<boolean>;
   areOptionsShown(): Promise<boolean>;
   getOptionsCount(): Promise<number>;
   selectOptionAt(index: number): Promise<void>;
   hasError(): Promise<boolean>;
   hasErrorMessage(): Promise<boolean>;
   getErrorMessageContent(): Promise<string>;
-  getDropdownCoreDriver(baseUniDriver: BaseUniDriver);
-  getTooltipDriver(baseUniDriver: BaseUniDriver);
+  click(): Promise<void>;
   hasAriaHasPopup(): Promise<boolean>;
   getAriaLabel(): Promise<string | null>;
   getAriaLabelledBy(): Promise<string | null>;
@@ -46,7 +49,10 @@ const getDropdownNativeSelect = async (base: UniDriver) => {
   return base.$(`[data-hook="${DATA_HOOKS.nativeSelect}"]`);
 };
 
-const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
+const regularDriver = (
+  base: UniDriver,
+  baseUniDriver: BaseUniDriver,
+): BaseDropdownDriver => {
   const getDropdownBase = async () => {
     return base.$(`[data-hook="${DATA_HOOKS.base}"]`);
   };
@@ -79,8 +85,10 @@ const regularDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
   };
 };
 
-const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
-  const stylableUtil = new StylableUnidriverUtil(nativeStyle);
+const nativeDriver = (
+  base: UniDriver,
+  baseUniDriver: BaseUniDriver,
+): BaseDropdownDriver => {
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
   const warnUnsupportedFunction = (fnName: string) => {
@@ -100,13 +108,18 @@ const nativeDriver = (base: UniDriver, baseUniDriver: BaseUniDriver) => {
     hasAriaHasPopup: async () => warnUnsupportedFunction('hasAriaHasPopup'),
     click: async () => warnUnsupportedFunction('click'),
     areOptionsShown: async () => warnUnsupportedFunction('areOptionsShown'),
-    selectOptionAt: async (index: number) =>
-      warnUnsupportedFunction('selectOptionAt'),
+    selectOptionAt: async (index: number) => {
+      const option = getNativeOptions().get(index);
+      const isDisabled = (await option.attr('disabled')) !== null;
+      !isDisabled && Simulate.change(await option.getNative());
+    },
     getOptionsCount: async () => getNativeOptions().count(),
     hasErrorMessage: async () =>
       (await getTooltipDriver(baseUniDriver)).exists(),
     hasError: async () =>
-      stylableUtil.hasStyleState(await getDropdownNativeSelect(base), 'error'),
+      (await (await getDropdownNativeSelect(base)).attr(
+        DATA_ATTRIBUTES.error,
+      )) !== null,
     getErrorMessageContent: async () => {
       const tooltipDriver = await getTooltipDriver(baseUniDriver);
       tooltipDriver.mouseEnter();

@@ -2,7 +2,7 @@ import * as React from 'react';
 import styles from './DropdownNativeSelect.st.css';
 import dropdownStyles from './Dropdown.st.css';
 import buttonStyles from '../Button/Button.st.css';
-import { DATA_HOOKS, ICON_SIZE } from './constants';
+import { DATA_ATTRIBUTES, DATA_HOOKS, ICON_SIZE } from './constants';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
 import { PRIORITY, SIZE } from '../Button';
 import classNames from 'classnames';
@@ -30,8 +30,12 @@ export class DropdownNativeSelect extends React.Component<
 > {
   static contextType = TPAComponentsContext;
 
-  private onSelect(e: React.FormEvent<HTMLSelectElement>) {
-    const optionId = e.currentTarget.value;
+  private onSelect(e) {
+    const { selectedOption: prevSelectedOption } = this.props;
+    const optionId = e.target.value;
+    if ((prevSelectedOption && prevSelectedOption.id) === optionId) {
+      return;
+    }
     const selectedOption = this.props.options.find(({ id }) => id === optionId);
     this.props.onSelect(selectedOption);
   }
@@ -41,7 +45,7 @@ export class DropdownNativeSelect extends React.Component<
     return (
       <>
         {hasPlaceholder && (
-          <option value="" selected disabled>
+          <option data-hook={DATA_HOOKS.placeholderOption} value="" disabled>
             {placeholder}
           </option>
         )}
@@ -75,6 +79,13 @@ export class DropdownNativeSelect extends React.Component<
     return (
       <div className={styles.optionIcon}>{this.props.selectedOption.icon}</div>
     );
+  }
+
+  private getDataAttributes() {
+    const { error } = this.props;
+    return {
+      [DATA_ATTRIBUTES.error]: error,
+    };
   }
 
   render() {
@@ -119,16 +130,18 @@ export class DropdownNativeSelect extends React.Component<
         <select
           {...componentStyles}
           {...buttonStyle}
+          {...this.getDataAttributes()}
+          defaultValue={''}
           onChange={e => this.onSelect(e)}
-          data-hook="native-select"
+          data-hook={DATA_HOOKS.nativeSelect}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
+          disabled={disabled}
           className={classNames(
             styles.root,
             buttonStyles.root,
             dropdownStyles.dropdownNativeSelect,
           )}
-          disabled={disabled}
         >
           {this.renderOptions(hasPlaceholder)}
         </select>

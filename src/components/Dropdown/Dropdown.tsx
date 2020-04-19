@@ -32,7 +32,7 @@ export interface DropdownProps {
   'aria-labelledby'?: string;
   shouldRenderNativeSelectOnMobile?: boolean;
   /* use for visual test */
-  forceContentElementVisibility?: boolean;houldRenderNativeSelectOnMobile?: boolean;
+  forceContentElementVisibility?: boolean;
   upgrade?: boolean;
 }
 
