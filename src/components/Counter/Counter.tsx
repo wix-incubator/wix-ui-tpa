@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
-import { Button } from 'wix-ui-core/button';
+import { IconButton } from '../IconButton';
 import style from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
@@ -84,15 +84,14 @@ export class Counter extends React.Component<CounterProps> {
         aria-labelledby={this.props['aria-labelledby']}
         aria-label={this.props['aria-label']}
       >
-        <Button
+        <IconButton
+          icon = {<Plus />}
           aria-label={incrementAriaLabel}
           className={style.btn}
           onClick={this._onIncrement}
           name="increment"
           disabled={disabled || (max && value + step > max)}
-        >
-          <Plus />
-        </Button>
+        />
         {shouldShowErrorMessageTooltip && (
           <Tooltip
             data-hook="dropdown-error-tooltip"
@@ -117,15 +116,14 @@ export class Counter extends React.Component<CounterProps> {
             value={value.toString()}
           />
         </div>
-        <Button
+        <IconButton
+          icon = {<Minus />}
           aria-label={decrementAriaLabel}
           className={style.btn}
           onClick={this._onDecrement}
           name="decrement"
           disabled={disabled || value - step < min}
-        >
-          <Minus />
-        </Button>
+        />
       </div>
     );
   }

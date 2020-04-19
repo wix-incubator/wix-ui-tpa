@@ -50,8 +50,8 @@
     border-color: value(DefaultErrorColor);
 }
 
-.root:hover:not(:disabled),
-.root:focus:not(:disabled){
+.root:hover:not(:disabled):not(:error),
+.root:focus:not(:disabled):not(:error){
     border-color: value(counterColor);
 }
 
