@@ -145,11 +145,12 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       options,
       forceContentElementVisibility,
       placement,
+      upgrade,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
 
-    const { mobile: isMobile } = this.context;
+    const { rtl, mobile: isMobile } = this.context;
     const { selectedOption } = this.state;
 
     const coreOptions = options.map(option => ({
@@ -178,6 +179,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
           placeholder={placeholder}
           disabled={disabled}
           error={error}
+          upgrade={upgrade}
+          rtl={rtl}
         />
         {error && errorMessage && (
           <DropdownError
