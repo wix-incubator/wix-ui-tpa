@@ -157,7 +157,7 @@ describe('Native Dropdown', () => {
   const createDriver = createUniDriverFactory(dropdownDriverFactory);
   const NativeConfiguredDropdown = props =>
     TPAComponentsWrapper({ mobile: true })(
-      <Dropdown options={[]} shouldRenderNativeSelectOnMobile {...props} />,
+      <Dropdown options={[]} mobileNativeSelect {...props} />,
     );
 
   it('should render native', async () => {
@@ -168,7 +168,7 @@ describe('Native Dropdown', () => {
   it('should not render native on desktop', async () => {
     const driver = createDriver(
       TPAComponentsWrapper({ mobile: false })(
-        <Dropdown options={[]} shouldRenderNativeSelectOnMobile />,
+        <Dropdown options={[]} mobileNativeSelect />,
       ),
     );
     expect(await driver.isNativeSelect()).toBe(false);
