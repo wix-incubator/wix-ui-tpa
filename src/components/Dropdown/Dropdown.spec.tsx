@@ -90,6 +90,7 @@ describe('Dropdown', () => {
   describe('onChange', () => {
     let driver: DropdownDriver;
     let onChange: Mock;
+    const placeholder = 'placeholder';
     const options = new Array(5).fill(null).map((el, i) => ({
       id: `${i}`,
       value: `value-${i}`,
@@ -98,12 +99,20 @@ describe('Dropdown', () => {
 
     beforeEach(async () => {
       onChange = jest.fn();
-      driver = createDriver(<Dropdown options={options} onChange={onChange} />);
+      driver = createDriver(
+        <Dropdown
+          options={options}
+          onChange={onChange}
+          placeholder={placeholder}
+        />,
+      );
       await driver.click(); // open
     });
 
     it('should be called when selection changed', async () => {
+      expect(await driver.getDropdownText()).toEqual(placeholder);
       await driver.selectOptionAt(0);
+      expect(await driver.getDropdownText()).toEqual(options[0].value);
       expect(onChange).toHaveBeenCalledWith(options[0]);
     });
 
@@ -214,6 +223,7 @@ describe('Native Dropdown', () => {
   describe('onChange', () => {
     let driver: DropdownDriver;
     let onChange: Mock;
+    const placeholder = 'placeholder';
     const options = new Array(5).fill(null).map((el, i) => ({
       id: `${i}`,
       value: `value-${i}`,
@@ -223,12 +233,18 @@ describe('Native Dropdown', () => {
     beforeEach(async () => {
       onChange = jest.fn();
       driver = createDriver(
-        <NativeConfiguredDropdown options={options} onChange={onChange} />,
+        <NativeConfiguredDropdown
+          options={options}
+          onChange={onChange}
+          placeholder={placeholder}
+        />,
       );
     });
 
     it('should be called when selection changed', async () => {
+      expect(await driver.getDropdownText()).toEqual(placeholder);
       await driver.selectOptionAt(2);
+      expect(await driver.getDropdownText()).toEqual(options[2].value);
       expect(onChange).toHaveBeenCalledWith(options[2]);
     });
 

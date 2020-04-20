@@ -29,6 +29,7 @@ interface BaseDropdownDriver {
   hasAriaHasPopup(): Promise<boolean>;
   getAriaLabel(): Promise<string | null>;
   getAriaLabelledBy(): Promise<string | null>;
+  getDropdownText(): Promise<string>;
 }
 
 const getDropdownCoreDriver = async (baseUniDriver: BaseUniDriver) => {
@@ -73,6 +74,8 @@ const regularDriver = (
     selectOptionAt: async (index: number) => {
       (await getDropdownCoreDriver(baseUniDriver)).optionAt(index).click();
     },
+    getDropdownText: async () =>
+      base.$(`[data-hook="${DATA_HOOKS.baseText}"]`).text(),
     hasErrorMessage: async () =>
       (await getTooltipDriver(baseUniDriver)).exists(),
     hasError: async () =>
@@ -91,6 +94,8 @@ const nativeDriver = (
 ): BaseDropdownDriver => {
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
+  const getNativeSelectElement = async () =>
+    base.$(`[data-hook="${DATA_HOOKS.nativeSelect}"]`).getNative();
   const warnUnsupportedFunction = (fnName: string) => {
     console.warn(
       `Function ${fnName} is not supported within native dropdown mode.`,
@@ -125,6 +130,8 @@ const nativeDriver = (
       tooltipDriver.mouseEnter();
       return tooltipDriver.getContentElement().innerHTML;
     },
+    getDropdownText: async () =>
+      (await getNativeSelectElement()).selectedOptions[0].text,
   };
 };
 
@@ -155,6 +162,7 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     hasError: async () => (await getDriver()).hasError(),
     getErrorMessageContent: async () =>
       (await getDriver()).getErrorMessageContent(),
+    getDropdownText: async () => (await getDriver()).getDropdownText(),
     getTooltipDriver,
     getDropdownCoreDriver,
   };
