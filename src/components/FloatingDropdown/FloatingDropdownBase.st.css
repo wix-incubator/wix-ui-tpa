@@ -22,7 +22,7 @@
     disabledTextColor: color(value(DisabledTextColor));
     iconWith: 24px;
     iconHeight: 24px;
-    maxWidth: 272px;
+    maxWidth: 20vw;
     minWidth: 220px;
     textColor: color(value(TextColor));
 }
@@ -60,6 +60,13 @@
     opacity: 0.6;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+.selectedValue {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-shrink: 2;
+    overflow: hidden;
 }
 
 .label::after {
