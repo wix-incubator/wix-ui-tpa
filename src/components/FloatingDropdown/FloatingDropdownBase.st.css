@@ -1,0 +1,99 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+:import {
+    -st-from: "../TextButton/TextButton.st.css";
+    -st-default: TPAButton;
+}
+
+:vars {
+    DisabledTextColor: color-3;
+    TextColor: color-5;
+}
+
+:vars {
+    disabledTextColor: color(value(DisabledTextColor));
+    iconHeight: 24px;
+    iconWith: 24px;
+    maxWidth: 20vw;
+    minWidth: 220px;
+    textColor: color(value(TextColor));
+}
+
+.root {
+    -st-extends: TPAButton;
+    display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    transition: none;
+}
+
+.textContent {
+    max-width: calc(value(maxWidth) - value(iconWith));
+    max-height: value(iconHeight);
+    overflow: hidden;
+    display: flex;
+}
+
+.root .content {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '16px'}"
+    );
+    display: flex;
+    color: value(textColor);
+}
+
+.arrowIcon path {
+    fill: value(textColor);
+}
+
+.label {
+    display: flex;
+    opacity: 0.6;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.selectedValue {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-shrink: 2;
+    overflow: hidden;
+}
+
+.label::after {
+    width: 4px;
+    content: '';
+}
+
+.root::content {
+    flex: 1;
+    text-align: start;
+}
+
+.root:mobile,
+.root {
+    padding: 8px 0;
+}
+
+.root:disabled {
+    cursor: default;
+}
+
+.root:disabled .label,
+.root:disabled .content {
+    opacity: 1;
+    color: value(disabledTextColor);
+}
+
+.root:disabled .arrowIcon path {
+    fill: value(disabledTextColor);
+}

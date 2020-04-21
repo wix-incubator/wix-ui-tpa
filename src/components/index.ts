@@ -32,3 +32,4 @@ export { ShareButton } from './ShareButton';
 export { CopyUrlButton } from './CopyUrlButton';
 export { SectionNotification } from './SectionNotification';
 export { Tags } from './Tags';
+export { FloatingDropdown } from './FloatingDropdown';

@@ -1,0 +1,43 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "./FloatingDropdownBase.st.css";
+    -st-default: FloatingDropdownBase;
+    -st-named: minWidth, maxWidth;
+}
+
+:import {
+    -st-from: "../Dropdown/DropdownOption.st.css";
+    -st-default: DropdownOption;
+}
+
+:import {
+    -st-from: "../Dropdown/Dropdown.st.css";
+    -st-named: dropdown;
+}
+
+.root {}
+
+.root .dropdown {
+    min-width: value(minWidth);
+    max-width: value(maxWidth);
+}
+
+.floatingDropdownBase {
+    -st-extends: FloatingDropdownBase;
+}
+
+.root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
+    transform: rotate(180deg);
+}
+
+.root .dropdown:content-visible .floatingDropdownBase::root {
+    background: transparent;
+}
+
+.root .dropdown DropdownOption::title {
+    white-space: initial;
+}
