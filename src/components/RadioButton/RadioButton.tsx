@@ -17,7 +17,10 @@ interface RadioButtonState {
 }
 
 /** RadioButton */
-export class RadioButton extends React.Component<RadioButtonProps, RadioButtonState> {
+export class RadioButton extends React.Component<
+  RadioButtonProps,
+  RadioButtonState
+> {
   static displayName = 'RadioButton';
   static defaultProps: DefaultProps = { buttonText: 'Click me!' };
 
@@ -38,7 +41,7 @@ export class RadioButton extends React.Component<RadioButtonProps, RadioButtonSt
           You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
           times
         </Text> */}
-        <CoreRadioButton {...styles('root',)} label={<p>Example</p>} />
+        <CoreRadioButton {...styles('root')} label={<p>Example</p>} />
         {/* <div className={styles.button}>
           <Button onClick={this._handleClick}>{buttonText}</Button>
         </div> */}
