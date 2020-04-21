@@ -17,118 +17,113 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   options: FloatingDropdownOptionProps[];
   name?: string;
   id?: string;
+  onChange?(selectedOption: FloatingDropdownOptionProps): void;
 }
 
 export class FloatingDropdownBase extends React.Component<
   FloatingDropdownBaseProps
 > {
-  static _index: number;
-  private readonly _id: string;
+  _getSelectedOption = (selectedId: string) => {
+    const { options } = this.props;
+    return options.find(({ id }) => selectedId === id);
+  };
 
-  constructor(props) {
-    super(props);
+  _onSelect = e => {
+    const { onChange } = this.props;
+    const selectedId = e.target.value;
 
-    this._id =
-      props.id || `__floating-dropdown-base-${++FloatingDropdownBase._index}`;
-  }
-  _getContentWrapper(content, isLabel?: boolean) {
-    const { label } = this.props;
-    const TagName = isLabel ? 'label' : 'div';
+    if (onChange) {
+      onChange(this._getSelectedOption(selectedId));
+    }
+  };
 
-    return (
-      <div className={styles.content}>
-        <TagName
-          className={styles.textContent}
-          htmlFor={isLabel ? this._id : undefined}
-        >
-          <span className={styles.label}>{label}</span>
-          {content}
-        </TagName>
-        <ArrowIcon
-          className={styles.arrowIcon}
-          height={ICON_SIZE}
-          width={ICON_SIZE}
-        />
-      </div>
-    );
-  }
-
-  _getButtonContent() {
-    const { placeholder, value } = this.props;
-
-    return this._getContentWrapper(
-      <div
-        className={styles.selectedValue}
-        data-hook={DATA_HOOKS.baseSelectedValue}
-      >
-        {value || placeholder}
-      </div>,
-    );
-  }
-
-  _getNativeDropdown() {
+  _getContent() {
     const {
       value,
-      options,
-      name,
       placeholder,
+      label,
+      options,
       ['aria-labelledby']: ariaLabelledBy,
+      mobile,
     } = this.props;
 
-    return this._getContentWrapper(
-      <select
-        id={this._id}
-        value={value}
-        name={name}
-        className={styles.selectedValue}
-        aria-labelledby={ariaLabelledBy}
-        data-hook={DATA_HOOKS.baseSelectedValue}
-      >
-        {placeholder ? <option value="">{placeholder}</option> : null}
-        {options.map((option: FloatingDropdownOptionProps) => (
-          <option
-            value={option.id}
-            disabled={!option.isSelectable}
-            selected={value === option.id}
-          >
-            {option.value}
-          </option>
-        ))}
-      </select>,
-      true,
-    );
-  }
-
-  _getBaseContent() {
-    const {
-      ['aria-label']: ariaLabel,
-      ['aria-labelledby']: ariaLabelledBy,
-      disabled,
-      id,
-    } = this.props;
+    const selectedOption = this._getSelectedOption(value);
 
     return (
-      <TextButton
-        aria-haspopup
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy || id}
-        data-hook={DATA_HOOKS.base}
-        disabled={disabled}
-        priority={TEXT_BUTTON_PRIORITY.secondary}
-        className={styles.btn}
-      >
-        {this._getButtonContent()}
-      </TextButton>
+      <>
+        <div className={styles.content}>
+          <div className={styles.textContent}>
+            <span className={styles.label}>{label}</span>
+            <div
+              className={styles.selectedValue}
+              data-hook={DATA_HOOKS.baseSelectedValue}
+            >
+              {selectedOption?.value || placeholder}
+            </div>
+          </div>
+          <ArrowIcon
+            className={styles.arrowIcon}
+            height={ICON_SIZE}
+            width={ICON_SIZE}
+          />
+        </div>
+        {mobile ? (
+          <select
+            value={value}
+            name={name}
+            className={styles.select}
+            aria-labelledby={ariaLabelledBy}
+            data-hook={DATA_HOOKS.baseSelectedValue}
+            onChange={this._onSelect}
+          >
+            {placeholder ? (
+              <option value="" disabled>
+                {placeholder}
+              </option>
+            ) : null}
+            {options.map((option: FloatingDropdownOptionProps) => (
+              <option value={option.id} disabled={!option.isSelectable}>
+                {option.value}
+              </option>
+            ))}
+          </select>
+        ) : null}
+      </>
     );
   }
 
   render() {
-    const { mobile, ...rest } = this.props;
+    const {
+      value,
+      placeholder,
+      label,
+      options,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
+      mobile,
+      id,
+      disabled,
+      ...rest
+    } = this.props;
 
-    return (
-      <div {...styles('root', { mobile }, rest)}>
-        {mobile ? this._getNativeDropdown() : this._getBaseContent()}
-      </div>
-    );
+    let content = this._getContent();
+
+    if (!mobile) {
+      content = (
+        <TextButton
+          aria-haspopup
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy || id}
+          data-hook={DATA_HOOKS.base}
+          disabled={disabled}
+          priority={TEXT_BUTTON_PRIORITY.secondary}
+          className={styles.btn}
+        >
+          {content}
+        </TextButton>
+      );
+    }
+
+    return <div {...styles('root', { mobile }, rest)}>{content}</div>;
   }
 }

@@ -59,6 +59,7 @@ export const native = `
     ]}
     id="my-native-dropdown"
     label="Sort by:"
-    placeholder="Most recent"
+    placeholder="Something"
+    value="2"
   />
 </ExampleWithContextProps>`;

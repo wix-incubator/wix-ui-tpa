@@ -101,8 +101,13 @@
     fill: value(disabledTextColor);
 }
 
+.root:mobile {
+    display: inline-block;
+    position: relative;
+}
+
 .root:mobile .label,
-.root:mobile select {
+.root:mobile .selectedValue {
     font: font(value(LabelFont));
     color: value(textColor);
 }
@@ -114,7 +119,10 @@
     outline: none;
     appearance: none;
     cursor: pointer;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
 }

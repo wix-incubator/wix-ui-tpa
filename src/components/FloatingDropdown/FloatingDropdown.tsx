@@ -41,36 +41,28 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
   static displayName = 'FloatingDropdown';
   static defaultProps: DefaultProps = { disabled: false, options: [] };
 
-  onSelect = (selectedOption: FloatingDropdownOptionProps) => {
+  _onSelect = (selectedOption: FloatingDropdownOptionProps) => {
     if (!selectedOption) {
       return;
     }
     if (this.props.onChange) {
-      this.props.onChange(
-        this.props.options.find(({ id }) => selectedOption.id === id),
-      );
+      this.props.onChange(selectedOption);
     }
   };
 
   _generateCoreOptions() {
-    const { options, value } = this.props;
+    const { options } = this.props;
     const coreOptions = [];
-    let selectedOption = null;
 
     for (const option of options) {
       coreOptions.push({
         ...option,
         render: () => <DropdownOption {...option} />,
       });
-
-      if (option && value === option.id) {
-        selectedOption = option;
-      }
     }
 
     return {
       coreOptions,
-      selectedOption,
     };
   }
 
@@ -87,7 +79,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       name,
       id,
     } = this.props;
-    const { selectedOption, coreOptions } = this._generateCoreOptions();
+    const { coreOptions } = this._generateCoreOptions();
 
     const baseElement = (
       <FloatingDropdownBase
@@ -97,11 +89,12 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         disabled={disabled}
         label={label}
         placeholder={placeholder}
-        value={selectedOption?.value}
+        value={value}
         name={name}
         mobile={mobile}
         options={options}
         id={id}
+        onChange={this._onSelect}
       />
     );
 
@@ -114,8 +107,8 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         data-mobile={mobile}
         forceContentElementVisibility={forceContentElementVisibility}
         initialSelectedIds={value ? [value] : []}
-        onDeselect={this.onSelect}
-        onSelect={this.onSelect}
+        onDeselect={this._onSelect}
+        onSelect={this._onSelect}
         openTrigger={disabled ? 'none' : 'click'}
         options={coreOptions}
       >
