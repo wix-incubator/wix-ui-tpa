@@ -19,7 +19,7 @@ export const unwrap = (key: string): void => {
 
 export function deprecationLog(componentName, ...args) {
   if (isDevelopment && !(cache[componentName] || wrapCache[componentName])) {
-      console.warn('wix-ui-tpa: [WARNING]', ...args);
-      addToCache(componentName);
+    console.warn('wix-ui-tpa: [WARNING]', ...args);
+    addToCache(componentName);
   }
 }

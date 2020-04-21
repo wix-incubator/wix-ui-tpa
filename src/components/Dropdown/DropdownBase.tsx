@@ -60,7 +60,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
         />
       }
     >
-      <div className={styles.childrenWrapper}>
+      <div className={styles.childrenWrapper} data-hook={DATA_HOOKS.baseText}>
         {(selectedOption && selectedOption.value) || placeholder}
       </div>
     </Button>

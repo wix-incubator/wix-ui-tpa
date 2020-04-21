@@ -41,7 +41,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
     return (
       <div className={styles.likeButton}>
         <IconToggle
-          {...styles('root', { checked, disabled}, rest)}
+          {...styles('root', { checked, disabled }, rest)}
           icon={<Heart />}
           label={label}
           disabled={disabled}

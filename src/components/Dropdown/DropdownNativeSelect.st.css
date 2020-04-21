@@ -1,0 +1,160 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "../Button/Button.st.css";
+    -st-default: TPAButton;
+}
+
+:import {
+    -st-from: "../Input/Input.st.css";
+    -st-default: TPAInput;
+    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Tooltip;
+}
+
+:import {
+    -st-from: "../Tooltip/Tooltip.st.css";
+    -st-default: TPATooltip;
+}
+
+:vars {
+    BorderHoverColor: color-5;
+}
+
+:vars {
+    borderHoverColor: color(value(BorderHoverColor));
+}
+
+.wrapper {
+    position: relative;
+    min-width: 68px;
+    background-color: value(backgroundColor);
+}
+
+.root {
+    -st-extends: TPAButton;
+    -st-mixin: TPAButton(
+            MainBackgroundColor 'value(backgroundColor)',
+            MainBorderWidth '1px',
+            MainBorderColor 'value(borderColor)',
+            MainTextColor 'value(inputColor)'
+    );
+    -st-states: disabled, error, placeholder, rtl, icon;
+    display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    appearance: none;
+}
+
+.root:mobile:size(medium) {
+    padding: 8px 12px;
+    background-color: transparent;
+}
+
+.root:mobile:size(medium):icon {
+    padding: 8px 36px;
+}
+
+.root:priority(basic):focus {
+    border-color: value(borderHoverColor);
+    background-color: value(backgroundColor);
+}
+
+.root:error,
+.root:priority(basic):error:focus {
+    border-color: value(errorColor);
+}
+
+
+.root:placeholder {
+    color: value(colorPlaceholder);
+}
+
+.root:priority(basic):disabled {
+    cursor: default;
+    background-color: value(backgroundColor);
+    color: value(colorDisabled);
+    border-color: value(colorDisabled);
+}
+
+.root:priority(basic):disabled:hover {
+    border-color: value(colorDisabled);
+}
+
+.root:priority(basic):disabled ~ .arrowIcon {
+    color: value(colorDisabled);
+}
+
+.arrowIcon {
+    color: value(inputColor);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.arrowIcon path {
+    fill: currentColor;
+}
+
+.errorIcon {
+    -st-extends: Tooltip;
+    -st-mixin: TPATooltip;
+    color: value(errorColor);
+}
+
+.errorIcon::popover {
+    min-width: initial;
+}
+
+.errorIcon::popoverElement {
+    display: flex; /* vertical center error icon */
+}
+
+.root:rtl ~ .arrowIcon {
+    left: 7px;
+}
+
+.root:not(:rtl) ~ .arrowIcon {
+    right: 7px;
+}
+
+.root:rtl ~ .errorIconWrapper {
+    left: 32px;
+}
+
+.root:not(:rtl) ~ .errorIconWrapper {
+    right: 32px;
+}
+
+.optionIcon {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.root:rtl ~ .optionIcon {
+    right: 7px;
+}
+
+.root:not(:rtl) ~ .optionIcon {
+    left: 7px;
+}
+
+.errorIconWrapper {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    top: 0;
+    align-items: center;
+}

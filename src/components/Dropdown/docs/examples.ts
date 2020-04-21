@@ -27,6 +27,14 @@ export const simpleExample = wrap(`
   )}} />
 `);
 
+export const simpleNativeExample = `
+    <ExampleWithContextProps mobile={true}>
+        <Dropdown placeholder="Placeholder Text" mobileNativeSelect options={${JSON.stringify(
+          simpleOptions,
+        )}} />
+    </ExampleWithContextProps>
+`;
+
 export const disabledExample = `
     <Dropdown placeholder="Placeholder Text" disabled options={${JSON.stringify(
       simpleOptions,

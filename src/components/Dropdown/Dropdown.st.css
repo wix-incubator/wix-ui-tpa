@@ -31,6 +31,11 @@
 }
 
 :import {
+    -st-from: "./DropdownNativeSelect.st.css";
+    -st-default: DropdownNativeSelect;
+}
+
+:import {
     -st-from: "./DropdownError.st.css";
     -st-default: DropdownError;
 }
@@ -62,6 +67,10 @@
     -st-extends: DropdownBase;
 }
 
+.dropdownNativeSelect {
+    -st-extends: DropdownNativeSelect;
+}
+
 .dropdownError {
     -st-extends: DropdownError;
 }
@@ -72,7 +81,8 @@
 }
 
 .dropdown,
-.dropdownBase::root {
+.dropdownBase::root,
+.dropdownNativeSelect::root {
     min-width: 68px;
 }
 
