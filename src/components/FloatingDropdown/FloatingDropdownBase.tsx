@@ -23,7 +23,7 @@ export class FloatingDropdownBase extends React.Component<
   FloatingDropdownBaseProps
 > {
   static _index: number;
-  private _id: string;
+  private readonly _id: string;
 
   constructor(props) {
     super(props);
