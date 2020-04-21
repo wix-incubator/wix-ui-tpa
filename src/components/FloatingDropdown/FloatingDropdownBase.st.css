@@ -20,8 +20,8 @@
 
 :vars {
     disabledTextColor: color(value(DisabledTextColor));
-    iconWith: 24px;
     iconHeight: 24px;
+    iconWith: 24px;
     maxWidth: 20vw;
     minWidth: 220px;
     textColor: color(value(TextColor));
