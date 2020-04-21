@@ -28,6 +28,8 @@ export interface FloatingDropdownProps {
   value?: string;
   /** Force dropdown open. Use for visual test. Optional. Boolean. */
   forceContentElementVisibility?: boolean;
+  name?: string;
+  id?: string;
 }
 
 type DefaultProps = Required<
@@ -72,55 +74,62 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
     };
   }
 
-  render() {
+  _getContent(mobile) {
     const {
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       disabled,
       forceContentElementVisibility,
       label,
-      options,
       placeholder,
       value,
-      ...rest
+      options,
+      name,
+      id,
     } = this.props;
-
     const { selectedOption, coreOptions } = this._generateCoreOptions();
 
+    const baseElement = (
+      <FloatingDropdownBase
+        className={styles.floatingDropdownBase}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        disabled={disabled}
+        label={label}
+        placeholder={placeholder}
+        value={selectedOption?.value}
+        name={name}
+        mobile={mobile}
+        options={options}
+        id={id}
+      />
+    );
+
+    return mobile ? (
+      baseElement
+    ) : (
+      <CoreDropdown
+        className={styles.dropdown}
+        data-hook={DATA_HOOKS.coreDropdown}
+        data-mobile={mobile}
+        forceContentElementVisibility={forceContentElementVisibility}
+        initialSelectedIds={value ? [value] : []}
+        onDeselect={this.onSelect}
+        onSelect={this.onSelect}
+        openTrigger={disabled ? 'none' : 'click'}
+        options={coreOptions}
+      >
+        {baseElement}
+      </CoreDropdown>
+    );
+  }
+
+  render() {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div
-            {...styles(
-              'root',
-              {
-                mobile,
-              },
-              rest,
-            )}
-            data-mobile={mobile}
-          >
-            <CoreDropdown
-              className={styles.dropdown}
-              data-hook={DATA_HOOKS.coreDropdown}
-              data-mobile={mobile}
-              forceContentElementVisibility={forceContentElementVisibility}
-              initialSelectedIds={value ? [value] : []}
-              onDeselect={this.onSelect}
-              onSelect={this.onSelect}
-              openTrigger={disabled ? 'none' : 'click'}
-              options={coreOptions}
-            >
-              <FloatingDropdownBase
-                aria-label={ariaLabel}
-                aria-labelledby={ariaLabelledBy}
-                className={styles.floatingDropdownBase}
-                disabled={disabled}
-                label={label}
-                placeholder={placeholder}
-                value={selectedOption?.value}
-              />
-            </CoreDropdown>
+          <div data-mobile={mobile} {...styles('root', { mobile }, this.props)}>
+            {this._getContent(mobile)}
           </div>
         )}
       </TPAComponentsConsumer>

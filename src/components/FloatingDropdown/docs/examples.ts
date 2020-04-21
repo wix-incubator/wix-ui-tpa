@@ -46,3 +46,19 @@ export const preselected = `
   placeholder="Most recent"
   value="3"
 />`;
+
+export const native = `
+<ExampleWithContextProps mobile={true}>
+  <FloatingDropdown
+    options={[
+      {id: '1', value: 'Most recent', isSelectable: true},
+      {id: '2', value: 'Most viewed', isSelectable: true},
+      {id: '3', value: 'Most liked', isSelectable: true},
+      {id: '4', value: 'Most comments', isSelectable: true},
+      {id: '5', value: 'Most recent posts in the whole galaxy', isSelectable: true},
+    ]}
+    id="my-native-dropdown"
+    label="Sort by:"
+    placeholder="Most recent"
+  />
+</ExampleWithContextProps>`;
