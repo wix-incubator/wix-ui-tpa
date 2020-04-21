@@ -94,8 +94,6 @@ const nativeDriver = (
 ): BaseDropdownDriver => {
   const getNativeOptions = () =>
     base.$$(`option:not([data-hook="${DATA_HOOKS.placeholderOption}"])`);
-  const getNativeSelectElement = async () =>
-    base.$(`[data-hook="${DATA_HOOKS.nativeSelect}"]`).getNative();
   const warnUnsupportedFunction = (fnName: string) => {
     console.warn(
       `Function ${fnName} is not supported within native dropdown mode.`,
@@ -131,7 +129,8 @@ const nativeDriver = (
       return tooltipDriver.getContentElement().innerHTML;
     },
     getDropdownText: async () =>
-      (await getNativeSelectElement()).selectedOptions[0].text,
+      (await (await getDropdownNativeSelect(base))._prop('selectedOptions'))[0]
+        .text,
   };
 };
 
