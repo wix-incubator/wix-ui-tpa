@@ -67,28 +67,21 @@
 
 .btn {
     -st-extends: TPAIconButton;
+    -st-mixin: TPAIconButton(
+        IconColor color(value(counterColor))
+    );
     background: none;
     padding: 6px;
     border: none;
     cursor: pointer;
 }
 
-.root .btn::icon svg path {
-    fill: color(value(counterColor));
-    stroke: none;
-}
-
-.btn[disabled] {
-    cursor: default;
-}
-
-.root:disabled .btn::icon svg path {
+.root .btn:skin(full):disabled::icon path {
     fill: color(value(counterDisabledColor));
     stroke: none;
 }
 
-.root .btn[disabled]::icon svg path {
-    fill: color(value(counterDisabledColor)) !important;
+.root .btn:skin(full):not(:disabled)::icon path {
     stroke: none;
 }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
-import { IconButton } from '../IconButton';
+import { IconButton, Skins } from '../IconButton';
 import style from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
@@ -8,6 +8,7 @@ import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
+const isNumber = require('lodash/isNumber');
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
@@ -90,7 +91,8 @@ export class Counter extends React.Component<CounterProps> {
           className={style.btn}
           onClick={this._onIncrement}
           name="increment"
-          disabled={disabled || (max && value + step > max)}
+          skin={Skins.Full}
+          disabled={disabled || (isNumber(max) && value + step > max)}
         />
         {shouldShowErrorMessageTooltip && (
           <Tooltip
@@ -118,11 +120,12 @@ export class Counter extends React.Component<CounterProps> {
         </div>
         <IconButton
           icon = {<Minus />}
+          skin={Skins.Full}
           aria-label={decrementAriaLabel}
           className={style.btn}
           onClick={this._onDecrement}
           name="decrement"
-          disabled={disabled || value - step < min}
+          disabled={disabled || isNumber(min) && value - step < min}
         />
       </div>
     );
