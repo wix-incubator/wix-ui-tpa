@@ -134,7 +134,7 @@
 
 .root:mobile:disabled .label,
 .root:mobile:disabled .selectedValue {
-    color: color(value(DisabledColor))
+    color: value(disabledTextColor);
 }
 
 .root:mobile:disabled select {
