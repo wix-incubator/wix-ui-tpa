@@ -8,6 +8,12 @@
     -st-named: errorColor;
 }
 
+:import {
+  -st-from: "../IconButton/IconButton.st.css";
+  -st-default: TPAIconButton;
+}
+
+
 :vars {
     /*Defaults*/
     DefaultColor: color-5;
@@ -60,22 +66,30 @@
 }
 
 .btn {
+    -st-extends: TPAIconButton;
     background: none;
     padding: 6px;
     border: none;
     cursor: pointer;
 }
 
-.btn path {
+.root .btn::icon svg path {
     fill: color(value(counterColor));
+    stroke: none;
 }
 
 .btn[disabled] {
     cursor: default;
 }
 
-.btn[disabled] path {
+.root:disabled .btn::icon svg path {
     fill: color(value(counterDisabledColor));
+    stroke: none;
+}
+
+.root .btn[disabled]::icon svg path {
+    fill: color(value(counterDisabledColor)) !important;
+    stroke: none;
 }
 
 .root:disabled .btn {
