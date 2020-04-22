@@ -17,6 +17,7 @@
     DisabledTextColor: color-3;
     TextColor: color-5;
     LabelFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    DisabledColor: color-3;
 }
 
 :vars {
@@ -29,7 +30,7 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: mobile, disabled;
     cursor: pointer;
 }
 
@@ -97,7 +98,11 @@
     color: value(disabledTextColor);
 }
 
-.btn:disabled .arrowIcon path {
+.root:disabled {
+    cursor: default;
+}
+
+.root:disabled .arrowIcon path {
     fill: value(disabledTextColor);
 }
 
@@ -125,4 +130,13 @@
     width: 100%;
     height: 100%;
     color: transparent;
+}
+
+.root:mobile:disabled .label,
+.root:mobile:disabled .selectedValue {
+    color: color(value(DisabledColor))
+}
+
+.root:mobile:disabled select {
+    cursor: default;
 }

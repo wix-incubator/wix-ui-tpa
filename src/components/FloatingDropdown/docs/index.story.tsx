@@ -56,7 +56,6 @@ export default {
             { title: 'MinWidth', source: examples.minWidth },
             { title: 'MaxWidth', source: examples.maxWidth },
             { title: 'Disabled', source: examples.disabled },
-            { title: 'Native', source: examples.native },
           ].map(code),
         ],
       }),
