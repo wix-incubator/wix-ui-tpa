@@ -45,6 +45,7 @@ export class FloatingDropdownBase extends React.Component<
       options,
       ['aria-labelledby']: ariaLabelledBy,
       mobile,
+      disabled,
     } = this.props;
 
     const selectedOption = this._getSelectedOption(value);
@@ -73,8 +74,9 @@ export class FloatingDropdownBase extends React.Component<
             name={name}
             className={styles.select}
             aria-labelledby={ariaLabelledBy}
-            data-hook={DATA_HOOKS.baseSelectedValue}
+            data-hook={DATA_HOOKS.nativeSelect}
             onChange={this._onSelect}
+            disabled={disabled}
           >
             {placeholder ? (
               <option value="" disabled>
@@ -82,7 +84,11 @@ export class FloatingDropdownBase extends React.Component<
               </option>
             ) : null}
             {options.map((option: FloatingDropdownOptionProps) => (
-              <option value={option.id} disabled={!option.isSelectable}>
+              <option
+                value={option.id}
+                disabled={!option.isSelectable}
+                key={option.id}
+              >
                 {option.value}
               </option>
             ))}
@@ -114,7 +120,6 @@ export class FloatingDropdownBase extends React.Component<
           aria-haspopup
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy || id}
-          data-hook={DATA_HOOKS.base}
           disabled={disabled}
           priority={TEXT_BUTTON_PRIORITY.secondary}
           className={styles.btn}
@@ -124,6 +129,10 @@ export class FloatingDropdownBase extends React.Component<
       );
     }
 
-    return <div {...styles('root', { mobile }, rest)}>{content}</div>;
+    return (
+      <div {...styles('root', { mobile }, rest)} data-hook={DATA_HOOKS.base}>
+        {content}
+      </div>
+    );
   }
 }
