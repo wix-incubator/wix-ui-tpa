@@ -85,6 +85,15 @@
     stroke: none;
 }
 
+.root .btn:skin(full):not(:disabled):hover::icon path {
+    stroke: none;
+}
+
+.root .btn:skin(full):disabled:hover::icon path {
+    fill: color(value(counterDisabledColor));
+    stroke: none;
+}
+
 .root:disabled .btn {
     color: color(value(counterDisabledColor));
 }

@@ -86,6 +86,7 @@ export class Counter extends React.Component<CounterProps> {
         aria-label={this.props['aria-label']}
       >
         <IconButton
+          inverseColor
           icon = {<Plus />}
           aria-label={incrementAriaLabel}
           className={style.btn}
@@ -119,6 +120,7 @@ export class Counter extends React.Component<CounterProps> {
           />
         </div>
         <IconButton
+          inverseColor
           icon = {<Minus />}
           skin={Skins.Full}
           aria-label={decrementAriaLabel}
