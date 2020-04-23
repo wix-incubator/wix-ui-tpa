@@ -30,6 +30,10 @@
     -st-extends: FloatingDropdownBase;
 }
 
+.root .dropdown::popoverContent {
+    background-color: "color(color-1)";
+}
+
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
     transform: rotate(180deg);
 }
