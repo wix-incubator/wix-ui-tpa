@@ -10,7 +10,7 @@
 
 * IconToggle - Add animations and hover behaviour ([0665398](https://github.com/wix/wix-ui-tpa/commit/06653981645b772a0583aa9e94286a9cf3c6dd35))
 * Dropdown native select on mobile ([47d71c5](https://github.com/wix/wix-ui-tpa/commit/47d71c5b513ff9597506635f1794d88250c0022f))
-* new <FloatingDropdown /> component ([073e8d5](https://github.com/wix/wix-ui-tpa/commit/073e8d562ad2f4cc13426ac30d58d1e17188001b))
+* new FloatingDropdown component ([073e8d5](https://github.com/wix/wix-ui-tpa/commit/073e8d562ad2f4cc13426ac30d58d1e17188001b))
 
 
 ### Performance Improvements
