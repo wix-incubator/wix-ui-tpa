@@ -87,7 +87,7 @@ export class Counter extends React.Component<CounterProps> {
       >
         <IconButton
           inverseColor
-          icon = {<Plus />}
+          icon={<Plus />}
           aria-label={incrementAriaLabel}
           className={style.btn}
           onClick={this._onIncrement}
@@ -121,13 +121,13 @@ export class Counter extends React.Component<CounterProps> {
         </div>
         <IconButton
           inverseColor
-          icon = {<Minus />}
+          icon={<Minus />}
           skin={Skins.Full}
           aria-label={decrementAriaLabel}
           className={style.btn}
           onClick={this._onDecrement}
           name="decrement"
-          disabled={disabled || isNumber(min) && value - step < min}
+          disabled={disabled || (isNumber(min) && value - step < min)}
         />
       </div>
     );

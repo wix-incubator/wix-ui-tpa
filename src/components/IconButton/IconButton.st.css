@@ -21,7 +21,7 @@
 
 :vars {
     iconColor: fallback(value(IconColor), value(DefaultColor));
-    inverseIconColor: applyOpacity(color(value(iconColor)), 0.6);
+    inverseIconColor: applyOpacity(color(value(iconColor)), 0.7);
 }
 
 .root {

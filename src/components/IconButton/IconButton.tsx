@@ -32,7 +32,10 @@ export class IconButton extends React.Component<IconButtonProps, State> {
   render() {
     const { icon, disabled, skin, inverseColor, ...rest } = this.props;
     return (
-      <ButtonNext {...rest} {...style('root', { disabled, skin, inverseColor }, rest)}>
+      <ButtonNext
+        {...rest}
+        {...style('root', { disabled, skin, inverseColor }, rest)}
+      >
         <span className={style.icon}>{icon}</span>
       </ButtonNext>
     );
