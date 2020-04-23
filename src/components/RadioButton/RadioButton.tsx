@@ -28,9 +28,7 @@ interface DefaultProps {
 }
 
 /** RadioButton */
-export class RadioButton extends React.Component<
-  RadioButtonProps
-  > {
+export class RadioButton extends React.Component<RadioButtonProps> {
   static displayName = 'RadioButton';
   static defaultProps: DefaultProps = {
     checked: false,
@@ -48,10 +46,10 @@ export class RadioButton extends React.Component<
       onChange,
       ...rest
     } = this.props;
-    const radioBtnIcon = <span className={styles.checkmark}/>;
+    const radioBtnIcon = <span className={styles.checkmark} />;
     return (
       <CoreRadioButton
-        {...styles('root', {checked, disabled}, rest)}
+        {...styles('root', { checked, disabled }, rest)}
         checked={checked}
         disabled={disabled}
         value={value}

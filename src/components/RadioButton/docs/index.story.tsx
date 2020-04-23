@@ -48,9 +48,13 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Unchecked', source: examples.uncheckedExample }].map(code),
+          ...[{ title: 'Unchecked', source: examples.uncheckedExample }].map(
+            code,
+          ),
           ...[{ title: 'Checked', source: examples.checkedExample }].map(code),
-          ...[{ title: 'Disabled', source: examples.disabledExample }].map(code),
+          ...[{ title: 'Disabled', source: examples.disabledExample }].map(
+            code,
+          ),
         ],
       }),
 

@@ -10,20 +10,22 @@ interface IState {
 class RadioButtonWiringExample extends React.Component<{}, IState> {
   state = {
     label: 'Click for laugh',
-    isChecked: false
-  }
+    isChecked: false,
+  };
   handleChange = event => {
     this.setState(prevState => {
-      const label = prevState.isChecked ? 'Click for laughs' : 'My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right.'
+      const label = prevState.isChecked
+        ? 'Click for laughs'
+        : 'My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right.';
       return {
         isChecked: !prevState.isChecked,
-        label
+        label,
       };
     });
-  }
+  };
 
   render() {
-    const {label, isChecked} = this.state;
+    const { label, isChecked } = this.state;
     return (
       <RadioButton
         label={label}
@@ -32,7 +34,7 @@ class RadioButtonWiringExample extends React.Component<{}, IState> {
         value={label}
         {...styles('root')}
       />
-    )
+    );
   }
 }
 

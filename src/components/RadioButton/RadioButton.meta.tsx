@@ -9,6 +9,6 @@ RadioButtonMetadata.addSim({
   props: {
     label: 'label',
     value: 'value',
-    onChange: () => {}
+    onChange: () => {},
   },
 });

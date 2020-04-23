@@ -15,7 +15,7 @@ describe('RadioButton', () => {
   const defProps = {
     onChange: () => {},
     label: 'label',
-    value: 'value'
+    value: 'value',
   };
 
   it('should render', async () => {
@@ -26,9 +26,13 @@ describe('RadioButton', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<RadioButton {...defProps}/>, radioButtonTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <RadioButton {...defProps} />,
+          radioButtonTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
