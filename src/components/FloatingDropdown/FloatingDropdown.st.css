@@ -30,7 +30,7 @@
     -st-extends: FloatingDropdownBase;
 }
 
-.root .dropdown::popoverContent {
+.root .dropdown:content-visible::popoverContent {
     background-color: "color(color-1)";
 }
 
