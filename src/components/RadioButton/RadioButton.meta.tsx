@@ -7,6 +7,8 @@ RadioButtonMetadata.nonReactStrictModeCompliant = true;
 RadioButtonMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
+    label: 'label',
+    value: 'value',
+    onChange: () => {}
   },
 });

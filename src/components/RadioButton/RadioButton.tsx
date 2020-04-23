@@ -1,51 +1,66 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
 import { RadioButton as CoreRadioButton } from 'wix-ui-core/radio-button';
 import styles from './RadioButton.st.css';
 
+export interface RadioButtonChangeEvent
+  extends React.MouseEvent<HTMLDivElement> {
+  value: string;
+}
+
+export interface RadioButtonClickEvent
+  extends React.MouseEvent<HTMLDivElement> {
+  value: string;
+}
+
 export interface RadioButtonProps {
-  buttonText: string;
+  checked?: boolean;
+  disabled?: boolean;
+  value: string;
+  name?: string;
+  label: string;
+  onChange(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
 }
 
 interface DefaultProps {
-  buttonText: string;
-}
-
-interface RadioButtonState {
-  count: number;
+  checked: boolean;
+  disabled: boolean;
+  name: string;
 }
 
 /** RadioButton */
 export class RadioButton extends React.Component<
-  RadioButtonProps,
-  RadioButtonState
-> {
+  RadioButtonProps
+  > {
   static displayName = 'RadioButton';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
-
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
+  static defaultProps: DefaultProps = {
+    checked: false,
+    disabled: false,
+    name: '',
   };
 
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
-
+    const {
+      checked,
+      disabled,
+      value,
+      label,
+      name,
+      onChange,
+      ...rest
+    } = this.props;
+    const radioBtnIcon = <span className={styles.checkmark}/>;
     return (
-      <div {...styles('root', {}, rest)}>
-        {/* <Text {...styles('number', { even: isEven, odd: !isEven })}>
-          You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
-          times
-        </Text> */}
-        <CoreRadioButton {...styles('root')} label={<p>Example</p>} />
-        {/* <div className={styles.button}>
-          <Button onClick={this._handleClick}>{buttonText}</Button>
-        </div> */}
-      </div>
+      <CoreRadioButton
+        {...styles('root', {checked, disabled}, rest)}
+        checked={checked}
+        disabled={disabled}
+        value={value}
+        label={<label>{label}</label>}
+        name={name}
+        onChange={onChange}
+        checkedIcon={radioBtnIcon}
+        uncheckedIcon={radioBtnIcon}
+      />
     );
   }
 }

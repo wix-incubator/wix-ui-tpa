@@ -16,7 +16,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as RadioButtonWiringExampleRaw from '!raw-loader!./RadioButtonWiringExample.tsx';
 import * as RadioButtonWiringExampleCSSRaw from '!raw-loader!./RadioButtonWiringExample.st.css';
-import { RadioButtonWiringExample } from './RadioButtonWiringExample';
+import RadioButtonWiringExample from './RadioButtonWiringExample';
 import { RadioButton } from '../';
 
 const code = config =>
@@ -48,7 +48,9 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Unchecked', source: examples.uncheckedExample }].map(code),
+          ...[{ title: 'Checked', source: examples.checkedExample }].map(code),
+          ...[{ title: 'Disabled', source: examples.disabledExample }].map(code),
         ],
       }),
 
@@ -65,9 +67,23 @@ export default {
               rawSource: RadioButtonWiringExampleRaw,
               rawCSSSource: RadioButtonWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
-                numbers: [],
+                colors: [
+                  {
+                    label: 'Icon Color',
+                    wixParam: 'iconColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
               },
             }),
           ],
