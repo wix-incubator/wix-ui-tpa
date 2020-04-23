@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-
+import { visualize, story, snap } from 'storybook-snapper';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { FloatingDropdown } from './';
 import { getFloatingDropdownTestProps } from './test-props';
 import { FloatingDropdownProps } from './FloatingDropdown';
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 class FloatingDropdownVisual extends React.Component<any> {
   props = getFloatingDropdownTestProps();
@@ -22,51 +22,60 @@ const extendedProps: Partial<FloatingDropdownProps> = {
 };
 const preselectedProps: Partial<FloatingDropdownProps> = { value: '3' };
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: getFloatingDropdownTestProps(),
-      },
-      {
-        it: 'expanded',
-        props: getFloatingDropdownTestProps({ ...extendedProps }),
-      },
-    ],
-  },
-  {
-    describe: 'preselected',
-    its: [
-      {
-        it: 'default',
-        props: getFloatingDropdownTestProps({ ...preselectedProps }),
-      },
-      {
-        it: 'expanded',
-        props: getFloatingDropdownTestProps({
+visualize('FloatingDropdown', () => {
+  story('basic', () => {
+    snap(
+      'default',
+      <FloatingDropdownVisual {...getFloatingDropdownTestProps()} />,
+    );
+
+    snap(
+      'expanded',
+      // tslint:disable-next-line:jsx-wrap-multiline
+      <FloatingDropdownVisual
+        {...getFloatingDropdownTestProps({ ...extendedProps })}
+      />,
+    );
+  });
+
+  story('preselected', () => {
+    snap(
+      'default',
+      // tslint:disable-next-line:jsx-wrap-multiline
+      <FloatingDropdownVisual
+        {...getFloatingDropdownTestProps({ ...preselectedProps })}
+      />,
+    );
+
+    snap(
+      'expanded',
+      // tslint:disable-next-line:jsx-wrap-multiline
+      <FloatingDropdownVisual
+        {...getFloatingDropdownTestProps({
           ...preselectedProps,
           ...extendedProps,
-        }),
-      },
-    ],
-  },
-  {
-    describe: 'disabled',
-    its: [
-      {
-        it: 'default',
-        props: getFloatingDropdownTestProps({ disabled: true }),
-      },
-    ],
-  },
-];
+        })}
+      />,
+    );
+  });
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`FloatingDropdown/${describe}`, module).add(it, () => (
-      <FloatingDropdownVisual {...props} />
-    ));
+  story('disabled', () => {
+    snap(
+      'default',
+      // tslint:disable-next-line:jsx-wrap-multiline
+      <FloatingDropdownVisual
+        {...getFloatingDropdownTestProps({ disabled: true })}
+      />,
+    );
+  });
+
+  story('native', () => {
+    snap(
+      'default',
+      // tslint:disable-next-line:jsx-wrap-multiline
+      <TPAComponentsProvider value={{ mobile: true }}>
+        <FloatingDropdownVisual {...getFloatingDropdownTestProps()} />
+      </TPAComponentsProvider>,
+    );
   });
 });
