@@ -1,3 +1,5 @@
+require('../src/components/SectionNotification/docs/index.story');
+require('../src/components/FloatingDropdown/docs/index.story');
 require('../src/components/Autocomplete/docs/index.story');
 require('../src/components/Button/docs/index.story');
 require('../src/components/StatesButton/docs/index.story');
@@ -38,8 +40,7 @@ require('../src/components/ColorPicker/docs/index.story');
 require('../src/components/CheckboxGroup/docs/index.story');
 require('../src/components/Dropdown/docs/index.story');
 require('../src/components/NewCard/docs/index.story');
+
 require('../src/components/SocialBar/docs/index.story');
 require('../src/components/ShareButton/docs/index.story');
 require('../src/components/CopyUrlButton/docs/index.story');
-require('../src/components/SectionNotification/docs/index.story');
-require('../src/components/FloatingDropdown/docs/index.story');
