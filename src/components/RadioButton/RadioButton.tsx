@@ -58,6 +58,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         onChange={onChange}
         checkedIcon={radioBtnIcon}
         uncheckedIcon={radioBtnIcon}
+        aria-label={label}
       />
     );
   }
