@@ -19,9 +19,14 @@
     IconColor: --overridable;
 }
 
+:vars {
+    iconColor: fallback(value(IconColor), value(DefaultColor));
+    inverseIconColor: applyOpacity(color(value(iconColor)), 0.7);
+}
+
 .root {
     -st-extends: ButtonNext;
-    -st-states: disabled, skin(enum(line, full));
+    -st-states: disabled, skin(enum(line, full)), inverseColor;
     /*css goes here*/
     background-color: transparent;
     text-decoration: none;
@@ -59,13 +64,40 @@
 }
 
 .root:skin(line) .icon path {
-    stroke: color(fallback(value(IconColor), value(DefaultColor)));
+    stroke: color(value(iconColor));
     fill: none;
 }
 
 .root:skin(full) .icon path {
-    fill: color(fallback(value(IconColor), value(DefaultColor)));
-    stroke: color(fallback(value(IconColor), value(DefaultColor)))  ;
+    fill: color(value(iconColor));
+    stroke: color(value(iconColor));
 }
 
+/*-------------------------------inverseColor------------------------------*/
 
+.root:inverseColor:hover {
+    opacity: 1;
+}
+
+.root:skin(line):inverseColor .icon path {
+    stroke: value(inverseIconColor);
+    fill: none;
+    transition: stroke 0.2s cubic-bezier(.39,.11,.37,.99);
+}
+
+.root:skin(full):inverseColor .icon path {
+    fill: value(inverseIconColor);
+    stroke: value(inverseIconColor);
+    transition: fill 0.2s cubic-bezier(.39,.11,.37,.99),
+                stroke 0.2s cubic-bezier(.39,.11,.37,.99);
+}
+
+.root:skin(line):inverseColor:hover .icon path {
+    stroke: color(value(iconColor));
+    fill: none;
+}
+
+.root:skin(full):inverseColor:hover .icon path {
+    fill: color(value(iconColor));
+    stroke: color(value(iconColor));
+}

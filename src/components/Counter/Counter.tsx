@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
-import { Button } from 'wix-ui-core/button';
+import { IconButton, Skins } from '../IconButton';
 import style from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
@@ -8,6 +8,7 @@ import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
+const isNumber = require('lodash/isNumber');
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
@@ -84,15 +85,16 @@ export class Counter extends React.Component<CounterProps> {
         aria-labelledby={this.props['aria-labelledby']}
         aria-label={this.props['aria-label']}
       >
-        <Button
+        <IconButton
+          inverseColor
+          icon={<Plus />}
           aria-label={incrementAriaLabel}
           className={style.btn}
           onClick={this._onIncrement}
           name="increment"
-          disabled={disabled || (max && value + step > max)}
-        >
-          <Plus />
-        </Button>
+          skin={Skins.Full}
+          disabled={disabled || (isNumber(max) && value + step > max)}
+        />
         {shouldShowErrorMessageTooltip && (
           <Tooltip
             data-hook="dropdown-error-tooltip"
@@ -117,15 +119,16 @@ export class Counter extends React.Component<CounterProps> {
             value={value.toString()}
           />
         </div>
-        <Button
+        <IconButton
+          inverseColor
+          icon={<Minus />}
+          skin={Skins.Full}
           aria-label={decrementAriaLabel}
           className={style.btn}
           onClick={this._onDecrement}
           name="decrement"
-          disabled={disabled || value - step < min}
-        >
-          <Minus />
-        </Button>
+          disabled={disabled || (isNumber(min) && value - step < min)}
+        />
       </div>
     );
   }
