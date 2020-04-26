@@ -15,7 +15,7 @@ describe('RadioButton', () => {
   const defProps = {
     onChange: () => {},
     label: 'label',
-    value: 'value'
+    value: 'value',
   };
 
   it('should render', async () => {
