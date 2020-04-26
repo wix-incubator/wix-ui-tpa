@@ -52,6 +52,8 @@
     box-sizing: border-box;
     outline: none;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .root:mobile:size(medium) {
