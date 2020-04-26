@@ -41,8 +41,8 @@ export class RadioButton extends React.Component<RadioButtonProps> {
     const { checked, disabled } = this.props;
     return {
       [RADIOBUTTON_DATA_KEYS.Checked]: checked,
-      [RADIOBUTTON_DATA_KEYS.Disabled]: disabled
-    }
+      [RADIOBUTTON_DATA_KEYS.Disabled]: disabled,
+    };
   }
 
   render() {

@@ -16,10 +16,10 @@ export const radioButtonDriverFactory = (
   return {
     ...baseUniDriverFactory(base),
     async hasChecked() {
-      return (await base.attr(RADIOBUTTON_DATA_KEYS.Checked)) === 'true'
+      return (await base.attr(RADIOBUTTON_DATA_KEYS.Checked)) === 'true';
     },
     async hasDisabled() {
-      return (await base.attr(RADIOBUTTON_DATA_KEYS.Disabled)) === 'true'
-    }
+      return (await base.attr(RADIOBUTTON_DATA_KEYS.Disabled)) === 'true';
+    },
   };
 };

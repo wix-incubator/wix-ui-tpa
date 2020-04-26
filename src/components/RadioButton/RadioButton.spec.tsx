@@ -35,15 +35,19 @@ describe('RadioButton', () => {
     expect(await driver.hasDisabled()).toBeTruthy();
   });
 
-   describe('testkit', () => {
-     it('should exist', async () => {
-       expect(
-         await isUniTestkitExists(<RadioButton {...defProps}/>, radioButtonTestkitFactory, {
-           dataHookPropName: 'data-hook',
-         }),
-       ).toBe(true);
-     });
-   });
+  describe('testkit', () => {
+    it('should exist', async () => {
+      expect(
+        await isUniTestkitExists(
+          <RadioButton {...defProps} />,
+          radioButtonTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
+      ).toBe(true);
+    });
+  });
 
   // describe('enzyme testkit', () => {
   //   it('should exist', async () => {
