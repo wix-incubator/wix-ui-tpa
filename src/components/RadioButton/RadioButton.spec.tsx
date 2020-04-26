@@ -15,7 +15,7 @@ describe('RadioButton', () => {
   const defProps = {
     onChange: () => {},
     label: 'label',
-    value: 'value',
+    value: 'value'
   };
 
   it('should render', async () => {
@@ -23,19 +23,15 @@ describe('RadioButton', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  describe('testkit', () => {
-    it('should exist', async () => {
-      expect(
-        await isUniTestkitExists(
-          <RadioButton {...defProps} />,
-          radioButtonTestkitFactory,
-          {
-            dataHookPropName: 'data-hook',
-          },
-        ),
-      ).toBe(true);
-    });
-  });
+  // describe('testkit', () => {
+  //   it('should exist', async () => {
+  //     expect(
+  //       await isUniTestkitExists(<RadioButton {...defProps}/>, radioButtonTestkitFactory, {
+  //         dataHookPropName: 'data-hook',
+  //       }),
+  //     ).toBe(true);
+  //   });
+  // });
 
   // describe('enzyme testkit', () => {
   //   it('should exist', async () => {
