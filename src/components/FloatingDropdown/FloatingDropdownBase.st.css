@@ -1,0 +1,142 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, font;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+:import {
+    -st-from: "../TextButton/TextButton.st.css";
+    -st-default: TPAButton;
+}
+
+:vars {
+    DisabledTextColor: color-3;
+    TextColor: color-5;
+    LabelFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    DisabledColor: color-3;
+}
+
+:vars {
+    disabledTextColor: color(value(DisabledTextColor));
+    iconHeight: 24px;
+    iconWith: 24px;
+    maxWidth: 20vw;
+    minWidth: 220px;
+    textColor: color(value(TextColor));
+}
+
+.root {
+    -st-states: mobile, disabled;
+    cursor: pointer;
+}
+
+.btn {
+    -st-extends: TPAButton;
+    display: flex;
+    cursor: pointer;
+    box-sizing: border-box;
+    outline: none;
+    transition: none;
+    padding: 8px 0;
+}
+
+.textContent {
+    max-width: calc(value(maxWidth) - value(iconWith));
+    max-height: value(iconHeight);
+    overflow: hidden;
+    display: flex;
+}
+
+.content {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '16px'}"
+    );
+    display: flex;
+    color: value(textColor);
+}
+
+.arrowIcon path {
+    fill: value(textColor);
+}
+
+.label {
+    display: flex;
+    opacity: 0.6;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.selectedValue {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-shrink: 2;
+    overflow: hidden;
+}
+
+.label::after {
+    width: 4px;
+    content: '';
+}
+
+.btn::content {
+    flex: 1;
+    text-align: start;
+}
+
+.btn:disabled {
+    cursor: default;
+}
+
+.btn:disabled .label,
+.btn:disabled .content {
+    opacity: 1;
+    color: value(disabledTextColor);
+}
+
+.root:disabled {
+    cursor: default;
+}
+
+.root:disabled .arrowIcon path {
+    fill: value(disabledTextColor);
+}
+
+.root:mobile {
+    display: inline-block;
+    position: relative;
+}
+
+.root:mobile .label,
+.root:mobile .selectedValue {
+    font: font(value(LabelFont));
+    color: value(textColor);
+}
+
+.root:mobile select {
+    background-color: transparent;
+    border: none;
+    min-width: 0;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+}
+
+.root:mobile:disabled .label,
+.root:mobile:disabled .selectedValue {
+    color: value(disabledTextColor);
+}
+
+.root:mobile:disabled select {
+    cursor: default;
+}

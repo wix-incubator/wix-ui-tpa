@@ -53,12 +53,25 @@ export class IconToggle extends React.Component<IconToggleProps> {
   };
 
   render() {
-    const { labelPlacement, onChange, checked, disabled, animation, ...rest } = this.props;
+    const {
+      labelPlacement,
+      onChange,
+      checked,
+      disabled,
+      animation,
+      ...rest
+    } = this.props;
 
     const content = this._getContent();
-    
+
     return (
-      <span {...styles('root', { checked, disabled, labelPlacement, animation }, rest)}>
+      <span
+        {...styles(
+          'root',
+          { checked, disabled, labelPlacement, animation },
+          rest,
+        )}
+      >
         <CoreCheckbox
           uncheckedIcon={content}
           checkedIcon={content}
