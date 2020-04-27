@@ -99,6 +99,10 @@
 }
 
 .dropdown .dropdownBase::arrowIcon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
     height: 1.5em;
     width: 1.5em;
 }
