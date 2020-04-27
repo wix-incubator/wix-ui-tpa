@@ -2,12 +2,14 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
+import { Simulate } from 'react-dom/test-utils';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
-import { RADIOBUTTON_DATA_KEYS } from './datahooks';
+import { RADIOBUTTON_DATA_HOOKS, RADIOBUTTON_DATA_KEYS } from './dataHooks';
 
 export interface RadioButtonDriver extends BaseUniDriver {
-  hasChecked(): Promise<boolean>;
-  hasDisabled(): Promise<boolean>;
+  isChecked(): Promise<boolean>;
+  isDisabled(): Promise<boolean>;
+  clickOnRadioButton(): Promise<void>;
 }
 
 export const radioButtonDriverFactory = (
@@ -15,11 +17,16 @@ export const radioButtonDriverFactory = (
 ): RadioButtonDriver => {
   return {
     ...baseUniDriverFactory(base),
-    async hasChecked() {
+    async isChecked() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Checked)) === 'true';
     },
-    async hasDisabled() {
+    async isDisabled() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Disabled)) === 'true';
     },
+    async clickOnRadioButton() {
+      const radioButtonDatahook = `[data-hook="${RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper}"]`;
+      const inputNative = await base.$(`${radioButtonDatahook} input`).getNative();
+      return Simulate.change(inputNative);
+    }
   };
 };

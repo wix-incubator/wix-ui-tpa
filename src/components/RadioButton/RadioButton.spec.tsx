@@ -13,7 +13,7 @@ describe('RadioButton', () => {
   const createDriver = createUniDriverFactory(radioButtonDriverFactory);
 
   const defProps = {
-    onChange: () => {},
+    onChange: () => { },
     label: 'label',
     value: 'value',
   };
@@ -26,13 +26,26 @@ describe('RadioButton', () => {
   it('should show checked state', async () => {
     const driver = createDriver(<RadioButton checked {...defProps} />);
 
-    expect(await driver.hasChecked()).toBeTruthy();
+    expect(await driver.isChecked()).toBeTruthy();
   });
 
   it('should show disabled state', async () => {
     const driver = createDriver(<RadioButton disabled {...defProps} />);
 
-    expect(await driver.hasDisabled()).toBeTruthy();
+    expect(await driver.isDisabled()).toBeTruthy();
+  });
+
+  it('should call onChange with correct "checked" value', async () => {
+    const onChangeSpy = jest.fn();
+    const driver = createDriver(
+      <RadioButton value="value" label="Label" onChange={onChangeSpy} />,
+    );
+
+    await driver.clickOnRadioButton();
+
+    expect(onChangeSpy).toHaveBeenCalledWith(
+      expect.objectContaining({ checked: true }),
+    );
   });
 
   describe('testkit', () => {
@@ -49,18 +62,18 @@ describe('RadioButton', () => {
     });
   });
 
-  // describe('enzyme testkit', () => {
-  //   it('should exist', async () => {
-  //     expect(
-  //       await isUniEnzymeTestkitExists(
-  //         <RadioButton {...defProps}/>,
-  //         enzymeRadioButtonTestkitFactory,
-  //         mount,
-  //         {
-  //           dataHookPropName: 'data-hook',
-  //         },
-  //       ),
-  //     ).toBe(true);
-  //   });
-  // });
+  describe('enzyme testkit', () => {
+    it('should exist', async () => {
+      expect(
+        await isUniEnzymeTestkitExists(
+          <RadioButton {...defProps} />,
+          enzymeRadioButtonTestkitFactory,
+          mount,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
+      ).toBe(true);
+    });
+  });
 });

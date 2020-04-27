@@ -13,7 +13,7 @@
     DefaultTextColor: color-5;
     DefaultBorderColor: color-5;
     DefaultIconColor: color-8;
-    DisabledColor: color-3;
+    DisabledColor: gray;
 }
 
 /*Overrides*/
@@ -127,4 +127,8 @@
 
 .root:disabled .checkmark {
     border-color: color(value(DisabledColor));
+}
+
+.root:disabled::icon {
+    cursor: not-allowed;
 }
