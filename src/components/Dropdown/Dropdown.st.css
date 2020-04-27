@@ -95,7 +95,7 @@
 }
 
 .dropdown:content-visible .dropdownBase::arrowIcon {
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
 }
 
 .dropdown .dropdownBase::arrowIcon {
