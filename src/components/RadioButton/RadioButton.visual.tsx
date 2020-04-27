@@ -41,14 +41,7 @@ import { Omit } from '../../types';
 
 const VisualRadioButton = (
   props: Omit<RadioButtonProps, 'label' | 'onChange' | 'value'>,
-) => (
-  <RadioButton
-    label="label"
-    value="value"
-    onChange={() => {}}
-    {...props}
-  />
-);
+) => <RadioButton label="label" value="value" onChange={() => {}} {...props} />;
 
 visualize('ShareButton', () => {
   story('render', () => {

@@ -39,7 +39,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
     checked: false,
     disabled: false,
     name: '',
-    'data-hook': RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper
+    'data-hook': RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper,
   };
 
   getDataAttributes() {
@@ -60,7 +60,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       onChange,
       ...rest
     } = this.props;
-    
+
     return (
       <CoreRadioButton
         {...styles('root', { checked, disabled }, rest)}

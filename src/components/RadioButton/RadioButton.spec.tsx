@@ -13,7 +13,7 @@ describe('RadioButton', () => {
   const createDriver = createUniDriverFactory(radioButtonDriverFactory);
 
   const defProps = {
-    onChange: () => { },
+    onChange: () => {},
     label: 'label',
     value: 'value',
   };

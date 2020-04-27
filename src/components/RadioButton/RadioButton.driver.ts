@@ -25,8 +25,10 @@ export const radioButtonDriverFactory = (
     },
     async clickOnRadioButton() {
       const radioButtonDatahook = `[data-hook="${RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper}"]`;
-      const inputNative = await base.$(`${radioButtonDatahook} input`).getNative();
+      const inputNative = await base
+        .$(`${radioButtonDatahook} input`)
+        .getNative();
       return Simulate.change(inputNative);
-    }
+    },
   };
 };
