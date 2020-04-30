@@ -1,8 +1,7 @@
 import * as React from 'react';
-
 import { Text, TYPOGRAPHY } from '../Text';
-
 import styles from './DropdownOption.st.css';
+import { TPAComponentProps } from '../../types';
 
 export interface DropdownOptionProps {
   id: string;
@@ -13,7 +12,8 @@ export interface DropdownOptionProps {
   icon?: React.ReactElement;
 }
 
-export const DropdownOption: React.FC<DropdownOptionProps> = props => {
+export const DropdownOption: React.FC<DropdownOptionProps &
+  TPAComponentProps> = props => {
   const { value, id, isSelectable, subtitle, icon, isSectionTitle } = props;
   return (
     <div

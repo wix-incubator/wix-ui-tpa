@@ -155,7 +155,9 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
     const coreOptions = options.map(option => ({
       ...option,
-      render: () => <DropdownOption {...option} />,
+      render: () => (
+        <DropdownOption className={styles.dropdownOption} {...option} />
+      ),
     }));
 
     return (

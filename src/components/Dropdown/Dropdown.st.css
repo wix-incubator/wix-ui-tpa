@@ -67,6 +67,10 @@
     -st-extends: DropdownBase;
 }
 
+.dropdownOption {
+    -st-extends: DropdownOption;
+}
+
 .dropdownNativeSelect {
     -st-extends: DropdownNativeSelect;
 }
