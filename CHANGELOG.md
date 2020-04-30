@@ -1,14 +1,3 @@
-# [1.10.0](https://github.com/wix/wix-ui-tpa/compare/v1.9.2...v1.10.0) (2020-04-30)
-
-
-### Bug Fixes
-
-* Counter - add missing hover and focus behaviour  ([b100d3b](https://github.com/wix/wix-ui-tpa/commit/b100d3b4b55a57e286ddf802b7700fb427b7024d))
-* Dropdown - add vendor prefixes for mobile support ([7163644](https://github.com/wix/wix-ui-tpa/commit/7163644c4632faec25323e994c0a92b878e438d2))
-* Dropdown - expose dropdownOption in stylable ([1e57bfd](https://github.com/wix/wix-ui-tpa/commit/1e57bfda4018ddd529ea193004823b8b4f038f72))
-
-
-
 ## [1.9.2](https://github.com/wix/wix-ui-tpa/compare/v1.9.1...v1.9.2) (2020-04-23)
 
 
