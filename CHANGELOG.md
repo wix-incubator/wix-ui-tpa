@@ -1,3 +1,12 @@
+## [1.10.2](https://github.com/wix/wix-ui-tpa/compare/v1.10.1...v1.10.2) (2020-05-03)
+
+
+### Reverts
+
+* Revert "fix: Counter - add missing hover and focus behaviour " (#328) ([1b42d02](https://github.com/wix/wix-ui-tpa/commit/1b42d02fe4e8e076d5e3271a7f82d4db60a75460)), closes [#328](https://github.com/wix/wix-ui-tpa/issues/328)
+
+
+
 # [1.10.0](https://github.com/wix/wix-ui-tpa/compare/v1.9.2...v1.10.0) (2020-04-30)
 
 
