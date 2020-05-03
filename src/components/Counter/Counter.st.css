@@ -1,18 +1,12 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: applyUnit, color, fallback, font, value, applyOpacity;
+    -st-named: applyUnit, color, fallback, font, value;
 }
 
 :import {
     -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
-
-:import {
-  -st-from: "../IconButton/IconButton.st.css";
-  -st-default: TPAIconButton;
-}
-
 
 :vars {
     /*Defaults*/
@@ -49,16 +43,11 @@
     background: color(value(DefaultBackgroundColor));
     border-width: 1px;
     border-style: solid;
-    border-color: applyOpacity(value(counterColor), 0.6);
+    border-color: color(value(counterColor));
 }
 
 .root:error {
     border-color: value(DefaultErrorColor);
-}
-
-.root:hover:not(:disabled):not(:error),
-.root:focus:not(:disabled):not(:error){
-    border-color: value(counterColor);
 }
 
 .root:disabled {
@@ -66,32 +55,22 @@
 }
 
 .btn {
-    -st-extends: TPAIconButton;
-    -st-mixin: TPAIconButton(
-        IconColor color(value(counterColor))
-    );
     background: none;
     padding: 6px;
     border: none;
     cursor: pointer;
 }
 
-.root .btn:skin(full):disabled::icon path {
+.btn path {
+    fill: color(value(counterColor));
+}
+
+.btn[disabled] {
+    cursor: default;
+}
+
+.btn[disabled] path {
     fill: color(value(counterDisabledColor));
-    stroke: none;
-}
-
-.root .btn:skin(full):not(:disabled)::icon path {
-    stroke: none;
-}
-
-.root .btn:skin(full):not(:disabled):hover::icon path {
-    stroke: none;
-}
-
-.root .btn:skin(full):disabled:hover::icon path {
-    fill: color(value(counterDisabledColor));
-    stroke: none;
 }
 
 .root:disabled .btn {

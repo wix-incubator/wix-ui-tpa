@@ -7,7 +7,6 @@ import { TPAComponentProps } from '../../types';
 export interface IconButtonProps extends ButtonProps, TPAComponentProps {
   icon: React.ReactNode;
   skin: Skins;
-  inverseColor?: boolean;
 }
 
 export enum Skins {
@@ -17,7 +16,6 @@ export enum Skins {
 
 interface DefaultProps {
   skin: Skins;
-  inverseColor?: boolean;
 }
 
 interface State {}
@@ -27,15 +25,12 @@ interface State {}
  * By default the IconButton will pull the theme from the site (site color scheme) */
 export class IconButton extends React.Component<IconButtonProps, State> {
   static displayName = 'IconButton';
-  static defaultProps: DefaultProps = { skin: Skins.Line, inverseColor: false };
+  static defaultProps: DefaultProps = { skin: Skins.Line };
 
   render() {
-    const { icon, disabled, skin, inverseColor, ...rest } = this.props;
+    const { icon, disabled, skin, ...rest } = this.props;
     return (
-      <ButtonNext
-        {...rest}
-        {...style('root', { disabled, skin, inverseColor }, rest)}
-      >
+      <ButtonNext {...rest} {...style('root', { disabled, skin }, rest)}>
         <span className={style.icon}>{icon}</span>
       </ButtonNext>
     );
