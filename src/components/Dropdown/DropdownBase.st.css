@@ -56,6 +56,8 @@
 .root:mobile:size(medium)::after,
 .root:size(medium)::after {
     width: 7px;
+    /* so ui doesnt change for consumers. making arrow icon size aligned with font size makes dropdown size change. this prevents it */
+    height: 24px;
     content: '';
 }
 
