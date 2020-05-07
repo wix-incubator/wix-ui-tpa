@@ -1,0 +1,32 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+/*Defaults*/
+:vars {
+    DefaultAlignment: left;
+}
+
+/*Overrides*/
+:vars {
+    OverridedAlignment: --overridable
+}
+
+:vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.root {
+    border: 1px solid color(color-2);
+    background-color: color(color-1);
+    height: 135px;
+    width: 135px;
+    padding: 12px;
+}
+
+.time {
+    padding: 8px 4px;
+}
