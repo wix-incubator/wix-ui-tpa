@@ -21,7 +21,10 @@ describe('calendarCell', () => {
 
   it('should render', async () => {
     const driver = calendarCellTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find CalendarCell');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find CalendarCell',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

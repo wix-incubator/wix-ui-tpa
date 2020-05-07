@@ -13,27 +13,22 @@ export interface CalendarCellProps {
   children: any;
 }
 
-interface DefaultProps {
-}
+interface DefaultProps {}
 
-interface State {
-}
+interface State {}
 
 /** CalendarCell */
 export class CalendarCell extends React.Component<CalendarCellProps, State> {
   static displayName = 'CalendarCell';
-  static defaultProps: DefaultProps = { };
-
+  static defaultProps: DefaultProps = {};
 
   render() {
-    const { time, children,  ...rest } = this.props;
+    const { time, children, ...rest } = this.props;
 
     return (
       <div {...styles('root', {}, rest)}>
-          <Text className={styles.time}>{time}</Text>
-        <div>
-          {children}
-        </div>
+        <Text className={styles.time}>{time}</Text>
+        <div>{children}</div>
       </div>
     );
   }
