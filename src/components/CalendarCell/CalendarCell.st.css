@@ -22,6 +22,7 @@
 
 :vars {
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentAlignment: fallback(value(OverridedAlignment), value(DefaultAlignment));
 }
 
 .root {
@@ -31,6 +32,7 @@
     height: 135px;
     width: 135px;
     padding: 12px;
+    text-align: value(CurrentAlignment);
 }
 
 .time {
