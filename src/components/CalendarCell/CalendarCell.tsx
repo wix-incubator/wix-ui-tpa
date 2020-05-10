@@ -12,25 +12,32 @@ export enum Times {
 export interface CalendarCellProps {
   time: string;
   children: any;
-  timeType: Times;
+  timeType?: Times;
+  isStretchAble?: boolean;
 }
 
-interface DefaultProps {}
+interface DefaultProps {
+  isStretchAble: boolean;
+}
 
-interface State {}
+interface State { }
 
 /** CalendarCell */
 export class CalendarCell extends React.Component<CalendarCellProps, State> {
   static displayName = 'CalendarCell';
-  static defaultProps: DefaultProps = {};
+  static defaultProps: DefaultProps = {
+    isStretchAble: false
+  };
 
   render() {
-    const { time, children, timeType, ...rest } = this.props;
+    const { time, children, timeType, isStretchAble, ...rest } = this.props;
 
     return (
-      <div {...styles('root', { timeType }, rest)}>
-        <Text className={styles.time}>{time}</Text>
-        <div>{children}</div>
+      <div {...styles('root', { timeType, isStretchAble }, rest)}>
+        <div className={styles.innerContainer}>
+          <Text className={styles.time}>{time}</Text>
+          <div>{children}</div>
+        </div>
       </div>
     );
   }

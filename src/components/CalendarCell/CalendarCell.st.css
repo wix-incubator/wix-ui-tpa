@@ -26,23 +26,38 @@
 }
 
 .root {
-    -st-states: timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
+    -st-states: isStretchAble, timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
     border: 1px solid color(color-2);
     background-color: color(color-1);
-    height: 135px;
-    width: 135px;
-    padding: 12px;
     text-align: value(CurrentAlignment);
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+}
+
+.innerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 12px;
 }
 
 .time {
-    padding: 8px 4px;
     font-size: 16px;
     line-height: 1em;
     -st-extends: TPAText;
     -st-mixin: TPAText(
         MainTextColor value(CurrentTextColor)
     );
+}
+
+
+/* isStrechAble == true */
+.root:isStretchAble {
+    padding-top: 0;
+    height: 100%;
 }
 
 /* Previous Month */
