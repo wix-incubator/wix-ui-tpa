@@ -32,7 +32,7 @@ export default {
   }),
   exampleProps: {
     timeType: Object.values(Times),
-    time: "",
+    time: '',
   },
   dataHook: 'storybook-CalendarCell',
   sections: [

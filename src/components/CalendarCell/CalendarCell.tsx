@@ -6,7 +6,7 @@ export enum Times {
   previousMonth = 'PreviousMonth',
   previousDays = 'PreviousDays',
   currentDay = 'CurrentDay',
-  nextMonth = 'NextMonth'
+  nextMonth = 'NextMonth',
 }
 
 export interface CalendarCellProps {
@@ -28,7 +28,7 @@ export class CalendarCell extends React.Component<CalendarCellProps, State> {
     const { time, children, timeType, ...rest } = this.props;
 
     return (
-      <div {...styles('root', {timeType}, rest)}>
+      <div {...styles('root', { timeType }, rest)}>
         <Text className={styles.time}>{time}</Text>
         <div>{children}</div>
       </div>
