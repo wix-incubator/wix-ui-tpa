@@ -1,1 +1,1 @@
-export { CalendarCell, CalendarCellProps } from './CalendarCell';
+export { CalendarCell, CalendarCellProps, Times } from './CalendarCell';

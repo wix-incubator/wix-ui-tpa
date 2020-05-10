@@ -1,25 +1,31 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback, applyOpacity;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
 }
 
 /*Defaults*/
 :vars {
     DefaultAlignment: left;
+    DefaultTextColor: color-5;
 }
 
 /*Overrides*/
 :vars {
     OverridedAlignment: --overridable
+    TextColor: --overridable
 }
 
 :vars {
-    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
-    CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
 }
 
 .root {
+    -st-states: timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
     border: 1px solid color(color-2);
     background-color: color(color-1);
     height: 135px;
@@ -29,4 +35,62 @@
 
 .time {
     padding: 8px 4px;
+    font-size: 16px;
+    line-height: 1em;
+    -st-extends: TPAText;
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentTextColor)
+    );
+}
+
+/* Previous Month */
+
+.root:timeType(PreviousMonth) {
+    background: applyOpacity(color(color-2), 0.1);
+    border: 1px solid color(color-2);
+}
+
+.root:timeType(PreviousMonth) .time {
+    -st-mixin: TPAText(
+        MainTextColor applyOpacity(color(color-5), 0.35)
+    );
+}
+
+/* Previous Days */
+
+.root:timeType(PreviousDays) {
+    background: applyOpacity(color(color-2), 0.1);
+    border: 1px solid color(color-2);
+}
+
+.root:timeType(PreviousDays) .time {
+    -st-mixin: TPAText(
+        MainTextColor color(color-5)
+    );
+}
+
+/* Current Day */
+
+.root:timeType(CurrentDay) {
+    background: color(color-1);
+    border: 1px solid color(color-8);
+}
+
+.root:timeType(CurrentDay) .time {
+    -st-mixin: TPAText(
+        MainTextColor color(color-8)
+    );
+}
+
+/* Next Month */
+
+.root:timeType(NextMonth) {
+    background: color(color-1);
+    border: 1px solid color(color-2);
+}
+
+.root:timeType(NextMonth) .time {
+    -st-mixin: TPAText(
+        MainTextColor applyOpacity(color(color-5), 0.35)
+    );
 }
