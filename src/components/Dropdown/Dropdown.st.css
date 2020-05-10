@@ -98,7 +98,8 @@
     transform: translateY(-50%) rotate(180deg);
 }
 
-.dropdown .dropdownBase::arrowIcon {
+.dropdown .dropdownBase::arrowIcon, 
+.dropdown .dropdownNativeSelect::arrowIcon {
     position: absolute;
     right: 8px;
     top: 50%;
