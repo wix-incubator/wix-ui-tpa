@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, applyOpacity;
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :import {
@@ -11,24 +11,42 @@
 /*Defaults*/
 :vars {
     DefaultAlignment: left;
+    DefaultWidth: 1px;
+    DefaultOpacity: 1;
     DefaultTextColor: color-5;
+    DefaultBackgroundColor: color-1;
+    DefaultBorderColor: color-2;
+    DefaultTodayColor: color-8;
+    DefaultFontStyle: "{theme: 'Body-M', size: '16px', lineHeight: '1em'}";
 }
 
 /*Overrides*/
 :vars {
     OverridedAlignment: --overridable
+    Width: --overridable
+    Opacity: --overridable
     TextColor: --overridable
+    BackgroundColor: --overridable
+    BorderColor: --overridable
+    TodayColor: --overridable
+    FontStyle: --overridable
 }
 
 :vars {
-    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
     CurrentAlignment: fallback(value(OverridedAlignment), value(DefaultAlignment));
+    CurrentWidth: fallback(value(Width), value(DefaultWidth));
+    CurrentOpacity: fallback(value(Opacity), value(DefaultOpacity))
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
+    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
 }
 
 .root {
     -st-states: isStretchAble, timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
-    border: 1px solid color(color-2);
-    background-color: color(color-1);
+    border: value(CurrentWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentOpacity));
+    background-color: value(CurrentBackgroundColor);
     text-align: value(CurrentAlignment);
     width: 100%;
     padding-top: 100%; /* 1:1 Aspect Ratio */
@@ -62,7 +80,8 @@
     line-height: 1em;
     -st-extends: TPAText;
     -st-mixin: TPAText(
-        MainTextColor value(CurrentTextColor)
+        MainTextColor value(CurrentTextColor),
+        MainTextFont value(CurrentFontStyle)
     );
 }
 
@@ -103,12 +122,12 @@
 
 .root:timeType(CurrentDay) {
     background: color(color-1);
-    border: 1px solid color(color-8);
+    border: 1px solid value(CurrentTodayColor);
 }
 
 .root:timeType(CurrentDay) .time {
     -st-mixin: TPAText(
-        MainTextColor color(color-8)
+        MainTextColor value(CurrentTodayColor)
     );
 }
 
