@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classnames from 'classnames';
 import { TPAComponentProps } from '../../types';
-import styles from './NewCard.st.css';
+import { st, classes } from './NewCard.st.css';
 import { NEWCARD_DATA_HOOKS, NEWCARD_DATA_KEYS } from './dataHooks';
 
 export interface NewCardProps extends TPAComponentProps {
@@ -22,7 +22,7 @@ const Container: React.FunctionComponent<ContainerProps> = props => {
   return (
     <div
       style={{ flexBasis: minWidth }}
-      className={classnames(styles.container, className)}
+      className={classnames(classes.container, className)}
       data-hook={props['data-hook'] || NEWCARD_DATA_HOOKS.NewCardContainer}
     >
       {children}
@@ -48,13 +48,13 @@ export class NewCard extends React.Component<NewCardProps> {
   }
 
   render() {
-    const { stacked, children, className, ...rest } = this.props;
+    const { stacked, children, className } = this.props;
 
     return (
       <section
         data-hook={this.props['data-hook']}
+        className={st(classes.root, { stacked }, className)}
         {...this.getDataAttributes()}
-        {...styles(classnames('root', className), { stacked }, rest)}
       >
         {children}
       </section>
