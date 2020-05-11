@@ -44,6 +44,13 @@
     padding: 12px;
 }
 
+/* .childrenContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 67%;
+} */
+
 @media only screen and (max-width: 75px) {
     .innerContainer {
         padding: 8px 4px;
