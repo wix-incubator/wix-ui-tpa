@@ -35,7 +35,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
       onChange,
       checked,
       disabled,
-      className
+      className,
     } = this.props;
 
     return (

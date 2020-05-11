@@ -5,9 +5,9 @@ import {
 } from 'wix-ui-core/input';
 import { st, classes } from './Input.st.css';
 import { ErrorMessageWrapper, ErrorProps } from '../ErrorMessageWrapper';
-import {TPAComponentProps} from "../../types";
+import { TPAComponentProps } from '../../types';
 
-export interface TPAInputProps extends TPAComponentProps{
+export interface TPAInputProps extends TPAComponentProps {
   /** the error message to display */
   errorMessage?: string;
   /** apply error state*/

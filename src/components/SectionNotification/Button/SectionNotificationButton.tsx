@@ -6,9 +6,9 @@ import {
   TEXT_BUTTON_PRIORITY,
 } from '../../TextButton';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
-import parentStyles from '../SectionNotification.st.css';
+import { classes as parentClasses } from '../SectionNotification.st.css';
 import { SectionNotificationButtonProps } from '../types';
-import styles from './SectionNotificationButton.st.css';
+import { st, classes } from './SectionNotificationButton.st.css';
 
 export { TEXT_BUTTON_PRIORITY, PRIORITY as BUTTON_PRIORITY, BUTTON_TYPE };
 
@@ -48,21 +48,17 @@ export class SectionNotificationButton extends React.Component<
 
     return (
       <div
-        {...styles('root', { type }, { className: parentStyles.button })}
+        className={st(classes.root, { type }, parentClasses.button)}
         data-hook={SECTION_NOTIFICATION_DATA_HOOKS.button}
       >
         <ButtonComponent
+          className={st(classes.button, {
+            priority:
+              (buttonProps as TPAButtonProps).priority ||
+              defaultButtonProps.priority,
+          })}
           {...defaultButtonProps}
           {...buttonProps}
-          {...styles(
-            'button',
-            {
-              priority:
-                (buttonProps as TPAButtonProps).priority ||
-                defaultButtonProps.priority,
-            },
-            buttonProps,
-          )}
         >
           {children}
         </ButtonComponent>
