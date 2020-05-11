@@ -28,14 +28,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   };
 
   render() {
-    const {
-      label,
-      layout,
-      error,
-      disabled,
-      errorText,
-      className
-    } = this.props;
+    const { label, layout, error, disabled, errorText, className } = this.props;
 
     return (
       <fieldset
