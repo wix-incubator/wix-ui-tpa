@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './TextButton.st.css';
+import { st, classes } from './TextButton.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
@@ -23,14 +23,14 @@ export class TextButton extends React.Component<TextButtonProps> {
   };
 
   render() {
-    const { priority, ...rest } = this.props;
+    const { priority, className, ...rest } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ButtonNext
             {...rest}
-            {...style('root', { priority, mobile }, rest)}
+            className={st(classes.root, { priority, mobile }, className)}
           />
         )}
       </TPAComponentsConsumer>

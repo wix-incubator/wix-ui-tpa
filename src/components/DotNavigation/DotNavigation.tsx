@@ -315,7 +315,7 @@ export class DotNavigation extends React.Component<
 
     return _isNumber(length) && length > 0 ? (
       <div
-        className={st('root', { short }, className)}
+        className={st(classes.root, { short }, className)}
         data-hook={this.props['data-hook']}
         {...this._getDataAttributes()}
       >

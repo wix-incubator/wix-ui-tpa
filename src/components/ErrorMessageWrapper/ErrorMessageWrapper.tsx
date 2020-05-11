@@ -20,7 +20,7 @@ export const ErrorMessageWrapper: React.FunctionComponent<ErrorMessageWrapperPro
 
   return (
     <div
-      className={st('root', {}, className)}
+      className={st(classes.root, className)}
       data-hook={this.props['data-hook']}
     >
       {render({ error: inErrorState })}

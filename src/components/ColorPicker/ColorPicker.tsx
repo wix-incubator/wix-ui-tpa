@@ -24,7 +24,7 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
 
     return (
       <div
-        className={st('root', {}, className)}
+        className={st(classes.root, {}, className)}
         data-hook={this.props['data-hook']}
       >
         {React.Children.map(

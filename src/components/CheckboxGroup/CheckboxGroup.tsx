@@ -33,7 +33,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
     return (
       <fieldset
         data-hook={this.props['data-hook']}
-        className={st('root', { layout, disabled }, className)}
+        className={st(classes.root, { layout, disabled }, className)}
       >
         {!!label && <legend className={classes.label}>{label}</legend>}
 

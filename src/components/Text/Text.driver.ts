@@ -1,5 +1,5 @@
 import { StylableDOMUtil } from '@stylable/dom-test-kit';
-import style from './Text.st.css';
+import * as style from './Text.st.css';
 
 export const textDriverFactory = ({ element }) => {
   const stylableDOMUtil = new StylableDOMUtil(style);
