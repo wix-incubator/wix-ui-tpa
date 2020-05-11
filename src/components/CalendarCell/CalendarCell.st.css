@@ -11,41 +11,44 @@
 /*Defaults*/
 :vars {
     DefaultAlignment: left;
-    DefaultWidth: 1px;
-    DefaultOpacity: 1;
+    DefaultBorderWidth: 1px;
+    DefaultBorderOpacity: 1;
     DefaultTextColor: color-5;
     DefaultBackgroundColor: color-1;
     DefaultBorderColor: color-2;
     DefaultTodayColor: color-8;
-    DefaultFontStyle: "{theme: 'Body-M', size: '16px', lineHeight: '1em'}";
+    DefaultFontSize: 16px;
+    DefaultFontStyle: "{theme: 'Body-M', size:'16px' lineHeight: '1em'}";
 }
 
 /*Overrides*/
 :vars {
     OverridedAlignment: --overridable
-    Width: --overridable
-    Opacity: --overridable
+    BorderWidth: --overridable
+    BorderOpacity: --overridable
     TextColor: --overridable
     BackgroundColor: --overridable
     BorderColor: --overridable
     TodayColor: --overridable
     FontStyle: --overridable
+    FontSize: --overridable
 }
 
 :vars {
     CurrentAlignment: fallback(value(OverridedAlignment), value(DefaultAlignment));
-    CurrentWidth: fallback(value(Width), value(DefaultWidth));
-    CurrentOpacity: fallback(value(Opacity), value(DefaultOpacity))
+    CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
+    CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity))
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
     CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
+    CurrentFontSize: fallback(value(FontSize), value(DefaultFontSize));
 }
 
 .root {
     -st-states: isStretchAble, timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
-    border: value(CurrentWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentOpacity));
+    border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentBorderOpacity));
     background-color: value(CurrentBackgroundColor);
     text-align: value(CurrentAlignment);
     width: 100%;
@@ -76,13 +79,13 @@
 }
 
 .time {
-    font-size: 16px;
-    line-height: 1em;
     -st-extends: TPAText;
     -st-mixin: TPAText(
         MainTextColor value(CurrentTextColor),
         MainTextFont value(CurrentFontStyle)
     );
+    font-size: value(CurrentFontSize);
+    line-height: 1em;
 }
 
 
@@ -101,7 +104,8 @@
 
 .root:timeType(PreviousMonth) .time {
     -st-mixin: TPAText(
-        MainTextColor applyOpacity(color(color-5), 0.35)
+        MainTextColor applyOpacity(value(CurrentTextColor), 0.35),
+        MainTextFont value(CurrentFontStyle)
     );
 }
 
@@ -114,7 +118,8 @@
 
 .root:timeType(PreviousDays) .time {
     -st-mixin: TPAText(
-        MainTextColor color(color-5)
+        MainTextColor value(CurrentTextColor),
+        MainTextFont value(CurrentFontStyle)
     );
 }
 
@@ -122,12 +127,13 @@
 
 .root:timeType(CurrentDay) {
     background: color(color-1);
-    border: 1px solid value(CurrentTodayColor);
+    border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
 }
 
 .root:timeType(CurrentDay) .time {
     -st-mixin: TPAText(
-        MainTextColor value(CurrentTodayColor)
+        MainTextColor value(CurrentTodayColor),
+        MainTextFont value(CurrentFontStyle)
     );
 }
 
@@ -140,6 +146,7 @@
 
 .root:timeType(NextMonth) .time {
     -st-mixin: TPAText(
-        MainTextColor applyOpacity(color(color-5), 0.35)
+        MainTextColor applyOpacity(value(CurrentTextColor), 0.35),
+        MainTextFont value(CurrentFontStyle)
     );
 }

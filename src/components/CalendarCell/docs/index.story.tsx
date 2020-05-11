@@ -50,7 +50,8 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Time Types', source: examples.timeTypes }].map(code),
+          ...[{ title: 'Resolutions', source: examples.resulotions }].map(code),
         ],
       }),
 
@@ -67,9 +68,60 @@ export default {
               rawSource: CalendarCellWiringExampleRaw,
               rawCSSSource: CalendarCellWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
-                numbers: [],
+                colors: [
+                  {
+                    label: 'Background Color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-2',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Current Day Color',
+                    wixParam: 'todayColor',
+                    defaultColor: 'color-8',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Text Font',
+                    wixParam: 'fontStyle',
+                    defaultFont: 'arial'
+                  },
+                ],
+                numbers: [
+                  {
+                    label: 'Border Width',
+                    wixParam: 'borderWidth',
+                    defaultNumber: 1,
+                    unit: 'px',
+                    max: 3,
+                  },
+                  {
+                    label: 'Border Opacity',
+                    wixParam: 'borderOpacity',
+                    defaultNumber: 1,
+                    unit: '',
+                    min: 0,
+                    max: 1,
+                  },
+                  {
+                    label: 'Font Size',
+                    wixParam: 'fontSize',
+                    defaultNumber: 16,
+                    unit: 'px',
+                    min: 14,
+                    max: 30,
+                  },
+                ],
               },
             }),
           ],

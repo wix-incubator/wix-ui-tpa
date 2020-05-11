@@ -7,7 +7,7 @@ class CalendarCellVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer>
-        <CalendarCell {...this.props} />
+        <CalendarCell time='14' {...this.props} />
       </VisualTestContainer>
     );
   }

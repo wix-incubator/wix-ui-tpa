@@ -11,7 +11,7 @@ export enum Times {
 
 export interface CalendarCellProps {
   time: string;
-  children: any;
+  children?: any;
   timeType?: Times;
   isStretchAble?: boolean;
 }
