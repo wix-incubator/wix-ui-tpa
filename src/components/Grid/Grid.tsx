@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Grid.st.css';
+import { st, classes, cssStates } from './Grid.st.css';
 import {
   generateKey,
   getGridStyle,
@@ -90,7 +90,7 @@ export class Grid extends React.PureComponent<GridProps> {
             uniformRowHeight,
             minColumnWidth,
             maxColumns,
-            ...rest
+            className,
           } = this.props;
           const itemMinWidth = `${minColumnWidth}px`;
           const itemMaxWidth = this.props.maxColumnWidth
@@ -125,15 +125,13 @@ export class Grid extends React.PureComponent<GridProps> {
             : `repeat(${itemsPerRow}, minmax(${itemMinWidth}, ${itemMaxWidth}))`;
 
           const gridId = generateKey();
-          const cssStateDivider = Object.keys(
-            styles.$cssStates({ dividers: true }),
-          )[0];
+          const cssStateDivider = Object.keys(cssStates({ dividers: true }))[0];
           return (
             <div
-              {...styles(
-                'root',
+              className={st(
+                classes.root,
                 { dividers: showRowDivider, uniformRowHeight },
-                rest,
+                className,
               )}
               id={gridId}
             >
@@ -145,7 +143,7 @@ export class Grid extends React.PureComponent<GridProps> {
                     cssStateDivider,
                     gridId,
                     gridTemplateColumns,
-                    listWrapperClass: styles.listWrapper,
+                    listWrapperClass: classes.listWrapper,
                   })}
                   ${
                     isFullWidth
@@ -154,7 +152,7 @@ export class Grid extends React.PureComponent<GridProps> {
                           minColumnWidth,
                           maxColumnWidth: itemMaxWidth,
                           columnGap,
-                          ListItemClass: styles.listWrapper,
+                          ListItemClass: classes.listWrapper,
                           gridId,
                         })
                       : ''
@@ -162,7 +160,7 @@ export class Grid extends React.PureComponent<GridProps> {
                 }}
               />
               <ul
-                className={styles.listWrapper}
+                className={classes.listWrapper}
                 style={{
                   gridTemplateColumns,
                   gap: `${rowGapInPixels} ${columnGapInPixels}`,
