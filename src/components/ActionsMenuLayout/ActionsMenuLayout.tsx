@@ -11,9 +11,7 @@ export interface ActionsMenuLayoutProps extends TPAComponentProps {
 }
 
 /** ActionsMenuLayout */
-export class ActionsMenuLayout extends React.Component<
-  ActionsMenuLayoutProps
-> {
+export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
   static Item = ActionsMenuLayoutItem;
   static Divider = ActionsMenuLayoutDivider;
 
