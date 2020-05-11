@@ -5,7 +5,7 @@ import {
 } from 'wix-ui-core/autocomplete';
 import { withStylable } from 'wix-ui-core/withStylable';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
-import style from './Autocomplete.st.css';
+import * as styleSheet from './Autocomplete.st.css';
 import { ErrorMessageWrapper, ErrorProps } from '../ErrorMessageWrapper';
 import { TPAComponentProps } from '../../types';
 
@@ -16,12 +16,12 @@ export interface TPAAutocompleteProps extends TPAComponentProps {
   error?: boolean;
 }
 
-export type AutocompleteProps = TPAAutocompleteProps & CoreAutocompleteProps;
+export type AutocompleteProps = TPAAutocompleteProps & CoreAutocompleteProps & TPAComponentProps;
 
 const AutocompleteWithErrorStates = withStylable<
   CoreAutocompleteProps,
   ErrorProps
->(CoreAutocomplete, style, ({ error }) => ({ error }));
+>(CoreAutocomplete, styleSheet, ({ error }) => ({ error }));
 
 export type AutocompleteType = React.FunctionComponent<AutocompleteProps> & {
   createOption: typeof CoreAutocomplete.createOption;
@@ -42,13 +42,13 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
           {...coreAutocompleteProps}
           error={errorProps.error}
           suffix={
-            <span className={style.suffix}>
+            <span className={styleSheet.classes.suffix}>
               {
                 <ChevronDown
                   width={14}
                   height={14}
                   viewBox="8 7 9 10"
-                  className={style.arrowIcon}
+                  className={styleSheet.classes.arrowIcon}
                 />
               }
               {suffix}
