@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatesButton, StatesButtonProps } from '..';
-import extendedStyles from './StatesButtonExample.st.css';
+import { st, classes } from './StatesButtonExample.st.css';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 import { SIZE } from '../../Button';
 import { BUTTON_STATES } from '../constants';
@@ -37,7 +37,7 @@ export default {
       <StatesButton
         {...defaultProps}
         ref={ref}
-        {...extendedStyles('root', {}, {})}
+        className={st(classes.root)}
       />
       <MockSettings
         wixNumberParams={[

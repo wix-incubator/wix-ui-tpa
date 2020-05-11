@@ -17,7 +17,7 @@ export const ActionsMenuLayoutExtendedExample: React.FC = () => {
         onClick={onClick}
         content="item 2"
         subtitle="Subtitle"
-        className={st(classes.item)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Divider key={3} />
       <ActionsMenuLayout.Item
@@ -25,7 +25,7 @@ export const ActionsMenuLayoutExtendedExample: React.FC = () => {
         onClick={onClick}
         content="item 3"
         subtitle="Subtitle"
-        className={st(classes.item)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Item
         key={5}
@@ -33,7 +33,7 @@ export const ActionsMenuLayoutExtendedExample: React.FC = () => {
         content="item 4"
         subtitle="Subtitle"
         disabled
-        className={st(classes.item)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Item key={6} onClick={onClick} content="item 5" />
     </ActionsMenuLayout>
