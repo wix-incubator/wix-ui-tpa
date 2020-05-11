@@ -16,7 +16,9 @@ export interface TPAAutocompleteProps extends TPAComponentProps {
   error?: boolean;
 }
 
-export type AutocompleteProps = TPAAutocompleteProps & CoreAutocompleteProps & TPAComponentProps;
+export type AutocompleteProps = TPAAutocompleteProps &
+  CoreAutocompleteProps &
+  TPAComponentProps;
 
 const AutocompleteWithErrorStates = withStylable<
   CoreAutocompleteProps,
