@@ -11,7 +11,7 @@ export enum Alignment {
   right = 'right',
 }
 
-export interface ActionsMenuLayoutItemProps {
+export interface ActionsMenuLayoutItemProps extends TPAComponentProps{
   prefixIcon?: React.ReactNode;
   /** the item's content */
   content: string;
@@ -24,7 +24,7 @@ export interface ActionsMenuLayoutItemProps {
 
 /** ActionsMenuLayout */
 export class ActionsMenuLayoutItem extends React.Component<
-  ActionsMenuLayoutItemProps & TPAComponentProps
+  ActionsMenuLayoutItemProps
 > {
   static displayName = 'ActionsMenuLayout.Item';
 

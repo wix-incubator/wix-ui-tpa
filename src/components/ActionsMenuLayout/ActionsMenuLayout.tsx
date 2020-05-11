@@ -6,13 +6,13 @@ import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
 import { ActionsMenuLayoutDivider } from './ActionsMenuLayoutDivider/ActionsMenuLayoutDivider';
 import { TPAComponentProps } from '../../types';
 
-export interface ActionsMenuLayoutProps {
+export interface ActionsMenuLayoutProps extends TPAComponentProps {
   alignment?: Alignment;
 }
 
 /** ActionsMenuLayout */
 export class ActionsMenuLayout extends React.Component<
-  ActionsMenuLayoutProps & TPAComponentProps
+  ActionsMenuLayoutProps
 > {
   static Item = ActionsMenuLayoutItem;
   static Divider = ActionsMenuLayoutDivider;
