@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './CheckboxGroup.st.css';
+import { st, classes } from './CheckboxGroup.st.css';
 import { Checkbox } from '../Checkbox';
 import { TPAComponentProps } from '../../types';
 
@@ -30,22 +30,21 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   render() {
     const {
       label,
-      children,
       layout,
       error,
       disabled,
       errorText,
-      ...rest
+      className
     } = this.props;
 
     return (
       <fieldset
         data-hook={this.props['data-hook']}
-        {...styles('root', { layout, disabled }, rest)}
+        className={st('root', { layout, disabled }, className)}
       >
-        {!!label && <legend className={styles.label}>{label}</legend>}
+        {!!label && <legend className={classes.label}>{label}</legend>}
 
-        <div className={styles.wrapper}>
+        <div className={classes.wrapper}>
           {React.Children.map(
             this.props.children,
             (child: Checkbox, idx: number) => {
@@ -65,7 +64,7 @@ export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
           )}
         </div>
         {!!errorText && !disabled && (
-          <span className={styles.error}>{errorText}</span>
+          <span className={classes.error}>{errorText}</span>
         )}
       </fieldset>
     );

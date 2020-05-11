@@ -4,7 +4,7 @@ import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
 import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
-import styles from './Checkbox.st.css';
+import { st, classes } from './Checkbox.st.css';
 
 interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
@@ -55,7 +55,10 @@ export class Checkbox extends React.Component<CheckboxProps> {
     const { checked, indeterminate, error } = this.props;
 
     return (
-      <span className={styles.icon} data-hook={CHECKBOX_DATA_HOOKS.IconWrapper}>
+      <span
+        className={classes.icon}
+        data-hook={CHECKBOX_DATA_HOOKS.IconWrapper}
+      >
         {checked && !error ? (
           <CheckboxChecked />
         ) : indeterminate && !error ? (
@@ -76,13 +79,13 @@ export class Checkbox extends React.Component<CheckboxProps> {
       indeterminate,
       onChange,
       name,
-      ...rest
+      className,
     } = this.props;
     const iconContent = this._renderIcon();
 
     return (
       <CoreCheckbox
-        {...styles('root', { checked, disabled, error }, rest)}
+        className={st(classes.root, { checked, disabled, error }, className)}
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
         checkedIcon={iconContent}
@@ -94,10 +97,10 @@ export class Checkbox extends React.Component<CheckboxProps> {
         name={name}
       >
         <>
-          {!!label && <span className={styles.divider} />}
+          {!!label && <span className={classes.divider} />}
           <div
             data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
-            className={styles.label}
+            className={classes.label}
           >
             {label}
           </div>
