@@ -3,7 +3,7 @@ import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import { st, classes } from './ActionsMenuLayoutItem.st.css';
 import { Text } from '../../Text';
 import { ACTIONS_MENU_ITEM_DATA_HOOK } from '../dataHooks';
-import {TPAComponentProps} from "../../../types";
+import { TPAComponentProps } from '../../../types';
 
 export enum Alignment {
   left = 'left',
@@ -37,7 +37,6 @@ export class ActionsMenuLayoutItem extends React.Component<
       onClick,
       alignment,
       className,
-      ...rest
     } = this.props;
 
     return (
@@ -56,7 +55,6 @@ export class ActionsMenuLayoutItem extends React.Component<
             data-hook={ACTIONS_MENU_ITEM_DATA_HOOK}
             data-content={content}
             onClick={disabled ? undefined : onClick}
-            {...rest}
           >
             <div className={classes.container}>
               {prefixIcon ? (

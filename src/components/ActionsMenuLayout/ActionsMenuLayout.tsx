@@ -4,14 +4,16 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuLayoutItem, Alignment } from './Item/ActionsMenuLayoutItem';
 import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
 import { ActionsMenuLayoutDivider } from './ActionsMenuLayoutDivider/ActionsMenuLayoutDivider';
-import {TPAComponentProps} from "../../types";
+import { TPAComponentProps } from '../../types';
 
 export interface ActionsMenuLayoutProps {
   alignment?: Alignment;
 }
 
 /** ActionsMenuLayout */
-export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps & TPAComponentProps> {
+export class ActionsMenuLayout extends React.Component<
+  ActionsMenuLayoutProps & TPAComponentProps
+> {
   static Item = ActionsMenuLayoutItem;
   static Divider = ActionsMenuLayoutDivider;
 
@@ -24,14 +26,14 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps & 
   }
 
   render() {
-    const { alignment, children, className, ...rest } = this.props;
+    const { alignment, children, className } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ul
             className={st(classes.root, { mobile }, className)}
             {...this.getDataAttributes(mobile)}
-            {...rest}
+            data-hook={this.props['data-hook']}
             role="menu"
             tabIndex={-1}
           >
