@@ -4,7 +4,7 @@ import { TPAComponentProps } from '../../types';
 
 export const Divider = (props: TPAComponentProps) => (
   <div
-    className={st(classes.root, {}, props.className)}
+    className={st(classes.root, props.className)}
     data-hook={props['data-hook']}
   />
 );

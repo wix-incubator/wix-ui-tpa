@@ -34,7 +34,7 @@ export class TabsNavButton extends React.Component<TabsNavButtonProps> {
 
     return (
       <div
-        className={st(classes.root, {}, className)}
+        className={st(classes.root, className)}
         onClick={onClick}
         onKeyDown={this._onKeyDown}
         tabIndex={tabIndex}

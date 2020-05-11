@@ -5,10 +5,6 @@ import { st, classes } from './CloseIconButton.st.css';
 
 export const CloseIconButton = function(props) {
   return (
-    <IconButton
-      icon={<CloseIcon />}
-      className={st(classes.root)}
-      {...props}
-    />
+    <IconButton icon={<CloseIcon />} className={st(classes.root)} {...props} />
   );
 };
