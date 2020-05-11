@@ -94,7 +94,7 @@ export default {
                   {
                     label: 'Text Font',
                     wixParam: 'fontStyle',
-                    defaultFont: 'arial'
+                    defaultFont: 'arial',
                   },
                 ],
                 numbers: [
