@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ButtonProps } from '../Button';
-import style from './IconButton.st.css';
+import { st, classes } from './IconButton.st.css';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { TPAComponentProps } from '../../types';
 
@@ -28,10 +28,13 @@ export class IconButton extends React.Component<IconButtonProps, State> {
   static defaultProps: DefaultProps = { skin: Skins.Line };
 
   render() {
-    const { icon, disabled, skin, ...rest } = this.props;
+    const { icon, disabled, skin, className, ...rest } = this.props;
     return (
-      <ButtonNext {...rest} {...style('root', { disabled, skin }, rest)}>
-        <span className={style.icon}>{icon}</span>
+      <ButtonNext
+        className={st(classes.root, { disabled, skin }, className)}
+        {...rest}
+      >
+        <span className={classes.icon}>{icon}</span>
       </ButtonNext>
     );
   }
