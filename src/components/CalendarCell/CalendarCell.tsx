@@ -20,7 +20,7 @@ interface DefaultProps {
   isStretchAble: boolean;
 }
 
-interface State { }
+interface State {}
 
 /** CalendarCell */
 export class CalendarCell extends React.Component<CalendarCellProps, State> {
