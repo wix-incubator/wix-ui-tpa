@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './CopyUrlButton.st.css';
+import { st, classes } from './CopyUrlButton.st.css';
 import { Check, SocialIcons } from '../../assets/icons';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN, TOAST_PLACEMENT } from '../Toast';
@@ -44,17 +44,17 @@ export class CopyUrlButton extends React.Component<
           shouldAnimate
           isShown
         >
-          <div className={styles.successMobile}>
+          <div className={classes.successMobile}>
             <Check height={13} width={13} />
-            <span className={styles.successTextMobile}>{successText}</span>
+            <span className={classes.successTextMobile}>{successText}</span>
           </div>
         </Toast>
       );
     }
     return (
-      <div className={styles.success}>
-        <Check className={styles.checkIcon} height={19} width={19} />
-        <span className={styles.successText}>{successText}</span>
+      <div className={classes.success}>
+        <Check className={classes.checkIcon} height={19} width={19} />
+        <span className={classes.successText}>{successText}</span>
       </div>
     );
   };
@@ -100,14 +100,17 @@ export class CopyUrlButton extends React.Component<
 
   render() {
     const { success } = this.state;
-    const { url, socialBarTheme, ...oherProps } = this.props;
+    const { url, socialBarTheme, className } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { theme: socialBarTheme }, oherProps)}>
+          <div
+            className={st(classes.root, { theme: socialBarTheme }, className)}
+            data-hook={this.props['data-hook']}
+          >
             <input
-              className={styles.copyInput}
+              className={classes.copyInput}
               ref={this.inputRef}
               value={url}
               readOnly
