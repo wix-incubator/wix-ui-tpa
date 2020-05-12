@@ -34,11 +34,7 @@ export default {
   },
   examples: (
     <>
-      <StatesButton
-        {...defaultProps}
-        ref={ref}
-        className={st(classes.root)}
-      />
+      <StatesButton {...defaultProps} ref={ref} className={st(classes.root)} />
       <MockSettings
         wixNumberParams={[
           {

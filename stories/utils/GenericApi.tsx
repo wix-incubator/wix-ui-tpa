@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './GenericApi.st.css';
+import { classes } from './GenericApi.st.css';
 
 // TODO: this component should be defined in wix-storybook-utils
 // This is because it is responsible for design of API table
@@ -22,7 +22,7 @@ export function genericApiTable({ title, columns, items }: IGenericApiConfig) {
     <div className="markdown-body">
       <div>
         {title && (
-          <div key="title" className={styles.tableTitle}>
+          <div key="title" className={classes.tableTitle}>
             {title}
           </div>
         )}

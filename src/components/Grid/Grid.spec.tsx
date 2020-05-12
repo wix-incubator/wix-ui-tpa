@@ -14,7 +14,7 @@ import {
   ROW_GAP,
 } from './constants';
 import { Card } from '../Card';
-import styles from './Grid.st.css';
+import { classes, cssStates } from './Grid.st.css';
 import * as GridUtils from './GridUtils';
 import { TPAComponentsWrapper } from '../../test/utils';
 
@@ -145,7 +145,7 @@ describe('Grid', () => {
       minColumnWidth: expectedMinItemWidth,
       maxColumnWidth: `${expectedMaxItemWidth}px`,
       columnGap: expectedColumnGap,
-      ListItemClass: styles.listWrapper,
+      ListItemClass: classes.listWrapper,
       gridId: expectedGridId,
     });
   });
@@ -204,7 +204,7 @@ describe('Grid', () => {
     const expectedDividerWidth = '34px';
     const expectedGridId = 'someID';
     const expectedCSSStateDivider = Object.keys(
-      styles.$cssStates({ dividers: true }),
+      cssStates({ dividers: true }),
     )[0];
     spyOn(GridUtils, 'getGridStyle');
     spyOn(GridUtils, 'generateKey').and.returnValue(expectedGridId);
@@ -225,7 +225,7 @@ describe('Grid', () => {
       cssStateDivider: expectedCSSStateDivider,
       gridId: expectedGridId,
       gridTemplateColumns: '',
-      listWrapperClass: styles.listWrapper,
+      listWrapperClass: classes.listWrapper,
     });
   });
 

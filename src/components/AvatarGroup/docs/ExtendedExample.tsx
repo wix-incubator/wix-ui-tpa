@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AvatarGroup } from '../index';
 import { AvatarGroupSize } from '../AvatarGroup';
-import { st, classes} from './ExtendedExample.st.css';
+import { st, classes } from './ExtendedExample.st.css';
 
 const items = [
   {},

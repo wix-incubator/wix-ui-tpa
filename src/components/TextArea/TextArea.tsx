@@ -81,7 +81,7 @@ export class TextArea extends React.Component<TextAreaProps> {
               {...dataObject}
               data-hook={this.props['data-hook']}
               className={st(
-                'root',
+                classes.root,
                 {
                   error,
                   rtl,
