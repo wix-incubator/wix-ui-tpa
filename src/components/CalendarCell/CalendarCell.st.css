@@ -13,7 +13,7 @@
     DefaultAlignment: left;
     DefaultBorderWidth: 1px;
     DefaultBorderOpacity: 1;
-    DefaultTextColor: color-5;
+    DefaultFontColor: color-5;
     DefaultBackgroundColor: color-1;
     DefaultBorderColor: color-2;
     DefaultTodayColor: color-8;
@@ -26,7 +26,7 @@
     OverridedAlignment: --overridable
     BorderWidth: --overridable
     BorderOpacity: --overridable
-    TextColor: --overridable
+    FontColor: --overridable
     BackgroundColor: --overridable
     BorderColor: --overridable
     TodayColor: --overridable
@@ -38,7 +38,7 @@
     CurrentAlignment: fallback(value(OverridedAlignment), value(DefaultAlignment));
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
     CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity))
-    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
@@ -81,7 +81,7 @@
 .time {
     -st-extends: TPAText;
     -st-mixin: TPAText(
-        MainTextColor value(CurrentTextColor),
+        MainTextColor value(CurrentFontColor),
         MainTextFont value(CurrentFontStyle)
     );
     font-size: value(CurrentFontSize);
@@ -104,7 +104,7 @@
 
 .root:timeType(PreviousMonth) .time {
     -st-mixin: TPAText(
-        MainTextColor applyOpacity(value(CurrentTextColor), 0.35),
+        MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
         MainTextFont value(CurrentFontStyle)
     );
 }
@@ -118,7 +118,7 @@
 
 .root:timeType(PreviousDays) .time {
     -st-mixin: TPAText(
-        MainTextColor value(CurrentTextColor),
+        MainTextColor value(CurrentFontColor),
         MainTextFont value(CurrentFontStyle)
     );
 }
@@ -146,7 +146,7 @@
 
 .root:timeType(NextMonth) .time {
     -st-mixin: TPAText(
-        MainTextColor applyOpacity(value(CurrentTextColor), 0.35),
+        MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
         MainTextFont value(CurrentFontStyle)
     );
 }

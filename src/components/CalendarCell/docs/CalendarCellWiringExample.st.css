@@ -7,11 +7,11 @@
     -st-mixin: TPACalendarCell(
         BackgroundColor '"--backgroundColor"',
         BorderColor '"--borderColor"',
-        TodayColor '"--todayColor"',
-        TextColor '"--textColor"',
-        FontStyle '"--fontStyle"',
         BorderWidth '"unit(fallback(--borderWidth, 1), px)"',
         BorderOpacity '"unit(fallback(zeroAsTrue(--borderOpacity), 1), "")"',
-        FontSize '"unit(fallback(--fontSize, 16), px)"'
+        TodayColor '"--todayColor"',
+        FontColor '"--fontColor"',
+        FontStyle '"--fontStyle"',
+        OverridedAlignment '"center"'
     )
 }

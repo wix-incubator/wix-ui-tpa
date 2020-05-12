@@ -80,8 +80,8 @@ export default {
                     defaultColor: 'color-2',
                   },
                   {
-                    label: 'Text Color',
-                    wixParam: 'textColor',
+                    label: 'Font Color',
+                    wixParam: 'fontColor',
                     defaultColor: 'color-5',
                   },
                   {
@@ -113,14 +113,14 @@ export default {
                     min: 0,
                     max: 1,
                   },
-                  {
-                    label: 'Font Size',
-                    wixParam: 'fontSize',
-                    defaultNumber: 16,
-                    unit: 'px',
-                    min: 14,
-                    max: 30,
-                  },
+                  // {
+                  //   label: 'Font Size',
+                  //   wixParam: 'fontSize',
+                  //   defaultNumber: 16,
+                  //   unit: 'px',
+                  //   min: 14,
+                  //   max: 30,
+                  // },
                 ],
               },
             }),
