@@ -9,7 +9,6 @@ import { CalendarCell, Times } from './';
 import { calendarCellTestkitFactory } from '../../testkit';
 import { calendarCellTestkitFactory as enzymeCalendarCellTestkitFactory } from '../../testkit/enzyme';
 
-
 const defProps = {
   time: '22',
 };
@@ -23,31 +22,39 @@ describe('CalendarCell', () => {
   });
 
   it('should show streched state', async () => {
-    const driver = createDriver(<CalendarCell isStretchAble={true} {...defProps} />);
+    const driver = createDriver(<CalendarCell isStretchAble {...defProps} />);
 
     expect(await driver.isStretched()).toBeTruthy();
   });
 
   it('should show previous month state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.previousMonth} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.previousMonth} {...defProps} />,
+    );
 
     expect(await driver.isPreviousMonth()).toBeTruthy();
   });
 
   it('should show previous days state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.previousDays} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.previousDays} {...defProps} />,
+    );
 
     expect(await driver.isPreviousDays()).toBeTruthy();
   });
 
   it('should show current day state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.currentDay} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.currentDay} {...defProps} />,
+    );
 
     expect(await driver.isCurrentDay()).toBeTruthy();
   });
 
   it('should show next month state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.nextMonth} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.nextMonth} {...defProps} />,
+    );
 
     expect(await driver.isNextMonth()).toBeTruthy();
   });
@@ -55,9 +62,13 @@ describe('CalendarCell', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<CalendarCell time="11" />, calendarCellTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <CalendarCell time="11" />,
+          calendarCellTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });

@@ -23,16 +23,22 @@ export const calendarCellDriverFactory = (
       return (await base.attr(CALENDAR_DATA_KEYS.IsStretchAble)) === 'true';
     },
     async isPreviousMonth() {
-      return (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.previousMonth;
+      return (
+        (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.previousMonth
+      );
     },
     async isPreviousDays() {
-      return (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.previousDays;
+      return (
+        (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.previousDays
+      );
     },
     async isCurrentDay() {
-      return (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.currentDay;
+      return (
+        (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.currentDay
+      );
     },
     async isNextMonth() {
       return (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.nextMonth;
-    }
+    },
   };
 };

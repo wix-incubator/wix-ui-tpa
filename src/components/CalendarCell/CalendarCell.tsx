@@ -22,14 +22,14 @@ interface DefaultProps {
   'data-hook': string;
 }
 
-interface State { }
+interface State {}
 
 /** CalendarCell */
 export class CalendarCell extends React.Component<CalendarCellProps, State> {
   static displayName = 'CalendarCell';
   static defaultProps: DefaultProps = {
     isStretchAble: false,
-    'data-hook': CALENDARCELL_DATA_HOOKS.CalendarCell
+    'data-hook': CALENDARCELL_DATA_HOOKS.CalendarCell,
   };
 
   getDataAttributes() {
@@ -37,7 +37,7 @@ export class CalendarCell extends React.Component<CalendarCellProps, State> {
 
     return {
       [CALENDAR_DATA_KEYS.IsStretchAble]: isStretchAble,
-      [CALENDAR_DATA_KEYS.TimeType]: timeType
+      [CALENDAR_DATA_KEYS.TimeType]: timeType,
     };
   }
 
@@ -47,8 +47,9 @@ export class CalendarCell extends React.Component<CalendarCellProps, State> {
     return (
       <div
         {...this.getDataAttributes()}
-        data-hook={this.props["data-hook"]}
-        {...styles('root', { timeType, isStretchAble }, rest)}>
+        data-hook={this.props['data-hook']}
+        {...styles('root', { timeType, isStretchAble }, rest)}
+      >
         <div className={styles.innerContainer}>
           <Text className={styles.time}>{time}</Text>
           <div>{children}</div>

@@ -7,46 +7,46 @@ CalendarCellMetadata.nonReactStrictModeCompliant = true;
 CalendarCellMetadata.addSim({
   title: 'defalut',
   props: {
-    time: "13",
+    time: '13',
   },
 });
 
 CalendarCellMetadata.addSim({
   title: 'previous month',
   props: {
-    time: "13",
-    timeType: Times.previousMonth
+    time: '13',
+    timeType: Times.previousMonth,
   },
 });
 
 CalendarCellMetadata.addSim({
   title: 'previous days',
   props: {
-    time: "13",
-    timeType: Times.previousDays
+    time: '13',
+    timeType: Times.previousDays,
   },
 });
 
 CalendarCellMetadata.addSim({
   title: 'current day',
   props: {
-    time: "13",
-    timeType: Times.currentDay
+    time: '13',
+    timeType: Times.currentDay,
   },
 });
 
 CalendarCellMetadata.addSim({
   title: 'next month',
   props: {
-    time: "13",
-    timeType: Times.nextMonth
+    time: '13',
+    timeType: Times.nextMonth,
   },
 });
 
 CalendarCellMetadata.addSim({
   title: 'stretch',
   props: {
-    time: "13",
-    isStretchAble: true
+    time: '13',
+    isStretchAble: true,
   },
 });
