@@ -3,5 +3,5 @@ import { Picker } from '../';
 import styles from './PickerWiringExample.st.css';
 
 export const PickerWiringExample = () => {
-  return <Picker className={styles.component} />;
+  return <Picker value={'October 2020'} previousClickHandler={()=>{}} nextClickHandler={()=>{}} />;
 };

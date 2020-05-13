@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-named: color, fallback, font;
 }
 
 :import {
@@ -8,32 +8,45 @@
     -st-default: Text;
 }
 
+:import {
+    -st-from: "../IconButton/IconButton.st.css";
+    -st-default: IconButton;
+}
+
 /*Defaults*/
 :vars {
-    DefaultFontColor: color(color-8)
+    DefaultMainColor: color(color-5)
+    DefaultFontStyle: "{theme: 'Body-M', size: '20px', lineHeight: '28px'}"
 }
 
 /*Overrides*/
 :vars {
-    FontColor: --overridable
+    MainColor: --overridable
+    FontStyle: --overridable
 }
 
 :vars {
-    CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
+    CurrentMainColor: color(fallback(value(MainColor), value(DefaultMainColor)));
+    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle))); 
 }
 
 .root {
   display: flex;
   justify-content: center;
-  padding-top: 2px;
 }
 
 .value {
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextColor value(CurrentMainColor),
+        MainTextFont value(CurrentFontStyle)
+    );
     margin: auto 24px;
 }
 
-.navigator {
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
+.arrowIcon {
+    -st-extends: IconButton;
+    -st-mixin: IconButton(
+        IconColor value(CurrentMainColor)
+    );
 }
