@@ -2,22 +2,21 @@ import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 import { TPAComponentsContext } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
-
 import { DropdownBase } from './DropdownBase';
 import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
-
-import styles from './Dropdown.st.css';
+import { st, classes } from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
 import { Placement } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
+import { TPAComponentProps } from '../../types';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
 }
 
-export interface DropdownProps {
+export interface DropdownProps extends TPAComponentProps {
   options: DropdownOptionProps[];
   onChange?(selectedOption: DropdownOptionProps): void;
   initialSelectedId?: string;
@@ -125,7 +124,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
         disabled={disabled}
-        className={styles.dropdownNativeSelect}
+        className={classes.dropdownNativeSelect}
         error={error}
         errorMessage={errorMessage}
         options={options}
@@ -156,27 +155,28 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const coreOptions = options.map(option => ({
       ...option,
       render: () => (
-        <DropdownOption className={styles.dropdownOption} {...option} />
+        <DropdownOption className={classes.dropdownOption} {...option} />
       ),
     }));
 
     return (
       <CoreDropdown
-        className={styles.dropdown}
+        className={classes.dropdown}
         placement={placement}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={isMobile}
-        openTrigger={disabled ? 'none' : 'click'}
+        openTrigger={'click'}
         options={coreOptions}
         onDeselect={this.onSelect}
         onSelect={this.onSelect}
         initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+        onInitialSelectedOptionsSet={() => {}}
         forceContentElementVisibility={forceContentElementVisibility}
       >
         <DropdownBase
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
-          className={styles.dropdownBase}
+          className={classes.dropdownBase}
           selectedOption={selectedOption}
           placeholder={placeholder}
           disabled={disabled}
@@ -186,7 +186,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         />
         {error && errorMessage && (
           <DropdownError
-            className={styles.dropdownError}
+            className={classes.dropdownError}
             errorMessage={errorMessage}
           />
         )}
@@ -195,37 +195,25 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   };
 
   render() {
-    const {
-      placeholder,
-      disabled,
-      error,
-      errorMessage,
-      label,
-      options,
-      alignment,
-      forceContentElementVisibility,
-      placement,
-      ['aria-label']: ariaLabel,
-      ['aria-labelledby']: ariaLabelledBy,
-      ...rest
-    } = this.props;
+    const { label, alignment, className } = this.props;
 
     const { mobile } = this.context;
 
     return (
       <div
-        {...styles(
-          'root',
+        className={st(
+          classes.root,
           {
             alignment,
             mobile,
           },
-          rest,
+          className,
         )}
         data-mobile={mobile}
+        data-hook={this.props['data-hook']}
       >
         {label && (
-          <Text className={styles.label} typography={TYPOGRAPHY.runningText}>
+          <Text className={classes.label} typography={TYPOGRAPHY.runningText}>
             {label}
           </Text>
         )}

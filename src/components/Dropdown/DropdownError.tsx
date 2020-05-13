@@ -4,17 +4,16 @@ import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { Tooltip } from '../Tooltip';
 import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
-import styles from './DropdownError.st.css';
+import { st, classes } from './DropdownError.st.css';
 
-interface DropdownErrorProps {
+interface DropdownErrorProps extends TPAComponentProps {
   errorMessage: string;
 }
 
-export const DropdownError: React.FC<DropdownErrorProps &
-  TPAComponentProps> = props => {
+export const DropdownError: React.FC<DropdownErrorProps> = props => {
   return (
     <Tooltip
-      {...styles('root', {}, props)}
+      className={st(classes.root, props.className)}
       data-hook={DATA_HOOKS.errorTooltip}
       placement="top-end"
       skin={TooltipSkin.Error}

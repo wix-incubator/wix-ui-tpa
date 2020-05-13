@@ -7,7 +7,7 @@ import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { DropdownOptionProps } from './DropdownOption';
 
-import styles from './DropdownBase.st.css';
+import { st, classes } from './DropdownBase.st.css';
 
 interface DropdownBaseProps {
   selectedOption: DropdownOptionProps;
@@ -27,6 +27,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
     error,
     disabled,
     upgrade,
+    className,
     ['aria-label']: ariaLabel,
     ['aria-labelledby']: ariaLabelledBy,
     rtl,
@@ -36,10 +37,10 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
     <Button
       upgrade={upgrade}
       fullWidth
-      {...styles(
-        'root',
+      className={st(
+        classes.root,
         { error, placeholder: hasPlaceholder, upgrade, rtl },
-        props,
+        className,
       )}
       data-hook={DATA_HOOKS.base}
       data-dropdown-base-error={error}
@@ -49,18 +50,18 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       aria-haspopup
       prefixIcon={
         selectedOption && selectedOption.icon ? (
-          <div className={styles.optionIcon}>{selectedOption.icon}</div>
+          <div className={classes.optionIcon}>{selectedOption.icon}</div>
         ) : null
       }
       suffixIcon={
         <ArrowIcon
-          className={styles.arrowIcon}
+          className={classes.arrowIcon}
           width={ICON_SIZE}
           height={ICON_SIZE}
         />
       }
     >
-      <div className={styles.childrenWrapper} data-hook={DATA_HOOKS.baseText}>
+      <div className={classes.childrenWrapper} data-hook={DATA_HOOKS.baseText}>
         {(selectedOption && selectedOption.value) || placeholder}
       </div>
     </Button>
