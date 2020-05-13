@@ -20,10 +20,9 @@ interface DefaultProps {
 
 /** Picker */
 export class Picker extends React.Component<PickerProps> {
-
   static defaultProps: DefaultProps = {
-      arrowsSize: "20px"
-  } 
+    arrowsSize: '20px',
+  };
 
   render() {
     const {
@@ -38,7 +37,7 @@ export class Picker extends React.Component<PickerProps> {
       <div {...styles('root', {}, rest)}>
         <IconButton
           {...styles('arrowIcon', {})}
-          icon={<ChevronLeft height={arrowsSize} width={arrowsSize}/>}
+          icon={<ChevronLeft height={arrowsSize} width={arrowsSize} />}
         />
         <Text className={styles.value}>{value}</Text>
         <IconButton

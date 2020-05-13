@@ -32,7 +32,7 @@ export default {
   }),
   exampleProps: {
     value: '',
-    arrowsSize: ''
+    arrowsSize: '',
   },
   dataHook: 'storybook-Picker',
   sections: [
