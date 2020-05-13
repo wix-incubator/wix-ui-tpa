@@ -1,0 +1,39 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: Text;
+}
+
+/*Defaults*/
+:vars {
+    DefaultFontColor: color(color-8)
+}
+
+/*Overrides*/
+:vars {
+    FontColor: --overridable
+}
+
+:vars {
+    CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+
+.value {
+    margin: auto 24px;
+}
+
+.navigator {
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
