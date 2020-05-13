@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../Text';
 import { st, classes } from './DropdownOption.st.css';
 import { TPAComponentProps } from '../../types';
-import {Option} from "wix-ui-core/dropdown-option";
 
 export interface DropdownOptionProps {
   id: string;
