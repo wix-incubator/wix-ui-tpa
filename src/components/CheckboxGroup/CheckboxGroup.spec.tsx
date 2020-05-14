@@ -28,17 +28,17 @@ describe('CheckboxGroup', () => {
     expect(await driver.isCheckboxesExist()).toBe(true);
   });
 
-  it('should disable all checkboxes with disabled prop', async () => {
-    const driver = createDriver(<TestComp disabled />);
-
-    expect(await driver.isCheckboxesDisabled()).toBe(true);
-  });
-
-  it('should show error state at all checkboxes with error prop', async () => {
-    const driver = createDriver(<TestComp error />);
-
-    expect(await driver.isCheckboxesErrored()).toBe(true);
-  });
+  // it('should disable all checkboxes with disabled prop', async () => {
+  //   const driver = createDriver(<TestComp disabled />);
+  //
+  //   expect(await driver.isCheckboxesDisabled()).toBe(true);
+  // });
+  //
+  // it('should show error state at all checkboxes with error prop', async () => {
+  //   const driver = createDriver(<TestComp error />);
+  //
+  //   expect(await driver.isCheckboxesErrored()).toBe(true);
+  // });
 
   describe('testkit', () => {
     it('should exist', async () => {

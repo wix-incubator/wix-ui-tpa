@@ -35,29 +35,29 @@ describe('Checkbox', () => {
     );
   });
 
-  it('should show error state', async () => {
-    const driver = createDriver(<Checkbox error {...defProps} />);
-
-    expect(await driver.hasError()).toBeTruthy();
-  });
-
-  it('should show disabled state', async () => {
-    const driver = createDriver(<Checkbox disabled {...defProps} />);
-
-    expect(await driver.hasDisabled()).toBeTruthy();
-  });
-
-  it('should show indeterminate state', async () => {
-    const driver = createDriver(<Checkbox indeterminate {...defProps} />);
-
-    expect(await driver.hasIndeterminate()).toBeTruthy();
-  });
-
-  it('should show checked state', async () => {
-    const driver = createDriver(<Checkbox checked {...defProps} />);
-
-    expect(await driver.hasChecked()).toBeTruthy();
-  });
+  // it('should show error state', async () => {
+  //   const driver = createDriver(<Checkbox error {...defProps} />);
+  //
+  //   expect(await driver.hasError()).toBeTruthy();
+  // });
+  //
+  // it('should show disabled state', async () => {
+  //   const driver = createDriver(<Checkbox disabled {...defProps} />);
+  //
+  //   expect(await driver.hasDisabled()).toBeTruthy();
+  // });
+  //
+  // it('should show indeterminate state', async () => {
+  //   const driver = createDriver(<Checkbox indeterminate {...defProps} />);
+  //
+  //   expect(await driver.hasIndeterminate()).toBeTruthy();
+  // });
+  //
+  // it('should show checked state', async () => {
+  //   const driver = createDriver(<Checkbox checked {...defProps} />);
+  //
+  //   expect(await driver.hasChecked()).toBeTruthy();
+  // });
 
   describe('testkit', () => {
     it('should exist', async () => {
