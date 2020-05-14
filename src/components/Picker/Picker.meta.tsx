@@ -7,6 +7,18 @@ PickerMetadata.nonReactStrictModeCompliant = true;
 PickerMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
+    value: 'october 2020',
+    previousClickHandler: () => {},
+    nextClickHandler: () => {},
+  },
+});
+
+PickerMetadata.addSim({
+  title: 'render',
+  props: {
+    value: 'october 2020',
+    previousClickHandler: () => {},
+    nextClickHandler: () => {},
+    arrowsSize: '24px',
   },
 });
