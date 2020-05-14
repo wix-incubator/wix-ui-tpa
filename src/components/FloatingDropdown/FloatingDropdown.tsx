@@ -10,6 +10,7 @@ import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 import { Placement } from 'wix-ui-core/popover';
 import { TPAComponentProps } from '../../types';
+import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 
 export interface FloatingDropdownProps extends TPAComponentProps {
   /** Defines a string value that labels the current element. Optional. */
@@ -58,16 +59,25 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
     }
   };
 
+  _onCoreSelect = (selectedCoreOption: Option) => {
+    if (!selectedCoreOption) {
+      return;
+    }
+    const selectedOption = this.props.options.find(
+      ({ id }) => selectedCoreOption.id === id,
+    );
+    this._onSelect(selectedOption);
+  };
+
   _generateCoreOptions() {
     const { options } = this.props;
-    const coreOptions = [];
 
-    for (const option of options) {
-      coreOptions.push({
-        ...option,
-        render: () => <DropdownOption {...option} />,
-      });
-    }
+    const renderableOptions = options.map(option => ({
+      ...option,
+      render: () => <DropdownOption {...option} />,
+    }));
+
+    const coreOptions = renderableOptions.map(OptionFactory.create);
 
     return {
       coreOptions,
@@ -117,8 +127,8 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         forceContentElementVisibility={forceContentElementVisibility}
         initialSelectedIds={value ? [value] : []}
         onInitialSelectedOptionsSet={() => {}}
-        onDeselect={this._onSelect}
-        onSelect={this._onSelect}
+        onDeselect={this._onCoreSelect}
+        onSelect={this._onCoreSelect}
         openTrigger={'click'}
         options={coreOptions}
         placement={placement}

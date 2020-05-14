@@ -11,6 +11,7 @@ import { Placement } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import { TPAComponentProps } from '../../types';
+import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -108,6 +109,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       onChange(this.props.options.find(({ id }) => selectedOption.id === id));
   };
 
+  private readonly onCoreSelect = (selectedCoreOption: Option) => {
+    if (!selectedCoreOption) {
+      return;
+    }
+    const selectedOption = this.props.options.find(
+      ({ id }) => selectedOption.id === id,
+    );
+    this.onSelect(selectedOption);
+  };
+
   private readonly renderNativeSelect = () => {
     const {
       options,
@@ -152,12 +163,14 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const { rtl, mobile: isMobile } = this.context;
     const { selectedOption } = this.state;
 
-    const coreOptions = options.map(option => ({
+    const renderableOptions = options.map(option => ({
       ...option,
       render: () => (
         <DropdownOption className={classes.dropdownOption} {...option} />
       ),
     }));
+
+    const coreOptions = renderableOptions.map(OptionFactory.create);
 
     return (
       <CoreDropdown
@@ -167,8 +180,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         data-mobile={isMobile}
         openTrigger={'click'}
         options={coreOptions}
-        onDeselect={this.onSelect}
-        onSelect={this.onSelect}
+        onDeselect={this.onCoreSelect}
+        onSelect={this.onCoreSelect}
         initialSelectedIds={selectedOption ? [selectedOption.id] : []}
         onInitialSelectedOptionsSet={() => {}}
         forceContentElementVisibility={forceContentElementVisibility}
