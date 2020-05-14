@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RadioButton } from '../';
-import styles from './RadioButtonWiringExample.st.css';
+import { st, classes } from './RadioButtonWiringExample.st.css';
 
 interface IState {
   isChecked: boolean;
@@ -32,7 +32,7 @@ class RadioButtonWiringExample extends React.Component<{}, IState> {
         checked={isChecked}
         onChange={this.handleChange}
         value={label}
-        {...styles('root')}
+       className={st(classes.root)}
       />
     );
   }

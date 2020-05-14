@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RadioButton as CoreRadioButton } from 'wix-ui-core/radio-button';
 import { RADIOBUTTON_DATA_KEYS, RADIOBUTTON_DATA_HOOKS } from './dataHooks';
-import styles from './RadioButton.st.css';
+import { st, classes } from './RadioButton.st.css';
 
 export interface RadioButtonChangeEvent
   extends React.MouseEvent<HTMLDivElement> {
@@ -14,6 +14,7 @@ export interface RadioButtonClickEvent
 }
 
 export interface RadioButtonProps {
+  className?:string,
   checked?: boolean;
   disabled?: boolean;
   value: string;
@@ -30,7 +31,7 @@ interface DefaultProps {
 }
 
 /** Radio button icon */
-const radioBtnIcon = <span className={styles.checkmark} />;
+const radioBtnIcon = <span className={st(classes.checkmark)  }/>;
 
 /** RadioButton */
 export class RadioButton extends React.Component<RadioButtonProps> {
@@ -58,12 +59,11 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       label,
       name,
       onChange,
-      ...rest
+      className
     } = this.props;
 
     return (
       <CoreRadioButton
-        {...styles('root', { checked, disabled }, rest)}
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
         checked={checked}
@@ -75,6 +75,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         checkedIcon={radioBtnIcon}
         uncheckedIcon={radioBtnIcon}
         aria-label={label}
+        className={st(classes.root,  { checked, disabled }, className)}
       />
     );
   }
