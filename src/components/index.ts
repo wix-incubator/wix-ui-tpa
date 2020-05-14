@@ -33,3 +33,4 @@ export { CopyUrlButton } from './CopyUrlButton';
 export { SectionNotification } from './SectionNotification';
 export { Tags } from './Tags';
 export { FloatingDropdown } from './FloatingDropdown';
+export { CalendarCell } from './CalendarCell';

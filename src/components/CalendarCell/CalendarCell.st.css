@@ -1,0 +1,152 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+/*Defaults*/
+:vars {
+    DefaultAlignment: left;
+    DefaultBorderWidth: 1px;
+    DefaultBorderOpacity: 1;
+    DefaultFontColor: color-5;
+    DefaultBackgroundColor: color-1;
+    DefaultBorderColor: color-2;
+    DefaultTodayColor: color-8;
+    DefaultFontSize: 16px;
+    DefaultFontStyle: "{theme: 'Body-M', size:'16px' lineHeight: '1em'}";
+}
+
+/*Overrides*/
+:vars {
+    OverridedAlignment: --overridable
+    BorderWidth: --overridable
+    BorderOpacity: --overridable
+    FontColor: --overridable
+    BackgroundColor: --overridable
+    BorderColor: --overridable
+    TodayColor: --overridable
+    FontStyle: --overridable
+    FontSize: --overridable
+}
+
+:vars {
+    CurrentAlignment: fallback(value(OverridedAlignment), value(DefaultAlignment));
+    CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
+    CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity))
+    CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
+    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
+    CurrentFontSize: fallback(value(FontSize), value(DefaultFontSize));
+}
+
+.root {
+    -st-states: isStretchAble, timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
+    border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentBorderOpacity));
+    background-color: value(CurrentBackgroundColor);
+    text-align: value(CurrentAlignment);
+    width: 100%;
+    padding-top: 100%; /* 1:1 Aspect Ratio */
+    position: relative;
+}
+
+.innerContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 12px;
+}
+
+/* .childrenContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    height: 67%;
+} */
+
+@media only screen and (max-width: 75px) {
+    .innerContainer {
+        padding: 8px 4px;
+    }
+}
+
+.time {
+    -st-extends: TPAText;
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentFontColor),
+        MainTextFont value(CurrentFontStyle)
+    );
+    font-size: value(CurrentFontSize);
+    line-height: 1em;
+}
+
+
+/* isStrechAble == true */
+.root:isStretchAble {
+    padding-top: 0;
+    height: 100%;
+}
+
+/* Previous Month */
+
+.root:timeType(PreviousMonth) {
+    background: applyOpacity(color(color-2), 0.1);
+    border: 1px solid color(color-2);
+}
+
+.root:timeType(PreviousMonth) .time {
+    -st-mixin: TPAText(
+        MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
+        MainTextFont value(CurrentFontStyle)
+    );
+}
+
+/* Previous Days */
+
+.root:timeType(PreviousDays) {
+    background: applyOpacity(color(color-2), 0.1);
+    border: 1px solid color(color-2);
+}
+
+.root:timeType(PreviousDays) .time {
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentFontColor),
+        MainTextFont value(CurrentFontStyle)
+    );
+}
+
+/* Current Day */
+
+.root:timeType(CurrentDay) {
+    background: color(color-1);
+    border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
+}
+
+.root:timeType(CurrentDay) .time {
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentTodayColor),
+        MainTextFont value(CurrentFontStyle)
+    );
+}
+
+/* Next Month */
+
+.root:timeType(NextMonth) {
+    background: color(color-1);
+    border: 1px solid color(color-2);
+}
+
+.root:timeType(NextMonth) .time {
+    -st-mixin: TPAText(
+        MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
+        MainTextFont value(CurrentFontStyle)
+    );
+}
