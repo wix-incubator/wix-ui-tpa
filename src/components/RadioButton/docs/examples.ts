@@ -1,0 +1,13 @@
+export const importExample = `import { RadioButton } from 'wix-ui-tpa/RadioButton';`;
+
+export const uncheckedExample = `
+<RadioButton value={'Unchecked'} onChange={val => console.log(val)} label="Unchecked"/>
+`;
+
+export const checkedExample = `
+<RadioButton value={'Checked'} onChange={val => console.log(val)} checked label="Checked" />
+`;
+
+export const disabledExample = `
+<RadioButton value={'Disabled'} onChange={val => console.log(val)} disabled label="Disabled" />
+`;
