@@ -66,8 +66,20 @@ export default {
               rawSource: PickerWiringExampleRaw,
               rawCSSSource: PickerWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
+                colors: [
+                  {
+                    label: 'Color',
+                    wixParam: 'mainColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Font',
+                    wixParam: 'fontStyle',
+                    defaultFont: 'arial'
+                  }
+                ],
                 numbers: [],
               },
             }),

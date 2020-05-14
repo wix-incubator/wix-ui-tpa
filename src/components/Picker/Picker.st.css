@@ -44,7 +44,7 @@
     margin: auto 24px;
 }
 
-.arrowIcon {
+.arrow {
     -st-extends: IconButton;
     -st-mixin: IconButton(
         IconColor value(CurrentMainColor)

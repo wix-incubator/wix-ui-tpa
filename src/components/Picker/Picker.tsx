@@ -36,12 +36,12 @@ export class Picker extends React.Component<PickerProps> {
     return (
       <div {...styles('root', {}, rest)}>
         <IconButton
-          {...styles('arrowIcon', {})}
+          {...styles('arrow', {})}
           icon={<ChevronLeft height={arrowsSize} width={arrowsSize} />}
         />
         <Text className={styles.value}>{value}</Text>
         <IconButton
-          {...styles('arrowIcon', {})}
+          {...styles('arrow', {})}
           icon={<ChevronRight height={arrowsSize} width={arrowsSize} />}
         />
       </div>

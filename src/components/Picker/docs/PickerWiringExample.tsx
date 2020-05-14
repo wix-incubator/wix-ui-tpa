@@ -8,6 +8,7 @@ export const PickerWiringExample = () => {
       value={'October 2020'}
       previousClickHandler={() => {}}
       nextClickHandler={() => {}}
+      {...styles('root', {})}
     />
   );
 };
