@@ -77,8 +77,8 @@ export default {
                   {
                     label: 'Font',
                     wixParam: 'fontStyle',
-                    defaultFont: 'arial'
-                  }
+                    defaultFont: 'arial',
+                  },
                 ],
                 numbers: [],
               },
