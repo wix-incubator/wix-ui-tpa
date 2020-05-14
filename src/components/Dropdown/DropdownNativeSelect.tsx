@@ -124,8 +124,6 @@ export class DropdownNativeSelect extends React.Component<
     return (
       <div className={classes.wrapper}>
         <select
-          {...nativeSelectStyles}
-          {...buttonStyle}
           {...this.getDataAttributes()}
           defaultValue={''}
           {...(selectedOption && { value: selectedOption.id })}

@@ -130,6 +130,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         onDeselect={this._onCoreSelect}
         onSelect={this._onCoreSelect}
         openTrigger={'click'}
+        disabled={disabled}
         options={coreOptions}
         placement={placement}
       >

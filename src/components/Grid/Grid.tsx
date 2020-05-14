@@ -134,6 +134,7 @@ export class Grid extends React.PureComponent<GridProps> {
                 className,
               )}
               id={gridId}
+              data-hook={this.props['data-hook']}
             >
               <style
                 dangerouslySetInnerHTML={{

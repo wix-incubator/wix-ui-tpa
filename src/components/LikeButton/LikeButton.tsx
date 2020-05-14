@@ -49,6 +49,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
           checked={checked}
           labelPlacement={labelPlacement}
           animation
+          data-hook={this.props['data-hook']}
         />
       </div>
     );

@@ -113,8 +113,9 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     if (!selectedCoreOption) {
       return;
     }
+
     const selectedOption = this.props.options.find(
-      ({ id }) => selectedOption.id === id,
+      ({ id }) => selectedCoreOption.id === id,
     );
     this.onSelect(selectedOption);
   };

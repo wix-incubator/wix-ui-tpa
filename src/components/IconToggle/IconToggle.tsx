@@ -71,6 +71,7 @@ export class IconToggle extends React.Component<IconToggleProps> {
           { checked, disabled, labelPlacement, animation },
           className,
         )}
+        data-hook={this.props['data-hook']}
       >
         <CoreCheckbox
           uncheckedIcon={content}

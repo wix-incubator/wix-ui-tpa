@@ -19,10 +19,7 @@ export const ErrorMessageWrapper: React.FunctionComponent<ErrorMessageWrapperPro
   const inErrorState = error && !disabled && !!errorMessage;
 
   return (
-    <div
-      className={st(classes.root, className)}
-      data-hook={this.props['data-hook']}
-    >
+    <div className={st(classes.root, className)} data-hook={props['data-hook']}>
       {render({ error: inErrorState })}
       {inErrorState && (
         <div className={classes.errorMessage}>{errorMessage}</div>

@@ -68,6 +68,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
       upgrade,
       children,
       className,
+      ...rest
     } = this.props;
     return (
       <TPAComponentsConsumer>
@@ -82,6 +83,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
               { priority, size, fullWidth, mobile, upgrade },
               className,
             )}
+            {...rest}
           />
         )}
       </TPAComponentsConsumer>

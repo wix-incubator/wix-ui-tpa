@@ -33,7 +33,10 @@ export class SocialBar extends React.Component<SocialBarProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div className={st(classes.root, { mobile }, className)}>
+          <div
+            className={st(classes.root, { mobile }, className)}
+            data-hook={this.props['data-hook']}
+          >
             {React.Children.map(children, child => {
               if (!React.isValidElement(child)) {
                 return child;
