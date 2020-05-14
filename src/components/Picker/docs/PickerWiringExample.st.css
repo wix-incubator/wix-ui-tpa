@@ -1,0 +1,11 @@
+:import {
+    -st-from: "../Picker.st.css";
+    -st-default: Picker;
+}
+
+.root {
+    -st-mixin: Picker(
+        MainColor '"--mainColor"',
+        FontStyle '"--fontStyle"'
+    )
+}
