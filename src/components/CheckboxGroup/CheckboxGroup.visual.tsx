@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { CheckboxGroup, Layout } from './';
+import { CheckboxGroup, CheckboxGroupLayout as Layout  } from './';
 import { Checkbox } from '../Checkbox';
 
 class CheckboxGroupVisual extends React.Component<any> {
