@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { StatesButton, StatesButtonProps } from '..';
-import { st, classes } from './StatesButtonExample.st.css';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 import { SIZE } from '../../Button';
 import { BUTTON_STATES } from '../constants';
@@ -34,7 +33,7 @@ export default {
   },
   examples: (
     <>
-      <StatesButton {...defaultProps} ref={ref} className={st(classes.root)} />
+      <StatesButton {...defaultProps} ref={ref} />
       <MockSettings
         wixNumberParams={[
           {
