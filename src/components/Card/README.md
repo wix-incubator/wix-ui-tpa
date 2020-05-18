@@ -44,7 +44,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import cardStylesExt from './CardExt.st.css';
+    import { st, classes } from './CardExt.st.css';
 
-    const CardExt = (props) => <Card upgrade {...props} {...cardStylesExt('root', {}, props)}/>;
+    const CardExt = (props) => <Card upgrade className={st(classes.root)} {...props}/>;
     ```

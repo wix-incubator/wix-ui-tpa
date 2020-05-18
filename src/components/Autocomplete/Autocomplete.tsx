@@ -4,8 +4,8 @@ import {
   AutocompleteProps as CoreAutocompleteProps,
 } from 'wix-ui-core/autocomplete';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
-import { st, classes} from './Autocomplete.st.css';
-import { ErrorMessageWrapper} from '../ErrorMessageWrapper';
+import { st, classes } from './Autocomplete.st.css';
+import { ErrorMessageWrapper } from '../ErrorMessageWrapper';
 import { TPAComponentProps } from '../../types';
 
 export interface TPAAutocompleteProps extends TPAComponentProps {
@@ -25,7 +25,13 @@ export type AutocompleteType = React.FunctionComponent<AutocompleteProps> & {
 };
 
 export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
-  const { errorMessage, error, suffix, className, ...coreAutocompleteProps } = props;
+  const {
+    errorMessage,
+    error,
+    suffix,
+    className,
+    ...coreAutocompleteProps
+  } = props;
   const { disabled } = props;
 
   return (
@@ -35,7 +41,7 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
       disabled={disabled}
       render={errorProps => (
         <CoreAutocomplete
-          className={st(classes.root,{error},className)}
+          className={st(classes.root, { error }, className)}
           {...coreAutocompleteProps}
           error={errorProps.error}
           data-hook={props['data-hook']}

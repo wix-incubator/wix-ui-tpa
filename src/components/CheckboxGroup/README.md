@@ -28,13 +28,13 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import CheckboxGroup from 'wix-ui-tpa/CheckboxGroup';
     import Checkbox from 'wix-ui-tpa/Checkbox';
-    import checkboxGroupStylesExt from './CheckboxGroupExt.st.css';
+    import { st, classes } from './CheckboxGroupExt.st.css';
 
     const CheckboxExt = (props) => (
         <CheckboxGroup
             label="Label"
+            className={st(classes.root)} 
             {...props}
-            {...checkboxGroupStylesExt('root', {}, props)}
         >
             <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1️⃣" />
             <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2️⃣" />
