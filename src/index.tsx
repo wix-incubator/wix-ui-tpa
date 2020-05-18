@@ -5,11 +5,7 @@ export * from './components/Button';
 export * from './components/TextButton';
 export * from './components/Card';
 export * from './components/Checkbox';
-export {
-  CheckboxGroup,
-  Layout,
-  CheckboxGroupProps,
-} from './components/CheckboxGroup';
+export * from './components/CheckboxGroup';
 export * from './components/Counter';
 export * from './components/Divider';
 export * from './components/Grid';

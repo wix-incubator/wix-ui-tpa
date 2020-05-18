@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxGroup, Layout } from '.';
+import { CheckboxGroup, CheckboxGroupLayout as Layout } from './';
 import { Checkbox } from '../Checkbox';
 import Registry from '@ui-autotools/registry';
 
