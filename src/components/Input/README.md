@@ -41,5 +41,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import {Input} from 'wix-ui-tpa/Input';
     import { st, classes } from './InputExt.st.css';
 
-    const const InputExt = (props) => <Input {...props} className={st(classes.root)} />;
+    const const InputExt = (props) => <Input className={st(classes.root)} {...props} />;
     ```

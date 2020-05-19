@@ -43,5 +43,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import { st, classes } from './TagsExt.st.css';
 
-    const TagsExt = (props) => <Tags {...props} className={st(classes.root)} />;
+    const TagsExt = (props) => <Tags className={st(classes.root)} {...props} />;
     `

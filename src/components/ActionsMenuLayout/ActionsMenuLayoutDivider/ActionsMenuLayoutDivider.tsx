@@ -3,7 +3,7 @@ import { Divider } from '../../Divider';
 import { st, classes } from './ActionsMenuLayoutDivider.st.css';
 
 const ActionsMenuLayoutDivider: React.FC = props => (
-  <Divider {...props} className={st(classes.root)} />
+  <Divider className={st(classes.root)} {...props} />
 );
 ActionsMenuLayoutDivider.displayName = 'ActionsMenuLayout.Divider';
 

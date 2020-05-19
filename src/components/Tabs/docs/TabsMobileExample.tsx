@@ -7,7 +7,7 @@ export const TabsMobileExample: React.FunctionComponent<TabsProps> = props => {
   return (
     <div style={{ width: 480 }}>
       <TPAComponentsProvider value={{ mobile: true }}>
-        <Tabs {...props} className={st(classes.root)} />
+        <Tabs className={st(classes.root)} {...props} />
       </TPAComponentsProvider>
     </div>
   );

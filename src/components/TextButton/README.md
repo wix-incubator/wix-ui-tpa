@@ -38,5 +38,5 @@ The TPA implementation provides a few default overridable styles. By default sit
     import { TextButton } from 'wix-ui-tpa/TextButton';
     import { st, classes } from './TextButtonExt.st.css';
 
-    const TextButtonExt = (props) => <TextButton {...props} className={st(classes.root)} />;
+    const TextButtonExt = (props) => <TextButton className={st(classes.root)} {...props} />;
     ```

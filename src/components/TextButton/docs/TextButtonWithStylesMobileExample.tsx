@@ -5,7 +5,7 @@ import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 export const TextButtonWithStylesMobileExample: React.FunctionComponent<TextButtonProps> = props => (
   <TPAComponentsProvider value={{ mobile: true }}>
-    <TextButton {...props} className={st(classes.root)}>
+    <TextButton className={st(classes.root)} {...props}>
       Text Button
     </TextButton>
   </TPAComponentsProvider>

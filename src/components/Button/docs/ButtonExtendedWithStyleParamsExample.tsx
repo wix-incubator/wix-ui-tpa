@@ -4,7 +4,7 @@ import { st, classes } from './ButtonExtendedWithStyleParamsExample.st.css';
 
 export const ButtonExtendedWithStyleParamsExample: React.FunctionComponent<ButtonProps> = props => (
   <div>
-    <Button upgrade {...props} className={st(classes.root)}>
+    <Button upgrade className={st(classes.root)} {...props}>
       Button
     </Button>
   </div>

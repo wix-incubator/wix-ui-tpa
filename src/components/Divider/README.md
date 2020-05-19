@@ -34,5 +34,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import {Divider} from 'wix-ui-tpa/Divider';
     import { st, classes } from './DividerExt.st.css';
 
-    const DividerExt = (props) => <Divider {...props} className={st(classes.root)} />;
+    const DividerExt = (props) => <Divider className={st(classes.root)} {...props} />;
     ```

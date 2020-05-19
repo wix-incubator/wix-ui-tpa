@@ -39,5 +39,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import ToggleSwitch from 'wix-ui-tpa/ToggleSwitch';
     import { st, classes } from './ToggleSwitchExt.st.css';
 
-    const ToggleSwitchExt = (props) => <ToggleSwitch {...props} className={st(classes.root)}/>;
+    const ToggleSwitchExt = (props) => <ToggleSwitch className={st(classes.root)} {...props}/>;
     ```

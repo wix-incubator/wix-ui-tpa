@@ -34,4 +34,4 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import Counter from 'wix-ui-tpa/Counter';
     import { st, classes } from './CounterExt.st.css';
 
-    const CounterExt = (props) => <Counter {...props} className={st(classes.root)} />;
+    const CounterExt = (props) => <Counter className={st(classes.root)} {...props} />;
