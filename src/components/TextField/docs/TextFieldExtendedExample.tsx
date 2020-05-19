@@ -5,7 +5,7 @@ import { TextFieldTheme } from '../TextFieldEnums';
 
 export const TextFieldExtendedExample: React.FunctionComponent<TextFieldProps> = props => (
   <>
-    <TextField className={st(classes.root)} {...props} />
+    <TextField {...props} className={st(classes.root)} />
     <br />
     <TextField
       {...{ ...props, theme: TextFieldTheme.Line }}

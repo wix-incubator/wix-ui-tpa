@@ -52,7 +52,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
     const ButtonExt = (props) => 
         (<Button 
-            className={st(classes.root)} 
             {...props} 
+            className={st(classes.root)} 
         />);
     ```

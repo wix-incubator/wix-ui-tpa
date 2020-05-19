@@ -3,7 +3,7 @@ import { st, classes } from './TextAreaOverrides.st.css';
 import { TextArea } from '../../TextArea';
 
 const TextAreaConnected = props => (
-  <TextArea className={st(classes.root)} {...props} />
+  <TextArea {...props} className={st(classes.root)} />
 );
 TextAreaConnected.displayName = 'TextArea';
 

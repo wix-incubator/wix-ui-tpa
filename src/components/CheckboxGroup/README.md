@@ -33,8 +33,8 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     const CheckboxExt = (props) => (
         <CheckboxGroup
             label="Label"
-            className={st(classes.root)} 
             {...props}
+            className={st(classes.root)} 
         >
             <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 1️⃣" />
             <Checkbox name="group1" onChange={val => console.log(val)} label="Checkbox 2️⃣" />

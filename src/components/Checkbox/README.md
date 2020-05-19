@@ -37,7 +37,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
         <Checkbox
             onChange={() => {}}
             label="Label"
-            className={st(classes.root)} 
             {...props}
+            className={st(classes.root)} 
         />);
     ```

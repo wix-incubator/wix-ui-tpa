@@ -41,5 +41,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import {TextField} from 'wix-ui-tpa/TextField';
     import { st, classes } from './InputExt.st.css';
 
-    const const InputExt = (props) => <TextField className={st(classes.root)} {...props} />;
+    const const InputExt = (props) => <TextField {...props} className={st(classes.root)} />;
     ```

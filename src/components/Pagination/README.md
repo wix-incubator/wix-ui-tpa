@@ -34,5 +34,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import { st, classes } from './Pagination.st.css';
 
-    const PaginationExt = (props) => <Pagination className={st(classes.root)} {...props} />;
+    const PaginationExt = (props) => <Pagination {...props} className={st(classes.root)} />;
     ```

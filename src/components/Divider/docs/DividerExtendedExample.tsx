@@ -3,5 +3,5 @@ import { Divider } from '../Divider';
 import { st, classes } from './DividerExtendedExample.st.css';
 
 export const DividerExtendedExample = props => (
-  <Divider className={st(classes.root)} {...props} />
+  <Divider {...props} className={st(classes.root)} />
 );

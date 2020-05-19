@@ -36,5 +36,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import { st, classes } from './Tabs.st.css';
 
-    const TabsExt = (props) => <Tabs className={st(classes.root)} {...props} />;
+    const TabsExt = (props) => <Tabs {...props} className={st(classes.root)} />;
     ```

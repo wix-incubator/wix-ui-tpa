@@ -42,5 +42,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import {Text} from 'wix-ui-tpa/Text';
     import { st, classes } from './TextExt.st.css';
 
-    const TextExt = (props) => <Text className={st(classes.root)} {...props} />;
+    const TextExt = (props) => <Text {...props} className={st(classes.root)} />;
     ```

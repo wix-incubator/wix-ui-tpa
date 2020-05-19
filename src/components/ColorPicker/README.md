@@ -32,5 +32,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     import ColorPicker from 'wix-ui-tpa/ColorPicker';
     import { st, classes } from './ColorPickerExt.st.css';
 
-    const ColorPickerExt = (props) => <ColorPicker className={st(classes.root)} {...props}/>;
+    const ColorPickerExt = (props) => <ColorPicker {...props} className={st(classes.root)}/>;
 

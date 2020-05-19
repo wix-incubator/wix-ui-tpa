@@ -65,5 +65,5 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import { st, classes } from './GridExt.st.css';
 
-    const GridExt = (props) => <Grid className={st(classes.root)} {...props} />;
+    const GridExt = (props) => <Grid {...props} className={st(classes.root)} />;
     ```
