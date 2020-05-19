@@ -28,11 +28,11 @@ export class ColorPickerItem extends React.Component<
   );
 
   render = () => {
-    const { value, checked, onChange } = this.props;
-
+    const { value, checked, onChange, className } = this.props;
+    const { focused } = this.state;
     return (
       <RadioButton
-        className={st(classes.root, { checked, focused: this.state.focused })}
+        className={st(classes.root, { checked, focused }, className)}
         aria-label={this.props['aria-label']}
         data-hook={ColorPickerItem.displayName}
         checked={checked}
