@@ -233,7 +233,6 @@ describe('Counter', () => {
     expect(await driver.isInputHasAriaLive()).toBe(false);
     await driver.changeInputFocus(false);
     expect(await driver.isInputHasAriaLive()).toBe(true);
-
   });
 
   describe('testkit', () => {
