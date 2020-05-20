@@ -37,7 +37,7 @@ export class Text extends React.Component<TextProps> {
                 },
                 className,
               ),
-              ['data-hook']: this.props['data-hook'],
+              'data-hook': this.props['data-hook'],
             },
             children,
           )
