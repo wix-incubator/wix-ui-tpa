@@ -30,12 +30,20 @@ interface DefaultProps {
   value: number;
 }
 
+interface CounterState {
+  isFocused: boolean;
+}
+
 /** Counter */
-export class Counter extends React.Component<CounterProps> {
+export class Counter extends React.Component<CounterProps, CounterState> {
   static displayName = 'Counter';
   static defaultProps: DefaultProps = {
     step: 1,
     value: 0,
+  };
+
+  state = {
+    isFocused: false,
   };
 
   _onDecrement = () => {
@@ -75,6 +83,8 @@ export class Counter extends React.Component<CounterProps> {
       ...rest
     } = this.props;
 
+    const { isFocused } = this.state;
+
     const shouldShowErrorMessageTooltip = error && errorMessage;
     return (
       <div
@@ -108,6 +118,9 @@ export class Counter extends React.Component<CounterProps> {
           <Input
             aria-label={inputAriaLabel}
             onChange={ev => onChange(ev.target.value)}
+            onBlur={() => this.setState({ isFocused: false })}
+            onFocus={() => this.setState({ isFocused: true })}
+            {...(!isFocused && { 'aria-live': 'assertive' })}
             type="number"
             disabled={disabled}
             min={min}
