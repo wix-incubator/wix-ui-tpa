@@ -8,11 +8,13 @@ import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/To
 import { Simulate } from 'react-dom/test-utils';
 
 export interface CounterDriver extends BaseUniDriver {
+  changeInputFocus(shouldFocus: boolean): Promise<void>;
   enterValue(val: string): Promise<void>;
   getCounterAriaLabel(): Promise<string>;
   getCounterAriaLabellledby(): Promise<string>;
   getErrorMessageContent(): Promise<void>;
   hasCounterComponentError(): Promise<boolean>;
+  isInputHasAriaLive(): Promise<boolean>;
   isCounterComponentDisabled(): Promise<boolean>;
   isErrorTooltipExists(): Promise<boolean>;
   isInputComponentDisabled(): Promise<boolean>;
@@ -40,6 +42,10 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
 
   return {
     ...baseUniDriverFactory(base),
+    changeInputFocus: async (shouldFocus: boolean) => {
+      const element = await getInput().getNative();
+      shouldFocus ? Simulate.focus(element) : Simulate.blur(element);
+    },
     isCounterComponentDisabled: async () =>
       stylableUtil.hasStyleState(base, 'disabled'),
     isInputComponentDisabled: async () => !!getInput()._prop('disabled'),
@@ -54,6 +60,7 @@ export const counterDriverFactory = (base: UniDriver): CounterDriver => {
     },
     isInputValueEqualTo: async (val: number) =>
       (await getInput().value()) === val.toString(),
+    isInputHasAriaLive: async () => !!(await getInput().attr('aria-live')),
     pressMinus: async () => getMinusButton().click(),
     pressPlus: async () => getPlusButton().click(),
     getCounterAriaLabel: async () => getAriaLabel('label'),

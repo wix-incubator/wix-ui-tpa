@@ -217,6 +217,23 @@ describe('Counter', () => {
     expect(await driver.hasCounterComponentError()).toBeTruthy();
     expect(await driver.isErrorTooltipExists()).toBeFalsy();
   });
+  //file.only
+  it('should render input with aria-live when not in focus', async () => {
+    const driver = createDriver(
+      <Counter
+        inputAriaLabel={'amount'}
+        incrementAriaLabel={'increment'}
+        decrementAriaLabel={'decrement'}
+        onChange={() => {}}
+      />,
+    );
+
+    expect(await driver.isInputHasAriaLive()).toBe(true);
+    await driver.changeInputFocus(true);
+    expect(await driver.isInputHasAriaLive()).toBe(false);
+    await driver.changeInputFocus(false);
+    expect(await driver.isInputHasAriaLive()).toBe(true);
+  });
 
   describe('testkit', () => {
     it('should exist', async () => {
