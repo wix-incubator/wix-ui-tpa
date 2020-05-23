@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxGroup, Layout } from '.';
+import { CheckboxGroup, Layout as CheckboxGroupLayout } from './CheckboxGroup';
 import { Checkbox } from '../Checkbox';
 import Registry from '@ui-autotools/registry';
 
@@ -34,7 +34,7 @@ CheckboxGroupMetadata.addSim({
   props: {
     children: [checkboxEl],
     label: "No worries. I'm a label.",
-    layout: Layout.Horizontal,
+    layout: CheckboxGroupLayout.Horizontal,
   },
 });
 CheckboxGroupMetadata.addSim({
@@ -42,7 +42,7 @@ CheckboxGroupMetadata.addSim({
   props: {
     children: [checkboxEl],
     label: "No worries. I'm a label.",
-    layout: Layout.Horizontal,
+    layout: CheckboxGroupLayout.Horizontal,
     error: true,
     errorText: "I'm an error",
   },
