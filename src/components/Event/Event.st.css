@@ -20,6 +20,7 @@
 
 .root {
     -st-states: isMultiday;
+    position: relative;
     padding: 4px 4px 4px 12px;
 }
 
@@ -29,6 +30,15 @@
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
         MainTextColor 'color(color-4)' 
     );
+}
+
+.root:hover::before {
+    content: '';
+    background-color: applyOpacity(color(color-5), 0.6);
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 100%;
 }
 
 .title {
