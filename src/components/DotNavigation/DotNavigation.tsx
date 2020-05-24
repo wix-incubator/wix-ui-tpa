@@ -220,7 +220,7 @@ export class DotNavigation extends React.Component<
       onChange={onChange}
       onKeyDown={onKeyDown}
       aria-label={ariaLabel}
-      {...{ className: classes.extendedRadioButton }}
+      className={classes.extendedRadioButton}
     />
   );
 
