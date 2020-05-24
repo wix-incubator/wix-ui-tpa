@@ -3,14 +3,14 @@ import { st, classes } from './CheckboxGroup.st.css';
 import { Checkbox } from '../Checkbox';
 import { TPAComponentProps } from '../../types';
 
-export enum Layout {
+export enum CheckboxGroupLayout {
   Horizontal = 'horizontal',
   Vertical = 'vertical',
 }
 export interface CheckboxGroupProps extends TPAComponentProps {
   label?: string | React.ReactNode;
   children?: any;
-  layout?: Layout;
+  layout?: CheckboxGroupLayout;
   error?: boolean;
   errorText?: string;
   disabled?: boolean;
@@ -18,13 +18,13 @@ export interface CheckboxGroupProps extends TPAComponentProps {
 }
 
 interface DefaultProps {
-  layout: Layout;
+  layout: CheckboxGroupLayout;
 }
 
 export class CheckboxGroup extends React.Component<CheckboxGroupProps> {
   static displayName = 'CheckboxGroup';
   static defaultProps: DefaultProps = {
-    layout: Layout.Vertical,
+    layout: CheckboxGroupLayout.Vertical,
   };
 
   render() {

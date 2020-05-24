@@ -1,5 +1,5 @@
 export {
   CheckboxGroup,
   CheckboxGroupProps,
-  Layout as CheckboxGroupLayout,
+  CheckboxGroupLayout,
 } from './CheckboxGroup';
