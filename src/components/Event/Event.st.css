@@ -1,0 +1,50 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+/*Defaults*/
+:vars {
+    /*Defaults params goes here*/
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+}
+
+.root {
+    -st-states: isMultiday;
+    padding: 4px 4px 4px 12px;
+}
+
+.time {
+    padding-right: 2px;
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
+        MainTextColor 'color(color-4)' 
+    );
+}
+
+.title {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
+        MainTextColor 'color(color-5)' 
+    );
+}
+
+.root:isMultiday {
+    background: applyOpacity(color(color-8), 0.2);
+}
+
+.root:isMultiday .time {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
+        MainTextColor 'color(color-5)' 
+    );
+}
