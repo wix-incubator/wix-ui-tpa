@@ -8,49 +8,47 @@ export interface EventProps {
   isTimeShown: boolean;
   isMultiday: boolean;
   isRightToLeft: boolean;
-}
-
-interface State {
-  isClicked: boolean;
+  isSelected: boolean;
 }
 
 interface DefaultProps {
   isTimeShown: boolean;
   isMultiday: boolean;
   isRightToLeft: boolean;
+  isSelected: boolean;
 }
 
 /** Event */
-export class Event extends React.Component<EventProps, State> {
+export class Event extends React.Component<EventProps> {
   static displayName = 'Event';
   static defaultProps: DefaultProps = {
     isTimeShown: true,
     isMultiday: false,
-    isRightToLeft: true
-  };
-
-  state: State = {
-    isClicked: false,
-  };
-
-  handleClick = () => {
-    this.setState(prevState => ({ isClicked: !prevState.isClicked }));
+    isRightToLeft: false,
+    isSelected: false
   };
 
   render() {
-    const { isClicked } = this.state;
-    const { time, title, isTimeShown, isMultiday, isRightToLeft, ...rest } = this.props;
+    const {
+      time,
+      title,
+      isTimeShown,
+      isMultiday,
+      isRightToLeft,
+      isSelected,
+      ...rest
+    } = this.props;
     const timeComponent = isTimeShown ? (
       <Text className={styles.time}>{time}</Text>
     ) : null;
 
-
-    return (<div
-      onClick={this.handleClick}
-      {...styles('root', { isMultiday, isClicked, isRightToLeft }, rest)}
-    >
-      {timeComponent}
-      <Text className={styles.title}>{title}</Text>
-    </div>)
+    return (
+      <div
+        {...styles('root', { isMultiday, isSelected, isRightToLeft }, rest)}
+      >
+        {timeComponent}
+        <Text className={styles.title}>{title}</Text>
+      </div>
+    );
   }
 }

@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, applyOpacity;
+    -st-named: color, applyOpacity, fallback, font;
 }
 
 :import {
@@ -10,18 +10,59 @@
 
 /*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+    DefaultFontStyle: "{theme: 'Body-M', size: '14px', lineHeight: '1em'}";
+    DefaultTimeColor: color-4;
+    DefaultTitleColor: color-5;
+    DefaultAllDayBackground: color-8;
+    DefaultAllDayOpacity: 0.2; 
+    DefaultTopPadding: 4px;
+    DefaultRightPadding: 4px;
+    DefaultBottomPadding: 4px;
+    DefaultLeftPadding: 12px;
+    DefaultRTLTopPadding: 4px;
+    DefaultRTLRightPadding: 12px;
+    DefaultRTLBottomPadding: 4px;
+    DefaultRTLLeftPadding: 4px;
 }
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    FontStyle: --overridable;
+    TimeColor: --overridable;
+    TitleColor: --overridable;
+    AllDayBackground:  --overridable;
+    AllDayOpacity: --overridable;
+    TopPadding: --overridable;
+    RightPadding: --overridable;
+    BottomPadding: --overridable;
+    LeftPadding: --overridable;
+    RTLTopPadding: --overridable;
+    RTLRightPadding: --overridable;
+    RTLBottomPadding: --overridable;
+    RTLLeftPadding: --overridable;
+}
+
+/* Fallbacks */
+:vars {
+    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
+    CurrentTimeColor: color(fallback(value(TimeColor), value(DefaultTimeColor)));
+    CurrentTitleColor: color(fallback(value(TitleColor), value(DefaultTitleColor)));
+    CurrentAllDayBackground: color(fallback(value(AllDayBackground), value(DefaultAllDayBackground)));
+    CurrentAllDayOpacity: fallback(value(AllDayOpacity), value(DefaultAllDayOpacity));
+    CurrentTopPadding: fallback(value(TopPadding),value(DefaultTopPadding));
+    CurrentRightPadding: fallback(value(RightPadding),value(DefaultRightPadding));
+    CurrentLeftPadding: fallback(value(LeftPadding),value(DefaultLeftPadding));
+    CurrentBottomPadding: fallback(value(BottomPadding),value(DefaultBottomPadding));
+    CurrentRTLTopPadding: fallback(value(RTLTopPadding),value(DefaultRTLTopPadding));
+    CurrentRTLRightPadding: fallback(value(RTLRightPadding),value(DefaultRTLRightPadding));
+    CurrentRTLLeftPadding: fallback(value(RTLLeftPadding),value(DefaultRTLLeftPadding));
+    CurrentRTLBottomPadding: fallback(value(RTLBottomPadding),value(DefaultRTLBottomPadding));
 }
 
 .root {
-    -st-states: isMultiday, isClicked, isRightToLeft;
+    -st-states: isMultiday, isSelected, isRightToLeft;
     position: relative;
-    padding: 4px 4px 4px 12px;
+    padding: value(CurrentTopPadding) value(CurrentRightPadding) value(CurrentBottomPadding) value(CurrentLeftPadding);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -30,8 +71,15 @@
 .time {
     padding-right: 2px;
     -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
-        MainTextColor 'color(color-4)' 
+        MainTextFont value(CurrentFontStyle),
+        MainTextColor value(CurrentTimeColor)
+    );
+}
+
+.title {
+  -st-mixin: TPAText(
+        MainTextFont value(CurrentFontStyle),
+        MainTextColor value(CurrentTitleColor)
     );
 }
 
@@ -42,22 +90,24 @@
     left: 0px;
     right: 0px;
     height: 100%;
+    margin-top: -4px;
 }
 
-.root:isClicked::before {
+.root:isSelected::before {
     content: '';
     background-color: applyOpacity(color(color-5), 0.1);
     position: absolute;
     left: 0px;
     right: 0px;
     height: 100%;
+    margin-top: -4px;
 }
 
 .root:isRightToLeft {
     direction: rtl;
     display: table;
     float: right;
-    padding: 4px 12px 4px 4px;
+    padding: value(CurrentRTLTopPadding) value(CurrentRTLRightPadding) value(CurrentRTLBottomPadding) value(CurrentRTLLeftPadding);
 }
 
 .root:isRightToLeft .time{
@@ -66,20 +116,6 @@
     display: table-cell;
 }
 
-.title {
-  -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
-        MainTextColor 'color(color-5)' 
-    );
-}
-
 .root:isMultiday {
-    background: applyOpacity(color(color-8), 0.2);
-}
-
-.root:isMultiday .time {
-    -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
-        MainTextColor 'color(color-5)' 
-    );
+    background: applyOpacity(value(CurrentAllDayBackground), value(CurrentAllDayOpacity));
 }
