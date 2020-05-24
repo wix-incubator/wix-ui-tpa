@@ -19,7 +19,7 @@
 }
 
 .root {
-    -st-states: isMultiday, isClicked;
+    -st-states: isMultiday, isClicked, isRightToLeft;
     position: relative;
     padding: 4px 4px 4px 12px;
     white-space: nowrap;
@@ -51,6 +51,19 @@
     left: 0px;
     right: 0px;
     height: 100%;
+}
+
+.root:isRightToLeft {
+    direction: rtl;
+    display: table;
+    float: right;
+    padding: 4px 12px 4px 4px;
+}
+
+.root:isRightToLeft .time{
+    padding-right: 0;
+    padding-left: 2px;
+    display: table-cell;
 }
 
 .title {
