@@ -3,5 +3,5 @@ import { Event } from '../';
 import styles from './EventWiringExample.st.css';
 
 export const EventWiringExample = () => {
-  return <Event time='20:30' title='Blink 182 Concert' />;
+  return <Event time="20:30" title="Blink 182 Concert" />;
 };

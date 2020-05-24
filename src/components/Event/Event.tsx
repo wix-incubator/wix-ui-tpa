@@ -17,16 +17,18 @@ interface DefaultProps {
 /** Event */
 export class Event extends React.Component<EventProps> {
   static displayName = 'Event';
-  static defaultProps: DefaultProps = { 
+  static defaultProps: DefaultProps = {
     isTimeShown: true,
-    isMultiday: false
+    isMultiday: false,
   };
 
   render() {
     const { time, title, isTimeShown, isMultiday, ...rest } = this.props;
-    const timeComponent = isTimeShown ? <Text className={styles.time}>{time}</Text> : null;
+    const timeComponent = isTimeShown ? (
+      <Text className={styles.time}>{time}</Text>
+    ) : null;
     return (
-      <div {...styles('root', {isMultiday}, rest)}>
+      <div {...styles('root', { isMultiday }, rest)}>
         {timeComponent}
         <Text className={styles.title}>{title}</Text>
       </div>

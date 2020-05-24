@@ -7,6 +7,6 @@ EventMetadata.nonReactStrictModeCompliant = true;
 EventMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });
