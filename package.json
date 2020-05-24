@@ -75,6 +75,7 @@
     "@storybook/addon-links": "^5.0.9",
     "@storybook/react": "^5.0.9",
     "@stylable/cli": "^3.5.0",
+    "@stylable/core": "^3.5.0",
     "@stylable/dom-test-kit": "^3.5.0",
     "@svgr/core": "^4.3.2",
     "@svgr/plugin-jsx": "^4.3.2",
