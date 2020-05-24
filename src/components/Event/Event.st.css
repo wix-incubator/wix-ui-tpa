@@ -22,6 +22,9 @@
     -st-states: isMultiday;
     position: relative;
     padding: 4px 4px 4px 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .time {
@@ -42,7 +45,7 @@
 }
 
 .title {
-    -st-mixin: TPAText(
+  -st-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '1px'}",
         MainTextColor 'color(color-5)' 
     );
