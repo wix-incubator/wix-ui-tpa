@@ -19,7 +19,7 @@
 }
 
 .root {
-    -st-states: isMultiday;
+    -st-states: isMultiday, isClicked;
     position: relative;
     padding: 4px 4px 4px 12px;
     white-space: nowrap;
@@ -37,7 +37,16 @@
 
 .root:hover::before {
     content: '';
-    background-color: applyOpacity(color(color-5), 0.6);
+    background-color: applyOpacity(color(color-5), 0.06);
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    height: 100%;
+}
+
+.root:isClicked::before {
+    content: '';
+    background-color: applyOpacity(color(color-5), 0.1);
     position: absolute;
     left: 0px;
     right: 0px;
