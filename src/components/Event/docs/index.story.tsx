@@ -49,9 +49,13 @@ export default {
           title('Examples'),
 
           ...[{ title: 'Regular', source: examples.regularSection }].map(code),
-          ...[{ title: 'Multiday', source: examples.multidaySection }].map(code),
+          ...[{ title: 'Multiday', source: examples.multidaySection }].map(
+            code,
+          ),
           ...[{ title: 'Alignment', source: examples.alignment }].map(code),
-          ...[{ title: 'More Events', source: examples.moreEventsSection }].map(code),
+          ...[{ title: 'More Events', source: examples.moreEventsSection }].map(
+            code,
+          ),
         ],
       }),
 
@@ -82,8 +86,8 @@ export default {
                   {
                     label: 'All Day Background',
                     wixParam: 'allDayBackground',
-                    defaultColor: 'color-8'
-                  }
+                    defaultColor: 'color-8',
+                  },
                 ],
                 fonts: [
                   {
@@ -100,7 +104,7 @@ export default {
                     unit: '',
                     min: 0,
                     max: 1,
-                  }
+                  },
                 ],
               },
             }),
