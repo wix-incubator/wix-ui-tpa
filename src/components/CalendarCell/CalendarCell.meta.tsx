@@ -47,6 +47,6 @@ CalendarCellMetadata.addSim({
   title: 'stretch',
   props: {
     time: '13',
-    isStretchAble: true,
+    stretchable: true,
   },
 });

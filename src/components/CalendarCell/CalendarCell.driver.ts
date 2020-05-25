@@ -20,7 +20,7 @@ export const calendarCellDriverFactory = (
   return {
     ...baseUniDriverFactory(base),
     async isStretched() {
-      return (await base.attr(CALENDAR_DATA_KEYS.IsStretchAble)) === 'true';
+      return (await base.attr(CALENDAR_DATA_KEYS.Stertchable)) === 'true';
     },
     async isPreviousMonth() {
       return (

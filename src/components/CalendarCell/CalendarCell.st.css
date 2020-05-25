@@ -23,7 +23,7 @@
 
 /*Overrides*/
 :vars {
-    OverridedAlignment: --overridable
+    Alignment: --overridable
     BorderWidth: --overridable
     BorderOpacity: --overridable
     FontColor: --overridable
@@ -35,7 +35,7 @@
 }
 
 :vars {
-    CurrentAlignment: fallback(value(OverridedAlignment), value(DefaultAlignment));
+    CurrentAlignment: fallback(value(Alignment), value(DefaultAlignment));
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
     CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity))
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
@@ -47,7 +47,7 @@
 }
 
 .root {
-    -st-states: isStretchAble, timeType(enum(PreviousMonth, PreviousDays, CurrentDay, NextMonth))
+    -st-states: stretchable, timeType(enum(previousMonth, previousDays, currentDay, nextMonth))
     border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentBorderOpacity));
     background-color: value(CurrentBackgroundColor);
     text-align: value(CurrentAlignment);
@@ -90,19 +90,19 @@
 
 
 /* isStrechAble == true */
-.root:isStretchAble {
+.root:stretchable {
     padding-top: 0;
     height: 100%;
 }
 
 /* Previous Month */
 
-.root:timeType(PreviousMonth) {
+.root:timeType(previousMonth) {
     background: applyOpacity(color(color-2), 0.1);
     border: 1px solid color(color-2);
 }
 
-.root:timeType(PreviousMonth) .time {
+.root:timeType(previousMonth) .time {
     -st-mixin: TPAText(
         MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
         MainTextFont value(CurrentFontStyle)
@@ -111,12 +111,12 @@
 
 /* Previous Days */
 
-.root:timeType(PreviousDays) {
+.root:timeType(previousDays) {
     background: applyOpacity(color(color-2), 0.1);
     border: 1px solid color(color-2);
 }
 
-.root:timeType(PreviousDays) .time {
+.root:timeType(previousDays) .time {
     -st-mixin: TPAText(
         MainTextColor value(CurrentFontColor),
         MainTextFont value(CurrentFontStyle)
@@ -125,12 +125,12 @@
 
 /* Current Day */
 
-.root:timeType(CurrentDay) {
+.root:timeType(currentDay) {
     background: color(color-1);
     border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
 }
 
-.root:timeType(CurrentDay) .time {
+.root:timeType(currentDay) .time {
     -st-mixin: TPAText(
         MainTextColor value(CurrentTodayColor),
         MainTextFont value(CurrentFontStyle)
@@ -139,12 +139,12 @@
 
 /* Next Month */
 
-.root:timeType(NextMonth) {
+.root:timeType(nextMonth) {
     background: color(color-1);
     border: 1px solid color(color-2);
 }
 
-.root:timeType(NextMonth) .time {
+.root:timeType(nextMonth) .time {
     -st-mixin: TPAText(
         MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
         MainTextFont value(CurrentFontStyle)

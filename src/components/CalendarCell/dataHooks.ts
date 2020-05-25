@@ -3,6 +3,6 @@ export enum CALENDARCELL_DATA_HOOKS {
 }
 
 export enum CALENDAR_DATA_KEYS {
-  IsStretchAble = 'data-isstretchable',
+  Stertchable = 'data-stretchable',
   TimeType = 'data-timetype',
 }

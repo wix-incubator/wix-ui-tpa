@@ -3,14 +3,14 @@ export const importExample = `import { CalendarCell } from 'wix-ui-tpa/CalendarC
 const createStringCell = (
   title,
   timeType = '',
-  isStretchAble = false,
+  stretchable = false,
   width = 135,
   height = 180,
 ) => {
   return `
     <div style={{width: "${width}px", height: "${height}px"}}>
         <h4>${title}</h4>
-        <CalendarCell isStretchAble={${isStretchAble}} timeType="${timeType}" time='17' />
+        <CalendarCell stretchable={${stretchable}} timeType="${timeType}" time='17' />
     </div>
     `;
 };

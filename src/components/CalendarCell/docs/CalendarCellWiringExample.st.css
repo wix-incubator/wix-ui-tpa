@@ -12,6 +12,6 @@
         TodayColor '"--todayColor"',
         FontColor '"--fontColor"',
         FontStyle '"--fontStyle"',
-        OverridedAlignment '"center"'
+        Alignment '"center"'
     )
 }

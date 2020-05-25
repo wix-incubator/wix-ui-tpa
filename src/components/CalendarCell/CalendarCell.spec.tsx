@@ -22,7 +22,7 @@ describe('CalendarCell', () => {
   });
 
   it('should show streched state', async () => {
-    const driver = createDriver(<CalendarCell isStretchAble {...defProps} />);
+    const driver = createDriver(<CalendarCell stretchable {...defProps} />);
 
     expect(await driver.isStretched()).toBeTruthy();
   });
