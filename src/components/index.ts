@@ -1,5 +1,3 @@
-import { CheckboxGroup, CheckboxGroupProps, Layout } from './CheckboxGroup';
-
 export * from './Card';
 export * from './OverlappingCard';
 export * from './Text';
