@@ -1,3 +1,5 @@
+import { CheckboxGroup, CheckboxGroupProps, Layout } from './CheckboxGroup';
+
 export * from './Card';
 export * from './OverlappingCard';
 export * from './Text';
@@ -24,7 +26,6 @@ export * from './Toast';
 export { ActionsMenuLayout } from './ActionsMenuLayout';
 export * from './Checkbox';
 export { DotNavigation } from './DotNavigation';
-export { CheckboxGroup, Layout, CheckboxGroupProps } from './CheckboxGroup';
 export * from './Dropdown';
 export * from './NewCard';
 export { SocialBar } from './SocialBar';
@@ -34,3 +35,4 @@ export { SectionNotification } from './SectionNotification';
 export { Tags } from './Tags';
 export { FloatingDropdown } from './FloatingDropdown';
 export { Picker } from './Picker';
+export { CheckboxGroup, CheckboxGroupProps, Layout };
