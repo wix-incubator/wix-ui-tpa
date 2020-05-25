@@ -11,7 +11,12 @@ export const EventWiringExample = () => {
       </div>
       <div>
         <h4>All Day</h4>
-        <Event {...styles('root')} isMultiday time="20:30" title="Blink 182 Concert" />
+        <Event
+          {...styles('root')}
+          isMultiday
+          time="20:30"
+          title="Blink 182 Concert"
+        />
       </div>
     </div>
   );
