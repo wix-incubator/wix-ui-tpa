@@ -20,42 +20,42 @@ const tests = [
       {
         it: 'default',
         props: {
-          time: '12'
+          time: '12',
         },
       },
       {
         it: 'previous-month',
         props: {
           time: '12',
-          timeType: Times.previousMonth
+          timeType: Times.previousMonth,
         },
       },
       {
         it: 'previous-days',
         props: {
           time: '12',
-          timeType: Times.previousDays
+          timeType: Times.previousDays,
         },
       },
       {
         it: 'current-day',
         props: {
           time: '12',
-          timeType: Times.currentDay
+          timeType: Times.currentDay,
         },
       },
       {
         it: 'next-month',
         props: {
           time: '12',
-          timeType: Times.nextMonth
+          timeType: Times.nextMonth,
         },
       },
       {
         it: 'stretchable',
         props: {
           time: '12',
-          stretchable: true
+          stretchable: true,
         },
       },
     ],
