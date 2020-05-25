@@ -1,7 +1,19 @@
-.root {
-
+:import {
+    -st-from: "../Event.st.css";
+    -st-default: TPAEvent;
 }
 
-.component {
+.root {
+    -st-mixin: TPAEvent(
+            TimeColor '"--timeColor"',
+            TitleColor '"--titleColor"',
+            AllDayBackground '"--allDayBackground"',
+            FontStyle '"--fontStyle"',
+            AllDayOpacity '"unit(fallback(zeroAsTrue(--allDayOpacity), 0.2), "")"'
+    );
+}
 
+.flexContainer {
+    display: flex;
+    justify-content: space-around;
 }

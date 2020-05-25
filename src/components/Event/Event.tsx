@@ -3,7 +3,7 @@ import { Text } from '../Text';
 import styles from './Event.st.css';
 
 export interface EventProps {
-  time: string;
+  time?: string;
   title: string;
   isTimeShown: boolean;
   isMultiday: boolean;
@@ -25,7 +25,7 @@ export class Event extends React.Component<EventProps> {
     isTimeShown: true,
     isMultiday: false,
     isRightToLeft: false,
-    isSelected: false
+    isSelected: false,
   };
 
   render() {
@@ -38,14 +38,12 @@ export class Event extends React.Component<EventProps> {
       isSelected,
       ...rest
     } = this.props;
-    const timeComponent = isTimeShown ? (
+    const timeComponent = isTimeShown && time ? (
       <Text className={styles.time}>{time}</Text>
     ) : null;
 
     return (
-      <div
-        {...styles('root', { isMultiday, isSelected, isRightToLeft }, rest)}
-      >
+      <div {...styles('root', { isMultiday, isSelected, isRightToLeft }, rest)}>
         {timeComponent}
         <Text className={styles.title}>{title}</Text>
       </div>

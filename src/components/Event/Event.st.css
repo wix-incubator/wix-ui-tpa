@@ -23,6 +23,8 @@
     DefaultRTLRightPadding: 12px;
     DefaultRTLBottomPadding: 4px;
     DefaultRTLLeftPadding: 4px;
+    BeforeColor: color(color-4);
+    BeforeOpacity: 0.06;
 }
 
 /*Overrides*/
@@ -68,6 +70,18 @@
     text-overflow: ellipsis;
 }
 
+.root:isRightToLeft {
+    position: relative;
+    direction: rtl;
+    display: table;
+    table-layout: fixed;
+    float: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: value(CurrentRTLTopPadding) value(CurrentRTLRightPadding) value(CurrentRTLBottomPadding) value(CurrentRTLLeftPadding);
+}
+
 .time {
     padding-right: 2px;
     -st-mixin: TPAText(
@@ -83,31 +97,39 @@
     );
 }
 
-.root:hover::before {
+.root:isRightToLeft .title {
+    -st-mixin: TPAText(
+        MainTextFont value(CurrentFontStyle),
+        MainTextColor value(CurrentTitleColor)
+    );
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 1.2em;
+}
+.root:isRightToLeft .time {
+    padding-right: 0;
+    padding-left: 2px;
+    display: table-cell;
+    width: 10%;
+}
+
+.beforeMixin {
     content: '';
-    background-color: applyOpacity(color(color-5), 0.06);
+    background-color: applyOpacity(value(BeforeColor), value(BeforeOpacity));
     position: absolute;
     left: 0px;
     right: 0px;
     height: 100%;
     margin-top: -4px;
+}
+
+.root:hover::before {
+    -st-mixin: beforeMixin;
 }
 
 .root:isSelected::before {
-    content: '';
-    background-color: applyOpacity(color(color-5), 0.1);
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    height: 100%;
-    margin-top: -4px;
-}
-
-.root:isRightToLeft {
-    direction: rtl;
-    display: table;
-    float: right;
-    padding: value(CurrentRTLTopPadding) value(CurrentRTLRightPadding) value(CurrentRTLBottomPadding) value(CurrentRTLLeftPadding);
+    -st-mixin: beforeMixin(BeforeColor color(color-5), BeforeOpacity 0.1);
 }
 
 .root:isRightToLeft .time{
