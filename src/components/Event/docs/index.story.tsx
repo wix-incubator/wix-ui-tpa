@@ -48,7 +48,10 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Regular', source: examples.regularSection }].map(code),
+          ...[{ title: 'Multiday', source: examples.multidaySection }].map(code),
+          ...[{ title: 'Alignment', source: examples.alignment }].map(code),
+          ...[{ title: 'More Events', source: examples.moreEventsSection }].map(code),
         ],
       }),
 
@@ -65,9 +68,40 @@ export default {
               rawSource: EventWiringExampleRaw,
               rawCSSSource: EventWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
-                numbers: [],
+                colors: [
+                  {
+                    label: 'Time Color',
+                    wixParam: 'timeColor',
+                    defaultColor: 'color-4',
+                  },
+                  {
+                    label: 'Title Color',
+                    wixParam: 'titleColor',
+                    defaultColor: 'color-4',
+                  },
+                  {
+                    label: 'All Day Background',
+                    wixParam: 'allDayBackground',
+                    defaultColor: 'color-8'
+                  }
+                ],
+                fonts: [
+                  {
+                    label: 'Font Style',
+                    wixParam: 'fontStyle',
+                    defaultFont: 'arial',
+                  },
+                ],
+                numbers: [
+                  {
+                    label: 'All Day Background opacity',
+                    wixParam: 'allDayOpacity',
+                    defaultNumber: 1,
+                    unit: '',
+                    min: 0,
+                    max: 1,
+                  }
+                ],
               },
             }),
           ],
