@@ -52,7 +52,7 @@ export class CalendarCell extends React.Component<CalendarCellProps, State> {
       >
         <div className={styles.innerContainer}>
           <Text className={styles.time}>{time}</Text>
-          <div>{children}</div>
+          {children}
         </div>
       </div>
     );
