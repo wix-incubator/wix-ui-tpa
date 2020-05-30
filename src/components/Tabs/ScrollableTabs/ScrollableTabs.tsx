@@ -5,7 +5,7 @@ import { Tab, TabItem } from '../Tab/Tab';
 import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateElementByProp } from '../../../common/animations';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from '../dataHooks';
-import style from './ScrollableTabs.st.css';
+import { st, classes } from './ScrollableTabs.st.css';
 import { TPAComponentProps } from '../../../types';
 
 export interface ScrollPosition {
@@ -231,21 +231,25 @@ export class ScrollableTabs extends React.Component<
       alignment,
       variant,
       animateIndicator,
-      ...rest
+      className,
     } = this.props;
 
     return (
       <div
-        {...style('root', { alignment, variant, animateIndicator }, rest)}
+        className={st(
+          classes.root,
+          { alignment, variant, animateIndicator },
+          className,
+        )}
         {...this._getDataAttributes()}
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
-        <nav className={style.nav} ref={this._navRef} onScroll={onScroll}>
-          <ul className={style.itemsList} ref={this._listRef}>
+        <nav className={classes.nav} ref={this._navRef} onScroll={onScroll}>
+          <ul className={classes.itemsList} ref={this._listRef}>
             {items.map((item, index) => (
               <Tab
                 key={`${item.title}-${index}`}
-                className={style.tab}
+                className={classes.tab}
                 item={item}
                 index={index}
                 data-hook={`${TABS_DATA_HOOKS.tab}-${index}`}
@@ -257,11 +261,11 @@ export class ScrollableTabs extends React.Component<
             ))}
           </ul>
           <div
-            className={style.selectedIndicator}
+            className={classes.selectedIndicator}
             style={selectedIndicatorRect}
           />
         </nav>
-        <div className={style.border} />
+        <div className={classes.border} />
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './TabsNavButton.st.css';
+import { st, classes } from './TabsNavButton.st.css';
 import { isSelectKey } from '../../../common/keyCodes';
 import { TPAComponentProps } from '../../../types';
 
@@ -34,7 +34,7 @@ export class TabsNavButton extends React.Component<TabsNavButtonProps> {
 
     return (
       <div
-        {...style('root', {}, { className })}
+        className={st(classes.root, className)}
         onClick={onClick}
         onKeyDown={this._onKeyDown}
         tabIndex={tabIndex}
@@ -42,7 +42,7 @@ export class TabsNavButton extends React.Component<TabsNavButtonProps> {
         ref={this._rootRefCallback}
       >
         {children}
-        <div className={style.border} />
+        <div className={classes.border} />
       </div>
     );
   }

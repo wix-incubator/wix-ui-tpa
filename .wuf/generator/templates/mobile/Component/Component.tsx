@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text } from '../Text';
 import { Button } from '../Button';
-import styles from './{%ComponentName%}.st.css';
+import { st, classes } from './{%ComponentName%}.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface {%ComponentName%}Props {
@@ -35,13 +35,13 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)} data-mobile={mobile}>
-            <Text {...styles('number', { even: isEven, odd: !isEven })}>
+          <div className={st(classes.root, { mobile }, rest)} data-mobile={mobile}>
+            <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
               You clicked this button {isEven ? 'even' : 'odd'} number ({count})
               of times
             </Text>
 
-            <div className={styles.button}>
+            <div className={classes.button}>
               <Button onClick={this._handleClick}>{buttonText}</Button>
             </div>
           </div>

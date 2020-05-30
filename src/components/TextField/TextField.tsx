@@ -3,7 +3,7 @@ import {
   Input as CoreInput,
   InputProps as CoreInputProps,
 } from 'wix-ui-core/input';
-import style from './TextField.st.css';
+import { st, classes } from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
@@ -77,6 +77,7 @@ export class TextField extends React.Component<TextFieldProps> {
       disabled = false,
       theme = TextFieldTheme.Box,
       suffix,
+      className,
       ...restProps
     } = this.props;
 
@@ -92,21 +93,21 @@ export class TextField extends React.Component<TextFieldProps> {
     return (
       <CoreInput
         {...dataObject}
-        {...style(
-          'root',
+        className={st(
+          classes.root,
           {
             error,
             theme,
             success,
             disabled,
           },
-          restProps,
+          className,
         )}
         ref={this.TextFieldRef}
         suffix={
           suffixToShow && (
-            <div className={style.suffixWrapper}>
-              <div className={style.gap} />
+            <div className={classes.suffixWrapper}>
+              <div className={classes.gap} />
               {suffixToShow}
             </div>
           )

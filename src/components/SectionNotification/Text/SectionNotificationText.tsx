@@ -2,7 +2,7 @@ import * as React from 'react';
 import classNames from 'classnames';
 import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
 import { SectionNotificationTextProps } from '../types';
-import styles from '../SectionNotification.st.css';
+import { classes } from '../SectionNotification.st.css';
 
 export class SectionNotificationText extends React.Component<
   SectionNotificationTextProps
@@ -12,7 +12,7 @@ export class SectionNotificationText extends React.Component<
   render() {
     return (
       <div
-        className={classNames(styles.text, this.props.className)}
+        className={classNames(classes.text, this.props.className)}
         data-hook={SECTION_NOTIFICATION_DATA_HOOKS.text}
       >
         {this.props.children}

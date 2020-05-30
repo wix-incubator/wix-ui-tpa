@@ -10,7 +10,7 @@
 
 :vars {
     /*Overrides*/
-    MainDividerColor: --overidable;
+    MainDividerColor: --overridable;
 }
 
 :vars {

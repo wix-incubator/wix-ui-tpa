@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Divider } from '../Divider';
-import extendedStyles from './DividerExtendedExample.st.css';
+import { st, classes } from './DividerExtendedExample.st.css';
 
 export const DividerExtendedExample = props => (
-  <Divider {...props} {...extendedStyles('root', {}, props)} />
+  <Divider {...props} className={st(classes.root)} />
 );

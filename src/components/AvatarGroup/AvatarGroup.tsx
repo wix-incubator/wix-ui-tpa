@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './AvatarGroup.st.css';
+import { st, classes } from './AvatarGroup.st.css';
 import { Avatar } from '../Avatar';
 import { AvatarGroupTextButton } from './AvatarGroupTextButton';
 import { TextButton } from '../TextButton';
@@ -53,24 +53,27 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
     ) as React.ReactElement;
     if (textButton) {
       return React.cloneElement(textButton, {
-        className: `${textButton.props.className || ''} ${styles.textButton}`,
+        className: `${textButton.props.className || ''} ${classes.textButton}`,
         'data-hook': 'text-button',
       });
     }
   };
 
   render() {
-    const { items, size, maxAmount, ...rest } = this.props;
+    const { items, size, maxAmount, className } = this.props;
 
     const textButton = this.getTextButton();
 
     return (
-      <div {...styles('root', { size }, rest)}>
-        <div className={styles.avatars}>
+      <div
+        className={st(classes.root, { size }, className)}
+        data-hook={this.props['data-hook']}
+      >
+        <div className={classes.avatars}>
           {items.slice(0, maxAmount).map(({ name, src, onLoad }, key) => (
-            <div className={styles.avatarContainer} key={key}>
+            <div className={classes.avatarContainer} key={key}>
               <Avatar
-                className={styles.avatar}
+                className={classes.avatar}
                 data-hook="avatar"
                 name={name}
                 src={src}
@@ -80,7 +83,7 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
           ))}
         </div>
         {textButton ? (
-          <div className={styles.textButtonContainer}>{textButton}</div>
+          <div className={classes.textButtonContainer}>{textButton}</div>
         ) : null}
       </div>
     );

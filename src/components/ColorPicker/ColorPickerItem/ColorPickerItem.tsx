@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './ColorPickerItem.st.css';
+import { st, classes } from './ColorPickerItem.st.css';
 import { RadioButton } from 'wix-ui-core/radio-button';
 import { RadioButtonProps } from 'wix-ui-core/dist/src/components/radio-button/RadioButton';
 import { colorPickerItemDataHook } from '../dataHooks';
@@ -22,21 +22,17 @@ export class ColorPickerItem extends React.Component<
   state = { focused: false };
 
   getRadio = ({ value }: ColorPickerItemProps) => (
-    <div className={styles.radioOuter}>
-      <div className={styles.radioInner} style={{ backgroundColor: value }} />
+    <div className={classes.radioOuter}>
+      <div className={classes.radioInner} style={{ backgroundColor: value }} />
     </div>
   );
 
   render = () => {
-    const { value, checked, onChange } = this.props;
-
+    const { value, checked, onChange, className } = this.props;
+    const { focused } = this.state;
     return (
       <RadioButton
-        {...styles(
-          'root',
-          { checked, focused: this.state.focused },
-          { ...this.props },
-        )}
+        className={st(classes.root, { checked, focused }, className)}
         aria-label={this.props['aria-label']}
         data-hook={ColorPickerItem.displayName}
         checked={checked}

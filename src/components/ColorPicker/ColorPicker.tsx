@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './ColorPicker.st.css';
+import { st, classes } from './ColorPicker.st.css';
 import { ColorPickerItem, ColorPickerItemProps } from './ColorPickerItem';
 import {
   RadioButtonChangeEvent,
@@ -20,10 +20,13 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
   static Item = (props: ColorPickerItemProps) => <ColorPickerItem {...props} />;
 
   render() {
-    const { onChange, children, ...rest } = this.props;
+    const { onChange, children, className } = this.props;
 
     return (
-      <div {...styles('root', {}, rest)}>
+      <div
+        className={st(classes.root, className)}
+        data-hook={this.props['data-hook']}
+      >
         {React.Children.map(
           children,
           (item: ColorPickerItem, index: number) => {
@@ -33,7 +36,7 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
             return React.cloneElement(item, {
               onChange,
               key: index,
-              className: styles.item,
+              className: classes.item,
             });
           },
         )}

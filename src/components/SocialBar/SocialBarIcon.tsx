@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import styles from './SocialBarIcon.st.css';
+import { st, classes } from './SocialBarIcon.st.css';
 import { Tooltip } from '../Tooltip';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ButtonProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
@@ -20,11 +20,19 @@ export class SocialBarIcon extends React.Component<SocialBarIconProps> {
   static defaultProps = { socialBarTheme: 'light' };
 
   render() {
-    const { children, tooltip, socialBarTheme, ...rest } = this.props;
+    const {
+      children,
+      tooltip,
+      socialBarTheme,
+      className,
+      ...rest
+    } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { theme: socialBarTheme }, rest)}>
+          <div
+            className={st(classes.root, { theme: socialBarTheme }, className)}
+          >
             <Tooltip
               appendTo={'scrollParent'}
               content={tooltip}
@@ -32,7 +40,7 @@ export class SocialBarIcon extends React.Component<SocialBarIconProps> {
               disabled={!tooltip || mobile}
             >
               <IconButton
-                className={styles.iconButton}
+                className={classes.iconButton}
                 skin={Skins.Full}
                 as="a"
                 {...rest}

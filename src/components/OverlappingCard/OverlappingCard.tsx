@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './OverlappingCard.st.css';
+import { st, classes } from './OverlappingCard.st.css';
 import { CardRatioOptions } from '../Card';
 import { TPAComponentProps } from '../../types';
 import { deprecationLog } from '../../common/deprecationLog';
@@ -20,7 +20,8 @@ const OverlappingCard = ({
   ratio,
   invertInfoPosition,
   flippedRatio,
-  ...rest
+  className,
+  ['data-hook']: dataHook,
 }: OverlappingCardProps) => {
   deprecationLog(
     'OverlappingCard',
@@ -29,20 +30,21 @@ const OverlappingCard = ({
 
   return (
     <div
-      {...style(
-        'root',
+      className={st(
+        classes.root,
         {
           ratio: media ? ratio : CardRatioOptions.RATIO_100,
           invertInfoPosition,
           flippedRatio,
         },
-        rest,
+        className,
       )}
+      data-hook={dataHook}
     >
       {media && ratio !== CardRatioOptions.RATIO_100 && (
-        <div className={style.mediaContainer}>{media}</div>
+        <div className={classes.mediaContainer}>{media}</div>
       )}
-      {info && <div className={style.infoContainer}>{info}</div>}
+      {info && <div className={classes.infoContainer}>{info}</div>}
     </div>
   );
 };
