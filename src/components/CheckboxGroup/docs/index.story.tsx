@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CheckboxGroup, Layout } from '../';
+import { CheckboxGroup, CheckboxGroupLayout } from '../';
 import { Checkbox } from '../../Checkbox';
 import * as examples from './examples';
 import {
@@ -40,7 +40,7 @@ export default {
     children: el,
   }),
   exampleProps: {
-    layout: Object.values(Layout),
+    layout: Object.values(CheckboxGroupLayout),
   },
   dataHook: 'storybook-CheckboxGroup',
   sections: [

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
 import { Button } from 'wix-ui-core/button';
-import style from './Counter.st.css';
+import { st, classes } from './Counter.st.css';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
 import { TPAComponentProps } from '../../types';
@@ -72,21 +72,22 @@ export class Counter extends React.Component<CounterProps> {
       value,
       error,
       errorMessage,
-      ...rest
+      className,
     } = this.props;
 
     const shouldShowErrorMessageTooltip = error && errorMessage;
     return (
       <div
-        {...style('root', { disabled, error }, rest)}
+        className={st(classes.root, { disabled, error }, className)}
         dir="ltr"
         role="region"
         aria-labelledby={this.props['aria-labelledby']}
         aria-label={this.props['aria-label']}
+        data-hook={this.props['data-hook']}
       >
         <Button
           aria-label={incrementAriaLabel}
-          className={style.btn}
+          className={classes.btn}
           onClick={this._onIncrement}
           name="increment"
           disabled={disabled || (max && value + step > max)}
@@ -101,10 +102,10 @@ export class Counter extends React.Component<CounterProps> {
             appendTo="window"
             skin={TooltipSkin.Error}
           >
-            <ErrorIcon className={style.error} />
+            <ErrorIcon className={classes.error} />
           </Tooltip>
         )}
-        <div className={style.inputWrapper}>
+        <div className={classes.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
             onChange={ev => onChange(ev.target.value)}
@@ -119,7 +120,7 @@ export class Counter extends React.Component<CounterProps> {
         </div>
         <Button
           aria-label={decrementAriaLabel}
-          className={style.btn}
+          className={classes.btn}
           onClick={this._onDecrement}
           name="decrement"
           disabled={disabled || value - step < min}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import style from './StatesButton.st.css';
+import { st, classes } from './StatesButton.st.css';
 import { Button, ButtonProps } from '../Button';
 import { TPAComponentProps } from '../../types';
 import { BUTTON_STATES } from './constants';
@@ -71,7 +71,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
 
   private renderCheck() {
     return (
-      <div className={classNames(style.successIcon)}>
+      <div className={classNames(classes.successIcon)}>
         <Check size="1em" data-hook={'checkIcon'} />
       </div>
     );
@@ -111,12 +111,14 @@ export class StatesButton extends React.Component<StatesButtonProps> {
       successContent,
       onNotificationEnd,
       upgrade,
+      className,
       ...rest
     } = this.props;
     const inProgress = state === BUTTON_STATES.IN_PROGRESS;
 
     return (
       <Button
+        className={st(classes.root, { upgrade }, className)}
         upgrade={upgrade}
         disabled={disabled}
         onClick={this.debounceOnClick}
@@ -124,7 +126,6 @@ export class StatesButton extends React.Component<StatesButtonProps> {
         aria-live="assertive"
         {...(inProgress && { 'aria-busy': true })}
         {...rest}
-        {...style('root', { upgrade }, this.props)}
       >
         {this.renderContent()}
       </Button>

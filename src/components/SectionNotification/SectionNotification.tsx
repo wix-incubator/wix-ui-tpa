@@ -7,7 +7,7 @@ import {
 import { SectionNotificationButton } from './Button/SectionNotificationButton';
 import { SectionNotificationText } from './Text/SectionNotificationText';
 import { SectionNotificationIcon } from './Icon/SectionNotificationIcon';
-import styles from './SectionNotification.st.css';
+import { st, classes } from './SectionNotification.st.css';
 
 /** Section notification displays an important, succinct message, and provides actions for users to address and can not be dismissed.  */
 export class SectionNotification extends React.Component<
@@ -23,7 +23,7 @@ export class SectionNotification extends React.Component<
   static Button = SectionNotificationButton;
 
   render() {
-    const { children, type } = this.props;
+    const { children, type, className } = this.props;
     const isError = type === NOTIFICATION_TYPE.error;
     const isAlert = type === NOTIFICATION_TYPE.alert;
 
@@ -40,14 +40,19 @@ export class SectionNotification extends React.Component<
 
     return (
       <div
-        {...styles('root', { error: isError, alert: isAlert }, this.props)}
+        className={st(
+          classes.root,
+          { error: isError, alert: isAlert },
+          className,
+        )}
         data-error={isError}
         data-alert={isAlert}
         aria-live="assertive"
+        data-hook={this.props['data-hook']}
       >
-        <div className={styles.main}>
-          <div className={styles.contentsWrapper}>{contents}</div>
-          <div className={styles.buttonsWrapper}>{buttons}</div>
+        <div className={classes.main}>
+          <div className={classes.contentsWrapper}>{contents}</div>
+          <div className={classes.buttonsWrapper}>{buttons}</div>
         </div>
       </div>
     );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import { RadioButton as CoreRadio } from 'wix-ui-core/radio-button';
-import styles from './Ratings.st.css';
+import { st, classes } from './Ratings.st.css';
 import { ReactComponent as StarIcon } from '../../assets/icons/Star.svg';
 import { RATINGS_DATA_HOOKS, RATINGS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
@@ -102,11 +102,11 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     const { currentHovered } = this.state;
 
     return (
-      <div className={styles.labelList}>
+      <div className={classes.labelList}>
         {currentHovered > -1 ? (
           <span
             data-hook={RATINGS_DATA_HOOKS.InputOption}
-            className={styles.inputOption}
+            className={classes.inputOption}
           >
             {inputOptions[currentHovered]}
           </span>
@@ -114,8 +114,8 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
           <span
             data-hook={RATINGS_DATA_HOOKS.InputOptionCurrent}
             className={classNames(
-              styles.inputOption,
-              styles.inputOptionCurrent,
+              classes.inputOption,
+              classes.inputOptionCurrent,
             )}
           >
             {inputOptions[value - 1]}
@@ -140,7 +140,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     return (
       <div
         data-hook={RATINGS_DATA_HOOKS.RatingInfo}
-        className={styles.ratingInfo}
+        className={classes.ratingInfo}
       >
         {info.join(' | ')}
       </div>
@@ -159,7 +159,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
       layout,
       ratingDisplay,
       countDisplay,
-      ...rest
+      className,
     } = this.props;
     const content = this._renderContent();
     const ratingList = Array.from(new Array(5));
@@ -169,12 +169,16 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
 
     return (
       <div
-        {...styles('root', { disabled, error, size, mode, layout }, rest)}
+        className={st(
+          classes.root,
+          { disabled, error, size, mode, layout },
+          className,
+        )}
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
       >
         <div
-          className={`${styles.iconList} ${!value ? styles.empty : ''}`}
+          className={`${classes.iconList} ${!value ? classes.empty : ''}`}
           role={'group'}
           tabIndex={mode === Mode.Display ? -1 : undefined}
         >
@@ -195,7 +199,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                 disabled={disabled && mode !== Mode.Display}
                 onChange={() => this.onClick(idx + 1)}
                 name={this.props.name}
-                {...styles(styles.icon, { checked })}
+                className={st(classes.icon, { checked })}
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
                 onHover={() => this.handleHoverIcon(idx)}
                 onIconBlur={this.handleUnhoverIcon}

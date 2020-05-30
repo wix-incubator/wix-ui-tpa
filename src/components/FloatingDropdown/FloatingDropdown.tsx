@@ -4,12 +4,15 @@ import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 
 import { DropdownOption } from '../Dropdown/DropdownOption';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import styles from './FloatingDropdown.st.css';
+import { st, classes } from './FloatingDropdown.st.css';
 import { FloatingDropdownBase } from './FloatingDropdownBase';
 import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
+import { Placement } from 'wix-ui-core/popover';
+import { TPAComponentProps } from '../../types';
+import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 
-export interface FloatingDropdownProps {
+export interface FloatingDropdownProps extends TPAComponentProps {
   /** Defines a string value that labels the current element. Optional. */
   'aria-label'?: string;
   /** Identifies the element (or elements) that labels the current element. Optional. */
@@ -28,18 +31,24 @@ export interface FloatingDropdownProps {
   value?: string;
   /** Force dropdown open. Use for visual test. Optional. Boolean. */
   forceContentElementVisibility?: boolean;
+  /** Placement for Popover. Optional. Placement. */
+  placement?: Placement;
   name?: string;
   id?: string;
 }
 
 type DefaultProps = Required<
-  Pick<FloatingDropdownProps, 'disabled' | 'options'>
+  Pick<FloatingDropdownProps, 'disabled' | 'options' | 'placement'>
 >;
 
 /** Dropdown component for sort. */
 export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
   static displayName = 'FloatingDropdown';
-  static defaultProps: DefaultProps = { disabled: false, options: [] };
+  static defaultProps: DefaultProps = {
+    disabled: false,
+    options: [],
+    placement: 'bottom',
+  };
 
   _onSelect = (selectedOption: FloatingDropdownOptionProps) => {
     if (!selectedOption) {
@@ -50,16 +59,25 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
     }
   };
 
+  _onCoreSelect = (selectedCoreOption: Option) => {
+    if (!selectedCoreOption) {
+      return;
+    }
+    const selectedOption = this.props.options.find(
+      ({ id }) => selectedCoreOption.id === id,
+    );
+    this._onSelect(selectedOption);
+  };
+
   _generateCoreOptions() {
     const { options } = this.props;
-    const coreOptions = [];
 
-    for (const option of options) {
-      coreOptions.push({
-        ...option,
-        render: () => <DropdownOption {...option} />,
-      });
-    }
+    const renderableOptions = options.map(option => ({
+      ...option,
+      render: () => <DropdownOption {...option} />,
+    }));
+
+    const coreOptions = renderableOptions.map(OptionFactory.create);
 
     return {
       coreOptions,
@@ -78,12 +96,13 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       options,
       name,
       id,
+      placement,
     } = this.props;
     const { coreOptions } = this._generateCoreOptions();
 
     const baseElement = (
       <FloatingDropdownBase
-        className={styles.floatingDropdownBase}
+        className={classes.floatingDropdownBase}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
         disabled={disabled}
@@ -102,15 +121,18 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       baseElement
     ) : (
       <CoreDropdown
-        className={styles.dropdown}
+        className={classes.dropdown}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={mobile}
         forceContentElementVisibility={forceContentElementVisibility}
         initialSelectedIds={value ? [value] : []}
-        onDeselect={this._onSelect}
-        onSelect={this._onSelect}
-        openTrigger={disabled ? 'none' : 'click'}
+        onInitialSelectedOptionsSet={() => {}}
+        onDeselect={this._onCoreSelect}
+        onSelect={this._onCoreSelect}
+        openTrigger={'click'}
+        disabled={disabled}
         options={coreOptions}
+        placement={placement}
       >
         {baseElement}
       </CoreDropdown>
@@ -121,7 +143,11 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div data-mobile={mobile} {...styles('root', { mobile }, this.props)}>
+          <div
+            data-mobile={mobile}
+            data-hook={this.props['data-hook']}
+            className={st(classes.root, { mobile }, this.props.className)}
+          >
             {this._getContent(mobile)}
           </div>
         )}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './StripCard.st.css';
+import { st, classes } from './StripCard.st.css';
 import { TPAComponentProps } from '../../types';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 
@@ -38,12 +38,15 @@ export class StripCard extends React.Component<StripCardProps> {
   }
 
   render() {
-    const { media, info, roundMedia, sidePadding, ...rest } = this.props;
+    const { media, info, roundMedia, sidePadding, className } = this.props;
 
     return (
-      <div {...styles('root', { roundMedia, sidePadding }, rest)}>
-        {media ? <div className={styles.mediaContainer}>{media}</div> : null}
-        {info ? <div className={styles.infoContainer}>{info}</div> : null}
+      <div
+        className={st(classes.root, { roundMedia, sidePadding }, className)}
+        data-hook={this.props['data-hook']}
+      >
+        {media ? <div className={classes.mediaContainer}>{media}</div> : null}
+        {info ? <div className={classes.infoContainer}>{info}</div> : null}
       </div>
     );
   }

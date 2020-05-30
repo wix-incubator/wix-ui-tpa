@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text } from '../Text';
 import { Button } from '../Button';
-import styles from './{%ComponentName%}.st.css';
+import { st, classes } from './{%ComponentName%}.st.css';
 
 export interface {%ComponentName%}Props {
   buttonText: string;
@@ -32,13 +32,13 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     const isEven = count % 2 === 0;
 
     return (
-      <div {...styles('root', {}, rest)}>
-        <Text {...styles('number', { even: isEven, odd: !isEven })}>
+      <div className={st(classes.root)}>
+        <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
           You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
           times
         </Text>
 
-        <div className={styles.button}>
+        <div className={classes.button}>
           <Button onClick={this._handleClick}>{buttonText}</Button>
         </div>
       </div>

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import styles from './DropdownNativeSelect.st.css';
-import dropdownStyles from './Dropdown.st.css';
-import buttonStyles from '../Button/Button.st.css';
+import { st, classes } from './DropdownNativeSelect.st.css';
+import { st as buttonSt } from '../Button/Button.st.css';
 import { DATA_ATTRIBUTES, DATA_HOOKS, ICON_SIZE } from './constants';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
 import { PRIORITY, SIZE } from '../Button';
@@ -13,7 +12,7 @@ import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { Tooltip } from '../Tooltip';
 
-interface DropdownNativeSelectProps {
+interface DropdownNativeSelectProps extends TPAComponentProps {
   onSelect(selectedOption: DropdownOptionProps): void;
   selectedOption: DropdownOptionProps;
   options: DropdownOptionProps[];
@@ -26,7 +25,7 @@ interface DropdownNativeSelectProps {
 }
 
 export class DropdownNativeSelect extends React.Component<
-  DropdownNativeSelectProps & TPAComponentProps
+  DropdownNativeSelectProps
 > {
   static contextType = TPAComponentsContext;
 
@@ -60,9 +59,9 @@ export class DropdownNativeSelect extends React.Component<
 
   private renderErrorIcon() {
     return (
-      <div className={styles.errorIconWrapper}>
+      <div className={classes.errorIconWrapper}>
         <Tooltip
-          className={styles.errorIcon}
+          className={classes.errorIcon}
           data-hook={DATA_HOOKS.errorTooltip}
           placement="top-end"
           skin={TooltipSkin.Error}
@@ -77,7 +76,7 @@ export class DropdownNativeSelect extends React.Component<
 
   private renderOptionIcon() {
     return (
-      <div className={styles.optionIcon}>{this.props.selectedOption.icon}</div>
+      <div className={classes.optionIcon}>{this.props.selectedOption.icon}</div>
     );
   }
 
@@ -96,25 +95,22 @@ export class DropdownNativeSelect extends React.Component<
       errorMessage,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
+      className,
     } = this.props;
     const { rtl } = this.context;
 
     const hasPlaceholder = !selectedOption || !selectedOption.value;
     const shouldRenderIcon = selectedOption && !!selectedOption.icon;
 
-    const buttonStyle = buttonStyles(
-      'root',
-      {
-        priority: PRIORITY.basic,
-        size: SIZE.medium,
-        fullWidth: true,
-        mobile: true,
-      },
-      {},
-    );
+    const buttonStyle = buttonSt(classes.root, {
+      priority: PRIORITY.basic,
+      size: SIZE.medium,
+      fullWidth: true,
+      mobile: true,
+    });
 
-    const componentStyles = styles(
-      'root',
+    const nativeSelectStyles = st(
+      classes.root,
       {
         error,
         disabled,
@@ -122,14 +118,12 @@ export class DropdownNativeSelect extends React.Component<
         icon: shouldRenderIcon,
         rtl,
       },
-      {},
+      className,
     );
 
     return (
-      <div className={styles.wrapper}>
+      <div className={classes.wrapper}>
         <select
-          {...componentStyles}
-          {...buttonStyle}
           {...this.getDataAttributes()}
           defaultValue={''}
           {...(selectedOption && { value: selectedOption.id })}
@@ -138,18 +132,14 @@ export class DropdownNativeSelect extends React.Component<
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
           disabled={disabled}
-          className={classNames(
-            styles.root,
-            buttonStyles.root,
-            dropdownStyles.dropdownNativeSelect,
-          )}
+          className={classNames(nativeSelectStyles, buttonStyle)}
         >
           {this.renderOptions(hasPlaceholder)}
         </select>
         {shouldRenderIcon ? this.renderOptionIcon() : null}
         {error && errorMessage && this.renderErrorIcon()}
         <ArrowIcon
-          className={styles.arrowIcon}
+          className={classes.arrowIcon}
           width={ICON_SIZE}
           height={ICON_SIZE}
         />

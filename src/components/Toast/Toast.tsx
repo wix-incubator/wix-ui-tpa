@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Toast.st.css';
+import { st, classes } from './Toast.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { CloseIconButton } from './CloseIconButton';
 import { DefaultProps, ToastProps } from './types';
@@ -25,36 +25,37 @@ export class Toast extends React.Component<ToastProps> {
       shouldAnimate,
       isShown,
       placement,
-      ...rest
+      className,
     } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-            {...styles(
-              'root',
+            className={st(
+              classes.root,
               { mobile, skin, shouldAnimate, isShown, placement },
-              rest,
+              className,
             )}
             role="alert"
             data-is-shown={isShown}
             data-skin={skin}
             data-mobile={mobile}
+            data-hook={this.props['data-hook']}
           >
-            <span role="presentation" className={styles.gapBeforeMessage} />
-            <span className={styles.message} data-hook="message">
+            <span role="presentation" className={classes.gapBeforeMessage} />
+            <span className={classes.message} data-hook="message">
               {children}
             </span>
             {shouldShowCloseButton ? (
-              <div className={styles.closeButtonWrapper}>
+              <div className={classes.closeButtonWrapper}>
                 <CloseIconButton
                   onClick={this.handleOnCloseClick}
                   data-hook="closeButton"
                 />
               </div>
             ) : (
-              <span role="presentation" className={styles.gapAfterMessage} />
+              <span role="presentation" className={classes.gapAfterMessage} />
             )}
           </div>
         )}

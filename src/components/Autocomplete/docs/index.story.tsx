@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Option, DividerArgs } from 'wix-ui-core/dropdown-option';
+import { Option } from 'wix-ui-core/dropdown-option';
 
 import { Autocomplete } from '../Autocomplete';
 import { generateOptions } from 'wix-ui-core/dist/src/components/dropdown-option/OptionsExample';
 
-const options = generateOptions((args: Partial<DividerArgs> = {}) =>
-  Autocomplete.createDivider(args.value),
-);
+const options = generateOptions();
 
 export default {
   category: 'Components',

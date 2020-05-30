@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
-import styles from './ActionsMenuLayoutItem.st.css';
+import { st, classes } from './ActionsMenuLayoutItem.st.css';
 import { Text } from '../../Text';
 import { ACTIONS_MENU_ITEM_DATA_HOOK } from '../dataHooks';
+import { TPAComponentProps } from '../../../types';
 
 export enum Alignment {
   left = 'left',
@@ -10,7 +11,7 @@ export enum Alignment {
   right = 'right',
 }
 
-export interface ActionsMenuLayoutItemProps {
+export interface ActionsMenuLayoutItemProps extends TPAComponentProps {
   prefixIcon?: React.ReactNode;
   /** the item's content */
   content: string;
@@ -35,7 +36,7 @@ export class ActionsMenuLayoutItem extends React.Component<
       disabled,
       onClick,
       alignment,
-      ...rest
+      className,
     } = this.props;
 
     return (
@@ -43,10 +44,10 @@ export class ActionsMenuLayoutItem extends React.Component<
         {({ mobile, rtl }) => (
           <li
             key={content}
-            {...styles(
-              'root',
+            className={st(
+              classes.root,
               { mobile, rtl, disabled, alignment, withIcon: !!prefixIcon },
-              rest,
+              className,
             )}
             role="menuitem"
             tabIndex={-1}
@@ -55,17 +56,17 @@ export class ActionsMenuLayoutItem extends React.Component<
             data-content={content}
             onClick={disabled ? undefined : onClick}
           >
-            <div className={styles.container}>
+            <div className={classes.container}>
               {prefixIcon ? (
-                <div className={styles.iconContainer}>
-                  <div className={styles.icon}>{prefixIcon}</div>
+                <div className={classes.iconContainer}>
+                  <div className={classes.icon}>{prefixIcon}</div>
                 </div>
               ) : null}
-              <div className={styles.textContainer}>
-                <div className={styles.text}>
-                  <Text className={styles.content}>{content}</Text>
+              <div className={classes.textContainer}>
+                <div className={classes.text}>
+                  <Text className={classes.content}>{content}</Text>
                   {subtitle && (
-                    <Text className={styles.subtitle}>{subtitle}</Text>
+                    <Text className={classes.subtitle}>{subtitle}</Text>
                   )}
                 </div>
               </div>

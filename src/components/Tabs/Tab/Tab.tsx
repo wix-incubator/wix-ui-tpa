@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { isSelectKey } from '../../../common/keyCodes';
-import style from './Tab.st.css';
+import { st, classes } from './Tab.st.css';
 import { TABS_DATA_KEYS } from '../dataHooks';
 import { TPAComponentProps } from '../../../types';
 
@@ -18,7 +18,7 @@ interface TabProps extends TPAComponentProps {
 }
 
 export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
-  const { index, item, onClick, isActive, indicateActive } = props;
+  const { index, item, onClick, isActive, indicateActive, className } = props;
   const title = item.title;
   const onSelectTab = () => {
     onClick(index);
@@ -40,7 +40,7 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
   return (
     <li
       ref={ref}
-      {...style('root', { isActive, indicateActive }, props)}
+      className={st(classes.root, { isActive, indicateActive }, className)}
       {...dataAttributes}
       data-hook={props['data-hook']}
       key={`${title}-${index}`}
@@ -50,8 +50,8 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       aria-current={isActive}
     >
       <span role="link">{title}</span>
-      <div className={style.focusIndicatorWrapper} tabIndex={-1}>
-        <div className={style.focusIndicator} tabIndex={-1} />
+      <div className={classes.focusIndicatorWrapper} tabIndex={-1}>
+        <div className={classes.focusIndicator} tabIndex={-1} />
       </div>
     </li>
   );

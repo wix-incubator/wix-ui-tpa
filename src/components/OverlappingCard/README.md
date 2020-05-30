@@ -40,7 +40,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import cardStylesExt from './OverlappingCardExt.st.css';
+    import { st, classes } from './OverlappingCardExt.st.css';
 
-    const OverlappingCardExt = (props) => <OverlappingCard {...props} {...cardStylesExt('root', {}, props)}/>;
+    const OverlappingCardExt = (props) => <OverlappingCard {...props} className={st(classes.root)} />;
     ```
