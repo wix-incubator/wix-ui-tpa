@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './ToggleSwitch.st.css';
+import { st, classes } from './ToggleSwitch.st.css';
 import {
   ToggleSwitch as CoreToggleSwitch,
   ToggleSwitchProps as CoreToggleSwitchProps,
@@ -15,14 +15,14 @@ export class ToggleSwitch extends React.Component<ToggleSwitchProps> {
   static defaultProps = { ...CoreToggleSwitch.defaultProps };
 
   render() {
-    const { checked, disabled, ...rest } = this.props;
+    const { checked, disabled, className, ...rest } = this.props;
 
     return (
       <CoreToggleSwitch
         checked={checked}
         disabled={disabled}
         {...rest}
-        {...style('root', { checked, disabled }, rest)}
+        className={st(classes.root, { checked, disabled }, className)}
       />
     );
   }

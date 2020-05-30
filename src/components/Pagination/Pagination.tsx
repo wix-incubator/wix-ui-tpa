@@ -12,7 +12,7 @@ import { ChevronRight } from '../../assets/icons/ChevronRight';
 
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-import styles from './Pagination.st.css';
+import { st, classes } from './Pagination.st.css';
 import { TPAComponentProps } from '../../types';
 
 export interface PaginationProps
@@ -26,7 +26,7 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
       {({ mobile, rtl }) => {
         return (
           <CorePagination
-            {...styles('root', { mobile, rtl }, props)}
+            className={st(classes.root, { mobile, rtl }, props.className)}
             previousLabel={ChevronLeft}
             nextLabel={ChevronRight}
             firstLabel={DoubleChevronLeft}

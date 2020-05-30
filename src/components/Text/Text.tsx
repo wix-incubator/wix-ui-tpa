@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './Text.st.css';
+import { st, classes } from './Text.st.css';
 import { DEFAULT_TAG_NAME, TYPOGRAPHY } from './constants';
 import {
   TPAComponentsConsumer,
@@ -21,7 +21,7 @@ export class Text extends React.Component<TextProps> {
   };
 
   render() {
-    const { typography, tagName, children, ...rest } = this.props;
+    const { typography, tagName, children, className } = this.props;
 
     return (
       <TPAComponentsConsumer>
@@ -29,14 +29,15 @@ export class Text extends React.Component<TextProps> {
           React.createElement(
             tagName || DEFAULT_TAG_NAME,
             {
-              ...style(
-                'root',
+              className: st(
+                classes.root,
                 {
                   typography,
                   mobile,
                 },
-                rest,
+                className,
               ),
+              'data-hook': this.props['data-hook'],
             },
             children,
           )

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './Badge.st.css';
+import { st, classes } from './Badge.st.css';
 import { TPAComponentProps } from '../../types';
 
 export enum BADGE_PRIORITY {
@@ -22,18 +22,12 @@ class Badge extends React.Component<BadgeProps> {
   static defaultProps: DefaultProps = { priority: BADGE_PRIORITY.default };
 
   render() {
-    const { priority, children, ...rest } = this.props;
+    const { priority, children, className } = this.props;
     return (
       <div
         data-priority={priority}
-        {...styles(
-          'root',
-          {
-            priority,
-          },
-          rest,
-        )}
-        {...rest}
+        className={st(classes.root, { priority }, className)}
+        data-hook={this.props['data-hook']}
       >
         {children}
       </div>

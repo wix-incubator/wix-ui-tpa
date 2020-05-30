@@ -26,11 +26,11 @@
 
 :vars {
     /*Overrides*/
-    MainTextColor: --overidable;
-    MainBackgroundColor: --overidable;
-    MainTextFont: --overidable;
-    MainBorderColor: --overidable;
-    MainBorderWidth: --overidable;
+    MainTextColor: --overridable;
+    MainBackgroundColor: --overridable;
+    MainTextFont: --overridable;
+    MainBorderColor: --overridable;
+    MainBorderWidth: --overridable;
     MainBorderRadius: value(BorderRadius);
 }
 

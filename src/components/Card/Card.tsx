@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './Card.st.css';
+import { st, classes } from './Card.st.css';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,
@@ -71,7 +71,7 @@ export class Card extends React.Component<CardProps> {
       stacked,
       mediaAspectRatio,
       upgrade,
-      ...rest
+      className,
     } = this.props;
     return upgrade ? (
       <NewCard {...this.props} />
@@ -79,8 +79,8 @@ export class Card extends React.Component<CardProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-            {...style(
-              'root',
+            className={st(
+              classes.root,
               {
                 ratio: media ? ratio : CardRatioOptions.RATIO_100,
                 invertInfoPosition,
@@ -89,18 +89,19 @@ export class Card extends React.Component<CardProps> {
                 mobile,
                 mediaAspectRatio: !!mediaAspectRatio || stacked,
               },
-              rest,
+              className,
             )}
+            data-hook={this.props['data-hook']}
           >
             {media && ratio !== CardRatioOptions.RATIO_100 && (
               <div
-                className={style.mediaWrapper}
+                className={classes.mediaWrapper}
                 style={{ paddingTop: this.getRatio() }}
               >
-                <div className={style.mediaContainer}>{media}</div>
+                <div className={classes.mediaContainer}>{media}</div>
               </div>
             )}
-            {info && <div className={style.infoContainer}>{info}</div>}
+            {info && <div className={classes.infoContainer}>{info}</div>}
           </div>
         )}
       </TPAComponentsConsumer>

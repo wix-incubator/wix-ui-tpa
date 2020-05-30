@@ -1,4 +1,6 @@
-export interface SectionNotificationProps {
+import { TPAComponentProps } from '../../types';
+
+export interface SectionNotificationProps extends TPAComponentProps {
   type?: string;
   children?: React.ReactNode;
 }

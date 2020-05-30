@@ -3,7 +3,7 @@ import {
   Tooltip as CoreTooltip,
   TooltipProps as CoreTooltipProps,
 } from 'wix-ui-core/tooltip';
-import tooltipStyles from './Tooltip.st.css';
+import { st, classes } from './Tooltip.st.css';
 import { getArrowByPlacement } from './Arrows';
 import { Placement } from 'wix-ui-core/popover';
 import { TooltipSkin } from './TooltipEnums';
@@ -13,7 +13,7 @@ function customArrow(placement: Placement, arrowProps) {
   const ArrowSvg = getArrowByPlacement(placement);
 
   return (
-    <div className={tooltipStyles.tpaArrow} {...arrowProps}>
+    <div className={classes.tpaArrow} {...arrowProps}>
       <ArrowSvg />
     </div>
   );
@@ -34,12 +34,13 @@ export class Tooltip extends React.Component<TooltipProps> {
   };
 
   render() {
+    const { className, ...rest } = this.props;
     return (
       <CoreTooltip
-        {...tooltipStyles('root', { skin: this.props.skin }, this.props)}
-        {...this.props}
+        className={st(classes.root, { skin: this.props.skin }, className)}
         timeout={{ enter: 120, exit: 80 }}
         customArrow={customArrow}
+        {...rest}
       />
     );
   }

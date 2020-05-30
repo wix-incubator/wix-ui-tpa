@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { TextButtonProps, TextButton } from '../TextButton';
-import extendedStyles from './TextButtonWithStylesExample.st.css';
+import { st, classes } from './TextButtonWithStylesExample.st.css';
 
 export const TextButtonWithStylesExample: React.FunctionComponent<TextButtonProps> = props => (
-  <TextButton {...props} {...extendedStyles('root', {}, props)}>
+  <TextButton {...props} className={st(classes.root)}>
     Text Button
   </TextButton>
 );

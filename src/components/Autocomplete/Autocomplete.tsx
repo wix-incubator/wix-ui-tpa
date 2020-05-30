@@ -3,10 +3,9 @@ import {
   Autocomplete as CoreAutocomplete,
   AutocompleteProps as CoreAutocompleteProps,
 } from 'wix-ui-core/autocomplete';
-import { withStylable } from 'wix-ui-core/withStylable';
 import ChevronDown from 'wix-ui-icons-common/ChevronDown';
-import style from './Autocomplete.st.css';
-import { ErrorMessageWrapper, ErrorProps } from '../ErrorMessageWrapper';
+import { st, classes } from './Autocomplete.st.css';
+import { ErrorMessageWrapper } from '../ErrorMessageWrapper';
 import { TPAComponentProps } from '../../types';
 
 export interface TPAAutocompleteProps extends TPAComponentProps {
@@ -16,12 +15,9 @@ export interface TPAAutocompleteProps extends TPAComponentProps {
   error?: boolean;
 }
 
-export type AutocompleteProps = TPAAutocompleteProps & CoreAutocompleteProps;
-
-const AutocompleteWithErrorStates = withStylable<
-  CoreAutocompleteProps,
-  ErrorProps
->(CoreAutocomplete, style, ({ error }) => ({ error }));
+export type AutocompleteProps = TPAAutocompleteProps &
+  CoreAutocompleteProps &
+  TPAComponentProps;
 
 export type AutocompleteType = React.FunctionComponent<AutocompleteProps> & {
   createOption: typeof CoreAutocomplete.createOption;
@@ -29,7 +25,13 @@ export type AutocompleteType = React.FunctionComponent<AutocompleteProps> & {
 };
 
 export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
-  const { errorMessage, error, suffix, ...coreAutocompleteProps } = props;
+  const {
+    errorMessage,
+    error,
+    suffix,
+    className,
+    ...coreAutocompleteProps
+  } = props;
   const { disabled } = props;
 
   return (
@@ -38,17 +40,19 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
       errorMessage={errorMessage}
       disabled={disabled}
       render={errorProps => (
-        <AutocompleteWithErrorStates
+        <CoreAutocomplete
+          className={st(classes.root, { error }, className)}
           {...coreAutocompleteProps}
           error={errorProps.error}
+          data-hook={props['data-hook']}
           suffix={
-            <span className={style.suffix}>
+            <span className={classes.suffix}>
               {
                 <ChevronDown
                   width={14}
                   height={14}
                   viewBox="8 7 9 10"
-                  className={style.arrowIcon}
+                  className={classes.arrowIcon}
                 />
               }
               {suffix}

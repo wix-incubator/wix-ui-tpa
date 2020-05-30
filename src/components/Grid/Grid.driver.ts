@@ -3,7 +3,7 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Grid.st.css';
+import * as style from './Grid.st.css';
 import { GridDataHooks, GridDataKeys } from './DataHooks';
 
 export interface gridDriver extends BaseUniDriver {

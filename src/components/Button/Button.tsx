@@ -1,5 +1,5 @@
 import * as React from 'react';
-import style from './Button.st.css';
+import { st, classes } from './Button.st.css';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
 import {
@@ -67,6 +67,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
       innerRef,
       upgrade,
       children,
+      className,
       ...rest
     } = this.props;
     return (
@@ -75,13 +76,14 @@ class ButtonComponent extends React.Component<ButtonProps> {
           <ButtonNext
             {...this._getDataAttributes(mobile)}
             ref={innerRef}
-            {...rest}
             children={children}
-            {...style(
-              'root',
+            data-hook={this.props['data-hook']}
+            className={st(
+              classes.root,
               { priority, size, fullWidth, mobile, upgrade },
-              rest,
+              className,
             )}
+            {...rest}
           />
         )}
       </TPAComponentsConsumer>

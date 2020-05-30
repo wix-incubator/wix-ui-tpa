@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './TextArea.st.css';
+import { st, classes } from './TextArea.st.css';
 import { TEXT_AREA_DATA_HOOK, TEXT_AREA_ERROR_DATA_HOOK } from './dataHooks';
 import { Tooltip } from '../Tooltip';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
@@ -69,7 +69,7 @@ export class TextArea extends React.Component<TextAreaProps> {
       onChange,
       placeholder,
       errorDescription,
-      ...rest
+      className,
     } = this.props;
     const dataObject = this._getDataAttributes();
     const showErrorIcon = error && errorDescription;
@@ -79,8 +79,9 @@ export class TextArea extends React.Component<TextAreaProps> {
           return (
             <div
               {...dataObject}
-              {...styles(
-                'root',
+              data-hook={this.props['data-hook']}
+              className={st(
+                classes.root,
                 {
                   error,
                   rtl,
@@ -89,7 +90,7 @@ export class TextArea extends React.Component<TextAreaProps> {
                   success,
                   disabled,
                 },
-                rest,
+                className,
               )}
             >
               <textarea
@@ -101,14 +102,14 @@ export class TextArea extends React.Component<TextAreaProps> {
                   }
                 }}
                 placeholder={placeholder}
-                className={styles.textArea}
+                className={classes.textArea}
                 data-hook={TEXT_AREA_DATA_HOOK}
                 aria-label={this.props.ariaLabel}
               />
               {showErrorIcon && (
                 <div
                   data-hook={TEXT_AREA_ERROR_DATA_HOOK}
-                  className={styles.errorIconWrapper}
+                  className={classes.errorIconWrapper}
                 >
                   <Tooltip
                     placement={'top-end'}

@@ -2,9 +2,10 @@ import * as React from 'react';
 import { ALIGNMENT, SIZE, SKIN } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Tag as CoreTag, TagsList as CoreTagList } from 'wix-ui-core/tags-list';
-import styles from './Tags.st.css';
+import { st, classes } from './Tags.st.css';
 import * as classNames from 'classnames';
 import { TAGS_DATA_KEYS } from './dataHooks';
+import { TPAComponentProps } from '../../types';
 
 export interface TagItem {
   title: string;
@@ -15,7 +16,7 @@ export interface TagItem {
   rel?: string;
 }
 
-export interface TagsProps {
+export interface TagsProps extends TPAComponentProps {
   items: TagItem[];
   onClick(item: TagItem): void;
   size?: SIZE;
@@ -65,7 +66,7 @@ export class Tags extends React.Component<TagsProps> {
         link={item.link}
         rel={item.rel}
         value={item.value}
-        className={classNames(styles.tag, { [styles.checked]: item.checked })}
+        className={classNames(classes.tag, { [classes.checked]: item.checked })}
         {...this.getTagDataAttributes({
           isChecked: item.checked,
           index,
@@ -77,26 +78,27 @@ export class Tags extends React.Component<TagsProps> {
   }
 
   render() {
-    const { alignment, size, skin, ...rest } = this.props;
+    const { alignment, size, skin, className, ...rest } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => (
           <CoreTagList
+            data-hook={this.props['data-hook']}
             {...this.getTagsListDataAttributes({
               alignment,
               skin,
               size,
               rtl,
             })}
-            {...styles(
-              'root',
+            className={st(
+              classes.root,
               {
                 alignment,
                 skin,
                 size,
                 rtl,
               },
-              rest,
+              className,
             )}
           >
             {this.generateTagItems()}
