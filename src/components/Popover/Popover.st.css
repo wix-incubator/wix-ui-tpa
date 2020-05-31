@@ -1,0 +1,32 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity;
+}
+
+/*Defaults*/
+:vars {
+    /*Defaults params goes here*/
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+}
+
+.root {
+    width: 400px;
+    box-sizing: border-box;
+    padding: 24px;
+    box-shadow: 0 0 25px 10px rgba(80, 80, 80, 0.1), 0 4px 50px 0 rgba(209, 209, 209, 0.1);
+    border-radius: 2px;
+    border: 1px solid applyOpacity(#fff, 0.2);
+    position: relative;
+    min-height: 260px;
+    max-height: 460px;
+}
+
+.close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
