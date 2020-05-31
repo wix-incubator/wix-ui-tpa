@@ -6,8 +6,8 @@ import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { CalendarCell, Times, CalendarCellProps } from './';
 
 const defaultProps: CalendarCellProps = {
-  title: '12'
-}
+  title: '12',
+};
 
 visualize('ShareButton', () => {
   story('render', () => {
