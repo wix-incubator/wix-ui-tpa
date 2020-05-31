@@ -3,16 +3,14 @@ import { ReactComponent as Close } from '../../assets/icons/Close.svg';
 import { IconButton } from '../IconButton';
 import styles from './Popover.st.css';
 
-export interface PopoverProps {
-}
+export interface PopoverProps {}
 
-interface DefaultProps {
-}
+interface DefaultProps {}
 
 /** Popover */
 export class Popover extends React.Component<PopoverProps> {
   static displayName = 'Popover';
-  static defaultProps: DefaultProps = { };
+  static defaultProps: DefaultProps = {};
 
   render() {
     const { children, ...rest } = this.props;
@@ -20,11 +18,7 @@ export class Popover extends React.Component<PopoverProps> {
     return (
       <div {...styles('root', {}, rest)}>
         {children}
-        <IconButton
-          {...styles('close', {})}
-          as="a"
-          icon={<Close/>}
-        />
+        <IconButton {...styles('close', {})} as="a" icon={<Close />} />
       </div>
     );
   }

@@ -7,6 +7,6 @@ PopoverMetadata.nonReactStrictModeCompliant = true;
 PopoverMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });
