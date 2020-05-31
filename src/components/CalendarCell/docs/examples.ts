@@ -10,7 +10,7 @@ const createStringCell = (
   return `
     <div style={{width: "${width}px", height: "${height}px"}}>
         <h4>${title}</h4>
-        <CalendarCell stretchable={${stretchable}} timeType="${timeType}" time='17' />
+        <CalendarCell stretchable={${stretchable}} timeType="${timeType}" title='17' />
     </div>
     `;
 };

@@ -9,7 +9,7 @@ import { calendarCellTestkitFactory } from '../../testkit';
 import { calendarCellTestkitFactory as enzymeCalendarCellTestkitFactory } from '../../testkit/enzyme';
 
 const defProps = {
-  time: '22',
+  title: '22',
 };
 
 describe('CalendarCell', () => {
@@ -62,7 +62,7 @@ describe('CalendarCell', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <CalendarCell time="11" />,
+          <CalendarCell title="11" />,
           calendarCellTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -76,7 +76,7 @@ describe('CalendarCell', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <CalendarCell time="11" />,
+          <CalendarCell title="11" />,
           enzymeCalendarCellTestkitFactory,
           mount,
           {

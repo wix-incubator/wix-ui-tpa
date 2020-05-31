@@ -11,7 +11,7 @@ export enum Times {
 }
 
 export interface CalendarCellProps {
-  time: string;
+  title: string;
   children?: any;
   timeType?: Times;
   stretchable?: boolean;
@@ -42,7 +42,7 @@ export class CalendarCell extends React.Component<CalendarCellProps, State> {
   }
 
   render() {
-    const { time, children, timeType, stretchable, ...rest } = this.props;
+    const { title, children, timeType, stretchable, ...rest } = this.props;
 
     return (
       <div
@@ -51,7 +51,7 @@ export class CalendarCell extends React.Component<CalendarCellProps, State> {
         {...styles('root', { timeType, stretchable }, rest)}
       >
         <div className={styles.innerContainer}>
-          <Text className={styles.time}>{time}</Text>
+          <Text className={styles.title}>{title}</Text>
           {children}
         </div>
       </div>

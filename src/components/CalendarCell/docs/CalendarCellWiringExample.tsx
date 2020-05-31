@@ -7,14 +7,14 @@ export const CalendarCellWiringExample = () => {
     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
       <div style={{ width: '135px' }}>
         <h4>Default Day</h4>
-        <CalendarCell {...styles('root')} time={'17'} />
+        <CalendarCell {...styles('root')} title={'17'} />
       </div>
       <div style={{ width: '135px' }}>
         <h4>Current Day</h4>
         <CalendarCell
           timeType={Times.currentDay}
           {...styles('root')}
-          time={'17'}
+          title={'17'}
         />
       </div>
     </div>

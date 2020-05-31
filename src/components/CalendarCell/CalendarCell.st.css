@@ -65,13 +65,7 @@
     padding: 12px;
 }
 
-@media only screen and (max-width: 75px) {
-    .innerContainer {
-        padding: 8px 4px;
-    }
-}
-
-.time {
+.title {
     -st-extends: TPAText;
     -st-mixin: TPAText(
         MainTextColor value(CurrentFontColor),
@@ -95,7 +89,7 @@
     border: 1px solid color(color-2);
 }
 
-.root:timeType(previousMonth) .time {
+.root:timeType(previousMonth) .title {
     -st-mixin: TPAText(
         MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
         MainTextFont value(CurrentFontStyle)
@@ -109,7 +103,7 @@
     border: 1px solid color(color-2);
 }
 
-.root:timeType(previousDays) .time {
+.root:timeType(previousDays) .title {
     -st-mixin: TPAText(
         MainTextColor value(CurrentFontColor),
         MainTextFont value(CurrentFontStyle)
@@ -123,7 +117,7 @@
     border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
 }
 
-.root:timeType(currentDay) .time {
+.root:timeType(currentDay) .title {
     -st-mixin: TPAText(
         MainTextColor value(CurrentTodayColor),
         MainTextFont value(CurrentFontStyle)
@@ -137,7 +131,7 @@
     border: 1px solid color(color-2);
 }
 
-.root:timeType(nextMonth) .time {
+.root:timeType(nextMonth) .title {
     -st-mixin: TPAText(
         MainTextColor applyOpacity(value(CurrentFontColor), 0.35),
         MainTextFont value(CurrentFontStyle)

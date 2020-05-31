@@ -1,71 +1,24 @@
 import * as React from 'react';
+import { visualize, story, snap } from 'storybook-snapper';
+import { Omit } from '../../types';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { CalendarCell, Times } from './';
+import { CalendarCell, Times, CalendarCellProps } from './';
 
-class CalendarCellVisual extends React.Component<any> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <CalendarCell time="14" {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
+const VisualCalendarCell = (
+  props: CalendarCellProps
+) => (
+  <CalendarCell
+    title={'12'}
+    {...props}
+  />
+);
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {
-          time: '12',
-        },
-      },
-      {
-        it: 'previous-month',
-        props: {
-          time: '12',
-          timeType: Times.previousMonth,
-        },
-      },
-      {
-        it: 'previous-days',
-        props: {
-          time: '12',
-          timeType: Times.previousDays,
-        },
-      },
-      {
-        it: 'current-day',
-        props: {
-          time: '12',
-          timeType: Times.currentDay,
-        },
-      },
-      {
-        it: 'next-month',
-        props: {
-          time: '12',
-          timeType: Times.nextMonth,
-        },
-      },
-      {
-        it: 'stretchable',
-        props: {
-          time: '12',
-          stretchable: true,
-        },
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`CalendarCell/${describe}`, module).add(it, () => (
-      <CalendarCellVisual {...props} />
-    ));
+visualize('ShareButton', () => {
+  story('render', () => {
+    snap('title', <VisualCalendarCell title='12' />);
+    snap('current-day', <VisualCalendarCell title='12' timeType={Times.currentDay} />);
+    snap('stretchable', <VisualCalendarCell title='12' stretchable />);
   });
 });
+
