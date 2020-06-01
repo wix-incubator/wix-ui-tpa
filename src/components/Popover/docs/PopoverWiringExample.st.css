@@ -1,7 +1,25 @@
-.root {
-
+:import {
+    -st-from: "../Popover.st.css";
+    -st-default: TPAPopover;
 }
 
-.component {
+.root {
+    -st-mixin: TPAPopover(
+        BorderColor '"--borderColor"',
+        Radius '"unit(fallback(--radius, 2), px)"',
+        IconColor '"--iconColor"',
+        IconTopPadding '"unit(fallback(--iconTopPadding, 16), px)"',
+        IconRightPadding '"unit(fallback(--iconRightPadding, 16), px)"',
+        IconLeftPadding '"unit(fallback(--iconLeftPadding, 16), px)"',
+        BackgroundColor '"--backgroundColor"',
+        TopPadding '"unit(fallback(--topPadding, 24), px)"',
+        RightPadding '"unit(fallback(--rightPadding, 24), px)"',
+        LeftPadding '"unit(fallback(--leftPadding, 24), px)"',
+        BottomPadding '"unit(fallback(--bottomPadding, 24), px)"'
+    );
+}
 
+.flexContainer {
+    display: flex;
+    justify-content: space-around;
 }

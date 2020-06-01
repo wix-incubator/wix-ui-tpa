@@ -10,9 +10,10 @@
 
 /*Defaults*/
 :vars {
+    DefaultBackgroundColor: color-1;
     DefaultBorderColor: #fff;
     DefaultRadius: 2px;
-    DefaultIconColor: gray;
+    DefaultIconColor: color-5;
     DefaultPadding: 24px;
     DefaultIconPadding: 16px;
 }
@@ -29,6 +30,7 @@
     IconTopPadding: --overridable;
     IconRightPadding: --overridable;
     IconLeftPadding: --overridable;
+    BackgroundColor: --overridable;
 }
 
 /*Fallbacks*/
@@ -43,11 +45,11 @@
     CurrentIconTopPadding: fallback(value(IconTopPadding), value(DefaultIconPadding));
     CurrentIconRightPadding: fallback(value(IconRightPadding), value(DefaultIconPadding));
     CurrentIconLeftPadding: fallback(value(IconLeftPadding), value(DefaultIconPadding));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
 }
 
 .root {
     -st-states: rightToLeft;
-    width: 400px;
     box-sizing: border-box;
     padding-top: value(CurrentTopPadding);
     padding-right: value(CurrentRightPadding);
@@ -59,6 +61,8 @@
     position: relative;
     min-height: 260px;
     max-height: 460px;
+    width: 400px;
+    background-color: value(CurrentBackgroundColor);
 }
 
 .close {
@@ -72,4 +76,8 @@
 
 .root:rightToLeft .close {
     left: value(CurrentIconLeftPadding);
+}
+
+.root:rightToLeft .children {
+    float: right;
 }

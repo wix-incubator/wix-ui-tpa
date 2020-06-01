@@ -48,7 +48,7 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Alignment', source: examples.alignment }].map(code),
         ],
       }),
 
@@ -65,9 +65,74 @@ export default {
               rawSource: PopoverWiringExampleRaw,
               rawCSSSource: PopoverWiringExampleCSSRaw,
               params: {
-                colors: [],
+                colors: [
+                  {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Icon Color',
+                    wixParam: 'iconColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Background Color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
                 fonts: [],
-                numbers: [],
+                numbers: [
+                  {
+                    label: 'Radius',
+                    wixParam: 'radius',
+                    defaultNumber: 2,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Icon Top Padding',
+                    wixParam: 'iconTopPadding',
+                    defaultNumber: 16,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Icon Right Padding (LTR)',
+                    wixParam: 'iconRightPadding',
+                    defaultNumber: 16,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Icon Left Padding (RTL)',
+                    wixParam: 'iconLeftPadding',
+                    defaultNumber: 16,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Top Padding',
+                    wixParam: 'topPadding',
+                    defaultNumber: 24,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Right Padding',
+                    wixParam: 'rightPadding',
+                    defaultNumber: 24,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Left Padding',
+                    wixParam: 'leftPadding',
+                    defaultNumber: 24,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Bottom Padding',
+                    wixParam: 'bottomPadding',
+                    defaultNumber: 24,
+                    unit: 'px',
+                  },
+                ],
               },
             }),
           ],

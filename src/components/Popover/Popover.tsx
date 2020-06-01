@@ -15,7 +15,7 @@ interface DefaultProps {
 export class Popover extends React.Component<PopoverProps> {
   static displayName = 'Popover';
   static defaultProps: DefaultProps = {
-    rightToLeft: true,
+    rightToLeft: false,
   };
 
   render() {
@@ -23,14 +23,8 @@ export class Popover extends React.Component<PopoverProps> {
 
     return (
       <div {...styles('root', { rightToLeft }, rest)}>
-        {children}
-        <div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-          <div>1</div>
-        </div>
-        <IconButton {...styles('close', {})} as="a" icon={<Close height='24px' width='24px' />} />
+        <div className={styles.children}>{children}</div>
+        <IconButton {...styles('close', {})} as="a" icon={<Close />} />
       </div>
     );
   }
