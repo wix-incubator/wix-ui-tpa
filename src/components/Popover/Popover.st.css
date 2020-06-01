@@ -14,6 +14,7 @@
 }
 
 .root {
+    -st-states: rightToLeft;
     width: 400px;
     box-sizing: border-box;
     padding: 24px;
@@ -29,4 +30,8 @@
     position: absolute;
     top: 16px;
     right: 16px;
+}
+
+.root:rightToLeft .close {
+    left: 16px;
 }
