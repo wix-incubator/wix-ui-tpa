@@ -3,7 +3,6 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { popoverDriverFactory } from './Popover.driver';
 import { Popover } from './';
 import { popoverTestkitFactory } from '../../testkit';
@@ -13,8 +12,13 @@ describe('Popover', () => {
   const createDriver = createUniDriverFactory(popoverDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Popover buttonText="Click Me" />);
+    const driver = createDriver(<Popover />);
     expect(await driver.exists()).toBe(true);
+  });
+
+  it('should show right to left state', async () => {
+    const driver = createDriver(<Popover rightToLeft/>);
+    expect(await driver.isRightToLeft()).toBeTruthy();
   });
 
   describe('testkit', () => {

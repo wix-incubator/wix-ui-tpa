@@ -1,34 +1,10 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { visualize, story, snap } from 'storybook-snapper';
 import { Popover } from './';
 
-class PopoverVisual extends React.Component<any> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <Popover {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
-
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`Popover/${describe}`, module).add(it, () => (
-      <PopoverVisual {...props} />
-    ));
+visualize('Popover', () => {
+  story('render', () => {
+    snap('default', <Popover />);
+    snap('right to left',<Popover rightToLeft />);
   });
 });
