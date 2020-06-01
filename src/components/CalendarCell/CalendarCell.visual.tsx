@@ -9,7 +9,7 @@ const defaultProps: CalendarCellProps = {
   title: '12',
 };
 
-visualize('ShareButton', () => {
+visualize('CalendarCell', () => {
   story('render', () => {
     snap('title', <CalendarCell {...defaultProps} />);
     snap(
