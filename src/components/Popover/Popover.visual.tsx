@@ -5,6 +5,6 @@ import { Popover } from './';
 visualize('Popover', () => {
   story('render', () => {
     snap('default', <Popover />);
-    snap('right to left',<Popover rightToLeft />);
+    snap('right to left', <Popover rightToLeft />);
   });
 });

@@ -18,25 +18,25 @@ export class Popover extends React.Component<PopoverProps> {
   static displayName = 'Popover';
   static defaultProps: DefaultProps = {
     rightToLeft: false,
-    'data-hook': POPOVER_DATA_HOOKS.Popover
+    'data-hook': POPOVER_DATA_HOOKS.Popover,
   };
 
   getDataAttributes = () => {
     const { rightToLeft } = this.props;
     return {
-      [POPOVER_DATA_KEYS.RightToLeft]: rightToLeft
-    }
-  }
+      [POPOVER_DATA_KEYS.RightToLeft]: rightToLeft,
+    };
+  };
 
   render() {
     const { children, rightToLeft, ...rest } = this.props;
 
     return (
-      <div 
+      <div
         {...styles('root', { rightToLeft }, rest)}
         data-hook={this.props['data-hook']}
         {...this.getDataAttributes()}
-        >
+      >
         <div className={styles.children}>{children}</div>
         <IconButton {...styles('close', {})} as="a" icon={<Close />} />
       </div>

@@ -13,7 +13,7 @@ export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
   return {
     ...baseUniDriverFactory(base),
     async isRightToLeft() {
-        return (await base.attr(POPOVER_DATA_KEYS.RightToLeft)) === 'true';
-    }
+      return (await base.attr(POPOVER_DATA_KEYS.RightToLeft)) === 'true';
+    },
   };
 };

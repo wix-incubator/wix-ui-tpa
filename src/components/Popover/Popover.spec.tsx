@@ -17,7 +17,7 @@ describe('Popover', () => {
   });
 
   it('should show right to left state', async () => {
-    const driver = createDriver(<Popover rightToLeft/>);
+    const driver = createDriver(<Popover rightToLeft />);
     expect(await driver.isRightToLeft()).toBeTruthy();
   });
 
