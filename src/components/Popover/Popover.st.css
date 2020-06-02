@@ -80,4 +80,5 @@
 
 .root:rightToLeft .children {
     float: right;
+    text-align: right;
 }
