@@ -24,6 +24,6 @@ export const pickerDriverFactory = (base: UniDriver): PickerDriver => {
       return (await base.attr(PICKER_DATA_KEYS.ArrowsSized)) === arrowsSized;
     },
     clickOnNext: async () => warnUnsupportedFunction('clickOnNext'),
-    clickOnPrev: async () => warnUnsupportedFunction('clickOnPrev')
+    clickOnPrev: async () => warnUnsupportedFunction('clickOnPrev'),
   };
 };

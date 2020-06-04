@@ -28,7 +28,7 @@ export class Picker extends React.Component<PickerProps> {
     arrowsSize: '24px',
     'data-hook': PICKER_DATA_HOOKS.PickerWrapper,
     disablePrev: false,
-    disableNext: false
+    disableNext: false,
   };
 
   getDataAttributes() {
@@ -60,7 +60,7 @@ export class Picker extends React.Component<PickerProps> {
           className={styles.arrow}
           icon={<ChevronLeft height={arrowsSize} width={arrowsSize} />}
           as="a"
-          onClick={() => disablePrev ? null : onPrev()}
+          onClick={() => (disablePrev ? null : onPrev())}
           disabled={disablePrev}
         />
         <Text className={styles.value}>{value}</Text>
@@ -68,7 +68,7 @@ export class Picker extends React.Component<PickerProps> {
           className={styles.arrow}
           as="a"
           icon={<ChevronRight height={arrowsSize} width={arrowsSize} />}
-          onClick={() => disableNext ? null : onNext()}
+          onClick={() => (disableNext ? null : onNext())}
           disabled={disableNext}
         />
       </div>
