@@ -4,15 +4,15 @@ import styles from './EventWiringExample.st.css';
 
 export const EventWiringExample = () => {
   return (
-    <div {...styles('flexContainer')}>
+    <div {...styles('root')}>
       <div>
         <h4>Regular</h4>
-        <Event {...styles('root')} time="20:30" title="Blink 182 Concert" />
+        <Event {...styles('event')} time="20:30" title="Blink 182 Concert" />
       </div>
       <div>
         <h4>All Day</h4>
         <Event
-          {...styles('root')}
+          {...styles('event')}
           isMultiday
           time="20:30"
           title="Blink 182 Concert"

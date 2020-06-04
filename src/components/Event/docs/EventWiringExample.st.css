@@ -4,6 +4,11 @@
 }
 
 .root {
+    display: flex;
+    justify-content: space-around;
+}
+
+.event {
     -st-mixin: TPAEvent(
             TimeColor '"--timeColor"',
             TitleColor '"--titleColor"',
@@ -11,9 +16,4 @@
             FontStyle '"--fontStyle"',
             AllDayOpacity '"unit(fallback(zeroAsTrue(--allDayOpacity), 0.2), "")"'
     );
-}
-
-.flexContainer {
-    display: flex;
-    justify-content: space-around;
 }
