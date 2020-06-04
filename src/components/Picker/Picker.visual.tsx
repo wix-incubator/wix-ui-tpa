@@ -7,10 +7,20 @@ class PickerVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer>
-        <Picker {...this.props} />
+        <Picker
+        value='Monday'
+        onNext={()=>{}}
+        onPrev={()=>{}}
+         {...this.props} />
       </VisualTestContainer>
     );
   }
+}
+
+const defaultProps = {
+  onNext: () => {},
+  onPrev: () => {},
+  value: 'October 2020'
 }
 
 const tests = [
@@ -19,7 +29,28 @@ const tests = [
     its: [
       {
         it: 'default',
-        props: {},
+        props: {...defaultProps},
+      },
+      {
+        it: 'disable prev',
+        props: {
+          ...defaultProps,
+          disablePrev: true
+        },
+      },
+      {
+        it: 'disable next',
+        props: {
+          ...defaultProps,
+          disableNext: true
+        },
+      },
+      {
+        it: 'change the arrow size',
+        props: {
+          ...defaultProps,
+          arrowsSize: '24px'
+        },
       },
     ],
   },

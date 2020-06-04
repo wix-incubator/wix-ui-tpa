@@ -8,14 +8,18 @@ import styles from './Picker.st.css';
 
 export interface PickerProps {
   value: any;
-  previousClickHandler(): void;
-  nextClickHandler(): void;
+  onPrev(): void;
+  onNext(): void;
   arrowsSize?: string;
+  disablePrev?: boolean;
+  disableNext?: boolean;
 }
 
 interface DefaultProps {
   arrowsSize: string;
   'data-hook': string;
+  disablePrev: boolean;
+  disableNext: boolean;
 }
 
 /** Picker */
@@ -23,6 +27,8 @@ export class Picker extends React.Component<PickerProps> {
   static defaultProps: DefaultProps = {
     arrowsSize: '24px',
     'data-hook': PICKER_DATA_HOOKS.PickerWrapper,
+    disablePrev: false,
+    disableNext: false
   };
 
   getDataAttributes() {
@@ -35,10 +41,12 @@ export class Picker extends React.Component<PickerProps> {
 
   render() {
     const {
-      previousClickHandler,
+      onPrev,
       value,
-      nextClickHandler,
+      onNext,
       arrowsSize,
+      disablePrev,
+      disableNext,
       ...rest
     } = this.props;
 
@@ -49,15 +57,19 @@ export class Picker extends React.Component<PickerProps> {
         {...this.getDataAttributes()}
       >
         <IconButton
-          {...styles('arrow', {})}
+          className={styles.arrow}
           icon={<ChevronLeft height={arrowsSize} width={arrowsSize} />}
           as="a"
+          onClick={() => disablePrev ? null : onPrev()}
+          disabled={disablePrev}
         />
         <Text className={styles.value}>{value}</Text>
         <IconButton
-          {...styles('arrow', {})}
+          className={styles.arrow}
           as="a"
           icon={<ChevronRight height={arrowsSize} width={arrowsSize} />}
+          onClick={() => disableNext ? null : onNext()}
+          disabled={disableNext}
         />
       </div>
     );

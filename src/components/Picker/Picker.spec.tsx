@@ -3,7 +3,6 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { pickerDriverFactory } from './Picker.driver';
 import { Picker } from './';
 import { pickerTestkitFactory } from '../../testkit';
@@ -11,8 +10,8 @@ import { pickerTestkitFactory as enzymePickerTestkitFactory } from '../../testki
 
 const noop = () => {};
 const defProps = {
-  previousClickHandler: noop,
-  nextClickHandler: noop,
+  onPrev: noop,
+  onNext: noop,
   value: 'October 2020',
 };
 
@@ -31,6 +30,16 @@ describe('Picker', () => {
     );
 
     expect(await driver.isArrowsSizeSet(arrowsSize)).toBeTruthy();
+  });
+
+  it('shold click next', async () => {
+    const driver = createDriver(<Picker {...defProps} />);
+    expect(await driver.clickOnNext()).toBe(null);
+  });
+
+  it('shold click prev', async () => {
+    const driver = createDriver(<Picker {...defProps} />);
+    expect(await driver.clickOnPrev()).toBe(null);
   });
 
   describe('testkit', () => {
