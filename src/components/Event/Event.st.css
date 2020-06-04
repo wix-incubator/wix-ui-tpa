@@ -76,9 +76,6 @@
     display: table;
     table-layout: fixed;
     float: right;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     padding: value(CurrentRTLTopPadding) value(CurrentRTLRightPadding) value(CurrentRTLBottomPadding) value(CurrentRTLLeftPadding);
 }
 
