@@ -10,5 +10,6 @@ module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     serverUrl: process.env.APPLITOOLS_SERVER_URL,
     concurrency: 50,
+    showLogs: true,
   }),
 });
