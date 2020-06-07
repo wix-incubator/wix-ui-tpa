@@ -2,17 +2,19 @@ export const importExample = `import { Event } from 'wix-ui-tpa/Event';`;
 
 const createStringComponent = (
   exampleTitle,
-  isTimeShown,
+  showTime,
   eventTitle = 'BYOB Party',
-  isMultiDay = false,
+  multiday = false,
   isRightToLeft = false,
   isSelected = false,
 ) => {
   return `
     <div style={{width: "135px"}}>
        <h4>${exampleTitle}</h4>
-       <Event isMultiday={${isMultiDay}} isTimeShown={${isTimeShown}} time='21:30' title='${eventTitle}' isRightToLeft={${isRightToLeft}} isSelected={${isSelected}}/>
-    </div>
+          <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
+            <Event multiday={${multiday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
+          </TPAComponentsProvider>   
+       </div>
     `;
 };
 

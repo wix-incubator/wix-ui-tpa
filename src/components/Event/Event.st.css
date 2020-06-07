@@ -50,7 +50,7 @@
 }
 
 .root {
-    -st-states: isMultiday, isSelected, isRightToLeft;
+    -st-states: multiday, selected, rtl;
     position: relative;
     padding-top: value(CurrentTopPadding);   
     padding-right: value(CurrentRightPadding);
@@ -61,7 +61,7 @@
     text-overflow: ellipsis;
 }
 
-.root:isRightToLeft {
+.root:rtl {
     position: relative;
     direction: rtl;
     display: table;
@@ -84,7 +84,7 @@
     );
 }
 
-.root:isRightToLeft .title {
+.root:rtl .title {
     -st-mixin: TPAText(
         MainTextFont value(CurrentFontStyle),
         MainTextColor value(CurrentTitleColor)
@@ -94,7 +94,7 @@
     text-overflow: ellipsis;
     min-height: 1.2em;
 }
-.root:isRightToLeft .time {
+.root:rtl .time {
     padding-right: 0;
     padding-left: 2px;
     display: table-cell;
@@ -115,16 +115,16 @@
     -st-mixin: beforeMixin;
 }
 
-.root:isSelected::before {
+.root:selected::before {
     -st-mixin: beforeMixin(BeforeColor color(color-5), BeforeOpacity 0.1);
 }
 
-.root:isRightToLeft .time{
+.root:rtl .time{
     padding-right: 0;
     padding-left: 2px;
     display: table-cell;
 }
 
-.root:isMultiday {
+.root:multiday {
     background: applyOpacity(value(CurrentAllDayBackground), value(CurrentAllDayOpacity));
 }

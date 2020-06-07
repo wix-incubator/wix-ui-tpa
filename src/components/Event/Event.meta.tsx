@@ -20,7 +20,7 @@ EventMetadata.addSim({
   title: 'time not shown',
   props: {
     ...defaultProps,
-    isTimeShown: false,
+    showTime: false,
   },
 });
 
@@ -28,7 +28,7 @@ EventMetadata.addSim({
   title: 'selected',
   props: {
     ...defaultProps,
-    isSelected: true,
+    selected: true,
   },
 });
 
@@ -36,7 +36,7 @@ EventMetadata.addSim({
   title: 'multiday',
   props: {
     ...defaultProps,
-    isMultiday: true,
+    multiday: true,
   },
 });
 
@@ -44,6 +44,5 @@ EventMetadata.addSim({
   title: 'right to left',
   props: {
     ...defaultProps,
-    isRightToLeft: true,
   },
 });

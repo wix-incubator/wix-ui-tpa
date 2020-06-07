@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import { Event } from '../';
 import styles from './EventWiringExample.st.css';
 
@@ -13,20 +14,21 @@ export const EventWiringExample = () => {
         <h4>All Day</h4>
         <Event
           {...styles('event')}
-          isMultiday
+          multiday
           time="20:30"
           title="Blink 182 Concert"
         />
       </div>
       <div>
         <h4>Right To Left All Day</h4>
-        <Event
-          {...styles('event')}
-          isRightToLeft
-          isMultiday
-          time="20:30"
-          title="Blink 182 Concert"
-        />
+        <TPAComponentsProvider value={{ rtl: true }}>
+          <Event
+            {...styles('event')}
+            multiday
+            time="20:30"
+            title="Blink 182 Concert"
+          />
+        </TPAComponentsProvider>
       </div>
     </div>
   );

@@ -10,9 +10,8 @@ visualize('Event', () => {
   story('render', () => {
     snap('default', <Event {...defaultProps} />);
     snap('time', <Event time="23:23" {...defaultProps} />);
-    snap('timeShown', <Event isTimeShown {...defaultProps} />);
-    snap('multiday', <Event isMultiday {...defaultProps} />);
-    snap('isRightToLeft', <Event isRightToLeft {...defaultProps} />);
-    snap('isSelected', <Event isSelected {...defaultProps} />);
+    snap('timeShown', <Event showTime {...defaultProps} />);
+    snap('multiday', <Event multiday {...defaultProps} />);
+    snap('selected', <Event selected {...defaultProps} />);
   });
 });

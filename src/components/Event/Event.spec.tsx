@@ -3,7 +3,6 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { eventDriverFactory } from './Event.driver';
 import { Event } from './';
 import { eventTestkitFactory } from '../../testkit';
@@ -23,22 +22,17 @@ describe('Event', () => {
   });
 
   it('should show selected state', async () => {
-    const driver = createDriver(<Event isSelected {...defaultProps} />);
+    const driver = createDriver(<Event selected {...defaultProps} />);
     expect(await driver.isSelected()).toBe(true);
   });
 
   it('should show multiday state', async () => {
-    const driver = createDriver(<Event isMultiday {...defaultProps} />);
+    const driver = createDriver(<Event multiday {...defaultProps} />);
     expect(await driver.isMultiday()).toBe(true);
   });
 
-  it('should show right-to-left state', async () => {
-    const driver = createDriver(<Event isRightToLeft {...defaultProps} />);
-    expect(await driver.isRightToLeft()).toBe(true);
-  });
-
   it('should show time shown state', async () => {
-    const driver = createDriver(<Event isTimeShown {...defaultProps} />);
+    const driver = createDriver(<Event showTime {...defaultProps} />);
     expect(await driver.isTimeShown()).toBe(true);
   });
 
