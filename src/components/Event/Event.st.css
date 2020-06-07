@@ -19,10 +19,6 @@
     DefaultRightPadding: 4px;
     DefaultBottomPadding: 4px;
     DefaultLeftPadding: 12px;
-    DefaultRTLTopPadding: 4px;
-    DefaultRTLRightPadding: 12px;
-    DefaultRTLBottomPadding: 4px;
-    DefaultRTLLeftPadding: 4px;
     BeforeColor: color(color-4);
     BeforeOpacity: 0.06;
 }
@@ -38,10 +34,6 @@
     RightPadding: --overridable;
     BottomPadding: --overridable;
     LeftPadding: --overridable;
-    RTLTopPadding: --overridable;
-    RTLRightPadding: --overridable;
-    RTLBottomPadding: --overridable;
-    RTLLeftPadding: --overridable;
 }
 
 /* Fallbacks */
@@ -55,16 +47,15 @@
     CurrentRightPadding: fallback(value(RightPadding),value(DefaultRightPadding));
     CurrentLeftPadding: fallback(value(LeftPadding),value(DefaultLeftPadding));
     CurrentBottomPadding: fallback(value(BottomPadding),value(DefaultBottomPadding));
-    CurrentRTLTopPadding: fallback(value(RTLTopPadding),value(DefaultRTLTopPadding));
-    CurrentRTLRightPadding: fallback(value(RTLRightPadding),value(DefaultRTLRightPadding));
-    CurrentRTLLeftPadding: fallback(value(RTLLeftPadding),value(DefaultRTLLeftPadding));
-    CurrentRTLBottomPadding: fallback(value(RTLBottomPadding),value(DefaultRTLBottomPadding));
 }
 
 .root {
     -st-states: isMultiday, isSelected, isRightToLeft;
     position: relative;
-    padding: value(CurrentTopPadding) value(CurrentRightPadding) value(CurrentBottomPadding) value(CurrentLeftPadding);
+    padding-top: value(CurrentTopPadding);   
+    padding-right: value(CurrentRightPadding);
+    padding-bottom: value(CurrentBottomPadding);
+    padding-left: value(CurrentLeftPadding);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -76,7 +67,6 @@
     display: table;
     table-layout: fixed;
     float: right;
-    padding: value(CurrentRTLTopPadding) value(CurrentRTLRightPadding) value(CurrentRTLBottomPadding) value(CurrentRTLLeftPadding);
 }
 
 .time {

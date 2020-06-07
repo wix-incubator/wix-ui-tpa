@@ -18,6 +18,16 @@ export const EventWiringExample = () => {
           title="Blink 182 Concert"
         />
       </div>
+      <div>
+        <h4>Right To Left All Day</h4>
+        <Event
+          {...styles('event')}
+          isRightToLeft
+          isMultiday
+          time="20:30"
+          title="Blink 182 Concert"
+        />
+      </div>
     </div>
   );
 };

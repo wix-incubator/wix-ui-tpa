@@ -105,6 +105,30 @@ export default {
                     min: 0,
                     max: 1,
                   },
+                  {
+                    label: 'Top Padding',
+                    wixParam: 'topPadding',
+                    defaultNumber: 5,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Right Padding',
+                    wixParam: 'rightPadding',
+                    defaultNumber: 5,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Left Padding',
+                    wixParam: 'leftPadding',
+                    defaultNumber: 5,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Bottom Padding',
+                    wixParam: 'bottomPadding',
+                    defaultNumber: 5,
+                    unit: 'px',
+                  }
                 ],
               },
             }),

@@ -9,11 +9,14 @@
 }
 
 .event {
-    -st-mixin: TPAEvent(
-            TimeColor '"--timeColor"',
+    -st-mixin: TPAEvent(TimeColor '"--timeColor"',
             TitleColor '"--titleColor"',
             AllDayBackground '"--allDayBackground"',
             FontStyle '"--fontStyle"',
-            AllDayOpacity '"unit(fallback(zeroAsTrue(--allDayOpacity), 0.2), "")"'
-    );
+            AllDayOpacity '"unit(fallback(zeroAsTrue(--allDayOpacity), 0.2), "")"',
+            TopPadding '"unit(fallback(--topPadding, 5), px)"',
+            RightPadding '"unit(fallback(--rightPadding, 5), px)"',
+            LeftPadding '"unit(fallback(--leftPadding, 5), px)"',
+            BottomPadding '"unit(fallback(--bottomPadding, 5), px)"'
+        );
 }
