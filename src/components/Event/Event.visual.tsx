@@ -1,34 +1,18 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { Event } from './';
+import { visualize, story, snap } from 'storybook-snapper';
+import { Event, EventProps } from './';
 
-class EventVisual extends React.Component<any> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <Event {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
+const defaultProps: EventProps = {
+  title: 'Calendar Lunch',
+};
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`Event/${describe}`, module).add(it, () => (
-      <EventVisual {...props} />
-    ));
+visualize('Event', () => {
+  story('render', () => {
+    snap('default', <Event {...defaultProps} />);
+    snap('time', <Event time="23:23" {...defaultProps} />);
+    snap('timeShown', <Event isTimeShown {...defaultProps} />);
+    snap('multiday', <Event isMultiday {...defaultProps} />);
+    snap('isRightToLeft', <Event isRightToLeft {...defaultProps} />);
+    snap('isSelected', <Event isSelected {...defaultProps} />);
   });
 });

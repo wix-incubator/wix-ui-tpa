@@ -128,7 +128,7 @@ export default {
                     wixParam: 'bottomPadding',
                     defaultNumber: 5,
                     unit: 'px',
-                  }
+                  },
                 ],
               },
             }),
