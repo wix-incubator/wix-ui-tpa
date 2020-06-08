@@ -6,12 +6,7 @@ PopoverMetadata.nonReactStrictModeCompliant = true;
 
 PopoverMetadata.addSim({
   title: 'render',
-  props: {},
-});
-
-PopoverMetadata.addSim({
-  title: 'right to left',
   props: {
-    rightToLeft: true,
+    onClose: () => {}
   },
 });

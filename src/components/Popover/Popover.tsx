@@ -6,6 +6,7 @@ import styles from './Popover.st.css';
 
 export interface PopoverProps {
   rightToLeft?: boolean;
+  onClose(): void;
 }
 
 interface DefaultProps {
@@ -29,7 +30,7 @@ export class Popover extends React.Component<PopoverProps> {
   };
 
   render() {
-    const { children, rightToLeft, ...rest } = this.props;
+    const { children, rightToLeft, onClose, ...rest } = this.props;
 
     return (
       <div
@@ -38,7 +39,7 @@ export class Popover extends React.Component<PopoverProps> {
         {...this.getDataAttributes()}
       >
         <div className={styles.children}>{children}</div>
-        <IconButton {...styles('close', {})} as="a" icon={<Close />} />
+        <IconButton onClick={onClose} {...styles('close', {})} as="a" icon={<Close />} />
       </div>
     );
   }

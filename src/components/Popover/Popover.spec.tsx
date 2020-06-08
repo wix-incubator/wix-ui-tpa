@@ -4,27 +4,31 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { popoverDriverFactory } from './Popover.driver';
-import { Popover } from './';
+import { Popover, PopoverProps } from './';
 import { popoverTestkitFactory } from '../../testkit';
 import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
+
+const defaultProps: PopoverProps = {
+  onClose: () => {}
+}
 
 describe('Popover', () => {
   const createDriver = createUniDriverFactory(popoverDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Popover />);
+    const driver = createDriver(<Popover {...defaultProps}/>);
     expect(await driver.exists()).toBe(true);
   });
 
   it('should show right to left state', async () => {
-    const driver = createDriver(<Popover rightToLeft />);
+    const driver = createDriver(<Popover rightToLeft {...defaultProps}/>);
     expect(await driver.isRightToLeft()).toBeTruthy();
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<Popover />, popoverTestkitFactory, {
+        await isUniTestkitExists(<Popover {...defaultProps}/>, popoverTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -35,7 +39,7 @@ describe('Popover', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Popover />,
+          <Popover {...defaultProps}/>,
           enzymePopoverTestkitFactory,
           mount,
           {
