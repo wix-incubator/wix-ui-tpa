@@ -3,8 +3,8 @@ import { Popover, PopoverProps } from '../';
 import styles from './PopoverWiringExample.st.css';
 
 const defaultProps: PopoverProps = {
-  onClose: () => {}
-}
+  onClose: () => {},
+};
 
 export const PopoverWiringExample = () => {
   return (

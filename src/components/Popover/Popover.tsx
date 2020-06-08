@@ -1,16 +1,19 @@
 import * as React from 'react';
 import { ReactComponent as Close } from '../../assets/icons/Close.svg';
 import { IconButton } from '../IconButton';
+import { Text } from '../Text';
 import { POPOVER_DATA_HOOKS, POPOVER_DATA_KEYS } from './dataHooks';
 import styles from './Popover.st.css';
 
 export interface PopoverProps {
   rightToLeft?: boolean;
+  title?: string;
   onClose(): void;
 }
 
 interface DefaultProps {
   rightToLeft: boolean;
+  title: string;
   'data-hook': string;
 }
 
@@ -18,6 +21,7 @@ interface DefaultProps {
 export class Popover extends React.Component<PopoverProps> {
   static displayName = 'Popover';
   static defaultProps: DefaultProps = {
+    title: '',
     rightToLeft: false,
     'data-hook': POPOVER_DATA_HOOKS.Popover,
   };
@@ -30,7 +34,7 @@ export class Popover extends React.Component<PopoverProps> {
   };
 
   render() {
-    const { children, rightToLeft, onClose, ...rest } = this.props;
+    const { children, rightToLeft, title, onClose, ...rest } = this.props;
 
     return (
       <div
@@ -38,8 +42,16 @@ export class Popover extends React.Component<PopoverProps> {
         data-hook={this.props['data-hook']}
         {...this.getDataAttributes()}
       >
-        <div className={styles.children}>{children}</div>
-        <IconButton onClick={onClose} {...styles('close', {})} as="a" icon={<Close />} />
+        <div className={styles.container}>
+          {title && <Text className={styles.title}>{title}</Text>}
+          {children}
+        </div>
+        <IconButton
+          onClick={onClose}
+          {...styles('close', {})}
+          as="a"
+          icon={<Close />}
+        />
       </div>
     );
   }

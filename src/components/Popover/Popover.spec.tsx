@@ -9,28 +9,32 @@ import { popoverTestkitFactory } from '../../testkit';
 import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
 
 const defaultProps: PopoverProps = {
-  onClose: () => {}
-}
+  onClose: () => {},
+};
 
 describe('Popover', () => {
   const createDriver = createUniDriverFactory(popoverDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Popover {...defaultProps}/>);
+    const driver = createDriver(<Popover {...defaultProps} />);
     expect(await driver.exists()).toBe(true);
   });
 
   it('should show right to left state', async () => {
-    const driver = createDriver(<Popover rightToLeft {...defaultProps}/>);
+    const driver = createDriver(<Popover rightToLeft {...defaultProps} />);
     expect(await driver.isRightToLeft()).toBeTruthy();
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<Popover {...defaultProps}/>, popoverTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <Popover {...defaultProps} />,
+          popoverTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -39,7 +43,7 @@ describe('Popover', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Popover {...defaultProps}/>,
+          <Popover {...defaultProps} />,
           enzymePopoverTestkitFactory,
           mount,
           {

@@ -3,11 +3,11 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { Popover, PopoverProps } from './';
 
 const defaultProps: PopoverProps = {
-  onClose: () => {}
-}
+  onClose: () => {},
+};
 
 visualize('Popover', () => {
   story('render', () => {
-    snap('default', <Popover {...defaultProps}/>);
+    snap('default', <Popover {...defaultProps} />);
   });
 });

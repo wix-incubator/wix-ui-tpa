@@ -4,8 +4,7 @@ const createStringComponent = (exampleTitle, rtl = false) => {
   return `
       <div style={{width: "300px"}}>
          <h4>${exampleTitle}</h4>
-         <Popover onClose={()=>alert('close click!')} rightToLeft={${rtl}}>
-            <h1>Today Events</h1>
+         <Popover title={'Events'} onClose={()=>alert('close click!')} rightToLeft={${rtl}}>
             <div>Michal birthday party</div>
             <div>Movies night</div>
             <div>Football tournament</div>

@@ -1,6 +1,11 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, applyOpacity, fallback;
+    -st-named: color, applyOpacity, fallback, font;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
 }
 
 :import {
@@ -16,6 +21,8 @@
     DefaultIconColor: color-5;
     DefaultPadding: 24px;
     DefaultIconPadding: 16px;
+    DefaultTitleColor: color-5;
+    DefaultTitleFont: "{theme: 'Body-L', size: '20px', lineHeight: '28px'}";
 }
 
 /*Overrides*/
@@ -31,6 +38,8 @@
     IconRightPadding: --overridable;
     IconLeftPadding: --overridable;
     BackgroundColor: --overridable;
+    TitleColor: --overridable;
+    TitleFont: --overridable;
 }
 
 /*Fallbacks*/
@@ -46,6 +55,8 @@
     CurrentIconRightPadding: fallback(value(IconRightPadding), value(DefaultIconPadding));
     CurrentIconLeftPadding: fallback(value(IconLeftPadding), value(DefaultIconPadding));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentTitleColor: color(fallback(value(TitleColor), value(DefaultTitleColor)));
+    CurrentTitleFont: fallback(value(TitleFont), font(value(DefaultTitleFont)));
 }
 
 .root {
@@ -65,6 +76,13 @@
     background-color: value(CurrentBackgroundColor);
 }
 
+.title {
+    -st-mixin: TPAText(
+        MainTextFont value(CurrentTitleFont),
+        MainTextColor value(CurrentTitleColor)
+    );
+}
+
 .close {
     position: absolute;
     top: value(CurrentIconTopPadding);
@@ -78,7 +96,10 @@
     left: value(CurrentIconLeftPadding);
 }
 
-.root:rightToLeft .children {
-    float: right;
+.root:rightToLeft {
     text-align: right;
+}
+
+.root:rightToLeft .container {
+    float: right;
 }
