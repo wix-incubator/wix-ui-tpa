@@ -60,7 +60,7 @@
 }
 
 .root {
-    -st-states: rightToLeft;
+    -st-states: rtl;
     box-sizing: border-box;
     padding-top: value(CurrentTopPadding);
     padding-right: value(CurrentRightPadding);
@@ -92,14 +92,14 @@
     );
 }
 
-.root:rightToLeft .close {
+.root:rtl .close {
     left: value(CurrentIconLeftPadding);
 }
 
-.root:rightToLeft {
+.root:rtl {
     text-align: right;
 }
 
-.root:rightToLeft .container {
+.root:rtl .container {
     float: right;
 }

@@ -1,19 +1,21 @@
 export const importExample = `import { Popover } from 'wix-ui-tpa/Popover';`;
 
-const createStringComponent = (exampleTitle, rtl = false) => {
-  return `
+const createStringComponent = (exampleTitle, isRightToLeft = false) => {
+   return `
       <div style={{width: "300px"}}>
          <h4>${exampleTitle}</h4>
-         <Popover title={'Events'} onClose={()=>alert('close click!')} rightToLeft={${rtl}}>
-            <div>Michal birthday party</div>
-            <div>Movies night</div>
-            <div>Football tournament</div>
-         </Popover>
+         <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
+               <Popover title={'Events'} onClose={()=>alert('close click!')}>
+                  <div>Michal birthday party</div>
+                  <div>Movies night</div>
+                  <div>Football tournament</div>
+               </Popover>
+            </TPAComponentsProvider>
       </div>
       `;
 };
 const createComponentsSection = stringComponents => {
-  return `<div style={{display: "flex", "justifyContent": "space-around"}}>
+   return `<div style={{display: "flex", "justifyContent": "space-around"}}>
           ${stringComponents.join(' ')}
       </div>
       `;

@@ -20,11 +20,6 @@ describe('Popover', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should show right to left state', async () => {
-    const driver = createDriver(<Popover rightToLeft {...defaultProps} />);
-    expect(await driver.isRightToLeft()).toBeTruthy();
-  });
-
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
