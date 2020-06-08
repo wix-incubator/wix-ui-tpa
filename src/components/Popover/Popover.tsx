@@ -47,8 +47,8 @@ export class Popover extends React.Component<PopoverProps> {
           {children}
         </div>
         <IconButton
+          className={styles.close}
           onClick={onClose}
-          {...styles('close', {})}
           as="a"
           icon={<Close />}
         />
