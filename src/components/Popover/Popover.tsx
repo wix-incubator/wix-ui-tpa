@@ -24,8 +24,7 @@ export class Popover extends React.Component<PopoverProps> {
     'data-hook': POPOVER_DATA_HOOKS.Popover,
   };
 
-  getDataAttributes = () => {
-  };
+  getDataAttributes = () => {};
 
   render() {
     const { children, title, onClose, ...rest } = this.props;
@@ -41,13 +40,13 @@ export class Popover extends React.Component<PopoverProps> {
             >
               <div className={styles.container}>
                 {title && <Text className={styles.title}>{title}</Text>}
-                {children}
+                <div className={styles.children}>{children}</div> 
               </div>
               <IconButton
                 className={styles.close}
                 onClick={onClose}
                 as="a"
-                icon={<Close />}
+                icon={<Close height='24px' width='23px' />}
               />
             </div>
           );

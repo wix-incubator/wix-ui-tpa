@@ -18,14 +18,48 @@ import * as PopoverWiringExampleRaw from '!raw-loader!./PopoverWiringExample.tsx
 import * as PopoverWiringExampleCSSRaw from '!raw-loader!./PopoverWiringExample.st.css';
 import { PopoverWiringExample } from './PopoverWiringExample';
 import { Popover } from '../';
+import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+  function ExamplePopover(props) {
+    const [rtl, setRtl] = React.useState(false);
+    const rootRef = React.useRef<HTMLDivElement>();
+  
+    React.useEffect(() => {
+      if (rootRef && rootRef.current) {
+        const observer = new MutationObserver(mutationsList => {
+          mutationsList.map(mutation => {
+            if (mutation.attributeName === 'dir') {
+              setRtl(
+                (rootRef.current.parentNode as any).getAttribute('dir') === 'rtl',
+              );
+            }
+          });
+        });
+  
+        observer.observe(rootRef.current.parentNode, { attributes: true });
+  
+        return function cleanup() {
+          observer.disconnect();
+        };
+      }
+    }, [rootRef]);
+  
+    return (
+      <div ref={rootRef}>
+        <TPAComponentsProvider value={{ mobile: false, rtl }}>
+          <Popover {...props} />
+        </TPAComponentsProvider>
+      </div>
+    );
+  }
+
 export default {
   category: 'Components',
   storyName: 'Popover',
-  component: Popover,
+  component: ExamplePopover,
   componentPath: '../Popover.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Popover',
@@ -48,7 +82,7 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Alignment', source: examples.alignment }].map(code),
+          ...[{ title: 'Default', source: examples.alignment }].map(code),
         ],
       }),
 

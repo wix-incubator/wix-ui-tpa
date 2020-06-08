@@ -1,7 +1,7 @@
 export const importExample = `import { Popover } from 'wix-ui-tpa/Popover';`;
 
 const createStringComponent = (exampleTitle, isRightToLeft = false) => {
-   return `
+  return `
       <div style={{width: "300px"}}>
          <h4>${exampleTitle}</h4>
          <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
@@ -15,12 +15,12 @@ const createStringComponent = (exampleTitle, isRightToLeft = false) => {
       `;
 };
 const createComponentsSection = stringComponents => {
-   return `<div style={{display: "flex", "justifyContent": "space-around"}}>
+  return `<div style={{display: "flex", "justifyContent": "space-around"}}>
           ${stringComponents.join(' ')}
       </div>
       `;
 };
 
-const leftToRight = createStringComponent('Left-To-Right');
-const rightToLeft = createStringComponent('Right-To-Left', true);
-export const alignment = createComponentsSection([leftToRight, rightToLeft]);
+const leftToRight = createStringComponent('');
+//const rightToLeft = createStringComponent('Right-To-Left', true);
+export const alignment = createComponentsSection([leftToRight]);

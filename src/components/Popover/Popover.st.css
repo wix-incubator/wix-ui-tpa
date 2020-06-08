@@ -19,10 +19,11 @@
     DefaultBorderColor: #fff;
     DefaultRadius: 2px;
     DefaultIconColor: color-5;
-    DefaultPadding: 24px;
-    DefaultIconPadding: 16px;
+    DefaultPadding: 16px;
+    DefaultIconPadding: 12px;
     DefaultTitleColor: color-5;
-    DefaultTitleFont: "{theme: 'Body-L', size: '20px', lineHeight: '28px'}";
+    DefaultTitleFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+    DefaultWidth: 252px;
 }
 
 /*Overrides*/
@@ -40,6 +41,7 @@
     BackgroundColor: --overridable;
     TitleColor: --overridable;
     TitleFont: --overridable;
+    Width: --overridable;
 }
 
 /*Fallbacks*/
@@ -57,6 +59,7 @@
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentTitleColor: color(fallback(value(TitleColor), value(DefaultTitleColor)));
     CurrentTitleFont: fallback(value(TitleFont), font(value(DefaultTitleFont)));
+    CurrentWidth: fallback(value(Width), value(DefaultWidth));
 }
 
 .root {
@@ -70,9 +73,9 @@
     border-radius: value(CurrentRadius);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.2);
     position: relative;
-    min-height: 260px;
-    max-height: 460px;
-    width: 400px;
+    min-height: 224px;
+    max-height: 364px;
+    width: value(CurrentWidth);
     background-color: value(CurrentBackgroundColor);
 }
 
@@ -102,4 +105,8 @@
 
 .root:rtl .container {
     float: right;
+}
+
+.children {
+    margin-top: 16px;
 }
