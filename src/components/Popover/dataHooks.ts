@@ -3,5 +3,9 @@ export enum POPOVER_DATA_HOOKS {
 }
 
 export enum POPOVER_DATA_KEYS {
-  RightToLeft = 'data-rtl',
+  WithShadow = 'data-shadow',
+  WithArrow = 'data-arrow',
+  RightArrow = 'data-right-arrow',
+  Title = 'data-title',
+  ArrowTop = 'data-arrow-top'
 }

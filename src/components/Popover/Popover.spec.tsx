@@ -20,6 +20,36 @@ describe('Popover', () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should show withArrow state', async () => {
+    const driver = createDriver(<Popover withArrow {...defaultProps} />);
+
+    expect(await driver.withArrow()).toBeTruthy();
+  });
+
+  it('should show withShadow state', async () => {
+    const driver = createDriver(<Popover withShadow {...defaultProps} />);
+
+    expect(await driver.withShadow()).toBeTruthy();
+  });
+
+  it('should show right arrow state', async () => {
+    const driver = createDriver(<Popover rightArrow {...defaultProps} />);
+
+    expect(await driver.isRightArrow()).toBeTruthy();
+  });
+
+  it('should show title with the value \'title\'', async () => {
+    const driver = createDriver(<Popover title='title' {...defaultProps} />);
+
+    expect(await driver.withTitle()).toBeTruthy();
+  });
+
+  it('should show arrow top of 50px', async () => {
+    const driver = createDriver(<Popover arrowTop='50px' {...defaultProps} />);
+
+    expect(await driver.withArrowTop()).toBeTruthy();
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

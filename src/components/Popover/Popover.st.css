@@ -63,13 +63,12 @@
 }
 
 .root {
-    -st-states: rtl;
+    -st-states: rtl, withArrow, rightArrow, withShadow;
     box-sizing: border-box;
     padding-top: value(CurrentTopPadding);
     padding-right: value(CurrentRightPadding);
     padding-bottom: value(CurrentBottomPadding);
     padding-left: value(CurrentLeftPadding);
-    box-shadow: 0 0 25px 10px rgba(80, 80, 80, 0.1), 0 4px 50px 0 rgba(209, 209, 209, 0.1);
     border-radius: value(CurrentRadius);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.2);
     position: relative;
@@ -79,20 +78,45 @@
     background-color: value(CurrentBackgroundColor);
 }
 
+.root:withShadow {
+    box-shadow: 0 0 25px 10px rgba(80, 80, 80, 0.1), 0 4px 50px 0 rgba(209, 209, 209, 0.1);
+}
+
+.arrow {
+    display: none;
+    position: absolute;
+    left: -19px
+    border-top: 35px solid transparent;
+    border-bottom: 35px solid transparent;
+    border-left: 0;
+    border-right: 35px solid #FFFFFF;
+    width: 0;
+    height: 0 
+    z-index: 1;
+}
+
+
+.root:withArrow:rightArrow .arrow {
+    border-left: 35px solid #FFFFFF;
+    border-right: 0;
+    left: 234px;
+    display: block;
+}
+
+.root:withArrow .arrow {
+    display: block;
+}
+
 .title {
-    -st-mixin: TPAText(
-        MainTextFont value(CurrentTitleFont),
-        MainTextColor value(CurrentTitleColor)
-    );
+    -st-mixin: TPAText(MainTextFont value(CurrentTitleFont),
+            MainTextColor value(CurrentTitleColor));
 }
 
 .close {
     position: absolute;
     top: value(CurrentIconTopPadding);
     right: value(CurrentIconRightPadding);
-    -st-mixin: TPAIconButton(
-        IconColor value(CurrentIconColor)
-    );
+    -st-mixin: TPAIconButton(IconColor value(CurrentIconColor));
 }
 
 .root:rtl .close {
