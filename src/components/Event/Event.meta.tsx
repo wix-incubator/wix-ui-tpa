@@ -33,16 +33,17 @@ EventMetadata.addSim({
 });
 
 EventMetadata.addSim({
-  title: 'multiday',
+  title: 'fullday',
   props: {
     ...defaultProps,
-    multiday: true,
+    fullday: true,
   },
 });
 
 EventMetadata.addSim({
-  title: 'right to left',
+  title: 'without time',
   props: {
     ...defaultProps,
+    showTime: false
   },
 });

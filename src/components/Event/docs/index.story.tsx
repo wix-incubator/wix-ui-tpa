@@ -49,10 +49,7 @@ export default {
           title('Examples'),
 
           ...[{ title: 'Regular', source: examples.regularSection }].map(code),
-          ...[{ title: 'Multiday', source: examples.multidaySection }].map(
-            code,
-          ),
-          ...[{ title: 'Alignment', source: examples.alignment }].map(code),
+          ...[{ title: 'Fullday', source: examples.fulldaySection }].map(code),
           ...[{ title: 'More Events', source: examples.moreEventsSection }].map(
             code,
           ),
@@ -84,52 +81,29 @@ export default {
                     defaultColor: 'color-4',
                   },
                   {
-                    label: 'All Day Background',
-                    wixParam: 'allDayBackground',
+                    label: 'Full Day Background',
+                    wixParam: 'fulldayBgColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Hover Overlay',
+                    wixParam: 'hoverOverlayColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Selected Overlay',
+                    wixParam: 'selectedOverlayColor',
                     defaultColor: 'color-8',
                   },
                 ],
                 fonts: [
                   {
                     label: 'Font Style',
-                    wixParam: 'fontStyle',
+                    wixParam: 'textFont',
                     defaultFont: 'arial',
                   },
                 ],
-                numbers: [
-                  {
-                    label: 'All Day Background opacity',
-                    wixParam: 'allDayOpacity',
-                    defaultNumber: 1,
-                    unit: '',
-                    min: 0,
-                    max: 1,
-                  },
-                  {
-                    label: 'Top Padding',
-                    wixParam: 'topPadding',
-                    defaultNumber: 5,
-                    unit: 'px',
-                  },
-                  {
-                    label: 'Right Padding',
-                    wixParam: 'rightPadding',
-                    defaultNumber: 5,
-                    unit: 'px',
-                  },
-                  {
-                    label: 'Left Padding',
-                    wixParam: 'leftPadding',
-                    defaultNumber: 5,
-                    unit: 'px',
-                  },
-                  {
-                    label: 'Bottom Padding',
-                    wixParam: 'bottomPadding',
-                    defaultNumber: 5,
-                    unit: 'px',
-                  },
-                ],
+                numbers: [],
               },
             }),
           ],

@@ -11,7 +11,7 @@ visualize('Event', () => {
     snap('default', <Event {...defaultProps} />);
     snap('time', <Event time="23:23" {...defaultProps} />);
     snap('timeShown', <Event showTime {...defaultProps} />);
-    snap('multiday', <Event multiday {...defaultProps} />);
+    snap('fullday', <Event fullday {...defaultProps} />);
     snap('selected', <Event selected {...defaultProps} />);
   });
 });

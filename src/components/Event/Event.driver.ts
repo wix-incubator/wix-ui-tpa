@@ -8,7 +8,7 @@ import { EVENT_DATA_KEYS } from './dataHooks';
 export interface EventDriver extends BaseUniDriver {
   isTimeShown(): Promise<boolean>;
   isSelected(): Promise<boolean>;
-  isMultiday(): Promise<boolean>;
+  isFullday(): Promise<boolean>;
 }
 
 export const eventDriverFactory = (base: UniDriver): EventDriver => {
@@ -17,7 +17,7 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
     async isSelected() {
       return (await base.attr(EVENT_DATA_KEYS.IsSelected)) === 'true';
     },
-    async isMultiday() {
+    async isFullday() {
       return (await base.attr(EVENT_DATA_KEYS.IsMultiday)) === 'true';
     },
     async isTimeShown() {

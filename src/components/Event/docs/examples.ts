@@ -4,7 +4,7 @@ const createStringComponent = (
   exampleTitle,
   showTime,
   eventTitle = 'BYOB Party',
-  multiday = false,
+  fullday = false,
   isRightToLeft = false,
   isSelected = false,
 ) => {
@@ -12,7 +12,7 @@ const createStringComponent = (
     <div style={{width: "135px"}}>
        <h4>${exampleTitle}</h4>
           <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-            <Event multiday={${multiday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
+            <Event fullday={${fullday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
           </TPAComponentsProvider>   
        </div>
     `;
@@ -47,25 +47,25 @@ export const regularSection = createComponentsSection([
   selected,
 ]);
 
-const multidayWithTime = createStringComponent(
+const fulldayWithTime = createStringComponent(
   'With Time',
   true,
   'BYOB Party',
   true,
 );
-const multidayWithoutTime = createStringComponent(
+const fulldayWithoutTime = createStringComponent(
   'Without Time',
   false,
   'BYOB Party',
   true,
 );
-const multidayEllipsis = createStringComponent(
+const fulldayEllipsis = createStringComponent(
   'Ellipsis',
   true,
   'Tomorrowland Fastival',
   true,
 );
-const multidaySelected = createStringComponent(
+const fulldaySelected = createStringComponent(
   'Selected',
   true,
   'Family Fun',
@@ -73,21 +73,11 @@ const multidaySelected = createStringComponent(
   false,
   true,
 );
-export const multidaySection = createComponentsSection([
-  multidayWithTime,
-  multidayWithoutTime,
-  multidayEllipsis,
-  multidaySelected,
+export const fulldaySection = createComponentsSection([
+  fulldayWithTime,
+  fulldayWithoutTime,
+  fulldayEllipsis,
+  fulldaySelected,
 ]);
-
-const leftToRight = createStringComponent('Left-to-Right', true);
-const rightToLeft = createStringComponent(
-  'Right-to-Left',
-  true,
-  'BYOB Party',
-  false,
-  true,
-);
-export const alignment = createComponentsSection([leftToRight, rightToLeft]);
 
 export const moreEventsSection = createStringComponent('', false, '+2 more');

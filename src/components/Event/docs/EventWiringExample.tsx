@@ -11,20 +11,29 @@ export const EventWiringExample = () => {
         <Event {...styles('event')} time="20:30" title="Blink 182 Concert" />
       </div>
       <div>
-        <h4>All Day</h4>
+        <h4>Selected</h4>
         <Event
           {...styles('event')}
-          multiday
+          selected
           time="20:30"
           title="Blink 182 Concert"
         />
       </div>
       <div>
-        <h4>Right To Left All Day</h4>
+        <h4>Full Day</h4>
+        <Event
+          {...styles('event')}
+          fullday
+          time="20:30"
+          title="Blink 182 Concert"
+        />
+      </div>
+      <div>
+        <h4>Right To Left Full Day</h4>
         <TPAComponentsProvider value={{ rtl: true }}>
           <Event
             {...styles('event')}
-            multiday
+            fullday
             time="20:30"
             title="Blink 182 Concert"
           />

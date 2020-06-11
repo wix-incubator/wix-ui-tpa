@@ -26,9 +26,9 @@ describe('Event', () => {
     expect(await driver.isSelected()).toBe(true);
   });
 
-  it('should show multiday state', async () => {
-    const driver = createDriver(<Event multiday {...defaultProps} />);
-    expect(await driver.isMultiday()).toBe(true);
+  it('should show fullday state', async () => {
+    const driver = createDriver(<Event fullday {...defaultProps} />);
+    expect(await driver.isFullday()).toBe(true);
   });
 
   it('should show time shown state', async () => {
