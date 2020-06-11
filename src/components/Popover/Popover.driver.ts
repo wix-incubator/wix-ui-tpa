@@ -17,7 +17,7 @@ export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
   return {
     ...baseUniDriverFactory(base),
     async withArrow() {
-      return(await base.attr(POPOVER_DATA_KEYS.WithArrow)) === 'true';
+      return (await base.attr(POPOVER_DATA_KEYS.WithArrow)) === 'true';
     },
     async withShadow() {
       return (await base.attr(POPOVER_DATA_KEYS.WithShadow)) === 'true';
@@ -30,6 +30,6 @@ export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
     },
     async withArrowTop() {
       return (await base.attr(POPOVER_DATA_KEYS.ArrowTop)) === '50px';
-    }
+    },
   };
 };

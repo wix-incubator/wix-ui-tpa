@@ -38,14 +38,14 @@ describe('Popover', () => {
     expect(await driver.isRightArrow()).toBeTruthy();
   });
 
-  it('should show title with the value \'title\'', async () => {
-    const driver = createDriver(<Popover title='title' {...defaultProps} />);
+  it("should show title with the value 'title'", async () => {
+    const driver = createDriver(<Popover title="title" {...defaultProps} />);
 
     expect(await driver.withTitle()).toBeTruthy();
   });
 
   it('should show arrow top of 50px', async () => {
-    const driver = createDriver(<Popover arrowTop='50px' {...defaultProps} />);
+    const driver = createDriver(<Popover arrowTop="50px" {...defaultProps} />);
 
     expect(await driver.withArrowTop()).toBeTruthy();
   });

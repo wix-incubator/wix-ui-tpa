@@ -15,7 +15,9 @@
         TopPadding '"unit(fallback(--topPadding, 24), px)"',
         RightPadding '"unit(fallback(--rightPadding, 24), px)"',
         LeftPadding '"unit(fallback(--leftPadding, 24), px)"',
-        BottomPadding '"unit(fallback(--bottomPadding, 24), px)"'
+        BottomPadding '"unit(fallback(--bottomPadding, 24), px)"',
+        TitleFont '"--titleFont"',
+        TitleColor '"--titleColor"'
     );
 }
 

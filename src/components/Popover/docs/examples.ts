@@ -21,6 +21,7 @@ const createComponentsSection = stringComponents => {
       `;
 };
 
-const leftToRight = createStringComponent('');
+const defaultPopover = createStringComponent('');
 //const rightToLeft = createStringComponent('Right-To-Left', true);
-export const alignment = createComponentsSection([leftToRight]);
+
+export const popoverExample = createComponentsSection([defaultPopover]);

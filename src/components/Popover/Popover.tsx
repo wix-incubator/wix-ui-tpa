@@ -12,11 +12,7 @@ export interface PopoverProps {
   withArrow?: boolean;
   rightArrow?: boolean;
   arrowTop?: string;
-  withShadow?: boolean; 
-}
-
-interface PopoverState {
-  arrowTop: string
+  withShadow?: boolean;
 }
 
 interface DefaultProps {
@@ -25,11 +21,11 @@ interface DefaultProps {
   withArrow: boolean;
   rightArrow: boolean;
   arrowTop: string;
-  withShadow?: boolean; 
+  withShadow: boolean;
 }
 
 /** Popover */
-export class Popover extends React.Component<PopoverProps, PopoverState> {
+export class Popover extends React.Component<PopoverProps> {
   static displayName = 'Popover';
   static defaultProps: DefaultProps = {
     title: '',
@@ -37,30 +33,45 @@ export class Popover extends React.Component<PopoverProps, PopoverState> {
     withArrow: true,
     rightArrow: false,
     arrowTop: '0',
-    withShadow: true
+    withShadow: true,
   };
 
   getDataAttributes = () => {
-    const {withShadow, withArrow, rightArrow, title, arrowTop} = this.props;
+    const { withShadow, withArrow, rightArrow, title, arrowTop } = this.props;
     return {
       [POPOVER_DATA_KEYS.ArrowTop]: arrowTop,
       [POPOVER_DATA_KEYS.RightArrow]: rightArrow,
       [POPOVER_DATA_KEYS.Title]: title,
       [POPOVER_DATA_KEYS.WithArrow]: withArrow,
-      [POPOVER_DATA_KEYS.WithShadow]: withShadow
-    }
+      [POPOVER_DATA_KEYS.WithShadow]: withShadow,
+    };
   };
 
   render() {
-    const { children, title, onClose, withArrow, rightArrow, arrowTop, withShadow, ...rest } = this.props;
-    const arrow = withArrow && <div className={styles.arrow} style={{top: arrowTop}}/>;
-    
+    const {
+      children,
+      title,
+      onClose,
+      withArrow,
+      rightArrow,
+      arrowTop,
+      withShadow,
+      ...rest
+    } = this.props;
+    const arrow = withArrow && (
+      <div className={styles.arrow} style={{ top: arrowTop }} />
+    );
+
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => {
           return (
             <div
-              {...styles('root', { rtl, rightArrow, withArrow, withShadow }, rest)}
+              {...styles(
+                'root',
+                { rtl, rightArrow, withArrow, withShadow },
+                rest,
+              )}
               data-hook={this.props['data-hook']}
               {...this.getDataAttributes()}
             >

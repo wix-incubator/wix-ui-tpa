@@ -89,7 +89,7 @@
     border-top: 35px solid transparent;
     border-bottom: 35px solid transparent;
     border-left: 0;
-    border-right: 35px solid #FFFFFF;
+    border-right: 35px solid value(CurrentBackgroundColor);
     width: 0;
     height: 0 
     z-index: 1;
@@ -97,7 +97,7 @@
 
 
 .root:withArrow:rightArrow .arrow {
-    border-left: 35px solid #FFFFFF;
+    border-left: 35px solid value(CurrentBackgroundColor);
     border-right: 0;
     left: 234px;
     display: block;

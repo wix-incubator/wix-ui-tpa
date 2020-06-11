@@ -9,7 +9,7 @@ const onClose = () => {};
 PopoverMetadata.addSim({
   title: 'render',
   props: {
-    onClose
+    onClose,
   },
 });
 
@@ -17,7 +17,7 @@ PopoverMetadata.addSim({
   title: 'with arrow',
   props: {
     onClose,
-    withArrow: true
+    withArrow: true,
   },
 });
 
@@ -25,7 +25,7 @@ PopoverMetadata.addSim({
   title: 'with title',
   props: {
     onClose,
-    title: 'title'
+    title: 'title',
   },
 });
 
@@ -33,7 +33,7 @@ PopoverMetadata.addSim({
   title: 'with shadow',
   props: {
     onClose,
-    withShadow: true
+    withShadow: true,
   },
 });
 
@@ -41,15 +41,14 @@ PopoverMetadata.addSim({
   title: 'right arrow',
   props: {
     onClose,
-    rightArrow: true
+    rightArrow: true,
   },
 });
-
 
 PopoverMetadata.addSim({
   title: 'with arrow top',
   props: {
     onClose,
-    arrowTop: '50px'
+    arrowTop: '50px',
   },
 });

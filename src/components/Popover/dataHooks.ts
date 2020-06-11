@@ -7,5 +7,5 @@ export enum POPOVER_DATA_KEYS {
   WithArrow = 'data-arrow',
   RightArrow = 'data-right-arrow',
   Title = 'data-title',
-  ArrowTop = 'data-arrow-top'
+  ArrowTop = 'data-arrow-top',
 }

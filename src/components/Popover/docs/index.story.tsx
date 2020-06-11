@@ -82,7 +82,7 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Default', source: examples.alignment }].map(code),
+          ...[{ title: '', source: examples.popoverExample }].map(code),
         ],
       }),
 
@@ -115,8 +115,19 @@ export default {
                     wixParam: 'backgroundColor',
                     defaultColor: 'color-1',
                   },
+                  {
+                    label: 'Title Color',
+                    wixParam: 'titleColor',
+                    defaultColor: 'color-5',
+                  },
                 ],
-                fonts: [],
+                fonts: [
+                  {
+                    label: 'Title Font',
+                    wixParam: 'titleFont',
+                    defaultFont: 'arial',
+                  },
+                ],
                 numbers: [
                   {
                     label: 'Radius',
