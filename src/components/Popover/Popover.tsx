@@ -61,10 +61,10 @@ export class Popover extends React.Component<PopoverProps> {
     const arrow = withArrow && (
       <div className={styles.arrow} style={{ top: arrowTop }} />
     );
-    const arrowBorderClasses = [styles.arrowBorder, styles.arrow]
+    const arrowBorderClasses = [styles.arrowBorder, styles.arrow];
     const arrowBorder = withArrow && (
-      <div className={arrowBorderClasses.join(' ')} style={{ top: arrowTop }}/>
-    )
+      <div className={arrowBorderClasses.join(' ')} style={{ top: arrowTop }} />
+    );
 
     return (
       <TPAComponentsConsumer>
