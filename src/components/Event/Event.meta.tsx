@@ -44,6 +44,6 @@ EventMetadata.addSim({
   title: 'without time',
   props: {
     ...defaultProps,
-    showTime: false
+    showTime: false,
   },
 });
