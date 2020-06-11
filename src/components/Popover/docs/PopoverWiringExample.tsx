@@ -25,6 +25,7 @@ export const PopoverWiringExample = () => {
             title="Today Events"
             {...defaultProps}
             {...styles('root', {})}
+            rightArrow
           >
             <div>Getting the cake</div>
             <div>First sight wedding</div>

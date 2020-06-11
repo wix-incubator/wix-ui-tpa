@@ -76,6 +76,7 @@
     max-height: 364px;
     width: value(CurrentWidth);
     background-color: value(CurrentBackgroundColor);
+    z-index: 2;
 }
 
 .root:withShadow {
@@ -85,27 +86,52 @@
 .arrow {
     display: none;
     position: absolute;
-    left: -19px
-    border-top: 35px solid transparent;
-    border-bottom: 35px solid transparent;
+    left: -14px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
     border-left: 0;
-    border-right: 35px solid value(CurrentBackgroundColor);
+    border-right: 15px solid value(CurrentBackgroundColor);
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
+
+.arrowBorder {
+    display: none;
+    position: absolute;
+    left: -15px;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 0;
+    border-right: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
     width: 0;
     height: 0 
     z-index: 1;
 }
 
 
-.root:withArrow:rightArrow .arrow {
-    border-left: 35px solid value(CurrentBackgroundColor);
-    border-right: 0;
-    left: 234px;
-    display: block;
-}
-
 .root:withArrow .arrow {
     display: block;
 }
+
+.root:withArrow .arrowBorder {
+    display: block;
+}
+
+.root:withArrow:rightArrow .arrow {
+    border-left: 15px solid value(CurrentBackgroundColor);
+    border-right: 0;
+    left: 250px;
+    display: block;
+}
+
+.root:withArrow:rightArrow .arrowBorder {
+    border-left: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
+    border-right: 0;
+    left: 251px;
+    display: block;
+}
+
 
 .title {
     -st-mixin: TPAText(MainTextFont value(CurrentTitleFont),

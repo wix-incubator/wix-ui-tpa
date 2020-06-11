@@ -32,7 +32,7 @@ export class Popover extends React.Component<PopoverProps> {
     'data-hook': POPOVER_DATA_HOOKS.Popover,
     withArrow: true,
     rightArrow: false,
-    arrowTop: '0',
+    arrowTop: '15px',
     withShadow: true,
   };
 
@@ -61,6 +61,10 @@ export class Popover extends React.Component<PopoverProps> {
     const arrow = withArrow && (
       <div className={styles.arrow} style={{ top: arrowTop }} />
     );
+    const arrowBorderClasses = [styles.arrowBorder, styles.arrow]
+    const arrowBorder = withArrow && (
+      <div className={arrowBorderClasses.join(' ')} style={{ top: arrowTop }}/>
+    )
 
     return (
       <TPAComponentsConsumer>
@@ -86,6 +90,7 @@ export class Popover extends React.Component<PopoverProps> {
                 icon={<Close height="24px" width="23px" />}
               />
               {arrow}
+              {arrowBorder}
             </div>
           );
         }}
