@@ -32,7 +32,6 @@ export default {
   }),
   exampleProps: {
     value: '',
-    arrowsSize: '',
   },
   dataHook: 'storybook-Picker',
   sections: [

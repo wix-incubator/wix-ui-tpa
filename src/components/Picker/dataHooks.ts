@@ -1,7 +1,4 @@
 export enum PICKER_DATA_HOOKS {
-  PickerWrapper = 'picker-wrapper',
-}
-
-export enum PICKER_DATA_KEYS {
-  ArrowsSized = 'data-arrowssize',
+  Next = 'next-button',
+  Prev = 'prev-button',
 }

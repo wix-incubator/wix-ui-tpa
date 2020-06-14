@@ -8,17 +8,7 @@ PickerMetadata.addSim({
   title: 'render',
   props: {
     value: 'october 2020',
-    previousClickHandler: () => {},
-    nextClickHandler: () => {},
-  },
-});
-
-PickerMetadata.addSim({
-  title: 'render',
-  props: {
-    value: 'october 2020',
-    previousClickHandler: () => {},
-    nextClickHandler: () => {},
-    arrowsSize: '24px',
+    onPrev: () => {},
+    onNext: () => {},
   },
 });

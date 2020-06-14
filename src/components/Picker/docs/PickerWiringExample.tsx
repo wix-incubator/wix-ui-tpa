@@ -27,8 +27,8 @@ export const PickerWiringExample = () => {
         setMonthIndex(monthIndex + 1);
       }}
       {...styles('root', {})}
-      disableNext={monthIndex === month.length - 1}
-      disablePrev={monthIndex === 0}
+      nextDisabled={monthIndex === month.length - 1}
+      prevDisabled={monthIndex === 0}
     />
   );
 };

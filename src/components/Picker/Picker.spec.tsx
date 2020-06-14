@@ -10,8 +10,6 @@ import { pickerTestkitFactory as enzymePickerTestkitFactory } from '../../testki
 
 const noop = () => {};
 const defProps = {
-  onPrev: noop,
-  onNext: noop,
   value: 'October 2020',
 };
 
@@ -19,34 +17,35 @@ describe('Picker', () => {
   const createDriver = createUniDriverFactory(pickerDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Picker {...defProps} />);
+    const driver = createDriver(
+      <Picker onPrev={noop} onNext={noop} {...defProps} />,
+    );
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should show arrow size set state', async () => {
-    const arrowsSize = '24px';
-    const driver = createDriver(
-      <Picker arrowsSize={arrowsSize} {...defProps} />,
-    );
-
-    expect(await driver.isArrowsSizeSet(arrowsSize)).toBeTruthy();
-  });
-
   it('shold click next', async () => {
-    const driver = createDriver(<Picker {...defProps} />);
-    expect(await driver.clickOnNext()).toBe(null);
+    const mockOnNext = jest.fn(noop);
+    const driver = createDriver(
+      <Picker onPrev={noop} onNext={mockOnNext} {...defProps} />,
+    );
+    await driver.clickOnNext();
+    expect(mockOnNext).toHaveBeenCalled();
   });
 
   it('shold click prev', async () => {
-    const driver = createDriver(<Picker {...defProps} />);
-    expect(await driver.clickOnPrev()).toBe(null);
+    const mockOnPrev = jest.fn(noop);
+    const driver = createDriver(
+      <Picker onPrev={mockOnPrev} onNext={noop} {...defProps} />,
+    );
+    await driver.clickOnPrev();
+    expect(mockOnPrev).toHaveBeenCalled();
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <Picker {...defProps} />,
+          <Picker onPrev={noop} onNext={noop} {...defProps} />,
           pickerTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -60,7 +59,7 @@ describe('Picker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Picker {...defProps} />,
+          <Picker onPrev={noop} onNext={noop} {...defProps} />,
           enzymePickerTestkitFactory,
           mount,
           {

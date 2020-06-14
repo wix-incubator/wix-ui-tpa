@@ -36,21 +36,14 @@ const tests = [
         it: 'disable prev',
         props: {
           ...defaultProps,
-          disablePrev: true,
+          prevDisabled: true,
         },
       },
       {
         it: 'disable next',
         props: {
           ...defaultProps,
-          disableNext: true,
-        },
-      },
-      {
-        it: 'change the arrow size',
-        props: {
-          ...defaultProps,
-          arrowsSize: '24px',
+          nextDisabled: true,
         },
       },
     ],
