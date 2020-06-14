@@ -33,9 +33,11 @@
 .root {
   display: flex;
   justify-content: center;
+  font: font(value(CurrentFontStyle));
 }
 
-.value {
+.shownOption {
+    display: block;
     -st-extends: Text;
     -st-mixin: Text(
         MainTextColor value(CurrentMainColor),
@@ -44,9 +46,18 @@
     margin: auto 24px;
 }
 
+.hiddenOption {
+    display: none;
+}
+
 .arrow {
     -st-extends: IconButton;
     -st-mixin: IconButton(
         IconColor value(CurrentMainColor)
     );
+}
+
+.arrow::icon svg {
+    width: 1.5em;
+    height: 1.5em;
 }

@@ -8,7 +8,8 @@ import { TPAComponentProps } from '../../types';
 import styles from './Picker.st.css';
 
 export interface PickerProps extends TPAComponentProps {
-  value: any;
+  options?: Array<string>;
+  currentIndex?: number;
   onPrev(): void;
   onNext(): void;
   prevDisabled?: boolean;
@@ -18,6 +19,8 @@ export interface PickerProps extends TPAComponentProps {
 interface DefaultProps {
   prevDisabled: boolean;
   nextDisabled: boolean;
+  currentIndex: number;
+  options: Array<string>;
 }
 
 /** Picker */
@@ -25,6 +28,8 @@ export class Picker extends React.Component<PickerProps> {
   static defaultProps: DefaultProps = {
     prevDisabled: false,
     nextDisabled: false,
+    currentIndex: 0,
+    options: []
   };
 
   getDataAttributes() {
@@ -33,15 +38,24 @@ export class Picker extends React.Component<PickerProps> {
     return {};
   }
 
+  renderOptions() {
+    const { options, currentIndex } = this.props;
+    return options && options.map && options.map((option, optionIndex) => {
+      const optionClass = currentIndex === optionIndex ? styles.shownOption : styles.hiddenOption;
+      return <Text key={optionIndex} className={optionClass}> {option} </Text>
+    })
+  }
+
   render() {
     const {
       onPrev,
-      value,
       onNext,
       prevDisabled,
       nextDisabled,
       ...rest
     } = this.props;
+
+    const options = this.renderOptions();
 
     return (
       <div {...styles('root', {}, rest)} {...this.getDataAttributes()}>
@@ -53,7 +67,7 @@ export class Picker extends React.Component<PickerProps> {
           disabled={prevDisabled}
           data-hook={PICKER_DATA_HOOKS.Prev}
         />
-        <Text className={styles.value}>{value}</Text>
+        {options}
         <IconButton
           className={styles.arrow}
           as="a"
