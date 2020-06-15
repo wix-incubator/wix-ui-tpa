@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Popover, PopoverProps, Sides } from '../';
+import { CalendarPopover, CalendarPopoverProps, Sides } from '..';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
-import styles from './PopoverWiringExample.st.css';
+import styles from './CalendarPopoverWiringExample.st.css';
 
-const defaultProps: PopoverProps = {
+const defaultProps: CalendarPopoverProps = {
   onClose: () => {},
 };
 
-export const PopoverWiringExample = () => {
+export const CalendarPopoverWiringExample = () => {
   return (
     <div {...styles('flexContainer', {})}>
       <div>
         <h1>Left To Right</h1>
-        <Popover
+        <CalendarPopover
           isShown
           title="Today Events"
           {...defaultProps}
@@ -21,12 +21,12 @@ export const PopoverWiringExample = () => {
           <div>Getting the cake</div>
           <div>First sight wedding</div>
           <div>Stuido workout</div>
-        </Popover>
+        </CalendarPopover>
       </div>
       <div>
         <h1>Right To Left</h1>
         <TPAComponentsProvider value={{ rtl: true }}>
-          <Popover
+          <CalendarPopover
             isShown
             title="Today Events"
             {...defaultProps}
@@ -36,7 +36,7 @@ export const PopoverWiringExample = () => {
             <div>Getting the cake</div>
             <div>First sight wedding</div>
             <div>Stuido workout</div>
-          </Popover>
+          </CalendarPopover>
         </TPAComponentsProvider>
       </div>
     </div>

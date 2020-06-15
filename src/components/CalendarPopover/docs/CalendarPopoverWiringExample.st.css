@@ -1,10 +1,10 @@
 :import {
-    -st-from: "../Popover.st.css";
-    -st-default: TPAPopover;
+    -st-from: "../CalendarPopover.st.css";
+    -st-default: TPACalendarPopover;
 }
 
 .root {
-    -st-mixin: TPAPopover(
+    -st-mixin: TPACalendarPopover(
         BorderColor '"--borderColor"',
         Radius '"unit(fallback(--radius, 2), px)"',
         IconColor '"--iconColor"',

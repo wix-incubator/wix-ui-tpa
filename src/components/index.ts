@@ -36,4 +36,4 @@ export { FloatingDropdown } from './FloatingDropdown';
 export { Picker } from './Picker';
 export { CalendarCell } from './CalendarCell';
 export { Event } from './Event';
-export { Popover } from './Popover';
+export { CalendarPopover } from './CalendarPopover';

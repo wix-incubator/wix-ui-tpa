@@ -1,7 +1,3 @@
-export enum POPOVER_DATA_HOOKS {
-  Popover = 'popover',
-}
-
 export enum POPOVER_DATA_KEYS {
   WithShadow = 'data-shadow',
   WithArrow = 'data-arrow',

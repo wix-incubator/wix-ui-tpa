@@ -14,10 +14,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as PopoverWiringExampleRaw from '!raw-loader!./PopoverWiringExample.tsx';
-import * as PopoverWiringExampleCSSRaw from '!raw-loader!./PopoverWiringExample.st.css';
-import { PopoverWiringExample } from './PopoverWiringExample';
-import { Popover } from '../';
+import * as CalendarPopoverWiringExampleRaw from '!raw-loader!./CalendarPopoverWiringExample.tsx';
+import * as CalendarPopoverWiringExampleCSSRaw from '!raw-loader!./CalendarPopoverWiringExample.st.css';
+import { CalendarPopoverWiringExample } from './CalendarPopoverWiringExample';
+import { CalendarPopover } from '..';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 const code = config =>
@@ -50,7 +50,7 @@ function ExamplePopover(props) {
   return (
     <div ref={rootRef}>
       <TPAComponentsProvider value={{ mobile: false, rtl }}>
-        <Popover {...props} />
+        <CalendarPopover {...props} />
       </TPAComponentsProvider>
     </div>
   );
@@ -58,16 +58,16 @@ function ExamplePopover(props) {
 
 export default {
   category: 'Components',
-  storyName: 'Popover',
+  storyName: 'CalendarPopover',
   component: ExamplePopover,
-  componentPath: '../Popover.tsx',
+  componentPath: '../CalendarPopover.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-Popover',
+    'data-hook': 'storybook-CalendarPopover',
   }),
   exampleProps: {
     arrowSide: ['right', 'left'],
   },
-  dataHook: 'storybook-Popover',
+  dataHook: 'storybook-CalendarPopover',
   sections: [
     header(),
     tabs([
@@ -94,10 +94,10 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              title: 'Popover Panel',
-              example: <PopoverWiringExample />,
-              rawSource: PopoverWiringExampleRaw,
-              rawCSSSource: PopoverWiringExampleCSSRaw,
+              title: 'CalendarPopover Panel',
+              example: <CalendarPopoverWiringExample />,
+              rawSource: CalendarPopoverWiringExampleRaw,
+              rawCSSSource: CalendarPopoverWiringExampleCSSRaw,
               params: {
                 colors: [
                   {

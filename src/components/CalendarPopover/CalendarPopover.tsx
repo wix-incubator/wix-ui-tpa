@@ -5,14 +5,14 @@ import { Text } from '../Text';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import { POPOVER_DATA_KEYS } from './dataHooks';
-import styles from './Popover.st.css';
+import styles from './CalendarPopover.st.css';
 
 export enum Sides {
   Right = 'right',
   Left = 'left',
 }
 
-export interface PopoverProps extends TPAComponentProps {
+export interface CalendarPopoverProps extends TPAComponentProps {
   title?: string;
   onClose(): void;
   withArrow?: boolean;
@@ -33,9 +33,9 @@ interface DefaultProps {
   animated: boolean;
 }
 
-/** Popover */
-export class Popover extends React.Component<PopoverProps> {
-  static displayName = 'Popover';
+/** CalendarPopover */
+export class CalendarPopover extends React.Component<CalendarPopoverProps> {
+  static displayName = 'CalendarPopover';
   static defaultProps: DefaultProps = {
     title: '',
     withArrow: true,

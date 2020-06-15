@@ -1,19 +1,19 @@
-import { Popover, Sides } from '.';
+import { CalendarPopover, Sides } from '.';
 import Registry from '@ui-autotools/registry';
 
-const PopoverMetadata = Registry.getComponentMetadata(Popover);
-PopoverMetadata.nonReactStrictModeCompliant = true;
+const CalendarPopoverMetadata = Registry.getComponentMetadata(CalendarPopover);
+CalendarPopoverMetadata.nonReactStrictModeCompliant = true;
 
 const onClose = () => {};
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'render',
   props: {
     onClose,
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'with left arrow',
   props: {
     onClose,
@@ -21,7 +21,7 @@ PopoverMetadata.addSim({
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'with title',
   props: {
     onClose,
@@ -29,7 +29,7 @@ PopoverMetadata.addSim({
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'with shadow',
   props: {
     onClose,
@@ -37,7 +37,7 @@ PopoverMetadata.addSim({
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'with right arrow',
   props: {
     onClose,
@@ -46,7 +46,7 @@ PopoverMetadata.addSim({
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'with arrow top',
   props: {
     onClose,
@@ -54,7 +54,7 @@ PopoverMetadata.addSim({
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'shown',
   props: {
     onClose,
@@ -62,7 +62,7 @@ PopoverMetadata.addSim({
   },
 });
 
-PopoverMetadata.addSim({
+CalendarPopoverMetadata.addSim({
   title: 'animated',
   props: {
     onClose,

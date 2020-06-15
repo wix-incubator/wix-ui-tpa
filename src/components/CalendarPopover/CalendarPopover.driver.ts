@@ -3,7 +3,7 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { POPOVER_DATA_KEYS } from './dataHooks';
-import { Sides } from './'; 
+import { Sides } from '.';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
 export interface PopoverDriver extends BaseUniDriver {
