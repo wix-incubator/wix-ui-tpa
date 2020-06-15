@@ -3,14 +3,15 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { POPOVER_DATA_KEYS } from './dataHooks';
+import { Sides } from './'; 
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
 export interface PopoverDriver extends BaseUniDriver {
-  withArrowTop(): Promise<boolean>;
-  withTitle(): Promise<boolean>;
-  isRightArrow(): Promise<boolean>;
-  withShadow(): Promise<boolean>;
-  withArrow(): Promise<boolean>;
+  hasArrowTop(arrowTop: number): Promise<boolean>;
+  hasTitle(): Promise<boolean>;
+  hasRightArrow(side: Sides): Promise<boolean>;
+  hasShadow(): Promise<boolean>;
+  hasArrow(): Promise<boolean>;
   hasShown(): Promise<boolean>;
   hasAnimation(): Promise<boolean>;
 }
@@ -18,20 +19,20 @@ export interface PopoverDriver extends BaseUniDriver {
 export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
   return {
     ...baseUniDriverFactory(base),
-    async withArrow() {
+    async hasArrow() {
       return (await base.attr(POPOVER_DATA_KEYS.WithArrow)) === 'true';
     },
-    async withShadow() {
+    async hasShadow() {
       return (await base.attr(POPOVER_DATA_KEYS.WithShadow)) === 'true';
     },
-    async isRightArrow() {
-      return (await base.attr(POPOVER_DATA_KEYS.ArrowSide)) === 'right';
+    async hasRightArrow(side: Sides) {
+      return (await base.attr(POPOVER_DATA_KEYS.ArrowSide)) === side;
     },
-    async withTitle() {
+    async hasTitle() {
       return (await base.attr(POPOVER_DATA_KEYS.Title)) === 'title';
     },
-    async withArrowTop() {
-      return (await base.attr(POPOVER_DATA_KEYS.ArrowTop)) === '50';
+    async hasArrowTop(arrowTop: number) {
+      return (await base.attr(POPOVER_DATA_KEYS.ArrowTop)) === `${arrowTop}`;
     },
     async hasShown() {
       return (await base.attr(POPOVER_DATA_KEYS.Shown)) === 'true';

@@ -23,33 +23,35 @@ describe('Popover', () => {
   it('should show withArrow state', async () => {
     const driver = createDriver(<Popover withArrow {...defaultProps} />);
 
-    expect(await driver.withArrow()).toBeTruthy();
+    expect(await driver.hasArrow()).toBeTruthy();
   });
 
   it('should show withShadow state', async () => {
     const driver = createDriver(<Popover withShadow {...defaultProps} />);
 
-    expect(await driver.withShadow()).toBeTruthy();
+    expect(await driver.hasShadow()).toBeTruthy();
   });
 
   it('should show right arrow state', async () => {
+    const sideMock = Sides.Right;
     const driver = createDriver(
-      <Popover arrowSide={Sides.Right} {...defaultProps} />,
+      <Popover arrowSide={sideMock} {...defaultProps} />,
     );
 
-    expect(await driver.isRightArrow()).toBeTruthy();
+    expect(await driver.hasRightArrow(sideMock)).toBeTruthy();
   });
 
   it("should show title with the value 'title'", async () => {
     const driver = createDriver(<Popover title="title" {...defaultProps} />);
 
-    expect(await driver.withTitle()).toBeTruthy();
+    expect(await driver.hasTitle()).toBeTruthy();
   });
 
-  it('should show arrow top of 50px', async () => {
-    const driver = createDriver(<Popover arrowTop={44} {...defaultProps} />);
+  it('should show arrow top of 40', async () => {
+    const arrowTopMock = 40;
+    const driver = createDriver(<Popover arrowTop={arrowTopMock} {...defaultProps} />);
 
-    expect(await driver.withArrowTop()).toBeTruthy();
+    expect(await driver.hasArrowTop(arrowTopMock)).toBeTruthy();
   });
 
   it('should show shown state', async () => {
