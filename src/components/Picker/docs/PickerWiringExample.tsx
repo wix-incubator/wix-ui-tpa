@@ -21,8 +21,7 @@ export const PickerWiringExample = () => {
   const [monthIndex, setMonthIndex] = React.useState(5);
   return (
     <Picker
-      options={month}
-      currentIndex={monthIndex}
+      value={month[monthIndex]}
       onPrev={() => setMonthIndex(monthIndex - 1)}
       onNext={() => {
         setMonthIndex(monthIndex + 1);

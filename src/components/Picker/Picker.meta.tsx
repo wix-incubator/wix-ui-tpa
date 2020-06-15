@@ -7,7 +7,7 @@ PickerMetadata.nonReactStrictModeCompliant = true;
 PickerMetadata.addSim({
   title: 'render',
   props: {
-    options: ['october 2020'],
+    value: 'october 2020',
     onPrev: () => {},
     onNext: () => {},
   },

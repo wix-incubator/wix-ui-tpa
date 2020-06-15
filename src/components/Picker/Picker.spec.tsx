@@ -10,7 +10,7 @@ import { pickerTestkitFactory as enzymePickerTestkitFactory } from '../../testki
 
 const noop = () => {};
 const defProps = {
-  options: []
+  value: 'October 2020',
 };
 
 describe('Picker', () => {

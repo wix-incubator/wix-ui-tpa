@@ -30,7 +30,9 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Picker',
   }),
-  exampleProps: {},
+  exampleProps: {
+    value: '',
+  },
   dataHook: 'storybook-Picker',
   sections: [
     header(),
