@@ -63,7 +63,7 @@
 }
 
 .root {
-    -st-states: rtl, withArrow, rightArrow, withShadow;
+    -st-states: rtl, withArrow, rightArrow, withShadow, isShown, animated;
     box-sizing: border-box;
     padding-top: value(CurrentTopPadding);
     padding-right: value(CurrentRightPadding);
@@ -77,6 +77,11 @@
     width: value(CurrentWidth);
     background-color: value(CurrentBackgroundColor);
     z-index: 2;
+    display: none;
+}
+
+.root:isShown {
+    display: block;
 }
 
 .root:withShadow {

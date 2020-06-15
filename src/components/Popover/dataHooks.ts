@@ -8,4 +8,6 @@ export enum POPOVER_DATA_KEYS {
   RightArrow = 'data-right-arrow',
   Title = 'data-title',
   ArrowTop = 'data-arrow-top',
+  Animated = "data-animated",
+  Shown = "data-shown",
 }

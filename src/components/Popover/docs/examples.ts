@@ -5,7 +5,7 @@ const createStringComponent = (exampleTitle, isRightToLeft = false) => {
       <div style={{width: "300px"}}>
          <h4>${exampleTitle}</h4>
          <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-               <Popover title={'Events'} onClose={()=>alert('close click!')}>
+               <Popover isShown={true} title={'Events'} onClose={()=>alert('close click!')}>
                   <div>Michal birthday party</div>
                   <div>Movies night</div>
                   <div>Football tournament</div>

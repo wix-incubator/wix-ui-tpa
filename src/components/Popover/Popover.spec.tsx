@@ -7,6 +7,7 @@ import { popoverDriverFactory } from './Popover.driver';
 import { Popover, PopoverProps } from './';
 import { popoverTestkitFactory } from '../../testkit';
 import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
+import { create } from 'domain';
 
 const defaultProps: PopoverProps = {
   onClose: () => {},
@@ -49,6 +50,16 @@ describe('Popover', () => {
 
     expect(await driver.withArrowTop()).toBeTruthy();
   });
+
+  it('should show shown state', async () => {
+    const driver = createDriver(<Popover isShown {...defaultProps}/>);
+    expect(await driver.hasShown()).toBeTruthy();
+  })
+
+  it('should show animated state', async () => {
+    const driver = createDriver(<Popover animated {...defaultProps}/>);
+    expect(await driver.hasAnimation()).toBeTruthy();
+  })
 
   describe('testkit', () => {
     it('should exist', async () => {

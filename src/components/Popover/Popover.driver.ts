@@ -6,11 +6,13 @@ import { POPOVER_DATA_KEYS } from './dataHooks';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
 export interface PopoverDriver extends BaseUniDriver {
-  withArrowTop(): any;
-  withTitle(): any;
-  isRightArrow(): any;
-  withShadow(): any;
-  withArrow(): any;
+  withArrowTop(): Promise<boolean>;
+  withTitle(): Promise<boolean>;
+  isRightArrow(): Promise<boolean>;
+  withShadow(): Promise<boolean>;
+  withArrow(): Promise<boolean>;
+  hasShown(): Promise<boolean>;
+  hasAnimation(): Promise<boolean>;
 }
 
 export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
@@ -30,6 +32,12 @@ export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
     },
     async withArrowTop() {
       return (await base.attr(POPOVER_DATA_KEYS.ArrowTop)) === '50px';
+    },
+    async hasShown() {
+      return (await base.attr(POPOVER_DATA_KEYS.Shown)) === 'true';
+    },
+    async hasAnimation() {
+      return (await base.attr(POPOVER_DATA_KEYS.Animated)) === 'true';
     },
   };
 };

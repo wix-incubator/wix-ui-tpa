@@ -13,6 +13,8 @@ export interface PopoverProps {
   rightArrow?: boolean;
   arrowTop?: string;
   withShadow?: boolean;
+  isShown?: boolean;
+  animated?: boolean;
 }
 
 interface DefaultProps {
@@ -22,6 +24,8 @@ interface DefaultProps {
   rightArrow: boolean;
   arrowTop: string;
   withShadow: boolean;
+  isShown: boolean;
+  animated: boolean;
 }
 
 /** Popover */
@@ -34,16 +38,20 @@ export class Popover extends React.Component<PopoverProps> {
     rightArrow: false,
     arrowTop: '15px',
     withShadow: true,
+    isShown: false,
+    animated: false,
   };
 
   getDataAttributes = () => {
-    const { withShadow, withArrow, rightArrow, title, arrowTop } = this.props;
+    const { withShadow, withArrow, rightArrow, title, arrowTop, animated, isShown } = this.props;
     return {
       [POPOVER_DATA_KEYS.ArrowTop]: arrowTop,
       [POPOVER_DATA_KEYS.RightArrow]: rightArrow,
       [POPOVER_DATA_KEYS.Title]: title,
       [POPOVER_DATA_KEYS.WithArrow]: withArrow,
       [POPOVER_DATA_KEYS.WithShadow]: withShadow,
+      [POPOVER_DATA_KEYS.Animated]: animated,
+      [POPOVER_DATA_KEYS.Shown]: isShown,
     };
   };
 
@@ -56,15 +64,10 @@ export class Popover extends React.Component<PopoverProps> {
       rightArrow,
       arrowTop,
       withShadow,
+      isShown,
+      animated,
       ...rest
     } = this.props;
-    const arrow = withArrow && (
-      <div className={styles.arrow} style={{ top: arrowTop }} />
-    );
-    const arrowBorderClasses = [styles.arrowBorder, styles.arrow];
-    const arrowBorder = withArrow && (
-      <div className={arrowBorderClasses.join(' ')} style={{ top: arrowTop }} />
-    );
 
     return (
       <TPAComponentsConsumer>
@@ -73,7 +76,7 @@ export class Popover extends React.Component<PopoverProps> {
             <div
               {...styles(
                 'root',
-                { rtl, rightArrow, withArrow, withShadow },
+                { rtl, rightArrow, withArrow, withShadow, isShown, animated },
                 rest,
               )}
               data-hook={this.props['data-hook']}
@@ -89,8 +92,8 @@ export class Popover extends React.Component<PopoverProps> {
                 as="a"
                 icon={<Close height="24px" width="23px" />}
               />
-              {arrow}
-              {arrowBorder}
+              <div className={styles.arrow} style={{ top: arrowTop }} />
+              <div className={`${styles.arrowBorder} ${styles.arrow}`} style={{ top: arrowTop }} />
             </div>
           );
         }}

@@ -52,3 +52,19 @@ PopoverMetadata.addSim({
     arrowTop: '50px',
   },
 });
+
+PopoverMetadata.addSim({
+  title: 'shown',
+  props: {
+    onClose,
+    isShown: true,
+  },
+});
+
+PopoverMetadata.addSim({
+  title: 'animated',
+  props: {
+    onClose,
+    animated: true,
+  },
+});
