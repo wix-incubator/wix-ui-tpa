@@ -27,7 +27,7 @@ visualize('CalendarPopover', () => {
     );
     snap(
       'with right arrow',
-      <CalendarPopover arrowSide={Sides.Right} {...defaultProps}/>,
+      <CalendarPopover arrowSide={Sides.Right} {...defaultProps} />,
     );
     snap('animated', <CalendarPopover animated {...defaultProps} />);
   });
