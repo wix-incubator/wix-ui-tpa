@@ -31,10 +31,8 @@
     BorderColor: --overridable;
     Radius: --overridable;
     IconColor: --overridable;
-    TopPadding: --overridable;
-    RightPadding: --overridable;
-    BottomPadding: --overridable;
-    LeftPadding: --overridable;
+    HorizontalPadding: --overridable;
+    VerticalPadding: --overridable;
     IconTopPadding: --overridable;
     IconRightPadding: --overridable;
     IconLeftPadding: --overridable;
@@ -49,10 +47,8 @@
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentRadius: fallback(value(Radius), value(DefaultRadius));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
-    CurrentTopPadding: fallback(value(TopPadding), value(DefaultPadding));
-    CurrentRightPadding: fallback(value(RightPadding), value(DefaultPadding));
-    CurrentBottomPadding: fallback(value(BottomPadding), value(DefaultPadding));
-    CurrentLeftPadding: fallback(value(LeftPadding), value(DefaultPadding));
+    CurrentHorizontalPadding: fallback(value(HorizontalPadding), value(DefaultPadding));
+    CurrentVerticalPadding: fallback(value(VerticalPadding), value(DefaultPadding));
     CurrentIconTopPadding: fallback(value(IconTopPadding), value(DefaultIconPadding));
     CurrentIconRightPadding: fallback(value(IconRightPadding), value(DefaultIconPadding));
     CurrentIconLeftPadding: fallback(value(IconLeftPadding), value(DefaultIconPadding));
@@ -65,10 +61,10 @@
 .root {
     -st-states: rtl, withArrow, rightArrow, withShadow, isShown, animated;
     box-sizing: border-box;
-    padding-top: value(CurrentTopPadding);
-    padding-right: value(CurrentRightPadding);
-    padding-bottom: value(CurrentBottomPadding);
-    padding-left: value(CurrentLeftPadding);
+    padding-top: value(CurrentVerticalPadding);
+    padding-right: value(CurrentHorizontalPadding);
+    padding-bottom: value(CurrentVerticalPadding);
+    padding-left: value(CurrentHorizontalPadding);
     border-radius: value(CurrentRadius);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.2);
     position: relative;

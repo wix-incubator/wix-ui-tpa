@@ -52,14 +52,14 @@ describe('Popover', () => {
   });
 
   it('should show shown state', async () => {
-    const driver = createDriver(<Popover isShown {...defaultProps}/>);
+    const driver = createDriver(<Popover isShown {...defaultProps} />);
     expect(await driver.hasShown()).toBeTruthy();
-  })
+  });
 
   it('should show animated state', async () => {
-    const driver = createDriver(<Popover animated {...defaultProps}/>);
+    const driver = createDriver(<Popover animated {...defaultProps} />);
     expect(await driver.hasAnimation()).toBeTruthy();
-  })
+  });
 
   describe('testkit', () => {
     it('should exist', async () => {

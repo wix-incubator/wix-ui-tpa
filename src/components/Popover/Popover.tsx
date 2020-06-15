@@ -43,7 +43,15 @@ export class Popover extends React.Component<PopoverProps> {
   };
 
   getDataAttributes = () => {
-    const { withShadow, withArrow, rightArrow, title, arrowTop, animated, isShown } = this.props;
+    const {
+      withShadow,
+      withArrow,
+      rightArrow,
+      title,
+      arrowTop,
+      animated,
+      isShown,
+    } = this.props;
     return {
       [POPOVER_DATA_KEYS.ArrowTop]: arrowTop,
       [POPOVER_DATA_KEYS.RightArrow]: rightArrow,
@@ -93,7 +101,10 @@ export class Popover extends React.Component<PopoverProps> {
                 icon={<Close height="24px" width="23px" />}
               />
               <div className={styles.arrow} style={{ top: arrowTop }} />
-              <div className={`${styles.arrowBorder} ${styles.arrow}`} style={{ top: arrowTop }} />
+              <div
+                className={`${styles.arrowBorder} ${styles.arrow}`}
+                style={{ top: arrowTop }}
+              />
             </div>
           );
         }}

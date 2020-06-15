@@ -12,8 +12,11 @@ visualize('Popover', () => {
     snap('with arrow', <Popover withArrow isShown {...defaultProps} />);
     snap('with shadow', <Popover withShadow isShown {...defaultProps} />);
     snap('with title', <Popover title="title" isShown {...defaultProps} />);
-    snap('with arrow top', <Popover arrowTop="50px" isShown {...defaultProps} />);
+    snap(
+      'with arrow top',
+      <Popover arrowTop="50px" isShown {...defaultProps} />,
+    );
     snap('with right arrow', <Popover rightArrow isShown {...defaultProps} />);
-    snap('animated', <Popover animated  {...defaultProps} />);
+    snap('animated', <Popover animated {...defaultProps} />);
   });
 });

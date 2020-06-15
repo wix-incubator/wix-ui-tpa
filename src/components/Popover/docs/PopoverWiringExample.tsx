@@ -4,7 +4,7 @@ import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import styles from './PopoverWiringExample.st.css';
 
 const defaultProps: PopoverProps = {
-  onClose: () => { },
+  onClose: () => {},
 };
 
 export const PopoverWiringExample = () => {
@@ -12,7 +12,12 @@ export const PopoverWiringExample = () => {
     <div {...styles('flexContainer', {})}>
       <div>
         <h1>Left To Right</h1>
-        <Popover isShown title="Today Events" {...defaultProps} {...styles('root', {})}>
+        <Popover
+          isShown
+          title="Today Events"
+          {...defaultProps}
+          {...styles('root', {})}
+        >
           <div>Getting the cake</div>
           <div>First sight wedding</div>
           <div>Stuido workout</div>
