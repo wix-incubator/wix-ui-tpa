@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverProps } from '../';
+import { Popover, PopoverProps, Sides } from '../';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import styles from './PopoverWiringExample.st.css';
 
@@ -31,7 +31,7 @@ export const PopoverWiringExample = () => {
             title="Today Events"
             {...defaultProps}
             {...styles('root', {})}
-            rightArrow
+            arrowSide={Sides.Right}
           >
             <div>Getting the cake</div>
             <div>First sight wedding</div>

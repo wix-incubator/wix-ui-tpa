@@ -1,4 +1,4 @@
-import { Popover } from '.';
+import { Popover, Sides } from '.';
 import Registry from '@ui-autotools/registry';
 
 const PopoverMetadata = Registry.getComponentMetadata(Popover);
@@ -14,7 +14,7 @@ PopoverMetadata.addSim({
 });
 
 PopoverMetadata.addSim({
-  title: 'with arrow',
+  title: 'with left arrow',
   props: {
     onClose,
     withArrow: true,
@@ -38,10 +38,11 @@ PopoverMetadata.addSim({
 });
 
 PopoverMetadata.addSim({
-  title: 'right arrow',
+  title: 'with right arrow',
   props: {
     onClose,
-    rightArrow: true,
+    arrowSide: Sides.Right,
+    withArrow: true,
   },
 });
 
@@ -49,7 +50,7 @@ PopoverMetadata.addSim({
   title: 'with arrow top',
   props: {
     onClose,
-    arrowTop: '50px',
+    arrowTop: 66,
   },
 });
 

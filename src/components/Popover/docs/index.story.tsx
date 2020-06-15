@@ -65,7 +65,7 @@ export default {
     'data-hook': 'storybook-Popover',
   }),
   exampleProps: {
-    //
+    arrowSide: ['right', 'left'],
   },
   dataHook: 'storybook-Popover',
   sections: [
@@ -134,6 +134,7 @@ export default {
                     wixParam: 'radius',
                     defaultNumber: 2,
                     unit: 'px',
+                    max: 20,
                   },
                   {
                     label: 'Icon Top Padding',

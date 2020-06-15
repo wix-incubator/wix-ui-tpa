@@ -59,7 +59,7 @@
 }
 
 .root {
-    -st-states: rtl, withArrow, rightArrow, withShadow, isShown, animated;
+    -st-states: rtl, withArrow, withShadow, isShown, animated, arrowSide(enum(left, right));
     box-sizing: border-box;
     padding-top: value(CurrentVerticalPadding);
     padding-right: value(CurrentHorizontalPadding);
@@ -87,29 +87,32 @@
 .arrow {
     display: none;
     position: absolute;
-    left: -14px;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 0;
-    border-right: 15px solid value(CurrentBackgroundColor);
     width: 0;
     height: 0;
     z-index: 3;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
 }
 
 .arrowBorder {
     display: none;
     position: absolute;
-    left: -15px;
-    border-top: 15px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-left: 0;
-    border-right: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
     width: 0;
     height: 0 
     z-index: 1;
 }
 
+.root:arrowSide(left) .arrow {
+    left: -14px;
+    border-left: 0;
+    border-right: 15px solid value(CurrentBackgroundColor);
+}
+
+.root:arrowSide(left) .arrowBorder {
+    left: -15px;
+    border-left: 0;
+    border-right: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
+}
 
 .root:withArrow .arrow {
     display: block;
@@ -119,20 +122,17 @@
     display: block;
 }
 
-.root:withArrow:rightArrow .arrow {
+.root:arrowSide(right) .arrow {
     border-left: 15px solid value(CurrentBackgroundColor);
     border-right: 0;
     left: 250px;
-    display: block;
 }
 
-.root:withArrow:rightArrow .arrowBorder {
+.root:arrowSide(right) .arrowBorder {
     border-left: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
     border-right: 0;
     left: 251px;
-    display: block;
 }
-
 
 .title {
     -st-mixin: TPAText(MainTextFont value(CurrentTitleFont),
@@ -148,14 +148,11 @@
 
 .root:rtl .close {
     left: value(CurrentIconLeftPadding);
+    right: initial;
 }
 
 .root:rtl {
     text-align: right;
-}
-
-.root:rtl .container {
-    float: right;
 }
 
 .children {

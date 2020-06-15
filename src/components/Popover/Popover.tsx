@@ -3,15 +3,21 @@ import { ReactComponent as Close } from '../../assets/icons/Close.svg';
 import { IconButton } from '../IconButton';
 import { Text } from '../Text';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { POPOVER_DATA_HOOKS, POPOVER_DATA_KEYS } from './dataHooks';
+import { TPAComponentProps } from '../../types';
+import { POPOVER_DATA_KEYS } from './dataHooks';
 import styles from './Popover.st.css';
 
-export interface PopoverProps {
+export enum Sides {
+  Right = 'right',
+  Left = 'left',
+}
+
+export interface PopoverProps extends TPAComponentProps {
   title?: string;
   onClose(): void;
   withArrow?: boolean;
-  rightArrow?: boolean;
-  arrowTop?: string;
+  arrowSide?: Sides;
+  arrowTop?: number;
   withShadow?: boolean;
   isShown?: boolean;
   animated?: boolean;
@@ -19,10 +25,9 @@ export interface PopoverProps {
 
 interface DefaultProps {
   title: string;
-  'data-hook': string;
   withArrow: boolean;
-  rightArrow: boolean;
-  arrowTop: string;
+  arrowSide?: Sides;
+  arrowTop: number;
   withShadow: boolean;
   isShown: boolean;
   animated: boolean;
@@ -33,10 +38,9 @@ export class Popover extends React.Component<PopoverProps> {
   static displayName = 'Popover';
   static defaultProps: DefaultProps = {
     title: '',
-    'data-hook': POPOVER_DATA_HOOKS.Popover,
     withArrow: true,
-    rightArrow: false,
-    arrowTop: '15px',
+    arrowSide: Sides.Left,
+    arrowTop: 15,
     withShadow: true,
     isShown: false,
     animated: false,
@@ -46,7 +50,7 @@ export class Popover extends React.Component<PopoverProps> {
     const {
       withShadow,
       withArrow,
-      rightArrow,
+      arrowSide,
       title,
       arrowTop,
       animated,
@@ -54,7 +58,7 @@ export class Popover extends React.Component<PopoverProps> {
     } = this.props;
     return {
       [POPOVER_DATA_KEYS.ArrowTop]: arrowTop,
-      [POPOVER_DATA_KEYS.RightArrow]: rightArrow,
+      [POPOVER_DATA_KEYS.ArrowSide]: arrowSide,
       [POPOVER_DATA_KEYS.Title]: title,
       [POPOVER_DATA_KEYS.WithArrow]: withArrow,
       [POPOVER_DATA_KEYS.WithShadow]: withShadow,
@@ -69,13 +73,15 @@ export class Popover extends React.Component<PopoverProps> {
       title,
       onClose,
       withArrow,
-      rightArrow,
+      arrowSide,
       arrowTop,
       withShadow,
       isShown,
       animated,
       ...rest
     } = this.props;
+
+    const pxArrowTop = `${arrowTop}px`;
 
     return (
       <TPAComponentsConsumer>
@@ -84,7 +90,7 @@ export class Popover extends React.Component<PopoverProps> {
             <div
               {...styles(
                 'root',
-                { rtl, rightArrow, withArrow, withShadow, isShown, animated },
+                { rtl, arrowSide, withArrow, withShadow, isShown, animated },
                 rest,
               )}
               data-hook={this.props['data-hook']}
@@ -100,10 +106,10 @@ export class Popover extends React.Component<PopoverProps> {
                 as="a"
                 icon={<Close height="24px" width="23px" />}
               />
-              <div className={styles.arrow} style={{ top: arrowTop }} />
+              <div className={styles.arrow} style={{ top: pxArrowTop }} />
               <div
                 className={`${styles.arrowBorder} ${styles.arrow}`}
-                style={{ top: arrowTop }}
+                style={{ top: pxArrowTop }}
               />
             </div>
           );

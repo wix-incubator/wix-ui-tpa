@@ -4,10 +4,9 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { popoverDriverFactory } from './Popover.driver';
-import { Popover, PopoverProps } from './';
+import { Popover, PopoverProps, Sides } from './';
 import { popoverTestkitFactory } from '../../testkit';
 import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
-import { create } from 'domain';
 
 const defaultProps: PopoverProps = {
   onClose: () => {},
@@ -34,7 +33,9 @@ describe('Popover', () => {
   });
 
   it('should show right arrow state', async () => {
-    const driver = createDriver(<Popover rightArrow {...defaultProps} />);
+    const driver = createDriver(
+      <Popover arrowSide={Sides.Right} {...defaultProps} />,
+    );
 
     expect(await driver.isRightArrow()).toBeTruthy();
   });
@@ -46,7 +47,7 @@ describe('Popover', () => {
   });
 
   it('should show arrow top of 50px', async () => {
-    const driver = createDriver(<Popover arrowTop="50px" {...defaultProps} />);
+    const driver = createDriver(<Popover arrowTop={44} {...defaultProps} />);
 
     expect(await driver.withArrowTop()).toBeTruthy();
   });
