@@ -12,3 +12,23 @@ PickerMetadata.addSim({
     onNext: () => {},
   },
 });
+
+PickerMetadata.addSim({
+  title: 'disable next',
+  props: {
+    value: 'october 2020',
+    onPrev: () => {},
+    onNext: () => {},
+    nextDisabled: true,
+  },
+});
+
+PickerMetadata.addSim({
+  title: 'disable prev',
+  props: {
+    value: 'october 2020',
+    onPrev: () => {},
+    onNext: () => {},
+    prevDisabled: true,
+  },
+});

@@ -1,1 +1,1 @@
-export { Picker, PickerProps } from './Picker';
+export * from './Picker';

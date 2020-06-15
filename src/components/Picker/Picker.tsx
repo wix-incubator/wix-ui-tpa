@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text } from '../Text';
-import { PICKER_DATA_HOOKS } from './dataHooks';
+import { PICKER_DATA_HOOKS, PICKER_DATA_PROPS } from './dataHooks';
 import { ReactComponent as ChevronLeft } from '../../assets/icons/ChevronLeft.svg';
 import { ReactComponent as ChevronRight } from '../../assets/icons/ChevronRight.svg';
 import { IconButton } from '../IconButton';
@@ -28,9 +28,12 @@ export class Picker extends React.Component<PickerProps> {
   };
 
   getDataAttributes() {
-    const {} = this.props;
+    const { prevDisabled, nextDisabled } = this.props;
 
-    return {};
+    return {
+      [PICKER_DATA_PROPS.NextDisabled]: nextDisabled,
+      [PICKER_DATA_PROPS.PrevDisabled]: prevDisabled,
+    };
   }
 
   render() {

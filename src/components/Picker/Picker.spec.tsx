@@ -23,6 +23,20 @@ describe('Picker', () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should show prev disabled state', async () => {
+    const driver = createDriver(
+      <Picker onPrev={noop} onNext={noop} prevDisabled {...defProps} />,
+    );
+    expect(await driver.hasDisablePrev()).toBe(true);
+  });
+
+  it('should show next disabled state', async () => {
+    const driver = createDriver(
+      <Picker onPrev={noop} onNext={noop} nextDisabled {...defProps} />,
+    );
+    expect(await driver.hasDisableNext()).toBe(true);
+  });
+
   it('shold click next', async () => {
     const mockOnNext = jest.fn(noop);
     const driver = createDriver(
