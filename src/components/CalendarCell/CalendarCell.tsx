@@ -13,42 +13,62 @@ export enum Times {
 export interface CalendarCellProps {
   title: string;
   children?: any;
-  timeType?: Times;
   stretchable?: boolean;
+  boldTitle?: boolean;
+  boldBackground?: boolean;
+  current?: boolean;
 }
 
 interface DefaultProps {
   stretchable: boolean;
   'data-hook': string;
+  boldTitle: boolean;
+  boldBackground: boolean;
+  current: boolean;
 }
 
-interface State {}
-
 /** CalendarCell */
-export class CalendarCell extends React.Component<CalendarCellProps, State> {
+export class CalendarCell extends React.Component<CalendarCellProps> {
   static displayName = 'CalendarCell';
   static defaultProps: DefaultProps = {
     stretchable: false,
     'data-hook': CALENDARCELL_DATA_HOOKS.CalendarCell,
+    boldTitle: true,
+    boldBackground: true,
+    current: false,
   };
 
   getDataAttributes() {
-    const { stretchable, timeType } = this.props;
+    const { stretchable, boldBackground, boldTitle, current } = this.props;
 
     return {
       [CALENDAR_DATA_KEYS.Stertchable]: stretchable,
-      [CALENDAR_DATA_KEYS.TimeType]: timeType,
+      [CALENDAR_DATA_KEYS.BoldTitle]: boldTitle,
+      [CALENDAR_DATA_KEYS.BoldBackground]: boldBackground,
+      [CALENDAR_DATA_KEYS.Current]: current,
     };
   }
 
   render() {
-    const { title, children, timeType, stretchable, ...rest } = this.props;
+    const {
+      title,
+      children,
+      stretchable,
+      boldTitle,
+      boldBackground,
+      current,
+      ...rest
+    } = this.props;
 
     return (
       <div
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
-        {...styles('root', { timeType, stretchable }, rest)}
+        {...styles(
+          'root',
+          { stretchable, boldTitle, boldBackground, current },
+          rest,
+        )}
       >
         <div className={styles.innerContainer}>
           <Text className={styles.title}>{title}</Text>

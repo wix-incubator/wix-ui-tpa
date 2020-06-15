@@ -11,11 +11,7 @@ export const CalendarCellWiringExample = () => {
       </div>
       <div style={{ width: '135px' }}>
         <h4>Current Day</h4>
-        <CalendarCell
-          timeType={Times.currentDay}
-          {...styles('root')}
-          title={'17'}
-        />
+        <CalendarCell current {...styles('root')} title={'17'} />
       </div>
     </div>
   );

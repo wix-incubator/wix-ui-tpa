@@ -4,12 +4,10 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { CALENDAR_DATA_KEYS } from './dataHooks';
-import { Times } from './CalendarCell';
 
 export interface CalendarCellDriver extends BaseUniDriver {
-  isNextMonth(): Promise<boolean>;
-  isPreviousDays(): Promise<boolean>;
-  isPreviousMonth(): Promise<boolean>;
+  isBoldBackground(): Promise<boolean>;
+  isBoldTitle(): Promise<boolean>;
   isStretched(): Promise<boolean>;
   isCurrentDay(): Promise<boolean>;
 }
@@ -22,23 +20,14 @@ export const calendarCellDriverFactory = (
     async isStretched() {
       return (await base.attr(CALENDAR_DATA_KEYS.Stertchable)) === 'true';
     },
-    async isPreviousMonth() {
-      return (
-        (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.previousMonth
-      );
+    async isBoldTitle() {
+      return (await base.attr(CALENDAR_DATA_KEYS.BoldTitle)) === 'true';
     },
-    async isPreviousDays() {
-      return (
-        (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.previousDays
-      );
+    async isBoldBackground() {
+      return (await base.attr(CALENDAR_DATA_KEYS.BoldBackground)) === 'true';
     },
     async isCurrentDay() {
-      return (
-        (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.currentDay
-      );
-    },
-    async isNextMonth() {
-      return (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === Times.nextMonth;
+      return (await base.attr(CALENDAR_DATA_KEYS.Current)) === 'true';
     },
   };
 };

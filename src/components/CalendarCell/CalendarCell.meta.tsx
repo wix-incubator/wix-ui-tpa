@@ -1,4 +1,4 @@
-import { CalendarCell, Times } from '.';
+import { CalendarCell } from '.';
 import Registry from '@ui-autotools/registry';
 
 const CalendarCellMetadata = Registry.getComponentMetadata(CalendarCell);
@@ -12,18 +12,18 @@ CalendarCellMetadata.addSim({
 });
 
 CalendarCellMetadata.addSim({
-  title: 'previous month',
+  title: 'bold title',
   props: {
     title: '13',
-    timeType: Times.previousMonth,
+    boldTitle: true,
   },
 });
 
 CalendarCellMetadata.addSim({
-  title: 'previous days',
+  title: 'bold background',
   props: {
     title: '13',
-    timeType: Times.previousDays,
+    boldBackground: true,
   },
 });
 
@@ -31,15 +31,7 @@ CalendarCellMetadata.addSim({
   title: 'current day',
   props: {
     title: '13',
-    timeType: Times.currentDay,
-  },
-});
-
-CalendarCellMetadata.addSim({
-  title: 'next month',
-  props: {
-    title: '13',
-    timeType: Times.nextMonth,
+    current: true,
   },
 });
 

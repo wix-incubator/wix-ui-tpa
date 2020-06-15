@@ -4,7 +4,7 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { calendarCellDriverFactory } from './CalendarCell.driver';
-import { CalendarCell, Times } from './';
+import { CalendarCell } from './';
 import { calendarCellTestkitFactory } from '../../testkit';
 import { calendarCellTestkitFactory as enzymeCalendarCellTestkitFactory } from '../../testkit/enzyme';
 
@@ -26,36 +26,22 @@ describe('CalendarCell', () => {
     expect(await driver.isStretched()).toBeTruthy();
   });
 
-  it('should show previous month state', async () => {
-    const driver = createDriver(
-      <CalendarCell timeType={Times.previousMonth} {...defProps} />,
-    );
+  it('should show bold background state', async () => {
+    const driver = createDriver(<CalendarCell boldBackground {...defProps} />);
 
-    expect(await driver.isPreviousMonth()).toBeTruthy();
+    expect(await driver.isBoldBackground()).toBeTruthy();
   });
 
-  it('should show previous days state', async () => {
-    const driver = createDriver(
-      <CalendarCell timeType={Times.previousDays} {...defProps} />,
-    );
+  it('should show bold title state', async () => {
+    const driver = createDriver(<CalendarCell boldTitle {...defProps} />);
 
-    expect(await driver.isPreviousDays()).toBeTruthy();
+    expect(await driver.isBoldTitle()).toBeTruthy();
   });
 
   it('should show current day state', async () => {
-    const driver = createDriver(
-      <CalendarCell timeType={Times.currentDay} {...defProps} />,
-    );
+    const driver = createDriver(<CalendarCell current {...defProps} />);
 
     expect(await driver.isCurrentDay()).toBeTruthy();
-  });
-
-  it('should show next month state', async () => {
-    const driver = createDriver(
-      <CalendarCell timeType={Times.nextMonth} {...defProps} />,
-    );
-
-    expect(await driver.isNextMonth()).toBeTruthy();
   });
 
   describe('testkit', () => {

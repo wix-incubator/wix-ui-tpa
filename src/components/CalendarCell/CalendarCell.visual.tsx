@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
-import { Omit } from '../../types';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { CalendarCell, Times, CalendarCellProps } from './';
+import { CalendarCell, CalendarCellProps } from './';
 
 const defaultProps: CalendarCellProps = {
   title: '12',
@@ -12,10 +9,13 @@ const defaultProps: CalendarCellProps = {
 visualize('CalendarCell', () => {
   story('render', () => {
     snap('title', <CalendarCell {...defaultProps} />);
+    snap('bold title', <CalendarCell boldTitle {...defaultProps} />);
+    snap('bold background', <CalendarCell boldBackground {...defaultProps} />);
     snap(
-      'current-day',
-      <CalendarCell {...defaultProps} timeType={Times.currentDay} />,
+      'bold background and title',
+      <CalendarCell boldBackground boldTitle {...defaultProps} />,
     );
+    snap('current-day', <CalendarCell current {...defaultProps} />);
     snap('stretchable', <CalendarCell {...defaultProps} stretchable />);
   });
 });

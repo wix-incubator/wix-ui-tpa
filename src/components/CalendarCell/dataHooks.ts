@@ -4,5 +4,7 @@ export enum CALENDARCELL_DATA_HOOKS {
 
 export enum CALENDAR_DATA_KEYS {
   Stertchable = 'data-stretchable',
-  TimeType = 'data-timetype',
+  BoldTitle = 'data-bold-title',
+  BoldBackground = 'data-bold-background',
+  Current = 'data-current',
 }
