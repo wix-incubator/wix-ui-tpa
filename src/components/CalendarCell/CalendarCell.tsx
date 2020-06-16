@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text } from '../Text';
-import { CALENDARCELL_DATA_HOOKS, CALENDAR_DATA_KEYS } from './dataHooks';
+import { CALENDAR_DATA_KEYS } from './dataHooks';
+import { TPAComponentProps } from '../../types';
 import styles from './CalendarCell.st.css';
 
 export enum Times {
@@ -10,7 +11,7 @@ export enum Times {
   nextMonth = 'nextMonth',
 }
 
-export interface CalendarCellProps {
+export interface CalendarCellProps extends TPAComponentProps {
   title: string;
   children?: any;
   stretchable?: boolean;
