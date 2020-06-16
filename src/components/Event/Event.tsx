@@ -48,6 +48,7 @@ export class Event extends React.Component<EventProps> {
         {({ rtl }) => {
           return (
             <div
+            data-hook={this.props['data-hook']}
               {...this.getDataAttributes()}
               {...styles('root', { fullday, selected, rtl }, rest)}
             >
