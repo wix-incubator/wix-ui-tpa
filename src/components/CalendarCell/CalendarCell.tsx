@@ -21,7 +21,6 @@ export interface CalendarCellProps {
 
 interface DefaultProps {
   stretchable: boolean;
-  'data-hook': string;
   boldTitle: boolean;
   boldBackground: boolean;
   current: boolean;
@@ -32,7 +31,6 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
   static displayName = 'CalendarCell';
   static defaultProps: DefaultProps = {
     stretchable: false,
-    'data-hook': CALENDARCELL_DATA_HOOKS.CalendarCell,
     boldTitle: true,
     boldBackground: true,
     current: false,
