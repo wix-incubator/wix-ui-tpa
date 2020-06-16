@@ -47,7 +47,7 @@ export class Picker extends React.Component<PickerProps> {
     } = this.props;
 
     return (
-      <div {...styles('root', {}, rest)} {...this.getDataAttributes()}>
+      <div data-hook={this.props['data-hook']} {...styles('root', {}, rest)} {...this.getDataAttributes()}>
         <IconButton
           className={styles.arrow}
           icon={<ChevronLeft />}
