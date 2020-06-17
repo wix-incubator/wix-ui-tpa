@@ -4,7 +4,7 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { calendarCellDriverFactory } from './CalendarCell.driver';
-import { CalendarCell } from './';
+import { CalendarCell, Alignment } from './';
 import { calendarCellTestkitFactory } from '../../testkit';
 import { calendarCellTestkitFactory as enzymeCalendarCellTestkitFactory } from '../../testkit/enzyme';
 
@@ -42,6 +42,15 @@ describe('CalendarCell', () => {
     const driver = createDriver(<CalendarCell current {...defProps} />);
 
     expect(await driver.isCurrentDay()).toBeTruthy();
+  });
+
+  it('should show right alignment state', async () => {
+    const mockAlignment = Alignment.right;
+    const driver = createDriver(
+      <CalendarCell alignment={mockAlignment} {...defProps} />,
+    );
+
+    expect(await driver.hasRightAlignment(mockAlignment)).toBeTruthy();
   });
 
   describe('testkit', () => {

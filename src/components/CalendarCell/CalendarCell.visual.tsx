@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
-import { CalendarCell, CalendarCellProps } from './';
+import { CalendarCell, CalendarCellProps, Alignment } from './';
 
 const defaultProps: CalendarCellProps = {
   title: '12',
@@ -17,5 +17,17 @@ visualize('CalendarCell', () => {
     );
     snap('current-day', <CalendarCell current {...defaultProps} />);
     snap('stretchable', <CalendarCell {...defaultProps} stretchable />);
+    snap(
+      'left',
+      <CalendarCell alignment={Alignment.left} {...defaultProps} stretchable />,
+    );
+    snap(
+      'center',
+      <CalendarCell alignment={Alignment.center} {...defaultProps} />,
+    );
+    snap(
+      'right',
+      <CalendarCell alignment={Alignment.right} {...defaultProps} />,
+    );
   });
 });

@@ -4,11 +4,10 @@ import { CALENDAR_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 import styles from './CalendarCell.st.css';
 
-export enum Times {
-  previousMonth = 'previousMonth',
-  previousDays = 'previousDays',
-  currentDay = 'currentDay',
-  nextMonth = 'nextMonth',
+export enum Alignment {
+  left = 'left',
+  center = 'center',
+  right = 'right',
 }
 
 export interface CalendarCellProps extends TPAComponentProps {
@@ -17,6 +16,7 @@ export interface CalendarCellProps extends TPAComponentProps {
   stretchable?: boolean;
   boldTitle?: boolean;
   boldBackground?: boolean;
+  alignment?: Alignment;
   current?: boolean;
 }
 
@@ -25,6 +25,7 @@ interface DefaultProps {
   boldTitle: boolean;
   boldBackground: boolean;
   current: boolean;
+  alignment: Alignment;
 }
 
 /** CalendarCell */
@@ -35,16 +36,24 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
     boldTitle: true,
     boldBackground: true,
     current: false,
+    alignment: Alignment.left,
   };
 
   getDataAttributes() {
-    const { stretchable, boldBackground, boldTitle, current } = this.props;
+    const {
+      stretchable,
+      boldBackground,
+      boldTitle,
+      current,
+      alignment,
+    } = this.props;
 
     return {
       [CALENDAR_DATA_KEYS.Stertchable]: stretchable,
       [CALENDAR_DATA_KEYS.BoldTitle]: boldTitle,
       [CALENDAR_DATA_KEYS.BoldBackground]: boldBackground,
       [CALENDAR_DATA_KEYS.Current]: current,
+      [CALENDAR_DATA_KEYS.Alignment]: alignment,
     };
   }
 
@@ -56,6 +65,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
       boldTitle,
       boldBackground,
       current,
+      alignment,
       ...rest
     } = this.props;
 
@@ -65,7 +75,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
         data-hook={this.props['data-hook']}
         {...styles(
           'root',
-          { stretchable, boldTitle, boldBackground, current },
+          { stretchable, boldTitle, boldBackground, current, alignment },
           rest,
         )}
       >

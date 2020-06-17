@@ -11,7 +11,6 @@
         BorderOpacity '"unit(fallback(zeroAsTrue(--borderOpacity), 1), "")"',
         TodayColor '"--todayColor"',
         FontColor '"--fontColor"',
-        FontStyle '"--fontStyle"',
-        Alignment '"center"'
+        FontStyle '"--fontStyle"'
     )
 }

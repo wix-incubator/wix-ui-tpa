@@ -4,8 +4,10 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { CALENDAR_DATA_KEYS } from './dataHooks';
+import { Alignment } from './CalendarCell';
 
 export interface CalendarCellDriver extends BaseUniDriver {
+  hasRightAlignment(mockAlignment: Alignment): Promise<boolean>;
   isBoldBackground(): Promise<boolean>;
   isBoldTitle(): Promise<boolean>;
   isStretched(): Promise<boolean>;
@@ -28,6 +30,9 @@ export const calendarCellDriverFactory = (
     },
     async isCurrentDay() {
       return (await base.attr(CALENDAR_DATA_KEYS.Current)) === 'true';
+    },
+    async hasRightAlignment(mockAlignment) {
+      return (await base.attr(CALENDAR_DATA_KEYS.Alignment)) === mockAlignment;
     },
   };
 };

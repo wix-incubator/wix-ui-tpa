@@ -1,4 +1,4 @@
-import { CalendarCell } from '.';
+import { CalendarCell, Alignment } from '.';
 import Registry from '@ui-autotools/registry';
 
 const CalendarCellMetadata = Registry.getComponentMetadata(CalendarCell);
@@ -40,5 +40,21 @@ CalendarCellMetadata.addSim({
   props: {
     title: '13',
     stretchable: true,
+  },
+});
+
+CalendarCellMetadata.addSim({
+  title: 'center',
+  props: {
+    title: '13',
+    alignment: Alignment.center,
+  },
+});
+
+CalendarCellMetadata.addSim({
+  title: 'right',
+  props: {
+    title: '13',
+    alignment: Alignment.right,
   },
 });

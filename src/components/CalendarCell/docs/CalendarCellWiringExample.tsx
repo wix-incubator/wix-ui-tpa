@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarCell, Times } from '../';
+import { CalendarCell, Alignment } from '../';
 import styles from './CalendarCellWiringExample.st.css';
 
 export const CalendarCellWiringExample = () => {

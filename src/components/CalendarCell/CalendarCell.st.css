@@ -10,7 +10,6 @@
 
 /*Defaults*/
 :vars {
-    DefaultAlignment: left;
     DefaultBorderWidth: 1px;
     DefaultBorderOpacity: 1;
     DefaultFontColor: color-5;
@@ -23,7 +22,6 @@
 
 /*Overrides*/
 :vars {
-    Alignment: --overridable
     BorderWidth: --overridable
     BorderOpacity: --overridable
     FontColor: --overridable
@@ -35,7 +33,6 @@
 }
 
 :vars {
-    CurrentAlignment: fallback(value(Alignment), value(DefaultAlignment));
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
     CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity))
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
@@ -56,13 +53,25 @@
 }
 
 .root {
-    -st-states: stretchable, boldTitle, boldBackground, current;
+    -st-states: stretchable, boldTitle, boldBackground, current, alignment(enum(left, center, right));
     background: applyOpacity(color(color-2), 0.1);
-    text-align: value(CurrentAlignment);
     width: 100%;
     padding-top: 100%; /* 1:1 Aspect Ratio */
     position: relative;
     border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentBorderOpacity));
+}
+
+.root:alignment(left) {
+    text-align: left;
+}
+
+
+.root:alignment(center) {
+    text-align: center;
+}
+
+.root:alignment(right) {
+    text-align: right;
 }
 
 .title {
