@@ -116,7 +116,6 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     option: (DropdownOptionProps & IDOMid) | null,
   ) => {
     const ariaActivedescendant = option ? option._DOMid : null;
-
     this.setState({ ariaActivedescendant });
   };
 
