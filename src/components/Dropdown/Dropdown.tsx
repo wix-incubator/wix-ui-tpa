@@ -12,6 +12,7 @@ import { DATA_HOOKS } from './constants';
 import { Placement } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
+import { IDOMid } from 'wix-ui-core/dropdown-content';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -46,6 +47,7 @@ interface DefaultProps {
 
 interface State {
   selectedOption: DropdownOptionProps;
+  ariaActivedescendant: string | null;
 }
 
 /**
@@ -91,6 +93,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
   state = {
     selectedOption: null,
+    ariaActivedescendant: null,
   };
 
   private shouldRenderNativeSelect() {
@@ -107,6 +110,14 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     this.setState({ selectedOption });
     onChange &&
       onChange(this.props.options.find(({ id }) => selectedOption.id === id));
+  };
+
+  private readonly onOptionHover = (
+    option: (DropdownOptionProps & IDOMid) | null,
+  ) => {
+    const ariaActivedescendant = option ? option._DOMid : null;
+
+    this.setState({ ariaActivedescendant });
   };
 
   private readonly renderNativeSelect = () => {
@@ -151,7 +162,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
-    const { selectedOption } = this.state;
+    const { selectedOption, ariaActivedescendant } = this.state;
 
     const coreOptions = options.map(option => ({
       ...option,
@@ -170,12 +181,15 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         options={coreOptions}
         onDeselect={this.onSelect}
         onSelect={this.onSelect}
+        onOptionHover={this.onOptionHover}
+        contentId={'test-test-content'}
         initialSelectedIds={selectedOption ? [selectedOption.id] : []}
         forceContentElementVisibility={forceContentElementVisibility}
       >
         <DropdownBase
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
+          aria-activedescendant={ariaActivedescendant}
           className={styles.dropdownBase}
           selectedOption={selectedOption}
           placeholder={placeholder}

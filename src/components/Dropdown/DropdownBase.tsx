@@ -16,6 +16,7 @@ interface DropdownBaseProps {
   error: boolean;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  'aria-activedescendant'?: string | null;
   upgrade: boolean;
   rtl: boolean;
 }
@@ -29,6 +30,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
     upgrade,
     ['aria-label']: ariaLabel,
     ['aria-labelledby']: ariaLabelledBy,
+    ['aria-activedescendant']: ariaActivedescendant,
     rtl,
   } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
@@ -46,6 +48,7 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       disabled={disabled}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
+      aria-activedescendant={ariaActivedescendant}
       aria-haspopup
       prefixIcon={
         selectedOption && selectedOption.icon ? (
