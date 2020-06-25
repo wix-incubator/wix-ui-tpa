@@ -12,6 +12,7 @@ import { DATA_HOOKS } from './constants';
 import { Placement } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
+import { IDOMid } from 'wix-ui-core/dist/es/src';
 
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
@@ -19,6 +20,7 @@ export enum DROPDOWN_ALIGNMENT {
 
 export interface DropdownProps {
   options: DropdownOptionProps[];
+  optionsContainerId?: string;
   onChange?(selectedOption: DropdownOptionProps): void;
   initialSelectedId?: string;
   placeholder?: string;
@@ -42,10 +44,13 @@ interface DefaultProps {
   placement: Placement;
   upgrade: boolean;
   mobileNativeSelect: boolean;
+  optionsContainerId: string;
 }
 
 interface State {
   selectedOption: DropdownOptionProps;
+  ariaActivedescendant: string | null;
+  isOpen: boolean;
 }
 
 /**
@@ -61,6 +66,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placement: 'bottom',
     mobileNativeSelect: false,
     upgrade: false,
+    optionsContainerId: 'dropdown-options-container',
   };
   constructor(props) {
     super(props);
@@ -91,6 +97,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
 
   state = {
     selectedOption: null,
+    ariaActivedescendant: null,
+    isOpen: false,
   };
 
   private shouldRenderNativeSelect() {
@@ -104,9 +112,26 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     }
 
     const { onChange } = this.props;
-    this.setState({ selectedOption });
+    this.setState({
+      selectedOption,
+      isOpen: false,
+      ariaActivedescendant: null,
+    });
     onChange &&
       onChange(this.props.options.find(({ id }) => selectedOption.id === id));
+  };
+
+  private readonly onOptionHover = (option: DropdownOptionProps & IDOMid) => {
+    const ariaActivedescendant = option ? option._DOMid : null;
+    this.setState({ ariaActivedescendant });
+  };
+
+  private readonly onExpandedChange = (isOpen: boolean) => {
+    const newState = {
+      isOpen,
+      ...(!isOpen && { ariaActivedescendant: null }),
+    };
+    this.setState(newState);
   };
 
   private readonly renderNativeSelect = () => {
@@ -143,6 +168,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       error,
       errorMessage,
       options,
+      optionsContainerId,
       forceContentElementVisibility,
       placement,
       upgrade,
@@ -151,7 +177,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
-    const { selectedOption } = this.state;
+    const { selectedOption, ariaActivedescendant, isOpen } = this.state;
 
     const coreOptions = options.map(option => ({
       ...option,
@@ -163,19 +189,24 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     return (
       <CoreDropdown
         className={styles.dropdown}
+        contentId={optionsContainerId}
         placement={placement}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={isMobile}
         openTrigger={disabled ? 'none' : 'click'}
         options={coreOptions}
         onDeselect={this.onSelect}
+        onExpandedChange={this.onExpandedChange}
         onSelect={this.onSelect}
+        onOptionHover={this.onOptionHover}
         initialSelectedIds={selectedOption ? [selectedOption.id] : []}
         forceContentElementVisibility={forceContentElementVisibility}
       >
         <DropdownBase
+          aria-activedescendant={ariaActivedescendant}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
+          isExpanded={isOpen}
           className={styles.dropdownBase}
           selectedOption={selectedOption}
           placeholder={placeholder}

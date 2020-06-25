@@ -14,6 +14,8 @@ interface DropdownBaseProps {
   placeholder: string;
   disabled: boolean;
   error: boolean;
+  isExpanded: boolean;
+  'aria-activedescendant'?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
   upgrade: boolean;
@@ -27,8 +29,10 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
     error,
     disabled,
     upgrade,
+    isExpanded,
     ['aria-label']: ariaLabel,
     ['aria-labelledby']: ariaLabelledBy,
+    ['aria-activedescendant']: ariaActivedescendant,
     rtl,
   } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
@@ -44,9 +48,11 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
       data-hook={DATA_HOOKS.base}
       data-dropdown-base-error={error}
       disabled={disabled}
+      aria-activedescendant={ariaActivedescendant}
+      aria-expanded={isExpanded}
       aria-label={ariaLabel}
       aria-labelledby={ariaLabelledBy}
-      aria-haspopup
+      role="listbox"
       prefixIcon={
         selectedOption && selectedOption.icon ? (
           <div className={styles.optionIcon}>{selectedOption.icon}</div>
