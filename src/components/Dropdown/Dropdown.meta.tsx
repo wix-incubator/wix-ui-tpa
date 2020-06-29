@@ -4,6 +4,7 @@ import { optionsWithSections, simpleOptions } from './helpers';
 
 const DropdownMetadata = Registry.getComponentMetadata(Dropdown);
 DropdownMetadata.nonReactStrictModeCompliant = true;
+DropdownMetadata.nonA11yCompliant = true;
 
 DropdownMetadata.addSim({
   title: 'Simple',
