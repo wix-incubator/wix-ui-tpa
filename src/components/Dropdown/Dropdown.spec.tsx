@@ -158,11 +158,27 @@ describe('Dropdown', () => {
 
     it('should add and remove aria-activedescendant', async () => {
       await driver.hoverOptionAt(0);
-      expect((await driver.getAriaActivedescendant()).startsWith('dropdown-options-container_')).toBeTruthy();
-      expect((await driver.getAriaActivedescendant()).endsWith(`_option-${options[0].id}`)).toBeTruthy();
+      expect(
+        (await driver.getAriaActivedescendant()).startsWith(
+          'dropdown-options-container_',
+        ),
+      ).toBeTruthy();
+      expect(
+        (await driver.getAriaActivedescendant()).endsWith(
+          `_option-${options[0].id}`,
+        ),
+      ).toBeTruthy();
       await driver.hoverOptionAt(1);
-      expect((await driver.getAriaActivedescendant()).startsWith('dropdown-options-container_')).toBeTruthy();
-      expect((await driver.getAriaActivedescendant()).endsWith(`_option-${options[1].id}`)).toBeTruthy();
+      expect(
+        (await driver.getAriaActivedescendant()).startsWith(
+          'dropdown-options-container_',
+        ),
+      ).toBeTruthy();
+      expect(
+        (await driver.getAriaActivedescendant()).endsWith(
+          `_option-${options[1].id}`,
+        ),
+      ).toBeTruthy();
       await driver.selectOptionAt(0);
       expect(await driver.getAriaActivedescendant()).toBe(null);
     });

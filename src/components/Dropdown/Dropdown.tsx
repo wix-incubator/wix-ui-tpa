@@ -73,7 +73,9 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   constructor(props) {
     super(props);
     wrap('Button');
-    this.contentId = props.optionsContainerId ? props.optionsContainerId : uniqueId('dropdown-options-container_');
+    this.contentId = props.optionsContainerId
+      ? props.optionsContainerId
+      : uniqueId('dropdown-options-container_');
   }
 
   componentDidMount(): void {
