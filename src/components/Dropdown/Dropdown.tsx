@@ -14,6 +14,8 @@ import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import { IDOMid } from 'wix-ui-core/dist/es/src';
 
+const uniqueId = require('lodash/uniqueId');
+
 export enum DROPDOWN_ALIGNMENT {
   center = 'center',
 }
@@ -44,7 +46,6 @@ interface DefaultProps {
   placement: Placement;
   upgrade: boolean;
   mobileNativeSelect: boolean;
-  optionsContainerId: string;
 }
 
 interface State {
@@ -58,6 +59,7 @@ interface State {
  * Single selection dropdown.
  * */
 export class Dropdown extends React.Component<DropdownProps, State> {
+  private readonly contentId: string;
   static displayName = 'Dropdown';
   static contextType = TPAComponentsContext;
   static defaultProps: DefaultProps = {
@@ -66,11 +68,12 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     placement: 'bottom',
     mobileNativeSelect: false,
     upgrade: false,
-    optionsContainerId: 'dropdown-options-container',
   };
+
   constructor(props) {
     super(props);
     wrap('Button');
+    this.contentId = props.optionsContainerId ? props.optionsContainerId : uniqueId('dropdown-options-container_');
   }
 
   componentDidMount(): void {
@@ -168,7 +171,6 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       error,
       errorMessage,
       options,
-      optionsContainerId,
       forceContentElementVisibility,
       placement,
       upgrade,
@@ -189,7 +191,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     return (
       <CoreDropdown
         className={styles.dropdown}
-        contentId={optionsContainerId}
+        contentId={this.contentId}
         placement={placement}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={isMobile}
