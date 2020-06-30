@@ -1,3 +1,12 @@
+# [1.11.0](https://github.com/wix/wix-ui-tpa/compare/v1.10.2...v1.11.0) (2020-06-30)
+
+
+### Bug Fixes
+
+* Dropdown a11y adjustments ([f33cadb](https://github.com/wix/wix-ui-tpa/commit/f33cadb8c73fda80d02b38c96d5e0fdfee9c30b8))
+
+
+
 ## [1.10.2](https://github.com/wix/wix-ui-tpa/compare/v1.10.1...v1.10.2) (2020-05-03)
 
 
