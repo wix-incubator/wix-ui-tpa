@@ -38,11 +38,6 @@ describe('Dropdown', () => {
     expect(await driver.getOptionsCount()).toBe(5);
   });
 
-  it('should have aria-haspopup attribute', async () => {
-    const driver = createDriver(<Dropdown options={[]} />);
-    expect(await driver.hasAriaHasPopup()).toBe(true);
-  });
-
   it('should not have aria-label attribute when not received by props', async () => {
     const driver = createDriver(<Dropdown options={[]} />);
     expect(await driver.getAriaLabel()).toBe(null);
@@ -67,6 +62,39 @@ describe('Dropdown', () => {
       <Dropdown aria-labelledby={ariaLabelledByContent} options={[]} />,
     );
     expect(await driver.getAriaLabelledBy()).toBe(ariaLabelledByContent);
+  });
+
+  it('should use contentId when received by props', async () => {
+    const optionsContainerId = 'the-best-id-ever';
+    const options = new Array(5).fill(null).map((el, i) => ({
+      id: `${i}`,
+      value: `value-${i}`,
+      isSelectable: i < 3,
+    }));
+    const driver = createDriver(
+      <Dropdown optionsContainerId={optionsContainerId} options={options} />,
+    );
+
+    await driver.click(); // open
+    await driver.hoverOptionAt(0);
+    expect(await driver.getAriaActivedescendant()).toBe(
+      `${optionsContainerId}_option-${options[0].id}`,
+    );
+  });
+
+  it('should toggle aria expanded according to dropdown state', async () => {
+    const options = new Array(5).fill(null).map((el, i) => ({
+      id: `${i}`,
+      value: `value-${i}`,
+      isSelectable: i < 3,
+    }));
+    const driver = createDriver(<Dropdown options={options} />);
+
+    expect(await driver.getAriaExpanded()).toBe('false');
+    await driver.click(); // open
+    expect(await driver.getAriaExpanded()).toBe('true');
+    await driver.selectOptionAt(0);
+    expect(await driver.getAriaExpanded()).toBe('false');
   });
 
   describe('error states', () => {
@@ -126,6 +154,33 @@ describe('Dropdown', () => {
       await driver.click(); // open
       await driver.selectOptionAt(0);
       expect(onChange).toHaveBeenCalledTimes(1);
+    });
+
+    it('should add and remove aria-activedescendant', async () => {
+      await driver.hoverOptionAt(0);
+      expect(
+        (await driver.getAriaActivedescendant()).startsWith(
+          'dropdown-options-container_',
+        ),
+      ).toBeTruthy();
+      expect(
+        (await driver.getAriaActivedescendant()).endsWith(
+          `_option-${options[0].id}`,
+        ),
+      ).toBeTruthy();
+      await driver.hoverOptionAt(1);
+      expect(
+        (await driver.getAriaActivedescendant()).startsWith(
+          'dropdown-options-container_',
+        ),
+      ).toBeTruthy();
+      expect(
+        (await driver.getAriaActivedescendant()).endsWith(
+          `_option-${options[1].id}`,
+        ),
+      ).toBeTruthy();
+      await driver.selectOptionAt(0);
+      expect(await driver.getAriaActivedescendant()).toBe(null);
     });
   });
 
@@ -292,7 +347,12 @@ describe('Native Dropdown', () => {
   describe('unsupported driver methods', () => {
     it('hasAriaHasPopup', async () => {
       const driver = createDriver(<NativeConfiguredDropdown />);
-      expect(await driver.hasAriaHasPopup()).toBe(null);
+      expect(await driver.getAriaActivedescendant()).toBe(null);
+    });
+
+    it('getAriaExpanded', async () => {
+      const driver = createDriver(<NativeConfiguredDropdown />);
+      expect(await driver.getAriaExpanded()).toBe(null);
     });
 
     it('areOptionsShown', async () => {

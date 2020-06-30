@@ -22,11 +22,13 @@ interface BaseDropdownDriver {
   areOptionsShown(): Promise<boolean>;
   getOptionsCount(): Promise<number>;
   selectOptionAt(index: number): Promise<void>;
+  hoverOptionAt(index: number): Promise<void>;
   hasError(): Promise<boolean>;
   hasErrorMessage(): Promise<boolean>;
   getErrorMessageContent(): Promise<string>;
   click(): Promise<void>;
-  hasAriaHasPopup(): Promise<boolean>;
+  getAriaActivedescendant(): Promise<string | null>;
+  getAriaExpanded(): Promise<string | null>;
   getAriaLabel(): Promise<string | null>;
   getAriaLabelledBy(): Promise<string | null>;
   getDropdownText(): Promise<string>;
@@ -61,8 +63,10 @@ const regularDriver = (
   return {
     isDisabled: async () =>
       (await (await getDropdownBase()).attr('disabled')) !== null,
-    hasAriaHasPopup: async () =>
-      (await (await getDropdownBase()).attr('aria-haspopup')) !== null,
+    getAriaActivedescendant: async () =>
+      (await getDropdownBase()).attr('aria-activedescendant'),
+    getAriaExpanded: async () =>
+      (await getDropdownBase()).attr('aria-expanded'),
     getAriaLabel: async () => (await getDropdownBase()).attr('aria-label'),
     getAriaLabelledBy: async () =>
       (await getDropdownBase()).attr('aria-labelledby'),
@@ -73,6 +77,9 @@ const regularDriver = (
       (await getDropdownCoreDriver(baseUniDriver)).getOptionsCount(),
     selectOptionAt: async (index: number) => {
       (await getDropdownCoreDriver(baseUniDriver)).optionAt(index).click();
+    },
+    hoverOptionAt: async (index: number) => {
+      (await getDropdownCoreDriver(baseUniDriver)).optionAt(index).mouseEnter();
     },
     getDropdownText: async () =>
       base.$(`[data-hook="${DATA_HOOKS.baseText}"]`).text(),
@@ -108,7 +115,9 @@ const nativeDriver = (
       (await getDropdownNativeSelect(base)).attr('aria-label'),
     getAriaLabelledBy: async () =>
       (await getDropdownNativeSelect(base)).attr('aria-labelledby'),
-    hasAriaHasPopup: async () => warnUnsupportedFunction('hasAriaHasPopup'),
+    getAriaActivedescendant: async () =>
+      warnUnsupportedFunction('getAriaActivedescendant'),
+    getAriaExpanded: async () => warnUnsupportedFunction('getAriaExpanded'),
     click: async () => warnUnsupportedFunction('click'),
     areOptionsShown: async () => warnUnsupportedFunction('areOptionsShown'),
     selectOptionAt: async (index: number) => {
@@ -116,6 +125,7 @@ const nativeDriver = (
       const isDisabled = (await option.attr('disabled')) !== null;
       !isDisabled && Simulate.change(await option.getNative());
     },
+    hoverOptionAt: async _index => warnUnsupportedFunction('hoverOptionAt'),
     getOptionsCount: async () => getNativeOptions().count(),
     hasErrorMessage: async () =>
       (await getTooltipDriver(baseUniDriver)).exists(),
@@ -149,7 +159,9 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     isMobile: () => hasMobile(base),
     isNativeSelect,
     isDisabled: async () => (await getDriver()).isDisabled(),
-    hasAriaHasPopup: async () => (await getDriver()).hasAriaHasPopup(),
+    getAriaActivedescendant: async () =>
+      (await getDriver()).getAriaActivedescendant(),
+    getAriaExpanded: async () => (await getDriver()).getAriaExpanded(),
     getAriaLabel: async () => (await getDriver()).getAriaLabel(),
     getAriaLabelledBy: async () => (await getDriver()).getAriaLabelledBy(),
     click: async () => (await getDriver()).click(),
@@ -157,6 +169,8 @@ export const dropdownDriverFactory = (base: UniDriver): DropdownDriver => {
     getOptionsCount: async () => (await getDriver()).getOptionsCount(),
     selectOptionAt: async (index: number) =>
       (await getDriver()).selectOptionAt(index),
+    hoverOptionAt: async (index: number) =>
+      (await getDriver()).hoverOptionAt(index),
     hasErrorMessage: async () => (await getDriver()).hasErrorMessage(),
     hasError: async () => (await getDriver()).hasError(),
     getErrorMessageContent: async () =>
