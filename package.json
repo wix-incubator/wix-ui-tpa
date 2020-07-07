@@ -76,6 +76,7 @@
     "@storybook/react": "5.0.9",
     "@stylable/cli": "1.0.0",
     "@stylable/core": "1.1.0",
+    "@stylable/node": "1.1.0",
     "@svgr/core": "^4.3.2",
     "@svgr/plugin-jsx": "^4.3.2",
     "@svgr/plugin-svgo": "^4.3.1",
