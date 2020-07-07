@@ -7,6 +7,7 @@ const FloatingDropdownMetadata = Registry.getComponentMetadata(
   FloatingDropdown,
 );
 FloatingDropdownMetadata.nonReactStrictModeCompliant = true;
+FloatingDropdownMetadata.nonA11yCompliant = true;
 
 FloatingDropdownMetadata.addSim({
   title: 'render',
