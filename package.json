@@ -28,6 +28,7 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
+    "postinstall": "npm-blame",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
@@ -89,6 +90,7 @@
     "@ui-autotools/a11y": "^2.7.1",
     "@ui-autotools/registry": "^4.0.0",
     "@ui-autotools/sanity": "^2.8.2",
+    "@wix/npm-blame": "^1.0.509",
     "autoprefixer": "^9.5.1",
     "chalk": "^2.4.2",
     "conventional-changelog-cli": "^2.0.23",
