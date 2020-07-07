@@ -1,9 +1,4 @@
 :import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
-}
-
-:import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
     -st-named: minWidth, maxWidth;
