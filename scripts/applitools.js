@@ -21,7 +21,7 @@ async function getBaselineBranchName(githubToken, branch) {
       },
     );
 
-    console.info('got PR info: ', JSON.stringify(prInfo, null, 2));
+    console.info('got PR info: ', prInfo);
 
     if (prInfo) {
       if (prInfo.head) {
