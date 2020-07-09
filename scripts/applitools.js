@@ -1,6 +1,5 @@
 const { spawn } = require('child_process');
 const { get } = require('axios');
-// if test "$EYES_API_KEY"; then npm run test:eyes-storybook:local ; fi
 
 async function getBaselineBranchName(githubToken, branch) {
   let branchName = 'master';
@@ -21,6 +20,8 @@ async function getBaselineBranchName(githubToken, branch) {
         },
       },
     );
+
+    console.info('got PR info: ', JSON.stringify(prInfo, null, 2));
 
     if (prInfo) {
       if (prInfo.head) {
