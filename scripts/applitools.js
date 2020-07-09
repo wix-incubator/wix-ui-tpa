@@ -12,7 +12,7 @@ async function getBaselineBranchName(githubToken, branch) {
     : null;
 
   if (pullRequestNumber && githubToken) {
-    const prInfo = await get(
+    const { data: prInfo } = await get(
       `https://api.github.com/repos/wix/wix-ui-tpa/pulls/${pullRequestNumber}`,
       {
         auth: {
