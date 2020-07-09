@@ -3,7 +3,7 @@ const { get } = require('axios');
 
 async function getBaselineBranchName(githubToken, branch) {
   let branchName = 'master';
-  let baseLineBranchName;
+  let baselineBranchName;
   const pullRequestNumberMatches = branch
     ? /^(\d*)\/(?:head|merge)$/.exec(branch)
     : null;
@@ -26,12 +26,16 @@ async function getBaselineBranchName(githubToken, branch) {
     console.info('PR base:', prInfo.base);
 
     if (prInfo) {
-      branchName = (prInfo.head && prInfo.head.ref) || branchName;
-      baseLineBranchName = (prInfo.base && prInfo.base.ref) || undefined;
+      if (prInfo.head) {
+        branchName = prInfo.head.ref;
+      }
+      if (prInfo.base) {
+        baselineBranchName = prInfo.base.ref;
+      }
     }
   }
 
-  return { branchName, baseLineBranchName };
+  return { branchName, baselineBranchName };
 }
 
 async function runCommand({ command, args, cwd, env }) {
