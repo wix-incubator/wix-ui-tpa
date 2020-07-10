@@ -89,7 +89,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    if (state.selectedOption && nextProps.initialSelectedId !== state.selectedOption.id || !state.selectedOption) {
+    if (!state.selectedOption || nextProps.initialSelectedId !== state.selectedOption.id) {
       return {
         selectedOption:
           nextProps.options.find(
