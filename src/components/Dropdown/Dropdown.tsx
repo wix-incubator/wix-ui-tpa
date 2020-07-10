@@ -126,7 +126,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       onChange(this.props.options.find(({ id }) => selectedOption.id === id));
   };
 
-  private readonly onOptionHover = (option: DropdownOptionProps & IDOMid) => {
+  private readonly onOptionHover = (option: Option & IDOMid) => {
     const ariaActivedescendant = option ? option._DOMid : null;
     this.setState({ ariaActivedescendant });
   };
@@ -194,44 +194,44 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const { rtl, mobile: isMobile } = this.context;
     const { selectedOption, ariaActivedescendant, isOpen } = this.state;
 
-    const renderableOptions = options.map(option => ({
-      ...option,
-      render: () => (
-        <DropdownOption className={classes.dropdownOption} {...option} />
-      ),
-    }));
-
-    const coreOptions = renderableOptions.map(OptionFactory.create);
+    const coreOptions = options.map(option =>
+      OptionFactory.create({
+        ...option,
+        render: () => (
+          <DropdownOption className={classes.dropdownOption} {...option} />
+        ),
+      }),
+    );
 
     return (
       <CoreDropdown
-        contentId={this.contentId}
         className={classes.dropdown}
         placement={placement}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={isMobile}
-        openTrigger={'click'}
         options={coreOptions}
-        onExpandedChange={this.onExpandedChange}
-        onOptionHover={this.onOptionHover}
         onDeselect={this.onCoreSelect}
         onSelect={this.onCoreSelect}
         initialSelectedIds={selectedOption ? [selectedOption.id] : []}
         onInitialSelectedOptionsSet={() => {}}
         forceContentElementVisibility={forceContentElementVisibility}
+        contentId={this.contentId}
+        openTrigger={disabled ? undefined : 'click'}
+        onExpandedChange={this.onExpandedChange}
+        onOptionHover={this.onOptionHover}
       >
         <DropdownBase
-          aria-activedescendant={ariaActivedescendant}
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledBy}
           className={classes.dropdownBase}
-          isExpanded={isOpen}
           selectedOption={selectedOption}
           placeholder={placeholder}
           disabled={disabled}
           error={error}
           upgrade={upgrade}
           rtl={rtl}
+          aria-activedescendant={ariaActivedescendant}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          isExpanded={isOpen}
         />
         {error && errorMessage && (
           <DropdownError
