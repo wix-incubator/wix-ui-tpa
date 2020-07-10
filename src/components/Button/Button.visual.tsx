@@ -36,7 +36,7 @@ function upgradeTestSuite() {
       Object.values(PRIORITY).forEach(priority => {
         snap(`${priority}`, () => (
           <Button upgrade priority={priority}>
-            {priority} HELLO WORLD
+            {priority}
           </Button>
         ));
       });
