@@ -27,7 +27,7 @@ function upgradeTestSuite() {
       Object.values(SIZE).forEach(size => {
         snap(`${size}`, () => (
           <Button upgrade size={size}>
-            {size} HELLO WORLD
+            {size} HELLO SIZE
           </Button>
         ));
       });
