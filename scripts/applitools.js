@@ -82,9 +82,9 @@ async function runEyesStorybook(githubToken, branch) {
   //   env.TPA_BASELINE_BRANCH_NAME = baselineBranchName;
   // }
 
-  console.info(
-    `Running eyes-storybook with branch: ${branchName}, baseline branch: ${baselineBranchName}`,
-  );
+  // console.info(
+  //   `Running eyes-storybook with branch: ${branchName}, baseline branch: ${baselineBranchName}`,
+  // );
 
   return runCommand({
     command: 'npm',
