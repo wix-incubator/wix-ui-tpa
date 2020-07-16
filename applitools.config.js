@@ -12,6 +12,7 @@ const config = {
     concurrency: 50,
     branchName: process.env.TPA_BRANCH_NAME,
     baselineBranchName: process.env.TPA_BASELINE_BRANCH_NAME,
+    parentBranchName: process.env.TPA_BASELINE_BRANCH_NAME,
   }),
 };
 
