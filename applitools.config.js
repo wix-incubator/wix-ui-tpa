@@ -6,7 +6,7 @@ try {
   privateConfig = require('./applitools.private.config.js');
 } catch (e) {}
 
-const config = {
+module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     serverUrl: process.env.APPLITOOLS_SERVER_URL,
     concurrency: 50,
@@ -14,6 +14,4 @@ const config = {
     baselineBranchName: process.env.TPA_BASELINE_BRANCH_NAME,
     parentBranchName: process.env.TPA_BASELINE_BRANCH_NAME,
   }),
-};
-
-module.exports = applitoolsConfig(config);
+});
