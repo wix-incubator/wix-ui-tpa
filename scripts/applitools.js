@@ -65,10 +65,10 @@ async function runCommand({ command, args, cwd, env }) {
 }
 
 async function runEyesStorybook(githubToken, branch) {
-  // const { branchName, baselineBranchName } = await getBaselineBranchName(
-  //   githubToken,
-  //   branch,
-  // );
+  const { branchName, baselineBranchName } = await getBaselineBranchName(
+    githubToken,
+    branch,
+  );
 
   const env = {
     ...process.env,
@@ -78,13 +78,13 @@ async function runEyesStorybook(githubToken, branch) {
     env.TPA_BRANCH_NAME = branch ? undefined : 'master';
   }
 
-  // if (baselineBranchName) {
-  //   env.TPA_BASELINE_BRANCH_NAME = baselineBranchName;
-  // }
+  if (baselineBranchName) {
+    env.TPA_BASELINE_BRANCH_NAME = baselineBranchName;
+  }
 
-  // console.info(
-  //   `Running eyes-storybook with branch: ${branchName}, baseline branch: ${baselineBranchName}`,
-  // );
+  console.info(
+    `Running eyes-storybook with branch: ${branchName}, baseline branch: ${baselineBranchName}`,
+  );
 
   return runCommand({
     command: 'npm',
