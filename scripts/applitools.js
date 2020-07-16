@@ -72,15 +72,18 @@ async function runEyesStorybook(githubToken, branch) {
 
   const env = {
     ...process.env,
-    TPA_BRANCH_NAME: branchName,
   };
+
+  if (branchName === 'master') {
+    env.TPA_BRANCH_NAME = branchName;
+  }
 
   if (baselineBranchName) {
     env.TPA_BASELINE_BRANCH_NAME = baselineBranchName;
   }
 
   console.info(
-    `Running eyes-storybook with branch: ${branchName}, baseline branch: ${baselineBranchName}`,
+    `Running eyes-storybook with branch: ${env.TPA_BRANCH_NAME}, baseline branch: ${baselineBranchName}`,
   );
 
   return runCommand({
