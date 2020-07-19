@@ -18,7 +18,7 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
       return (await base.attr(EVENT_DATA_KEYS.IsSelected)) === 'true';
     },
     async isFullday() {
-      return (await base.attr(EVENT_DATA_KEYS.IsMultiday)) === 'true';
+      return (await base.attr(EVENT_DATA_KEYS.IsFullDay)) === 'true';
     },
     async isTimeShown() {
       return (await base.attr(EVENT_DATA_KEYS.IsTimeShown)) === 'true';

@@ -1,6 +1,6 @@
 export enum EVENT_DATA_KEYS {
   IsTimeShown = 'data-time-shown',
-  IsMultiday = 'data-fullday',
+  IsFullDay = 'data-fullday',
   IsRightToLeft = 'data-right-to-left',
   IsSelected = 'data-selected',
 }

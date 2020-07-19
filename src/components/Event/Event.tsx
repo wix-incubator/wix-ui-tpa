@@ -32,7 +32,7 @@ export class Event extends React.Component<EventProps> {
     const { fullday, selected, showTime } = this.props;
 
     return {
-      [EVENT_DATA_KEYS.IsMultiday]: fullday,
+      [EVENT_DATA_KEYS.IsFullDay]: fullday,
       [EVENT_DATA_KEYS.IsSelected]: selected,
       [EVENT_DATA_KEYS.IsTimeShown]: showTime,
     };
