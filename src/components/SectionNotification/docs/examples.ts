@@ -2,7 +2,6 @@ export const importExample = `
   import { SectionNotification } from 'wix-ui-tpa/SectionNotification';
 `;
 import { NOTIFICATION_TYPE } from '../types';
-import * as styles from './examples.scss';
 
 const errorIcon = `<Error />`;
 
@@ -50,7 +49,7 @@ function getSectionNotification(
 
 
     ${
-      type !== NOTIFICATION_TYPE.error
+      type !== NOTIFICATION_TYPE.error && type !== NOTIFICATION_TYPE.alert
         ? `
         <br/>
         <SectionNotification type="${type}">

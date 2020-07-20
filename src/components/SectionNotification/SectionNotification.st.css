@@ -19,6 +19,7 @@
 
     DefaultBackgroundColor: applyOpacity(#000000, 0.05);
     ErrorBackgroundColor: applyOpacity(#F64D43, 0.1);
+    AlertBackgroundColor: applyOpacity(#FFB600, 0.1);
 }
 
 /*Overrides*/
@@ -33,7 +34,7 @@
 }
 
 .root {
-    -st-states: error;
+    -st-states: error, alert;
     width: 100%;
     height: 100%;
     display: flex;
@@ -103,4 +104,8 @@
 
 .root:error .main {
     background-color: value(ErrorBackgroundColor);
+}
+
+.root:alert .main {
+    background-color: value(AlertBackgroundColor);
 }
