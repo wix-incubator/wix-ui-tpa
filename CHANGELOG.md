@@ -1,3 +1,12 @@
+## [1.11.1](https://github.com/wix/wix-ui-tpa/compare/v1.11.0...v1.11.1) (2020-07-21)
+
+
+### Features
+
+* SectionNotification - add alert type ([18c4db4](https://github.com/wix/wix-ui-tpa/commit/18c4db4d4ebbf58c7cb1b0c86e2b2faeaa238861))
+
+
+
 # [1.11.0](https://github.com/wix/wix-ui-tpa/compare/v1.10.2...v1.11.0) (2020-06-30)
 
 
