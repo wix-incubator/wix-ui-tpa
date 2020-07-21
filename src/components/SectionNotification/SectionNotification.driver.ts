@@ -9,6 +9,7 @@ import { SECTION_NOTIFICATION_DATA_HOOKS } from './dataHooks';
 
 export interface SectionNotificationDriver extends BaseUniDriver {
   isError(): Promise<boolean>;
+  isAlert(): Promise<boolean>;
   hasIcon(): Promise<boolean>;
   hasButtons(): Promise<boolean>;
   getText(): Promise<string>;
@@ -29,6 +30,7 @@ export const sectionNotificationDriverFactory = (
   return {
     ...baseUniDriverFactory(base),
     isError: () => hasDataAttr(base, 'error', 'true'),
+    isAlert: () => hasDataAttr(base, 'alert', 'true'),
     hasIcon: () => getIconContainer(base).exists(),
     hasButtons: async () => (await getButtons(base).count()) > -1,
     getText: () => getTextContainer(base).text(),

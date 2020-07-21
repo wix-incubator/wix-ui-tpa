@@ -25,6 +25,7 @@ export class SectionNotification extends React.Component<
   render() {
     const { children, type } = this.props;
     const isError = type === NOTIFICATION_TYPE.error;
+    const isAlert = type === NOTIFICATION_TYPE.alert;
 
     const contents = [];
     const buttons = [];
@@ -39,8 +40,9 @@ export class SectionNotification extends React.Component<
 
     return (
       <div
-        {...styles('root', { error: isError }, this.props)}
+        {...styles('root', { error: isError, alert: isAlert }, this.props)}
         data-error={isError}
+        data-alert={isAlert}
         aria-live="assertive"
       >
         <div className={styles.main}>

@@ -24,6 +24,7 @@ export interface SectionNotificationButtonProps {
 export enum NOTIFICATION_TYPE {
   default = 'default',
   error = 'error',
+  alert = 'alert',
 }
 
 export {

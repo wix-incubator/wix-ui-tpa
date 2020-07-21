@@ -55,6 +55,16 @@ describe('SectionNotification', () => {
     expect(await driver.isError()).toBe(true);
   });
 
+  it('should render notification of type Alert', async () => {
+    const driver = createDriver(
+      <SectionNotification type={NOTIFICATION_TYPE.alert}>
+        <SectionNotification.Text>{props.text}</SectionNotification.Text>
+      </SectionNotification>,
+    );
+
+    expect(await driver.isAlert()).toBe(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
