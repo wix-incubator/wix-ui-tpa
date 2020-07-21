@@ -5,7 +5,7 @@ It appears at the relevant app section and push the content below it.
 
 Section notifications can contain Icon / Text / Buttons
 
-### How to usee
+### How to use
 
 [Api docs](https://wix-wix-ui-tpa.surge.sh/?path=//story/components--sectionnotification)
 
