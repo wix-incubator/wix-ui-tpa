@@ -2,7 +2,7 @@
   "private": false,
   "name": "wix-ui-tpa",
   "sideEffects": false,
-  "version": "1.11.1",
+  "version": "1.11.2",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -28,7 +28,6 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
-    "postinstall": "npm-blame",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
