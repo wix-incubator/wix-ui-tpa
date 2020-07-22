@@ -39,16 +39,11 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
     stretchable: false,
     current: true,
     alignment: Alignment.left,
-    timeType: Times.futureDate
+    timeType: Times.futureDate,
   };
 
   getDataAttributes() {
-    const {
-      stretchable,
-      current,
-      timeType,
-      alignment,
-    } = this.props;
+    const { stretchable, current, timeType, alignment } = this.props;
 
     return {
       [CALENDAR_DATA_KEYS.Stertchable]: stretchable,
@@ -73,11 +68,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
       <div
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
-        {...styles(
-          'root',
-          { stretchable, current, alignment, timeType },
-          rest,
-        )}
+        {...styles('root', { stretchable, current, alignment, timeType }, rest)}
       >
         <div className={styles.innerContainer}>
           <Text className={styles.title}>{title}</Text>

@@ -27,19 +27,25 @@ describe('CalendarCell', () => {
   });
 
   it('should show past date state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.pastDate} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.pastDate} {...defProps} />,
+    );
 
     expect(await driver.hasTimeType(Times.pastDate)).toBeTruthy();
   });
 
   it('should show today state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.today} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.today} {...defProps} />,
+    );
 
     expect(await driver.hasTimeType(Times.today)).toBeTruthy();
   });
 
   it('should show future date state', async () => {
-    const driver = createDriver(<CalendarCell timeType={Times.futureDate} {...defProps} />);
+    const driver = createDriver(
+      <CalendarCell timeType={Times.futureDate} {...defProps} />,
+    );
 
     expect(await driver.hasTimeType(Times.futureDate)).toBeTruthy();
   });

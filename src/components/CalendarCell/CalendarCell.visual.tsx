@@ -9,9 +9,15 @@ const defaultProps: CalendarCellProps = {
 visualize('CalendarCell', () => {
   story('render', () => {
     snap('title', <CalendarCell {...defaultProps} />);
-    snap('past date', <CalendarCell timeType={Times.pastDate} {...defaultProps} />);
+    snap(
+      'past date',
+      <CalendarCell timeType={Times.pastDate} {...defaultProps} />,
+    );
     snap('today', <CalendarCell timeType={Times.today} {...defaultProps} />);
-    snap('future date', <CalendarCell timeType={Times.futureDate} {...defaultProps} />);
+    snap(
+      'future date',
+      <CalendarCell timeType={Times.futureDate} {...defaultProps} />,
+    );
     snap('current', <CalendarCell current {...defaultProps} />);
     snap(
       'past date and current',

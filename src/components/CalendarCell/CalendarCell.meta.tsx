@@ -1,4 +1,4 @@
-import { CalendarCell, Alignment,Times } from '.';
+import { CalendarCell, Alignment, Times } from '.';
 import Registry from '@ui-autotools/registry';
 
 const CalendarCellMetadata = Registry.getComponentMetadata(CalendarCell);
