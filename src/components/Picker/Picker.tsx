@@ -58,6 +58,7 @@ export class Picker extends React.Component<PickerProps> {
           onClick={() => (prevDisabled ? null : onPrev())}
           disabled={prevDisabled}
           data-hook={PICKER_DATA_HOOKS.Prev}
+          title={PICKER_DATA_HOOKS.Prev}
         />
         <Text className={styles.value}>{value}</Text>
         <IconButton
@@ -66,6 +67,7 @@ export class Picker extends React.Component<PickerProps> {
           onClick={() => (nextDisabled ? null : onNext())}
           disabled={nextDisabled}
           data-hook={PICKER_DATA_HOOKS.Next}
+          title={PICKER_DATA_HOOKS.Next}
         />
       </div>
     );
