@@ -15,41 +15,38 @@
 
 /*Defaults*/
 :vars {
-    DefaultMainColor: color(color-5)
-    DefaultFontStyle: "{theme: 'Body-M', size: '20px', lineHeight: '28px'}"
+    DefaultMainColor: color(color-5) DefaultFontStyle: "{theme: 'Body-M', size: '20px', lineHeight: '28px'}"
 }
 
 /*Overrides*/
 :vars {
-    MainColor: --overridable
-    FontStyle: --overridable
+    MainColor: --overridable FontStyle: --overridable
 }
 
 :vars {
     CurrentMainColor: color(fallback(value(MainColor), value(DefaultMainColor)));
-    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle))); 
+    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
 }
 
 .root {
-  display: flex;
-  justify-content: center;
-  font: font(value(CurrentFontStyle));
+    width: 12.6em;
+    font: font(value(CurrentFontStyle));
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .value {
     -st-extends: Text;
-    -st-mixin: Text(
-        MainTextColor value(CurrentMainColor),
-        MainTextFont value(CurrentFontStyle)
-    );
-    margin: auto 24px;
+    -st-mixin: Text(MainTextColor value(CurrentMainColor),
+            MainTextFont value(CurrentFontStyle));
+    min-width: 207px;
 }
 
 .arrow {
     -st-extends: IconButton;
-    -st-mixin: IconButton(
-        IconColor value(CurrentMainColor)
-    );
+    -st-mixin: IconButton(IconColor value(CurrentMainColor));
 }
 
 .arrow::icon svg {
