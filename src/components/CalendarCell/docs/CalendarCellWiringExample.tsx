@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CalendarCell, Alignment } from '../';
+import { CalendarCell, Times } from '../';
 import styles from './CalendarCellWiringExample.st.css';
 
 export const CalendarCellWiringExample = () => {
@@ -11,7 +11,7 @@ export const CalendarCellWiringExample = () => {
       </div>
       <div style={{ width: '135px' }}>
         <h4>Current Day</h4>
-        <CalendarCell current {...styles('root')} title={'17'} />
+        <CalendarCell timeType={Times.today} {...styles('root')} title={'17'} />
       </div>
     </div>
   );

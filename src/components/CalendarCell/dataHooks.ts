@@ -1,7 +1,6 @@
 export enum CALENDAR_DATA_KEYS {
   Stertchable = 'data-stretchable',
-  BoldTitle = 'data-bold-title',
-  BoldBackground = 'data-bold-background',
+  TimeType = 'data-time-type',
   Current = 'data-current',
   Alignment = 'data-alignment',
 }

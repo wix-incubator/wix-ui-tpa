@@ -1,4 +1,4 @@
-import { CalendarCell, Alignment } from '.';
+import { CalendarCell, Alignment,Times } from '.';
 import Registry from '@ui-autotools/registry';
 
 const CalendarCellMetadata = Registry.getComponentMetadata(CalendarCell);
@@ -12,26 +12,34 @@ CalendarCellMetadata.addSim({
 });
 
 CalendarCellMetadata.addSim({
-  title: 'bold title',
-  props: {
-    title: '13',
-    boldTitle: true,
-  },
-});
-
-CalendarCellMetadata.addSim({
-  title: 'bold background',
-  props: {
-    title: '13',
-    boldBackground: true,
-  },
-});
-
-CalendarCellMetadata.addSim({
-  title: 'current day',
+  title: 'current',
   props: {
     title: '13',
     current: true,
+  },
+});
+
+CalendarCellMetadata.addSim({
+  title: 'future date',
+  props: {
+    title: '13',
+    timeType: Times.futureDate,
+  },
+});
+
+CalendarCellMetadata.addSim({
+  title: 'past date',
+  props: {
+    title: '13',
+    timeType: Times.pastDate,
+  },
+});
+
+CalendarCellMetadata.addSim({
+  title: 'today',
+  props: {
+    title: '13',
+    timeType: Times.today,
   },
 });
 

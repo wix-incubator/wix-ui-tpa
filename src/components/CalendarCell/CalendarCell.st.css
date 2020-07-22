@@ -22,19 +22,12 @@
 
 /*Overrides*/
 :vars {
-    BorderWidth: --overridable
-    BorderOpacity: --overridable
-    FontColor: --overridable
-    BackgroundColor: --overridable
-    BorderColor: --overridable
-    TodayColor: --overridable
-    FontStyle: --overridable
-    FontSize: --overridable
+    BorderWidth: --overridable BorderOpacity: --overridable FontColor: --overridable BackgroundColor: --overridable BorderColor: --overridable TodayColor: --overridable FontStyle: --overridable FontSize: --overridable
 }
 
 :vars {
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
-    CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity))
+    CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity));
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
@@ -53,10 +46,14 @@
 }
 
 .root {
-    -st-states: stretchable, boldTitle, boldBackground, current, alignment(enum(left, center, right));
-    background: applyOpacity(color(color-2), 0.1);
+    -st-states:
+        stretchable,
+        current,
+        alignment(enum(left, center, right)),
+        timeType(enum(pastDate, today, futureDate));
     width: 100%;
-    padding-top: 100%; /* 1:1 Aspect Ratio */
+    padding-top: 100%;
+    /* 1:1 Aspect Ratio */
     position: relative;
     border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentBorderOpacity));
 }
@@ -76,37 +73,30 @@
 
 .title {
     -st-extends: TPAText;
-    -st-mixin: TPAText(
-        MainTextColor color(color-4),
-        MainTextFont value(CurrentFontStyle)
-    );
+    -st-mixin: TPAText(MainTextColor color(color-4));
     font-size: value(CurrentFontSize);
     line-height: 1em;
 }
 
-.root:boldTitle .title {
-    -st-mixin: TPAText(
-        MainTextColor value(CurrentFontColor),
-        MainTextFont value(CurrentFontStyle)
-    );
-}
-
-.root:boldBackground {
-    background-color: applyOpacity(value(CurrentBackgroundColor), 1);
-}
-
-/* Current Day */
-
-.root:current {
-    border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
-    background-color: value(CurrentBackgroundColor);
+.root:timeType(pastDate) {
+    background: applyOpacity(color(color-2), 0.1);
 }
 
 .root:current .title {
-    -st-mixin: TPAText(
-        MainTextColor value(CurrentTodayColor),
-        MainTextFont value(CurrentFontStyle)
-    );
+    -st-mixin: TPAText(MainTextColor value(CurrentFontColor));
+}
+
+.root:timeType(today) {
+    border-color: applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
+    background-color: value(CurrentBackgroundColor);
+}
+
+.root:timeType(today) .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor));
+}
+
+.root:timeType(futureDate) {
+    background-color: applyOpacity(value(CurrentBackgroundColor), 1);
 }
 
 /* isStrechAble == true */

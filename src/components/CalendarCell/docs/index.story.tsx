@@ -17,7 +17,7 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as CalendarCellWiringExampleRaw from '!raw-loader!./CalendarCellWiringExample.tsx';
 import * as CalendarCellWiringExampleCSSRaw from '!raw-loader!./CalendarCellWiringExample.st.css';
 import { CalendarCellWiringExample } from './CalendarCellWiringExample';
-import { CalendarCell, Alignment } from '../';
+import { CalendarCell, Alignment, Times } from '../';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -31,8 +31,8 @@ export default {
     'data-hook': 'storybook-CalendarCell',
   }),
   exampleProps: {
-    timeType: Object.values(Alignment),
-    time: '',
+    alignment: Object.values(Alignment),
+    timeType: Object.values(Times),
     stertchable: false,
   },
   dataHook: 'storybook-CalendarCell',

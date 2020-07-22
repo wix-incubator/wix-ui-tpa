@@ -7,11 +7,10 @@ import { CALENDAR_DATA_KEYS } from './dataHooks';
 import { Alignment } from './CalendarCell';
 
 export interface CalendarCellDriver extends BaseUniDriver {
+  hasTimeType(timeType): Promise<boolean>;
   hasRightAlignment(mockAlignment: Alignment): Promise<boolean>;
-  isBoldBackground(): Promise<boolean>;
-  isBoldTitle(): Promise<boolean>;
-  isStretched(): Promise<boolean>;
-  isCurrentDay(): Promise<boolean>;
+  stretcheable(): Promise<boolean>;
+  hasCurrent(): Promise<boolean>;
 }
 
 export const calendarCellDriverFactory = (
@@ -19,16 +18,13 @@ export const calendarCellDriverFactory = (
 ): CalendarCellDriver => {
   return {
     ...baseUniDriverFactory(base),
-    async isStretched() {
+    async stretcheable() {
       return (await base.attr(CALENDAR_DATA_KEYS.Stertchable)) === 'true';
     },
-    async isBoldTitle() {
-      return (await base.attr(CALENDAR_DATA_KEYS.BoldTitle)) === 'true';
+    async hasTimeType(timeType) {
+      return (await base.attr(CALENDAR_DATA_KEYS.TimeType)) === timeType;
     },
-    async isBoldBackground() {
-      return (await base.attr(CALENDAR_DATA_KEYS.BoldBackground)) === 'true';
-    },
-    async isCurrentDay() {
+    async hasCurrent() {
       return (await base.attr(CALENDAR_DATA_KEYS.Current)) === 'true';
     },
     async hasRightAlignment(mockAlignment) {

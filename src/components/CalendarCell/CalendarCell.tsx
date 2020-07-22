@@ -10,22 +10,26 @@ export enum Alignment {
   right = 'right',
 }
 
+export enum Times {
+  pastDate = 'pastDate',
+  today = 'today',
+  futureDate = 'futureDate',
+}
+
 export interface CalendarCellProps extends TPAComponentProps {
   title: string;
   children?: any;
   stretchable?: boolean;
-  boldTitle?: boolean;
-  boldBackground?: boolean;
-  alignment?: Alignment;
   current?: boolean;
+  alignment?: Alignment;
+  timeType?: Times;
 }
 
 interface DefaultProps {
   stretchable: boolean;
-  boldTitle: boolean;
-  boldBackground: boolean;
   current: boolean;
   alignment: Alignment;
+  timeType: Times;
 }
 
 /** CalendarCell */
@@ -33,25 +37,22 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
   static displayName = 'CalendarCell';
   static defaultProps: DefaultProps = {
     stretchable: false,
-    boldTitle: true,
-    boldBackground: true,
-    current: false,
+    current: true,
     alignment: Alignment.left,
+    timeType: Times.futureDate
   };
 
   getDataAttributes() {
     const {
       stretchable,
-      boldBackground,
-      boldTitle,
       current,
+      timeType,
       alignment,
     } = this.props;
 
     return {
       [CALENDAR_DATA_KEYS.Stertchable]: stretchable,
-      [CALENDAR_DATA_KEYS.BoldTitle]: boldTitle,
-      [CALENDAR_DATA_KEYS.BoldBackground]: boldBackground,
+      [CALENDAR_DATA_KEYS.TimeType]: timeType,
       [CALENDAR_DATA_KEYS.Current]: current,
       [CALENDAR_DATA_KEYS.Alignment]: alignment,
     };
@@ -62,10 +63,9 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
       title,
       children,
       stretchable,
-      boldTitle,
-      boldBackground,
       current,
       alignment,
+      timeType,
       ...rest
     } = this.props;
 
@@ -75,7 +75,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
         data-hook={this.props['data-hook']}
         {...styles(
           'root',
-          { stretchable, boldTitle, boldBackground, current, alignment },
+          { stretchable, current, alignment, timeType },
           rest,
         )}
       >
