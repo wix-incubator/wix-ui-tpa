@@ -25,10 +25,10 @@ How to use it:
 
 ``` javascript
     import NewCard from 'wix-ui-tpa/NewCard';
-    import { st, classes } from './MyComponent.st.css';
+    import { classes } from './MyComponent.st.css';
 
     const MyComponent = (props) => (
-        <div className={st(classes.root)} >
+        <div className={classes.root} >
             <NewCard>
                 <NewCard.Container className={classes.media}>
                     Put whatever you want 😍

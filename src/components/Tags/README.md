@@ -41,7 +41,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import { st, classes } from './TagsExt.st.css';
+    import { classes } from './TagsExt.st.css';
 
-    const TagsExt = (props) => <Tags {...props} className={st(classes.root)} />;
+    const TagsExt = (props) => <Tags {...props} className={classes.root} />;
     `

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ActionsMenuLayout } from '../ActionsMenuLayout';
-import { st, classes } from './ActionsMenuLayoutExtendedExample.st.css';
+import { classes } from './ActionsMenuLayoutExtendedExample.st.css';
 
 const onClick = () => console.log('clicked');
 export const ActionsMenuLayoutExtendedExample: React.FC = () => {
   return (
-    <ActionsMenuLayout className={st(classes.root)}>
+    <ActionsMenuLayout className={classes.root}>
       <ActionsMenuLayout.Item
         key={1}
         onClick={onClick}

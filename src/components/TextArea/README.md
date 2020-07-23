@@ -44,7 +44,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     ``` javascript
     import * as React from 'react';
     import { TextArea } from 'wix-ui-tpa/TextArea';
-    import { st, classes } from './TextAreaExtendedExample.st.css';
+    import { classes } from './TextAreaExtendedExample.st.css';
     
     export const TextAreaExtendedExample = () => {
       return (
@@ -52,7 +52,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
           <div>Text example:</div>
           <TextArea
             value={'Text'}
-            className={st(classes.textArea)} 
+            className={classes.textArea} 
             onChange={() => {}}
           />
           <div>Placeholder example:</div>

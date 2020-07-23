@@ -46,13 +46,13 @@ Components' styles can be overridden like this:
 // Input.tsx 
 import React from 'react';
 import { Input } from 'wix-ui-tpa/Input';
-import { st, classes } from './Input.st.css';
+import { classes } from './Input.st.css';
 
 class MyInput extends React.Component {
     render() {
         return (
             <Input
-                className={st(classes.root)} 
+                className={classes.root} 
                 // ...
             />
         );

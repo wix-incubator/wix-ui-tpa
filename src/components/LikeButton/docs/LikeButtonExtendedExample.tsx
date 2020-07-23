@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LikeButton } from '../LikeButton';
-import { st, classes } from './LikeButtonExtendedExample.st.css';
+import { classes } from './LikeButtonExtendedExample.st.css';
 
 interface State {
   checked: boolean;
@@ -22,7 +22,7 @@ export class LikeButtonExtendedExample extends React.Component<{}, State> {
       onChange={this.handleChange}
       checked={this.state.checked}
       {...this.props}
-      className={st(classes.root)}
+      className={classes.root}
     />
   );
 }

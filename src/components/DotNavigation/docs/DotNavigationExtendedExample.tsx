@@ -24,7 +24,7 @@ export class DotNavigationExtendedExample extends React.Component<
       {...this.props}
       currentIndex={this.state.currentIndex}
       onSelect={this.changeCurrentIndex}
-      className={st(classes.root)}
+      className={classes.root}
     />
   );
 }

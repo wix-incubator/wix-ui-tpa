@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Card } from '../../Card';
-import { st, classes } from './NewCardWiringExample.st.css';
+import { classes } from './NewCardWiringExample.st.css';
 
 const image = (
   <img
@@ -69,7 +69,7 @@ export const ExampleMinWidth = () => (
 
 export const NewCardWiringExample = () => {
   return (
-    <div className={st(classes.root)}>
+    <div className={classes.root}>
       <section className={classes.exampleSection}>
         <Text typography={TYPOGRAPHY.smallTitle}>Default Card</Text>
 

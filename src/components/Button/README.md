@@ -48,11 +48,11 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import Button from 'wix-ui-tpa/Button';
-    import { st, classes } from './ButtonExt.st.css';
+    import { classes } from './ButtonExt.st.css';
 
     const ButtonExt = (props) => 
         (<Button 
-            {...props} 
-            className={st(classes.root)} 
+            {...props}
+            className={classes.root}
         />);
     ```

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconToggle } from '../IconToggle';
-import { st, classes } from './IconToggleExtendedExample.st.css';
+import { classes } from './IconToggleExtendedExample.st.css';
 import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 
 interface State {
@@ -24,7 +24,7 @@ export class IconToggleExtendedExample extends React.Component<{}, State> {
       onChange={this.handleChange}
       checked={this.state.checked}
       {...this.props}
-      className={st(classes.root)}
+      className={classes.root}
     />
   );
 }

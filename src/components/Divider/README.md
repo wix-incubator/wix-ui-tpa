@@ -32,7 +32,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import {Divider} from 'wix-ui-tpa/Divider';
-    import { st, classes } from './DividerExt.st.css';
+    import { classes } from './DividerExt.st.css';
 
-    const DividerExt = (props) => <Divider {...props} className={st(classes.root)} />;
+    const DividerExt = (props) => <Divider {...props} className={classes.root} />;
     ```

@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Ratings, Mode } from '../index';
-import { st, classes } from './RatingsExtendedExample.st.css';
+import { classes } from './RatingsExtendedExample.st.css';
 
 export const RatingsExtendedExample = () => {
   const [value, setValue] = React.useState(0);
 
   return (
     <div>
-      <div className={st(classes.root)}>
+      <div className={classes.root}>
         <h3>Ratings Input</h3>
         <Ratings
           name={'example1'}

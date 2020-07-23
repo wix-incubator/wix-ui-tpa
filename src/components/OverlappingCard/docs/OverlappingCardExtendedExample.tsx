@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { OverlappingCard } from '../index';
-import { st, classes } from './OverlappingCardExtendedExample.st.css';
+import { classes } from './OverlappingCardExtendedExample.st.css';
 import { TYPOGRAPHY, Text } from '../../Text';
 import { Divider } from '../../Divider';
 import { Button } from '../../Button';
@@ -47,7 +47,7 @@ export const CardExtendedExample = props => (
         </div>
       }
       {...props}
-      className={st(classes.card)}
+      className={classes.card}
     />
   </div>
 );
