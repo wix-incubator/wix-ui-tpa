@@ -1,3 +1,26 @@
+# 2.0.0 (2020-07-27)
+
+
+### Bug Fixes
+
+* DropDown error from rebase ([ebb299b](https://github.com/wix/wix-ui-tpa/commit/ebb299b097b55fbdbf4b47e93f38a8e514d35ecc))
+
+
+### chore
+
+* update Stylable version to latest (v3) ([045b56f](https://github.com/wix/wix-ui-tpa/commit/045b56f3fea527bbcc3b51e2fd6730956b361e3a))
+
+
+### BREAKING CHANGES
+
+* usage of Stylable stylesheets has been changed. See more here: https://stylable.io/docs/guides/components-basics
+
+
+
+## 1.11.2 (2020-07-21)
+
+
+
 ## [1.11.1](https://github.com/wix/wix-ui-tpa/compare/v1.11.0...v1.11.1) (2020-07-21)
 
 
@@ -62,6 +85,11 @@
 ### Bug Fixes
 
 * Tags add margin customization + fix sizes ([8bb2bdc](https://github.com/wix/wix-ui-tpa/commit/8bb2bdcca27849985e1b09d74d8cdef5c961ae3d))
+
+
+### Reverts
+
+* Revert "build: freeze yoshi version" ([3e980b0](https://github.com/wix/wix-ui-tpa/commit/3e980b010b38cc617d4f71a15c0d91459e5be41b))
 
 
 
@@ -241,6 +269,12 @@
 # [1.3.0](https://github.com/wix/wix-ui-tpa/compare/v1.2.0...v1.3.0) (2019-11-04)
 
 
+### Bug Fixes
+
+* freeze typescript version to v3.2.4 ([6fd28ed](https://github.com/wix/wix-ui-tpa/commit/6fd28eda01640b613edace17b9426a25ce7070a9))
+* NewCard minWidth prop ([1af0c7b](https://github.com/wix/wix-ui-tpa/commit/1af0c7b82554f520e50b46c82e6259f85385b90b))
+
+
 ### Features
 
 * component NewCard ([69c5d40](https://github.com/wix/wix-ui-tpa/commit/69c5d40e02cfc7037b88787a0005cd810927982a))
@@ -286,16 +320,54 @@
 
 ### Bug Fixes
 
-* AvatarGroup textbutton overrides ([bae9717](https://github.com/wix/wix-ui-tpa/commit/bae9717))
-* release-candidate bug ([572d278](https://github.com/wix/wix-ui-tpa/commit/572d278))
+* AvatarGroup textbutton overrides ([bae9717](https://github.com/wix/wix-ui-tpa/commit/bae971780fdceb42b69c2e10d3c4d52d315e92bf))
+* release-candidate bug ([572d278](https://github.com/wix/wix-ui-tpa/commit/572d2780a62c253ef8be38df7ede45fd9443a7b6))
+* **build:** upgrade wix-ui-core to v1 -> v2 to unify unidriver versions =) ([38d0a5e](https://github.com/wix/wix-ui-tpa/commit/38d0a5e539590fdf622b546555270a906759a563))
+* **testkits:** set noTestkit for ToggleSwitch component ([dd87ccb](https://github.com/wix/wix-ui-tpa/commit/dd87ccb0af9077c2da600dac851c2221178c5be9))
+* change versions from latest to ^1.0.0 in order to support lerna links feature ([#12](https://github.com/wix/wix-ui-tpa/issues/12)) ([6b8a3be](https://github.com/wix/wix-ui-tpa/commit/6b8a3be19c055a7028bdd552e4af5baef654af00))
 
 
 ### Features
 
-* Add settings panel to generator ([#199](https://github.com/wix/wix-ui-tpa/issues/199)) ([cd3b739](https://github.com/wix/wix-ui-tpa/commit/cd3b739))
-* use angular preset for changelog creation ([d7312ad](https://github.com/wix/wix-ui-tpa/commit/d7312ad))
+* Add settings panel to generator ([#199](https://github.com/wix/wix-ui-tpa/issues/199)) ([cd3b739](https://github.com/wix/wix-ui-tpa/commit/cd3b739c0cadf7decde42a65b4d658646f1afe6e))
+* use angular preset for changelog creation ([d7312ad](https://github.com/wix/wix-ui-tpa/commit/d7312ad84fa4cf90ce26bf4c72c6e72e5eb48290))
+* **a11y:** change tabs to implement navigation a11y guidelines ([#187](https://github.com/wix/wix-ui-tpa/issues/187)) ([a77a763](https://github.com/wix/wix-ui-tpa/commit/a77a7638ff824a12bf1389af8b4776e6be3716bc)), closes [#188](https://github.com/wix/wix-ui-tpa/issues/188)
+* **Colorpicker:** add Colorpicker basic element ([#165](https://github.com/wix/wix-ui-tpa/issues/165)) ([cd2437a](https://github.com/wix/wix-ui-tpa/commit/cd2437a6604fb4d2cdee500aa6a065ad7928b2e4))
+* ToggleSwitch Component ([#166](https://github.com/wix/wix-ui-tpa/issues/166)) ([545f30c](https://github.com/wix/wix-ui-tpa/commit/545f30cad80ae3499122b4f66d8f2f63cf3e7aac))
+* **Counter:** add Counter basic element ([#152](https://github.com/wix/wix-ui-tpa/issues/152)) ([a882702](https://github.com/wix/wix-ui-tpa/commit/a8827023277659e91e0a84fc4bbc2c202ac6d85d))
+* **Stylable TPA:** Add colorPicker ([5d812ca](https://github.com/wix/wix-ui-tpa/commit/5d812ca20e96533293921aecd87739b2b58d2b0c))
+* **Stylable TPA:** Add extended input example ([bd82666](https://github.com/wix/wix-ui-tpa/commit/bd8266692b49102b0c31bedc0a0cf8cf175528e6))
+* **Stylable TPA:** add input ([4204437](https://github.com/wix/wix-ui-tpa/commit/4204437bfc56b08949f2114ee1b47459587a541e))
+* **Stylable TPA:** add needed js files ([1653575](https://github.com/wix/wix-ui-tpa/commit/16535752336e64df499965715cf8b0eb4cb5359a))
+* **Stylable TPA:** add needed js files ([655cfe7](https://github.com/wix/wix-ui-tpa/commit/655cfe72bdcd6e2eba29b2031e17f1f0ce62ac1f))
+* **Stylable TPA:** change input value to placeholder so it will be modifieable. ([b7fada0](https://github.com/wix/wix-ui-tpa/commit/b7fada053583325d6ee6b8647d91701ad90b1930))
+* **Stylable TPA:** change story folder name ([d519a6b](https://github.com/wix/wix-ui-tpa/commit/d519a6bc545fe89e440b44adcc1c8a4a3da818ab))
+* **Stylable TPA:** convert styleableExt to es5 syntax ([d4c0191](https://github.com/wix/wix-ui-tpa/commit/d4c01917f4c87b78969b75efa929c622e4b5e729))
+* **Stylable TPA:** copy stylable ext js files to dist ([8f27723](https://github.com/wix/wix-ui-tpa/commit/8f277231c032a1242b921447f06e932f898221dc))
+* **Stylable TPA:** create initial project with toggle POC ([a0792bc](https://github.com/wix/wix-ui-tpa/commit/a0792bc82972c6fb4314ec7a33357abd77c7e0f6))
+* **Stylable TPA:** documentation ([b5983a5](https://github.com/wix/wix-ui-tpa/commit/b5983a58cbbaa46545373b1a8095f914e0d4602e))
+* **Stylable TPA:** enable testing ([d5f1c82](https://github.com/wix/wix-ui-tpa/commit/d5f1c8255a45f6ffadb0afd12780013315367c66))
+* **Stylable TPA:** enhance ToggleSwitch example ([5b77e23](https://github.com/wix/wix-ui-tpa/commit/5b77e236536d1a36e60a3777d3fd12ea83a97eec))
+* **Stylable TPA:** Fix code example ([eb74211](https://github.com/wix/wix-ui-tpa/commit/eb742112e3e8c54ec6b5217c2dd7e91eb6eb9c9c))
+* **Stylable TPA:** fix gh-pages ([54c26e1](https://github.com/wix/wix-ui-tpa/commit/54c26e1d0ebab02e45f731b0509e0e9308a129d6))
+* **Stylable TPA:** fix storybook statics ([b22c6eb](https://github.com/wix/wix-ui-tpa/commit/b22c6eb8b21de810db0d484aebf7cab08139dd45))
+* **Stylable TPA:** fix storybook statics ([3b3a4e0](https://github.com/wix/wix-ui-tpa/commit/3b3a4e0a1f096248864cd2d4eb5f2093035c62c4))
+* **Stylable TPA:** readme for input ([69775cb](https://github.com/wix/wix-ui-tpa/commit/69775cbd184ff4bc206655a438f10829035ed382))
+* **Stylable TPA:** remove redundant libs ([55b5e2f](https://github.com/wix/wix-ui-tpa/commit/55b5e2f07074e2a3b1e8bf9cbff731b7cd7762bc))
+* **Stylable TPA:** reorder components ([b8d7a87](https://github.com/wix/wix-ui-tpa/commit/b8d7a87ab77ebb13d7c2a10a7d9e4474d3acbb8d))
+* **Stylable TPA:** use custom-selector to select input from core ([a5415aa](https://github.com/wix/wix-ui-tpa/commit/a5415aafa930287f34250f211fcc72c1afcbbef1))
+* **TextArea:** create text area component ([#150](https://github.com/wix/wix-ui-tpa/issues/150)) ([6b52b7b](https://github.com/wix/wix-ui-tpa/commit/6b52b7b62717067e018a0fbeff44859dbcbf7acc))
+* **ToolTip:** error skin ([#163](https://github.com/wix/wix-ui-tpa/issues/163)) ([5a2073e](https://github.com/wix/wix-ui-tpa/commit/5a2073e395807f53cc2aa781ae48b9f447f74662))
+* **TPA toggleSwitch:** fix index calculations ([d1db5c6](https://github.com/wix/wix-ui-tpa/commit/d1db5c6655fa45f9622909f092a74651c8cd3d9f))
 
 
+### Reverts
+
+* Revert "(Card | OverlappingCard) Media container with multiple background colors (#99)" (#102) ([3fdc1f2](https://github.com/wix/wix-ui-tpa/commit/3fdc1f2cce78ba23ca405f76cca931ac5d18f68c)), closes [#99](https://github.com/wix/wix-ui-tpa/issues/99) [#102](https://github.com/wix/wix-ui-tpa/issues/102)
+* Revert "test if .ci_config is working" ([683917e](https://github.com/wix/wix-ui-tpa/commit/683917e987c13d6d0160c033d2dededa681ff5cc))
+* Revert "fix broken input story" ([00f17ec](https://github.com/wix/wix-ui-tpa/commit/00f17ece34635950d5bff576a1ec09e928faf867))
+* Revert "add missing dep" ([15ad854](https://github.com/wix/wix-ui-tpa/commit/15ad854181a799a252aaac05d9408f8eab26a15e))
+* Revert "update jest-setup location" ([f0b2df4](https://github.com/wix/wix-ui-tpa/commit/f0b2df4bc5ea1a52390eb96fdc1da496ff503b6e))
 
 # 1.1.0 (2019-09-18)
 
