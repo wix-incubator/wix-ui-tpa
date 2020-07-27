@@ -25,15 +25,15 @@ How to use it:
 
 ``` javascript
     import NewCard from 'wix-ui-tpa/NewCard';
-    import styles from './MyComponent.st.css';
+    import { classes } from './MyComponent.st.css';
 
     const MyComponent = (props) => (
-        <div {...styles('root', {}, props)}>
+        <div className={classes.root} >
             <NewCard>
-                <NewCard.Container className={styles.media}>
+                <NewCard.Container className={classes.media}>
                     Put whatever you want 😍
                 </NewCard.Container>
-                <NewCard.Container className={styles.info}>
+                <NewCard.Container className={classes.info}>
                     Put whatever you want 😍
                 </NewCard.Container>
             </NewCard>

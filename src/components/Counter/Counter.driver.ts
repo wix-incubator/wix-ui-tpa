@@ -3,7 +3,7 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './Counter.st.css';
+import * as style from './Counter.st.css';
 import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
 import { Simulate } from 'react-dom/test-utils';
 
@@ -26,9 +26,9 @@ export interface CounterDriver extends BaseUniDriver {
 export const counterDriverFactory = (base: UniDriver): CounterDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
 
-  const getPlusButton = () => base.$$(`.${style.btn}`).get(0);
-  const getMinusButton = () => base.$$(`.${style.btn}`).get(1);
-  const getInput = () => base.$(`.${style.root} input`);
+  const getPlusButton = () => base.$$(`.${style.classes.btn}`).get(0);
+  const getMinusButton = () => base.$$(`.${style.classes.btn}`).get(1);
+  const getInput = () => base.$(`.${style.classes.root} input`);
   const getAriaLabel = (label: string) => base.attr(`aria-${label}`);
   const baseUniDriver = baseUniDriverFactory(base);
   const getTooltipDriver = async () => {

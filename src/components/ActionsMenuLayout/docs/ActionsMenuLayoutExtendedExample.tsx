@@ -1,23 +1,23 @@
 import * as React from 'react';
 import { ActionsMenuLayout } from '../ActionsMenuLayout';
-import styles from './ActionsMenuLayoutExtendedExample.st.css';
+import { classes } from './ActionsMenuLayoutExtendedExample.st.css';
 
 const onClick = () => console.log('clicked');
-export const ActionsMenuLayoutExtendedExample: React.FC = props => {
+export const ActionsMenuLayoutExtendedExample: React.FC = () => {
   return (
-    <ActionsMenuLayout {...styles(styles.root, {}, props)}>
+    <ActionsMenuLayout className={classes.root}>
       <ActionsMenuLayout.Item
         key={1}
         onClick={onClick}
         content="item 1"
-        {...styles(styles.item, {}, props)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Item
         key={2}
         onClick={onClick}
         content="item 2"
         subtitle="Subtitle"
-        {...styles(styles.item, {}, props)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Divider key={3} />
       <ActionsMenuLayout.Item
@@ -25,7 +25,7 @@ export const ActionsMenuLayoutExtendedExample: React.FC = props => {
         onClick={onClick}
         content="item 3"
         subtitle="Subtitle"
-        {...styles(styles.item, {}, props)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Item
         key={5}
@@ -33,7 +33,7 @@ export const ActionsMenuLayoutExtendedExample: React.FC = props => {
         content="item 4"
         subtitle="Subtitle"
         disabled
-        {...styles(styles.item, {}, props)}
+        className={classes.item}
       />
       <ActionsMenuLayout.Item key={6} onClick={onClick} content="item 5" />
     </ActionsMenuLayout>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import extendedStyles from './CounterExtendedExample.st.css';
+import { classes } from './CounterExtendedExample.st.css';
 import { Counter } from '../Counter';
 
 interface State {
@@ -27,7 +27,7 @@ export class CounterExtendedExample extends React.Component<{}, State> {
         onChange={this.handleChange}
         value={this.state.value}
         {...this.props}
-        {...extendedStyles('root')}
+        className={classes.root}
       />
       <h3>Disabled Counter</h3>
       <Counter
@@ -38,7 +38,7 @@ export class CounterExtendedExample extends React.Component<{}, State> {
         value={this.state.value}
         {...this.props}
         disabled
-        {...extendedStyles('root')}
+        className={classes.root}
       />
       <h3>Counter with a max value of 15, and a min value of -5</h3>
       <Counter
@@ -50,7 +50,7 @@ export class CounterExtendedExample extends React.Component<{}, State> {
         max={15}
         min={-5}
         {...this.props}
-        {...extendedStyles('root')}
+        className={classes.root}
       />
     </>
   );

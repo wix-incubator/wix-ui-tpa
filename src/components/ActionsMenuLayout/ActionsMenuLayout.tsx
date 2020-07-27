@@ -1,11 +1,12 @@
 import * as React from 'react';
-import styles from './ActionsMenuLayout.st.css';
+import { st, classes } from './ActionsMenuLayout.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ActionsMenuLayoutItem, Alignment } from './Item/ActionsMenuLayoutItem';
 import { ACTIONS_MENU_DATA_KEYS } from './dataHooks';
 import { ActionsMenuLayoutDivider } from './ActionsMenuLayoutDivider/ActionsMenuLayoutDivider';
+import { TPAComponentProps } from '../../types';
 
-export interface ActionsMenuLayoutProps {
+export interface ActionsMenuLayoutProps extends TPAComponentProps {
   alignment?: Alignment;
 }
 
@@ -23,20 +24,21 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
   }
 
   render() {
-    const { alignment, children, ...rest } = this.props;
+    const { alignment, children, className } = this.props;
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <ul
-            {...styles('root', { mobile }, rest)}
+            className={st(classes.root, { mobile }, className)}
             {...this.getDataAttributes(mobile)}
+            data-hook={this.props['data-hook']}
             role="menu"
             tabIndex={-1}
           >
             {React.Children.map(children, (child: React.ReactElement) =>
               child.type === ActionsMenuLayoutItem
                 ? React.cloneElement(child, {
-                    className: styles.item,
+                    className: classes.item,
                     alignment,
                   })
                 : child,

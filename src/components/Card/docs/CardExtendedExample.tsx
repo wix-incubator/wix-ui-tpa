@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card } from '../index';
-import extendedStyles from './CardExtendedExample.st.css';
+import { classes } from './CardExtendedExample.st.css';
 import { TYPOGRAPHY, Text } from '../../Text';
 import { TPAComponentsWrapper } from '../../../test/utils';
 
@@ -28,7 +28,7 @@ export const CardExtendedExample = props => (
           </div>
         }
         {...props}
-        {...extendedStyles('card', {}, props)}
+        className={classes.card}
       />
     </div>
     <div style={{ width: `${Card.MIN_WIDTH_MOBILE + 170}px` }}>
@@ -42,7 +42,7 @@ export const CardExtendedExample = props => (
           </div>
         }
         {...props}
-        {...extendedStyles('card', {}, props)}
+        className={classes.card}
       />
     </div>
     <div style={{ width: `${Card.MIN_WIDTH_MOBILE}px` }}>
@@ -57,7 +57,7 @@ export const CardExtendedExample = props => (
             </div>
           }
           {...props}
-          {...extendedStyles('card', {}, props)}
+          className={classes.card}
         />,
       )}
     </div>

@@ -36,7 +36,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
 2. Create a component that uses it
     ``` javascript
     import * as React from 'react';
-    import extendedStyles from './SectionNotificationExt.st.css';
+    import { classes } from './SectionNotificationExt.st.css';
     import { ReactComponent as ErrorIcon } from './Error.svg';
     import { SectionNotification, BUTTON_TYPE, BUTTON_PRIORITY, NOTIFICATION_TYPE } from 'wix-ui-tpa/SectionNotification';
 
@@ -44,7 +44,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
       render = () => (
         <SectionNotification
           type={NOTIFICATION_TYPE}
-          {...extendedStyles('root', {}, this.props)}
+          className={classes.root}
         >
           <SectionNotification.Icon icon={<ErrorIcon />} />
           <SectionNotification.Text>Notification text</SectionNotification.Text>

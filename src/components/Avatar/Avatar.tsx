@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 
-import styles from './Avatar.st.css';
+import { st, classes } from './Avatar.st.css';
 import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
 import { TPAComponentProps } from '../../types';
 
@@ -42,11 +42,11 @@ export class Avatar extends React.Component<AvatarProps> {
   };
 
   render() {
-    const { size, src, name, onLoad, ...rest } = this.props;
+    const { size, src, name, onLoad, className } = this.props;
 
     return (
       <CoreAvatar
-        {...styles('root', { size }, rest)}
+        className={st(classes.root, { size }, className)}
         imgProps={src ? { src, onLoad } : undefined}
         placeholder={
           <Anonymous
@@ -55,6 +55,7 @@ export class Avatar extends React.Component<AvatarProps> {
           />
         }
         name={name && name.split(' ')[0]}
+        data-hook={this.props['data-hook']}
       />
     );
   }

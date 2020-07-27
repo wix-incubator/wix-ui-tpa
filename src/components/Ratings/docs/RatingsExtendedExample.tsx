@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Ratings, Mode } from '../index';
-import extendedStyles from './RatingsExtendedExample.st.css';
+import { classes } from './RatingsExtendedExample.st.css';
 
 export const RatingsExtendedExample = () => {
   const [value, setValue] = React.useState(0);
 
   return (
     <div>
-      <div>
+      <div className={classes.root}>
         <h3>Ratings Input</h3>
         <Ratings
           name={'example1'}
@@ -16,7 +16,7 @@ export const RatingsExtendedExample = () => {
           onSelect={val => {
             setValue(val);
           }}
-          className={extendedStyles.ratings}
+          className={classes.ratings}
         />
       </div>
       <div>
@@ -27,7 +27,7 @@ export const RatingsExtendedExample = () => {
           countDisplay="150 Ratings"
           value={3}
           mode={Mode.Display}
-          className={extendedStyles.ratings}
+          className={classes.ratings}
         />
       </div>
     </div>

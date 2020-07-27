@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Card } from '../../Card';
-import styles from './NewCardWiringExample.st.css';
+import { classes } from './NewCardWiringExample.st.css';
 
 const image = (
   <img
@@ -21,9 +21,9 @@ const mediaContainer = (
 );
 
 export const ExampleDefault = () => (
-  <Card upgrade className={styles.card}>
-    <Card.Container className={styles.media}>{mediaContainer}</Card.Container>
-    <Card.Container className={styles.info}>
+  <Card upgrade className={classes.card}>
+    <Card.Container className={classes.media}>{mediaContainer}</Card.Container>
+    <Card.Container className={classes.info}>
       <>
         <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
         <br />
@@ -36,9 +36,9 @@ export const ExampleDefault = () => (
 );
 
 export const ExampleStacked = () => (
-  <Card upgrade className={styles.card} stacked>
-    <Card.Container className={styles.media}>{mediaContainer}</Card.Container>
-    <Card.Container className={styles.info}>
+  <Card upgrade className={classes.card} stacked>
+    <Card.Container className={classes.media}>{mediaContainer}</Card.Container>
+    <Card.Container className={classes.info}>
       <>
         <Text typography={TYPOGRAPHY.smallTitle}>Stacked layout</Text>
         <br />
@@ -51,11 +51,11 @@ export const ExampleStacked = () => (
 );
 
 export const ExampleMinWidth = () => (
-  <Card upgrade className={styles.card}>
-    <Card.Container minWidth={300} className={styles.media}>
+  <Card upgrade className={classes.card}>
+    <Card.Container minWidth={300} className={classes.media}>
       {mediaContainer}
     </Card.Container>
-    <Card.Container minWidth={300} className={styles.info}>
+    <Card.Container minWidth={300} className={classes.info}>
       <>
         <Text typography={TYPOGRAPHY.smallTitle}>Side By Side</Text>
         <br />
@@ -67,16 +67,16 @@ export const ExampleMinWidth = () => (
   </Card>
 );
 
-export const NewCardWiringExample = props => {
+export const NewCardWiringExample = () => {
   return (
-    <div {...styles('root', {}, props)}>
-      <section className={styles.exampleSection}>
+    <div className={classes.root}>
+      <section className={classes.exampleSection}>
         <Text typography={TYPOGRAPHY.smallTitle}>Default Card</Text>
 
         <ExampleDefault />
       </section>
 
-      <section className={styles.exampleSection}>
+      <section className={classes.exampleSection}>
         <Text typography={TYPOGRAPHY.smallTitle}>
           Default <i>Stacked</i> Card
         </Text>
@@ -84,7 +84,7 @@ export const NewCardWiringExample = props => {
         <ExampleStacked />
       </section>
 
-      <section className={styles.exampleSection}>
+      <section className={classes.exampleSection}>
         <Text typography={TYPOGRAPHY.smallTitle}>Containers with minWidth</Text>
 
         <ExampleMinWidth />

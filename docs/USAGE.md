@@ -34,13 +34,13 @@ Using components is as simple as:
 
 import React from 'react';
 import { Button } from 'wix-ui-tpa/Button';
-import styles from './MySpecialButton.st.css';
+import { classes } from './MySpecialButton.st.css';
 
 class MySpecialButton extends React.Component {
     render() {
         return (
             <Button
-                {...styles('root', {}, this.props)} 
+                className={classes.root}
                 onClick={this._onClick}>
                 Schwift Me
             </Button>

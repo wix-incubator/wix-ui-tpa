@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { GridDataHooks, GridDataKeys } from '../DataHooks';
-import style from '../Grid.st.css';
+import { classes } from '../Grid.st.css';
 import { DEFAULT_COLUMN_SPAN, DEFAULT_ROW_SPAN } from '../constants';
 
 export interface ItemProps {
@@ -32,7 +32,7 @@ export class Item extends React.PureComponent<ItemProps> {
     return (
       <li
         data-hook={GridDataHooks.item}
-        className={style.item}
+        className={classes.item}
         style={{
           gridColumnEnd: `span ${colSpan}`,
           gridRowEnd: `span ${rowSpan}`,

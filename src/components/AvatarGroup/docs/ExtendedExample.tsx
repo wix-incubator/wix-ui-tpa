@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AvatarGroup } from '../index';
 import { AvatarGroupSize } from '../AvatarGroup';
-import extendedStyles from './ExtendedExample.st.css';
+import { classes } from './ExtendedExample.st.css';
 
 const items = [
   {},
@@ -15,7 +15,7 @@ export const ExtendedExample = props => (
   <div>
     <div>
       <AvatarGroup
-        {...extendedStyles('root', {}, props)}
+        className={classes.root}
         items={[...items]}
         size={AvatarGroupSize.large}
       >
@@ -25,7 +25,7 @@ export const ExtendedExample = props => (
 
     <div>
       <AvatarGroup
-        {...extendedStyles('root', {}, props)}
+        className={classes.root}
         items={[...items, ...items]}
         size={AvatarGroupSize.small}
       >
@@ -35,7 +35,7 @@ export const ExtendedExample = props => (
 
     <div>
       <AvatarGroup
-        {...extendedStyles('root', {}, props)}
+        className={classes.root}
         items={[...items, ...items, ...items]}
         maxAmount={9}
         size={AvatarGroupSize.xxSmall}
@@ -45,7 +45,7 @@ export const ExtendedExample = props => (
     </div>
     <div dir="rtl">
       <AvatarGroup
-        {...extendedStyles('root', {}, props)}
+        className={classes.root}
         items={[...items, ...items, ...items]}
         maxAmount={9}
         size={AvatarGroupSize.xxSmall}

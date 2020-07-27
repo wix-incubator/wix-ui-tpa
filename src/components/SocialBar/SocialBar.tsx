@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { SocialBarIcon } from './SocialBarIcon';
 
-import styles from './SocialBar.st.css';
+import { st, classes } from './SocialBar.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { TPAComponentProps } from '../../types';
 
 export type SocialBarTheme = 'light' | 'dark';
 
-export interface SocialBarProps {
+export interface SocialBarProps extends TPAComponentProps {
   theme?: SocialBarTheme;
 }
 
@@ -25,20 +26,23 @@ export class SocialBar extends React.Component<SocialBarProps> {
   static defaultProps: DefaultProps = { theme: 'light' };
 
   render() {
-    const { theme, children, ...rest } = this.props;
+    const { theme, children, className } = this.props;
 
     const childProps: SocialBarInjectedProps = { socialBarTheme: theme };
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div {...styles('root', { mobile }, rest)}>
+          <div
+            className={st(classes.root, { mobile }, className)}
+            data-hook={this.props['data-hook']}
+          >
             {React.Children.map(children, child => {
               if (!React.isValidElement(child)) {
                 return child;
               }
               return (
-                <div className={styles.item}>
+                <div className={classes.item}>
                   {React.cloneElement(child, childProps)}
                 </div>
               );

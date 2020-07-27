@@ -8,7 +8,7 @@ import { TabItem } from './Tab';
 import { ScrollableTabs } from './ScrollableTabs';
 import { TabsNavButton } from './TabsNavButton';
 import { ALIGNMENT, NavButtonOptions, SKIN, VARIANT } from './constants';
-import style from './Tabs.st.css';
+import { st, classes } from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
@@ -178,7 +178,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   render() {
     const { navButtons, animateIndicator, selectedTab } = this.state;
-    const { items, alignment, skin, variant } = this.props;
+    const { items, alignment, skin, variant, className } = this.props;
     const leftButtonWidth = this._leftButtonRef
       ? this._leftButtonRef.width()
       : 0;
@@ -190,7 +190,11 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <div
-            {...style('root', { skin, navButtons, mobile }, this.props)}
+            className={st(
+              classes.root,
+              { skin, navButtons, mobile },
+              className,
+            )}
             {...this._getDataAttributes(mobile, rtl)}
             data-hook={this.props['data-hook']}
           >
@@ -199,7 +203,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
               alignment={alignment}
               variant={variant}
               items={items}
-              className={style.navigation}
+              className={classes.navigation}
               onClickItem={this._onClickItem}
               onScroll={this._updateButtonsIfNeeded}
               activeTabIndex={selectedTab}
@@ -213,7 +217,7 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
             />
             <TabsNavButton
               onClick={this._onClickLeft}
-              className={classnames(style.navBtn, style.navBtnLeft)}
+              className={classnames(classes.navBtn, classes.navBtnLeft)}
               tabIndex={NavButtonOptions.right ? -1 : 0}
               data-hook={TABS_DATA_HOOKS.leftNavButton}
               ref={this._rightButtonRefCallback}
@@ -222,14 +226,14 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
             </TabsNavButton>
             <TabsNavButton
               onClick={this._onClickRight}
-              className={classnames(style.navBtn, style.navBtnRight)}
+              className={classnames(classes.navBtn, classes.navBtnRight)}
               tabIndex={NavButtonOptions.left ? -1 : 0}
               data-hook={TABS_DATA_HOOKS.rightNavButton}
               ref={this._leftButtonRefCallback}
             >
               <ChevronRight />
             </TabsNavButton>
-            <div className={style.border} />
+            <div className={classes.border} />
           </div>
         )}
       </TPAComponentsConsumer>

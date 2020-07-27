@@ -2,16 +2,16 @@ import * as React from 'react';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 import { TPAComponentsContext } from '../TPAComponentsConfig';
 import { Text, TYPOGRAPHY } from '../Text';
-
 import { DropdownBase } from './DropdownBase';
 import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
-
-import styles from './Dropdown.st.css';
+import { st, classes } from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
 import { Placement } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
+import { TPAComponentProps } from '../../types';
+import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 import { IDOMid } from 'wix-ui-core/dist/es/src';
 
 const uniqueId = require('lodash/uniqueId');
@@ -20,7 +20,7 @@ export enum DROPDOWN_ALIGNMENT {
   center = 'center',
 }
 
-export interface DropdownProps {
+export interface DropdownProps extends TPAComponentProps {
   options: DropdownOptionProps[];
   optionsContainerId?: string;
   onChange?(selectedOption: DropdownOptionProps): void;
@@ -126,7 +126,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       onChange(this.props.options.find(({ id }) => selectedOption.id === id));
   };
 
-  private readonly onOptionHover = (option: DropdownOptionProps & IDOMid) => {
+  private readonly onOptionHover = (option: Option & IDOMid) => {
     const ariaActivedescendant = option ? option._DOMid : null;
     this.setState({ ariaActivedescendant });
   };
@@ -137,6 +137,17 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       ...(!isOpen && { ariaActivedescendant: null }),
     };
     this.setState(newState);
+  };
+
+  private readonly onCoreSelect = (selectedCoreOption: Option) => {
+    if (!selectedCoreOption) {
+      return;
+    }
+
+    const selectedOption = this.props.options.find(
+      ({ id }) => selectedCoreOption.id === id,
+    );
+    this.onSelect(selectedOption);
   };
 
   private readonly renderNativeSelect = () => {
@@ -155,7 +166,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
         disabled={disabled}
-        className={styles.dropdownNativeSelect}
+        className={classes.dropdownNativeSelect}
         error={error}
         errorMessage={errorMessage}
         options={options}
@@ -183,45 +194,48 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const { rtl, mobile: isMobile } = this.context;
     const { selectedOption, ariaActivedescendant, isOpen } = this.state;
 
-    const coreOptions = options.map(option => ({
-      ...option,
-      render: () => (
-        <DropdownOption className={styles.dropdownOption} {...option} />
-      ),
-    }));
+    const coreOptions = options.map(option =>
+      OptionFactory.create({
+        ...option,
+        render: () => (
+          <DropdownOption className={classes.dropdownOption} {...option} />
+        ),
+      }),
+    );
 
     return (
       <CoreDropdown
-        className={styles.dropdown}
-        contentId={this.contentId}
+        className={classes.dropdown}
         placement={placement}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={isMobile}
-        openTrigger={disabled ? 'none' : 'click'}
         options={coreOptions}
-        onDeselect={this.onSelect}
-        onExpandedChange={this.onExpandedChange}
-        onSelect={this.onSelect}
-        onOptionHover={this.onOptionHover}
+        onDeselect={this.onCoreSelect}
+        onSelect={this.onCoreSelect}
         initialSelectedIds={selectedOption ? [selectedOption.id] : []}
+        onInitialSelectedOptionsSet={() => {}}
         forceContentElementVisibility={forceContentElementVisibility}
+        contentId={this.contentId}
+        openTrigger={disabled ? undefined : 'click'}
+        onExpandedChange={this.onExpandedChange}
+        onOptionHover={this.onOptionHover}
       >
         <DropdownBase
-          aria-activedescendant={ariaActivedescendant}
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledBy}
-          isExpanded={isOpen}
-          className={styles.dropdownBase}
+          className={classes.dropdownBase}
           selectedOption={selectedOption}
           placeholder={placeholder}
           disabled={disabled}
           error={error}
           upgrade={upgrade}
           rtl={rtl}
+          aria-activedescendant={ariaActivedescendant}
+          aria-label={ariaLabel}
+          aria-labelledby={ariaLabelledBy}
+          isExpanded={isOpen}
         />
         {error && errorMessage && (
           <DropdownError
-            className={styles.dropdownError}
+            className={classes.dropdownError}
             errorMessage={errorMessage}
           />
         )}
@@ -230,37 +244,25 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   };
 
   render() {
-    const {
-      placeholder,
-      disabled,
-      error,
-      errorMessage,
-      label,
-      options,
-      alignment,
-      forceContentElementVisibility,
-      placement,
-      ['aria-label']: ariaLabel,
-      ['aria-labelledby']: ariaLabelledBy,
-      ...rest
-    } = this.props;
+    const { label, alignment, className } = this.props;
 
     const { mobile } = this.context;
 
     return (
       <div
-        {...styles(
-          'root',
+        className={st(
+          classes.root,
           {
             alignment,
             mobile,
           },
-          rest,
+          className,
         )}
         data-mobile={mobile}
+        data-hook={this.props['data-hook']}
       >
         {label && (
-          <Text className={styles.label} typography={TYPOGRAPHY.runningText}>
+          <Text className={classes.label} typography={TYPOGRAPHY.runningText}>
             {label}
           </Text>
         )}

@@ -1,5 +1,5 @@
 import { StylableDOMUtil } from '@stylable/dom-test-kit';
-import style from './ErrorMessageWrapper.st.css';
+import * as style from './ErrorMessageWrapper.st.css';
 
 const stylableDOMUtil = new StylableDOMUtil(style);
 export const errorMessageWrapperDriverFactory = ({ element }) => {

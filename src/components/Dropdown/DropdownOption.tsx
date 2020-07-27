@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../Text';
-import styles from './DropdownOption.st.css';
+import { st, classes } from './DropdownOption.st.css';
 import { TPAComponentProps } from '../../types';
 
 export interface DropdownOptionProps {
@@ -14,27 +14,38 @@ export interface DropdownOptionProps {
 
 export const DropdownOption: React.FC<DropdownOptionProps &
   TPAComponentProps> = props => {
-  const { value, id, isSelectable, subtitle, icon, isSectionTitle } = props;
+  const {
+    value,
+    id,
+    isSelectable,
+    subtitle,
+    icon,
+    isSectionTitle,
+    className,
+  } = props;
   return (
     <div
       key={id}
-      {...styles(
-        'root',
+      className={st(
+        classes.root,
         {
           withIcon: !!icon,
           sectionTitle: isSectionTitle,
           selectable: isSelectable,
         },
-        props,
+        className,
       )}
     >
-      {icon && <div className={styles.icon}>{icon}</div>}
-      <div className={styles.contentWrapper}>
-        <Text className={styles.title} typography={TYPOGRAPHY.runningText}>
+      {icon && <div className={classes.icon}>{icon}</div>}
+      <div className={classes.contentWrapper}>
+        <Text className={classes.title} typography={TYPOGRAPHY.runningText}>
           {value}
         </Text>
         {subtitle && (
-          <Text className={styles.subtitle} typography={TYPOGRAPHY.runningText}>
+          <Text
+            className={classes.subtitle}
+            typography={TYPOGRAPHY.runningText}
+          >
             {subtitle}
           </Text>
         )}

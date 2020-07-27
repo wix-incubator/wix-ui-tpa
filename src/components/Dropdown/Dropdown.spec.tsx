@@ -337,9 +337,7 @@ describe('Native Dropdown', () => {
 
   describe('disabled', () => {
     it('should be disabled', async () => {
-      const driver = createDriver(
-        <NativeConfiguredDropdown options={[]} disabled />,
-      );
+      const driver = createDriver(<NativeConfiguredDropdown disabled />);
       expect(await driver.isDisabled()).toBe(true);
     });
   });

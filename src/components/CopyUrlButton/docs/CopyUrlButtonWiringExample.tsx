@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CopyUrlButton } from '../';
-import styles from './CopyUrlButtonWiringExample.st.css';
+import { classes } from './CopyUrlButtonWiringExample.st.css';
 
 export const CopyUrlButtonWiringExample = () => {
   return (
@@ -8,7 +8,7 @@ export const CopyUrlButtonWiringExample = () => {
       url="wix.com"
       tooltipText="Copy link"
       successText="Link Copied"
-      className={styles.component}
+      className={classes.root}
     />
   );
 };

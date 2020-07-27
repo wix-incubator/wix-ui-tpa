@@ -31,12 +31,12 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import Ratings from 'wix-ui-tpa/Ratings';
-    import ratingsStylesExt from './RatingsExt.st.css';
+    import { classes } from './RatingsExt.st.css';
 
     const RatingsExt = (props) => (
         <Ratings
             value={0}
             {...props}
-            {...ratingsStylesExt('root', {}, props)}
+            className={classes.root}
         />);
     ```

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Pagination, PaginationProps } from '../Pagination';
 
-import extendedStyles from './PaginationExtendedExample.st.css';
+import { classes } from './PaginationExtendedExample.st.css';
 
 interface IPaginationExtendedExampleState {
   currentPage: number;
@@ -21,7 +21,7 @@ export class PaginationExtendedExample extends React.Component<
 
     return (
       <Pagination
-        {...extendedStyles('root', {}, this.props)}
+        className={classes.root}
         {...this.props}
         totalPages={10}
         onChange={this.handleChange}

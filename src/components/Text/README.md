@@ -40,7 +40,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import {Text} from 'wix-ui-tpa/Text';
-    import textStylesExt from './TextExt.st.css';
+    import { classes } from './TextExt.st.css';
 
-    const TextExt = (props) => <Text {...props} {...textStylesExt('root', {}, props)}/>;
+    const TextExt = (props) => <Text {...props} className={classes.root} />;
     ```

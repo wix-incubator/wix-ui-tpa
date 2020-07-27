@@ -20,7 +20,7 @@
 
 :vars {
     /*Overrides*/
-    MainTextColor: --overidable;
+    MainTextColor: --overridable;
     MainTextFont: --overridable;
 }
 

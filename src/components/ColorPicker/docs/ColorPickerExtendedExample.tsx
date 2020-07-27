@@ -1,5 +1,5 @@
 import * as React from 'react';
-import extendedStyles from './ColorPickerExtendedExample.st.css';
+import { classes } from './ColorPickerExtendedExample.st.css';
 import { ColorPicker } from '../ColorPicker';
 import {
   RadioButtonChangeEvent,
@@ -49,7 +49,7 @@ export class ColorPickerExtendedExample extends React.Component<{}, State> {
   render = () => (
     <ColorPicker
       {...this.props}
-      {...extendedStyles('root', {}, this.props)}
+      className={classes.root}
       onChange={this.handleSelection}
     >
       {COLORS.map((color, index) => (

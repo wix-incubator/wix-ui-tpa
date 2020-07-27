@@ -27,7 +27,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
 2. Create a component that uses it
     ``` javascript
     import * as React from 'react';
-    import extendedStyles from './IconButtonExt.st.css';
+    import { classes } from './IconButtonExt.st.css';
     import { ReactComponent as ShareIcon } from './Share.svg';
     import { IconButton } from 'wix-ui-tpa/IconButton';
     
@@ -36,7 +36,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
         <IconButton
           icon={<ShareIcon />}
           {...this.props}
-          {...extendedStyles('root', {}, this.props)}
+          className={classes.root} 
         />
       );
     }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ToggleSwitch, ToggleSwitchProps } from '../ToggleSwitch';
-import extendedStyles from './ToggleSwitchExtensionExample.st.css';
+import { classes } from './ToggleSwitchExtensionExample.st.css';
 
 export class ToggleSwitchExtensionExample extends React.Component<
   ToggleSwitchProps,
@@ -23,7 +23,7 @@ export class ToggleSwitchExtensionExample extends React.Component<
       <div>
         <ToggleSwitch
           {...this.props}
-          {...extendedStyles('root', {}, this.props)}
+          className={classes.root}
           onChange={() => this.setState({ checked: !this.state.checked })}
           disabled={this.state.disabled}
           checked={this.state.checked}

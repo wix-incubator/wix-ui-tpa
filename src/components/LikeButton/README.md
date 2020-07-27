@@ -34,12 +34,12 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
 2. Create a component that uses it
     ``` javascript
     import LikeButton from 'wix-ui-tpa/LikeButton';
-    import likeButtonStylesExt from './LikeButtonExt.st.css';
+    import { classes } from './LikeButtonExt.st.css';
 
     const LikeButtonExt = (props) => (
         <LikeButton 
             label="0"
             {...props}
-            {...likeButtonStylesExt('root', {}, props)}
+            className={classes.root}
         />);
     ```

@@ -4,7 +4,7 @@ import { TextButton, TEXT_BUTTON_PRIORITY } from '../TextButton';
 import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
-import styles from './FloatingDropdownBase.st.css';
+import { st, classes } from './FloatingDropdownBase.st.css';
 
 interface FloatingDropdownBaseProps extends TPAComponentProps {
   'aria-label'?: string;
@@ -52,18 +52,18 @@ export class FloatingDropdownBase extends React.Component<
 
     return (
       <>
-        <div className={styles.content}>
-          <div className={styles.textContent}>
-            <span className={styles.label}>{label}</span>
+        <div className={classes.content}>
+          <div className={classes.textContent}>
+            <span className={classes.label}>{label}</span>
             <div
-              className={styles.selectedValue}
+              className={classes.selectedValue}
               data-hook={DATA_HOOKS.baseSelectedValue}
             >
               {selectedOption?.value || placeholder}
             </div>
           </div>
           <ArrowIcon
-            className={styles.arrowIcon}
+            className={classes.arrowIcon}
             height={ICON_SIZE}
             width={ICON_SIZE}
           />
@@ -72,7 +72,7 @@ export class FloatingDropdownBase extends React.Component<
           <select
             value={value}
             name={name}
-            className={styles.select}
+            className={classes.select}
             aria-labelledby={ariaLabelledBy}
             data-hook={DATA_HOOKS.nativeSelect}
             onChange={this._onSelect}
@@ -100,16 +100,12 @@ export class FloatingDropdownBase extends React.Component<
 
   render() {
     const {
-      value,
-      placeholder,
-      label,
-      options,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       mobile,
       id,
       disabled,
-      ...rest
+      className,
     } = this.props;
 
     let content = this._getContent();
@@ -122,7 +118,7 @@ export class FloatingDropdownBase extends React.Component<
           aria-labelledby={ariaLabelledBy || id}
           disabled={disabled}
           priority={TEXT_BUTTON_PRIORITY.secondary}
-          className={styles.btn}
+          className={classes.btn}
         >
           {content}
         </TextButton>
@@ -131,7 +127,7 @@ export class FloatingDropdownBase extends React.Component<
 
     return (
       <div
-        {...styles('root', { mobile, disabled }, rest)}
+        className={st(classes.root, { mobile, disabled }, className)}
         data-hook={DATA_HOOKS.base}
       >
         {content}

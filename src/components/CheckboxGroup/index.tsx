@@ -1,1 +1,5 @@
-export * from './CheckboxGroup';
+export {
+  CheckboxGroup,
+  CheckboxGroupProps,
+  CheckboxGroupLayout,
+} from './CheckboxGroup';

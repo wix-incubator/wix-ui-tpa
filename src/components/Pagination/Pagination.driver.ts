@@ -3,7 +3,7 @@ import { Simulate } from 'react-dom/test-utils';
 
 import { paginationDriverFactory as corePaginationDriverFactory } from 'wix-ui-core/dist/src/components/pagination/Pagination.driver';
 
-import style from './Pagination.st.css';
+import * as style from './Pagination.st.css';
 
 export const paginationDriverFactory = ({ element }) => {
   const stylableDOMUtil = new StylableDOMUtil(style);

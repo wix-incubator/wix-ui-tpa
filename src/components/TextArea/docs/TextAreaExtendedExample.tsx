@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TextArea } from '../TextArea';
-import extendedStyles from './TextAreaExtendedExample.st.css';
+import { classes } from './TextAreaExtendedExample.st.css';
 
 export const TextAreaExtendedExample = () => {
   return (
@@ -13,7 +13,7 @@ export const TextAreaExtendedExample = () => {
               <TextArea
                 value={'Text'}
                 ariaLabel={'Test'}
-                {...extendedStyles('textArea')}
+                className={classes.textArea}
                 onChange={() => {}}
               />
             </label>
@@ -25,7 +25,7 @@ export const TextAreaExtendedExample = () => {
                 value=""
                 ariaLabel="Test"
                 placeholder="Placeholder example"
-                {...extendedStyles('textArea')}
+                className={classes.textArea}
                 onChange={() => {}}
               />
             </label>
@@ -39,7 +39,7 @@ export const TextAreaExtendedExample = () => {
                 error
                 errorDescription="Test"
                 placeholder="Placeholder example"
-                {...extendedStyles('textArea')}
+                className={classes.textArea}
                 onChange={() => {}}
               />
             </label>
@@ -55,7 +55,7 @@ export const TextAreaExtendedExample = () => {
                 value=""
                 ariaLabel="Test"
                 placeholder="Placeholder example"
-                {...extendedStyles('textArea')}
+                className={classes.textArea}
                 onChange={() => {}}
               />
             </label>
@@ -69,7 +69,7 @@ export const TextAreaExtendedExample = () => {
                 value=""
                 ariaLabel="Test"
                 placeholder="Placeholder example"
-                {...extendedStyles('textArea')}
+                className={classes.textArea}
                 onChange={() => {}}
               />
             </label>
@@ -83,7 +83,7 @@ export const TextAreaExtendedExample = () => {
                 value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 ariaLabel="Test"
                 placeholder="Placeholder example"
-                {...extendedStyles('textArea')}
+                className={classes.textArea}
                 onChange={() => {}}
               />
             </label>

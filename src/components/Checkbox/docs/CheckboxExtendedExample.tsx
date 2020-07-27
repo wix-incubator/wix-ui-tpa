@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Checkbox } from '../index';
-import extendedStyles from './CheckboxExtendedExample.st.css';
+import { classes } from './CheckboxExtendedExample.st.css';
 
 export const CheckboxExtendedExample = () => {
   const [value, setValue] = React.useState(false);
@@ -13,7 +13,7 @@ export const CheckboxExtendedExample = () => {
           checked={value}
           onChange={({ checked }) => setValue(checked)}
           label={value ? 'Hakol tov!' : 'Click me, ah sheli!'}
-          {...extendedStyles('root')}
+          className={classes.root}
         />
       </div>
     </div>

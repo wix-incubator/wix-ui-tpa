@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CheckboxGroup } from '../index';
 import { Checkbox } from '../../Checkbox';
-import extendedStyles from './CheckboxGroupExtendedExample.st.css';
+import { classes } from './CheckboxGroupExtendedExample.st.css';
 
 export const CheckboxGroupExtendedExample = () => {
   const [value, setValue] = React.useState({});
@@ -10,7 +10,7 @@ export const CheckboxGroupExtendedExample = () => {
     <div>
       <div>
         <h3>CheckboxGroup</h3>
-        <CheckboxGroup label="What's up?" {...extendedStyles('root')}>
+        <CheckboxGroup label="What's up?" className={classes.root}>
           <Checkbox
             checked={value[0]}
             name="group1"

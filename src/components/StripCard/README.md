@@ -41,7 +41,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import stripStylesExt from './StripCardExt.st.css';
+    import { classes } from './StripCardExt.st.css';
 
-    const StripCardExt = (props) => <StripCard {...props} {...stripStylesExt('root', {}, props)}/>;
+    const StripCardExt = (props) => <StripCard {...props} className={classes.root} />;
     ```

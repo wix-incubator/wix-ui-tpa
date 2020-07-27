@@ -39,7 +39,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import {TextField} from 'wix-ui-tpa/TextField';
-    import inputStylesExt from './InputExt.st.css';
+    import { classes } from './InputExt.st.css';
 
-    const const InputExt = (props) => <TextField {...props} {...inputStylesExt('root', {}, props)}/>;
+    const const InputExt = (props) => <TextField {...props} className={classes.root} />;
     ```

@@ -34,7 +34,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
 2. Create a component that uses it
     ``` javascript
-    import tabsStylesExt from './Tabs.st.css';
+    import { classes } from './Tabs.st.css';
 
-    const TabsExt = (props) => <Tabs {...props} {...tabsStylesExt('root', {}, props)}/>;
+    const TabsExt = (props) => <Tabs {...props} className={classes.root} />;
     ```

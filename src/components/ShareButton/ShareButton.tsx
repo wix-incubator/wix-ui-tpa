@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './ShareButton.st.css';
+import { st, classes } from './ShareButton.st.css';
 import { ButtonProps } from '../Button';
 import { Omit } from '../../types';
 import {
@@ -44,16 +44,21 @@ export class ShareButton extends React.Component<ShareButtonProps> {
   };
 
   render() {
-    const { shareData, text, withIcon, ...rest } = this.props;
+    const { shareData, text, withIcon, className, ...rest } = this.props;
     return (
       <TextButton
-        {...styles('root', { withIcon, withText: Boolean(text) }, rest)}
+        className={st(
+          classes.root,
+          { withIcon, withText: Boolean(text) },
+          className,
+        )}
         priority={TEXT_BUTTON_PRIORITY.secondary}
-        prefixIcon={withIcon ? <Share className={styles.icon} /> : undefined}
+        prefixIcon={withIcon ? <Share className={classes.icon} /> : undefined}
         {...rest}
         onClick={this.onButtonClick}
+        data-hook={this.props['data-hook']}
       >
-        <div className={styles.text}>{text}</div>
+        <div className={classes.text}>{text}</div>
       </TextButton>
     );
   }

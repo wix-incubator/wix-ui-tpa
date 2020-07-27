@@ -31,13 +31,13 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 2. Create a component that uses it
     ``` javascript
     import Checkbox from 'wix-ui-tpa/Checkbox';
-    import checkboxStylesExt from './CheckboxExt.st.css';
+    import { classes } from './CheckboxExt.st.css';
 
     const CheckboxExt = (props) => (
         <Checkbox
             onChange={() => {}}
             label="Label"
             {...props}
-            {...checkboxStylesExt('root', {}, props)}
+            className={classes.root}
         />);
     ```

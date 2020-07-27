@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './LikeButton.st.css';
+import { st, classes } from './LikeButton.st.css';
 import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 import { IconToggle, LabelPlacement, OnChangeEvent } from '../IconToggle';
 import { TPAComponentProps } from '../../types';
@@ -35,13 +35,13 @@ export class LikeButton extends React.Component<LikeButtonProps> {
       onChange,
       checked,
       disabled,
-      ...rest
+      className,
     } = this.props;
 
     return (
-      <div className={styles.likeButton}>
+      <div className={classes.likeButton}>
         <IconToggle
-          {...styles('root', { checked, disabled }, rest)}
+          className={st(classes.root, { checked, disabled }, className)}
           icon={<Heart />}
           label={label}
           disabled={disabled}
@@ -49,6 +49,7 @@ export class LikeButton extends React.Component<LikeButtonProps> {
           checked={checked}
           labelPlacement={labelPlacement}
           animation
+          data-hook={this.props['data-hook']}
         />
       </div>
     );

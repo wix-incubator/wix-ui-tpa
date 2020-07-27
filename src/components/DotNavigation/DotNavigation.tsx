@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styles from './DotNavigation.st.css';
+import { st, classes } from './DotNavigation.st.css';
 import { RadioButton, RadioButtonKeyDownEvent } from 'wix-ui-core/radio-button';
 import { DotNavigationDataKeys, DotNavigationDataHooks } from './dataHooks';
 import classNames from 'classnames';
@@ -185,16 +185,16 @@ export class DotNavigation extends React.Component<
   getRadio = ({ checked, size, fakeRadio }: RadioProps) => (
     <div
       {...(fakeRadio && { tabIndex: -1, 'aria-hidden': true })}
-      className={classNames(styles.radio)}
+      className={classNames(classes.radio)}
     >
       <div
-        className={classNames(styles.dot, {
-          [styles.small]: size === Size.Small,
-          [styles.tiny]: size === Size.Tiny,
-          [styles.bordered]: this.props.showBorder === true,
-          [styles.light]: this.props.theme === Theme.Light,
-          [styles.checked]: checked,
-          [styles.noOpacityTransition]: this.props.noOpacityTransition,
+        className={classNames(classes.dot, {
+          [classes.small]: size === Size.Small,
+          [classes.tiny]: size === Size.Tiny,
+          [classes.bordered]: this.props.showBorder === true,
+          [classes.light]: this.props.theme === Theme.Light,
+          [classes.checked]: checked,
+          [classes.noOpacityTransition]: this.props.noOpacityTransition,
         })}
         data-hook={fakeRadio ? undefined : DotNavigationDataHooks.Dot}
       />
@@ -220,7 +220,7 @@ export class DotNavigation extends React.Component<
       onChange={onChange}
       onKeyDown={onKeyDown}
       aria-label={ariaLabel}
-      {...{ className: styles.extendedRadioButton }}
+      {...{ className: classes.extendedRadioButton }}
     />
   );
 
@@ -266,11 +266,11 @@ export class DotNavigation extends React.Component<
 
   renderLongVersion = () => (
     <div
-      className={classNames(styles.radioGroup, {
-        [styles.back]: this.state.animation === Animation.Back,
-        [styles.forward]: this.state.animation === Animation.Forward,
-        [styles.backNext]: this.state.animation === Animation.BackNext,
-        [styles.forwardNext]: this.state.animation === Animation.ForwardNext,
+      className={classNames(classes.radioGroup, {
+        [classes.back]: this.state.animation === Animation.Back,
+        [classes.forward]: this.state.animation === Animation.Forward,
+        [classes.backNext]: this.state.animation === Animation.BackNext,
+        [classes.forwardNext]: this.state.animation === Animation.ForwardNext,
       })}
     >
       {this.renderFakeRadio()}
@@ -310,11 +310,15 @@ export class DotNavigation extends React.Component<
   });
 
   render = () => {
-    const { length, ...rest } = this.props;
+    const { length, className } = this.props;
     const short = length <= MAX_SHORT_LIST_LENGTH;
 
     return _isNumber(length) && length > 0 ? (
-      <div {...styles('root', { short }, rest)} {...this._getDataAttributes()}>
+      <div
+        className={st(classes.root, { short }, className)}
+        data-hook={this.props['data-hook']}
+        {...this._getDataAttributes()}
+      >
         {length <= MAX_SHORT_LIST_LENGTH
           ? this.renderShortVersion()
           : this.renderLongVersion()}

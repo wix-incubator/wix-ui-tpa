@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tags } from '../';
-import extendedStyles from './TagsWiringExample.st.css';
+import { classes } from './TagsWiringExample.st.css';
 import { SKIN } from '../constants';
 
 const items = Array(20)
@@ -25,7 +25,7 @@ export const TagsWiringExample = props => {
         skin={SKIN.solid}
         items={items}
         onClick={onClick}
-        {...extendedStyles('solid', {}, props)}
+        className={classes.solid}
       />
       Light:
       <Tags
@@ -33,7 +33,7 @@ export const TagsWiringExample = props => {
         skin={SKIN.light}
         items={items}
         onClick={onClick}
-        {...extendedStyles('light', {}, props)}
+        className={classes.light}
       />
     </div>
   );

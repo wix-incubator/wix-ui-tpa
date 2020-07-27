@@ -1,6 +1,6 @@
 import * as React from 'react';
-import extendedStyles from './DotNavigationExtendedExample.st.css';
 import { DotNavigation, DotNavigationProps } from '../DotNavigation';
+import { classes, st } from '../../Counter/docs/CounterExtendedExample.st.css';
 
 interface DotNavigationExtendedExampleState {
   currentIndex: number;
@@ -24,7 +24,7 @@ export class DotNavigationExtendedExample extends React.Component<
       {...this.props}
       currentIndex={this.state.currentIndex}
       onSelect={this.changeCurrentIndex}
-      {...extendedStyles('root')}
+      className={classes.root}
     />
   );
 }

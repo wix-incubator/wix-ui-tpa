@@ -3,10 +3,11 @@ import {
   Input as CoreInput,
   InputProps as CoreInputProps,
 } from 'wix-ui-core/input';
-import style from './Input.st.css';
+import { st, classes } from './Input.st.css';
 import { ErrorMessageWrapper, ErrorProps } from '../ErrorMessageWrapper';
+import { TPAComponentProps } from '../../types';
 
-export interface TPAInputProps {
+export interface TPAInputProps extends TPAComponentProps {
   /** the error message to display */
   errorMessage?: string;
   /** apply error state*/
@@ -17,7 +18,7 @@ export type InputProps = ErrorProps & TPAInputProps & CoreInputProps;
 export const Input: React.FunctionComponent<InputProps> = (
   props: InputProps,
 ) => {
-  const { errorMessage, error, ...coreInputProps } = props;
+  const { errorMessage, error, className, ...coreInputProps } = props;
   const { disabled } = props;
 
   return (
@@ -27,7 +28,7 @@ export const Input: React.FunctionComponent<InputProps> = (
       disabled={disabled}
       render={errorProps => (
         <CoreInput
-          {...style('root', { error })}
+          className={st(classes.root, { error }, className)}
           error={errorProps.error}
           {...coreInputProps}
         />

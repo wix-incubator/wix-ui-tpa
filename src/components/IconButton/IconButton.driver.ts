@@ -2,8 +2,7 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
-import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import style from './IconButton.st.css';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
 export interface IconButtonDriver extends BaseUniDriver {}
 
