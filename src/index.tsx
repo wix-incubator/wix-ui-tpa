@@ -1,4 +1,9 @@
 import * as Icons from './assets/icons';
+import {
+  CheckboxGroup,
+  CheckboxGroupProps,
+  Layout,
+} from './components/CheckboxGroup';
 export { Icons };
 export * from './components/Autocomplete';
 export * from './components/Button';
@@ -22,4 +27,3 @@ export * from './components/Tooltip';
 export * from './components/Pagination';
 export * from './components/Ratings';
 export * from './components/TPAComponentsConfig';
-export * from './components/CalendarPopover';
