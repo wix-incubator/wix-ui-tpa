@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text } from '../Text';
 import { CALENDAR_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
-import styles from './CalendarCell.st.css';
+import { st, classes } from './CalendarCell.st.css';
 
 export enum Alignment {
   left = 'left',
@@ -61,17 +61,21 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
       current,
       alignment,
       timeType,
-      ...rest
+      className,
     } = this.props;
 
     return (
       <div
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
-        {...styles('root', { stretchable, current, alignment, timeType }, rest)}
+        className={st(
+          classes.root,
+          { stretchable, current, alignment, timeType },
+          className,
+        )}
       >
-        <div className={styles.innerContainer}>
-          <Text className={styles.title}>{title}</Text>
+        <div className={classes.innerContainer}>
+          <Text className={classes.title}>{title}</Text>
           {children}
         </div>
       </div>
