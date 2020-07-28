@@ -5,7 +5,7 @@ import { ReactComponent as ChevronLeft } from '../../assets/icons/ChevronLeft.sv
 import { ReactComponent as ChevronRight } from '../../assets/icons/ChevronRight.svg';
 import { IconButton } from '../IconButton';
 import { TPAComponentProps } from '../../types';
-import styles from './Picker.st.css';
+import { st, classes} from './Picker.st.css';
 
 export interface PickerProps extends TPAComponentProps {
   value: any;
@@ -43,26 +43,26 @@ export class Picker extends React.Component<PickerProps> {
       onNext,
       prevDisabled,
       nextDisabled,
-      ...rest
+      className,
     } = this.props;
 
     return (
       <div
         data-hook={this.props['data-hook']}
-        {...styles('root', {}, rest)}
+        className={st(classes.root, {}, className)}
         {...this.getDataAttributes()}
       >
         <IconButton
-          className={styles.arrow}
+          className={classes.arrow}
           icon={<ChevronLeft />}
           onClick={() => (prevDisabled ? null : onPrev())}
           disabled={prevDisabled}
           data-hook={PICKER_DATA_HOOKS.Prev}
           title={PICKER_DATA_HOOKS.Prev}
         />
-        <Text className={styles.value}>{value}</Text>
+        <Text className={classes.value}>{value}</Text>
         <IconButton
-          className={styles.arrow}
+          className={classes.arrow}
           icon={<ChevronRight />}
           onClick={() => (nextDisabled ? null : onNext())}
           disabled={nextDisabled}

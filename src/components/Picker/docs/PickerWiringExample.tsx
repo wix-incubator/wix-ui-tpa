@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Picker } from '../';
-import styles from './PickerWiringExample.st.css';
+import { st, classes } from './PickerWiringExample.st.css';
 
 const month = [
   'January',
@@ -26,7 +26,7 @@ export const PickerWiringExample = () => {
       onNext={() => {
         setMonthIndex(monthIndex + 1);
       }}
-      {...styles('root', {})}
+      className={st(classes.root, {})}
       nextDisabled={monthIndex === month.length - 1}
       prevDisabled={monthIndex === 0}
     />
