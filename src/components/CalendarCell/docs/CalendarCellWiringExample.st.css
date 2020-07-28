@@ -1,0 +1,16 @@
+:import {
+    -st-from: '../CalendarCell.st.css'
+    -st-default: TPACalendarCell;
+}
+
+.root {
+    -st-mixin: TPACalendarCell(
+        BackgroundColor '"--backgroundColor"',
+        BorderColor '"--borderColor"',
+        BorderWidth '"unit(fallback(--borderWidth, 1), px)"',
+        BorderOpacity '"unit(fallback(zeroAsTrue(--borderOpacity), 1), "")"',
+        TodayColor '"--todayColor"',
+        FontColor '"--fontColor"',
+        FontStyle '"--fontStyle"'
+    )
+}
