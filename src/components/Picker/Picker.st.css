@@ -47,6 +47,7 @@
 .arrow {
     -st-extends: IconButton;
     -st-mixin: IconButton(IconColor value(CurrentMainColor));
+    font-size: inherit;
 }
 
 .arrow::icon svg {
