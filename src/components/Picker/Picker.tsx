@@ -5,7 +5,7 @@ import { ReactComponent as ChevronLeft } from '../../assets/icons/ChevronLeft.sv
 import { ReactComponent as ChevronRight } from '../../assets/icons/ChevronRight.svg';
 import { IconButton } from '../IconButton';
 import { TPAComponentProps } from '../../types';
-import { st, classes} from './Picker.st.css';
+import { st, classes } from './Picker.st.css';
 
 export interface PickerProps extends TPAComponentProps {
   value: any;
