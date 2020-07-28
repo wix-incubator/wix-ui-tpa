@@ -11,7 +11,6 @@
 /*Defaults*/
 :vars {
     DefaultBorderWidth: 1px;
-    DefaultBorderOpacity: 1;
     DefaultFontColor: color-5;
     DefaultBackgroundColor: color-1;
     DefaultBorderColor: color-2;
@@ -22,12 +21,17 @@
 
 /*Overrides*/
 :vars {
-    BorderWidth: --overridable BorderOpacity: --overridable FontColor: --overridable BackgroundColor: --overridable BorderColor: --overridable TodayColor: --overridable FontStyle: --overridable FontSize: --overridable
+    BorderWidth: --overridable;
+    FontColor: --overridable;
+    BackgroundColor: --overridable;
+    BorderColor: --overridable;
+    TodayColor: --overridable;
+    FontStyle: --overridable;
+    FontSize: --overridable;
 }
 
 :vars {
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
-    CurrentBorderOpacity: fallback(value(BorderOpacity), value(DefaultBorderOpacity));
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
@@ -55,7 +59,7 @@
     padding-top: 100%;
     /* 1:1 Aspect Ratio */
     position: relative;
-    border: value(CurrentBorderWidth) solid applyOpacity(value(CurrentBorderColor), value(CurrentBorderOpacity));
+    border: value(CurrentBorderWidth) solid value(CurrentBorderColor);
 }
 
 .root:alignment(left) {
@@ -87,7 +91,7 @@
 }
 
 .root:timeType(today) {
-    border-color: applyOpacity(value(CurrentTodayColor), value(CurrentBorderOpacity));
+    border-color: value(CurrentTodayColor);
     background-color: value(CurrentBackgroundColor);
 }
 
