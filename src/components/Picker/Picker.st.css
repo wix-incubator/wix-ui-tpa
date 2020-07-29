@@ -1,0 +1,56 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: Text;
+}
+
+:import {
+    -st-from: "../IconButton/IconButton.st.css";
+    -st-default: IconButton;
+}
+
+/*Defaults*/
+:vars {
+    DefaultMainColor: color(color-5) DefaultFontStyle: "{theme: 'Body-M', size: '20px', lineHeight: '28px'}"
+}
+
+/*Overrides*/
+:vars {
+    MainColor: --overridable FontStyle: --overridable
+}
+
+:vars {
+    CurrentMainColor: color(fallback(value(MainColor), value(DefaultMainColor)));
+    CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
+}
+
+.root {
+    width: 12.6em;
+    font: font(value(CurrentFontStyle));
+    margin: auto;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.value {
+    -st-extends: Text;
+    -st-mixin: Text(MainTextColor value(CurrentMainColor),
+            MainTextFont value(CurrentFontStyle));
+    min-width: 207px;
+}
+
+.arrow {
+    -st-extends: IconButton;
+    -st-mixin: IconButton(IconColor value(CurrentMainColor));
+    font-size: inherit;
+}
+
+.arrow::icon svg {
+    width: 1.5em;
+    height: 1.5em;
+}
