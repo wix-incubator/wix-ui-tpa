@@ -2,7 +2,7 @@
   "private": false,
   "name": "wix-ui-tpa",
   "sideEffects": false,
-  "version": "2.0.0",
+  "version": "2.1.0",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -60,7 +60,7 @@
     "update-components": ".wuf/update-components.sh",
     "pr-release": "# SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
     "release-candidate": "node scripts/rc.js",
-    "changelog": "conventional-changelog --preset angular --infile CHANGELOG.md --samefile --release-count 0"
+    "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s"
   },
   "dependencies": {
     "classnames": "^2.2.6",
