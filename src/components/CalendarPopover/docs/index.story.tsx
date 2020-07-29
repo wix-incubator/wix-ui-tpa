@@ -63,6 +63,15 @@ export default {
   componentPath: '../CalendarPopover.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-CalendarPopover',
+    title: 'Iyengar Yoga',
+    isShown: true,
+    withShadow: false,
+    animated: true,
+    arrowTop: 60,
+    withArrow: false,
+    arrowSide: 'right',
+    children:
+      'named after and developed by B. K. S. Iyengar, and described in his bestselling 1966 book Light on Yoga, is a form of yoga as exercise that has an emphasis on detail, precision and alignment in the performance of yoga postures (asanas)',
   }),
   exampleProps: {
     arrowSide: ['right', 'left'],
