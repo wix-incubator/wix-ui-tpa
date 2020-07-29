@@ -1,19 +1,23 @@
 import * as React from 'react';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import { Event } from '../';
-import styles from './EventWiringExample.st.css';
+import { st, classes } from './EventWiringExample.st.css';
 
 export const EventWiringExample = () => {
   return (
-    <div {...styles('root')}>
+    <div className={st(classes.root)}>
       <div>
         <h4>Regular</h4>
-        <Event {...styles('event')} time="20:30" title="Blink 182 Concert" />
+        <Event
+          className={classes.event}
+          time="20:30"
+          title="Blink 182 Concert"
+        />
       </div>
       <div>
         <h4>Selected</h4>
         <Event
-          {...styles('event')}
+          className={classes.event}
           selected
           time="20:30"
           title="Blink 182 Concert"
@@ -22,7 +26,7 @@ export const EventWiringExample = () => {
       <div>
         <h4>Full Day</h4>
         <Event
-          {...styles('event')}
+          className={classes.event}
           fullday
           time="20:30"
           title="Blink 182 Concert"
@@ -32,7 +36,7 @@ export const EventWiringExample = () => {
         <h4>Right To Left Full Day</h4>
         <TPAComponentsProvider value={{ rtl: true }}>
           <Event
-            {...styles('event')}
+            className={classes.event}
             fullday
             time="20:30"
             title="Blink 182 Concert"

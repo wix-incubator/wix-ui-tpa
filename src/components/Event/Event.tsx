@@ -3,7 +3,7 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Text } from '../Text';
 import { EVENT_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
-import styles from './Event.st.css';
+import { st, classes } from './Event.st.css';
 
 export interface EventProps extends TPAComponentProps {
   time?: string;
@@ -39,9 +39,9 @@ export class Event extends React.Component<EventProps> {
   }
 
   render() {
-    const { time, title, showTime, fullday, selected, ...rest } = this.props;
+    const { time, title, showTime, fullday, selected, className } = this.props;
     const timeComponent =
-      showTime && time ? <Text className={styles.time}>{time}</Text> : null;
+      showTime && time ? <Text className={classes.time}>{time}</Text> : null;
 
     return (
       <TPAComponentsConsumer>
@@ -50,11 +50,15 @@ export class Event extends React.Component<EventProps> {
             <div
               data-hook={this.props['data-hook']}
               {...this.getDataAttributes()}
-              {...styles('root', { fullday, selected, rtl }, rest)}
+              className={st(
+                classes.root,
+                { fullday, selected, rtl },
+                className,
+              )}
             >
               {timeComponent}
-              <Text className={styles.title}>{title}</Text>
-              <div className={styles.overlay} />
+              <Text className={classes.title}>{title}</Text>
+              <div className={classes.overlay} />
             </div>
           );
         }}
