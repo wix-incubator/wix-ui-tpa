@@ -46,3 +46,4 @@ require('../src/components/ShareButton/docs/index.story');
 require('../src/components/CopyUrlButton/docs/index.story');
 require('../src/components/Picker/docs/index.story');
 require('../src/components/CalendarCell/docs/index.story');
+require('../src/components/Event/docs/index.story');

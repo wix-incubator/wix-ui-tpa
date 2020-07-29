@@ -1,0 +1,102 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback, font;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+/*Defaults*/
+:vars {
+    defaulTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1em'}";
+    defaultTimeColor: color-4;
+    defaultTitleColor: color-5;
+    defaultHoverOverlayColor: color-5;
+    defaultFulldayBgColor: color-8;
+    defaultBgColor: transparent;
+    defaultSelectedOverlayColor: color-8;
+}
+
+/*Overrides*/
+:vars {
+    textFont: --overridable;
+    timeColor: --overridable;
+    titleColor: --overridable;
+    fulldayBgColor: --overridable;
+    hoverOverlayColor:  --overridable;
+    bgColor: --overridable;
+    selectedOverlayColor: --overridable;
+}
+
+/* Fallbacks */
+:vars {
+    currentTextFont: fallback(value(textFont), font(value(defaulTextFont)));
+    currentTimeColor: color(fallback(value(timeColor), value(defaultTimeColor)));
+    currentTitleColor: color(fallback(value(titleColor), value(defaultTitleColor)));
+    currentFulldayBgColor: color(fallback(value(fulldayBgColor), value(defaultFulldayBgColor)));
+    currentHoverOverlayColor: color(fallback(value(hoverOverlayColor), value(defaultHoverOverlayColor)));
+    currentSelectedOverlayColor: color(fallback(value(selectedOverlayColor), value(defaultSelectedOverlayColor)));
+    currentBgColor: color(fallback(value(bgColor), value(defaultBgColor)));
+}
+
+.root {
+    -st-states: selected, fullday, rtl;
+    position: relative;
+    background-color: value(currentBgColor);
+    display: flex;
+}
+
+.root::before {
+    content: '';
+    flex: 0 0 12px;
+}
+
+.root::after {
+    content: '';
+    flex: 0 0 4px;
+}
+
+.overlay {
+    display: none;
+    background: applyOpacity(value(currentHoverOverlayColor), 0.06);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.root:hover .overlay {
+    display: block;
+}
+
+.root:selected .overlay{
+    display: block;
+    background: applyOpacity(value(currentSelectedOverlayColor), 0.1);
+}
+
+.root:rtl {
+    flex-direction: row-reverse;
+}
+
+.root:fullday {
+    background: value(currentFulldayBgColor);
+}
+
+.time {
+    padding-right: 2px;
+    -st-mixin: TPAText(
+        MainTextFont value(currentTextFont),
+        MainTextColor value(currentTimeColor)
+    );
+}
+
+.title {
+  -st-mixin: TPAText(
+        MainTextFont value(currentTextFont),
+        MainTextColor value(currentTitleColor)
+    );
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
