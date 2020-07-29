@@ -1,9 +1,4 @@
 import * as Icons from './assets/icons';
-import {
-  CheckboxGroup,
-  CheckboxGroupProps,
-  Layout,
-} from './components/CheckboxGroup';
 export { Icons };
 export * from './components/Autocomplete';
 export * from './components/Button';
