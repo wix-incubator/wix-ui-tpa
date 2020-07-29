@@ -1,0 +1,25 @@
+:import {
+    -st-from: "../CalendarPopover.st.css";
+    -st-default: TPACalendarPopover;
+}
+
+.root {
+    -st-mixin: TPACalendarPopover(
+        BorderColor '"--borderColor"',
+        Radius '"unit(fallback(--radius, 2), px)"',
+        IconColor '"--iconColor"',
+        IconTopPadding '"unit(fallback(--iconTopPadding, 16), px)"',
+        IconRightPadding '"unit(fallback(--iconRightPadding, 16), px)"',
+        IconLeftPadding '"unit(fallback(--iconLeftPadding, 16), px)"',
+        BackgroundColor '"--backgroundColor"',
+        HorizontalPadding '"unit(fallback(--horizontalPadding, 24), px)"',
+        VerticalPadding '"unit(fallback(--verticalPadding, 24), px)"',
+        TitleFont '"--titleFont"',
+        TitleColor '"--titleColor"'
+    );
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: space-around;
+}

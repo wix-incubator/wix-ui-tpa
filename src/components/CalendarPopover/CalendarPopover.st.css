@@ -1,0 +1,184 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback, font;
+}
+
+:import {
+    -st-from: "../Text/Text.st.css";
+    -st-default: TPAText;
+}
+
+:import {
+    -st-from: "../IconButton/IconButton.st.css";
+    -st-default: TPAIconButton
+}
+
+/*Defaults*/
+:vars {
+    DefaultBackgroundColor: color-1;
+    DefaultBorderColor: #fff;
+    DefaultRadius: 2px;
+    DefaultIconColor: color-5;
+    DefaultPadding: 16px;
+    DefaultIconPadding: 12px;
+    DefaultTitleColor: color-5;
+    DefaultTitleFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+    DefaultWidth: 252px;
+}
+
+/*Overrides*/
+:vars {
+    BorderColor: --overridable;
+    Radius: --overridable;
+    IconColor: --overridable;
+    HorizontalPadding: --overridable;
+    VerticalPadding: --overridable;
+    IconTopPadding: --overridable;
+    IconRightPadding: --overridable;
+    IconLeftPadding: --overridable;
+    BackgroundColor: --overridable;
+    TitleColor: --overridable;
+    TitleFont: --overridable;
+    Width: --overridable;
+}
+
+/*Fallbacks*/
+:vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentRadius: fallback(value(Radius), value(DefaultRadius));
+    CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
+    CurrentHorizontalPadding: fallback(value(HorizontalPadding), value(DefaultPadding));
+    CurrentVerticalPadding: fallback(value(VerticalPadding), value(DefaultPadding));
+    CurrentIconTopPadding: fallback(value(IconTopPadding), value(DefaultIconPadding));
+    CurrentIconRightPadding: fallback(value(IconRightPadding), value(DefaultIconPadding));
+    CurrentIconLeftPadding: fallback(value(IconLeftPadding), value(DefaultIconPadding));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentTitleColor: color(fallback(value(TitleColor), value(DefaultTitleColor)));
+    CurrentTitleFont: fallback(value(TitleFont), font(value(DefaultTitleFont)));
+    CurrentWidth: fallback(value(Width), value(DefaultWidth));
+}
+
+.root {
+    -st-states: rtl, withArrow, withShadow, isShown, animated, arrowSide(enum(left, right));
+    box-sizing: border-box;
+    padding-top: value(CurrentVerticalPadding);
+    padding-right: value(CurrentHorizontalPadding);
+    padding-bottom: value(CurrentVerticalPadding);
+    padding-left: value(CurrentHorizontalPadding);
+    border-radius: value(CurrentRadius);
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.2);
+    position: relative;
+    min-height: 224px;
+    max-height: 364px;
+    width: value(CurrentWidth);
+    background-color: value(CurrentBackgroundColor);
+    z-index: 2;
+    display: none;
+}
+
+.root:isShown {
+    display: block;
+}
+
+.root:animated:isShown {
+    animation: bounce-in 0.2s ease 0s 1 normal ;
+    animation-fill-mode: forwards;
+}
+
+.root:withShadow {
+    box-shadow: 0 0 25px 10px rgba(80, 80, 80, 0.1), 0 4px 50px 0 rgba(209, 209, 209, 0.1);
+}
+
+.arrow {
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+}
+
+.arrowBorder {
+    display: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 1;
+}
+
+.root:arrowSide(left) .arrow {
+    left: -14px;
+    border-left: 0;
+    border-right: 15px solid value(CurrentBackgroundColor);
+}
+
+.root:arrowSide(left) .arrowBorder {
+    left: -15px;
+    border-left: 0;
+    border-right: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
+}
+
+.root:withArrow .arrow {
+    display: block;
+}
+
+.root:withArrow .arrowBorder {
+    display: block;
+}
+
+.root:arrowSide(right) .arrow {
+    border-left: 15px solid value(CurrentBackgroundColor);
+    border-right: 0;
+    left: 250px;
+}
+
+.root:arrowSide(right) .arrowBorder {
+    border-left: 15px solid applyOpacity(value(CurrentBorderColor), 0.2);
+    border-right: 0;
+    left: 251px;
+}
+
+.title {
+    -st-mixin: TPAText(MainTextFont value(CurrentTitleFont),
+            MainTextColor value(CurrentTitleColor));
+}
+
+.close {
+    position: absolute;
+    top: value(CurrentIconTopPadding);
+    right: value(CurrentIconRightPadding);
+    -st-mixin: TPAIconButton(IconColor value(CurrentIconColor));
+}
+
+.root:rtl .close {
+    left: value(CurrentIconLeftPadding);
+    right: initial;
+}
+
+.root:rtl {
+    text-align: right;
+}
+
+.children {
+    margin-top: 16px;
+}
+
+@keyframes bounce-in {
+    0%{
+        transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        opacity: 0;
+    }
+    50%{
+        transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+        opacity: 0.32;
+    }
+    100%{
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
