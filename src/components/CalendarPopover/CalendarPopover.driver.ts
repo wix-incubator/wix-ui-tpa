@@ -6,7 +6,7 @@ import { POPOVER_DATA_KEYS } from './dataHooks';
 import { Sides } from '.';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
-export interface PopoverDriver extends BaseUniDriver {
+export interface CalendarPopoverDriver extends BaseUniDriver {
   hasArrowTop(arrowTop: number): Promise<boolean>;
   hasTitle(): Promise<boolean>;
   hasRightArrow(side: Sides): Promise<boolean>;
@@ -16,7 +16,9 @@ export interface PopoverDriver extends BaseUniDriver {
   hasAnimation(): Promise<boolean>;
 }
 
-export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
+export const calendarPopoverDriverFactory = (
+  base: UniDriver,
+): CalendarPopoverDriver => {
   return {
     ...baseUniDriverFactory(base),
     async hasArrow() {

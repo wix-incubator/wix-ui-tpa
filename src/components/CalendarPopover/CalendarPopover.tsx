@@ -5,7 +5,7 @@ import { Text } from '../Text';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import { POPOVER_DATA_KEYS } from './dataHooks';
-import styles from './CalendarPopover.st.css';
+import { st, classes } from './CalendarPopover.st.css';
 
 export enum Sides {
   Right = 'right',
@@ -78,7 +78,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       withShadow,
       isShown,
       animated,
-      ...rest
+      className,
     } = this.props;
 
     const pxArrowTop = `${arrowTop}px`;
@@ -88,27 +88,27 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
         {({ rtl }) => {
           return (
             <div
-              {...styles(
-                'root',
+              className={st(
+                classes.root,
                 { rtl, arrowSide, withArrow, withShadow, isShown, animated },
-                rest,
+                className,
               )}
               data-hook={this.props['data-hook']}
               {...this.getDataAttributes()}
             >
-              <div className={styles.container}>
-                {title && <Text className={styles.title}>{title}</Text>}
-                <div className={styles.children}>{children}</div>
+              <div className={classes.container}>
+                {title && <Text className={classes.title}>{title}</Text>}
+                <div className={classes.children}>{children}</div>
               </div>
               <IconButton
-                className={styles.close}
+                className={classes.close}
                 onClick={onClose}
                 as="a"
                 icon={<Close height="24px" width="23px" />}
               />
-              <div className={styles.arrow} style={{ top: pxArrowTop }} />
+              <div className={classes.arrow} style={{ top: pxArrowTop }} />
               <div
-                className={`${styles.arrowBorder} ${styles.arrow}`}
+                className={`${classes.arrowBorder} ${classes.arrow}`}
                 style={{ top: pxArrowTop }}
               />
             </div>

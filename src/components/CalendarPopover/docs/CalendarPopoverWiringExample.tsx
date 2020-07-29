@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CalendarPopover, CalendarPopoverProps, Sides } from '..';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
-import styles from './CalendarPopoverWiringExample.st.css';
+import { st, classes } from './CalendarPopoverWiringExample.st.css';
 
 const defaultProps: CalendarPopoverProps = {
   onClose: () => {},
@@ -9,18 +9,18 @@ const defaultProps: CalendarPopoverProps = {
 
 export const CalendarPopoverWiringExample = () => {
   return (
-    <div {...styles('flexContainer', {})}>
+    <div className={st(classes.flexContainer)}>
       <div>
         <h1>Left To Right</h1>
         <CalendarPopover
           isShown
           title="Today Events"
           {...defaultProps}
-          {...styles('root', {})}
+          className={classes.root}
         >
           <div>Getting the cake</div>
           <div>First sight wedding</div>
-          <div>Stuido workout</div>
+          <div>Studio workout</div>
         </CalendarPopover>
       </div>
       <div>
@@ -30,12 +30,12 @@ export const CalendarPopoverWiringExample = () => {
             isShown
             title="Today Events"
             {...defaultProps}
-            {...styles('root', {})}
+            className={classes.root}
             arrowSide={Sides.Right}
           >
             <div>Getting the cake</div>
             <div>First sight wedding</div>
-            <div>Stuido workout</div>
+            <div>Studio workout</div>
           </CalendarPopover>
         </TPAComponentsProvider>
       </div>

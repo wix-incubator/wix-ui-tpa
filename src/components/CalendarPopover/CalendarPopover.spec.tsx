@@ -3,17 +3,17 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { popoverDriverFactory } from './CalendarPopover.driver';
+import { calendarPopoverDriverFactory } from './CalendarPopover.driver';
 import { CalendarPopover, CalendarPopoverProps, Sides } from '.';
-import { popoverTestkitFactory } from '../../testkit';
-import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
+import { calendarPopoverTestkitFactory } from '../../testkit';
+import { calendarPopoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
 
 const defaultProps: CalendarPopoverProps = {
   onClose: () => {},
 };
 
 describe('CalendarPopover', () => {
-  const createDriver = createUniDriverFactory(popoverDriverFactory);
+  const createDriver = createUniDriverFactory(calendarPopoverDriverFactory);
 
   it('should render', async () => {
     const driver = createDriver(<CalendarPopover {...defaultProps} />);
@@ -77,7 +77,7 @@ describe('CalendarPopover', () => {
       expect(
         await isUniTestkitExists(
           <CalendarPopover {...defaultProps} />,
-          popoverTestkitFactory,
+          calendarPopoverTestkitFactory,
           {
             dataHookPropName: 'data-hook',
           },
