@@ -80,6 +80,11 @@
     display: block;
 }
 
+.root:animated:isShown {
+    animation: bounce-in 0.2s ease 0s 1 normal ;
+    animation-fill-mode: forwards;
+}
+
 .root:withShadow {
     box-shadow: 0 0 25px 10px rgba(80, 80, 80, 0.1), 0 4px 50px 0 rgba(209, 209, 209, 0.1);
 }
@@ -98,7 +103,7 @@
     display: none;
     position: absolute;
     width: 0;
-    height: 0 
+    height: 0;
     z-index: 1;
 }
 
@@ -158,3 +163,22 @@
 .children {
     margin-top: 16px;
 }
+
+@keyframes bounce-in {
+    0%{
+        transform: scale(0.9);
+        -webkit-transform: scale(0.9);
+        opacity: 0;
+    }
+    50%{
+        transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+        opacity: 0.32;
+    }
+    100%{
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 1;
+    }
+}
+
