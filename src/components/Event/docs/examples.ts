@@ -47,13 +47,7 @@ export const regularSection = createComponentsSection([
   selected,
 ]);
 
-const fulldayWithTime = createStringComponent(
-  'With Time',
-  true,
-  'BYOB Party',
-  true,
-);
-const fulldayWithoutTime = createStringComponent(
+const fulldayDefault = createStringComponent(
   'Without Time',
   false,
   'BYOB Party',
@@ -61,21 +55,20 @@ const fulldayWithoutTime = createStringComponent(
 );
 const fulldayEllipsis = createStringComponent(
   'Ellipsis',
-  true,
+  false,
   'Tomorrowland Fastival',
   true,
 );
 const fulldaySelected = createStringComponent(
   'Selected',
-  true,
+  false,
   'Family Fun',
   true,
   false,
   true,
 );
 export const fulldaySection = createComponentsSection([
-  fulldayWithTime,
-  fulldayWithoutTime,
+  fulldayDefault,
   fulldayEllipsis,
   fulldaySelected,
 ]);
