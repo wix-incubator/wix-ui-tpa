@@ -2,7 +2,7 @@
   "private": false,
   "name": "wix-ui-tpa",
   "sideEffects": false,
-  "version": "2.1.0",
+  "version": "2.1.1",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -42,7 +42,7 @@
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
-    "postpublish": "npm run git:tag && npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "postpublish": "npm run git:tag && npm run surge-release",
     "git:tag": "node scripts/tag.js",
     "storybook": "start-storybook -p 6006 -s ./src/assets,./.storybook-test/public",
     "copy-styleable-ext": "cp src/common/formatters.st.js dist/src/common && cp src/common/formatters.st.js dist/es/src/common",
@@ -60,7 +60,8 @@
     "update-components": ".wuf/update-components.sh",
     "pr-release": "# SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
     "release-candidate": "node scripts/rc.js",
-    "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s"
+    "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s",
+    "surge-release": "npx teamcity-surge-autorelease@^1.0.0 --dist=storybook-static"
   },
   "dependencies": {
     "classnames": "^2.2.6",
