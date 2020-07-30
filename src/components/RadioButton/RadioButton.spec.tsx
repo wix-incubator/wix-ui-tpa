@@ -37,13 +37,13 @@ describe('RadioButton', () => {
   it('should call onChange with correct "checked" value', async () => {
     const onChangeSpy = jest.fn();
     const driver = createDriver(
-      <RadioButton value="value" label="Label" onChange={onChangeSpy} />,
+      <RadioButton value="value1" label="Label" onChange={onChangeSpy} />,
     );
 
     await driver.clickOnRadioButton();
 
     expect(onChangeSpy).toHaveBeenCalledWith(
-      expect.objectContaining({ checked: true }),
+      expect.objectContaining({ value: "value1" }),
     );
   });
 
