@@ -16,7 +16,7 @@ class RadioButtonWiringExample extends React.Component<{}, IState> {
     this.setState(prevState => {
       const label = prevState.isChecked
         ? 'Click for laughs'
-        : 'My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right.';
+        : 'My wife is really mad at the fact that I have no sense of direction. So I packed up my stuff and right.WHAT?';
       return {
         isChecked: !prevState.isChecked,
         label,
@@ -32,7 +32,7 @@ class RadioButtonWiringExample extends React.Component<{}, IState> {
         checked={isChecked}
         onChange={this.handleChange}
         value={label}
-       className={st(classes.root)}
+        className={st(classes.root)}
       />
     );
   }
