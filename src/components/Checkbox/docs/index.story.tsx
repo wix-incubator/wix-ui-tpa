@@ -68,6 +68,24 @@ export default {
               source: examples.exampleWithIndeterminate,
             },
           ].map(code),
+          ...[
+            {
+              title: 'With box',
+              source: examples.exampleWithBox,
+            },
+          ].map(code),
+          ...[
+            {
+              title: 'With checked box',
+              source: examples.exampleWithCheckedBox,
+            },
+          ].map(code),
+          ...[
+            {
+              title: 'With disabled, checked box',
+              source: examples.exampleWithDisabledCheckedBox,
+            },
+          ].map(code),
         ],
       }),
 

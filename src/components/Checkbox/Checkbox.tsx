@@ -17,6 +17,7 @@ export interface CheckboxProps extends TPAComponentProps {
   indeterminate?: boolean;
   error?: boolean;
   name?: string;
+  box?: boolean;
 }
 
 interface DefaultProps {
@@ -72,6 +73,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
 
   render() {
     const {
+      box,
       checked,
       disabled,
       label,
@@ -84,29 +86,34 @@ export class Checkbox extends React.Component<CheckboxProps> {
     const iconContent = this._renderIcon();
 
     return (
-      <CoreCheckbox
-        className={st(classes.root, { checked, disabled, error }, className)}
-        {...this.getDataAttributes()}
-        data-hook={this.props['data-hook']}
-        checkedIcon={iconContent}
-        uncheckedIcon={iconContent}
-        indeterminateIcon={iconContent}
-        indeterminate={indeterminate}
-        checked={checked}
-        onChange={onChange}
-        name={name}
-        disabled={disabled}
+      <div
+        className={`${box && classes.box} ${checked &&
+          classes.checked} ${disabled && classes.disabled} `}
       >
-        <>
-          {!!label && <span className={classes.divider} />}
-          <div
-            data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
-            className={classes.label}
-          >
-            {label}
-          </div>
-        </>
-      </CoreCheckbox>
+        <CoreCheckbox
+          className={st(classes.root, { checked, disabled, error }, className)}
+          {...this.getDataAttributes()}
+          data-hook={this.props['data-hook']}
+          checkedIcon={iconContent}
+          uncheckedIcon={iconContent}
+          indeterminateIcon={iconContent}
+          indeterminate={indeterminate}
+          checked={checked}
+          onChange={onChange}
+          name={name}
+          disabled={disabled}
+        >
+          <>
+            {!!label && <span className={classes.divider} />}
+            <div
+              data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
+              className={classes.label}
+            >
+              {label}
+            </div>
+          </>
+        </CoreCheckbox>
+      </div>
     );
   }
 }

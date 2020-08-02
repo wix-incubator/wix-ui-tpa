@@ -56,6 +56,14 @@ const tests = [
           label: 'Amazing',
         },
       },
+      {
+        it: 'box',
+        props: {
+          box: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
     ],
   },
 ];

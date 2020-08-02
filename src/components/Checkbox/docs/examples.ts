@@ -19,3 +19,15 @@ export const exampleWithDisabled = `
 export const exampleWithIndeterminate = `
 <Checkbox onChange={val => console.log(val)} indeterminate label="What should I do 🧐?" />
 `;
+
+export const exampleWithBox = `
+<Checkbox box onChange={val => console.log(val)} label="What's in the box?" />
+`;
+
+export const exampleWithCheckedBox = `
+<Checkbox box checked onChange={val => console.log(val)} label="A checkbox!" />
+`;
+
+export const exampleWithDisabledCheckedBox = `
+<Checkbox box checked disabled onChange={val => console.log(val)} label="I'm a disabled, checked box 😶" />
+`;

@@ -27,12 +27,22 @@
     TextColor: --overridable;
     BorderColor: --overridable;
     IconColor: color-8;
+    BoxColor: color-1;
 }
 
 :vars {
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+}
+
+.box {
+    display: flex;
+    padding: 16px;
+    background-color: color(color-1);
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+    margin-bottom: 16px;
+    cursor: pointer;
 }
 
 .root {
@@ -96,6 +106,35 @@
 }
 
 /* STATES */
+.box.disabled {
+    cursor: default;
+}
+
+.box:hover, .box:focus-within {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.box.disabled:hover:not(.checked), .box.disabled:focus-within:not(.checked) {
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.box.checked {
+    background-color: applyOpacity(value(CurrentIconColor), 0.1);
+    border-color: value(CurrentIconColor);
+}
+
+.box.checked:not(.disabled):hover, .box.checked:not(.disabled):focus-within {
+    border-color: applyOpacity(value(CurrentIconColor), 0.6);
+}
+
+.box:not(.disabled):hover .icon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.box:last-of-type {
+    margin-bottom: 0;
+}
+
 .root:hover .icon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }

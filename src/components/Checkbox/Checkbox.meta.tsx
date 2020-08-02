@@ -38,3 +38,12 @@ CheckboxMetadata.addSim({
     label: 'Amazing',
   },
 });
+
+CheckboxMetadata.addSim({
+  title: 'box',
+  props: {
+    box: true,
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});
