@@ -4,6 +4,7 @@ import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
 import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
 import { CHECKBOX_DATA_HOOKS, CHEKCBOX_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
+import { Text } from '../Text';
 import { st, classes } from './Checkbox.st.css';
 
 interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
@@ -18,6 +19,7 @@ export interface CheckboxProps extends TPAComponentProps {
   error?: boolean;
   name?: string;
   box?: boolean;
+  price?: string;
 }
 
 interface DefaultProps {
@@ -81,6 +83,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
       indeterminate,
       onChange,
       name,
+      price,
       className,
     } = this.props;
     const iconContent = this._renderIcon();
@@ -111,6 +114,9 @@ export class Checkbox extends React.Component<CheckboxProps> {
             >
               {label}
             </div>
+            {price && (
+              <div className={`${classes.label} ${classes.price}`}>{price}</div>
+            )}
           </>
         </CoreCheckbox>
       </div>

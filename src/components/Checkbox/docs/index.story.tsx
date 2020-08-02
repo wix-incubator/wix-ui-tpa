@@ -86,6 +86,12 @@ export default {
               source: examples.exampleWithDisabledCheckedBox,
             },
           ].map(code),
+          ...[
+            {
+              title: 'With price',
+              source: examples.exampleWithPrice,
+            },
+          ].map(code),
         ],
       }),
 

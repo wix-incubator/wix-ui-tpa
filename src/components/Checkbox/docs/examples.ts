@@ -31,3 +31,7 @@ export const exampleWithCheckedBox = `
 export const exampleWithDisabledCheckedBox = `
 <Checkbox box checked disabled onChange={val => console.log(val)} label="I'm a disabled, checked box 😶" />
 `;
+
+export const exampleWithPrice = `
+<Checkbox box price="$1,000" onChange={val => console.log(val)} label="An expansive checkbox." />
+`;

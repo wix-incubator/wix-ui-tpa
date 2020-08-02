@@ -47,3 +47,13 @@ CheckboxMetadata.addSim({
     label: 'Amazing',
   },
 });
+
+CheckboxMetadata.addSim({
+  title: 'price',
+  props: {
+    price: '$50,000',
+    box: true,
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});

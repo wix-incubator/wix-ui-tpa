@@ -33,7 +33,7 @@ const tests = [
         },
       },
       {
-        it: 'disbled',
+        it: 'disabled',
         props: {
           disabled: true,
           onChange: () => {},
@@ -59,6 +59,15 @@ const tests = [
       {
         it: 'box',
         props: {
+          box: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
+      {
+        it: 'price',
+        props: {
+          price: '$50,000',
           box: true,
           onChange: () => {},
           label: 'Amazing',

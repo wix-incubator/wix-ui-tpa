@@ -43,6 +43,8 @@
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     margin-bottom: 16px;
     cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .root {
@@ -54,6 +56,7 @@
     box-sizing: border-box;
 
     font: value(Font);
+    flex: 1;
 }
 
 .root * {
@@ -62,6 +65,7 @@
 
 .root::childContainer {
     display: flex;
+    flex: 1;
 }
 
 .root::box {
@@ -103,6 +107,14 @@
 .label {
     display: inline-block;
     color: value(CurrentTextColor);
+}
+
+.price {
+    margin-left: 5px;
+}
+
+.box .price {
+    margin-left: auto;
 }
 
 /* STATES */
