@@ -1,34 +1,10 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { visualize, story, snap } from 'storybook-snapper';
 import { {%ComponentName%} } from './';
 
-class {%ComponentName%}Visual extends React.Component<any> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <{%ComponentName%} {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
-
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {},
-      },
-    ],
-  },
-];
-
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`{%ComponentName%}/${describe}`, module).add(it, () => (
-      <{%ComponentName%}Visual {...props} />
-    ));
+visualize('{%ComponentName%}', () => {
+  story('simple example', () => {
+    snap('default props', <{%ComponentName%} />);
+    snap('custom buttonText', <{%ComponentName%} buttonText={'Some custom text'} />);
   });
 });
