@@ -15,7 +15,7 @@
 
 /*Defaults*/
 :vars {
-    defaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1em'}";
+    defaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '14px'}";
     defaultTimeColor: color-4;
     defaultTitleColor: color-5;
     defaultHoverOverlayColor: color-5;
@@ -49,10 +49,11 @@
 }
 
 .root {
-    -st-states: selected, fullday, rtl;
+    -st-states: selected, fullday;
     position: relative;
     background-color: value(currentBgColor);
     display: flex;
+    align-items: center;
 }
 
 .root::before {
@@ -83,6 +84,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    pointer-events: none;
 }
 
 .root:hover .overlay {
@@ -94,20 +96,25 @@
     background: applyOpacity(value(currentSelectedOverlayColor), 0.1);
 }
 
-.root:rtl {
-    flex-direction: row-reverse;
-}
-
 .root:fullday {
     background: value(currentFulldayBgColor);
 }
 
 .time {
-    padding-right: 2px;
     -st-mixin: TPAText(
         MainTextFont value(currentTimeFont),
         MainTextColor value(currentTimeColor)
     );
+    display: flex;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.time::after {
+    content: ' ';
+    width: 2px;
+    height: 100%;
+    display: inline-block;
 }
 
 .title {
@@ -115,6 +122,10 @@
         MainTextFont value(currentTitleFont),
         MainTextColor value(currentTitleColor)
     );
+    display: inline;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    min-width: 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

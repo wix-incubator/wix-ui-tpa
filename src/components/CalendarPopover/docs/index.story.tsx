@@ -36,7 +36,6 @@ export default {
     isShown: true,
     withShadow: false,
     animated: true,
-    arrowTop: 60,
     withArrow: false,
     arrowSide: 'right',
     children:

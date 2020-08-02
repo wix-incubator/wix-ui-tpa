@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { ReactComponent as Close } from '../../assets/icons/Close.svg';
 import { IconButton } from '../IconButton';
+import { Text } from '../Text';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import { POPOVER_DATA_KEYS } from './dataHooks';
 import { KEY_CODES } from '../../common/keyCodes';
 import { st, classes } from './CalendarPopover.st.css';
-import { Text } from '../Text';
 
 export enum Sides {
   Right = 'right',
@@ -43,7 +43,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     title: '',
     withArrow: true,
     arrowSide: Sides.Left,
-    arrowTop: 15,
+    arrowTop: 42,
     withShadow: true,
     isShown: false,
     animated: false,
@@ -149,15 +149,14 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
               data-hook={this.props['data-hook']}
               {...this.getDataAttributes()}
             >
-              <div className={classes.container}>
+              <div className={classes.contentContainer}>
                 {titleToRender}
-                <div className={classes.children}>{children}</div>
+                <div className={classes.content}>{children}</div>
               </div>
               <IconButton
                 className={classes.close}
                 onClick={onClose}
-                as="a"
-                icon={<Close height="24px" width="23px" />}
+                icon={<Close width={24} height={24} />}
                 innerRef={this.iconRef}
               />
               <div className={classes.arrow} style={{ top: pxArrowTop }} />
