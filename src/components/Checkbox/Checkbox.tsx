@@ -95,6 +95,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
         checked={checked}
         onChange={onChange}
         name={name}
+        disabled={disabled}
       >
         <>
           {!!label && <span className={classes.divider} />}
