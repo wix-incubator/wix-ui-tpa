@@ -5,5 +5,6 @@ import { {%ComponentName%} } from './';
 visualize('{%ComponentName%}', () => {
   story('simple example', () => {
     snap('default props', <{%ComponentName%} />);
+    snap('custom buttonText', <{%ComponentName%} buttonText={'Some custom text'} />);
   });
 });
