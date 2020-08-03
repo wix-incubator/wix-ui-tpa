@@ -88,8 +88,8 @@ export default {
           ].map(code),
           ...[
             {
-              title: 'With price',
-              source: examples.exampleWithPrice,
+              title: 'With suffix',
+              source: examples.exampleWithSuffix,
             },
           ].map(code),
         ],

@@ -65,9 +65,9 @@ const tests = [
         },
       },
       {
-        it: 'price',
+        it: 'suffix',
         props: {
-          price: '$50,000',
+          suffix: '$50,000',
           box: true,
           onChange: () => {},
           label: 'Amazing',

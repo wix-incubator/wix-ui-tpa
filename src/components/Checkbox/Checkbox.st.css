@@ -109,11 +109,11 @@
     color: value(CurrentTextColor);
 }
 
-.price {
+.suffix {
     margin-left: 5px;
 }
 
-.box .price {
+.box .suffix {
     margin-left: auto;
 }
 

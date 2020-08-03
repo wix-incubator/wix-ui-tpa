@@ -19,7 +19,7 @@ export interface CheckboxProps extends TPAComponentProps {
   error?: boolean;
   name?: string;
   box?: boolean;
-  price?: string;
+  suffix?: string;
 }
 
 interface DefaultProps {
@@ -83,7 +83,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
       indeterminate,
       onChange,
       name,
-      price,
+      suffix,
       className,
     } = this.props;
     const iconContent = this._renderIcon();
@@ -114,8 +114,10 @@ export class Checkbox extends React.Component<CheckboxProps> {
             >
               {label}
             </div>
-            {price && (
-              <div className={`${classes.label} ${classes.price}`}>{price}</div>
+            {suffix && (
+              <div className={`${classes.label} ${classes.suffix}`}>
+                {suffix}
+              </div>
             )}
           </>
         </CoreCheckbox>
