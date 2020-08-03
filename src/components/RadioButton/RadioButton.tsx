@@ -14,7 +14,7 @@ export interface RadioButtonClickEvent
 }
 
 export interface RadioButtonProps {
-  className?:string,
+  className?: string;
   checked?: boolean;
   disabled?: boolean;
   value: string;
@@ -31,7 +31,7 @@ interface DefaultProps {
 }
 
 /** Radio button icon */
-const radioBtnIcon = <span className={st(classes.checkmark)  }/>;
+const radioBtnIcon = <span className={st(classes.checkmark)} />;
 
 /** RadioButton */
 export class RadioButton extends React.Component<RadioButtonProps> {
@@ -59,7 +59,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       label,
       name,
       onChange,
-      className
+      className,
     } = this.props;
 
     return (
@@ -75,7 +75,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         checkedIcon={radioBtnIcon}
         uncheckedIcon={radioBtnIcon}
         aria-label={label}
-        className={st(classes.root,  { checked, disabled }, className)}
+        className={st(classes.root, { checked, disabled }, className)}
       />
     );
   }

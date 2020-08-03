@@ -19,7 +19,7 @@ import * as RadioButtonGroupWiringExampleCSSRaw from '!raw-loader!./RadioButtonG
 import { RadioButtonGroupWiringExample } from './RadioButtonGroupWiringExample';
 import { RadioButtonGroup } from '../';
 
-console.log("this is here")
+console.log('this is here');
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
