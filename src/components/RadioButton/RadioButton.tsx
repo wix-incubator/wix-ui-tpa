@@ -20,7 +20,7 @@ export interface RadioButtonProps {
   value: string;
   name?: string;
   label: string;
-  onChange(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
+  onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
 }
 
 interface DefaultProps {

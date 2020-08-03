@@ -1,21 +1,28 @@
-import {RadioButtonGroup} from '.';import * as React from 'react';
+import { RadioButtonGroup } from '.';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import {RadioButton} from "../RadioButton";
-import {CheckboxGroupLayout} from "../CheckboxGroup";
+import { RadioButton } from '../RadioButton';
+import { CheckboxGroupLayout } from '../CheckboxGroup';
 
 class RadioButtonGroupVisual extends React.Component<any> {
   render() {
     return (
-        <VisualTestContainer>
-          <RadioButtonGroup {...this.props} />
-        </VisualTestContainer>
+      <VisualTestContainer>
+        <RadioButtonGroup {...this.props} />
+      </VisualTestContainer>
     );
   }
 }
 
 const RadioButtonEl = (
-    <RadioButton value={'n'} key={1} checked={false} onChange={() => {}} label="hello" />
+  <RadioButton
+    value={'n'}
+    key={1}
+    checked={false}
+    onChange={() => {}}
+    label="hello"
+  />
 );
 
 const tests = [
@@ -85,7 +92,7 @@ const tests = [
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props }) => {
     storiesOf(`RadioButtonGroup/${describe}`, module).add(it, () => (
-        <RadioButtonGroupVisual {...props} />
+      <RadioButtonGroupVisual {...props} />
     ));
   });
 });

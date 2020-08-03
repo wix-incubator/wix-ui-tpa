@@ -21,7 +21,10 @@ describe('radioButtonGroup', () => {
 
   it('should render', async () => {
     const driver = radioButtonGroupTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find RadioButtonGroup');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find RadioButtonGroup',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

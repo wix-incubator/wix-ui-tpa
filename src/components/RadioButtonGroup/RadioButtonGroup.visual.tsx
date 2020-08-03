@@ -1,22 +1,24 @@
 import * as React from 'react';
-import {storiesOf} from '@storybook/react';
-import {VisualTestContainer} from '../../../test/visual/VisualTestContainer';
-import {RadioButtonGroup} from './';
-import {RadioButton} from "../RadioButton";
+import { storiesOf } from '@storybook/react';
+import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { RadioButtonGroup } from './';
+import { RadioButton } from '../RadioButton';
 
 class RadioButtonGroupVisual extends React.Component<any> {
   render() {
     return (
-        <VisualTestContainer>
-          <RadioButtonGroup onChange={(e)=>console.log(e)} defaultValue={"meowmeow"} {...this.props} />
-        </VisualTestContainer>
+      <VisualTestContainer>
+        <RadioButtonGroup
+          onChange={e => console.log(e)}
+          defaultValue={'meowmeow'}
+          {...this.props}
+        />
+      </VisualTestContainer>
     );
   }
 }
 
-const radioButtonEl = (
-    <RadioButton key={1} label={"meow"} value={"meow"} />
-);
+const radioButtonEl = <RadioButton key={1} label={'meow'} value={'meow'} />;
 
 const tests = [
   {
@@ -85,7 +87,7 @@ const tests = [
 tests.forEach(({ describe, its }) => {
   its.forEach(({ it, props }) => {
     storiesOf(`RadioButtonGroup/${describe}`, module).add(it, () => (
-        <RadioButtonGroupVisual {...props} />
+      <RadioButtonGroupVisual {...props} />
     ));
   });
 });

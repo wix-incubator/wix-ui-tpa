@@ -87,16 +87,6 @@
 	background: value(CurrentIconColor);
 }
 
-.root:hover .checkmark::after{
-   display: block;
-    top: 4px;
-	left: 4px;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: value(CurrentIconColor);
-}
-
 .root:checked .checkmark {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
