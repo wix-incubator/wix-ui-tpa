@@ -25,7 +25,7 @@ describe('RadioButtonGroup', () => {
     const driver = createDriver(<RadioButtonGroup />);
     expect(await driver.exists()).toBe(true);
   });
-  it('should render with childrens', async () => {
+  it('should render with children', async () => {
     const driver = createDriver(<TestComp />);
 
     expect(await driver.exists()).toBe(true);
