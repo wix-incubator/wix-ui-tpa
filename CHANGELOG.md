@@ -1,3 +1,12 @@
+## [2.1.2](https://github.com/wix/wix-ui-tpa/compare/v2.1.1...v2.1.2) (2020-08-05)
+
+
+### Bug Fixes
+
+* Pagination RTL + mobile styles got overridden ([80ee466](https://github.com/wix/wix-ui-tpa/commit/80ee466e8d353f8f0d4860b1f08f124745670ccb))
+
+
+
 # [2.1.0](https://github.com/wix/wix-ui-tpa/compare/v2.0.0...v2.1.0) (2020-07-29)
 
 
