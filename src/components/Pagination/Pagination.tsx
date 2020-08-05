@@ -26,7 +26,6 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
       {({ mobile, rtl }) => {
         return (
           <CorePagination
-            className={st(classes.root, { mobile, rtl }, props.className)}
             previousLabel={ChevronLeft}
             nextLabel={ChevronRight}
             firstLabel={DoubleChevronLeft}
@@ -36,6 +35,7 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
             paginationMode={mobile ? 'compact' : 'pages'}
             slashLabel={'/'}
             {...props}
+            className={st(classes.root, { mobile, rtl }, props.className)}
           />
         );
       }}
