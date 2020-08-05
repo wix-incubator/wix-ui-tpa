@@ -10,10 +10,10 @@ interface IPaginationVisualProps extends PaginationProps {
 
 class PaginationVisual extends React.Component<IPaginationVisualProps> {
   render() {
-    const { mobile } = this.props;
+    const { mobile, rtl } = this.props;
 
     return (
-      <TPAComponentsProvider value={{ mobile }}>
+      <TPAComponentsProvider value={{ mobile, rtl }}>
         <VisualTestContainer>
           <Pagination data-hook={'storybook-e2e-LikeButton'} {...this.props} />
         </VisualTestContainer>
@@ -36,6 +36,13 @@ const tests = [
         it: 'mobile',
         props: {
           mobile: true,
+          totalPages: 10,
+        },
+      },
+      {
+        it: 'rtl',
+        props: {
+          rtl: true,
           totalPages: 10,
         },
       },
