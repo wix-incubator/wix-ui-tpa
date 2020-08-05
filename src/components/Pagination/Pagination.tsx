@@ -26,8 +26,6 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
       {({ mobile, rtl }) => {
         return (
           <CorePagination
-            {...props}
-            className={st(classes.root, { mobile, rtl }, props.className)}
             previousLabel={ChevronLeft}
             nextLabel={ChevronRight}
             firstLabel={DoubleChevronLeft}
@@ -36,6 +34,8 @@ export const Pagination: React.FunctionComponent<PaginationProps> = props => {
             showFirstLastNavButtons={props.totalPages > props.maxPagesToShow}
             paginationMode={mobile ? 'compact' : 'pages'}
             slashLabel={'/'}
+            {...props}
+            className={st(classes.root, { mobile, rtl }, props.className)}
           />
         );
       }}
