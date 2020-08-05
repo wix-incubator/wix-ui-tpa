@@ -5,7 +5,6 @@ ActionMenu is just a popup you'll get when openin 3-dors Menu, Drodpowdn etc. It
 
 Child of `ActionsMenuLayout` must be either `Divider` or `ActionsMenuLayoutItem`, see Examples section for details.
 
-
 The `ActionsMenuLayout` implementation provides a few default overridable styles. By default site theme is used.
 
 ## Theme properties (all are optional)
