@@ -19,7 +19,6 @@ By default the Card will pull the theme from the site (site colors),
 | MainBorderWidth  | string   | 1px | The width of the border instead of the default width |
 | StackedInfoSidePadding  | string   | 32px | The width of Stack layout Side padding |
 
-
 In order to override the theme, use Wix Stylable extends capabilities and wrap with stylable HOC:
 
 1. create an stylable file (e.g. CardExt.st.css)

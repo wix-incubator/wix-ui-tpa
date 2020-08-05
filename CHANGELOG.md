@@ -1,3 +1,12 @@
+## [2.1.3](https://github.com/wix/wix-ui-tpa/compare/v2.1.2...v2.1.3) (2020-08-05)
+
+
+### Bug Fixes
+
+* pagination props overrides + move stylable/dom-test-kit to dependencies  ([291f717](https://github.com/wix/wix-ui-tpa/commit/291f717d564cffd107f9d194ba9feca3f6d35c9b))
+
+
+
 ## [2.1.2](https://github.com/wix/wix-ui-tpa/compare/v2.1.1...v2.1.2) (2020-08-05)
 
 
