@@ -21,17 +21,23 @@ export const exampleWithIndeterminate = `
 `;
 
 export const exampleWithBox = `
-<Checkbox box onChange={val => console.log(val)} label="What's in the box?" />
+<Checkbox theme="box" onChange={val => console.log(val)} label="What's in the box?" />
 `;
 
 export const exampleWithCheckedBox = `
-<Checkbox box checked onChange={val => console.log(val)} label="A checkbox!" />
+<Checkbox theme="box" checked onChange={val => console.log(val)} label="A checkbox!" />
 `;
 
 export const exampleWithDisabledCheckedBox = `
-<Checkbox box checked disabled onChange={val => console.log(val)} label="I'm a disabled, checked box 😶" />
+<Checkbox theme="box" checked disabled onChange={val => console.log(val)} label="I'm a disabled, checked box 😶" />
 `;
 
-export const exampleWithSuffix = `
-<Checkbox box suffix="$1,000" onChange={val => console.log(val)} label="An expansive checkbox." />
+export const exampleWithBoxAndSuffix = `
+<Checkbox theme="box" suffix="$1,000" onChange={val => console.log(val)} label="An expansive checkbox." />
+`;
+
+export const exampleWithSmallBoxAndSuffix = `
+<div style={{ width: '250px' }}>
+  <Checkbox theme="box" suffix="$10" onChange={val => console.log(val)} label="A lot of text, relatively." />
+</div>
 `;

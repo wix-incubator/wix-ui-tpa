@@ -22,6 +22,40 @@ import { CheckboxExtendedExample } from './CheckboxExtendedExample';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+const codeExamples = [
+  { title: 'Default', source: examples.example },
+  {
+    title: 'Checked',
+    source: examples.exampleWithChecked,
+  },
+  { title: 'Error state', source: examples.exampleWithError },
+  { title: 'Disabled state', source: examples.exampleWithDisabled },
+  {
+    title: 'With indeterminate state',
+    source: examples.exampleWithIndeterminate,
+  },
+  {
+    title: 'With box',
+    source: examples.exampleWithBox,
+  },
+  {
+    title: 'With checked box',
+    source: examples.exampleWithCheckedBox,
+  },
+  {
+    title: 'With disabled, checked box',
+    source: examples.exampleWithDisabledCheckedBox,
+  },
+  {
+    title: 'With box and suffix',
+    source: examples.exampleWithBoxAndSuffix,
+  },
+  {
+    title: 'With small box and suffix',
+    source: examples.exampleWithSmallBoxAndSuffix,
+  },
+];
+
 export default {
   category: 'Components',
   storyName: 'Checkbox',
@@ -48,50 +82,7 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Default', source: examples.example }].map(code),
-
-          ...[
-            {
-              title: 'Checked',
-              source: examples.exampleWithChecked,
-            },
-          ].map(code),
-          ...[{ title: 'Error state', source: examples.exampleWithError }].map(
-            code,
-          ),
-          ...[
-            { title: 'Disabled state', source: examples.exampleWithDisabled },
-          ].map(code),
-          ...[
-            {
-              title: 'With indeterminate state',
-              source: examples.exampleWithIndeterminate,
-            },
-          ].map(code),
-          ...[
-            {
-              title: 'With box',
-              source: examples.exampleWithBox,
-            },
-          ].map(code),
-          ...[
-            {
-              title: 'With checked box',
-              source: examples.exampleWithCheckedBox,
-            },
-          ].map(code),
-          ...[
-            {
-              title: 'With disabled, checked box',
-              source: examples.exampleWithDisabledCheckedBox,
-            },
-          ].map(code),
-          ...[
-            {
-              title: 'With suffix',
-              source: examples.exampleWithSuffix,
-            },
-          ].map(code),
+          ...codeExamples.map(code),
         ],
       }),
 

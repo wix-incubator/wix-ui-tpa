@@ -36,27 +36,14 @@
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
 }
 
-.box {
-    display: flex;
-    padding: 16px;
-    background-color: color(color-1);
-    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
-    margin-bottom: 16px;
-    cursor: pointer;
-    width: 100%;
-    box-sizing: border-box;
-}
-
 .root {
     -st-extends: Checkbox;
-    -st-states: checked, disabled, error;
+    -st-states: box, checked, disabled, error;
 
     display: inline-flex;
-    align-items: flex-start;
     box-sizing: border-box;
 
     font: value(Font);
-    flex: 1;
 }
 
 .root * {
@@ -66,10 +53,29 @@
 .root::childContainer {
     display: flex;
     flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .root::box {
-    line-height: 20px;
+    line-height: 0;
+    margin-right: 12px;
+}
+
+.core {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.root:box {
+    display: flex;
+    padding: 16px;
+    background-color: color(color-1);
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .icon {
@@ -93,13 +99,6 @@
     height: 7px;
 }
 
-.divider {
-    display: inline-block;
-    width: 12px;
-
-    flex-shrink: 0;
-}
-
 .icon path {
     fill: value(CurrentIconColor);
 }
@@ -109,42 +108,40 @@
     color: value(CurrentTextColor);
 }
 
-.suffix {
-    margin-left: 5px;
+.label.suffixed {
+    margin-right: 5px;
+    flex: 1;
+    white-space: nowrap;
 }
 
-.box .suffix {
-    margin-left: auto;
+.suffix {
+    flex: 0;
 }
 
 /* STATES */
-.box.disabled {
+.root:box:disabled {
     cursor: default;
 }
 
-.box:hover, .box:focus-within {
+.root:box:hover, .root:box:focus-within {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
-.box.disabled:hover:not(.checked), .box.disabled:focus-within:not(.checked) {
+.root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
     border-color: applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
-.box.checked {
+.root:box:checked {
     background-color: applyOpacity(value(CurrentIconColor), 0.1);
     border-color: value(CurrentIconColor);
 }
 
-.box.checked:not(.disabled):hover, .box.checked:not(.disabled):focus-within {
+.root:box:checked:not(:disabled):hover, .root:box:checked:not(:disabled):focus-within {
     border-color: applyOpacity(value(CurrentIconColor), 0.6);
 }
 
-.box:not(.disabled):hover .icon {
+.root:box:not(:disabled):hover .icon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
-}
-
-.box:last-of-type {
-    margin-bottom: 0;
 }
 
 .root:hover .icon {

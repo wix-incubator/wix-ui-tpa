@@ -42,7 +42,7 @@ CheckboxMetadata.addSim({
 CheckboxMetadata.addSim({
   title: 'box',
   props: {
-    box: true,
+    theme: 'box',
     onChange: () => {},
     label: 'Amazing',
   },
@@ -52,7 +52,7 @@ CheckboxMetadata.addSim({
   title: 'suffix',
   props: {
     suffix: '$50,000',
-    box: true,
+    theme: 'box',
     onChange: () => {},
     label: 'Amazing',
   },
