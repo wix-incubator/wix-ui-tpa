@@ -33,7 +33,7 @@ interface DefaultProps {
   checked: boolean;
   disabled: boolean;
   name: string;
-  theme: CheckboxTheme
+  theme: CheckboxTheme;
   'data-hook': string;
 }
 
@@ -67,13 +67,18 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       name,
       onChange,
       className,
-        theme,
-        suffix
+      theme,
+      suffix,
     } = this.props;
-    const radioBtnIcon = <div className={st(classes.checkmark,{checked,disabled},className)} ><div className={st(classes.innerCheck, {checked, disabled},className)} /></div>;
+    const radioBtnIcon = (
+      <div className={st(classes.checkmark, { checked, disabled }, className)}>
+        <div
+          className={st(classes.innerCheck, { checked, disabled }, className)}
+        />
+      </div>
+    );
 
     return (
-
       <CoreRadioButton
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
@@ -87,7 +92,11 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         checkedIcon={radioBtnIcon}
         uncheckedIcon={radioBtnIcon}
         aria-label={label}
-        className={st(classes.root, { checked, disabled, box: theme === 'box' }, className)}
+        className={st(
+          classes.root,
+          { checked, disabled, box: theme === 'box' },
+          className,
+        )}
       />
     );
   }

@@ -15,7 +15,6 @@ class RadioButtonGroupVisual extends React.Component<any> {
   }
 }
 
-
 const RadioButtonEl = (
   <RadioButton
     value={'n'}
