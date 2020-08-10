@@ -12,6 +12,10 @@ export interface RadioButtonClickEvent
   extends React.MouseEvent<HTMLDivElement> {
   value: string;
 }
+export enum CheckboxTheme {
+  Default = 'default',
+  Box = 'box',
+}
 
 export interface RadioButtonProps {
   className?: string;
@@ -20,6 +24,8 @@ export interface RadioButtonProps {
   value: string;
   name?: string;
   label: string;
+  theme?: CheckboxTheme;
+  suffix?: string;
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
 }
 
@@ -27,11 +33,11 @@ interface DefaultProps {
   checked: boolean;
   disabled: boolean;
   name: string;
+  theme: CheckboxTheme
   'data-hook': string;
 }
 
 /** Radio button icon */
-const radioBtnIcon = <span className={st(classes.checkmark)} />;
 
 /** RadioButton */
 export class RadioButton extends React.Component<RadioButtonProps> {
@@ -40,6 +46,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
     checked: false,
     disabled: false,
     name: '',
+    theme: CheckboxTheme.Default,
     'data-hook': RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper,
   };
 
@@ -60,14 +67,19 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       name,
       onChange,
       className,
+        theme,
+        suffix
     } = this.props;
+    const radioBtnIcon = <div className={st(classes.checkmark,{checked,disabled},className)} ><div className={st(classes.innerCheck, {checked, disabled},className)} /></div>;
 
     return (
+
       <CoreRadioButton
         {...this.getDataAttributes()}
         data-hook={this.props['data-hook']}
         checked={checked}
         disabled={disabled}
+        tabIndex={0}
         value={value}
         label={<label>{label}</label>}
         name={name}
@@ -75,7 +87,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         checkedIcon={radioBtnIcon}
         uncheckedIcon={radioBtnIcon}
         aria-label={label}
-        className={st(classes.root, { checked, disabled }, className)}
+        className={st(classes.root, { checked, disabled, box: theme === 'box' }, className)}
       />
     );
   }

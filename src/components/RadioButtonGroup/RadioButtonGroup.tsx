@@ -3,6 +3,7 @@ import { classes, st } from './RadioButtonGroup.st.css';
 import { TPAComponentProps } from '../../types';
 import { CheckboxGroupLayout } from '../CheckboxGroup';
 import { RadioButton } from '../RadioButton';
+import {CheckboxTheme} from "../RadioButton/RadioButton";
 
 export interface RadioButtonGroupProps extends TPAComponentProps {
   label?: string | React.ReactNode;
@@ -13,6 +14,8 @@ export interface RadioButtonGroupProps extends TPAComponentProps {
   disabled?: boolean;
   'data-hook'?: string;
   defaultValue?: string;
+  name:string,
+  theme?: CheckboxTheme;
   onChange?(value: string): void;
 }
 
@@ -44,8 +47,7 @@ export class RadioButtonGroup extends React.Component<
   };
 
   render() {
-    const { label, layout, error, disabled, errorText, className } = this.props;
-    console.log('rendering');
+    const { label, layout, error, disabled, errorText, className ,theme} = this.props;
     return (
       <fieldset
         data-hook={this.props['data-hook']}
@@ -53,7 +55,7 @@ export class RadioButtonGroup extends React.Component<
       >
         {!!label && <legend className={classes.label}>{label}</legend>}
 
-        <div className={classes.wrapper}>
+        <div  tabIndex={0} className={classes.wrapper}>
           {React.Children.map(
             this.props.children,
             (child: RadioButton, idx: number) => {
@@ -65,9 +67,10 @@ export class RadioButtonGroup extends React.Component<
                   {React.cloneElement(child, {
                     key: idx,
                     disabled,
+                    theme,
                     checked: child.props.value === this.state.checkedValue,
                     onChange: e => {
-                      this.props.onChange(e);
+                      this.props.onChange && this.props.onChange(e);
                       this.setState({ checkedValue: e.value });
                     },
                   })}

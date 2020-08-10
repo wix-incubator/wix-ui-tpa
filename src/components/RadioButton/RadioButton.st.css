@@ -31,89 +31,110 @@
 
 .root {
     -st-extends: RadioButton;
-    -st-states: checked, disabled;
+    -st-states: checked, disabled,box;
 
     display: flex;
     line-height: 20px;
 }
+.root:box:disabled {
+    cursor: default;
+}
 
+.root:box:hover, .root:box:focus-within {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.root:box:checked {
+    background-color: applyOpacity(value(CurrentIconColor), 0.1);
+    border-color: value(CurrentIconColor);
+}
+
+.root:box:checked:not(:disabled):hover, .root:box:checked:not(:disabled):focus-within {
+    border-color: applyOpacity(value(CurrentIconColor), 0.6);
+}
+
+.root:box:not(:disabled):hover .icon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
 .root::label {
-  font-size: 17px;
-  font-weight: 500;
-  color: value(CurrentTextColor);
+    font-size: 17px;
+    font-weight: 500;
+    color: value(CurrentTextColor);
 }
 
 .root::icon {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
-  border-radius: 50%;
+    position: absolute;
+    top: 0;
+    background-color: transparent;
+    left: 0;
+    height: 20px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.innerCheck {
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+
+.root:box {
+    display: flex;
+    padding: 16px;
+    background-color: color(color-1);
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.root::box:after {
+    content: '';
+    width: 12px;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark::after {
-  content: "";
-  position: absolute;
-  display: none;
-}
 
 .root:hover .checkmark {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
-
-.iconMixin {
-    display: block;
-    top: 4px;
-	left: 4px;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: value(CurrentIconColor);
-}
-
-.root:checked .checkmark {
-    border-color: applyOpacity(value(CurrentBorderColor), 1);
+.root:checked .innerCheck {
+    opacity: 1;
+    background-color: value(CurrentIconColor);
+    transform: scale(1);
 }
 
 /* Show the indicator (dot/circle) when checked */
-.root:checked .checkmark::after {
-    display: block;
-    top: 4px;
-	left: 4px;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: value(CurrentIconColor);
-}
+
 .root:disabled {
     color: color(value(DisabledColor));
 }
 
-.root:disabled .checkmark::after {
-    display: block;
-    top: 4px;
-	left: 4px;
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	background: value(DisabledColor);
-}
 
 .root:disabled .checkmark {
     border-color: color(value(DisabledColor));
