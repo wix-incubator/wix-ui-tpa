@@ -59,7 +59,12 @@
 
 .root::box {
     line-height: 0;
-    margin-right: 12px;
+    display: flex;
+}
+
+.root::box:after {
+    content: '';
+    width: 12px;
 }
 
 .core {
@@ -109,9 +114,14 @@
 }
 
 .label.suffixed {
-    margin-right: 5px;
     flex: 1;
     white-space: nowrap;
+    display: flex;
+}
+
+.label.suffixed:after {
+    content: '';
+    width: 5px;
 }
 
 .suffix {

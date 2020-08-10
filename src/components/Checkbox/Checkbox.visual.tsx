@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { Checkbox } from './';
+import { Checkbox, CheckboxTheme } from './';
 
 class CheckboxVisual extends React.Component<any> {
   render() {
@@ -59,7 +59,7 @@ const tests = [
       {
         it: 'box',
         props: {
-          theme: 'box',
+          theme: CheckboxTheme.Box,
           onChange: () => {},
           label: 'Amazing',
         },
@@ -68,7 +68,7 @@ const tests = [
         it: 'suffix',
         props: {
           suffix: '$50,000',
-          theme: 'box',
+          theme: CheckboxTheme.Box,
           onChange: () => {},
           label: 'Amazing',
         },
