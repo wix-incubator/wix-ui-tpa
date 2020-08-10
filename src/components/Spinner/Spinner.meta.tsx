@@ -6,7 +6,5 @@ SpinnerMetadata.nonReactStrictModeCompliant = true;
 
 SpinnerMetadata.addSim({
   title: 'render',
-  props: {
-    buttonText: 'Click me!'
-  },
+  props: {},
 });

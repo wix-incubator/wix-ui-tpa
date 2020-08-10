@@ -1,50 +1,46 @@
 import * as React from 'react';
-import { Text } from '../Text';
-import { Button } from '../Button';
+import {
+  SpinnerDefaultProps,
+  SpinnerProps,
+  SpinnerState,
+  SPINNER_TYPES,
+} from './types';
 import { st, classes } from './Spinner.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-export interface SpinnerProps {
-  buttonText: string;
-}
-
-interface DefaultProps {
-  buttonText: string;
-}
-
-interface State {
-  count: number;
-}
-
-/** ... spinner */
-export class Spinner extends React.Component<SpinnerProps, State> {
+export class Spinner extends React.Component<SpinnerProps, SpinnerState> {
   static displayName = 'Spinner';
-  static defaultProps: DefaultProps = { buttonText: 'Click me!' };
-
-  state = { count: 0 };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
+  static defaultProps: SpinnerDefaultProps = {
+    type: SPINNER_TYPES.regular,
+    width: 100,
   };
 
   render() {
-    const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
-    const isEven = count % 2 === 0;
+    const { type, width, className } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div className={st(classes.root, { mobile }, rest)} data-mobile={mobile}>
-            <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
-              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
-              of times
-            </Text>
-
-            <div className={classes.button}>
-              <Button onClick={this._handleClick}>{buttonText}</Button>
-            </div>
-          </div>
+          <svg
+            viewBox="0 0 50 50"
+            className={st(classes.root, { mobile }, className)}
+            data-mobile={mobile}
+            style={{
+              width: `${width}px`,
+              height: `${width}px`,
+              top: `calc(50% - ${width / 2}px)`,
+              margin: `0 0 0 -${width / 2}px`,
+            }}
+          >
+            <circle
+              cx="25"
+              cy="25"
+              r="20"
+              fill="none"
+              strokeWidth={type === SPINNER_TYPES.regular ? 4 : 1}
+              className={classes.circle}
+            />
+          </svg>
         )}
       </TPAComponentsConsumer>
     );

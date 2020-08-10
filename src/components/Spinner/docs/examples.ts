@@ -1,11 +1,11 @@
 export const importExample = `import { Spinner } from 'wix-ui-tpa/Spinner';`;
 
-export const example = `
-<Spinner />
+export const regular = `
+<div style={{ height: "140px", position: "relative" }}><Spinner width={100} /></div>
 `;
 
-export const mobileExample = `
+export const slim = `
 <ExampleWithContextProps mobile={true}>
-  <Spinner />
+  <div style={{ height: "140px", position: "relative" }}><Spinner type="slim" width={100} /></div>
 </ExampleWithContextProps>
 `;

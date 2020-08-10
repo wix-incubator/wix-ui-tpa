@@ -3,21 +3,51 @@
     -st-named: color;
 }
 
-/*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+    DefaultPathColor: color(color-5);
 }
 
-/*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    PathColor: --overridable;
+}
+
+:vars {
+    UsedPathColor: color(fallback(value(PathColor), value(DefaultPathColor)));
 }
 
 .root {
     -st-states: mobile;
-    /*css goes here*/
+
+    animation: rotate 2s linear infinite;
+    z-index: 2;
+    position: absolute;
+    left: 50%;
 }
 
-.root:mobile {
-    /*mobile css goes here*/
+.circle {
+    stroke: value(UsedPathColor);
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+.root:mobile {}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
 }

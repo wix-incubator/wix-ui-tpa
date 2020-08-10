@@ -30,9 +30,7 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-Spinner',
   }),
-  exampleProps: {
-    //
-  },
+  exampleProps: {},
   dataHook: 'storybook-Spinner',
   sections: [
     header(),
@@ -49,8 +47,8 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'Regular', source: examples.regular },
+            { title: 'Slim', source: examples.slim },
           ].map(code),
         ],
       }),
@@ -68,7 +66,13 @@ export default {
               rawSource: SpinnerWiringExampleRaw,
               rawCSSSource: SpinnerWiringExampleCSSRaw,
               params: {
-                colors: [],
+                colors: [
+                  {
+                    label: 'Path Color',
+                    wixParam: 'pathColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
                 fonts: [],
                 numbers: [],
               },
