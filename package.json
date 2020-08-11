@@ -38,7 +38,7 @@
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
-    "test:eyes-storybook": "node scripts/applitools.js",
+    "test:eyes-storybook": "if test \"$EYES_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
