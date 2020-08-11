@@ -56,7 +56,7 @@ export default {
       ...[
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        { title: 'Playground', sections: [playground()] }, // ... absolute => readme => tests
         {
           title: 'Settings Panel',
           sections: [

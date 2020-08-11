@@ -13,7 +13,7 @@ describe('Spinner', () => {
   const createDriver = createUniDriverFactory(spinnerDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Spinner buttonText="Click Me" />);
+    const driver = createDriver(<Spinner />);
     expect(await driver.exists()).toBe(true);
   });
 

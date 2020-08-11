@@ -31,6 +31,7 @@ export class Spinner extends React.Component<SpinnerProps, SpinnerState> {
               top: `calc(50% - ${width / 2}px)`,
               margin: `0 0 0 -${width / 2}px`,
             }}
+            data-hook={this.props['data-hook']}
           >
             <circle
               cx="25"
