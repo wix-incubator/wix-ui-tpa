@@ -13,23 +13,29 @@ export class Spinner extends React.Component<SpinnerProps, SpinnerState> {
   static defaultProps: SpinnerDefaultProps = {
     type: SPINNER_TYPES.regular,
     width: 100,
+    isCentered: false,
+    isStatic: false,
   };
 
   render() {
-    const { type, width, className } = this.props;
+    const { className, type, width, isCentered, isStatic } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <svg
             viewBox="0 0 50 50"
-            className={st(classes.root, { mobile }, className)}
+            className={st(
+              classes.root,
+              { mobile, centered: !!isCentered, static: !!isStatic },
+              className,
+            )}
             data-mobile={mobile}
             style={{
               width: `${width}px`,
               height: `${width}px`,
-              top: `calc(50% - ${width / 2}px)`,
-              margin: `0 0 0 -${width / 2}px`,
+              top: isCentered ? `calc(50% - ${width / 2}px)` : 0,
+              margin: isCentered ? `0 0 0 -${width / 2}px` : 0,
             }}
             data-hook={this.props['data-hook']}
           >

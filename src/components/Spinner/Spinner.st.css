@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback;
 }
 
 :vars {
@@ -16,17 +16,24 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: mobile, centered, static;
 
     animation: rotate 2s linear infinite;
     z-index: 2;
-    position: absolute;
-    left: 50%;
 }
 
 .circle {
     stroke: value(UsedPathColor);
     animation: dash 1.5s ease-in-out infinite;
+}
+
+.root:centered {
+    position: absolute;
+    left: 50%;
+}
+
+.root:static, .root:static .circle {
+    animation: none;
 }
 
 .root:mobile {}
