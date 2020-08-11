@@ -43,7 +43,7 @@ describe('RadioButton', () => {
     await driver.clickOnRadioButton();
 
     expect(onChangeSpy).toHaveBeenCalledWith(
-      expect.objectContaining({ value: "value1" }),
+      expect.objectContaining({ value: 'value1' }),
     );
   });
 

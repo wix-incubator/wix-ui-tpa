@@ -1,1 +1,5 @@
-export { RadioButtonGroup, RadioButtonGroupProps } from './RadioButtonGroup';
+export {
+  RadioButtonGroup,
+  RadioButtonGroupProps,
+  RadioButtonGroupLayout,
+} from './RadioButtonGroup';

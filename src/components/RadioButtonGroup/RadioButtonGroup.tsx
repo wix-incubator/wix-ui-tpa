@@ -1,32 +1,36 @@
 import * as React from 'react';
 import { classes, st } from './RadioButtonGroup.st.css';
 import { TPAComponentProps } from '../../types';
-import { CheckboxGroupLayout } from '../CheckboxGroup';
 import { RadioButton } from '../RadioButton';
-import { CheckboxTheme } from '../RadioButton/RadioButton';
+import { RadioButtonTheme } from '../RadioButton/RadioButton';
 
 export interface RadioButtonGroupProps extends TPAComponentProps {
   label?: string | React.ReactNode;
   children?: any;
-  layout?: CheckboxGroupLayout;
+  layout?: RadioButtonGroupLayout;
   error?: boolean;
   errorText?: string;
   disabled?: boolean;
   'data-hook'?: string;
   defaultValue?: string;
   name: string;
-  theme?: CheckboxTheme;
+  withSpacing?: boolean;
+  theme?: RadioButtonTheme;
   onChange?(value: string): void;
 }
 
 interface DefaultProps {
   defaultValue: string;
-  layout?: CheckboxGroupLayout;
+  layout?: RadioButtonGroupLayout;
 }
 
 interface State {
   count: number;
   checkedValue: string;
+}
+export enum RadioButtonGroupLayout {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
 }
 
 /** radio button group */
@@ -37,7 +41,7 @@ export class RadioButtonGroup extends React.Component<
   static displayName = 'RadioButtonGroup';
   static defaultProps: DefaultProps = {
     defaultValue: '',
-    layout: CheckboxGroupLayout.Vertical,
+    layout: RadioButtonGroupLayout.Vertical,
   };
 
   state = { count: 0, checkedValue: this.props.defaultValue };
@@ -55,11 +59,16 @@ export class RadioButtonGroup extends React.Component<
       errorText,
       className,
       theme,
+      withSpacing,
     } = this.props;
     return (
       <fieldset
         data-hook={this.props['data-hook']}
-        className={st(classes.root, { layout, disabled }, className)}
+        className={st(
+          classes.root,
+          { layout, disabled, withSpacing },
+          className,
+        )}
       >
         {!!label && <legend className={classes.label}>{label}</legend>}
 
@@ -75,6 +84,7 @@ export class RadioButtonGroup extends React.Component<
                   {React.cloneElement(child, {
                     key: idx,
                     disabled,
+                    error,
                     theme,
                     checked: child.props.value === this.state.checkedValue,
                     onChange: e => {

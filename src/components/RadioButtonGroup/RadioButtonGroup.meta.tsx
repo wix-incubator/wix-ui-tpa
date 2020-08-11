@@ -1,15 +1,14 @@
-import { RadioButtonGroup } from '.';
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { RadioButton } from '../RadioButton';
-import { CheckboxGroupLayout } from '../CheckboxGroup';
+import { RadioButtonGroupLayout, RadioButtonGroup } from '../RadioButtonGroup';
 
 class RadioButtonGroupVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer>
-        <RadioButtonGroup {...this.props} />
+        <RadioButtonGroup name="group" {...this.props} />
       </VisualTestContainer>
     );
   }
@@ -47,7 +46,7 @@ const tests = [
         props: {
           children: [RadioButtonEl],
           label: "No worries. I'm a label.",
-          layout: CheckboxGroupLayout.Horizontal,
+          layout: RadioButtonGroupLayout.Horizontal,
         },
       },
       {
@@ -55,7 +54,7 @@ const tests = [
         props: {
           children: [RadioButtonEl],
           label: "No worries. I'm a label.",
-          layout: CheckboxGroupLayout.Horizontal,
+          layout: RadioButtonGroupLayout.Horizontal,
           errorText: "I'm an error",
           error: true,
         },

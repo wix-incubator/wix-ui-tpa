@@ -26,7 +26,7 @@
 }
 
 .root {
-    -st-states: disabled, layout( enum(horizontal, vertical) );
+    -st-states: disabled, layout( enum(horizontal, vertical) ),withSpacing;
 
     display: inline-block;
     margin: 0;
@@ -41,7 +41,7 @@
     margin-bottom: -12px;
 }
 
-.wrapper > * {
+.root:withSpacing .wrapper > * {
     margin-bottom: 12px;
 }
 

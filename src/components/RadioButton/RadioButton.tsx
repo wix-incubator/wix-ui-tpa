@@ -2,6 +2,7 @@ import * as React from 'react';
 import { RadioButton as CoreRadioButton } from 'wix-ui-core/radio-button';
 import { RADIOBUTTON_DATA_KEYS, RADIOBUTTON_DATA_HOOKS } from './dataHooks';
 import { st, classes } from './RadioButton.st.css';
+import classnames from 'classnames';
 
 export interface RadioButtonChangeEvent
   extends React.MouseEvent<HTMLDivElement> {
@@ -12,7 +13,8 @@ export interface RadioButtonClickEvent
   extends React.MouseEvent<HTMLDivElement> {
   value: string;
 }
-export enum CheckboxTheme {
+
+export enum RadioButtonTheme {
   Default = 'default',
   Box = 'box',
 }
@@ -24,7 +26,8 @@ export interface RadioButtonProps {
   value: string;
   name?: string;
   label: string;
-  theme?: CheckboxTheme;
+  error?: boolean;
+  theme?: RadioButtonTheme;
   suffix?: string;
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
 }
@@ -33,11 +36,17 @@ interface DefaultProps {
   checked: boolean;
   disabled: boolean;
   name: string;
-  theme: CheckboxTheme;
+  error: boolean;
+  theme: RadioButtonTheme;
   'data-hook': string;
 }
 
 /** Radio button icon */
+const radioBtnIcon = (
+  <div className={st(classes.checkmark)}>
+    <div className={st(classes.innerCheck)} />
+  </div>
+);
 
 /** RadioButton */
 export class RadioButton extends React.Component<RadioButtonProps> {
@@ -45,8 +54,9 @@ export class RadioButton extends React.Component<RadioButtonProps> {
   static defaultProps: DefaultProps = {
     checked: false,
     disabled: false,
+    error: false,
     name: '',
-    theme: CheckboxTheme.Default,
+    theme: RadioButtonTheme.Default,
     'data-hook': RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper,
   };
 
@@ -67,16 +77,10 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       name,
       onChange,
       className,
+      error,
       theme,
       suffix,
     } = this.props;
-    const radioBtnIcon = (
-      <div className={st(classes.checkmark, { checked, disabled }, className)}>
-        <div
-          className={st(classes.innerCheck, { checked, disabled }, className)}
-        />
-      </div>
-    );
 
     return (
       <CoreRadioButton
@@ -86,7 +90,24 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         disabled={disabled}
         tabIndex={0}
         value={value}
-        label={<label>{label}</label>}
+        label={
+          <div className={classes.labelWrapper}>
+            {' '}
+            <div
+              data-hook={RADIOBUTTON_DATA_HOOKS.LabelWrapper}
+              className={classnames(classes.label, {
+                [classes.suffixed]: suffix,
+              })}
+            >
+              {label}
+            </div>
+            {suffix && (
+              <div className={`${classes.label} ${classes.suffix}`}>
+                {suffix}
+              </div>
+            )}
+          </div>
+        }
         name={name}
         onChange={onChange}
         checkedIcon={radioBtnIcon}
@@ -94,7 +115,7 @@ export class RadioButton extends React.Component<RadioButtonProps> {
         aria-label={label}
         className={st(
           classes.root,
-          { checked, disabled, box: theme === 'box' },
+          { checked, error, disabled, box: theme === 'box' },
           className,
         )}
       />

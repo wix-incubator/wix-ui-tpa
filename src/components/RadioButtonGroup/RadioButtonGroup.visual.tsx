@@ -3,14 +3,16 @@ import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { RadioButtonGroup } from './';
 import { RadioButton } from '../RadioButton';
+import { RadioButtonGroupLayout } from './RadioButtonGroup';
 
 class RadioButtonGroupVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer>
         <RadioButtonGroup
+          name={'group'}
           onChange={e => console.log(e)}
-          defaultValue={'meowmeow'}
+          defaultValue={'option'}
           {...this.props}
         />
       </VisualTestContainer>
@@ -34,50 +36,50 @@ const tests = [
         it: 'with label',
         props: {
           children: [radioButtonEl],
-          // label: "No worries. I'm a label.",
+          label: "No worries. I'm a label.",
         },
       },
       {
         it: 'with horizontal layout',
         props: {
           children: [radioButtonEl],
-          // label: "No worries. I'm a label.",
-          // layout: CheckboxGroupLayout.Horizontal,
+          label: "No worries. I'm a label.",
+          layout: RadioButtonGroupLayout.Horizontal,
         },
       },
       {
         it: 'with horizontal layout with error text',
         props: {
           children: [radioButtonEl],
-          // label: "No worries. I'm a label.",
-          // layout: CheckboxGroupLayout.Horizontal,
-          // errorText: "I'm an error",
-          // error: true,
+          label: "No worries. I'm a label.",
+          layout: RadioButtonGroupLayout.Horizontal,
+          errorText: "I'm an error",
+          error: true,
         },
       },
       {
         it: 'with disabled',
         props: {
           children: [radioButtonEl],
-          // label: "No worries. I'm a label.",
-          // disabled: true,
+          label: "No worries. I'm a label.",
+          disabled: true,
         },
       },
       {
         it: 'with error',
         props: {
           children: [radioButtonEl],
-          // label: "No worries. I'm a label.",
-          // error: true,
+          label: "No worries. I'm a label.",
+          error: true,
         },
       },
       {
         it: 'with error text',
         props: {
           children: [radioButtonEl],
-          // label: "No worries. I'm a label.",
-          // error: true,
-          // errorText: "I'm error text",
+          label: "No worries. I'm a label.",
+          error: true,
+          errorText: "I'm error text",
         },
       },
     ],

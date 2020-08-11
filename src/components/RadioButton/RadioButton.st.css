@@ -8,6 +8,11 @@
     -st-named: RadioButton;
 }
 
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
 /*Defaults*/
 :vars {
     DefaultTextColor: color-5;
@@ -29,13 +34,24 @@
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
 }
 
+.labelWrapper {
+    display: flex;
+    width: 256px;
+    justify-content: space-between;
+}
+
 .root {
     -st-extends: RadioButton;
-    -st-states: checked, disabled,box;
-
+    -st-states: checked, disabled, box, error;
+    width: 325px;
     display: flex;
     line-height: 20px;
 }
+
+.root:error .checkmark {
+    border-color: color(value(errorColor));
+}
+
 .root:box:disabled {
     cursor: default;
 }
@@ -108,14 +124,26 @@
 .root:box {
     display: flex;
     padding: 16px;
+    margin-bottom: 23[x];
     background-color: color(color-1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;
     box-sizing: border-box;
 }
-.root::box:after {
+
+.label.suffixed {
+    flex: 1;
+    white-space: nowrap;
+    display: flex;
+}
+
+.label.suffixed:after {
     content: '';
-    width: 12px;
+    width: 5px;
+}
+
+.suffix {
+    flex: 0;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -123,6 +151,7 @@
 .root:hover .checkmark {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
+
 .root:checked .innerCheck {
     opacity: 1;
     background-color: value(CurrentIconColor);

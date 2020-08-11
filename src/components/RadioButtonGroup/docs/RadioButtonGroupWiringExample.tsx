@@ -1,41 +1,63 @@
 import * as React from 'react';
 import { RadioButtonGroup } from '../';
 import { RadioButton } from '../../RadioButton';
-import { CheckboxGroupLayout } from '../../CheckboxGroup';
-import { CheckboxTheme } from '../../RadioButton/RadioButton';
+import { RadioButtonTheme } from '../../RadioButton/RadioButton';
+import { RadioButtonGroupLayout } from '../RadioButtonGroup';
+import { classes } from './RadioButtonGroupWiringExample.st.css';
 
 export const RadioButtonGroupWiringExample = () => {
   return (
-    <div style={{ display: 'flex' }}>
-      <RadioButtonGroup
-        layout={CheckboxGroupLayout.Horizontal}
-        name="areAreRadio"
-        defaultValue={'meowmeow'}
-      >
-        <RadioButton label={'meow'} value={'meow'} />
-        <RadioButton label={'meow1'} value={'meowmeow'} />
-        <RadioButton label={'meow3'} value={'meowmeowmeow'} />
-      </RadioButtonGroup>
-      <RadioButtonGroup
-        layout={CheckboxGroupLayout.Vertical}
-        name="areAreRadio"
-        disabled
-        defaultValue={'meowmeow'}
-      >
-        <RadioButton label={'meow'} value={'meow'} />
-        <RadioButton label={'meow1'} value={'meowmeow'} />
-        <RadioButton label={'meow3'} value={'meowmeowmeow'} />
-      </RadioButtonGroup>
-      <RadioButtonGroup
-        theme={CheckboxTheme.Box}
-        layout={CheckboxGroupLayout.Vertical}
-        name="areAreRadio"
-        defaultValue={'meowmeow'}
-      >
-        <RadioButton label={'meow'} value={'meow'} />
-        <RadioButton label={'meow1'} value={'meowmeow'} />
-        <RadioButton label={'meow3'} value={'meowmeowmeow'} />
-      </RadioButtonGroup>
+    <div className={classes.root}>
+      Horizontal Layout
+      <div className={classes.component}>
+        <RadioButtonGroup
+          layout={RadioButtonGroupLayout.Horizontal}
+          name="areAreRadio"
+          defaultValue={'optionoption'}
+        >
+          <RadioButton label={'option'} value={'option'} />
+          <RadioButton label={'option1'} value={'optionoption'} />
+          <RadioButton label={'option3'} value={'optionoptionoption'} />
+        </RadioButtonGroup>
+      </div>
+      Disabled
+      <div className={classes.component}>
+        <RadioButtonGroup
+          layout={RadioButtonGroupLayout.Horizontal}
+          name="areAreRadio"
+          disabled
+        >
+          <RadioButton label={'option'} value={'option'} />
+          <RadioButton label={'option1'} value={'optionoption'} />
+          <RadioButton label={'option3'} value={'optionoptionoption'} />
+        </RadioButtonGroup>
+      </div>
+      Error
+      <div className={classes.component}>
+        <RadioButtonGroup
+          error
+          withSpacing
+          errorText={'Bad choice'}
+          name="areAreRadio"
+        >
+          <RadioButton label={'option'} value={'option'} />
+          <RadioButton label={'option1'} value={'optionoption'} />
+          <RadioButton label={'option3'} value={'optionoptionoption'} />
+        </RadioButtonGroup>
+      </div>
+      Box
+      <div className={classes.component}>
+        <RadioButtonGroup
+          withSpacing
+          theme={RadioButtonTheme.Box}
+          name="areAreRadio"
+          defaultValue={'optionoption'}
+        >
+          <RadioButton suffix="$10" label={'option'} value={'option'} />
+          <RadioButton label={'option1'} value={'optionoption'} />
+          <RadioButton label={'option3'} value={'optionoptionoption'} />
+        </RadioButtonGroup>
+      </div>
     </div>
   );
 };
