@@ -24,6 +24,7 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
     onClick(index);
   };
   const onKeyDown = (e: React.KeyboardEvent<HTMLLIElement>) => {
+    // tslint:disable-next-line
     const keyCode = e.keyCode;
 
     if (isSelectKey(keyCode)) {
