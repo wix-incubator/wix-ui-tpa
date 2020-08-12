@@ -22,7 +22,7 @@ describe('RadioButtonGroup', () => {
   const createDriver = createUniDriverFactory(radioButtonGroupDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<RadioButtonGroup />);
+    const driver = createDriver(<RadioButtonGroup name={'name'} />);
     expect(await driver.exists()).toBe(true);
   });
   it('should render with children', async () => {
@@ -36,7 +36,7 @@ describe('RadioButtonGroup', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <RadioButtonGroup />,
+          <RadioButtonGroup name={'name'} />,
           radioButtonGroupTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -50,7 +50,7 @@ describe('RadioButtonGroup', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <RadioButtonGroup />,
+          <RadioButtonGroup name={'name'}/>,
           enzymeRadioButtonGroupTestkitFactory,
           mount,
           {
