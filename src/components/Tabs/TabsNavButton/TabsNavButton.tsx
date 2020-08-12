@@ -17,10 +17,8 @@ export class TabsNavButton extends React.Component<TabsNavButtonProps> {
 
   _onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     const { onClick } = this.props;
-    // tslint:disable-next-line
-    const keyCode = e.keyCode;
 
-    if (isSelectKey(keyCode)) {
+    if (isSelectKey(e)) {
       onClick();
       return false;
     }
