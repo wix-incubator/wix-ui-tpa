@@ -50,7 +50,7 @@ describe('RadioButtonGroup', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <RadioButtonGroup name={'name'}/>,
+          <RadioButtonGroup name={'name'} />,
           enzymeRadioButtonGroupTestkitFactory,
           mount,
           {
