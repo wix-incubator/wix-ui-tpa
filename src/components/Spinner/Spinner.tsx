@@ -19,7 +19,6 @@ export class Spinner extends React.Component<SpinnerProps, SpinnerState> {
 
   render() {
     const { className, type, width, isCentered, isStatic } = this.props;
-
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
