@@ -13,13 +13,17 @@ describe('Modal', () => {
   const createDriver = createUniDriverFactory(modalDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Modal buttonText="Click Me" />);
+    const driver = createDriver(
+      <Modal isOpen rootElement={document.body} focusTrap={false} />,
+    );
     expect(await driver.exists()).toBe(true);
   });
 
   it('should use mobile design', async () => {
     const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<Modal />),
+      TPAComponentsWrapper({ mobile: true })(
+        <Modal isOpen rootElement={document.body} focusTrap={false} />,
+      ),
     );
     expect(await driver.isMobile()).toBe(true);
   });
@@ -27,9 +31,13 @@ describe('Modal', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<Modal />, modalTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <Modal isOpen rootElement={document.body} focusTrap={false} />,
+          modalTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -38,7 +46,7 @@ describe('Modal', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Modal />,
+          <Modal isOpen rootElement={document.body} focusTrap={false} />,
           enzymeModalTestkitFactory,
           mount,
           {

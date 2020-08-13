@@ -4,7 +4,6 @@ import { Modal } from './';
 
 visualize('Modal', () => {
   story('simple', () => {
-    snap('default props', <Modal />);
-    snap('custom buttonText', <Modal buttonText={'Some custom text'} />);
+    snap('default props', <Modal isOpen rootElement={document.body} />);
   });
 });
