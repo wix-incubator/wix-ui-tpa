@@ -22,3 +22,5 @@ export * from './components/Tooltip';
 export * from './components/Pagination';
 export * from './components/Ratings';
 export * from './components/TPAComponentsConfig';
+export * from './components/CalendarPopover';
+
