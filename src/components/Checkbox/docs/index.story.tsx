@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from '../';
+import { Checkbox, CheckboxTheme } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -65,7 +65,7 @@ export default {
     'data-hook': 'storybook-Checkbox',
   }),
   exampleProps: {
-    //
+    theme: Object.values(CheckboxTheme),
   },
   dataHook: 'storybook-Checkbox',
   sections: [
@@ -101,7 +101,7 @@ export default {
               params: {
                 colors: [
                   {
-                    label: 'Icon Color',
+                    label: 'Icon/Box Color',
                     wixParam: 'iconColor',
                     defaultColor: 'color-8',
                   },
