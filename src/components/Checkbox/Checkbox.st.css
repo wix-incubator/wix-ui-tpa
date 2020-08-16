@@ -16,8 +16,9 @@
 :vars {
     /*Defaults*/
     DefaultTextColor: color-5;
-    DefaultBorderColor: color-5;
+    DefaultBoxBorderColor: color-5;
     DefaultIconColor: color-8;
+    DefaultBoxColor: color-1;
     DisabledColor: color-3;
     Font: font("{theme: 'Body-M', size: '16px', lineHeight: '24px'}");
 }
@@ -25,15 +26,16 @@
 :vars {
     /*Overrides*/
     TextColor: --overridable;
-    BorderColor: --overridable;
-    IconColor: color-8;
-    BoxColor: color-1;
+    BoxBorderColor: --overridable;
+    IconColor: --overridable;
+    BoxColor: --overridable;
 }
 
 :vars {
-    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentBoxBorderColor: color(fallback(value(BoxBorderColor), value(DefaultBoxBorderColor)));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentBoxColor: color(fallback(value(BoxColor), value(DefaultBoxColor)));
 }
 
 .root {
@@ -77,8 +79,8 @@
 .root:box {
     display: flex;
     padding: 16px;
-    background-color: color(color-1);
-    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+    background-color: color(value(CurrentBoxColor));
+    border: 1px solid applyOpacity(value(CurrentBoxBorderColor), 0.6);
     cursor: pointer;
     box-sizing: border-box;
 }
@@ -89,7 +91,7 @@
     height: 16px;
 
     border: 1px solid;
-    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-color: applyOpacity(value(CurrentTextColor), 0.6);
     border-radius: 1px;
 
     font-size: 13px;
@@ -134,11 +136,11 @@
 }
 
 .root:box:hover, .root:box:focus-within {
-    border-color: applyOpacity(value(CurrentBorderColor), 1);
+    border-color: applyOpacity(value(CurrentBoxBorderColor), 1);
 }
 
 .root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
-    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-color: applyOpacity(value(CurrentBoxBorderColor), 0.6);
 }
 
 .root:box:checked {
@@ -151,11 +153,11 @@
 }
 
 .root:box:not(:disabled):hover .icon {
-    border-color: applyOpacity(value(CurrentBorderColor), 1);
+    border-color: applyOpacity(value(CurrentBoxBorderColor), 1);
 }
 
 .root:hover .icon {
-    border-color: applyOpacity(value(CurrentBorderColor), 1);
+    border-color: applyOpacity(value(CurrentBoxBorderColor), 1);
 }
 
 .root:error:not(:hover) .icon {

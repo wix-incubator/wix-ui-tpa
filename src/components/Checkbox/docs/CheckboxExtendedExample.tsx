@@ -22,7 +22,7 @@ export const CheckboxExtendedExample = () => {
           theme={CheckboxTheme.Box}
           checked={value}
           onChange={({ checked }) => setValue(checked)}
-          label={value ? 'Wrapped with box!' : 'Still wrapped!'}
+          label={value ? 'Still wrapped!' : 'Wrapped with box!'}
           className={classes.root}
         />
       </div>

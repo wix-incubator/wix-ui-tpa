@@ -101,18 +101,23 @@ export default {
               params: {
                 colors: [
                   {
-                    label: 'Icon/Box Color',
+                    label: 'Icon Color',
                     wixParam: 'iconColor',
                     defaultColor: 'color-8',
                   },
                   {
-                    label: 'Border Color',
-                    wixParam: 'borderColor',
+                    label: 'Text Color',
+                    wixParam: 'textColor',
                     defaultColor: 'color-5',
                   },
                   {
-                    label: 'Text Color',
-                    wixParam: 'textColor',
+                    label: 'Box Color',
+                    wixParam: 'boxColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Box Border Color',
+                    wixParam: 'boxBorderColor',
                     defaultColor: 'color-5',
                   },
                 ],
