@@ -52,3 +52,4 @@ require('../src/components/CalendarPopover/docs/index.story');
 require('../src/components/Spinner/docs/index.story');
 require('../src/components/RadioButtonGroup/docs/index.story');
 require('../src/components/Modal/docs/index.story');
+require('../src/components/Modal/docs/ModalTestStory');

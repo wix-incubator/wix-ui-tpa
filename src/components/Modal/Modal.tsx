@@ -112,6 +112,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
         {isOpen ? (
           <div
             className={classes.overlay}
+            data-hook="tpa-modal-overlay"
             onClick={() => {
               if (this.props.closeOnClickOutside) {
                 this.onClose();
@@ -119,7 +120,6 @@ export class Modal extends React.Component<ModalProps, ModalState> {
             }}
           />
         ) : null}
-
         <section
           className={`${classes.modal} ${
             isOpen && !isCloseInProgress ? classes.animated : ''
@@ -130,17 +130,21 @@ export class Modal extends React.Component<ModalProps, ModalState> {
             minWidth,
             maxWidth,
           }}
+          data-hook="tpa-modal-box"
+          data-is-open={isOpen}
         >
           <button
             className={classes.close}
             onClick={this.onClose}
             ref={closeButtonRef}
+            data-hook="tpa-modal-close-btn"
           >
             <CloseIcon />
           </button>
           <div
             className={`${classes.content} ${this.props.contentClassName ||
               ''}`}
+            data-hook="tpa-modal-content"
           >
             {this.props.children}
           </div>
@@ -150,6 +154,6 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   }
 
   componentWillUnmount() {
-    this.props.rootElement.removeChild(this.el);
+    this.props.rootElement && this.props.rootElement.removeChild(this.el);
   }
 }
