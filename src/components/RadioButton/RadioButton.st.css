@@ -32,18 +32,19 @@
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
 .labelWrapper {
     display: flex;
-    width: 256px;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
 }
 
 .root {
     -st-extends: RadioButton;
     -st-states: checked, disabled, box, error;
-    width: 325px;
     display: flex;
     line-height: 20px;
 }
@@ -76,17 +77,18 @@
 .root:box:not(:disabled):hover .icon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
+
 .root::label {
-    font-size: 17px;
-    font-weight: 500;
-    color: value(CurrentTextColor);
+    width: 100%;
+    font: font(value(LabelTextFont));
+    color: applyOpacity(value(CurrentTextColor),1);
 }
 
 .root::icon {
-    display: block;
+    display: flex;
     position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
+    margin-bottom: 1px;
+    top:3px;
     cursor: pointer;
     font-size: 22px;
     -webkit-user-select: none;
@@ -95,11 +97,17 @@
     user-select: none;
 }
 
+.root::icon:before {
+    content: '';
+    width: 35px;
+}
+
 .checkmark {
     position: absolute;
     top: 0;
     background-color: transparent;
     left: 0;
+    right: 0;
     height: 20px;
     border-radius: 50%;
     box-sizing: border-box;
@@ -124,7 +132,7 @@
 .root:box {
     display: flex;
     padding: 16px;
-    margin-bottom: 23[x];
+    margin-bottom: 23 [x];
     background-color: color(color-1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;

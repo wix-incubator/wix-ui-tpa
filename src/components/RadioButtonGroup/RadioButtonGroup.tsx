@@ -12,42 +12,29 @@ export interface RadioButtonGroupProps extends TPAComponentProps {
   errorText?: string;
   disabled?: boolean;
   'data-hook'?: string;
-  defaultValue?: string;
+  value?: string;
   name: string;
   withSpacing?: boolean;
   theme?: RadioButtonTheme;
-  onChange?(value: string): void;
+  onChange(value: string): void;
 }
 
 interface DefaultProps {
-  defaultValue: string;
+  value: string;
   layout?: RadioButtonGroupLayout;
 }
 
-interface State {
-  count: number;
-  checkedValue: string;
-}
 export enum RadioButtonGroupLayout {
   Horizontal = 'horizontal',
   Vertical = 'vertical',
 }
 
 /** radio button group */
-export class RadioButtonGroup extends React.Component<
-  RadioButtonGroupProps,
-  State
-> {
+export class RadioButtonGroup extends React.Component<RadioButtonGroupProps> {
   static displayName = 'RadioButtonGroup';
   static defaultProps: DefaultProps = {
-    defaultValue: '',
+    value: '',
     layout: RadioButtonGroupLayout.Vertical,
-  };
-
-  state = { count: 0, checkedValue: this.props.defaultValue };
-
-  _handleClick = () => {
-    this.setState(({ count }) => ({ count: count + 1 }));
   };
 
   render() {
@@ -86,10 +73,9 @@ export class RadioButtonGroup extends React.Component<
                     disabled,
                     error,
                     theme,
-                    checked: child.props.value === this.state.checkedValue,
+                    checked: child.props.value === this.props.value,
                     onChange: e => {
-                      this.props.onChange && this.props.onChange(e);
-                      this.setState({ checkedValue: e.value });
+                      this.props.onChange(e.value);
                     },
                   })}
                 </>

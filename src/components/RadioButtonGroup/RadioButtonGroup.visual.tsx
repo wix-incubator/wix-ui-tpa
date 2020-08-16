@@ -12,7 +12,7 @@ class RadioButtonGroupVisual extends React.Component<any> {
         <RadioButtonGroup
           name={'group'}
           onChange={e => console.log(e)}
-          defaultValue={'option'}
+          value={'option'}
           {...this.props}
         />
       </VisualTestContainer>
@@ -21,6 +21,10 @@ class RadioButtonGroupVisual extends React.Component<any> {
 }
 
 const radioButtonEl = <RadioButton key={1} label={'meow'} value={'meow'} />;
+const radioButtonElAnother = (
+  <RadioButton key={1} label={'meow'} value={'meow'} />
+);
+const radioButtonEl2 = <RadioButton key={1} label={'meow'} value={'meow'} />;
 
 const tests = [
   {
@@ -36,6 +40,14 @@ const tests = [
         it: 'with label',
         props: {
           children: [radioButtonEl],
+          label: "No worries. I'm a label.",
+        },
+      },
+      {
+        it: 'with label',
+        props: {
+          withSpacing: true,
+          children: [radioButtonEl, radioButtonElAnother, radioButtonEl2],
           label: "No worries. I'm a label.",
         },
       },

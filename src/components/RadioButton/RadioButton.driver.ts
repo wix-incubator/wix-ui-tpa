@@ -9,7 +9,7 @@ import { RADIOBUTTON_DATA_HOOKS, RADIOBUTTON_DATA_KEYS } from './dataHooks';
 export interface RadioButtonDriver extends BaseUniDriver {
   isChecked(): Promise<boolean>;
   isDisabled(): Promise<boolean>;
-  clickOnRadioButton(): Promise<void>;
+  click(): Promise<void>;
 }
 
 export const radioButtonDriverFactory = (
@@ -23,7 +23,7 @@ export const radioButtonDriverFactory = (
     async isDisabled() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Disabled)) === 'true';
     },
-    async clickOnRadioButton() {
+    async click() {
       const radioButtonDatahook = `[data-hook="${RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper}"]`;
       const inputNative = await base
         .$(`${radioButtonDatahook} input`)

@@ -8,7 +8,7 @@ class RadioButtonGroupVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer>
-        <RadioButtonGroup name="group" {...this.props} />
+        <RadioButtonGroup onChange={() => {}} name="group" {...this.props} />
       </VisualTestContainer>
     );
   }

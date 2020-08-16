@@ -40,7 +40,7 @@ describe('RadioButton', () => {
       <RadioButton value="value1" label="Label" onChange={onChangeSpy} />,
     );
 
-    await driver.clickOnRadioButton();
+    await driver.click();
 
     expect(onChangeSpy).toHaveBeenCalledWith(
       expect.objectContaining({ value: 'value1' }),
