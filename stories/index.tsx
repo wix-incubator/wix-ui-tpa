@@ -49,3 +49,4 @@ require('../src/components/CalendarCell/docs/index.story');
 require('../src/components/Event/docs/index.story');
 require('../src/components/CalendarPopover/docs/index.story');
 require('../src/components/Modal/docs/index.story');
+require('../src/components/Modal/docs/ModalTestStory');
