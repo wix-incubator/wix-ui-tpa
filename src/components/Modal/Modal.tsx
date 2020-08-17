@@ -4,7 +4,7 @@ import createFocusTrap from 'focus-trap';
 import { st, classes } from './Modal.st.css';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ModalProps, ModalDefaultProps, ModalState } from './types';
-import { CloseIcon } from './Close';
+import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 
 export class Modal extends React.Component<ModalProps, ModalState> {
   static displayName = 'Modal';

@@ -56,7 +56,16 @@ class Modal extends React.Component<ModalProps> {
               `[data-hook="e2e-storybook-modal-wrapper"]`,
             )}
             {...rest}
-          />
+          >
+            <input
+              className="e2e-storybook-modal-input-first"
+              style={{ display: 'block', margin: '20px' }}
+            />
+            <input
+              className="e2e-storybook-modal-input-second"
+              style={{ display: 'block', margin: '20px' }}
+            />
+          </CoreModal>
         ) : null}
       </div>
     );
