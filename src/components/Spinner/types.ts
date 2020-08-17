@@ -9,7 +9,7 @@ export interface SpinnerProps extends TPAComponentProps {
   type?: SPINNER_TYPES;
   width?: number;
   isCentered?: boolean;
-  isStatic: boolean;
+  isStatic?: boolean;
 }
 
 export interface SpinnerDefaultProps {

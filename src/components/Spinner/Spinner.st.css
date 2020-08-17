@@ -16,7 +16,7 @@
 }
 
 .root {
-    -st-states: mobile, centered, static;
+    -st-states: centered, static;
 
     animation: rotate 2s linear infinite;
     z-index: 2;
@@ -35,8 +35,6 @@
 .root:static, .root:static .circle {
     animation: none;
 }
-
-.root:mobile {}
 
 @keyframes rotate {
     100% {

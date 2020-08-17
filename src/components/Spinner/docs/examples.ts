@@ -5,9 +5,7 @@ export const regular = `
 `;
 
 export const slim = `
-<ExampleWithContextProps mobile={true}>
-  <Spinner type="slim" />
-</ExampleWithContextProps>
+<Spinner type="slim" />
 `;
 
 export const centered = `

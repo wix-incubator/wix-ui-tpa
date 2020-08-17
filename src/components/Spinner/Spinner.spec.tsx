@@ -3,7 +3,6 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { spinnerDriverFactory } from './Spinner.driver';
 import { Spinner } from './';
 import { spinnerTestkitFactory } from '../../testkit';
@@ -15,13 +14,6 @@ describe('Spinner', () => {
   it('should render', async () => {
     const driver = createDriver(<Spinner />);
     expect(await driver.exists()).toBe(true);
-  });
-
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<Spinner />),
-    );
-    expect(await driver.isMobile()).toBe(true);
   });
 
   describe('testkit', () => {
