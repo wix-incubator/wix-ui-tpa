@@ -6,19 +6,18 @@ import {
   SPINNER_TYPES,
 } from './types';
 import { st, classes } from './Spinner.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export class Spinner extends React.Component<SpinnerProps, SpinnerState> {
   static displayName = 'Spinner';
   static defaultProps: SpinnerDefaultProps = {
     type: SPINNER_TYPES.regular,
-    width: 100,
+    diameter: 50,
     isCentered: false,
     isStatic: false,
   };
 
   render() {
-    const { className, type, width, isCentered, isStatic } = this.props;
+    const { className, type, diameter, isCentered, isStatic } = this.props;
     return (
       <svg
         viewBox="0 0 50 50"
@@ -28,10 +27,10 @@ export class Spinner extends React.Component<SpinnerProps, SpinnerState> {
           className,
         )}
         style={{
-          width: `${width}px`,
-          height: `${width}px`,
-          top: isCentered ? `calc(50% - ${width / 2}px)` : 0,
-          margin: isCentered ? `0 0 0 -${width / 2}px` : 0,
+          width: `${diameter}px`,
+          height: `${diameter}px`,
+          top: isCentered ? `calc(50% - ${diameter / 2}px)` : 'auto',
+          left: isCentered ? `calc(50% - ${diameter / 2}px)` : 'auto',
         }}
         data-hook={this.props['data-hook']}
       >

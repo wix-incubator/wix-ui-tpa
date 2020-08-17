@@ -27,7 +27,7 @@ function Spinner(props: SpinnerProps) {
   return (
     <div
       style={{
-        height: !props.isCentered ? 'auto' : props.width + 40,
+        height: !props.isCentered ? 'auto' : props.diameter + 40,
         position: 'relative',
       }}
     >
@@ -43,7 +43,7 @@ export default {
   component: Spinner,
   componentPath: '../Spinner.tsx',
   componentProps: () => ({
-    width: 100,
+    diameter: 50,
     isCentered: false,
     'data-hook': 'storybook-Spinner',
   }),

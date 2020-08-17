@@ -19,7 +19,6 @@
     -st-states: centered, static;
 
     animation: rotate 2s linear infinite;
-    z-index: 2;
 }
 
 .circle {
@@ -29,7 +28,6 @@
 
 .root:centered {
     position: absolute;
-    left: 50%;
 }
 
 .root:static, .root:static .circle {

@@ -7,14 +7,14 @@ export enum SPINNER_TYPES {
 
 export interface SpinnerProps extends TPAComponentProps {
   type?: SPINNER_TYPES;
-  width?: number;
+  diameter?: number;
   isCentered?: boolean;
   isStatic?: boolean;
 }
 
 export interface SpinnerDefaultProps {
   type: SPINNER_TYPES;
-  width: number;
+  diameter: number;
   isCentered: boolean;
   isStatic: boolean;
 }

@@ -9,5 +9,5 @@ export const slim = `
 `;
 
 export const centered = `
-<div style={{ height: "140px", position: "relative" }}><Spinner width={100} isCentered={true} /></div>
+<div style={{ height: "140px", position: "relative" }}><Spinner diameter={50} isCentered={true} /></div>
 `;
