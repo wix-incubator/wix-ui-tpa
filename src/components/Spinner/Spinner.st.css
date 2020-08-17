@@ -1,0 +1,56 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+:vars {
+    DefaultPathColor: color(color-5);
+}
+
+:vars {
+    PathColor: --overridable;
+}
+
+:vars {
+    UsedPathColor: color(fallback(value(PathColor), value(DefaultPathColor)));
+}
+
+.root {
+    -st-states: centered, static;
+
+    animation: rotate 2s linear infinite;
+}
+
+.circle {
+    stroke: value(UsedPathColor);
+    animation: dash 1.5s ease-in-out infinite;
+}
+
+.root:centered {
+    position: absolute;
+}
+
+.root:static, .root:static .circle {
+    animation: none;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes dash {
+    0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+    }
+    50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+    }
+    100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+    }
+}
