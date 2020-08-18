@@ -106,6 +106,11 @@ export default {
                     defaultColor: 'color-8',
                   },
                   {
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
                     label: 'Text Color',
                     wixParam: 'textColor',
                     defaultColor: 'color-5',

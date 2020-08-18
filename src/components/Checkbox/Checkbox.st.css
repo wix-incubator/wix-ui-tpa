@@ -16,6 +16,7 @@
 :vars {
     /*Defaults*/
     DefaultTextColor: color-5;
+    DefaultBorderColor: color-5;
     DefaultBoxBorderColor: color-5;
     DefaultIconColor: color-8;
     DefaultBoxColor: color-1;
@@ -26,12 +27,14 @@
 :vars {
     /*Overrides*/
     TextColor: --overridable;
+    BorderColor: --overridable;
     BoxBorderColor: --overridable;
     IconColor: --overridable;
     BoxColor: --overridable;
 }
 
 :vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentBoxBorderColor: color(fallback(value(BoxBorderColor), value(DefaultBoxBorderColor)));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
@@ -91,7 +94,7 @@
     height: 16px;
 
     border: 1px solid;
-    border-color: applyOpacity(value(CurrentTextColor), 0.6);
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
     border-radius: 1px;
 
     font-size: 13px;
