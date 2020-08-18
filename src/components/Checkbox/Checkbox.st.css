@@ -160,7 +160,7 @@
 }
 
 .root:hover .icon {
-    border-color: applyOpacity(value(CurrentBoxBorderColor), 1);
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
 .root:error:not(:hover) .icon {
