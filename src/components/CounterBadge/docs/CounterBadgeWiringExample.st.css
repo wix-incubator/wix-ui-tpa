@@ -1,0 +1,13 @@
+:import {
+    -st-from: "../CounterBadge.st.css";
+    -st-default: CounterBadge;
+}
+
+.root {
+    -st-mixin: CounterBadge(
+        BadgePrimaryBGColor '"--primaryBGColor"',
+        BadgePrimaryColor '"--primaryColor"',
+        BadgeSecondaryBGColor '"--secondaryBGColor"',
+        BadgeSecondaryColor '"--secondaryColor"'
+    );
+}

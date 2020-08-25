@@ -38,3 +38,4 @@ export { CalendarCell } from './CalendarCell';
 export { Event } from './Event';
 export { CalendarPopover } from './CalendarPopover';
 export { Spinner } from './Spinner';
+export { CounterBadge } from './CounterBadge';

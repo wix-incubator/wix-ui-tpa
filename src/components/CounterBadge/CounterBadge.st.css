@@ -1,0 +1,45 @@
+:import {
+    -st-from: "wix-style-react/dist/src/CounterBadge/CounterBadge.st.css";
+    -st-default: CounterBadge;
+    -st-named: --color, --bg;
+}
+
+:import {
+    -st-from: "wix-style-react/dist/src/Foundation/stylable/typography.st.css";
+    -st-default: Typography;
+    -st-named: --font-size, --line-height;
+}
+
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, applyOpacity, font;
+}
+
+:vars {
+    DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '1.33'}";
+    BadgePrimaryBGColor: --overridable;
+    BadgeSecondaryBGColor: --overridable;
+    BadgePrimaryColor: --overridable;
+    BadgeSecondaryColor: --overridable;
+}
+
+.root {
+    -st-extends: CounterBadge, Typography;
+    -st-states: theme(enum(Primary, Secondary));
+    height: 20px;
+}
+
+.root:theme(Primary) {
+    --bg: fallback(color(value(BadgePrimaryBGColor)), color(color-8));
+    --color: fallback(color(value(BadgePrimaryColor)), color(color-1));
+}
+
+.root:theme(Secondary) {
+    --bg: fallback(color(value(BadgeSecondaryBGColor)), applyOpacity(color(color-8), 0.1));
+    --color: fallback(color(value(BadgeSecondaryColor)), color(color-8));
+}
+
+.root:text {
+    --font-size: 12px;
+    --line-height: 16px;
+}
