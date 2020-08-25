@@ -21,7 +21,10 @@ describe('counterBadge', () => {
 
   it('should render', async () => {
     const driver = counterBadgeTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find CounterBadge');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find CounterBadge',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

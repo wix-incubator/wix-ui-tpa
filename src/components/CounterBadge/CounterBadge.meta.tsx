@@ -7,6 +7,6 @@ CounterBadgeMetadata.nonReactStrictModeCompliant = true;
 CounterBadgeMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });
