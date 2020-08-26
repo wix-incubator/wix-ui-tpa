@@ -7,10 +7,6 @@ export interface ModalProps extends TPAComponentProps {
   onClose?(): void;
   contentClassName?: string;
   closeOnClickOutside?: boolean;
-  minHeight?: string;
-  maxHeight?: string;
-  minWidth?: string;
-  maxWidth?: string;
   closeButtonRef?: RefObject<any>;
   focusTrap?: boolean;
 }
@@ -18,10 +14,6 @@ export interface ModalProps extends TPAComponentProps {
 export interface ModalDefaultProps {
   isOpen: boolean;
   closeOnClickOutside: boolean;
-  minHeight: string;
-  maxHeight: string;
-  minWidth: string;
-  maxWidth: string;
   focusTrap: boolean;
 }
 

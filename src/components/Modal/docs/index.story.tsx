@@ -98,10 +98,6 @@ export default {
     children: childrenExamples[0].value,
     'data-hook': 'storybook-Modal',
     onClose: () => setState({ isOpen: false }),
-    minHeight: '150px',
-    maxHeight: '620px',
-    minWidth: 'auto',
-    maxWidth: '580px',
   }),
   exampleProps: {
     closeOnClickOutside: false,
