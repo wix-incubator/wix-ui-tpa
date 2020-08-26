@@ -4,6 +4,12 @@ import { Modal } from './';
 
 visualize('Modal', () => {
   story('simple', () => {
-    snap('default props', <Modal isOpen rootElement={document.body} />);
+    const content = (
+      <Modal isOpen rootElement={document.body}>
+        <p>Inner Content.</p>
+      </Modal>
+    );
+
+    snap('default props', content);
   });
 });

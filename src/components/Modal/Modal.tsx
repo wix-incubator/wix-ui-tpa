@@ -11,27 +11,25 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   static defaultProps: ModalDefaultProps = {
     isOpen: false,
     closeOnClickOutside: true,
-    minHeight: '150px',
-    maxHeight: '620px',
-    minWidth: 'auto',
-    maxWidth: '580px',
     focusTrap: true,
   };
 
   el = null;
   focusTrapInstance = null;
+  _closingTimeout = null;
 
   constructor(props: ModalProps) {
     super(props);
 
-    this.el = document.createElement('div');
     this.state = {
       isCloseInProgress: false,
     };
   }
 
   componentDidMount() {
+    this.el = document.createElement('div');
     this.props.rootElement.appendChild(this.el);
+
     if (this.props.focusTrap) {
       this.focusTrapInstance = createFocusTrap(this.el, {
         escapeDeactivates: false,
@@ -41,7 +39,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
   }
 
-  componentDidUpdate(prevProps: ModalProps) {
+  componentDidUpdate(prevProps: ModalProps, prevState: ModalState) {
     if (this.props.isOpen !== prevProps.isOpen && this.focusTrapInstance) {
       if (this.props.isOpen) {
         try {
@@ -53,28 +51,25 @@ export class Modal extends React.Component<ModalProps, ModalState> {
         this.focusTrapInstance.deactivate();
       }
     }
+
+    if (!prevState.isCloseInProgress && this.state.isCloseInProgress) {
+      clearTimeout(this._closingTimeout);
+      this._closingTimeout = setTimeout(() => {
+        this.setState({ isCloseInProgress: false });
+      }, 200);
+    } else if (
+      prevState.isCloseInProgress &&
+      !this.state.isCloseInProgress &&
+      this.props.onClose
+    ) {
+      this.props.onClose();
+    }
   }
 
-  onClose = () => {
-    this.setState(
-      {
-        isCloseInProgress: true,
-      },
-      () => {
-        setTimeout(() => {
-          this.setState(
-            {
-              isCloseInProgress: false,
-            },
-            () => {
-              if (this.props.onClose) {
-                this.props.onClose();
-              }
-            },
-          );
-        }, 200);
-      },
-    );
+  _onClose = () => {
+    this.setState({
+      isCloseInProgress: true,
+    });
   };
 
   render() {
@@ -87,7 +82,8 @@ export class Modal extends React.Component<ModalProps, ModalState> {
               data-rtl={rtl}
               data-hook={this.props['data-hook']}
             >
-              {ReactDOM.createPortal(this.renderModal(mobile, rtl), this.el)}
+              {this.el &&
+                ReactDOM.createPortal(this._renderModal(mobile, rtl), this.el)}
             </div>
           );
         }}
@@ -95,16 +91,8 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     );
   }
 
-  renderModal(mobile, rtl) {
-    const {
-      isOpen,
-      className,
-      minHeight,
-      maxHeight,
-      minWidth,
-      maxWidth,
-      closeButtonRef,
-    } = this.props;
+  _renderModal(mobile, rtl) {
+    const { isOpen, className, closeButtonRef } = this.props;
     const { isCloseInProgress } = this.state;
 
     return (
@@ -115,7 +103,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
             data-hook="tpa-modal-overlay"
             onClick={() => {
               if (this.props.closeOnClickOutside) {
-                this.onClose();
+                this._onClose();
               }
             }}
           />
@@ -124,18 +112,12 @@ export class Modal extends React.Component<ModalProps, ModalState> {
           className={`${classes.modal} ${
             isOpen && !isCloseInProgress ? classes.animated : ''
           } ${isCloseInProgress ? classes.closing : ''}`}
-          style={{
-            minHeight: !mobile ? minHeight : 'auto',
-            maxHeight: !mobile ? maxHeight : 'auto',
-            minWidth,
-            maxWidth,
-          }}
           data-hook="tpa-modal-box"
           data-is-open={isOpen}
         >
           <button
             className={classes.close}
-            onClick={this.onClose}
+            onClick={this._onClose}
             ref={closeButtonRef}
             data-hook="tpa-modal-close-btn"
           >
@@ -154,6 +136,7 @@ export class Modal extends React.Component<ModalProps, ModalState> {
   }
 
   componentWillUnmount() {
-    this.props.rootElement && this.props.rootElement.removeChild(this.el);
+    this.props.rootElement.removeChild(this.el);
+    clearTimeout(this._closingTimeout);
   }
 }

@@ -7,6 +7,9 @@
     padding: 24px;
 
     width: 100%;
+    max-width: 580px;
+    min-height: 150px;
+    max-height: min(90vh, 620px);
 
     top: 50%;
     left: 50%;
