@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from '../index';
+import { Checkbox, CheckboxTheme } from '../index';
 import { classes } from './CheckboxExtendedExample.st.css';
 
 export const CheckboxExtendedExample = () => {
@@ -13,6 +13,16 @@ export const CheckboxExtendedExample = () => {
           checked={value}
           onChange={({ checked }) => setValue(checked)}
           label={value ? 'Hakol tov!' : 'Click me, ah sheli!'}
+          className={classes.root}
+        />
+      </div>
+      <div>
+        <h3>Checkbox with Box</h3>
+        <Checkbox
+          theme={CheckboxTheme.Box}
+          checked={value}
+          onChange={({ checked }) => setValue(checked)}
+          label={value ? 'Still wrapped!' : 'Wrapped with box!'}
           className={classes.root}
         />
       </div>

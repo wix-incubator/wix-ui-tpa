@@ -17,7 +17,9 @@
     /*Defaults*/
     DefaultTextColor: color-5;
     DefaultBorderColor: color-5;
+    DefaultBoxBorderColor: color-5;
     DefaultIconColor: color-8;
+    DefaultBoxColor: color-1;
     DisabledColor: color-3;
     Font: font("{theme: 'Body-M', size: '16px', lineHeight: '24px'}");
 }
@@ -26,24 +28,28 @@
     /*Overrides*/
     TextColor: --overridable;
     BorderColor: --overridable;
-    IconColor: color-8;
+    BoxBorderColor: --overridable;
+    IconColor: --overridable;
+    BoxColor: --overridable;
 }
 
 :vars {
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentBoxBorderColor: color(fallback(value(BoxBorderColor), value(DefaultBoxBorderColor)));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentBoxColor: color(fallback(value(BoxColor), value(DefaultBoxColor)));
 }
 
 .root {
     -st-extends: Checkbox;
-    -st-states: checked, disabled, error;
+    -st-states: box, checked, disabled, error;
 
     display: inline-flex;
-    align-items: flex-start;
     box-sizing: border-box;
 
     font: value(Font);
+    transition: background-color 0.2s linear, border-color 0.2s linear;
 }
 
 .root * {
@@ -52,10 +58,58 @@
 
 .root::childContainer {
     display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .root::box {
-    line-height: 20px;
+    line-height: 0;
+    display: flex;
+}
+
+.root::box::after {
+    content: '';
+    width: 12px;
+}
+
+.core {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.root:box {
+    display: flex;
+    background-color: color(value(CurrentBoxColor));
+    border: 1px solid applyOpacity(value(CurrentBoxBorderColor), 0.6);
+    box-sizing: border-box;
+    position: relative;
+}
+
+.root:box::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    display: block;
+    background-color: applyOpacity(value(CurrentIconColor), 0.1);
+    border: 1px solid color(value(CurrentIconColor));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+.root:box::childContainer {
+    padding: 16px;
+    padding-left: 0;
+}
+
+.root:box::box {
+    padding-left: 16px;
 }
 
 .icon {
@@ -70,6 +124,7 @@
     font-size: 13px;
     line-height: 1.2;
     vertical-align: middle;
+    transition: border-color 0.2s linear;
 }
 
 .icon svg {
@@ -77,13 +132,6 @@
 
     width: 8px;
     height: 7px;
-}
-
-.divider {
-    display: inline-block;
-    width: 12px;
-
-    flex-shrink: 0;
 }
 
 .icon path {
@@ -95,8 +143,35 @@
     color: value(CurrentTextColor);
 }
 
+.label.suffixed {
+    flex: 1;
+    white-space: nowrap;
+    display: flex;
+}
+
+.label.suffixed::after {
+    content: '';
+    width: 5px;
+}
+
+.suffix {
+    flex: 0;
+}
+
 /* STATES */
-.root:hover .icon {
+.root:hover:box, .root:focus-within:box {
+    border-color: applyOpacity(value(CurrentBoxBorderColor), 1);
+}
+
+.root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
+    border-color: applyOpacity(value(CurrentBoxBorderColor), 0.6);
+}
+
+.root:box:checked::after {
+    opacity: 1;
+}
+
+.root:hover .icon, .root:focus-within .icon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 

@@ -42,7 +42,11 @@ export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
       return Simulate.change(inputNative);
     },
     async hoverCheckbox() {
-      return base.$(`${iconDatahook}`).hover();
+      return new Promise(async done => {
+        await base.$(`${iconDatahook}`).hover();
+        // wait for transition to end
+        setTimeout(done, 200);
+      });
     },
     async getBorderColor() {
       const icon = getIcon();

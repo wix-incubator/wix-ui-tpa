@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import { Checkbox as CoreCheckbox } from 'wix-ui-core/checkbox';
 import CheckboxChecked from 'wix-ui-icons-common/system/CheckboxChecked';
 import CheckboxIndeterminate from 'wix-ui-icons-common/system/CheckboxIndeterminate';
@@ -9,6 +10,12 @@ import { st, classes } from './Checkbox.st.css';
 interface OnChangeEvent extends React.ChangeEvent<HTMLInputElement> {
   checked: boolean;
 }
+
+export enum CheckboxTheme {
+  Default = 'default',
+  Box = 'box',
+}
+
 export interface CheckboxProps extends TPAComponentProps {
   onChange(event: OnChangeEvent): void;
   label: React.ReactNode | string;
@@ -17,6 +24,8 @@ export interface CheckboxProps extends TPAComponentProps {
   indeterminate?: boolean;
   error?: boolean;
   name?: string;
+  theme?: CheckboxTheme;
+  suffix?: string;
 }
 
 interface DefaultProps {
@@ -25,6 +34,7 @@ interface DefaultProps {
   label: string;
   error: false;
   indeterminate: boolean;
+  theme: CheckboxTheme;
   'data-hook': string;
 }
 
@@ -37,6 +47,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
     label: '',
     error: false,
     indeterminate: false,
+    theme: CheckboxTheme.Default,
     'data-hook': CHECKBOX_DATA_HOOKS.CheckboxWrapper,
   };
 
@@ -72,6 +83,7 @@ export class Checkbox extends React.Component<CheckboxProps> {
 
   render() {
     const {
+      theme,
       checked,
       disabled,
       label,
@@ -79,33 +91,45 @@ export class Checkbox extends React.Component<CheckboxProps> {
       indeterminate,
       onChange,
       name,
+      suffix,
       className,
     } = this.props;
     const iconContent = this._renderIcon();
 
     return (
-      <CoreCheckbox
-        className={st(classes.root, { checked, disabled, error }, className)}
-        {...this.getDataAttributes()}
+      <div
+        className={st(
+          classes.root,
+          { box: theme === 'box', checked, disabled, error },
+          className,
+        )}
         data-hook={this.props['data-hook']}
-        checkedIcon={iconContent}
-        uncheckedIcon={iconContent}
-        indeterminateIcon={iconContent}
-        indeterminate={indeterminate}
-        checked={checked}
-        onChange={onChange}
-        name={name}
+        {...this.getDataAttributes()}
       >
-        <>
-          {!!label && <span className={classes.divider} />}
+        <CoreCheckbox
+          className={classes.core}
+          checkedIcon={iconContent}
+          uncheckedIcon={iconContent}
+          indeterminateIcon={iconContent}
+          indeterminate={indeterminate}
+          checked={checked}
+          onChange={onChange}
+          name={name}
+          disabled={disabled}
+        >
           <div
             data-hook={CHECKBOX_DATA_HOOKS.LabelWrapper}
-            className={classes.label}
+            className={classnames(classes.label, {
+              [classes.suffixed]: suffix,
+            })}
           >
             {label}
           </div>
-        </>
-      </CoreCheckbox>
+          {suffix && (
+            <div className={`${classes.label} ${classes.suffix}`}>{suffix}</div>
+          )}
+        </CoreCheckbox>
+      </div>
     );
   }
 }

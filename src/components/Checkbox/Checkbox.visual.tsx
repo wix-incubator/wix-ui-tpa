@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
-import { Checkbox } from './';
+import { Checkbox, CheckboxTheme } from './';
 
 class CheckboxVisual extends React.Component<any> {
   render() {
@@ -33,7 +33,7 @@ const tests = [
         },
       },
       {
-        it: 'disbled',
+        it: 'disabled',
         props: {
           disabled: true,
           onChange: () => {},
@@ -52,6 +52,23 @@ const tests = [
         it: 'indeterminate',
         props: {
           indeterminate: true,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
+      {
+        it: 'box',
+        props: {
+          theme: CheckboxTheme.Box,
+          onChange: () => {},
+          label: 'Amazing',
+        },
+      },
+      {
+        it: 'suffix',
+        props: {
+          suffix: '$50,000',
+          theme: CheckboxTheme.Box,
           onChange: () => {},
           label: 'Amazing',
         },
