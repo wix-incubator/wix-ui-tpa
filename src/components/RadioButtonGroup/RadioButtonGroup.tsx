@@ -59,7 +59,7 @@ export class RadioButtonGroup extends React.Component<RadioButtonGroupProps> {
       >
         {!!label && <legend className={classes.label}>{label}</legend>}
 
-        <div tabIndex={0} className={classes.wrapper}>
+        <div className={classes.wrapper}>
           {React.Children.map(
             this.props.children,
             (child: RadioButton, idx: number) => {

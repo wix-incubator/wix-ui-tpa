@@ -4,6 +4,7 @@ import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { RadioButtonGroup } from './';
 import { RadioButton } from '../RadioButton';
 import { RadioButtonGroupLayout } from './RadioButtonGroup';
+import { RadioButtonTheme } from '../RadioButton/RadioButton';
 
 class RadioButtonGroupVisual extends React.Component<any> {
   render() {
@@ -92,6 +93,14 @@ const tests = [
           label: "No worries. I'm a label.",
           error: true,
           errorText: "I'm error text",
+        },
+      },
+      {
+        it: 'with box theme',
+        props: {
+          children: [radioButtonEl],
+          label: "No worries. I'm a label.",
+          theme: RadioButtonTheme.Box,
         },
       },
     ],

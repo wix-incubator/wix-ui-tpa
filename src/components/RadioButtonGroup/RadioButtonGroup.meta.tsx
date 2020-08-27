@@ -1,97 +1,109 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
+import { RadioButtonGroup, RadioButtonGroupLayout } from './';
+import Registry from '@ui-autotools/registry';
 import { RadioButton } from '../RadioButton';
-import { RadioButtonGroupLayout, RadioButtonGroup } from '../RadioButtonGroup';
+import { RadioButtonTheme } from '../RadioButton/RadioButton';
 
-class RadioButtonGroupVisual extends React.Component<any> {
-  render() {
-    return (
-      <VisualTestContainer>
-        <RadioButtonGroup onChange={() => {}} name="group" {...this.props} />
-      </VisualTestContainer>
-    );
-  }
-}
-
-const RadioButtonEl = (
-  <RadioButton
-    value={'n'}
-    key={1}
-    checked={false}
-    onChange={() => {}}
-    label="hello"
-  />
+const RadioButtonGroupMetadata = Registry.getComponentMetadata(
+  RadioButtonGroup,
 );
+RadioButtonGroupMetadata.nonReactStrictModeCompliant = true;
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {
-          children: [RadioButtonEl],
-        },
-      },
-      {
-        it: 'with label',
-        props: {
-          children: [RadioButtonEl],
-          label: "No worries. I'm a label.",
-        },
-      },
-      {
-        it: 'with horizontal layout',
-        props: {
-          children: [RadioButtonEl],
-          label: "No worries. I'm a label.",
-          layout: RadioButtonGroupLayout.Horizontal,
-        },
-      },
-      {
-        it: 'with horizontal layout with error text',
-        props: {
-          children: [RadioButtonEl],
-          label: "No worries. I'm a label.",
-          layout: RadioButtonGroupLayout.Horizontal,
-          errorText: "I'm an error",
-          error: true,
-        },
-      },
-      {
-        it: 'with disabled',
-        props: {
-          children: [RadioButtonEl],
-          label: "No worries. I'm a label.",
-          disabled: true,
-        },
-      },
-      {
-        it: 'with error',
-        props: {
-          children: [RadioButtonEl],
-          label: "No worries. I'm a label.",
-          error: true,
-        },
-      },
-      {
-        it: 'with error text',
-        props: {
-          children: [RadioButtonEl],
-          label: "No worries. I'm a label.",
-          error: true,
-          errorText: "I'm error text",
-        },
-      },
-    ],
+const RadioButtonEl = <RadioButton label={'label'} value={'val1'} />;
+
+RadioButtonGroupMetadata.addSim({
+  title: 'render',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
   },
-];
+});
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`RadioButtonGroup/${describe}`, module).add(it, () => (
-      <RadioButtonGroupVisual {...props} />
-    ));
-  });
+RadioButtonGroupMetadata.addSim({
+  title: 'with children',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    children: [RadioButtonEl],
+  },
+});
+
+RadioButtonGroupMetadata.addSim({
+  title: 'with label',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    label: 'Label',
+    children: [RadioButtonEl],
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'with horizontal layout',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    children: [RadioButtonEl],
+    label: "No worries. I'm a label.",
+    layout: RadioButtonGroupLayout.Horizontal,
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'with horizontal layout with error text',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    children: [RadioButtonEl],
+    label: "No worries. I'm a label.",
+    layout: RadioButtonGroupLayout.Horizontal,
+    error: true,
+    errorText: "I'm an error",
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'with disabled',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    label: 'Label',
+    children: [RadioButtonEl],
+    disabled: true,
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'with error',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    label: 'Label',
+    children: [RadioButtonEl],
+    error: true,
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'with Box theme',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    label: 'Label',
+    theme: RadioButtonTheme.Box,
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'with spacing',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    label: 'Label',
+    withSpacing: true,
+  },
+});
+RadioButtonGroupMetadata.addSim({
+  title: 'horizontal',
+  props: {
+    name: 'name',
+    onChange(value: string): void {},
+    label: 'Label',
+    children: [RadioButtonEl],
+    layout: RadioButtonGroupLayout.Horizontal,
+  },
 });

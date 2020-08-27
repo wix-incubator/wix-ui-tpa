@@ -12,9 +12,9 @@ import { RadioButton } from '../RadioButton';
 const noop = () => {};
 const TestComp: React.FunctionComponent<any> = props => (
   <RadioButtonGroup {...props}>
-    <RadioButton value="group1" onChange={noop} label="Checkbox 1️⃣" />
-    <RadioButton value="group1" onChange={noop} label="Checkbox 2️⃣" />
-    <RadioButton value="group1" onChange={noop} label="Checkbox 3️⃣" />
+    <RadioButton value="group1" data-hook={'radio'} onChange={noop} label="RadioButton 1" />
+    <RadioButton value="group1"  data-hook={'radio'} onChange={noop} label="RadioButton 2" />
+    <RadioButton value="group1"  data-hook={'radio'} onChange={noop} label="RadioButton 3" />
   </RadioButtonGroup>
 );
 
@@ -31,7 +31,7 @@ describe('RadioButtonGroup', () => {
     const driver = createDriver(<TestComp />);
 
     expect(await driver.exists()).toBe(true);
-    expect(await driver.isRadioButtonsExists()).toBe(true);
+    expect(await driver.getItemsCountByItemDatahook('radio')).toBe(3);
   });
 
   describe('testkit', () => {

@@ -18,6 +18,7 @@
     DefaultTextColor: color-5;
     DefaultBorderColor: color-5;
     DefaultIconColor: color-8;
+    DefaultBackgroundColor:color-1;
     DisabledColor: gray;
 }
 
@@ -25,13 +26,15 @@
 :vars {
     TextColor: --overridable;
     BorderColor: --overridable;
-    IconColor: color-8;
+    IconColor:  --overridable;
+    BackgroundColor:--overridable;
 }
 
 :vars {
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
@@ -108,7 +111,7 @@
     background-color: transparent;
     left: 0;
     right: 0;
-    height: 20px;
+    height: 16px;
     border-radius: 50%;
     box-sizing: border-box;
     display: flex;
@@ -132,8 +135,8 @@
 .root:box {
     display: flex;
     padding: 16px;
-    margin-bottom: 23 [x];
-    background-color: color(color-1);
+    margin-bottom: 23px;
+    background-color:applyOpacity(value(DefaultBackgroundColor),1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;
     box-sizing: border-box;
@@ -175,8 +178,4 @@
 
 .root:disabled .checkmark {
     border-color: color(value(DisabledColor));
-}
-
-.root:disabled::icon {
-    cursor: not-allowed;
 }
