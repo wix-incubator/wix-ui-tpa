@@ -22,7 +22,7 @@
 }
 
 :vars {
-    CurrentLabelColor: color(fallback(value(LabelColor), value(DefaultLabelColor)));
+    CurrentLabelColor: color(fallback(value(LabelColor),color(value(DefaultLabelColor))));
 }
 
 .root {
@@ -49,7 +49,7 @@
     padding: 0;
     margin-bottom: 20px;
 
-    color: value(CurrentLabelColor);
+    color: color(value(CurrentLabelColor));
     font: value(Font);
 }
 
