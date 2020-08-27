@@ -17,6 +17,7 @@ export interface BadgeDriver extends BaseUniDriver {
   isPrimary(): Promise<boolean>;
   isLight(): Promise<boolean>;
   isDefault(): Promise<boolean>;
+  getIcon(): Promise<string | null>;
 }
 
 export const badgeDriverFactory = (base: UniDriver): BadgeDriver => {
@@ -25,5 +26,6 @@ export const badgeDriverFactory = (base: UniDriver): BadgeDriver => {
     isPrimary: () => hasPriority(base, BADGE_PRIORITY.primary),
     isLight: () => hasPriority(base, BADGE_PRIORITY.light),
     isDefault: () => hasPriority(base, BADGE_PRIORITY.default),
+    getIcon: () => base.attr('.icon'),
   };
 };

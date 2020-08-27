@@ -11,6 +11,7 @@ export enum BADGE_PRIORITY {
 export interface BadgeProps extends TPAComponentProps {
   /** define style preset */
   priority?: BADGE_PRIORITY;
+  icon?: React.ReactElement;
 }
 
 interface DefaultProps {
@@ -22,14 +23,17 @@ class Badge extends React.Component<BadgeProps> {
   static defaultProps: DefaultProps = { priority: BADGE_PRIORITY.default };
 
   render() {
-    const { priority, children, className } = this.props;
+    const { priority, children, className, icon } = this.props;
     return (
       <div
         data-priority={priority}
         className={st(classes.root, { priority }, className)}
         data-hook={this.props['data-hook']}
       >
-        {children}
+        <div style={{ display: 'flex' }}>
+          {icon && <div className={classes.icon}>{icon}</div>}
+          {children}
+        </div>
       </div>
     );
   }
