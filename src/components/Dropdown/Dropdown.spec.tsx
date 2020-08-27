@@ -184,6 +184,54 @@ describe('Dropdown', () => {
     });
   });
 
+  describe('onExpandedChange', () => {
+    let driver: DropdownDriver;
+    let onExpandedChange: Mock;
+    const placeholder = 'placeholder';
+    const options = new Array(5).fill(null).map((el, i) => ({
+      id: `${i}`,
+      value: `value-${i}`,
+      isSelectable: i < 3,
+    }));
+
+    beforeEach(() => {
+      onExpandedChange = jest.fn();
+      driver = createDriver(
+        <Dropdown
+          options={options}
+          onExpandedChange={onExpandedChange}
+          placeholder={placeholder}
+        />,
+      );
+    });
+
+    it('should be called with true when clicked', async () => {
+      await driver.click();
+
+      expect(onExpandedChange).toBeCalledTimes(1);
+      expect(onExpandedChange).toBeCalledWith(true);
+    });
+
+    it('should be called with false when clicked twice', async () => {
+      await driver.click();
+
+      onExpandedChange.mockClear();
+
+      await driver.click();
+
+      expect(onExpandedChange).toBeCalledTimes(1);
+      expect(onExpandedChange).toBeCalledWith(false);
+    });
+
+    it('should not crush if undefined is passed', async () => {
+      driver = createDriver(
+        <Dropdown options={options} placeholder={placeholder} />,
+      );
+
+      expect(await driver.exists()).toBe(true);
+    });
+  });
+
   describe('disabled', () => {
     it('should be disabled', async () => {
       const driver = createDriver(<Dropdown options={[]} disabled />);

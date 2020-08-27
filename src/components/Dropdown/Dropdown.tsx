@@ -24,6 +24,7 @@ export interface DropdownProps extends TPAComponentProps {
   options: DropdownOptionProps[];
   optionsContainerId?: string;
   onChange?(selectedOption: DropdownOptionProps): void;
+  onExpandedChange?(isExpanded: boolean): void;
   initialSelectedId?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -132,11 +133,17 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   };
 
   private readonly onExpandedChange = (isOpen: boolean) => {
+    const { onExpandedChange } = this.props;
+
     const newState = {
       isOpen,
       ...(!isOpen && { ariaActivedescendant: null }),
     };
     this.setState(newState);
+
+    if (typeof onExpandedChange === 'function') {
+      onExpandedChange(isOpen);
+    }
   };
 
   private readonly onCoreSelect = (selectedCoreOption: Option) => {
