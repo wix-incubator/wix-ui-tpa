@@ -1,6 +1,9 @@
-import {BaseUniDriver, baseUniDriverFactory,} from 'wix-ui-test-utils/base-driver';
-import {UniDriver} from 'wix-ui-test-utils/unidriver';
-import {RADIOBUTTON_DATA_KEYS} from './dataHooks';
+import {
+  BaseUniDriver,
+  baseUniDriverFactory,
+} from 'wix-ui-test-utils/base-driver';
+import { UniDriver } from 'wix-ui-test-utils/unidriver';
+import { RADIOBUTTON_DATA_KEYS } from './dataHooks';
 
 export interface RadioButtonDriver extends BaseUniDriver {
   isChecked(): Promise<boolean>;

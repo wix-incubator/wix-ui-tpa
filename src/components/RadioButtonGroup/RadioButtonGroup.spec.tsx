@@ -12,9 +12,24 @@ import { RadioButton } from '../RadioButton';
 const noop = () => {};
 const TestComp: React.FunctionComponent<any> = props => (
   <RadioButtonGroup {...props}>
-    <RadioButton value="group1" data-hook={'radio'} onChange={noop} label="RadioButton 1" />
-    <RadioButton value="group1"  data-hook={'radio'} onChange={noop} label="RadioButton 2" />
-    <RadioButton value="group1"  data-hook={'radio'} onChange={noop} label="RadioButton 3" />
+    <RadioButton
+      value="group1"
+      data-hook={'radio'}
+      onChange={noop}
+      label="RadioButton 1"
+    />
+    <RadioButton
+      value="group1"
+      data-hook={'radio'}
+      onChange={noop}
+      label="RadioButton 2"
+    />
+    <RadioButton
+      value="group1"
+      data-hook={'radio'}
+      onChange={noop}
+      label="RadioButton 3"
+    />
   </RadioButtonGroup>
 );
 
