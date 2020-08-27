@@ -117,7 +117,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20px;
+    width: 16px;
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
@@ -136,7 +136,7 @@
     display: flex;
     padding: 16px;
     margin-bottom: 23px;
-    background-color:applyOpacity(value(DefaultBackgroundColor),1);
+    background-color:applyOpacity(value(CurrentBackgroundColor),1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;
     box-sizing: border-box;
