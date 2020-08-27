@@ -1,3 +1,14 @@
+# [2.2.0](https://github.com/wix/wix-ui-tpa/compare/v2.1.3...v2.2.0) (2020-08-27)
+
+
+### Features
+
+* **Dropdown:** exposed onExpandedChange prop ([2dcfaa5](https://github.com/wix/wix-ui-tpa/commit/2dcfaa54f877d366866aa5c118d604bc9b35973a))
+* **Checkbox** box theme ([3d3dacb](https://github.com/wix/wix-ui-tpa/commit/3d3dacb8b2fafa78161d70a68feb00abf9e3370d))
+* **Spinner** new component ([79727e1](https://github.com/wix/wix-ui-tpa/commit/79727e1bc313ad983e82401347e3c63f34d80c27))
+
+
+
 ## [2.1.3](https://github.com/wix/wix-ui-tpa/compare/v2.1.2...v2.1.3) (2020-08-05)
 
 
