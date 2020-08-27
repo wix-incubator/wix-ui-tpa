@@ -61,30 +61,30 @@
 }
 
 .root:box:hover, .root:box:focus-within {
-    border-color: applyOpacity(color(value(CurrentBorderColor), 1));
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
 .root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
-    border-color: applyOpacity(color(value(CurrentBorderColor), 0.6));
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
 .root:box:checked {
-    background-color: applyOpacity(color(value(CurrentIconColor), 0.1));
+    background-color: applyOpacity(value(CurrentIconColor), 0.1);
     border-color: value(CurrentIconColor);
 }
 
 .root:box:checked:not(:disabled):hover, .root:box:checked:not(:disabled):focus-within {
-    border-color: applyOpacity(color(value(CurrentIconColor), 0.6));
+    border-color: applyOpacity(value(CurrentIconColor), 0.6);
 }
 
 .root:box:not(:disabled):hover .icon {
-    border-color: applyOpacity(color(value(CurrentBorderColor), 1));
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
 .root::label {
     width: 100%;
     font: font(value(LabelTextFont));
-    color: applyOpacity(color(value(CurrentTextColor),1));
+    color: applyOpacity(value(CurrentTextColor),1);
 }
 
 .root::icon {
@@ -118,7 +118,7 @@
     justify-content: center;
     align-items: center;
     width: 20px;
-    border: 1px solid applyOpacity(color(value(CurrentBorderColor), 0.6));
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
 .innerCheck {
@@ -136,8 +136,8 @@
     display: flex;
     padding: 16px;
     margin-bottom: 23px;
-    background-color:applyOpacity(color(value(DefaultBackgroundColor),1));
-    border: 1px solid applyOpacity(color(value(CurrentBorderColor), 0.6));
+    background-color:applyOpacity(value(DefaultBackgroundColor),1);
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;
     box-sizing: border-box;
 }
@@ -160,12 +160,12 @@
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
 .root:hover .checkmark {
-    border-color: applyOpacity(color(value(CurrentBorderColor), 1)) s;
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
 .root:checked .innerCheck {
     opacity: 1;
-    background-color: color(value(CurrentIconColor));
+    background-color: value(CurrentIconColor);
     transform: scale(1);
 }
 
