@@ -9,6 +9,7 @@ export interface EventDriver extends BaseUniDriver {
   isTimeShown(): Promise<boolean>;
   isSelected(): Promise<boolean>;
   isFullday(): Promise<boolean>;
+  hasOnClick(): Promise<boolean>;
 }
 
 export const eventDriverFactory = (base: UniDriver): EventDriver => {
@@ -22,6 +23,9 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
     },
     async isTimeShown() {
       return (await base.attr(EVENT_DATA_KEYS.IsTimeShown)) === 'true';
+    },
+    async hasOnClick() {
+      return (await base.attr(EVENT_DATA_KEYS.OnClick)) === 'true';
     },
   };
 };

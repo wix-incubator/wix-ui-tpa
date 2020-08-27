@@ -13,5 +13,6 @@ visualize('Event', () => {
     snap('timeShown', <Event showTime {...defaultProps} />);
     snap('fullday', <Event fullday {...defaultProps} />);
     snap('selected', <Event selected {...defaultProps} />);
+    snap('clickable', <Event onClick={() => {}} {...defaultProps} />);
   });
 });

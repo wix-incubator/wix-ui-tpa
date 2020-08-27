@@ -36,6 +36,11 @@ describe('Event', () => {
     expect(await driver.isTimeShown()).toBe(true);
   });
 
+  it('should have onClick', async () => {
+    const driver = createDriver(<Event onClick={() => {}} {...defaultProps} />);
+    expect(await driver.hasOnClick()).toBe(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

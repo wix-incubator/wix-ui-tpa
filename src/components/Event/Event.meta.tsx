@@ -47,3 +47,11 @@ EventMetadata.addSim({
     showTime: false,
   },
 });
+
+EventMetadata.addSim({
+  title: 'clickable',
+  props: {
+    ...defaultProps,
+    onClick: () => {},
+  },
+});

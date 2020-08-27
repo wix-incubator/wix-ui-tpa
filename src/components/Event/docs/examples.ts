@@ -7,12 +7,13 @@ const createStringComponent = (
   fullday = false,
   isRightToLeft = false,
   isSelected = false,
+  onClick = null,
 ) => {
   return `
     <div style={{width: "135px"}}>
        <h4>${exampleTitle}</h4>
           <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-            <Event fullday={${fullday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
+            <Event onClick={${onClick}} fullday={${fullday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
           </TPAComponentsProvider>   
        </div>
     `;
@@ -74,3 +75,12 @@ export const fulldaySection = createComponentsSection([
 ]);
 
 export const moreEventsSection = createStringComponent('', false, '+2 more');
+export const clickAbleSection = createStringComponent(
+  'clickable',
+  true,
+  'React Course',
+  false,
+  false,
+  false,
+  () => alert('hello from clickable event'),
+);
