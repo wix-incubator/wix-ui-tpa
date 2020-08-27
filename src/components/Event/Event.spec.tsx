@@ -41,6 +41,13 @@ describe('Event', () => {
     expect(await driver.hasOnClick()).toBe(true);
   });
 
+  it('should show disabled state', async () => {
+    const driver = createDriver(
+      <Event onClick={() => {}} disabled {...defaultProps} />,
+    );
+    expect(await driver.isDisabled()).toBe(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

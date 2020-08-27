@@ -53,7 +53,7 @@ export default {
           ...[{ title: 'More Events', source: examples.moreEventsSection }].map(
             code,
           ),
-          ...[{ title: 'Clickable', source: examples.clickAbleSection }].map(
+          ...[{ title: 'Clickable', source: examples.clickableSection }].map(
             code,
           ),
         ],

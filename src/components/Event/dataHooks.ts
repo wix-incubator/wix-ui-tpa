@@ -4,4 +4,5 @@ export enum EVENT_DATA_KEYS {
   IsRightToLeft = 'data-right-to-left',
   IsSelected = 'data-selected',
   OnClick = 'data-on-click',
+  Disabled = 'data-disabled',
 }

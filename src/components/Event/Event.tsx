@@ -12,6 +12,7 @@ export interface EventProps extends TPAComponentProps {
   showTime?: boolean;
   fullday?: boolean;
   selected?: boolean;
+  disabled?: boolean;
   onClick?(): void;
 }
 
@@ -19,6 +20,8 @@ interface DefaultProps {
   showTime: boolean;
   fullday: boolean;
   selected: boolean;
+  disabled: boolean;
+  onClick(): void;
 }
 
 /** Event */
@@ -28,16 +31,19 @@ export class Event extends React.Component<EventProps> {
     showTime: true,
     fullday: false,
     selected: false,
+    disabled: false,
+    onClick: null,
   };
 
   getDataAttributes() {
-    const { fullday, selected, showTime, onClick } = this.props;
+    const { fullday, selected, showTime, onClick, disabled } = this.props;
 
     return {
       [EVENT_DATA_KEYS.IsFullDay]: fullday,
       [EVENT_DATA_KEYS.IsSelected]: selected,
       [EVENT_DATA_KEYS.IsTimeShown]: showTime,
       [EVENT_DATA_KEYS.OnClick]: Boolean(onClick),
+      [EVENT_DATA_KEYS.Disabled]: disabled,
     };
   }
 
@@ -50,6 +56,7 @@ export class Event extends React.Component<EventProps> {
       selected,
       className,
       onClick,
+      disabled,
     } = this.props;
     const timeComponent =
       showTime && time ? <Text className={classes.time}>{time}</Text> : null;
@@ -65,7 +72,11 @@ export class Event extends React.Component<EventProps> {
     const event = (rtl, isContainer) => (
       <div
         {...eventProps(isContainer)}
-        className={st(classes.root, { fullday, selected, rtl }, className)}
+        className={st(
+          classes.root,
+          { fullday, selected, rtl, disabled },
+          className,
+        )}
       >
         {timeComponent}
         <Text className={classes.title}>{title}</Text>
@@ -78,7 +89,7 @@ export class Event extends React.Component<EventProps> {
         {({ rtl }) => {
           return onClick ? (
             <ButtonNext
-              onClick={onClick}
+              onClick={() => !disabled && onClick()}
               className={st(classes.buttonContainer)}
               {...eventProps(true)}
             >

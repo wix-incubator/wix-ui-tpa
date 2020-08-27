@@ -14,5 +14,6 @@ visualize('Event', () => {
     snap('fullday', <Event fullday {...defaultProps} />);
     snap('selected', <Event selected {...defaultProps} />);
     snap('clickable', <Event onClick={() => {}} {...defaultProps} />);
+    snap('disabled', <Event onClick={() => {}} disabled {...defaultProps} />);
   });
 });

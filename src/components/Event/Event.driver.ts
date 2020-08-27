@@ -10,6 +10,7 @@ export interface EventDriver extends BaseUniDriver {
   isSelected(): Promise<boolean>;
   isFullday(): Promise<boolean>;
   hasOnClick(): Promise<boolean>;
+  isDisabled(): Promise<boolean>;
 }
 
 export const eventDriverFactory = (base: UniDriver): EventDriver => {
@@ -26,6 +27,9 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
     },
     async hasOnClick() {
       return (await base.attr(EVENT_DATA_KEYS.OnClick)) === 'true';
+    },
+    async isDisabled() {
+      return (await base.attr(EVENT_DATA_KEYS.Disabled)) === 'true';
     },
   };
 };
