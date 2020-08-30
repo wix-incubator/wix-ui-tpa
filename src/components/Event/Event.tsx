@@ -14,6 +14,8 @@ export interface EventProps extends TPAComponentProps {
   selected?: boolean;
   disabled?: boolean;
   onClick?(): void;
+  'aria-has-popup'?: boolean;
+  'aria-expanded'?: boolean;
 }
 
 interface DefaultProps {
@@ -22,6 +24,8 @@ interface DefaultProps {
   selected: boolean;
   disabled: boolean;
   onClick(): void;
+  'aria-has-popup'?: boolean;
+  'aria-expanded': boolean;
 }
 
 /** Event */
@@ -33,6 +37,8 @@ export class Event extends React.Component<EventProps> {
     selected: false,
     disabled: false,
     onClick: null,
+    'aria-has-popup': false,
+    'aria-expanded': false
   };
 
   getDataAttributes() {
@@ -66,6 +72,8 @@ export class Event extends React.Component<EventProps> {
         ? {
             'data-hook': this.props['data-hook'],
             ...this.getDataAttributes(),
+            [EVENT_DATA_KEYS.ARIA_Has_Popup]: this.props['aria-has-popup'],
+            [EVENT_DATA_KEYS.ARIA_Expanded]: this.props['aria-expanded'],
           }
         : null;
 

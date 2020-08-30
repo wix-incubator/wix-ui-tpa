@@ -5,4 +5,6 @@ export enum EVENT_DATA_KEYS {
   IsSelected = 'data-selected',
   OnClick = 'data-on-click',
   Disabled = 'data-disabled',
+  ARIA_Has_Popup = 'data-aria-has-popup',
+  ARIA_Expanded = 'data-aria-expanded',
 }

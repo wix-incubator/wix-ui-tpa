@@ -48,6 +48,20 @@ describe('Event', () => {
     expect(await driver.isDisabled()).toBe(true);
   });
 
+  it('should show aria-has-expanded state', async () => {
+    const driver = createDriver(
+      <Event aria-expanded {...defaultProps} />,
+    );
+    expect(await driver.hasAriaExpanded()).toBe(true);
+  });
+
+  it('should show aria-has-popup state', async () => {
+    const driver = createDriver(
+      <Event aria-has-popup {...defaultProps} />,
+    );
+    expect(await driver.hasAriaHasPopup()).toBe(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

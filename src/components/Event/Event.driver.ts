@@ -11,6 +11,8 @@ export interface EventDriver extends BaseUniDriver {
   isFullday(): Promise<boolean>;
   hasOnClick(): Promise<boolean>;
   isDisabled(): Promise<boolean>;
+  hasAriaHasPopup(): Promise<boolean>;
+  hasAriaExpanded(): Promise<boolean>;
 }
 
 export const eventDriverFactory = (base: UniDriver): EventDriver => {
@@ -30,6 +32,12 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
     },
     async isDisabled() {
       return (await base.attr(EVENT_DATA_KEYS.Disabled)) === 'true';
+    },
+    async hasAriaHasPopup() {
+      return (await base.attr(EVENT_DATA_KEYS.ARIA_Has_Popup)) === 'true';
+    },
+    async hasAriaExpanded() {
+      return (await base.attr(EVENT_DATA_KEYS.ARIA_Expanded)) === 'true';
     },
   };
 };
