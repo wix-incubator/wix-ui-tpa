@@ -11,7 +11,6 @@ export interface RadioButtonGroupProps extends TPAComponentProps {
   error?: boolean;
   errorText?: string;
   disabled?: boolean;
-  'data-hook'?: string;
   value?: string;
   name: string;
   withSpacing?: boolean;

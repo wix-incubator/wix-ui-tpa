@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { RadioButton as CoreRadioButton } from 'wix-ui-core/radio-button';
+import {
+  RadioButton as CoreRadioButton,
+  RadioButtonProps as CoreRadioButtonProps,
+} from 'wix-ui-core/radio-button';
 import { RADIOBUTTON_DATA_KEYS, RADIOBUTTON_DATA_HOOKS } from './dataHooks';
 import { st, classes } from './RadioButton.st.css';
 import classnames from 'classnames';
@@ -29,7 +32,8 @@ export interface RadioButtonProps {
   error?: boolean;
   theme?: RadioButtonTheme;
   suffix?: string;
-  onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
+  onChange: CoreRadioButtonProps['onChange'];
+  'data-hook'?: string;
 }
 
 interface DefaultProps {
@@ -38,7 +42,6 @@ interface DefaultProps {
   name: string;
   error: boolean;
   theme: RadioButtonTheme;
-  'data-hook': string;
 }
 
 /** Radio button icon */
@@ -57,7 +60,6 @@ export class RadioButton extends React.Component<RadioButtonProps> {
     error: false,
     name: '',
     theme: RadioButtonTheme.Default,
-    'data-hook': RADIOBUTTON_DATA_HOOKS.RadioButtonWrapper,
   };
 
   getDataAttributes() {

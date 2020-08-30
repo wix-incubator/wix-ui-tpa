@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
   divider,
+  header,
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
@@ -17,7 +17,8 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as RadioButtonGroupWiringExampleRaw from '!raw-loader!./RadioButtonGroupWiringExample.tsx';
 import * as RadioButtonGroupWiringExampleCSSRaw from '!raw-loader!./RadioButtonGroupWiringExample.st.css';
 import { RadioButtonGroupWiringExample } from './RadioButtonGroupWiringExample';
-import { RadioButtonGroup } from '../';
+import { RadioButtonGroup, RadioButtonGroupLayout } from '../';
+import { RadioButton, RadioButtonTheme } from '../../RadioButton/RadioButton';
 
 console.log('this is here');
 const code = config =>
@@ -29,9 +30,21 @@ export default {
   component: RadioButtonGroup,
   componentPath: '../RadioButtonGroup.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-RadioButtonGroup',
+    theme: RadioButtonTheme.Default,
+    layout: RadioButtonGroupLayout.Vertical,
+    value: 'option1',
+    withSpacing: false,
+    children: [
+      <RadioButton key={'option1'} label={'option 1'} value={'option1'} />,
+      <RadioButton key={'option2'} label={'option 2'} value={'option2'} />,
+    ],
   }),
   exampleProps: {
+    theme: [RadioButtonTheme.Default, RadioButtonTheme.Box],
+    layout: [
+      RadioButtonGroupLayout.Vertical,
+      RadioButtonGroupLayout.Horizontal,
+    ],
     //
   },
   dataHook: 'storybook-RadioButtonGroup',
@@ -50,6 +63,19 @@ export default {
           title('Examples'),
 
           ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Disabled', source: examples.disabledExample }].map(
+            code,
+          ),
+          ...[{ title: 'Box Theme', source: examples.boxExample }].map(code),
+          ...[
+            {
+              title: 'Box Theme with spacing',
+              source: examples.boxExampleWithSpacing,
+            },
+          ].map(code),
+          ...[
+            { title: 'horizontal layout', source: examples.horizontalLayput },
+          ].map(code),
         ],
       }),
 

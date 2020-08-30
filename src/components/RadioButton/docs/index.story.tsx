@@ -18,6 +18,7 @@ import * as RadioButtonWiringExampleRaw from '!raw-loader!./RadioButtonWiringExa
 import * as RadioButtonWiringExampleCSSRaw from '!raw-loader!./RadioButtonWiringExample.st.css';
 import RadioButtonWiringExample from './RadioButtonWiringExample';
 import { RadioButton } from '../';
+import { RadioButtonTheme } from '../RadioButton';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -28,9 +29,13 @@ export default {
   component: RadioButton,
   componentPath: '../RadioButton.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-RadioButton',
+    checked: true,
+    disabled: false,
+    theme: RadioButtonTheme.Default,
+    label: 'Im a Radiobutton',
   }),
   exampleProps: {
+    theme: [RadioButtonTheme.Default, RadioButtonTheme.Box],
     //
   },
   dataHook: 'storybook-RadioButton',
@@ -52,6 +57,7 @@ export default {
             code,
           ),
           ...[{ title: 'Checked', source: examples.checkedExample }].map(code),
+          ...[{ title: 'box', source: examples.boxExample }].map(code),
           ...[{ title: 'Disabled', source: examples.disabledExample }].map(
             code,
           ),

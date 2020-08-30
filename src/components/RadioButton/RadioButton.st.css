@@ -49,7 +49,6 @@
     -st-extends: RadioButton;
     -st-states: checked, disabled, box, error;
     display: flex;
-    line-height: 20px;
 }
 
 .root:error .checkmark {
@@ -135,7 +134,6 @@
 .root:box {
     display: flex;
     padding: 16px;
-    margin-bottom: 23px;
     background-color:applyOpacity(value(CurrentBackgroundColor),1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;
