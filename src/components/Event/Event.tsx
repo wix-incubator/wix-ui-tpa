@@ -38,7 +38,7 @@ export class Event extends React.Component<EventProps> {
     disabled: false,
     onClick: null,
     'aria-has-popup': false,
-    'aria-expanded': false
+    'aria-expanded': false,
   };
 
   getDataAttributes() {
