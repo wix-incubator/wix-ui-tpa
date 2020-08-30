@@ -55,12 +55,12 @@ export class MobileTooltip extends React.Component<
     shown: false,
   };
 
-  show = () => {
+  private show = () => {
     this.setState({
       shown: true,
     });
   };
-  hide = () => {
+  private hide = () => {
     this.setState({
       shown: false,
     });
