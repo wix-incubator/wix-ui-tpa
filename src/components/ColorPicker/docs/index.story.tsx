@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { ColorPicker } from '../';
-import * as examples from './examples';
+import * as React from "react";
+import { ColorPicker } from "../";
+import * as examples from "./examples";
 import {
   header,
   api,
@@ -13,27 +13,27 @@ import {
   testkit,
   title,
   description,
-} from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+} from "wix-storybook-utils/Sections";
+import { allComponents } from "../../../../stories/utils/allComponents";
+import { settingsPanel } from "../../../../stories/utils/SettingsPanel";
 import {
   ColorPickerExtendedExample,
   COLORS,
-} from './ColorPickerExtendedExample';
-import * as ExtendedRawSource from '!raw-loader!./ColorPickerExtendedExample.tsx';
-import * as AnotherExtendedRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./ColorPickerExtendedExample.st.css';
-import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.st.css';
-import * as Readme from '../README.md';
-import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
+} from "./ColorPickerExtendedExample";
+import * as ExtendedRawSource from "!raw-loader!./ColorPickerExtendedExample.tsx";
+import * as AnotherExtendedRawSource from "!raw-loader!./ColorPickerAnotherExtendedExample.tsx";
+import * as ExtendedCSSRawSource from "!raw-loader!./ColorPickerExtendedExample.st.css";
+import * as AnotherExtendedCSSRawSource from "!raw-loader!./ColorPickerAnotherExtendedExample.st.css";
+import * as Readme from "../README.md";
+import { ColorPickerAnotherExtendedExample } from "./ColorPickerAnotherExtendedExample";
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const CHILDREN = [
   {
-    label: '4 colors',
-    value: [1, 2, 3, 4].map(n => (
+    label: "4 colors",
+    value: [1, 2, 3, 4].map((n) => (
       <ColorPicker.Item
         key={n}
         value={COLORS[n].value}
@@ -42,8 +42,8 @@ const CHILDREN = [
     )),
   },
   {
-    label: '3 colors with second selected',
-    value: [1, 2, 3].map(n => (
+    label: "3 colors with second selected",
+    value: [1, 2, 3].map((n) => (
       <ColorPicker.Item
         checked={n === 2}
         key={n}
@@ -52,27 +52,52 @@ const CHILDREN = [
       />
     )),
   },
+  {
+    label: "Crossed out, crossed out with tooltip, just tooltip",
+    value: [
+      <ColorPicker.Item
+        checked
+        key={1}
+        value={COLORS[1].value}
+        aria-label={COLORS[1].ariaLabel}
+        disabled
+      />,
+      <ColorPicker.Item
+        key={2}
+        value={COLORS[2].value}
+        aria-label={COLORS[2].ariaLabel}
+        disabled
+        tooltip="This is a tooltip"
+      />,
+      <ColorPicker.Item
+        key={3}
+        value={COLORS[3].value}
+        aria-label={COLORS[3].ariaLabel}
+        tooltip="Another tooltip"
+      />,
+    ],
+  },
 ];
 
 export default {
-  category: 'Components',
-  storyName: 'ColorPicker',
+  category: "Components",
+  storyName: "ColorPicker",
   component: ColorPicker,
-  componentPath: '../ColorPicker.tsx',
+  componentPath: "../ColorPicker.tsx",
   componentProps: () => ({
-    'data-hook': 'storybook-ColorPicker',
-    onChange: color => console.log(color),
+    "data-hook": "storybook-ColorPicker",
+    onChange: (color) => console.log(color),
     children: CHILDREN[0].value,
   }),
   exampleProps: {
     children: CHILDREN,
   },
-  dataHook: 'storybook-ColorPicker',
+  dataHook: "storybook-ColorPicker",
   sections: [
     header(),
     tabs([
       tab({
-        title: 'Usage',
+        title: "Usage",
         sections: [
           description(Readme),
           importExample({
@@ -81,54 +106,54 @@ export default {
 
           divider(),
 
-          title('Examples'),
+          title("Examples"),
 
           ...[{ source: examples.example }].map(code),
         ],
       }),
 
       ...[
-        { title: 'API', sections: [api()] },
-        { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        { title: "API", sections: [api()] },
+        { title: "TestKit", sections: [testkit()] },
+        { title: "Playground", sections: [playground()] },
         {
-          title: 'Settings Panel',
+          title: "Settings Panel",
           sections: [
             settingsPanel({
               example: <ColorPickerExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
-              title: 'Colorpicker extended with border-radius in px',
+              title: "Colorpicker extended with border-radius in px",
               params: {},
             }),
             settingsPanel({
               example: <ColorPickerAnotherExtendedExample />,
               rawSource: AnotherExtendedRawSource,
               rawCSSSource: AnotherExtendedCSSRawSource,
-              title: 'Colorpicker extended with border-radius in %',
+              title: "Colorpicker extended with border-radius in %",
               params: {
                 numbers: [
                   {
-                    label: 'Item Size',
-                    wixParam: 'itemSize',
+                    label: "Item Size",
+                    wixParam: "itemSize",
                     defaultNumber: 24,
-                    unit: 'px',
+                    unit: "px",
                     min: 20,
                     max: 60,
                   },
                   {
-                    label: 'Item Border Radius',
-                    wixParam: 'borderRadius',
+                    label: "Item Border Radius",
+                    wixParam: "borderRadius",
                     defaultNumber: 12,
-                    unit: 'px',
+                    unit: "px",
                     min: 0,
                     max: 30,
                   },
                   {
-                    label: 'Item Border Radius',
-                    wixParam: 'anotherBorderRadius',
+                    label: "Item Border Radius",
+                    wixParam: "anotherBorderRadius",
                     defaultNumber: 12,
-                    unit: '%',
+                    unit: "%",
                     min: 0,
                     max: 50,
                   },
