@@ -6,4 +6,6 @@ export enum PICKER_DATA_HOOKS {
 export enum PICKER_DATA_PROPS {
   NextDisabled = 'data-disabled-next',
   PrevDisabled = 'data-disabled-prev',
+  NextAriaLabel = 'data-next-aria-label',
+  PrevAriaLabel = 'data-prev-aria-label',
 }

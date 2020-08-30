@@ -7,6 +7,7 @@ import { pickerDriverFactory } from './Picker.driver';
 import { Picker } from './';
 import { pickerTestkitFactory } from '../../testkit';
 import { pickerTestkitFactory as enzymePickerTestkitFactory } from '../../testkit/enzyme';
+import { Preview } from 'wix-ui-icons-common';
 
 const noop = () => {};
 const defProps = {
@@ -53,6 +54,32 @@ describe('Picker', () => {
     );
     await driver.clickOnPrev();
     expect(mockOnPrev).toHaveBeenCalled();
+  });
+
+  it('shold have next aria label attribute', async () => {
+    const nextAriaLabel = 'next';
+    const driver = createDriver(
+      <Picker
+        nextAriaLabel={nextAriaLabel}
+        onPrev={noop}
+        onNext={noop}
+        {...defProps}
+      />,
+    );
+    expect(await driver.hasNextAriaLabel(nextAriaLabel)).toBe(true);
+  });
+
+  it('shold have prev aria label attribute', async () => {
+    const prevAriaLabel = 'prev';
+    const driver = createDriver(
+      <Picker
+        prevAriaLabel={prevAriaLabel}
+        onPrev={noop}
+        onNext={noop}
+        {...defProps}
+      />,
+    );
+    expect(await driver.hasPrevAriaLabel(prevAriaLabel)).toBe(true);
   });
 
   describe('testkit', () => {

@@ -13,11 +13,15 @@ export interface PickerProps extends TPAComponentProps {
   onNext(): void;
   prevDisabled?: boolean;
   nextDisabled?: boolean;
+  prevAriaLabel?: string;
+  nextAriaLabel?: string;
 }
 
 interface DefaultProps {
   prevDisabled: boolean;
   nextDisabled: boolean;
+  prevAriaLabel: string;
+  nextAriaLabel: string;
 }
 
 /** Picker */
@@ -25,14 +29,24 @@ export class Picker extends React.Component<PickerProps> {
   static defaultProps: DefaultProps = {
     prevDisabled: false,
     nextDisabled: false,
+    prevAriaLabel: '',
+    nextAriaLabel: '',
   };
 
   getDataAttributes() {
-    const { prevDisabled, nextDisabled } = this.props;
+    const {
+      prevDisabled,
+      nextDisabled,
+      nextAriaLabel,
+      prevAriaLabel,
+    } = this.props;
 
     return {
       [PICKER_DATA_PROPS.NextDisabled]: nextDisabled,
       [PICKER_DATA_PROPS.PrevDisabled]: prevDisabled,
+      [PICKER_DATA_PROPS.PrevDisabled]: prevDisabled,
+      [PICKER_DATA_PROPS.NextAriaLabel]: nextAriaLabel,
+      [PICKER_DATA_PROPS.PrevAriaLabel]: prevAriaLabel,
     };
   }
 
@@ -43,7 +57,10 @@ export class Picker extends React.Component<PickerProps> {
       onNext,
       prevDisabled,
       nextDisabled,
+      prevAriaLabel,
+      nextAriaLabel,
       className,
+      ...rest
     } = this.props;
 
     return (
@@ -51,6 +68,7 @@ export class Picker extends React.Component<PickerProps> {
         data-hook={this.props['data-hook']}
         className={st(classes.root, {}, className)}
         {...this.getDataAttributes()}
+        {...rest}
       >
         <IconButton
           className={classes.arrow}
@@ -59,8 +77,11 @@ export class Picker extends React.Component<PickerProps> {
           disabled={prevDisabled}
           data-hook={PICKER_DATA_HOOKS.Prev}
           title={PICKER_DATA_HOOKS.Prev}
+          aria-label={prevAriaLabel}
         />
-        <Text className={classes.value}>{value}</Text>
+        <Text className={classes.value}>
+          <span role="status">{value}</span>
+        </Text>
         <IconButton
           className={classes.arrow}
           icon={<ChevronRight />}
@@ -68,6 +89,7 @@ export class Picker extends React.Component<PickerProps> {
           disabled={nextDisabled}
           data-hook={PICKER_DATA_HOOKS.Next}
           title={PICKER_DATA_HOOKS.Next}
+          aria-label={nextAriaLabel}
         />
       </div>
     );

@@ -10,6 +10,8 @@ export interface PickerDriver extends BaseUniDriver {
   clickOnPrev(): Promise<void>;
   hasDisablePrev(): Promise<boolean>;
   hasDisableNext(): Promise<boolean>;
+  hasNextAriaLabel(nextAriaLabel): Promise<boolean>;
+  hasPrevAriaLabel(prevAriaLabel): Promise<boolean>;
 }
 
 function arrowButton(base: UniDriver, arrowType) {
@@ -26,6 +28,16 @@ export const pickerDriverFactory = (base: UniDriver): PickerDriver => {
     },
     async hasDisablePrev() {
       return (await base.attr(PICKER_DATA_PROPS.PrevDisabled)) === 'true';
+    },
+    async hasNextAriaLabel(nextArialabel) {
+      return (
+        (await base.attr(PICKER_DATA_PROPS.NextAriaLabel)) === nextArialabel
+      );
+    },
+    async hasPrevAriaLabel(prevAriaLabel) {
+      return (
+        (await base.attr(PICKER_DATA_PROPS.PrevAriaLabel)) === prevAriaLabel
+      );
     },
   };
 };
