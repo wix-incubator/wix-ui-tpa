@@ -70,7 +70,7 @@ EventMetadata.addSim({
   props: {
     ...defaultProps,
     onClick: () => {},
-    "aria-has-popup": true
+    'aria-has-popup': true,
   },
 });
 
@@ -79,6 +79,6 @@ EventMetadata.addSim({
   props: {
     ...defaultProps,
     onClick: () => {},
-    "aria-expanded": true
+    'aria-expanded': true,
   },
 });
