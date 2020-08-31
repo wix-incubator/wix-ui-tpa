@@ -64,7 +64,7 @@
 .root:isCrossedOut .radioInner::before {
     content: '';
     position: absolute;
-    border-top: 1px solid white;
+    border-top: 1px solid #C9C9C9;
     transform-origin: right;
     transform: rotate(-45deg);
     width: 200%;
