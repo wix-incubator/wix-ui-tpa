@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ReactComponent as Close } from '../../assets/icons/Close.svg';
+import { Popover, Placement } from 'wix-ui-core/popover';
 import { IconButton } from '../IconButton';
 import { Text } from '../Text';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
@@ -21,6 +22,8 @@ export interface CalendarPopoverProps extends TPAComponentProps {
   withShadow?: boolean;
   isShown?: boolean;
   animated?: boolean;
+  placement?: Placement;
+  target: React.FunctionComponent;
 }
 
 interface DefaultProps {
@@ -31,6 +34,7 @@ interface DefaultProps {
   withShadow: boolean;
   isShown: boolean;
   animated: boolean;
+  placement: Placement;
 }
 
 /** CalendarPopover */
@@ -44,6 +48,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     withShadow: true,
     isShown: false,
     animated: false,
+    placement: 'auto'
   };
 
   getDataAttributes = () => {
@@ -79,41 +84,50 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       isShown,
       animated,
       className,
+      placement,
+      target
     } = this.props;
 
     const pxArrowTop = `${arrowTop}px`;
 
     return (
       <TPAComponentsConsumer>
-        {({ rtl }) => {
-          return (
-            <div
-              className={st(
-                classes.root,
-                { rtl, arrowSide, withArrow, withShadow, isShown, animated },
-                className,
-              )}
-              data-hook={this.props['data-hook']}
-              {...this.getDataAttributes()}
-            >
-              <div className={classes.container}>
-                {title && <Text className={classes.title}>{title}</Text>}
-                <div className={classes.children}>{children}</div>
-              </div>
-              <IconButton
-                className={classes.close}
-                onClick={onClose}
-                as="a"
-                icon={<Close height="24px" width="23px" />}
-              />
-              <div className={classes.arrow} style={{ top: pxArrowTop }} />
-              <div
-                className={`${classes.arrowBorder} ${classes.arrow}`}
-                style={{ top: pxArrowTop }}
-              />
-            </div>
-          );
-        }}
+        {
+          ({ rtl }) => {
+            return (
+              <Popover onClickOutside={onClose} showArrow={withArrow} placement={placement} shown={isShown}>
+                <Popover.Element>{target}</Popover.Element>
+                <Popover.Content>
+                  <div
+                    className={st(
+                      classes.root,
+                      { rtl, arrowSide, withShadow, isShown, animated },
+                      className,
+                    )}
+                    data-hook={this.props['data-hook']}
+                    {...this.getDataAttributes()}
+                  >
+                    <div className={classes.container}>
+                      {title && <Text className={classes.title}>{title}</Text>}
+                      <div className={classes.children}>{children}</div>
+                    </div>
+                    <IconButton
+                      className={classes.close}
+                      onClick={onClose}
+                      as="a"
+                      icon={<Close height="24px" width="23px" />}
+                    />
+                    <div className={classes.arrow} style={{ top: pxArrowTop }} />
+                    <div
+                      className={`${classes.arrowBorder} ${classes.arrow}`}
+                      style={{ top: pxArrowTop }}
+                    />
+                  </div>
+                </Popover.Content>
+              </Popover>
+            );
+          }
+        }
       </TPAComponentsConsumer>
     );
   }
