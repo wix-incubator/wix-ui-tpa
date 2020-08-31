@@ -1,14 +1,14 @@
-import * as React from "react";
-import { st, classes } from "./ColorPickerItem.st.css";
-import { RadioButton } from "wix-ui-core/radio-button";
-import { RadioButtonProps } from "wix-ui-core/dist/src/components/radio-button/RadioButton";
+import * as React from 'react';
+import { st, classes } from './ColorPickerItem.st.css';
+import { RadioButton } from 'wix-ui-core/radio-button';
+import { RadioButtonProps } from 'wix-ui-core/dist/src/components/radio-button/RadioButton';
 import {
   colorPickerItemDataHook,
   colorPickerItemTooltipDataHook,
-} from "../dataHooks";
-import { Tooltip } from "../../Tooltip";
-import { MobileTooltip } from "./MobileTooltip";
-import { TPAComponentsConsumer } from "../../TPAComponentsConfig";
+} from '../dataHooks';
+import { Tooltip } from '../../Tooltip';
+import { MobileTooltip } from './MobileTooltip';
+import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 
 export interface ColorPickerItemProps extends RadioButtonProps {
   className?: string;
@@ -50,9 +50,8 @@ export class ColorPickerItem extends React.Component<
           {this.getRadioVisual(props)}
         </Tooltip>
       );
-    } else {
-      return radioVisual;
     }
+    return radioVisual;
   };
 
   getComponent = () => {};
@@ -69,9 +68,9 @@ export class ColorPickerItem extends React.Component<
             className={st(
               classes.root,
               { checked, focused, isCrossedOut: disabled },
-              className
+              className,
             )}
-            aria-label={this.props["aria-label"]}
+            aria-label={this.props['aria-label']}
             data-hook={ColorPickerItem.displayName}
             disabled={disabled}
             checked={finalChecked}
@@ -80,7 +79,7 @@ export class ColorPickerItem extends React.Component<
                 ...this.props,
                 checked: true,
               },
-              mobile
+              mobile,
             )}
             value={value}
             uncheckedIcon={this.getRadio(
@@ -88,7 +87,7 @@ export class ColorPickerItem extends React.Component<
                 ...this.props,
                 checked: false,
               },
-              mobile
+              mobile,
             )}
             onChange={onChange}
             onHover={() => this.setState({ focused: true })}

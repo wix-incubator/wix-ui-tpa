@@ -1,32 +1,32 @@
-import * as React from "react";
-import { colorPickerItemTooltipDataHook } from "../dataHooks";
-import { Tooltip } from "../../Tooltip";
+import * as React from 'react';
+import { colorPickerItemTooltipDataHook } from '../dataHooks';
+import { Tooltip } from '../../Tooltip';
 import Timeout = NodeJS.Timeout;
 
 const DEFAULT_DELAY = 1000;
 
-type LongPressProps = {
+interface LongPressProps {
   onLongPress(): void;
   delay?: number;
   children: React.ReactNode;
-};
+}
 
 export class LongPress extends React.Component<LongPressProps> {
   private pressTimer: Timeout;
 
-  private handlePress = () => {
+  private readonly handlePress = () => {
     const { delay = DEFAULT_DELAY, onLongPress } = this.props;
     this.pressTimer = setTimeout(onLongPress, delay);
   };
 
-  private handleRelease = () => {
+  private readonly handleRelease = () => {
     clearTimeout(this.pressTimer);
   };
 
   render = () => {
     const { children } = this.props;
-    if (typeof children === "string" || !children) {
-      return children || "";
+    if (typeof children === 'string' || !children) {
+      return children || '';
     }
     return React.cloneElement(children as any, {
       onTouchStart: this.handlePress,
@@ -38,14 +38,14 @@ export class LongPress extends React.Component<LongPressProps> {
   };
 }
 
-export type MobileTooltipProps = {
+export interface MobileTooltipProps {
   children: React.ReactNode;
   tooltip: string;
-};
+}
 
-type MobileTooltipState = {
+interface MobileTooltipState {
   shown: boolean;
-};
+}
 
 export class MobileTooltip extends React.Component<
   MobileTooltipProps,
@@ -55,12 +55,12 @@ export class MobileTooltip extends React.Component<
     shown: false,
   };
 
-  private show = () => {
+  private readonly show = () => {
     this.setState({
       shown: true,
     });
   };
-  private hide = () => {
+  private readonly hide = () => {
     this.setState({
       shown: false,
     });
