@@ -1,7 +1,11 @@
 export const importExample = `import { CalendarPopover } from 'wix-ui-tpa/CalendarPopover';`;
 
-const createStringComponent = ({ title = '', isRightToLeft = false, isInPopover = false }) => {
-      return `
+const createStringComponent = ({
+  title = '',
+  isRightToLeft = false,
+  isInPopover = false,
+}) => {
+  return `
       <div style={{width: "300px"}}>
          <div>
              <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
@@ -29,7 +33,7 @@ const createStringComponent = ({ title = '', isRightToLeft = false, isInPopover 
       `;
 };
 const createComponentsSection = stringComponents => {
-      return `<div style={{display: "flex", "justifyContent": "space-around"}}>
+  return `<div style={{display: "flex", "justifyContent": "space-around"}}>
           ${stringComponents.join(' ')}
       </div>
       `;
@@ -37,6 +41,12 @@ const createComponentsSection = stringComponents => {
 
 const defaultPopover = createStringComponent({ title: 'default' });
 
-const popoverInPopover = createStringComponent({ title: 'popover in popover', isInPopover: true })
+const popoverInPopover = createStringComponent({
+  title: 'popover in popover',
+  isInPopover: true,
+});
 
-export const popoverExample = createComponentsSection([defaultPopover, popoverInPopover]);
+export const popoverExample = createComponentsSection([
+  defaultPopover,
+  popoverInPopover,
+]);
