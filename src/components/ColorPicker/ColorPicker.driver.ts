@@ -4,10 +4,15 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { colorPickerItemDataHook } from './dataHooks';
+import {
+  ColorPickerItemDriver,
+  colorPickerItemDriverFactory,
+} from './ColorPickerItem/ColorPickerItem.driver';
 
 export interface ColorPickerDriver extends BaseUniDriver {
   selectByIndex(index: number): Promise<void>;
   selectByColor(color: string): Promise<void>;
+  getItemAt(index: number): ColorPickerItemDriver;
 }
 
 export const colorPickerDriverFactory = (
@@ -25,6 +30,10 @@ export const colorPickerDriverFactory = (
     },
     selectByColor: async (color: string) => {
       await childByColor(color).click();
+    },
+    getItemAt: (index: number): ColorPickerItemDriver => {
+      const child = children.get(index);
+      return colorPickerItemDriverFactory(child);
     },
   };
 };
