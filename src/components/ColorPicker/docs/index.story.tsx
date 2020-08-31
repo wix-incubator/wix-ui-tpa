@@ -54,32 +54,18 @@ const CHILDREN = [
     )),
   },
   {
-    label: 'Crossed out, crossed out with tooltip, just tooltip',
-    value: [
-      // tslint:disable-next-line:jsx-wrap-multiline
+    label: 'Crossed out and disabled states plus tooltip',
+    value: [1, 2, 3, 4, 5].map(n => (
       <ColorPicker.Item
-        checked
-        key={1}
-        value={COLORS[1].value}
-        aria-label={COLORS[1].ariaLabel}
-        disabled
-      />,
-      // tslint:disable-next-line:jsx-wrap-multiline
-      <ColorPicker.Item
-        key={2}
-        value={COLORS[2].value}
-        aria-label={COLORS[2].ariaLabel}
-        disabled
-        tooltip="This is a tooltip"
-      />,
-      // tslint:disable-next-line:jsx-wrap-multiline
-      <ColorPicker.Item
-        key={3}
-        value={COLORS[3].value}
-        aria-label={COLORS[3].ariaLabel}
-        tooltip="Another tooltip"
-      />,
-    ],
+        checked={n === 2}
+        key={n}
+        value={COLORS[n].value}
+        aria-label={COLORS[n].ariaLabel}
+        disabled={COLORS[n].disabled}
+        isCrossedOut={COLORS[n].isCrossedOut}
+        tooltip={COLORS[n].tooltip}
+      />
+    )),
   },
 ];
 

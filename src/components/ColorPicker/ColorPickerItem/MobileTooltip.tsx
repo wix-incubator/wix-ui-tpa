@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { colorPickerItemTooltipDataHook } from '../dataHooks';
 import { Tooltip } from '../../Tooltip';
+import { TOOLTIP_COMMON_PROPS } from './tooltipCommonProps';
 import Timeout = NodeJS.Timeout;
 
 const DEFAULT_DELAY = 1000;
@@ -71,10 +71,8 @@ export class MobileTooltip extends React.Component<
 
     return (
       <Tooltip
-        data-hook={colorPickerItemTooltipDataHook}
+        {...TOOLTIP_COMMON_PROPS}
         content={tooltip}
-        appendTo="window"
-        placement="top"
         disabled
         shown={this.state.shown}
         onClickOutside={this.hide}
