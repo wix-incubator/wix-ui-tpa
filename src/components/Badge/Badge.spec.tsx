@@ -39,7 +39,7 @@ describe('Badge', () => {
       expect(await driver.isPrimary()).toBeTruthy();
       expect(await driver.exists()).toBe(true);
     });
-    it('should render with icon', async () => {
+    it('should render badge with icon', async () => {
       const icon = <CameraIcon />;
       const driver = createDriver(<Badge icon={icon}>I'm primary badge</Badge>);
       expect(await driver.getIcon()).toBe(true);
