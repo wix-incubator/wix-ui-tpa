@@ -32,7 +32,7 @@ export interface RadioButtonProps {
   error?: boolean;
   theme?: RadioButtonTheme;
   suffix?: string;
-  onChange: CoreRadioButtonProps['onChange'];
+  onChange?: CoreRadioButtonProps['onChange'];
   'data-hook'?: string;
 }
 
