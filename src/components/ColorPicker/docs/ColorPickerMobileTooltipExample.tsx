@@ -57,7 +57,7 @@ export class ColorPickerMobileTooltipExample extends React.Component<
           <ColorPicker.Item
             key={index}
             value={itemProps.value}
-            aria-label={itemProps.Label}
+            aria-label={itemProps.ariaLabel}
             disabled={itemProps.disabled}
             tooltip={itemProps.tooltip}
             checked={this.state.selectedColor === itemProps.value}
