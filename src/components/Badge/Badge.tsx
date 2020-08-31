@@ -30,8 +30,12 @@ class Badge extends React.Component<BadgeProps> {
         className={st(classes.root, { priority }, className)}
         data-hook={this.props['data-hook']}
       >
-        <div style={{ display: 'flex' }}>
-          {icon && <div className={classes.icon}>{icon}</div>}
+        <div className={classes.innerContainer}>
+          {icon && (
+            <div data-hook={'badge-icon'} className={classes.icon}>
+              {icon}
+            </div>
+          )}
           {children}
         </div>
       </div>

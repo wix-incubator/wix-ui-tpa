@@ -27,12 +27,16 @@
 }
 
 .root {
-    -st-states: withIcon, priority(enum(default, light, primary));
+    -st-states: priority(enum(default, light, primary));
     display: inline-block;
     border-radius: 12px;
     padding: 0 12px;
     line-height: 20px;
     font-size: 12px;
+}
+
+.innerContainer {
+    display: flex;
 }
 
 .icon {
