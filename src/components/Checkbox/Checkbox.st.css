@@ -141,6 +141,7 @@
 .label {
     display: inline-block;
     color: value(CurrentTextColor);
+    transition: color 0.2s linear;
 }
 
 .label.suffixed {
