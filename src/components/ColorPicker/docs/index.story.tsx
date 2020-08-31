@@ -55,6 +55,7 @@ const CHILDREN = [
   {
     label: 'Crossed out, crossed out with tooltip, just tooltip',
     value: [
+      // tslint:disable-next-line:jsx-wrap-multiline
       <ColorPicker.Item
         checked
         key={1}
@@ -62,6 +63,7 @@ const CHILDREN = [
         aria-label={COLORS[1].ariaLabel}
         disabled
       />,
+      // tslint:disable-next-line:jsx-wrap-multiline
       <ColorPicker.Item
         key={2}
         value={COLORS[2].value}
@@ -69,6 +71,7 @@ const CHILDREN = [
         disabled
         tooltip="This is a tooltip"
       />,
+      // tslint:disable-next-line:jsx-wrap-multiline
       <ColorPicker.Item
         key={3}
         value={COLORS[3].value}
