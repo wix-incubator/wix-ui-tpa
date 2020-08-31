@@ -8,7 +8,7 @@ import { radioButtonDriverFactory } from '../RadioButton/RadioButton.driver';
 export interface RadioButtonGroupDriver extends BaseUniDriver {
   isEmpty(): Promise<boolean>;
 
-  getItemsCountByItemDatahook(datahook: string): any;
+  getItemsCount(datahook: string): any;
 }
 
 export const radioButtonGroupDriverFactory = (
@@ -20,7 +20,7 @@ export const radioButtonGroupDriverFactory = (
     async isEmpty() {
       return radiobuttonDriver.exists();
     },
-    async getItemsCountByItemDatahook(datahook: string) {
+    async getItemsCount(datahook: string) {
       return base.$$(`[data-hook=${datahook}]`).count();
     },
   };

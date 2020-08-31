@@ -46,7 +46,7 @@ interface DefaultProps {
 
 /** Radio button icon */
 const radioBtnIcon = (
-  <div className={st(classes.checkmark)}>
+  <div className={st(classes.radioIcon)}>
     <div className={st(classes.innerCheck)} />
   </div>
 );
@@ -83,7 +83,6 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       theme,
       suffix,
     } = this.props;
-
     return (
       <CoreRadioButton
         {...this.getDataAttributes()}

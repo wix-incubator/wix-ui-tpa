@@ -13,5 +13,16 @@ export const disabledExample = `
 `;
 
 export const boxExample = `
-<RadioButton value={'Checked'} checked theme='box' onChange={val => console.log(val)}  label="Checked" />
+<RadioButton value={'Checked'}  checked theme='box' onChange={val => console.log(val)}  label="Checked" />
+`;
+export const boxExampleDisabled = `
+<RadioButton value={'Checked'} suffix="$" disabled checked theme='box' onChange={val => console.log(val)}  label="Checked" />
+`;
+
+export const suffixExample = `
+<RadioButton value={'Checked'} suffix="$" checked  onChange={val => console.log(val)}  label="Checked" />
+`;
+
+export const errorExample = `
+<RadioButton value={'Checked'} error checked theme='box' onChange={val => console.log(val)}  label="Checked" />
 `;

@@ -46,7 +46,7 @@ describe('RadioButtonGroup', () => {
     const driver = createDriver(<TestComp />);
 
     expect(await driver.exists()).toBe(true);
-    expect(await driver.getItemsCountByItemDatahook('radio')).toBe(3);
+    expect(await driver.getItemsCount('radio')).toBe(3);
   });
 
   describe('testkit', () => {

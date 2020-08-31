@@ -19,7 +19,7 @@
     DefaultBorderColor: color-5;
     DefaultIconColor: color-8;
     DefaultBackgroundColor:color-1;
-    DisabledColor: gray;
+    DisabledColor: color-3;
 }
 
 /*Overrides*/
@@ -50,10 +50,48 @@
     -st-states: checked, disabled, box, error;
     display: flex;
     cursor: pointer;
+    width: 100%;
 }
 
-.root:error .checkmark {
-    border-color: color(value(errorColor));
+.radioIcon {
+    position: absolute;
+    top:1px;
+    background-color: transparent;
+    height: 16px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.innerCheck {
+    margin: 2px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+}
+
+
+
+.label.suffixed {
+    flex: 1;
+    white-space: nowrap;
+    display: flex;
+}
+
+.label.suffixed:after {
+    content: '';
+    width: 5px;
+}
+
+.suffix {
+    flex: 0;
 }
 
 .root:box:disabled {
@@ -91,8 +129,7 @@
     display: flex;
     position: relative;
     margin-bottom: 1px;
-    top:3px;
-
+    top:4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -104,31 +141,6 @@
     width: 28px;
 }
 
-.checkmark {
-    position: absolute;
-    top: 0;
-    background-color: transparent;
-    left: 0;
-    right: 0;
-    height: 16px;
-    border-radius: 50%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 16px;
-    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
-}
-
-.innerCheck {
-    margin: 2px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    transform: scale(0.5);
-    opacity: 0;
-    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
-}
 
 
 .root:box {
@@ -140,24 +152,10 @@
     box-sizing: border-box;
 }
 
-.label.suffixed {
-    flex: 1;
-    white-space: nowrap;
-    display: flex;
-}
-
-.label.suffixed:after {
-    content: '';
-    width: 5px;
-}
-
-.suffix {
-    flex: 0;
-}
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
-.root:hover .checkmark {
+.root:hover .radioIcon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
@@ -170,10 +168,24 @@
 /* Show the indicator (dot/circle) when checked */
 
 .root:disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+.root:disabled .label {
     color: color(value(DisabledColor));
 }
 
-
-.root:disabled .checkmark {
+.root:disabled .radioIcon {
     border-color: color(value(DisabledColor));
+}
+.root:disabled .innerCheck {
+    background-color: color(value(DisabledColor));
+}
+.root:error .innerCheck {
+    background-color: color(value(errorColor));
+}
+
+.root:error .radioIcon {
+    border-color: color(value(errorColor));
 }

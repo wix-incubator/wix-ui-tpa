@@ -57,10 +57,15 @@ export default {
             code,
           ),
           ...[{ title: 'Checked', source: examples.checkedExample }].map(code),
-          ...[{ title: 'box', source: examples.boxExample }].map(code),
+          ...[{ title: 'Box Theme', source: examples.boxExample }].map(code),
           ...[{ title: 'Disabled', source: examples.disabledExample }].map(
             code,
           ),
+          ...[
+            { title: 'Disabled box', source: examples.boxExampleDisabled },
+          ].map(code),
+          ...[{ title: 'Suffixed', source: examples.suffixExample }].map(code),
+          ...[{ title: 'Error', source: examples.errorExample }].map(code),
         ],
       }),
 
