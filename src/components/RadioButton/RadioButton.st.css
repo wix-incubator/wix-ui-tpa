@@ -49,6 +49,7 @@
     -st-extends: RadioButton;
     -st-states: checked, disabled, box, error;
     display: flex;
+    cursor: pointer;
 }
 
 .root:error .checkmark {
@@ -91,8 +92,7 @@
     position: relative;
     margin-bottom: 1px;
     top:3px;
-    cursor: pointer;
-    font-size: 22px;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -101,7 +101,7 @@
 
 .root::icon:before {
     content: '';
-    width: 35px;
+    width: 28px;
 }
 
 .checkmark {
