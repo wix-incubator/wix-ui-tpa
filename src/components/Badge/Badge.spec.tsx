@@ -42,7 +42,7 @@ describe('Badge', () => {
     it('should render badge with icon', async () => {
       const icon = <CameraIcon />;
       const driver = createDriver(<Badge icon={icon}>I'm primary badge</Badge>);
-      expect(await driver.getIcon()).toBe(true);
+      expect(await driver.hasIcon()).toBe(true);
     });
   });
 
