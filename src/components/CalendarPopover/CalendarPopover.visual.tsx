@@ -30,5 +30,6 @@ visualize('CalendarPopover', () => {
       <CalendarPopover arrowSide={Sides.Right} {...defaultProps} />,
     );
     snap('animated', <CalendarPopover animated {...defaultProps} />);
+    snap('auto focus', <CalendarPopover autoFocused {...defaultProps} />);
   });
 });

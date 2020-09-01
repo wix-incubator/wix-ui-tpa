@@ -124,18 +124,6 @@ export default {
                     wixParam: 'backgroundColor',
                     defaultColor: 'color-1',
                   },
-                  {
-                    label: 'Title Color',
-                    wixParam: 'titleColor',
-                    defaultColor: 'color-5',
-                  },
-                ],
-                fonts: [
-                  {
-                    label: 'Title Font',
-                    wixParam: 'titleFont',
-                    defaultFont: 'arial',
-                  },
                 ],
                 numbers: [
                   {

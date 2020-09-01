@@ -21,8 +21,6 @@
     DefaultIconColor: color-5;
     DefaultPadding: 16px;
     DefaultIconPadding: 12px;
-    DefaultTitleColor: color-5;
-    DefaultTitleFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
     DefaultWidth: 252px;
 }
 
@@ -37,8 +35,6 @@
     IconRightPadding: --overridable;
     IconLeftPadding: --overridable;
     BackgroundColor: --overridable;
-    TitleColor: --overridable;
-    TitleFont: --overridable;
     Width: --overridable;
 }
 
@@ -53,8 +49,6 @@
     CurrentIconRightPadding: fallback(value(IconRightPadding), value(DefaultIconPadding));
     CurrentIconLeftPadding: fallback(value(IconLeftPadding), value(DefaultIconPadding));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
-    CurrentTitleColor: color(fallback(value(TitleColor), value(DefaultTitleColor)));
-    CurrentTitleFont: fallback(value(TitleFont), font(value(DefaultTitleFont)));
     CurrentWidth: fallback(value(Width), value(DefaultWidth));
 }
 
@@ -139,16 +133,15 @@
     left: 251px;
 }
 
-.title {
-    -st-mixin: TPAText(MainTextFont value(CurrentTitleFont),
-            MainTextColor value(CurrentTitleColor));
-}
-
 .close {
     position: absolute;
     top: value(CurrentIconTopPadding);
     right: value(CurrentIconRightPadding);
     -st-mixin: TPAIconButton(IconColor value(CurrentIconColor));
+}
+
+.close:focus {
+    border: color(color-8) solid 1px;
 }
 
 .root:rtl .close {
