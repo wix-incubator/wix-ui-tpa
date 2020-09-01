@@ -5,6 +5,7 @@ import { st, classes } from './CalendarPopoverWiringExample.st.css';
 
 const defaultProps: CalendarPopoverProps = {
   onClose: () => {},
+  closeAriaLabel: 'close',
 };
 
 export const CalendarPopoverWiringExample = () => {

@@ -38,6 +38,7 @@ export default {
     animated: true,
     withArrow: false,
     arrowSide: 'right',
+    closeAriaLabel: 'close',
     children:
       'named after and developed by B. K. S. Iyengar, and described in his bestselling 1966 book Light on Yoga, is a form of yoga as exercise that has an emphasis on detail, precision and alignment in the performance of yoga postures (asanas)',
   }),

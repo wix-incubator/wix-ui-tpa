@@ -23,6 +23,7 @@ export interface CalendarPopoverProps extends TPAComponentProps {
   isShown?: boolean;
   animated?: boolean;
   manualFocus?: boolean;
+  closeAriaLabel: string;
 }
 
 interface DefaultProps {
@@ -125,6 +126,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       isShown,
       animated,
       className,
+      closeAriaLabel,
     } = this.props;
 
     const pxArrowTop = `${arrowTop}px`;
@@ -156,6 +158,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
               <IconButton
                 className={classes.close}
                 onClick={onClose}
+                aria-label={closeAriaLabel}
                 icon={<Close width={24} height={24} />}
                 innerRef={this.iconRef}
               />
