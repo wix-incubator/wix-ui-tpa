@@ -61,7 +61,7 @@
     "pr-release": "# SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
     "release-candidate": "node scripts/rc.js",
     "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s",
-    "storybook:release": "npx janet deploy --ci"
+    "storybook:release": "npx janet deploy --ci || exit 0"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^3.5.0",
