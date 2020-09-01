@@ -25,6 +25,7 @@ export interface CalendarPopoverProps extends TPAComponentProps {
   animated?: boolean;
   placement?: Placement;
   target: React.FunctionComponent;
+  manualFocus?: boolean;
 }
 
 interface DefaultProps {
@@ -36,6 +37,7 @@ interface DefaultProps {
   isShown: boolean;
   animated: boolean;
   placement: Placement;
+  manualFocus: boolean;
 }
 
 /** CalendarPopover */
@@ -50,7 +52,10 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     isShown: false,
     animated: false,
     placement: 'auto',
+    manualFocus: true
   };
+  closeBtn = React.createRef<IconButton>();
+  lastActiveElement = null;
 
   getDataAttributes = () => {
     const {
@@ -73,26 +78,37 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     };
   };
 
+  _onClose = () => {
+    this.props.onClose();
+    !this.props.manualFocus && this.lastActiveElement && this.lastActiveElement.focus();
+  }
+
   onEsc = e => {
     if (e.keyCode === KEY_CODES.Esc) {
-      this.props.onClose();
+      this._onClose();
+    }
+  };
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isShown && this.props.isShown) {
+      document.addEventListener('keyup', this.onEsc);
+      this.lastActiveElement = document.activeElement;
+    } else {
+      document.removeEventListener('keyup', this.onEsc);
     }
   }
 
-  componentDidUpdate() {
-    this.props.isShown ? document.addEventListener('keyup', this.onEsc) :
-    document.removeEventListener('keyup', this.onEsc)
-  }
-
   componentDidMount() {
-    this.props.isShown && document.addEventListener('keyup', this.onEsc)
+    if (this.props.isShown) {
+      this.lastActiveElement = document.activeElement;
+      document.addEventListener('keyup', this.onEsc);
+    }
   }
 
   render() {
     const {
       children,
       title,
-      onClose,
       withArrow,
       arrowSide,
       arrowTop,
@@ -105,23 +121,23 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     } = this.props;
 
     const pxArrowTop = `${arrowTop}px`;
-
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => {
           return (
             <Popover
-              onClickOutside={onClose}
-              showArrow={withArrow}
+              onClickOutside={this._onClose}
+              showArrow={false}
               placement={placement}
               shown={isShown}
+              className={st(classes.popover)}
             >
               <Popover.Element>{target}</Popover.Element>
               <Popover.Content>
                 <div
                   className={st(
                     classes.root,
-                    { rtl, arrowSide, withShadow, isShown, animated },
+                    { rtl, arrowSide, withArrow, withShadow, isShown, animated },
                     className,
                   )}
                   data-hook={this.props['data-hook']}
@@ -132,8 +148,9 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
                     <div className={classes.children}>{children}</div>
                   </div>
                   <IconButton
+                    ref={this.closeBtn}
                     className={classes.close}
-                    onClick={onClose}
+                    onClick={this._onClose}
                     as="a"
                     icon={<Close height="24px" width="23px" />}
                   />

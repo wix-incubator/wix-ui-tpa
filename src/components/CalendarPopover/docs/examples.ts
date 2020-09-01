@@ -9,7 +9,7 @@ const createStringComponent = ({
       <div style={{width: "300px"}}>
          <div>
              <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-                 <CalendarPopover placement='right' target={<h4 style={{ padding: '5px', width: '50px', height: '50px', border: 'white solid 2px'}}>${title}</h4>} isShown={true} title={'Events'} onClose={()=>console.log('close click! first popover')}>
+                 <CalendarPopover withArrow={false} placement='right' target={<h4 style={{ padding: '5px', width: '50px', height: '50px', border: 'white solid 2px'}}>${title}</h4>} isShown={true} title={'Events'} onClose={()=>console.log('close click! first popover')}>
                     <div>Michal birthday party</div>
                     <div>Movies night</div>
                     <div>Football tournament</div>

@@ -13,6 +13,11 @@
     -st-default: TPAIconButton
 }
 
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-default: CorePopover;
+}
+
 /*Defaults*/
 :vars {
     DefaultBackgroundColor: color-1;
@@ -182,3 +187,11 @@
     }
 }
 
+.popover {
+    -st-extends: CorePopover;
+    border: none;
+}
+
+.popover::popoverContent {
+    border: none;
+}
