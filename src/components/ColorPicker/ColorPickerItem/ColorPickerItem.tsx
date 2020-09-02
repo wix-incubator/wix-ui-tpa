@@ -14,7 +14,6 @@ const TOOLTIP_HIDE_DELAY = 1000;
 export interface ColorPickerItemProps extends RadioButtonProps {
   className?: string;
   key?: number;
-  disabled?: boolean;
   isCrossedOut?: boolean;
   tooltip?: string;
 }
