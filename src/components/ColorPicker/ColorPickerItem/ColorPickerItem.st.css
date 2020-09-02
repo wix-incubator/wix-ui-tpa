@@ -29,7 +29,7 @@
 
 .root {
     -st-extends: RadioButton;
-    -st-states: checked, focused;
+    -st-states: checked, focused, isCrossedOut;
 }
 
 .root * {
@@ -57,5 +57,21 @@
     height: calc(100% - 2px);
     border-radius: value(colorPickerBorderRadius);
     border: 1px solid #C9C9C9;
+    position: relative;
+    overflow: hidden;
 }
 
+.root:isCrossedOut .radioInner::before {
+    content: '';
+    position: absolute;
+    border-top: 1px solid #C9C9C9;
+    transform-origin: right;
+    transform: rotate(-45deg);
+    width: 200%;
+    right: 0;
+ }
+
+.root:disabled {
+    filter: none;
+    opacity: 1;
+}

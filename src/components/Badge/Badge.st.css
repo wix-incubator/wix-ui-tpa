@@ -35,10 +35,33 @@
     font-size: 12px;
 }
 
+.innerContainer {
+    display: flex;
+}
+
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 2px;
+    height: 12px;
+    width: 14px;
+}
+
+.icon::after {
+    content: '';
+    width: 2px;
+}
+
 .root:priority(default) {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
     border: none;
+}
+
+.root:priority(default) .icon path {
+    fill: color(value(badgeTextColor));
 }
 
 .root:priority(light) {
@@ -51,8 +74,16 @@
     line-height: 18px;
 }
 
+.root:priority(light) .icon path {
+    fill: color(value(LightTextColor));
+}
+
 .root:priority(primary) {
     background-color: color(value(PrimaryBgColor));
     color: color(value(PrimaryTextColor));
     border: none;
+}
+
+.root:priority(primary) .icon path {
+    fill: color(value(PrimaryTextColor));
 }
