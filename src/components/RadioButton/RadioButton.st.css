@@ -1,0 +1,201 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: RadioButton;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+/*Defaults*/
+:vars {
+    DefaultTextColor: color-5;
+    DefaultBorderColor: color-5;
+    DefaultIconColor: color-8;
+    DefaultBackgroundColor:color-1;
+    DisabledColor: color-3;
+}
+
+/*Overrides*/
+:vars {
+    TextColor: --overridable;
+    BorderColor: --overridable;
+    IconColor:  --overridable;
+    BackgroundColor:--overridable;
+}
+
+:vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+}
+
+.labelWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.wrapper{
+    display: flex;
+    -st-extends: RadioButton;
+    cursor: pointer;
+}
+
+.root {
+    -st-states: checked, disabled, box, error;
+}
+
+.radioIcon {
+    position: absolute;
+    top:1px;
+    background-color: transparent;
+    height: 16px;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.innerCheck {
+    margin: 2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transform: scale(0.5);
+    opacity: 0;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+}
+.root:box {
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
+
+
+.label.suffixed {
+    flex: 1;
+    white-space: nowrap;
+    display: flex;
+}
+
+.label.suffixed:after {
+    content: '';
+    width: 5px;
+}
+
+.suffix {
+    flex: 0;
+}
+
+.root:box:disabled {
+    cursor: default;
+}
+
+.root:box:hover, .root:box:focus-within {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.root:box:checked {
+    background-color: value(CurrentBackgroundColor);
+    z-index:1000;
+
+}
+
+.root:box:checked .wrapper {
+    background-color: applyOpacity(value(CurrentIconColor), 0.1);
+    border-color: value(CurrentIconColor);
+
+}
+
+.root:box:checked:not(:disabled):hover, .root:box:checked:not(:disabled):focus-within {
+    border-color: applyOpacity(value(CurrentIconColor), 0.6);
+}
+
+.root:box:not(:disabled):hover .icon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.wrapper::label {
+    width: 100%;
+    font: font(value(LabelTextFont));
+    color: applyOpacity(value(CurrentTextColor),1);
+}
+
+.wrapper::icon {
+    display: flex;
+    position: relative;
+    margin-bottom: 1px;
+    top:4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.wrapper::icon:before {
+    content: '';
+    width: 28px;
+}
+
+
+
+.root:box .wrapper{
+    display: flex;
+    padding: 16px;
+    background-color:applyOpacity(value(CurrentBackgroundColor),1);
+    border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+
+.root:hover .radioIcon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.root:checked .innerCheck {
+    opacity: 1;
+    background-color: value(CurrentIconColor);
+    transform: scale(1);
+}
+
+/* Show the indicator (dot/circle) when checked */
+
+.root:disabled {
+    cursor: default;
+    pointer-events: none;
+}
+
+.root:disabled .label {
+    color: color(value(DisabledColor));
+}
+
+.root:disabled .radioIcon {
+    border-color: color(value(DisabledColor));
+}
+.root:disabled .innerCheck {
+    background-color: color(value(DisabledColor));
+}
+.root:error .innerCheck {
+    background-color: color(value(errorColor));
+}
+
+.root:error .radioIcon {
+    border-color: color(value(errorColor));
+}
