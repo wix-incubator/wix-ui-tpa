@@ -42,15 +42,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+}
+.wrapper{
+    display: flex;
+    -st-extends: RadioButton;
+    cursor: pointer;
 }
 
 .root {
-    -st-extends: RadioButton;
     -st-states: checked, disabled, box, error;
-    display: flex;
-    cursor: pointer;
-    width: 100%;
 }
 
 .radioIcon {
@@ -69,14 +69,17 @@
 
 .innerCheck {
     margin: 2px;
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     transform: scale(0.5);
     opacity: 0;
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
-
+.root:box {
+    margin-top: -1px;
+    margin-bottom: -1px;
+}
 
 
 .label.suffixed {
@@ -107,8 +110,15 @@
 }
 
 .root:box:checked {
+    background-color: value(CurrentBackgroundColor);
+    z-index:1000;
+
+}
+
+.root:box:checked .wrapper {
     background-color: applyOpacity(value(CurrentIconColor), 0.1);
     border-color: value(CurrentIconColor);
+
 }
 
 .root:box:checked:not(:disabled):hover, .root:box:checked:not(:disabled):focus-within {
@@ -119,13 +129,13 @@
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
-.root::label {
+.wrapper::label {
     width: 100%;
     font: font(value(LabelTextFont));
     color: applyOpacity(value(CurrentTextColor),1);
 }
 
-.root::icon {
+.wrapper::icon {
     display: flex;
     position: relative;
     margin-bottom: 1px;
@@ -136,14 +146,14 @@
     user-select: none;
 }
 
-.root::icon:before {
+.wrapper::icon:before {
     content: '';
     width: 28px;
 }
 
 
 
-.root:box {
+.root:box .wrapper{
     display: flex;
     padding: 16px;
     background-color:applyOpacity(value(CurrentBackgroundColor),1);

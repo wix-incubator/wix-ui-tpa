@@ -84,42 +84,46 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       suffix,
     } = this.props;
     return (
-      <CoreRadioButton
-        {...this.getDataAttributes()}
-        data-hook={this.props['data-hook']}
-        checked={checked}
-        disabled={disabled}
-        tabIndex={0}
-        value={value}
-        label={
-          <div className={classes.labelWrapper}>
-            {' '}
-            <div
-              data-hook={RADIOBUTTON_DATA_HOOKS.LabelWrapper}
-              className={classnames(classes.label, {
-                [classes.suffixed]: suffix,
-              })}
-            >
-              {label}
-            </div>
-            {suffix && (
-              <div className={`${classes.label} ${classes.suffix}`}>
-                {suffix}
-              </div>
-            )}
-          </div>
-        }
-        name={name}
-        onChange={onChange}
-        checkedIcon={radioBtnIcon}
-        uncheckedIcon={radioBtnIcon}
-        aria-label={label}
+      <div
         className={st(
           classes.root,
           { checked, error, disabled, box: theme === 'box' },
           className,
         )}
-      />
+      >
+        <CoreRadioButton
+          {...this.getDataAttributes()}
+          data-hook={this.props['data-hook']}
+          checked={checked}
+          disabled={disabled}
+          tabIndex={0}
+          value={value}
+          label={
+            <div className={classes.labelWrapper}>
+              {' '}
+              <div
+                data-hook={RADIOBUTTON_DATA_HOOKS.LabelWrapper}
+                className={classnames(classes.label, {
+                  [classes.suffixed]: suffix,
+                })}
+              >
+                {label}
+              </div>
+              {suffix && (
+                <div className={`${classes.label} ${classes.suffix}`}>
+                  {suffix}
+                </div>
+              )}
+            </div>
+          }
+          name={name}
+          onChange={onChange}
+          checkedIcon={radioBtnIcon}
+          uncheckedIcon={radioBtnIcon}
+          aria-label={label}
+          className={classes.wrapper}
+        />
+      </div>
     );
   }
 }

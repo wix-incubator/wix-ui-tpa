@@ -23,6 +23,7 @@ export class RadioButtonGroupWiringExample extends React.Component {
               this.setState({ firstGroup: val });
             }}
             layout={RadioButtonGroupLayout.Horizontal}
+            theme={RadioButtonTheme.Box}
             name="areAreRadio"
             value={this.state.firstGroup}
           >

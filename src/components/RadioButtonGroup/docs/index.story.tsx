@@ -20,7 +20,6 @@ import { RadioButtonGroupWiringExample } from './RadioButtonGroupWiringExample';
 import { RadioButtonGroup, RadioButtonGroupLayout } from '../';
 import { RadioButton, RadioButtonTheme } from '../../RadioButton/RadioButton';
 
-console.log('this is here');
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
@@ -30,13 +29,15 @@ export default {
   component: RadioButtonGroup,
   componentPath: '../RadioButtonGroup.tsx',
   componentProps: () => ({
-    theme: RadioButtonTheme.Default,
-    layout: RadioButtonGroupLayout.Vertical,
+    theme: RadioButtonTheme.Box,
+    layout: RadioButtonGroupLayout.Horizontal,
     value: 'option1',
+    name: 'areAreRadio',
     withSpacing: false,
     children: [
       <RadioButton key={'option1'} label={'option 1'} value={'option1'} />,
       <RadioButton key={'option2'} label={'option 2'} value={'option2'} />,
+      <RadioButton key={'option2'} label={'option 2'} value={'option3'} />,
     ],
   }),
   exampleProps: {
