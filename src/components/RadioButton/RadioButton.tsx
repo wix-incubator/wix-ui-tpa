@@ -90,10 +90,10 @@ export class RadioButton extends React.Component<RadioButtonProps> {
           { checked, error, disabled, box: theme === 'box' },
           className,
         )}
+        data-hook={this.props['data-hook']}
+        {...this.getDataAttributes()}
       >
         <CoreRadioButton
-          {...this.getDataAttributes()}
-          data-hook={this.props['data-hook']}
           checked={checked}
           disabled={disabled}
           tabIndex={0}
