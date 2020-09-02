@@ -54,6 +54,11 @@
     width: 2px;
 }
 
+.icon::before {
+    content: '';
+    margin: 0 -1px;
+}
+
 .root:priority(default) {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
