@@ -1,0 +1,12 @@
+:import {
+    -st-from: "../RadioButton.st.css";
+    -st-default: TPARadioButton;
+}
+
+.root {
+    -st-mixin: TPARadioButton(
+            TextColor '"--textColor"',
+            BorderColor '"--borderColor"',
+            IconColor '"--iconColor"'
+    );
+}

@@ -1,0 +1,10 @@
+.root {
+    display: flex;
+    flex-direction: column;
+}
+
+.component {
+    margin: 10px 0 24px 0;
+    display: flex;
+    flex-direction: column;
+}
