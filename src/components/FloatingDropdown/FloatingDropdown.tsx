@@ -5,11 +5,18 @@ import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 import { DropdownOption } from '../Dropdown/DropdownOption';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import styles from './FloatingDropdown.st.css';
+
+/* TODO
+ * The import below is a workaround. FloatingDropdown and Dropdown
+ * components should be refactored according to this thread
+ * https://github.com/wix/wix-ui-tpa/pull/387 (or merged into a single component)
+ */
+import '../Dropdown/Dropdown.st.css';
 import { FloatingDropdownBase } from './FloatingDropdownBase';
 import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 
-export interface FloatingDropdownProps {
+export interface FloatingDropdownProps extends TPAComponentProps {
   /** Defines a string value that labels the current element. Optional. */
   'aria-label'?: string;
   /** Identifies the element (or elements) that labels the current element. Optional. */
