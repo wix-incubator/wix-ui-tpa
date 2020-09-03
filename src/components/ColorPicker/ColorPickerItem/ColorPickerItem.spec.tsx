@@ -1,10 +1,24 @@
 import * as React from 'react';
+import { jsdomReactUniDriver } from '@unidriver/jsdom-react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { colorPickerItemDriverFactory } from './ColorPickerItem.driver';
 import { ColorPickerItem } from './';
 
 describe('ColorPickerItem', () => {
   const createDriver = createUniDriverFactory(colorPickerItemDriverFactory);
+
+  afterEach(() => {
+    // this is obviousle a "hack".
+    // this data-hook is taken from the wix-ui-core/Popover implementation:
+    // https://github.com/wix/wix-ui/blob/master/packages/wix-ui-core/src/components/popover/Popover.uni.driver.ts#L17
+    // TODO fix TooltipDriver in core, to remove the portal when not needed
+    const portal =
+      document && document.querySelector('[data-hook="popover-portal"]');
+
+    if (portal) {
+      portal.remove();
+    }
+  });
 
   it('should render', async () => {
     const driver = createDriver(<ColorPickerItem onChange={e => {}} />);
@@ -40,23 +54,25 @@ describe('ColorPickerItem', () => {
   });
 
   it('should display tooltip', async () => {
-    const driver = createDriver(
-      <span>
-        <ColorPickerItem tooltip="Hello" />
-      </span>,
-    );
-    expect(await driver.getTooltipText()).toBe('ArrowTop.svgHello');
+    const driver = createDriver(<ColorPickerItem tooltip="Hello" />);
+    expect(
+      await driver.getTooltipText(jsdomReactUniDriver(document.body)),
+    ).toBe('ArrowTop.svgHello');
   });
 
   it('should disabled tooltip disabled state', async () => {
     const driver = createDriver(<ColorPickerItem disabled tooltip="Hello" />);
-    expect(await driver.getTooltipText()).toBe('ArrowTop.svgHello');
+    expect(
+      await driver.getTooltipText(jsdomReactUniDriver(document.body)),
+    ).toBe('ArrowTop.svgHello');
   });
 
   it('should disabled tooltip crossed out state state', async () => {
     const driver = createDriver(
       <ColorPickerItem isCrossedOut tooltip="Hello" />,
     );
-    expect(await driver.getTooltipText()).toBe('ArrowTop.svgHello');
+    expect(
+      await driver.getTooltipText(jsdomReactUniDriver(document.body)),
+    ).toBe('ArrowTop.svgHello');
   });
 });
