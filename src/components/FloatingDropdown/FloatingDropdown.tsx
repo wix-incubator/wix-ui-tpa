@@ -15,6 +15,7 @@ import '../Dropdown/Dropdown.st.css';
 import { FloatingDropdownBase } from './FloatingDropdownBase';
 import { DATA_HOOKS } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
+import { TPAComponentProps } from '../../types';
 
 export interface FloatingDropdownProps extends TPAComponentProps {
   /** Defines a string value that labels the current element. Optional. */
@@ -114,9 +115,6 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         data-mobile={mobile}
         forceContentElementVisibility={forceContentElementVisibility}
         initialSelectedIds={value ? [value] : []}
-        onDeselect={this._onSelect}
-        onSelect={this._onSelect}
-        openTrigger={disabled ? 'none' : 'click'}
         options={coreOptions}
       >
         {baseElement}
