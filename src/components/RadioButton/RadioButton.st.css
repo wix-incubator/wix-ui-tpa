@@ -88,7 +88,7 @@
     display: flex;
 }
 
-.label.suffixed:after {
+.label.suffixed::after {
     content: '';
     width: 5px;
 }
@@ -146,7 +146,7 @@
     user-select: none;
 }
 
-.wrapper::icon:before {
+.wrapper::icon::before {
     content: '';
     width: 28px;
 }
