@@ -80,17 +80,16 @@ export class Event extends React.Component<EventProps> {
     const timeComponent =
       showTime && time ? <Text className={classes.time}>{time}</Text> : null;
 
-          return onClick ? (
-            <ButtonNext
-              onClick={() => !disabled && onClick()}
-              className={st(classes.buttonContainer)}
-              {...this._getEventProps(true)}
-            >
-              {this._getEvent(false, className, timeComponent, title)}
-            </ButtonNext>
-          ) : (
-            this._getEvent(true, className, timeComponent, title)
-          );
+    return onClick ? (
+      <ButtonNext
+        onClick={() => !disabled && onClick()}
+        className={st(classes.buttonContainer)}
+        {...this._getEventProps(true)}
+      >
+        {this._getEvent(false, className, timeComponent, title)}
+      </ButtonNext>
+    ) : (
+      this._getEvent(true, className, timeComponent, title)
     );
   }
 }
