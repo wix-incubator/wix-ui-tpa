@@ -9,8 +9,7 @@ export interface EventDriver extends BaseUniDriver {
   isTimeShown(): Promise<boolean>;
   isSelected(): Promise<boolean>;
   isFullday(): Promise<boolean>;
-  hasOnClick(): Promise<boolean>;
-  isDisabled(): Promise<boolean>;
+  isButton(): Promise<boolean>;
   hasAriaHasPopup(): Promise<boolean>;
   hasAriaExpanded(): Promise<boolean>;
 }
@@ -27,11 +26,8 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
     async isTimeShown() {
       return (await base.attr(EVENT_DATA_KEYS.IsTimeShown)) === 'true';
     },
-    async hasOnClick() {
-      return (await base.attr(EVENT_DATA_KEYS.OnClick)) === 'true';
-    },
-    async isDisabled() {
-      return (await base.attr(EVENT_DATA_KEYS.Disabled)) === 'true';
+    async isButton() {
+      return (await base._prop('tagName')).toLowerCase() === 'button';
     },
     async hasAriaHasPopup() {
       return (await base.attr(EVENT_DATA_KEYS.ARIA_Has_Popup)) === 'true';

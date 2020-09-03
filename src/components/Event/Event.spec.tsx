@@ -36,19 +36,12 @@ describe('Event', () => {
     expect(await driver.isTimeShown()).toBe(true);
   });
 
-  it('should have onClick', async () => {
+  it('should be button', async () => {
     const driver = createDriver(<Event onClick={() => {}} {...defaultProps} />);
-    expect(await driver.hasOnClick()).toBe(true);
+    expect(await driver.isButton()).toBe(true);
   });
 
-  it('should show disabled state', async () => {
-    const driver = createDriver(
-      <Event onClick={() => {}} disabled {...defaultProps} />,
-    );
-    expect(await driver.isDisabled()).toBe(true);
-  });
-
-  it('should show aria-has-expanded state', async () => {
+  it('should show aria-expanded state', async () => {
     const driver = createDriver(<Event aria-expanded {...defaultProps} />);
     expect(await driver.hasAriaExpanded()).toBe(true);
   });

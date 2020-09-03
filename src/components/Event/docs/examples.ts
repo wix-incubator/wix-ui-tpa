@@ -14,7 +14,7 @@ const createStringComponent = (
     <div style={{width: "135px"}}>
        <h4>${exampleTitle}</h4>
           <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-            <Event disabled={${disabled}} onClick={${onClick}} fullday={${fullday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
+            <Event data-hook="my-event" disabled={${disabled}} onClick={${onClick}} fullday={${fullday}} showTime={${showTime}} time='21:30' title='${eventTitle}' selected={${isSelected}}/>
           </TPAComponentsProvider>   
        </div>
     `;

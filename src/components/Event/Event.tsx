@@ -42,24 +42,45 @@ export class Event extends React.Component<EventProps> {
   };
 
   getDataAttributes() {
-    const { fullday, selected, showTime, onClick, disabled } = this.props;
+    const { fullday, selected, showTime } = this.props;
 
     return {
       [EVENT_DATA_KEYS.IsFullDay]: fullday,
       [EVENT_DATA_KEYS.IsSelected]: selected,
-      [EVENT_DATA_KEYS.IsTimeShown]: showTime,
-      [EVENT_DATA_KEYS.OnClick]: Boolean(onClick),
-      [EVENT_DATA_KEYS.Disabled]: disabled,
+      [EVENT_DATA_KEYS.IsTimeShown]: showTime
     };
   }
+
+  _getEventProps = isContainer =>
+    isContainer
+      ? {
+        'data-hook': this.props['data-hook'],
+            ...this.getDataAttributes(),
+            [EVENT_DATA_KEYS.ARIA_Has_Popup]: this.props['aria-has-popup'],
+            [EVENT_DATA_KEYS.ARIA_Expanded]: this.props['aria-expanded'],
+          }
+        : null;
+
+  _getEvent = (rtl, isContainer, className, timeComponent, title) => (
+    <div
+      {...this._getEventProps(isContainer)}
+      className={st(
+        classes.root,
+        { fullday: this.props.fullday, selected: this.props.selected, rtl },
+        className,
+      )}
+    >
+      {timeComponent}
+      <Text className={classes.title}>{title}</Text>
+      <div className={classes.overlay} />
+    </div>
+  );
 
   render() {
     const {
       time,
       title,
       showTime,
-      fullday,
-      selected,
       className,
       onClick,
       disabled,
@@ -67,30 +88,6 @@ export class Event extends React.Component<EventProps> {
     const timeComponent =
       showTime && time ? <Text className={classes.time}>{time}</Text> : null;
 
-    const eventProps = isContainer =>
-      isContainer
-        ? {
-            'data-hook': this.props['data-hook'],
-            ...this.getDataAttributes(),
-            [EVENT_DATA_KEYS.ARIA_Has_Popup]: this.props['aria-has-popup'],
-            [EVENT_DATA_KEYS.ARIA_Expanded]: this.props['aria-expanded'],
-          }
-        : null;
-
-    const event = (rtl, isContainer) => (
-      <div
-        {...eventProps(isContainer)}
-        className={st(
-          classes.root,
-          { fullday, selected, rtl, disabled },
-          className,
-        )}
-      >
-        {timeComponent}
-        <Text className={classes.title}>{title}</Text>
-        <div className={classes.overlay} />
-      </div>
-    );
 
     return (
       <TPAComponentsConsumer>
@@ -99,13 +96,13 @@ export class Event extends React.Component<EventProps> {
             <ButtonNext
               onClick={() => !disabled && onClick()}
               className={st(classes.buttonContainer)}
-              {...eventProps(true)}
+              {...this._getEventProps(true)}
             >
-              {event(rtl, false)}
+              {this._getEvent(rtl, false, className, timeComponent, title)}
             </ButtonNext>
           ) : (
-            event(rtl, true)
-          );
+              this._getEvent(rtl, true, className, timeComponent, title)
+            );
         }}
       </TPAComponentsConsumer>
     );
