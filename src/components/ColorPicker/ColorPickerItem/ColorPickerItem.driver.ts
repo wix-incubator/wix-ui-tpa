@@ -6,10 +6,7 @@ import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
 import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
 import { radioButtonDriverFactory } from 'wix-ui-core/dist/src/components/radio-button/RadioButton.driver';
 import { Simulate } from 'react-dom/test-utils';
-import {
-  colorPickerItemDataHook,
-  colorPickerItemTooltipDataHook,
-} from '../dataHooks';
+import { colorPickerItemTooltipDataHook } from '../dataHooks';
 import * as style from './ColorPickerItem.st.css';
 
 export interface ColorPickerItemDriver extends BaseUniDriver {
@@ -31,27 +28,19 @@ export const colorPickerItemDriverFactory = (
     return tooltipDriverFactory({ element, eventTrigger: Simulate });
   };
   const getCoreRadioButtonDriver = async () => {
-    const element = (await baseUniDriver.element()).querySelector(
-      `[data-hook="${colorPickerItemDataHook}"]`,
-    );
-    return radioButtonDriverFactory({ element, eventTrigger: Simulate });
+    return radioButtonDriverFactory({
+      element: await baseUniDriver.element(),
+      eventTrigger: Simulate,
+    });
   };
 
   return {
     ...baseUniDriverFactory(base),
     isDisabled: async () => {
       return (await getCoreRadioButtonDriver()).isDisabled();
-      return (
-        (await base
-          .$(`[data-hook="${colorPickerItemDataHook}"]`)
-          .attr('disabled')) !== null
-      );
     },
     isCrossedOut: async () => {
-      return !!(await stylableUtil.getStyleState(
-        base.$(`[data-hook="${colorPickerItemDataHook}"]`),
-        'isCrossedOut',
-      ));
+      return !!(await stylableUtil.getStyleState(base, 'isCrossedOut'));
     },
     getTooltipText: async () => {
       const tooltipDriver = await getTooltipDriver();

@@ -46,6 +46,45 @@ describe('ColorPicker', () => {
     await eventually(() => expect(onChange).toBeCalled);
   });
 
+  it('should support ColorPickerItemDriver (disabled, isCrossedOut)', async () => {
+    const onChange = jest.fn();
+
+    const driver = createDriver(
+      <ColorPicker onChange={onChange}>
+        <ColorPicker.Item aria-label={'red color'} value="red" isCrossedOut />
+        <ColorPicker.Item aria-label={'red color'} value="blue" disabled />
+      </ColorPicker>,
+    );
+
+    const itemDriverFirst = driver.getItemAt(0);
+    const itemDriverSecond = driver.getItemAt(1);
+
+    expect(await itemDriverFirst.isCrossedOut()).toBe(true);
+    expect(await itemDriverFirst.isDisabled()).toBe(false);
+
+    expect(await itemDriverSecond.isCrossedOut()).toBe(false);
+    expect(await itemDriverSecond.isDisabled()).toBe(true);
+  });
+
+  it('should support ColorPickerItemDriver (tooltip)', async () => {
+    const onChange = jest.fn();
+    const color = 'red';
+
+    const driver = createDriver(
+      <ColorPicker onChange={onChange}>
+        <ColorPicker.Item
+          aria-label={'red color'}
+          value={color}
+          tooltip="Hello"
+        />
+      </ColorPicker>,
+    );
+
+    const itemDriverFirst = driver.getItemAt(0);
+
+    expect(await itemDriverFirst.getTooltipText()).toBe('ArrowTop.svgHello');
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
