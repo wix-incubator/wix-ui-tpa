@@ -47,19 +47,19 @@ export class Event extends React.Component<EventProps> {
     return {
       [EVENT_DATA_KEYS.IsFullDay]: fullday,
       [EVENT_DATA_KEYS.IsSelected]: selected,
-      [EVENT_DATA_KEYS.IsTimeShown]: showTime
+      [EVENT_DATA_KEYS.IsTimeShown]: showTime,
     };
   }
 
   _getEventProps = isContainer =>
     isContainer
       ? {
-        'data-hook': this.props['data-hook'],
-            ...this.getDataAttributes(),
-            [EVENT_DATA_KEYS.ARIA_Has_Popup]: this.props['aria-has-popup'],
-            [EVENT_DATA_KEYS.ARIA_Expanded]: this.props['aria-expanded'],
-          }
-        : null;
+          'data-hook': this.props['data-hook'],
+          ...this.getDataAttributes(),
+          [EVENT_DATA_KEYS.ARIA_Has_Popup]: this.props['aria-has-popup'],
+          [EVENT_DATA_KEYS.ARIA_Expanded]: this.props['aria-expanded'],
+        }
+      : null;
 
   _getEvent = (rtl, isContainer, className, timeComponent, title) => (
     <div
@@ -77,17 +77,9 @@ export class Event extends React.Component<EventProps> {
   );
 
   render() {
-    const {
-      time,
-      title,
-      showTime,
-      className,
-      onClick,
-      disabled,
-    } = this.props;
+    const { time, title, showTime, className, onClick, disabled } = this.props;
     const timeComponent =
       showTime && time ? <Text className={classes.time}>{time}</Text> : null;
-
 
     return (
       <TPAComponentsConsumer>
@@ -101,8 +93,8 @@ export class Event extends React.Component<EventProps> {
               {this._getEvent(rtl, false, className, timeComponent, title)}
             </ButtonNext>
           ) : (
-              this._getEvent(rtl, true, className, timeComponent, title)
-            );
+            this._getEvent(rtl, true, className, timeComponent, title)
+          );
         }}
       </TPAComponentsConsumer>
     );
