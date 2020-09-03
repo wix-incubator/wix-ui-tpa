@@ -7,6 +7,7 @@ import { badgeDriverFactory } from './Badge.driver';
 import { Badge, BADGE_PRIORITY } from './';
 import { badgeTestkitFactory } from '../../testkit';
 import { badgeTestkitFactory as enzymeBadgeTestkitFactory } from '../../testkit/enzyme';
+import { ReactComponent as CameraIcon } from '../../assets/icons/Camera.svg';
 
 describe('Badge', () => {
   const createDriver = createUniDriverFactory(badgeDriverFactory);
@@ -37,6 +38,11 @@ describe('Badge', () => {
       );
       expect(await driver.isPrimary()).toBeTruthy();
       expect(await driver.exists()).toBe(true);
+    });
+    it('should render badge with icon', async () => {
+      const icon = <CameraIcon />;
+      const driver = createDriver(<Badge icon={icon}>I'm primary badge</Badge>);
+      expect(await driver.hasIcon()).toBe(true);
     });
   });
 
