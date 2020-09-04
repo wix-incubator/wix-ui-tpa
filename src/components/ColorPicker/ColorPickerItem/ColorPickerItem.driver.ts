@@ -12,8 +12,8 @@ import * as style from './ColorPickerItem.st.css';
 export interface ColorPickerItemDriver extends BaseUniDriver {
   isDisabled(): Promise<boolean>;
   isCrossedOut(): Promise<boolean>;
-  getTooltipText(body: UniDriver): Promise<string>;
-  hasTooltip(body: UniDriver): Promise<boolean>;
+  getTooltipText(bodyUniDriver: UniDriver): Promise<string>;
+  hasTooltip(bodyUniDriver: UniDriver): Promise<boolean>;
 }
 
 export const colorPickerItemDriverFactory = (
@@ -42,12 +42,12 @@ export const colorPickerItemDriverFactory = (
     isCrossedOut: async () => {
       return !!(await stylableUtil.getStyleState(base, 'isCrossedOut'));
     },
-    getTooltipText: async body => {
-      const tooltipDriver = await getTooltipDriver(body);
+    getTooltipText: async bodyUniDriver => {
+      const tooltipDriver = await getTooltipDriver(bodyUniDriver);
       return tooltipDriver.getTooltipText();
     },
-    hasTooltip: async body => {
-      const tooltipDriver = await getTooltipDriver(body);
+    hasTooltip: async bodyUniDriver => {
+      const tooltipDriver = await getTooltipDriver(bodyUniDriver);
       return tooltipDriver.exists();
     },
   };

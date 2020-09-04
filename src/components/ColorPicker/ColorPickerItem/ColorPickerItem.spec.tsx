@@ -6,6 +6,11 @@ import { ColorPickerItem } from './';
 
 describe('ColorPickerItem', () => {
   const createDriver = createUniDriverFactory(colorPickerItemDriverFactory);
+  let bodyUniDriver;
+
+  beforeAll(() => {
+    bodyUniDriver = jsdomReactUniDriver(document.body);
+  });
 
   afterEach(() => {
     // this is obviousle a "hack".
@@ -56,14 +61,14 @@ describe('ColorPickerItem', () => {
   it('should display tooltip', async () => {
     const driver = createDriver(<ColorPickerItem tooltip="Hello" />);
     expect(
-      await driver.getTooltipText(jsdomReactUniDriver(document.body)),
+      await driver.getTooltipText(bodyUniDriver),
     ).toBe('ArrowTop.svgHello');
   });
 
   it('should disabled tooltip disabled state', async () => {
     const driver = createDriver(<ColorPickerItem disabled tooltip="Hello" />);
     expect(
-      await driver.getTooltipText(jsdomReactUniDriver(document.body)),
+      await driver.getTooltipText(bodyUniDriver),
     ).toBe('ArrowTop.svgHello');
   });
 
@@ -72,7 +77,7 @@ describe('ColorPickerItem', () => {
       <ColorPickerItem isCrossedOut tooltip="Hello" />,
     );
     expect(
-      await driver.getTooltipText(jsdomReactUniDriver(document.body)),
+      await driver.getTooltipText(bodyUniDriver),
     ).toBe('ArrowTop.svgHello');
   });
 });
