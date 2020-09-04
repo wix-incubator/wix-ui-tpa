@@ -27,26 +27,32 @@
 }
 
 .root {
-    -st-states: priority(enum(default, light, primary));
-    display: inline-block;
+    -st-states: priority(enum(default, light, primary)), withIcon;
+    display: inline-flex;
     border-radius: 12px;
-    padding: 0 12px;
     line-height: 20px;
     font-size: 12px;
 }
 
+.root::before, .root::after {
+    content: '';
+    width: 12px;;
+}
+
 .innerContainer {
     display: flex;
+    align-items: center;
 }
 
 .icon {
+    height: 16px;
+    width: 18px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    padding: 2px;
-    height: 12px;
-    width: 14px;
+}
+
+.icon > svg {
+    width: 16px;
+    height: 16px;
 }
 
 .icon::after {
@@ -86,4 +92,8 @@
 
 .root:priority(primary) .icon path {
     fill: color(value(PrimaryTextColor));
+}
+
+.root:withIcon::before {
+    width: 10px;
 }
