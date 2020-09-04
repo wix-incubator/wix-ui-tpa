@@ -60,24 +60,24 @@ describe('ColorPickerItem', () => {
 
   it('should display tooltip', async () => {
     const driver = createDriver(<ColorPickerItem tooltip="Hello" />);
-    expect(
-      await driver.getTooltipText(bodyUniDriver),
-    ).toBe('ArrowTop.svgHello');
+    expect(await driver.getTooltipText(bodyUniDriver)).toBe(
+      'ArrowTop.svgHello',
+    );
   });
 
   it('should disabled tooltip disabled state', async () => {
     const driver = createDriver(<ColorPickerItem disabled tooltip="Hello" />);
-    expect(
-      await driver.getTooltipText(bodyUniDriver),
-    ).toBe('ArrowTop.svgHello');
+    expect(await driver.getTooltipText(bodyUniDriver)).toBe(
+      'ArrowTop.svgHello',
+    );
   });
 
   it('should disabled tooltip crossed out state state', async () => {
     const driver = createDriver(
       <ColorPickerItem isCrossedOut tooltip="Hello" />,
     );
-    expect(
-      await driver.getTooltipText(bodyUniDriver),
-    ).toBe('ArrowTop.svgHello');
+    expect(await driver.getTooltipText(bodyUniDriver)).toBe(
+      'ArrowTop.svgHello',
+    );
   });
 });
