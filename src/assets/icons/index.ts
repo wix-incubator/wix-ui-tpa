@@ -1,3 +1,4 @@
+export { ReactComponent as Camera } from './Camera.svg';
 export { ReactComponent as CaretDown } from './CaretDown.svg';
 export { ReactComponent as Check } from './Check.svg';
 export { ReactComponent as CheckSuccess } from './CheckSuccess.svg';

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { ButtonNext } from 'wix-ui-core/button-next';
 import { Text } from '../Text';
 import { EVENT_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
@@ -11,12 +12,20 @@ export interface EventProps extends TPAComponentProps {
   showTime?: boolean;
   fullday?: boolean;
   selected?: boolean;
+  disabled?: boolean;
+  onClick?(): void;
+  'aria-has-popup'?: boolean;
+  'aria-expanded'?: boolean;
 }
 
 interface DefaultProps {
   showTime: boolean;
   fullday: boolean;
   selected: boolean;
+  disabled: boolean;
+  onClick(): void;
+  'aria-has-popup'?: boolean;
+  'aria-expanded': boolean;
 }
 
 /** Event */
@@ -26,6 +35,10 @@ export class Event extends React.Component<EventProps> {
     showTime: true,
     fullday: false,
     selected: false,
+    disabled: false,
+    onClick: null,
+    'aria-has-popup': false,
+    'aria-expanded': false,
   };
 
   getDataAttributes() {
@@ -38,28 +51,49 @@ export class Event extends React.Component<EventProps> {
     };
   }
 
+  _getEventProps = isContainer =>
+    isContainer
+      ? {
+          'data-hook': this.props['data-hook'],
+          ...this.getDataAttributes(),
+          [EVENT_DATA_KEYS.ARIA_Has_Popup]: this.props['aria-has-popup'],
+          [EVENT_DATA_KEYS.ARIA_Expanded]: this.props['aria-expanded'],
+        }
+      : null;
+
+  _getEvent = (rtl, isContainer, className, timeComponent, title) => (
+    <div
+      {...this._getEventProps(isContainer)}
+      className={st(
+        classes.root,
+        { fullday: this.props.fullday, selected: this.props.selected, rtl },
+        className,
+      )}
+    >
+      {timeComponent}
+      <Text className={classes.title}>{title}</Text>
+      <div className={classes.overlay} />
+    </div>
+  );
+
   render() {
-    const { time, title, showTime, fullday, selected, className } = this.props;
+    const { time, title, showTime, className, onClick, disabled } = this.props;
     const timeComponent =
       showTime && time ? <Text className={classes.time}>{time}</Text> : null;
 
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => {
-          return (
-            <div
-              data-hook={this.props['data-hook']}
-              {...this.getDataAttributes()}
-              className={st(
-                classes.root,
-                { fullday, selected, rtl },
-                className,
-              )}
+          return onClick ? (
+            <ButtonNext
+              onClick={() => !disabled && onClick()}
+              className={st(classes.buttonContainer)}
+              {...this._getEventProps(true)}
             >
-              {timeComponent}
-              <Text className={classes.title}>{title}</Text>
-              <div className={classes.overlay} />
-            </div>
+              {this._getEvent(rtl, false, className, timeComponent, title)}
+            </ButtonNext>
+          ) : (
+            this._getEvent(rtl, true, className, timeComponent, title)
           );
         }}
       </TPAComponentsConsumer>

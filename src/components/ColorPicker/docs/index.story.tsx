@@ -26,6 +26,7 @@ import * as ExtendedCSSRawSource from '!raw-loader!./ColorPickerExtendedExample.
 import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.st.css';
 import * as Readme from '../README.md';
 import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
+import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -49,6 +50,20 @@ const CHILDREN = [
         key={n}
         value={COLORS[n].value}
         aria-label={COLORS[n].ariaLabel}
+      />
+    )),
+  },
+  {
+    label: 'Crossed out and disabled states plus tooltip',
+    value: [1, 2, 3, 4, 5].map(n => (
+      <ColorPicker.Item
+        checked={n === 2}
+        key={n}
+        value={COLORS[n].value}
+        aria-label={COLORS[n].ariaLabel}
+        disabled={COLORS[n].disabled}
+        isCrossedOut={COLORS[n].isCrossedOut}
+        tooltip={COLORS[n].tooltip}
       />
     )),
   },
@@ -134,6 +149,13 @@ export default {
                   },
                 ],
               },
+            }),
+            settingsPanel({
+              example: <ColorPickerMobileTooltipExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              title: 'Colorpicker with tooltip in mobile mode (long press)',
+              params: {},
             }),
           ],
         },
