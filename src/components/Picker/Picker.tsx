@@ -34,10 +34,7 @@ export class Picker extends React.Component<PickerProps> {
   };
 
   getDataAttributes() {
-    const {
-      prevDisabled,
-      nextDisabled,
-    } = this.props;
+    const { prevDisabled, nextDisabled } = this.props;
 
     return {
       [PICKER_DATA_PROPS.NextDisabled]: nextDisabled,
@@ -54,7 +51,7 @@ export class Picker extends React.Component<PickerProps> {
       nextDisabled,
       prevAriaLabel,
       nextAriaLabel,
-      className
+      className,
     } = this.props;
 
     return (
@@ -72,7 +69,9 @@ export class Picker extends React.Component<PickerProps> {
           title={PICKER_DATA_HOOKS.Prev}
           aria-label={prevAriaLabel}
         />
-        <Text role="status" className={classes.value}>{value}</Text>
+        <Text role="status" className={classes.value}>
+          {value}
+        </Text>
         <IconButton
           className={classes.arrow}
           icon={<ChevronRight />}
