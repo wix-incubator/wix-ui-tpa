@@ -27,7 +27,7 @@ class Badge extends React.Component<BadgeProps> {
     return (
       <div
         data-priority={priority}
-        className={st(classes.root, { priority }, className)}
+        className={st(classes.root, { priority, withIcon: !!icon }, className)}
         data-hook={this.props['data-hook']}
       >
         <div className={classes.innerContainer}>
