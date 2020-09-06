@@ -16,6 +16,7 @@ export enum KEY_CODES {
   ArrowDown = 40,
   ArrowRight = 39,
   ArrowLeft = 37,
+  Esc = 27,
 }
 
 export enum KEYS {
