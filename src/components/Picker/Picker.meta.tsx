@@ -32,3 +32,23 @@ PickerMetadata.addSim({
     prevDisabled: true,
   },
 });
+
+PickerMetadata.addSim({
+  title: 'next aria label',
+  props: {
+    value: 'october 2020',
+    onPrev: () => {},
+    onNext: () => {},
+    nextAriaLabel: 'next',
+  },
+});
+
+PickerMetadata.addSim({
+  title: 'prev aria label',
+  props: {
+    value: 'october 2020',
+    onPrev: () => {},
+    onNext: () => {},
+    prevAriaLabel: 'prev',
+  },
+});

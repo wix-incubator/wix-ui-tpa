@@ -13,11 +13,15 @@ export interface PickerProps extends TPAComponentProps {
   onNext(): void;
   prevDisabled?: boolean;
   nextDisabled?: boolean;
+  prevAriaLabel?: string;
+  nextAriaLabel?: string;
 }
 
 interface DefaultProps {
   prevDisabled: boolean;
   nextDisabled: boolean;
+  prevAriaLabel: string;
+  nextAriaLabel: string;
 }
 
 /** Picker */
@@ -25,6 +29,8 @@ export class Picker extends React.Component<PickerProps> {
   static defaultProps: DefaultProps = {
     prevDisabled: false,
     nextDisabled: false,
+    prevAriaLabel: '',
+    nextAriaLabel: '',
   };
 
   getDataAttributes() {
@@ -43,6 +49,8 @@ export class Picker extends React.Component<PickerProps> {
       onNext,
       prevDisabled,
       nextDisabled,
+      prevAriaLabel,
+      nextAriaLabel,
       className,
     } = this.props;
 
@@ -59,8 +67,11 @@ export class Picker extends React.Component<PickerProps> {
           disabled={prevDisabled}
           data-hook={PICKER_DATA_HOOKS.Prev}
           title={PICKER_DATA_HOOKS.Prev}
+          aria-label={prevAriaLabel}
         />
-        <Text className={classes.value}>{value}</Text>
+        <Text role="status" className={classes.value}>
+          {value}
+        </Text>
         <IconButton
           className={classes.arrow}
           icon={<ChevronRight />}
@@ -68,6 +79,7 @@ export class Picker extends React.Component<PickerProps> {
           disabled={nextDisabled}
           data-hook={PICKER_DATA_HOOKS.Next}
           title={PICKER_DATA_HOOKS.Next}
+          aria-label={nextAriaLabel}
         />
       </div>
     );
