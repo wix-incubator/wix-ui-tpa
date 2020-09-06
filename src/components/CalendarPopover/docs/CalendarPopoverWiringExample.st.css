@@ -13,6 +13,9 @@
         IconLeftPadding '"unit(fallback(--iconLeftPadding, 16), px)"',
         BackgroundColor '"--backgroundColor"',
         HorizontalPadding '"unit(fallback(--horizontalPadding, 24), px)"',
+        VerticalPadding '"unit(fallback(--verticalPadding, 24), px)"',
+        TitleFont '"--titleFont"',
+        TitleColor '"--titleColor"',
         VerticalPadding '"unit(fallback(--verticalPadding, 24), px)"'
     );
 }

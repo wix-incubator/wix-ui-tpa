@@ -87,7 +87,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     }
   };
 
-  manageA11y = () => {
+  _manageA11y = () => {
     if (this.props.isShown) {
       document.addEventListener('keyup', this._onEsc);
       this.lastActiveElement = document.activeElement;
@@ -97,15 +97,15 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
 
   componentDidUpdate(prevProps) {
     if (!prevProps.isShown) {
-      this.manageA11y();
-    } else if (prevProps.isShown && !this.props.isShown) {
+      this._manageA11y();
+    } else if (!this.props.isShown) {
       document.removeEventListener('keyup', this._onEsc);
       this._focusLastActive();
     }
   }
 
   componentDidMount() {
-    this.manageA11y();
+    this._manageA11y();
   }
 
   componentWillUnmount() {
@@ -130,7 +130,11 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     const pxArrowTop = `${arrowTop}px`;
 
     const titleToRender =
-      typeof title === 'string' ? <Text>{title}</Text> : title;
+      typeof title === 'string' ? (
+        <Text className={classes.title}>{title}</Text>
+      ) : (
+        title
+      );
 
     return (
       <TPAComponentsConsumer>
