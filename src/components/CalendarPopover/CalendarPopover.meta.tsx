@@ -76,7 +76,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'auto focused',
   props: {
-    onClose,
+    ...defaultProps,
     manualFocus: true,
   },
 });
