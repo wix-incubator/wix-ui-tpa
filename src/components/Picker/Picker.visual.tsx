@@ -13,11 +13,5 @@ visualize('Picker', () => {
     snap('default', () => <Picker {...defaultProps} />);
     snap('prev disabled', () => <Picker prevDisabled {...defaultProps} />);
     snap('next disabled', () => <Picker nextDisabled {...defaultProps} />);
-    snap('next aria label', () => (
-      <Picker nextAriaLabel="next" {...defaultProps} />
-    ));
-    snap('prev aria label', () => (
-      <Picker prevAriaLabel="prev" {...defaultProps} />
-    ));
   });
 });

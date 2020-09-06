@@ -37,16 +37,11 @@ export class Picker extends React.Component<PickerProps> {
     const {
       prevDisabled,
       nextDisabled,
-      nextAriaLabel,
-      prevAriaLabel,
     } = this.props;
 
     return {
       [PICKER_DATA_PROPS.NextDisabled]: nextDisabled,
       [PICKER_DATA_PROPS.PrevDisabled]: prevDisabled,
-      [PICKER_DATA_PROPS.PrevDisabled]: prevDisabled,
-      [PICKER_DATA_PROPS.NextAriaLabel]: nextAriaLabel,
-      [PICKER_DATA_PROPS.PrevAriaLabel]: prevAriaLabel,
     };
   }
 
@@ -59,8 +54,7 @@ export class Picker extends React.Component<PickerProps> {
       nextDisabled,
       prevAriaLabel,
       nextAriaLabel,
-      className,
-      ...rest
+      className
     } = this.props;
 
     return (
@@ -68,7 +62,6 @@ export class Picker extends React.Component<PickerProps> {
         data-hook={this.props['data-hook']}
         className={st(classes.root, {}, className)}
         {...this.getDataAttributes()}
-        {...rest}
       >
         <IconButton
           className={classes.arrow}
@@ -79,9 +72,7 @@ export class Picker extends React.Component<PickerProps> {
           title={PICKER_DATA_HOOKS.Prev}
           aria-label={prevAriaLabel}
         />
-        <Text className={classes.value}>
-          <span role="status">{value}</span>
-        </Text>
+        <Text role="status" className={classes.value}>{value}</Text>
         <IconButton
           className={classes.arrow}
           icon={<ChevronRight />}
