@@ -1,3 +1,18 @@
+# [2.4.0](https://github.com/wix/wix-ui-tpa/compare/v2.3.0...v2.4.0) (2020-09-06)
+
+
+### Bug Fixes
+
+* **CalendarEvent:** Fix a11y issues ([8f9e009](https://github.com/wix/wix-ui-tpa/commit/8f9e009aff62e72df78f077b78a550c8ca7a5168))
+
+
+### Features
+
+* **Badge:** add icon support ([dee6742](https://github.com/wix/wix-ui-tpa/commit/dee6742bd702c22b8d83f663ff476fe30cc70dcb))
+* **RadioButton:** New RadioButton and RadioButtonGroup components ([4dff53b](https://github.com/wix/wix-ui-tpa/commit/4dff53bd987bc27f11298beb0e634c0234e36675))
+
+
+
 # [2.3.0](https://github.com/wix/wix-ui-tpa/compare/v2.2.1...v2.3.0) (2020-09-01)
 
 
