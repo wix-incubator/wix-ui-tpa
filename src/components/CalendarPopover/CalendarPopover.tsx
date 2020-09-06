@@ -6,6 +6,7 @@ import { TPAComponentProps } from '../../types';
 import { POPOVER_DATA_KEYS } from './dataHooks';
 import { KEY_CODES } from '../../common/keyCodes';
 import { st, classes } from './CalendarPopover.st.css';
+import { Text } from '../Text';
 
 export enum Sides {
   Right = 'right',
@@ -13,7 +14,7 @@ export enum Sides {
 }
 
 export interface CalendarPopoverProps extends TPAComponentProps {
-  title?: string | HTMLElement;
+  title?: React.ReactNode;
   onClose(): void;
   withArrow?: boolean;
   arrowSide?: Sides;
@@ -21,7 +22,7 @@ export interface CalendarPopoverProps extends TPAComponentProps {
   withShadow?: boolean;
   isShown?: boolean;
   animated?: boolean;
-  autoFocused?: boolean;
+  manualFocus?: boolean;
 }
 
 interface DefaultProps {
@@ -32,7 +33,7 @@ interface DefaultProps {
   withShadow: boolean;
   isShown: boolean;
   animated: boolean;
-  autoFocused: boolean;
+  manualFocus: boolean;
 }
 
 /** CalendarPopover */
@@ -46,7 +47,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     withShadow: true,
     isShown: false,
     animated: false,
-    autoFocused: false,
+    manualFocus: false,
   };
   iconRef = React.createRef<HTMLButtonElement>();
   lastActiveElement = null;
@@ -60,7 +61,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       arrowTop,
       animated,
       isShown,
-      autoFocused,
+      manualFocus,
     } = this.props;
     return {
       [POPOVER_DATA_KEYS.ArrowTop]: arrowTop,
@@ -70,35 +71,37 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       [POPOVER_DATA_KEYS.WithShadow]: withShadow,
       [POPOVER_DATA_KEYS.Animated]: animated,
       [POPOVER_DATA_KEYS.Shown]: isShown,
-      [POPOVER_DATA_KEYS.AutoFocused]: autoFocused,
+      [POPOVER_DATA_KEYS.ManualFocus]: manualFocus,
     };
   };
 
-  _onClose = () => {
-    this.props.onClose();
-    this.props.autoFocused &&
+  _focusLastActive = () => {
+    !this.props.manualFocus &&
       this.lastActiveElement &&
       this.lastActiveElement.focus();
   };
 
-  onEsc = e => {
+  _onEsc = e => {
     if (e.keyCode === KEY_CODES.Esc) {
-      this._onClose();
+      this.props.onClose();
     }
   };
 
   manageA11y = () => {
     if (this.props.isShown) {
-      document.addEventListener('keyup', this.onEsc);
+      document.addEventListener('keyup', this._onEsc);
       this.lastActiveElement = document.activeElement;
-      this.props.autoFocused && this.iconRef.current.focus();
+      !this.props.manualFocus && this.iconRef.current.focus();
     }
   };
 
   componentDidUpdate(prevProps) {
-    !prevProps.isShown
-      ? this.manageA11y()
-      : document.removeEventListener('keyup', this.onEsc);
+    if (!prevProps.isShown) {
+      this.manageA11y();
+    } else if (prevProps.isShown && !this.props.isShown) {
+      document.removeEventListener('keyup', this._onEsc);
+      this._focusLastActive();
+    }
   }
 
   componentDidMount() {
@@ -106,7 +109,8 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keyup', this.onEsc);
+    document.removeEventListener('keyup', this._onEsc);
+    this._focusLastActive();
   }
 
   render() {
@@ -125,6 +129,9 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
 
     const pxArrowTop = `${arrowTop}px`;
 
+    const titleToRender =
+      typeof title === 'string' ? <Text>{title}</Text> : title;
+
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => {
@@ -139,7 +146,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
               {...this.getDataAttributes()}
             >
               <div className={classes.container}>
-                {title}
+                {titleToRender}
                 <div className={classes.children}>{children}</div>
               </div>
               <IconButton

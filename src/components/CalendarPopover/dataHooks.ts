@@ -6,5 +6,5 @@ export enum POPOVER_DATA_KEYS {
   Animated = 'data-animated',
   Shown = 'data-shown',
   ArrowSide = 'data-side',
-  AutoFocused = 'data-auto-focused',
+  ManualFocus = 'data-manual-focused',
 }

@@ -3,13 +3,14 @@ export const importExample = `import { CalendarPopover } from 'wix-ui-tpa/Calend
 const createStringComponent = ({
   title,
   isRightToLeft = false,
-  autoFocus = false,
+  manualFocus = false,
 }) => {
   return `
       <div style={{width: "300px"}}>
          <h4>${title}</h4>
          <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-               <CalendarPopover autoFocus={${autoFocus}} isShown={true} title=<h2 style={{marginTop: "0"}}>Events</h2> onClose={()=>alert('close click!')}>
+               <CalendarPopover manualFocus={${manualFocus}} isShown={true} 
+               title=<h2 style={{marginTop: "0"}}>Events</h2> onClose={()=>alert('close click!')}>
                   <div>Michal birthday party</div>
                   <div>Movies night</div>
                   <div>Football tournament</div>
@@ -26,12 +27,5 @@ const createComponentsSection = stringComponents => {
 };
 
 const defaultPopover = createStringComponent({ title: 'default' });
-const a11yPopover = createStringComponent({
-  title: 'auto focused',
-  autoFocus: true,
-});
 
-export const popoverExample = createComponentsSection([
-  defaultPopover,
-  a11yPopover,
-]);
+export const popoverExample = createComponentsSection([defaultPopover]);

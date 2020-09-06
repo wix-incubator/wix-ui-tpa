@@ -14,7 +14,7 @@ export interface CalendarPopoverDriver extends BaseUniDriver {
   hasArrow(): Promise<boolean>;
   hasShown(): Promise<boolean>;
   hasAnimation(): Promise<boolean>;
-  hasAutoFocus(): Promise<boolean>;
+  hasManualFocus(): Promise<boolean>;
 }
 
 export const calendarPopoverDriverFactory = (
@@ -43,8 +43,8 @@ export const calendarPopoverDriverFactory = (
     async hasAnimation() {
       return (await base.attr(POPOVER_DATA_KEYS.Animated)) === 'true';
     },
-    async hasAutoFocus() {
-      return (await base.attr(POPOVER_DATA_KEYS.AutoFocused)) === 'true';
+    async hasManualFocus() {
+      return (await base.attr(POPOVER_DATA_KEYS.ManualFocus)) === 'true';
     },
   };
 };

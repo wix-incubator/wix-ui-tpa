@@ -140,10 +140,6 @@
     -st-mixin: TPAIconButton(IconColor value(CurrentIconColor));
 }
 
-.close:focus {
-    border: color(color-8) solid 1px;
-}
-
 .root:rtl .close {
     left: value(CurrentIconLeftPadding);
     right: initial;
