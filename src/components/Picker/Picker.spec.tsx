@@ -55,6 +55,32 @@ describe('Picker', () => {
     expect(mockOnPrev).toHaveBeenCalled();
   });
 
+  it('shold have next aria label attribute', async () => {
+    const nextAriaLabel = 'next';
+    const driver = createDriver(
+      <Picker
+        nextAriaLabel={nextAriaLabel}
+        onPrev={noop}
+        onNext={noop}
+        {...defProps}
+      />,
+    );
+    expect(await driver.getNextAriaLabel()).toBe(nextAriaLabel);
+  });
+
+  it('shold have prev aria label attribute', async () => {
+    const prevAriaLabel = 'prev';
+    const driver = createDriver(
+      <Picker
+        prevAriaLabel={prevAriaLabel}
+        onPrev={noop}
+        onNext={noop}
+        {...defProps}
+      />,
+    );
+    expect(await driver.getPrevAriaLabel()).toBe(prevAriaLabel);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

@@ -27,18 +27,47 @@
 }
 
 .root {
-    -st-states: priority(enum(default, light, primary));
-    display: inline-block;
+    -st-states: priority(enum(default, light, primary)), withIcon;
+    display: inline-flex;
     border-radius: 12px;
-    padding: 0 12px;
     line-height: 20px;
     font-size: 12px;
+}
+
+.root::before, .root::after {
+    content: '';
+    width: 12px;;
+}
+
+.innerContainer {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    height: 16px;
+    width: 18px;
+    display: flex;
+}
+
+.icon > svg {
+    width: 16px;
+    height: 16px;
+}
+
+.icon::after {
+    content: '';
+    width: 2px;
 }
 
 .root:priority(default) {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
     border: none;
+}
+
+.root:priority(default) .icon path {
+    fill: color(value(badgeTextColor));
 }
 
 .root:priority(light) {
@@ -51,8 +80,20 @@
     line-height: 18px;
 }
 
+.root:priority(light) .icon path {
+    fill: color(value(LightTextColor));
+}
+
 .root:priority(primary) {
     background-color: color(value(PrimaryBgColor));
     color: color(value(PrimaryTextColor));
     border: none;
+}
+
+.root:priority(primary) .icon path {
+    fill: color(value(PrimaryTextColor));
+}
+
+.root:withIcon::before {
+    width: 10px;
 }

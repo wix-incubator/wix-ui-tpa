@@ -8,6 +8,11 @@
     -st-default: TPAText;
 }
 
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
+}
+
 /*Defaults*/
 :vars {
     defaulTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1em'}";
@@ -56,6 +61,18 @@
 .root::after {
     content: '';
     flex: 0 0 4px;
+}
+
+.buttonContainer {
+    -st-extends: ButtonNext;
+    width: 100%;
+    padding: 0;
+    background: value(currentBgColor);
+    border: none;
+}
+
+.buttonContainer::content {
+    width: 100%;
 }
 
 .overlay {

@@ -36,6 +36,21 @@ describe('Event', () => {
     expect(await driver.isTimeShown()).toBe(true);
   });
 
+  it('should be button', async () => {
+    const driver = createDriver(<Event onClick={() => {}} {...defaultProps} />);
+    expect(await driver.isButton()).toBe(true);
+  });
+
+  it('should show aria-expanded state', async () => {
+    const driver = createDriver(<Event aria-expanded {...defaultProps} />);
+    expect(await driver.hasAriaExpanded()).toBe(true);
+  });
+
+  it('should show aria-has-popup state', async () => {
+    const driver = createDriver(<Event aria-has-popup {...defaultProps} />);
+    expect(await driver.hasAriaHasPopup()).toBe(true);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
