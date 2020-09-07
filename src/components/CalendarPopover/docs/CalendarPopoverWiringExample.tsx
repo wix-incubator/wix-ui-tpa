@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { CalendarPopover, CalendarPopoverProps, Sides } from '..';
+import { Event } from '../../Event';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import { st, classes } from './CalendarPopoverWiringExample.st.css';
 
@@ -19,12 +20,12 @@ export const CalendarPopoverWiringExample = () => {
           {...defaultProps}
           className={classes.root}
         >
-          <div>Getting the cake</div>
-          <div>First sight wedding</div>
-          <div>Studio workout</div>
+          <Event time={'11:00'} title={"Michal's birthday party"} />
+          <Event time={'19:00'} title={'Movies night'} />
+          <Event time={'21:00'} title={'Football tournament'} />
         </CalendarPopover>
       </div>
-      <div>
+      <div dir={'rtl'}>
         <h1>Right To Left</h1>
         <TPAComponentsProvider value={{ rtl: true }}>
           <CalendarPopover
@@ -34,9 +35,9 @@ export const CalendarPopoverWiringExample = () => {
             className={classes.root}
             arrowSide={Sides.Right}
           >
-            <div>Getting the cake</div>
-            <div>First sight wedding</div>
-            <div>Studio workout</div>
+            <Event time={'11:00'} title={"Michal's birthday party"} />
+            <Event time={'19:00'} title={'Movies night'} />
+            <Event time={'21:00'} title={'Football tournament'} />
           </CalendarPopover>
         </TPAComponentsProvider>
       </div>
