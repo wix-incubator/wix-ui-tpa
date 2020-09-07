@@ -15,7 +15,8 @@
         HorizontalPadding '"unit(fallback(--horizontalPadding, 24), px)"',
         VerticalPadding '"unit(fallback(--verticalPadding, 24), px)"',
         TitleFont '"--titleFont"',
-        TitleColor '"--titleColor"'
+        TitleColor '"--titleColor"',
+        VerticalPadding '"unit(fallback(--verticalPadding, 24), px)"'
     );
 }
 
