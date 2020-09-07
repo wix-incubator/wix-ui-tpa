@@ -106,6 +106,31 @@ describe('ColorPicker', () => {
     );
   });
 
+  it('should  getItemAt', async () => {
+    const onChange = jest.fn();
+
+    const driver = createDriver(
+      <ColorPicker onChange={onChange}>
+        <ColorPicker.Item aria-label={'red color'} value="red" tooltip="Red" />
+        <ColorPicker.Item
+          aria-label={'blue color'}
+          value="blue"
+          tooltip="Blue"
+        />
+      </ColorPicker>,
+    );
+
+    const itemDriverFirst = driver.getItemAt(0);
+    const itemDriverSecond = driver.getItemAt(1);
+
+    expect(await itemDriverFirst.getTooltipText(bodyUniDriver)).toBe(
+      'ArrowTop.svgRed',
+    );
+    expect(await itemDriverSecond.getTooltipText(bodyUniDriver)).toBe(
+      'ArrowTop.svgBlue',
+    );
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
