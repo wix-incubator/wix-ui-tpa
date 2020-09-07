@@ -31,7 +31,7 @@
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
     "postbuild": "import-path --path src/components --dts",
-    "pr-postbuild": "npm install @wix/teamcity-surge-autorelease@^1.0.0 --no-save && teamcity-surge-autorelease",
+    "pr-postbuild": "npm run storybook:release",
     "pretest": "./scripts/ensure-build.sh",
     "test": "npm run test:unit && npm run autotools && npm run test:e2e && npm run test:eyes-storybook",
     "posttest": "npm run lint",
@@ -42,7 +42,7 @@
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
-    "postpublish": "npm run git:tag && npm run surge-release",
+    "postpublish": "npm run git:tag && npm run storybook:release",
     "git:tag": "node scripts/tag.js",
     "storybook": "start-storybook -p 6006 -s ./src/assets,./.storybook-test/public",
     "copy-styleable-ext": "cp src/common/formatters.st.js dist/src/common && cp src/common/formatters.st.js dist/es/src/common",
@@ -61,7 +61,7 @@
     "pr-release": "# SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
     "release-candidate": "node scripts/rc.js",
     "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s",
-    "surge-release": "npx teamcity-surge-autorelease@^1.0.0 --dist=storybook-static"
+    "storybook:release": "npx janet deploy --ci || exit 0"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^3.5.0",
