@@ -15,7 +15,7 @@
 
 /*Defaults*/
 :vars {
-    defaulTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1em'}";
+    defaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1em'}";
     defaultTimeColor: color-4;
     defaultTitleColor: color-5;
     defaultHoverOverlayColor: color-5;
@@ -37,7 +37,7 @@
 
 /* Fallbacks */
 :vars {
-    currentTextFont: fallback(value(textFont), font(value(defaulTextFont)));
+    currentTextFont: fallback(value(textFont), font(value(defaultTextFont)));
     currentTimeColor: color(fallback(value(timeColor), value(defaultTimeColor)));
     currentTitleColor: color(fallback(value(titleColor), value(defaultTitleColor)));
     currentFulldayBgColor: color(fallback(value(fulldayBgColor), value(defaultFulldayBgColor)));
