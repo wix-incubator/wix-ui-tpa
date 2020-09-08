@@ -47,14 +47,12 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
           data-hook={props['data-hook']}
           suffix={
             <span className={classes.suffix}>
-              {
-                <ChevronDown
-                  width={14}
-                  height={14}
-                  viewBox="8 7 9 10"
-                  className={classes.arrowIcon}
-                />
-              }
+              <ChevronDown
+                width={14}
+                height={14}
+                viewBox="8 7 9 10"
+                className={classes.arrowIcon}
+              />
               {suffix}
             </span>
           }
