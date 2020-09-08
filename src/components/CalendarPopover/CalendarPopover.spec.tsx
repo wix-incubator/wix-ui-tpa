@@ -72,6 +72,13 @@ describe('CalendarPopover', () => {
     expect(await driver.hasAnimation()).toBeTruthy();
   });
 
+  it('should show auto focused state', async () => {
+    const driver = createDriver(
+      <CalendarPopover manualFocus {...defaultProps} />,
+    );
+    expect(await driver.hasManualFocus()).toBeTruthy();
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

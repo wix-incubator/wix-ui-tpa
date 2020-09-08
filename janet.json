@@ -1,0 +1,10 @@
+{
+  "name": "wix-ui-tpa",
+  "rootDir": "storybook-static",
+  "files": [
+    "*"
+  ],
+  "exposure": [
+    "bo"
+  ]
+}
