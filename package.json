@@ -2,7 +2,7 @@
   "private": false,
   "name": "wix-ui-tpa",
   "sideEffects": false,
-  "version": "2.4.0",
+  "version": "2.4.1",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {

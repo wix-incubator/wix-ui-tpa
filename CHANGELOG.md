@@ -1,3 +1,19 @@
+## [2.4.1](https://github.com/wix/wix-ui-tpa/compare/v2.4.0...v2.4.1) (2020-09-08)
+
+
+### Bug Fixes
+
+* **CalendarPopover:** Fix a11y issues ([33b2d69](https://github.com/wix/wix-ui-tpa/commit/33b2d69d2c5b52dd3548e156e1fc4f51acc71dba))
+* **Event:** Rename some Stylable variables ([fd1c8ce](https://github.com/wix/wix-ui-tpa/commit/fd1c8cecc459efea5df9b45ba5b8b6c7f07180a5))
+* **Picker:** Fix a11y issues ([f374aae](https://github.com/wix/wix-ui-tpa/commit/f374aae6747c36648a4162ec8291dc67dc51feb8))
+
+
+### Features
+
+* **Dropdown:** Add 2 CoreDropdown props to Dropdown ([#392](https://github.com/wix/wix-ui-tpa/issues/392)) ([bfb2cce](https://github.com/wix/wix-ui-tpa/commit/bfb2cced6e9a7bc72f8d90d1a519100ed383aa39))
+
+
+
 # [2.4.0](https://github.com/wix/wix-ui-tpa/compare/v2.3.0...v2.4.0) (2020-09-06)
 
 
