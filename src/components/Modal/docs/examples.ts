@@ -22,10 +22,9 @@ class MobileExample extends React.Component {
 
 export const base = buildExample(`<>
   <Button onClick={this.openModal}>Open Modal</Button>
-  <Modal isOpen={isModalOpen} onClose={this.closeModal} rootElement={document.body} />
+  <Modal isOpen={isModalOpen} onRequestClose={this.closeModal}>
+    <div style={{padding: 20, width: '100%', display: 'flex', justifyContent: 'center'}}>
+      <Button onClick={this.closeModal}>Close Modal</Button>
+    </div>
+  </Modal>
 </>`);
-
-export const mobile = buildExample(`<ExampleWithContextProps mobile={true}>
-  <Button onClick={this.openModal}>Open Modal</Button>
-  <Modal isOpen={isModalOpen} onClose={this.closeModal} rootElement={document.body} />
-</ExampleWithContextProps>`);

@@ -31,13 +31,13 @@ class Modal extends React.Component<ModalProps> {
 
   closeModal = () =>
     this.setState({ isModalOpen: false }, () => {
-      if (this.props.onClose) {
-        this.props.onClose();
+      if (this.props.onRequestClose) {
+        this.props.onRequestClose();
       }
     });
 
   render() {
-    const { isOpen, onClose, rootElement, ...rest } = this.props;
+    const { isOpen, onRequestClose, ...rest } = this.props;
     const { isModalOpen } = this.state;
 
     return (
@@ -51,10 +51,7 @@ class Modal extends React.Component<ModalProps> {
         {this.state.isShowModal ? (
           <CoreModal
             isOpen={isModalOpen}
-            onClose={this.closeModal}
-            rootElement={document.querySelector(
-              `[data-hook="e2e-storybook-modal-wrapper"]`,
-            )}
+            onRequestClose={this.closeModal}
             {...rest}
           >
             <input
@@ -75,7 +72,7 @@ class Modal extends React.Component<ModalProps> {
 function renderTest() {
   return (
     <div data-hook="e2e-storybook-modal-wrapper">
-      <Modal isOpen={false} rootElement={null} />
+      <Modal isOpen={false} />
     </div>
   );
 }

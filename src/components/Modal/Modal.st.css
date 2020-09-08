@@ -1,15 +1,16 @@
 .root {
-    -st-states: mobile, rtl;
+    -st-states: isOpen;
+    box-sizing: border-box;
+}
+
+.root * {
+    box-sizing: border-box;
 }
 
 .modal {
     position: fixed;
-    padding: 24px;
 
     width: 100%;
-    max-width: 580px;
-    min-height: 150px;
-    max-height: min(90vh, 620px);
 
     top: 50%;
     left: 50%;
@@ -19,15 +20,16 @@
 
     /* to bit z-index of header in mobile */
     z-index: 2000;
-    box-sizing: border-box;
 
     opacity: 0;
-    visibility: hidden;
 
     -webkit-transition: opacity 0.3s, -webkit-transform 0.4s; /* Safari */
     transition: opacity 0.2s, transform 0.4s;
     transition-timing-function: ease;
+}
 
+.root:isOpen .modal {
+    opacity: 1;
 }
 
 .content {
@@ -48,41 +50,4 @@
     background: #000;
     opacity: 0.6;
     z-index: 1999;
-}
-
-.close {
-    background: transparent;
-    border: none;
-
-    cursor: pointer;
-
-    color: #000;
-    position: absolute;
-    top: 24px; right: 24px;
-    padding: 0;
-}
-
-.root:rtl .close {
-    left: 24px; right: auto;
-}
-
-.root:mobile .modal {
-    height: 100%;
-    min-height: 100%;
-
-    overflow: auto;
-}
-
-.root:mobile .content {
-    max-height: 100%;
-}
-
-.animated {
-    visibility: visible;
-    opacity: 1;
-    transform: translate(-50%, -50%);
-}
-
-.closing {
-    visibility: visible;
 }

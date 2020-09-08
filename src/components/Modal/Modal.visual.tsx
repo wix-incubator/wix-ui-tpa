@@ -5,7 +5,7 @@ import { Modal } from './';
 visualize('Modal', () => {
   story('simple', () => {
     const content = (
-      <Modal isOpen rootElement={document.body}>
+      <Modal isOpen>
         <p>Inner Content.</p>
       </Modal>
     );

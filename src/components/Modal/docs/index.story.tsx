@@ -55,34 +55,30 @@ class Modal extends React.Component<ModalProps> {
     isModalOpen: false,
   };
 
-  componentDidUpdate(prevProps: ModalProps) {
-    if (this.props.isOpen !== prevProps.isOpen) {
+  componentDidUpdate(prevProps: ModalProps, prevState) {
+    const { isModalOpen } = this.state;
+    const { isOpen } = this.props;
+
+    if (
+      isModalOpen === prevState.isModalOpen &&
+      (isOpen !== prevProps.isOpen || isOpen !== isModalOpen)
+    ) {
       this.setState({
-        isModalOpen: this.props.isOpen,
+        isModalOpen: isOpen,
       });
     }
   }
 
   openModal = () => this.setState({ isModalOpen: true });
 
-  closeModal = () =>
-    this.setState({ isModalOpen: false }, () => {
-      this.props.onClose();
-    });
-
   render() {
-    const { isOpen, onClose, ...rest } = this.props;
+    const { isOpen, ...rest } = this.props;
     const { isModalOpen } = this.state;
 
     return (
       <>
         <Button onClick={this.openModal}>Open Modal</Button>
-        <CoreModal
-          isOpen={isModalOpen}
-          onClose={this.closeModal}
-          rootElement={document.body}
-          {...rest}
-        />
+        <CoreModal isOpen={isModalOpen} {...rest} />
       </>
     );
   }
@@ -97,14 +93,13 @@ export default {
     isOpen: false,
     children: childrenExamples[0].value,
     'data-hook': 'storybook-Modal',
-    onClose: () => setState({ isOpen: false }),
+    onRequestClose: () => setState({ isOpen: false }),
+    closeOnClickOutside: true,
   }),
   exampleProps: {
-    closeOnClickOutside: false,
     children: childrenExamples,
-    onClose: () => 'Closed',
   },
-  hiddenProps: ['rootElement', 'focusTrap', 'closeButtonRef'],
+  hiddenProps: ['focusTrap'],
   dataHook: 'storybook-Modal',
   sections: [
     header(),
@@ -120,10 +115,7 @@ export default {
 
           title('Examples'),
 
-          ...[
-            { title: 'Example', source: examples.base },
-            { title: 'Mobile Example', source: examples.mobile },
-          ].map(code),
+          ...[{ title: 'Example', source: examples.base }].map(code),
         ],
       }),
 

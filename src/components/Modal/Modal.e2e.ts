@@ -1,4 +1,4 @@
-import { browser, element, by, Key, WebElement } from 'protractor';
+import { browser, element, by, Key } from 'protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
@@ -21,12 +21,13 @@ describe('modal', () => {
   it('should show and close correctly', async () => {
     const driver = modalTestkitFactory({ dataHook });
     await waitForVisibilityOf(await driver.element(), 'Cannot find Modal');
+    const close = element(by.css(`[data-hook=${closeDataHook}]`));
 
     expect(await driver.isModalShowed()).toBe(false);
     element(by.css('[data-hook=e2e-storybook-modal-open-btn]')).click();
     await new Promise(resolve => setTimeout(resolve, 300));
     expect(await driver.isModalShowed()).toBe(true);
-    await driver.clickOnCloseButton();
+    await close.click();
     await new Promise(resolve => setTimeout(resolve, 300));
     expect(await driver.isModalShowed()).toBe(false);
 
@@ -64,23 +65,3 @@ describe('modal', () => {
     ).toBe(firstInputClassName);
   });
 });
-
-/*
-
-it('should work correctly with the focus trap', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({})(
-        <Modal isOpen rootElement={document.body} focusTrap>
-          <input />
-          <input />
-        </Modal>,
-      ),
-    );
-
-    var first = element(by.css('input#first'));
-    first.sendKeys(protractor.Key.TAB);
-
-    expect(true).toBe(true);
-  });
-
- */

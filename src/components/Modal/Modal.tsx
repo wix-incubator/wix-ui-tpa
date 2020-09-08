@@ -1,12 +1,9 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import createFocusTrap from 'focus-trap';
 import { st, classes } from './Modal.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-import { ModalProps, ModalDefaultProps, ModalState } from './types';
-import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
+import { ModalProps, ModalDefaultProps } from './types';
 
-export class Modal extends React.Component<ModalProps, ModalState> {
+export class Modal extends React.Component<ModalProps> {
   static displayName = 'Modal';
   static defaultProps: ModalDefaultProps = {
     isOpen: false,
@@ -14,24 +11,38 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     focusTrap: true,
   };
 
-  el = null;
-  focusTrapInstance = null;
-  _closingTimeout = null;
-
-  constructor(props: ModalProps) {
-    super(props);
-
-    this.state = {
-      isCloseInProgress: false,
-    };
-  }
+  _contentRef = React.createRef<HTMLDivElement>();
+  _focusTrapInstance = null;
 
   componentDidMount() {
-    this.el = document.createElement('div');
-    this.props.rootElement.appendChild(this.el);
+    const { focusTrap } = this.props;
 
-    if (this.props.focusTrap) {
-      this.focusTrapInstance = createFocusTrap(this.el, {
+    if (focusTrap) {
+      this._createFocusTrap();
+    }
+  }
+
+  componentDidUpdate(prevProps: ModalProps) {
+    const { isOpen, focusTrap } = this.props;
+
+    if (isOpen !== prevProps.isOpen) {
+      if (isOpen) {
+        this._onModalOpen();
+      } else {
+        this._onModalClose();
+      }
+    }
+
+    if (focusTrap && !prevProps.focusTrap) {
+      this._createFocusTrap();
+    } else if (!focusTrap && prevProps.focusTrap) {
+      this._destroyFocusTrap();
+    }
+  }
+
+  _createFocusTrap() {
+    if (this._contentRef.current) {
+      this._focusTrapInstance = createFocusTrap(this._contentRef.current, {
         escapeDeactivates: false,
         clickOutsideDeactivates: false,
         returnFocusOnDeactivate: false,
@@ -39,104 +50,76 @@ export class Modal extends React.Component<ModalProps, ModalState> {
     }
   }
 
-  componentDidUpdate(prevProps: ModalProps, prevState: ModalState) {
-    if (this.props.isOpen !== prevProps.isOpen && this.focusTrapInstance) {
-      if (this.props.isOpen) {
-        try {
-          this.focusTrapInstance.activate();
-        } catch (err) {
-          console.error(err);
-        }
-      } else {
-        this.focusTrapInstance.deactivate();
-      }
+  _destroyFocusTrap() {
+    if (this._focusTrapInstance) {
+      this._focusTrapInstance.deactivate();
     }
+    this._focusTrapInstance = undefined;
+  }
 
-    if (!prevState.isCloseInProgress && this.state.isCloseInProgress) {
-      clearTimeout(this._closingTimeout);
-      this._closingTimeout = setTimeout(() => {
-        this.setState({ isCloseInProgress: false });
-      }, 200);
-    } else if (
-      prevState.isCloseInProgress &&
-      !this.state.isCloseInProgress &&
-      this.props.onClose
-    ) {
-      this.props.onClose();
+  _onModalOpen() {
+    if (this._focusTrapInstance) {
+      try {
+        this._focusTrapInstance.activate();
+      } catch (err) {}
+    }
+  }
+
+  _onModalClose() {
+    if (this._focusTrapInstance) {
+      this._focusTrapInstance.deactivate();
     }
   }
 
   _onClose = () => {
-    this.setState({
-      isCloseInProgress: true,
-    });
+    const { onRequestClose } = this.props;
+    onRequestClose && onRequestClose();
   };
 
-  render() {
-    return (
-      <TPAComponentsConsumer>
-        {({ mobile, rtl }) => {
-          return (
-            <div
-              data-mobile={mobile}
-              data-rtl={rtl}
-              data-hook={this.props['data-hook']}
-            >
-              {this.el &&
-                ReactDOM.createPortal(this._renderModal(mobile, rtl), this.el)}
-            </div>
-          );
-        }}
-      </TPAComponentsConsumer>
-    );
-  }
-
-  _renderModal(mobile, rtl) {
-    const { isOpen, className, closeButtonRef } = this.props;
-    const { isCloseInProgress } = this.state;
+  _renderModal() {
+    const {
+      isOpen,
+      contentClassName,
+      closeOnClickOutside,
+      children,
+    } = this.props;
 
     return (
-      <div className={st(classes.root, { mobile, rtl }, className)}>
+      <>
         {isOpen ? (
           <div
             className={classes.overlay}
             data-hook="tpa-modal-overlay"
-            onClick={() => {
-              if (this.props.closeOnClickOutside) {
-                this._onClose();
-              }
-            }}
+            onClick={closeOnClickOutside ? this._onClose : undefined}
           />
         ) : null}
         <section
-          className={`${classes.modal} ${
-            isOpen && !isCloseInProgress ? classes.animated : ''
-          } ${isCloseInProgress ? classes.closing : ''}`}
+          className={classes.modal}
           data-hook="tpa-modal-box"
           data-is-open={isOpen}
         >
-          <button
-            className={classes.close}
-            onClick={this._onClose}
-            ref={closeButtonRef}
-            data-hook="tpa-modal-close-btn"
-          >
-            <CloseIcon />
-          </button>
           <div
-            className={`${classes.content} ${this.props.contentClassName ||
-              ''}`}
+            className={`${classes.content} ${contentClassName || ''}`}
             data-hook="tpa-modal-content"
+            ref={this._contentRef}
           >
-            {this.props.children}
+            {children}
           </div>
         </section>
-      </div>
+      </>
     );
   }
 
-  componentWillUnmount() {
-    this.props.rootElement.removeChild(this.el);
-    clearTimeout(this._closingTimeout);
+  render() {
+    const { className, isOpen } = this.props;
+
+    return isOpen ? (
+      <div
+        data-hook={this.props['data-hook']}
+        className={st(classes.root, { isOpen }, className)}
+      >
+        {this._renderModal()}
+      </div>
+    ) : null;
   }
 }
