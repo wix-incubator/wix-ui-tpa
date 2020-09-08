@@ -11,11 +11,11 @@
 
 .event {
     -st-mixin: TPAEvent(
-            timeColor '"--timeColor"',
-            titleColor '"--titleColor"',
-            textFont '"--textFont"',
-            fulldayBgColor '"--fulldayBgColor"',
-            hoverOverlayColor '"--hoverOverlayColor"',
-            selectedOverlayColor '"--selectedOverlayColor"'
+            TimeColor '"--timeColor"',
+            TitleColor '"--titleColor"',
+            TextFont '"--textFont"',
+            FulldayBgColor '"--fulldayBgColor"',
+            HoverOverlayColor '"--hoverOverlayColor"',
+            SelectedOverlayColor '"--selectedOverlayColor"'
         );
 }
