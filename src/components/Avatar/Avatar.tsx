@@ -11,12 +11,14 @@ export enum AvatarSize {
   large = 'large',
   medium = 'medium',
   small = 'small',
+  xSmall = 'xSmall',
+  xxSmall = 'xxSmall',
 }
 
 export interface AvatarProps extends TPAComponentProps {
   /** User's name. Optional. Used in a case when avatar image src is missing or is invalid. */
   name?: string;
-  /** Avatar's size. Optional. Defaults to 'medium'. One of 'xLarge' | 'large' | 'medium' | 'small'. */
+  /** Avatar's size. Optional. Defaults to 'medium'. One of 'xLarge' | 'large' | 'medium' | 'small' | 'xSmall' | 'xxSmall' . */
   size?: AvatarSize;
   /** Avatar's image src. Optional. */
   src?: string;
@@ -39,6 +41,8 @@ export class Avatar extends React.Component<AvatarProps> {
     [AvatarSize.large]: 52,
     [AvatarSize.medium]: 36,
     [AvatarSize.small]: 28,
+    [AvatarSize.xSmall]: 20,
+    [AvatarSize.xxSmall]: 16,
   };
 
   render() {
