@@ -25,6 +25,8 @@
     "!wallaby.js",
     "!protractor.conf.js",
     "!applitools.*.js",
+    "!Modal.js",
+    "!Modal.d.ts",
     "!webpack.config.storybook.js"
   ],
   "scripts": {
