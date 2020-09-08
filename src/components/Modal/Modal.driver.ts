@@ -3,25 +3,30 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
+import { MODAL_DATA_HOOKS } from './dataHooks';
 
 export interface ModalDriver extends BaseUniDriver {
-  isMobile(): Promise<boolean>;
-  getModalBox(): UniDriver;
+  getModalStage(): UniDriver;
   isModalShowed(): Promise<boolean>;
 }
 
 export const modalDriverFactory = (base: UniDriver): ModalDriver => {
-  const modalBoxDataHook = 'tpa-modal-box';
-
-  const getModalBox = (): UniDriver =>
-    base.$(`[data-hook="${modalBoxDataHook}"]`);
+  const getModalStage = () => base.$(`[data-hook="${MODAL_DATA_HOOKS.STAGE}"]`);
 
   return {
     ...baseUniDriverFactory(base),
-    isMobile: async () => (await base.attr('data-mobile')) === 'true',
-    getModalBox,
+    getModalStage,
     isModalShowed: async () => {
-      return (await getModalBox().attr('data-is-open')) === 'true';
+      let isShown;
+
+      try {
+        const stage = getModalStage();
+        isShown = await stage.exists();
+      } catch (e) {
+        isShown = false;
+      }
+
+      return isShown;
     },
   };
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import createFocusTrap from 'focus-trap';
 import { st, classes } from './Modal.st.css';
 import { ModalProps, ModalDefaultProps } from './types';
+import { MODAL_DATA_HOOKS } from './dataHooks';
 
 export class Modal extends React.Component<ModalProps> {
   static displayName = 'Modal';
@@ -77,30 +78,19 @@ export class Modal extends React.Component<ModalProps> {
   };
 
   _renderModal() {
-    const {
-      isOpen,
-      contentClassName,
-      closeOnClickOutside,
-      children,
-    } = this.props;
+    const { contentClassName, closeOnClickOutside, children } = this.props;
 
     return (
       <>
-        {isOpen ? (
-          <div
-            className={classes.overlay}
-            data-hook="tpa-modal-overlay"
-            onClick={closeOnClickOutside ? this._onClose : undefined}
-          />
-        ) : null}
-        <section
-          className={classes.modal}
-          data-hook="tpa-modal-box"
-          data-is-open={isOpen}
-        >
+        <div
+          className={classes.overlay}
+          data-hook={MODAL_DATA_HOOKS.OVERLAY}
+          onClick={closeOnClickOutside ? this._onClose : undefined}
+        />
+        <section className={classes.modal} data-hook={MODAL_DATA_HOOKS.STAGE}>
           <div
             className={`${classes.content} ${contentClassName || ''}`}
-            data-hook="tpa-modal-content"
+            data-hook={MODAL_DATA_HOOKS.CONTENT}
             ref={this._contentRef}
           >
             {children}
@@ -112,14 +102,15 @@ export class Modal extends React.Component<ModalProps> {
 
   render() {
     const { className, isOpen } = this.props;
+    console.log('adler', 'Modal.tsx:109', { isOpen });
 
-    return isOpen ? (
+    return (
       <div
         data-hook={this.props['data-hook']}
         className={st(classes.root, { isOpen }, className)}
       >
-        {this._renderModal()}
+        {isOpen ? this._renderModal() : null}
       </div>
-    ) : null;
+    );
   }
 }

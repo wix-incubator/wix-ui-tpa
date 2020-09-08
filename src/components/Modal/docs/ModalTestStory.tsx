@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { Modal as CoreModal, ModalProps } from '..';
+import { Modal } from '..';
 import { Button } from '../../Button';
 
 const kind = 'Tests';
 
-class Modal extends React.Component<ModalProps> {
+class ModalTestStory extends React.Component {
   state = {
     isModalOpen: false,
     isShowModal: false,
@@ -19,29 +19,15 @@ class Modal extends React.Component<ModalProps> {
     }, 0);
   }
 
-  componentDidUpdate(prevProps: ModalProps) {
-    if (this.props.isOpen !== prevProps.isOpen) {
-      this.setState({
-        isModalOpen: this.props.isOpen,
-      });
-    }
-  }
-
   openModal = () => this.setState({ isModalOpen: true });
 
-  closeModal = () =>
-    this.setState({ isModalOpen: false }, () => {
-      if (this.props.onRequestClose) {
-        this.props.onRequestClose();
-      }
-    });
+  closeModal = () => this.setState({ isModalOpen: false });
 
   render() {
-    const { isOpen, onRequestClose, ...rest } = this.props;
     const { isModalOpen } = this.state;
 
     return (
-      <div>
+      <div data-hook="e2e-storybook-modal-wrapper">
         <Button
           onClick={this.openModal}
           data-hook="e2e-storybook-modal-open-btn"
@@ -49,11 +35,10 @@ class Modal extends React.Component<ModalProps> {
           Open Modal
         </Button>
         {this.state.isShowModal ? (
-          <CoreModal
-            isOpen={isModalOpen}
-            onRequestClose={this.closeModal}
-            {...rest}
-          >
+          <Modal isOpen={isModalOpen} onRequestClose={this.closeModal}>
+            <button data-hook={'tpa-modal-close-btn'} onClick={this.closeModal}>
+              X
+            </button>
             <input
               className="e2e-storybook-modal-input-first"
               style={{ display: 'block', margin: '20px' }}
@@ -62,7 +47,7 @@ class Modal extends React.Component<ModalProps> {
               className="e2e-storybook-modal-input-second"
               style={{ display: 'block', margin: '20px' }}
             />
-          </CoreModal>
+          </Modal>
         ) : null}
       </div>
     );
@@ -70,11 +55,7 @@ class Modal extends React.Component<ModalProps> {
 }
 
 function renderTest() {
-  return (
-    <div data-hook="e2e-storybook-modal-wrapper">
-      <Modal isOpen={false} />
-    </div>
-  );
+  return <ModalTestStory />;
 }
 
 storiesOf(kind, module).add('Modal', renderTest);

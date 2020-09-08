@@ -15,30 +15,32 @@ describe('modal', () => {
   const firstInputClassName = 'e2e-storybook-modal-input-first';
   const secondInputClassName = 'e2e-storybook-modal-input-second';
   const closeDataHook = 'tpa-modal-close-btn';
+  const openDataHook = 'e2e-storybook-modal-open-btn';
 
   beforeEach(() => browser.get(storyUrl));
 
   it('should show and close correctly', async () => {
     const driver = modalTestkitFactory({ dataHook });
+    const openModalButton = element(by.css(`[data-hook="${openDataHook}"]`));
     await waitForVisibilityOf(await driver.element(), 'Cannot find Modal');
-    const close = element(by.css(`[data-hook=${closeDataHook}]`));
-
-    expect(await driver.isModalShowed()).toBe(false);
-    element(by.css('[data-hook=e2e-storybook-modal-open-btn]')).click();
-    await new Promise(resolve => setTimeout(resolve, 300));
-    expect(await driver.isModalShowed()).toBe(true);
-    await close.click();
-    await new Promise(resolve => setTimeout(resolve, 300));
-    expect(await driver.isModalShowed()).toBe(false);
-
     expect((await driver.element()).isDisplayed()).toBe(true);
+
+    expect(await driver.isModalShowed()).toBe(false);
+    openModalButton.click();
+    expect(await driver.isModalShowed()).toBe(true);
+
+    const close = element(by.css(`[data-hook=${closeDataHook}]`));
+    await close.click();
+    expect(await driver.isModalShowed()).toBe(false);
   });
 
   it('should work correctly with the focus trap', async () => {
     const driver = modalTestkitFactory({ dataHook });
+    const openModalButton = element(by.css(`[data-hook="${openDataHook}"]`));
+
     await waitForVisibilityOf(await driver.element(), 'Cannot find Modal');
 
-    element(by.css('[data-hook=e2e-storybook-modal-open-btn]')).click();
+    openModalButton.click();
     await new Promise(resolve => setTimeout(resolve, 300));
 
     const firstInput = element(by.css(`.${firstInputClassName}`));
