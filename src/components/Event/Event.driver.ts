@@ -9,6 +9,9 @@ export interface EventDriver extends BaseUniDriver {
   isTimeShown(): Promise<boolean>;
   isSelected(): Promise<boolean>;
   isFullday(): Promise<boolean>;
+  isButton(): Promise<boolean>;
+  hasAriaHasPopup(): Promise<boolean>;
+  hasAriaExpanded(): Promise<boolean>;
 }
 
 export const eventDriverFactory = (base: UniDriver): EventDriver => {
@@ -22,6 +25,15 @@ export const eventDriverFactory = (base: UniDriver): EventDriver => {
     },
     async isTimeShown() {
       return (await base.attr(EVENT_DATA_KEYS.IsTimeShown)) === 'true';
+    },
+    async isButton() {
+      return (await base._prop('tagName')).toLowerCase() === 'button';
+    },
+    async hasAriaHasPopup() {
+      return (await base.attr(EVENT_DATA_KEYS.ARIA_Has_Popup)) === 'true';
+    },
+    async hasAriaExpanded() {
+      return (await base.attr(EVENT_DATA_KEYS.ARIA_Expanded)) === 'true';
     },
   };
 };

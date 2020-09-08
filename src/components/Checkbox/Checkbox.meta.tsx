@@ -1,4 +1,4 @@
-import { Checkbox } from '.';
+import { Checkbox, CheckboxTheme } from '.';
 import Registry from '@ui-autotools/registry';
 
 const CheckboxMetadata = Registry.getComponentMetadata(Checkbox);
@@ -34,6 +34,25 @@ CheckboxMetadata.addSim({
   title: 'indeterminate',
   props: {
     indeterminate: true,
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});
+
+CheckboxMetadata.addSim({
+  title: 'box',
+  props: {
+    theme: CheckboxTheme.Box,
+    onChange: () => {},
+    label: 'Amazing',
+  },
+});
+
+CheckboxMetadata.addSim({
+  title: 'suffix',
+  props: {
+    suffix: '$50,000',
+    theme: CheckboxTheme.Box,
     onChange: () => {},
     label: 'Amazing',
   },

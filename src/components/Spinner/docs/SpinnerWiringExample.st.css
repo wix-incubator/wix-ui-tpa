@@ -1,0 +1,10 @@
+:import {
+    -st-from: "../Spinner.st.css";
+    -st-default: Spinner;
+}
+
+.root {
+    -st-mixin: Spinner(
+        PathColor '"--pathColor"',
+    );
+}

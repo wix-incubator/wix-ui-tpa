@@ -24,6 +24,7 @@ export interface DropdownProps extends TPAComponentProps {
   options: DropdownOptionProps[];
   optionsContainerId?: string;
   onChange?(selectedOption: DropdownOptionProps): void;
+  onExpandedChange?(isExpanded: boolean): void;
   initialSelectedId?: string;
   placeholder?: string;
   disabled?: boolean;
@@ -38,6 +39,8 @@ export interface DropdownProps extends TPAComponentProps {
   /* use for visual test */
   forceContentElementVisibility?: boolean;
   upgrade?: boolean;
+  flip?: boolean;
+  fixed?: boolean;
 }
 
 interface DefaultProps {
@@ -132,11 +135,17 @@ export class Dropdown extends React.Component<DropdownProps, State> {
   };
 
   private readonly onExpandedChange = (isOpen: boolean) => {
+    const { onExpandedChange } = this.props;
+
     const newState = {
       isOpen,
       ...(!isOpen && { ariaActivedescendant: null }),
     };
     this.setState(newState);
+
+    if (typeof onExpandedChange === 'function') {
+      onExpandedChange(isOpen);
+    }
   };
 
   private readonly onCoreSelect = (selectedCoreOption: Option) => {
@@ -189,6 +198,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       upgrade,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
+      flip,
+      fixed,
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
@@ -219,6 +230,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         openTrigger={disabled ? undefined : 'click'}
         onExpandedChange={this.onExpandedChange}
         onOptionHover={this.onOptionHover}
+        flip={flip}
+        fixed={fixed}
       >
         <DropdownBase
           className={classes.dropdownBase}

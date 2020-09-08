@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { ReactComponent as Close } from '../../assets/icons/Close.svg';
 import { IconButton } from '../IconButton';
-import { Text } from '../Text';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import { POPOVER_DATA_KEYS } from './dataHooks';
+import { KEY_CODES } from '../../common/keyCodes';
 import { st, classes } from './CalendarPopover.st.css';
+import { Text } from '../Text';
 
 export enum Sides {
   Right = 'right',
@@ -13,7 +14,7 @@ export enum Sides {
 }
 
 export interface CalendarPopoverProps extends TPAComponentProps {
-  title?: string;
+  title?: React.ReactNode;
   onClose(): void;
   withArrow?: boolean;
   arrowSide?: Sides;
@@ -21,6 +22,7 @@ export interface CalendarPopoverProps extends TPAComponentProps {
   withShadow?: boolean;
   isShown?: boolean;
   animated?: boolean;
+  manualFocus?: boolean;
 }
 
 interface DefaultProps {
@@ -31,6 +33,7 @@ interface DefaultProps {
   withShadow: boolean;
   isShown: boolean;
   animated: boolean;
+  manualFocus: boolean;
 }
 
 /** CalendarPopover */
@@ -44,7 +47,10 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
     withShadow: true,
     isShown: false,
     animated: false,
+    manualFocus: false,
   };
+  iconRef = React.createRef<HTMLButtonElement>();
+  lastActiveElement = null;
 
   getDataAttributes = () => {
     const {
@@ -55,6 +61,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       arrowTop,
       animated,
       isShown,
+      manualFocus,
     } = this.props;
     return {
       [POPOVER_DATA_KEYS.ArrowTop]: arrowTop,
@@ -64,8 +71,47 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       [POPOVER_DATA_KEYS.WithShadow]: withShadow,
       [POPOVER_DATA_KEYS.Animated]: animated,
       [POPOVER_DATA_KEYS.Shown]: isShown,
+      [POPOVER_DATA_KEYS.ManualFocus]: manualFocus,
     };
   };
+
+  _focusLastActive = () => {
+    !this.props.manualFocus &&
+      this.lastActiveElement &&
+      this.lastActiveElement.focus();
+  };
+
+  _onEsc = e => {
+    if (e.keyCode === KEY_CODES.Esc) {
+      this.props.onClose();
+    }
+  };
+
+  _manageA11y = () => {
+    if (this.props.isShown) {
+      document.addEventListener('keyup', this._onEsc);
+      this.lastActiveElement = document.activeElement;
+      !this.props.manualFocus && this.iconRef.current.focus();
+    }
+  };
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isShown) {
+      this._manageA11y();
+    } else if (!this.props.isShown) {
+      document.removeEventListener('keyup', this._onEsc);
+      this._focusLastActive();
+    }
+  }
+
+  componentDidMount() {
+    this._manageA11y();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keyup', this._onEsc);
+    this._focusLastActive();
+  }
 
   render() {
     const {
@@ -83,6 +129,13 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
 
     const pxArrowTop = `${arrowTop}px`;
 
+    const titleToRender =
+      typeof title === 'string' ? (
+        <Text className={classes.title}>{title}</Text>
+      ) : (
+        title
+      );
+
     return (
       <TPAComponentsConsumer>
         {({ rtl }) => {
@@ -97,7 +150,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
               {...this.getDataAttributes()}
             >
               <div className={classes.container}>
-                {title && <Text className={classes.title}>{title}</Text>}
+                {titleToRender}
                 <div className={classes.children}>{children}</div>
               </div>
               <IconButton
@@ -105,6 +158,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
                 onClick={onClose}
                 as="a"
                 icon={<Close height="24px" width="23px" />}
+                innerRef={this.iconRef}
               />
               <div className={classes.arrow} style={{ top: pxArrowTop }} />
               <div

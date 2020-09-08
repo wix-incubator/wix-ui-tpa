@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from '../';
+import { Checkbox, CheckboxTheme } from '../';
 import * as examples from './examples';
 import {
   header,
@@ -22,6 +22,40 @@ import { CheckboxExtendedExample } from './CheckboxExtendedExample';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+const codeExamples = [
+  { title: 'Default', source: examples.example },
+  {
+    title: 'Checked',
+    source: examples.exampleWithChecked,
+  },
+  { title: 'Error state', source: examples.exampleWithError },
+  { title: 'Disabled state', source: examples.exampleWithDisabled },
+  {
+    title: 'With indeterminate state',
+    source: examples.exampleWithIndeterminate,
+  },
+  {
+    title: 'With box',
+    source: examples.exampleWithBox,
+  },
+  {
+    title: 'With checked box',
+    source: examples.exampleWithCheckedBox,
+  },
+  {
+    title: 'With disabled, checked box',
+    source: examples.exampleWithDisabledCheckedBox,
+  },
+  {
+    title: 'With box and suffix',
+    source: examples.exampleWithBoxAndSuffix,
+  },
+  {
+    title: 'With small box and suffix',
+    source: examples.exampleWithSmallBoxAndSuffix,
+  },
+];
+
 export default {
   category: 'Components',
   storyName: 'Checkbox',
@@ -31,7 +65,7 @@ export default {
     'data-hook': 'storybook-Checkbox',
   }),
   exampleProps: {
-    //
+    theme: Object.values(CheckboxTheme),
   },
   dataHook: 'storybook-Checkbox',
   sections: [
@@ -48,26 +82,7 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Default', source: examples.example }].map(code),
-
-          ...[
-            {
-              title: 'Checked',
-              source: examples.exampleWithChecked,
-            },
-          ].map(code),
-          ...[{ title: 'Error state', source: examples.exampleWithError }].map(
-            code,
-          ),
-          ...[
-            { title: 'Disabled state', source: examples.exampleWithDisabled },
-          ].map(code),
-          ...[
-            {
-              title: 'With indeterminate state',
-              source: examples.exampleWithIndeterminate,
-            },
-          ].map(code),
+          ...codeExamples.map(code),
         ],
       }),
 
@@ -98,6 +113,16 @@ export default {
                   {
                     label: 'Text Color',
                     wixParam: 'textColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Box Color',
+                    wixParam: 'boxColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Box Border Color',
+                    wixParam: 'boxBorderColor',
                     defaultColor: 'color-5',
                   },
                 ],

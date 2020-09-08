@@ -18,22 +18,30 @@ export const COLORS = [
   {
     value: 'green',
     ariaLabel: 'green color',
+    tooltip: 'Hello',
   },
   {
     value: 'red',
     ariaLabel: 'red color',
+    isCrossedOut: true,
   },
   {
     value: 'navy',
     ariaLabel: 'navy color',
+    disabled: true,
   },
   {
     value: 'cyan',
     ariaLabel: 'cyan color',
+    isCrossedOut: true,
+    disabled: true,
   },
   {
     value: 'yellow',
     ariaLabel: 'yellow color',
+    isCrossedOut: true,
+    disabled: true,
+    tooltip: 'Hello',
   },
 ];
 
