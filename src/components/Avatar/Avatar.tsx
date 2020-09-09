@@ -5,6 +5,7 @@ import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 import { st, classes } from './Avatar.st.css';
 import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
 import { TPAComponentProps } from '../../types';
+import {deprecationLog} from "../../common/deprecationLog";
 
 export enum AvatarSize {
   xLarge = 'xLarge',
@@ -24,10 +25,13 @@ export interface AvatarProps extends TPAComponentProps {
   src?: string;
   /** Avatar's image onLoad callback. Optional. */
   onLoad?: React.EventHandler<React.SyntheticEvent>;
+  /** Whether to use the new Avatar API */
+  upgrade?: boolean;
 }
 
 interface DefaultProps {
   size: AvatarSize;
+  upgrade: boolean;
 }
 
 /** Avatar is a type of element that visually represents a user, either as an image, placeholder or text (name initials). */
@@ -35,6 +39,7 @@ export class Avatar extends React.Component<AvatarProps> {
   static displayName = 'Avatar';
   static defaultProps: DefaultProps = {
     size: AvatarSize.medium,
+    upgrade: false,
   };
   static dimmentionBySize = {
     [AvatarSize.xLarge]: 60,
@@ -45,12 +50,21 @@ export class Avatar extends React.Component<AvatarProps> {
     [AvatarSize.xxSmall]: 16,
   };
 
+  componentDidMount(): void {
+    if (!this.props.upgrade) {
+      deprecationLog(
+          'Avatar',
+          'The current `Avatar` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
+      );
+    }
+  }
+
   render() {
-    const { size, src, name, onLoad, className } = this.props;
+    const { size, src, name, onLoad, className, upgrade } = this.props;
 
     return (
       <CoreAvatar
-        className={st(classes.root, { size }, className)}
+        className={st(classes.root, { size, upgrade }, className)}
         imgProps={src ? { src, onLoad } : undefined}
         placeholder={
           <Anonymous
