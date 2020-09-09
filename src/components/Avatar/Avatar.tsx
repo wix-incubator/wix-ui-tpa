@@ -5,7 +5,7 @@ import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 import { st, classes } from './Avatar.st.css';
 import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
 import { TPAComponentProps } from '../../types';
-import {deprecationLog} from "../../common/deprecationLog";
+import { deprecationLog } from '../../common/deprecationLog';
 
 export enum AvatarSize {
   xLarge = 'xLarge',
@@ -53,8 +53,8 @@ export class Avatar extends React.Component<AvatarProps> {
   componentDidMount(): void {
     if (!this.props.upgrade) {
       deprecationLog(
-          'Avatar',
-          'The current `Avatar` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
+        'Avatar',
+        'The current `Avatar` component API will be deprecated in the next major version. Please use the `upgrade` prop in order to use the new API.',
       );
     }
   }
