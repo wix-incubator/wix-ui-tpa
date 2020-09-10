@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Simulate } from 'react-dom/test-utils';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { textAreaDriverFactory } from './TextArea.driver';
 import { TextArea, TextAreaTheme } from './';
@@ -153,7 +154,8 @@ describe('TextArea', () => {
         onBlur={onBlur}
       />,
     );
-    await driver.blur();
+    const textarea = await driver.getTextareaElement();
+    Simulate.blur(textarea);
     expect(onBlur).toBeCalled();
   });
 });
