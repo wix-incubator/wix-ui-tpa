@@ -1,143 +1,134 @@
 :import {
-  -st-from: '../../../common/formatters.st';
-  -st-named: color, fallback, font, applyOpacity;
+    -st-from: "../../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :import {
-  -st-from: '../../Text/Text.st.css';
-  -st-default: Text;
+    -st-from: "../../Text/Text.st.css";
+    -st-default: Text;
 }
 
 :vars {
-  /*Defaults*/
-  itemfontdesktop: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
-  itemsubtitlefontdesktop: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
-  itemfontmobile: "{theme: 'Body-M', size: '14px', lineHeight: '24px'}";
-  itemsubtitlefontmobile: "{theme: 'Body-M', size: '12px', lineHeight: '20px'}";
+    /*Defaults*/
+    ItemFontDesktop: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+    ItemSubtitleFontDesktop: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    ItemFontMobile: "{theme: 'Body-M', size: '14px', lineHeight: '24px'}";
+    ItemSubtitleFontMobile: "{theme: 'Body-M', size: '12px', lineHeight: '20px'}";
 }
 
 :vars {
-  /*Overrides*/
-  itemfont: --overridable;
-  itemsubtitlefont: --overridable;
+    /*Overrides*/
+    ItemFont:  --overridable;
+    ItemSubtitleFont:  --overridable;
 }
 
 .root {
-  -st-states: disabled, mobile, withIcon, rtl,
-    alignment(enum(left, center, right));
-  padding: 8px 24px;
-  cursor: pointer;
-  width: calc(100% + 2px);
-  position: relative;
-  left: -1px;
-  right: -1px;
+    -st-states: disabled, mobile, withIcon, rtl, alignment(enum(left, center, right));
+    padding: 8px 24px;
+    cursor: pointer;
+    width: calc(100% + 2px);
+    position: relative;
+    left: -1px;
+    right: -1px;
 }
 
 .root:hover,
 .root:focus {
-  background-color: applyOpacity(color(color-5), 0.06);
+    background-color: applyOpacity(color(color-5), 0.06);
 }
 
 .container {
-  display: inline-flex;
-  align-items: center;
+    display: inline-flex;
+    align-items: center;
 }
 
 .iconContainer {
-  display: flex;
-  align-self: stretch;
+    display: flex;
+    align-self: stretch;
 }
 
 .icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: start;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
 }
 
 .iconContainer::after {
-  content: '';
-  width: 12px;
-  height: 100%;
+    content: '';
+    width: 12px;
+    height: 100%;
 }
 
 .root:disabled {
-  opacity: 0.3;
-  cursor: default;
+    opacity: 0.3;
+    cursor: default;
 }
 
 .root:disabled:hover {
-  background-color: inherit;
+    background-color: inherit;
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
 }
 
 .content {
-  -st-extends: Text;
-  -st-mixin: Text(
-    MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
-  );
-  width: 100%;
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
+    );
+    width: 100%;
 }
 
 .root:mobile .content {
-  -st-mixin: Text(
-    MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
-  );
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
+    );
 }
 
 .subtitle {
-  -st-extends: Text;
-  -st-mixin: Text(
-    MainTextColor applyOpacity(color(color-5), 0.6),
-    MainTextFont
-      fallback(
-        font(value(ItemSubtitleFont)),
-        font(value(ItemSubtitleFontDesktop))
-      )
-  );
-  width: 100%;
-  margin-top: 4px;
+    -st-extends: Text;
+    -st-mixin: Text(
+        MainTextColor applyOpacity(color(color-5), 0.6),
+        MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)))
+    );
+    width: 100%;
+    margin-top: 4px;
 }
 
 .root:mobile .subtitle {
-  -st-mixin: Text(
-    MainTextFont
-      fallback(
-        font(value(ItemSubtitleFont)),
-        font(value(ItemSubtitleFontMobile))
-      )
-  );
+    -st-mixin: Text(
+        MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)))
+    );
 }
 
 .textContainer {
-  display: flex;
+    display: flex;
 }
 
 .root:alignment(left) {
-  text-align: left;
+    text-align: left;
 }
 
 .root:alignment(center) {
-  text-align: center;
+    text-align: center;
 }
 
 .root:alignment(right) {
-  text-align: right;
+    text-align: right;
 }
 
-.root:alignment(center):withicon .container {
-  margin-left: -36px;
+.root:alignment(center):withIcon .container {
+    margin-left: -36px;
 }
 
-.root:rtl:alignment(center):withicon .container {
-  margin-left: unset;
-  margin-right: -36px;
+.root:rtl:alignment(center):withIcon .container {
+    margin-left: unset;
+    margin-right: -36px;
 }
