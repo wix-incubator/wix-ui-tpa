@@ -11,10 +11,10 @@ import * as MobileRawSource from '!raw-loader!./TabsMobileExample.tsx';
 import { TabsMobileExample } from './TabsMobileExample';
 
 const items = [
-  { title: 'Title 1' },
-  { title: 'Title 2' },
-  { title: 'Title 3' },
-  { title: 'Title 4' },
+  { title: 'Title 1', id: 'tab-1' },
+  { title: 'Title 2', id: 'tab-2' },
+  { title: 'Title 3', id: 'tab-3' },
+  { title: 'Title 4', id: 'tab-4' },
 ];
 
 export const Examples = () => {
