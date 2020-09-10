@@ -39,6 +39,8 @@ export interface DropdownProps extends TPAComponentProps {
   /* use for visual test */
   forceContentElementVisibility?: boolean;
   upgrade?: boolean;
+  flip?: boolean;
+  fixed?: boolean;
 }
 
 interface DefaultProps {
@@ -196,6 +198,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       upgrade,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
+      flip,
+      fixed,
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
@@ -226,6 +230,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         openTrigger={disabled ? undefined : 'click'}
         onExpandedChange={this.onExpandedChange}
         onOptionHover={this.onOptionHover}
+        flip={flip}
+        fixed={fixed}
       >
         <DropdownBase
           className={classes.dropdownBase}

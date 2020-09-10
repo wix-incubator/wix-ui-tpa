@@ -47,3 +47,38 @@ EventMetadata.addSim({
     showTime: false,
   },
 });
+
+EventMetadata.addSim({
+  title: 'clickable',
+  props: {
+    ...defaultProps,
+    onClick: () => {},
+  },
+});
+
+EventMetadata.addSim({
+  title: 'disabled',
+  props: {
+    ...defaultProps,
+    onClick: () => {},
+    disabled: true,
+  },
+});
+
+EventMetadata.addSim({
+  title: 'aria-has-popup',
+  props: {
+    ...defaultProps,
+    onClick: () => {},
+    'aria-has-popup': true,
+  },
+});
+
+EventMetadata.addSim({
+  title: 'aria-expanded',
+  props: {
+    ...defaultProps,
+    onClick: () => {},
+    'aria-expanded': true,
+  },
+});

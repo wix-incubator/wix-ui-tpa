@@ -1,3 +1,48 @@
+## [2.4.1](https://github.com/wix/wix-ui-tpa/compare/v2.4.0...v2.4.1) (2020-09-08)
+
+
+### Bug Fixes
+
+* **CalendarPopover:** Fix a11y issues ([33b2d69](https://github.com/wix/wix-ui-tpa/commit/33b2d69d2c5b52dd3548e156e1fc4f51acc71dba))
+* **Event:** Rename some Stylable variables ([fd1c8ce](https://github.com/wix/wix-ui-tpa/commit/fd1c8cecc459efea5df9b45ba5b8b6c7f07180a5))
+* **Picker:** Fix a11y issues ([f374aae](https://github.com/wix/wix-ui-tpa/commit/f374aae6747c36648a4162ec8291dc67dc51feb8))
+
+
+### Features
+
+* **Dropdown:** Add 2 CoreDropdown props to Dropdown ([#392](https://github.com/wix/wix-ui-tpa/issues/392)) ([bfb2cce](https://github.com/wix/wix-ui-tpa/commit/bfb2cced6e9a7bc72f8d90d1a519100ed383aa39))
+
+
+
+# [2.4.0](https://github.com/wix/wix-ui-tpa/compare/v2.3.0...v2.4.0) (2020-09-06)
+
+
+### Bug Fixes
+
+* **CalendarEvent:** Fix a11y issues ([8f9e009](https://github.com/wix/wix-ui-tpa/commit/8f9e009aff62e72df78f077b78a550c8ca7a5168))
+
+
+### Features
+
+* **Badge:** add icon support ([dee6742](https://github.com/wix/wix-ui-tpa/commit/dee6742bd702c22b8d83f663ff476fe30cc70dcb))
+* **RadioButton:** New RadioButton and RadioButtonGroup components ([4dff53b](https://github.com/wix/wix-ui-tpa/commit/4dff53bd987bc27f11298beb0e634c0234e36675))
+
+
+
+# [2.3.0](https://github.com/wix/wix-ui-tpa/compare/v2.2.1...v2.3.0) (2020-09-01)
+
+
+### Bug Fixes
+
+* **Checkbox:**  Add transition to checkbox label color ([f2337c7](https://github.com/wix/wix-ui-tpa/commit/f2337c7a5589e0473675f3092fe1c89ffcc39220))
+
+
+### Features
+
+* **ColorPicker:** Add disabled, crossed-out and tooltip props to item ([651546d](https://github.com/wix/wix-ui-tpa/commit/651546dd423245faf391934c8394681c824f6db2))
+
+
+
 # [2.2.0](https://github.com/wix/wix-ui-tpa/compare/v2.1.3...v2.2.0) (2020-08-27)
 
 

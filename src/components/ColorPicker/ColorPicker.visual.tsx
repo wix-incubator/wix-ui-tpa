@@ -43,6 +43,28 @@ const tests = [
           ],
         },
       },
+      {
+        it: 'default',
+        props: {
+          childProps: [
+            {
+              value: 'red',
+              'aria-label': 'red color',
+            },
+            {
+              value: 'yellow',
+              'aria-label': 'yellow color',
+              disabled: true,
+            },
+            {
+              value: 'green',
+              'aria-label': 'green color',
+              checked: true,
+              disabled: true,
+            },
+          ],
+        },
+      },
     ],
   },
 ];

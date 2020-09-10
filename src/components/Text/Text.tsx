@@ -11,6 +11,7 @@ export interface TextProps extends TPAComponentProps {
   typography?: TYPOGRAPHY;
   tagName?: string;
   className?: string;
+  role?: string;
 }
 
 export class Text extends React.Component<TextProps> {
@@ -21,7 +22,7 @@ export class Text extends React.Component<TextProps> {
   };
 
   render() {
-    const { typography, tagName, children, className } = this.props;
+    const { typography, tagName, children, className, role } = this.props;
 
     return (
       <TPAComponentsConsumer>
@@ -38,6 +39,7 @@ export class Text extends React.Component<TextProps> {
                 className,
               ),
               'data-hook': this.props['data-hook'],
+              role,
             },
             children,
           )

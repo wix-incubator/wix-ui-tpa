@@ -28,11 +28,12 @@ export class IconButton extends React.Component<IconButtonProps, State> {
   static defaultProps: DefaultProps = { skin: Skins.Line };
 
   render() {
-    const { icon, disabled, skin, className, ...rest } = this.props;
+    const { icon, disabled, skin, className, innerRef, ...rest } = this.props;
     return (
       <ButtonNext
         className={st(classes.root, { disabled, skin }, className)}
         {...rest}
+        ref={innerRef}
       >
         <span className={classes.icon}>{icon}</span>
       </ButtonNext>
