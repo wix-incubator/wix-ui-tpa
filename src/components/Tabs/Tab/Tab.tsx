@@ -5,6 +5,8 @@ import { TABS_DATA_KEYS } from '../dataHooks';
 import { TPAComponentProps } from '../../../types';
 
 export interface TabItem {
+  /** Title id for a11y */
+  id?: string;
   /** Title of the tab */
   title?: string;
 }
@@ -42,6 +44,7 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       {...dataAttributes}
       data-hook={props['data-hook']}
       key={`${title}-${index}`}
+      id={item.id}
       onClick={onSelectTab}
       onKeyDown={onKeyDown}
       tabIndex={0}

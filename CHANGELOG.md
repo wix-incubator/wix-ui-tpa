@@ -1,3 +1,14 @@
+# [2.5.0](https://github.com/wix/wix-ui-tpa/compare/v2.4.1...v2.5.0) (2020-09-10)
+
+
+### Features
+
+* **Event:** Support overriding `time` element's font ([b7041d2](https://github.com/wix/wix-ui-tpa/commit/b7041d2cdffdc26d3c327476a2127edd411a3a81))
+* **Modal:** New Modal logical component ([58405ec](https://github.com/wix/wix-ui-tpa/commit/58405ecadc720c66470359f82e1750bab111dd91))
+* **Tab:** add id prop ([a79b551](https://github.com/wix/wix-ui-tpa/commit/a79b551a857a71578420b48259e2a4f4e2c9b529))
+
+
+
 ## [2.4.1](https://github.com/wix/wix-ui-tpa/compare/v2.4.0...v2.4.1) (2020-09-08)
 
 
