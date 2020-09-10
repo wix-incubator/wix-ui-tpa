@@ -7,6 +7,9 @@ export const ActionsMenuLayoutExtendedExample: React.FC = () => {
   return (
     <ActionsMenuLayout className={classes.root}>
       <ActionsMenuLayout.Item
+        ref={_ref => {
+          _ref?.focus();
+        }}
         key={1}
         onClick={onClick}
         content="item 1"

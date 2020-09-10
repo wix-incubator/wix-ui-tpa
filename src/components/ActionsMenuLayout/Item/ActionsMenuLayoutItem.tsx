@@ -20,13 +20,22 @@ export interface ActionsMenuLayoutItemProps extends TPAComponentProps {
   disabled?: boolean;
   onClick(): void;
   alignment?: Alignment;
+  /** a11y */
+  'aria-label'?: string;
 }
 
 /** ActionsMenuLayout */
 export class ActionsMenuLayoutItem extends React.Component<
   ActionsMenuLayoutItemProps
 > {
+  private readonly liRef = React.createRef<HTMLLIElement>();
   static displayName = 'ActionsMenuLayout.Item';
+
+  focus() {
+    if (this.liRef.current) {
+      this.liRef.current.focus();
+    }
+  }
 
   render() {
     const {
@@ -43,6 +52,9 @@ export class ActionsMenuLayoutItem extends React.Component<
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <li
+            aria-label={this.props['aria-label']}
+            tabIndex={-1}
+            ref={this.liRef}
             key={content}
             className={st(
               classes.root,
@@ -50,7 +62,6 @@ export class ActionsMenuLayoutItem extends React.Component<
               className,
             )}
             role="menuitem"
-            tabIndex={-1}
             aria-disabled={disabled}
             data-hook={ACTIONS_MENU_ITEM_DATA_HOOK}
             data-content={content}

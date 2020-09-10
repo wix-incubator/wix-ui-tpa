@@ -8,6 +8,8 @@ import { TPAComponentProps } from '../../types';
 
 export interface ActionsMenuLayoutProps extends TPAComponentProps {
   alignment?: Alignment;
+  /** a11y */
+  'aria-labeledby'?: string;
 }
 
 /** ActionsMenuLayout */
@@ -33,7 +35,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
             {...this.getDataAttributes(mobile)}
             data-hook={this.props['data-hook']}
             role="menu"
-            tabIndex={-1}
+            aria-labelledby={this.props['aria-labeledby']}
           >
             {React.Children.map(children, (child: React.ReactElement) =>
               child.type === ActionsMenuLayoutItem
