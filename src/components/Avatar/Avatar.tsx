@@ -5,7 +5,6 @@ import { Avatar as CoreAvatar } from 'wix-ui-core/avatar';
 import { st, classes } from './Avatar.st.css';
 import { ReactComponent as Anonymous } from '../../assets/icons/Anonymous.svg';
 import { TPAComponentProps } from '../../types';
-import { deprecationLog } from '../../common/deprecationLog';
 
 export enum AvatarSize {
   xLarge = 'xLarge',
