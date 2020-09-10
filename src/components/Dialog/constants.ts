@@ -1,3 +1,3 @@
 export const DATA_HOOKS = {
-    CLOSE_BTN: 'close-btn',
-}
+  CLOSE_BTN: 'close-btn',
+};

@@ -7,6 +7,6 @@ DialogMetadata.nonReactStrictModeCompliant = true;
 DialogMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   },
 });
