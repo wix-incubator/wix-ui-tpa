@@ -44,7 +44,7 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       {...dataAttributes}
       data-hook={props['data-hook']}
       key={`${title}-${index}`}
-      id={item.id || undefined}
+      id={item.id}
       onClick={onSelectTab}
       onKeyDown={onKeyDown}
       tabIndex={0}
