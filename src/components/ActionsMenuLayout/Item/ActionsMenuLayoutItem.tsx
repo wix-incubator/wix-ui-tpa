@@ -4,6 +4,7 @@ import { st, classes } from './ActionsMenuLayoutItem.st.css';
 import { Text } from '../../Text';
 import { ACTIONS_MENU_ITEM_DATA_HOOK } from '../dataHooks';
 import { TPAComponentProps } from '../../../types';
+import { isSelectKey } from '../../../common/keyCodes';
 
 export enum Alignment {
   left = 'left',
@@ -37,6 +38,13 @@ export class ActionsMenuLayoutItem extends React.Component<
     }
   }
 
+  _onKeyDown = (e: React.KeyboardEvent<HTMLLIElement>) => {
+    if (!this.props.disabled && isSelectKey(e)) {
+      e.preventDefault();
+      this.props.onClick();
+    }
+  };
+
   render() {
     const {
       content,
@@ -52,6 +60,7 @@ export class ActionsMenuLayoutItem extends React.Component<
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <li
+            onKeyDown={this._onKeyDown}
             aria-label={this.props['aria-label']}
             tabIndex={-1}
             ref={this.liRef}
