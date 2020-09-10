@@ -25,7 +25,7 @@ export interface TextAreaProps extends TPAComponentProps {
   theme?: TextAreaTheme;
   errorDescription?: string;
   onChange(event: React.ChangeEvent<HTMLTextAreaElement>): void;
-  onBlur(): void;
+  onBlur?(): void;
 }
 
 interface DefaultProps {

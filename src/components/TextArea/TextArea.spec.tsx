@@ -141,4 +141,19 @@ describe('TextArea', () => {
     expect(await driver.error()).toBe(true);
     expect(await driver.errorIcon()).toBe(false);
   });
+
+  it('should handle blur event', async function() {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    const driver = createDriver(
+      <TextArea
+        ariaLabel="test"
+        value="Test"
+        onChange={onChange}
+        onBlur={onBlur}
+      />,
+    );
+    await driver.blur();
+    expect(onBlur).toBeCalled();
+  });
 });

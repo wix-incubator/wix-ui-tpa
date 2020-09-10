@@ -2,6 +2,7 @@ import {
   BaseUniDriver,
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
+import { Simulate } from 'react-dom/test-utils';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { TEXT_AREA_DATA_HOOK, TEXT_AREA_ERROR_DATA_HOOK } from './dataHooks';
 import {
@@ -21,6 +22,7 @@ export interface TextAreaDriver extends BaseUniDriver {
   placeholder(): Promise<string>;
   theme(): Promise<TextAreaTheme>;
   typeText(text: string): Promise<any>;
+  blur(): Promise<void>;
 }
 
 function textArea(base: UniDriver) {
@@ -74,6 +76,10 @@ export const textAreaDriverFactory = (base: UniDriver): TextAreaDriver => {
     },
     async success() {
       return isSuccess(base);
+    },
+    async blur() {
+      const element = await textArea(base).getNative();
+      Simulate.blur(element);
     },
   };
 };
