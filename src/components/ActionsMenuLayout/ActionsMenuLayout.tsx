@@ -36,10 +36,6 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     }
   }
 
-  // componentDidUpdate() {
-
-  // }
-
   focusItem(idx: number) {
     this.setState(
       {
@@ -82,7 +78,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
   addRef(ref, index: number) {
     if (ref) {
       if (
-        this.liRefs.find(_ref => {
+        this.liRefs.find((_ref) => {
           return _ref?.props.content === ref.props.content;
         })
       ) {
@@ -113,7 +109,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
                 ? React.cloneElement(child, {
                     className: classes.item,
                     alignment,
-                    ref: _ref => {
+                    ref: (_ref) => {
                       this.addRef(_ref, index);
                     },
                   })
