@@ -5,7 +5,7 @@
 
 .root {
     -st-extends: Avatar;
-    -st-states: size(enum(large, medium, small, xLarge, xSmall, xxSmall)), upgrade;
+    -st-states: size(enum(large, medium, small, xLarge, xSmall, xxSmall));
 }
 
 .root::content {
