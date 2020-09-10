@@ -112,6 +112,7 @@
 .root:box:checked {
     background-color: value(CurrentBackgroundColor);
     z-index:1000;
+    position: relative;
 
 }
 
