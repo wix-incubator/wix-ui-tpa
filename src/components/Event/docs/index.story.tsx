@@ -101,8 +101,13 @@ export default {
                 ],
                 fonts: [
                   {
-                    label: 'Font Style',
-                    wixParam: 'textFont',
+                    label: 'Title Font',
+                    wixParam: 'titleFont',
+                    defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Time Font',
+                    wixParam: 'timeFont',
                     defaultFont: 'arial',
                   },
                 ],
