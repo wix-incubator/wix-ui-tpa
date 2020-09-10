@@ -1,5 +1,5 @@
 import { TPAComponentProps } from '../../types';
-import { RefObject } from 'react';
+import * as React from 'react';
 
 export interface ModalProps extends TPAComponentProps {
   isOpen: boolean;
@@ -7,6 +7,7 @@ export interface ModalProps extends TPAComponentProps {
   contentClassName?: string;
   closeOnClickOutside?: boolean;
   focusTrap?: boolean;
+  children?: React.ReactNode;
 }
 
 export interface ModalDefaultProps {

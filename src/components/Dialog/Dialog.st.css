@@ -1,0 +1,23 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+/*Defaults*/
+:vars {
+    /*Defaults params goes here*/
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+}
+
+.root {
+    -st-states: mobile;
+    /*css goes here*/
+}
+
+.root:mobile {
+    /*mobile css goes here*/
+}
