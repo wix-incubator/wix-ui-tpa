@@ -28,8 +28,8 @@ export const actionsMenuLayoutDriverFactory = (
     ...baseUniDriverFactory(base),
     isMobile: async () =>
       (await base.attr(ACTIONS_MENU_DATA_KEYS.mobile)) === 'true',
-    item: (content) => actionsMenuLayoutItem(base, content),
-    clickItem: (content) => actionsMenuLayoutItem(base, content).click(),
+    item: content => actionsMenuLayoutItem(base, content),
+    clickItem: content => actionsMenuLayoutItem(base, content).click(),
     layout: () => base,
   };
 };
