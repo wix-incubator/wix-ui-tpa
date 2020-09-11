@@ -25,6 +25,7 @@ export interface TextAreaProps extends TPAComponentProps {
   theme?: TextAreaTheme;
   errorDescription?: string;
   onChange(event: React.ChangeEvent<HTMLTextAreaElement>): void;
+  onBlur?(): void;
 }
 
 interface DefaultProps {
@@ -67,6 +68,7 @@ export class TextArea extends React.Component<TextAreaProps> {
       success,
       disabled,
       onChange,
+      onBlur,
       placeholder,
       errorDescription,
       className,
@@ -101,6 +103,7 @@ export class TextArea extends React.Component<TextAreaProps> {
                     onChange(e);
                   }
                 }}
+                onBlur={onBlur}
                 placeholder={placeholder}
                 className={classes.textArea}
                 data-hook={TEXT_AREA_DATA_HOOK}
