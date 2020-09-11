@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Simulate } from 'react-dom/test-utils';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { textAreaDriverFactory } from './TextArea.driver';
 import { TextArea, TextAreaTheme } from './';
@@ -140,5 +141,21 @@ describe('TextArea', () => {
     );
     expect(await driver.error()).toBe(true);
     expect(await driver.errorIcon()).toBe(false);
+  });
+
+  it('should handle blur event', async function() {
+    const onChange = jest.fn();
+    const onBlur = jest.fn();
+    const driver = createDriver(
+      <TextArea
+        ariaLabel="test"
+        value="Test"
+        onChange={onChange}
+        onBlur={onBlur}
+      />,
+    );
+    const textarea = await driver.getTextareaElement();
+    Simulate.blur(textarea);
+    expect(onBlur).toBeCalled();
   });
 });

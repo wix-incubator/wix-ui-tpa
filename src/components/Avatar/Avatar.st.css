@@ -5,7 +5,7 @@
 
 .root {
     -st-extends: Avatar;
-    -st-states: size(enum(large, medium, small, xLarge));
+    -st-states: size(enum(large, medium, small, xLarge, xSmall, xxSmall));
 }
 
 .root::content {
@@ -29,21 +29,30 @@
 
 .root:size(large)::content {
     font-size: 32px;
-    font-weight: 400;
     height: 52px;
     width: 52px;
 }
 
 .root:size(medium)::content {
     font-size: 20px;
-    font-weight: 400;
     height: 36px;
     width: 36px;
 }
 
 .root:size(small)::content {
-    font-size: 17px;
-    font-weight: 400;
+    font-size: 16px;
     height: 28px;
     width: 28px;
+}
+
+.root:size(xSmall)::content {
+    font-size: 12px;
+    height: 20px;
+    width: 20px;
+}
+
+.root:size(xxSmall)::content {
+    font-size: 8px;
+    height: 16px;
+    width: 16px;
 }

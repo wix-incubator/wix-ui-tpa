@@ -21,6 +21,7 @@ export interface TextAreaDriver extends BaseUniDriver {
   placeholder(): Promise<string>;
   theme(): Promise<TextAreaTheme>;
   typeText(text: string): Promise<any>;
+  getTextareaElement(): Promise<HTMLElement>;
 }
 
 function textArea(base: UniDriver) {
@@ -74,6 +75,9 @@ export const textAreaDriverFactory = (base: UniDriver): TextAreaDriver => {
     },
     async success() {
       return isSuccess(base);
+    },
+    async getTextareaElement() {
+      return textArea(base).getNative();
     },
   };
 };
