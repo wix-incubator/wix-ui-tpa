@@ -1,3 +1,18 @@
+# [2.6.0](https://github.com/wix/wix-ui-tpa/compare/v2.5.0...v2.6.0) (2020-09-11)
+
+
+### Bug Fixes
+
+* **ActionsMenuLayout:** A11Y fixes ([728570d](https://github.com/wix/wix-ui-tpa/commit/728570d3e11268a175bed5e084c8c6bcb0dee539))
+
+
+### Features
+
+* **Avatar:** New sizes: xSmall and xxSmall ([f101d15](https://github.com/wix/wix-ui-tpa/commit/f101d15f3f78759f6ba29bfb1adc14a1e736524a))
+* **TextArea:** add 'onBlur' property  ([1fc7394](https://github.com/wix/wix-ui-tpa/commit/1fc7394c5b859c4221eb1361a8e41c3747a3de7a))
+
+
+
 # [2.5.0](https://github.com/wix/wix-ui-tpa/compare/v2.4.1...v2.5.0) (2020-09-10)
 
 
