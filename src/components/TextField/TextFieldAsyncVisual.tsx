@@ -10,7 +10,7 @@ interface TextFieldAsyncVisualProps {
   dir: 'ltr' | 'rtl';
   hover?: boolean;
   focus?: boolean;
-  onDone?(): Promise<void>;
+  onDone?(): void;
   testDataHook?: string;
   children: React.ReactElement;
 }
@@ -42,7 +42,7 @@ export class TextFieldAsyncVisual extends React.Component<
       }
     } catch (e) {}
 
-    await onDone();
+    onDone();
   }
 
   async _hoverTest() {
