@@ -26,8 +26,9 @@
 
 /*Overrides*/
 :vars {
-    TextFont: --overridable;
+    TimeFont: --overridable;
     TimeColor: --overridable;
+    TitleFont: --overridable;
     TitleColor: --overridable;
     FulldayBgColor: --overridable;
     HoverOverlayColor:  --overridable;
@@ -37,8 +38,9 @@
 
 /* Fallbacks */
 :vars {
-    currentTextFont: fallback(value(TextFont), font(value(defaultTextFont)));
+    currentTimeFont: fallback(value(TimeFont), font(value(defaultTextFont)));
     currentTimeColor: color(fallback(value(TimeColor), value(defaultTimeColor)));
+    currentTitleFont: fallback(value(TitleFont), font(value(defaultTextFont)));
     currentTitleColor: color(fallback(value(TitleColor), value(defaultTitleColor)));
     currentFulldayBgColor: color(fallback(value(FulldayBgColor), value(defaultFulldayBgColor)));
     currentHoverOverlayColor: color(fallback(value(HoverOverlayColor), value(defaultHoverOverlayColor)));
@@ -103,14 +105,14 @@
 .time {
     padding-right: 2px;
     -st-mixin: TPAText(
-        MainTextFont value(currentTextFont),
+        MainTextFont value(currentTimeFont),
         MainTextColor value(currentTimeColor)
     );
 }
 
 .title {
   -st-mixin: TPAText(
-        MainTextFont value(currentTextFont),
+        MainTextFont value(currentTitleFont),
         MainTextColor value(currentTitleColor)
     );
     white-space: nowrap;

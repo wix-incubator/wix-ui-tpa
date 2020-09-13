@@ -4,6 +4,7 @@ import { st, classes } from './ActionsMenuLayoutItem.st.css';
 import { Text } from '../../Text';
 import { ACTIONS_MENU_ITEM_DATA_HOOK } from '../dataHooks';
 import { TPAComponentProps } from '../../../types';
+import { isSelectKey } from '../../../common/keyCodes';
 
 export enum Alignment {
   left = 'left',
@@ -20,13 +21,29 @@ export interface ActionsMenuLayoutItemProps extends TPAComponentProps {
   disabled?: boolean;
   onClick(): void;
   alignment?: Alignment;
+  /** a11y */
+  'aria-label'?: string;
 }
 
 /** ActionsMenuLayout */
 export class ActionsMenuLayoutItem extends React.Component<
   ActionsMenuLayoutItemProps
 > {
+  private readonly liRef = React.createRef<HTMLLIElement>();
   static displayName = 'ActionsMenuLayout.Item';
+
+  focus() {
+    if (this.liRef.current) {
+      this.liRef.current.focus();
+    }
+  }
+
+  _onKeyDown = (e: React.KeyboardEvent<HTMLLIElement>) => {
+    if (!this.props.disabled && isSelectKey(e)) {
+      e.preventDefault();
+      this.props.onClick();
+    }
+  };
 
   render() {
     const {
@@ -43,6 +60,10 @@ export class ActionsMenuLayoutItem extends React.Component<
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <li
+            onKeyDown={this._onKeyDown}
+            aria-label={this.props['aria-label']}
+            tabIndex={-1}
+            ref={this.liRef}
             key={content}
             className={st(
               classes.root,
@@ -50,7 +71,6 @@ export class ActionsMenuLayoutItem extends React.Component<
               className,
             )}
             role="menuitem"
-            tabIndex={-1}
             aria-disabled={disabled}
             data-hook={ACTIONS_MENU_ITEM_DATA_HOOK}
             data-content={content}

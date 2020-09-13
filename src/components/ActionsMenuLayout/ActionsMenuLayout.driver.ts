@@ -11,6 +11,8 @@ import {
 export interface ActionsMenuLayoutDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
   clickItem(content): Promise<any>;
+  item(content): UniDriver<HTMLLIElement>;
+  layout(): UniDriver<HTMLUListElement>;
 }
 
 function actionsMenuLayoutItem(base: UniDriver, content) {
@@ -26,6 +28,8 @@ export const actionsMenuLayoutDriverFactory = (
     ...baseUniDriverFactory(base),
     isMobile: async () =>
       (await base.attr(ACTIONS_MENU_DATA_KEYS.mobile)) === 'true',
+    item: content => actionsMenuLayoutItem(base, content),
     clickItem: content => actionsMenuLayoutItem(base, content).click(),
+    layout: () => base,
   };
 };
