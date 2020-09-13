@@ -127,10 +127,11 @@ visualize('Tabs', () => {
       }
     }
 
-    snap('left nav button', done =>
-      renderTest({ compact: true, props: { items: lotsItems } }, async () =>
-        done(),
-      ),
+    snap('right nav button', done =>
+      renderTest({ compact: true, props: { items: lotsItems } }, async () => {
+        await delay(500);
+        done();
+      }),
     );
 
     snap('both nav buttons', done =>
