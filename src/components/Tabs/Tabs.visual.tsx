@@ -27,6 +27,13 @@ class TabsVisual extends React.Component<TabsVisualProps> {
   private driver: TabsDriver;
 
   componentDidMount(): void {
+    const style = document.createElement('style');
+    style.innerHTML = `
+      * {
+        transition: none !important;
+      }
+    `;
+    document.head.appendChild(style);
     this.driver = createDriver({ wrapper: document.body, dataHook });
 
     onStyleProcessorDone()
@@ -113,6 +120,17 @@ visualize('Tabs', () => {
   story('Scroll', () => {
     async function scrollToEnd(driver, direction) {
       const navShown = await driver.getNavButtonsShown();
+      // const transitionHandler = async e => {
+      //   if (e.propertyName === 'left') {
+      //     console.log('adler', 'Tabs.visual.tsx:117', e);
+      //     // await scrollToEnd(driver, direction);
+      //   }
+      // };
+
+      // (await driver.element()).addEventListener(
+      //   'transitionend',
+      //   transitionHandler,
+      // );
 
       if (navShown === NavButtonOptions.both || navShown === direction) {
         if (direction === NavButtonOptions.right) {
@@ -129,7 +147,6 @@ visualize('Tabs', () => {
 
     snap('right nav button', done =>
       renderTest({ compact: true, props: { items: lotsItems } }, async () => {
-        await delay(500);
         done();
       }),
     );
@@ -139,7 +156,6 @@ visualize('Tabs', () => {
         { compact: true, props: { items: lotsItems } },
         async (driver: TabsDriver) => {
           await driver.clickRightNavButton();
-          await delay(500);
           done();
         },
       ),
@@ -150,7 +166,6 @@ visualize('Tabs', () => {
         { compact: true, props: { items: lotsItems } },
         async (driver: TabsDriver) => {
           await scrollToEnd(driver, NavButtonOptions.right);
-          await delay(500);
           done();
         },
       ),
