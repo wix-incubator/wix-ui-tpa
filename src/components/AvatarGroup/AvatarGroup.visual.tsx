@@ -38,7 +38,7 @@ visualize('AvatarGroup', () => {
         );
       });
 
-      snap('With 12 items and custom limit', async done => {
+      snap('With 12 items and custom limit', done => {
         let count = 0;
 
         function onLoad() {
