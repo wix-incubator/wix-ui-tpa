@@ -30,9 +30,7 @@ visualize('AvatarGroup', () => {
       ));
 
       snap('With 6 items and default limit', done => {
-        function onLoad() {
-          done();
-        }
+        const onLoad = async () => done();
 
         return (
           <AvatarGroup
@@ -42,14 +40,14 @@ visualize('AvatarGroup', () => {
         );
       });
 
-      snap('With 12 items and custom limit', done => {
+      snap('With 12 items and custom limit', async done => {
         let count = 0;
 
-        function onLoad() {
+        async function onLoad() {
           count += 1;
 
           if (count === 3) {
-            done();
+            return done();
           }
         }
 

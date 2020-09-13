@@ -24,7 +24,7 @@ visualize('Avatar', () => {
           src={IMG_SRC}
           onLoad={async () => {
             await delay(500);
-            done();
+            return done();
           }}
         />
       ));

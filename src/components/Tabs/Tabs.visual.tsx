@@ -54,13 +54,10 @@ class TabsVisual extends React.Component<TabsVisualProps> {
 }
 
 visualize('Tabs', () => {
-  const renderTest = (
-    renderProps?: any,
-    onDone?: (any?) => (TabsDriver) => void,
-  ) => {
+  const renderTest = (renderProps?: any, onDone?: (TabsDriver) => void) => {
     const { props, mobile, compact } = renderProps;
     onDone = onDone || (d => () => d());
-    return done => (
+    return (
       <TabsVisual
         tabsProps={{
           items,
@@ -69,32 +66,32 @@ visualize('Tabs', () => {
         }}
         compact={compact}
         mobile={mobile}
-        onDone={onDone(done)}
+        onDone={onDone}
       />
     );
   };
 
   story('basic', () => {
-    snap('default', renderTest());
+    snap('default', () => renderTest());
 
-    snap('mobile', renderTest({ mobile: true }));
+    snap('mobile', () => renderTest({ mobile: true }));
   });
 
   story('Alignments', () => {
     Object.values(ALIGNMENT).map(alignment => {
-      snap(alignment, renderTest({ props: { alignment } }));
+      snap(alignment, () => renderTest({ props: { alignment } }));
     });
   });
 
   story('Variants', () => {
     Object.values(VARIANT).map(variant => {
-      snap(variant, renderTest({ props: { variant } }));
+      snap(variant, () => renderTest({ props: { variant } }));
     });
   });
 
   story('Skins', () => {
     Object.values(SKIN).map(skin => {
-      snap(skin, renderTest({ props: { skin } }));
+      snap(skin, () => renderTest({ props: { skin } }));
     });
   });
 
@@ -128,35 +125,32 @@ visualize('Tabs', () => {
       }
     }
 
-    snap(
-      'left nav button',
-      renderTest({ compact: true, props: { items: lotsItems } }, done => {
-        return async () => {
-          done();
-        };
-      }),
+    snap('left nav button', done =>
+      renderTest({ compact: true, props: { items: lotsItems } }, async () =>
+        done(),
+      ),
     );
 
-    snap(
-      'both nav buttons',
-      renderTest({ compact: true, props: { items: lotsItems } }, done => {
-        return async (driver: TabsDriver) => {
+    snap('both nav buttons', done =>
+      renderTest(
+        { compact: true, props: { items: lotsItems } },
+        async (driver: TabsDriver) => {
           await driver.clickRightNavButton();
           await delay(500);
-          done();
-        };
-      }),
+          return done();
+        },
+      ),
     );
 
-    snap(
-      'scroll to right end',
-      renderTest({ compact: true, props: { items: lotsItems } }, done => {
-        return async (driver: TabsDriver) => {
+    snap('scroll to right end', done =>
+      renderTest(
+        { compact: true, props: { items: lotsItems } },
+        async (driver: TabsDriver) => {
           await scrollToEnd(driver, NavButtonOptions.right);
           await delay(500);
-          done();
-        };
-      }),
+          return done();
+        },
+      ),
     );
   });
 });
