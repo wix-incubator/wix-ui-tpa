@@ -1,16 +1,26 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback;
+}
+
+:import {
+    -st-from: "../IconButton/IconButton.st.css";
+    -st-default: TPAIconButton;
 }
 
 /*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+    DefaultCloseButtonColor: color-5;
 }
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    CloseButtonColor: --overridable;
+}
+
+/*Fallbacks*/
+:vars {
+    CurrentCloseButtonColor: color(fallback(value(CloseButtonColor), value(DefaultCloseButtonColor)));
 }
 
 .root {
@@ -20,4 +30,23 @@
 
 .root:mobile {
     /*mobile css goes here*/
+}
+
+.closeButtonWrapper {
+    text-align: right;
+    padding: 20px 20px 0 0;
+}
+
+.closeIconButton {
+    -st-mixin: TPAIconButton(
+            IconColor value(CurrentCloseButtonColor)
+    );
+}
+
+.dialogContent {
+    padding: 80px 70px;
+}
+
+.root:mobile .dialogContent {
+
 }

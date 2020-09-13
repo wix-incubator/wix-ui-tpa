@@ -3,8 +3,9 @@ import { st, classes } from './Dialog.st.css';
 import { DATA_HOOKS } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-import { Button } from '../Button';
 import { Modal } from '../Modal';
+import { IconButton } from '../IconButton';
+import { Close as CloseIcon } from '../../assets/icons';
 
 export interface DialogProps {
   isOpen?: boolean;
@@ -45,13 +46,15 @@ export class Dialog extends React.Component<DialogProps> {
               focusTrap={!manualFocus}
               closeOnClickOutside={false}
             >
-              <Button
-                data-hook={DATA_HOOKS.CLOSE_BTN}
-                ref={closeButtonRef}
-                onClick={onClose}
-              >
-                X
-              </Button>
+              <div className={classes.closeButtonWrapper}>
+                <IconButton
+                    className={classes.closeIconButton}
+                    data-hook={DATA_HOOKS.CLOSE_BTN}
+                    innerRef={closeButtonRef}
+                    onClick={onClose}
+                    icon={<CloseIcon />}
+                />
+              </div>
               <div className={classes.dialogContent}>{children}</div>
             </Modal>
           </div>
