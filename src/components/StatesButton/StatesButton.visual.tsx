@@ -11,7 +11,7 @@ import {
 import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 
 interface StatesButtonVisualProps {
-  done(): void;
+  done(): Promise<void>;
   onClickState: BUTTON_STATES;
 }
 
@@ -49,7 +49,7 @@ class StatesButtonVisual extends React.Component<
       prevState.buttonState !== buttonState
     ) {
       await delay(500);
-      this.props.done();
+      await this.props.done();
     }
   }
 
