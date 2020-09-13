@@ -33,7 +33,9 @@ class TabsVisual extends React.Component<TabsVisualProps> {
       .then(async () => {
         const { onDone } = this.props as any;
         try {
-          onDone && (await onDone(this.driver));
+          if (onDone) {
+            await onDone(this.driver);
+          }
         } catch (e) {}
       })
       .catch(() => {});
@@ -137,7 +139,7 @@ visualize('Tabs', () => {
         async (driver: TabsDriver) => {
           await driver.clickRightNavButton();
           await delay(500);
-          return done();
+          done();
         },
       ),
     );
@@ -148,7 +150,7 @@ visualize('Tabs', () => {
         async (driver: TabsDriver) => {
           await scrollToEnd(driver, NavButtonOptions.right);
           await delay(500);
-          return done();
+          done();
         },
       ),
     );
