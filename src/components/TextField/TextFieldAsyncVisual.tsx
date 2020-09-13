@@ -20,7 +20,7 @@ export class TextFieldAsyncVisual extends React.Component<
 > {
   static defaultProps = {
     dir: 'ltr',
-    onDone: async () => {},
+    onDone: () => {},
     testDataHook: dataHook,
   };
   private _driver;
