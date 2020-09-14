@@ -5,7 +5,7 @@ import { init } from '../test/visual/StyleProcessorUtil';
 function loadStories() {
   require('../mocks');
 
-  const req = require.context('../src', true, /\.visual\.tsx$/);
+  const req = require.context('../src', true, /Tabs.visual\.tsx$/);
   req.keys().forEach(filename => req(filename));
 
   setTimeout(init);
