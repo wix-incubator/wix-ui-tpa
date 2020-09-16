@@ -33,8 +33,9 @@
 }
 
 .closeButtonWrapper {
-    text-align: right;
-    padding: 20px 20px 0 0;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
 
 .closeIconButton {
@@ -48,5 +49,5 @@
 }
 
 .root:mobile .dialogContent {
-
+    padding: 80px 32px;
 }

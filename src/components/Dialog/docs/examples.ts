@@ -22,7 +22,7 @@ class MobileExample extends React.Component {
 
 export const example = buildExample(`
     <>
-        <Button onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
+        <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
         <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog}>
             <div className="content" style={{ textAlign: 'center' }}>
                 <Text typography="largeTitle">Are You Sure?</Text>
@@ -39,7 +39,7 @@ export const example = buildExample(`
                 >
                     SECONDARY
                 </Button>
-                <Button upgrade priority={PRIORITY.primary} style={{ marginLeft: '10px' }}>
+                <Button upgrade style={{ marginLeft: '10px' }}>
                     PRIMARY
                 </Button>
              </div>
@@ -49,7 +49,24 @@ export const example = buildExample(`
 
 export const mobileExample = buildExample(`
     <ExampleWithContextProps mobile={true}>
-       <Button onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
-      <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} />
+      <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
+      <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} >
+        <div className="content" style={{ textAlign: 'center' }}>
+            <Text typography="MobileSmallTitleFont" tagName="div">Discard draft?</Text>
+            <div class="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
+                <Text typography="MobileRunningTextFont" tagName="div">Are You Sure you want to discard the changes you made?</Text>
+            </div>
+            <Button
+              upgrade
+              priority={PRIORITY.basicSecondary}
+              style={{ marginLeft: '10px', display: 'block' }}
+            >
+              SECONDARY
+            </Button>
+            </div>
+            <Button upgrade style={{ marginLeft: '10px' }}>
+              PRIMARY
+            </Button>
+      </Dialog>
     </ExampleWithContextProps>
 `);
