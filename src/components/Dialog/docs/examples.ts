@@ -26,7 +26,7 @@ export const example = buildExample(`
         <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog}>
             <div className="content" style={{ textAlign: 'center' }}>
                 <Text typography="largeTitle">Are You Sure?</Text>
-                <div class="text-container" style={{ marginTop: '24px', marginBottom: '36px' }}>
+                <div className="text-container" style={{ marginTop: '24px', marginBottom: '36px' }}>
                     <Text typography="listText" tagName="div">
                         <div>Do you really want to delete the selected files?</div>
                         <div>Once removed, cannot be undone.</div>
@@ -53,7 +53,7 @@ export const mobileExample = buildExample(`
       <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} >
         <div className="content" style={{ textAlign: 'center' }}>
             <Text typography="MobileSmallTitleFont" tagName="div">Discard draft?</Text>
-            <div class="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
+            <div className="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
                 <Text typography="MobileRunningTextFont" tagName="div">Are You Sure you want to discard the changes you made?</Text>
             </div>
             <Button
