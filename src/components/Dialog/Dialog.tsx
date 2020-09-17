@@ -55,13 +55,13 @@ export class Dialog extends React.Component<DialogProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-              className={st(classes.root, { mobile })}
-              data-mobile={mobile}
-              role="dialog"
-              aria-modal="true"
-              aria-label={ariaLabel}
-              aria-labelledby={ariaLabelledBy}
-              aria-describedby={ariaDescribedBy}
+            className={st(classes.root, { mobile })}
+            data-mobile={mobile}
+            role="dialog"
+            aria-modal="true"
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
           >
             <Modal
               isOpen={isOpen}
@@ -70,11 +70,11 @@ export class Dialog extends React.Component<DialogProps> {
             >
               <div className={classes.closeButtonWrapper}>
                 <IconButton
-                    className={classes.closeIconButton}
-                    data-hook={DATA_HOOKS.CLOSE_BTN}
-                    innerRef={closeButtonRef}
-                    onClick={onClose}
-                    icon={<CloseIcon />}
+                  className={classes.closeIconButton}
+                  data-hook={DATA_HOOKS.CLOSE_BTN}
+                  innerRef={closeButtonRef}
+                  onClick={onClose}
+                  icon={<CloseIcon />}
                 />
               </div>
               <div className={classes.dialogContent}>{children}</div>
