@@ -28,6 +28,8 @@
     FontColor: --overridable;
     FutureFontColor: --overidable;
     BackgroundColor: --overridable;
+    FutureBackgroundColor: --overridable;
+    PastBackgroundColor: --overridable;
     BorderColor: --overridable;
     TodayColor: --overridable;
     FontStyle: --overridable;
@@ -40,6 +42,8 @@
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
     CurrentFutureFontColor: color(fallback(value(FutureFontColor), value(DefaultFutureColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentFutureBackgroundColor: color(fallback(value(FutureBackgroundColor), value(DefaultBackgroundColor)));
+    CurrentPastBackgroundColor: color(fallback(value(PastBackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
     CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
@@ -90,6 +94,10 @@
     line-height: 1em;
 }
 
+.root:timeType(pastDate) {
+    background: value(CurrentPastBackgroundColor)
+}
+
 .root:timeType(pastDate) .title {
     -st-mixin: TPAText(MainTextColor value(CurrentPastFontColor), MainTextFont value(CurrentFontStyle));
 }
@@ -98,16 +106,24 @@
     border-color: value(CurrentTodayColor);
 }
 
+.root:timeType(today) .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
+}
+
+.root:timeType(futureDate){
+    background: value(CurrentFutureBackgroundColor);
+}
+
 .root:timeType(futureDate) .title {
     -st-mixin: TPAText(MainTextColor value(CurrentFutureFontColor), MainTextFont value(CurrentFontStyle));
 }
 
-.root:current .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
+.root:current {
+    background: value(CurrentBackgroundColor)
 }
 
-.root:timeType(today) .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
+.root:current .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
 }
 
 /* isStrechAble == true */
