@@ -7,7 +7,11 @@ export const CalendarCellWiringExample = () => {
     <div style={{ display: 'flex', justifyContent: 'space-around' }}>
       <div style={{ width: '135px' }}>
         <h4>Past Month</h4>
-        <CalendarCell className={st(classes.root)} timeType={Times.pastDate} title={'17'} />
+        <CalendarCell
+          className={st(classes.root)}
+          timeType={Times.pastDate}
+          title={'17'}
+        />
       </div>
       <div style={{ width: '135px' }}>
         <h4>Current Month</h4>

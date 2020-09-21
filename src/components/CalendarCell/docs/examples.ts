@@ -24,7 +24,7 @@ export const timeTypes = `
     ${cell({
       title: 'Future Day',
       timeType: Times.futureDate,
-      current: true
+      current: true,
     })}
     ${cell({ title: 'Next Month', timeType: Times.futureDate })}
 </div>
