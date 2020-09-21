@@ -38,6 +38,12 @@
     right: 20px;
 }
 
+:global([dir="rtl"]) .closeButtonWrapper,
+:global(.rtl) .closeButtonWrapper {
+    right: initial;
+    left: 20px;
+}
+
 .closeIconButton {
     -st-mixin: TPAIconButton(
             IconColor value(CurrentCloseButtonColor)
