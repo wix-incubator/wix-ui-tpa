@@ -66,7 +66,7 @@ export class Dialog extends React.Component<DialogProps> {
             <Modal
               isOpen={isOpen}
               focusTrap={!manualFocus}
-              closeOnClickOutside={false}
+              onRequestClose={onClose}
             >
               <div className={classes.closeButtonWrapper}>
                 <IconButton

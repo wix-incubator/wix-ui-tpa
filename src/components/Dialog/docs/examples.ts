@@ -59,14 +59,13 @@ export const mobileExample = buildExample(`
             <Button
               upgrade
               priority={PRIORITY.basicSecondary}
-              style={{ marginLeft: '10px', display: 'block' }}
             >
               SECONDARY
             </Button>
-            </div>
-            <Button upgrade style={{ marginLeft: '10px' }}>
+            <Button upgrade>
               PRIMARY
             </Button>
+        </div>
       </Dialog>
     </ExampleWithContextProps>
 `);
