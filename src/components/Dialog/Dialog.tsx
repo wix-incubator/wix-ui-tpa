@@ -6,8 +6,9 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Modal } from '../Modal';
 import { IconButton } from '../IconButton';
 import { Close as CloseIcon } from '../../assets/icons';
+import { TPAComponentProps } from '../../types';
 
-export interface DialogProps {
+export interface DialogProps extends TPAComponentProps{
   /** Whether the modal is opened */
   isOpen?: boolean;
   /** Whether to use our focus trap or to manage the focus manually. */
@@ -41,6 +42,7 @@ export class Dialog extends React.Component<DialogProps> {
 
   render() {
     const {
+      className,
       isOpen,
       manualFocus,
       closeButtonRef,
@@ -55,7 +57,7 @@ export class Dialog extends React.Component<DialogProps> {
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-            className={st(classes.root, { mobile })}
+            className={st(classes.root, { mobile }, className)}
             data-mobile={mobile}
             role="dialog"
             aria-modal="true"

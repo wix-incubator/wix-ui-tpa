@@ -1,7 +1,16 @@
-.root {
-
+:import {
+    -st-from: "../Dialog.st.css";
+    -st-default: TPADialog;
 }
 
-.component {
-    
+.dialogComponent {
+    -st-mixin: TPADialog(
+            CloseButtonColor '"color(--customCloseButtonColor)"'
+    );
+}
+
+.content {
+    text-align: center;
+    height: 50vh;
+    line-height: 50vh;
 }

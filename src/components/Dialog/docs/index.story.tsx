@@ -28,39 +28,42 @@ const childrenExamples = [
   {
     label: 'Simple text',
     value: (
-        <div
-            style={{
-              textAlign: 'center',
-              height: '50vh',
-              lineHeight: '50vh',
-            }}
-        >
-          This is the content!
-        </div>
+      <div
+        style={{
+          textAlign: 'center',
+          height: '50vh',
+          lineHeight: '50vh',
+        }}
+      >
+        This is the content!
+      </div>
     ),
   },
   {
     label: 'Dialog content',
     value: (
-        <div className="content" style={{ textAlign: 'center' }}>
-          <Text typography={TYPOGRAPHY.largeTitle}>Are You Sure?</Text>
-          <div className="text-container" style={{ marginTop: '24px', marginBottom: '36px' }}>
-            <Text typography={TYPOGRAPHY.listText} tagName="div">
-              <div>Do you really want to delete the selected files?</div>
-              <div>Once removed, cannot be undone.</div>
-            </Text>
-          </div>
-          <Button
-              upgrade
-              priority={PRIORITY.basicSecondary}
-              style={{ marginLeft: '10px' }}
-          >
-            SECONDARY
-          </Button>
-          <Button upgrade style={{ marginLeft: '10px' }}>
-            PRIMARY
-          </Button>
+      <div className="content" style={{ textAlign: 'center' }}>
+        <Text typography={TYPOGRAPHY.largeTitle}>Are You Sure?</Text>
+        <div
+          className="text-container"
+          style={{ marginTop: '24px', marginBottom: '36px' }}
+        >
+          <Text typography={TYPOGRAPHY.listText} tagName="div">
+            <div>Do you really want to delete the selected files?</div>
+            <div>Once removed, cannot be undone.</div>
+          </Text>
         </div>
+        <Button
+          upgrade
+          priority={PRIORITY.basicSecondary}
+          style={{ marginLeft: '10px' }}
+        >
+          SECONDARY
+        </Button>
+        <Button upgrade style={{ marginLeft: '10px' }}>
+          PRIMARY
+        </Button>
+      </div>
     ),
   },
 ];
@@ -114,9 +117,13 @@ export default {
               rawSource: DialogWiringExampleRaw,
               rawCSSSource: DialogWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
-                numbers: [],
+                colors: [
+                  {
+                    label: 'Close Button Color',
+                    wixParam: 'customCloseButtonColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
               },
             }),
           ],
