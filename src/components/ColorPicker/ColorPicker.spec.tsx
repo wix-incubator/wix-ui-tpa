@@ -1,10 +1,7 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
-import {
-  isUniEnzymeTestkitExists,
-  enzymeUniTestkitFactoryCreator,
-} from 'wix-ui-test-utils/enzyme';
+import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { mount } from 'enzyme';
 import { colorPickerDriverFactory } from './ColorPicker.driver';
 import { ColorPicker } from './';
@@ -13,20 +10,7 @@ import { colorPickerTestkitFactory as enzymeColorPickerTestkitFactory } from '..
 import { eventually } from 'wix-ui-test-utils/dist/src/protractor/utils';
 
 describe('ColorPicker', () => {
-  const createDriver = enzymeUniTestkitFactoryCreator(colorPickerDriverFactory);
-
-  // afterEach(() => {
-  //   // this is obviously a "hack".
-  //   // this data-hook is taken from the wix-ui-core/Popover implementation:
-  //   // https://github.com/wix/wix-ui/blob/master/packages/wix-ui-core/src/components/popover/Popover.uni.driver.ts#L17
-  //   // TODO fix TooltipDriver in core, to remove the portal when not needed
-  //   const portal =
-  //     document && document.querySelector('[data-hook="popover-portal"]');
-  //
-  //   if (portal) {
-  //     portal.remove();
-  //   }
-  // });
+  const createDriver = createUniDriverFactory(colorPickerDriverFactory);
   const bootstrap = (props = {}) => {
     const dataHook = 'compDataHook';
     const compProps = {
@@ -34,14 +18,8 @@ describe('ColorPicker', () => {
       onChange: () => {},
       ...props,
     };
-    const wrapper = mount(
-      <div>
-        <ColorPicker {...compProps} />
-      </div>,
-    );
-    return createDriver({ wrapper, dataHook });
+    return createDriver(<ColorPicker {...compProps} />);
   };
-  const unMountComponent = element => ReactDOM.unmountComponentAtNode(element);
 
   it('should render', async () => {
     const driver = bootstrap();
