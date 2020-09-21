@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
@@ -8,31 +9,26 @@ import { ColorPicker } from './';
 import { colorPickerTestkitFactory } from '../../testkit';
 import { colorPickerTestkitFactory as enzymeColorPickerTestkitFactory } from '../../testkit/enzyme';
 import { eventually } from 'wix-ui-test-utils/dist/src/protractor/utils';
-import { jsdomReactUniDriver } from '@unidriver/jsdom-react';
 
 describe('ColorPicker', () => {
   const createDriver = createUniDriverFactory(colorPickerDriverFactory);
-  let bodyUniDriver;
 
-  beforeAll(() => {
-    bodyUniDriver = jsdomReactUniDriver(document.body);
-  });
-
-  afterEach(() => {
-    // this is obviousle a "hack".
-    // this data-hook is taken from the wix-ui-core/Popover implementation:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-ui-core/src/components/popover/Popover.uni.driver.ts#L17
-    // TODO fix TooltipDriver in core, to remove the portal when not needed
-    const portal =
-      document && document.querySelector('[data-hook="popover-portal"]');
-
-    if (portal) {
-      portal.remove();
-    }
-  });
+  // afterEach(() => {
+  //   // this is obviously a "hack".
+  //   // this data-hook is taken from the wix-ui-core/Popover implementation:
+  //   // https://github.com/wix/wix-ui/blob/master/packages/wix-ui-core/src/components/popover/Popover.uni.driver.ts#L17
+  //   // TODO fix TooltipDriver in core, to remove the portal when not needed
+  //   const portal =
+  //     document && document.querySelector('[data-hook="popover-portal"]');
+  //
+  //   if (portal) {
+  //     portal.remove();
+  //   }
+  // });
+  const unMountComponent = element => ReactDOM.unmountComponentAtNode(element);
 
   it('should render', async () => {
-    const driver = createDriver(<ColorPicker onChange={e => {}} />);
+    const driver = createDriver(<ColorPicker onChange={() => {}} />);
     expect(await driver.exists()).toBe(true);
   });
 
@@ -101,16 +97,15 @@ describe('ColorPicker', () => {
 
     const itemDriverFirst = driver.getItemAt(0);
 
-    expect(await itemDriverFirst.getTooltipText(bodyUniDriver)).toBe(
-      'ArrowTop.svgHello',
-    );
+    expect(await itemDriverFirst.getTooltipText()).toBe('ArrowTop.svgHello');
+    unMountComponent(await driver.element());
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <ColorPicker onChange={e => {}} />,
+          <ColorPicker onChange={() => {}} />,
           colorPickerTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -124,7 +119,7 @@ describe('ColorPicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <ColorPicker onChange={e => {}} />,
+          <ColorPicker onChange={() => {}} />,
           enzymeColorPickerTestkitFactory,
           mount,
           {

@@ -2,7 +2,10 @@ import * as React from 'react';
 import { classes, st } from './ColorPickerItem.st.css';
 import { RadioButton } from 'wix-ui-core/radio-button';
 import { RadioButtonProps } from 'wix-ui-core/dist/src/components/radio-button/RadioButton';
-import { colorPickerItemDataHook } from '../dataHooks';
+import {
+  colorPickerItemDataHook,
+  colorPickerItemTooltipDataHook,
+} from '../dataHooks';
 import { Tooltip } from '../../Tooltip';
 import { MobileTooltip } from './MobileTooltip';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
@@ -16,10 +19,15 @@ export interface ColorPickerItemProps extends RadioButtonProps {
   key?: number;
   isCrossedOut?: boolean;
   tooltip?: string;
+  tooltipDataHook?: string;
 }
 
 interface ColorPickerItemState {
   focused: boolean;
+}
+
+interface ColorPickerItemDefaultProps {
+  tooltipDataHook: string;
 }
 
 /** ColorPickerItem */
@@ -28,6 +36,10 @@ export class ColorPickerItem extends React.Component<
   ColorPickerItemState
 > {
   static displayName = colorPickerItemDataHook;
+  static defaultProps: ColorPickerItemDefaultProps = {
+    tooltipDataHook: colorPickerItemTooltipDataHook,
+  };
+
   state = { focused: false };
 
   getRadioVisual = ({ value }: ColorPickerItemProps) => (
@@ -44,6 +56,7 @@ export class ColorPickerItem extends React.Component<
       ) : (
         <Tooltip
           {...TOOLTIP_COMMON_PROPS}
+          data-hook={props.tooltipDataHook}
           content={props.tooltip}
           showDelay={TOOLTIP_SHOW_DELAY}
           hideDelay={TOOLTIP_HIDE_DELAY}
@@ -55,8 +68,6 @@ export class ColorPickerItem extends React.Component<
     return radioVisual;
   };
 
-  getComponent = () => {};
-
   render = () => {
     const { focused } = this.state;
     const {
@@ -66,6 +77,7 @@ export class ColorPickerItem extends React.Component<
       className,
       disabled,
       isCrossedOut,
+      tooltipDataHook,
     } = this.props;
     const finalChecked = checked && !disabled;
 
@@ -80,6 +92,7 @@ export class ColorPickerItem extends React.Component<
             )}
             aria-label={this.props['aria-label']}
             data-hook={ColorPickerItem.displayName}
+            data-tooltip-hook={tooltipDataHook}
             disabled={disabled}
             checked={finalChecked}
             checkedIcon={this.getRadio(

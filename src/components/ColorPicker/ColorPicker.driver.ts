@@ -17,6 +17,7 @@ export interface ColorPickerDriver extends BaseUniDriver {
 
 export const colorPickerDriverFactory = (
   base: UniDriver,
+  body: UniDriver,
 ): ColorPickerDriver => {
   const children = base.$$(`[data-hook="${colorPickerItemDataHook}"]`);
   const childByColor = color => base.$(`[style="background-color: ${color};"]`);
@@ -33,7 +34,7 @@ export const colorPickerDriverFactory = (
     },
     getItemAt: (index: number): ColorPickerItemDriver => {
       const child = children.get(index);
-      return colorPickerItemDriverFactory(child);
+      return colorPickerItemDriverFactory(child, body);
     },
   };
 };
