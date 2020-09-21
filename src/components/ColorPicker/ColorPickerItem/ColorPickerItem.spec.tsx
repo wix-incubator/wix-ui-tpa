@@ -1,14 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { colorPickerItemDriverFactory } from './ColorPickerItem.driver';
+import { enzymeUniTestkitFactoryCreator } from 'wix-ui-test-utils/enzyme';
 import { ColorPickerItem } from './';
+import { mount } from 'enzyme';
+import { ColorPicker } from '../ColorPicker';
 
 describe('ColorPickerItem', () => {
   const tooltipContent = 'Hello';
   const tooltipInnerContent = `ArrowTop.svg${tooltipContent}`;
   const tooltipDataHook = 'colorPickerItem-tooltip';
-  const createDriver = createUniDriverFactory(colorPickerItemDriverFactory);
+  const createDriver = enzymeUniTestkitFactoryCreator(
+    colorPickerItemDriverFactory,
+  );
 
   // afterEach(() => {
   //   // this is obviously a "hack".
@@ -24,13 +28,19 @@ describe('ColorPickerItem', () => {
   // });
 
   const bootstrap = (props = {}) => {
+    const dataHook = 'compDataHook';
     const compProps = {
       onChange: () => {},
+      'data-hook': dataHook,
       tooltipDataHook,
       ...props,
     };
-
-    return createDriver(<ColorPickerItem {...compProps} />);
+    const wrapper = mount(
+      <div>
+        <ColorPickerItem {...compProps} />
+      </div>,
+    );
+    return createDriver({ wrapper, dataHook });
   };
   const unMountComponent = element => ReactDOM.unmountComponentAtNode(element);
 
@@ -70,18 +80,18 @@ describe('ColorPickerItem', () => {
   it('should display tooltip', async () => {
     const driver = bootstrap({ tooltip: tooltipContent });
     expect(await driver.getTooltipText()).toBe(tooltipInnerContent);
-    unMountComponent(await driver.element());
+    // unMountComponent(await driver.element());
   });
 
   it('should disabled tooltip disabled state', async () => {
     const driver = bootstrap({ tooltip: tooltipContent, disabled: true });
     expect(await driver.getTooltipText()).toBe(tooltipInnerContent);
-    unMountComponent(await driver.element());
+    // unMountComponent(await driver.element());
   });
 
   it('should disabled tooltip crossed out state state', async () => {
     const driver = bootstrap({ tooltip: tooltipContent, isCrossedOut: true });
     expect(await driver.getTooltipText()).toBe(tooltipInnerContent);
-    unMountComponent(await driver.element());
+    // unMountComponent(await driver.element());
   });
 });

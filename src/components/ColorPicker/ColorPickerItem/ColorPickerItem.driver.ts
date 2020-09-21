@@ -22,6 +22,8 @@ export const colorPickerItemDriverFactory = (
   const stylableUtil = new StylableUnidriverUtil(style);
   const baseUniDriver = baseUniDriverFactory(base);
 
+  console.log('adler', 'ColorPickerItem.driver.ts:25', body);
+
   const getTooltipDriver = async () => {
     const tooltipDataHook = await base.attr('data-tooltip-hook');
     return tooltipDriverFactory(base.$(`[data-hook=${tooltipDataHook}]`), body);
