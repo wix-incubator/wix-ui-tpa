@@ -80,9 +80,19 @@ export default {
                     defaultColor: 'color-2',
                   },
                   {
+                    label: 'Past Font Color',
+                    wixParam: 'pastFontColor',
+                    defaultColor: 'color-4',
+                  },
+                  {
                     label: 'Font Color',
                     wixParam: 'fontColor',
                     defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Futurn Font Color',
+                    wixParam: 'futureFontColor',
+                    defaultColor: 'color-4',
                   },
                   {
                     label: 'Current Day Color',

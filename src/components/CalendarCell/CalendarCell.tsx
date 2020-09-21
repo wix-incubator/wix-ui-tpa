@@ -37,7 +37,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
   static displayName = 'CalendarCell';
   static defaultProps: DefaultProps = {
     stretchable: false,
-    current: true,
+    current: false,
     alignment: Alignment.left,
     timeType: Times.futureDate,
   };
