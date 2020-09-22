@@ -5,9 +5,9 @@ import { TPAComponentsProvider } from '../../src/components/TPAComponentsConfig'
 import { st, classes } from './MobileExample.st.css';
 
 export class MobileExample extends React.Component {
-  private _frameRef = React.createRef<HTMLIFrameElement>();
+  private readonly _frameRef = React.createRef<HTMLIFrameElement>();
   private _frameBody: HTMLElement;
-  private _frameHead: HTMLHeadElement;
+  private readonly _frameHead: HTMLHeadElement;
 
   componentDidMount() {
     // if (this._frameRef.current) {
