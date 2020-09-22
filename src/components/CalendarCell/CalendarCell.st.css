@@ -13,7 +13,7 @@
     DefaultBorderWidth: 1px;
     DefaultPastFontColor: color-4;
     DefaultFontColor: color-5;
-    DefaultFutureColor: color-4;
+    DefaultFutureFontColor: color-4;
     DefaultBackgroundColor: color-1;
     DefaultBorderColor: color-2;
     DefaultTodayColor: color-8;
@@ -40,10 +40,10 @@
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
     CurrentPastFontColor: color(fallback(value(PastFontColor), value(DefaultPastFontColor)));
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
-    CurrentFutureFontColor: color(fallback(value(FutureFontColor), value(DefaultFutureColor)));
+    CurrentFutureFontColor: color(fallback(value(FutureFontColor), value(DefaultFutureFontColor)));
+    CurrentPastBackgroundColor: color(fallback(value(PastBackgroundColor), value(DefaultBackgroundColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentFutureBackgroundColor: color(fallback(value(FutureBackgroundColor), value(DefaultBackgroundColor)));
-    CurrentPastBackgroundColor: color(fallback(value(PastBackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
     CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
@@ -126,7 +126,6 @@
     -st-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
 }
 
-/* isStrechAble == true */
 .root:stretchable {
     padding-top: 0;
     height: 100%;

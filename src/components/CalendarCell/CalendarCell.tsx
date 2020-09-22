@@ -29,6 +29,7 @@ interface DefaultProps {
   stretchable: boolean;
   current: boolean;
   alignment: Alignment;
+  timeType: Times;
 }
 
 /** CalendarCell */
@@ -38,6 +39,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
     stretchable: false,
     current: false,
     alignment: Alignment.left,
+    timeType: Times.futureDate
   };
 
   getDataAttributes() {
