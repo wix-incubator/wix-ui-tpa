@@ -7,27 +7,6 @@ import { st, classes } from './MobileExample.st.css';
 export class MobileExample extends React.Component {
   private readonly _frameRef = React.createRef<HTMLIFrameElement>();
   private _frameBody: HTMLElement;
-  private readonly _frameHead: HTMLHeadElement;
-
-  componentDidMount() {
-    // if (this._frameRef.current) {
-    //   this._frameBody = this._frameRef.current.contentDocument.getElementById(
-    //     'mobile-root',
-    //   );
-    //   console.log('adler', 'MobileExample.tsx:17', this._frameBody);
-    //   this._frameHead = this._frameRef.current.contentDocument.head;
-    //
-    //   // const headContent = document.createDocumentFragment();
-    //   // const currentHeadChildren = Array.from(document.head.children);
-    //   // const currentBodyScripts = Array.from(
-    //   //   document.querySelectorAll('script'),
-    //   // );
-    //   // [...currentHeadChildren, ...currentBodyScripts].forEach(el =>
-    //   //   headContent.appendChild(el.cloneNode(true)),
-    //   // );
-    //   // this._frameHead.appendChild(headContent);
-    // }
-  }
 
   _onIframeLoad = () => {
     if (this._frameRef.current) {
