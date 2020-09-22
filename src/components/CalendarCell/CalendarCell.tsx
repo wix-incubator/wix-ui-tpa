@@ -39,7 +39,7 @@ export class CalendarCell extends React.Component<CalendarCellProps> {
     stretchable: false,
     current: false,
     alignment: Alignment.left,
-    timeType: Times.futureDate
+    timeType: Times.futureDate,
   };
 
   getDataAttributes() {
