@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as componentsScope from '../../src/components';
 import * as icons from '../../src/assets/icons';
 import * as iconsScope from 'wix-ui-icons-common';
+import { MobileExample } from './MobileExample';
 
 /*
  * This object contains all wix-ui-tpa components including icons
@@ -16,4 +17,5 @@ export const allComponents = {
       {children}
     </componentsScope.TPAComponentsProvider>
   ),
+  MobileExample,
 };
