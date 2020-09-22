@@ -53,7 +53,7 @@ export class MobileExample extends React.Component {
         <iframe
           frameBorder="0"
           ref={this._frameRef}
-          src="/iframe.html?id=tests--mobilepage"
+          src="iframe.html?id=tests--mobilepage"
           onLoad={this._onIframeLoad}
         >
           {this._frameBody &&
