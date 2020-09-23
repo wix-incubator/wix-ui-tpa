@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as componentsScope from '../../src/components';
 import * as icons from '../../src/assets/icons';
 import * as iconsScope from 'wix-ui-icons-common';
+import { Modal } from '../../src/components/Modal';
 import { MobileExample } from './MobileExample';
 
 /*
@@ -11,6 +12,7 @@ import { MobileExample } from './MobileExample';
 export const allComponents = {
   ...componentsScope,
   ...icons,
+  Modal,
   Icons: iconsScope,
   ExampleWithContextProps: ({ children, mobile, rtl }) => (
     <componentsScope.TPAComponentsProvider value={{ mobile, rtl }}>
