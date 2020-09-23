@@ -39,8 +39,12 @@ export class Modal extends React.Component<ModalProps> {
     if (this._contentRef) {
       console.log('_createFocusTrap, in if');
       this._focusTrapInstance = createFocusTrap(this._contentRef, {
-        onActivate: () => {console.log('onActivate!')},
-        onDeactivate: () => {console.log('onDeactivate!')},
+        onActivate: () => {
+          console.log('onActivate!');
+        },
+        onDeactivate: () => {
+          console.log('onDeactivate!');
+        },
         escapeDeactivates: false,
         clickOutsideDeactivates: closeOnClickOutside,
         returnFocusOnDeactivate: true,
@@ -50,15 +54,18 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   _destroyFocusTrap() {
-    console.log('_destroyFocusTrap, this._focusTrapInstance = ', this._focusTrapInstance);
+    console.log(
+      '_destroyFocusTrap, this._focusTrapInstance = ',
+      this._focusTrapInstance,
+    );
     if (this._focusTrapInstance) {
       this._focusTrapInstance.deactivate();
     }
     this._focusTrapInstance = undefined;
   }
 
-  _contentRefCallback = (ref) => {
-    console.log("_contentRefCallback, ref = ", ref);
+  _contentRefCallback = ref => {
+    console.log('_contentRefCallback, ref = ', ref);
     const { focusTrap, isOpen } = this.props;
     this._contentRef = ref;
 
@@ -101,7 +108,11 @@ export class Modal extends React.Component<ModalProps> {
           data-hook={MODAL_DATA_HOOKS.OVERLAY}
           onClick={closeOnClickOutside ? this._onClose : undefined}
         />
-        <section className={classes.modal} data-hook={MODAL_DATA_HOOKS.CONTENT} ref={this._contentRefCallback}>
+        <section
+          className={classes.modal}
+          data-hook={MODAL_DATA_HOOKS.CONTENT}
+          ref={this._contentRefCallback}
+        >
           {children}
         </section>
       </>
