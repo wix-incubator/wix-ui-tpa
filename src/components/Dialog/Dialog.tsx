@@ -103,16 +103,18 @@ export class Dialog extends React.Component<DialogProps> {
               focusTrap={!manualFocus}
               onRequestClose={onClose}
             >
-              <div className={classes.closeButtonWrapper}>
-                <IconButton
-                  className={classes.closeIconButton}
-                  data-hook={DATA_HOOKS.CLOSE_BTN}
-                  innerRef={closeButtonRef}
-                  onClick={onClose}
-                  icon={<CloseIcon />}
-                />
+              <div className={classes.contentWrapper}>
+                <div className={classes.closeButtonWrapper}>
+                  <IconButton
+                      className={classes.closeIconButton}
+                      data-hook={DATA_HOOKS.CLOSE_BTN}
+                      innerRef={closeButtonRef}
+                      onClick={onClose}
+                      icon={<CloseIcon />}
+                  />
+                </div>
+                <div className={classes.dialogContent}>{children}</div>
               </div>
-              <div className={classes.dialogContent}>{children}</div>
             </Modal>
           </div>
         )}

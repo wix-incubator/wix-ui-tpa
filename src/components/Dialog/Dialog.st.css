@@ -32,6 +32,21 @@
     /*mobile css goes here*/
 }
 
+.contentWrapper {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+
+    background: #fff;
+}
+
+.root:mobile .contentWrapper {
+    height: 100%;
+    transform: translate(-50%, -50%);
+}
+
 .closeButtonWrapper {
     position: absolute;
     top: 20px;
@@ -48,6 +63,10 @@
     -st-mixin: TPAIconButton(
             IconColor value(CurrentCloseButtonColor)
     );
+}
+
+.closeIconButton:focus {
+    outline: 1px solid blue;
 }
 
 .dialogContent {
