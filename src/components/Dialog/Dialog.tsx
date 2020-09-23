@@ -106,11 +106,11 @@ export class Dialog extends React.Component<DialogProps> {
               <div className={classes.contentWrapper}>
                 <div className={classes.closeButtonWrapper}>
                   <IconButton
-                      className={classes.closeIconButton}
-                      data-hook={DATA_HOOKS.CLOSE_BTN}
-                      innerRef={closeButtonRef}
-                      onClick={onClose}
-                      icon={<CloseIcon />}
+                    className={classes.closeIconButton}
+                    data-hook={DATA_HOOKS.CLOSE_BTN}
+                    innerRef={closeButtonRef}
+                    onClick={onClose}
+                    icon={<CloseIcon />}
                   />
                 </div>
                 <div className={classes.dialogContent}>{children}</div>
