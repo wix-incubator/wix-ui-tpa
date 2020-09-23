@@ -102,7 +102,6 @@ export class Modal extends React.Component<ModalProps> {
 
   render() {
     const { className, isOpen } = this.props;
-    console.log('adler', 'Modal.tsx:109', { isOpen });
 
     return (
       <div

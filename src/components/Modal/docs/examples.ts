@@ -1,7 +1,7 @@
 export const importExample = `import { Modal } from 'wix-ui-tpa/Modal';`;
 
 const buildExample = (content: string) => `
-class MobileExample extends React.Component {
+class ModalExample extends React.Component {
   state = {
     isModalOpen: false,
   };
@@ -28,3 +28,12 @@ export const base = buildExample(`<>
     </div>
   </Modal>
 </>`);
+
+export const mobile = buildExample(`<MobileExample>
+  <Button onClick={this.openModal}>Open Modal</Button>
+  <Modal isOpen={isModalOpen} onRequestClose={this.closeModal}>
+    <div style={{padding: 20, width: '100%', display: 'flex', justifyContent: 'center'}}>
+      <Button onClick={this.closeModal}>Close Modal</Button>
+    </div>
+  </Modal>
+  </MobileExample>`);
