@@ -13,7 +13,7 @@ describe('Dialog', () => {
   const createDriver = createUniDriverFactory(dialogDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Dialog buttonText="Click Me" />);
+    const driver = createDriver(<Dialog />);
     expect(await driver.exists()).toBe(true);
   });
 
