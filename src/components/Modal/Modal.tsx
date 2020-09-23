@@ -17,7 +17,6 @@ export class Modal extends React.Component<ModalProps> {
 
   componentDidUpdate(prevProps: ModalProps) {
     const { isOpen, focusTrap } = this.props;
-    console.log('componentDidUpdate');
 
     if (isOpen !== prevProps.isOpen) {
       if (isOpen) {
@@ -33,39 +32,25 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   _createFocusTrap() {
-    console.log('_createFocusTrap, this._contentRef = ', this._contentRef);
     const { closeOnClickOutside } = this.props;
 
     if (this._contentRef) {
-      console.log('_createFocusTrap, in if');
       this._focusTrapInstance = createFocusTrap(this._contentRef, {
-        onActivate: () => {
-          console.log('onActivate!');
-        },
-        onDeactivate: () => {
-          console.log('onDeactivate!');
-        },
         escapeDeactivates: false,
         clickOutsideDeactivates: closeOnClickOutside,
         returnFocusOnDeactivate: true,
       });
-      console.log('_createFocusTrap, end of if');
     }
   }
 
   _destroyFocusTrap() {
-    console.log(
-      '_destroyFocusTrap, this._focusTrapInstance = ',
-      this._focusTrapInstance,
-    );
     if (this._focusTrapInstance) {
       this._focusTrapInstance.deactivate();
     }
-    this._focusTrapInstance = undefined;
+    this._focusTrapInstance = null;
   }
 
   _contentRefCallback = ref => {
-    console.log('_contentRefCallback, ref = ', ref);
     const { focusTrap, isOpen } = this.props;
     this._contentRef = ref;
 
@@ -76,9 +61,7 @@ export class Modal extends React.Component<ModalProps> {
   };
 
   _onModalOpen() {
-    console.log('_onModalOpen');
     if (this._focusTrapInstance) {
-      console.log('in if, this._focusTrapInstance = ', this._focusTrapInstance);
       try {
         this._focusTrapInstance.activate();
       } catch (err) {}
@@ -86,15 +69,14 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   _onModalClose() {
-    console.log('_onModalClose');
     if (this._focusTrapInstance) {
       this._focusTrapInstance.deactivate();
+      this._focusTrapInstance = null;
     }
   }
 
   _onClose = () => {
     const { onRequestClose } = this.props;
-    console.log('_onClose');
     onRequestClose && onRequestClose();
   };
 

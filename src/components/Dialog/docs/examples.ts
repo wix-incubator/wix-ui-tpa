@@ -1,7 +1,7 @@
 export const importExample = `import { Dialog } from 'wix-ui-tpa/Dialog';`;
 
 const buildExample = (content: string) => `
-class MobileExample extends React.Component {
+class ModalExample extends React.Component {
   state = {
     isDialogOpen: false,
   };
@@ -48,7 +48,7 @@ export const example = buildExample(`
 `);
 
 export const mobileExample = buildExample(`
-    <ExampleWithContextProps mobile={true}>
+    <MobileExample>
       <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
       <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} >
         <div className="content" style={{ textAlign: 'center' }}>
@@ -67,5 +67,5 @@ export const mobileExample = buildExample(`
             </Button>
         </div>
       </Dialog>
-    </ExampleWithContextProps>
+     </MobileExample>
 `);
