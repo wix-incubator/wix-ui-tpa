@@ -11,7 +11,7 @@ export interface ModalDriver extends BaseUniDriver {
 }
 
 export const modalDriverFactory = (base: UniDriver): ModalDriver => {
-  const getModalStage = () => base.$(`[data-hook="${MODAL_DATA_HOOKS.STAGE}"]`);
+  const getModalStage = () => base.$(`[data-hook="${MODAL_DATA_HOOKS.CONTENT}"]`);
 
   return {
     ...baseUniDriverFactory(base),

@@ -78,7 +78,7 @@ export class Modal extends React.Component<ModalProps> {
   };
 
   _renderModal() {
-    const { contentClassName, closeOnClickOutside, children } = this.props;
+    const { closeOnClickOutside, children } = this.props;
 
     return (
       <>
@@ -87,14 +87,8 @@ export class Modal extends React.Component<ModalProps> {
           data-hook={MODAL_DATA_HOOKS.OVERLAY}
           onClick={closeOnClickOutside ? this._onClose : undefined}
         />
-        <section className={classes.modal} data-hook={MODAL_DATA_HOOKS.STAGE}>
-          <div
-            className={`${classes.content} ${contentClassName || ''}`}
-            data-hook={MODAL_DATA_HOOKS.CONTENT}
-            ref={this._contentRef}
-          >
-            {children}
-          </div>
+        <section className={classes.modal} data-hook={MODAL_DATA_HOOKS.CONTENT}  ref={this._contentRef}>
+          {children}
         </section>
       </>
     );
