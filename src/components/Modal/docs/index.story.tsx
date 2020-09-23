@@ -115,7 +115,10 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.base }].map(code),
+          ...[
+            { title: 'Example', source: examples.base },
+            { title: 'Mobile', source: examples.mobile },
+          ].map(code),
         ],
       }),
 
