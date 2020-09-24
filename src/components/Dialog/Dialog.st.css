@@ -65,10 +65,6 @@
     );
 }
 
-.closeIconButton:focus {
-    outline: 1px solid blue;
-}
-
 .dialogContent {
     padding: 80px 70px;
 }

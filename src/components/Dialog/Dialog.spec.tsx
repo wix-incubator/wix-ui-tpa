@@ -26,37 +26,37 @@ describe('Dialog', () => {
 
   describe('With Focus Trap', () => {
     it('expect dialog to be open', async () => {
-      const driver = createDriver(<Dialog isOpen/>);
+      const driver = createDriver(<Dialog isOpen />);
       expect(await driver.isDialogOpen()).toBe(true);
     });
   });
 
   describe('Manual Focus', () => {
     it('expect dialog to be open', async () => {
-      const driver = createDriver(<Dialog manualFocus isOpen/>);
+      const driver = createDriver(<Dialog manualFocus isOpen />);
       expect(await driver.isDialogOpen()).toBe(true);
     });
 
     it('expect dialog to be closed', async () => {
-      const driver = createDriver(<Dialog manualFocus isOpen={false}/>);
+      const driver = createDriver(<Dialog manualFocus isOpen={false} />);
       expect(await driver.isDialogOpen()).toBe(false);
     });
 
     it('should render children', async () => {
       const driver = createDriver(
-          <Dialog manualFocus isOpen>
-            <div data-hook="dialog-children">Dialog children</div>
-          </Dialog>,
+        <Dialog manualFocus isOpen>
+          <div data-hook="dialog-children">Dialog children</div>
+        </Dialog>,
       );
       expect(await driver.childExists('[data-hook="dialog-children"]')).toBe(
-          true,
+        true,
       );
     });
 
     it('expect onClick to be called after clicking on the close button', async () => {
       const onCloseButtonClick = jest.fn();
       const driver = createDriver(
-          <Dialog manualFocus isOpen onClose={onCloseButtonClick}/>,
+        <Dialog manualFocus isOpen onClose={onCloseButtonClick} />,
       );
 
       await driver.clickOnCloseButton();
