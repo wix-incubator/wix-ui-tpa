@@ -24,6 +24,33 @@ describe('Dialog', () => {
     expect(await driver.isMobile()).toBe(true);
   });
 
+  it('expect dialog to be open', async () => {
+    const driver = createDriver(<Dialog manualFocus isOpen />);
+    expect(await driver.isDialogOpen()).toBe(true);
+  });
+
+  it('expect dialog to be closed', async () => {
+    const driver = createDriver(<Dialog manualFocus isOpen={false} />);
+    expect(await driver.isDialogOpen()).toBe(false);
+  });
+
+  it('should render children', async () => {
+    const driver = createDriver(
+        <Dialog manualFocus isOpen >
+          <div data-hook="dialog-children">Dialog children</div>
+        </Dialog>
+    );
+    expect(await driver.childExists('[data-hook="dialog-children"]')).toBe(true);
+  });
+
+  xit('expect onClick to be called after clicking on the close button', async () => {
+    const onCloseButtonClickSpy = jest.fn();
+    const driver = createDriver(<Dialog manualFocus isOpen onClose={onCloseButtonClickSpy}/>);
+
+    await driver.clickOnCloseButton();
+    expect(onCloseButtonClickSpy).toHaveBeenCalledTimes(1);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

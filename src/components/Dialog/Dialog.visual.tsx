@@ -5,6 +5,6 @@ import { Dialog } from './';
 visualize('Dialog', () => {
   story('simple', () => {
     snap('default props', <Dialog />);
-    snap('custom buttonText', <Dialog buttonText={'Some custom text'} />);
+    // snap('custom buttonText', <Dialog buttonText={'Some custom text'} />);
   });
 });

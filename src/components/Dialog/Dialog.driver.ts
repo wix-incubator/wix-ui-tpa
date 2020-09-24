@@ -38,7 +38,7 @@ export const dialogDriverFactory = (base: UniDriver): DialogDriver => {
      * @param {string} predicate - a predicate for the child node
      * @returns {Promise<boolean>}
      */
-    childExists: async (predicate: string) => base.$(predicate).exists(),
+    childExists: async (predicate: string) => await base.$(predicate).exists(),
 
     /**
      * Clicks on close button
