@@ -3,6 +3,7 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
+import { DATA_HOOKS } from './constants';
 
 import { modalDriverFactory } from '../Modal/Modal.driver';
 import { iconButtonDriverFactory } from '../IconButton/IconButton.driver';
@@ -45,8 +46,7 @@ export const dialogDriverFactory = (base: UniDriver): DialogDriver => {
      * @return {Promise<void>}
      */
     clickOnCloseButton: async () => {
-      const iconButtonDriver = iconButtonDriverFactory(base);
-      await iconButtonDriver.click();
+      await base.$(`[data-hook=${DATA_HOOKS.CLOSE_BTN}]`).click();
     },
   };
 };

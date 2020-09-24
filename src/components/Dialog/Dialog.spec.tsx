@@ -45,14 +45,14 @@ describe('Dialog', () => {
     );
   });
 
-  xit('expect onClick to be called after clicking on the close button', async () => {
-    const onCloseButtonClickSpy = jest.fn();
+  it('expect onClick to be called after clicking on the close button', async () => {
+    const onCloseButtonClick = jest.fn();
     const driver = createDriver(
-      <Dialog manualFocus isOpen onClose={onCloseButtonClickSpy} />,
+      <Dialog manualFocus isOpen onClose={onCloseButtonClick} />,
     );
 
     await driver.clickOnCloseButton();
-    expect(onCloseButtonClickSpy).toHaveBeenCalledTimes(1);
+    expect(onCloseButtonClick).toHaveBeenCalledTimes(1);
   });
 
   describe('testkit', () => {
