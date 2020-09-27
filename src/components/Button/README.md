@@ -33,7 +33,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     
     .root {
         -st-extends: TPAButton;
-        -st-mixin: TPAButton(
+        -st-partial-mixin: TPAButton(
             MainTextColor '"--buttonTextColor"',
             MainBackgroundColor '"--buttonBackgroundColor"',
             MainTextFont '"--buttonTextFont"',

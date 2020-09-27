@@ -24,7 +24,7 @@
 
 .root {
     -st-extends: TPAButton;
-    -st-mixin: TPAButton(
+    -st-partial-mixin: TPAButton(
         MainBackgroundColor 'value(backgroundColor)',
         MainBorderWidth '1px',
         MainBorderColor 'value(borderColor)',

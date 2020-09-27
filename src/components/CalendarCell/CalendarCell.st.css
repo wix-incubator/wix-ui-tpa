@@ -88,7 +88,7 @@
 
 .title {
     -st-extends: TPAText;
-    -st-mixin: TPAText(MainTextColor value(CurrentFontColor),
+    -st-partial-mixin: TPAText(MainTextColor value(CurrentFontColor),
     MainTextFont value(CurrentFontStyle));
     font-size: value(CurrentFontSize);
     line-height: 1em;
@@ -99,7 +99,7 @@
 }
 
 .root:timeType(pastDate) .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentPastFontColor), MainTextFont value(CurrentFontStyle));
+    -st-partial-mixin: TPAText(MainTextColor value(CurrentPastFontColor), MainTextFont value(CurrentFontStyle));
 }
 
 .root:timeType(futureDate){
@@ -107,7 +107,7 @@
 }
 
 .root:timeType(futureDate) .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentFutureFontColor), MainTextFont value(CurrentFontStyle));
+    -st-partial-mixin: TPAText(MainTextColor value(CurrentFutureFontColor), MainTextFont value(CurrentFontStyle));
 }
 
 .root:current {
@@ -115,7 +115,7 @@
 }
 
 .root:current .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
+    -st-partial-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
 }
 
 .root:timeType(today) {
@@ -123,7 +123,7 @@
 }
 
 .root:timeType(today) .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
+    -st-partial-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
 }
 
 .root:stretchable {

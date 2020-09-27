@@ -101,7 +101,7 @@
 
 .navigation {
     -st-extends: Navigation;
-    -st-mixin: Navigation(
+    -st-partial-mixin: Navigation(
         indicatorColor value(calculatedBorderColor),
         selectedIndicatorColor value(calculatedSelectedBorderColor)
     );

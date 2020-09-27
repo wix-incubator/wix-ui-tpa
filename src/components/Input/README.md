@@ -27,7 +27,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
     
     .root {
-        -st-mixin: TPAInput(
+        -st-partial-mixin: TPAInput(
           MainBackgroundColor '"opacity(color(--inputBackgroundColor), 0.2)"',
           MainTextColor '"--inputTextColor"',
           MainBorderColor '"--inputBorderColor"',

@@ -104,14 +104,14 @@
 
 .time {
     padding-right: 2px;
-    -st-mixin: TPAText(
+    -st-partial-mixin: TPAText(
         MainTextFont value(currentTimeFont),
         MainTextColor value(currentTimeColor)
     );
 }
 
 .title {
-  -st-mixin: TPAText(
+  -st-partial-mixin: TPAText(
         MainTextFont value(currentTitleFont),
         MainTextColor value(currentTitleColor)
     );

@@ -80,21 +80,21 @@
 
 .content {
     -st-extends: Text;
-    -st-mixin: Text(
+    -st-partial-mixin: Text(
         MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontDesktop)))
     );
     width: 100%;
 }
 
 .root:mobile .content {
-    -st-mixin: Text(
+    -st-partial-mixin: Text(
         MainTextFont fallback(font(value(ItemFont)), font(value(ItemFontMobile)))
     );
 }
 
 .subtitle {
     -st-extends: Text;
-    -st-mixin: Text(
+    -st-partial-mixin: Text(
         MainTextColor applyOpacity(color(color-5), 0.6),
         MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontDesktop)))
     );
@@ -103,7 +103,7 @@
 }
 
 .root:mobile .subtitle {
-    -st-mixin: Text(
+    -st-partial-mixin: Text(
         MainTextFont fallback(font(value(ItemSubtitleFont)), font(value(ItemSubtitleFontMobile)))
     );
 }

@@ -4,7 +4,7 @@
 }
 
 .root {
-  -st-mixin: DotNavigation(
+  -st-partial-mixin: DotNavigation(
     SelectedDotColor '"--selectedDotColor"',
     SelectedBorderColor '"--selectedBorderColor"'
   );

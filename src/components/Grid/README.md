@@ -54,7 +54,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
 
     .root {
-        -st-mixin: TPAGrid(
+        -st-partial-mixin: TPAGrid(
             MainDividerColor '"--dividerColor"'
       );
     }

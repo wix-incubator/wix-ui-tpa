@@ -6,7 +6,7 @@
 .root {}
 
 .ratings {
-    -st-mixin: TPARatings(
+    -st-partial-mixin: TPARatings(
             IconColor '"--iconColor"',
             IconEmptyColor '"--iconEmptyColor"',
             TextColor '"--textColor"'

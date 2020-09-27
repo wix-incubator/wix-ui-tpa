@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: TPACalendarPopover(
+    -st-partial-mixin: TPACalendarPopover(
         BorderColor '"--borderColor"',
         Radius '"unit(fallback(--radius, 2), px)"',
         IconColor '"--iconColor"',

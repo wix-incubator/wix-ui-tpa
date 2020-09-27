@@ -5,7 +5,7 @@
 
 .root {
   -st-extends: TPAButton;
-  -st-mixin: TPAButton(
+  -st-partial-mixin: TPAButton(
           MainTextColor '"--buttonTextColor"',
           MainBackgroundColor '"--buttonBackgroundColor"',
           MainTextFont '"--buttonTextFont"',

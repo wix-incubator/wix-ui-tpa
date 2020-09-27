@@ -143,11 +143,11 @@
     position: absolute;
     top: value(CurrentIconTopPadding);
     right: value(CurrentIconRightPadding);
-    -st-mixin: TPAIconButton(IconColor value(CurrentIconColor));
+    -st-partial-mixin: TPAIconButton(IconColor value(CurrentIconColor));
 }
 
 .title {
-    -st-mixin: TPAText(MainTextFont value(CurrentTitleFont),
+    -st-partial-mixin: TPAText(MainTextFont value(CurrentTitleFont),
             MainTextColor value(CurrentTitleColor));
 }
 

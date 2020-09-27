@@ -4,7 +4,7 @@
 }
 
 .root {
-  -st-mixin: TPAIconToggle(
+  -st-partial-mixin: TPAIconToggle(
     IconColor '"color(--iconColor)"',
     LabelColor '"color(--labelColor)"',
     LabelFont '"font(--labelFont)"'

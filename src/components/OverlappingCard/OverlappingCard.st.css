@@ -138,7 +138,7 @@
     box-sizing: border-box;
     grid-area: info;
     z-index: 20;
-    -st-mixin: withBorder(
+    -st-partial-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     ), withDynamicPadding(

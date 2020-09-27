@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: AvatarGroup(
+    -st-partial-mixin: AvatarGroup(
         AvatarBorderColor '"--AvatarBorderColor"',
         TextButtonColor '"--AvatarTextButtonColor"',
         TextButtonFont '"--AvatarTextButtonFont'

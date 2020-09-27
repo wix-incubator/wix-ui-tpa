@@ -32,7 +32,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
         }
 
         .root {
-            -st-mixin: TPATags(
+            -st-partial-mixin: TPATags(
                     MainTextColor '"--textColor"',
                     MainTextFont '"--textFont"'
             );

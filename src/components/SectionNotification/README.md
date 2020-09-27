@@ -26,7 +26,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
     }
 
     .root {
-      -st-mixin: TPASectionNotification(
+      -st-partial-mixin: TPASectionNotification(
         BackgroundColor '"color(--backgroundColor)"'
         TextColor '"color(--textColor)"'
       );

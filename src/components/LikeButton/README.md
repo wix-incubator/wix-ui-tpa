@@ -22,7 +22,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
     
     .root {
         -st-extends: TPALikeButton;
-        -st-mixin: TPALikeButton(
+        -st-partial-mixin: TPALikeButton(
             IconColor '"--iconColor"',
             LabelColor '"--labelColor"',
             LabelFont '"--labelFont"'

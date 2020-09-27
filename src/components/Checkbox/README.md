@@ -19,7 +19,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
 
     .root {
-        -st-mixin: TPACheckbox(
+        -st-partial-mixin: TPACheckbox(
             TextColor '"--textColor"',
             BorderColor '"--borderColor"',
             IconColor '"--iconColor"'

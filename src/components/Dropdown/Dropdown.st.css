@@ -55,13 +55,13 @@
 }
 
 .root:mobile .label {
-    -st-mixin: TPAText(
+    -st-partial-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '12px'}"
     );
 }
 
 .label {
-    -st-mixin: TPAText(
+    -st-partial-mixin: TPAText(
         MainTextFont "{theme: 'Body-M', size: '14px'}"
     );
     display: block;

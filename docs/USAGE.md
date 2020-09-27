@@ -59,7 +59,7 @@ The component's style can be customized like this:
 
 .root {
     -st-extends: Button;
-    -st-mixin: Button(
+    -st-partial-mixin: Button(
         MainTextColor: white,
         MainBackgroundColor: pink,
         MainBorderColor: black,

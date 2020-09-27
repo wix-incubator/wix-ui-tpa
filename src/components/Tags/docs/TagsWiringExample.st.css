@@ -7,7 +7,7 @@
 }
 
 .solid {
-    -st-mixin: Tags(
+    -st-partial-mixin: Tags(
             MainBorderRadius '"unit(--borderRadius, px)"',
             MainVerticalSpacing '"unit(fallback(zeroAsTrue(--verticalSpacing), 4), px)"',
             MainHorizontalSpacing '"unit(fallback(zeroAsTrue(--horizontalSpacing), 4), px)"',
@@ -22,7 +22,7 @@
 }
 
 .light {
-    -st-mixin: Tags(
+    -st-partial-mixin: Tags(
             MainBorderWidth '"unit(fallback(--borderWidth, 1), px)"',
             MainBorderRadius '"unit(--borderRadius, px)"',
             MainVerticalSpacing '"unit(fallback(zeroAsTrue(--verticalSpacing), 4), px)"',

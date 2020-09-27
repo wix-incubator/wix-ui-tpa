@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: TPAColorPicker(
+    -st-partial-mixin: TPAColorPicker(
             ItemSize '"--itemSize"',
             BorderRadius '"unit(fallback(zeroAsTrue(--anotherBorderRadius), 12), %)"'
     );

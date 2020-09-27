@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: TPACalendarCell(
+    -st-partial-mixin: TPACalendarCell(
         BackgroundColor '"--backgroundColor"',
         FutureBackgroundColor '"--futureBackgroundColor"',
         PastBackgroundColor '"--pastBackgroundColor"',

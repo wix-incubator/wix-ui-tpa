@@ -30,6 +30,6 @@
 
 .item {
     -st-extends: ColorPickerItem;
-    -st-mixin: ColorPickerItem(Size value(ItemSize), Radius value(BorderRadius));
+    -st-partial-mixin: ColorPickerItem(Size value(ItemSize), Radius value(BorderRadius));
 }
 

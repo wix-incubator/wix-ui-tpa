@@ -29,7 +29,7 @@
 }
 
 .root:not(:selectable) .title {
-    -st-mixin: TPAText(
+    -st-partial-mixin: TPAText(
         MainTextColor 'value(colorPlaceholder)'
     );
 }
@@ -40,7 +40,7 @@
 
 .subtitle {
     -st-extends: TPAText;
-    -st-mixin: TPAText(
+    -st-partial-mixin: TPAText(
         MainTextColor "value(colorPlaceholder)",
         MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
     );

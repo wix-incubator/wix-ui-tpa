@@ -20,7 +20,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
 
     .root {
         -st-extends: TPACounter;
-        -st-mixin: TPACounter(
+        -st-partial-mixin: TPACounter(
             MainColor '"--mainColor"',
             DisabledColor '"--disabledColor"',
             MainWidth '"--mainWidth"'

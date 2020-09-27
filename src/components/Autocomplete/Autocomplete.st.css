@@ -27,7 +27,7 @@
 .root {
     -st-extends: Autocomplete;
     -st-states: error;
-    -st-mixin: inputStyling; /*Apply same styling as the Input*/
+    -st-partial-mixin: inputStyling; /*Apply same styling as the Input*/
     width: 100%;
 }
 
@@ -44,7 +44,7 @@
 }
 
 .root::inputComponent {
-    -st-mixin: Input;
+    -st-partial-mixin: Input;
     display: flex;
     align-items: center;
     border: 0; /*Border is set on the root*/

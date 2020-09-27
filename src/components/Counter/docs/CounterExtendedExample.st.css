@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: TPACounter(
+    -st-partial-mixin: TPACounter(
             MainColor '"--mainColor"',
             DisabledColor '"--disabledColor"',
             MainWidth '"unit(--mainWidth, px)"'

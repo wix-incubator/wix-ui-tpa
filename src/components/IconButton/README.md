@@ -18,7 +18,7 @@ In order to override the theme, use Wix Stylable `extends` capabilities and wrap
     }
     
     .root {
-      -st-mixin: TPAIconButton(
+      -st-partial-mixin: TPAIconButton(
         IconColor '"color(--iconColor)"'
       );
     }

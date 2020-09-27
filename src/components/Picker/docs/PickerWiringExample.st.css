@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: Picker(
+    -st-partial-mixin: Picker(
         MainColor '"--mainColor"',
         FontStyle '"--fontStyle"'
     )

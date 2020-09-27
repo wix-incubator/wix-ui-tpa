@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: TPARadioButton(
+    -st-partial-mixin: TPARadioButton(
             TextColor '"--textColor"',
             BorderColor '"--borderColor"',
             IconColor '"--iconColor"'

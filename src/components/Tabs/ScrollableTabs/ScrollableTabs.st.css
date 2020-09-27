@@ -39,7 +39,7 @@
 
 .tab {
     -st-extends: Tab;
-    -st-mixin: Tab(
+    -st-partial-mixin: Tab(
         focusIndicatorColor applyOpacity(color(value(selectedIndicatorColor)), 0.2),
         activeIndicatorColor value(selectedIndicatorColor)
     );

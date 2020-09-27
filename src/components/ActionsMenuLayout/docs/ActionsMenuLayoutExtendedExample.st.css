@@ -9,14 +9,14 @@
 }
 
 .root {
-    -st-mixin: TPAActionsMenuLayout(
+    -st-partial-mixin: TPAActionsMenuLayout(
         MenuBackgroundColor '"--backgroundColor"',
         MenuBorderColor '"--borderColor"'
     );
 }
 
 .item {
-    -st-mixin: TPAActionsMenuLayoutItem(
+    -st-partial-mixin: TPAActionsMenuLayoutItem(
         ItemFont '"--itemFont"',
         ItemSubtitleFont  '"--itemSubtitleFont"'
     );

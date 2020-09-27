@@ -10,7 +10,7 @@
 }
 
 .event {
-    -st-mixin: TPAEvent(
+    -st-partial-mixin: TPAEvent(
             TimeFont '"--timeFont"',
             TimeColor '"--timeColor"',
             TitleFont '"--titleFont"',

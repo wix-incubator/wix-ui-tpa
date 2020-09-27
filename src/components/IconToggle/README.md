@@ -23,7 +23,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     
     .root {
         -st-extends: TPAIconToggle;
-        -st-mixin: TPAIconToggle(
+        -st-partial-mixin: TPAIconToggle(
             IconColor '"--iconColor"',
             LabelColor '"--labelColor"',
             LabelFont '"--labelFont"'

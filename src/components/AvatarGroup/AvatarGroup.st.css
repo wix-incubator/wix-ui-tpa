@@ -167,7 +167,7 @@
 .root:size(large) .textButton,
 .root:size(medium) .textButton,
 .root:size(small) .textButton {
-    -st-mixin: TextButton(
+    -st-partial-mixin: TextButton(
        MainTextColor value(TextButtonColor),
        MainTextFont value(TextButtonFont)
     );
@@ -175,7 +175,7 @@
 
 .root:size(xSmall) .textButton,
 .root:size(xxSmall) .textButton {
-    -st-mixin: TextButton(
+    -st-partial-mixin: TextButton(
         MainTextColor value(TextButtonColor),
         MainTextFont fallback(value(TextButtonFont), font(value(SmallerTextButtonFont)))
     );

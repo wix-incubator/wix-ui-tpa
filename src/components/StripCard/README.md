@@ -28,7 +28,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
 
     .root {
-        -st-mixin: TPAStripCard(
+        -st-partial-mixin: TPAStripCard(
             MainBGColor '"--backgroundColor"',
             MainMediaColor '"--imageColor"',
             MainBorderColor '"--borderColor"',

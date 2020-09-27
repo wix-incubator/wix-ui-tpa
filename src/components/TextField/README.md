@@ -27,7 +27,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
     
     .root {
-        -st-mixin: TPATextField(
+        -st-partial-mixin: TPATextField(
           MainBackgroundColor '"--textFieldBackgroundColor"',
           MainTextColor '"--textFieldTextColor"',
           MainBorderColor '"--textFieldBorderColor"',

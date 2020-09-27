@@ -27,7 +27,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     .root {
         --runtimeSettings1: <some default value for a settings key>;
         -st-extends: ToggleSwitch;
-        -st-mixin: ToggleSwitch(
+        -st-partial-mixin: ToggleSwitch(
                 BaseColor '"color(--runtimeSettings1)"',
                 //more overriders
         );

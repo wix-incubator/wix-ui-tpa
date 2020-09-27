@@ -4,7 +4,7 @@
 }
 
 .root {
-    -st-mixin: TPAIconButton(
+    -st-partial-mixin: TPAIconButton(
             IconColor #FFFFFF
     );
 }

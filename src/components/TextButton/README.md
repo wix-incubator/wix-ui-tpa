@@ -25,7 +25,7 @@ The TPA implementation provides a few default overridable styles. By default sit
     
     .root {t
         -st-extends: TPAButton;
-        -st-mixin: TPAButton(
+        -st-partial-mixin: TPAButton(
                 MainTextColor '"--textButtonTextColor"',
                 MainTextFont '"--textButtonTextFont"'
         );

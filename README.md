@@ -70,7 +70,7 @@ class MyInput extends React.Component {
 .root {
   --yourSettingsKey: "color(color-5)";
   -st-extends: Input;
-  -st-mixin: Input(
+  -st-partial-mixin: Input(
     MainTextColor '"color(--yourSettingsKey)"'
   );
 }

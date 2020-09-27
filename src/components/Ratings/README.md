@@ -20,7 +20,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
 
     .root {
-        -st-mixin: TPARatings(
+        -st-partial-mixin: TPARatings(
             IconColor '"--iconColor"',
             IconEmptyColor '"--iconEmptyColor"'
         );

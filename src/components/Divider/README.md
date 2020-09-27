@@ -21,7 +21,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
     
     .root {
-        -st-mixin: TPADivider(
+        -st-partial-mixin: TPADivider(
             MainDividerColor '"--dividerColor"',
             MainDividerWidth '"--dividerWidth"'
       );

@@ -15,7 +15,7 @@
 
 .root {
     -st-extends: Tooltip;
-    -st-mixin: TPATooltip;
+    -st-partial-mixin: TPATooltip;
     color: value(errorColor);
     box-sizing: border-box;
     position: absolute;

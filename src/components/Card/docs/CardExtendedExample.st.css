@@ -4,7 +4,7 @@
 }
 
 .card {
-    -st-mixin: TPACard(
+    -st-partial-mixin: TPACard(
             MainCardColor '"--cardBGColor"',
             MainInfoColor '"--infoBGColor"',
             MainMediaColor '"--imageBGColor"',

@@ -29,7 +29,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
     }
     
     .textArea {
-        -st-mixin: TPATextArea(
+        -st-partial-mixin: TPATextArea(
             BackgroundColor '"--backgroundColor"',
             BorderColor '"--borderColor"',
             TextColor '"--textColor"',

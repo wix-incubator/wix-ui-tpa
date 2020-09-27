@@ -4,7 +4,7 @@
 }
 
 .root {
-  -st-mixin: ToggleSwitch(
+  -st-partial-mixin: ToggleSwitch(
       BaseColor '"--baseColor"',
       SelectedColor '"--selectedColor"',
       KnobColor '"--knobColor"',

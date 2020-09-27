@@ -23,7 +23,7 @@ In order to override the theme, use Wix Stylable extends capabilities and wrap w
         }
 
         .root {
-            -st-mixin: TPATabs(
+            -st-partial-mixin: TPATabs(
                     MainTextColor '"--textColor"',
                     MainTextFont '"--textFont"',
                     SelectedTabIndicatorColor '"--selectedTabIndicatorColor"',

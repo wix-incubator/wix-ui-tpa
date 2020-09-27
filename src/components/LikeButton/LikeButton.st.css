@@ -32,7 +32,7 @@
 .root {
     -st-states: checked;
     -st-extends: IconToggle;
-    -st-mixin: IconToggle(
+    -st-partial-mixin: IconToggle(
         IconColor value(iconColor),
         LabelColor value(labelColor),
         LabelFont value(labelFont)
@@ -40,7 +40,7 @@
 }
 
 .root:checked {
-    -st-mixin: IconToggle(
+    -st-partial-mixin: IconToggle(
         IconColor value(checkedIconColor),
         LabelColor value(labelColor),
         LabelFont value(labelFont)

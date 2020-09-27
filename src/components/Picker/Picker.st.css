@@ -39,14 +39,14 @@
 
 .value {
     -st-extends: Text;
-    -st-mixin: Text(MainTextColor value(CurrentMainColor),
+    -st-partial-mixin: Text(MainTextColor value(CurrentMainColor),
             MainTextFont value(CurrentFontStyle));
     min-width: 207px;
 }
 
 .arrow {
     -st-extends: IconButton;
-    -st-mixin: IconButton(IconColor value(CurrentMainColor));
+    -st-partial-mixin: IconButton(IconColor value(CurrentMainColor));
     font-size: inherit;
 }
 
