@@ -36,8 +36,21 @@ class ModalTestStory extends React.Component {
         </Button>
         {this.state.isShowModal ? (
           <Modal isOpen={isModalOpen} onRequestClose={this.closeModal}>
-            <div className="modal-content-wrapper" style={{width: '100%', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -30%)', background: '#fff' }}>
-              <button data-hook={'tpa-modal-close-btn'} onClick={this.closeModal}>
+            <div
+              className="modal-content-wrapper"
+              style={{
+                width: '100%',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -30%)',
+                background: '#fff',
+              }}
+            >
+              <button
+                data-hook={'tpa-modal-close-btn'}
+                onClick={this.closeModal}
+              >
                 X
               </button>
               <input
