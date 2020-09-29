@@ -1,8 +1,9 @@
 import * as React from 'react';
-import createFocusTrap from 'focus-trap';
 import { st, classes } from './Modal.st.css';
 import { ModalProps, ModalDefaultProps } from './types';
 import { MODAL_DATA_HOOKS } from './dataHooks';
+
+const createFocusTrap = require('focus-trap');
 
 export class Modal extends React.Component<ModalProps> {
   static displayName = 'Modal';

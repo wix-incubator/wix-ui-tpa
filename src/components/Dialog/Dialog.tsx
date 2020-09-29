@@ -91,6 +91,7 @@ export class Dialog extends React.Component<DialogProps> {
         {({ mobile }) => (
           <div
             className={st(classes.root, { mobile }, className)}
+            data-hook={this.props['data-hook']}
             data-mobile={mobile}
             role="dialog"
             aria-modal="true"
