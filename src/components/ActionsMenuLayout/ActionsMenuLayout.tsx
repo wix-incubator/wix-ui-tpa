@@ -97,8 +97,8 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
   };
 
   // to get proper index on mouse click
-  _onClick = (e) => {
-    const indexValue = Object.values(this.liRefs).findIndex((i) => {
+  _onClick = e => {
+    const indexValue = Object.values(this.liRefs).findIndex(i => {
       return i.liRef?.current === e.target;
     });
 
@@ -129,7 +129,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
                 ? React.cloneElement(child, {
                     className: classes.item,
                     alignment,
-                    ref: (_ref) => {
+                    ref: _ref => {
                       this._addRef(_ref, index);
                     },
                   })

@@ -70,8 +70,18 @@ export default {
               params: {
                 colors: [
                   {
+                    label: 'Past Background Color',
+                    wixParam: 'pastBackgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
                     label: 'Background Color',
                     wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Future Background Color',
+                    wixParam: 'futureBackgroundColor',
                     defaultColor: 'color-1',
                   },
                   {
@@ -80,9 +90,19 @@ export default {
                     defaultColor: 'color-2',
                   },
                   {
+                    label: 'Past Font Color',
+                    wixParam: 'pastFontColor',
+                    defaultColor: 'color-4',
+                  },
+                  {
                     label: 'Font Color',
                     wixParam: 'fontColor',
                     defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Future Font Color',
+                    wixParam: 'futureFontColor',
+                    defaultColor: 'color-4',
                   },
                   {
                     label: 'Current Day Color',

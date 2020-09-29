@@ -11,7 +11,9 @@
 /*Defaults*/
 :vars {
     DefaultBorderWidth: 1px;
+    DefaultPastFontColor: color-4;
     DefaultFontColor: color-5;
+    DefaultFutureFontColor: color-4;
     DefaultBackgroundColor: color-1;
     DefaultBorderColor: color-2;
     DefaultTodayColor: color-8;
@@ -22,8 +24,12 @@
 /*Overrides*/
 :vars {
     BorderWidth: --overridable;
+    PastFontColor: --overridable;
     FontColor: --overridable;
+    FutureFontColor: --overidable;
     BackgroundColor: --overridable;
+    FutureBackgroundColor: --overridable;
+    PastBackgroundColor: --overridable;
     BorderColor: --overridable;
     TodayColor: --overridable;
     FontStyle: --overridable;
@@ -32,8 +38,12 @@
 
 :vars {
     CurrentBorderWidth: fallback(value(BorderWidth), value(DefaultBorderWidth));
+    CurrentPastFontColor: color(fallback(value(PastFontColor), value(DefaultPastFontColor)));
     CurrentFontColor: color(fallback(value(FontColor), value(DefaultFontColor)));
+    CurrentFutureFontColor: color(fallback(value(FutureFontColor), value(DefaultFutureFontColor)));
+    CurrentPastBackgroundColor: color(fallback(value(PastBackgroundColor), value(DefaultBackgroundColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentFutureBackgroundColor: color(fallback(value(FutureBackgroundColor), value(DefaultBackgroundColor)));
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentTodayColor: color(fallback(value(TodayColor), value(DefaultTodayColor)));
     CurrentFontStyle: fallback(value(FontStyle), font(value(DefaultFontStyle)));
@@ -60,6 +70,7 @@
     /* 1:1 Aspect Ratio */
     position: relative;
     border: value(CurrentBorderWidth) solid value(CurrentBorderColor);
+    background-color: value(CurrentBackgroundColor);
 }
 
 .root:alignment(left) {
@@ -77,33 +88,44 @@
 
 .title {
     -st-extends: TPAText;
-    -st-mixin: TPAText(MainTextColor color(color-4));
+    -st-mixin: TPAText(MainTextColor value(CurrentFontColor),
+    MainTextFont value(CurrentFontStyle));
     font-size: value(CurrentFontSize);
     line-height: 1em;
 }
 
 .root:timeType(pastDate) {
-    background: applyOpacity(color(color-2), 0.1);
+    background: value(CurrentPastBackgroundColor)
 }
 
-.root:current .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentFontColor));
+.root:timeType(pastDate) .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentPastFontColor), MainTextFont value(CurrentFontStyle));
 }
 
 .root:timeType(today) {
     border-color: value(CurrentTodayColor);
-    background-color: value(CurrentBackgroundColor);
 }
 
 .root:timeType(today) .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor));
+    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
 }
 
-.root:timeType(futureDate) {
-    background-color: applyOpacity(value(CurrentBackgroundColor), 1);
+.root:timeType(futureDate){
+    background: value(CurrentFutureBackgroundColor);
 }
 
-/* isStrechAble == true */
+.root:timeType(futureDate) .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentFutureFontColor), MainTextFont value(CurrentFontStyle));
+}
+
+.root:current {
+    background: value(CurrentBackgroundColor)
+}
+
+.root:current .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
+}
+
 .root:stretchable {
     padding-top: 0;
     height: 100%;

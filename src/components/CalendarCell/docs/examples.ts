@@ -19,10 +19,10 @@ const cell = ({
 export const timeTypes = `
 <div style={{display: "flex", "justifyContent": "space-around"}}>
     ${cell({ title: 'Previous Month', timeType: Times.pastDate })}
-    ${cell({ title: 'Previous Days', timeType: Times.pastDate, current: true })}
-    ${cell({ title: 'Current Day', timeType: Times.today, current: true })}
+    ${cell({ title: 'Previous Day', timeType: Times.pastDate, current: true })}
+    ${cell({ title: 'Current Day', timeType: Times.today })}
     ${cell({
-      title: 'This month future days',
+      title: 'Future Day',
       timeType: Times.futureDate,
       current: true,
     })}
