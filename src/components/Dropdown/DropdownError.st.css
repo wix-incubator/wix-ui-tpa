@@ -4,18 +4,12 @@
 }
 
 :import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: Tooltip;
-}
-
-:import {
     -st-from: "../Tooltip/Tooltip.st.css";
     -st-default: TPATooltip;
 }
 
 .root {
-    -st-extends: Tooltip;
-    -st-partial-mixin: TPATooltip;
+    -st-extends: TPATooltip;
     color: value(errorColor);
     box-sizing: border-box;
     position: absolute;

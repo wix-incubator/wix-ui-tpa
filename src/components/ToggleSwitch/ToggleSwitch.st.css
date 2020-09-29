@@ -32,7 +32,7 @@
 
 .root {
     -st-extends: ToggleSwitch;
-    -st-partial-mixin: ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
+    -st-mixin: ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
 
     color: value(UsedBaseColor);
     opacity: .7;

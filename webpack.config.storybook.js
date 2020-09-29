@@ -60,7 +60,7 @@ module.exports = ({ config }) => {
 
         options: {
           plugins: [
-            path.resolve(__dirname, '.storybook/stylable-metadata-plugin.js'),
+            // path.resolve(__dirname, '.storybook/stylable-metadata-plugin.js'),
           ],
           storyConfig: {
             moduleName: 'wix-ui-tpa',

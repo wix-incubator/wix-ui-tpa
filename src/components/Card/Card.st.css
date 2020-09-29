@@ -50,7 +50,7 @@
     width: 100%;
     height: 100%;
     background-color: value(cardBGColor);
-    -st-partial-mixin: withBorder(
+    -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
     );
@@ -137,14 +137,14 @@
 .root > .infoContainer {
     box-sizing: border-box;
     background-color: value(infoBGColor);
-    -st-partial-mixin: withDynamicPadding(
+    -st-mixin: withDynamicPadding(
             PaddingSize value(infoPadding),
             BorderWidth value(borderWidth)
     );
 }
 
 .root:stacked > .infoContainer {
-    -st-partial-mixin: withDynamicPadding(
+    -st-mixin: withDynamicPadding(
             PaddingSize value(stackedInfoPadding),
             BorderWidth value(borderWidth)
     ), withDynamicSidePadding(
@@ -154,7 +154,7 @@
 }
 
 .root:mobile > .infoContainer {
-    -st-partial-mixin: withDynamicPadding(
+    -st-mixin: withDynamicPadding(
             PaddingSize value(mobileInfoPadding),
             BorderWidth value(borderWidth)
     );
