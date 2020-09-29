@@ -48,7 +48,6 @@ require('../src/components/Event/docs/index.story');
 require('../src/components/CalendarPopover/docs/index.story');
 require('../src/components/Spinner/docs/index.story');
 require('../src/components/RadioButtonGroup/docs/index.story');
-require('../src/components/Modal/docs/index.story');
 require('../src/components/Modal/docs/ModalTestStory');
 require('./utils/MobilePageStory');
 require('../src/components/Dialog/docs/index.story');
