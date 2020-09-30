@@ -3,7 +3,7 @@ import { Input } from '..';
 import { Examples } from './examples';
 
 export default {
-  category: 'Components',
+  category: 'Deprecated',
   storyName: 'Input',
 
   component: Input,
