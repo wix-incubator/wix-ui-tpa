@@ -1,4 +1,4 @@
-import { {%ComponentName%} } from '.';
+import { {%ComponentName%}, {%ComponentName%}Props } from '.';
 import Registry from '@ui-autotools/registry';
 
 const {%ComponentName%}Metadata = Registry.getComponentMetadata({%ComponentName%});
