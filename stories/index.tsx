@@ -51,3 +51,4 @@ require('../src/components/RadioButtonGroup/docs/index.story');
 require('../src/components/Modal/docs/index.story');
 require('../src/components/Modal/docs/ModalTestStory');
 require('./utils/MobilePageStory');
+require('../src/components/ActionsMenu/docs/index.story');
