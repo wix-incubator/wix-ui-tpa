@@ -25,13 +25,13 @@ describe('modal', () => {
     await waitForVisibilityOf(await driver.element(), 'Cannot find Modal');
     expect((await driver.element()).isDisplayed()).toBe(true);
 
-    expect(await driver.isModalShowed()).toBe(false);
+    expect(await driver.isOpen()).toBe(false);
     openModalButton.click();
-    expect(await driver.isModalShowed()).toBe(true);
+    expect(await driver.isOpen()).toBe(true);
 
     const close = element(by.css(`[data-hook=${closeDataHook}]`));
     await close.click();
-    expect(await driver.isModalShowed()).toBe(false);
+    expect(await driver.isOpen()).toBe(false);
   });
 
   it('should work correctly with the focus trap', async () => {

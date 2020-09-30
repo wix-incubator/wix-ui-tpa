@@ -7,7 +7,7 @@ import { MODAL_DATA_HOOKS } from './dataHooks';
 
 export interface ModalDriver extends BaseUniDriver {
   getModalContent(): UniDriver;
-  isModalShowed(): Promise<boolean>;
+  isOpen(): Promise<boolean>;
 }
 
 export const modalDriverFactory = (base: UniDriver): ModalDriver => {
@@ -17,17 +17,17 @@ export const modalDriverFactory = (base: UniDriver): ModalDriver => {
   return {
     ...baseUniDriverFactory(base),
     getModalContent,
-    isModalShowed: async () => {
-      let isShown;
+    isOpen: async () => {
+      let isOpen;
 
       try {
         const content = getModalContent();
-        isShown = await content.exists();
+        isOpen = await content.exists();
       } catch (e) {
-        isShown = false;
+        isOpen = false;
       }
 
-      return isShown;
+      return isOpen;
     },
   };
 };

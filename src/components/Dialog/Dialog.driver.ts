@@ -30,7 +30,7 @@ export const dialogDriverFactory = (base: UniDriver): DialogDriver => {
      */
     isDialogOpen: async () => {
       const modalDriver = modalDriverFactory(base);
-      return modalDriver.isModalShowed();
+      return modalDriver.isOpen();
     },
 
     /**

@@ -27,9 +27,6 @@
     -st-states: mobile;
 }
 
-.root:mobile {
-}
-
 .contentWrapper {
     width: 100%;
     position: absolute;
@@ -51,8 +48,7 @@
     right: 20px;
 }
 
-:global([dir="rtl"]) .closeButtonWrapper,
-:global(.rtl) .closeButtonWrapper {
+.root:rtl .closeButtonWrapper {
     right: initial;
     left: 20px;
 }
