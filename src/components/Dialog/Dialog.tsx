@@ -106,12 +106,12 @@ export class Dialog extends React.Component<DialogProps> {
               onRequestClose={onClose}
             >
               <div
-                  className={classes.contentWrapper}
-                  role="dialog"
-                  aria-modal="true"
-                  aria-label={ariaLabel}
-                  aria-labelledby={ariaLabelledBy}
-                  aria-describedby={ariaDescribedBy}
+                className={classes.contentWrapper}
+                role="dialog"
+                aria-modal="true"
+                aria-label={ariaLabel}
+                aria-labelledby={ariaLabelledBy}
+                aria-describedby={ariaDescribedBy}
               >
                 <div className={classes.closeButtonWrapper}>
                   <IconButton
