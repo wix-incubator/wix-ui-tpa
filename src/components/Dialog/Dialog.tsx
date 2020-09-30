@@ -45,12 +45,6 @@ export class Dialog extends React.Component<DialogProps> {
     manualFocus: false,
   };
 
-  _onEscKeyup = e => {
-    if (e.keyCode === KEY_CODES.Esc) {
-      this.props.onClose();
-    }
-  };
-
   _addEscEventListener() {
     if (this.props.isOpen) {
       document.addEventListener('keyup', this._onEscKeyup);
@@ -60,6 +54,12 @@ export class Dialog extends React.Component<DialogProps> {
   _removeEscEventListener() {
     document.removeEventListener('keyup', this._onEscKeyup);
   }
+
+  _onEscKeyup = e => {
+    if (e.keyCode === KEY_CODES.Esc) {
+      this.props.onClose();
+    }
+  };
 
   componentDidMount() {
     this._addEscEventListener();
