@@ -8,5 +8,5 @@ const {%ComponentName%}Metadata = Registry.getComponentMetadata({%ComponentName%
   title: 'render',
   props: {
     buttonText: 'Click me!'
-  },
+  } as {%ComponentName%}Props,
 });

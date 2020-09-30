@@ -1,9 +1,11 @@
 import * as React from 'react';
+import { TPAComponentProps } from '../../types';
+
 import { Text } from '../Text';
 import { Button } from '../Button';
 import { st, classes } from './{%ComponentName%}.st.css';
 
-export interface {%ComponentName%}Props {
+export interface {%ComponentName%}Props extends TPAComponentProps {
   buttonText: string;
 }
 
@@ -32,7 +34,7 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     const isEven = count % 2 === 0;
 
     return (
-      <div className={st(classes.root)}>
+      <div className={st(classes.root)} data-hook={this.props['data-hook']}>
         <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
           You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
           times
