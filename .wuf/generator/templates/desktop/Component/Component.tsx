@@ -30,11 +30,11 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
 
   render() {
     const { count } = this.state;
-    const { buttonText, ...rest } = this.props;
+    const { className, buttonText } = this.props;
     const isEven = count % 2 === 0;
 
     return (
-      <div className={st(classes.root)} data-hook={this.props['data-hook']}>
+      <div className={st(classes.root, className)} data-hook={this.props['data-hook']}>
         <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
           You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
           times
