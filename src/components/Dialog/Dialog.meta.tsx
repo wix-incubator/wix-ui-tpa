@@ -23,6 +23,7 @@ DialogMetadata.addSim({
     isOpen: true,
     children: <DialogContent />,
     'aria-label': 'Dialog',
+    'close-button-aria-label': 'Close Button',
   } as DialogProps,
 });
 
@@ -33,6 +34,8 @@ DialogMetadata.addSim({
     children: <div>This is the content!</div>,
     manualFocus: true,
     closeButtonRef: React.createRef<HTMLButtonElement>(),
+    'aria-label': 'Dialog',
+    'close-button-aria-label': 'Close Button',
   } as DialogProps,
 });
 
@@ -41,7 +44,8 @@ DialogMetadata.addSim({
   props: {
     isOpen: true,
     children: <DialogContent />,
-    'aria-labelledby': 'dialog_label',
+    'aria-labelledby': 'dialog4_label',
     'aria-describedby': 'dialog4_desc',
+    'close-button-aria-label': 'Close Button',
   } as DialogProps,
 });

@@ -26,6 +26,10 @@ export interface DialogProps extends TPAComponentProps {
   'aria-labelledby'?: string;
   /** Gives the dialog an accessible description by referring to the dialog content that describes the primary message or purpose of the dialog. Optional. */
   'aria-describedby'?: string;
+  /** Defines a string value that labels the close button element. Optional. */
+  'close-button-aria-label'?: string;
+  /** Identifies the element that labels the close button element. Optional. */
+  'close-button-aria-labelledby'?: string;
 }
 
 interface DefaultProps {
@@ -84,6 +88,8 @@ export class Dialog extends React.Component<DialogProps> {
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       ['aria-describedby']: ariaDescribedBy,
+      ['close-button-aria-label']: closeButtonAriaLabel,
+      ['close-button-aria-labelledby']: closeButtonAriaLabelBy,
     } = this.props;
 
     return (
@@ -109,6 +115,8 @@ export class Dialog extends React.Component<DialogProps> {
                   <IconButton
                     className={classes.closeIconButton}
                     data-hook={DATA_HOOKS.CLOSE_BTN}
+                    aria-label={closeButtonAriaLabel}
+                    aria-labelledby={closeButtonAriaLabelBy}
                     innerRef={closeButtonRef}
                     onClick={onClose}
                     icon={<CloseIcon />}
