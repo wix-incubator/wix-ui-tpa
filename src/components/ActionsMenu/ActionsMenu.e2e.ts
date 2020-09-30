@@ -21,7 +21,10 @@ describe('actionsMenu', () => {
 
   it('should render', async () => {
     const driver = actionsMenuTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find ActionsMenu');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find ActionsMenu',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

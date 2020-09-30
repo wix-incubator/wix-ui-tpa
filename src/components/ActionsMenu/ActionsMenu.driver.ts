@@ -7,7 +7,9 @@ export interface ActionsMenuDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;
 }
 
-export const actionsMenuDriverFactory = (base: UniDriver): ActionsMenuDriver => {
+export const actionsMenuDriverFactory = (
+  base: UniDriver,
+): ActionsMenuDriver => {
   return {
     ...baseUniDriverFactory(base),
     isMobile: async () => (await base.attr('data-mobile')) === 'true',

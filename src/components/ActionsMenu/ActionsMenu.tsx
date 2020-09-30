@@ -35,8 +35,13 @@ export class ActionsMenu extends React.Component<ActionsMenuProps, State> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div className={st(classes.root, { mobile }, rest)} data-mobile={mobile}>
-            <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
+          <div
+            className={st(classes.root, { mobile }, rest)}
+            data-mobile={mobile}
+          >
+            <Text
+              className={st(classes.number, { even: isEven, odd: !isEven })}
+            >
               You clicked this button {isEven ? 'even' : 'odd'} number ({count})
               of times
             </Text>
