@@ -7,7 +7,6 @@ import { Modal } from '../Modal';
 import { IconButton } from '../IconButton';
 import { Close as CloseIcon } from '../../assets/icons';
 import { TPAComponentProps } from '../../types';
-import { KEY_CODES } from '../../common/keyCodes';
 
 export interface DialogProps extends TPAComponentProps {
   /** Whether the modal is opened */
@@ -44,38 +43,6 @@ export class Dialog extends React.Component<DialogProps> {
     isOpen: false,
     manualFocus: false,
   };
-
-  _addEscEventListener() {
-    if (this.props.isOpen) {
-      document.addEventListener('keyup', this._onEscKeyup);
-    }
-  }
-
-  _removeEscEventListener() {
-    document.removeEventListener('keyup', this._onEscKeyup);
-  }
-
-  _onEscKeyup = e => {
-    if (e.keyCode === KEY_CODES.Esc) {
-      this.props.onClose();
-    }
-  };
-
-  componentDidMount() {
-    this._addEscEventListener();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (!prevProps.isOpen) {
-      this._addEscEventListener();
-    } else if (!this.props.isOpen) {
-      this._removeEscEventListener();
-    }
-  }
-
-  componentWillUnmount() {
-    this._removeEscEventListener();
-  }
 
   render() {
     const {

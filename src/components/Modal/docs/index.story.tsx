@@ -94,7 +94,8 @@ export default {
     children: childrenExamples[0].value,
     'data-hook': 'storybook-Modal',
     onRequestClose: () => setState({ isOpen: false }),
-    closeOnClickOutside: true,
+    shouldCloseOnClickOutside: true,
+    shouldCloseOnEsc: true,
   }),
   exampleProps: {
     children: childrenExamples,

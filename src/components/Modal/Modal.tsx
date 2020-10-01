@@ -2,19 +2,27 @@ import * as React from 'react';
 import { st, classes } from './Modal.st.css';
 import { ModalProps, ModalDefaultProps } from './types';
 import { MODAL_DATA_HOOKS } from './dataHooks';
+import { KEY_CODES } from '../../common/keyCodes';
+import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
 
 const createFocusTrap = require('focus-trap');
 
 export class Modal extends React.Component<ModalProps> {
+  static contextType = TPAComponentsContext;
   static displayName = 'Modal';
   static defaultProps: ModalDefaultProps = {
     isOpen: false,
-    closeOnClickOutside: true,
+    shouldCloseOnClickOutside: true,
+    shouldCloseOnEsc: true,
     focusTrap: true,
   };
 
   _contentRef = null;
   _focusTrapInstance = null;
+
+  componentDidMount() {
+    this._addEscEventListener();
+  }
 
   componentDidUpdate(prevProps: ModalProps) {
     const { isOpen, focusTrap } = this.props;
@@ -32,13 +40,17 @@ export class Modal extends React.Component<ModalProps> {
     }
   }
 
+  componentWillUnmount() {
+    this._removeEscEventListener();
+  }
+
   _createFocusTrap() {
-    const { closeOnClickOutside } = this.props;
+    const { shouldCloseOnClickOutside } = this.props;
 
     if (this._contentRef) {
       this._focusTrapInstance = createFocusTrap(this._contentRef, {
         escapeDeactivates: false,
-        clickOutsideDeactivates: closeOnClickOutside,
+        clickOutsideDeactivates: shouldCloseOnClickOutside,
         returnFocusOnDeactivate: true,
       });
     }
@@ -61,7 +73,34 @@ export class Modal extends React.Component<ModalProps> {
     }
   };
 
+  _isMobile() {
+    const { mobile: isMobile } = this.context;
+    return isMobile;
+  }
+
+  _addEscEventListener() {
+    const { isOpen } = this.props;
+
+    if (!this._isMobile() && isOpen) {
+      document.addEventListener('keyup', this._onEscKeyup);
+    }
+  }
+
+  _removeEscEventListener() {
+    if (!this._isMobile()) {
+      document.removeEventListener('keyup', this._onEscKeyup);
+    }
+  }
+
+  _onEscKeyup = e => {
+    if (e.keyCode === KEY_CODES.Esc) {
+      this._onClose();
+    }
+  };
+
   _onModalOpen() {
+    this._addEscEventListener();
+
     if (this._focusTrapInstance) {
       try {
         this._focusTrapInstance.activate();
@@ -70,6 +109,8 @@ export class Modal extends React.Component<ModalProps> {
   }
 
   _onModalClose() {
+    this._removeEscEventListener();
+
     if (this._focusTrapInstance) {
       this._focusTrapInstance.deactivate();
       this._focusTrapInstance = null;
@@ -82,14 +123,14 @@ export class Modal extends React.Component<ModalProps> {
   };
 
   _renderModal() {
-    const { closeOnClickOutside, children } = this.props;
+    const { shouldCloseOnClickOutside, children } = this.props;
 
     return (
       <>
         <div
           className={classes.overlay}
           data-hook={MODAL_DATA_HOOKS.OVERLAY}
-          onClick={closeOnClickOutside ? this._onClose : undefined}
+          onClick={shouldCloseOnClickOutside ? this._onClose : undefined}
         />
         <section
           className={classes.modal}
@@ -106,12 +147,16 @@ export class Modal extends React.Component<ModalProps> {
     const { className, isOpen } = this.props;
 
     return (
-      <div
-        data-hook={this.props['data-hook']}
-        className={st(classes.root, { isOpen }, className)}
-      >
-        {isOpen ? this._renderModal() : null}
-      </div>
+        <TPAComponentsConsumer>
+          {({ mobile }) => (
+            <div
+              data-hook={this.props['data-hook']}
+              className={st(classes.root, { isOpen }, className)}
+            >
+              {isOpen ? this._renderModal() : null}
+            </div>
+          )}
+        </TPAComponentsConsumer>
     );
   }
 }
