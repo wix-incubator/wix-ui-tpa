@@ -1,3 +1,12 @@
+## [2.6.2](https://github.com/wix/wix-ui-tpa/compare/v2.6.1...v2.6.2) (2020-10-01)
+
+
+### Bug Fixes
+
+* **FloatingDropdown:** Import missing styles from Dropdown ([2af097b](https://github.com/wix/wix-ui-tpa/commit/2af097b6b1374a3ff3cd80192a6ea25e5900fd49))
+
+
+
 ## [2.6.1](https://github.com/wix/wix-ui-tpa/compare/v2.6.0...v2.6.1) (2020-09-29)
 
 
