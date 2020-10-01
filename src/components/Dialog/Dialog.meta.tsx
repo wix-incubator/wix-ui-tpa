@@ -24,7 +24,7 @@ DialogMetadata.addSim({
     children: <DialogContent />,
     'aria-label': 'Dialog',
     closeButtonAriaLabel: 'Close Button',
-    contentClassName: 'content'
+    contentClassName: 'content',
   } as DialogProps,
 });
 

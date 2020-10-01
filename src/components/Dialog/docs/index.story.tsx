@@ -31,8 +31,9 @@ const childrenExamples = [
       <div
         style={{
           textAlign: 'center',
-          height: '50vh',
-          lineHeight: '50vh',
+          width: '30vw',
+          height: '30vh',
+          lineHeight: '30vh',
         }}
       >
         This is the content!

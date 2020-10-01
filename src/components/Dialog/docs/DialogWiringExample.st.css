@@ -11,6 +11,7 @@
 
 .content {
     text-align: center;
-    height: 50vh;
-    line-height: 50vh;
+    width: 30vw;
+    height: 30vh;
+    line-height: 30vh;
 }
