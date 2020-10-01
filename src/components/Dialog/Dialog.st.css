@@ -28,7 +28,12 @@
 }
 
 .contentWrapper {
-    width: 100%;
+    box-sizing: border-box;
+    min-width: 280px;
+    max-width: 980px;
+    min-height: 240px;
+    max-height: 620px;
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -60,9 +65,5 @@
 }
 
 .dialogContent {
-    padding: 80px;
-}
-
-.root:mobile .dialogContent {
     padding: 80px 32px;
 }

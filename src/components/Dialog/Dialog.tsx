@@ -19,6 +19,8 @@ export interface DialogProps extends TPAComponentProps {
   onClose?(): void;
   /** Children to render inside dialog */
   children?: React.ReactNode;
+  /** A class name that will be added to the content wrapper */
+  contentClassName?: string;
   /** Defines a string value that labels the dialog element. Optional. */
   'aria-label'?: string;
   /** Identifies the element that labels the dialog element. Optional. */
@@ -52,6 +54,7 @@ export class Dialog extends React.Component<DialogProps> {
       closeButtonRef,
       onClose,
       children,
+      contentClassName,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       ['aria-describedby']: ariaDescribedBy,
@@ -73,7 +76,7 @@ export class Dialog extends React.Component<DialogProps> {
               onRequestClose={onClose}
             >
               <div
-                className={classes.contentWrapper}
+                className={`${classes.contentWrapper} ${contentClassName || ''}`}
                 role="dialog"
                 aria-modal="true"
                 aria-label={ariaLabel}
