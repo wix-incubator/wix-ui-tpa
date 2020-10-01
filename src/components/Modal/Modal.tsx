@@ -3,7 +3,10 @@ import { st, classes } from './Modal.st.css';
 import { ModalProps, ModalDefaultProps } from './types';
 import { MODAL_DATA_HOOKS } from './dataHooks';
 import { KEY_CODES } from '../../common/keyCodes';
-import { TPAComponentsConsumer, TPAComponentsContext } from '../TPAComponentsConfig';
+import {
+  TPAComponentsConsumer,
+  TPAComponentsContext,
+} from '../TPAComponentsConfig';
 
 const createFocusTrap = require('focus-trap');
 
@@ -147,16 +150,16 @@ export class Modal extends React.Component<ModalProps> {
     const { className, isOpen } = this.props;
 
     return (
-        <TPAComponentsConsumer>
-          {({ mobile }) => (
-            <div
-              data-hook={this.props['data-hook']}
-              className={st(classes.root, { isOpen }, className)}
-            >
-              {isOpen ? this._renderModal() : null}
-            </div>
-          )}
-        </TPAComponentsConsumer>
+      <TPAComponentsConsumer>
+        {({ mobile }) => (
+          <div
+            data-hook={this.props['data-hook']}
+            className={st(classes.root, { isOpen }, className)}
+          >
+            {isOpen ? this._renderModal() : null}
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }
