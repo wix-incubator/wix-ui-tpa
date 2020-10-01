@@ -50,4 +50,6 @@ require('../src/components/Spinner/docs/index.story');
 require('../src/components/RadioButtonGroup/docs/index.story');
 require('../src/components/Modal/docs/ModalTestStory');
 require('./utils/MobilePageStory');
+require('../src/components/Input/docs/index.story');
+require('../src/components/Autocomplete/docs/index.story');
 require('../src/components/Dialog/docs/index.story');

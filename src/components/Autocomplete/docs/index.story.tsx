@@ -7,7 +7,7 @@ import { generateOptions } from 'wix-ui-core/dist/src/components/dropdown-option
 const options = generateOptions();
 
 export default {
-  category: 'Components',
+  category: 'Deprecated',
   storyName: 'Autocomplete',
 
   component: Autocomplete,

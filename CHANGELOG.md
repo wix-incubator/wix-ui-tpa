@@ -1,3 +1,12 @@
+## [2.6.1](https://github.com/wix/wix-ui-tpa/compare/v2.6.0...v2.6.1) (2020-09-29)
+
+
+### Features
+
+* **CalendarCell:** Open background color API ([bb76dd5](https://github.com/wix/wix-ui-tpa/commit/bb76dd55fdabb118f92df9b1c279008c55a91cae))
+
+
+
 # [2.6.0](https://github.com/wix/wix-ui-tpa/compare/v2.5.0...v2.6.0) (2020-09-11)
 
 
