@@ -13,6 +13,10 @@
     -st-states: skin(enum(standard, error));
 }
 
+.root[data-hook="popover-portal"] {
+    display: initial;
+}
+
 .root::popoverContent {
     background-color: #212121;
     padding: 4px 12px;
@@ -34,10 +38,6 @@
 
 .tpaArrow svg {
     display: block;
-}
-
-.root::popover {
-    display: initial;
 }
 
 .root::popover[data-placement*="top"].withArrow { padding-bottom: 6px; }
