@@ -36,6 +36,10 @@
     display: block;
 }
 
+.root::popover {
+    display: initial;
+}
+
 .root::popover[data-placement*="top"].withArrow { padding-bottom: 6px; }
 .root::popover[data-placement*="bottom"].withArrow { padding-top: 6px; }
 .root::popover[data-placement*="left"].withArrow { padding-right: 6px; }
