@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
+import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { mount } from 'enzyme';
 import { colorPickerDriverFactory } from './ColorPicker.driver';
 import { ColorPicker } from './';
@@ -11,20 +11,27 @@ import { eventually } from 'wix-ui-test-utils/dist/src/protractor/utils';
 
 describe('ColorPicker', () => {
   const createDriver = createUniDriverFactory(colorPickerDriverFactory);
+  const bootstrap = (props = {}) => {
+    const dataHook = 'compDataHook';
+    const compProps = {
+      'data-hook': dataHook,
+      onChange: () => {},
+      ...props,
+    };
+    return createDriver(<ColorPicker {...compProps} />);
+  };
 
   it('should render', async () => {
-    const driver = createDriver(<ColorPicker onChange={e => {}} />);
+    const driver = bootstrap();
     expect(await driver.exists()).toBe(true);
   });
 
   it('should call onChange callback (select by index)', async () => {
     const onChange = jest.fn();
-
-    const driver = createDriver(
-      <ColorPicker onChange={onChange}>
-        <ColorPicker.Item aria-label={'red color'} value={'red'} />
-      </ColorPicker>,
-    );
+    const driver = bootstrap({
+      children: <ColorPicker.Item aria-label={'red color'} value={'red'} />,
+      onChange,
+    });
 
     await driver.selectByIndex(0);
 
@@ -34,12 +41,10 @@ describe('ColorPicker', () => {
   it('should call onChange callback (select by color)', async () => {
     const onChange = jest.fn();
     const color = 'red';
-
-    const driver = createDriver(
-      <ColorPicker onChange={onChange}>
-        <ColorPicker.Item aria-label={'red color'} value={color} />
-      </ColorPicker>,
-    );
+    const driver = bootstrap({
+      children: <ColorPicker.Item aria-label={'red color'} value={color} />,
+      onChange,
+    });
 
     await driver.selectByColor(color);
 
@@ -48,13 +53,15 @@ describe('ColorPicker', () => {
 
   it('should support ColorPickerItemDriver (disabled, isCrossedOut)', async () => {
     const onChange = jest.fn();
-
-    const driver = createDriver(
-      <ColorPicker onChange={onChange}>
-        <ColorPicker.Item aria-label={'red color'} value="red" isCrossedOut />
-        <ColorPicker.Item aria-label={'red color'} value="blue" disabled />
-      </ColorPicker>,
-    );
+    const driver = bootstrap({
+      children: (
+        <>
+          <ColorPicker.Item aria-label={'red color'} value="red" isCrossedOut />
+          <ColorPicker.Item aria-label={'red color'} value="blue" disabled />
+        </>
+      ),
+      onChange,
+    });
 
     const itemDriverFirst = driver.getItemAt(0);
     const itemDriverSecond = driver.getItemAt(1);
@@ -69,16 +76,17 @@ describe('ColorPicker', () => {
   it('should support ColorPickerItemDriver (tooltip)', async () => {
     const onChange = jest.fn();
     const color = 'red';
-
-    const driver = createDriver(
-      <ColorPicker onChange={onChange}>
+    const driver = bootstrap({
+      children: (
         <ColorPicker.Item
           aria-label={'red color'}
           value={color}
           tooltip="Hello"
+          tooltipDataHook={'tooltip-data-hook'}
         />
-      </ColorPicker>,
-    );
+      ),
+      onChange,
+    });
 
     const itemDriverFirst = driver.getItemAt(0);
 
@@ -89,7 +97,7 @@ describe('ColorPicker', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <ColorPicker onChange={e => {}} />,
+          <ColorPicker onChange={() => {}} />,
           colorPickerTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -103,7 +111,7 @@ describe('ColorPicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <ColorPicker onChange={e => {}} />,
+          <ColorPicker onChange={() => {}} />,
           enzymeColorPickerTestkitFactory,
           mount,
           {

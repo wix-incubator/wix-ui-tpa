@@ -3,10 +3,9 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { StylableUnidriverUtil, UniDriver } from 'wix-ui-test-utils/unidriver';
-import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.driver';
+import { tooltipDriverFactory } from 'wix-ui-core/dist/src/components/tooltip/Tooltip.uni.driver';
 import { radioButtonDriverFactory } from 'wix-ui-core/dist/src/components/radio-button/RadioButton.driver';
 import { Simulate } from 'react-dom/test-utils';
-import { colorPickerItemTooltipDataHook } from '../dataHooks';
 import * as style from './ColorPickerItem.st.css';
 
 export interface ColorPickerItemDriver extends BaseUniDriver {
@@ -18,15 +17,16 @@ export interface ColorPickerItemDriver extends BaseUniDriver {
 
 export const colorPickerItemDriverFactory = (
   base: UniDriver,
+  body: UniDriver,
 ): ColorPickerItemDriver => {
   const stylableUtil = new StylableUnidriverUtil(style);
   const baseUniDriver = baseUniDriverFactory(base);
+
   const getTooltipDriver = async () => {
-    const element = (await baseUniDriver.element()).querySelector(
-      `[data-hook=${colorPickerItemTooltipDataHook}]`,
-    );
-    return tooltipDriverFactory({ element, eventTrigger: Simulate });
+    const tooltipDataHook = await base.attr('data-tooltip-hook');
+    return tooltipDriverFactory(base.$(`[data-hook=${tooltipDataHook}]`), body);
   };
+
   const getCoreRadioButtonDriver = async () => {
     return radioButtonDriverFactory({
       element: await baseUniDriver.element(),
@@ -35,7 +35,7 @@ export const colorPickerItemDriverFactory = (
   };
 
   return {
-    ...baseUniDriverFactory(base),
+    ...baseUniDriver,
     isDisabled: async () => {
       return (await getCoreRadioButtonDriver()).isDisabled();
     },
@@ -43,12 +43,10 @@ export const colorPickerItemDriverFactory = (
       return !!(await stylableUtil.getStyleState(base, 'isCrossedOut'));
     },
     getTooltipText: async () => {
-      const tooltipDriver = await getTooltipDriver();
-      return tooltipDriver.getTooltipText();
+      return (await getTooltipDriver()).getTooltipText();
     },
     hasTooltip: async () => {
-      const tooltipDriver = await getTooltipDriver();
-      return tooltipDriver.exists();
+      return (await getTooltipDriver()).exists();
     },
   };
 };
