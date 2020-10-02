@@ -1,3 +1,47 @@
+## [2.6.2](https://github.com/wix/wix-ui-tpa/compare/v2.6.1...v2.6.2) (2020-10-01)
+
+
+### Bug Fixes
+
+* **FloatingDropdown:** Import missing styles from Dropdown ([2af097b](https://github.com/wix/wix-ui-tpa/commit/2af097b6b1374a3ff3cd80192a6ea25e5900fd49))
+
+
+
+## [2.6.1](https://github.com/wix/wix-ui-tpa/compare/v2.6.0...v2.6.1) (2020-09-29)
+
+
+### Features
+
+* **CalendarCell:** Open background color API ([bb76dd5](https://github.com/wix/wix-ui-tpa/commit/bb76dd55fdabb118f92df9b1c279008c55a91cae))
+
+
+
+# [2.6.0](https://github.com/wix/wix-ui-tpa/compare/v2.5.0...v2.6.0) (2020-09-11)
+
+
+### Bug Fixes
+
+* **ActionsMenuLayout:** A11Y fixes ([728570d](https://github.com/wix/wix-ui-tpa/commit/728570d3e11268a175bed5e084c8c6bcb0dee539))
+
+
+### Features
+
+* **Avatar:** New sizes: xSmall and xxSmall ([f101d15](https://github.com/wix/wix-ui-tpa/commit/f101d15f3f78759f6ba29bfb1adc14a1e736524a))
+* **TextArea:** add 'onBlur' property  ([1fc7394](https://github.com/wix/wix-ui-tpa/commit/1fc7394c5b859c4221eb1361a8e41c3747a3de7a))
+
+
+
+# [2.5.0](https://github.com/wix/wix-ui-tpa/compare/v2.4.1...v2.5.0) (2020-09-10)
+
+
+### Features
+
+* **Event:** Support overriding `time` element's font ([b7041d2](https://github.com/wix/wix-ui-tpa/commit/b7041d2cdffdc26d3c327476a2127edd411a3a81))
+* **Modal:** New Modal logical component ([58405ec](https://github.com/wix/wix-ui-tpa/commit/58405ecadc720c66470359f82e1750bab111dd91))
+* **Tab:** add id prop ([a79b551](https://github.com/wix/wix-ui-tpa/commit/a79b551a857a71578420b48259e2a4f4e2c9b529))
+
+
+
 ## [2.4.1](https://github.com/wix/wix-ui-tpa/compare/v2.4.0...v2.4.1) (2020-09-08)
 
 

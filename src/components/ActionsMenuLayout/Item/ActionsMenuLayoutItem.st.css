@@ -32,7 +32,8 @@
     right: -1px;
 }
 
-.root:hover {
+.root:hover,
+.root:focus {
     background-color: applyOpacity(color(color-5), 0.06);
 }
 

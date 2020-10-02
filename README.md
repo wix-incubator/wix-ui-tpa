@@ -2,7 +2,7 @@
 
 `wix-ui-tpa` is a library of React components that are designed to be used in Wix TPA's.
 
-#### [Demo](https://wix-wix-ui-tpa.surge.sh/) | [Demo App](https://github.com/wix/wix-ui-tpa-example)
+#### [Demo](https://bo.wix.com/pages/wix-ui-tpa) | [Demo App](https://github.com/wix/wix-ui-tpa-example)
   
 ## Installation
 * Install with `npm` or `yarn`:

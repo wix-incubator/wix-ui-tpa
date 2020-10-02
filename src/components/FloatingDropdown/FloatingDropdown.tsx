@@ -4,6 +4,13 @@ import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 
 import { DropdownOption } from '../Dropdown/DropdownOption';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+
+/* TODO
+ * The import below is a workaround. FloatingDropdown and Dropdown
+ * components should be refactored according to this thread
+ * https://github.com/wix/wix-ui-tpa/pull/387 (or merged into a single component)
+ */
+import '../Dropdown/Dropdown.st.css';
 import { st, classes } from './FloatingDropdown.st.css';
 import { FloatingDropdownBase } from './FloatingDropdownBase';
 import { DATA_HOOKS } from './constants';
@@ -72,7 +79,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
   _generateCoreOptions() {
     const { options } = this.props;
 
-    const renderableOptions = options.map(option => ({
+    const renderableOptions = options.map((option) => ({
       ...option,
       render: () => <DropdownOption {...option} />,
     }));
