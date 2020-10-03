@@ -3,11 +3,11 @@ import {
   Tooltip as CoreTooltip,
   TooltipProps as CoreTooltipProps,
 } from 'wix-ui-core/tooltip';
-import { st, classes } from './Tooltip.st.css';
 import { getArrowByPlacement } from './Arrows';
 import { Placement } from 'wix-ui-core/popover';
 import { TooltipSkin } from './TooltipEnums';
 import { TPAComponentProps } from '../../types';
+import { st, classes } from './Tooltip.st.css';
 
 function customArrow(placement: Placement, arrowProps) {
   const ArrowSvg = getArrowByPlacement(placement);

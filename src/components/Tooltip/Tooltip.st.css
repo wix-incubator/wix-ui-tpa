@@ -13,6 +13,10 @@
     -st-states: skin(enum(standard, error));
 }
 
+.root[data-hook="popover-portal"] {
+    display: initial;
+}
+
 .root::popoverContent {
     background-color: #212121;
     padding: 4px 12px;
