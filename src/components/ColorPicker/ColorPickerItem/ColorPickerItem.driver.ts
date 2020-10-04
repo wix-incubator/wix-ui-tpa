@@ -11,8 +11,8 @@ import * as style from './ColorPickerItem.st.css';
 export interface ColorPickerItemDriver extends BaseUniDriver {
   isDisabled(): Promise<boolean>;
   isCrossedOut(): Promise<boolean>;
-  getTooltipText(bodyUniDriver: UniDriver): Promise<string>;
-  hasTooltip(bodyUniDriver: UniDriver): Promise<boolean>;
+  getTooltipText(): Promise<string>;
+  hasTooltip(): Promise<boolean>;
 }
 
 export const colorPickerItemDriverFactory = (

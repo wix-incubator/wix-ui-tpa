@@ -9,24 +9,6 @@ describe('ColorPickerItem', () => {
   const tooltipInnerContent = `ArrowTop.svg${tooltipContent}`;
   const tooltipDataHook = 'colorPickerItem-tooltip';
   const createDriver = createUniDriverFactory(colorPickerItemDriverFactory);
-  /*let bodyUniDriver;
-
-  beforeAll(() => {
-    bodyUniDriver = jsdomReactUniDriver(document.body);
-  });
-
-  afterEach(() => {
-    // this is obviousle a "hack".
-    // this data-hook is taken from the wix-ui-core/Popover implementation:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-ui-core/src/components/popover/Popover.uni.driver.ts#L17
-    // TODO fix TooltipDriver in core, to remove the portal when not needed
-    const portal =
-      document && document.querySelector('[data-hook="popover-portal"]');
-
-    if (portal) {
-      portal.remove();
-    }
-  });*/
 
   const bootstrap = (props = {}) => {
     const dataHook = 'compDataHook';

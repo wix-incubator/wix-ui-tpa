@@ -22,25 +22,6 @@ describe('ColorPicker', () => {
     return createDriver(<ColorPicker {...compProps} />);
   };
 
-  /*let bodyUniDriver;
-
-  beforeAll(() => {
-    bodyUniDriver = jsdomReactUniDriver(document.body);
-  });
-
-  afterEach(() => {
-    // this is obviousle a "hack".
-    // this data-hook is taken from the wix-ui-core/Popover implementation:
-    // https://github.com/wix/wix-ui/blob/master/packages/wix-ui-core/src/components/popover/Popover.uni.driver.ts#L17
-    // TODO fix TooltipDriver in core, to remove the portal when not needed
-    const portal =
-      document && document.querySelector('[data-hook="popover-portal"]');
-
-    if (portal) {
-      portal.remove();
-    }
-  });*/
-
   it('should render', async () => {
     const driver = bootstrap();
     expect(await driver.exists()).toBe(true);
@@ -110,9 +91,7 @@ describe('ColorPicker', () => {
 
     const itemDriverFirst = driver.getItemAt(0);
 
-    expect(await itemDriverFirst.getTooltipText(bodyUniDriver)).toBe(
-      'ArrowTop.svgHello',
-    );
+    expect(await itemDriverFirst.getTooltipText()).toBe('ArrowTop.svgHello');
   });
 
   it('should  getItemAt', async () => {
@@ -132,12 +111,8 @@ describe('ColorPicker', () => {
     const itemDriverFirst = driver.getItemAt(0);
     const itemDriverSecond = driver.getItemAt(1);
 
-    expect(await itemDriverFirst.getTooltipText(bodyUniDriver)).toBe(
-      'ArrowTop.svgRed',
-    );
-    expect(await itemDriverSecond.getTooltipText(bodyUniDriver)).toBe(
-      'ArrowTop.svgBlue',
-    );
+    expect(await itemDriverFirst.getTooltipText()).toBe('ArrowTop.svgRed');
+    expect(await itemDriverSecond.getTooltipText()).toBe('ArrowTop.svgBlue');
   });
 
   describe('testkit', () => {
