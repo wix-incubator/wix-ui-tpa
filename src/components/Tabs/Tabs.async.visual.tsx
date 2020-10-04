@@ -88,7 +88,7 @@ const eyesConfig = {
     scriptHooks: {
       beforeCaptureScreenshot: `
         const hscroll = document.querySelector('#APPLITOOLS_ATTR').dataset.hscroll
-        const scrollElement = document.querySelector('nav.ScrollableTabs910048044__nav')
+        const scrollElement = document.querySelector('[data-hook="${dataHook}"] nav')
         scrollElement.scrollLeft = hscroll
         `,
     },
