@@ -32,8 +32,8 @@
     line-height: 0;
 }
 
-.root:hover {
-    opacity: 0.6;
+.root:hover, .root:focus {
+    opacity: 0.7;
 }
 
 .root:disabled {
