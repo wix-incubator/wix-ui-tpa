@@ -6,27 +6,28 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { MODAL_DATA_HOOKS } from './dataHooks';
 
 export interface ModalDriver extends BaseUniDriver {
-  getModalStage(): UniDriver;
-  isModalShowed(): Promise<boolean>;
+  getModalContent(): UniDriver;
+  isOpen(): Promise<boolean>;
 }
 
 export const modalDriverFactory = (base: UniDriver): ModalDriver => {
-  const getModalStage = () => base.$(`[data-hook="${MODAL_DATA_HOOKS.STAGE}"]`);
+  const getModalContent = () =>
+    base.$(`[data-hook="${MODAL_DATA_HOOKS.CONTENT}"]`);
 
   return {
     ...baseUniDriverFactory(base),
-    getModalStage,
-    isModalShowed: async () => {
-      let isShown;
+    getModalContent,
+    isOpen: async () => {
+      let isOpen;
 
       try {
-        const stage = getModalStage();
-        isShown = await stage.exists();
+        const content = getModalContent();
+        isOpen = await content.exists();
       } catch (e) {
-        isShown = false;
+        isOpen = false;
       }
 
-      return isShown;
+      return isOpen;
     },
   };
 };

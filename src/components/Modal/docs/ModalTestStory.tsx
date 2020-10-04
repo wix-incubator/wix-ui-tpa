@@ -36,17 +36,32 @@ class ModalTestStory extends React.Component {
         </Button>
         {this.state.isShowModal ? (
           <Modal isOpen={isModalOpen} onRequestClose={this.closeModal}>
-            <button data-hook={'tpa-modal-close-btn'} onClick={this.closeModal}>
-              X
-            </button>
-            <input
-              className="e2e-storybook-modal-input-first"
-              style={{ display: 'block', margin: '20px' }}
-            />
-            <input
-              className="e2e-storybook-modal-input-second"
-              style={{ display: 'block', margin: '20px' }}
-            />
+            <div
+              className="modal-content-wrapper"
+              style={{
+                width: '100%',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -30%)',
+                background: '#fff',
+              }}
+            >
+              <button
+                data-hook={'tpa-modal-close-btn'}
+                onClick={this.closeModal}
+              >
+                X
+              </button>
+              <input
+                className="e2e-storybook-modal-input-first"
+                style={{ display: 'block', margin: '20px' }}
+              />
+              <input
+                className="e2e-storybook-modal-input-second"
+                style={{ display: 'block', margin: '20px' }}
+              />
+            </div>
           </Modal>
         ) : null}
       </div>
