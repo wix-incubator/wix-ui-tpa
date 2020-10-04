@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { jsdomReactUniDriver } from '@unidriver/jsdom-react';
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { colorPickerItemDriverFactory } from './ColorPickerItem.driver';
 import { ColorPickerItem } from './';

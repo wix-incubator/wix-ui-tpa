@@ -8,7 +8,6 @@ import { ColorPicker } from './';
 import { colorPickerTestkitFactory } from '../../testkit';
 import { colorPickerTestkitFactory as enzymeColorPickerTestkitFactory } from '../../testkit/enzyme';
 import { eventually } from 'wix-ui-test-utils/dist/src/protractor/utils';
-import { jsdomReactUniDriver } from '@unidriver/jsdom-react';
 
 describe('ColorPicker', () => {
   const createDriver = createUniDriverFactory(colorPickerDriverFactory);
