@@ -37,8 +37,14 @@ export class AddItem extends React.Component<AddItemProps, State> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <div className={st(classes.root, { mobile }, className)} data-mobile={mobile} data-hook={this.props['data-hook']}>
-            <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
+          <div
+            className={st(classes.root, { mobile }, className)}
+            data-mobile={mobile}
+            data-hook={this.props['data-hook']}
+          >
+            <Text
+              className={st(classes.number, { even: isEven, odd: !isEven })}
+            >
               You clicked this button {isEven ? 'even' : 'odd'} number ({count})
               of times
             </Text>
