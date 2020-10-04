@@ -38,7 +38,7 @@ export interface AddItemProps extends TPAComponentProps {
 interface DefaultProps {
   disabled: boolean;
   hasError: boolean;
-  alignment: ALIGNMENT,
+  alignment: ALIGNMENT;
   size: SIZE;
 }
 
@@ -53,21 +53,29 @@ export class AddItem extends React.Component<AddItemProps> {
   };
 
   render() {
-    const { className, children, disabled, alignment, size, hasError, onClick } = this.props;
+    const {
+      className,
+      children,
+      disabled,
+      alignment,
+      size,
+      hasError,
+      onClick,
+    } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <WSRAddItem
-              className={st(classes.root, { mobile, hasError }, className)}
-              data-mobile={mobile}
-              dataHook={this.props['data-hook']}
-              children={children}
-              disabled={disabled}
-              theme="dashes"
-              alignItems={alignment}
-              size={size}
-              onClick={onClick}
+            className={st(classes.root, { mobile, hasError }, className)}
+            data-mobile={mobile}
+            dataHook={this.props['data-hook']}
+            children={children}
+            disabled={disabled}
+            theme="dashes"
+            alignItems={alignment}
+            size={size}
+            onClick={onClick}
           />
         )}
       </TPAComponentsConsumer>

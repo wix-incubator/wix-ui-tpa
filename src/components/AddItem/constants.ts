@@ -1,2 +1,1 @@
-export const DATA_HOOKS = {
-};
+export const DATA_HOOKS = {};
