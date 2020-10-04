@@ -1,3 +1,18 @@
+# [2.7.0](https://github.com/wix/wix-ui-tpa/compare/v2.6.2...v2.7.0) (2020-10-04)
+
+### Bug Fixes
+
+* **IconButton:** add opacity on focus ([e000e7b](https://github.com/wix/wix-ui-tpa/commit/e000e7b315b6fc210842f3ee5fff24656625d7af))
+* **Tooltip:** Fix css of tooltip portal element ([35978e0](https://github.com/wix/wix-ui-tpa/commit/35978e036d516d42ada4ead2cd41621a22ed0c77))
+
+
+### Features
+
+* **Dialog:** New Dialog component ([29a0202](https://github.com/wix/wix-ui-tpa/commit/29a02020f2db8873132eccb5cceb5e4d9c0228ea))
+* **ColorPicker:** Fix Tooltip driver ([ea47402](https://github.com/wix/wix-ui-tpa/commit/ea47402c1949e5a788a67c1bed6ca196d68d2458))
+
+
+
 ## [2.6.2](https://github.com/wix/wix-ui-tpa/compare/v2.6.1...v2.6.2) (2020-10-01)
 
 
