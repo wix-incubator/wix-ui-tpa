@@ -9,7 +9,7 @@ import { colorPickerDataHook } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
 interface ColorPickerProps extends TPAComponentProps {
-  /** A callback to invoke on change */
+  /** A callback to invoke on a value change */
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
 }
 
