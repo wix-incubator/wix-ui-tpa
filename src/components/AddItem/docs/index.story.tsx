@@ -17,7 +17,7 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as AddItemWiringExampleRaw from '!raw-loader!./AddItemWiringExample.tsx';
 import * as AddItemWiringExampleCSSRaw from '!raw-loader!./AddItemWiringExample.st.css';
 import { AddItemWiringExample } from './AddItemWiringExample';
-import { AddItem } from '../';
+import { AddItem, ALIGNMENT, SIZE } from '../';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -29,9 +29,13 @@ export default {
   componentPath: '../AddItem.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-AddItem',
+    disabled: false,
+    hasError: false,
+    children: 'Add Item',
   }),
   exampleProps: {
-    //
+    alignment: Object.values(ALIGNMENT),
+    size: Object.values(SIZE),
   },
   dataHook: 'storybook-AddItem',
   sections: [

@@ -1,1 +1,1 @@
-export { AddItem, AddItemProps } from './AddItem';
+export { AddItem, AddItemProps, SIZE, ALIGNMENT } from './AddItem';
