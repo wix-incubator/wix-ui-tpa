@@ -8,6 +8,11 @@
     -st-default: AddItem;
 }
 
+:import {
+    -st-from: "wix-style-react/dist/src/Text/Text.st.css";
+    -st-default: Text;
+}
+
 /*Defaults*/
 :vars {
     /*Defaults params goes here*/
@@ -24,18 +29,32 @@
 }
 
 .root:theme(dashes) {
-    border-color: #ED24D9;
+    border: dashed 1px #ED24D9;
     background-color: #FFFFFF;
     color: #ED24D9;
 }
 
 .root:theme(dashes):hover {
     background-color: applyOpacity(#ED24D9, 0.1);
-    opacity: 0.6;
+    border: dashed 1px applyOpacity(#ED24D9, 0.6);
 }
 
 .root:theme(dashes):active {
     background-color: #FFFFFF;
+}
+
+/* We might change opacity on hover */
+.root:hasError, .root:hasError:not(:disabled):theme(dashes):hover {
+    background-color: #FFFFFF;
+    border: dashed 1px #DF3131;
+    color: #DF3131;
+    opacity: 1;
+}
+
+/* Remove WSR focus, opacity is just for now */
+.root:not(:disabled):focus-visible:theme(dashes):hasError {
+    border: dashed 1px #DF3131;
+    opacity: 0.6;
 }
 
 .root:theme(dashes):disabled {
@@ -45,22 +64,23 @@
     opacity: 1;
 }
 
-.root:hasError, .root:hasError:theme(dashes):hover {
-    background-color: #FFFFFF;
-    border-color: #DF3131;
+/* Remove WSR focus, opacity is just for now */
+.root:not(:disabled):focus-visible:theme(dashes) {
+    box-shadow: none;
+    border: dashed 1px #ED24D9;
+    opacity: 0.6;
+}
+
+.root::text Text {
+    color: #ED24D9;
+}
+
+.root:hasError::text Text {
     color: #DF3131;
-    opacity: 1;
 }
 
-.root::text {
-    /* Just test */
-    color: red;
-}
-
-/*Doesn't work!!!*/
-.root::text .Text:skin(standard) {
-    sivan: 'hi';
-    color: black;
+.root:disabled::text Text {
+    color: #969696;
 }
 
 .root:mobile {

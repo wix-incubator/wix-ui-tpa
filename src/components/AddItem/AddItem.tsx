@@ -26,7 +26,7 @@ export interface AddItemProps extends TPAComponentProps {
   hasError?: boolean;
   /** Content horizontal alignment */
   alignment?: ALIGNMENT;
-  /** size to control the icon and text sizes  */
+  /** Size to control the sizes of the text and the icon  */
   size?: SIZE;
   /** Could be any renderable node */
   children?: React.ReactNode;
