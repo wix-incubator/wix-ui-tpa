@@ -24,7 +24,7 @@ export const addItemDriverFactory = (base: UniDriver): AddItemDriver => {
     ...baseUniDriverFactory(base),
     isMobile: async () => (await base.attr('data-mobile')) === 'true',
 
-    hover: async () => await base.hover(),
+    hover: async () => base.hover(),
 
     // /**
     //  * Gets AddItem text
