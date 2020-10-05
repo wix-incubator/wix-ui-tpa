@@ -7,6 +7,10 @@ AddItemMetadata.nonReactStrictModeCompliant = true;
 AddItemMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
+    disabled: false,
+    hasError: false,
+    alignment: 'center',
+    size: 'medium',
+    children: 'Add Item',
   } as AddItemProps,
 });
