@@ -8,7 +8,7 @@ export const example = `
    <div style={{ marginBottom: '12px' }}>
     <AddItem disabled>Add Item</AddItem>
    </div>
-  <AddItem hasError>Add Item</AddItem>;
+  <AddItem hasError>Add Item</AddItem>
 </>
 `;
 
