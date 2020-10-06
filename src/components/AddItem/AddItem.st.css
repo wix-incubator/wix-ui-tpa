@@ -1,6 +1,11 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, applyOpacity;
+    -st-named: color, applyOpacity, fallback, font;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
 }
 
 :import {
@@ -15,12 +20,23 @@
 
 /*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+    DefaultBorderColor: color-8;
+    DefaultBackgroundColor: color-1;
+    DefaultTextColor: color-8;
 }
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    BorderColor: --overridable;
+    BackgroundColor: --overridable;
+    TextColor: --overridable;
+}
+
+/*Fallbacks*/
+:vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
 }
 
 .root {
@@ -29,31 +45,31 @@
 }
 
 .root:theme(dashes) {
-    border: dashed 1px #ED24D9;
-    background-color: #FFFFFF;
-    color: #ED24D9;
+    border: dashed 1px value(CurrentBorderColor);
+    background-color: value(CurrentBackgroundColor);
+    color: value(CurrentTextColor);
 }
 
 .root:theme(dashes):hover {
     background-color: applyOpacity(#ED24D9, 0.1);
-    border: dashed 1px applyOpacity(#ED24D9, 0.6);
+    border: dashed 1px applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
 .root:theme(dashes):active {
-    background-color: #FFFFFF;
+    background-color: value(CurrentBackgroundColor);
 }
 
 /* We might change opacity on hover */
 .root:hasError, .root:hasError:not(:disabled):theme(dashes):hover {
     background-color: #FFFFFF;
-    border: dashed 1px #DF3131;
-    color: #DF3131;
+    border: dashed 1px color(value(errorColor));
+    color: color(value(errorColor));
     opacity: 1;
 }
 
 /* Remove WSR focus, opacity is just for now */
 .root:not(:disabled):focus-visible:theme(dashes):hasError {
-    border: dashed 1px #DF3131;
+    border: dashed 1px color(value(errorColor));
     opacity: 0.6;
 }
 
@@ -67,16 +83,17 @@
 /* Remove WSR focus, opacity is just for now */
 .root:not(:disabled):focus-visible:theme(dashes) {
     box-shadow: none;
-    border: dashed 1px #ED24D9;
+    border: dashed 1px value(CurrentBorderColor);
     opacity: 0.6;
 }
 
 .root::text Text {
-    color: #ED24D9;
+    color: color(value(CurrentTextColor));
+    font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
 }
 
 .root:hasError::text Text {
-    color: #DF3131;
+    color: value(errorColor);
 }
 
 .root:disabled::text Text {

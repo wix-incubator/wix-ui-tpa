@@ -74,7 +74,23 @@ export default {
               rawSource: AddItemWiringExampleRaw,
               rawCSSSource: AddItemWiringExampleCSSRaw,
               params: {
-                colors: [],
+                colors: [
+                  {
+                    label: 'Border Color',
+                    wixParam: 'customBorderColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Background Color',
+                    wixParam: 'customBackgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'customTextColor',
+                    defaultColor: 'color-8',
+                  },
+                ],
                 fonts: [],
                 numbers: [],
               },

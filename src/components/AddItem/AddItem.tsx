@@ -29,7 +29,6 @@ export interface AddItemProps extends TPAComponentProps {
   size?: SIZE;
   /** Could be any renderable node */
   children?: React.ReactNode;
-  // todo: Sivan: check about onClick
   /** Click event handler  */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
