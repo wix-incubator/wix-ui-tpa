@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
 import { AddItem, ALIGNMENT, SIZE } from './';
+import { AddItemAsyncVisual } from './AddItemAsyncVisual';
 
 const CONTAINER_SIZES_MAP = {
   [SIZE.tiny]: { width: '250px', height: '55px' },
@@ -8,6 +9,23 @@ const CONTAINER_SIZES_MAP = {
   [SIZE.medium]: { width: '250px', height: '100px' },
   [SIZE.large]: { width: '250px', height: '130px' },
 };
+
+function snapTest(
+    snapName,
+    children,
+    {
+      mouseAction,
+      hover,
+      focus,
+    }
+  ) {
+  snap(`${snapName} / ${mouseAction}`, done => (
+      <AddItemAsyncVisual onDone={done} hover={hover} focus={focus}>
+        {children}
+      </AddItemAsyncVisual>
+    ),
+  );
+}
 
 visualize('AddItem', () => {
   story('simple', () => {
@@ -50,8 +68,13 @@ visualize('AddItem', () => {
   });
 
   story('states', () => {
-    snap('default', <AddItem>Add Item</AddItem>);
-    snap('disabled', <AddItem disabled>Add Item</AddItem>);
-    snap('hasError', <AddItem hasError>Add Item</AddItem>);
+    ['initial', 'hover', 'focus'].forEach(mouseAction => {
+      const hover = mouseAction === 'hover';
+      const focus = mouseAction === 'focus';
+
+      snapTest('default',  <AddItem>Add Item</AddItem>, { mouseAction, focus, hover });
+      snapTest('disabled', <AddItem disabled>Add Item</AddItem>, { mouseAction, focus, hover });
+      snapTest('hasError', <AddItem hasError>Add Item</AddItem>, { mouseAction, focus, hover });
+    });
   });
 });
