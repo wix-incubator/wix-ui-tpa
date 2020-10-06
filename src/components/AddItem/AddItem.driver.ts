@@ -9,6 +9,7 @@ import { addItemUniDriverFactory as WSRAddItemUniDriverFactory } from 'wix-style
 
 export interface AddItemDriver extends BaseUniDriver {
   hover(): Promise<void>;
+  focus(): Promise<void>;
   getText(): Promise<string>;
   textExists(): Promise<boolean>;
 }
@@ -22,7 +23,17 @@ export const addItemDriverFactory = (
   return {
     ...baseUniDriverFactory(base),
 
+    /**
+     * Hover on the element
+     * @returns {Promise<void>}
+     */
     hover: async () => base.hover(),
+
+    /**
+     * Focus on the element
+     * @returns {Promise<void>}
+     */
+    focus: async () => {}, // todo: Sivan Implement it
 
     /**
      * Gets AddItem text
@@ -34,17 +45,6 @@ export const addItemDriverFactory = (
      * Checks whether AddItem text exist
      * @returns {Promise<boolean>}
      */
-    textExists: async () => {
-      console.log('WSRAddItemDriver = ', WSRAddItemDriver);
-      console.log(
-        'WSRAddItemDriver.exists() = ',
-        await WSRAddItemDriver.exists(),
-      );
-      console.log(
-        'WSRAddItemDriver.textExists() = ',
-        await WSRAddItemDriver.textExists(),
-      );
-      return WSRAddItemDriver.textExists();
-    },
+    textExists: async () => WSRAddItemDriver.textExists(),
   };
 };

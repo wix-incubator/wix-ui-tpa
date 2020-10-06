@@ -22,7 +22,7 @@ describe('AddItem', () => {
     expect(await driver.getText()).toBe('Add Item');
   });
 
-  xit('should call onClick function', async () => {
+  it('should call onClick function', async () => {
     const onClick = jest.fn();
     const driver = createDriver(<AddItem onClick={onClick}>AddItem</AddItem>);
     await driver.click();

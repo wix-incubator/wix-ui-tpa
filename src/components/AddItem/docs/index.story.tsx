@@ -53,7 +53,7 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
+            { title: 'States', source: examples.example },
             { title: 'Sizes', source: examples.sizesExample },
             { title: 'Alignment', source: examples.alignmentExample },
           ].map(code),
