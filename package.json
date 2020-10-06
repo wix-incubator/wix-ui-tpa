@@ -26,7 +26,9 @@
     "!protractor.conf.js",
     "!applitools.*.js",
     "!Modal.js",
+    "dist/**/Modal.js",
     "!Modal.d.ts",
+    "dist/**/Modal.d.ts",
     "!webpack.config.storybook.js"
   ],
   "scripts": {
