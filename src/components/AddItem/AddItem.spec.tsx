@@ -13,7 +13,7 @@ describe('AddItem', () => {
   const createDriver = createUniDriverFactory(addItemDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<AddItem buttonText="Click Me" />);
+    const driver = createDriver(<AddItem />);
     expect(await driver.exists()).toBe(true);
   });
 
@@ -22,6 +22,15 @@ describe('AddItem', () => {
       TPAComponentsWrapper({ mobile: true })(<AddItem />),
     );
     expect(await driver.isMobile()).toBe(true);
+  });
+
+  it('should call onClick function', async () => {
+    const onClick = jest.fn();
+    const driver = createDriver(
+        <AddItem onClick={onClick}>AddItem</AddItem>,
+    );
+    await driver.click();
+    expect(onClick).toHaveBeenCalled();
   });
 
   describe('testkit', () => {
