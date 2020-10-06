@@ -10,21 +10,12 @@ const CONTAINER_SIZES_MAP = {
   [SIZE.large]: { width: '250px', height: '130px' },
 };
 
-function snapTest(
-    snapName,
-    children,
-    {
-      mouseAction,
-      hover,
-      focus,
-    }
-  ) {
+function snapTest(snapName, children, { mouseAction, hover, focus }) {
   snap(`${snapName} / ${mouseAction}`, done => (
-      <AddItemAsyncVisual onDone={done} hover={hover} focus={focus}>
-        {children}
-      </AddItemAsyncVisual>
-    ),
-  );
+    <AddItemAsyncVisual onDone={done} hover={hover} focus={focus}>
+      {children}
+    </AddItemAsyncVisual>
+  ));
 }
 
 visualize('AddItem', () => {
@@ -72,9 +63,21 @@ visualize('AddItem', () => {
       const hover = mouseAction === 'hover';
       const focus = mouseAction === 'focus';
 
-      snapTest('default',  <AddItem>Add Item</AddItem>, { mouseAction, focus, hover });
-      snapTest('disabled', <AddItem disabled>Add Item</AddItem>, { mouseAction, focus, hover });
-      snapTest('hasError', <AddItem hasError>Add Item</AddItem>, { mouseAction, focus, hover });
+      snapTest('default', <AddItem>Add Item</AddItem>, {
+        mouseAction,
+        focus,
+        hover,
+      });
+      snapTest('disabled', <AddItem disabled>Add Item</AddItem>, {
+        mouseAction,
+        focus,
+        hover,
+      });
+      snapTest('hasError', <AddItem hasError>Add Item</AddItem>, {
+        mouseAction,
+        focus,
+        hover,
+      });
     });
   });
 });
