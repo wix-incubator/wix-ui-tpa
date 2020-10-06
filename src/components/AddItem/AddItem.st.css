@@ -23,6 +23,10 @@
     DefaultBorderColor: color-8;
     DefaultBackgroundColor: color-1;
     DefaultTextColor: color-8;
+
+    DisabledBorderColor: color-3;
+    DisabledBackgroundColor: color-1;
+    DisabledTextColor: color-3;
 }
 
 /*Overrides*/
@@ -51,7 +55,7 @@
 }
 
 .root:theme(dashes):hover {
-    background-color: applyOpacity(#ED24D9, 0.1);
+    background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
     border: dashed 1px applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
@@ -62,21 +66,21 @@
 /* We might change opacity on hover */
 .root:hasError, .root:hasError:not(:disabled):theme(dashes):hover {
     background-color: #FFFFFF;
-    border: dashed 1px color(value(errorColor));
-    color: color(value(errorColor));
+    border: dashed 1px value(errorColor);
+    color: value(errorColor);
     opacity: 1;
 }
 
 /* Remove WSR focus, opacity is just for now */
 .root:not(:disabled):focus-visible:theme(dashes):hasError {
-    border: dashed 1px color(value(errorColor));
+    border: dashed 1px value(errorColor);
     opacity: 0.6;
 }
 
 .root:theme(dashes):disabled {
-    background-color: #FFFFFF;
-    color: #969696;
-    border: dashed 1px #969696;
+    background-color: color(value(DisabledBackgroundColor));
+    color: color(value(DisabledTextColor));
+    border: dashed 1px color(value(DisabledBorderColor));
     opacity: 1;
 }
 
@@ -88,14 +92,16 @@
 }
 
 .root::text Text {
-    color: color(value(CurrentTextColor));
+    color: value(CurrentTextColor);
     font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
 }
 
 .root:hasError::text Text {
     color: value(errorColor);
+    font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
 }
 
 .root:disabled::text Text {
-    color: #969696;
+    color: color(value(DisabledTextColor));
+    font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
 }
