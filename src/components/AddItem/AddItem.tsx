@@ -63,16 +63,16 @@ export class AddItem extends React.Component<AddItemProps> {
     } = this.props;
 
     return (
-        <WSRAddItem
-            className={st(classes.root, { hasError }, className)}
-            dataHook={this.props['data-hook']}
-            children={children}
-            disabled={disabled}
-            theme="dashes"
-            alignItems={alignment}
-            size={size}
-            onClick={onClick}
-        />
+      <WSRAddItem
+        className={st(classes.root, { hasError }, className)}
+        dataHook={this.props['data-hook']}
+        children={children}
+        disabled={disabled}
+        theme="dashes"
+        alignItems={alignment}
+        size={size}
+        onClick={onClick}
+      />
     );
   }
 }

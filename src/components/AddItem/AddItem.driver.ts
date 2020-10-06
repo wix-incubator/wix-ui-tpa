@@ -13,9 +13,11 @@ export interface AddItemDriver extends BaseUniDriver {
   textExists(): Promise<boolean>;
 }
 
-export const addItemDriverFactory = (base: UniDriver, body: UniDriver): AddItemDriver => {
-  const WSRAddItemDriver =
-      WSRAddItemUniDriverFactory(base, body);
+export const addItemDriverFactory = (
+  base: UniDriver,
+  body: UniDriver,
+): AddItemDriver => {
+  const WSRAddItemDriver = WSRAddItemUniDriverFactory(base, body);
 
   return {
     ...baseUniDriverFactory(base),
@@ -26,7 +28,7 @@ export const addItemDriverFactory = (base: UniDriver, body: UniDriver): AddItemD
      * Gets AddItem text
      * @return {Promise<string>}
      */
-    getText: async () => await WSRAddItemDriver.getText(),
+    getText: async () => WSRAddItemDriver.getText(),
 
     /**
      * Checks whether AddItem text exist
@@ -34,9 +36,15 @@ export const addItemDriverFactory = (base: UniDriver, body: UniDriver): AddItemD
      */
     textExists: async () => {
       console.log('WSRAddItemDriver = ', WSRAddItemDriver);
-      console.log('WSRAddItemDriver.exists() = ', await WSRAddItemDriver.exists());
-      console.log('WSRAddItemDriver.textExists() = ', await WSRAddItemDriver.textExists());
-      return await WSRAddItemDriver.textExists();
+      console.log(
+        'WSRAddItemDriver.exists() = ',
+        await WSRAddItemDriver.exists(),
+      );
+      console.log(
+        'WSRAddItemDriver.textExists() = ',
+        await WSRAddItemDriver.textExists(),
+      );
+      return WSRAddItemDriver.textExists();
     },
   };
 };
