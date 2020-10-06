@@ -25,7 +25,7 @@
 
 .root {
     -st-extends: AddItem;
-    -st-states: mobile, hasError;
+    -st-states: hasError;
 }
 
 .root:theme(dashes) {
@@ -81,8 +81,4 @@
 
 .root:disabled::text Text {
     color: #969696;
-}
-
-.root:mobile {
-    /*mobile css goes here*/
 }

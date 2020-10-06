@@ -3,7 +3,6 @@ import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
-import { TPAComponentsWrapper } from '../../test/utils';
 import { addItemDriverFactory } from './AddItem.driver';
 import { AddItem } from './';
 import { addItemTestkitFactory } from '../../testkit';
@@ -17,18 +16,15 @@ describe('AddItem', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should use mobile design', async () => {
-    const driver = createDriver(
-      TPAComponentsWrapper({ mobile: true })(<AddItem />),
-    );
-    expect(await driver.isMobile()).toBe(true);
+  it('should add the correct text', async () => {
+    const driver = createDriver(<AddItem>Add Item</AddItem>);
+    expect(await driver.textExists()).toBe(true);
+    expect(await driver.getText()).toBe('Add Item');
   });
 
-  it('should call onClick function', async () => {
+  xit('should call onClick function', async () => {
     const onClick = jest.fn();
-    const driver = createDriver(
-        <AddItem onClick={onClick}>AddItem</AddItem>,
-    );
+    const driver = createDriver(<AddItem onClick={onClick}>AddItem</AddItem>);
     await driver.click();
     expect(onClick).toHaveBeenCalled();
   });

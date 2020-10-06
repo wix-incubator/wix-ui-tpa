@@ -4,7 +4,6 @@ import { TPAComponentProps } from '../../types';
 import { AddItem as WSRAddItem } from 'wix-style-react';
 
 import { st, classes } from './AddItem.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export enum SIZE {
   tiny = 'tiny',
@@ -64,11 +63,8 @@ export class AddItem extends React.Component<AddItemProps> {
     } = this.props;
 
     return (
-      <TPAComponentsConsumer>
-        {({ mobile }) => (
-          <WSRAddItem
-            className={st(classes.root, { mobile, hasError }, className)}
-            data-mobile={mobile}
+        <WSRAddItem
+            className={st(classes.root, { hasError }, className)}
             dataHook={this.props['data-hook']}
             children={children}
             disabled={disabled}
@@ -76,9 +72,7 @@ export class AddItem extends React.Component<AddItemProps> {
             alignItems={alignment}
             size={size}
             onClick={onClick}
-          />
-        )}
-      </TPAComponentsConsumer>
+        />
     );
   }
 }
