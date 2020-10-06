@@ -12,12 +12,6 @@ export const example = `
 </>
 `;
 
-export const mobileExample = `
-<ExampleWithContextProps mobile={true}>
-  <AddItem>Add Item</AddItem>
-</ExampleWithContextProps>
-`;
-
 export const sizesExample = `
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
        <div style={{ height: '130px', width: '250px', marginBottom: '12px' }}>

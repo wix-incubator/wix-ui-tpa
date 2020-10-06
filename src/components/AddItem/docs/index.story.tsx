@@ -54,7 +54,6 @@ export default {
 
           ...[
             { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
             { title: 'Sizes', source: examples.sizesExample },
             { title: 'Alignment', source: examples.alignmentExample },
           ].map(code),
