@@ -1,3 +1,12 @@
+## [2.7.1](https://github.com/wix/wix-ui-tpa/compare/v2.7.0...v2.7.1) (2020-10-07)
+
+
+### Bug Fixes
+
+* Fix missing Modal files ([7edb29b](https://github.com/wix/wix-ui-tpa/commit/7edb29b97f7d61d208d3ebee8d5f46e963ea4d9a))
+
+
+
 # [2.7.0](https://github.com/wix/wix-ui-tpa/compare/v2.6.2...v2.7.0) (2020-10-04)
 
 ### Bug Fixes
