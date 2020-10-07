@@ -78,27 +78,27 @@ class StatesButtonVisual extends React.Component<
   }
 }
 
-visualize('StatesButton', () => {
-  Object.keys(BUTTON_STATES).forEach(state => {
-    const buttonState = BUTTON_STATES[state];
-
-    snap(`${state}`, () => (
-      <StatesButton
-        state={buttonState}
-        disabled={false}
-        idleContent={'My States Button'}
-        successContent={'Success'}
-        inProgressContent={'Loading...'}
-        failureContent={'Try Again'}
-      />
-    ));
-  });
-
-  snap('State change to success and back', done => (
-    <StatesButtonVisual done={done} onClickState={BUTTON_STATES.SUCCESS} />
-  ));
-
-  snap('State change to failure and back', done => (
-    <StatesButtonVisual done={done} onClickState={BUTTON_STATES.FAILURE} />
-  ));
-});
+// visualize('StatesButton', () => {
+//   Object.keys(BUTTON_STATES).forEach(state => {
+//     const buttonState = BUTTON_STATES[state];
+//
+//     snap(`${state}`, () => (
+//       <StatesButton
+//         state={buttonState}
+//         disabled={false}
+//         idleContent={'My States Button'}
+//         successContent={'Success'}
+//         inProgressContent={'Loading...'}
+//         failureContent={'Try Again'}
+//       />
+//     ));
+//   });
+//
+//   snap('State change to success and back', done => (
+//     <StatesButtonVisual done={done} onClickState={BUTTON_STATES.SUCCESS} />
+//   ));
+//
+//   snap('State change to failure and back', done => (
+//     <StatesButtonVisual done={done} onClickState={BUTTON_STATES.FAILURE} />
+//   ));
+// });
