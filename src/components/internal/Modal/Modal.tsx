@@ -2,11 +2,11 @@ import * as React from 'react';
 import { st, classes } from './Modal.st.css';
 import { ModalProps, ModalDefaultProps } from './types';
 import { MODAL_DATA_HOOKS } from './dataHooks';
-import { KEY_CODES } from '../../common/keyCodes';
+import { KEY_CODES } from '../../../common/keyCodes';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,
-} from '../TPAComponentsConfig';
+} from '../../TPAComponentsConfig';
 
 const createFocusTrap = require('focus-trap');
 

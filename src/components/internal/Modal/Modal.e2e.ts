@@ -1,9 +1,10 @@
 import { browser, element, by, Key } from 'protractor';
 import {
   createStoryUrl,
+  protractorUniTestkitFactoryCreator,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
-import { modalTestkitFactory } from '../../testkit/protractor';
+import { modalDriverFactory } from './Modal.driver';
 
 describe('modal', () => {
   const storyUrl = createStoryUrl({
@@ -16,6 +17,10 @@ describe('modal', () => {
   const secondInputClassName = 'e2e-storybook-modal-input-second';
   const closeDataHook = 'tpa-modal-close-btn';
   const openDataHook = 'e2e-storybook-modal-open-btn';
+
+  const modalTestkitFactory = protractorUniTestkitFactoryCreator(
+    modalDriverFactory,
+  );
 
   beforeEach(() => browser.get(storyUrl));
 

@@ -3,7 +3,7 @@ import { st, classes } from './Dialog.st.css';
 import { DATA_HOOKS } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-import { Modal } from '../Modal';
+import { Modal } from '../internal/Modal';
 import { IconButton } from '../IconButton';
 import { Close as CloseIcon } from '../../assets/icons';
 import { TPAComponentProps } from '../../types';
@@ -76,7 +76,8 @@ export class Dialog extends React.Component<DialogProps> {
               onRequestClose={onClose}
             >
               <div
-                className={`${classes.contentWrapper} ${contentClassName || ''}`}
+                className={`${classes.contentWrapper} ${contentClassName ||
+                  ''}`}
                 role="dialog"
                 aria-modal="true"
                 aria-label={ariaLabel}
