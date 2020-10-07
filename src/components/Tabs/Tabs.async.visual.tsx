@@ -95,33 +95,33 @@ const eyesConfig = {
   },
 };
 
-storiesOf('Tabs/Scroll', module)
-  .add(
-    'right nav button only',
-    () => {
-      return <TabsAsyncVisual />;
-    },
-    eyesConfig,
-  )
-  .add(
-    'both nav buttons',
-    () => {
-      const onTestReady = async driver => {
-        await driver.clickRightNavButton();
-        await delay(500);
-      };
-      return <TabsAsyncVisual onReady={onTestReady} />;
-    },
-    eyesConfig,
-  )
-  .add(
-    'scroll to right end',
-    () => {
-      const onTestReady = async driver => {
-        await scrollToEnd(driver, NavButtonOptions.right);
-        await delay(500);
-      };
-      return <TabsAsyncVisual onReady={onTestReady} />;
-    },
-    eyesConfig,
-  );
+// storiesOf('Tabs/Scroll', module)
+//   .add(
+//     'right nav button only',
+//     () => {
+//       return <TabsAsyncVisual />;
+//     },
+//     eyesConfig,
+//   )
+//   .add(
+//     'both nav buttons',
+//     () => {
+//       const onTestReady = async driver => {
+//         await driver.clickRightNavButton();
+//         await delay(500);
+//       };
+//       return <TabsAsyncVisual onReady={onTestReady} />;
+//     },
+//     eyesConfig,
+//   )
+//   .add(
+//     'scroll to right end',
+//     () => {
+//       const onTestReady = async driver => {
+//         await scrollToEnd(driver, NavButtonOptions.right);
+//         await delay(500);
+//       };
+//       return <TabsAsyncVisual onReady={onTestReady} />;
+//     },
+//     eyesConfig,
+//   );
