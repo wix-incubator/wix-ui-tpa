@@ -15,6 +15,24 @@ IconToggleMetadata.addSim({
 });
 
 IconToggleMetadata.addSim({
+  title: 'checked',
+  props: {
+    icon: <Heart />,
+    label: 'Heart',
+    checked: true,
+  },
+});
+
+IconToggleMetadata.addSim({
+  title: 'disabled',
+  props: {
+    icon: <Heart />,
+    label: 'Heart',
+    disabled: true,
+  },
+});
+
+IconToggleMetadata.addSim({
   title: 'without label',
   props: {
     icon: <Heart />,
