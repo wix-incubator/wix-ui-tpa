@@ -42,7 +42,7 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
 
   render() {
     const { onChange, children, className } = this.props;
-    const validChildren: ColorPickerItem[] = React.Children.map(
+    const validChildren: ColorPickerItem[] = (React.Children.map(
       children,
       (item: ColorPickerItem) => {
         if (!React.isValidElement(item)) {
@@ -50,7 +50,7 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
         }
         return item;
       },
-    ).filter(Boolean);
+    ) || []).filter(Boolean);
 
     return (
       <div
