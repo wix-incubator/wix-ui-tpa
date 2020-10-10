@@ -8,16 +8,10 @@ const isNaN = require('lodash/isNaN');
 const isNumber = require('lodash/isNumber');
 
 import { TPAComponentProps } from '../../types';
+import { KEYS } from '../../common/keyCodes';
 
 const MAX_SHORT_LIST_LENGTH = 5;
 const NUM_OF_NAV_DOTS = 2;
-
-const enum Keys {
-  ArrowRight = 'ArrowRight',
-  ArrowLeft = 'ArrowLeft',
-  ArrowUp = 'ArrowUp',
-  ArrowDown = 'ArrowDown',
-}
 
 const enum Size {
   Normal = 'normal',
@@ -224,14 +218,16 @@ export class DotNavigation extends React.Component<
     />
   );
 
-  callOnSelect = (index: number) => () => this.props.onSelect(index);
+  callOnSelect = (index: number) => () => {
+    this.props.onSelect(index);
+  };
 
   startKeyDownHandler = (event: RadioButtonKeyDownEvent) =>
-    (event.key === Keys.ArrowLeft || event.key === Keys.ArrowUp) &&
+    (event.key === KEYS.ArrowLeft || event.key === KEYS.ArrowUp) &&
     event.nativeEvent.preventDefault();
 
   endKeyDownHandler = (event: RadioButtonKeyDownEvent) =>
-    (event.key === Keys.ArrowRight || event.key === Keys.ArrowDown) &&
+    (event.key === KEYS.ArrowRight || event.key === KEYS.ArrowDown) &&
     event.nativeEvent.preventDefault();
 
   getKeyDownHandler = (value: number) =>
