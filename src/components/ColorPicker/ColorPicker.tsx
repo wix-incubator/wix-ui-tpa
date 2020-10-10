@@ -61,12 +61,15 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
       >
         {validChildren.map(
           (item: ColorPickerItem, index: number, all: ColorPickerItem[]) => {
-            return React.cloneElement(item, {
-              onChange,
-              key: index,
-              className: classes.item,
-              onKeyDown: this.getKeyDownHandler(index, all.length),
-            });
+            return React.cloneElement(
+              (item as unknown) as React.ReactElement<ColorPickerItemProps>,
+              {
+                onChange,
+                key: index,
+                className: classes.item,
+                onKeyDown: this.getKeyDownHandler(index, all.length),
+              },
+            );
           },
         )}
       </div>
