@@ -99,7 +99,6 @@
     font: value(CurrentTextFont);
 }
 
-/* Is not working */
 .root:hasError::text Text {
     color: value(errorColor);
     font: value(CurrentTextFont);
