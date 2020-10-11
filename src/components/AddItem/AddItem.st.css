@@ -64,11 +64,18 @@
 }
 
 /* We might change opacity on hover */
-.root:hasError, .root:hasError:not(:disabled):theme(dashes):hover {
+.root:hasError {
     background-color: #FFFFFF;
     border: dashed 1px value(errorColor);
     color: value(errorColor);
     opacity: 1;
+}
+
+.root:hasError:not(:disabled):theme(dashes):hover,
+.root:not(:disabled):focus-visible:theme(dashes):hasError {
+    background-color: applyOpacity(value(errorColor), 0.1);
+    border: dashed 1px applyOpacity(value(errorColor), 0.6);
+    color: value(errorColor);
 }
 
 /* Remove WSR focus, opacity is just for now */
@@ -93,15 +100,16 @@
 
 .root::text Text {
     color: value(CurrentTextColor);
-    font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
+    font: value(font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}"));
 }
 
+/* Is not working */
 .root:hasError::text Text {
     color: value(errorColor);
-    font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
+    font: value(font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}"));
 }
 
 .root:disabled::text Text {
     color: color(value(DisabledTextColor));
-    font: font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}");
+    font: value(font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}"));
 }
