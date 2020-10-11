@@ -7,6 +7,7 @@
     -st-mixin: TPAAddItem(
             BorderColor '"color(--customBorderColor)"',
             BackgroundColor '"color(--customBackgroundColor)"',
-            TextColor '"color(--customTextColor)"'
+            TextColor '"color(--customTextColor)"',
+            TextFont '"--textFont"'
     );
 }

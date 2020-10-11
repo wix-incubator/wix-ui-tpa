@@ -23,6 +23,7 @@
     DefaultBorderColor: color-8;
     DefaultBackgroundColor: color-1;
     DefaultTextColor: color-8;
+    DefaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '24px'}";
 
     DisabledBorderColor: color-3;
     DisabledBackgroundColor: color-1;
@@ -34,6 +35,7 @@
     BorderColor: --overridable;
     BackgroundColor: --overridable;
     TextColor: --overridable;
+    TextFont: --overridable;
 }
 
 /*Fallbacks*/
@@ -41,6 +43,7 @@
     CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentTextFont: fallback(font(value(TextFont)), font(value(DefaultTextFont)));
 }
 
 .root {
@@ -93,16 +96,16 @@
 
 .root::text Text {
     color: value(CurrentTextColor);
-    font: value(font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}"));
+    font: value(CurrentTextFont);
 }
 
 /* Is not working */
 .root:hasError::text Text {
     color: value(errorColor);
-    font: value(font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}"));
+    font: value(CurrentTextFont);
 }
 
 .root:disabled::text Text {
     color: color(value(DisabledTextColor));
-    font: value(font("{theme: 'Body-M', size: '14px', lineHeight: '24px'}"));
+    font: value(CurrentTextFont);
 }

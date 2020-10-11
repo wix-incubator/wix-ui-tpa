@@ -90,8 +90,13 @@ export default {
                     defaultColor: 'color-8',
                   },
                 ],
-                fonts: [],
-                numbers: [],
+                fonts: [
+                  {
+                    label: 'Text Font',
+                    wixParam: 'textFont',
+                    defaultFont: 'arial',
+                  },
+                ],
               },
             }),
           ],
