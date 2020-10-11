@@ -25,7 +25,7 @@ visualize('AddItem', () => {
     snap(
       'With child node',
       <AddItem>
-        <div></div>
+        <div>Add Item div</div>
       </AddItem>,
     );
     snap(
