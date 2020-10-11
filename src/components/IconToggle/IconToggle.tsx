@@ -14,12 +14,14 @@ export enum LabelPlacement {
 
 export interface IconToggleProps extends TPAComponentProps {
   icon: React.ReactNode;
-  label: React.ReactNode | string;
-  labelPlacement: LabelPlacement;
+  label?: React.ReactNode | string;
+  labelPlacement?: LabelPlacement;
   onChange?(event: OnChangeEvent): void;
-  checked: boolean;
-  disabled: boolean;
-  animation: boolean;
+  checked?: boolean;
+  disabled?: boolean;
+  animation?: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 interface DefaultProps {
@@ -54,12 +56,15 @@ export class IconToggle extends React.Component<IconToggleProps> {
 
   render() {
     const {
+      label,
       labelPlacement,
       onChange,
       checked,
       disabled,
       animation,
       className,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
 
     const content = this._getContent();
@@ -82,6 +87,10 @@ export class IconToggle extends React.Component<IconToggleProps> {
           checked={checked}
           disabled={disabled}
           onChange={onChange}
+          aria-label={
+            ariaLabel || (typeof label === 'string' ? label : undefined)
+          }
+          aria-labelledby={ariaLabelledBy}
         />
       </span>
     );
