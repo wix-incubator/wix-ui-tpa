@@ -1,0 +1,22 @@
+:import {
+    -st-from: "../ColorPicker.st.css";
+    -st-default: TPAColorPicker;
+}
+
+.wrapper {
+    display: inline-grid;
+    grid-template-columns: 1fr;
+    grid-auto-flow: row dense;
+    grid-gap: 10px;
+}
+
+.withFocusHighlight:focus-within {
+    box-shadow: -2px -2px 0 red, 2px 2px 0 red, 2px -2px 0 red, -2px 2px 0 red;
+}
+
+.colorPicker {
+    -st-mixin: TPAColorPicker(
+            ItemSize '"--itemSize"',
+            BorderRadius '"unit(fallback(zeroAsTrue(--borderRadius), 12), px)"'
+    );
+}
