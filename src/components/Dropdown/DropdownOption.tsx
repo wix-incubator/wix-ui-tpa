@@ -10,6 +10,7 @@ export interface DropdownOptionProps {
   isSelectable?: boolean;
   isSectionTitle?: boolean;
   icon?: React.ReactElement;
+  divider?: boolean;
 }
 
 export const DropdownOption: React.FC<DropdownOptionProps &

@@ -13,6 +13,7 @@ import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import { TPAComponentProps } from '../../types';
 import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 import { IDOMid } from 'wix-ui-core/dist/es/src';
+import { Divider } from '../Divider';
 
 const uniqueId = require('lodash/uniqueId');
 
@@ -206,12 +207,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const { selectedOption, ariaActivedescendant, isOpen } = this.state;
 
     const coreOptions = options.map(option =>
-      OptionFactory.create({
-        ...option,
-        render: () => (
-          <DropdownOption className={classes.dropdownOption} {...option} />
-        ),
-      }),
+      option.divider
+        ? OptionFactory.createDivider({
+            className: classes.divider,
+          })
+        : OptionFactory.create({
+            ...option,
+            render: () => (
+              <DropdownOption className={classes.dropdownOption} {...option} />
+            ),
+          }),
     );
 
     return (

@@ -137,3 +137,9 @@
 .root:alignment(center) DropdownOption {
     justify-content: center;
 }
+
+.divider {
+    margin: 10px 13px !important;
+    width: auto !important;
+    opacity: 0.2 !important;
+}

@@ -20,10 +20,10 @@ import {
   numberOptions,
   optionsWithSections,
   optionsWithSubtitle,
+  optionsWithDivider,
 } from '../helpers';
 import { Heart } from '../../../assets/icons';
 import * as Readme from '../../Dropdown/README.md';
-import { Placement } from 'wix-ui-core/dist/src/components/popover/Popover';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -58,6 +58,10 @@ const options = [
   {
     label: 'numbers',
     value: numberOptions,
+  },
+  {
+    label: 'w. divider',
+    value: optionsWithDivider,
   },
 ];
 
@@ -122,6 +126,7 @@ export default {
               source: examples.withIconsAndSubtitlesExample,
             },
             { title: 'Min Width', source: examples.minWidthExample },
+            { title: 'With Divider', source: examples.dividerExample },
           ].map(code),
         ],
       }),

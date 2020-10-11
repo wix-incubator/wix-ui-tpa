@@ -6,7 +6,7 @@ import {
   optionsWithIcon,
   optionsWithIconAndSubtitles,
   optionsWithSections,
-  optionsWithSubtitle,
+  optionsWithSubtitle, optionsWithDivider,
 } from '../helpers';
 
 const wrap = example => `
@@ -91,6 +91,12 @@ export const minWidthExample = `
           numberOptions,
         )}} initialSelectedId={'0'}/>
     </div>
+`;
+
+export const dividerExample = `
+  <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+    optionsWithDivider,
+  )}} />
 `;
 
 export const mobileExample = `

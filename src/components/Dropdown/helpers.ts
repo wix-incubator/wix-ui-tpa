@@ -4,6 +4,11 @@ export const simpleOptions = new Array(5).fill(null).map((el, i) => ({
   isSelectable: i < 3,
 }));
 
+export const optionsWithDivider = [...simpleOptions];
+optionsWithDivider.splice(Math.floor(simpleOptions.length / 2), 0, {
+  divider: true,
+} as any);
+
 export const optionsWithSubtitle = simpleOptions.map((option, i) => ({
   ...option,
   subtitle:
