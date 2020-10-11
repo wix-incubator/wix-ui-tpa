@@ -16,6 +16,7 @@ import {
 import { Card } from '../Card';
 import { classes, cssStates } from './Grid.st.css';
 import * as GridUtils from './GridUtils';
+import * as RandomUtils from '../../common/random';
 import { TPAComponentsWrapper } from '../../test/utils';
 
 function generateItems(amount = 5) {
@@ -127,7 +128,7 @@ describe('Grid', () => {
     const expectedColumnGap = 48;
     const expectedGridId = 'someID';
     spyOn(GridUtils, 'getMediaQueries');
-    spyOn(GridUtils, 'generateKey').and.returnValue(expectedGridId);
+    spyOn(RandomUtils, 'generateKey').and.returnValue(expectedGridId);
 
     createDriver(
       <Grid
@@ -207,7 +208,7 @@ describe('Grid', () => {
       cssStates({ dividers: true }),
     )[0];
     spyOn(GridUtils, 'getGridStyle');
-    spyOn(GridUtils, 'generateKey').and.returnValue(expectedGridId);
+    spyOn(RandomUtils, 'generateKey').and.returnValue(expectedGridId);
 
     createDriver(
       <Grid

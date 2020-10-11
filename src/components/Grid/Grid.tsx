@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { st, classes, cssStates } from './Grid.st.css';
 import {
-  generateKey,
   getGridStyle,
   getMediaQueries,
   itemsPerRowWidth,
@@ -20,6 +19,7 @@ import {
 import { GridDataKeys, GridDataHooks } from './DataHooks';
 import { Item } from './Item/Item';
 import { TPAComponentProps } from '../../types';
+import { generateKey } from '../../common/random';
 
 export interface GridProps extends TPAComponentProps {
   children?: React.ReactNode[];

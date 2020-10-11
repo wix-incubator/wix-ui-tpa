@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   itemsPerRowWidth,
   getMediaQueries,
-  generateKey,
   getGridStyle,
 } from './GridUtils';
 
@@ -157,14 +156,6 @@ bottom: calc((${expectedRowGap}px / -2) - ${expectedDividerWidth});
           listWrapperClass: expectedListWrapperClass,
         }),
       ).toEqual(expectedStyle);
-    });
-  });
-
-  describe('generateKey', () => {
-    it('should add prefix to the id', () => {
-      const expectedPrefix = 'list_';
-
-      expect(generateKey(expectedPrefix)).toContain(expectedPrefix);
     });
   });
 });

@@ -9,7 +9,3 @@
             BorderRadius '"unit(fallback(zeroAsTrue(--borderRadius), 12), px)"'
     );
 }
-
-.root:focus-within {
-    border: solid 1px red;
-}

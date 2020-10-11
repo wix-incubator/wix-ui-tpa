@@ -78,7 +78,7 @@ export class ColorPickerItem extends React.Component<
       disabled,
       isCrossedOut,
       tooltipDataHook,
-      onKeyDown,
+      name,
     } = this.props;
     const finalChecked = checked && !disabled;
 
@@ -114,7 +114,7 @@ export class ColorPickerItem extends React.Component<
             onChange={onChange}
             onHover={() => this.setState({ focused: true })}
             onIconBlur={() => this.setState({ focused: false })}
-            onKeyDown={onKeyDown}
+            name={name}
           />
         )}
       </TPAComponentsConsumer>

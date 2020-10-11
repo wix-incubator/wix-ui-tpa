@@ -159,10 +159,10 @@ export default {
               params: {},
             }),
             settingsPanel({
-              example: <ColorPickerFocusTabExample/>,
+              example: <ColorPickerFocusTabExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
-              title: 'Tabs between ColorPickers',
+              title: 'A11y navigation in ColorPickers',
               params: {},
             }),
           ],
