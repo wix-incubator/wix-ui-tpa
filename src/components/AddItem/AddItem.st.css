@@ -63,7 +63,6 @@
     background-color: value(CurrentBackgroundColor);
 }
 
-/* We might change opacity on hover */
 .root:hasError {
     background-color: #FFFFFF;
     border: dashed 1px value(errorColor);
@@ -78,12 +77,6 @@
     color: value(errorColor);
 }
 
-/* Remove WSR focus, opacity is just for now */
-.root:not(:disabled):focus-visible:theme(dashes):hasError {
-    border: dashed 1px value(errorColor);
-    opacity: 0.6;
-}
-
 .root:theme(dashes):disabled {
     background-color: color(value(DisabledBackgroundColor));
     color: color(value(DisabledTextColor));
@@ -95,7 +88,7 @@
 .root:not(:disabled):focus-visible:theme(dashes) {
     box-shadow: none;
     border: dashed 1px value(CurrentBorderColor);
-    opacity: 0.6;
+    background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
 }
 
 .root::text Text {

@@ -8,8 +8,6 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { addItemUniDriverFactory as WSRAddItemUniDriverFactory } from 'wix-style-react/dist/src/AddItem/AddItem.uni.driver';
 
 export interface AddItemDriver extends BaseUniDriver {
-  hover(): Promise<void>;
-  focus(): Promise<void>;
   getText(): Promise<string>;
   textExists(): Promise<boolean>;
 }
@@ -22,18 +20,6 @@ export const addItemDriverFactory = (
 
   return {
     ...baseUniDriverFactory(base),
-
-    /**
-     * Hover on the element
-     * @returns {Promise<void>}
-     */
-    hover: async () => base.hover(),
-
-    /**
-     * Focus on the element
-     * @returns {Promise<void>}
-     */
-    focus: async () => {}, // todo: Sivan Implement it
 
     /**
      * Gets AddItem text
