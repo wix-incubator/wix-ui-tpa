@@ -48,8 +48,6 @@ export class ColorPickerFocusTabExample extends React.Component {
     <div className={classes.wrapper}>
       <ColorPickerStateful className={classes.withFocusHighlight} />
       <ColorPickerStateful className={classes.withFocusHighlight} />
-      <button className={classes.withFocusHighlight}>Select me</button>
-      <button className={classes.withFocusHighlight}>Select me 2</button>
     </div>
   );
 }
