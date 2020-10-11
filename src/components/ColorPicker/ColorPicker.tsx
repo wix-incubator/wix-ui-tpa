@@ -14,45 +14,48 @@ interface ColorPickerProps extends TPAComponentProps {
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
   /** aria-label - Accessibility */
   'aria-label'?: string;
+  'aria-labeledby'?: string;
+  name?: string;
 }
 
 /** ColorPicker */
 export class ColorPicker extends React.Component<ColorPickerProps> {
-  private readonly groupName: string;
+  private readonly _groupName: string;
   static displayName = colorPickerDataHook;
 
   constructor(props) {
     super(props);
 
-    this.groupName = generateKey('ColorPicker_group');
+    this._groupName = generateKey('ColorPicker_group');
   }
 
   static Item = (props: ColorPickerItemProps) => <ColorPickerItem {...props} />;
 
   render() {
-    const { onChange, children, className } = this.props;
+    const { onChange, children, className, name } = this.props;
 
     return (
       <fieldset
         className={st(classes.root, className)}
         data-hook={this.props['data-hook']}
         aria-label={this.props['aria-label']}
+        aria-labelledby={this.props['aria-labeledby']}
       >
         <div className={classes.wrapper}>
-        {React.Children.map(
-          children,
-          (item: ColorPickerItem, index: number) => {
-            if (!React.isValidElement(item)) {
-              return null;
-            }
-            return React.cloneElement(item, {
-              onChange,
-              key: index,
-              className: classes.item,
-              name: this.groupName,
-            });
-          },
-        )}
+          {React.Children.map(
+            children,
+            (item: ColorPickerItem, index: number) => {
+              if (!React.isValidElement(item)) {
+                return null;
+              }
+              return React.cloneElement(item, {
+                onChange,
+                key: index,
+                className: classes.item,
+                name: name || this.props['aria-label'] || this._groupName,
+              });
+            },
+          )}
         </div>
       </fieldset>
     );

@@ -1,9 +1,5 @@
 import * as React from 'react';
-import {
-  itemsPerRowWidth,
-  getMediaQueries,
-  getGridStyle,
-} from './GridUtils';
+import { itemsPerRowWidth, getMediaQueries, getGridStyle } from './GridUtils';
 
 describe('GridUtils', () => {
   describe('itemsPerRowWidth', () => {

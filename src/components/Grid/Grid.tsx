@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { st, classes, cssStates } from './Grid.st.css';
-import {
-  getGridStyle,
-  getMediaQueries,
-  itemsPerRowWidth,
-} from './GridUtils';
+import { getGridStyle, getMediaQueries, itemsPerRowWidth } from './GridUtils';
 import {
   TPAComponentsConsumer,
   TPAComponentsContext,

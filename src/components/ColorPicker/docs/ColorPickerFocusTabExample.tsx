@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { classes } from './ColorPickerFocusTabExample.st.css';
 import { COLORS } from './ColorPickerExtendedExample';
-import { RadioButtonChangeEvent, RadioButtonClickEvent } from 'wix-ui-core/src/components/radio-button/RadioButton';
+import {
+  RadioButtonChangeEvent,
+  RadioButtonClickEvent,
+} from 'wix-ui-core/src/components/radio-button/RadioButton';
 import { ColorPicker } from '../ColorPicker';
 import classNames from 'classnames';
 
@@ -17,8 +20,8 @@ class ColorPickerStateful extends React.Component<Props, State> {
   state = { selectedColor: null };
 
   handleSelection = ({
-                       value,
-                     }: RadioButtonChangeEvent | RadioButtonClickEvent) => {
+    value,
+  }: RadioButtonChangeEvent | RadioButtonClickEvent) => {
     this.setState({ selectedColor: value });
   };
 
