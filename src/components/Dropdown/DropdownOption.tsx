@@ -4,8 +4,8 @@ import { st, classes } from './DropdownOption.st.css';
 import { TPAComponentProps } from '../../types';
 
 export interface DropdownOptionProps {
-  id: string;
-  value: string;
+  id?: string;
+  value?: string;
   subtitle?: string;
   isSelectable?: boolean;
   isSectionTitle?: boolean;
