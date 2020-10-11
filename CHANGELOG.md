@@ -1,3 +1,13 @@
+## [2.7.2](https://github.com/wix/wix-ui-tpa/compare/v2.7.1...v2.7.2) (2020-10-11)
+
+
+### Bug Fixes
+
+* **ColorPicker:** Add a11y props for arrow navigation ([cec09d7](https://github.com/wix/wix-ui-tpa/commit/cec09d7296a904279b53edb41f8725f90ec24001))
+* **IconToggle:** Add aria- attributes ([bca1171](https://github.com/wix/wix-ui-tpa/commit/bca1171beeb30d6890a6e9d648648ccedd5abacc))
+
+
+
 ## [2.7.1](https://github.com/wix/wix-ui-tpa/compare/v2.7.0...v2.7.1) (2020-10-07)
 
 
