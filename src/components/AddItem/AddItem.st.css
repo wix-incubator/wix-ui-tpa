@@ -58,7 +58,8 @@
 }
 
 .root:theme(dashes):hover {
-    background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
+    /*background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);*/
+    background-color: green;
     border: dashed 1px applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
@@ -91,7 +92,8 @@
 .root:not(:disabled):focus-visible:theme(dashes) {
     box-shadow: none;
     border: dashed 1px value(CurrentBorderColor);
-    background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
+    /*background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);*/
+    background-color: blue;
 }
 
 .root::text Text {
