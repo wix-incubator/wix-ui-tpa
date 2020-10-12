@@ -83,15 +83,17 @@ export class FloatingDropdownBase extends React.Component<
                 {placeholder}
               </option>
             ) : null}
-            {options.map((option: FloatingDropdownOptionProps) => (
-              <option
-                value={option.id}
-                disabled={!option.isSelectable}
-                key={option.id}
-              >
-                {option.value}
-              </option>
-            ))}
+            {options.map((option: FloatingDropdownOptionProps) =>
+              !option.divider ? (
+                <option
+                  value={option.id}
+                  disabled={!option.isSelectable}
+                  key={option.id}
+                >
+                  {option.value}
+                </option>
+              ) : null,
+            )}
           </select>
         ) : null}
       </>

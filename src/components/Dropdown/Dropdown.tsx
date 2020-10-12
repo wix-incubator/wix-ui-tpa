@@ -13,7 +13,6 @@ import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import { TPAComponentProps } from '../../types';
 import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 import { IDOMid } from 'wix-ui-core/dist/es/src';
-import { Divider } from '../Divider';
 
 const uniqueId = require('lodash/uniqueId');
 
