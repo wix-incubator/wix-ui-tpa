@@ -24,6 +24,7 @@ export interface TextAreaProps extends TPAComponentProps {
   /** Possible values: 'line', 'box' */
   theme?: TextAreaTheme;
   errorDescription?: string;
+  autoFocus?: boolean;
   onChange(event: React.ChangeEvent<HTMLTextAreaElement>): void;
   onBlur?(): void;
 }
@@ -71,6 +72,7 @@ export class TextArea extends React.Component<TextAreaProps> {
       onBlur,
       placeholder,
       errorDescription,
+      autoFocus,
       className,
     } = this.props;
     const dataObject = this._getDataAttributes();
@@ -103,6 +105,7 @@ export class TextArea extends React.Component<TextAreaProps> {
                     onChange(e);
                   }
                 }}
+                autoFocus={autoFocus}
                 onBlur={onBlur}
                 placeholder={placeholder}
                 className={classes.textArea}
