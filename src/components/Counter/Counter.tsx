@@ -22,6 +22,7 @@ export interface CounterProps extends TPAComponentProps {
   max?: number;
   error?: boolean;
   disabled?: boolean;
+  stopPropagation?: boolean;
   errorMessage?: string;
 }
 
@@ -71,6 +72,7 @@ export class Counter extends React.Component<CounterProps> {
       onChange,
       value,
       error,
+      stopPropagation,
       errorMessage,
       className,
     } = this.props;
@@ -108,7 +110,13 @@ export class Counter extends React.Component<CounterProps> {
         <div className={classes.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
-            onChange={ev => onChange(ev.target.value)}
+            onChange={ev => {
+              if (stopPropagation) {
+                ev.stopPropagation();
+              }
+
+              onChange(ev.target.value);
+            }}
             type="number"
             disabled={disabled}
             min={min}
