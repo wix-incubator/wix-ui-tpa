@@ -4,6 +4,11 @@
 }
 
 :import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Divider;
+}
+
+:import {
     -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
@@ -139,7 +144,11 @@
 }
 
 .divider {
-    margin: 10px 13px !important;
-    width: auto !important;
-    opacity: 0.2 !important;
+    -st-extends: Divider;
+}
+
+.divider:not(.customDivider) {
+    margin: 10px 13px;
+    width: auto;
+    opacity: 0.2;
 }
