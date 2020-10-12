@@ -49,7 +49,7 @@ export class DropdownNativeSelect extends React.Component<
           </option>
         )}
         {options.map((option, i) =>
-          !options.divider ? (
+          !option.divider ? (
             <option key={i} value={option.id} disabled={!option.isSelectable}>
               {option.value}
             </option>
