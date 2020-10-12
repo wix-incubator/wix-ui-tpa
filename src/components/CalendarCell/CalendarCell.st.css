@@ -102,14 +102,6 @@
     -st-mixin: TPAText(MainTextColor value(CurrentPastFontColor), MainTextFont value(CurrentFontStyle));
 }
 
-.root:timeType(today) {
-    border-color: value(CurrentTodayColor);
-}
-
-.root:timeType(today) .title {
-    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
-}
-
 .root:timeType(futureDate){
     background: value(CurrentFutureBackgroundColor);
 }
@@ -124,6 +116,14 @@
 
 .root:current .title {
     -st-mixin: TPAText(MainTextColor value(CurrentFontColor), MainTextFont value(CurrentFontStyle));
+}
+
+.root:timeType(today) {
+    border-color: value(CurrentTodayColor);
+}
+
+.root:timeType(today) .title {
+    -st-mixin: TPAText(MainTextColor value(CurrentTodayColor), MainTextFont value(CurrentFontStyle));
 }
 
 .root:stretchable {
