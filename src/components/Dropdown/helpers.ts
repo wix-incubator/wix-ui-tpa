@@ -1,8 +1,12 @@
-export const simpleOptions = new Array(5).fill(null).map((el, i) => ({
-  id: `${i}`,
-  value: `Input Text ${i + 1}`,
-  isSelectable: i < 3,
-}));
+export const simpleOptions = new Array(6).fill(null).map((el, i) => {
+  return i === 4
+    ? { divider: true }
+    : {
+        id: `${i}`,
+        value: `Input Text ${i + 1}`,
+        isSelectable: i < 3,
+      };
+});
 
 export const optionsWithSubtitle = simpleOptions.map((option, i) => ({
   ...option,

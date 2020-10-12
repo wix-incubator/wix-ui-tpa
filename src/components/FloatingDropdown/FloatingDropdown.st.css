@@ -11,7 +11,7 @@
 
 :import {
     -st-from: "../Dropdown/Dropdown.st.css";
-    -st-named: dropdown;
+    -st-named: dropdown, divider;
 }
 
 .root {}
@@ -35,4 +35,8 @@
 
 .root .dropdown DropdownOption::title {
     white-space: initial;
+}
+
+.optionDivider {
+    -st-mixin: divider;
 }
