@@ -37,6 +37,6 @@
     white-space: initial;
 }
 
-.divider {
+.optionDivider {
     -st-mixin: divider;
 }

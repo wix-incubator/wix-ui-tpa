@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
@@ -23,7 +23,7 @@ class DropdownVisual extends React.Component<any> {
   }
 }
 
-function getTests(isMobile) {
+function getTests(isMobile = false) {
   return [
     {
       it: 'Simple',
@@ -60,21 +60,16 @@ function getTests(isMobile) {
   ];
 }
 
-const tests = [
-  {
-    describe: 'desktop',
-    its: getTests(false),
-  },
-  {
-    describe: 'mobile',
-    its: getTests(true),
-  },
-];
+visualize('Dropdown', () => {
+  story('desktop', () => {
+    getTests().map(testConfig => {
+      snap(testConfig.it, <DropdownVisual {...testConfig.props} />);
+    });
+  });
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`Dropdown/${describe}`, module).add(it, () => (
-      <DropdownVisual {...props} />
-    ));
+  story('mobile', () => {
+    getTests(true).map(testConfig => {
+      snap(testConfig.it, <DropdownVisual {...testConfig.props} />);
+    });
   });
 });
