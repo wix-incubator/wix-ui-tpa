@@ -3,10 +3,10 @@ import { snap, story, visualize } from 'storybook-snapper';
 import { AddItem, ALIGNMENT, SIZE } from './';
 
 const CONTAINER_SIZES_MAP = {
-  [SIZE.tiny]: { width: '250px', height: '55px' },
-  [SIZE.small]: { width: '250px', height: '70px' },
-  [SIZE.medium]: { width: '250px', height: '100px' },
-  [SIZE.large]: { width: '250px', height: '130px' },
+  [SIZE.small]: { width: '250px', height: '55px' },
+  [SIZE.medium]: { width: '250px', height: '70px' },
+  [SIZE.large]: { width: '250px', height: '100px' },
+  [SIZE.xLarge]: { width: '250px', height: '130px' },
 };
 
 visualize('AddItem', () => {
@@ -22,7 +22,7 @@ visualize('AddItem', () => {
     snap(
       'Long text with Ellipsis',
       <div style={{ height: '130px', width: '150px', marginBottom: '12px' }}>
-        <AddItem size={SIZE.large}>Add Item long text!!!!</AddItem>
+        <AddItem size={SIZE.xLarge}>Add Item long text!!!!</AddItem>
       </div>,
     );
   });

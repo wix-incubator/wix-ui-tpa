@@ -7,10 +7,10 @@ import { theme } from './WSRTheme';
 import { st, classes } from './AddItem.st.css';
 
 export enum SIZE {
-  tiny = 'tiny',
   small = 'small',
   medium = 'medium',
   large = 'large',
+  xLarge = 'xLarge',
 }
 
 export enum ALIGNMENT {
@@ -18,6 +18,13 @@ export enum ALIGNMENT {
   right = 'right',
   left = 'left',
 }
+
+const WSR_SIZE_MAP = {
+  [SIZE.small]: 'tiny',
+  [SIZE.medium]: 'small',
+  [SIZE.large]: 'medium',
+  [SIZE.xLarge]: 'large',
+};
 
 export interface AddItemProps extends TPAComponentProps {
   /** Applies disabled styles */
@@ -48,7 +55,7 @@ export class AddItem extends React.Component<AddItemProps> {
     disabled: false,
     hasError: false,
     alignment: ALIGNMENT.center,
-    size: SIZE.tiny,
+    size: SIZE.small,
   };
 
   render() {
@@ -72,7 +79,7 @@ export class AddItem extends React.Component<AddItemProps> {
           disabled={disabled}
           theme="dashes"
           alignItems={alignment}
-          size={size}
+          size={WSR_SIZE_MAP[size]}
           onClick={onClick}
         >
           {() => children}
