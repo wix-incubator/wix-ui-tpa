@@ -13,11 +13,6 @@
     -st-default: AddItem;
 }
 
-:import {
-    -st-from: "wix-style-react/dist/src/Text/Text.st.css";
-    -st-default: Text;
-}
-
 /*Defaults*/
 :vars {
     DefaultBorderColor: color-8;
@@ -94,17 +89,17 @@
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
 }
 
-.root::text Text {
+.root::textContent {
     color: value(CurrentTextColor);
     font: value(CurrentTextFont);
 }
 
-.root:hasError::text Text {
+.root:hasError::textContent {
     color: value(errorColor);
     font: value(CurrentTextFont);
 }
 
-.root:disabled::text Text {
+.root:disabled::textContent {
     color: color(value(DisabledTextColor));
     font: value(CurrentTextFont);
 }
