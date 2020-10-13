@@ -79,6 +79,7 @@ export class AddItem extends React.Component<AddItemProps> {
           disabled={disabled}
           theme="dashes"
           alignItems={alignment}
+          // @ts-ignore
           size={WSR_SIZE_MAP[size]}
           onClick={onClick}
         >
