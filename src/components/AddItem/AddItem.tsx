@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 
-import { AddItem as WSRAddItem } from 'wix-style-react';
+import { AddItem as WSRAddItem, ThemeProvider } from 'wix-style-react';
+import { theme } from './WSRTheme';
 
 import { st, classes } from './AddItem.st.css';
 
@@ -62,16 +63,19 @@ export class AddItem extends React.Component<AddItemProps> {
     } = this.props;
 
     return (
-      <WSRAddItem
-        className={st(classes.root, { hasError }, className)}
-        dataHook={this.props['data-hook']}
-        children={children}
-        disabled={disabled}
-        theme="dashes"
-        alignItems={alignment}
-        size={size}
-        onClick={onClick}
-      />
+      <ThemeProvider theme={theme()}>
+        <WSRAddItem
+            className={st(classes.root, { hasError }, className)}
+            dataHook={this.props['data-hook']}
+            disabled={disabled}
+            theme="dashes"
+            alignItems={alignment}
+            size={size}
+            onClick={onClick}
+        >
+          {() => children}
+        </WSRAddItem>
+      </ThemeProvider>
     );
   }
 }

@@ -89,17 +89,17 @@
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
 }
 
-.root::textContent {
+.root::textWrapper {
     color: value(CurrentTextColor);
     font: value(CurrentTextFont);
 }
 
-.root:hasError::textContent {
+.root:hasError::textWrapper {
     color: value(errorColor);
     font: value(CurrentTextFont);
 }
 
-.root:disabled::textContent {
+.root:disabled::textWrapper {
     color: color(value(DisabledTextColor));
     font: value(CurrentTextFont);
 }
