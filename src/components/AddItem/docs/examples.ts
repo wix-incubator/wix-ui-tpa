@@ -20,7 +20,7 @@ export const sizesExample = `
       <div style={{ height: '100px', width: '250px', marginBottom: '12px' }}>
         <AddItem size="medium">Add Item</AddItem>
       </div>
-      <div style={{ height: '50px', width: '250px', marginBottom: '12px' }}>
+      <div style={{ height: '70px', width: '250px', marginBottom: '12px' }}>
         <AddItem size="small">Add Item</AddItem>
       </div>
       <div style={{ height: '36px', width: '250px' }}>
