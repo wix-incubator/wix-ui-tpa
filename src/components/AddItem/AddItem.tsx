@@ -65,13 +65,13 @@ export class AddItem extends React.Component<AddItemProps> {
     return (
       <ThemeProvider theme={theme()}>
         <WSRAddItem
-            className={st(classes.root, { hasError }, className)}
-            dataHook={this.props['data-hook']}
-            disabled={disabled}
-            theme="dashes"
-            alignItems={alignment}
-            size={size}
-            onClick={onClick}
+          className={st(classes.root, { hasError }, className)}
+          dataHook={this.props['data-hook']}
+          disabled={disabled}
+          theme="dashes"
+          alignItems={alignment}
+          size={size}
+          onClick={onClick}
         >
           {() => children}
         </WSRAddItem>

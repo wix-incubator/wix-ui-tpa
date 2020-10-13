@@ -8,7 +8,7 @@ import { ReactComponent as PlusS }  from '../../assets/icons/PlusS.svg';
 export const theme = () => ({
     icons: {
         AddItemButton: {
-            tiny: () => <PlusS className="AddItemSIcon" style={{ flexShrink: 0 }}/>,
+            tiny: () => <PlusS style={{ flexShrink: 0 }}/>,
             small: PlusM,
             medium: PlusL,
             large: PlusXL,
