@@ -90,7 +90,13 @@ export class Counter extends React.Component<CounterProps> {
         <Button
           aria-label={incrementAriaLabel}
           className={classes.btn}
-          onClick={this._onIncrement}
+          onClick={(e) => {
+            if (stopPropagation) {
+              e.stopPropagation();
+            }
+
+            this._onIncrement();
+          }}
           name="increment"
           disabled={disabled || (max && value + step > max)}
         >
@@ -110,13 +116,7 @@ export class Counter extends React.Component<CounterProps> {
         <div className={classes.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
-            onChange={ev => {
-              if (stopPropagation) {
-                ev.stopPropagation();
-              }
-
-              onChange(ev.target.value);
-            }}
+            onChange={ev => onChange(ev.target.value)}
             type="number"
             disabled={disabled}
             min={min}
@@ -129,7 +129,13 @@ export class Counter extends React.Component<CounterProps> {
         <Button
           aria-label={decrementAriaLabel}
           className={classes.btn}
-          onClick={this._onDecrement}
+          onClick={(e) => {
+            if (stopPropagation) {
+              e.stopPropagation();
+            }
+
+            this._onDecrement();
+          }}
           name="decrement"
           disabled={disabled || value - step < min}
         >
