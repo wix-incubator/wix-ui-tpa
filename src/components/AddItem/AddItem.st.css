@@ -42,44 +42,49 @@
 }
 
 .root {
+    width: 100%;
+    height: 100%;
+}
+
+.wsrAddItemRoot {
     -st-extends: AddItem;
     -st-states: hasError;
 }
 
-.root:theme(dashes) {
+.wsrAddItemRoot:theme(dashes) {
     border: dashed 1px value(CurrentBorderColor);
     background-color: value(CurrentBackgroundColor);
 }
 
-.root:theme(dashes):hover {
+.wsrAddItemRoot:theme(dashes):hover {
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
     border: dashed 1px applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
-.root:theme(dashes):active {
+.wsrAddItemRoot:theme(dashes):active {
     background-color: value(CurrentBackgroundColor);
 }
 
-.root:hasError {
+.wsrAddItemRoot:hasError {
     background-color: #FFFFFF;
     border: dashed 1px value(errorColor);
     opacity: 1;
 }
 
-.root:hasError:not(:disabled):theme(dashes):hover,
-.root:not(:disabled):focus-visible:theme(dashes):hasError {
+.wsrAddItemRoot:hasError:not(:disabled):theme(dashes):hover,
+.wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes):hasError {
     background-color: applyOpacity(value(errorColor), 0.1);
     border: dashed 1px applyOpacity(value(errorColor), 0.6);
 }
 
-.root:theme(dashes):disabled {
+.wsrAddItemRoot:theme(dashes):disabled {
     background-color: color(value(DisabledBackgroundColor));
     border: dashed 1px color(value(DisabledBorderColor));
     opacity: 1;
 }
 
 /* Remove WSR focus, opacity is just for now */
-.root:not(:disabled):focus-visible:theme(dashes) {
+.wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes) {
     box-shadow: none;
     border: dashed 1px value(CurrentBorderColor);
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
@@ -87,14 +92,14 @@
 
 /* Plus Icon color */
 
-.root:theme(dashes)::content path {
+.wsrAddItemRoot:theme(dashes)::content path {
     fill: value(CurrentTextColor);
 }
 
-.root:hasError::content path {
+.wsrAddItemRoot:hasError::content path {
     fill: value(errorColor);
 }
-.root:disabled::content path {
+.wsrAddItemRoot:disabled::content path {
     fill: color(value(DisabledTextColor))
 }
 
@@ -103,17 +108,17 @@
 
 /* Text color */
 
-.root::textWrapper {
+.wsrAddItemRoot::textWrapper {
     color: value(CurrentTextColor);
     font: value(CurrentTextFont);
 }
 
-.root:hasError::textWrapper {
+.wsrAddItemRoot:hasError::textWrapper {
     color: value(errorColor);
     font: value(CurrentTextFont);
 }
 
-.root:disabled::textWrapper {
+.wsrAddItemRoot:disabled::textWrapper {
     color: color(value(DisabledTextColor));
     font: value(CurrentTextFont);
 }

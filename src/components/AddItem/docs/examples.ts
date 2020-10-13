@@ -14,16 +14,16 @@ export const example = `
 
 export const sizesExample = `
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-       <div style={{ height: '130px', width: '250px', marginBottom: '12px' }}>
+       <div style={{ height: '150px', width: '250px', marginBottom: '12px' }}>
         <AddItem size="large">Add Item</AddItem>
       </div>
       <div style={{ height: '100px', width: '250px', marginBottom: '12px' }}>
         <AddItem size="medium">Add Item</AddItem>
       </div>
-      <div style={{ height: '70px', width: '250px', marginBottom: '12px' }}>
+      <div style={{ height: '50px', width: '250px', marginBottom: '12px' }}>
         <AddItem size="small">Add Item</AddItem>
       </div>
-      <div style={{ height: '55px', width: '250px' }}>
+      <div style={{ height: '36px', width: '250px' }}>
         <AddItem size="tiny">Add Item</AddItem>
       </div>
     </div>
