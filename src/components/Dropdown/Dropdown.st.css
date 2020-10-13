@@ -4,6 +4,11 @@
 }
 
 :import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: Divider;
+}
+
+:import {
     -st-from: "../../common/palette.st.css";
     -st-named: errorColor;
 }
@@ -136,4 +141,14 @@
 
 .root:alignment(center) DropdownOption {
     justify-content: center;
+}
+
+.divider {
+    -st-extends: Divider;
+}
+
+.divider:not(.customDivider) {
+    margin: 10px 13px;
+    width: auto;
+    opacity: 0.2;
 }

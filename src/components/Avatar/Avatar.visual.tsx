@@ -18,15 +18,7 @@ visualize('Avatar', () => {
         <Avatar size={AvatarSize[avatarSize]} name={'Peter'} />,
       );
       snap('With image', done => (
-        <Avatar
-          size={size}
-          name={'Eve'}
-          src={IMG_SRC}
-          onLoad={async () => {
-            await delay(500);
-            done();
-          }}
-        />
+        <Avatar size={size} name={'Eve'} src={IMG_SRC} onLoad={done} />
       ));
     });
   });

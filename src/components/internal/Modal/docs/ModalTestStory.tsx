@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { Modal } from '..';
-import { Button } from '../../Button';
+import { Modal } from '../index';
+import { Button } from '../../../Button';
 
 const kind = 'Tests';
 

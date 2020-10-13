@@ -23,6 +23,11 @@ import { getFloatingDropdownTestProps } from '../test-props';
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
+const exampleProps = getFloatingDropdownTestProps() as any;
+exampleProps.options = [
+  { value: exampleProps.options, label: 'simple example' },
+];
+
 export default {
   category: 'Components',
   storyName: 'FloatingDropdown',
@@ -30,10 +35,11 @@ export default {
   componentPath: '../FloatingDropdown.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-FloatingDropdown',
-    ...getFloatingDropdownTestProps(),
+    ...exampleProps,
+    options: exampleProps.options[0].value,
   }),
   exampleProps: {
-    //
+    options: exampleProps.options,
   },
   dataHook: 'storybook-FloatingDropdown',
   sections: [

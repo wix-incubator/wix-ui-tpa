@@ -5,7 +5,7 @@ import {
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { DATA_HOOKS } from './constants';
 
-import { modalDriverFactory } from '../Modal/Modal.driver';
+import { modalDriverFactory } from '../internal/Modal/Modal.driver';
 
 export interface DialogDriver extends BaseUniDriver {
   isMobile(): Promise<boolean>;

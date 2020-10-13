@@ -27,6 +27,7 @@ import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherEx
 import * as Readme from '../README.md';
 import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
 import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExample';
+import { ColorPickerFocusTabExample } from './ColorPickerFocusTabExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -155,6 +156,13 @@ export default {
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               title: 'Colorpicker with tooltip in mobile mode (long press)',
+              params: {},
+            }),
+            settingsPanel({
+              example: <ColorPickerFocusTabExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              title: 'A11y navigation in ColorPickers',
               params: {},
             }),
           ],

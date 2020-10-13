@@ -24,7 +24,7 @@
 }
 
 .root {
-    -st-states: mobile;
+    -st-states: mobile, rtl;
 }
 
 .contentWrapper {

@@ -2,7 +2,7 @@
   "private": false,
   "name": "wix-ui-tpa",
   "sideEffects": false,
-  "version": "2.6.2",
+  "version": "2.7.2",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -25,8 +25,6 @@
     "!wallaby.js",
     "!protractor.conf.js",
     "!applitools.*.js",
-    "!Modal.js",
-    "!Modal.d.ts",
     "!webpack.config.storybook.js"
   ],
   "scripts": {
@@ -78,7 +76,7 @@
     "yoshi-style-dependencies": "^4.6.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "^2.7.28",
+    "@applitools/eyes-storybook": "^3.0.0",
     "@storybook/addon-links": "^5.0.9",
     "@storybook/react": "^5.0.9",
     "@stylable/cli": "^3.5.0",

@@ -11,8 +11,15 @@
 }
 
 .root {
-    display: inline-flex;
+    display: inline-block;
     margin: -4px;
+    border: 0;
+    padding: 0.01em 0 0 0;
+    min-width: 0;
+}
+
+.wrapper {
+    display: inline-flex;
     flex-wrap: wrap;
 }
 

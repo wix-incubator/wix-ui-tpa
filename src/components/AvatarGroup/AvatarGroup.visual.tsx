@@ -30,14 +30,10 @@ visualize('AvatarGroup', () => {
       ));
 
       snap('With 6 items and default limit', done => {
-        function onLoad() {
-          done();
-        }
-
         return (
           <AvatarGroup
             size={size}
-            items={[...generate3Items(onLoad), ...generate3Items(onLoad)]}
+            items={[...generate3Items(done), ...generate3Items(done)]}
           />
         );
       });

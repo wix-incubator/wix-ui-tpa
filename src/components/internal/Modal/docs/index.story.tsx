@@ -12,9 +12,9 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { Modal as CoreModal, ModalProps } from '../';
-import { Button } from '../../Button';
+import { allComponents } from '../../../../../stories/utils/allComponents';
+import { Modal as CoreModal, ModalProps } from '../index';
+import { Button } from '../../../Button';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });

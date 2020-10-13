@@ -206,12 +206,16 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const { selectedOption, ariaActivedescendant, isOpen } = this.state;
 
     const coreOptions = options.map(option =>
-      OptionFactory.create({
-        ...option,
-        render: () => (
-          <DropdownOption className={classes.dropdownOption} {...option} />
-        ),
-      }),
+      option.divider
+        ? OptionFactory.createDivider({
+            className: classes.divider,
+          })
+        : OptionFactory.create({
+            ...option,
+            render: () => (
+              <DropdownOption className={classes.dropdownOption} {...option} />
+            ),
+          }),
     );
 
     return (

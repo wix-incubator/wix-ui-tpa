@@ -79,12 +79,14 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
   _generateCoreOptions() {
     const { options } = this.props;
 
-    const renderableOptions = options.map(option => ({
-      ...option,
-      render: () => <DropdownOption {...option} />,
-    }));
-
-    const coreOptions = renderableOptions.map(OptionFactory.create);
+    const coreOptions = options.map(option =>
+      option.divider
+        ? OptionFactory.createDivider({ className: classes.optionDivider })
+        : OptionFactory.create({
+            ...option,
+            render: () => <DropdownOption {...option} />,
+          }),
+    );
 
     return {
       coreOptions,

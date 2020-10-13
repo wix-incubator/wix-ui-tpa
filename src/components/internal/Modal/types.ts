@@ -1,4 +1,4 @@
-import { TPAComponentProps } from '../../types';
+import { TPAComponentProps } from '../../../types';
 import * as React from 'react';
 
 export interface ModalProps extends TPAComponentProps {
