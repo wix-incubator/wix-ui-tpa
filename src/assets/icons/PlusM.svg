@@ -2,6 +2,6 @@
 <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Plus - M</title>
     <g id="Plus---M" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M6.5,0 L6.5,5.5 L12,5.5 L12,6.5 L6.5,6.5 L6.5,12 L5.5,12 L5.5,6.5 L0,6.5 L6.123234e-17,5.5 L5.5,5.5 L5.5,0 L6.5,0 Z" id="Combined-Shape" fill="currentColor" fill-rule="nonzero"></path>
+        <path d="M6.5,0 L6.5,5.5 L12,5.5 L12,6.5 L6.5,6.5 L6.5,12 L5.5,12 L5.5,6.5 L0,6.5 L6.123234e-17,5.5 L5.5,5.5 L5.5,0 L6.5,0 Z" id="Combined-Shape" fill="#000000" fill-rule="nonzero"></path>
     </g>
 </svg>

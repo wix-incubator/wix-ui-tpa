@@ -49,7 +49,6 @@
 .root:theme(dashes) {
     border: dashed 1px value(CurrentBorderColor);
     background-color: value(CurrentBackgroundColor);
-    color: value(CurrentTextColor);
 }
 
 .root:theme(dashes):hover {
@@ -64,7 +63,6 @@
 .root:hasError {
     background-color: #FFFFFF;
     border: dashed 1px value(errorColor);
-    color: value(errorColor);
     opacity: 1;
 }
 
@@ -72,12 +70,10 @@
 .root:not(:disabled):focus-visible:theme(dashes):hasError {
     background-color: applyOpacity(value(errorColor), 0.1);
     border: dashed 1px applyOpacity(value(errorColor), 0.6);
-    color: value(errorColor);
 }
 
 .root:theme(dashes):disabled {
     background-color: color(value(DisabledBackgroundColor));
-    color: color(value(DisabledTextColor));
     border: dashed 1px color(value(DisabledBorderColor));
     opacity: 1;
 }
@@ -88,6 +84,24 @@
     border: dashed 1px value(CurrentBorderColor);
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
 }
+
+/* Plus Icon color */
+
+.root:theme(dashes)::content path {
+    fill: value(CurrentTextColor);
+}
+
+.root:hasError::content path {
+    fill: value(errorColor);
+}
+.root:disabled::content path {
+    fill: color(value(DisabledTextColor))
+}
+
+/*****************/
+
+
+/* Text color */
 
 .root::textWrapper {
     color: value(CurrentTextColor);
@@ -103,3 +117,5 @@
     color: color(value(DisabledTextColor));
     font: value(CurrentTextFont);
 }
+
+/*****************/
