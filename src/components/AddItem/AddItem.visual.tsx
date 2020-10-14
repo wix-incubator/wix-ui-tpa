@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
-import { AddItem, ALIGNMENT, SIZE } from './';
+import { AddItem, ALIGNMENT, ICON_SIZE, DIRECTION } from './';
 
 const CONTAINER_SIZES_MAP = {
-  [SIZE.small]: { width: '250px', height: '55px' },
-  [SIZE.medium]: { width: '250px', height: '70px' },
-  [SIZE.large]: { width: '250px', height: '100px' },
-  [SIZE.xLarge]: { width: '250px', height: '130px' },
+  [ICON_SIZE.small]: { width: '250px', height: '55px' },
+  [ICON_SIZE.medium]: { width: '250px', height: '70px' },
+  [ICON_SIZE.large]: { width: '250px', height: '100px' },
+  [ICON_SIZE.xLarge]: { width: '250px', height: '130px' },
 };
 
 visualize('AddItem', () => {
@@ -22,13 +22,13 @@ visualize('AddItem', () => {
     snap(
       'Long text with Ellipsis',
       <div style={{ height: '130px', width: '150px', marginBottom: '12px' }}>
-        <AddItem size={SIZE.xLarge}>Add Item long text!!!!</AddItem>
+        <AddItem iconSize={ICON_SIZE.xLarge}>Add Item long text!!!!</AddItem>
       </div>,
     );
   });
 
   story('Sizes', () => {
-    Object.values(SIZE).map(size => {
+    Object.values(ICON_SIZE).map(size => {
       snap(
         size,
         <div
@@ -37,7 +37,7 @@ visualize('AddItem', () => {
             height: CONTAINER_SIZES_MAP[size].height,
           }}
         >
-          <AddItem size={size}>Add Item</AddItem>
+          <AddItem iconSize={size}>Add Item</AddItem>
         </div>,
       );
     });
@@ -46,6 +46,28 @@ visualize('AddItem', () => {
   story('Alignments', () => {
     Object.values(ALIGNMENT).map(alignment => {
       snap(alignment, <AddItem alignment={alignment}>Add Item</AddItem>);
+    });
+  });
+
+  story('Directions', () => {
+    Object.values(DIRECTION).map(direction => {
+      snap(direction, <AddItem direction={direction}>Add Item</AddItem>);
+    });
+  });
+
+  story('only icons', () => {
+    Object.values(ICON_SIZE).map(size => {
+      snap(
+          size,
+          <div
+              style={{
+                width: CONTAINER_SIZES_MAP[size].width,
+                height: CONTAINER_SIZES_MAP[size].height,
+              }}
+          >
+            <AddItem iconSize={size}/>
+          </div>,
+      );
     });
   });
 

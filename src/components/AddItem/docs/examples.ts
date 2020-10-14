@@ -15,16 +15,16 @@ export const example = `
 export const sizesExample = `
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
        <div style={{ height: '150px', width: '250px', marginBottom: '12px' }}>
-        <AddItem size="xLarge">Add Item</AddItem>
+        <AddItem iconSize="xLarge">Add Item</AddItem>
       </div>
       <div style={{ height: '100px', width: '250px', marginBottom: '12px' }}>
-        <AddItem size="large">Add Item</AddItem>
+        <AddItem iconSize="large">Add Item</AddItem>
       </div>
       <div style={{ height: '70px', width: '250px', marginBottom: '12px' }}>
-        <AddItem size="medium">Add Item</AddItem>
+        <AddItem iconSize="medium">Add Item</AddItem>
       </div>
       <div style={{ height: '36px', width: '250px' }}>
-        <AddItem size="small">Add Item</AddItem>
+        <AddItem iconSize="small">Add Item</AddItem>
       </div>
     </div>
 `;
@@ -39,4 +39,31 @@ export const alignmentExample = `
       </div>
       <AddItem alignment="right">Add Item</AddItem>
     </>
+`;
+
+export const directionExample = `
+    <>
+      <div style={{ marginBottom: '12px' }}>
+        <AddItem direction="vertical">Add Item</AddItem>
+      </div>
+      <AddItem direction="horizontal">Add Item</AddItem>
+  
+    </>
+`;
+
+export const iconsExample = `
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+       <div style={{ height: '150px', width: '250px', marginBottom: '12px' }}>
+        <AddItem iconSize="xLarge"/>
+      </div>
+      <div style={{ height: '100px', width: '250px', marginBottom: '12px' }}>
+        <AddItem iconSize="large"/>
+      </div>
+      <div style={{ height: '70px', width: '250px', marginBottom: '12px' }}>
+        <AddItem iconSize="medium"/>
+      </div>
+      <div style={{ height: '36px', width: '250px' }}>
+        <AddItem iconSize="small"/>
+      </div>
+    </div>
 `;

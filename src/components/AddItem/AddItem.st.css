@@ -48,7 +48,7 @@
 
 .wsrAddItemRoot {
     -st-extends: AddItem;
-    -st-states: hasError;
+    -st-states: hasError, direction(enum(horizontal, vertical)), noChildren;
 }
 
 .wsrAddItemRoot:theme(dashes) {
@@ -57,7 +57,7 @@
 }
 
 .wsrAddItemRoot:theme(dashes):hover {
-    background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
+    background-color: applyOpacity(value(CurrentBorderColor), 0.1);
     border-color: applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
@@ -87,8 +87,44 @@
 .wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes) {
     box-shadow: none;
     border-color: value(CurrentBorderColor);
-    background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
+    background-color: applyOpacity(value(CurrentBorderColor), 0.1);
 }
+
+/* direction (vertical / horizontal) */
+
+.wsrAddItemRoot:direction(vertical)::content {
+    flex-direction: column;
+}
+
+.wsrAddItemRoot:direction(horizontal)::content {
+    flex-direction: row;
+}
+
+.wsrAddItemRoot:direction(vertical)::content svg {
+    flex-shrink: 1;
+}
+
+.wsrAddItemRoot:direction(horizontal)::content svg {
+    flex-shrink: 0;
+}
+
+.wsrAddItemRoot:direction(vertical)::textWrapper {
+    width: 100%;
+    padding-top: 6px;
+}
+
+.wsrAddItemRoot:direction(vertical):noChildren::textWrapper {
+    padding-top: 0;
+}
+
+.wsrAddItemRoot:direction(horizontal)::textWrapper {
+    max-width: 100%;
+    width: auto;
+    flex-basis: auto;
+    padding: 0 0 0 4px;
+}
+
+/*****************/
 
 /* Plus Icon color */
 

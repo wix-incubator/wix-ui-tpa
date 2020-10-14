@@ -9,7 +9,7 @@ export const theme = (className) => ({
     className: className,
     icons: {
         AddItemButton: {
-            tiny: () => <PlusS style={{flexShrink: 0}}/>,
+            tiny: () => <PlusS/>,
             small: PlusM,
             medium: PlusL,
             large: PlusXL,

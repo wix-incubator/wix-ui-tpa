@@ -7,7 +7,7 @@ import { theme } from './WSRTheme';
 import { st, classes } from './AddItem.st.css';
 import { DATA_HOOKS } from './constants';
 
-export enum SIZE {
+export enum ICON_SIZE {
   small = 'small',
   medium = 'medium',
   large = 'large',
@@ -20,11 +20,16 @@ export enum ALIGNMENT {
   left = 'left',
 }
 
+export enum DIRECTION {
+  horizontal = 'horizontal',
+  vertical = 'vertical',
+}
+
 const WSR_SIZE_MAP = {
-  [SIZE.small]: 'tiny',
-  [SIZE.medium]: 'small',
-  [SIZE.large]: 'medium',
-  [SIZE.xLarge]: 'large',
+  [ICON_SIZE.small]: 'tiny',
+  [ICON_SIZE.medium]: 'small',
+  [ICON_SIZE.large]: 'medium',
+  [ICON_SIZE.xLarge]: 'large',
 };
 
 export interface AddItemProps extends TPAComponentProps {
@@ -34,8 +39,10 @@ export interface AddItemProps extends TPAComponentProps {
   hasError?: boolean;
   /** Content horizontal alignment */
   alignment?: ALIGNMENT;
-  /** Size to control the sizes of the text and the icon  */
-  size?: SIZE;
+  /** Indicates whether to display the content horizontally or vertically */
+  direction: DIRECTION;
+  /** Size to control the size of the icon  */
+  iconSize?: ICON_SIZE;
   /** Could be any renderable node */
   children?: React.ReactNode;
   /** Click event handler  */
@@ -46,7 +53,8 @@ interface DefaultProps {
   disabled: boolean;
   hasError: boolean;
   alignment: ALIGNMENT;
-  size: SIZE;
+  direction: DIRECTION;
+  iconSize: ICON_SIZE;
 }
 
 /** Add Item is a component used to add new items to an existing items list. */
@@ -56,7 +64,8 @@ export class AddItem extends React.Component<AddItemProps> {
     disabled: false,
     hasError: false,
     alignment: ALIGNMENT.center,
-    size: SIZE.small,
+    direction: DIRECTION.horizontal,
+    iconSize: ICON_SIZE.medium,
   };
 
   render() {
@@ -65,12 +74,14 @@ export class AddItem extends React.Component<AddItemProps> {
       children,
       disabled,
       alignment,
-      size,
+      direction,
+      iconSize,
       hasError,
       onClick,
     } = this.props;
 
     const rootClassName = st(classes.root, className);
+    const noChildren = !children;
 
     return (
       <ThemeProvider
@@ -78,13 +89,14 @@ export class AddItem extends React.Component<AddItemProps> {
         theme={theme(rootClassName)}
       >
         <WSRAddItem
-          className={st(classes.wsrAddItemRoot, { hasError }, className)}
+          className={st(classes.wsrAddItemRoot, { hasError, direction, noChildren }, className)}
           dataHook={DATA_HOOKS.ADD_ITEM}
           disabled={disabled}
           theme="dashes"
           alignItems={alignment}
+          borderRadius="0"
           // @ts-ignore
-          size={WSR_SIZE_MAP[size]}
+          size={WSR_SIZE_MAP[iconSize]}
           onClick={onClick}
         >
           {() => (

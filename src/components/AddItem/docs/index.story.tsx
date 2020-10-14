@@ -17,7 +17,7 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as AddItemWiringExampleRaw from '!raw-loader!./AddItemWiringExample.tsx';
 import * as AddItemWiringExampleCSSRaw from '!raw-loader!./AddItemWiringExample.st.css';
 import { AddItemWiringExample } from './AddItemWiringExample';
-import { AddItem, ALIGNMENT, SIZE } from '../';
+import { AddItem, ALIGNMENT, ICON_SIZE, DIRECTION } from '../';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -35,7 +35,8 @@ export default {
   }),
   exampleProps: {
     alignment: Object.values(ALIGNMENT),
-    size: Object.values(SIZE),
+    iconSize: Object.values(ICON_SIZE),
+    direction: Object.values(DIRECTION),
   },
   dataHook: 'storybook-AddItem',
   sections: [
@@ -54,8 +55,10 @@ export default {
 
           ...[
             { title: 'States', source: examples.example },
-            { title: 'Sizes', source: examples.sizesExample },
+            { title: 'Icon Sizes', source: examples.sizesExample },
             { title: 'Alignment', source: examples.alignmentExample },
+            { title: 'Direction', source: examples.directionExample },
+            { title: 'Only Icon', source: examples.iconsExample },
           ].map(code),
         ],
       }),

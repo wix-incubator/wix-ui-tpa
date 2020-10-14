@@ -10,7 +10,7 @@ AddItemMetadata.addSim({
     disabled: false,
     hasError: false,
     alignment: 'center',
-    size: 'medium',
+    iconSize: 'medium',
     children: 'Add Item',
   } as AddItemProps,
 });
