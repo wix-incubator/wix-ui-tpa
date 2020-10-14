@@ -5,6 +5,7 @@ import { AddItem as WSRAddItem, ThemeProvider } from 'wix-style-react';
 import { theme } from './WSRTheme';
 
 import { st, classes } from './AddItem.st.css';
+import { DATA_HOOKS } from './constants';
 
 export enum SIZE {
   small = 'small',
@@ -83,7 +84,11 @@ export class AddItem extends React.Component<AddItemProps> {
           size={WSR_SIZE_MAP[size]}
           onClick={onClick}
         >
-          {() => children}
+          {() =>
+              <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
+                {children}
+              </div>
+          }
         </WSRAddItem>
       </ThemeProvider>
     );

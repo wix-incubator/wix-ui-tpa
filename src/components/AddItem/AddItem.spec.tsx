@@ -18,7 +18,6 @@ describe('AddItem', () => {
 
   it('should add the correct text', async () => {
     const driver = createDriver(<AddItem>Add Item</AddItem>);
-    expect(await driver.textExists()).toBe(true);
     expect(await driver.getText()).toBe('Add Item');
   });
 

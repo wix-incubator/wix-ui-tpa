@@ -108,17 +108,17 @@
 
 /* Text color */
 
-.wsrAddItemRoot::textWrapper {
+.text {
     color: value(CurrentTextColor);
     font: value(CurrentTextFont);
 }
 
-.wsrAddItemRoot:hasError::textWrapper {
+.wsrAddItemRoot:hasError .text {
     color: value(errorColor);
     font: value(CurrentTextFont);
 }
 
-.wsrAddItemRoot:disabled::textWrapper {
+.wsrAddItemRoot:disabled .text {
     color: color(value(DisabledTextColor));
     font: value(CurrentTextFont);
 }
