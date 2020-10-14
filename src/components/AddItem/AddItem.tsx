@@ -84,11 +84,11 @@ export class AddItem extends React.Component<AddItemProps> {
           size={WSR_SIZE_MAP[size]}
           onClick={onClick}
         >
-          {() =>
-              <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
-                {children}
-              </div>
-          }
+          {() => (
+            <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
+              {children}
+            </div>
+          )}
         </WSRAddItem>
       </ThemeProvider>
     );
