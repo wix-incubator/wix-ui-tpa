@@ -89,7 +89,11 @@ export class AddItem extends React.Component<AddItemProps> {
         theme={theme(rootClassName)}
       >
         <WSRAddItem
-          className={st(classes.wsrAddItemRoot, { hasError, direction, noChildren }, className)}
+          className={st(
+            classes.wsrAddItemRoot,
+            { hasError, direction, noChildren },
+            className,
+          )}
           dataHook={DATA_HOOKS.ADD_ITEM}
           disabled={disabled}
           theme="dashes"

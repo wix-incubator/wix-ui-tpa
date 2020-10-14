@@ -58,15 +58,15 @@ visualize('AddItem', () => {
   story('only icons', () => {
     Object.values(ICON_SIZE).map(size => {
       snap(
-          size,
-          <div
-              style={{
-                width: CONTAINER_SIZES_MAP[size].width,
-                height: CONTAINER_SIZES_MAP[size].height,
-              }}
-          >
-            <AddItem iconSize={size}/>
-          </div>,
+        size,
+        <div
+          style={{
+            width: CONTAINER_SIZES_MAP[size].width,
+            height: CONTAINER_SIZES_MAP[size].height,
+          }}
+        >
+          <AddItem iconSize={size} />
+        </div>,
       );
     });
   });

@@ -1,1 +1,7 @@
-export { AddItem, AddItemProps, ICON_SIZE, ALIGNMENT, DIRECTION } from './AddItem';
+export {
+  AddItem,
+  AddItemProps,
+  ICON_SIZE,
+  ALIGNMENT,
+  DIRECTION,
+} from './AddItem';
