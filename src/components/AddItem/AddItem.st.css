@@ -52,13 +52,13 @@
 }
 
 .wsrAddItemRoot:theme(dashes) {
-    border: dashed 1px value(CurrentBorderColor);
+    border-color: value(CurrentBorderColor);
     background-color: value(CurrentBackgroundColor);
 }
 
 .wsrAddItemRoot:theme(dashes):hover {
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
-    border: dashed 1px applyOpacity(value(CurrentBorderColor), 0.6);
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
 .wsrAddItemRoot:theme(dashes):active {
@@ -67,26 +67,26 @@
 
 .wsrAddItemRoot:hasError {
     background-color: #FFFFFF;
-    border: dashed 1px value(errorColor);
+    border-color: value(errorColor);
     opacity: 1;
 }
 
 .wsrAddItemRoot:hasError:not(:disabled):theme(dashes):hover,
 .wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes):hasError {
     background-color: applyOpacity(value(errorColor), 0.1);
-    border: dashed 1px applyOpacity(value(errorColor), 0.6);
+    border-color: applyOpacity(value(errorColor), 0.6);
 }
 
 .wsrAddItemRoot:theme(dashes):disabled {
     background-color: color(value(DisabledBackgroundColor));
-    border: dashed 1px color(value(DisabledBorderColor));
+    border-color: color(value(DisabledBorderColor));
     opacity: 1;
 }
 
 /* Remove WSR focus, opacity is just for now */
 .wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes) {
     box-shadow: none;
-    border: dashed 1px value(CurrentBorderColor);
+    border-color: value(CurrentBorderColor);
     background-color: applyOpacity(value(CurrentBackgroundColor), 0.1);
 }
 
