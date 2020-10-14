@@ -73,7 +73,10 @@ export class AddItem extends React.Component<AddItemProps> {
     const rootClassName = st(classes.root, className);
 
     return (
-      <ThemeProvider dataHook={this.props['data-hook']} theme={theme(rootClassName)}>
+      <ThemeProvider
+        dataHook={this.props['data-hook']}
+        theme={theme(rootClassName)}
+      >
         <WSRAddItem
           className={st(classes.wsrAddItemRoot, { hasError }, className)}
           dataHook={DATA_HOOKS.ADD_ITEM}

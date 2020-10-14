@@ -17,7 +17,7 @@ export const addItemDriverFactory = (
   base: UniDriver,
   body: UniDriver,
 ): AddItemDriver => {
-  const wsrAddItemNode =  base.$(`[data-hook="${DATA_HOOKS.ADD_ITEM}"]`)
+  const wsrAddItemNode = base.$(`[data-hook="${DATA_HOOKS.ADD_ITEM}"]`);
   const WSRAddItemDriver = WSRAddItemUniDriverFactory(wsrAddItemNode, body);
 
   return {
@@ -33,6 +33,6 @@ export const addItemDriverFactory = (
      * Click on the AddItem Button
      * @return {Promise<void>}
      */
-    click: async () => await WSRAddItemDriver.click(),
+    click: async () => WSRAddItemDriver.click(),
   };
 };
