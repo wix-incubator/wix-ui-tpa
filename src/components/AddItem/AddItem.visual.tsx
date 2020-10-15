@@ -24,15 +24,17 @@ visualize('AddItem', () => {
     Object.values(ICON_SIZE).map(size => {
       Object.values(DIRECTION).map(direction => {
         snap(
-            `${size} / ${direction}`,
-            <div
-                style={{
-                  width: CONTAINER_SIZES_MAP[size].width,
-                  height: CONTAINER_SIZES_MAP[size].height,
-                }}
-            >
-              <AddItem iconSize={size} direction={direction}>Add Item</AddItem>
-            </div>,
+          `${size} / ${direction}`,
+          <div
+            style={{
+              width: CONTAINER_SIZES_MAP[size].width,
+              height: CONTAINER_SIZES_MAP[size].height,
+            }}
+          >
+            <AddItem iconSize={size} direction={direction}>
+              Add Item
+            </AddItem>
+          </div>,
         );
       });
     });
