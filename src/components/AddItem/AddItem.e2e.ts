@@ -43,6 +43,6 @@ describe('AddItem', () => {
       await (await browser.driver.switchTo().activeElement()).getAttribute(
         'data-hook',
       ),
-    ).toBe(dataHook);
+    ).toBe(DATA_HOOKS.ADD_ITEM);
   });
 });
