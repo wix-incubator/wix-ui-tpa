@@ -69,7 +69,7 @@
     "focus-trap": "^5.1.0",
     "lodash": "^4.17.11",
     "react-resize-detector": "^4.1.3",
-    "wix-style-react": "http://cdn.dev.wixpress.com/wix-style-react/0.0.0-5e9fdf787e7c503f5a196e28e4fe5f6a",
+    "wix-style-react": "http://cdn.dev.wixpress.com/wix-style-react/0.0.0-1b9eabd78103905dd7bb05cb1e277680",
     "wix-ui-core": "^3.0.0",
     "wix-ui-icons-common": "^2.0.0",
     "yoshi-stylable-dependencies": "^4.122.0",

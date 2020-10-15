@@ -100,11 +100,11 @@
     flex-direction: row;
 }
 
-.wsrAddItemRoot:direction(vertical)::content svg {
+.wsrAddItemRoot:direction(vertical)::content .icon {
     flex-shrink: 1;
 }
 
-.wsrAddItemRoot:direction(horizontal)::content svg {
+.wsrAddItemRoot:direction(horizontal)::content .icon {
     flex-shrink: 0;
 }
 
@@ -128,14 +128,14 @@
 
 /* Plus Icon color */
 
-.wsrAddItemRoot:theme(dashes)::content path {
+.wsrAddItemRoot:theme(dashes)::content .icon path {
     fill: value(CurrentTextColor);
 }
 
-.wsrAddItemRoot:hasError::content path {
+.wsrAddItemRoot:hasError::content .icon path {
     fill: value(errorColor);
 }
-.wsrAddItemRoot:disabled::content path {
+.wsrAddItemRoot:disabled::content .icon path {
     fill: color(value(DisabledTextColor))
 }
 

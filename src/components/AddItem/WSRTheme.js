@@ -9,7 +9,7 @@ export const theme = (className) => ({
     className: className,
     icons: {
         AddItemButton: {
-            tiny: () => <PlusS/>,
+            tiny: PlusS,
             small: PlusM,
             medium: PlusL,
             large: PlusXL,
