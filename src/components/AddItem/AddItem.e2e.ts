@@ -1,5 +1,5 @@
 import * as eyes from 'eyes.it';
-import {browser, by, element, Key} from 'protractor';
+import { browser, by, element, Key } from 'protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
@@ -18,12 +18,12 @@ describe('AddItem', () => {
   let addItemElement;
 
   beforeEach(async () => {
-    browser.get(storyUrl)
+    browser.get(storyUrl);
     driver = addItemTestkitFactory({ dataHook });
     await waitForVisibilityOf(await driver.element(), 'Cannot find AddItem');
 
     addItemElement = element(by.css(`[data-hook="${DATA_HOOKS.ADD_ITEM}"]`));
-    expect((addItemElement).isDisplayed()).toBe(true);
+    expect(addItemElement.isDisplayed()).toBe(true);
   });
 
   eyes.it('should show the correct design on hover', async () => {
