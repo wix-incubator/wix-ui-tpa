@@ -58,7 +58,7 @@ export default {
             { title: 'Icon Sizes', source: examples.sizesExample },
             { title: 'Alignment', source: examples.alignmentExample },
             { title: 'Direction', source: examples.directionExample },
-            { title: 'Only Icon', source: examples.iconsExample },
+            { title: 'Icon Only', source: examples.iconsExample },
           ].map(code),
         ],
       }),
