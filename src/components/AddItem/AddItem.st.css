@@ -121,21 +121,21 @@
     max-width: 100%;
     width: auto;
     flex-basis: auto;
-    padding: 0 0 0 4px;
+    padding: 0 0 0 8px;
 }
 
 /*****************/
 
 /* Plus Icon color */
 
-.wsrAddItemRoot:theme(dashes)::content .icon path {
+.wsrAddItemRoot:theme(dashes)::content path {
     fill: value(CurrentTextColor);
 }
 
-.wsrAddItemRoot:hasError::content .icon path {
+.wsrAddItemRoot:hasError::content path {
     fill: value(errorColor);
 }
-.wsrAddItemRoot:disabled::content .icon path {
+.wsrAddItemRoot:disabled::content path {
     fill: color(value(DisabledTextColor))
 }
 
