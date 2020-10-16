@@ -16,6 +16,7 @@
     border: 0;
     padding: 0.01em 0 0 0;
     min-width: 0;
+    user-select: none;
 }
 
 .wrapper {
