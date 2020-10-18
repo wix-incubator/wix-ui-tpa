@@ -164,3 +164,35 @@
 }
 
 /*****************/
+
+
+
+/* Suggested API for WSR:
+
+This is an API example which should be thinked
+
+:vars {
+   dashesBorderColor: value(CurrentBorderColor);
+   dashesBackgroundColor: value(CurrentBackgroundColor);
+
+   dashesHoverBorderColor: applyOpacity(value(CurrentBorderColor), 0.6);
+   dashesHoverBackgroundColor: applyOpacity(value(CurrentBorderColor), 0.1);
+
+   dashesActiveBackgroundColor: value(CurrentBackgroundColor);
+
+   dashesDisabledBorderColor: color(value(DisabledBorderColor));
+   dashesDisabledBackgroundColor: color(value(DisabledBackgroundColor));
+
+   textWrapper_padding: 0 0 0 8px;
+   textWrapper_width: auto / 100%;
+   textWrapper_maxWidth: 100%;
+
+   *** Add a state for: hideFocusVisible ***
+
+   *** Too Specific? ***
+    content_flexDirection : row / column;
+    content_flexShrink: 0 / 1;
+    textWrapper_flexBasis: auto;
+}
+
+ */
