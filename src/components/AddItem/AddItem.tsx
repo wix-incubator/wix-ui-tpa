@@ -86,36 +86,36 @@ export class AddItem extends React.Component<AddItemProps> {
     const noChildren = !children;
 
     return (
-        <TPAComponentsConsumer>
-          {({ rtl }) => (
-            <ThemeProvider
-              dataHook={this.props['data-hook']}
-              theme={theme(rootClassName)}
+      <TPAComponentsConsumer>
+        {({ rtl }) => (
+          <ThemeProvider
+            dataHook={this.props['data-hook']}
+            theme={theme(rootClassName)}
+          >
+            <WSRAddItem
+              className={st(
+                classes.wsrAddItemRoot,
+                { rtl, hasError, direction, noChildren },
+                className,
+              )}
+              dataHook={DATA_HOOKS.ADD_ITEM}
+              disabled={disabled}
+              theme="dashes"
+              alignItems={alignment}
+              borderRadius="0"
+              // @ts-ignore
+              size={WSR_SIZE_MAP[iconSize]}
+              onClick={onClick}
             >
-              <WSRAddItem
-                className={st(
-                  classes.wsrAddItemRoot,
-                  { rtl, hasError, direction, noChildren },
-                  className,
-                )}
-                dataHook={DATA_HOOKS.ADD_ITEM}
-                disabled={disabled}
-                theme="dashes"
-                alignItems={alignment}
-                borderRadius="0"
-                // @ts-ignore
-                size={WSR_SIZE_MAP[iconSize]}
-                onClick={onClick}
-              >
-                {() => (
-                  <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
-                    {children}
-                  </div>
-                )}
-              </WSRAddItem>
-            </ThemeProvider>
-          )}
-        </TPAComponentsConsumer>
+              {() => (
+                <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
+                  {children}
+                </div>
+              )}
+            </WSRAddItem>
+          </ThemeProvider>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }
