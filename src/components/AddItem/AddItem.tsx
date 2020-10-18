@@ -7,6 +7,7 @@ import { theme } from './WSRTheme';
 
 import { st, classes } from './AddItem.st.css';
 import { DATA_HOOKS } from './constants';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export enum ICON_SIZE {
   small = 'small',
@@ -85,32 +86,36 @@ export class AddItem extends React.Component<AddItemProps> {
     const noChildren = !children;
 
     return (
-      <ThemeProvider
-        dataHook={this.props['data-hook']}
-        theme={theme(rootClassName)}
-      >
-        <WSRAddItem
-          className={st(
-            classes.wsrAddItemRoot,
-            { hasError, direction, noChildren },
-            className,
+        <TPAComponentsConsumer>
+          {({ rtl }) => (
+            <ThemeProvider
+              dataHook={this.props['data-hook']}
+              theme={theme(rootClassName)}
+            >
+              <WSRAddItem
+                className={st(
+                  classes.wsrAddItemRoot,
+                  { rtl, hasError, direction, noChildren },
+                  className,
+                )}
+                dataHook={DATA_HOOKS.ADD_ITEM}
+                disabled={disabled}
+                theme="dashes"
+                alignItems={alignment}
+                borderRadius="0"
+                // @ts-ignore
+                size={WSR_SIZE_MAP[iconSize]}
+                onClick={onClick}
+              >
+                {() => (
+                  <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
+                    {children}
+                  </div>
+                )}
+              </WSRAddItem>
+            </ThemeProvider>
           )}
-          dataHook={DATA_HOOKS.ADD_ITEM}
-          disabled={disabled}
-          theme="dashes"
-          alignItems={alignment}
-          borderRadius="0"
-          // @ts-ignore
-          size={WSR_SIZE_MAP[iconSize]}
-          onClick={onClick}
-        >
-          {() => (
-            <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
-              {children}
-            </div>
-          )}
-        </WSRAddItem>
-      </ThemeProvider>
+        </TPAComponentsConsumer>
     );
   }
 }
