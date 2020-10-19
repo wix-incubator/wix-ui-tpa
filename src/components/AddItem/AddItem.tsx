@@ -49,6 +49,10 @@ export interface AddItemProps extends TPAComponentProps {
   children?: React.ReactNode;
   /** Click event handler  */
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  /** Defines a string value that labels the add item element. Optional. */
+  'aria-label'?: string;
+  /** Identifies the element that labels the add item element. Optional. */
+  'aria-labelledby'?: string;
 }
 
 interface DefaultProps {
@@ -80,6 +84,8 @@ export class AddItem extends React.Component<AddItemProps> {
       iconSize,
       hasError,
       onClick,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
 
     const rootClassName = st(classes.root, className);
@@ -106,6 +112,8 @@ export class AddItem extends React.Component<AddItemProps> {
               // @ts-ignore
               size={WSR_SIZE_MAP[iconSize]}
               onClick={onClick}
+              ariaLabel={ariaLabel}
+              ariaLabelledBy={ariaLabelledBy}
             >
               {() => (
                 <div className={classes.text} data-hook={DATA_HOOKS.TEXT}>
