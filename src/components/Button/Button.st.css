@@ -144,13 +144,6 @@
     border-color: applyOpacity(value(SecondaryBorderColor), 0.7);
 }
 
-..root:priority(secondary):active,
-.root:priority(secondary):focus,
-.root:priority(secondary):hover {
-    color: applyOpacity(value(SecondaryTextColor), 0.7);
-    border-color: applyOpacity(value(SecondaryBorderColor), 0.7);
-}
-
 /*Disabled*/
 
 .root:priority(basic):disabled,
