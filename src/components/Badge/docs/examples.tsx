@@ -1,5 +1,25 @@
 export const importExample = `import { Badge, BADGE_PRIORITY } from 'wix-ui-tpa/Badge';`;
 
+export const inlineOverrides = `
+<div>
+  <Badge>Regular Badge</Badge>
+  <Badge styleOverrides={{BadgeBgColor: 'green', BadgeTextColor: 'white'}}>Badge with static overrides</Badge>
+  <Badge styleOverrides={{BadgeBgColor: '"color(color-8)"'}}>Badge with dynamic css function (doesn't work yet)</Badge>
+</div>
+`;
+
+export const stylesheetOverrides = `
+<div>
+  <Badge>Regular Badge</Badge>
+  <Badge className={styledBadgeClasses.customVariant}>
+    Badge with static overrides
+  </Badge>
+  <Badge className={styledBadgeClasses.customVariantWithCssFunction}>
+    Badge with dynamic css functions
+  </Badge>
+</div>
+`;
+
 export const example = `
 <div>
     <div style={{'display': 'flex', 'justify-content': 'space-between'}}>

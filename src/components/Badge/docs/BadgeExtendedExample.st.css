@@ -1,6 +1,7 @@
 :import {
     -st-from: "../Badge.st.css";
     -st-default: TPABadge;
+    -st-named: --BadgeBgColor, --BadgeTextColor;
 }
 
 .root {

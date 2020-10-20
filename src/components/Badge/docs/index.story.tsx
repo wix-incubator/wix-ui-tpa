@@ -10,6 +10,7 @@ import {
   playground,
   tab,
   code as baseCode,
+  example as baseExample,
   tabs,
   testkit,
   title,
@@ -18,11 +19,20 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as Readme from '../README.md';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { BadgeExtendedExample } from './BadgeExtendedExample';
+import { classes as styledBadgeClasses } from './BadgeWithExtendedCSSVars.st.css';
+import styledBadgeClassesRawSource from '!raw-loader!./BadgeWithExtendedCSSVars.st.css';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = config =>
+  baseExample({
+    components: {
+      ...allComponents,
+      styledBadgeClasses,
+    },
+    compact: true,
+    ...config,
+  });
 
 export default {
   category: 'Components',
@@ -52,8 +62,20 @@ export default {
           divider(),
 
           title('Examples'),
-
-          ...[{ title: 'Preset examples', source: examples.example }].map(code),
+          ...[
+            { title: 'Preset examples', source: examples.example },
+            {
+              title: 'CSS Vars inline overrides POC',
+              description:
+                'Customize the component with props and inline-styles CSS Vars',
+              source: examples.inlineOverrides,
+            },
+            {
+              title: 'CSS Vars stylesheet extend POC',
+              description: `Customize the component with extending stylesheets with CSS Vars\n\n${styledBadgeClassesRawSource}`,
+              source: examples.stylesheetOverrides,
+            },
+          ].map(example),
         ],
       }),
 

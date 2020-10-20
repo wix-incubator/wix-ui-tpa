@@ -61,8 +61,8 @@
 }
 
 .root:priority(default) {
-    background-color: value(badgeBgColor);
-    color: value(badgeTextColor);
+    background-color: var(--BadgeBgColor, value(badgeBgColor));
+    color: var(--BadgeTextColor, value(badgeTextColor));
     border: none;
 }
 

@@ -1,0 +1,17 @@
+:import {
+    -st-from: "../Badge.st.css";
+    -st-default: TPABadge;
+    -st-named: --BadgeBgColor, --BadgeTextColor;
+}
+
+.customVariant {
+  -st-extends: TPABadge;
+  --BadgeBgColor: black;
+  --BadgeTextColor: gold;
+}
+
+.customVariantWithCssFunction {
+  -st-extends: TPABadge;
+  --BadgeBgColor: "color(color-5)";
+  --BadgeTextColor: "color(color-3)";
+}
