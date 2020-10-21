@@ -15,6 +15,7 @@ interface ColorPickerProps extends TPAComponentProps {
   /** aria-label - Accessibility */
   'aria-label'?: string;
   'aria-labeledby'?: string;
+  /** The group name for all color options */
   name?: string;
 }
 
