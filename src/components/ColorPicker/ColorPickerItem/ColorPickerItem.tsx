@@ -68,6 +68,20 @@ export class ColorPickerItem extends React.Component<
     return radioVisual;
   };
 
+  getFocusOnHoverBehaviour = (isMobile: boolean) => {
+    if (isMobile) {
+      return {};
+    }
+    return {
+      onHover: () => {
+        this.setState({ focused: true });
+      },
+      onIconBlur: () => {
+        this.setState({ focused: false });
+      },
+    };
+  };
+
   render = () => {
     const { focused } = this.state;
     const {
@@ -112,8 +126,7 @@ export class ColorPickerItem extends React.Component<
               mobile,
             )}
             onChange={onChange}
-            onHover={() => this.setState({ focused: true })}
-            onIconBlur={() => this.setState({ focused: false })}
+            {...this.getFocusOnHoverBehaviour(mobile)}
             name={name}
           />
         )}
