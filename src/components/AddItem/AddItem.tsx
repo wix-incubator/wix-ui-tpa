@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 
-import WSRAddItem, { AddItemSize as WSRAddItemSize } from 'wix-style-react/dist/src/AddItem';
+import WSRAddItem, {
+  AddItemSize as WSRAddItemSize,
+} from 'wix-style-react/dist/src/AddItem';
 import ThemeProvider from 'wix-style-react/dist/src/ThemeProvider';
 import { theme } from './WSRTheme';
 
