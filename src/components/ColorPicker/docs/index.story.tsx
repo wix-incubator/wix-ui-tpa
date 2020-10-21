@@ -155,7 +155,7 @@ export default {
               example: <ColorPickerMobileTooltipExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
-              title: 'Colorpicker with tooltip in mobile mode (long press)',
+              title: 'ColorPicker with tooltip in mobile mode (long press)',
               params: {},
             }),
             settingsPanel({

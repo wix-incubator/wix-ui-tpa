@@ -14,6 +14,7 @@ export const COLORS = [
   {
     value: 'purple',
     ariaLabel: 'purple color',
+    tooltip: 'Hey',
   },
   {
     value: 'green',
@@ -24,6 +25,7 @@ export const COLORS = [
     value: 'red',
     ariaLabel: 'red color',
     isCrossedOut: true,
+    tooltip: 'Hi',
   },
   {
     value: 'navy',
@@ -66,6 +68,7 @@ export class ColorPickerExtendedExample extends React.Component<{}, State> {
           value={color.value}
           aria-label={color.ariaLabel}
           checked={this.state.selectedColor === color.value}
+          tooltip={color.tooltip}
         />
       ))}
     </ColorPicker>

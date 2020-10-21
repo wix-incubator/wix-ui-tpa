@@ -11,9 +11,6 @@ import { MobileTooltip } from './MobileTooltip';
 import { TPAComponentsConsumer } from '../../TPAComponentsConfig';
 import { TOOLTIP_COMMON_PROPS } from './tooltipCommonProps';
 
-const TOOLTIP_SHOW_DELAY = 0;
-const TOOLTIP_HIDE_DELAY = 1000;
-
 export interface ColorPickerItemProps extends RadioButtonProps {
   className?: string;
   key?: number;
@@ -58,8 +55,6 @@ export class ColorPickerItem extends React.Component<
           {...TOOLTIP_COMMON_PROPS}
           data-hook={props.tooltipDataHook}
           content={props.tooltip}
-          showDelay={TOOLTIP_SHOW_DELAY}
-          hideDelay={TOOLTIP_HIDE_DELAY}
         >
           {radioVisual}
         </Tooltip>
