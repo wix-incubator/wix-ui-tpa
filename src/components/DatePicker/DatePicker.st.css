@@ -1,0 +1,23 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color;
+}
+
+:import {
+    -st-from: "wix-style-react/dist/src/DatePicker/DatePicker.st.css";
+    -st-default: DatePicker;
+}
+
+/*Defaults*/
+:vars {
+    /*Defaults params goes here*/
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+}
+
+.root {
+    /*css goes here*/
+}
