@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 
-import WSRAddItem from 'wix-style-react/dist/src/AddItem';
+import WSRAddItem, { AddItemSize as WSRAddItemSize } from 'wix-style-react/dist/src/AddItem';
 import ThemeProvider from 'wix-style-react/dist/src/ThemeProvider';
 import { theme } from './WSRTheme';
 
@@ -27,7 +27,7 @@ export enum DIRECTION {
   vertical = 'vertical',
 }
 
-const WSR_SIZE_MAP = {
+const WSR_SIZE_MAP: { [key: string]: WSRAddItemSize } = {
   [ICON_SIZE.small]: 'tiny',
   [ICON_SIZE.medium]: 'small',
   [ICON_SIZE.large]: 'medium',
@@ -109,7 +109,6 @@ export class AddItem extends React.Component<AddItemProps> {
               theme="dashes"
               alignItems={alignment}
               borderRadius="0"
-              // @ts-ignore
               size={WSR_SIZE_MAP[iconSize]}
               onClick={onClick}
               ariaLabel={ariaLabel}
