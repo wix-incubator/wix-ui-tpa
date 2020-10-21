@@ -21,16 +21,19 @@ export const COLORS = [
     value: 'green',
     ariaLabel: 'green color',
     disabled: true,
+    isCrossedOut: true,
     tooltip: 'Tooltip with disabled',
   },
   {
     value: 'red',
     ariaLabel: 'red color',
+    isCrossedOut: true,
     disabled: true,
   },
   {
     value: 'navy',
     ariaLabel: 'navy color',
+    tooltip: 'Tooltip Last',
   },
 ];
 
@@ -59,6 +62,7 @@ export class ColorPickerMobileTooltipExample extends React.Component<
             value={itemProps.value}
             aria-label={itemProps.ariaLabel}
             disabled={itemProps.disabled}
+            isCrossedOut={itemProps.isCrossedOut}
             tooltip={itemProps.tooltip}
             checked={this.state.selectedColor === itemProps.value}
           />
