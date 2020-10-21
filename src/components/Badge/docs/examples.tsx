@@ -8,8 +8,13 @@ export const inlineOverrides = `
 </div>
 `;
 
-export const stylesheetOverrides = `
+export const stylesheetOverrides = ({ rawCSS }: { rawCSS: string }) => `
 <div>
+{/*
+import {classes as styledBadgeClasses} from './styledBadgeClasses.st.css';
+==========================================================================
+${rawCSS}
+*/}
   <Badge>Regular Badge</Badge>
   <Badge className={styledBadgeClasses.customVariant}>
     Badge with static overrides

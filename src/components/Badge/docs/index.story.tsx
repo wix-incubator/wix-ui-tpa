@@ -20,9 +20,10 @@ import * as Readme from '../README.md';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { BadgeExtendedExample } from './BadgeExtendedExample';
 import { classes as styledBadgeClasses } from './BadgeWithExtendedCSSVars.st.css';
-import styledBadgeClassesRawSource from '!raw-loader!./BadgeWithExtendedCSSVars.st.css';
+import { default as styledBadgeClassesRawSource } from '!raw-loader!./BadgeWithExtendedCSSVars.st.css';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
+console.log(styledBadgeClassesRawSource.default);
 
 const example = config =>
   baseExample({
@@ -72,8 +73,10 @@ export default {
             },
             {
               title: 'CSS Vars stylesheet extend POC',
-              description: `Customize the component with extending stylesheets with CSS Vars\n\n${styledBadgeClassesRawSource}`,
-              source: examples.stylesheetOverrides,
+              description: `Customize the component with extending stylesheets with CSS Vars`,
+              source: examples.stylesheetOverrides({
+                rawCSS: styledBadgeClassesRawSource,
+              }),
             },
           ].map(example),
         ],

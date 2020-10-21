@@ -12,7 +12,7 @@ export interface BadgeProps extends TPAComponentProps {
   /** define style preset */
   priority?: BADGE_PRIORITY;
   icon?: React.ReactElement;
-  styleOverrides: {
+  styleOverrides?: {
     BadgeBgColor?: string;
     BadgeTextColor?: string;
   };
