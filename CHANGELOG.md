@@ -1,3 +1,20 @@
+## [2.7.3](https://github.com/wix/wix-ui-tpa/compare/v2.7.2...v2.7.3) (2020-10-22)
+
+
+### Bug Fixes
+
+* **CalendarCell:** Fix time type priorities  ([75c5a6e](https://github.com/wix/wix-ui-tpa/commit/75c5a6e1d08e9e6dc2cc1e65defb0590d6371257))
+* **ColorPicker:** Remove tooltip delays in ColorPickerItem ([773ac96](https://github.com/wix/wix-ui-tpa/commit/773ac960c926df35f94f75d1f4f95727243a85e2))
+* **ColorPicker:** Remove user selection for mobile press ([deef22b](https://github.com/wix/wix-ui-tpa/commit/deef22b4a67ff3a1b08cc22bcf54d53fc7c3ef57))
+
+
+### Features
+
+* **Dropdown:** Add divider option ([c1b62c4](https://github.com/wix/wix-ui-tpa/commit/c1b62c4e0382ea873c9ba1602052c1c88339eef9))
+* **Textarea:** Add autoFocus prop ([7f8efc3](https://github.com/wix/wix-ui-tpa/commit/7f8efc3dda7a7e08de1a3ebc64a3304979e38e61))
+
+
+
 ## [2.7.2](https://github.com/wix/wix-ui-tpa/compare/v2.7.1...v2.7.2) (2020-10-11)
 
 
