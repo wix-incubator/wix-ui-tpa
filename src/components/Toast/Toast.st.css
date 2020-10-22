@@ -1,6 +1,9 @@
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: successColor, errorColor;
+}
+
 :vars {
-    successColor: #008250;
-    errorColor: #DF3131;
     statusColor: #212121;
 }
 
