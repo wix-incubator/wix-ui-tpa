@@ -4,7 +4,6 @@ import * as React from 'react';
 
 const DialogMetadata = Registry.getComponentMetadata(Dialog);
 DialogMetadata.nonReactStrictModeCompliant = true;
-DialogMetadata.nonA11yCompliant = true;
 
 const DialogContent = () => (
   <div>

@@ -4,6 +4,7 @@ import Registry from '@ui-autotools/registry';
 
 const AddItemMetadata = Registry.getComponentMetadata(AddItem);
 AddItemMetadata.nonReactStrictModeCompliant = true;
+AddItemMetadata.nonA11yCompliant = true;
 
 AddItemMetadata.addSim({
   title: 'render',
