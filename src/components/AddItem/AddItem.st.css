@@ -140,7 +140,7 @@
     fill: value(errorColor);
 }
 .wsrAddItemRoot:disabled::content path {
-    fill: color(value(DisabledTextColor))
+    fill: color(value(DisabledTextColor));
 }
 
 /*****************/
