@@ -1,3 +1,9 @@
+# [2.8.0](https://github.com/wix/wix-ui-tpa/compare/v2.7.3...v2.8.0) (2020-10-22)
+
+### Features
+
+* **AddItem:** new component ([54b02d1](https://github.com/wix/wix-ui-tpa/commit/6507ab293b38a7611eabd1e49ca348b7bae95e94))
+
 ## [2.7.3](https://github.com/wix/wix-ui-tpa/compare/v2.7.2...v2.7.3) (2020-10-22)
 
 
