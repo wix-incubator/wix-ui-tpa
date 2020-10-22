@@ -6,7 +6,7 @@ import {
 import { checkboxTestkitFactory } from '../../testkit/protractor';
 
 const hoveredColor = 'rgb(96, 96, 96)';
-const errorColor = 'rgb(246, 77, 67)';
+const errorColor = 'rgb(223,49,49)';
 
 describe('checkbox', () => {
   const storyUrl = createStoryUrl({
