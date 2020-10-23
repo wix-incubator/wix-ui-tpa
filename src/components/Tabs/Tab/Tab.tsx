@@ -54,7 +54,7 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       <div
         className={classes.focusIndicatorWrapper}
         tabIndex={-1}
-        aria-hidden={'true'}
+        aria-hidden="true"
       >
         <div className={classes.focusIndicator} tabIndex={-1} />
       </div>
