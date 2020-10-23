@@ -1,3 +1,12 @@
+## [2.8.1](https://github.com/wix/wix-ui-tpa/compare/v2.8.0...v2.8.1) (2020-10-23)
+
+
+### Bug Fixes
+
+* **Tabs:** added aria-hidden for Tabs focus indicators ([f95638d](https://github.com/wix/wix-ui-tpa/commit/f95638d13e045d7d7c33fb3173a5022735015d3a))
+
+
+
 # [2.8.0](https://github.com/wix/wix-ui-tpa/compare/v2.7.3...v2.8.0) (2020-10-22)
 
 ### Features
