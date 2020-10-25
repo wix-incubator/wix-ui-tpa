@@ -42,13 +42,13 @@
 
     /*
         Border color in case of error
-        @default #f64d43
+        @default #DF3131
     */
     ErrorBorderColor: --overridable;
 
     /*
         Border color in case of success
-        @default #57C487
+        @default #008250
     */
     SuccessBorderColor: --overridable;
 
