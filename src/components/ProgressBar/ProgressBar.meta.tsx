@@ -7,6 +7,6 @@ ProgressBarMetadata.nonReactStrictModeCompliant = true;
 ProgressBarMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!'
+    buttonText: 'Click me!',
   } as ProgressBarProps,
 });

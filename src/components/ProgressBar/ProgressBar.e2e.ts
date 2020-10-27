@@ -21,7 +21,10 @@ describe('progressBar', () => {
 
   it('should render', async () => {
     const driver = progressBarTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find ProgressBar');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find ProgressBar',
+    );
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
 });

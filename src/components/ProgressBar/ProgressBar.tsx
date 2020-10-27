@@ -29,7 +29,7 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
         className={st(classes.root, {}, this.props.className)}
         data-hook={this.props['data-hook']}
       >
-        <CoreProgressBar className={classes.progress} />
+        <CoreProgressBar className={classes.progress} {...this.props} />
       </div>
     );
   }
