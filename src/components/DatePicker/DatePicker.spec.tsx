@@ -13,7 +13,7 @@ describe('DatePicker', () => {
   const createDriver = createUniDriverFactory(datePickerDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<DatePicker buttonText="Click Me" />);
+    const driver = createDriver(<DatePicker />);
     expect(await driver.exists()).toBe(true);
   });
 
