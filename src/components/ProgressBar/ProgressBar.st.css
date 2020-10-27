@@ -1,0 +1,81 @@
+:import {
+    -st-from: '../../common/formatters.st';
+    -st-named: color, fallback, font;
+}
+
+:import {
+    -st-from: 'wix-ui-core/index.st.css';
+    -st-named: LinearProgressBar;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+/*Defaults*/
+:vars {
+    BarHeight: 4px;
+
+    DefaultTextColor: color-5;
+    DefaultTextFont: font("{theme: 'Body-M', size: '12px', lineHeight: '1.4em'}");
+    DefaultForegroundBG: color-8;
+}
+
+/*Overrides*/
+:vars {
+    /*Deceleration of overridable placeholders*/
+    ForegroundBG: --overridable;
+    TextColor: --overridable;
+    TextFont: --overridable;
+}
+
+.root {
+  /*css goes here*/
+  
+}
+
+.progress {
+    -st-extends: LinearProgressBar;
+  
+    height: value(BarHeight);
+}
+
+.progress::barContainer {
+    /* safety background */
+    background: #fff; 
+}
+
+.progress::barBackground {
+    height: value(BarHeight);
+
+    background: color(fallback(value(TextColor), value(DefaultTextColor)));
+    opacity: 0.2;
+}
+
+.progress::barForeground {
+    height: value(BarHeight);
+
+    background: color(fallback(value(ForegroundBG), value(DefaultForegroundBG)));
+}
+
+.progress::progressPercentage {
+    color: color(fallback(value(TextColor), value(DefaultTextColor)));
+    font: fallback(value(TextFont), value(DefaultTextFont));
+}
+
+/* gap between text and bar with trl support */
+.progress::indicationContainer {
+    display: flex;
+}
+
+.progress::indicationContainer::before {
+    content: '';
+    width: 12px;
+}
+
+/* error state */
+.progress:error::barBackground,
+.progress:error::barForeground {
+    background: color(value(errorColor));
+}
