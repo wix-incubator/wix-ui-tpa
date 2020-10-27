@@ -41,4 +41,5 @@ export { CalendarPopover } from './CalendarPopover';
 export { Spinner } from './Spinner';
 export { RadioButtonGroup } from './RadioButtonGroup';
 export { Dialog } from './Dialog';
+export { AddItem } from './AddItem';
 export { DatePicker } from './DatePicker';

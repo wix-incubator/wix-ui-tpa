@@ -3,6 +3,11 @@
     -st-named: value, color, fallback, applyOpacity;
 }
 
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
 /*Defaults*/
 :vars {
     BorderRadius: 2px;
@@ -18,7 +23,7 @@
     LineHeight: 20px;
 
     DefaultBackgroundColor: applyOpacity(#000000, 0.05);
-    ErrorBackgroundColor: applyOpacity(#F64D43, 0.1);
+    ErrorBackgroundColor: applyOpacity(value(errorColor), 0.1);
     AlertBackgroundColor: applyOpacity(#FFB600, 0.1);
 }
 

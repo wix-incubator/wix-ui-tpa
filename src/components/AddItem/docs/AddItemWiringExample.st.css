@@ -1,0 +1,13 @@
+:import {
+    -st-from: "../AddItem.st.css";
+    -st-default: TPAAddItem;
+}
+
+.component {
+    -st-mixin: TPAAddItem(
+            BorderColor '"color(--customBorderColor)"',
+            BackgroundColor '"color(--customBackgroundColor)"',
+            TextColor '"color(--customTextColor)"',
+            TextFont '"--textFont"'
+    );
+}

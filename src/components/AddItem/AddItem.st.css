@@ -1,0 +1,198 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback, font;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
+}
+
+:import {
+    -st-from: "wix-style-react/dist/src/AddItem/AddItem.st.css";
+    -st-default: AddItem;
+}
+
+/*Defaults*/
+:vars {
+    DefaultBorderColor: color-8;
+    DefaultBackgroundColor: color-1;
+    DefaultTextColor: color-8;
+    DefaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '24px'}";
+
+    DisabledBorderColor: color-3;
+    DisabledBackgroundColor: color-1;
+    DisabledTextColor: color-3;
+}
+
+/*Overrides*/
+:vars {
+    BorderColor: --overridable;
+    BackgroundColor: --overridable;
+    TextColor: --overridable;
+    TextFont: --overridable;
+}
+
+/*Fallbacks*/
+:vars {
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentTextFont: fallback(font(value(TextFont)), font(value(DefaultTextFont)));
+}
+
+.root {
+    width: 100%;
+    height: 100%;
+}
+
+.wsrAddItemRoot {
+    -st-extends: AddItem;
+    -st-states: rtl, hasError, direction(enum(horizontal, vertical)), noChildren;
+}
+
+.wsrAddItemRoot:theme(dashes) {
+    border-color: value(CurrentBorderColor);
+    background-color: value(CurrentBackgroundColor);
+}
+
+.wsrAddItemRoot:theme(dashes):hover {
+    background-color: applyOpacity(value(CurrentBorderColor), 0.1);
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.wsrAddItemRoot:theme(dashes):active {
+    background-color: value(CurrentBackgroundColor);
+}
+
+.wsrAddItemRoot:hasError {
+    background-color: #FFFFFF;
+    border-color: value(errorColor);
+    opacity: 1;
+}
+
+.wsrAddItemRoot:hasError:not(:disabled):theme(dashes):hover,
+.wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes):hasError {
+    background-color: applyOpacity(value(errorColor), 0.1);
+    border-color: applyOpacity(value(errorColor), 0.6);
+}
+
+.wsrAddItemRoot:theme(dashes):disabled {
+    background-color: color(value(DisabledBackgroundColor));
+    border-color: color(value(DisabledBorderColor));
+    opacity: 1;
+}
+
+/* Remove WSR focus, opacity is just for now */
+.wsrAddItemRoot:not(:disabled):focus-visible:theme(dashes) {
+    box-shadow: none;
+    border-color: value(CurrentBorderColor);
+    background-color: applyOpacity(value(CurrentBorderColor), 0.1);
+}
+
+/* direction (vertical / horizontal) */
+
+.wsrAddItemRoot:direction(vertical)::content {
+    flex-direction: column;
+}
+
+.wsrAddItemRoot:direction(horizontal)::content {
+    flex-direction: row;
+}
+
+.wsrAddItemRoot:direction(vertical)::content .icon {
+    flex-shrink: 1;
+}
+
+.wsrAddItemRoot:direction(horizontal)::content .icon {
+    flex-shrink: 0;
+}
+
+.wsrAddItemRoot:direction(vertical)::textWrapper {
+    width: 100%;
+    padding-top: 6px;
+}
+
+.wsrAddItemRoot:direction(vertical):noChildren::textWrapper {
+    padding-top: 0;
+}
+
+.wsrAddItemRoot:not(:rtl):direction(horizontal)::textWrapper {
+    max-width: 100%;
+    width: auto;
+    flex-basis: auto;
+    padding: 0 0 0 8px;
+}
+
+.wsrAddItemRoot:rtl:direction(horizontal)::textWrapper {
+    padding: 0 8px 0 0;
+}
+
+/*****************/
+
+/* Plus Icon color */
+
+.wsrAddItemRoot:theme(dashes)::content path {
+    fill: value(CurrentTextColor);
+}
+
+.wsrAddItemRoot:hasError::content path {
+    fill: value(errorColor);
+}
+.wsrAddItemRoot:disabled::content path {
+    fill: color(value(DisabledTextColor));
+}
+
+/*****************/
+
+
+/* Text color */
+
+.text {
+    color: value(CurrentTextColor);
+    font: value(CurrentTextFont);
+}
+
+.wsrAddItemRoot:hasError .text {
+    color: value(errorColor);
+    font: value(CurrentTextFont);
+}
+
+.wsrAddItemRoot:disabled .text {
+    color: color(value(DisabledTextColor));
+    font: value(CurrentTextFont);
+}
+
+/*****************/
+
+
+
+/* Suggested API for WSR:
+
+This is an API example which should be thinked
+
+:vars {
+   dashesBorderColor: value(CurrentBorderColor);
+   dashesBackgroundColor: value(CurrentBackgroundColor);
+
+   dashesHoverBorderColor: applyOpacity(value(CurrentBorderColor), 0.6);
+   dashesHoverBackgroundColor: applyOpacity(value(CurrentBorderColor), 0.1);
+
+   dashesActiveBackgroundColor: value(CurrentBackgroundColor);
+
+   dashesDisabledBorderColor: color(value(DisabledBorderColor));
+   dashesDisabledBackgroundColor: color(value(DisabledBackgroundColor));
+
+   textWrapper_padding: 0 0 0 8px;
+   textWrapper_width: auto / 100%;
+   textWrapper_maxWidth: 100%;
+
+   *** Add a state for: hideFocusVisible ***
+
+   *** Too Specific? ***
+    content_flexDirection : row / column;
+    content_flexShrink: 0 / 1;
+    textWrapper_flexBasis: auto;
+}
+
+ */

@@ -12,11 +12,13 @@ export const avatarDriverFactory = (base: UniDriver): AvatarDriver => {
   return {
     ...coreAvatarDriverFactory(base),
     src: async () => {
+      let src = '';
+
       try {
-        return base.$('img').attr('src');
+        src = await base.$('img').attr('src');
       } catch (e) {}
 
-      return '';
+      return src;
     },
   };
 };

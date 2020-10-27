@@ -1,3 +1,35 @@
+## [2.8.1](https://github.com/wix/wix-ui-tpa/compare/v2.8.0...v2.8.1) (2020-10-23)
+
+
+### Bug Fixes
+
+* **Tabs:** added aria-hidden for Tabs focus indicators ([f95638d](https://github.com/wix/wix-ui-tpa/commit/f95638d13e045d7d7c33fb3173a5022735015d3a))
+
+
+
+# [2.8.0](https://github.com/wix/wix-ui-tpa/compare/v2.7.3...v2.8.0) (2020-10-22)
+
+### Features
+
+* **AddItem:** new component ([54b02d1](https://github.com/wix/wix-ui-tpa/commit/6507ab293b38a7611eabd1e49ca348b7bae95e94))
+
+## [2.7.3](https://github.com/wix/wix-ui-tpa/compare/v2.7.2...v2.7.3) (2020-10-22)
+
+
+### Bug Fixes
+
+* **CalendarCell:** Fix time type priorities  ([75c5a6e](https://github.com/wix/wix-ui-tpa/commit/75c5a6e1d08e9e6dc2cc1e65defb0590d6371257))
+* **ColorPicker:** Remove tooltip delays in ColorPickerItem ([773ac96](https://github.com/wix/wix-ui-tpa/commit/773ac960c926df35f94f75d1f4f95727243a85e2))
+* **ColorPicker:** Remove user selection for mobile press ([deef22b](https://github.com/wix/wix-ui-tpa/commit/deef22b4a67ff3a1b08cc22bcf54d53fc7c3ef57))
+
+
+### Features
+
+* **Dropdown:** Add divider option ([c1b62c4](https://github.com/wix/wix-ui-tpa/commit/c1b62c4e0382ea873c9ba1602052c1c88339eef9))
+* **Textarea:** Add autoFocus prop ([7f8efc3](https://github.com/wix/wix-ui-tpa/commit/7f8efc3dda7a7e08de1a3ebc64a3304979e38e61))
+
+
+
 ## [2.7.2](https://github.com/wix/wix-ui-tpa/compare/v2.7.1...v2.7.2) (2020-10-11)
 
 
