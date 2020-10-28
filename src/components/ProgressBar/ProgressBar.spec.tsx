@@ -13,7 +13,7 @@ describe('ProgressBar', () => {
   const createDriver = createUniDriverFactory(progressBarDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<ProgressBar buttonText="Click Me" />);
+    const driver = createDriver(<ProgressBar value={20} />);
     expect(await driver.exists()).toBe(true);
   });
 

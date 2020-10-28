@@ -13,7 +13,6 @@ export interface ProgressBarProps
   extends TPAComponentProps,
     LinearProgressBarProps {
   className?: string;
-  'data-hook'?: string;
 }
 
 /** ProgressBar component based on LinearProgressBar from wix-ui-core */
@@ -25,12 +24,10 @@ export class ProgressBar extends React.PureComponent<ProgressBarProps> {
 
   render() {
     return (
-      <div
+      <CoreProgressBar
         className={st(classes.root, {}, this.props.className)}
-        data-hook={this.props['data-hook']}
-      >
-        <CoreProgressBar className={classes.progress} {...this.props} />
-      </div>
+        {...this.props}
+      />
     );
   }
 }

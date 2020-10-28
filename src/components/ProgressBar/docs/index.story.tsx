@@ -19,7 +19,7 @@ import * as ProgressBarWiringExampleCSSRaw from '!raw-loader!./ProgressBarWiring
 import { ProgressBarWiringExample } from './ProgressBarWiringExample';
 import { ProgressBar } from '../';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -29,10 +29,9 @@ export default {
   componentPath: '../ProgressBar.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ProgressBar',
+    value: 20,
   }),
-  exampleProps: {
-    //
-  },
+  exampleProps: {},
   dataHook: 'storybook-ProgressBar',
   sections: [
     header(),
@@ -48,7 +47,15 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[
+            { title: 'Example', source: examples.example },
+            { title: 'With percentage', source: examples.exampleWithText },
+            { title: 'RTL', source: examples.exampleRTL },
+            {
+              title: 'RTL with percentage',
+              source: examples.exampleRTLWithPercentage,
+            },
+          ].map(code),
         ],
       }),
 
@@ -65,8 +72,25 @@ export default {
               rawSource: ProgressBarWiringExampleRaw,
               rawCSSSource: ProgressBarWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
+                colors: [
+                  {
+                    label: 'Progress Background',
+                    wixParam: 'barBGColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Bar Color',
+                    wixParam: 'barColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Text Percentage Font',
+                    wixParam: 'textFont',
+                    defaultFont: 'arial',
+                  },
+                ],
                 numbers: [],
               },
             }),

@@ -17,16 +17,16 @@
 :vars {
     BarHeight: 4px;
 
-    DefaultTextColor: color-5;
+    DefaultBarColor: color-5;
     DefaultTextFont: font("{theme: 'Body-M', size: '12px', lineHeight: '1.4em'}");
-    DefaultForegroundBG: color-8;
+    DefaultBarBGColor: color-8;
 }
 
 /*Overrides*/
 :vars {
     /*Deceleration of overridable placeholders*/
-    ForegroundBG: --overridable;
-    TextColor: --overridable;
+    BarBGColor: --overridable;
+    BarColor: --overridable;
     TextFont: --overridable;
 }
 
@@ -35,47 +35,42 @@
   
 }
 
-.progress {
+.root {
     -st-extends: LinearProgressBar;
   
     height: value(BarHeight);
 }
 
-.progress::barContainer {
+.root::barContainer {
     /* safety background */
-    background: #fff; 
+    background: rgba(255, 255, 255, 0.2); 
 }
 
-.progress::barBackground {
+.root::barBackground {
     height: value(BarHeight);
 
-    background: color(fallback(value(TextColor), value(DefaultTextColor)));
+    background: color(fallback(value(BarColor), value(DefaultBarColor)));
     opacity: 0.2;
 }
 
-.progress::barForeground {
+.root::barForeground {
     height: value(BarHeight);
 
-    background: color(fallback(value(ForegroundBG), value(DefaultForegroundBG)));
+    background: color(fallback(value(BarBGColor), value(DefaultBarBGColor)));
 }
 
-.progress::progressPercentage {
-    color: color(fallback(value(TextColor), value(DefaultTextColor)));
-    font: fallback(value(TextFont), value(DefaultTextFont));
+.root::progressPercentage {
+    color: color(fallback(value(BarColor), value(DefaultBarColor)));
+    font: fallback(font(value(TextFont)), font(value(DefaultTextFont)));
+    font-size: 12px;
 }
 
 /* gap between text and bar with trl support */
-.progress::indicationContainer {
+.root::indicationContainer {
     display: flex;
 }
 
-.progress::indicationContainer::before {
+.root::indicationContainer::before {
     content: '';
     width: 12px;
-}
-
-/* error state */
-.progress:error::barBackground,
-.progress:error::barForeground {
-    background: color(value(errorColor));
 }
