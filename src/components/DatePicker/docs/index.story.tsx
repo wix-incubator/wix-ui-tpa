@@ -11,6 +11,7 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
@@ -29,9 +30,24 @@ export default {
   componentPath: '../DatePicker.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-DatePicker',
+    value: new Date(),
+    placeholderText: 'Select Date',
+    disabled: false,
+    dateFormat: 'LL/dd/yyyy',
+    excludePastDates: false,
+    firstDayOfWeek: 1,
   }),
   exampleProps: {
-    //
+    locale: [
+      { label: 'en', value: 'en' },
+      { label: 'es', value: 'es' },
+      { label: 'fr', value: 'fr' },
+    ],
+    filterDate: [
+      { label: 'Prior to the current date', value: date => date < new Date() },
+      { label: 'No filter', value: '' },
+    ],
+    // popoverProps: [], // todo: add examples
   },
   dataHook: 'storybook-DatePicker',
   sections: [
@@ -48,7 +64,22 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[
+            { title: 'Simple Usage', source: examples.basicExample },
+            {
+              title: 'Date Format',
+              description:
+                'The date format could be either string of tokens (see [`date-fns V2` docs](https://date-fns.org/v2.15.0/docs/format) for list of supported tokens) or function. The default value is `LL/dd/yyyy`',
+              source: examples.dateFormatExample,
+            },
+            {
+              title: 'Filter Dates',
+              description:
+                'In this example only prior dates to the current date can be selected.',
+              source: examples.filterExample,
+            },
+            { title: 'Disabled Mode', source: examples.disabledExample },
+          ].map(code),
         ],
       }),
 
