@@ -69,6 +69,7 @@ export default {
     'data-hook': 'storybook-Dropdown',
     placeholder: 'Placeholder Text',
     options: simpleOptions,
+    appendTo: 'parent',
   }),
   exampleProps: {
     placement: ['auto', 'top', 'right', 'bottom', 'left'],
@@ -80,6 +81,7 @@ export default {
     options,
     initialSelectedId: '',
     onChange: option => console.log(option),
+    appendTo: ['parent', 'scrollParent', 'window'],
   },
   dataHook: 'storybook-Dropdown',
   sections: [

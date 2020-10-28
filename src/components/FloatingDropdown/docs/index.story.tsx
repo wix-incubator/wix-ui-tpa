@@ -37,9 +37,11 @@ export default {
     'data-hook': 'storybook-FloatingDropdown',
     ...exampleProps,
     options: exampleProps.options[0].value,
+    appendTo: 'parent',
   }),
   exampleProps: {
     options: exampleProps.options,
+    appendTo: ['parent', 'scrollParent', 'window'],
   },
   dataHook: 'storybook-FloatingDropdown',
   sections: [

@@ -7,7 +7,7 @@ import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 import { st, classes } from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
-import { Placement } from 'wix-ui-core/popover';
+import { Placement, AppendTo } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import { TPAComponentProps } from '../../types';
@@ -41,6 +41,8 @@ export interface DropdownProps extends TPAComponentProps {
   upgrade?: boolean;
   flip?: boolean;
   fixed?: boolean;
+  /** Element to append the dropdown to */
+  appendTo?: AppendTo;
 }
 
 interface DefaultProps {
@@ -200,6 +202,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       ['aria-labelledby']: ariaLabelledBy,
       flip,
       fixed,
+      appendTo,
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
@@ -222,6 +225,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       <CoreDropdown
         className={classes.dropdown}
         placement={placement}
+        appendTo={appendTo}
         data-hook={DATA_HOOKS.coreDropdown}
         data-mobile={isMobile}
         options={coreOptions}

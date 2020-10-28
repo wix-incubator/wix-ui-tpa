@@ -1,23 +1,20 @@
 import * as React from 'react';
-
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
-
 import { DropdownOption } from '../Dropdown/DropdownOption';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-
+import { FloatingDropdownBase } from './FloatingDropdownBase';
+import { DATA_HOOKS } from './constants';
+import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
+import { Placement, AppendTo } from 'wix-ui-core/popover';
+import { TPAComponentProps } from '../../types';
+import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
+import { st, classes } from './FloatingDropdown.st.css';
 /* TODO
  * The import below is a workaround. FloatingDropdown and Dropdown
  * components should be refactored according to this thread
  * https://github.com/wix/wix-ui-tpa/pull/387 (or merged into a single component)
  */
 import '../Dropdown/Dropdown.st.css';
-import { st, classes } from './FloatingDropdown.st.css';
-import { FloatingDropdownBase } from './FloatingDropdownBase';
-import { DATA_HOOKS } from './constants';
-import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
-import { Placement } from 'wix-ui-core/popover';
-import { TPAComponentProps } from '../../types';
-import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
 
 export interface FloatingDropdownProps extends TPAComponentProps {
   /** Defines a string value that labels the current element. Optional. */
@@ -40,6 +37,8 @@ export interface FloatingDropdownProps extends TPAComponentProps {
   forceContentElementVisibility?: boolean;
   /** Placement for Popover. Optional. Placement. */
   placement?: Placement;
+  /** Element to append the dropdown to */
+  appendTo?: AppendTo;
   name?: string;
   id?: string;
 }
@@ -106,6 +105,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       name,
       id,
       placement,
+      appendTo,
     } = this.props;
     const { coreOptions } = this._generateCoreOptions();
 
@@ -142,6 +142,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         disabled={disabled}
         options={coreOptions}
         placement={placement}
+        appendTo={appendTo}
       >
         {baseElement}
       </CoreDropdown>
