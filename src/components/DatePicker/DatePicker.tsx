@@ -60,9 +60,9 @@ export interface DatePickerProps extends TPAComponentProps {
   /** Sets the popover props. The default placement value depends on the rtl prop - would be 'top-start' when rtl=false and 'top-end' in case of rtl=ture */
   popoverProps?: PopoverCommonProps;
   /** Error status */
-  hasError,
+  hasError;
   /** The error status message to display when hovering the status icon. */
-  errorMessage,
+  errorMessage;
 }
 
 interface DefaultProps {
@@ -114,13 +114,19 @@ export class DatePicker extends React.Component<DatePickerProps, State> {
       errorMessage,
     } = this.props;
 
-    const customInput = <TextField
+    const customInput = (
+      <TextField
         data-hook="date-input"
-        prefix={<div className={classes.calendarIconWrapper}><Heart /></div>}
+        prefix={
+          <div className={classes.calendarIconWrapper}>
+            <Heart />
+          </div>
+        }
         disabled={disabled}
         error={hasError}
         errorMessage={errorMessage}
-    />;
+      />
+    );
 
     return (
       <div

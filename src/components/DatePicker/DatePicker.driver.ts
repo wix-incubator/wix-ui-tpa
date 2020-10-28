@@ -8,7 +8,6 @@ import { DATA_HOOKS } from './constants';
 // @ts-ignore
 import { datePickerDriverFactory as WSRDatePickerDriverFactory } from 'wix-style-react/dist/src/DatePicker/DatePicker.driver';
 
-
 export interface DatePickerDriver extends BaseUniDriver {}
 
 export const datePickerDriverFactory = (base: UniDriver): DatePickerDriver => {
