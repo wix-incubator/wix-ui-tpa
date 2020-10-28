@@ -3,6 +3,8 @@ import { TPAComponentProps } from '../../types';
 
 import WSRDatePicker from 'wix-style-react/dist/src/DatePicker';
 import { PopoverCommonProps } from 'wix-style-react/dist/src/common/PropTypes/PopoverCommon';
+import { TextField } from '../TextField/TextField';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 
 import { st, classes } from './DatePicker.st.css';
 import { DATA_HOOKS } from './constants';
@@ -57,6 +59,10 @@ export interface DatePickerProps extends TPAComponentProps {
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   /** Sets the popover props. The default placement value depends on the rtl prop - would be 'top-start' when rtl=false and 'top-end' in case of rtl=ture */
   popoverProps?: PopoverCommonProps;
+  /** Error status */
+  hasError,
+  /** The error status message to display when hovering the status icon. */
+  errorMessage,
 }
 
 interface DefaultProps {
@@ -67,6 +73,8 @@ interface DefaultProps {
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
   firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  hasError: boolean;
+  errorMessage: string;
 }
 
 interface State {}
@@ -82,6 +90,8 @@ export class DatePicker extends React.Component<DatePickerProps, State> {
     excludePastDates: false,
     filterDate: () => true,
     firstDayOfWeek: 1,
+    hasError: false,
+    errorMessage: '',
   };
 
   state = {};
@@ -100,7 +110,17 @@ export class DatePicker extends React.Component<DatePickerProps, State> {
       filterDate,
       firstDayOfWeek,
       popoverProps,
+      hasError,
+      errorMessage,
     } = this.props;
+
+    const customInput = <TextField
+        data-hook="date-input"
+        prefix={<div className={classes.calendarIconWrapper}><Heart /></div>}
+        disabled={disabled}
+        error={hasError}
+        errorMessage={errorMessage}
+    />;
 
     return (
       <div
@@ -124,6 +144,8 @@ export class DatePicker extends React.Component<DatePickerProps, State> {
           shouldCloseOnSelect
           initialOpen={false}
           numOfMonths={1}
+          customInput={customInput}
+          width="300px"
         />
       </div>
     );
