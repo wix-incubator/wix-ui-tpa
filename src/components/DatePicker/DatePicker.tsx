@@ -31,9 +31,9 @@ export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
   value: Date;
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
-  onChange: (selectedDays: string | Date) => void;
+  onChange(selectedDays: string | Date): void;
   /** A Callback function which is called whenever the user presses escape or clicks outside of the element or a date is selected and `shouldCloseOnSelect` is set */
-  onClose?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClose?(event: React.MouseEvent<HTMLButtonElement>): void;
   /** placeholder of the Input */
   placeholderText?: string;
   /** Is the DatePicker disabled */
@@ -52,7 +52,7 @@ export interface DatePickerProps extends TPAComponentProps {
    *  * `param` {Date} `date` - a date to check
    *  * `return` {boolean} - true if `date` should be selectable, false otherwise
    */
-  filterDate?: (date: Date) => boolean;
+  filterDate?(date: Date): boolean;
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
   /** Sets the popover props. The default placement value depends on the rtl prop - would be 'top-start' when rtl=false and 'top-end' in case of rtl=ture */
