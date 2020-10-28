@@ -77,12 +77,12 @@ export default {
               params: {
                 colors: [
                   {
-                    label: 'Progress Background',
+                    label: 'Bar Color',
                     wixParam: 'barColor',
                     defaultColor: 'color-8',
                   },
                   {
-                    label: 'Bar Color',
+                    label: 'Bar Background Color',
                     wixParam: 'barBGColor',
                     defaultColor: 'color-5',
                   },

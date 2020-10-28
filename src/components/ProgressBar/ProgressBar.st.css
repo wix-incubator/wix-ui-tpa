@@ -57,6 +57,7 @@
     height: value(BarHeight);
 
     background: color(fallback(value(BarColor), value(DefaultBarColor)));
+    transition: width .5s ease-in-out;
 }
 
 .root::progressPercentage {
