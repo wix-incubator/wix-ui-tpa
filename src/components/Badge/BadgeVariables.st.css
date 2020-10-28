@@ -1,0 +1,27 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback;
+}
+
+:vars {
+    /* Defaults */
+    bgColor: applyOpacity(color(color-5), 0.1);
+    primaryBgColor: color(color-8);
+    lightBgColor: color(color-1);
+    textColor: color(color-5);
+    primaryTextColor: color(color-1);
+    lightTextColor: color(color-5);
+    lightBorderColor: applyOpacity(color(color-5), 0.10);
+}
+
+:vars {
+    /* Overrides */
+    BadgeBgColor: --overridable;
+    BadgeTextColor: --overridable;
+}
+
+:vars {
+    /* Overriden values with default fallbacks */
+    badgeBgColor: color(fallback(value(BadgeBgColor), value(bgColor)));
+    badgeTextColor: color(fallback(value(BadgeTextColor), value(textColor)));
+}
