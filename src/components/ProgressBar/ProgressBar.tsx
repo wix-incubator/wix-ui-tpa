@@ -11,9 +11,7 @@ import { st, classes } from './ProgressBar.st.css';
 
 export interface ProgressBarProps
   extends TPAComponentProps,
-    LinearProgressBarProps {
-  className?: string;
-}
+    Omit<LinearProgressBarProps, 'error' | 'errorIcon' | 'successIcon'> {}
 
 /** ProgressBar component based on LinearProgressBar from wix-ui-core */
 export class ProgressBar extends React.PureComponent<ProgressBarProps> {

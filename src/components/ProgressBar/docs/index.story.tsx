@@ -30,6 +30,9 @@ export default {
   componentProps: () => ({
     'data-hook': 'storybook-ProgressBar',
     value: 20,
+    showProgressIndication: true,
+    min: 0,
+    max: 100,
   }),
   exampleProps: {},
   dataHook: 'storybook-ProgressBar',
@@ -75,12 +78,12 @@ export default {
                 colors: [
                   {
                     label: 'Progress Background',
-                    wixParam: 'barBGColor',
+                    wixParam: 'barColor',
                     defaultColor: 'color-8',
                   },
                   {
                     label: 'Bar Color',
-                    wixParam: 'barColor',
+                    wixParam: 'barBGColor',
                     defaultColor: 'color-5',
                   },
                 ],

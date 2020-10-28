@@ -20,7 +20,7 @@ ProgressBarMetadata.addSim({
 });
 
 ProgressBarMetadata.addSim({
-  title: 'render with percentage 33%',
+  title: 'render with percentage 33 percents',
   props: {
     value: 33,
     showProgressIndication: true,
@@ -28,17 +28,9 @@ ProgressBarMetadata.addSim({
 });
 
 ProgressBarMetadata.addSim({
-  title: 'render with percentage 100%',
+  title: 'render with percentage 100 percents',
   props: {
-    value: 33,
-    showProgressIndication: true,
-  } as ProgressBarProps,
-});
-
-ProgressBarMetadata.addSim({
-  title: 'render with percentage RTL',
-  props: {
-    value: 33,
+    value: 100,
     showProgressIndication: true,
   } as ProgressBarProps,
 });
