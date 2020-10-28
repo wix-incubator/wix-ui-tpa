@@ -5,7 +5,7 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 import { Modal } from '../internal/Modal';
 import { IconButton } from '../IconButton';
-import { Close as CloseIcon } from '../../assets/icons';
+import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { TPAComponentProps } from '../../types';
 
 export interface DialogProps extends TPAComponentProps {
