@@ -52,20 +52,27 @@ export const errorExample = buildExample(`
 
 export const dateFormatExample = `
       <>
-       <div style={{ marginBottom: '12px' }}>
-            <DatePicker
-              value={new Date()}
-              onChange={() => {}}
-              dateFormat="LL/dd/yyyy"
-            />
-       </div>
-       <div style={{ marginBottom: '12px' }}>
-            <DatePicker
-              value={new Date()}
-              onChange={() => {}}
-              dateFormat="dd/LL/yy"
-            />
-       </div>
+             <div style={{ marginBottom: '12px' }}>
+                  <DatePicker
+                    value={new Date()}
+                    onChange={() => {}}
+                    dateFormat="LL/dd/yyyy"
+                  />
+             </div>
+             <div style={{ marginBottom: '12px' }}>
+                  <DatePicker
+                    value={new Date()}
+                    onChange={() => {}}
+                    dateFormat="dd/LL/yy"
+                  />
+            </div>
+                    <div style={{ marginBottom: '12px' }}>
+                  <DatePicker
+                    value={new Date()}
+                    onChange={() => {}}
+                    dateFormat="LLL dd, yyyy"
+                  />
+            </div>
             <DatePicker
               value={new Date()}
               onChange={() => {}}
