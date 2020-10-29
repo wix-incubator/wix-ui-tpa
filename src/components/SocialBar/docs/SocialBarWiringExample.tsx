@@ -5,7 +5,6 @@ import { ReactComponent as Instagram } from '../../../assets/icons/Social/Instag
 import { ReactComponent as Linkedin } from '../../../assets/icons/Social/Linkedin.svg';
 import { ReactComponent as Tumblr } from '../../../assets/icons/Social/Tumblr.svg';
 import { ReactComponent as Pinterest } from '../../../assets/icons/Social/Pinterest.svg';
-
 import { CopyUrlButton } from '../../CopyUrlButton';
 
 export const SocialBarWiringExample = () => {
