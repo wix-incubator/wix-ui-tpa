@@ -13,16 +13,22 @@ describe('DatePicker', () => {
   const createDriver = createUniDriverFactory(datePickerDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<DatePicker value={new Date()} onChange={() => {}} />);
+    const driver = createDriver(
+      <DatePicker value={new Date()} onChange={() => {}} />,
+    );
     expect(await driver.exists()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<DatePicker value={new Date()} onChange={() => {}} />, datePickerTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <DatePicker value={new Date()} onChange={() => {}} />,
+          datePickerTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
