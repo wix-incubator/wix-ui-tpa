@@ -1,3 +1,18 @@
+# [2.9.0](https://github.com/wix/wix-ui-tpa/compare/v2.8.1...v2.9.0) (2020-10-29)
+
+
+### Features
+
+* New ProgressBar component ([17a2095](https://github.com/wix/wix-ui-tpa/commit/17a2095c98e91ddd7680c92253e51bf190457ae6))
+* **TextArea:** add id prop ([4a32d57](https://github.com/wix/wix-ui-tpa/commit/4a32d5768f57b062224849a92caf562498a6c833))
+
+
+### Performance Improvements
+
+* **Dialog:** Avoid importing unnecessary icons ([f2fcdbd](https://github.com/wix/wix-ui-tpa/commit/f2fcdbd56884e214196dba4447bf0ff1361c6454))
+
+
+
 ## [2.8.1](https://github.com/wix/wix-ui-tpa/compare/v2.8.0...v2.8.1) (2020-10-23)
 
 
