@@ -77,10 +77,8 @@ interface DefaultProps {
   errorMessage: string;
 }
 
-interface State {}
-
 /** The Date pickers presents a calendar and allows a user to select a specific date. */
-export class DatePicker extends React.Component<DatePickerProps, State> {
+export class DatePicker extends React.Component<DatePickerProps> {
   static displayName = 'DatePicker';
   static defaultProps: DefaultProps = {
     placeholderText: '',
