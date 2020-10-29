@@ -16,6 +16,7 @@ import { TPAComponentProps } from '../../types';
 
 export interface TextAreaProps extends TPAComponentProps {
   value: string;
+  id?: string;
   error?: boolean;
   success?: boolean;
   ariaLabel: string;
@@ -63,6 +64,7 @@ export class TextArea extends React.Component<TextAreaProps> {
 
   render() {
     const {
+      id,
       value,
       theme,
       error,
@@ -105,6 +107,7 @@ export class TextArea extends React.Component<TextAreaProps> {
                     onChange(e);
                   }
                 }}
+                id={id}
                 autoFocus={autoFocus}
                 onBlur={onBlur}
                 placeholder={placeholder}

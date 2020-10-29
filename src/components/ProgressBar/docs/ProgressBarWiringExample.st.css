@@ -1,0 +1,12 @@
+:import {
+    -st-from: "../ProgressBar.st.css";
+    -st-default: ProgressBar;
+}
+
+.root {
+    -st-mixin: ProgressBar(
+        BarBGColor '"--barBGColor"',
+        BarColor '"--barColor"',
+        TextFont '"--textFont"'
+    )
+}
