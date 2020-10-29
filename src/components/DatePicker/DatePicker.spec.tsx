@@ -13,14 +13,14 @@ describe('DatePicker', () => {
   const createDriver = createUniDriverFactory(datePickerDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<DatePicker />);
+    const driver = createDriver(<DatePicker value={new Date()} onChange={() => {}} />);
     expect(await driver.exists()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<DatePicker />, datePickerTestkitFactory, {
+        await isUniTestkitExists(<DatePicker value={new Date()} onChange={() => {}} />, datePickerTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -31,7 +31,7 @@ describe('DatePicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <DatePicker />,
+          <DatePicker value={new Date()} onChange={() => {}} />,
           enzymeDatePickerTestkitFactory,
           mount,
           {

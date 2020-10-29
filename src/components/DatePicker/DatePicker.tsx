@@ -69,7 +69,7 @@ interface DefaultProps {
   placeholderText: string;
   disabled: boolean;
   dateFormat: string;
-  locale: string;
+  locale: LanguageType | { distanceInWords?: {}; format?: {} };
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
   firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
