@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { st, classes } from './CopyUrlButton.st.css';
 import { ReactComponent as Check } from '../../assets/icons/Check.svg';
-import { SocialIcons } from '../../assets/icons';
+import { ReactComponent as CopyLink } from '../../../assets/icons/Social/CopyLink.svg';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN, TOAST_PLACEMENT } from '../Toast';
 import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
@@ -91,7 +91,7 @@ export class CopyUrlButton extends React.Component<
       <SocialBarIcon
         tooltip={tooltipText}
         socialBarTheme={socialBarTheme}
-        icon={<SocialIcons.CopyLink />}
+        icon={<CopyLink />}
         as="button"
         {...otherProps}
         onClick={this.onButtonClick}
