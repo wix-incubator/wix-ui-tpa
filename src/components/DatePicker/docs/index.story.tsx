@@ -78,6 +78,7 @@ export default {
                 'In this example only prior dates to the current date can be selected.',
               source: examples.filterExample,
             },
+            { title: 'Error Mode', source: examples.errorExample },
             { title: 'Disabled Mode', source: examples.disabledExample },
           ].map(code),
         ],

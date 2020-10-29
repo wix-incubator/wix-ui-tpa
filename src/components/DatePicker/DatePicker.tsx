@@ -92,8 +92,6 @@ export class DatePicker extends React.Component<DatePickerProps> {
     errorMessage: '',
   };
 
-  state = {};
-
   render() {
     const {
       className,

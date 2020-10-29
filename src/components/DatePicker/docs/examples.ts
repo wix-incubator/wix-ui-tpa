@@ -41,18 +41,31 @@ export const disabledExample = buildExample(`
     />
 `);
 
+export const errorExample = buildExample(`
+    <DatePicker
+        value={value}
+        onChange={this._onChange}
+        hasError
+        errorMessage="Error Message"
+    />
+`);
+
 export const dateFormatExample = `
       <>
+       <div style={{ marginBottom: '12px' }}>
             <DatePicker
               value={new Date()}
               onChange={() => {}}
               dateFormat="LL/dd/yyyy"
             />
+       </div>
+       <div style={{ marginBottom: '12px' }}>
             <DatePicker
               value={new Date()}
               onChange={() => {}}
               dateFormat="dd/LL/yy"
             />
+       </div>
             <DatePicker
               value={new Date()}
               onChange={() => {}}
