@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { st, classes } from './CopyUrlButton.st.css';
 import { ReactComponent as Check } from '../../assets/icons/Check.svg';
-import { ReactComponent as CopyLink } from '../../../assets/icons/Social/CopyLink.svg';
+import { ReactComponent as CopyLink } from '../../assets/icons/Social/CopyLink.svg';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN, TOAST_PLACEMENT } from '../Toast';
 import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
