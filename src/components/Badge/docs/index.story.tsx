@@ -4,25 +4,28 @@ import * as examples from './examples';
 import {
   header,
   api,
-  description,
   divider,
   importExample,
   playground,
   tab,
-  code as baseCode,
+  example as baseExample,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import * as Readme from '../README.md';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { BadgeExtendedExample } from './BadgeExtendedExample';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = config =>
+  baseExample({
+    components: { ...allComponents, BadgeOverrides: { classes: [] } },
+    compact: true,
+    ...config,
+  });
 
 export default {
   category: 'Components',
@@ -44,7 +47,6 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
           importExample({
             source: examples.importExample,
           }),
@@ -53,12 +55,38 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Preset examples', source: examples.example }].map(code),
+          ...[
+            {
+              title: 'Priority skins',
+              description: 'The Badge component has different skins to apply',
+              source: examples.priority,
+            },
+            {
+              title: 'Icon prefix',
+              description: 'Icon prefix can be set per icon',
+              source: examples.icons,
+            },
+            {
+              title: 'RTL support',
+              description: 'RTL is supported using the native css property',
+              source: examples.rtl,
+            },
+            {
+              title: 'Style params override',
+              description:
+                'Override specific style variables to customize the component',
+              source: examples.overrideExample,
+            },
+          ].map(example),
         ],
       }),
 
       ...[
         { title: 'API', sections: [api()] },
+        {
+          title: 'Style API',
+          sections: [settingsApi()],
+        },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

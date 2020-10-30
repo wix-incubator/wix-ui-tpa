@@ -1,12 +1,19 @@
 :import {
     -st-from: "../Badge.st.css";
     -st-default: TPABadge;
+    -st-named: badgeOverrides;
 }
 
-.root {
+.mixAll {
     -st-mixin: TPABadge(
         BadgeBgColor '"color(--badgeBgColor)"',
         BadgeTextColor '"color(--badgeTextColor)"',
-        BadgeBorderColor '"color(--badgeBorderColor)"'
+    );
+}
+
+.mixOverrides {
+    -st-mixin: badgeOverrides(
+        BadgeBgColor '"color(--badgeBgColor)"',
+        BadgeTextColor '"color(--badgeTextColor)"',
     );
 }

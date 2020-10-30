@@ -14,9 +14,11 @@
     PrimaryTextColor: color-1;
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /* Background color */
     BadgeBgColor: --overridable;
+    /* Text color */
     BadgeTextColor: --overridable;
 }
 
@@ -96,4 +98,18 @@
 
 .root:withIcon::before {
     width: 10px;
+}
+
+/* Public API to customize the component */
+.badgeOverrides {
+  -st-extends: root;
+}
+
+.badgeOverrides:priority(default) {
+    background-color: value(badgeBgColor);
+    color: value(badgeTextColor);
+}
+
+.badgeOverrides:priority(default) .icon path {
+    fill: color(value(badgeTextColor));
 }
