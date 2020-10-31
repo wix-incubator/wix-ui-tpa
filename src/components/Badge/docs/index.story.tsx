@@ -104,7 +104,7 @@ export default {
                   {
                     label: 'Badge background color',
                     wixParam: 'badgeBgColor',
-                    defaultColor: 'color-2',
+                    defaultColor: 'color-5',
                   },
                   {
                     label: 'Badge text color',
