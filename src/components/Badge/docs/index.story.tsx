@@ -15,14 +15,16 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+
 import { BadgeExtendedExample } from './BadgeExtendedExample';
+import * as exampleOverrides from './BadgeExtendedExample.st.css';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
-import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 const example = config =>
   baseExample({
-    components: { ...allComponents, BadgeOverrides: { classes: [] } },
+    components: { ...allComponents, overrides: exampleOverrides },
     compact: true,
     ...config,
   });
@@ -74,7 +76,7 @@ export default {
             {
               title: 'Style params override',
               description:
-                'Override specific style variables to customize the component',
+                'Override specific style variables to customize the component. Go to the "Settings Panel" and start changing colors, see how it reflects this one as well',
               source: examples.overrideExample,
             },
           ].map(example),
@@ -94,15 +96,15 @@ export default {
           sections: [
             settingsPanel({
               example: <BadgeExtendedExample />,
-              rawSource: ExtendedRawSource,
-              rawCSSSource: ExtendedCSSRawSource,
+              rawSource: (ExtendedRawSource as any).default,
+              rawCSSSource: (ExtendedCSSRawSource as any).default,
               title: 'Badge Extended',
               params: {
                 colors: [
                   {
                     label: 'Badge background color',
                     wixParam: 'badgeBgColor',
-                    defaultColor: 'color-5',
+                    defaultColor: 'color-2',
                   },
                   {
                     label: 'Badge text color',

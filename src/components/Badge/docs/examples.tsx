@@ -1,22 +1,13 @@
+import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 export const importExample = `import { Badge, BADGE_PRIORITY } from 'wix-ui-tpa/Badge';`;
 
 export const overrideExample = `
 () => {
   \`
-  //BadgeOverrides.st.css
-  :import {
-    -st-from: "wix-ui-tpa/dist/src/components/Badge.st.css";
-    -st-named: badgeOverrides;
-  }
+//Overrides.st.css
+${(ExtendedCSSRawSource as any).default}\`
 
-  .root {
-    -st-mixin: badgeOverrides(
-        BadgeBgColor '"color(--badgeBgColor)"',
-        BadgeTextColor '"color(--badgeTextColor)"',
-    );
-  }\`
-
-  return <Badge className={BadgeOverrides.classes.root}>Badge with connected params</Badge>
+  return <Badge className={overrides.classes.mixOverrides }>Badge with connected params</Badge>
 }
 `;
 

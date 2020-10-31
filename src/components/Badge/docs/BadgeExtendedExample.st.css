@@ -4,15 +4,16 @@
     -st-named: badgeOverrides;
 }
 
-.mixAll {
-    -st-mixin: TPABadge(
+.mixOverrides {
+    -st-mixin: badgeOverrides(
         BadgeBgColor '"color(--badgeBgColor)"',
         BadgeTextColor '"color(--badgeTextColor)"',
     );
 }
 
-.mixOverrides {
-    -st-mixin: badgeOverrides(
+/* Deprecated */
+.mixAll {
+    -st-mixin: TPABadge(
         BadgeBgColor '"color(--badgeBgColor)"',
         BadgeTextColor '"color(--badgeTextColor)"',
     );

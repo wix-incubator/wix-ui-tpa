@@ -29,7 +29,7 @@
 }
 
 .root {
-    -st-states: priority(enum(default, light, primary)), withIcon;
+    -st-states:  withIcon;
     display: inline-flex;
     border-radius: 12px;
     line-height: 20px;
@@ -39,6 +39,15 @@
 .root::before, .root::after {
     content: '';
     width: 12px;;
+}
+
+.root:withIcon::before {
+    width: 10px;
+}
+
+.icon::after {
+    content: '';
+    width: 2px;
 }
 
 .innerContainer {
@@ -57,22 +66,17 @@
     height: 16px;
 }
 
-.icon::after {
-    content: '';
-    width: 2px;
-}
-
-.root:priority(default) {
+.root.priority-default {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
     border: none;
 }
 
-.root:priority(default) .icon path {
+.root.priority-default .icon path {
     fill: color(value(badgeTextColor));
 }
 
-.root:priority(light) {
+.root.priority-light {
     background-color: color(value(LightBgColor));
     color: color(value(LightTextColor));
     border-color: value(lightBorderColor);
@@ -82,34 +86,26 @@
     line-height: 18px;
 }
 
-.root:priority(light) .icon path {
+.root.priority-light .icon path {
     fill: color(value(LightTextColor));
 }
 
-.root:priority(primary) {
+.root.priority-primary {
     background-color: color(value(PrimaryBgColor));
     color: color(value(PrimaryTextColor));
     border: none;
 }
 
-.root:priority(primary) .icon path {
+.root.priority-primary .icon path {
     fill: color(value(PrimaryTextColor));
 }
 
-.root:withIcon::before {
-    width: 10px;
-}
-
 /* Public API to customize the component */
-.badgeOverrides {
-  -st-extends: root;
-}
-
-.badgeOverrides:priority(default) {
+.root.badgeOverrides {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
 }
 
-.badgeOverrides:priority(default) .icon path {
+.root.badgeOverrides .icon path {
     fill: color(value(badgeTextColor));
 }
