@@ -96,8 +96,8 @@ export default {
           sections: [
             settingsPanel({
               example: <BadgeExtendedExample />,
-              rawSource: (ExtendedRawSource as any).default,
-              rawCSSSource: (ExtendedCSSRawSource as any).default,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
               title: 'Badge Extended',
               params: {
                 colors: [
