@@ -1,7 +1,10 @@
-.root {
-
+:import {
+  -st-from: "../{%ComponentName}.st.css";
+  -st-default: {%ComponentName};
 }
 
-.component {
-
+.root {
+  -st-mixin: {%ComponentName}(
+    BgColor: ''"color(--myBackgroundOverride)"''
+  );
 }

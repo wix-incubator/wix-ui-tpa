@@ -70,7 +70,13 @@ export default {
               rawSource: {%ComponentName%}WiringExampleRaw,
               rawCSSSource: {%ComponentName%}WiringExampleCSSRaw,
               params: {
-                colors: [],
+                colors: [
+                  {
+                    label: 'Background color',
+                    wixParam: 'myBackgroundOverride',
+                    defaultColor: 'color-1',
+                  },
+                ],
                 fonts: [],
                 numbers: [],
               },
