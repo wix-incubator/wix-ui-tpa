@@ -16,6 +16,10 @@
         "singleQuote": true,
         "trailingComma": "all"
       }
+    ],
+    "import-blacklist": [
+      true,
+      [".*\\/assets\\/icons$"]
     ]
   },
   "linterOptions": {

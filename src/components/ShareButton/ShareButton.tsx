@@ -8,6 +8,7 @@ import {
   TEXT_BUTTON_PRIORITY,
 } from '../TextButton';
 import { ReactComponent as Share } from '../../assets/icons/Share.svg';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 
 interface ShareData {
   url: string;
