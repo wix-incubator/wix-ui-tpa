@@ -82,7 +82,7 @@
 }
 
 .root .inputWrapper {
-    flex-grow: 1;
+    flex: 1;
 }
 
 .root input {
