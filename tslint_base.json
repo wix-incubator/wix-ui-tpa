@@ -19,7 +19,7 @@
     ],
     "import-blacklist": [
       true,
-      [".*\\/assets\\/icons$", ".*\\/assets\\/icons\\/Social$", ".*\\/assets\\/icons\\/index.tsx$"]
+      [".*\\/assets\\/icons$", ".*\\/assets\\/icons\\/Social$", ".*\\/assets\\/icons\\/index$", ".*\\/assets\\/icons\\/Social\\/index$"]
     ]
   },
   "linterOptions": {
