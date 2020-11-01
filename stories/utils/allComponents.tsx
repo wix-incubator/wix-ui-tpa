@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as componentsScope from '../../src/components';
+// tslint:disable-next-line
 import * as icons from '../../src/assets/icons';
 import * as iconsScope from 'wix-ui-icons-common';
 import { Modal } from '../../src/components/internal/Modal';

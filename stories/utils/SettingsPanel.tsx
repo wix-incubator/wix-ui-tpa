@@ -109,7 +109,13 @@ export function settingsPanel({
       <div className="tpa-container">
         <CodeExample
           title={title}
-          code={['//.st.css', rawCSSSource, '', '//.tsx', rawSource].join('\n')}
+          code={[
+            '//.st.css',
+            (rawCSSSource as any).default,
+            '',
+            '//.tsx',
+            (rawSource as any).default,
+          ].join('\n')}
         >
           {example}
         </CodeExample>

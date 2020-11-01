@@ -19,7 +19,7 @@ import * as ProgressBarWiringExampleCSSRaw from '!raw-loader!./ProgressBarWiring
 import { ProgressBarWiringExample } from './ProgressBarWiringExample';
 import { ProgressBar } from '../';
 
-const code = (config) =>
+const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {

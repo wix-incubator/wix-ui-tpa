@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconToggle } from '.';
-import { Heart } from '../../assets/icons';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 import Registry from '@ui-autotools/registry';
 
 const IconToggleMetadata = Registry.getComponentMetadata(IconToggle);
