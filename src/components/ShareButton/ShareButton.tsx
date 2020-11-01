@@ -7,7 +7,7 @@ import {
   TextButtonProps,
   TEXT_BUTTON_PRIORITY,
 } from '../TextButton';
-import { Share } from '../../assets/icons';
+import { ReactComponent as Share } from '../../assets/icons/Share.svg';
 
 interface ShareData {
   url: string;
