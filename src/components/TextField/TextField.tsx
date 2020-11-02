@@ -128,6 +128,10 @@ export class TextField extends React.Component<TextFieldProps> {
       theme,
       suffix,
       className,
+      withClearButton,
+      onClear,
+      clearButtonAriaLabel,
+      clearButtonAriaLabelledby,
       ...restProps
     } = this.props;
 
