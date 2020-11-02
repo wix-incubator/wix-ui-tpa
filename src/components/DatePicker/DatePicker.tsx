@@ -31,7 +31,7 @@ export type LanguageType =
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
-  value: Date;
+  value: Date | string;
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange(selectedDays: string | Date): void;
   /** A Callback function which is called whenever the user presses escape or clicks outside of the element or a date is selected and `shouldCloseOnSelect` is set */
@@ -92,6 +92,11 @@ export class DatePicker extends React.Component<DatePickerProps> {
     errorMessage: '',
   };
 
+  _onInputClearButtonClicked = () => {
+    const { onChange } = this.props;
+    onChange('');
+  }
+
   render() {
     const {
       className,
@@ -113,14 +118,15 @@ export class DatePicker extends React.Component<DatePickerProps> {
     const customInput = (
       <TextField
         data-hook="date-input"
-        prefix={
-          <div className={classes.calendarIconWrapper}>
-            <Heart />
-          </div>
+        prefix=""
+        suffix={
+          <Heart />
         }
         disabled={disabled}
         error={hasError}
         errorMessage={errorMessage}
+        withClearButton
+        onClear={this._onInputClearButtonClicked}
       />
     );
 

@@ -21,11 +21,3 @@
 .root {
     /*css goes here*/
 }
-
-.calendarIconWrapper {
-    margin: auto 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}

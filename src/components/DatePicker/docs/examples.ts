@@ -1,9 +1,9 @@
 export const importExample = `import { DatePicker } from 'wix-ui-tpa/DatePicker';`;
 
-const buildExample = (content: string) => `
+const buildExample = (initialValue: (Date | string), content: string) => `
 class DatePickerExample extends React.Component {
   state = {
-    value: new Date(),
+    value: ${initialValue},
   };
 
   _onChange = (date) => this.setState({ value: date });
@@ -12,20 +12,29 @@ class DatePickerExample extends React.Component {
     const { value } = this.state;
     
     return (
-      ${content} 
+      ${content}
     );
   }
 }
 `;
 
-export const basicExample = buildExample(`
+export const basicExample = buildExample('new Date()', `
     <DatePicker
         value={value}
+        placeholderText="Select A Date"
         onChange={this._onChange} 
     />
 `);
 
-export const filterExample = buildExample(`
+export const emptyExample = buildExample('""', `
+    <DatePicker
+        value={value}
+        placeholderText="Select A Date"
+        onChange={this._onChange} 
+    />
+`);
+
+export const filterExample = buildExample('new Date()', `
     <DatePicker
         value={value}
         onChange={this._onChange}
@@ -33,7 +42,7 @@ export const filterExample = buildExample(`
     />
 `);
 
-export const disabledExample = buildExample(`
+export const disabledExample = buildExample('new Date()',`
     <DatePicker
         value={value}
         onChange={this._onChange}
@@ -41,9 +50,10 @@ export const disabledExample = buildExample(`
     />
 `);
 
-export const errorExample = buildExample(`
+export const errorExample = buildExample('new Date("2020/09/20")',`
     <DatePicker
         value={value}
+        placeholderText="Select A Date"
         onChange={this._onChange}
         hasError
         errorMessage="Error Message"

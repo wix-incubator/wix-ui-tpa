@@ -66,6 +66,7 @@ export default {
 
           ...[
             { title: 'Simple Usage', source: examples.basicExample },
+            { title: 'Without a selected date', source: examples.emptyExample },
             {
               title: 'Date Format',
               description:
