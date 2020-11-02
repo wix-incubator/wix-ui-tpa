@@ -12,7 +12,14 @@ import { IconButton } from '../IconButton';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';
-import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME } from './dataKeys';
+import {
+  EMPTY,
+  ERROR,
+  ERROR_MESSAGE,
+  SUCCESS,
+  THEME,
+  DATA_HOOKS,
+} from './dataKeys';
 import { TPAComponentProps } from '../../types';
 
 export interface TPATextFieldProps extends TPAComponentProps {
@@ -93,7 +100,7 @@ export class TextField extends React.Component<TextFieldProps> {
         {withClearButton && value && (
           <IconButton
             className={classes.clearButton}
-            data-hook="clear-button"
+            data-hook={DATA_HOOKS.CLEAR_BUTTON}
             aria-label={clearButtonAriaLabel}
             aria-labelledby={clearButtonAriaLabelledby}
             onClick={() => onClear && this.props.onClear()}
@@ -109,7 +116,7 @@ export class TextField extends React.Component<TextFieldProps> {
         {suffix && (
           <div
             className={classes.customSuffixWrapper}
-            data-hook="custom-suffix"
+            data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
           >
             {suffix}
           </div>
@@ -192,7 +199,7 @@ const StatusIcon = ({ error, errorMessage, success, successIcon }) => {
   } else if (successIcon && success) {
     statusIcon = (
       <SuccessIcon
-        data-hook="successIcon"
+        data-hook={DATA_HOOKS.SUCCESS_ICON}
         className={classes.successStatusIcon}
       />
     );
