@@ -74,19 +74,31 @@ export class TextField extends React.Component<TextFieldProps> {
       value,
     } = this.props;
 
-    const hasSuffix = suffix || (error && errorMessage) || (successIcon && success) || withClearButton;
+    const hasSuffix =
+      suffix ||
+      (error && errorMessage) ||
+      (successIcon && success) ||
+      withClearButton;
 
     return hasSuffix ? (
-        <div className={classes.suffixWrapper}>
-          <div className={classes.gap} />
-          {(withClearButton && value) && (
-              <ClearIcon className={classes.clearButton} onClick={() => onClear && this.props.onClear()} />
-          )}
-          <StatusIcon error={error} errorMessage={errorMessage} success={success} successIcon={successIcon} />
-          {suffix}
-        </div>
+      <div className={classes.suffixWrapper}>
+        <div className={classes.gap} />
+        {withClearButton && value && (
+          <ClearIcon
+            className={classes.clearButton}
+            onClick={() => onClear && this.props.onClear()}
+          />
+        )}
+        <StatusIcon
+          error={error}
+          errorMessage={errorMessage}
+          success={success}
+          successIcon={successIcon}
+        />
+        {suffix}
+      </div>
     ) : null;
-  }
+  };
 
   render() {
     const {
@@ -133,27 +145,36 @@ export class TextField extends React.Component<TextFieldProps> {
 }
 
 const ErrorSuffix = ({ className, errorMessage }) => (
-    <Tooltip
-        className={className}
-        appendTo="scrollParent"
-        placement="top-end"
-        skin={TooltipSkin.Error}
-        content={errorMessage}
-        moveBy={{ x: 5, y: 0 }}
-    >
-      <ErrorIcon />
-    </Tooltip>
+  <Tooltip
+    className={className}
+    appendTo="scrollParent"
+    placement="top-end"
+    skin={TooltipSkin.Error}
+    content={errorMessage}
+    moveBy={{ x: 5, y: 0 }}
+  >
+    <ErrorIcon />
+  </Tooltip>
 );
 
-
-const StatusIcon = ({error, errorMessage, success, successIcon }) => {
+const StatusIcon = ({ error, errorMessage, success, successIcon }) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
-    statusIcon = <ErrorSuffix className={classes.errorStatusIcon} errorMessage={errorMessage} />;
+    statusIcon = (
+      <ErrorSuffix
+        className={classes.errorStatusIcon}
+        errorMessage={errorMessage}
+      />
+    );
   } else if (successIcon && success) {
-    statusIcon = <SuccessIcon data-hook="successIcon" className={classes.successStatusIcon} />;
+    statusIcon = (
+      <SuccessIcon
+        data-hook="successIcon"
+        className={classes.successStatusIcon}
+      />
+    );
   }
 
   return statusIcon;
-}
+};
