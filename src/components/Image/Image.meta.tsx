@@ -6,7 +6,5 @@ ImageMetadata.nonReactStrictModeCompliant = true;
 
 ImageMetadata.addSim({
   title: 'render',
-  props: {
-    buttonText: 'Click me!',
-  } as ImageProps,
+  props: {} as ImageProps,
 });

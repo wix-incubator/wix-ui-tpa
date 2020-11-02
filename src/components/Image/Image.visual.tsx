@@ -4,7 +4,7 @@ import { Image } from './';
 
 visualize('Image', () => {
   story('simple example', () => {
-    snap('default props', <Image />);
-    snap('custom buttonText', <Image buttonText={'Some custom text'} />);
+    // snap('default props', <Image />);
+    snap('custom src', <Image src={'something'} />);
   });
 });

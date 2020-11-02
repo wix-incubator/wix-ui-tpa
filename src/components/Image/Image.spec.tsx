@@ -13,16 +13,20 @@ describe('Image', () => {
   const createDriver = createUniDriverFactory(imageDriverFactory);
 
   it('should render', async () => {
-    const driver = createDriver(<Image buttonText="Click Me" />);
+    const driver = createDriver(<Image src="something" />);
     expect(await driver.exists()).toBe(true);
   });
 
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<Image />, imageTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <Image src="something" />,
+          imageTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -31,7 +35,7 @@ describe('Image', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Image />,
+          <Image src="something" />,
           enzymeImageTestkitFactory,
           mount,
           {
