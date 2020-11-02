@@ -95,7 +95,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
   _onInputClearButtonClicked = () => {
     const { onChange } = this.props;
     onChange('');
-  }
+  };
 
   render() {
     const {
@@ -119,9 +119,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       <TextField
         data-hook="date-input"
         prefix=""
-        suffix={
-          <Heart />
-        }
+        suffix={<Heart />}
         disabled={disabled}
         error={hasError}
         errorMessage={errorMessage}
