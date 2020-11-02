@@ -1,5 +1,6 @@
 import { inputDriverFactory as coreDriver } from 'wix-ui-core/dist/src/components/input/Input.driver';
 import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME } from './dataKeys';
+import { Simulate } from 'react-dom/test-utils';
 
 export const textFieldDriverFactory = ({ element, eventTrigger }) => {
   const inputDriver = coreDriver({ element, eventTrigger });
@@ -40,6 +41,14 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     return inputDriver.getInput() === document.activeElement;
   }
 
+  function isClearButtonExist() {
+    return !!element.querySelector('[data-hook="clear-button"]');
+  }
+
+  function isCustomSuffixExist() {
+    return !!element.querySelector('[data-hook="custom-suffix"]');
+  }
+
   return {
     ...inputDriver,
     getTheme() {
@@ -54,17 +63,27 @@ export const textFieldDriverFactory = ({ element, eventTrigger }) => {
     isError() {
       return isErrorValue();
     },
-    isFocused() {
-      return isFocused();
+    hasErrorMessage() {
+      return !!getErrorMessage();
     },
     getErrorMessage() {
       return getErrorMessage();
     },
+    isFocused() {
+      return isFocused();
+    },
     hasEmptyState() {
       return isHasEmptyState();
     },
-    hasErrorMessage() {
-      return !!getErrorMessage();
+    hasClearButton() {
+      return isClearButtonExist();
+    },
+    clickOnClearButton() {
+      const clearButton = element.querySelector('[data-hook="clear-button"]');
+      Simulate.click(clearButton);
+    },
+    hasCustomSuffix() {
+      return isCustomSuffixExist();
     },
 
     hover() {

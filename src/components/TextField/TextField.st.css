@@ -202,6 +202,10 @@
 
 }
 
+.customSuffixWrapper {
+
+}
+
 /* Placeholder color */
 .root::nativeInput::-webkit-input-placeholder,
 .root::nativeInput::placeholder
