@@ -106,10 +106,13 @@ export class TextField extends React.Component<TextFieldProps> {
           success={success}
           successIcon={successIcon}
         />
-        { suffix && (
-            <div className={classes.customSuffixWrapper} data-hook="custom-suffix">
-              {suffix}
-            </div>
+        {suffix && (
+          <div
+            className={classes.customSuffixWrapper}
+            data-hook="custom-suffix"
+          >
+            {suffix}
+          </div>
         )}
       </div>
     ) : null;

@@ -133,14 +133,14 @@ describe('TextField', () => {
 
     it('should has clear button', function() {
       const emptyStateDriver = createDriver(
-          <TextField withClearButton value="text" />,
+        <TextField withClearButton value="text" />,
       );
       expect(emptyStateDriver.hasClearButton()).toBe(true);
     });
 
     it('should not have clear button when the input is empty', function() {
       const emptyStateDriver = createDriver(
-          <TextField withClearButton value="" />,
+        <TextField withClearButton value="" />,
       );
       expect(emptyStateDriver.hasClearButton()).toBe(false);
     });
@@ -148,7 +148,7 @@ describe('TextField', () => {
     it('should onClear', function() {
       const onClear = jest.fn();
       const driver = createDriver(
-          <TextField withClearButton onClear={onClear} value="text" />,
+        <TextField withClearButton onClear={onClear} value="text" />,
       );
       driver.clickOnClearButton();
       expect(onClear).toHaveBeenCalled();
@@ -156,15 +156,13 @@ describe('TextField', () => {
 
     it('should has custom suffix', function() {
       const emptyStateDriver = createDriver(
-          <TextField value="hello" suffix={<Heart/>} />,
+        <TextField value="hello" suffix={<Heart />} />,
       );
       expect(emptyStateDriver.hasCustomSuffix()).toBe(true);
     });
 
     it('should not have custom suffix', function() {
-      const emptyStateDriver = createDriver(
-          <TextField value="hello" />,
-      );
+      const emptyStateDriver = createDriver(<TextField value="hello" />);
       expect(emptyStateDriver.hasCustomSuffix()).toBe(false);
     });
   });
