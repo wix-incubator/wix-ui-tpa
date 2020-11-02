@@ -6,6 +6,7 @@
 * **Icons:** fix icons import ([#455](https://github.com/wix/wix-ui-tpa/issues/455)) ([7dd073b](https://github.com/wix/wix-ui-tpa/commit/7dd073b319b8bb3d3c3eca943f67c965ca4847fc))
 * **Icons:** use tslint import-blacklist to prevent incorrect imports ([#458](https://github.com/wix/wix-ui-tpa/issues/458)) ([9e24799](https://github.com/wix/wix-ui-tpa/commit/9e24799caffc8f36b108d2719e5a52942eda1965))
 
+
 ### Bug Fixes
 
 * **Counter:**  fix in IE11 issue ([9e24799](https://github.com/wix/wix-ui-tpa/commit/ecb3f7993747e02faab5002d323ebe3fff868fd6))
