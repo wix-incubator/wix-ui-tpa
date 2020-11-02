@@ -7,7 +7,7 @@ import { st, classes } from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
-import { ReactComponent as ClearIcon} from '../../assets/icons/Close.svg';
+import { ReactComponent as ClearIcon } from '../../assets/icons/Close.svg';
 import { IconButton } from '../IconButton';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
