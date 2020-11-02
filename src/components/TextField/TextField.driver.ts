@@ -1,5 +1,12 @@
 import { inputDriverFactory as coreDriver } from 'wix-ui-core/dist/src/components/input/Input.driver';
-import { EMPTY, ERROR, ERROR_MESSAGE, SUCCESS, THEME, DATA_HOOKS } from './dataKeys';
+import {
+  EMPTY,
+  ERROR,
+  ERROR_MESSAGE,
+  SUCCESS,
+  THEME,
+  DATA_HOOKS,
+} from './dataKeys';
 import { Simulate } from 'react-dom/test-utils';
 
 export const textFieldDriverFactory = ({ element, eventTrigger }) => {
