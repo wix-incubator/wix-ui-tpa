@@ -94,12 +94,13 @@ function snapTest({
   dir,
   success = false,
   error = false,
-  suffix= null,
+  suffix = null,
   withClearButton = false,
 }) {
   snap(
-    `${theme}${success ? '/success' : ''}${
-      error ? '/error' : ''}${suffix ? '/suffix' : ''}${withClearButton ? '/withClearButton' : ''}/${mouseAction}`,
+    `${theme}${success ? '/success' : ''}${error ? '/error' : ''}${
+      suffix ? '/suffix' : ''
+    }${withClearButton ? '/withClearButton' : ''}/${mouseAction}`,
     done => (
       <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
         <TextField
@@ -148,7 +149,7 @@ visualize('TextField', () => {
             focus,
             hover,
             dir,
-            suffix: <Heart/>,
+            suffix: <Heart />,
           });
           snapTest({
             theme,
@@ -164,7 +165,7 @@ visualize('TextField', () => {
             focus,
             hover,
             dir,
-            suffix: <Heart/>,
+            suffix: <Heart />,
             withClearButton: true,
           });
           snapTest({
@@ -174,7 +175,7 @@ visualize('TextField', () => {
             hover,
             dir,
             error: true,
-            suffix: <Heart/>,
+            suffix: <Heart />,
             withClearButton: true,
           });
         });
