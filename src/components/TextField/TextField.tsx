@@ -7,7 +7,8 @@ import { st, classes } from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
-import { ReactComponent as ClearIcon } from '../../assets/icons/Close.svg';
+import { ReactComponent as ClearIcon} from '../../assets/icons/Close.svg';
+import { IconButton } from '../IconButton';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';
@@ -29,6 +30,10 @@ export interface TPATextFieldProps extends TPAComponentProps {
   withClearButton?: boolean;
   /** callback for when the clear button is clicked */
   onClear?(): void;
+  /** Defines a string value that labels the clear button element. Optional. */
+  clearButtonAriaLabel?: string;
+  /** Identifies the element that labels the clear button element. Optional. */
+  clearButtonAriaLabelledby?: string;
 }
 
 interface DefaultProps {
@@ -70,6 +75,8 @@ export class TextField extends React.Component<TextFieldProps> {
       successIcon,
       suffix,
       withClearButton,
+      clearButtonAriaLabel,
+      clearButtonAriaLabelledby,
       onClear,
       value,
     } = this.props;
@@ -84,9 +91,13 @@ export class TextField extends React.Component<TextFieldProps> {
       <div className={classes.suffixWrapper}>
         <div className={classes.gap} />
         {withClearButton && value && (
-          <ClearIcon
+          <IconButton
             className={classes.clearButton}
+            data-hook="clear-button"
+            aria-label={clearButtonAriaLabel}
+            aria-labelledby={clearButtonAriaLabelledby}
             onClick={() => onClear && this.props.onClear()}
+            icon={<ClearIcon />}
           />
         )}
         <StatusIcon
