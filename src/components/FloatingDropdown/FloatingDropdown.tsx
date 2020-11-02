@@ -41,6 +41,8 @@ export interface FloatingDropdownProps extends TPAComponentProps {
   appendTo?: AppendTo;
   /** set dropdown to contents width  */
   dynamicWidth?: boolean;
+  /** A Callback triggered when the dropdown has been opened or closed  */
+  onExpandedChange?(isExpanded: boolean): void;
   name?: string;
   id?: string;
 }
@@ -109,6 +111,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       placement,
       appendTo,
       dynamicWidth,
+      onExpandedChange,
     } = this.props;
     const { coreOptions } = this._generateCoreOptions();
 
@@ -145,6 +148,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         disabled={disabled}
         options={coreOptions}
         placement={placement}
+        onExpandedChange={onExpandedChange}
         appendTo={appendTo}
         dynamicWidth={
           typeof dynamicWidth !== 'undefined'
