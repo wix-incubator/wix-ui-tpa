@@ -7,7 +7,7 @@ import { DropdownError } from './DropdownError';
 import { DropdownOption, DropdownOptionProps } from './DropdownOption';
 import { st, classes } from './Dropdown.st.css';
 import { DATA_HOOKS } from './constants';
-import { Placement } from 'wix-ui-core/popover';
+import { AppendTo, Placement } from 'wix-ui-core/popover';
 import { DropdownNativeSelect } from './DropdownNativeSelect';
 import { deprecationLog, wrap, unwrap } from '../../common/deprecationLog';
 import { TPAComponentProps } from '../../types';
@@ -41,6 +41,10 @@ export interface DropdownProps extends TPAComponentProps {
   upgrade?: boolean;
   flip?: boolean;
   fixed?: boolean;
+  /** Element to append the Popover to */
+  appendTo?: AppendTo;
+  /** set dropdown to contents width id true */
+  dynamicWidth?: boolean;
 }
 
 interface DefaultProps {
@@ -200,6 +204,8 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       ['aria-labelledby']: ariaLabelledBy,
       flip,
       fixed,
+      appendTo,
+      dynamicWidth,
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
@@ -236,6 +242,14 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         onOptionHover={this.onOptionHover}
         flip={flip}
         fixed={fixed}
+        appendTo={appendTo}
+        dynamicWidth={
+          typeof dynamicWidth !== 'undefined'
+            ? dynamicWidth
+            : appendTo === 'window'
+            ? true
+            : undefined
+        }
       >
         <DropdownBase
           className={classes.dropdownBase}
