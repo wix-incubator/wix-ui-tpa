@@ -7,6 +7,7 @@ import { st, classes } from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
+import { ReactComponent as ClearIcon } from '../../assets/icons/Close.svg';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';
@@ -24,10 +25,33 @@ export interface TPATextFieldProps extends TPAComponentProps {
   successIcon?: boolean;
   /** apply error state*/
   error?: boolean;
+  /** should display clear button */
+  withClearButton?: boolean;
+  /** callback for when the clear button is clicked */
+  onClear?(): void;
 }
+
+interface DefaultProps {
+  success: boolean;
+  successIcon: boolean;
+  error: boolean;
+  withClearButton: boolean;
+  disabled: boolean;
+  theme: TextFieldTheme;
+}
+
 export type TextFieldProps = ErrorProps & TPATextFieldProps & CoreInputProps;
 
 export class TextField extends React.Component<TextFieldProps> {
+  static displayName = 'TextField';
+  static defaultProps: DefaultProps = {
+    success: false,
+    successIcon: false,
+    error: false,
+    withClearButton: false,
+    disabled: false,
+    theme: TextFieldTheme.Box,
+  };
   public TextFieldRef = React.createRef<CoreInput>();
 
   public focus = () => {
@@ -38,50 +62,45 @@ export class TextField extends React.Component<TextFieldProps> {
     this.TextFieldRef.current.blur();
   };
 
-  getSuffix = () => {
+  _getSuffix = () => {
     const {
+      error,
       errorMessage,
-      success = false,
-      successIcon = false,
-      error = false,
+      success,
+      successIcon,
       suffix,
+      withClearButton,
+      onClear,
+      value,
     } = this.props;
-    let suffixToShow = suffix;
 
-    if (errorMessage && error) {
-      suffixToShow = (
-        <Tooltip
-          appendTo="scrollParent"
-          placement="top-end"
-          skin={TooltipSkin.Error}
-          content={errorMessage}
-          moveBy={{ x: 5, y: 0 }}
-        >
-          <ErrorIcon />
-        </Tooltip>
-      );
-    }
+    const hasSuffix = suffix || (error && errorMessage) || (successIcon && success) || withClearButton;
 
-    if (successIcon && success) {
-      suffixToShow = <SuccessIcon data-hook="successIcon" />;
-    }
-    return suffixToShow;
-  };
+    return hasSuffix ? (
+        <div className={classes.suffixWrapper}>
+          <div className={classes.gap} />
+          {(withClearButton && value) && (
+              <ClearIcon className={classes.clearButton} onClick={() => onClear && this.props.onClear()} />
+          )}
+          <StatusIcon error={error} errorMessage={errorMessage} success={success} successIcon={successIcon} />
+          {suffix}
+        </div>
+    ) : null;
+  }
 
   render() {
     const {
       errorMessage,
-      success = false,
-      successIcon = false,
-      error = false,
-      disabled = false,
-      theme = TextFieldTheme.Box,
+      success,
+      successIcon,
+      error,
+      disabled,
+      theme,
       suffix,
       className,
       ...restProps
     } = this.props;
 
-    const suffixToShow = this.getSuffix();
     const dataObject = {
       [ERROR_MESSAGE]: errorMessage,
       [THEME]: theme,
@@ -104,18 +123,37 @@ export class TextField extends React.Component<TextFieldProps> {
           className,
         )}
         ref={this.TextFieldRef}
-        suffix={
-          suffixToShow && (
-            <div className={classes.suffixWrapper}>
-              <div className={classes.gap} />
-              {suffixToShow}
-            </div>
-          )
-        }
+        suffix={this._getSuffix()}
         error={error}
         {...restProps}
         disabled={disabled}
       />
     );
   }
+}
+
+const ErrorSuffix = ({ className, errorMessage }) => (
+    <Tooltip
+        className={className}
+        appendTo="scrollParent"
+        placement="top-end"
+        skin={TooltipSkin.Error}
+        content={errorMessage}
+        moveBy={{ x: 5, y: 0 }}
+    >
+      <ErrorIcon />
+    </Tooltip>
+);
+
+
+const StatusIcon = ({error, errorMessage, success, successIcon }) => {
+  let statusIcon = null;
+
+  if (errorMessage && error) {
+    statusIcon = <ErrorSuffix className={classes.errorStatusIcon} errorMessage={errorMessage} />;
+  } else if (successIcon && success) {
+    statusIcon = <SuccessIcon data-hook="successIcon" className={classes.successStatusIcon} />;
+  }
+
+  return statusIcon;
 }

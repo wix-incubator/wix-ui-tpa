@@ -84,6 +84,18 @@ export default {
               source: examples.errorWithErrorMessage,
             },
             {
+              title: 'Clear Button',
+              source: examples.clearButton,
+            },
+            {
+              title: 'Custom Suffix',
+              source: examples.customSuffix,
+            },
+            {
+              title: 'Custom Suffix and Error Status',
+              source: examples.customSuffixAndError,
+            },
+            {
               title: 'Line theme',
               source: examples.lineTheme,
             },

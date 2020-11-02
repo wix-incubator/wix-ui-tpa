@@ -1,7 +1,7 @@
 export const importExample = `import { TextField } from 'wix-ui-tpa/TextField';`;
 
 export const placeholder = `
-<TextField />
+<TextField placeholder="Placeholder Text"/>
 `;
 
 export const value = `
@@ -22,6 +22,33 @@ export const error = `
 
 export const errorWithErrorMessage = `
 <TextField error errorMessage="TestError" value="Test text" />
+`;
+
+export const clearButton = `
+    class TextFieldExample extends React.Component {
+      state = {
+        value: 'Hello',
+      };
+    
+      _onClearButtonClick = () => this.setState({ value: '' });
+      _onChange = (e) => this.setState({value: e.target.value })
+    
+      render() {
+        const { value } = this.state;
+        
+        return (
+          <TextField placeholder="Placeholder Text" value={value} withClearButton onClear={this._onClearButtonClick} onChange={this._onChange} />
+        );
+      }
+    }
+`;
+
+export const customSuffix = `
+    <TextField suffix={<Heart />} value="Test text" />
+`;
+
+export const customSuffixAndError = `
+    <TextField error errorMessage="TestError" suffix={<Heart />} value="Test text" />
 `;
 
 export const lineTheme = `
