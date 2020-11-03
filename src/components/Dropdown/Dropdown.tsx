@@ -203,7 +203,6 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       flip,
       fixed,
       appendTo,
-      dynamicWidth,
     } = this.props;
 
     const { rtl, mobile: isMobile } = this.context;
