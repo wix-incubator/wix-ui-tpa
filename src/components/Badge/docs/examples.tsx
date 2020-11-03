@@ -4,10 +4,11 @@ export const importExample = `import { Badge, BADGE_PRIORITY } from 'wix-ui-tpa/
 export const overrideExample = `
 () => {
   \`
-//Overrides.st.css
+//MyComponent.st.css
 ${(ExtendedCSSRawSource as any).default}\`
 
-  return <Badge className={overrides.classes.mixOverrides }>Badge with connected params</Badge>
+  // c
+  return <Badge className={overrides.classes.mixStyleParams}>Badge with connected params</Badge>
 }
 `;
 

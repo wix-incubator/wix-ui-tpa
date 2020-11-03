@@ -29,7 +29,7 @@
 }
 
 .root {
-    -st-states:  withIcon;
+    -st-states: withIcon;
     display: inline-flex;
     border-radius: 12px;
     line-height: 20px;
@@ -101,11 +101,11 @@
 }
 
 /* Public API to customize the component */
-.root.badgeOverrides {
+.root.styleParams {
     background-color: value(badgeBgColor);
     color: value(badgeTextColor);
 }
 
-.root.badgeOverrides .icon path {
+.root.styleParams .icon path {
     fill: color(value(badgeTextColor));
 }
