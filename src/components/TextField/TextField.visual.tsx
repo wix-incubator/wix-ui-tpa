@@ -5,7 +5,7 @@ import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { TextField, TextFieldProps } from './TextField';
 import { TextFieldAsyncVisual } from './TextFieldAsyncVisual';
 import { TextFieldTheme } from './TextFieldEnums';
-import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { ReactComponent as Calendar } from '../../assets/icons/Calendar.svg';
 
 class TextFieldVisual extends React.Component<TextFieldProps> {
   static defaultProps: TextFieldProps = {
@@ -149,7 +149,7 @@ visualize('TextField', () => {
             focus,
             hover,
             dir,
-            suffix: <Heart />,
+            suffix: <Calendar />,
           });
           snapTest({
             theme,
@@ -165,7 +165,7 @@ visualize('TextField', () => {
             focus,
             hover,
             dir,
-            suffix: <Heart />,
+            suffix: <Calendar />,
             withClearButton: true,
           });
           snapTest({
@@ -175,7 +175,7 @@ visualize('TextField', () => {
             hover,
             dir,
             error: true,
-            suffix: <Heart />,
+            suffix: <Calendar />,
             withClearButton: true,
           });
         });

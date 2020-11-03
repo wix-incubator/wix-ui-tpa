@@ -44,11 +44,11 @@ export const clearButton = `
 `;
 
 export const customSuffix = `
-    <TextField suffix={<Heart />} value="Test text" />
+    <TextField suffix={<Calendar />} value="Test text" />
 `;
 
 export const customSuffixAndError = `
-    <TextField error errorMessage="TestError" suffix={<Heart />} value="Test text" />
+    <TextField error errorMessage="TestError" suffix={<Calendar />} value="Test text" />
 `;
 
 export const lineTheme = `

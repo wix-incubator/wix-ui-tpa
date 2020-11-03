@@ -212,6 +212,11 @@
     align-self: center;
 }
 
+/* overrides the IconButton hover & focus styling */
+.clearButton:hover, .clearButton:focus {
+    opacity: 1;
+}
+
 .clearButton::icon {
     line-height: 0;
     width: 100%;

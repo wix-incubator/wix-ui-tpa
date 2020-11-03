@@ -8,7 +8,7 @@ import { mount } from 'enzyme';
 import { textFieldTestkitFactory } from '../../testkit';
 import { textFieldTestkitFactory as enzymeTextFieldTestkitFactory } from '../../testkit/enzyme';
 import { TextFieldTheme } from './TextFieldEnums';
-import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { ReactComponent as Calendar } from '../../assets/icons/Calendar.svg';
 
 describe('TextField', () => {
   const createDriver = createDriverFactory(textFieldDriverFactory);
@@ -156,7 +156,7 @@ describe('TextField', () => {
 
     it('should has custom suffix', function() {
       const emptyStateDriver = createDriver(
-        <TextField value="hello" suffix={<Heart />} />,
+        <TextField value="hello" suffix={<Calendar />} />,
       );
       expect(emptyStateDriver.hasCustomSuffix()).toBe(true);
     });
