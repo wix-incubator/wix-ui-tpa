@@ -43,8 +43,6 @@ export interface DropdownProps extends TPAComponentProps {
   fixed?: boolean;
   /** Element to append the Popover to */
   appendTo?: AppendTo;
-  /** set dropdown to contents width id true */
-  dynamicWidth?: boolean;
 }
 
 interface DefaultProps {
@@ -243,13 +241,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         flip={flip}
         fixed={fixed}
         appendTo={appendTo}
-        dynamicWidth={
-          typeof dynamicWidth !== 'undefined'
-            ? dynamicWidth
-            : appendTo === 'window'
-            ? true
-            : undefined
-        }
+        dynamicWidth={appendTo === 'window' ? true : undefined}
       >
         <DropdownBase
           className={classes.dropdownBase}
