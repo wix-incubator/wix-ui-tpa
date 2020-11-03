@@ -37,7 +37,13 @@ export const clearButton = `
         const { value } = this.state;
         
         return (
-          <TextField placeholder="Placeholder Text" value={value} withClearButton onClear={this._onClearButtonClick} onChange={this._onChange} />
+          <TextField
+              placeholder="Placeholder Text"
+              value={value}
+              withClearButton
+              onClear={this._onClearButtonClick}
+              onChange={this._onChange}
+          />
         );
       }
     }
@@ -64,7 +70,16 @@ export const customSuffixAndErrorWithClearButton = `
         const { value } = this.state;
         
         return (
-          <TextField placeholder="Placeholder Text" value={value} withClearButton onClear={this._onClearButtonClick} error errorMessage="TestError" suffix={<Calendar />} onChange={this._onChange} />
+          <TextField
+              placeholder="Placeholder Text"
+              value={value}
+              withClearButton
+              onClear={this._onClearButtonClick}
+              error
+              errorMessage="TestError"
+              suffix={<Calendar />}
+              onChange={this._onChange}
+          />
         );
       }
     }

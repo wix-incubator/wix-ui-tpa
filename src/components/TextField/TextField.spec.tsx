@@ -145,7 +145,7 @@ describe('TextField', () => {
       expect(emptyStateDriver.hasClearButton()).toBe(false);
     });
 
-    it('should onClear', function() {
+    it('should call onClear after clicking on the clear button', function() {
       const onClear = jest.fn();
       const driver = createDriver(
         <TextField withClearButton onClear={onClear} value="text" />,
