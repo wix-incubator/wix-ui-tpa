@@ -92,11 +92,16 @@ export class TextField extends React.Component<TextFieldProps> {
     const shouldShowCustomSuffix = !!suffix;
     const shouldShowErrorIcon = error && errorMessage;
     const shouldShowSuccessIcon = successIcon && success;
-    const shouldShowClearButton = withClearButton && value && !disabled
+    const shouldShowClearButton = withClearButton && value && !disabled;
 
-    const hasSuffix = shouldShowCustomSuffix || shouldShowErrorIcon || shouldShowSuccessIcon || shouldShowClearButton;
+    const hasSuffix =
+      shouldShowCustomSuffix ||
+      shouldShowErrorIcon ||
+      shouldShowSuccessIcon ||
+      shouldShowClearButton;
 
-    const shouldAddLeftPaddingToCustomSuffix = (!shouldShowErrorIcon && !shouldShowSuccessIcon) && shouldShowClearButton
+    const shouldAddLeftPaddingToCustomSuffix =
+      !shouldShowErrorIcon && !shouldShowSuccessIcon && shouldShowClearButton;
 
     return hasSuffix ? (
       <div className={classes.suffixWrapper}>
@@ -112,7 +117,10 @@ export class TextField extends React.Component<TextFieldProps> {
           />
         )}
         <StatusIcon
-          className={st(classes.statusIconWrapper, { withRightPadding: shouldShowCustomSuffix, withLeftSuffix: shouldShowClearButton, })}
+          className={st(classes.statusIconWrapper, {
+            withRightPadding: shouldShowCustomSuffix,
+            withLeftSuffix: shouldShowClearButton,
+          })}
           error={error}
           errorMessage={errorMessage}
           success={success}
@@ -120,7 +128,9 @@ export class TextField extends React.Component<TextFieldProps> {
         />
         {suffix && (
           <div
-            className={st(classes.customSuffixWrapper, { withLeftPadding: shouldAddLeftPaddingToCustomSuffix })}
+            className={st(classes.customSuffixWrapper, {
+              withLeftPadding: shouldAddLeftPaddingToCustomSuffix,
+            })}
             data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
           >
             {suffix}
@@ -190,21 +200,19 @@ const ErrorSuffix = ({ errorMessage }) => (
   </Tooltip>
 );
 
-const StatusIcon = ({ className, error, errorMessage, success, successIcon }) => {
+const StatusIcon = ({
+  className,
+  error,
+  errorMessage,
+  success,
+  successIcon,
+}) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
-    statusIcon = (
-      <ErrorSuffix
-        errorMessage={errorMessage}
-      />
-    );
+    statusIcon = <ErrorSuffix errorMessage={errorMessage} />;
   } else if (successIcon && success) {
-    statusIcon = (
-      <SuccessIcon
-        data-hook={DATA_HOOKS.SUCCESS_ICON}
-      />
-    );
+    statusIcon = <SuccessIcon data-hook={DATA_HOOKS.SUCCESS_ICON} />;
   }
 
   return statusIcon ? <div className={className}>{statusIcon}</div> : null;
