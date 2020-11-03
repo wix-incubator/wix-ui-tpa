@@ -2,8 +2,9 @@ import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 
 import WSRDatePicker from 'wix-style-react/dist/src/DatePicker';
-import { PopoverCommonProps } from 'wix-style-react/dist/src/common/PropTypes/PopoverCommon';
+// import { PopoverCommonProps } from 'wix-style-react/dist/src/common/PropTypes/PopoverCommon';
 import { TextField } from '../TextField/TextField';
+import { TextFieldTheme } from '../TextField/TextFieldEnums';
 import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
 
 import { st, classes } from './DatePicker.st.css';
@@ -57,12 +58,16 @@ export interface DatePickerProps extends TPAComponentProps {
   filterDate?(date: Date): boolean;
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  /** Sets the popover props. The default placement value depends on the rtl prop - would be 'top-start' when rtl=false and 'top-end' in case of rtl=ture */
-  popoverProps?: PopoverCommonProps;
+  /** Displays a selectable monthDropdown and a selectable yearDropdown */
+  showMonthAndYearDropdown?: boolean;
   /** Error status */
-  hasError;
+  hasError?: boolean;
   /** The error status message to display when hovering the status icon. */
-  errorMessage;
+  errorMessage?: string;
+  /** sets desired width of DatePicker input */
+  inputWidth: number | string;
+  /** Sets the input theme possible values: 'line', 'box'*/
+  inputTheme: TextFieldTheme;
 }
 
 interface DefaultProps {
@@ -73,23 +78,27 @@ interface DefaultProps {
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
   firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  showMonthAndYearDropdown: boolean;
   hasError: boolean;
-  errorMessage: string;
+  inputWidth: number | string;
+  inputTheme: TextFieldTheme;
 }
 
 /** The Date pickers presents a calendar and allows a user to select a specific date. */
 export class DatePicker extends React.Component<DatePickerProps> {
   static displayName = 'DatePicker';
   static defaultProps: DefaultProps = {
-    placeholderText: '',
+    placeholderText: 'MM/DD/YY',
     disabled: false,
     dateFormat: 'LL/dd/yyyy',
     locale: 'en',
     excludePastDates: false,
     filterDate: () => true,
     firstDayOfWeek: 1,
+    showMonthAndYearDropdown: false,
     hasError: false,
-    errorMessage: '',
+    inputWidth: '280px',
+    inputTheme: TextFieldTheme.Box,
   };
 
   _onInputClearButtonClicked = () => {
@@ -110,9 +119,11 @@ export class DatePicker extends React.Component<DatePickerProps> {
       excludePastDates,
       filterDate,
       firstDayOfWeek,
-      popoverProps,
       hasError,
       errorMessage,
+      showMonthAndYearDropdown,
+      inputWidth,
+      inputTheme,
     } = this.props;
 
     const customInput = (
@@ -123,8 +134,9 @@ export class DatePicker extends React.Component<DatePickerProps> {
         disabled={disabled}
         error={hasError}
         errorMessage={errorMessage}
-        withClearButton
-        onClear={this._onInputClearButtonClicked}
+        theme={inputTheme}
+        // withClearButton
+        // onClear={this._onInputClearButtonClicked}
       />
     );
 
@@ -145,13 +157,14 @@ export class DatePicker extends React.Component<DatePickerProps> {
           excludePastDates={excludePastDates}
           filterDate={filterDate}
           firstDayOfWeek={firstDayOfWeek}
-          popoverProps={popoverProps}
+          showMonthDropdown={showMonthAndYearDropdown}
+          showYearDropdown={showMonthAndYearDropdown}
+          customInput={customInput}
+          width={inputWidth}
           selectionMode="day"
           shouldCloseOnSelect
           initialOpen={false}
           numOfMonths={1}
-          customInput={customInput}
-          width="300px"
         />
       </div>
     );
