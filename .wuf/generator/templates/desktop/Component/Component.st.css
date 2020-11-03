@@ -22,5 +22,9 @@
 }
 
 .root {
+  background-color: value(defaultBgColor);
+}
+
+.styleParams { 
   background-color: value(bgColor);
 }
