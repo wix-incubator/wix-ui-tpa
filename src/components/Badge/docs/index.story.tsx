@@ -22,9 +22,9 @@ import * as exampleOverrides from './BadgeExtendedExample.st.css';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 
-const example = config =>
+const example = (config, extraContext = {}) =>
   baseExample({
-    components: { ...allComponents, overrides: exampleOverrides },
+    components: { ...allComponents, ...extraContext },
     compact: true,
     ...config,
   });
@@ -73,13 +73,23 @@ export default {
               description: 'RTL is supported using the native css property',
               source: examples.rtl,
             },
+          ].map(example),
+          example(
             {
               title: 'Style params override',
               description:
                 'Override specific style variables to customize the component. Go to the "Settings Panel" and start changing colors, see how it reflects this one as well',
-              source: examples.overrideExample,
+              source: `() => {
+  \`
+//MyComponent.st.css
+${(ExtendedCSSRawSource as any).default}\`
+
+return <Badge className={classes.mixStyleParams}>Badge with connected params</Badge>
+}
+`,
             },
-          ].map(example),
+            { classes: exampleOverrides.classes },
+          ),
         ],
       }),
 

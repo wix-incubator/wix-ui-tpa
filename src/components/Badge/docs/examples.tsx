@@ -1,16 +1,4 @@
-import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 export const importExample = `import { Badge, BADGE_PRIORITY } from 'wix-ui-tpa/Badge';`;
-
-export const overrideExample = `
-() => {
-  \`
-//MyComponent.st.css
-${(ExtendedCSSRawSource as any).default}\`
-
-  // c
-  return <Badge className={overrides.classes.mixStyleParams}>Badge with connected params</Badge>
-}
-`;
 
 export const priority = `
   <div style={{'display': 'flex', gap: '16px'}}>
