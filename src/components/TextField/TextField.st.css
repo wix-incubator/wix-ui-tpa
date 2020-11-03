@@ -215,6 +215,7 @@
 /* overrides the IconButton hover & focus styling */
 .clearButton:hover, .clearButton:focus {
     opacity: 1;
+    background-color: applyOpacity(value(mainTextColor), 0.12);
 }
 
 .clearButton::icon {
@@ -224,10 +225,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.root:hover .clearButton, .root:focus .clearButton {
-    background-color: applyOpacity(value(mainTextColor), 0.12);
 }
 
 .statusIconWrapper {
