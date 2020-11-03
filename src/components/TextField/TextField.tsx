@@ -7,7 +7,7 @@ import { st, classes } from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
-import { ReactComponent as ClearIcon } from '../../assets/icons/Close.svg';
+import { ReactComponent as ClearIcon } from '../../assets/icons/X.svg';
 import { IconButton } from '../IconButton';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
@@ -86,18 +86,22 @@ export class TextField extends React.Component<TextFieldProps> {
       clearButtonAriaLabelledby,
       onClear,
       value,
+      disabled,
     } = this.props;
 
-    const hasSuffix =
-      suffix ||
-      (error && errorMessage) ||
-      (successIcon && success) ||
-      withClearButton;
+    const shouldShowCustomSuffix = !!suffix;
+    const shouldShowErrorIcon = error && errorMessage;
+    const shouldShowSuccessIcon = successIcon && success;
+    const shouldShowClearButton = withClearButton && value && !disabled
+
+    const hasSuffix = shouldShowCustomSuffix || shouldShowErrorIcon || shouldShowSuccessIcon || shouldShowClearButton;
+
+    const shouldAddLeftPaddingToCustomSuffix = (!shouldShowErrorIcon && !shouldShowSuccessIcon) && shouldShowClearButton
 
     return hasSuffix ? (
       <div className={classes.suffixWrapper}>
         <div className={classes.gap} />
-        {withClearButton && value && (
+        {shouldShowClearButton && (
           <IconButton
             className={classes.clearButton}
             data-hook={DATA_HOOKS.CLEAR_BUTTON}
@@ -108,6 +112,7 @@ export class TextField extends React.Component<TextFieldProps> {
           />
         )}
         <StatusIcon
+          className={st(classes.statusIconWrapper, { withRightPadding: shouldShowCustomSuffix, withLeftSuffix: shouldShowClearButton, })}
           error={error}
           errorMessage={errorMessage}
           success={success}
@@ -115,7 +120,7 @@ export class TextField extends React.Component<TextFieldProps> {
         />
         {suffix && (
           <div
-            className={classes.customSuffixWrapper}
+            className={st(classes.customSuffixWrapper, { withLeftPadding: shouldAddLeftPaddingToCustomSuffix })}
             data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
           >
             {suffix}
@@ -173,9 +178,8 @@ export class TextField extends React.Component<TextFieldProps> {
   }
 }
 
-const ErrorSuffix = ({ className, errorMessage }) => (
+const ErrorSuffix = ({ errorMessage }) => (
   <Tooltip
-    className={className}
     appendTo="scrollParent"
     placement="top-end"
     skin={TooltipSkin.Error}
@@ -186,13 +190,12 @@ const ErrorSuffix = ({ className, errorMessage }) => (
   </Tooltip>
 );
 
-const StatusIcon = ({ error, errorMessage, success, successIcon }) => {
+const StatusIcon = ({ className, error, errorMessage, success, successIcon }) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
     statusIcon = (
       <ErrorSuffix
-        className={classes.errorStatusIcon}
         errorMessage={errorMessage}
       />
     );
@@ -200,10 +203,9 @@ const StatusIcon = ({ error, errorMessage, success, successIcon }) => {
     statusIcon = (
       <SuccessIcon
         data-hook={DATA_HOOKS.SUCCESS_ICON}
-        className={classes.successStatusIcon}
       />
     );
   }
 
-  return statusIcon;
+  return statusIcon ? <div className={className}>{statusIcon}</div> : null;
 };

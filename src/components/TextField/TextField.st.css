@@ -200,15 +200,16 @@
 .clearButton {
     -st-extends: TPAIconButton;
     -st-mixin: TPAIconButton(
-            IconColor black
+            IconColor value(mainTextColor)
     );
-    width: 26px;
-    height: 26px;
-    border-radius: 26px;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
     box-sizing: border-box;
     text-align: center;
     outline: 0;
-    background-color: value(mainTextColor);
+    background-color: applyOpacity(value(mainTextColor), 0.06);
+    align-self: center;
 }
 
 .clearButton::icon {
@@ -221,19 +222,27 @@
 }
 
 .root:hover .clearButton, .root:focus .clearButton {
-    background-color: value(colorHover);
+    background-color: applyOpacity(value(mainTextColor), 0.12);
 }
 
-.errorStatusIcon {
-
+.statusIconWrapper {
+    -st-states: withRightPadding, withLeftPadding;
 }
 
-.successStatusIcon {
+.statusIconWrapper:withRightPadding {
+    padding-right: 8px;
+}
 
+.statusIconWrapper:withLeftPadding {
+    padding-left: 8px;
 }
 
 .customSuffixWrapper {
+    -st-states: withLeftPadding;
+}
 
+.customSuffixWrapper:withLeftPadding {
+    padding-left: 8px;
 }
 
 /* Placeholder color */
