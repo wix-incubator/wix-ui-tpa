@@ -27,7 +27,7 @@ export const errorWithErrorMessage = `
 export const clearButton = `
     class TextFieldExample extends React.Component {
       state = {
-        value: 'Hello',
+        value: 'Test text',
       };
     
       _onClearButtonClick = () => this.setState({ value: '' });
@@ -49,6 +49,25 @@ export const customSuffix = `
 
 export const customSuffixAndError = `
     <TextField error errorMessage="TestError" suffix={<Calendar />} value="Test text" />
+`;
+
+export const customSuffixAndErrorWithClearButton = `
+    class TextFieldExample extends React.Component {
+      state = {
+        value: 'Test text',
+      };
+    
+      _onClearButtonClick = () => this.setState({ value: '' });
+      _onChange = (e) => this.setState({value: e.target.value })
+    
+      render() {
+        const { value } = this.state;
+        
+        return (
+          <TextField placeholder="Placeholder Text" value={value} withClearButton onClear={this._onClearButtonClick} error errorMessage="TestError" suffix={<Calendar />} onChange={this._onChange} />
+        );
+      }
+    }
 `;
 
 export const lineTheme = `

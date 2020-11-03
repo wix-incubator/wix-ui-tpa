@@ -119,7 +119,7 @@ export class TextField extends React.Component<TextFieldProps> {
         <StatusIcon
           className={st(classes.statusIconWrapper, {
             withRightPadding: shouldShowCustomSuffix,
-            withLeftSuffix: shouldShowClearButton,
+            withLeftPadding: shouldShowClearButton,
           })}
           error={error}
           errorMessage={errorMessage}

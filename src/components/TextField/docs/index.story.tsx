@@ -96,6 +96,10 @@ export default {
               source: examples.customSuffixAndError,
             },
             {
+              title: 'Custom Suffix and Error Status With Clear Button',
+              source: examples.customSuffixAndErrorWithClearButton,
+            },
+            {
               title: 'Line theme',
               source: examples.lineTheme,
             },
