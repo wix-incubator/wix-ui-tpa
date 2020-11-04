@@ -22,8 +22,7 @@ export const OptimizedStylesBanner: React.FC = () => (
       story="Using the library"
       style={{ color: 'darkslategray' }}
     >
-      An optimized way for style
-    </LinkTo>{' '}
-    overriding
+      An optimized way for style overriding
+    </LinkTo>
   </div>
 );
