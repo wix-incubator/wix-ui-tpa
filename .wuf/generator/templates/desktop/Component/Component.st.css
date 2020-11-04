@@ -25,6 +25,6 @@
   background-color: value(defaultBgColor);
 }
 
-.root.styleParams { 
+.root.overrideStyleParams { 
   background-color: value(bgColor);
 }

@@ -30,6 +30,6 @@
   /*mobile css goes here*/
 }
 
-.root.styleParams { 
+.root.overrideStyleParams { 
   background-color: value(bgColor);
 }
