@@ -94,6 +94,8 @@ export class TextField extends React.Component<TextFieldProps> {
     const shouldShowSuccessIcon = successIcon && success;
     const shouldShowClearButton = withClearButton && value && !disabled;
 
+    const shouldAddClearButtonGap = shouldShowCustomSuffix || shouldShowErrorIcon || shouldShowSuccessIcon;
+
     const hasSuffix =
       shouldShowCustomSuffix ||
       shouldShowErrorIcon ||
@@ -114,7 +116,7 @@ export class TextField extends React.Component<TextFieldProps> {
               onClick={onClear ? () => this.props.onClear() : undefined}
               icon={<ClearIcon />}
             />
-            <div className={classes.clearButtonGap} />
+            {shouldAddClearButtonGap && <div className={classes.clearButtonGap} />}
           </div>
         )}
         <StatusIcon
