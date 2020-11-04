@@ -1,23 +1,35 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, fallback;
 }
 
-/*Defaults*/
+/* Defaults - default params */
 :vars {
-    /*Defaults params goes here*/
+  defaultBgColor: color(color-1);
 }
 
-/*Overrides*/
+/* Overrides - deceleration of overridable parameters by the consumer */
 :vars {
-    /*Deceleration of overridable placeholders*/
+  /*
+    Main background color
+  */
+  BgColor: --overridable;
+}
+
+/* Overrides */
+:vars {
+  bgColor: color(fallback(value(BgColor), value(defaultBgColor)));
 }
 
 .root {
-    -st-states: mobile;
-    /*css goes here*/
+  -st-states: mobile;
+  background-color: value(defaultBgColor);
 }
 
 .root:mobile {
-    /*mobile css goes here*/
+  /*mobile css goes here*/
+}
+
+.styleParams { 
+  background-color: value(bgColor);
 }
