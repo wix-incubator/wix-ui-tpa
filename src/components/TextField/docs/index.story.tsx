@@ -132,7 +132,8 @@ export default {
               source: examples.lineThemeCustomSuffixAndError,
             },
             {
-              title: 'Line theme Custom Suffix and Error Status With Clear Button',
+              title:
+                'Line theme Custom Suffix and Error Status With Clear Button',
               source: examples.lineThemeCustomSuffixAndErrorWithClearButton,
             },
           ].map(code),
