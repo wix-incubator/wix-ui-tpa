@@ -8,7 +8,7 @@ customization to their users.
 
 Overriding styles is done using [Stylable](https://stylable.io).
 
-## Componets Usage
+## Components Usage
 ### Basic Usages
 The very basic usages will be simply importing the React components and using them in your app.
 The components are pre-wired to the site colors palette and can be used with their default styles.
@@ -60,7 +60,7 @@ And then, mix the needed overrides as defined in the components API:
 }
 ```
 
-#### An optimized way for style overriding - NEW!
+#### An optimized way for style overriding - New!
 Starting of version 2.10.0, new components will support a more optimized way to override styles, which **reduces bundle size significantly**.
 
 *Note*: This will become the official way to override styles, however not all components are compatible yet (please check each component's documentation page to see if it supports the new way).
