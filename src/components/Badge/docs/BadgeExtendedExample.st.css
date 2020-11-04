@@ -1,7 +1,7 @@
 :import {
     -st-from: "../Badge.st.css";
     -st-default: TPABadge;
-    -st-named: styleParams;
+    -st-named: styleParams, priority-default, priority-light, priority-primary;
 }
 
 .mixStyleParams {
@@ -10,8 +10,29 @@
         BadgeTextColor '"color(--badgeTextColor)"',
     );
 }
+.mixPriorityDefault {
+    -st-mixin: priority-default(
+        BadgeBgColor '"color(--badgeBgColor)"',
+        BadgeTextColor '"color(--badgeTextColor)"',
+    );
+}
 
-/* Deprecated */
+
+.mixPriorityLight {
+  -st-mixin: priority-light(
+        BadgeBgColor '"color(--badgeBgColor)"',
+        BadgeTextColor '"color(--badgeTextColor)"',
+    );
+}
+
+.mixPriorityPrimary {
+  -st-mixin: priority-primary(
+        BadgeBgColor '"color(--badgeBgColor)"',
+        BadgeTextColor '"color(--badgeTextColor)"',
+    );
+}
+
+/* Deprecated - causes big bundle sizes */
 .mixAll {
     -st-mixin: TPABadge(
         BadgeBgColor '"color(--badgeBgColor)"',

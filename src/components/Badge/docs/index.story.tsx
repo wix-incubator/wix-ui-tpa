@@ -84,7 +84,13 @@ export default {
 //MyComponent.st.css
 ${(ExtendedCSSRawSource as any).default}\`
 
-return <Badge className={classes.mixStyleParams}>Badge with connected params</Badge>
+return (
+  <>
+    <Badge className={classes.mixPriorityDefault}>Badge</Badge>
+    <Badge className={classes.mixPriorityLight}>Badge</Badge>
+    <Badge className={classes.mixPriorityPrimary}>Badge</Badge>
+  </>
+  );
 }
 `,
             },

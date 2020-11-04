@@ -1,22 +1,23 @@
 import * as React from 'react';
 import { classes } from './BadgeExtendedExample.st.css';
-import { Badge, BADGE_PRIORITY } from '../Badge';
+import { Badge } from '../Badge';
 
 export const BadgeExtendedExample: React.FC = () => (
   <div>
     <h3>
-      Override the style params using an optimized class{' '}
-      <code>.badgeOVerrides</code>
+      Override the style for the basic wiring (regardless to any theme) - this
+      is the common approach for most components
     </h3>
     <Badge className={classes.mixStyleParams}>Badge</Badge>
     <h3>
-      Override the style params using an optimized class - also on variations
-      like <code>BADGE_PRIORITY.primary</code>
+      Override the style params per theme - start with a theme and change what
+      you want - this is common for a component with predefined variations
     </h3>
-    <Badge priority={BADGE_PRIORITY.primary} className={classes.mixStyleParams}>
-      Badge
-    </Badge>
-    <h3>*Deprecated* - Override the style params for the entire css mixin</h3>
+    <Badge className={classes.mixPriorityDefault}>Badge</Badge>
+    <Badge className={classes.mixPriorityLight}>Badge</Badge>
+    <Badge className={classes.mixPriorityPrimary}>Badge</Badge>
+
+    <h3>*Deprecated* - Override the style params in the entire css file</h3>
     <Badge className={classes.mixAll}>Badge</Badge>
   </div>
 );
