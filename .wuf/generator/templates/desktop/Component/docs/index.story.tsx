@@ -12,6 +12,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
@@ -36,7 +37,9 @@ export default {
   },
   dataHook: 'storybook-{%ComponentName%}',
   sections: [
-    header(),
+    header({
+      component: <OptimizedStylesBanner />,
+    }),
     tabs([
       tab({
         title: 'Usage',
