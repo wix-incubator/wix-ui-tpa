@@ -49,8 +49,8 @@ export default {
       },
     ],
     suffix: [
-      { label: 'Calendar icon', value: <CalendarIcon/> },
-      { label: 'Heart icon', value: <HeartIcon/> },
+      { label: 'Calendar icon', value: <CalendarIcon /> },
+      { label: 'Heart icon', value: <HeartIcon /> },
     ],
   },
 

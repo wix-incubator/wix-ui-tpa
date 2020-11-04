@@ -106,13 +106,13 @@ export class TextField extends React.Component<TextFieldProps> {
         {shouldShowClearButton && (
           <div className={classes.clearButtonWrapper}>
             <IconButton
-                className={classes.clearButton}
-                data-hook={DATA_HOOKS.CLEAR_BUTTON}
-                aria-label={clearButtonAriaLabel}
-                aria-labelledby={clearButtonAriaLabelledby}
-                skin={Skins.Line}
-                onClick={onClear ? () => this.props.onClear() : undefined}
-                icon={<ClearIcon />}
+              className={classes.clearButton}
+              data-hook={DATA_HOOKS.CLEAR_BUTTON}
+              aria-label={clearButtonAriaLabel}
+              aria-labelledby={clearButtonAriaLabelledby}
+              skin={Skins.Line}
+              onClick={onClear ? () => this.props.onClear() : undefined}
+              icon={<ClearIcon />}
             />
             <div className={classes.clearButtonGap} />
           </div>
@@ -123,13 +123,7 @@ export class TextField extends React.Component<TextFieldProps> {
           success={success}
           successIcon={successIcon}
         />
-        {suffix && (
-          <div
-            data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
-          >
-            {suffix}
-          </div>
-        )}
+        {suffix && <div data-hook={DATA_HOOKS.CUSTOM_SUFFIX}>{suffix}</div>}
       </div>
     ) : null;
   };
@@ -194,12 +188,7 @@ const ErrorSuffix = ({ errorMessage }) => (
   </Tooltip>
 );
 
-const StatusIcon = ({
-  error,
-  errorMessage,
-  success,
-  successIcon,
-}) => {
+const StatusIcon = ({ error, errorMessage, success, successIcon }) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
