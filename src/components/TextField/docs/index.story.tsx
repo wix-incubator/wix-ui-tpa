@@ -19,6 +19,8 @@ import { TextFieldExtendedExample } from './TextFieldExtendedExample';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as textFieldRawSource from '!raw-loader!./TextFieldExtendedExample.tsx';
 import * as textFieldCSSRawSource from '!raw-loader!./TextFieldExtendedExample.st.css';
+import { ReactComponent as CalendarIcon } from '../../../assets/icons/Calendar.svg';
+import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -45,6 +47,10 @@ export default {
         label: 'Long',
         value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       },
+    ],
+    suffix: [
+      { label: 'Calendar icon', value: <CalendarIcon/> },
+      { label: 'Heart icon', value: <HeartIcon/> },
     ],
   },
 

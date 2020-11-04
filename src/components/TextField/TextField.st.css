@@ -197,11 +197,20 @@
     width: 10px;
 }
 
+.clearButtonWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.clearButtonGap {
+    width: 4px;
+    height: 100%;
+    display: inline-block;
+}
+
 .clearButton {
     -st-extends: TPAIconButton;
-    -st-mixin: TPAIconButton(
-            IconColor value(mainTextColor)
-    );
     width: 16px;
     height: 16px;
     border-radius: 16px;
@@ -209,7 +218,6 @@
     text-align: center;
     outline: 0;
     background-color: applyOpacity(value(mainTextColor), 0.06);
-    align-self: center;
 }
 
 /* overrides the IconButton hover & focus styling */
@@ -227,24 +235,9 @@
     justify-content: center;
 }
 
-.statusIconWrapper {
-    -st-states: withRightPadding, withLeftPadding;
-}
-
-.statusIconWrapper:withRightPadding {
-    padding-right: 8px;
-}
-
-.statusIconWrapper:withLeftPadding {
-    padding-left: 8px;
-}
-
-.customSuffixWrapper {
-    -st-states: withLeftPadding;
-}
-
-.customSuffixWrapper:withLeftPadding {
-    padding-left: 8px;
+.clearButton:skin(line)::icon path {
+    stroke: none;
+    fill: value(mainTextColor);
 }
 
 /* Placeholder color */

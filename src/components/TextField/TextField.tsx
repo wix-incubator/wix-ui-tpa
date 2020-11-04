@@ -8,7 +8,7 @@ import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
 import { ReactComponent as ClearIcon } from '../../assets/icons/X.svg';
-import { IconButton } from '../IconButton';
+import { IconButton, Skins } from '../IconButton';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { TextFieldTheme } from './TextFieldEnums';
@@ -100,27 +100,24 @@ export class TextField extends React.Component<TextFieldProps> {
       shouldShowSuccessIcon ||
       shouldShowClearButton;
 
-    const shouldAddLeftPaddingToCustomSuffix =
-      !shouldShowErrorIcon && !shouldShowSuccessIcon && shouldShowClearButton;
-
     return hasSuffix ? (
       <div className={classes.suffixWrapper}>
         <div className={classes.gap} />
         {shouldShowClearButton && (
-          <IconButton
-            className={classes.clearButton}
-            data-hook={DATA_HOOKS.CLEAR_BUTTON}
-            aria-label={clearButtonAriaLabel}
-            aria-labelledby={clearButtonAriaLabelledby}
-            onClick={onClear ? () => this.props.onClear() : undefined}
-            icon={<ClearIcon />}
-          />
+          <div className={classes.clearButtonWrapper}>
+            <IconButton
+                className={classes.clearButton}
+                data-hook={DATA_HOOKS.CLEAR_BUTTON}
+                aria-label={clearButtonAriaLabel}
+                aria-labelledby={clearButtonAriaLabelledby}
+                skin={Skins.Line}
+                onClick={onClear ? () => this.props.onClear() : undefined}
+                icon={<ClearIcon />}
+            />
+            <div className={classes.clearButtonGap} />
+          </div>
         )}
         <StatusIcon
-          className={st(classes.statusIconWrapper, {
-            withRightPadding: shouldShowCustomSuffix,
-            withLeftPadding: shouldShowClearButton,
-          })}
           error={error}
           errorMessage={errorMessage}
           success={success}
@@ -128,9 +125,6 @@ export class TextField extends React.Component<TextFieldProps> {
         />
         {suffix && (
           <div
-            className={st(classes.customSuffixWrapper, {
-              withLeftPadding: shouldAddLeftPaddingToCustomSuffix,
-            })}
             data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
           >
             {suffix}
@@ -201,7 +195,6 @@ const ErrorSuffix = ({ errorMessage }) => (
 );
 
 const StatusIcon = ({
-  className,
   error,
   errorMessage,
   success,
@@ -215,5 +208,5 @@ const StatusIcon = ({
     statusIcon = <SuccessIcon data-hook={DATA_HOOKS.SUCCESS_ICON} />;
   }
 
-  return statusIcon ? <div className={className}>{statusIcon}</div> : null;
+  return statusIcon;
 };
