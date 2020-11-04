@@ -112,7 +112,7 @@ export class TextField extends React.Component<TextFieldProps> {
             data-hook={DATA_HOOKS.CLEAR_BUTTON}
             aria-label={clearButtonAriaLabel}
             aria-labelledby={clearButtonAriaLabelledby}
-            onClick={() => onClear && this.props.onClear()}
+            onClick={onClear ? () => this.props.onClear() : undefined}
             icon={<ClearIcon />}
           />
         )}
