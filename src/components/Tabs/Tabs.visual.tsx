@@ -33,7 +33,7 @@ class TabsVisual extends React.Component<TabsVisualProps> {
 
 visualize('Tabs', () => {
   const renderTest = (renderProps?: any) => {
-    const { props, mobile, compact } = renderProps;
+    const { props, mobile, compact } = renderProps || {};
     return (
       <TabsVisual
         tabsProps={{
