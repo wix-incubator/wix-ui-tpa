@@ -75,6 +75,10 @@ export interface DatePickerProps extends TPAComponentProps {
   popoverPlacement?: popoverPlacementType;
   /** Element to append the Popover to */
   popoverAppendTo?: AppendTo;
+  /** Defines a string value that labels the clear button element. Optional. */
+  clearButtonAriaLabel?: string;
+  /** Identifies the element that labels the clear button element. Optional. */
+  clearButtonAriaLabelledby?: string;
 }
 
 interface DefaultProps {
@@ -146,6 +150,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
         theme={inputTheme}
         // withClearButton
         // onClear={this._onInputClearButtonClicked}
+        // clearButtonAriaLabel
+        // clearButtonAriaLabelledby
       />
     );
 
