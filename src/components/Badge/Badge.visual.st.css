@@ -1,0 +1,18 @@
+:import {
+  -st-from: "./Badge.st.css";
+  -st-default: Badge;
+}
+
+.palette {
+  -st-mixin: Badge(
+    BadgeBgColor "color(color-11)",
+    BadgeTextColor "color(color-15)",
+  );
+}
+
+.staticColors {
+  -st-mixin: Badge(
+    BadgeBgColor gold,
+    BadgeTextColor black,
+  );
+}
