@@ -8,10 +8,7 @@ import { mount } from 'enzyme';
 import { textFieldTestkitFactory } from '../../testkit';
 import { textFieldTestkitFactory as enzymeTextFieldTestkitFactory } from '../../testkit/enzyme';
 import { TextFieldTheme } from './TextFieldEnums';
-import {
-  Input as CoreInput,
-  InputProps as CoreInputProps,
-} from 'wix-ui-core/input';
+import { ReactComponent as Calendar } from '../../assets/icons/Calendar.svg';
 
 describe('TextField', () => {
   const createDriver = createDriverFactory(textFieldDriverFactory);
@@ -132,6 +129,41 @@ describe('TextField', () => {
       );
       expect(disabledStateDriver.isDisabled()).toBe(true);
       expect(regularStateDriver.isDisabled()).toBe(false);
+    });
+
+    it('should has clear button', function() {
+      const emptyStateDriver = createDriver(
+        <TextField withClearButton value="text" />,
+      );
+      expect(emptyStateDriver.hasClearButton()).toBe(true);
+    });
+
+    it('should not have clear button when the input is empty', function() {
+      const emptyStateDriver = createDriver(
+        <TextField withClearButton value="" />,
+      );
+      expect(emptyStateDriver.hasClearButton()).toBe(false);
+    });
+
+    it('should call onClear after clicking on the clear button', function() {
+      const onClear = jest.fn();
+      const driver = createDriver(
+        <TextField withClearButton onClear={onClear} value="text" />,
+      );
+      driver.clickOnClearButton();
+      expect(onClear).toHaveBeenCalled();
+    });
+
+    it('should has custom suffix', function() {
+      const emptyStateDriver = createDriver(
+        <TextField value="hello" suffix={<Calendar />} />,
+      );
+      expect(emptyStateDriver.hasCustomSuffix()).toBe(true);
+    });
+
+    it('should not have custom suffix', function() {
+      const emptyStateDriver = createDriver(<TextField value="hello" />);
+      expect(emptyStateDriver.hasCustomSuffix()).toBe(false);
     });
   });
 });
