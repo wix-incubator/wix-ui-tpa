@@ -240,6 +240,14 @@
     fill: value(mainTextColor);
 }
 
+.customSuffix {
+    color: value(mainTextColor);
+}
+
+.customSuffix path {
+    fill: value(mainTextColor);
+}
+
 /* Placeholder color */
 .root::nativeInput::-webkit-input-placeholder,
 .root::nativeInput::placeholder
