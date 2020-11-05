@@ -6,7 +6,7 @@ import WSRDatePicker from 'wix-style-react/dist/src/DatePicker';
 import { AppendTo } from 'wix-ui-core/popover';
 import { TextField } from '../TextField/TextField';
 import { TextFieldTheme } from '../TextField/TextFieldEnums';
-import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { ReactComponent as Calendar } from '../../assets/icons/Calendar.svg';
 
 import { st, classes } from './DatePicker.st.css';
 import { DATA_HOOKS } from './constants';
@@ -148,15 +148,15 @@ export class DatePicker extends React.Component<DatePickerProps> {
       <TextField
         data-hook="date-input"
         prefix=""
-        suffix={<Heart />}
+        suffix={<Calendar />}
         disabled={disabled}
         error={hasError}
         errorMessage={errorMessage}
         theme={inputTheme}
-        // withClearButton
-        // onClear={this._onInputClearButtonClicked}
-        // clearButtonAriaLabel
-        // clearButtonAriaLabelledby
+        withClearButton
+        onClear={this._onInputClearButtonClicked}
+        clearButtonAriaLabel
+        clearButtonAriaLabelledby
       />
     );
 
