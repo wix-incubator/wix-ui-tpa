@@ -25,7 +25,7 @@
   );
 }
 .staticColorsSiteParams {
-  -st-mixin: Badge(
+  -st-mixin: overrideStyleParams(
     BadgeBgColor gold,
     BadgeTextColor black,
   );
