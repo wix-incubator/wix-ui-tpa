@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 import WSRDatePicker from 'wix-style-react/dist/src/DatePicker';
-// import { PopoverCommonProps } from 'wix-style-react/dist/src/common/PropTypes/PopoverCommon';
+import { AppendTo } from 'wix-ui-core/popover';
 import { TextField } from '../TextField/TextField';
 import { TextFieldTheme } from '../TextField/TextFieldEnums';
 import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
@@ -29,6 +30,10 @@ export type LanguageType =
   | 'zh'
   | 'th'
   | 'cs';
+
+export type popoverPlacementType =
+  | 'bottom-start'
+  | 'bottom-end';
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
@@ -65,9 +70,13 @@ export interface DatePickerProps extends TPAComponentProps {
   /** The error status message to display when hovering the status icon. */
   errorMessage?: string;
   /** sets desired width of DatePicker input */
-  inputWidth: number | string;
+  inputWidth?: number | string;
   /** Sets the input theme possible values: 'line', 'box'*/
-  inputTheme: TextFieldTheme;
+  inputTheme?: TextFieldTheme;
+  /** The popover placement. Could be 'bottom-starts' or 'bottom-end'. */
+  popoverPlacement?: popoverPlacementType;
+  /** Element to append the Popover to */
+  popoverAppendTo?: AppendTo;
 }
 
 interface DefaultProps {
@@ -124,6 +133,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
       showMonthAndYearDropdown,
       inputWidth,
       inputTheme,
+      popoverPlacement,
+      popoverAppendTo,
     } = this.props;
 
     const customInput = (
@@ -141,32 +152,42 @@ export class DatePicker extends React.Component<DatePickerProps> {
     );
 
     return (
-      <div
-        className={st(classes.root, className)}
-        data-hook={this.props['data-hook']}
-      >
-        <WSRDatePicker
-          dataHook={DATA_HOOKS.WSR_DATE_PICKER}
-          value={value}
-          onChange={onChange}
-          onClose={onClose}
-          placeholderText={placeholderText}
-          disabled={disabled}
-          dateFormatV2={dateFormat}
-          locale={locale}
-          excludePastDates={excludePastDates}
-          filterDate={filterDate}
-          firstDayOfWeek={firstDayOfWeek}
-          showMonthDropdown={showMonthAndYearDropdown}
-          showYearDropdown={showMonthAndYearDropdown}
-          customInput={customInput}
-          width={inputWidth}
-          selectionMode="day"
-          shouldCloseOnSelect
-          initialOpen={false}
-          numOfMonths={1}
-        />
-      </div>
+        <TPAComponentsConsumer>
+          {({ rtl }) => (
+            <div
+              className={st(classes.root, className)}
+              data-hook={this.props['data-hook']}
+            >
+              <WSRDatePicker
+                dataHook={DATA_HOOKS.WSR_DATE_PICKER}
+                value={value}
+                onChange={onChange}
+                onClose={onClose}
+                placeholderText={placeholderText}
+                disabled={disabled}
+                dateFormatV2={dateFormat}
+                locale={locale}
+                excludePastDates={excludePastDates}
+                filterDate={filterDate}
+                firstDayOfWeek={firstDayOfWeek}
+                showMonthDropdown={showMonthAndYearDropdown}
+                showYearDropdown={showMonthAndYearDropdown}
+                customInput={customInput}
+                width={inputWidth}
+                rtl={rtl}
+                selectionMode="day"
+                shouldCloseOnSelect
+                initialOpen={false}
+                numOfMonths={1}
+                popoverProps={{
+                    placement: popoverPlacement ? popoverPlacement : ( rtl ?  'bottom-end' : 'bottom-start'),
+                    appendTo: popoverAppendTo,
+                    dynamicWidth: popoverAppendTo === 'window' ? true : undefined,
+                }}
+              />
+            </div>
+          )}
+        </TPAComponentsConsumer>
     );
   }
 }
