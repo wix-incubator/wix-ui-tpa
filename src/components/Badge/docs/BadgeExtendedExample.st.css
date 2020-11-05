@@ -1,11 +1,11 @@
 :import {
     -st-from: "../Badge.st.css";
     -st-default: TPABadge;
-    -st-named: styleParams, priority-light, priority-primary;
+    -st-named: overrideStyleParams, priority-light, priority-primary;
 }
 
 .mixStyleParams {
-    -st-mixin: styleParams(
+    -st-mixin: overrideStyleParams(
         BadgeBgColor '"color(--badgeBgColor)"',
         BadgeTextColor '"color(--badgeTextColor)"',
     );

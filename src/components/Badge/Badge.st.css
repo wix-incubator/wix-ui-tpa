@@ -79,13 +79,13 @@
 
 /* Variants - including style overrides capabilities */
 
-.styleParams {
+.overrideStyleParams {
     background-color: color(value(defaultBgColor));
     color: color(value(defaultTextColor));
     border: none;
 }
 
-.styleParams .icon path /* default */ {
+.overrideStyleParams .icon path /* default */ {
     fill: color(value(defaultTextColor));
 }
 

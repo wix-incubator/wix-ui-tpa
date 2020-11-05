@@ -1,7 +1,7 @@
 :import {
   -st-from: "./Badge.st.css";
   -st-default: Badge;
-  -st-named: styleParams;
+  -st-named: overrideStyleParams;
 }
 
 .palette {
@@ -19,7 +19,7 @@
 }
 
 .paletteStyleParams {
-  -st-mixin: styleParams(
+  -st-mixin: overrideStyleParams(
     BadgeBgColor "color(color-11)",
     BadgeTextColor "color(color-15)",
   );
