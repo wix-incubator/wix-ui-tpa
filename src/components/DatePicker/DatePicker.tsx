@@ -116,9 +116,13 @@ export class DatePicker extends React.Component<DatePickerProps> {
     inputTheme: TextFieldTheme.Box,
   };
 
+  WSRDatePickerRef = React.createRef<WSRDatePicker>();
+
   _onInputClearButtonClicked = () => {
     const { onChange } = this.props;
     onChange('');
+    // @ts-ignore
+    this.WSRDatePickerRef.current.closeCalendar();
   };
 
   render() {
@@ -168,6 +172,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
             data-hook={this.props['data-hook']}
           >
             <WSRDatePicker
+              ref={this.WSRDatePickerRef}
               dataHook={DATA_HOOKS.WSR_DATE_PICKER}
               value={value}
               onChange={onChange}
