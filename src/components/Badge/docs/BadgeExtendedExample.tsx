@@ -13,7 +13,6 @@ export const BadgeExtendedExample: React.FC = () => (
       Override the style params per theme - start with a theme and change what
       you want - this is common for a component with predefined variations
     </h3>
-    <Badge className={classes.mixPriorityDefault}>Badge</Badge>
     <Badge className={classes.mixPriorityLight}>Badge</Badge>
     <Badge className={classes.mixPriorityPrimary}>Badge</Badge>
 

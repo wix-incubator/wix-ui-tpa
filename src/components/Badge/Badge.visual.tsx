@@ -53,6 +53,20 @@ const tests = [
           children: ['Style Params Override'],
         },
       },
+      {
+        it: 'style params override - from palette - optimized',
+        props: {
+          className: classes.paletteStyleParams,
+          children: ['Style Params Override'],
+        },
+      },
+      {
+        it: 'style params override - static - optimized',
+        props: {
+          className: classes.staticColorsSiteParams,
+          children: ['Style Params Override'],
+        },
+      },
     ],
   },
 ];

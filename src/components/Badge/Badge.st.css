@@ -12,8 +12,8 @@
 }
 
 :vars {
-    bgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(color-5), 0.1)));
-    textColor: color(fallback(value(BadgeTextColor), color(color-5)));
+    defaultBgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(color-5), 0.1)));
+    defaultTextColor: color(fallback(value(BadgeTextColor), color(color-5)));
 }
 
 :vars {
@@ -68,26 +68,25 @@
 /* Deprecated - Old style params overriding for full mixin */
 
 .root {
-  background-color: color(value(bgColor));
-  color: color(value(textColor));
+    background-color: color(value(defaultBgColor));
+    color: color(value(defaultTextColor));
+    border: none;
 }
 
 .root .icon path {
-    fill: color(value(textColor));
+    fill: color(value(defaultTextColor));
 }
 
 /* Variants - including style overrides capabilities */
 
-.styleParams, /* default */
-.priority-default {
-    background-color: color(value(bgColor));
-    color: color(value(textColor));
+.styleParams {
+    background-color: color(value(defaultBgColor));
+    color: color(value(defaultTextColor));
     border: none;
 }
 
-.styleParams .icon path , /* default */
-.priority-default .icon path {
-    fill: color(value(textColor));
+.styleParams .icon path /* default */ {
+    fill: color(value(defaultTextColor));
 }
 
 .priority-light {
