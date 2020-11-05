@@ -61,8 +61,10 @@ export interface DatePickerProps extends TPAComponentProps {
   filterDate?(date: Date): boolean;
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */
   firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  /** Displays a selectable monthDropdown and a selectable yearDropdown */
-  showMonthAndYearDropdown?: boolean;
+  /** Displays a selectable monthDropdown */
+  showMonthDropdown?: boolean;
+  /** Displays a selectable yearDropdown */
+  showYearDropdown?: boolean;
   /** Error status */
   hasError?: boolean;
   /** The error status message to display when hovering the status icon. */
@@ -89,7 +91,8 @@ interface DefaultProps {
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
   firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
-  showMonthAndYearDropdown: boolean;
+  showMonthDropdown: boolean;
+  showYearDropdown: boolean;
   hasError: boolean;
   inputWidth: number | string;
   inputTheme: TextFieldTheme;
@@ -106,7 +109,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
     excludePastDates: false,
     filterDate: () => true,
     firstDayOfWeek: 1,
-    showMonthAndYearDropdown: false,
+    showMonthDropdown: false,
+    showYearDropdown: false,
     hasError: false,
     inputWidth: '280px',
     inputTheme: TextFieldTheme.Box,
@@ -132,7 +136,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
       firstDayOfWeek,
       hasError,
       errorMessage,
-      showMonthAndYearDropdown,
+      showMonthDropdown,
+      showYearDropdown,
       inputWidth,
       inputTheme,
       popoverPlacement,
@@ -174,8 +179,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
               excludePastDates={excludePastDates}
               filterDate={filterDate}
               firstDayOfWeek={firstDayOfWeek}
-              showMonthDropdown={showMonthAndYearDropdown}
-              showYearDropdown={showMonthAndYearDropdown}
+              showMonthDropdown={showMonthDropdown}
+              showYearDropdown={showYearDropdown}
               customInput={customInput}
               width={inputWidth}
               rtl={rtl}
