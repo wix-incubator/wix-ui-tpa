@@ -9,5 +9,6 @@ try {
 module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     concurrency: 50,
+    saveNewTests: false,
   }),
 });

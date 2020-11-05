@@ -51,6 +51,8 @@ visualize('Tabs', () => {
     snap('default', renderTest());
 
     snap('mobile', renderTest({ mobile: true }));
+
+    snap('with scroll arrows', renderTest({ compact: true }));
   });
 
   story('Alignments', () => {
