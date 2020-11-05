@@ -31,9 +31,7 @@ export type LanguageType =
   | 'th'
   | 'cs';
 
-export type popoverPlacementType =
-  | 'bottom-start'
-  | 'bottom-end';
+export type popoverPlacementType = 'bottom-start' | 'bottom-end';
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
@@ -152,42 +150,46 @@ export class DatePicker extends React.Component<DatePickerProps> {
     );
 
     return (
-        <TPAComponentsConsumer>
-          {({ rtl }) => (
-            <div
-              className={st(classes.root, className)}
-              data-hook={this.props['data-hook']}
-            >
-              <WSRDatePicker
-                dataHook={DATA_HOOKS.WSR_DATE_PICKER}
-                value={value}
-                onChange={onChange}
-                onClose={onClose}
-                placeholderText={placeholderText}
-                disabled={disabled}
-                dateFormatV2={dateFormat}
-                locale={locale}
-                excludePastDates={excludePastDates}
-                filterDate={filterDate}
-                firstDayOfWeek={firstDayOfWeek}
-                showMonthDropdown={showMonthAndYearDropdown}
-                showYearDropdown={showMonthAndYearDropdown}
-                customInput={customInput}
-                width={inputWidth}
-                rtl={rtl}
-                selectionMode="day"
-                shouldCloseOnSelect
-                initialOpen={false}
-                numOfMonths={1}
-                popoverProps={{
-                    placement: popoverPlacement ? popoverPlacement : ( rtl ?  'bottom-end' : 'bottom-start'),
-                    appendTo: popoverAppendTo,
-                    dynamicWidth: popoverAppendTo === 'window' ? true : undefined,
-                }}
-              />
-            </div>
-          )}
-        </TPAComponentsConsumer>
+      <TPAComponentsConsumer>
+        {({ rtl }) => (
+          <div
+            className={st(classes.root, className)}
+            data-hook={this.props['data-hook']}
+          >
+            <WSRDatePicker
+              dataHook={DATA_HOOKS.WSR_DATE_PICKER}
+              value={value}
+              onChange={onChange}
+              onClose={onClose}
+              placeholderText={placeholderText}
+              disabled={disabled}
+              dateFormatV2={dateFormat}
+              locale={locale}
+              excludePastDates={excludePastDates}
+              filterDate={filterDate}
+              firstDayOfWeek={firstDayOfWeek}
+              showMonthDropdown={showMonthAndYearDropdown}
+              showYearDropdown={showMonthAndYearDropdown}
+              customInput={customInput}
+              width={inputWidth}
+              rtl={rtl}
+              selectionMode="day"
+              shouldCloseOnSelect
+              initialOpen={false}
+              numOfMonths={1}
+              popoverProps={{
+                placement: popoverPlacement
+                  ? popoverPlacement
+                  : rtl
+                  ? 'bottom-end'
+                  : 'bottom-start',
+                appendTo: popoverAppendTo,
+                dynamicWidth: popoverAppendTo === 'window' ? true : undefined,
+              }}
+            />
+          </div>
+        )}
+      </TPAComponentsConsumer>
     );
   }
 }
