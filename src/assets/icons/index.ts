@@ -12,5 +12,6 @@ export { ReactComponent as PlusL } from './PlusL.svg';
 export { ReactComponent as PlusXL } from './PlusXL.svg';
 export { ReactComponent as Share } from './Share.svg';
 export { ReactComponent as Star } from './Star.svg';
+export { ReactComponent as Calendar } from './Calendar.svg';
 import * as SocialIcons from './Social';
 export { SocialIcons };

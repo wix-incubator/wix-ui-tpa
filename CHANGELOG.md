@@ -1,3 +1,12 @@
+## [2.9.2](https://github.com/wix/wix-ui-tpa/compare/v2.9.1...v2.9.2) (2020-11-05)
+
+
+### Features
+
+* **Dropdowns:** add appendTo prop to Dropdown & FloatingDropdown ([0fc8f04](https://github.com/wix/wix-ui-tpa/commit/0fc8f04b8b8cb9282dedb24c49daa05f48ad6e2b))
+
+
+
 ## [2.9.1](https://github.com/wix/wix-ui-tpa/compare/v2.9.0...v2.9.1) (2020-11-02)
 
 
