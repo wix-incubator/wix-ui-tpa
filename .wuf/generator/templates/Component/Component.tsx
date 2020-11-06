@@ -4,6 +4,7 @@ import { TPAComponentProps } from '../../types';
 import { Text } from '../Text';
 import { Button } from '../Button';
 import { st, classes } from './{%ComponentName%}.st.css';
+import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface {%ComponentName%}Props extends TPAComponentProps {
   buttonText: string;
@@ -34,16 +35,20 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     const isEven = count % 2 === 0;
 
     return (
-      <div className={st(classes.root, className)} data-hook={this.props['data-hook']}>
-        <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
-          You clicked this button {isEven ? 'even' : 'odd'} number ({count}) of
-          times
-        </Text>
+      // <TPAComponentsConsumer>
+      //   {({ mobile, rtl }) => (
+          <div className={st(classes.root, {}, className)} data-hook={this.props['data-hook']}>
+            <Text className={st(classes.number, { even: isEven, odd: !isEven })}>
+              You clicked this button {isEven ? 'even' : 'odd'} number ({count})
+              of times
+            </Text>
 
-        <div className={classes.button}>
-          <Button onClick={this._handleClick}>{buttonText}</Button>
-        </div>
-      </div>
+            <div className={classes.button}>
+              <Button onClick={this._handleClick}>{buttonText}</Button>
+            </div>
+          </div>
+      //   )}
+      // </TPAComponentsConsumer>
     );
   }
 }

@@ -22,14 +22,9 @@
 }
 
 .root {
-  -st-states: mobile;
   background-color: value(defaultBgColor);
 }
 
-.root:mobile {
-  /*mobile css goes here*/
-}
-
-.root.overrideStyleParams { 
+.root.overrideStyleParams {
   background-color: value(bgColor);
 }
