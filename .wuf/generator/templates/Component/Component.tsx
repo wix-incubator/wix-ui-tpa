@@ -35,6 +35,8 @@ export class {%ComponentName%} extends React.Component<{%ComponentName%}Props, S
     const isEven = count % 2 === 0;
 
     return (
+      // Add this context consumer if the component needs to be aware of `mobile` and `rtl` states of the app
+      // For more information: https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#tpacomponentsprovider
       // <TPAComponentsConsumer>
       //   {({ mobile, rtl }) => (
           <div className={st(classes.root, {}, className)} data-hook={this.props['data-hook']}>
