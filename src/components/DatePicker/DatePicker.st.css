@@ -21,3 +21,8 @@
 .root {
     /*css goes here*/
 }
+
+.wsrDatePicker {
+    -st-extends: DatePicker;
+    sivan: 'hi';
+}

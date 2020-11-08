@@ -177,6 +177,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
             <WSRDatePicker
               ref={this.WSRDatePickerRef}
               dataHook={DATA_HOOKS.WSR_DATE_PICKER}
+              className={classes.wsrDatePicker}
               value={value}
               onChange={onChange}
               onClose={onClose}
