@@ -145,6 +145,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
       showYearDropdown,
       inputWidth,
       inputTheme,
+      clearButtonAriaLabel,
+      clearButtonAriaLabelledby,
       popoverPlacement,
       popoverAppendTo,
     } = this.props;
@@ -160,8 +162,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
         theme={inputTheme}
         withClearButton
         onClear={this._onInputClearButtonClicked}
-        clearButtonAriaLabel
-        clearButtonAriaLabelledby
+        clearButtonAriaLabel={clearButtonAriaLabel}
+        clearButtonAriaLabelledby={clearButtonAriaLabelledby}
       />
     );
 
