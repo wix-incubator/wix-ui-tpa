@@ -121,6 +121,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
   _onInputClearButtonClicked = () => {
     const { onChange } = this.props;
     onChange('');
+    // todo: Sivan: Remove this ts-ignore after merging the WSR PR
     // @ts-ignore
     this.WSRDatePickerRef.current.closeCalendar();
   };
