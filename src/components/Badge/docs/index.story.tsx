@@ -4,25 +4,30 @@ import * as examples from './examples';
 import {
   header,
   api,
-  description,
   divider,
   importExample,
   playground,
   tab,
-  code as baseCode,
+  example as baseExample,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import * as Readme from '../README.md';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+
 import { BadgeExtendedExample } from './BadgeExtendedExample';
+import * as exampleOverrides from './BadgeExtendedExample.st.css';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = (config, extraContext = {}) =>
+  baseExample({
+    components: { ...allComponents, ...extraContext },
+    compact: true,
+    ...config,
+  });
 
 export default {
   category: 'Components',
@@ -44,7 +49,6 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
           importExample({
             source: examples.importExample,
           }),
@@ -53,12 +57,53 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Preset examples', source: examples.example }].map(code),
+          ...[
+            {
+              title: 'Priority skins',
+              description: 'The Badge component has different skins to apply',
+              source: examples.priority,
+            },
+            {
+              title: 'Icon prefix',
+              description: 'Icon prefix can be set per icon',
+              source: examples.icons,
+            },
+            {
+              title: 'RTL support',
+              description: 'RTL is supported using the native css property',
+              source: examples.rtl,
+            },
+          ].map(example),
+          example(
+            {
+              title: 'Style params override',
+              description:
+                'Override specific style variables to customize the component. Go to the "Settings Panel" and start changing colors, see how it reflects this one as well',
+              source: `() => {
+  \`
+//MyComponent.st.css
+${(ExtendedCSSRawSource as any).default}\`
+
+return (
+  <>
+    <Badge className={classes.mixPriorityLight}>Badge</Badge>
+    <Badge className={classes.mixPriorityPrimary}>Badge</Badge>
+  </>
+  );
+}
+`,
+            },
+            { classes: exampleOverrides.classes },
+          ),
         ],
       }),
 
       ...[
         { title: 'API', sections: [api()] },
+        {
+          title: 'Style API',
+          sections: [settingsApi()],
+        },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {
