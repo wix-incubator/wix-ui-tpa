@@ -48,9 +48,13 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Basic Example', source: examples.basicExample }].map(
-            code,
-          ),
+          ...[
+            { title: 'Regular Image', source: examples.regularImageExample },
+            {
+              title: 'Media Image',
+              source: examples.mediaImageExample,
+            },
+          ].map(code),
         ],
       }),
 
