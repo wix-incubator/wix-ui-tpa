@@ -1,36 +1,35 @@
 import * as React from 'react';
+import {
+  MediaImage,
+  MediaPlatformItem as MediaImageProps,
+} from 'wix-ui-core/media-image';
 import { TPAComponentProps } from '../../types';
-
-import { st, classes } from './Image.st.css';
+import { classes, st } from './Image.st.css';
 
 export interface ImageProps extends TPAComponentProps {
-  src: string;
-  width?: string;
-  height?: string;
+  src?: string;
+  width?: number;
+  height?: number;
   alt?: string;
+  mediaImageProps?: MediaImageProps;
 }
 
-interface DefaultProps {}
-
-interface State {}
-
 /** A component to render image */
-export class Image extends React.Component<ImageProps, State> {
+export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
-  static defaultProps: DefaultProps = {};
 
   render() {
-    const { className, src, width, height, alt } = this.props;
+    const { className, src, mediaImageProps, ...imageProps } = this.props;
 
     return (
       <div
         className={st(classes.root, className)}
         data-hook={this.props['data-hook']}
       >
-        {alt ? (
-          <img src={src} alt={alt} width={width} height={height} />
+        {mediaImageProps ? (
+          <MediaImage {...imageProps} mediaPlatformItem={mediaImageProps} />
         ) : (
-          <div style={{ backgroundImage: `url("${src}")`, width, height }} />
+          <img {...imageProps} src={src} />
         )}
       </div>
     );
