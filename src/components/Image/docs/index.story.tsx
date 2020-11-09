@@ -48,7 +48,9 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Example', source: examples.example }].map(code),
+          ...[{ title: 'Basic Example', source: examples.basicExample }].map(
+            code,
+          ),
         ],
       }),
 
