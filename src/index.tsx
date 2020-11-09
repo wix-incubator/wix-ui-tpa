@@ -1,3 +1,4 @@
+// tslint:disable-next-line
 import * as Icons from './assets/icons';
 export { Icons };
 export * from './components/Autocomplete';

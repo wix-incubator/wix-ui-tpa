@@ -3,31 +3,32 @@
     -st-named: color, applyOpacity, fallback;
 }
 
+/*Overrides*/
 :vars {
-    /*Defaults*/
-    DefaultBgColor: color-5;
-    DefaultTextColor: color-5;
-    LightBgColor: color-1;
-    LightTextColor: color-5;
-    LightBorderColor: color-5;
-    PrimaryBgColor: color-8;
-    PrimaryTextColor: color-1;
-}
-
-:vars {
-    /*Overrides*/
+    /* Background color */
     BadgeBgColor: --overridable;
+    /* Text color */
     BadgeTextColor: --overridable;
 }
 
 :vars {
-    badgeBgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(value(DefaultBgColor)), 0.1)));
-    badgeTextColor: color(fallback(value(BadgeTextColor), value(DefaultTextColor)));
-    lightBorderColor: applyOpacity(color(value(LightBorderColor)), 0.10);
+    defaultBgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(color-5), 0.1)));
+    defaultTextColor: color(fallback(value(BadgeTextColor), color(color-5)));
+}
+
+:vars {
+    lightBgColor: color(fallback(value(BadgeBgColor), color(color-1)));
+    lightTextColor: color(fallback(value(BadgeTextColor), color(color-5)));
+    lightBorderColor: applyOpacity(color(color-5), 0.10);
+}
+
+:vars {
+    primaryBgColor: color(fallback(value(BadgeBgColor), color(color-8)));
+    primaryTextColor: color(fallback(value(BadgeTextColor), color(color-1)));
 }
 
 .root {
-    -st-states: priority(enum(default, light, primary)), withIcon;
+    -st-states: withIcon;
     display: inline-flex;
     border-radius: 12px;
     line-height: 20px;
@@ -37,6 +38,10 @@
 .root::before, .root::after {
     content: '';
     width: 12px;;
+}
+
+.root:withIcon::before {
+    width: 10px;
 }
 
 .innerContainer {
@@ -50,50 +55,60 @@
     display: flex;
 }
 
-.icon > svg {
-    width: 16px;
-    height: 16px;
-}
-
 .icon::after {
     content: '';
     width: 2px;
 }
 
-.root:priority(default) {
-    background-color: value(badgeBgColor);
-    color: value(badgeTextColor);
+.icon > svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Deprecated - Old style params overriding for full mixin */
+
+.root {
+    background-color: color(value(defaultBgColor));
+    color: color(value(defaultTextColor));
     border: none;
 }
 
-.root:priority(default) .icon path {
-    fill: color(value(badgeTextColor));
+.root .icon path {
+    fill: color(value(defaultTextColor));
 }
 
-.root:priority(light) {
-    background-color: color(value(LightBgColor));
-    color: color(value(LightTextColor));
-    border-color: value(lightBorderColor);
+/* Variants - including style overrides capabilities */
+
+.overrideStyleParams {
+    background-color: color(value(defaultBgColor));
+    color: color(value(defaultTextColor));
+    border: none;
+}
+
+.overrideStyleParams .icon path /* default */ {
+    fill: color(value(defaultTextColor));
+}
+
+.priority-light {
+    background-color: color(value(lightBgColor));
+    color: color(value(lightTextColor));
+    border-color: color(value(lightBorderColor));
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
     line-height: 18px;
 }
 
-.root:priority(light) .icon path {
-    fill: color(value(LightTextColor));
+.priority-light .icon path {
+    fill: color(value(lightTextColor));
 }
 
-.root:priority(primary) {
-    background-color: color(value(PrimaryBgColor));
-    color: color(value(PrimaryTextColor));
+.priority-primary {
+    background-color: color(value(primaryBgColor));
+    color: color(value(primaryTextColor));
     border: none;
 }
 
-.root:priority(primary) .icon path {
-    fill: color(value(PrimaryTextColor));
-}
-
-.root:withIcon::before {
-    width: 10px;
+.priority-primary .icon path {
+    fill: color(value(primaryTextColor));
 }

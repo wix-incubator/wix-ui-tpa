@@ -13,6 +13,12 @@
     -st-named: errorColor, successColor;
 }
 
+:import {
+    -st-from: "../IconButton/IconButton.st.css";
+    -st-default: TPAIconButton;
+}
+
+
 :vars {
     /** defaults */
     defaultMainBorderColor: color-5;
@@ -189,6 +195,57 @@
 
 .gap {
     width: 10px;
+}
+
+.clearButtonWrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.clearButtonGap {
+    width: 4px;
+    height: 100%;
+    display: inline-block;
+}
+
+.clearButton {
+    -st-extends: TPAIconButton;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    outline: 0;
+    background-color: applyOpacity(value(mainTextColor), 0.06);
+}
+
+/* overrides the IconButton hover & focus styling */
+.clearButton:hover, .clearButton:focus {
+    opacity: 1;
+    background-color: applyOpacity(value(mainTextColor), 0.12);
+}
+
+.clearButton::icon {
+    line-height: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clearButton:skin(line)::icon path {
+    stroke: none;
+    fill: value(mainTextColor);
+}
+
+.customSuffix {
+    color: value(mainTextColor);
+}
+
+.customSuffix path {
+    fill: value(mainTextColor);
 }
 
 /* Placeholder color */

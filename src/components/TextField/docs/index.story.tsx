@@ -19,6 +19,8 @@ import { TextFieldExtendedExample } from './TextFieldExtendedExample';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as textFieldRawSource from '!raw-loader!./TextFieldExtendedExample.tsx';
 import * as textFieldCSSRawSource from '!raw-loader!./TextFieldExtendedExample.st.css';
+import { ReactComponent as CalendarIcon } from '../../../assets/icons/Calendar.svg';
+import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -45,6 +47,10 @@ export default {
         label: 'Long',
         value: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
       },
+    ],
+    suffix: [
+      { label: 'Calendar icon', value: <CalendarIcon /> },
+      { label: 'Heart icon', value: <HeartIcon /> },
     ],
   },
 
@@ -84,6 +90,22 @@ export default {
               source: examples.errorWithErrorMessage,
             },
             {
+              title: 'Clear Button',
+              source: examples.clearButton,
+            },
+            {
+              title: 'Custom Suffix',
+              source: examples.customSuffix,
+            },
+            {
+              title: 'Custom Suffix and Error Status',
+              source: examples.customSuffixAndError,
+            },
+            {
+              title: 'Custom Suffix and Error Status With Clear Button',
+              source: examples.customSuffixAndErrorWithClearButton,
+            },
+            {
               title: 'Line theme',
               source: examples.lineTheme,
             },
@@ -102,6 +124,23 @@ export default {
             {
               title: 'Line theme error with error message',
               source: examples.lineThemeErrorMessage,
+            },
+            {
+              title: 'Line theme Clear Button',
+              source: examples.lineThemeClearButton,
+            },
+            {
+              title: 'Line theme Custom Suffix',
+              source: examples.lineThemeCustomSuffix,
+            },
+            {
+              title: 'Line theme Custom Suffix and Error Status',
+              source: examples.lineThemeCustomSuffixAndError,
+            },
+            {
+              title:
+                'Line theme Custom Suffix and Error Status With Clear Button',
+              source: examples.lineThemeCustomSuffixAndErrorWithClearButton,
             },
           ].map(code),
         ],

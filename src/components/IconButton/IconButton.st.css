@@ -65,7 +65,7 @@
 
 .root:skin(full) .icon path {
     fill: color(fallback(value(IconColor), value(DefaultColor)));
-    stroke: color(fallback(value(IconColor), value(DefaultColor)))  ;
+    stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
 
 

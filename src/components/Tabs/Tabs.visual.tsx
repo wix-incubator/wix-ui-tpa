@@ -33,7 +33,7 @@ class TabsVisual extends React.Component<TabsVisualProps> {
 
 visualize('Tabs', () => {
   const renderTest = (renderProps?: any) => {
-    const { props, mobile, compact } = renderProps;
+    const { props, mobile, compact } = renderProps || {};
     return (
       <TabsVisual
         tabsProps={{
@@ -51,6 +51,8 @@ visualize('Tabs', () => {
     snap('default', renderTest());
 
     snap('mobile', renderTest({ mobile: true }));
+
+    snap('with scroll arrows', renderTest({ compact: true }));
   });
 
   story('Alignments', () => {

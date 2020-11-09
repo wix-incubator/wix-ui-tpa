@@ -5,6 +5,7 @@ import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { TextField, TextFieldProps } from './TextField';
 import { TextFieldAsyncVisual } from './TextFieldAsyncVisual';
 import { TextFieldTheme } from './TextFieldEnums';
+import { ReactComponent as Calendar } from '../../assets/icons/Calendar.svg';
 
 class TextFieldVisual extends React.Component<TextFieldProps> {
   static defaultProps: TextFieldProps = {
@@ -93,19 +94,24 @@ function snapTest({
   dir,
   success = false,
   error = false,
+  suffix = null,
+  withClearButton = false,
 }) {
   snap(
-    `${theme}${success ? '/success' : ''}${
-      error ? '/error' : ''
-    }/${mouseAction}`,
+    `${theme}${success ? '/success' : ''}${error ? '/error' : ''}${
+      suffix ? '/suffix' : ''
+    }${withClearButton ? '/withClearButton' : ''}/${mouseAction}`,
     done => (
       <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
         <TextField
           theme={theme}
           success={success}
+          successIcon={success}
           error={error}
           errorMessage={'This is an error message'}
           value={'Some value'}
+          suffix={suffix}
+          withClearButton={withClearButton}
         />
       </TextFieldAsyncVisual>
     ),
@@ -136,6 +142,41 @@ visualize('TextField', () => {
             hover,
             dir,
             error: true,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            suffix: <Calendar />,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            withClearButton: true,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            suffix: <Calendar />,
+            withClearButton: true,
+          });
+          snapTest({
+            theme,
+            mouseAction,
+            focus,
+            hover,
+            dir,
+            error: true,
+            suffix: <Calendar />,
+            withClearButton: true,
           });
         });
       });
