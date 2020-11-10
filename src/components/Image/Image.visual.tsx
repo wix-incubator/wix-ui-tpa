@@ -20,5 +20,15 @@ visualize('Image', () => {
       'with alt',
       <Image alt="Garfield smiles and puts his hand over chest" />,
     );
+    snap(
+      'with mediaItem',
+      <Image
+        mediaItem={{
+          uri: 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg',
+          width: 400,
+          height: 400,
+        }}
+      />,
+    );
   });
 });
