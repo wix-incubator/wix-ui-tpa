@@ -10,7 +10,7 @@ ImageMetadata.addSim({
 });
 
 ImageMetadata.addSim({
-  title: 'render with `alt`',
+  title: 'render with alt',
   props: {
     alt: 'some alternative text',
   } as ImageProps,
