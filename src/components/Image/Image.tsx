@@ -17,10 +17,11 @@ export interface ImageProps extends TPAComponentProps {
   alt?: string;
   /** A callback to be called when the image is loaded */
   onLoad?: React.EventHandler<React.SyntheticEvent>;
+  /** Exposing the MediaPlatformItem API as specified in https://wix-wix-ui-core.surge.sh/?activeTab=Usage&path=%2Fstory%2Fcomponents--media-image */
   mediaItem?: MediaItemProps;
 }
 
-/** A component to render image */
+/** Image is a component to literally display an image - whether a regular with full path or an item from the media manager */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
 
