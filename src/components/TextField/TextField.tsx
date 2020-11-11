@@ -25,6 +25,8 @@ import { TPAComponentProps } from '../../types';
 export interface TPATextFieldProps extends TPAComponentProps {
   /** the error message to display */
   errorMessage?: string;
+  /** error tooltip max width */
+  errorTooltipMaxWidth?: number;
   /** possible values: 'line', 'box' */
   theme?: TextFieldTheme;
   /** apply success state */
@@ -87,6 +89,7 @@ export class TextField extends React.Component<TextFieldProps> {
       onClear,
       value,
       disabled,
+      errorTooltipMaxWidth,
     } = this.props;
 
     const shouldShowCustomSuffix = !!suffix;
@@ -127,6 +130,7 @@ export class TextField extends React.Component<TextFieldProps> {
           errorMessage={errorMessage}
           success={success}
           successIcon={successIcon}
+          errorTooltipMaxWidth={errorTooltipMaxWidth}
         />
         {suffix && <div className={classes.customSuffix} data-hook={DATA_HOOKS.CUSTOM_SUFFIX}>{suffix}</div>}
       </div>
@@ -181,23 +185,24 @@ export class TextField extends React.Component<TextFieldProps> {
   }
 }
 
-const ErrorSuffix = ({ errorMessage }) => (
+const ErrorSuffix = ({ errorMessage, tooltipMaxWidth }) => (
   <Tooltip
     appendTo="scrollParent"
     placement="top-end"
     skin={TooltipSkin.Error}
     content={errorMessage}
     moveBy={{ x: 5, y: 0 }}
+    maxWidth={tooltipMaxWidth}
   >
     <ErrorIcon />
   </Tooltip>
 );
 
-const StatusIcon = ({ error, errorMessage, success, successIcon }) => {
+const StatusIcon = ({ error, errorMessage, success, successIcon, errorTooltipMaxWidth }) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
-    statusIcon = <ErrorSuffix errorMessage={errorMessage} />;
+    statusIcon = <ErrorSuffix errorMessage={errorMessage} tooltipMaxWidth={errorTooltipMaxWidth} />;
   } else if (successIcon && success) {
     statusIcon = <SuccessIcon data-hook={DATA_HOOKS.SUCCESS_ICON} />;
   }
