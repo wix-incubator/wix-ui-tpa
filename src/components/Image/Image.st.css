@@ -1,18 +1,2 @@
-:import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color;
-}
-
-/*Defaults*/
-:vars {
-    /*Defaults params goes here*/
-}
-
-/*Overrides*/
-:vars {
-    /*Deceleration of overridable placeholders*/
-}
-
 .root {
-    /*css goes here*/
 }

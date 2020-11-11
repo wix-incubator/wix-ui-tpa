@@ -1,6 +1,3 @@
-import * as ImageWiringExampleCSSRaw from '!raw-loader!./ImageWiringExample.st.css';
-import * as ImageWiringExampleRaw from '!raw-loader!./ImageWiringExample.tsx';
-import * as React from 'react';
 import {
   api,
   code as baseCode,
@@ -15,9 +12,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { Image } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
-import { ImageWiringExample } from './ImageWiringExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -71,22 +66,6 @@ export default {
         { title: 'API', sections: [api()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
-        {
-          title: 'Settings Panel',
-          sections: [
-            settingsPanel({
-              title: 'Image Panel',
-              example: <ImageWiringExample />,
-              rawSource: ImageWiringExampleRaw,
-              rawCSSSource: ImageWiringExampleCSSRaw,
-              params: {
-                colors: [],
-                fonts: [],
-                numbers: [],
-              },
-            }),
-          ],
-        },
       ].map(tab),
     ]),
   ],
