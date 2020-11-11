@@ -18,6 +18,29 @@ describe('Image', () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should return the `src`', async () => {
+    const expectedSrc = `something`;
+    const driver = createDriver(<Image src={expectedSrc} />);
+    expect(await driver.getSrc()).toBe(expectedSrc);
+  });
+
+  it('should return the combined `src` when having media item', async () => {
+    const uri = 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg';
+    const width = 300;
+    const height = 250;
+    const expectedSrc = `https://static.wixstatic.com/media/${uri}/v1/fill/w_${width},h_${height},al_c,q_80/${uri}`;
+    const driver = createDriver(
+      <Image
+        mediaItem={{
+          uri,
+          width,
+          height,
+        }}
+      />,
+    );
+    expect(await driver.getSrc()).toBe(expectedSrc);
+  });
+
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
