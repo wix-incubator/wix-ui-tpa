@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Image as CoreImage } from 'wix-ui-core/image';
 import {
   MediaImage,
   MediaPlatformItem as MediaItemProps,
@@ -26,7 +27,15 @@ export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
 
   render() {
-    const { className, src, mediaItem, ...imageProps } = this.props;
+    const {
+      className,
+      src,
+      width,
+      height,
+      mediaItem,
+      ...imageProps
+    } = this.props;
+    const dimensions = { width, height };
 
     return (
       <div
@@ -34,9 +43,17 @@ export class Image extends React.Component<ImageProps> {
         data-hook={this.props['data-hook']}
       >
         {mediaItem ? (
-          <MediaImage {...imageProps} mediaPlatformItem={mediaItem} />
+          <MediaImage
+            {...imageProps}
+            {...dimensions}
+            mediaPlatformItem={mediaItem}
+          />
         ) : (
-          <img {...imageProps} src={src} />
+          <CoreImage
+            {...imageProps}
+            nativeProps={{ ...dimensions }}
+            src={src}
+          />
         )}
       </div>
     );
