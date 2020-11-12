@@ -7,6 +7,7 @@ ImageMetadata.nonReactStrictModeCompliant = true;
 ImageMetadata.addSim({
   title: 'render with alt',
   props: {
+    src: 'something',
     alt: 'some alternative text',
   } as ImageProps,
 });
