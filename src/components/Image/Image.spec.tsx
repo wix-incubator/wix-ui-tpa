@@ -11,34 +11,61 @@ import { imageDriverFactory } from './Image.driver';
 describe('Image', () => {
   const createDriver = createUniDriverFactory(imageDriverFactory);
   const sampleUrl =
-    'https://static.wixstatic.com/media/c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg/v1/fill/w_576,h_430,al_c,lg_1,q_80/c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.webp';
+    'https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg';
+  const sampleAlt = 'Garfield smiles and puts his hand over chest';
 
   it('should render', async () => {
     const driver = createDriver(<Image src={sampleUrl} />);
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should return the `src`', async () => {
-    const expectedSrc = `something`;
-    const driver = createDriver(<Image src={expectedSrc} />);
-    expect(await driver.getSrc()).toBe(expectedSrc);
+  describe('regular image', () => {
+    it('should return `src`', async () => {
+      const expectedSrc = sampleUrl;
+      const driver = createDriver(<Image src={expectedSrc} />);
+      expect(await driver.getSrc()).toBe(expectedSrc);
+    });
+
+    it('should return `alt`', async () => {
+      const expectedAlt = sampleAlt;
+      const driver = createDriver(<Image src={sampleUrl} alt={expectedAlt} />);
+      expect(await driver.getAlt()).toBe(expectedAlt);
+    });
   });
 
-  it('should return the combined `src` when having media item', async () => {
+  describe('media image', () => {
     const uri = 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg';
     const width = 300;
     const height = 250;
-    const expectedSrc = `https://static.wixstatic.com/media/${uri}/v1/fill/w_${width},h_${height},al_c,q_80/${uri}`;
-    const driver = createDriver(
-      <Image
-        mediaItem={{
-          uri,
-          width,
-          height,
-        }}
-      />,
-    );
-    expect(await driver.getSrc()).toBe(expectedSrc);
+
+    it('should return `src`', async () => {
+      const expectedSrc = `https://static.wixstatic.com/media/${uri}/v1/fill/w_${width},h_${height},al_c,q_80/${uri}`;
+      const driver = createDriver(
+        <Image
+          mediaItem={{
+            uri,
+            width,
+            height,
+          }}
+        />,
+      );
+      expect(await driver.getSrc()).toBe(expectedSrc);
+    });
+
+    it('should return `alt`', async () => {
+      const expectedAlt = sampleAlt;
+      const driver = createDriver(
+        <Image
+          mediaItem={{
+            uri,
+            width,
+            height,
+          }}
+          alt={expectedAlt}
+        />,
+      );
+      expect(await driver.getAlt()).toBe(expectedAlt);
+    });
   });
 
   describe('testkit', () => {

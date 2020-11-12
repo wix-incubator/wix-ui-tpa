@@ -7,6 +7,7 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 
 export interface ImageDriver extends BaseUniDriver {
   getSrc(): Promise<string>;
+  getAlt(): Promise<string>;
 }
 
 export const imageDriverFactory = (base: UniDriver): ImageDriver => {
@@ -15,5 +16,6 @@ export const imageDriverFactory = (base: UniDriver): ImageDriver => {
   return {
     ...baseUniDriverFactory(base),
     getSrc: mediaImageDriver.getSrc,
+    getAlt: mediaImageDriver.getAlt,
   };
 };
