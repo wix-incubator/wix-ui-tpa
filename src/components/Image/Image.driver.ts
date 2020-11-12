@@ -9,15 +9,19 @@ export interface ImageDriver extends BaseUniDriver {
   getSrc(): Promise<string>;
   getAlt(): Promise<string>;
   isLoaded(): Promise<boolean>;
+  isError(): Promise<boolean>;
 }
 
 export const imageDriverFactory = (base: UniDriver): ImageDriver => {
-  const { getSrc, getAlt, isLoaded } = mediaImageDriverFactory(base.$('img'));
+  const { getSrc, getAlt, isLoaded, isError } = mediaImageDriverFactory(
+    base.$('img'),
+  );
 
   return {
     ...baseUniDriverFactory(base),
     getSrc,
     getAlt,
     isLoaded,
+    isError,
   };
 };
