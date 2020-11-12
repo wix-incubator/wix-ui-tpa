@@ -8,14 +8,16 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 export interface ImageDriver extends BaseUniDriver {
   getSrc(): Promise<string>;
   getAlt(): Promise<string>;
+  isLoaded(): Promise<boolean>;
 }
 
 export const imageDriverFactory = (base: UniDriver): ImageDriver => {
-  const mediaImageDriver = mediaImageDriverFactory(base.$('img'));
+  const { getSrc, getAlt, isLoaded } = mediaImageDriverFactory(base.$('img'));
 
   return {
     ...baseUniDriverFactory(base),
-    getSrc: mediaImageDriver.getSrc,
-    getAlt: mediaImageDriver.getAlt,
+    getSrc,
+    getAlt,
+    isLoaded,
   };
 };
