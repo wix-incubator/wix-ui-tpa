@@ -13,9 +13,9 @@ export const mediaImageExample = `
 <Image
   mediaItem={{
     uri: 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg',
-    width: 300,
-    height: 250,
   }}
+  width="300"
+  height="250"
   alt="Garfield smiles and puts his hand over chest"
 />
 `;

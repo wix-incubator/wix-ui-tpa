@@ -30,6 +30,20 @@ export default {
     height: 250,
     alt: 'Garfield smiles and puts his hand over chest',
   }),
+  exampleProps: {
+    mediaItem: [
+      {
+        label: 'None',
+        value: null,
+      },
+      {
+        label: 'An image from media manager',
+        value: {
+          uri: 'c5f754_91bd6af05038434a894097cd967c721a~mv2.jpg',
+        },
+      },
+    ],
+  },
   dataHook: 'storybook-Image',
   sections: [
     header(),
