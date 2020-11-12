@@ -72,7 +72,7 @@
     "wix-style-react": "^9.27.0",
     "wix-ui-core": "^3.0.0",
     "wix-ui-icons-common": "^2.0.0",
-    "yoshi-stylable-dependencies": "^4.122.0",
+    "yoshi-stylable-dependencies": "^4.86.0",
     "yoshi-style-dependencies": "^4.6.0"
   },
   "devDependencies": {
