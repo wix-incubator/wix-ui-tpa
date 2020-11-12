@@ -7,7 +7,7 @@ import { st, classes } from './TextField.st.css';
 import { ErrorProps } from '../ErrorMessageWrapper';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { ReactComponent as SuccessIcon } from '../../assets/icons/CheckSuccess.svg';
-import { ReactComponent as ClearIcon } from './ClearIcon.svg';
+import { ClearIcon } from './ClearIcon';
 import { IconButton, Skins } from '../IconButton';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
@@ -132,7 +132,14 @@ export class TextField extends React.Component<TextFieldProps> {
           successIcon={successIcon}
           errorTooltipMaxWidth={errorTooltipMaxWidth}
         />
-        {suffix && <div className={classes.customSuffix} data-hook={DATA_HOOKS.CUSTOM_SUFFIX}>{suffix}</div>}
+        {suffix && (
+          <div
+            className={classes.customSuffix}
+            data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
+          >
+            {suffix}
+          </div>
+        )}
       </div>
     ) : null;
   };
@@ -198,11 +205,22 @@ const ErrorSuffix = ({ errorMessage, tooltipMaxWidth }) => (
   </Tooltip>
 );
 
-const StatusIcon = ({ error, errorMessage, success, successIcon, errorTooltipMaxWidth }) => {
+const StatusIcon = ({
+  error,
+  errorMessage,
+  success,
+  successIcon,
+  errorTooltipMaxWidth,
+}) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
-    statusIcon = <ErrorSuffix errorMessage={errorMessage} tooltipMaxWidth={errorTooltipMaxWidth} />;
+    statusIcon = (
+      <ErrorSuffix
+        errorMessage={errorMessage}
+        tooltipMaxWidth={errorTooltipMaxWidth}
+      />
+    );
   } else if (successIcon && success) {
     statusIcon = <SuccessIcon data-hook={DATA_HOOKS.SUCCESS_ICON} />;
   }
