@@ -18,6 +18,8 @@ export interface ImageProps extends TPAComponentProps {
   alt?: string;
   /** A callback to be called when the image is loaded */
   onLoad?: React.EventHandler<React.SyntheticEvent>;
+  /** A callback to be called if error occurs during while loading */
+  onError?: React.EventHandler<React.SyntheticEvent>;
   /** Exposing the MediaPlatformItem API as specified in https://wix-wix-ui-core.surge.sh/?activeTab=Usage&path=%2Fstory%2Fcomponents--media-image */
   mediaItem?: MediaItemProps;
 }
