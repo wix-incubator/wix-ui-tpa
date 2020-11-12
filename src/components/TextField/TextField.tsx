@@ -132,7 +132,14 @@ export class TextField extends React.Component<TextFieldProps> {
           successIcon={successIcon}
           errorTooltipMaxWidth={errorTooltipMaxWidth}
         />
-        {suffix && <div className={classes.customSuffix} data-hook={DATA_HOOKS.CUSTOM_SUFFIX}>{suffix}</div>}
+        {suffix && (
+          <div
+            className={classes.customSuffix}
+            data-hook={DATA_HOOKS.CUSTOM_SUFFIX}
+          >
+            {suffix}
+          </div>
+        )}
       </div>
     ) : null;
   };
@@ -198,11 +205,22 @@ const ErrorSuffix = ({ errorMessage, tooltipMaxWidth }) => (
   </Tooltip>
 );
 
-const StatusIcon = ({ error, errorMessage, success, successIcon, errorTooltipMaxWidth }) => {
+const StatusIcon = ({
+  error,
+  errorMessage,
+  success,
+  successIcon,
+  errorTooltipMaxWidth,
+}) => {
   let statusIcon = null;
 
   if (errorMessage && error) {
-    statusIcon = <ErrorSuffix errorMessage={errorMessage} tooltipMaxWidth={errorTooltipMaxWidth} />;
+    statusIcon = (
+      <ErrorSuffix
+        errorMessage={errorMessage}
+        tooltipMaxWidth={errorTooltipMaxWidth}
+      />
+    );
   } else if (successIcon && success) {
     statusIcon = <SuccessIcon data-hook={DATA_HOOKS.SUCCESS_ICON} />;
   }
