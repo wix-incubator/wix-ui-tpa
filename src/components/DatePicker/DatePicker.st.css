@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "wix-style-react/dist/src/DatePicker/DatePicker.st.css";
-    -st-default: DatePicker;
+    -st-default: WSRDatePicker;
 }
 
 /*Defaults*/
@@ -23,6 +23,6 @@
 }
 
 .wsrDatePicker {
-    -st-extends: DatePicker;
+    -st-extends: WSRDatePicker;
     sivan: 'hi';
 }
