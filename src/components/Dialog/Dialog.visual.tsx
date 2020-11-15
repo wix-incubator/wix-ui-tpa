@@ -3,7 +3,7 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { Dialog } from './';
 import { Text, TYPOGRAPHY } from '../Text';
 import { Button, PRIORITY } from '../Button';
-import {setDarkPalette} from "../../test/visualTestUtils";
+import { setDarkPalette } from '../../test/visualTestUtils';
 
 const DialogWithContent = props => (
   <Dialog isOpen wiredToSiteColors={props.wired}>
