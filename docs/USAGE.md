@@ -68,17 +68,14 @@ Starting of version 2.10.0, new components will support a more optimized way to 
 ```css
 /* CheckoutButton.st.css */
 :import {
-    -st-from: "wix-ui-tpa/dist/src/components/Button/Button.st.css";
+    -st-from: "wix-ui-tpa/dist/src/components/Badge/Badge.st.css";
     -st-named: overrideStyleParams;
 }
 
 .root {
     -st-mixin: overrideStyleParams(
-        MainTextColor: white,
-        MainBackgroundColor: pink,
-        MainBorderColor: black,
-        MainBorderWidth: 1px,
-        MainBorderRadius: 3px
+        BadgeBgColor gold
+        BadgeTextColor black
     );
 }
 ```
