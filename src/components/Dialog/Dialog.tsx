@@ -31,6 +31,8 @@ export interface DialogProps extends TPAComponentProps {
   closeButtonAriaLabel?: string;
   /** Identifies the element that labels the close button element. Optional. */
   closeButtonAriaLabelledby?: string;
+  /** Whether the Dialog is wired to the site palette, or has a white background */
+  wiredToSiteColors?: boolean;
 }
 
 interface DefaultProps {
@@ -60,13 +62,18 @@ export class Dialog extends React.Component<DialogProps> {
       ['aria-describedby']: ariaDescribedBy,
       closeButtonAriaLabel,
       closeButtonAriaLabelledby,
+      wiredToSiteColors,
     } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <div
-            className={st(classes.root, { mobile, rtl }, className)}
+            className={st(
+              classes.root,
+              { mobile, rtl, wired: wiredToSiteColors },
+              className,
+            )}
             data-hook={this.props['data-hook']}
             data-mobile={mobile}
           >

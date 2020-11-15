@@ -128,6 +128,11 @@ export default {
                     wixParam: 'customCloseButtonColor',
                     defaultColor: 'color-5',
                   },
+                  {
+                    label: 'Background Color',
+                    wixParam: 'customBackgroundColor',
+                    defaultColor: 'color-1',
+                  },
                 ],
               },
             }),

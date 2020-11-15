@@ -10,21 +10,26 @@
 
 /*Defaults*/
 :vars {
-    DefaultCloseButtonColor: color-5;
+    DefaultWiredCloseButtonColor: color-5;
+    DefaultCloseButtonColor: #000000;
+    DefaultWiredBackgroundColor: color-1;
+    DefaultBackgroundColor: #ffffff;
 }
 
 /*Overrides*/
 :vars {
     CloseButtonColor: --overridable;
+    BackgroundColor: --overridable;
 }
 
 /*Fallbacks*/
 :vars {
-    CurrentCloseButtonColor: color(fallback(value(CloseButtonColor), value(DefaultCloseButtonColor)));
+    WiredCloseButtonColor: color(fallback(value(CloseButtonColor), value(DefaultWiredCloseButtonColor)));
+    WiredBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultWiredBackgroundColor)));
 }
 
 .root {
-    -st-states: mobile, rtl;
+    -st-states: mobile, rtl, wired;
 }
 
 .contentWrapper {
@@ -39,7 +44,23 @@
     left: 50%;
     transform: translate(-50%, -30%);
 
-    background: #fff;
+    background: value(DefaultBackgroundColor);
+}
+
+.closeButtonWrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.closeIconButton {
+    -st-mixin: TPAIconButton(
+            IconColor value(DefaultCloseButtonColor)
+    );
+}
+
+.dialogContent {
+    padding: 80px 32px;
 }
 
 .root:mobile .contentWrapper {
@@ -51,23 +72,17 @@
     transform: none;
 }
 
-.closeButtonWrapper {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
 .root:rtl .closeButtonWrapper {
     right: initial;
     left: 20px;
 }
 
-.closeIconButton {
-    -st-mixin: TPAIconButton(
-            IconColor value(CurrentCloseButtonColor)
-    );
+.root:wired .contentWrapper {
+    background: value(WiredBackgroundColor);
 }
 
-.dialogContent {
-    padding: 80px 32px;
+.root:wired .closeIconButton {
+    -st-mixin: TPAIconButton(
+            IconColor value(WiredCloseButtonColor)
+    );
 }
