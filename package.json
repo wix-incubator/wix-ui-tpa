@@ -2,7 +2,7 @@
   "private": false,
   "name": "wix-ui-tpa",
   "sideEffects": false,
-  "version": "2.9.2",
+  "version": "2.10.1",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -72,7 +72,7 @@
     "wix-style-react": "http://cdn.dev.wixpress.com/wix-style-react/0.0.0-45c517f0f792109aa4fa07c450a071ad",
     "wix-ui-core": "^3.0.0",
     "wix-ui-icons-common": "^2.0.0",
-    "yoshi-stylable-dependencies": "^4.122.0",
+    "yoshi-stylable-dependencies": "^4.86.0",
     "yoshi-style-dependencies": "^4.6.0"
   },
   "devDependencies": {

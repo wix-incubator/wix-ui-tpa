@@ -1,3 +1,21 @@
+## [2.10.1](https://github.com/wix/wix-ui-tpa/compare/v2.10.0...v2.10.1) (2020-11-12)
+
+
+### Bug Fixes
+
+* Use ClearIcon as react element instead of svg ([2b27869](https://github.com/wix/wix-ui-tpa/commit/2b2786941f2364dc39a5a3b95286464cb348b436))
+
+
+
+# [2.10.0](https://github.com/wix/wix-ui-tpa/compare/v2.9.2...v2.10.0) (2020-11-12)
+
+
+### Features
+
+* **TextField:** Expose errorTooltipMaxWidth prop ([6d0f258](https://github.com/wix/wix-ui-tpa/commit/6d0f258340d1c4977e1941d707ef63b71728088d))
+
+
+
 ## [2.9.2](https://github.com/wix/wix-ui-tpa/compare/v2.9.1...v2.9.2) (2020-11-05)
 
 
