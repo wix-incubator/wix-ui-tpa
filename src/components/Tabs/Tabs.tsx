@@ -12,8 +12,6 @@ import { st, classes } from './Tabs.st.css';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from './dataHooks';
 import { TPAComponentProps } from '../../types';
 
-const SCROLL_EPSILON = 15;
-
 export interface TabsProps extends TPAComponentProps {
   /** tabs to be displayed */
   items: TabItem[];
@@ -115,27 +113,9 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
     }
   };
 
-  _getNewNavButtons() {
-    const scrollPosition = this._tabsRef.getNavScrollPosition();
-    let newNavButtons = NavButtonOptions.none;
-
-    if (scrollPosition.scrollLeft >= SCROLL_EPSILON) {
-      newNavButtons = NavButtonOptions.left;
-    }
-
-    if (scrollPosition.scrollRight >= SCROLL_EPSILON) {
-      newNavButtons =
-        newNavButtons === NavButtonOptions.none
-          ? NavButtonOptions.right
-          : NavButtonOptions.both;
-    }
-
-    return newNavButtons;
-  }
-
   _updateButtonsIfNeeded = () => {
     const { navButtons } = this.state;
-    const newNavButtons = this._getNewNavButtons();
+    const newNavButtons = this._tabsRef.getNavButtons();
 
     if (newNavButtons !== navButtons) {
       this.setState({ navButtons: newNavButtons });
