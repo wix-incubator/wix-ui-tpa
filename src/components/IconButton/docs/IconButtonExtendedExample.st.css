@@ -1,10 +1,24 @@
 :import {
   -st-from: "../IconButton.st.css";
   -st-default: TPAIconButton;
+  -st-named: skin-line, skin-full;
 }
 
-.root {
+.mixSkinLine {
+  -st-mixin: skin-line(
+          IconColor '"color(--iconColor)"'
+  );
+}
+
+.mixSkinFull {
+  -st-mixin: skin-full(
+          IconColor '"color(--iconColor)"'
+  );
+}
+
+/* Deprecated - causes big bundle sizes */
+.mixAll {
   -st-mixin: TPAIconButton(
-    IconColor '"color(--iconColor)"'
+          IconColor '"color(--iconColor)"'
   );
 }
