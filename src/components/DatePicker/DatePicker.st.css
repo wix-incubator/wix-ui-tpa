@@ -13,54 +13,91 @@
     calendarWidth: 280px;
     calendarHeight: 332px;
     sidePadding: 20px;
+
+    DefaultBackgroundColor: color-1;
+
+    DefaultWeekdayFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    DefaultWeekdayTextColor: color-8;
+
+    DefaultDayFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+    DeafultDayColor: color-5;
+    DefaultSelectedDayColor: color-1;
+    DefaultSelectedDayBGColor: color-8;
+
 }
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    BackgroundColor: --overridable;
+
+    WeekdayFont:  --overridable;
+    WeekdayTextColor: --overridable;
+
+    DayFont: --overridable;
+    DayColor: --overridable;
+    SelectedDayColor: --overridable;
+    SelectedDayBGColor: --overridable;
+}
+
+/*Fallbacks*/
+:vars {
+    CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+
+    CurrentWeekdayFont: color(fallback(value(WeekdayFont), value(DefaultWeekdayFont)));
+    CurrentWeekdayTextColor: color(fallback(value(WeekdayTextColor), value(DefaultWeekdayTextColor)));
+
+    CurrentDayFont: color(fallback(value(DayFont), value(DefaultDayFont)));
+    CurrentDayColor: color(fallback(value(DayColor), value(DeafultDayColor)));
+    CurrentSelectedDayColor: color(fallback(value(SelectedDayColor), value(DefaultSelectedDayColor)));
+    CurrentSelectedDayBGColor: color(fallback(value(SelectedDayBGColor), value(DefaultSelectedDayBGColor)));
 }
 
 .root {
-    /*css goes here*/
 }
 
 .wsrDatePicker {
     -st-extends: WSRDatePicker;
 }
 
-.wsrDatePicker::datePickerCalendar::calendarContainer {
-    /* fonts should be changed here */
-}
-
-/** calendar header */
-
-.wsrDatePicker::datePickerCalendar::calendarHeader {
-    padding: 28px value(sidePadding) 0;
-}
-
-/******************************************************/
-
 .wsrDatePicker::datePickerCalendar::calendarMonth {
     width: value(calendarWidth);
     height: value(calendarHeight);;
 }
 
-/** calendar Weekdays */
+/* calendar header */
 
-.wsrDatePicker::datePickerCalendar::calendarWeekdays {
-    padding: 0 value(sidePadding);
-}
-
-.wsrDatePicker::datePickerCalendar::calendarWeekday {
-    padding: 20px 0 16px;
+.wsrDatePicker::datePickerCalendar::calendarHeader {
+    padding: 28px value(sidePadding) 0;
+    background-color: value(CurrentBackgroundColor);
 }
 
 /******************************************************/
 
-/** calendar body */
+/* calendar Weekdays */
+
+.wsrDatePicker::datePickerCalendar::calendarWeekdays {
+    padding: 0 value(sidePadding);
+    background-color: value(CurrentBackgroundColor);
+}
+
+.wsrDatePicker::datePickerCalendar::calendarWeekday {
+    padding: 20px 0 16px;
+    font: value(CurrentWeekdayFont); /* font-size is 14px and shouldn't be overridable */
+    color: value(CurrentWeekdayTextColor);
+}
+
+/******************************************************/
+
+/* calendar body */
 
 .wsrDatePicker::datePickerCalendar::calendarBody {
     padding: 0 value(sidePadding) 20px;
+    background-color: value(CurrentBackgroundColor);
+}
+
+.wsrDatePicker::datePickerCalendar::calendarDay {
+    font: value(CurrentDayFont);
+    color: value(CurrentDayColor);
 }
 
 /******************************************************/

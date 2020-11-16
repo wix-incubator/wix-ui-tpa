@@ -105,3 +105,16 @@ export const dateFormatExample = `
             />
       </>
 `;
+
+export const yearsAndMonthDropdowns = buildExample(
+    'new Date()',
+    `
+    <DatePicker
+        value={value}
+        placeholderText="Select A Date"
+        showMonthDropdown
+        showYearDropdown
+        onChange={this._onChange} 
+    />
+`,
+);
