@@ -86,6 +86,7 @@
     border: 1px solid applyOpacity(value(CurrentBoxBorderColor), 0.6);
     box-sizing: border-box;
     position: relative;
+    padding: 0 16px;
 }
 
 .root:box::after {
@@ -104,12 +105,7 @@
 }
 
 .root:box::childContainer {
-    padding: 16px;
-    padding-left: 0;
-}
-
-.root:box::box {
-    padding-left: 16px;
+    padding: 16px 0;
 }
 
 .icon {
