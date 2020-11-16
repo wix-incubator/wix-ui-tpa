@@ -10,7 +10,9 @@
 
 /*Defaults*/
 :vars {
-    /*Defaults params goes here*/
+    calendarWidth: 280px;
+    calendarHeight: 332px;
+    sidePadding: 20px;
 }
 
 /*Overrides*/
@@ -24,5 +26,41 @@
 
 .wsrDatePicker {
     -st-extends: WSRDatePicker;
-    sivan: 'hi';
 }
+
+.wsrDatePicker::datePickerCalendar::calendarContainer {
+    /* fonts should be changed here */
+}
+
+/** calendar header */
+
+.wsrDatePicker::datePickerCalendar::calendarHeader {
+    padding: 28px value(sidePadding) 0;
+}
+
+/******************************************************/
+
+.wsrDatePicker::datePickerCalendar::calendarMonth {
+    width: value(calendarWidth);
+    height: value(calendarHeight);;
+}
+
+/** calendar Weekdays */
+
+.wsrDatePicker::datePickerCalendar::calendarWeekdays {
+    padding: 0 value(sidePadding);
+}
+
+.wsrDatePicker::datePickerCalendar::calendarWeekday {
+    padding: 20px 0 16px;
+}
+
+/******************************************************/
+
+/** calendar body */
+
+.wsrDatePicker::datePickerCalendar::calendarBody {
+    padding: 0 value(sidePadding) 20px;
+}
+
+/******************************************************/
