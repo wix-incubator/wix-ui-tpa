@@ -77,17 +77,6 @@
     left: 20px;
 }
 
-/* Deprecated - Old style params overriding for full mixin */
-.root:wired .contentWrapper {
-    background: value(WiredBackgroundColor);
-}
-
-.root:wired .closeIconButton {
-    -st-mixin: TPAIconButton(
-            IconColor value(WiredCloseButtonColor)
-    );
-}
-
 /* New style overrides capabilities */
 .overrideStyleParams {
     -st-extends: root;
