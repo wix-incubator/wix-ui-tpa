@@ -54,6 +54,22 @@
     url('//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/open-source/opensans-regular-webfont.svg#open_sansregular') format('svg');
 }
 
+@font-face{
+    font-family:"Avenir-LT-W01_35-Light1475496";
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix");
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/edefe737-dc78-4aa3-ad03-3c6f908330ed.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0078f486-8e52-42c0-ad81-3c8d3d43f48e.woff2") format("woff2"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/908c4810-64db-4b46-bb8e-823eb41f68c0.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/4577388c-510f-4366-addb-8b663bcc762a.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/b0268c31-e450-4159-bfea-e0d20e2b5c0c.svg#b0268c31-e450-4159-bfea-e0d20e2b5c0c") format("svg");
+}
+@font-face{
+    font-family:"Avenir-LT-W01_85-Heavy1475544";
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6af9989e-235b-4c75-8c08-a83bdaef3f66.eot?#iefix");
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/6af9989e-235b-4c75-8c08-a83bdaef3f66.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/d513e15e-8f35-4129-ad05-481815e52625.woff2") format("woff2"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/61bd362e-7162-46bd-b67e-28f366c4afbe.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/ccd17c6b-e7ed-4b73-b0d2-76712a4ef46b.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/20577853-40a7-4ada-a3fb-dd6e9392f401.svg#20577853-40a7-4ada-a3fb-dd6e9392f401") format("svg");
+}
+@font-face{
+    font-family:"BaskervilleMTW01-SmBdIt";
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0224f3fd-52d3-499a-ae2f-637a041f87f0.eot?#iefix");
+    src:url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/0224f3fd-52d3-499a-ae2f-637a041f87f0.eot?#iefix") format("eot"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/c887df8e-b6c3-4c97-85b8-91cfdde77b07.woff2") format("woff2"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/5c4d5432-75c4-4f6b-a6e7-8af4d54a33d1.woff") format("woff"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/2ee46b89-b7cb-4bbe-9d60-b7ca4354b706.ttf") format("truetype"),url("//static.parastorage.com/services/third-party/fonts/user-site-fonts/fonts/9714d635-13b3-48b2-9315-5d0f72a69ab9.svg#9714d635-13b3-48b2-9315-5d0f72a69ab9") format("svg");
+}
+
 @font-face {
     font-family: 'Open Sans';
     font-style: normal;
