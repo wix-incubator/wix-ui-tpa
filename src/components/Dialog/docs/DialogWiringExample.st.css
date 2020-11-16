@@ -1,11 +1,12 @@
 :import {
     -st-from: "../Dialog.st.css";
-    -st-default: TPADialog;
+    -st-named: overrideStyleParams;
 }
 
 .dialogComponent {
-    -st-mixin: TPADialog(
-            CloseButtonColor '"color(--customCloseButtonColor)"'
+    -st-mixin: overrideStyleParams(
+            CloseButtonColor '"color(--customCloseButtonColor)"',
+            BackgroundColor '"color(--customBackgroundColor)"'
     );
 }
 
