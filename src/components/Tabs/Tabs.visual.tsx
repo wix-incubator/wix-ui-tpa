@@ -22,7 +22,7 @@ class TabsVisual extends React.Component<TabsVisualProps> {
     const style = compact ? { margin: '10px', maxWidth: 200 } : undefined;
 
     return (
-      <TPAComponentsProvider value={{ mobile }}>
+      <TPAComponentsProvider value={{ mobile, rtl: true }}>
         <div style={style}>
           <Tabs {...tabsProps} />
         </div>
