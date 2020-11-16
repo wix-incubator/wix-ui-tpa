@@ -82,7 +82,7 @@ export default {
             {
               title: 'Years And Months Dropdowns',
               description:
-                  'Years or months dropdowns could be added for an easy selection.',
+                'Years or months dropdowns could be added for an easy selection.',
               source: examples.yearsAndMonthDropdowns,
             },
             { title: 'Error Mode', source: examples.errorExample },

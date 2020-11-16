@@ -107,8 +107,8 @@ export const dateFormatExample = `
 `;
 
 export const yearsAndMonthDropdowns = buildExample(
-    'new Date()',
-    `
+  'new Date()',
+  `
     <DatePicker
         value={value}
         placeholderText="Select A Date"
