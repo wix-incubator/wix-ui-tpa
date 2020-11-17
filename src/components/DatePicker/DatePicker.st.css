@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, applyOpacity, fallback, font;
 }
 
 :import {
@@ -55,43 +55,8 @@
 .root {
 }
 
-/*.wsrDatePicker {*/
-/*    -st-mixin: WSRDatePicker(*/
-/*            CalendarWidth value(calendarWidth),*/
-/*            CalendarHeight value(calendarHeight),*/
 
-/*            !* calendar header *!*/
-/*            CalendarHeaderPadding 28px value(sidePadding) 0,*/
-/*            CalendarHeaderBGColor value(CurrentBackgroundColor),*/
-/*            !**********************!*/
-
-/*            !* calendar Weekdays *!*/
-/*            CalendarWeekdaysPadding 0 value(sidePadding),*/
-/*            CalendarWeekdaysBGColor value(CurrentBackgroundColor),*/
-/*            CalendarWeekdayPadding 20px 0 16px,*/
-/*            CalendarWeekdayFont value(CurrentWeekdayFont),*/
-/*            CalndarWeekdayTextColor value(CurrentWeekdayTextColor),*/
-/*            !**********************!*/
-
-/*            !* calendar body *!*/
-/*            CalendarBodyPadding 0 value(sidePadding) 20px,*/
-/*            CalendarBodyBGColor value(CurrentBackgroundColor),*/
-
-/*            CalendarDayFont value(CurrentDayFont),*/
-/*            CalendarDayDefaultColor  value(CurrentDayColor),*/
-
-/*            !**********************!*/
-/*    );*/
-/*}*/
-
-
-
-
-
-
-
-/** Option 2: **/
-
+/** Option 1: override the styling using the pseudo elements. Define custom-selector for all the "complicated" selectors in WSR **/
 
 .wsrDatePicker {
     -st-extends: WSRDatePicker;
@@ -138,15 +103,87 @@
     color: value(CurrentDayColor);
 }
 
-/*.wsrDatePicker::datePickerCalendar::calendarDay:focus {*/
+.wsrDatePicker::datePickerCalendar::calendarDay:hover {
+    color: value(DeafultDayColor);
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
+}
+
+.wsrDatePicker::datePickerCalendar::todayNotSelectedDay {
+    /* todo: ask michal what is the real styling */
+    background-color: pink;
+    box-shadow: none;
+}
+.wsrDatePicker::datePickerCalendar::todayNotSelectedDayFocus {
+    /* todo: ask michal what is the real styling */
+    box-shadow: none;
+}
+
+.wsrDatePicker::datePickerCalendar::selectedDay {
+}
+
+.wsrDatePicker::datePickerCalendar::outsideDay, .wsrDatePicker::datePickerCalendar::disabledDay {
+    color: deeppink;
+}
+
+.wsrDatePicker::datePickerCalendar::singleSelectedDayCircle {
+}
+.wsrDatePicker::datePickerCalendar::singleSelectedDayCircleHover {
+}
+
+
+/*.wsrDatePicker::datePickerCalendar::calendarDay:focus .dayCircle {*/
 /*    color: blue;*/
 /*}*/
-/*.wsrDatePicker::datePickerCalendar::calendarDay:focus.dayCircle {*/
-/*    box-shadow: none;*/
-/*}*/
 
-/*.wsrDatePicker::datePickerCalendar::calendarDay::outsideDay {*/
-/*    color: pink;*/
+/*.wsrDatePicker::datePickerCalendar::calendarDay .wsrDatePicker::datePickerCalendar::unfocusedDay {*/
+/*    color:blue;*/
 /*}*/
 
 /******************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** Option 2: overriding the styling using st-mixin **/
+
+
+/*.wsrDatePicker {*/
+/*    -st-mixin: WSRDatePicker(*/
+/*            CalendarWidth value(calendarWidth),*/
+/*            CalendarHeight value(calendarHeight),*/
+
+/*            !* calendar header *!*/
+/*            CalendarHeaderPadding 28px value(sidePadding) 0,*/
+/*            CalendarHeaderBGColor value(CurrentBackgroundColor),*/
+/*            !**********************!*/
+
+/*            !* calendar Weekdays *!*/
+/*            CalendarWeekdaysPadding 0 value(sidePadding),*/
+/*            CalendarWeekdaysBGColor value(CurrentBackgroundColor),*/
+/*            CalendarWeekdayPadding 20px 0 16px,*/
+/*            CalendarWeekdayFont value(CurrentWeekdayFont),*/
+/*            CalendarWeekdayTextColor value(CurrentWeekdayTextColor),*/
+/*            !**********************!*/
+
+/*            !* calendar body *!*/
+/*            CalendarBodyPadding 0 value(sidePadding) 20px,*/
+/*            CalendarBodyBGColor value(CurrentBackgroundColor),*/
+
+/*            CalendarDayFont value(CurrentDayFont),*/
+/*            CalendarDayDefaultColor  value(CurrentDayColor),*/
+
+/*            !**********************!*/
+/*    );*/
+/*}*/
