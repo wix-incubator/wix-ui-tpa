@@ -1,9 +1,4 @@
 :import {
-  -st-from: "../Text/Text.st.css";
-  -st-default: Text;
-}
-
-:import {
   -st-from: "../../common/fonts.st.css";
   -st-named: fixedFont55;
 }
@@ -31,17 +26,11 @@
 }
 
 .root:theme(light) .successText {
-  -st-mixin: Text(
-          MainTextFont value(fixedFont55),
-          MainTextColor black
-  );
+  color: black;
 }
 
 .root:theme(dark) .successText {
-  -st-mixin: Text(
-          MainTextFont value(fixedFont55),
-          MainTextColor white
-  );
+  color: white;
 }
 
 .success {
@@ -56,9 +45,9 @@
 }
 
 .successText {
-  -st-extends: Text;
   font-size: 14px;
   line-height: 1.2;
+  font-family: value(fixedFont55);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -73,6 +62,7 @@
 
 .root:mobile .successText {
   padding-left: 10px;
+  color: white;
 }
 
 .copyInput {

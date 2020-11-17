@@ -6,7 +6,6 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Toast, TOAST_SKIN, TOAST_PLACEMENT } from '../Toast';
 import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
 import { SocialBarTheme } from '../SocialBar/SocialBar';
-import { Text } from '../Text/Text';
 import { Omit } from '../../types';
 
 const delay = time => new Promise(resolve => setTimeout(resolve, time));
@@ -48,7 +47,7 @@ export class CopyUrlButton extends React.Component<
         >
           <div className={classes.success}>
             <Check height={13} width={13} />
-            <Text className={classes.successText}>{successText}</Text>
+            <span className={classes.successText}>{successText}</span>
           </div>
         </Toast>
       );
@@ -56,7 +55,7 @@ export class CopyUrlButton extends React.Component<
     return (
       <div className={classes.success}>
         <Check className={classes.checkIcon} height={19} width={19} />
-        <Text className={classes.successText}>{successText}</Text>
+        <span className={classes.successText}>{successText}</span>
       </div>
     );
   };
