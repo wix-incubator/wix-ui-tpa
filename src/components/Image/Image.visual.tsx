@@ -1,9 +1,31 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
-import { Image } from './';
+import { Image, ImageProps } from './';
 
 const sampleUrl =
   'https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg';
+
+type ImageWrapperProps = ImageProps & { onDone(): void };
+
+class ImageWrapper extends React.Component<ImageWrapperProps> {
+  state = { hasError: false };
+
+  onError(onDone: ImageWrapperProps['onDone']) {
+    this.setState({ hasError: true }, onDone);
+  }
+
+  render() {
+    const { onDone, ...imageProps } = this.props;
+    const { hasError } = this.state;
+    const style = hasError ? { border: '1px solid red' } : null;
+
+    return (
+      <div style={style}>
+        <Image {...imageProps} onError={() => this.onError(onDone)} />
+      </div>
+    );
+  }
+}
 
 visualize('Image', () => {
   story('render', () => {
@@ -24,6 +46,9 @@ visualize('Image', () => {
         }}
         onLoad={done}
       />
+    ));
+    snap('onError', done => (
+      <ImageWrapper src="invalid-resource" onDone={done} />
     ));
   });
 });
