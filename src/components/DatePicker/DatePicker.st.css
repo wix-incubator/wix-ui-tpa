@@ -55,13 +55,51 @@
 .root {
 }
 
+/*.wsrDatePicker {*/
+/*    -st-mixin: WSRDatePicker(*/
+/*            CalendarWidth value(calendarWidth),*/
+/*            CalendarHeight value(calendarHeight),*/
+
+/*            !* calendar header *!*/
+/*            CalendarHeaderPadding 28px value(sidePadding) 0,*/
+/*            CalendarHeaderBGColor value(CurrentBackgroundColor),*/
+/*            !**********************!*/
+
+/*            !* calendar Weekdays *!*/
+/*            CalendarWeekdaysPadding 0 value(sidePadding),*/
+/*            CalendarWeekdaysBGColor value(CurrentBackgroundColor),*/
+/*            CalendarWeekdayPadding 20px 0 16px,*/
+/*            CalendarWeekdayFont value(CurrentWeekdayFont),*/
+/*            CalndarWeekdayTextColor value(CurrentWeekdayTextColor),*/
+/*            !**********************!*/
+
+/*            !* calendar body *!*/
+/*            CalendarBodyPadding 0 value(sidePadding) 20px,*/
+/*            CalendarBodyBGColor value(CurrentBackgroundColor),*/
+
+/*            CalendarDayFont value(CurrentDayFont),*/
+/*            CalendarDayDefaultColor  value(CurrentDayColor),*/
+
+/*            !**********************!*/
+/*    );*/
+/*}*/
+
+
+
+
+
+
+
+/** Option 2: **/
+
+
 .wsrDatePicker {
     -st-extends: WSRDatePicker;
 }
 
 .wsrDatePicker::datePickerCalendar::calendarMonth {
     width: value(calendarWidth);
-    height: value(calendarHeight);;
+    height: value(calendarHeight);
 }
 
 /* calendar header */
@@ -99,5 +137,16 @@
     font: value(CurrentDayFont);
     color: value(CurrentDayColor);
 }
+
+/*.wsrDatePicker::datePickerCalendar::calendarDay:focus {*/
+/*    color: blue;*/
+/*}*/
+/*.wsrDatePicker::datePickerCalendar::calendarDay:focus.dayCircle {*/
+/*    box-shadow: none;*/
+/*}*/
+
+/*.wsrDatePicker::datePickerCalendar::calendarDay::outsideDay {*/
+/*    color: pink;*/
+/*}*/
 
 /******************************************************/
