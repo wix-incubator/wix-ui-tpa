@@ -5,6 +5,7 @@ import { Tabs, NavButtonOptions, TabsProps } from '.';
 import { onStyleProcessorDone } from '../../../test/visual/StyleProcessorUtil';
 import { delay } from '../../test/utils';
 import { storiesOf } from '@storybook/react';
+import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
 const dataHook = 'storybook-e2e-Tabs';
 const createDriver = uniTestkitFactoryCreator(tabsDriverFactory);
@@ -24,6 +25,7 @@ const lotsItems = [
 class TabsAsyncVisual extends React.Component<{
   tabsProps?: Partial<TabsProps>;
   onReady?(driver: TabsDriver): Promise<void>;
+  direction: 'ltr' | 'rtl';
 }> {
   private driver: TabsDriver;
   state = {
@@ -46,12 +48,18 @@ class TabsAsyncVisual extends React.Component<{
 
   render() {
     const { isDone } = this.state;
-    const { tabsProps } = this.props as any;
+    const { tabsProps, direction } = this.props as any;
 
     return (
-      <div style={{ margin: '10px', maxWidth: 200 }} data-ready={isDone}>
-        <Tabs data-hook={dataHook} items={lotsItems} {...tabsProps} />
-      </div>
+      <TPAComponentsProvider value={{ rtl: direction === 'rtl' }}>
+        <div
+          style={{ margin: '10px', maxWidth: 200 }}
+          data-ready={isDone}
+          dir={direction}
+        >
+          <Tabs data-hook={dataHook} items={lotsItems} {...tabsProps} />
+        </div>
+      </TPAComponentsProvider>
     );
   }
 }
@@ -95,33 +103,46 @@ const eyesConfig = {
   },
 };
 
-// storiesOf('Tabs/Scroll', module)
-//   .add(
-//     'right nav button only',
-//     () => {
-//       return <TabsAsyncVisual />;
-//     },
-//     eyesConfig,
-//   )
-//   .add(
-//     'both nav buttons',
-//     () => {
-//       const onTestReady = async driver => {
-//         await driver.clickRightNavButton();
-//         await delay(500);
-//       };
-//       return <TabsAsyncVisual onReady={onTestReady} />;
-//     },
-//     eyesConfig,
-//   )
-//   .add(
-//     'scroll to right end',
-//     () => {
-//       const onTestReady = async driver => {
-//         await scrollToEnd(driver, NavButtonOptions.right);
-//         await delay(500);
-//       };
-//       return <TabsAsyncVisual onReady={onTestReady} />;
-//     },
-//     eyesConfig,
-//   );
+['ltr', 'rtl'].forEach((direction: 'ltr' | 'rtl') => {
+  const forwardSide = direction === 'ltr' ? 'right' : 'left';
+
+  storiesOf(`Tabs/Scroll - ${direction}`, module)
+    .add(
+      `${forwardSide} nav button only`,
+      () => {
+        return <TabsAsyncVisual direction={direction} />;
+      },
+      eyesConfig,
+    )
+    .add(
+      'both nav buttons',
+      () => {
+        const onTestReady = async driver => {
+          if (direction === 'ltr') {
+            await driver.clickRightNavButton();
+          } else {
+            await driver.clickLeftNavButton();
+          }
+          await delay(500);
+        };
+        return <TabsAsyncVisual onReady={onTestReady} direction={direction} />;
+      },
+      eyesConfig,
+    )
+    .add(
+      `scroll to ${forwardSide} end`,
+      () => {
+        const onTestReady = async driver => {
+          await scrollToEnd(
+            driver,
+            direction === 'ltr'
+              ? NavButtonOptions.right
+              : NavButtonOptions.left,
+          );
+          await delay(500);
+        };
+        return <TabsAsyncVisual onReady={onTestReady} direction={direction} />;
+      },
+      eyesConfig,
+    );
+});
