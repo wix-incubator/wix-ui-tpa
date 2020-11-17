@@ -55,3 +55,4 @@ require('../src/components/Autocomplete/docs/index.story');
 require('../src/components/Dialog/docs/index.story');
 require('../src/components/AddItem/docs/index.story');
 require('../src/components/ProgressBar/docs/index.story');
+require('../src/components/Image/docs/index.story');
