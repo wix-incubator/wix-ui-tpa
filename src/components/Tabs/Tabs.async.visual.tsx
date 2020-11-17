@@ -22,7 +22,7 @@ const lotsItems = [
   { title: 'Title 10' },
 ];
 
-class TabsAsyncVisualIgnore extends React.Component<{
+class TabsAsyncVisual extends React.Component<{
   tabsProps?: Partial<TabsProps>;
   onReady?(driver: TabsDriver): Promise<void>;
   direction: 'ltr' | 'rtl';
@@ -110,7 +110,7 @@ const eyesConfig = {
     .add(
       `${forwardSide} nav button only`,
       () => {
-        return <TabsAsyncVisualIgnore direction={direction} />;
+        return <TabsAsyncVisual direction={direction} />;
       },
       eyesConfig,
     )
@@ -125,7 +125,7 @@ const eyesConfig = {
           }
           await delay(500);
         };
-        return <TabsAsyncVisualIgnore onReady={onTestReady} direction={direction} />;
+        return <TabsAsyncVisual onReady={onTestReady} direction={direction} />;
       },
       eyesConfig,
     )
@@ -141,7 +141,7 @@ const eyesConfig = {
           );
           await delay(500);
         };
-        return <TabsAsyncVisualIgnore onReady={onTestReady} direction={direction} />;
+        return <TabsAsyncVisual onReady={onTestReady} direction={direction} />;
       },
       eyesConfig,
     );
