@@ -104,7 +104,7 @@
 }
 
 .wsrDatePicker::datePickerCalendar::calendarDay:hover {
-    color: value(DeafultDayColor);
+    color: value(color(DeafultDayColor));
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
 }
 
