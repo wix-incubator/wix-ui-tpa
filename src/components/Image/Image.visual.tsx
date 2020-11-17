@@ -47,7 +47,7 @@ visualize('Image', () => {
         onLoad={done}
       />
     ));
-    snap('onError', done => (
+    snap('with onError', done => (
       <ImageWrapper src="invalid-resource" onDone={done} />
     ));
   });
