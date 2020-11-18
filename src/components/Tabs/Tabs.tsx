@@ -180,7 +180,15 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
 
   render() {
     const { navButtons, animateIndicator, selectedTab } = this.state;
-    const { items, alignment, skin, variant, className } = this.props;
+    const {
+      items,
+      alignment,
+      skin,
+      variant,
+      className,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+    } = this.props;
     const leftButtonWidth = this._leftButtonRef
       ? this._leftButtonRef.width()
       : 0;
@@ -202,6 +210,8 @@ export class Tabs extends React.Component<TabsProps, TabsState> {
           >
             <ReactResizeDetector handleWidth onResize={this._onResize} />
             <ScrollableTabs
+              aria-label={ariaLabel}
+              aria-labelledby={ariaLabelledBy}
               alignment={alignment}
               variant={variant}
               items={items}
