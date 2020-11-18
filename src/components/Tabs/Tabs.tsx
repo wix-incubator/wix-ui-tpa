@@ -28,6 +28,8 @@ export interface TabsProps extends TPAComponentProps {
   /** control whether to set tabs on all content width*/
   variant?: VARIANT;
   'data-hook'?: string;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 interface TabsState {

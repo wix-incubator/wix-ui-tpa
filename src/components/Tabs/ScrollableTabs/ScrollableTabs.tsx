@@ -34,6 +34,8 @@ interface ScrollableTabsProps extends TPAComponentProps {
   animateIndicator?: boolean;
   scrollButtons: ScrollButtons;
   rtl: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 interface ScrollableTabsState {
@@ -309,6 +311,8 @@ export class ScrollableTabs extends React.Component<
       variant,
       animateIndicator,
       className,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabeledBy,
     } = this.props;
 
     return (
@@ -325,6 +329,8 @@ export class ScrollableTabs extends React.Component<
           className={classes.nav}
           ref={this._navRef}
           onScroll={this._onScroll}
+          aria-labelledby={ariaLabel}
+          aria-label={ariaLabeledBy}
         >
           <ul className={classes.itemsList} ref={this._listRef}>
             {items.map((item, index) => (
