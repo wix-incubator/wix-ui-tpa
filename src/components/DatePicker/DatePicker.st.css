@@ -16,6 +16,10 @@
 
     DefaultBackgroundColor: color-1;
 
+    DefaultNavigationArrowsColor: color-5;
+    DefaultMonthAndYearCaptionFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+    DefaultMonthAndYearCaptionColor: color-8;
+
     DefaultWeekdayFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
     DefaultWeekdayTextColor: color-8;
 
@@ -31,6 +35,10 @@
 :vars {
     BackgroundColor: --overridable;
 
+    NavigationArrowsColor: --overridable;
+    MonthAndYearCaptionFont: --overridable;
+    MonthAndYearCaptionColor: --overridable;
+
     WeekdayFont:  --overridable;
     WeekdayTextColor: --overridable;
 
@@ -45,10 +53,14 @@
 :vars {
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
 
-    CurrentWeekdayFont: color(fallback(value(WeekdayFont), value(DefaultWeekdayFont)));
+    CurrentNavigationArrowsColor: color(fallback(value(NavigationArrowsColor), value(DefaultNavigationArrowsColor)));
+    CurrentMonthAndYearCaptionFont: fallback(font(value(MonthAndYearCaptionFont)), font(value(DefaultMonthAndYearCaptionFont)));
+    CurrentMonthAndYearCaptionColor: color(fallback(value(MonthAndYearCaptionColor), value(DefaultMonthAndYearCaptionColor)));
+
+    CurrentWeekdayFont: fallback(font(value(WeekdayFont)), font(value(DefaultWeekdayFont)));
     CurrentWeekdayTextColor: color(fallback(value(WeekdayTextColor), value(DefaultWeekdayTextColor)));
 
-    CurrentDayFont: color(fallback(value(DayFont), value(DefaultDayFont)));
+    CurrentDayFont: fallback(font(value(DayFont)), font(value(DefaultDayFont)));
     CurrentDayColor: color(fallback(value(DayColor), value(DeafultDayColor)));
     CurrentSelectedDayColor: color(fallback(value(SelectedDayColor), value(DefaultSelectedDayColor)));
     CurrentSelectedDayBGColor: color(fallback(value(SelectedDayBGColor), value(DefaultSelectedDayBGColor)));
@@ -75,6 +87,23 @@
 .wsrDatePicker::datePickerCalendar::calendarHeader {
     padding: 28px value(sidePadding) 0;
     background-color: value(CurrentBackgroundColor);
+}
+
+.wsrDatePicker::datePickerCalendar::calendarHeader::arrow {
+    color: value(CurrentNavigationArrowsColor);
+}
+.wsrDatePicker::datePickerCalendar::calendarHeader::arrow:hover:not(active) {
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
+}
+
+.wsrDatePicker::datePickerCalendar::calendarHeader::arrow:active {
+    /* todo: ask michal what is the real styling */
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
+}
+
+.wsrDatePicker::datePickerCalendar::calendarHeader::caption {
+    font: value(CurrentMonthAndYearCaptionFont);
+    color: value(CurrentMonthAndYearCaptionColor);
 }
 
 /******************************************************/
