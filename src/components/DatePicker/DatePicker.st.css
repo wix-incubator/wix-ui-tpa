@@ -8,6 +8,11 @@
     -st-default: WSRDatePicker;
 }
 
+:import {
+    -st-from: "wix-style-react/dist/src/Calendar/Calendar.st.css";
+    -st-named: dayCircle;
+}
+
 /*Defaults*/
 :vars {
     calendarWidth: 280px;
@@ -140,27 +145,27 @@
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
 }
 
-.wsrDatePicker::datePickerCalendar::todayNotSelectedDay {
+.wsrDatePicker::datePickerCalendar::calendarDay:today:not(:selected):not(:hover) {
     /* todo: ask michal what is the real styling */
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.2);
     box-shadow: none;
 }
-.wsrDatePicker::datePickerCalendar::todayNotSelectedDayFocus {
+.wsrDatePicker::datePickerCalendar::calendarDay:today:not(:selected):not(:hover):focus {
     box-shadow: none;
 }
 
-.wsrDatePicker::datePickerCalendar::selectedDay {
+.wsrDatePicker::datePickerCalendar::calendarDay:selected:not(:outside) {
     color: value(CurrentSelectedDayColor);
 }
 
-.wsrDatePicker::datePickerCalendar::outsideDay, .wsrDatePicker::datePickerCalendar::disabledDay {
+.wsrDatePicker::datePickerCalendar::calendarDay:outside, .wsrDatePicker::datePickerCalendar::calendarDay.disabled {
     color: value(CurrentDisabledDayColor);
 }
 
-.wsrDatePicker::datePickerCalendar::singleSelectedDayCircle {
+.wsrDatePicker::datePickerCalendar::calendarDay:singleDay:not(:outside) .dayCircle {
     background-color: value(CurrentSelectedDayBGColor);
 }
-.wsrDatePicker::datePickerCalendar::singleSelectedDayCircleHover {
+.wsrDatePicker::datePickerCalendar::calendarDay:singleDay:not(:outside):hover .dayCircle {
     /* todo: ask michal what is the real styling */
      background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.6);
 }
