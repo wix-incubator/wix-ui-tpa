@@ -43,4 +43,5 @@ export { RadioButtonGroup } from './RadioButtonGroup';
 export { Dialog } from './Dialog';
 export { AddItem } from './AddItem';
 export { ProgressBar } from './ProgressBar';
+export { Image } from './Image';
 export { DatePicker } from './DatePicker';

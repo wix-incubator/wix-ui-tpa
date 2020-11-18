@@ -41,44 +41,31 @@ class App extends React.Component {
 (Be sure to add the `TPAComponentsProvider` to the root of your project, in order to support
 `mobile` and `rtl` displays).
  
-Components' styles can be overridden like this:
+Components' styles are the suggested defaults, but can be overridden like this:
+
 ```typescript jsx
-// Input.tsx 
+// MyInput.tsx 
 import React from 'react';
 import { Input } from 'wix-ui-tpa/Input';
-import { classes } from './Input.st.css';
-
-class MyInput extends React.Component {
-    render() {
-        return (
-            <Input
-                className={classes.root} 
-                // ...
-            />
-        );
-    }
-}
-
+import { classes } from './MyInput.st.css';
+export const MyInput: React.FC = () => <Input className={classes.root} />
 ```
+
 ```css
-// Input.st.css 
+// MyInput.st.css 
 :import {
   -st-from: "wix-ui-tpa/index.st.css";
   -st-named: Input;
 }
 
 .root {
-  --yourSettingsKey: "color(color-5)";
-  -st-extends: Input;
   -st-mixin: Input(
-    MainTextColor '"color(--yourSettingsKey)"'
+    MainTextColor '"color(color-5)"'
   );
 }
 ```
-The library relies on [wix-style-processor](https://github.com/wix/wix-style-processor) 
-on parsing Wix template colors, fonts and settings' keys.  
-For more on this, and on how to use the library and override components' styles, 
-refer to the [Usage document](./docs/USAGE.md).
+The library relies on [wix-style-processor](https://github.com/wix/wix-style-processor) or [tpa-style-webpack-plugin](http://github.com/wix-incubator/tpa-style-webpack-plugin) on parsing Wix template colors, fonts and settings' keys.
+For more on this, and on how to use the library and override components' styles, refer to the [Usage document](./docs/USAGE.md).
 
 ## Test drivers
 All of `wix-ui-tpa` components are 100% tested and supplies test drivers for easy 
