@@ -6,7 +6,6 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { tabsTestkitFactory } from '../../testkit/protractor';
 import { NavButtonOptions } from './constants';
-import { delay } from '../../test/utils';
 
 describe('Tabs', () => {
   const storyUrl = createStoryUrl({
@@ -59,7 +58,7 @@ describe('Tabs', () => {
         await driver.clickLeftNavButton();
       }
 
-      await delay(600);
+      await browser.sleep(600);
 
       return scrollToEnd(driver, direction);
     }
