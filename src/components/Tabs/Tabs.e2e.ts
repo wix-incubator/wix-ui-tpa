@@ -1,14 +1,12 @@
 import * as eyes from 'eyes.it';
-import { browser } from 'protractor';
+import { browser, by, element } from 'protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { tabsTestkitFactory } from '../../testkit/protractor';
 import { NavButtonOptions } from './constants';
-import { storiesOf } from '@storybook/react';
 import { delay } from '../../test/utils';
-import * as React from 'react';
 
 describe('Tabs', () => {
   const storyUrl = createStoryUrl({
@@ -17,6 +15,7 @@ describe('Tabs', () => {
     withExamples: true,
   });
   const dataHook = 'storybook-e2e-Tabs';
+  const rootId = 'tabs-test-root';
 
   beforeEach(async () => {
     await browser.get(storyUrl);
@@ -70,6 +69,14 @@ describe('Tabs', () => {
     const forwardSide = direction === 'ltr' ? 'right' : 'left';
 
     describe(`Tabs/Scroll - ${direction}`, () => {
+      beforeAll(async () => {
+        const rootElement = await element(by.id(rootId));
+        await browser.executeScript(
+          `arguments[0].setAttribute('dir',${direction});`,
+          rootElement,
+        );
+      });
+
       eyes.it(`${forwardSide} nav button only`, async () => {
         const driver = tabsTestkitFactory({ dataHook });
         await waitForVisibilityOf(await driver.element(), 'Cannot find Tabs');

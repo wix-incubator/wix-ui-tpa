@@ -21,7 +21,7 @@ function renderTest(props?: any) {
     items,
   };
   return (
-    <div style={{ margin: '10px', maxWidth: 200 }}>
+    <div id="tabs-test-root" style={{ margin: '10px', maxWidth: 200 }}>
       <Tabs data-hook={'storybook-e2e-Tabs'} {...defaultProps} {...props} />
     </div>
   );

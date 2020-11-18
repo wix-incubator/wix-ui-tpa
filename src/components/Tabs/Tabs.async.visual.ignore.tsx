@@ -125,7 +125,9 @@ const eyesConfig = {
           }
           await delay(500);
         };
-        return <TabsAsyncVisualIgnore onReady={onTestReady} direction={direction} />;
+        return (
+          <TabsAsyncVisualIgnore onReady={onTestReady} direction={direction} />
+        );
       },
       eyesConfig,
     )
@@ -141,7 +143,9 @@ const eyesConfig = {
           );
           await delay(500);
         };
-        return <TabsAsyncVisualIgnore onReady={onTestReady} direction={direction} />;
+        return (
+          <TabsAsyncVisualIgnore onReady={onTestReady} direction={direction} />
+        );
       },
       eyesConfig,
     );
