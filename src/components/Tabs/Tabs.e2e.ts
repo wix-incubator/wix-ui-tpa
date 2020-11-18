@@ -81,6 +81,7 @@ describe('Tabs', () => {
         const driver = tabsTestkitFactory({ dataHook });
         await waitForVisibilityOf(await driver.element(), 'Cannot find Tabs');
         await setDirection();
+        await browser.sleep(400);
       });
 
       eyes.it('both nav buttons', async () => {
