@@ -68,22 +68,27 @@ describe('Tabs', () => {
     const forwardSide = direction === 'ltr' ? 'right' : 'left';
 
     describe(`Tabs/Scroll - ${direction}`, () => {
-      beforeAll(async () => {
+      async function setDirection() {
         const rootElement = await element(by.id(rootId));
         await browser.executeScript(
-          `arguments[0].setAttribute('dir',${direction});`,
+          `arguments[0].setAttribute('dir','${direction}');`,
           rootElement,
         );
-      });
+        await browser.sleep(400);
+      }
 
       eyes.it(`${forwardSide} nav button only`, async () => {
         const driver = tabsTestkitFactory({ dataHook });
         await waitForVisibilityOf(await driver.element(), 'Cannot find Tabs');
+        await setDirection();
       });
 
       eyes.it('both nav buttons', async () => {
         const driver = tabsTestkitFactory({ dataHook });
         await waitForVisibilityOf(await driver.element(), 'Cannot find Tabs');
+
+        await setDirection();
+
         if (direction === 'ltr') {
           await driver.clickRightNavButton();
         } else {
@@ -95,6 +100,9 @@ describe('Tabs', () => {
       eyes.it(`scroll to ${forwardSide} end`, async () => {
         const driver = tabsTestkitFactory({ dataHook });
         await waitForVisibilityOf(await driver.element(), 'Cannot find Tabs');
+
+        await setDirection();
+
         await scrollToEnd(
           driver,
           direction === 'ltr' ? NavButtonOptions.right : NavButtonOptions.left,
