@@ -23,6 +23,7 @@
     DeafultDayColor: color-5;
     DefaultSelectedDayColor: color-1;
     DefaultSelectedDayBGColor: color-8;
+    DefaultDisabledDayColor: color-3;
 
 }
 
@@ -37,6 +38,7 @@
     DayColor: --overridable;
     SelectedDayColor: --overridable;
     SelectedDayBGColor: --overridable;
+    DisabledDayColor: --overridable;
 }
 
 /*Fallbacks*/
@@ -50,6 +52,7 @@
     CurrentDayColor: color(fallback(value(DayColor), value(DeafultDayColor)));
     CurrentSelectedDayColor: color(fallback(value(SelectedDayColor), value(DefaultSelectedDayColor)));
     CurrentSelectedDayBGColor: color(fallback(value(SelectedDayBGColor), value(DefaultSelectedDayBGColor)));
+    CurrentDisabledDayColor: color(fallback(value(DisabledDayColor), value(DefaultDisabledDayColor)));
 }
 
 .root {
@@ -104,40 +107,35 @@
 }
 
 .wsrDatePicker::datePickerCalendar::calendarDay:hover {
-    color: value(color(DeafultDayColor));
+    color: color(value(DeafultDayColor));
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
 }
 
 .wsrDatePicker::datePickerCalendar::todayNotSelectedDay {
     /* todo: ask michal what is the real styling */
-    background-color: pink;
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.2);
     box-shadow: none;
 }
 .wsrDatePicker::datePickerCalendar::todayNotSelectedDayFocus {
-    /* todo: ask michal what is the real styling */
     box-shadow: none;
 }
 
 .wsrDatePicker::datePickerCalendar::selectedDay {
+    color: value(CurrentSelectedDayColor);
 }
 
 .wsrDatePicker::datePickerCalendar::outsideDay, .wsrDatePicker::datePickerCalendar::disabledDay {
-    color: deeppink;
+    color: value(CurrentDisabledDayColor);
 }
 
 .wsrDatePicker::datePickerCalendar::singleSelectedDayCircle {
+    background-color: value(CurrentSelectedDayBGColor);
 }
 .wsrDatePicker::datePickerCalendar::singleSelectedDayCircleHover {
+    /* todo: ask michal what is the real styling */
+     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.6);
 }
 
-
-/*.wsrDatePicker::datePickerCalendar::calendarDay:focus .dayCircle {*/
-/*    color: blue;*/
-/*}*/
-
-/*.wsrDatePicker::datePickerCalendar::calendarDay .wsrDatePicker::datePickerCalendar::unfocusedDay {*/
-/*    color:blue;*/
-/*}*/
 
 /******************************************************/
 
