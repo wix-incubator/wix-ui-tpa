@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { st, classes } from './Dialog.st.css';
 import { DATA_HOOKS } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-
 import { Modal } from '../internal/Modal';
 import { IconButton } from '../IconButton';
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { TPAComponentProps } from '../../types';
+import { st, classes } from './Dialog.st.css';
 
 export interface DialogProps extends TPAComponentProps {
   /** Whether the modal is opened */
@@ -71,7 +70,8 @@ export class Dialog extends React.Component<DialogProps> {
           <div
             className={st(
               classes.root,
-              { mobile, rtl, wired: wiredToSiteColors },
+              { mobile, rtl },
+              classes[`skin-${wiredToSiteColors ? 'wired' : 'fixed'}`],
               className,
             )}
             data-hook={this.props['data-hook']}

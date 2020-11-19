@@ -8,14 +8,6 @@
     -st-named: skin-line;
 }
 
-/*Defaults*/
-:vars {
-    DefaultWiredCloseButtonColor: color-5;
-    DefaultCloseButtonColor: #000000;
-    DefaultWiredBackgroundColor: color-1;
-    DefaultBackgroundColor: #ffffff;
-}
-
 /*Overrides*/
 :vars {
     CloseButtonColor: --overridable;
@@ -24,12 +16,14 @@
 
 /*Fallbacks*/
 :vars {
-    WiredCloseButtonColor: color(fallback(value(CloseButtonColor), value(DefaultWiredCloseButtonColor)));
-    WiredBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultWiredBackgroundColor)));
+    FixedCloseButtonColor: color(fallback(value(CloseButtonColor), black));
+    FixedBackgroundColor: color(fallback(value(BackgroundColor), white));
+    WiredCloseButtonColor: color(fallback(value(CloseButtonColor), color-5));
+    WiredBackgroundColor: color(fallback(value(BackgroundColor), color-1));
 }
 
 .root {
-    -st-states: mobile, rtl, wired;
+    -st-states: mobile, rtl;
 }
 
 .contentWrapper {
@@ -43,20 +37,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -30%);
-
-    background: value(DefaultBackgroundColor);
 }
 
 .closeButtonWrapper {
     position: absolute;
     top: 20px;
     right: 20px;
-}
-
-.closeIconButton {
-    -st-mixin: skin-line(
-            IconColor value(DefaultCloseButtonColor)
-    );
 }
 
 .dialogContent {
@@ -78,16 +64,22 @@
 }
 
 /* New style overrides capabilities */
-.overrideStyleParams {
-    -st-extends: root;
+.skin-fixed .contentWrapper {
+    background: value(FixedBackgroundColor);
 }
 
-.overrideStyleParams:wired .contentWrapper {
+.skin-fixed .closeIconButton {
+    -st-mixin: skin-line(
+        IconColor value(FixedCloseButtonColor)
+    );
+}
+
+.skin-wired .contentWrapper {
     background: value(WiredBackgroundColor);
 }
 
-.overrideStyleParams:wired .closeIconButton {
+.skin-wired .closeIconButton {
     -st-mixin: skin-line(
-            IconColor value(WiredCloseButtonColor)
+        IconColor value(WiredCloseButtonColor)
     );
 }
