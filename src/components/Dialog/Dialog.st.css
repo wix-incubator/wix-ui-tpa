@@ -50,7 +50,6 @@
 }
 
 .root:mobile .contentWrapper {
-    height: 100%;
     top: 0;
     left: 0;
     width: 100%;
@@ -65,7 +64,7 @@
 
 /* New style overrides capabilities */
 .skin-fixed .contentWrapper {
-    background: value(FixedBackgroundColor);
+    background-color: value(FixedBackgroundColor);
 }
 
 .skin-fixed .closeIconButton {
@@ -75,7 +74,7 @@
 }
 
 .skin-wired .contentWrapper {
-    background: value(WiredBackgroundColor);
+    background-color: value(WiredBackgroundColor);
 }
 
 .skin-wired .closeIconButton {
