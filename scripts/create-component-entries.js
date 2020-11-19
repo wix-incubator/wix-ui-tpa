@@ -53,7 +53,7 @@ const run = async() => {
       
       /* 3. Create the index.st.css and index.es.st.css files with symlinks to the folder dir */
       await symlink(path.join(commonJsPath({compPath}), `${compName}.st.css`), path.join(entryFolderPath, 'index.st.css'))
-      await symlink(path.join(esmPath({compPath}), `${compName}.es.st.css`), path.join(entryFolderPath, 'index.es.st.css'))
+      await symlink(path.join(esmPath({compPath}), `${compName}.st.css`), path.join(entryFolderPath, 'index.es.st.css'))
     }));
   } catch (e) {
     console.error(e);
