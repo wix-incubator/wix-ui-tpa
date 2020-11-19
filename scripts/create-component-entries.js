@@ -4,7 +4,7 @@ const path = require('path');
 const components = require('../.wuf/components.json');
 const componentsNames = Object.keys(components);
 
-const e xists = util.promisify(fs.exists);
+const exists = util.promisify(fs.exists);
 const mkdir = util.promisify(fs.mkdir);
 const rmdir = util.promisify(fs.rmdir);
 const writeFile = util.promisify(fs.writeFile);
@@ -13,8 +13,10 @@ const symlink = util.promisify(fs.symlink);
 const commonJsPath = ({compPath}) => `../dist/${compPath}`
 const esmPath = ({compPath}) => `../dist/es/${compPath}`
 
+const camelToKebab = string => string.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+
 const getPackageJson = ({compName, compPath}) => ({
-  name: compName,
+  name: camelToKebab(compName),
   main: path.join(commonJsPath({compPath}), 'index.js'),
   module: path.join(esmPath({compPath}), 'index.js'),
   typings: path.join(commonJsPath({compPath}), 'index.d.ts'),
