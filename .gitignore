@@ -21,6 +21,7 @@ wix-ui-tpa.iml
 !wallaby.js
 !protractor.conf.js
 /index.st.css
+components
 
 # applitools private config
 !applitools.config.js
