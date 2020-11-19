@@ -1,3 +1,12 @@
+## [2.11.1](https://github.com/wix/wix-ui-tpa/compare/v2.11.0...v2.11.1) (2020-11-19)
+
+
+### Bug Fixes
+
+* **Tabs:** Add aria-label and aria-labelledby to nav element ([150734e](https://github.com/wix/wix-ui-tpa/commit/150734eda1a450157134863126cd32bed92009ad))
+
+
+
 # [2.11.0](https://github.com/wix/wix-ui-tpa/compare/v2.10.1...v2.11.0) (2020-11-18)
 
 
