@@ -29,7 +29,7 @@ const getPackageJson = ({compName, compPath}) => ({
 });
 
 const cleanup = async () => {
-  /* clean existing folders */s
+  /* clean existing folders */
   if(exists(entryPath)) {
     await rmdir(entryPath, {recursive: true});
   }
@@ -58,5 +58,5 @@ const run = async() => {
   }
 }
 
-console.log('Creating components entry filess');
+console.log('Creating components entry files');
 (async () => {await run()})();
