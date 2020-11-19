@@ -4,6 +4,8 @@ const path = require('path');
 const components = require('../.wuf/components.json');
 const componentsNames = Object.keys(components);
 
+const entryPath = path.join(process.cwd(), 'components');
+
 const exists = util.promisify(fs.exists);
 const mkdir = util.promisify(fs.mkdir);
 const rmdir = util.promisify(fs.rmdir);
@@ -26,25 +28,18 @@ const getPackageJson = ({compName, compPath}) => ({
   },
 });
 
-console.log('prepare to be amazed');
-
-
 const cleanup = async () => {
-  /* clean existing folders */
-  await Promise.all(componentsNames.map(async (compName) => {
-    const entryFolderPath = path.join(process.cwd(), compName);
-    if(exists(entryFolderPath)) {
-      await rmdir(entryFolderPath, {recursive: true});
-    }
-  }));
+  /* clean existing folders */s
+  if(exists(entryPath)) {
+    await rmdir(entryPath, {recursive: true});
+  }
 }
-
 
 const run = async() => {
   await cleanup()
   try {
     await Promise.all(componentsNames.map(async (compName) => {
-      const entryFolderPath = path.join(process.cwd(), compName);
+      const entryFolderPath = path.join(entryPath, compName);
       const compPath = components[compName].path;
       
       /* 1. Create a folder per component */
@@ -62,4 +57,6 @@ const run = async() => {
     cleanup();
   }
 }
+
+console.log('Creating components entry filess');
 (async () => {await run()})();
