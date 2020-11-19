@@ -33,6 +33,7 @@ const cleanup = async () => {
   if(exists(entryPath)) {
     await rmdir(entryPath, {recursive: true});
   }
+  await mkdir(entryPath, {});
 }
 
 const run = async() => {
