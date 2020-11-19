@@ -29,8 +29,7 @@
   ],
   "scripts": {
     "prebuild": "npm run update-components",
-    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build",
-    "postbuild": "import-path --path src/components --dts",
+    "build": "yoshi build && npm run copy-styleable-ext && npm run compile-base-ui && npm run generate-stylable-index && npm run storybook:build && npm run build:entries",
     "pr-postbuild": "npm run storybook:release",
     "pretest": "./scripts/ensure-build.sh",
     "test": "npm run test:unit && npm run test:e2e && npm run test:eyes-storybook && npm run autotools",
@@ -59,7 +58,8 @@
     "pr-release": "# SRC_MD5=`/usr/bin/python $SCRIPT_DIR/md5Calc.py .` npm-ci publish temp-publish",
     "release-candidate": "node scripts/rc.js",
     "changelog": "conventional-changelog --preset angular -i CHANGELOG.md -s",
-    "storybook:release": "npx janet deploy --ci || exit 0"
+    "storybook:release": "npx janet deploy --ci || exit 0",
+    "build:entries": "node ./scripts/create-component-entries.js"
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^3.5.0",
