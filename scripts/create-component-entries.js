@@ -1,14 +1,7 @@
  const fs = require('fs');
  const util = require('util');
  const path = require('path');
-//  const components = require('../.wuf/components.json');
-//  const readFile = util.promisify(fs.readFile);
-//  readFile(path.resolve())
-const components = {
-  "ActionsMenuLayout": {
-    "path": "src/components/ActionsMenuLayout"
-  },
-}
+ const components = require('../.wuf/components.json');
 const componentsNames = Object.keys(components);
 
  const exists = util.promisify(fs.exists);
