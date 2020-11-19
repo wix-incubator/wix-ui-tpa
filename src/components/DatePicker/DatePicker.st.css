@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "wix-style-react/dist/src/Calendar/Calendar.st.css";
-    -st-named: dayCircle;
+    -st-named: dayCircle; /* currently due to a stylable issue this is the best way to override styling of nested classes */yarn star
 }
 
 /*Defaults*/
@@ -82,31 +82,31 @@
     -st-extends: WSRDatePicker;
 }
 
-.wsrDatePicker::datePickerCalendar::calendarMonth {
+.wsrDatePicker::calendar::month {
     width: value(calendarWidth);
     height: value(calendarHeight);
 }
 
 /* calendar header */
 
-.wsrDatePicker::datePickerCalendar::calendarHeader {
+.wsrDatePicker::calendar::header {
     padding: 28px value(sidePadding) 0;
     background-color: value(CurrentBackgroundColor);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarHeader::arrow {
+.wsrDatePicker::calendar::header::arrow {
     color: value(CurrentNavigationArrowsColor);
 }
-.wsrDatePicker::datePickerCalendar::calendarHeader::arrow:hover:not(active) {
+.wsrDatePicker::calendar::header::arrow:hover:not(active) {
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarHeader::arrow:active {
+.wsrDatePicker::calendar::header::arrow:active {
     /* todo: ask michal what is the real styling */
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarHeader::caption {
+.wsrDatePicker::calendar::header::caption {
     font: value(CurrentMonthAndYearCaptionFont);
     color: value(CurrentMonthAndYearCaptionColor);
 }
@@ -115,12 +115,12 @@
 
 /* calendar Weekdays */
 
-.wsrDatePicker::datePickerCalendar::calendarWeekdays {
+.wsrDatePicker::calendar::weekdays {
     padding: 0 value(sidePadding);
     background-color: value(CurrentBackgroundColor);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarWeekday {
+.wsrDatePicker::calendar::weekday {
     padding: 20px 0 16px;
     font: value(CurrentWeekdayFont); /* font-size is 14px and shouldn't be overridable */
     color: value(CurrentWeekdayTextColor);
@@ -130,42 +130,42 @@
 
 /* calendar body */
 
-.wsrDatePicker::datePickerCalendar::calendarBody {
+.wsrDatePicker::calendar::body {
     padding: 0 value(sidePadding) 20px;
     background-color: value(CurrentBackgroundColor);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarDay {
+.wsrDatePicker::calendar::day {
     font: value(CurrentDayFont);
     color: value(CurrentDayColor);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarDay:hover {
+.wsrDatePicker::calendar::day:hover {
     color: color(value(DeafultDayColor));
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarDay:today:not(:selected):not(:hover) {
+.wsrDatePicker::calendar::day:today:not(:selected):not(:hover) {
     /* todo: ask michal what is the real styling */
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.2);
     box-shadow: none;
 }
-.wsrDatePicker::datePickerCalendar::calendarDay:today:not(:selected):not(:hover):focus {
+.wsrDatePicker::calendar::day:today:not(:selected):not(:hover):focus {
     box-shadow: none;
 }
 
-.wsrDatePicker::datePickerCalendar::calendarDay:selected:not(:outside) {
+.wsrDatePicker::calendar::day:selected:not(:outside) {
     color: value(CurrentSelectedDayColor);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarDay:outside, .wsrDatePicker::datePickerCalendar::calendarDay.disabled {
+.wsrDatePicker::calendar::day:outside, .wsrDatePicker::calendar::day.disabled {
     color: value(CurrentDisabledDayColor);
 }
 
-.wsrDatePicker::datePickerCalendar::calendarDay:singleDay:not(:outside) .dayCircle {
+.wsrDatePicker::calendar::day:singleDay:not(:outside) .dayCircle {
     background-color: value(CurrentSelectedDayBGColor);
 }
-.wsrDatePicker::datePickerCalendar::calendarDay:singleDay:not(:outside):hover .dayCircle {
+.wsrDatePicker::calendar::day:singleDay:not(:outside):hover .dayCircle {
     /* todo: ask michal what is the real styling */
      background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.6);
 }
