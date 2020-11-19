@@ -46,6 +46,7 @@ const cleanup = async () => {
 
 
 const run = async() => {
+  await cleanup()
   try {
     await Promise.all(componentsNames.map(async (compName) => {
       const entryFolderPath = path.join(process.cwd(), compName);
