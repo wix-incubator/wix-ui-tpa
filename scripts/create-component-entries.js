@@ -1,17 +1,17 @@
- const fs = require('fs');
- const util = require('util');
- const path = require('path');
- const components = require('../.wuf/components.json');
+const fs = require('fs');
+const util = require('util');
+const path = require('path');
+const components = require('../.wuf/components.json');
 const componentsNames = Object.keys(components);
 
- const exists = util.promisify(fs.exists);
- const mkdir = util.promisify(fs.mkdir);
- const rmdir = util.promisify(fs.rmdir);
- const writeFile = util.promisify(fs.writeFile);
- const symlink = util.promisify(fs.symlink);
+const e xists = util.promisify(fs.exists);
+const mkdir = util.promisify(fs.mkdir);
+const rmdir = util.promisify(fs.rmdir);
+const writeFile = util.promisify(fs.writeFile);
+const symlink = util.promisify(fs.symlink);
 
- const commonJsPath = ({compPath}) => `../dist/${compPath}`
- const esmPath = ({compPath}) => `../dist/es/${compPath}`
+const commonJsPath = ({compPath}) => `../dist/${compPath}`
+const esmPath = ({compPath}) => `../dist/es/${compPath}`
 
 const getPackageJson = ({compName, compPath}) => ({
   name: compName,
