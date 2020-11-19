@@ -1,10 +1,10 @@
 :import {
     -st-from: "../Dialog.st.css";
-    -st-named: overrideStyleParams;
+    -st-named: skin-wired;
 }
 
 .dialogComponent {
-    -st-mixin: overrideStyleParams(
+    -st-mixin: skin-wired(
             CloseButtonColor '"color(--customCloseButtonColor)"',
             BackgroundColor '"color(--customBackgroundColor)"'
     );
