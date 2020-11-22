@@ -8,8 +8,8 @@ The components of `wix-ui-tpa` are RTL-compatible and support that built-in, mea
 
 In order to apply RTL correctly for the library we'll need to use two things:
 
-1. Using `TPAComponentsProvider` while enabling the `rtl` option
-2. Setting the `dir` attribute as `rtl` on the root element
+1. Using `TPAComponentsProvider` while enabling the `rtl` option.
+2. Making sure the `dir` attribute is already set as `rtl` in the DOM hierarchy. Notice that the viewer might set the correct direction by itself on the `body` or on an ancestor of the component. If not, we can always set it on the root of the component by ourselves.
 
 Here's an example for `App.ts`:
 
@@ -20,7 +20,7 @@ import { TPAComponentsProvider } from 'wix-ui-tpa/TPAComponentsConfig';
 // Step 1: Enabling RTL
 const isRTL = true;
 
-// Step 2: Setting `dir` as `rtl`
+// Step 2: Setting `dir` as `rtl` directly on the root (this attribute could also come from the viewer, so check it before setting)
 const MyApp = () => <div dir="rtl">Hello World!</div>;
 
 export const App: React.FC = () => (
