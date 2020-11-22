@@ -1,4 +1,5 @@
 # Using `wix-ui-tpa`
+
 `wix-ui-tpa` is a React component library, designed for Wix TPA's.
 
 In addition to giving a uniform design and behaviour as defined in the 
@@ -66,7 +67,7 @@ Starting of version 2.10.0, new components will support a more optimized way to 
 *Note*: This will become the official way to override styles, however not all components are compatible yet (please check each component's documentation page to see if it supports the new way).
 
 ```css
-/* CheckoutButton.st.css */
+/* myBadge.st.css */
 :import {
     -st-from: "wix-ui-tpa/dist/src/components/Badge/Badge.st.css";
     -st-named: overrideStyleParams;

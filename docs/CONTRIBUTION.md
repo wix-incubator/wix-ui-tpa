@@ -1,5 +1,7 @@
 # Contribution
 
+wix-ui-tpa is an open source ui library, therefore everyone is invited to contribute by solving bugs, improving documentation, and add new components (as long as they are aligned with our design guidelines).
+
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 We use [conventional commits](https://www.conventionalcommits.org) to create a readable CHANGELOG.
@@ -95,3 +97,12 @@ As an example, the css above will be written like this:
 }
 ``` 
 For more on Stylable formatters read [here](https://stylable.io/docs/references/formatters).
+
+## How to create a PR
+Your commits must be signed so please follow all the following steps.
+
+Read more about it in `wix-style-react`'s excellent.
+documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/CREATE_PR.md).
+
+
+
