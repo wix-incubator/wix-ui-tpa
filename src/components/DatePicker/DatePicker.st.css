@@ -174,8 +174,32 @@
 /******************************************************/
 
 
+/*!* month and years dropdowns *!*/
 
+/*.dropdownItem {*/
+/*    -st-extends: WSRListItemSelect;*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*}*/
 
+/*.dropdownItem::title {*/
+/*    color: value(CurrentDayColor);*/
+/*    font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");*/
+/*}*/
+
+/*.dropdownItem:not(:disabled):not(:selected):hover {*/
+/*    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);*/
+/*}*/
+
+/*.dropdownItem:selected {*/
+/*    !* todo: ask michal what is the real styling *!*/
+/*    !* background-color, color *!*/
+/*}*/
+
+/*.dropdownItem:selected:hover {*/
+/*    !* todo: ask michal what is the real styling *!*/
+/*    !* background-color *!*/
+/*}*/
+/******************************************************/
 
 
 
