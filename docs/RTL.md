@@ -33,3 +33,9 @@ export const App: React.FC = () => (
 The example above demonstrates an application that uses `TPAComponentsProvider` to enable `rtl`.
 
 Also it renders `<MyApp/>` which constitutes our application in practice. Notice we set `dir` as `rtl` on the root of `<MyApp/>`.
+
+## How It Works
+
+The components of the library use `TPAComponentsConsumer` to consume the rtl configuration, and so adjust their structure and/or style to this value. The adjustments might be done using rendering different HTML, flexbox and more techniques.
+
+Also, some of the components do relay on the `dir` to allow the compatibility - and that's why we should set this attribute as `rtl` as consumers of the library.
