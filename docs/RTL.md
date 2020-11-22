@@ -36,6 +36,6 @@ Also it renders `<MyApp/>` which constitutes our application in practice. Notice
 
 ## How It Works
 
-The components of the library use `TPAComponentsConsumer` to consume the rtl configuration, and so adjust their structure and/or style to this value. The adjustments might be done using rendering different HTML, flexbox and more techniques.
+All components of the library require the `dir` attribute to allow the compatibility - and that's why we should verify this attribute is set as `rtl`. Also, some of the components use `TPAComponentsConsumer` to consume the rtl configuration.
 
-Also, some of the components do relay on the `dir` to allow the compatibility - and that's why we should set this attribute as `rtl` as consumers of the library.
+Combining both ways, the components can adjust their structure and/or style to the direction. The adjustments might be done using rendering different HTML, flexbox, `::before` and `::after` (that play as `padding-start`/`margin-start` & `padding-end`/`margin-end`) and more techniques.
