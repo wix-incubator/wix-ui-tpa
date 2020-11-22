@@ -11,14 +11,17 @@ In order to apply RTL correctly for the library we'll need to use two things:
 1. Using `TPAComponentsProvider` while enabling the `rtl` option
 2. Setting the `dir` attribute as `rtl` on the root element
 
-Here's an example for `App.js`:
+Here's an example for `App.ts`:
 
 ```jsx
 import React from 'react';
 import { TPAComponentsProvider } from 'wix-ui-tpa/TPAComponentsConfig';
 
-// Enabling RTL
+// Step 1: Enabling RTL
 const isRTL = true;
+
+// Step 2: Setting `dir` as `rtl`
+const MyApp = () => <div dir="rtl">Hello World!</div>;
 
 export const App: React.FC = () => (
   <TPAComponentsProvider value={{ rtl: isRTL }}>
@@ -27,4 +30,6 @@ export const App: React.FC = () => (
 );
 ```
 
-The example above demonstrates an application that imports `TPAComponentsProvider` and
+The example above demonstrates an application that uses `TPAComponentsProvider` to enable `rtl`.
+
+Also it renders `<MyApp/>` which constitutes our application in practice. Notice we set `dir` as `rtl` on the root of `<MyApp/>`.
