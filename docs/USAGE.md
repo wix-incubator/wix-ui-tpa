@@ -100,7 +100,7 @@ export const App: React.FC = () => (
 ## Advanced Style Processing
 TPAs get their colors and fonts (most of them) from the template's palette, and let the users override them using the settings panel.
 
-You can read more about it [here](https://dev.wix.com/docs/uiux-basics/site-components/#color).
+You can read more about it [here](https://zeroheight.com/7sjjzhgo2/p/85d7a3-wiring).
 
 `wix-ui-tpa`'s components are wired to default colors and fonts from the site's palette, and in order to easily use and manipulate these variables, the library uses [`wix-style-processor`](https://github.com/wix/wix-style-processor) or [tpa-style-webpack-plugin](http://github.com/wix-incubator/tpa-style-webpack-plugin).
 
