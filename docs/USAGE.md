@@ -97,6 +97,8 @@ export const App: React.FC = () => (
 );
 ```
 
+You can read [here](RTL.md) about using RTL.
+
 ## Advanced Style Processing
 TPAs get their colors and fonts (most of them) from the template's palette, and let the users override them using the settings panel.
 
