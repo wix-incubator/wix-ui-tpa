@@ -14,10 +14,11 @@ This will generate all the necessary files that are required for the new compone
 * `Component.spec.tsx` - `enzyme` unit tests for the component.
 * `Component.visual.tsx` - an `eyes-storybook` test file.
 * `Component.meta.tsx` - a [`ui-autotools`](https://github.com/wix-incubator/ui-autotools) test file - tests `SSR` and `A11Y`.
-* `Component.e2e.tsx` - e2e test for interactive tests that require real dom
 * `docs` folder - for `storybook` documentation.
+    * `index.story.ts` - The storybook configuration.
+    * `examples.ts` - The examples that will be displayed in the storybook under the `usage` tab.
+    * `Component.WiringExample.tsx` and `Component.WiringExample.st.css` - Define the `Settings Panel` tab in the component story page. This will allow our users to see all the overridable params of the component.
 * `index.tsx` - for exporting.
-* `README.md` - documentation file.
 
 ## Developing A Component
 refer to [Component Guidelines](COMPONENT_GUIDELINES.md).
