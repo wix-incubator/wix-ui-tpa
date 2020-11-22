@@ -9,7 +9,7 @@ import { allComponents } from '../utils/allComponents';
 // @ts-ignore
 import exampleCode from '!raw-loader!./example';
 
-import { SegmentedToggle, Box } from 'wix-style-react';
+import { SegmentedToggle } from 'wix-style-react';
 
 const PlaygroundWrapper = () => {
     const [layout, setLayout] = React.useState('vertical');
@@ -31,7 +31,7 @@ const PlaygroundWrapper = () => {
                 formatSnippetUrl={id => `${window.parent.location.href}&snippet=${id}`}
             />
 
-            <Box align="right">
+            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                 <SegmentedToggle
                     selected={layout}
                     onClick={(e, value) => setLayout(value)}
@@ -49,7 +49,7 @@ const PlaygroundWrapper = () => {
                         Horizontal layout
                     </SegmentedToggle.Button>
                 </SegmentedToggle>
-            </Box>
+            </div>
         </div>
     );
 };
