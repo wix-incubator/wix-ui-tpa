@@ -1,4 +1,5 @@
 # Using `wix-ui-tpa`
+
 `wix-ui-tpa` is a React component library, designed for Wix TPA's.
 
 In addition to giving a uniform design and behaviour as defined in the 
@@ -66,7 +67,7 @@ Starting of version 2.10.0, new components will support a more optimized way to 
 *Note*: This will become the official way to override styles, however not all components are compatible yet (please check each component's documentation page to see if it supports the new way).
 
 ```css
-/* CheckoutButton.st.css */
+/* myBadge.st.css */
 :import {
     -st-from: "wix-ui-tpa/dist/src/components/Badge/Badge.st.css";
     -st-named: overrideStyleParams;
@@ -101,7 +102,7 @@ You can read [here](RTL.md) about using RTL.
 ## Advanced Style Processing
 TPAs get their colors and fonts (most of them) from the template's palette, and let the users override them using the settings panel.
 
-You can read more about it [here](https://dev.wix.com/docs/uiux-basics/site-components/#color).
+You can read more about it [here](https://zeroheight.com/7sjjzhgo2/p/85d7a3-wiring).
 
 `wix-ui-tpa`'s components are wired to default colors and fonts from the site's palette, and in order to easily use and manipulate these variables, the library uses [`wix-style-processor`](https://github.com/wix/wix-style-processor) or [tpa-style-webpack-plugin](http://github.com/wix-incubator/tpa-style-webpack-plugin).
 

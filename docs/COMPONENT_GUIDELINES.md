@@ -21,9 +21,7 @@ dimensions are allowed only on user interactions.
 
 * No assumptions should be made on the components' environment and surroundings. Components might
 be used inside TPA pages, but also TPA widgets.  
-So solutions like `@media-queries` might not work, and `window` shouldn't be directly accessed.  
-In addition, currently TPA's in the editor are still rendered inside an iframe, so the window is 
-completely different than the window in the viewer.  
+So solutions like `@media-queries` might not work, and `window` shouldn't be directly accessed.
 
 * Widget's in the editor are fluid in their dimensions. `wix-ui-tpa` components should support this.
 
