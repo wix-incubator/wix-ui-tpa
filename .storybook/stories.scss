@@ -17,5 +17,6 @@ body {
 }
 
 *:focus {
-  box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff;
+  box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff !important;
+  z-index: 999,
 }
