@@ -1,4 +1,5 @@
 require('./Introduction');
+require('./Playground/Playground.story');
 require('../src/components/SectionNotification/docs/index.story');
 require('../src/components/FloatingDropdown/docs/index.story');
 require('../src/components/Button/docs/index.story');
