@@ -17,7 +17,6 @@ This will generate all the necessary files that are required for the new compone
 * `docs` folder - for `storybook` documentation.
     * `index.story.ts` - The storybook configuration.
     * `examples.ts` - The examples that will be displayed in the storybook under the `usage` tab.
-    * `Component.WiringExample.tsx` and `Component.WiringExample.st.css` - Define the `Settings Panel` tab in the component story page. This will allow our users to see all the overridable params of the component.
 * `index.tsx` - for exporting.
 
 ## Developing A Component
@@ -102,8 +101,7 @@ For more on Stylable formatters read [here](https://stylable.io/docs/references/
 ## How to create a PR
 Your commits must be signed so please follow all the following steps.
 
-Read more about it in `wix-style-react`'s excellent.
-documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/CREATE_PR.md).
+Read more about it in `wix-style-react`'s excellent. Documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/CREATE_PR.md).
 
 
 
