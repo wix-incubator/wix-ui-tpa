@@ -1,5 +1,7 @@
 # Contribution
 
+wix-ui-tpa is an open source ui library, therefore everyone is invited to contribute by solving bugs, improving documentation, and add new components (as long as they are aligned with our design guidelines).
+
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
 
 We use [conventional commits](https://www.conventionalcommits.org) to create a readable CHANGELOG.
@@ -12,10 +14,10 @@ This will generate all the necessary files that are required for the new compone
 * `Component.spec.tsx` - `enzyme` unit tests for the component.
 * `Component.visual.tsx` - an `eyes-storybook` test file.
 * `Component.meta.tsx` - a [`ui-autotools`](https://github.com/wix-incubator/ui-autotools) test file - tests `SSR` and `A11Y`.
-* `Component.e2e.tsx` - e2e test for interactive tests that require real dom
 * `docs` folder - for `storybook` documentation.
+    * `index.story.ts` - The storybook configuration.
+    * `examples.ts` - The examples that will be displayed in the storybook under the `usage` tab.
 * `index.tsx` - for exporting.
-* `README.md` - documentation file.
 
 ## Developing A Component
 refer to [Component Guidelines](COMPONENT_GUIDELINES.md).
@@ -95,3 +97,11 @@ As an example, the css above will be written like this:
 }
 ``` 
 For more on Stylable formatters read [here](https://stylable.io/docs/references/formatters).
+
+## How to create a PR
+Your commits must be signed so please follow all the following steps.
+
+Read more about it in `wix-style-react`'s excellent. Documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/CREATE_PR.md).
+
+
+
