@@ -3,7 +3,7 @@ import * as React from "react";
 
 () => {
   const initialState = {
-    selectedColor: 'white',
+    selectedColorName: 'white',
     selectedSizeId: '0',
 
   };
@@ -12,6 +12,13 @@ import * as React from "react";
       (currentState, newState) => ({ ...currentState, ...newState }),
       initialState,
   );
+
+  const PRODUCT_COLORS = {
+    1: 'white',
+    2: 'lightblue',
+    3: '#ffcc66',
+    4: '#00cc66',
+  };
 
   return (
       <div style={{ backgroundColor: 'white', width: '440px', boxSizing: 'border-box', padding: '20px' }}>
@@ -38,16 +45,32 @@ import * as React from "react";
                     <div style={{ marginBottom: '20px' }}>
                         <ColorPicker
                             aria-label="Color Picker"
-                            value={state.selectedColor}
-                            onChange={({ value }) => console.log(value)}
+                            onChange={({ value }) => setState({ selectedColorName: value })}
                         >
-                            <ColorPicker.Item aria-label="white color" value="white" />
                             <ColorPicker.Item
-                                aria-label="light blue color"
-                                value="lightblue"
+                                key={1}
+                                aria-label="white color"
+                                value={PRODUCT_COLORS[1]}
+                                checked={state.selectedColorName === PRODUCT_COLORS[1]}
                             />
-                            <ColorPicker.Item aria-label="third color" value="#ffcc66" />
-                            <ColorPicker.Item aria-label="fourth color" value="#00cc66" />
+                            <ColorPicker.Item
+                                key={2}
+                                aria-label="light blue color"
+                                value={PRODUCT_COLORS[2]}
+                                checked={state.selectedColorName === PRODUCT_COLORS[2]}
+                            />
+                            <ColorPicker.Item
+                                key={3}
+                                aria-label="orange color"
+                                value={PRODUCT_COLORS[3]}
+                                checked={state.selectedColorName === PRODUCT_COLORS[3]}
+                            />
+                            <ColorPicker.Item
+                                key={4}
+                                aria-label="green color"
+                                value={PRODUCT_COLORS[4]}
+                                checked={state.selectedColorName === PRODUCT_COLORS[4]}
+                            />
                         </ColorPicker>
                     </div>
                     <div style={{ marginBottom: '5px' }}>
