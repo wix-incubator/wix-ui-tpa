@@ -1,6 +1,7 @@
-import { configure, addParameters } from '@storybook/react';
+import { configure, addParameters, addDecorator } from '@storybook/react';
 import styleProcessor from 'wix-style-processor';
 import { storySort } from './utils';
+import FocusRingToggle from './addons/FocusRingToggle';
 
 function loadStories() {
   require('../stories');
@@ -22,6 +23,8 @@ addParameters({
     storySort,
   },
 });
+
+addDecorator(FocusRingToggle);
 
 configureStorybook();
 
