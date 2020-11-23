@@ -22,14 +22,14 @@ import * as React from "react";
             <Card.Container className="media">
                 <Image
                     width={400}
-                    height={400}
-                    src="https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg"
-                    alt="Achla Image"
+                    height={520}
+                    src="./product.png"
+                    alt="Product Image"
                 />
             </Card.Container>
             <Card.Container className="info">
                 <div>
-                    <div style={{ marginBottom: '5px' }}>
+                    <div style={{ marginTop: '12px', marginBottom: '5px' }}>
                         <Text typography={TYPOGRAPHY.smallTitle}>Product Name</Text>
                     </div>
                     <div style={{ marginBottom: '20px' }}>
@@ -37,6 +37,7 @@ import * as React from "react";
                     </div>
                     <div style={{ marginBottom: '20px' }}>
                         <ColorPicker
+                            aria-label="Color Picker"
                             value={state.selectedColor}
                             onChange={({ value }) => console.log(value)}
                         >
@@ -67,7 +68,7 @@ import * as React from "react";
                         />
                     </div>
                     <div style={{ marginTop: '20px' }}>
-                        <Button style={{ width: '100%', boxSizing: 'border-box' }} >ADD TO CART</Button>
+                        <Button aria-label="Add To Cart Button" style={{ width: '100%', boxSizing: 'border-box' }} >ADD TO CART</Button>
                     </div>
                 </div>
             </Card.Container>
