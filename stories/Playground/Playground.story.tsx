@@ -1,18 +1,21 @@
 import * as React from 'react';
-import { header, description } from 'wix-storybook-utils/Sections';
+import {description, header} from 'wix-storybook-utils/Sections';
 
 import Playground from 'wix-storybook-utils/Playground';
-import LayoutList from 'wix-ui-icons-common/LayoutList';
-import LayoutListWithPanel from 'wix-ui-icons-common/LayoutListWithPanel';
 
 import { allComponents } from '../utils/allComponents';
 // @ts-ignore
 import exampleCode from '!raw-loader!./example';
+import { Tabs, ALIGNMENT } from '../../src/components/Tabs';
 
-import { SegmentedToggle } from 'wix-style-react';
+const LAYOUT_INDEX_MAP = {
+    0: 'vertical',
+    1: 'horizontal'
+}
 
 const PlaygroundWrapper = () => {
-    const [layout, setLayout] = React.useState('vertical');
+    const [layoutIndex, setLayoutIndex] = React.useState(0);
+    const isHorizontalLayout = layoutIndex === 1;
 
     return (
         <div
@@ -23,32 +26,24 @@ const PlaygroundWrapper = () => {
             }}
         >
             <Playground
-                key={layout}
-                compact={layout === 'horizontal'}
-                initiallyOpen={layout === 'horizontal'}
+                key={LAYOUT_INDEX_MAP[layoutIndex]}
+                compact={isHorizontalLayout}
+                initiallyOpen={isHorizontalLayout}
                 initialCode={exampleCode}
                 scope={allComponents}
                 formatSnippetUrl={id => `${window.parent.location.href}&snippet=${id}`}
             />
 
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <SegmentedToggle
-                    selected={layout}
-                    onClick={(e, value) => setLayout(value)}
-                >
-                    <SegmentedToggle.Button
-                        prefixIcon={<LayoutListWithPanel />}
-                        value="vertical"
-                    >
-                        Vertical layout
-                    </SegmentedToggle.Button>
-                    <SegmentedToggle.Button
-                        value="horizontal"
-                        prefixIcon={<LayoutList />}
-                    >
-                        Horizontal layout
-                    </SegmentedToggle.Button>
-                </SegmentedToggle>
+                <Tabs
+                    alignment={ALIGNMENT.right}
+                    activeTabIndex={layoutIndex}
+                    items={[
+                        { title: 'Vertical layout' },
+                        { title: 'Horizontal layout' }
+                    ]}
+                    onTabClick={(index) => setLayoutIndex(index)}
+                />
             </div>
         </div>
     );
