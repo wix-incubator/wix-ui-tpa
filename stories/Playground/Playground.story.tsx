@@ -25,6 +25,15 @@ const PlaygroundWrapper = () => {
                 margin: `0 calc((100vw / 2 - 100% / 2) * -1 + 5%)`,
             }}
         >
+            <Tabs
+                alignment={ALIGNMENT.left}
+                activeTabIndex={layoutIndex}
+                items={[
+                    { title: 'Vertical layout' },
+                    { title: 'Horizontal layout' }
+                ]}
+                onTabClick={(index) => setLayoutIndex(index)}
+            />
             <Playground
                 key={LAYOUT_INDEX_MAP[layoutIndex]}
                 compact={isHorizontalLayout}
@@ -32,15 +41,6 @@ const PlaygroundWrapper = () => {
                 initialCode={exampleCode}
                 scope={allComponents}
                 formatSnippetUrl={id => `${window.parent.location.href}&snippet=${id}`}
-            />
-            <Tabs
-                alignment={ALIGNMENT.right}
-                activeTabIndex={layoutIndex}
-                items={[
-                    { title: 'Vertical layout' },
-                    { title: 'Horizontal layout' }
-                ]}
-                onTabClick={(index) => setLayoutIndex(index)}
             />
         </div>
     );
