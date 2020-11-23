@@ -20,6 +20,7 @@ import { DialogWiringExample } from './DialogWiringExample';
 import { Dialog } from '../';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Button, PRIORITY } from '../../Button';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -72,7 +73,7 @@ const childrenExamples = [
 export default {
   category: 'Components',
   storyName: 'Dialog',
-  component: Dialog,
+  component: storyComponent(Dialog),
   componentPath: '../Dialog.tsx',
   componentProps: setState => ({
     'data-hook': 'storybook-Dialog',

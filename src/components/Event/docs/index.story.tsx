@@ -18,6 +18,7 @@ import * as EventWiringExampleRaw from '!raw-loader!./EventWiringExample.tsx';
 import * as EventWiringExampleCSSRaw from '!raw-loader!./EventWiringExample.st.css';
 import { EventWiringExample } from './EventWiringExample';
 import { Event } from '../';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -25,7 +26,7 @@ const code = config =>
 export default {
   category: 'Components',
   storyName: 'Event',
-  component: Event,
+  component: storyComponent(Event),
   componentPath: '../Event.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Event',
