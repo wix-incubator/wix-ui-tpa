@@ -90,7 +90,7 @@ import * as React from "react";
                             }
                         />
                     </div>
-                    <div style={{ marginTop: '20px' }}>
+                    <div style={{ marginTop: '16px' }}>
                         <Button aria-label="Add To Cart Button" style={{ width: '100%', boxSizing: 'border-box' }} >ADD TO CART</Button>
                     </div>
                 </div>
