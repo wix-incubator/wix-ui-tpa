@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as UI from 'wix-base-ui/dist/base-ui';
 import styles from './MockSettings.scss';
 import SettingsChangedEvent from '../../mocks/fakeTPAChange.json';
+import { palettes } from './palettes';
 
 export interface IMockSettingsState {
   selectedNumber: any;
@@ -140,7 +141,7 @@ export class MockSettings extends React.PureComponent<
     this.state = {
       selectedNumber: this.getInitialSelectedNumber(wixNumberParams),
       selectedFont: this.getInitialSelectedFont(wixFontParams),
-      selectedPalette: COLOR_PALETTE,
+      selectedPalette: palettes[0],
       selectedColors: this.getInitialSelectedColors(wixColorParams),
     };
   }
@@ -273,7 +274,7 @@ export class MockSettings extends React.PureComponent<
       );
     }
 
-    if (changed === 'color') {
+    if (changed === 'color' || changed === 'palette') {
       SettingsChangedEvent.params.style.colors = this.props.wixColorParams.reduce(
         (obj, item) => {
           const color = this.state.selectedColors[item.wixParam];
@@ -346,6 +347,7 @@ export class MockSettings extends React.PureComponent<
             <div className={styles.palettePicker}>
               <label>Palette Picker</label>
               <UI.ColorPickerPalettePicker
+                palettePresets={palettes}
                 value={this.state.selectedPalette}
                 onChange={this.onPaletteChange}
               />
