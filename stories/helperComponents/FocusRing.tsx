@@ -9,6 +9,6 @@ export default class extends React.PureComponent<FocusRingProps> {
   render() {
     const { active, children } = this.props;
 
-    return <div className={st(active ? classes.root : null)}>{children}</div>;
+    return <div className={st(classes.root, { active })}>{children}</div>;
   }
 }
