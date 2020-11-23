@@ -33,18 +33,15 @@ const PlaygroundWrapper = () => {
                 scope={allComponents}
                 formatSnippetUrl={id => `${window.parent.location.href}&snippet=${id}`}
             />
-
-            <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Tabs
-                    alignment={ALIGNMENT.right}
-                    activeTabIndex={layoutIndex}
-                    items={[
-                        { title: 'Vertical layout' },
-                        { title: 'Horizontal layout' }
-                    ]}
-                    onTabClick={(index) => setLayoutIndex(index)}
-                />
-            </div>
+            <Tabs
+                alignment={ALIGNMENT.right}
+                activeTabIndex={layoutIndex}
+                items={[
+                    { title: 'Vertical layout' },
+                    { title: 'Horizontal layout' }
+                ]}
+                onTabClick={(index) => setLayoutIndex(index)}
+            />
         </div>
     );
 };
