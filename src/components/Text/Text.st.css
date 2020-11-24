@@ -1,66 +1,74 @@
 :import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, font;
+  -st-from: '../../common/formatters.st';
+  -st-named: color, fallback, font;
 }
 
 :vars {
-    /*Constance*/
-    TextColor: color-5;
-    SmallTitleFont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
-    RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-    ListTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '2em'}";
-    LargeTitleFont: "{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}";
-    MobileSmallTitleFont: "{theme: 'Page-title', size: '20px', lineHeight: '1.4em'}";
-    MobileRunningTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.42em'}";
-    MobileListTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.72em'}";
-    MobileLargeTitleFont: "{theme: 'Heading-M', size: '24px', lineHeight: '1.33em'}";
+  /*Constance*/
+  textcolor: color-5;
+  smalltitlefont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
+  runningtextfont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+  listtextfont: "{theme: 'Body-M', size: '16px', lineHeight: '2em'}";
+  largetitlefont: "{theme: 'Heading-M', size: '32px', lineHeight: '1.25em'}";
+  mobilesmalltitlefont: "{theme: 'Page-title', size: '20px', lineHeight: '1.4em'}";
+  mobilerunningtextfont: "{theme: 'Body-M', size: '14px', lineHeight: '1.42em'}";
+  mobilelisttextfont: "{theme: 'Body-M', size: '14px', lineHeight: '1.72em'}";
+  mobilelargetitlefont: "{theme: 'Heading-M', size: '24px', lineHeight: '1.33em'}";
 }
 
 :vars {
-    MainTextColor: --overridable;
-    MainTextFont: --overridable;
+  /*
+    The color of the text instead of the default color set by typography
+    @default color-5
+  */
+  maintextcolor: --overridable;
+  /*
+    The font of the text instead of the default font set by typography
+    @default Depends on the typography prop
+  */
+  maintextfont: --overridable;
 }
 
 .root {
-    -st-states: typography(enum(smallTitle, runningText, listText, largeTitle)), mobile;
+  -st-states: typography(enum(smallTitle, runningText, listText, largeTitle)), mobile;
 }
 
 .root:typography(smallTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(SmallTitleFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(SmallTitleFont)));
 }
 
 .root:typography(runningText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(RunningTextFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(RunningTextFont)));
 }
 
 .root:typography(listText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(ListTextFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(ListTextFont)));
 }
 
 .root:typography(largeTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(LargeTitleFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(LargeTitleFont)));
 }
 
 .root:mobile:typography(smallTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileSmallTitleFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(MobileSmallTitleFont)));
 }
 
 .root:mobile:typography(runningText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileRunningTextFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(MobileRunningTextFont)));
 }
 
 .root:mobile:typography(listText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileListTextFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(MobileListTextFont)));
 }
 
 .root:mobile:typography(largeTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
-    font: fallback(font(value(MainTextFont)), font(value(MobileLargeTitleFont)));
+  color: color(fallback(value(MainTextColor), value(TextColor)));
+  font: fallback(font(value(MainTextFont)), font(value(MobileLargeTitleFont)));
 }

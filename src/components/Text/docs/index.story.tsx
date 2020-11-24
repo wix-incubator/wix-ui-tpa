@@ -1,7 +1,23 @@
-import * as React from 'react';
-
+import {
+  api,
+  code as baseCode,
+  description,
+  divider,
+  header,
+  importExample,
+  playground,
+  tab,
+  tabs,
+  testkit,
+  title,
+} from 'wix-storybook-utils/Sections';
 import { Text, TYPOGRAPHY } from '..';
-import { Examples } from './examples';
+import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import * as examples from './examples';
+
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -18,5 +34,42 @@ export default {
   exampleProps: {
     typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
   },
-  examples: <Examples />,
+  sections: [
+    header(),
+    tabs([
+      tab({
+        title: 'Usage',
+        sections: [
+          description(
+            '`Text` is a component allowing to render a custom text.',
+          ),
+
+          importExample({
+            source: examples.importExample,
+          }),
+
+          divider(),
+
+          title('Examples'),
+
+          ...[
+            {
+              title: 'Basic Usage',
+              source: examples.basic,
+            },
+          ].map(code),
+        ],
+      }),
+
+      ...[
+        { title: 'Playground', sections: [playground()] },
+        { title: 'API', sections: [api()] },
+        {
+          title: 'Style API',
+          sections: [settingsApi()],
+        },
+        { title: 'TestKit', sections: [testkit()] },
+      ].map(tab),
+    ]),
+  ],
 };
