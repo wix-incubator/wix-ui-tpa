@@ -53,9 +53,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(
-              'Badge component is used to display a special content.',
-          ),
+          description('Badge component is used to display a special content.'),
 
           importExample({
             source: examples.importExample,
