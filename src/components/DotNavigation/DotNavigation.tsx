@@ -96,6 +96,9 @@ const getFiveFromStart = (start: number) => [
   start + 4,
 ];
 
+/**
+ * A dot navigation component
+ */
 export class DotNavigation extends React.Component<
   DotNavigationProps,
   DotNavigationState

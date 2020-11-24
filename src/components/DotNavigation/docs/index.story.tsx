@@ -13,6 +13,7 @@ import {
   testkit,
   title,
   description,
+  example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
@@ -20,10 +21,16 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawSource from '!raw-loader!./DotNavigationExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./DotNavigationExtendedExample.st.css';
 import { DotNavigationExtendedExample } from './DotNavigationExtendedExample';
-import * as Readme from '../README.md';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
+
+const example = (config, extraContext = {}) =>
+  baseExample({
+    components: { ...allComponents, ...extraContext },
+    compact: true,
+    ...config,
+  });
 
 export default {
   category: 'Components',
@@ -45,7 +52,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
+          description(
+            'A dot navigation component. Usually used to show numbering in slideshows.',
+          ),
 
           importExample({
             source: examples.importExample,
@@ -56,30 +65,47 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Default Example', source: examples.example },
-            { title: 'Three Dot Example', source: examples.threeDotExamle },
+            {
+              title: 'Default Example',
+              description: 'By default the DotNavigation shows 5 dots',
+              source: examples.example,
+            },
+            {
+              title: 'Three Dot Example',
+              description: 'The number of dots can be less than 5 though',
+              source: examples.threeDotExamle,
+            },
             {
               title: 'Ten Dot Example',
+              description:
+                'When there are more than 5 items, the DotNavigation shows a maximum of 5 dots, but with an indication that there are more to navigate to',
               source: examples.tenDotExamle,
             },
-            { title: 'Light Example', source: examples.lightExample },
+            {
+              title: 'Light Example',
+              description: 'The DotNavigation has a light theme',
+              source: examples.lightExample,
+            },
             {
               title: 'Light Example with Safety Border',
+              description:
+                'A "safety border" can be added to the dots, in case the background has a similar color as the dots',
               source: examples.lightExampleWithSafetyBorder,
             },
             {
               title: 'Default Example with currentIndex = 2',
+              description: 'The current selected index can be configured by a prop',
               source: examples.defaultExampleWithCurrentIndex,
             },
-          ].map(code),
+          ].map(example),
         ],
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
