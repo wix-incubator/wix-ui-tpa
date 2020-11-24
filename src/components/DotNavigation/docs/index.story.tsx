@@ -8,7 +8,6 @@ import {
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
@@ -21,9 +20,6 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawSource from '!raw-loader!./DotNavigationExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./DotNavigationExtendedExample.st.css';
 import { DotNavigationExtendedExample } from './DotNavigationExtendedExample';
-
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -94,7 +90,8 @@ export default {
             },
             {
               title: 'Default Example with currentIndex = 2',
-              description: 'The current selected index can be configured by a prop',
+              description:
+                'The current selected index can be configured by a prop',
               source: examples.defaultExampleWithCurrentIndex,
             },
           ].map(example),
