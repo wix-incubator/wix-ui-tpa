@@ -44,8 +44,16 @@ export default {
 
 
                     importExample(
-                        "import { Icons } from 'wix-ui-tpa';\n" +
-                        "<Icons.Calendar />",
+                        `import { Icons } from 'wix-ui-tpa';
+                        ...
+                        render() {
+                          ...
+                          return (
+                            ...  
+                            <Icons.Calendar />,
+                            ...
+                          );
+                        }`
                     ),
 
                     importExample(
