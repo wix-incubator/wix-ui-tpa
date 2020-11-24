@@ -4,6 +4,7 @@ import { TPAComponentsProvider } from '../../src/components/TPAComponentsConfig'
 // tslint:disable:react-hooks-nesting
 export const storyComponent = Component => {
   return props => {
+    const { mobile = false, ...rest } = props;
     const [rtl, setRtl] = React.useState(false);
     const rootRef = React.useRef<HTMLDivElement>();
 
@@ -30,8 +31,8 @@ export const storyComponent = Component => {
 
     return (
       <div ref={rootRef}>
-        <TPAComponentsProvider value={{ mobile: false, rtl }}>
-          <Component {...props} />
+        <TPAComponentsProvider value={{ mobile, rtl }}>
+          <Component {...rest} />
         </TPAComponentsProvider>
       </div>
     );
