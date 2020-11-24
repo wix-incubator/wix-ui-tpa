@@ -11,6 +11,11 @@ export interface AvatarDriver extends CoreAvatarDriver {
 export const avatarDriverFactory = (base: UniDriver): AvatarDriver => {
   return {
     ...coreAvatarDriverFactory(base),
+
+    /**
+     * Gets the src
+     * @return {Promise<string>}
+     */
     src: async () => {
       let src = '';
 

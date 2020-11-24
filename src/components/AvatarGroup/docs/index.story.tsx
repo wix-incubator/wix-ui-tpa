@@ -3,6 +3,7 @@ import * as React from 'react';
 import { AvatarGroup } from '../';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -63,6 +64,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+                'The Avatar group is made up of a group of avatars and an optional text link. Content in text link can be customized to the product\'s intent.'
+          ),
           importExample({
             source: examples.importExample,
           }),
@@ -81,10 +85,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

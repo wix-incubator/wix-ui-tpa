@@ -49,7 +49,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-              'Add Item is a component used to add new items to an existing items list.',
+            'Add Item is a component used to add new items to an existing items list.',
           ),
 
           importExample({
