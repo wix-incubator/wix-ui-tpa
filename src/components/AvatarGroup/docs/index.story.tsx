@@ -65,7 +65,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-                'The Avatar group is made up of a group of avatars and an optional text link. Content in text link can be customized to the product\'s intent.'
+            "The Avatar group is made up of a group of avatars and an optional text link. Content in text link can be customized to the product's intent.",
           ),
           importExample({
             source: examples.importExample,
