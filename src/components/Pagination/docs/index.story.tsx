@@ -15,11 +15,12 @@ import {
 
 import { Pagination } from '../Pagination';
 import { Examples } from './Examples';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 export default {
   category: 'Components',
   storyName: 'Pagination',
-  component: Pagination,
+  component: storyComponent(Pagination),
   componentPath: '../Pagination.tsx',
 
   componentProps: setState => ({

@@ -17,6 +17,7 @@ import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { TextAreaConnected as TextArea } from './connected';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -24,7 +25,7 @@ const code = config =>
 export default {
   category: 'Components',
   storyName: 'TextArea',
-  component: TextArea,
+  component: storyComponent(TextArea),
   componentPath: '../TextArea.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-TextArea',

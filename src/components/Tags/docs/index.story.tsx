@@ -20,6 +20,7 @@ import { TagsWiringExample } from './TagsWiringExample';
 import { Tags } from '../';
 import { ALIGNMENT, SIZE, SKIN } from '../constants';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -38,49 +39,23 @@ const exampleItems = [
 ];
 
 function ExampleTags(props) {
-  const [rtl, setRtl] = React.useState(false);
   const [update, forceUpdate] = React.useState(false);
-  const rootRef = React.useRef<HTMLDivElement>();
-
-  React.useEffect(() => {
-    if (rootRef && rootRef.current) {
-      const observer = new MutationObserver(mutationsList => {
-        mutationsList.map(mutation => {
-          if (mutation.attributeName === 'dir') {
-            setRtl(
-              (rootRef.current.parentNode as any).getAttribute('dir') === 'rtl',
-            );
-          }
-        });
-      });
-
-      observer.observe(rootRef.current.parentNode, { attributes: true });
-
-      return function cleanup() {
-        observer.disconnect();
-      };
-    }
-  }, [rootRef]);
 
   return (
-    <div ref={rootRef}>
-      <TPAComponentsProvider value={{ mobile: false, rtl }}>
-        <Tags
-          {...props}
-          onClick={item => {
-            item.checked = !item.checked;
-            forceUpdate(!update);
-          }}
-        />
-      </TPAComponentsProvider>
-    </div>
+    <Tags
+      {...props}
+      onClick={item => {
+        item.checked = !item.checked;
+        forceUpdate(!update);
+      }}
+    />
   );
 }
 
 export default {
   category: 'Components',
   storyName: 'Tags',
-  component: ExampleTags,
+  component: storyComponent(ExampleTags),
   componentPath: '../Tags.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Tags',
