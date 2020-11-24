@@ -57,8 +57,16 @@ export default {
                     ),
 
                     importExample(
-                        "import { ReactComponent as Calendar } from 'wix-ui-tpa/dist/src/assets/icons/Calendar.svg';\n" +
-                        "<Calendar />",
+                        `import { ReactComponent as Calendar } from 'wix-ui-tpa/dist/src/assets/icons/Calendar.svg';
+                        ...
+                        render() {
+                          ...
+                          return (
+                            ...  
+                            <Calendar />,
+                            ...
+                          );
+                        }`
                     ),
 
                     divider(),
