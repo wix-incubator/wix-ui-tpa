@@ -14,7 +14,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 import { BadgeExtendedExample } from './BadgeExtendedExample';
@@ -105,7 +105,7 @@ return (
           sections: [settingsApi()],
         },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         {
           title: 'Settings Panel',
           sections: [
