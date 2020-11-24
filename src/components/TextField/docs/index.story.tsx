@@ -12,11 +12,15 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as examples from './examples';
 import { TextFieldExtendedExample } from './TextFieldExtendedExample';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as textFieldRawSource from '!raw-loader!./TextFieldExtendedExample.tsx';
 import * as textFieldCSSRawSource from '!raw-loader!./TextFieldExtendedExample.st.css';
@@ -61,6 +65,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`TextField` is a component allowing to render a field to input text.',
+          ),
           importExample({
             source: examples.importExample,
           }),
@@ -148,10 +155,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

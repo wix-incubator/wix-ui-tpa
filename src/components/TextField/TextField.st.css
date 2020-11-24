@@ -19,8 +19,8 @@
 }
 
 
+/*Defaults*/
 :vars {
-    /** defaults */
     defaultMainBorderColor: color-5;
     defaultMainBackgroundColor: color-1;
     defaultMainTextColor: color-5;
@@ -28,10 +28,27 @@
     defaultMainTextFont: "{theme: 'Body-M', size: '16px'}";
 }
 
+/*Overrides*/
 :vars {
+    /*
+      The color of the input border
+      @default color-5
+    */
     MainBorderColor: --overridable;
+    /*
+      The color of the background of the input
+      @default color-1
+    */
     MainBackgroundColor: --overridable;
-    MainTextColor: --overridable;
+    /*
+      The color of the text/placeholder. 60% opacity when disabled and for the placeholder
+      @default color-5
+    */
+    MainTextColor: color-5;
+    /*
+      The font of the text/placeholder
+      @default "{theme: 'Body-M', size: '16px'}"
+    */
     MainTextFont: --overridable;
 }
 
