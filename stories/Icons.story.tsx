@@ -29,7 +29,7 @@ export default {
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<Anonymous />*/}
+                                <Anonymous />
                             </div>
                             <div>Anonymous - todo: check it out </div>
                         </div>
@@ -88,12 +88,6 @@ export default {
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <Minus />
-                            </div>
-                            <div>Minus</div>
-                        </div>
-                        <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
                                 <PlusS />
                             </div>
                             <div>Plus Small</div>
@@ -140,27 +134,27 @@ export default {
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<ArrowBottom />*/}
+                                <ArrowBottom />
                             </div>
-                            <div>ArrowBottom- todo: check it out</div>
+                            <div>ArrowBottom</div>
                         </div>
                          <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<ArrowLeft />*/}
+                                <ArrowLeft />
                             </div>
-                            <div>ArrowLeft- todo: check it out</div>
+                            <div>ArrowLeft</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<ArrowRight />*/}
+                                <ArrowRight />
                             </div>
-                            <div>ArrowRight- todo: check it out</div>
+                            <div>ArrowRight</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<ArrowTop />*/}
+                                <ArrowTop />
                             </div>
-                            <div>ArrowTop- todo: check it out</div>
+                            <div>ArrowTop</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
                             <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
