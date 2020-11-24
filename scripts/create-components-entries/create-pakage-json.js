@@ -10,6 +10,5 @@ module.exports.createJsonContent = ({compName, compPath}) => ({
   typings: path.join(commonJsPath({compPath}), 'index.d.ts'),
   browser: {
     './index.st.css': './index.es.st.css',
-    './index.js': path.join(esmPath({compPath}), 'index.js'),
   },
 });
