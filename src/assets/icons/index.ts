@@ -18,5 +18,24 @@ export { ReactComponent as ArrowBottom } from './ArrowBottom.svg';
 export { ReactComponent as ArrowLeft } from './ArrowLeft.svg';
 export { ReactComponent as ArrowRight } from './ArrowRight.svg';
 export { ReactComponent as ArrowTop } from './ArrowTop.svg';
+export { ReactComponent as ChevronLeft } from './ChevronLeft.svg';
+export { ReactComponent as ChevronRight } from './ChevronRight.svg';
+
+export { ReactComponent as CopyLink } from './Social/CopyLink.svg';
+export { ReactComponent as Facebook } from './Social/Facebook.svg';
+export { ReactComponent as GooglePodcast } from './Social/GooglePodcast.svg';
+export { ReactComponent as Instagram } from './Social/Instagram.svg';
+export { ReactComponent as Linkedin } from './Social/Linkedin.svg';
+export { ReactComponent as Pinterest } from './Social/Pinterest.svg';
+export { ReactComponent as Podcast } from './Social/Podcast.svg';
+export { ReactComponent as Rss } from './Social/Rss.svg';
+export { ReactComponent as Soundcloud } from './Social/Soundcloud.svg';
+export { ReactComponent as Spotify } from './Social/Spotify.svg';
+export { ReactComponent as Stitcher } from './Social/Stitcher.svg';
+export { ReactComponent as Tumblr } from './Social/Tumblr.svg';
+export { ReactComponent as Twitter } from './Social/Twitter.svg';
+export { ReactComponent as Vimeo } from './Social/Vimeo.svg';
+export { ReactComponent as Youtube } from './Social/Youtube.svg';
+
 import * as SocialIcons from './Social';
 export { SocialIcons };

@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import {
+    description,
+    importExample,
     header,
     divider,
     tab,
@@ -24,35 +26,62 @@ export default {
             tab({
                 title: 'Icon Inventory',
                 sections: [
+                    description({
+                        title: 'Importing the icons',
+                        text: [
+                            'We are using the ',
+                            <a href="https://www.npmjs.com/package/@svgr/webpack" >
+                                svgr plugin
+                            </a>,
+                            ' for svg imports which allow you to import the svg file directly. ',
+                            'If you have ',
+                            <a href="https://webpack.js.org/guides/tree-shaking/" >
+                                Tree Shaking
+                            </a>,
+                            ' in your application use the first option otherwise use the second option.'
+                        ],
+                    }),
+
+
+                    importExample(
+                        "import { Icons } from 'wix-ui-tpa';\n" +
+                        "<Icons.Calendar />",
+                    ),
+
+                    importExample(
+                        "import { ReactComponent as Calendar } from 'wix-ui-tpa/dist/src/assets/icons/Calendar.svg';\n" +
+                        "<Calendar />",
+                    ),
+
                     divider(),
                     title('General'),
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Anonymous />
                             </div>
-                            <div>Anonymous - todo: check it out </div>
+                            <div>Anonymous</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Calendar />
                             </div>
                             <div>Calendar</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Camera />
                             </div>
                             <div>Camera</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Heart />
                             </div>
                             <div>Heart</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Star />
                             </div>
                             <div>Star</div>
@@ -63,55 +92,55 @@ export default {
                     title('Actions'),
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Check />
                             </div>
                             <div>Check</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <CheckSuccess />
                             </div>
                             <div>CheckSuccess</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Close />
                             </div>
                             <div>Close</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Minus />
                             </div>
                             <div>Minus</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <PlusS />
                             </div>
                             <div>Plus Small</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Plus />
                             </div>
                             <div>Plus</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <PlusL />
                             </div>
                             <div>Plus Large</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <PlusXL />
                             </div>
                             <div>Plus XLarge</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Share />
                             </div>
                             <div>Share</div>
@@ -122,7 +151,7 @@ export default {
                     title('Notifications'),
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <Error />
                             </div>
                             <div>Error</div>
@@ -133,58 +162,46 @@ export default {
                     title('Arrows'),
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <ArrowBottom />
                             </div>
                             <div>ArrowBottom</div>
                         </div>
                          <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <ArrowLeft />
                             </div>
                             <div>ArrowLeft</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <ArrowRight />
                             </div>
                             <div>ArrowRight</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <ArrowTop />
                             </div>
                             <div>ArrowTop</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <CaretDown />
                             </div>
                             <div>CaretDown</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<ChevronLeft />*/}
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <ChevronLeft />
                             </div>
-                            <div>ChevronLeft - todo: check it out</div>
+                            <div>ChevronLeft</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<ChevronRight />*/}
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <ChevronRight />
                             </div>
-                            <div>ChevronRight - todo: check it out</div>
-                        </div>
-                        <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<DoubleChevronLeft />*/}
-                            </div>
-                            <div>DoubleChevronLeft - todo: check it out</div>
-                        </div>
-                        <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                {/*<DoubleChevronRight />*/}
-                            </div>
-                            <div>DoubleChevronRight - todo: check it out</div>
+                            <div>ChevronRight</div>
                         </div>
                       </div>`}
                     ),
@@ -192,7 +209,7 @@ export default {
                     title('Media'),
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
                                 <SocialIcons.CopyLink />
                             </div>
                             <div>Copy Link</div>
@@ -203,98 +220,98 @@ export default {
                     title('Socials'),
                     code({ title: '', source: `<div style={{display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr"}}>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.CopyLink />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <CopyLink />
                             </div>
                             <div>Copy Link</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Facebook />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Facebook />
                             </div>
                             <div>FB</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.GooglePodcast />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <GooglePodcast />
                             </div>
                             <div>Google Podcast</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Instagram />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Instagram />
                             </div>
                             <div>Instagram</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Linkedin />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Linkedin />
                             </div>
                             <div>LinkedIn</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Pinterest />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Pinterest />
                             </div>
                             <div>Pinterest</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Podcast />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Podcast />
                             </div>
                             <div>Podcast</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.GooglePodcast />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <GooglePodcast />
                             </div>
                             <div>Google Podcast</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Rss />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Rss />
                             </div>
                             <div>RSS</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Soundcloud />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Soundcloud />
                             </div>
                             <div>SoundCloud</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Spotify />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Spotify />
                             </div>
                             <div>Spotify</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Stitcher />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Stitcher />
                             </div>
                             <div>Stitcher</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Tumblr />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Tumblr />
                             </div>
                             <div>Tumblr</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Twitter />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Twitter />
                             </div>
                             <div>Twitter</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Vimeo />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Vimeo />
                             </div>
                             <div>Vimeo</div>
                         </div>
                         <div style={{display: "flex",flexDirection: "column", alignItems: "center", margin: "5px"}}>
-                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#F7F7F7"}}>
-                                <SocialIcons.Youtube />
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: " 125px", width: "125px", backgroundColor: "#e6e6e6"}}>
+                                <Youtube />
                             </div>
                             <div>Youtube</div>
                         </div>
