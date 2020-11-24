@@ -19,6 +19,7 @@ import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';
 import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -36,7 +37,7 @@ function generateItem(props) {
 export default {
   category: 'Components',
   storyName: 'ActionsMenuLayout',
-  component: ActionsMenuLayout,
+  component: storyComponent(ActionsMenuLayout),
   componentPath: '../ActionsMenuLayout.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ActionsMenuLayout',

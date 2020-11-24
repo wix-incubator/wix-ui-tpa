@@ -20,6 +20,7 @@ import * as {%ComponentName%}WiringExampleRaw from '!raw-loader!./{%ComponentNam
 import * as {%ComponentName%}WiringExampleCSSRaw from '!raw-loader!./{%ComponentName%}WiringExample.st.css';
 import { {%ComponentName%}WiringExample } from './{%ComponentName%}WiringExample';
 import { {%ComponentName%} } from '../';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -27,7 +28,7 @@ const code = config =>
 export default {
   category: 'Components',
   storyName: '{%ComponentName%}',
-  component: {%ComponentName%},
+  component: storyComponent({%ComponentName%}),
   componentPath: '../{%ComponentName%}.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-{%ComponentName%}',

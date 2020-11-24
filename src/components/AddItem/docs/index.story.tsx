@@ -18,6 +18,7 @@ import * as AddItemWiringExampleRaw from '!raw-loader!./AddItemWiringExample.tsx
 import * as AddItemWiringExampleCSSRaw from '!raw-loader!./AddItemWiringExample.st.css';
 import { AddItemWiringExample } from './AddItemWiringExample';
 import { AddItem, ALIGNMENT, ICON_SIZE, DIRECTION } from '../';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -25,7 +26,7 @@ const code = config =>
 export default {
   category: 'Components',
   storyName: 'AddItem',
-  component: AddItem,
+  component: storyComponent(AddItem),
   componentPath: '../AddItem.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-AddItem',

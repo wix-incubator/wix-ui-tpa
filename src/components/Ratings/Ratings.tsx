@@ -69,25 +69,27 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
     currentFocus: -1,
   };
 
-  getDataAttributes() {
+  _getDataAttributes() {
+    const { currentHovered } = this.state;
     const { disabled, error, size } = this.props;
 
     return {
       [RATINGS_DATA_KEYS.Disabled]: disabled,
       [RATINGS_DATA_KEYS.Error]: error,
       [RATINGS_DATA_KEYS.Size]: size,
+      [RATINGS_DATA_KEYS.Hovered]: currentHovered + 1,
     };
   }
 
-  handleHoverIcon = (idx: number) => {
+  _handleHoverIcon = (idx: number) => {
     this.setState({ currentHovered: idx });
   };
 
-  handleUnhoverIcon = () => {
+  _handleUnHoverIcon = () => {
     this.setState({ currentHovered: -1 });
   };
 
-  onClick = (idx: number) => {
+  _onClick = (idx: number) => {
     const { mode, onSelect } = this.props;
 
     if (mode === Mode.Input && onSelect) {
@@ -150,7 +152,6 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
   render() {
     const {
       value,
-      onSelect,
       disabled,
       error,
       size,
@@ -174,7 +175,7 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
           { disabled, error, size, mode, layout },
           className,
         )}
-        {...this.getDataAttributes()}
+        {...this._getDataAttributes()}
         data-hook={this.props['data-hook']}
       >
         <div
@@ -197,12 +198,12 @@ export class Ratings extends React.Component<RatingsProps, RatingsState> {
                 checkedIcon={content}
                 checked={checked}
                 disabled={disabled && mode !== Mode.Display}
-                onChange={() => this.onClick(idx + 1)}
+                onChange={() => this._onClick(idx + 1)}
                 name={this.props.name}
                 className={st(classes.icon, { checked })}
                 data-hook={RATINGS_DATA_HOOKS.IconWrapper}
-                onHover={() => this.handleHoverIcon(idx)}
-                onIconBlur={this.handleUnhoverIcon}
+                onHover={() => this._handleHoverIcon(idx)}
+                onIconBlur={this._handleUnHoverIcon}
               />
             );
           })}
