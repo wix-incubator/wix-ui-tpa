@@ -1,89 +1,89 @@
 :import {
-  -st-from: '../../common/formatters.st';
-  -st-named: color, fallback, font, applyOpacity;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 :import {
-  -st-from: 'wix-ui-core/index.st.css';
-  -st-named: ToggleSwitch, ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ToggleSwitch, ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
 }
 
 /*Defaults*/
 :vars {
-  defaultbasecolor: color(color-5);
-  defaultselectedcolor: color(color-8);
-  defaultknobcolor: color(color-1);
-  defaultdisabledcolor: applyOpacity(color(color-3), 0.9);
-  defaulttransitionduration: 0.2s;
+    DefaultBaseColor: color(color-5);
+    DefaultSelectedColor: color(color-8);
+    DefaultKnobColor: color(color-1);
+    DefaultDisabledColor: applyOpacity(color(color-3), 0.9);
+    DefaultTransitionDuration: .2s;
 }
 
 /*Overrides*/
 :vars {
-  /* The color of the track background */
-  basecolor: --overridable;
-  /* The color of the toggle when it is on */
-  selectedcolor: --overridable;
-  /* The background color of the knob */
-  knobcolor: --overridable;
-  /* The color of the toggle when disabled */
-  disabledcolor: --overridable;
+    /* The color of the track background */
+    BaseColor: --overridable;
+    /* The color of the toggle when it is on */
+    SelectedColor: --overridable;
+    /* The background color of the knob */
+    KnobColor: --overridable;
+    /* The color of the toggle when disabled */
+    DisabledColor: --overridable;
 }
 
 :vars {
-  usedbasecolor: color(fallback(value(BaseColor), value(DefaultBaseColor)));
-  usedselectedcolor: color(fallback(value(SelectedColor), value(DefaultSelectedColor)));
-  usedknobcolor: color(fallback(value(KnobColor), value(DefaultKnobColor)));
-  useddisabledcolor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
+    UsedBaseColor: color(fallback(value(BaseColor), value(DefaultBaseColor)));
+    UsedSelectedColor: color(fallback(value(SelectedColor), value(DefaultSelectedColor)));
+    UsedKnobColor: color(fallback(value(KnobColor), value(DefaultKnobColor)));
+    UsedDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
 }
 
 .root {
-  -st-extends: ToggleSwitch;
-  -st-mixin: ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
+    -st-extends: ToggleSwitch;
+    -st-mixin: ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
 
-  color: value(UsedBaseColor);
-  opacity: 0.7;
-  transition: all value(DefaultTransitionDuration) ease;
+    color: value(UsedBaseColor);
+    opacity: .7;
+    transition: all value(DefaultTransitionDuration) ease;
 }
 
 .root::track {
-  background-color: value(UsedBaseColor);
-  transition-duration: value(DefaultTransitionDuration);
+    background-color: value(UsedBaseColor);
+    transition-duration: value(DefaultTransitionDuration);
 }
 
 .root::knob {
-  background-color: value(UsedKnobColor);
-  transition-duration: value(DefaultTransitionDuration);
+    background-color: value(UsedKnobColor);
+    transition-duration: value(DefaultTransitionDuration);
 }
 
 .root:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .root:checked {
-  color: value(UsedSelectedColor);
-  opacity: 1;
+    color: value(UsedSelectedColor);
+    opacity: 1;
 }
 
 .root:checked::track {
-  background-color: value(UsedSelectedColor);
+    background-color: value(UsedSelectedColor);
 }
 
 .root:checked:hover {
-  opacity: 0.7;
+    opacity: .7;
 }
 
 .root:disabled,
 .root:disabled:hover,
 .root:disabled:checked,
 .root:disabled:checked:hover {
-  opacity: 1;
-  color: value(UsedDisabledColor);
+    opacity: 1;
+    color: value(UsedDisabledColor);
 }
 
 .root:disabled::track {
-  background-color: value(UsedDisabledColor);
+    background-color: value(UsedDisabledColor);
 }
 
 .root:disabled::knob {
-  background-color: applyOpacity(color(color-1), 0.6);
+    background-color: applyOpacity(color(color-1), 0.6);
 }

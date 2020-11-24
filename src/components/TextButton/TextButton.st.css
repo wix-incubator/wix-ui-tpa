@@ -1,93 +1,93 @@
 :import {
-  -st-from: 'wix-ui-core/index.st.css';
-  -st-named: ButtonNext;
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: ButtonNext;
 }
 
 :import {
-  -st-from: '../../common/formatters.st';
-  -st-named: color, fallback, font, applyOpacity;
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
 }
 
 /*Defaults*/
 :vars {
-  primarycolor: color-8;
-  secondarycolor: color-5;
-  linkcolor: color-5;
-  disabledcolor: color-3;
-  defaultfont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-  mobiledefaultfont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
+    PrimaryColor: color-8;
+    SecondaryColor: color-5;
+    LinkColor: color-5;
+    DisabledColor: color-3;
+    DefaultFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    MobileDefaultFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
 
 /*Overrides*/
 :vars {
-  /* The color of the text instead of the default */
-  maintextcolor: --overridable;
-  /* The font of the text instead of the default font */
-  maintextfont: --overridable;
+    /* The color of the text instead of the default */
+    MainTextColor: --overridable;
+    /* The font of the text instead of the default font */
+    MainTextFont: --overridable;
 }
 
 .root {
-  -st-extends: ButtonNext;
-  -st-states: priority(enum(link, primary, secondary)), mobile;
-  /*css goes here*/
-  background-color: transparent;
-  text-decoration: none;
-  border: none;
-  padding: 0;
-  font: fallback(font(value(MainTextFont)), font(value(DefaultFont)));
+    -st-extends: ButtonNext;
+    -st-states: priority(enum(link, primary, secondary)), mobile;
+    /*css goes here*/
+    background-color: transparent;
+    text-decoration: none;
+    border: none;
+    padding: 0;
+    font: fallback(font(value(MainTextFont)), font(value(DefaultFont)))
 }
 
 .root:mobile {
-  font: fallback(font(value(MainTextFont)), font(value(MobileDefaultFont)));
+    font: fallback(font(value(MainTextFont)), font(value(MobileDefaultFont)))
 }
 
 /* Primary */
 
 :vars {
-  primarytextcolor: color(fallback(value(MainTextColor), value(PrimaryColor)));
+    PrimaryTextColor: color(fallback(value(MainTextColor), value(PrimaryColor)));
 }
 
 .root:priority(primary) {
-  color: value(PrimaryTextColor);
+    color: value(PrimaryTextColor);
 }
 
 .root:priority(primary):active,
 .root:priority(primary):focus,
 .root:priority(primary):hover {
-  color: applyOpacity(value(PrimaryTextColor), 0.6);
+    color: applyOpacity(value(PrimaryTextColor), 0.6);
 }
 
 /* Secondary */
 
 :vars {
-  secondarytextcolor: color(fallback(value(MainTextColor), value(SecondaryColor)));
+    SecondaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
 }
 
 .root:priority(secondary) {
-  color: value(SecondaryTextColor);
+    color: value(SecondaryTextColor);
 }
 
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
-  color: applyOpacity(value(SecondaryTextColor), 0.6);
+    color: applyOpacity(value(SecondaryTextColor), 0.6);
 }
 
 /* Link */
 
 :vars {
-  linktextcolor: color(fallback(value(MainTextColor), value(LinkColor)));
+    LinkTextColor: color(fallback(value(MainTextColor), value(LinkColor)));
 }
 
 .root:priority(link) {
-  color: value(LinkTextColor);
-  text-decoration: underline;
+    color: value(LinkTextColor);
+    text-decoration: underline;
 }
 
 .root:priority(link):active,
 .root:priority(link):focus,
 .root:priority(link):hover {
-  color: applyOpacity(value(LinkTextColor), 0.6);
+    color: applyOpacity(value(LinkTextColor), 0.6);
 }
 
 /* Disabled */
@@ -95,5 +95,5 @@
 .root:priority(primary):disabled,
 .root:priority(link):disabled,
 .root:priority(secondary):disabled {
-  color: color(value(DisabledColor));
+    color: color(value(DisabledColor))
 }
