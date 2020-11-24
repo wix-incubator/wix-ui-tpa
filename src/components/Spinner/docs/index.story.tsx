@@ -14,6 +14,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as SpinnerWiringExampleRaw from '!raw-loader!./SpinnerWiringExample.tsx';
 import * as SpinnerWiringExampleCSSRaw from '!raw-loader!./SpinnerWiringExample.st.css';
 import { SpinnerWiringExample } from './SpinnerWiringExample';
@@ -75,6 +76,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

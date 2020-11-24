@@ -16,6 +16,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./ToggleSwitchExtensionExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ToggleSwitchExtensionExample.st.css';
 import { ToggleSwitchExtensionExample } from './ToggleSwitchExtensionExample';
@@ -56,6 +57,10 @@ export default {
       tab({
         title: 'API',
         sections: [api()],
+      }),
+      tab({
+        title: 'Style API',
+        sections: [settingsApi()],
       }),
       tab({
         title: 'TestKit',

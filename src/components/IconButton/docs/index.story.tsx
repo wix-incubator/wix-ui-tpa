@@ -17,6 +17,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
 import { IconButtonExtendedExample } from './IconButtonExtendedExample';
@@ -75,6 +76,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {
