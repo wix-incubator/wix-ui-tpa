@@ -14,6 +14,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as FloatingDropdownWiringExampleRaw from '!raw-loader!./FloatingDropdownWiringExample.tsx';
 import * as FloatingDropdownWiringExampleCSSRaw from '!raw-loader!./FloatingDropdownWiringExample.st.css';
 import { FloatingDropdownWiringExample } from './FloatingDropdownWiringExample';
@@ -68,6 +69,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

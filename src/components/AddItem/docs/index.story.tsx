@@ -14,6 +14,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as AddItemWiringExampleRaw from '!raw-loader!./AddItemWiringExample.tsx';
 import * as AddItemWiringExampleCSSRaw from '!raw-loader!./AddItemWiringExample.st.css';
 import { AddItemWiringExample } from './AddItemWiringExample';
@@ -66,6 +67,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

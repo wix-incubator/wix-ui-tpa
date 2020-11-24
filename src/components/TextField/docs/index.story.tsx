@@ -17,6 +17,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as examples from './examples';
 import { TextFieldExtendedExample } from './TextFieldExtendedExample';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as textFieldRawSource from '!raw-loader!./TextFieldExtendedExample.tsx';
 import * as textFieldCSSRawSource from '!raw-loader!./TextFieldExtendedExample.st.css';
 import { ReactComponent as CalendarIcon } from '../../../assets/icons/Calendar.svg';
@@ -148,6 +149,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

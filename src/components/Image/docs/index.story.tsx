@@ -12,6 +12,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { Image } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as examples from './examples';
 
 const code = config =>
@@ -78,6 +79,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),
