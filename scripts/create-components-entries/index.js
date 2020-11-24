@@ -5,7 +5,7 @@ const {commonJsPath, esmPath} = require('./common');
 const {createJsonContent} = require('./create-pakage-json');
 
 module.exports.run = async ({componentsFolder}) => {
-  const components = require('../../../.wuf/components.json');
+  const components = require('../../.wuf/components.json');
   const componentsNames = Object.keys(components);
   const entryPath = path.join(process.cwd(), componentsFolder);
 
