@@ -14,6 +14,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as CopyUrlButtonWiringExampleRaw from '!raw-loader!./CopyUrlButtonWiringExample.tsx';
 import * as CopyUrlButtonWiringExampleCSSRaw from '!raw-loader!./CopyUrlButtonWiringExample.st.css';
 import { CopyUrlButtonWiringExample } from './CopyUrlButtonWiringExample';
@@ -60,6 +61,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

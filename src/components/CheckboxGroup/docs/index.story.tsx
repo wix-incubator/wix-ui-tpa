@@ -15,6 +15,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawSource from '!raw-loader!./CheckboxGroupExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxGroupExtendedExample.st.css';
@@ -86,6 +87,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

@@ -21,10 +21,17 @@ import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExamp
 import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';
 import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 function generateItem(props) {
-  return <ActionsMenuLayout.Item key={props.content} onClick={() => alert('click')} {...props} />;
+  return (
+    <ActionsMenuLayout.Item
+      key={props.content}
+      onClick={() => alert('click')}
+      {...props}
+    />
+  );
 }
 
 export default {
