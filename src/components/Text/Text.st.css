@@ -3,8 +3,8 @@
   -st-named: color, fallback, font;
 }
 
+/*Defaults*/
 :vars {
-  /*Constance*/
   textcolor: color-5;
   smalltitlefont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
   runningtextfont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
@@ -16,6 +16,7 @@
   mobilelargetitlefont: "{theme: 'Heading-M', size: '24px', lineHeight: '1.33em'}";
 }
 
+/*Overrides*/
 :vars {
   /*
     The color of the text instead of the default color set by typography
