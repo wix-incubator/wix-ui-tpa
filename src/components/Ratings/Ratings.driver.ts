@@ -25,12 +25,10 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
   const inputOptionDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOption}"]`;
   const inputOptionCurrentDatahook = `[data-hook="${RATINGS_DATA_HOOKS.InputOptionCurrent}"]`;
   const ratingInfoDatahook = `[data-hook="${RATINGS_DATA_HOOKS.RatingInfo}"]`;
-  const filledColor = 'rgb(0, 185, 232)';
 
   const getStarInput = (idx: number): UniDriver =>
     base.$$(`${iconDatahook}`).get(idx);
 
-  const getStarIcons = (): UniDriverList => base.$$(`${iconDatahook} svg path`);
   const getLabel = (): UniDriver => base.$(inputOptionDatahook);
 
   return {
@@ -57,15 +55,9 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
       return getStarInput(idx - 1).hover();
     },
     async getHoveredStars() {
-      const icons = getStarIcons();
+      const hoveredCount = await base.attr(RATINGS_DATA_KEYS.Hovered);
 
-      const filtered = icons.filter(async icon => {
-        const native = await icon.getNative();
-
-        return (await native.getCssValue('fill')) === filledColor;
-      });
-
-      return filtered.count();
+      return +hoveredCount;
     },
     async getHoveredLabelText() {
       const label = getLabel();
