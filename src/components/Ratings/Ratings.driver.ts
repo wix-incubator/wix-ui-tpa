@@ -56,7 +56,6 @@ export const ratingsDriverFactory = (base: UniDriver): RatingsDriver => {
     },
     async getHoveredStars() {
       const hoveredCount = await base.attr(RATINGS_DATA_KEYS.Hovered);
-      console.log('adler', 'Ratings.driver.ts:59', hoveredCount);
 
       return +hoveredCount;
     },
