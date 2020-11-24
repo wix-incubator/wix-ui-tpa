@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ActionsMenuLayout, Alignment } from '../';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -79,6 +80,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            'ActionsMenuLayout component wraps multiple options into a list.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -96,10 +101,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

@@ -27,9 +27,25 @@
 
 /*Overrides*/
 :vars {
+    /*
+        Border color
+        @default color-8
+    */
     BorderColor: --overridable;
+    /*
+        Background color
+        @default color-1
+    */
     BackgroundColor: --overridable;
+    /*
+        Text Color
+        @default color-8
+    */
     TextColor: --overridable;
+    /*
+        Text Font
+        @default {theme: 'Body-M', size: '14px', lineHeight: '24px'}
+    */
     TextFont: --overridable;
 }
 

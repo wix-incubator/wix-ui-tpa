@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -47,6 +48,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+              'Add Item is a component used to add new items to an existing items list.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -66,10 +71,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
