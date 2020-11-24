@@ -3,6 +3,7 @@ import * as examples from './examples';
 import {
   header,
   api,
+  importExample,
   description,
   divider,
   playground,
@@ -23,7 +24,9 @@ import {
   optionsWithSubtitle,
 } from '../helpers';
 import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
-import * as Readme from '../../Dropdown/README.md';
+import { DropdownExtendedExample } from './DropdownExtendedExample';
+import ExtendedRawSource from '!raw-loader!./DropdownExtendedExample';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -85,16 +88,19 @@ export default {
   dataHook: 'storybook-Dropdown',
   sections: [
     header(),
+
     tabs([
       tab({
         title: 'Usage',
         sections: [
+          description('A single selection dropdown'),
+
           description(
             '**ATTENTION: The current API for this component will be deprecated on the next major version.<br>' +
               'Please use the new API using the `upgrade` prop.<br>**',
           ),
 
-          description(Readme),
+          importExample(),
 
           divider(),
 
@@ -127,10 +133,30 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              example: <DropdownExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ('' as unknown) as typeof import('*.st.css'),
+              title: 'Dropdown Extended',
+              params: {
+                colors: [
+                  {
+                    defaultColor: 'color-1',
+                    label: 'No style params found',
+                    wixParam: 'noParam',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],
