@@ -39,22 +39,63 @@
 
 /*Overrides*/
 :vars {
-    /*Deceleration of overridable placeholders*/
+    /*
+        @default {theme: 'Body-M', size: '14px', lineHeight: '24px'}
+    */
     MainTextFont: --overridable;
+    /*
+        @default 1px
+    */
     MainBorderWidth: --overridable;
+    /*
+        @default 0px
+    */
     MainBorderRadius: --overridable;
+    /*
+        @default color-5
+    */
     MainTextColor: --overridable;
+    /*
+        @default color-1
+    */
     MainBackgroundColor: --overridable;
+    /*
+        @default applyOpacity(color("color-5"), 0.2)
+    */
     MainBorderColor: --overridable;
+    /*
+        @default 4px
+    */
     MainVerticalSpacing: --overridable;
+    /*
+        @default 4px
+    */
     MainHorizontalSpacing: --overridable;
 
+    /*
+        @default color-5
+    */
     HoverTextColor: --overridable;
+    /*
+        @default applyOpacity(color("color-5"), 0.2)
+    */
     HoverBackgroundColor: --overridable;
+    /*
+        @default applyOpacity(color("color-5"), 0.6)
+    */
     HoverBorderColor: --overridable;
 
+    /*
+        @default color-1
+    */
     CheckedTextColor: --overridable;
+    /*
+        @default color-8
+    */
     CheckedBackgroundColor: --overridable;
+    /*
+        @default color-8
+    */
     CheckedBorderColor: --overridable;
 }
 
