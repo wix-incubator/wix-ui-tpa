@@ -32,6 +32,9 @@ interface DefaultProps {
   animation: boolean;
 }
 
+/**
+ * A toggle button represented by an icon and label
+ */
 export class IconToggle extends React.Component<IconToggleProps> {
   static displayName = 'IconToggle';
   static defaultProps: DefaultProps = {

@@ -11,13 +11,28 @@ import {
   tabs,
   testkit,
   title,
+  description,
+  example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { IconToggleExtendedExample } from './IconToggleExtendedExample';
+import ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample';
+import ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
+import * as examples from './examples';
+import { allComponents } from '../../../../stories/utils/allComponents';
 
 StarIcon.displayName = 'Star';
 HeartIcon.displayName = 'Heart';
+
+const example = (config, extraContext = {}) =>
+  baseExample({
+    components: { ...allComponents, ...extraContext },
+    compact: true,
+    ...config,
+  });
 
 const iconExamples = [
   {
@@ -54,6 +69,8 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description('A toggle button represented by an icon and label'),
+
           importExample({
             source: `import { IconToggle } from 'wix-ui-tpa/IconToggle';`,
           }),
@@ -61,16 +78,58 @@ export default {
           divider(),
 
           title('Examples'),
+
+          ...[
+            {
+              title: 'Star toggle with counter',
+              description: '',
+              source: examples.counter,
+            },
+            // {
+            //   title: 'Icon prefix',
+            //   description: 'Icon prefix can be set per icon',
+            //   // source: examples.icons,
+            // },
+            // {
+            //   title: 'RTL support',
+            //   description: 'RTL is supported using the native css property',
+            //   // source: examples.rtl,
+            // },
+          ].map(example),
         ],
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              example: <IconToggleExtendedExample />,
+              rawSource: ExtendedRawSource,
+              rawCSSSource: ExtendedCSSRawSource,
+              title: 'IconToggle Extended',
+              params: {
+                colors: [
+                  {
+                    label: 'Badge background color',
+                    wixParam: 'badgeBgColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Badge text color',
+                    wixParam: 'badgeTextColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],
-  examples: <Examples />,
 };
