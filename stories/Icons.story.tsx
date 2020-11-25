@@ -33,7 +33,6 @@ export default {
                         ],
                     }),
 
-                    divider(),
                     title('General'),
                     code({ title: '', source: `
                         <div
