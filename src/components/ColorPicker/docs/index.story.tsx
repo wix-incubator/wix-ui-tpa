@@ -15,7 +15,10 @@ import {
   description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import {
   ColorPickerExtendedExample,
@@ -91,7 +94,8 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
+          description('An implementation of a ColorPicker for TPAs'),
+
           importExample({
             source: examples.importExample,
           }),
@@ -100,15 +104,18 @@ export default {
 
           title('Examples'),
 
-          ...[{ source: examples.example }].map(code),
+          ...[
+              { title: 'Structure', description: 'The ColorPicker component consists of `<ColorPickerItem />` items.', source: examples.basicExample },
+              { title: 'With Cross Out', description: 'An example with items which are crossed out.', source: examples.crossedOutExample },
+            ].map(code),
         ],
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
