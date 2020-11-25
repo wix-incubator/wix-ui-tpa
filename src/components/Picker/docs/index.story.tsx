@@ -17,11 +17,15 @@ import {
 import { Picker } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
 import { PickerWiringExample } from './PickerWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -42,7 +46,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`Picker` is a component allowing to navigate between sections showing the current section you are on. Mostly used for months or years.'
+            '`Picker` is a component allowing to navigate between sections showing the current section you are on. Mostly used for months or years.',
           ),
 
           importExample({
