@@ -24,20 +24,45 @@
     MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The Button Text color
+        @default color-1
+    */
     MainTextColor: --overridable;
+    /*
+        The Button Background color
+        @default color-5
+    */
     MainBackgroundColor: --overridable;
+    /*
+        The font of the button's text
+        @default {theme: 'Body-M', size: '14px', lineHeight: '1.43em'}
+    */
     MainTextFont: --overridable;
+    /*
+        The border of the button
+        @default color-8
+    */
     MainBorderColor: --overridable;
+    /*
+        The button's border width
+        @default color- Basic and Primary: 0px, basicSecondary and secondary: 1px
+    */
     MainBorderWidth: --overridable;
-    MainBorderRadius: value(BorderRadius);
+    /*
+        The button border radius
+        @default 0
+    */
+    MainBorderRadius: --overridable;
 }
 
 :vars {
     PrimaryTextColor: color(fallback(value(MainTextColor), value(SecondaryColor)));
     PrimaryBorderWidth: fallback(value(MainBorderWidth), 0px);
     PrimaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
+    PrimaryBorderRadius: fallback(value(MainBorderRadius), value(BorderRadius));
 }
 
 .root {
@@ -48,7 +73,7 @@
     border-style: solid;
     box-sizing: content-box;
     border-color: color(value(PrimaryBorderColor));
-    border-radius: value(MainBorderRadius);
+    border-radius: value(PrimaryBorderRadius);
     transition: background-color .2s ease-in-out, border-color .2s ease-in-out, color .2s ease-in-out;
 }
 

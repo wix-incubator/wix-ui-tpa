@@ -18,7 +18,15 @@
 
 :vars {
     /*Overrides*/
+    /*
+        The font of the content text
+        @default: Desktop: {theme: 'Body-M', size: '16px', lineHeight: '24px'}, Mobile: {theme: 'Body-M', size: '14px', lineHeight: '24px'}
+     */
     ItemFont:  --overridable;
+    /*
+        The font of the subtitle text
+        @default: Desktop: {theme: 'Body-M', size: '14px', lineHeight: '20px'}, Mobile: {theme: 'Body-M', size: '12px', lineHeight: '20px'}
+     */
     ItemSubtitleFont:  --overridable;
 }
 

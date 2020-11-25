@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -13,7 +14,10 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as AddItemWiringExampleRaw from '!raw-loader!./AddItemWiringExample.tsx';
 import * as AddItemWiringExampleCSSRaw from '!raw-loader!./AddItemWiringExample.st.css';
@@ -47,6 +51,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            'Add Item is a component used to add new items to an existing items list.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -66,10 +74,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

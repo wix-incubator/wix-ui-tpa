@@ -15,7 +15,10 @@ import {
   description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import {
   ColorPickerExtendedExample,
@@ -25,7 +28,6 @@ import * as ExtendedRawSource from '!raw-loader!./ColorPickerExtendedExample.tsx
 import * as AnotherExtendedRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ColorPickerExtendedExample.st.css';
 import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.st.css';
-import * as Readme from '../README.md';
 import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
 import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExample';
 import { ColorPickerFocusTabExample } from './ColorPickerFocusTabExample';
@@ -91,7 +93,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
+          description(
+            'ColorPicker allowing the user to select a color from a set of predefined colors.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -100,15 +105,27 @@ export default {
 
           title('Examples'),
 
-          ...[{ source: examples.example }].map(code),
+          ...[
+            {
+              title: 'Structure',
+              description:
+                'The ColorPicker component consists of `<ColorPickerItem />` items.',
+              source: examples.basicExample,
+            },
+            {
+              title: 'With Cross Out',
+              description: 'An example with items which are crossed out.',
+              source: examples.crossedOutExample,
+            },
+          ].map(code),
         ],
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

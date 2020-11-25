@@ -7,18 +7,27 @@
     -st-default: ActionMenuItem;
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     DefaultMenuBackgroundColor: color-1;
     DefaultMenuBorderColor: rgba(255, 255, 255, 0.4);
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        Menu Background Color
+        @default color-1
+    */
     MenuBackgroundColor:  --overridable;
+    /*
+        Menu Border Color
+        @default rgba(255, 255, 255, 0.4)
+    */
     MenuBorderColor:  --overridable;
 }
 
+/*Fallbacks*/
 :vars {
     menuBackgroundColor: color(fallback(value(MenuBackgroundColor), value(DefaultMenuBackgroundColor)));
     menuBorderColor: color(fallback(value(MenuBorderColor), value(DefaultMenuBorderColor)));

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -13,7 +14,10 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as CalendarCellWiringExampleRaw from '!raw-loader!./CalendarCellWiringExample.tsx';
 import * as CalendarCellWiringExampleCSSRaw from '!raw-loader!./CalendarCellWiringExample.st.css';
@@ -43,6 +47,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            'This component represent a calendar cell and might be used in our future calendar component.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -57,10 +65,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

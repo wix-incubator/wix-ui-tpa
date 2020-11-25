@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Badge, BADGE_PRIORITY } from '../';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -52,6 +53,8 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description('Badge component is used to display a special content.'),
+
           importExample({
             source: examples.importExample,
           }),
@@ -102,13 +105,13 @@ return (
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         {
           title: 'Style API',
           sections: [settingsApi()],
         },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         {
           title: 'Settings Panel',
           sections: [

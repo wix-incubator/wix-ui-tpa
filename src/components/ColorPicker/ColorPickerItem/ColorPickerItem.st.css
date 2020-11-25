@@ -15,9 +15,17 @@
     DefaultFocusColor: color-5;
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The size of the item (width and height)
+        @default 24
+     */
     Size: --overridable;
+    /*
+        The radius size
+        @default 12
+     */
     Radius: --overridable;
 }
 
