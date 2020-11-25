@@ -16,12 +16,16 @@ import {
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { Pagination } from '../Pagination';
 import * as examples from './examples';
 import { PaginationWiringExample } from './PaginationWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -29,7 +33,7 @@ export default {
   component: storyComponent(Pagination),
   componentPath: '../Pagination.tsx',
 
-  componentProps: (setState) => ({
+  componentProps: setState => ({
     'data-hook': 'storybook-Pagination',
     totalPages: 10,
     maxPagesToShow: 5,
@@ -49,7 +53,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`Pagination` is a component allowing to render a series of numbered pages for navigation.'
+            '`Pagination` is a component allowing to render a series of numbered pages for navigation.',
           ),
 
           importExample({
