@@ -19,7 +19,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { AvatarGroupSize } from '../AvatarGroup';
 import {
   autoSettingsPanel,
-  settingsPanel
+  settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';

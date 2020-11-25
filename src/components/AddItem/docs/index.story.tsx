@@ -16,7 +16,7 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import {
   autoSettingsPanel,
-  settingsPanel
+  settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as AddItemWiringExampleRaw from '!raw-loader!./AddItemWiringExample.tsx';
