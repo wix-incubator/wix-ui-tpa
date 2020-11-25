@@ -4,11 +4,6 @@
   IconsGap: 40px;
 }
 
-/*Overrides*/
-:vars {
-  /*Deceleration of overridable placeholders*/
-}
-
 .root {
   -st-states: mobile;
   display: flex;

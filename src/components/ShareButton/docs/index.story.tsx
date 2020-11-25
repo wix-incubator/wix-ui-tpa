@@ -57,7 +57,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`ShareButton` is a component allowing to render a button for sharing data.',
+            '`ShareButton` is a component allowing to render a button for sharing data using the [`Navigator.share`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share) method.',
           ),
 
           importExample({
