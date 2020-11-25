@@ -3,11 +3,16 @@
     -st-named: color, fallback;
 }
 
+/*Defaults*/
 :vars {
     DefaultPathColor: color(color-5);
 }
 
+/*Overrides*/
 :vars {
+    /*
+      @default color-5
+    */
     PathColor: --overridable;
 }
 
