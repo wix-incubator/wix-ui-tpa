@@ -47,7 +47,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('This component represent a calendar cell and might be used in our future calendar component.'),
+          description(
+            'This component represent a calendar cell and might be used in our future calendar component.',
+          ),
 
           importExample({
             source: examples.importExample,
