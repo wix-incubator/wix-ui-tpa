@@ -1,24 +1,29 @@
+import * as SpinnerWiringExampleCSSRaw from '!raw-loader!./SpinnerWiringExample.st.css';
+import * as SpinnerWiringExampleRaw from '!raw-loader!./SpinnerWiringExample.tsx';
 import * as React from 'react';
-import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
+  description,
   divider,
+  header,
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as SpinnerWiringExampleRaw from '!raw-loader!./SpinnerWiringExample.tsx';
-import * as SpinnerWiringExampleCSSRaw from '!raw-loader!./SpinnerWiringExample.st.css';
-import { SpinnerWiringExample } from './SpinnerWiringExample';
 import { Spinner as SpinnerCore } from '../';
-import { SPINNER_TYPES, SpinnerProps } from '../types';
+import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
+import { SpinnerProps, SPINNER_TYPES } from '../types';
+import * as examples from './examples';
+import { SpinnerWiringExample } from './SpinnerWiringExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -57,6 +62,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`Spinner` is a component allowing to render a loading spinner for short processes that the user needs to wait.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -74,9 +83,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

@@ -1,23 +1,28 @@
+import * as PickerWiringExampleCSSRaw from '!raw-loader!./PickerWiringExample.st.css';
+import * as PickerWiringExampleRaw from '!raw-loader!./PickerWiringExample.tsx';
 import * as React from 'react';
-import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
+  description,
   divider,
+  header,
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as PickerWiringExampleRaw from '!raw-loader!./PickerWiringExample.tsx';
-import * as PickerWiringExampleCSSRaw from '!raw-loader!./PickerWiringExample.st.css';
-import { PickerWiringExample } from './PickerWiringExample';
 import { Picker } from '../';
+import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
+import * as examples from './examples';
+import { PickerWiringExample } from './PickerWiringExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -40,6 +45,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`Picker` is a component allowing to navigate between sections showing the current section you are on. Mostly used for months or years.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -53,9 +62,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

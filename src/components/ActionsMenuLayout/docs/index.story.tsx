@@ -16,6 +16,7 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';
 import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
@@ -96,6 +97,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

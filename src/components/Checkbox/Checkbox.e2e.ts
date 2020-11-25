@@ -5,7 +5,7 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { checkboxTestkitFactory } from '../../testkit/protractor';
 
-const hoveredColor = 'rgb(96, 96, 96)';
+const hoveredColor = 'rgb(0, 0, 0)';
 const errorColor = 'rgb(223, 49, 49)';
 
 describe('checkbox', () => {

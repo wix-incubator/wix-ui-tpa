@@ -3,13 +3,16 @@
     -st-named: color, fallback
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     DefaultColor: color-5;
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+    @default color-5
+    */
     IconColor: --overridable;
 }
 

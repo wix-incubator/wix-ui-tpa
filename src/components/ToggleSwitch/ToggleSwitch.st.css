@@ -8,6 +8,7 @@
     -st-named: ToggleSwitch, ToggleSwitchStyle, ToggleSwitchLayout, ToggleSwitchColor;
 }
 
+/*Defaults*/
 :vars {
     DefaultBaseColor: color(color-5);
     DefaultSelectedColor: color(color-8);
@@ -16,10 +17,27 @@
     DefaultTransitionDuration: .2s;
 }
 
+/*Overrides*/
 :vars {
+    /*
+      The color of the track background
+      @default color-5
+    */
     BaseColor: --overridable;
+    /*
+      The color of the toggle when it is on
+      @default color-8
+    */
     SelectedColor: --overridable;
+    /*
+      The background color of the knob
+      @default color-1
+    */
     KnobColor: --overridable;
+    /*
+      The color of the toggle when disabled 
+      @default color-3 with opacity 0.9
+    */
     DisabledColor: --overridable;
 }
 

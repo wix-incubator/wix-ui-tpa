@@ -20,6 +20,7 @@ import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWith
 import { examples } from './examples';
 import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 import { Button, PRIORITY, SIZE } from '..';
 
@@ -66,6 +67,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {
