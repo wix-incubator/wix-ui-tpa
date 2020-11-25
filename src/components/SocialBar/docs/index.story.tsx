@@ -17,7 +17,10 @@ import {
 import { SocialBar } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { ReactComponent as Facebook } from '../../../assets/icons/Social/Facebook.svg';
 import { ReactComponent as Instagram } from '../../../assets/icons/Social/Instagram.svg';
 import { ReactComponent as Linkedin } from '../../../assets/icons/Social/Linkedin.svg';
@@ -27,7 +30,8 @@ import { CopyUrlButton } from '../../CopyUrlButton';
 import * as examples from './examples';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 /* tslint:disable */
 
@@ -108,7 +112,7 @@ export default {
         title: 'SocialBar',
         sections: [
           description(
-            '`SocialBar` is a component allowing to render a bar with icons of social media sites.'
+            '`SocialBar` is a component allowing to render a bar with icons of social media sites.',
           ),
 
           importExample({
