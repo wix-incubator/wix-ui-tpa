@@ -17,11 +17,15 @@ import {
 import { ShareButton } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
 import { ShareButtonWiringExample } from './ShareButtonWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components/Share',
@@ -35,7 +39,7 @@ export default {
       url: 'https://wix.com',
     },
     withIcon: true,
-    onClick: (sharePromise) => {
+    onClick: sharePromise => {
       if (!sharePromise) {
         alert('share clicked');
       }
@@ -52,7 +56,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('`ShareButton` is a component allowing to render a button for sharing data.'),
+          description(
+            '`ShareButton` is a component allowing to render a button for sharing data.',
+          ),
 
           importExample({
             source: examples.importExample,

@@ -17,11 +17,15 @@ import {
 import { CopyUrlButton } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { CopyUrlButtonWiringExample } from './CopyUrlButtonWiringExample';
 import * as examples from './examples';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components/Share',
@@ -45,7 +49,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`CopyUrlButton` is a component allowing to render a button for copying a link.'
+            '`CopyUrlButton` is a component allowing to render a button for copying a link.',
           ),
 
           importExample({
