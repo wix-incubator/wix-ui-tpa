@@ -1,3 +1,5 @@
+import * as TextButtonWiringExampleCSSRaw from '!raw-loader!./TextButtonWiringExample.st.css';
+import * as TextButtonWiringExampleRaw from '!raw-loader!./TextButtonWiringExample.tsx';
 import * as React from 'react';
 import {
   api,
@@ -15,10 +17,14 @@ import {
 import { TextButton, TEXT_BUTTON_PRIORITY } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
+import { TextButtonWiringExample } from './TextButtonWiringExample';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -41,7 +47,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`TextButton` is a component allowing to render a custom text functioning as a button.',
+            '`TextButton` is a component allowing to render a custom text functioning as a button.'
           ),
 
           importExample({
@@ -62,10 +68,37 @@ export default {
       }),
 
       ...[
-        { title: 'Playground', sections: [playground()] },
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Text Panel',
+              example: <TextButtonWiringExample />,
+              rawSource: TextButtonWiringExampleRaw,
+              rawCSSSource: TextButtonWiringExampleCSSRaw,
+              params: {
+                fonts: [
+                  {
+                    label: 'Font',
+                    wixParam: 'textButtonTextFont',
+                    defaultFont: 'arial',
+                  },
+                ],
+                colors: [
+                  {
+                    label: 'Text color',
+                    wixParam: 'textButtonTextColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],
