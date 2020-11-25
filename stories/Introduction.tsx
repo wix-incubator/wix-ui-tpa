@@ -10,5 +10,4 @@ storiesOf('Getting Started', module)
   .add('Introduction', () => <Markdown source={README} />)
   .add('Using the library', () => <Markdown source={Usage} />)
   .add('Using RTL', () => <Markdown source={RTL} />)
-  .add('Contributing', () => <Markdown source={Contribution} />)
-  .add('Using RTL', () => <Markdown source={RTL} />)
+  .add('Contributing', () => <Markdown source={Contribution} />);
