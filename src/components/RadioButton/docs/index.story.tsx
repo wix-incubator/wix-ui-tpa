@@ -17,12 +17,16 @@ import {
 import { RadioButton } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { RadioButtonTheme } from '../RadioButton';
 import * as examples from './examples';
 import RadioButtonWiringExample from './RadioButtonWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -46,7 +50,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('`RadioButton` is a component allowing to render a single radio button'),
+          description(
+            '`RadioButton` is a component allowing to render a single radio button',
+          ),
 
           importExample({
             source: examples.importExample,
@@ -56,11 +62,17 @@ export default {
 
           title('Examples'),
 
-          ...[{ title: 'Unchecked', source: examples.uncheckedExample }].map(code),
+          ...[{ title: 'Unchecked', source: examples.uncheckedExample }].map(
+            code,
+          ),
           ...[{ title: 'Checked', source: examples.checkedExample }].map(code),
           ...[{ title: 'Box Theme', source: examples.boxExample }].map(code),
-          ...[{ title: 'Disabled', source: examples.disabledExample }].map(code),
-          ...[{ title: 'Disabled box', source: examples.boxExampleDisabled }].map(code),
+          ...[{ title: 'Disabled', source: examples.disabledExample }].map(
+            code,
+          ),
+          ...[
+            { title: 'Disabled box', source: examples.boxExampleDisabled },
+          ].map(code),
           ...[{ title: 'Suffixed', source: examples.suffixExample }].map(code),
           ...[{ title: 'Error', source: examples.errorExample }].map(code),
         ],
