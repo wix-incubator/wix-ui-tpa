@@ -27,7 +27,7 @@ export default {
                 title: 'Icon Inventory',
                 sections: [
                     description({
-                        title: 'Importing the icons',
+                        title: 'Description',
                         text: [
                             'The library provides the recommended icons for your applications, provided as raw SVG files. Make sure that your build tool knows how to handle it.',
                         ],
