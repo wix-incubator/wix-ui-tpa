@@ -19,7 +19,10 @@ import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWith
 
 import { examples } from './examples';
 import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 import { Button, PRIORITY, SIZE } from '..';
@@ -53,8 +56,10 @@ export default {
         sections: [
           description(
             '**ATTENTION: The current API for this component will be deprecated on the next major version.<br>' +
-              'Please use the new API using the `upgrade` prop.<br>**',
+              'Please use the new API using the `upgrade` prop.<br>**'
           ),
+          description('A simple Button component.'),
+
           importExample("import {Button} from 'wix-ui-tpa/Button';"),
 
           divider(),
@@ -66,10 +71,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
