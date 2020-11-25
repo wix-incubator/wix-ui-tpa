@@ -29,7 +29,7 @@ export default {
                     description({
                         title: 'Importing the icons',
                         text: [
-                            'The library provides the recommended icons for your applications, provided as raw SVG files. Make sure that your build tool knows how to handle it',
+                            'The library provides the recommended icons for your applications, provided as raw SVG files. Make sure that your build tool knows how to handle it.',
                         ],
                     }),
 
