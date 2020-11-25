@@ -8,17 +8,29 @@
     -st-default: IconToggle;
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     DefaultColor: color-5;
     CheckedIconColor: '#F64D43';
     DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+     /*
+      The color of the icon border instead of the default color (checked state color cannot be changed)
+      @default color-5, when checked - #F64D43
+    */
     IconColor: --overridable;
+     /*
+      The color of the label instead of the default color
+      @default color-5
+    */
     LabelColor: --overridable;
+     /*
+      The font of the label instead of the default font
+      @default {theme: 'Body-M', size: '12px', lineHeight: '16px'}
+    */
     LabelFont: --overridable;
 }
 
