@@ -2,15 +2,15 @@ import * as React from 'react';
 
 import { Pagination, PaginationProps } from '../Pagination';
 
-import { classes } from './PaginationExtendedExample.st.css';
+import { classes } from './PaginationWiringExample.st.css';
 
-interface IPaginationExtendedExampleState {
+interface IPaginationWiringExampleState {
   currentPage: number;
 }
 
-export class PaginationExtendedExample extends React.Component<
+export class PaginationWiringExample extends React.Component<
   Partial<PaginationProps>,
-  IPaginationExtendedExampleState
+  IPaginationWiringExampleState
 > {
   state = { currentPage: 1 };
 

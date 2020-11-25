@@ -18,9 +18,25 @@
 }
 
 :vars {
+  /*
+    The font of the pagination pages
+    @default {theme: 'Body-M', size: '16px'}, {theme: 'Body-M', size: '14px'} for mobile
+  */
   TextFont: --overridable;
+  /*
+    The color of the pagination pages
+    @default color-5
+  */
   TextFontColor: --overridable;
+  /*
+    The color of the selected page
+    @default color-8
+  */
   SelectedTextFontColor: --overridable;
+  /*
+    The color of the disabled nav buttons
+    @default color-3
+  */
   DisabledTextFontColor: --overridable;
 }
 
