@@ -37,5 +37,6 @@ export { ReactComponent as Twitter } from './Social/Twitter.svg';
 export { ReactComponent as Vimeo } from './Social/Vimeo.svg';
 export { ReactComponent as Youtube } from './Social/Youtube.svg';
 
+// todo: should be deprecated in the next major version
 import * as SocialIcons from './Social';
 export { SocialIcons };

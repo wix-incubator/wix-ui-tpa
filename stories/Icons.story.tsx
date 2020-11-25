@@ -44,11 +44,11 @@ export default {
                           }}
                         >
                             {[
-                                { name: 'Anonymous', icon: <Anonymous /> },
-                                { name: 'Calendar', icon: <Calendar /> },
-                                { name: 'Camera', icon: <Camera /> },
-                                { name: 'Heart', icon: <Heart /> },
-                                { name: 'Star', icon: <Star /> },
+                                { name: 'Anonymous', icon: <Icons.Anonymous /> },
+                                { name: 'Calendar', icon: <Icons.Calendar /> },
+                                { name: 'Camera', icon: <Icons.Camera /> },
+                                { name: 'Heart', icon: <Icons.Heart /> },
+                                { name: 'Star', icon: <Icons.Star /> },
                               ].map(item => (
                                 <div key={item.name}>
                                   <div
@@ -80,15 +80,15 @@ export default {
                           }}
                         >
                             {[
-                                { name: 'Check', icon: <Check /> },
-                                { name: 'Check Success', icon: <CheckSuccess /> },
-                                { name: 'Close', icon: <Close /> },
-                                { name: 'Minus', icon: <Minus /> },
-                                { name: 'Plus Small', icon: <PlusS /> },
-                                { name: 'Plus', icon: <Plus /> },
-                                { name: 'Plus Large', icon: <PlusL /> },
-                                { name: 'Plus XLarge', icon: <PlusXL /> },
-                                { name: 'Share', icon: <Share /> },
+                                { name: 'Check', icon: <Icons.Check /> },
+                                { name: 'Check Success', icon: <Icons.CheckSuccess /> },
+                                { name: 'Close', icon: <Icons.Close /> },
+                                { name: 'Minus', icon: <Icons.Minus /> },
+                                { name: 'Plus Small', icon: <Icons.PlusS /> },
+                                { name: 'Plus', icon: <Icons.Plus /> },
+                                { name: 'Plus Large', icon: <Icons.PlusL /> },
+                                { name: 'Plus XLarge', icon: <Icons.PlusXL /> },
+                                { name: 'Share', icon: <Icons.Share /> },
                               ].map(item => (
                                 <div key={item.name}>
                                   <div
@@ -120,7 +120,7 @@ export default {
                           }}
                         >
                             {[
-                                { name: 'Error', icon: <Error /> },
+                                { name: 'Error', icon: <Icons.Error /> },
                               ].map(item => (
                                 <div key={item.name}>
                                   <div
@@ -152,13 +152,13 @@ export default {
                           }}
                         >
                             {[
-                                { name: 'Arrow Bottom', icon: <ArrowBottom /> },
-                                { name: 'Arrow Left', icon: <ArrowLeft /> },
-                                { name: 'Arrow Right', icon: <ArrowRight /> },
-                                { name: 'Arrow Top', icon: <ArrowTop /> },
-                                { name: 'Caret Down', icon: <CaretDown /> },
-                                { name: 'Chevron Left', icon: <ChevronLeft /> },
-                                { name: 'Chevron Right', icon: <ChevronRight /> },
+                                { name: 'Arrow Bottom', icon: <Icons.ArrowBottom /> },
+                                { name: 'Arrow Left', icon: <Icons.ArrowLeft /> },
+                                { name: 'Arrow Right', icon: <Icons.ArrowRight /> },
+                                { name: 'Arrow Top', icon: <Icons.ArrowTop /> },
+                                { name: 'Caret Down', icon: <Icons.CaretDown /> },
+                                { name: 'Chevron Left', icon: <Icons.ChevronLeft /> },
+                                { name: 'Chevron Right', icon: <Icons.ChevronRight /> },
                               ].map(item => (
                                 <div key={item.name}>
                                   <div
@@ -190,7 +190,7 @@ export default {
                           }}
                         >
                             {[
-                                { name: 'Copy Link', icon: <CopyLink /> },
+                                { name: 'Copy Link', icon: <Icons.CopyLink /> },
                               ].map(item => (
                                 <div key={item.name}>
                                   <div
@@ -222,21 +222,21 @@ export default {
                           }}
                         >
                             {[
-                                { name: 'Facebook', icon: <Facebook /> },
-                                { name: 'Google Podcast', icon: <GooglePodcast /> },
-                                { name: 'Instagram', icon: <Instagram /> },
-                                { name: 'Linkedin', icon: <Linkedin /> },
-                                { name: 'Pinterest', icon: <Pinterest /> },
-                                { name: 'Podcast', icon: <Podcast /> },
-                                { name: 'GooglePodcast', icon: <GooglePodcast /> },
-                                { name: 'RSS', icon: <Rss /> },
-                                { name: 'Soundcloud', icon: <Soundcloud /> },
-                                { name: 'Spotify', icon: <Spotify /> },
-                                { name: 'Stitcher', icon: <Stitcher /> },
-                                { name: 'Tumblr', icon: <Tumblr /> },
-                                { name: 'Twitter', icon: <Twitter /> },
-                                { name: 'Vimeo', icon: <Vimeo /> },
-                                { name: 'Youtube', icon: <Youtube /> },
+                                { name: 'Facebook', icon: <Icons.Facebook /> },
+                                { name: 'Google Podcast', icon: <Icons.GooglePodcast /> },
+                                { name: 'Instagram', icon: <Icons.Instagram /> },
+                                { name: 'Linkedin', icon: <Icons.Linkedin /> },
+                                { name: 'Pinterest', icon: <Icons.Pinterest /> },
+                                { name: 'Podcast', icon: <Icons.Podcast /> },
+                                { name: 'GooglePodcast', icon: <Icons.GooglePodcast /> },
+                                { name: 'RSS', icon: <Icons.Rss /> },
+                                { name: 'Soundcloud', icon: <Icons.Soundcloud /> },
+                                { name: 'Spotify', icon: <Icons.Spotify /> },
+                                { name: 'Stitcher', icon: <Icons.Stitcher /> },
+                                { name: 'Tumblr', icon: <Icons.Tumblr /> },
+                                { name: 'Twitter', icon: <Icons.Twitter /> },
+                                { name: 'Vimeo', icon: <Icons.Vimeo /> },
+                                { name: 'Youtube', icon: <Icons.Youtube /> },
                               ].map(item => (
                                 <div key={item.name}>
                                   <div
