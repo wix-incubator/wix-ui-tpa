@@ -36,6 +36,3 @@ export { ReactComponent as Tumblr } from './Social/Tumblr.svg';
 export { ReactComponent as Twitter } from './Social/Twitter.svg';
 export { ReactComponent as Vimeo } from './Social/Vimeo.svg';
 export { ReactComponent as Youtube } from './Social/Youtube.svg';
-
-import * as SocialIcons from './Social';
-export { SocialIcons };
