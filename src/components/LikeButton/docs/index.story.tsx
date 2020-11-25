@@ -11,13 +11,13 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import Examples from './extendedExamples';
+import * as examples from './examples';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -41,23 +41,31 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description('`LikeButton` is a component allowing to render a like icon with label.'),
+
           importExample({
-            source: `import { LikeButton } from 'wix-ui-tpa/LikeButton';`,
+            source: examples.importExample,
           }),
 
           divider(),
 
           title('Examples'),
+
+          ...[
+            {
+              title: 'Basic Usage',
+              source: examples.basic,
+            },
+          ].map(code),
         ],
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),
   ],
-  examples: <Examples />,
 };
