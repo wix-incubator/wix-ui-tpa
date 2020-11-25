@@ -45,7 +45,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`ToggleSwitch` is a component allowing to render a sort of button that toggles between on and off states.',
+            '`ToggleSwitch` is a component allowing to render a button with on and off states.',
           ),
           importExample(examples.importExample),
           divider(),

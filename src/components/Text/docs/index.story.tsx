@@ -12,16 +12,20 @@ import {
   tab,
   tabs,
   testkit,
-  title
+  title,
 } from 'wix-storybook-utils/Sections';
 import { Text, TYPOGRAPHY } from '..';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
 import { TextWiringExample } from './TextWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -36,7 +40,7 @@ export default {
     typography: TYPOGRAPHY.runningText,
   },
   exampleProps: {
-    typography: Object.keys(TYPOGRAPHY).map((key) => TYPOGRAPHY[key]),
+    typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
   },
   sections: [
     header(),
@@ -44,7 +48,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('`Text` is a component allowing to render a custom text.'),
+          description(
+            '`Text` is a component allowing to render a custom text.',
+          ),
 
           importExample({
             source: examples.importExample,
