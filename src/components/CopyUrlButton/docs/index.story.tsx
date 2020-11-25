@@ -1,27 +1,27 @@
+import * as CopyUrlButtonWiringExampleCSSRaw from '!raw-loader!./CopyUrlButtonWiringExample.st.css';
+import * as CopyUrlButtonWiringExampleRaw from '!raw-loader!./CopyUrlButtonWiringExample.tsx';
 import * as React from 'react';
-import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
+  description,
   divider,
+  header,
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as CopyUrlButtonWiringExampleRaw from '!raw-loader!./CopyUrlButtonWiringExample.tsx';
-import * as CopyUrlButtonWiringExampleCSSRaw from '!raw-loader!./CopyUrlButtonWiringExample.st.css';
-import { CopyUrlButtonWiringExample } from './CopyUrlButtonWiringExample';
 import { CopyUrlButton } from '../';
+import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import { autoSettingsPanel, settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { CopyUrlButtonWiringExample } from './CopyUrlButtonWiringExample';
+import * as examples from './examples';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components/Share',
@@ -44,6 +44,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`CopyUrlButton` is a component allowing to render a button for copying a link.'
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -60,10 +64,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
