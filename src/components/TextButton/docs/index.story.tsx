@@ -24,7 +24,8 @@ import {
 import * as examples from './examples';
 import { TextButtonWiringExample } from './TextButtonWiringExample';
 
-const code = (config) => baseCode({ components: allComponents, compact: true, ...config });
+const code = config =>
+  baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: 'Components',
@@ -47,7 +48,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`TextButton` is a component allowing to render a custom text functioning as a button.'
+            '`TextButton` is a component allowing to render a custom text functioning as a button.',
           ),
 
           importExample({
