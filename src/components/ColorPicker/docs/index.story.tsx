@@ -28,7 +28,6 @@ import * as ExtendedRawSource from '!raw-loader!./ColorPickerExtendedExample.tsx
 import * as AnotherExtendedRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ColorPickerExtendedExample.st.css';
 import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.st.css';
-import * as Readme from '../README.md';
 import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
 import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExample';
 import { ColorPickerFocusTabExample } from './ColorPickerFocusTabExample';
@@ -94,7 +93,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('An implementation of a ColorPicker for TPAs'),
+          description('ColorPicker allowing the user to select a color from a set of predefined colors.'),
 
           importExample({
             source: examples.importExample,
@@ -105,9 +104,18 @@ export default {
           title('Examples'),
 
           ...[
-              { title: 'Structure', description: 'The ColorPicker component consists of `<ColorPickerItem />` items.', source: examples.basicExample },
-              { title: 'With Cross Out', description: 'An example with items which are crossed out.', source: examples.crossedOutExample },
-            ].map(code),
+            {
+              title: 'Structure',
+              description:
+                'The ColorPicker component consists of `<ColorPickerItem />` items.',
+              source: examples.basicExample,
+            },
+            {
+              title: 'With Cross Out',
+              description: 'An example with items which are crossed out.',
+              source: examples.crossedOutExample,
+            },
+          ].map(code),
         ],
       }),
 
