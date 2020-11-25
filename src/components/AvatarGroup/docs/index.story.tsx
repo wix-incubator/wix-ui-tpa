@@ -17,7 +17,10 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { AvatarGroupSize } from '../AvatarGroup';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
@@ -85,7 +88,7 @@ export default {
       }),
 
       ...[
-        { title: 'Playground', sections: [playground()] },
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },

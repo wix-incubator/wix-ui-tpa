@@ -21,18 +21,18 @@
 /*Overrides*/
 :vars {
     /*
-        Border color
+        The Avatar Border color
         @default color-1
     */
      AvatarBorderColor: --overridable;
     /*
-        Border color
+        Button Text Font
         @default {theme: 'Body-M', size: '14px', lineHeight: '1.44em'}
     */
      TextButtonFont: --overridable;
     /*
-        Border color
-        @default ?
+        Button Text Color
+        @default color-5
     */
      TextButtonColor: --overridable;
 }
