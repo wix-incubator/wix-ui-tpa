@@ -47,7 +47,7 @@
     MainTextColor: color-5;
     /*
       The font of the text/placeholder
-      @default "{theme: 'Body-M', size: '16px'}"
+      @default {theme: 'Body-M', size: '16px'}
     */
     MainTextFont: --overridable;
 }
