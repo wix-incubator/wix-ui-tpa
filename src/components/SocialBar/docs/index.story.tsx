@@ -109,7 +109,7 @@ export default {
     header(),
     tabs([
       tab({
-        title: 'SocialBar',
+        title: 'Usage',
         sections: [
           description(
             '`SocialBar` is a component allowing to render a bar with icons of social media sites.',
