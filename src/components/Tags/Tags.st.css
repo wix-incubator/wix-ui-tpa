@@ -40,61 +40,74 @@
 /*Overrides*/
 :vars {
     /*
-        @default {theme: 'Body-M', size: '14px', lineHeight: '24px'}
+      @default Depends on the size prop
     */
     MainTextFont: --overridable;
     /*
-        @default 1px
+      The border width of the tag component instead of the default width
+      @default Depends on the skin prop (1px or 0px)
     */
     MainBorderWidth: --overridable;
     /*
-        @default 0px
+      The border radius of the tag component instead of the default radius
+      @default 0px
     */
     MainBorderRadius: --overridable;
     /*
-        @default color-5
+      The color of the tag text instead of the default color
+      @default color-5
     */
     MainTextColor: --overridable;
     /*
-        @default color-1
+      The color of the tab background instead of the default color
+      @default Depends on the skin prop (color-1 or color-5 with opacity 0.1)
     */
     MainBackgroundColor: --overridable;
     /*
-        @default applyOpacity(color("color-5"), 0.2)
+      The color of the tab border instead of the default color
+      @default color-5 with opacity 0.2
     */
     MainBorderColor: --overridable;
     /*
-        @default 4px
+      The vertical spacing between tags component instead of the default spacing
+      @default 4px
     */
     MainVerticalSpacing: --overridable;
     /*
-        @default 4px
+      The horizontal spacing between tags component instead of the default spacing
+      @default 4px
     */
     MainHorizontalSpacing: --overridable;
 
     /*
-        @default color-5
+      The color of the tag text on hover instead of the default color
+      @default color-5
     */
     HoverTextColor: --overridable;
     /*
-        @default applyOpacity(color("color-5"), 0.2)
+      The color of the tab background on hover instead of the default color
+      @default Depends on the skin prop (color-1 or color-5 with opacity 0.2)
     */
     HoverBackgroundColor: --overridable;
     /*
-        @default applyOpacity(color("color-5"), 0.6)
+      The color of the tab border on hover instead of the default color
+      @default color-5 with opacity 0.6
     */
     HoverBorderColor: --overridable;
 
     /*
-        @default color-1
+      The color of the tag text on selected instead of the default color
+      @default color-1
     */
     CheckedTextColor: --overridable;
     /*
-        @default color-8
+      The color of the tab background on selected instead of the default color
+      @default color-8
     */
     CheckedBackgroundColor: --overridable;
     /*
-        @default color-8
+      The color of the tab border on selected instead of the default color
+      @default color-8
     */
     CheckedBorderColor: --overridable;
 }
