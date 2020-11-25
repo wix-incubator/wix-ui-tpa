@@ -1,23 +1,20 @@
-import * as React from 'react';
-import { Toast } from '../';
-import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
   description,
   divider,
-  importExample,
+  header,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+import { Toast } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as Readme from '../README.md';
-import { TOAST_SKIN, TOAST_PLACEMENT } from '../types';
+import { TOAST_PLACEMENT, TOAST_SKIN } from '../types';
+import * as examples from './examples';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -47,7 +44,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(Readme),
+          description(
+            '`Toast` is a component allowing to render a custom notification message.',
+          ),
 
           divider(),
 
@@ -72,10 +71,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
       ].map(tab),
     ]),
   ],

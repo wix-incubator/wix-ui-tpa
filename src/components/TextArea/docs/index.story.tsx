@@ -11,6 +11,7 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { autoSettingsPanel } from '../../../../stories/utils/SettingsPanel';
@@ -55,6 +56,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`TextArea` is a component allowing to render a multi-line custom text.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),

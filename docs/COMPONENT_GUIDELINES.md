@@ -29,3 +29,80 @@ So solutions like `@media-queries` might not work, and `window` shouldn't be dir
 
 * `wix-ui-tpa` are rendered for Wix's users-of-users, and so they must comply with web accessibility
  principles.
+ 
+ ## Typography
+ When creating a new component that renders text, we should in most cases use the `<Text/>` component with the correct props and style.  
+ In some cases we might need to use a typography that isn't defined in the `<Text/>` component.  
+ In this case, we rely on the style processor's syntax, to ensure we get the correct font from the viewer.
+ 
+ 
+ ### How it works
+ We use the [style processor's syntax](https://github.com/wix/wix-style-processor) to get our components wired correctly:  
+ The platform (viewer/editor) references the different fonts by a theme name, such as `Body-M` for paragraph text, and `Heading-L` for titles.  
+ To use these fonts we write for instance:
+ ```css
+:import {
+  -st-from: "src/common/formatters.st.js";
+  -st-named: font;
+}
+
+.myClass {
+  font: font({theme: 'Body-M', size: '16px', weight: 'bold'});
+}
+ ```
+ This will give us a bold, medium-body font (also identified as `font_8`), with `16px` font size.    
+ Fonts might come as a Stylable variable as well. Then we will write it like this:  
+```css
+:import {
+  -st-from: "src/common/formatters.st.js";
+  -st-named: font;
+}
+
+:vars {
+  MyFont: --overridable;
+}
+
+.myClass {
+  font: font(value(MyFont));
+}
+ ```
+
+The `font()` formatter we use here, is one of our helper [formatters](../src/common/formatters.st.js), which just give us a Stylable way of using the
+style processor's syntax.  
+You can read more about this syntax [here](https://github.com/wix-incubator/tpa-style-webpack-plugin#supported-css-functions)
+ 
+ ### Fixing font size
+Fonts are received from the platform as a [shorthand form](https://developer.mozilla.org/en-US/docs/Web/CSS/font) font, and that's why we
+have to use it with `font:`.  
+This defines the font with its family, size, line-height, style and more.  
+However, we sometimes need to fix a certain property. So in these situations we need to explicitly override the specific property.
+
+For instance, if we want to fix a component's font size, we will need to write: 
+     
+```css
+:import {
+  -st-from: "src/common/formatters.st.js";
+  -st-named: font;
+}
+
+:vars {
+  MyFont: --overridable;
+}
+
+.myClass {
+  font: font(value(MyFont));
+  font-size: 16px; 
+}
+ ```
+
+ 
+ ### Mapping design spec to style-processor syntax
+ The design system has a different naming convention for typography, as can be seen [here](https://zeroheight.com/7sjjzhgo2/p/00b9e9-typography), but the mapping is pretty simple:
+ 
+  
+ | Design Name | Style Processor Syntax |
+ | ----------- | ---------------------- |
+ | H2 | Page-title |
+ | P2 | Body-M |
+ | P3 | Body-S | 
+

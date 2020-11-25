@@ -1,43 +1,45 @@
+import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExample.st.css';
+import * as SocialBarWiringExampleRaw from '!raw-loader!./SocialBarWiringExample.tsx';
 import * as React from 'react';
-import * as examples from './examples';
 import {
-  header,
   api,
+  code as baseCode,
   divider,
+  header,
   importExample,
   playground,
   tab,
-  code as baseCode,
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as SocialBarWiringExampleRaw from '!raw-loader!./SocialBarWiringExample.tsx';
-import * as SocialBarWiringExampleCSSRaw from '!raw-loader!./SocialBarWiringExample.st.css';
-import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { SocialBar } from '../';
+import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { ReactComponent as Facebook } from '../../../assets/icons/Social/Facebook.svg';
 import { ReactComponent as Instagram } from '../../../assets/icons/Social/Instagram.svg';
 import { ReactComponent as Linkedin } from '../../../assets/icons/Social/Linkedin.svg';
-import { ReactComponent as Tumblr } from '../../../assets/icons/Social/Tumblr.svg';
 import { ReactComponent as Pinterest } from '../../../assets/icons/Social/Pinterest.svg';
+import { ReactComponent as Tumblr } from '../../../assets/icons/Social/Tumblr.svg';
 import { CopyUrlButton } from '../../CopyUrlButton';
+import * as examples from './examples';
+import { SocialBarWiringExample } from './SocialBarWiringExample';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
-  /* tslint:disable */
+/* tslint:disable */
 
 const DEFAULT_CHILDREN = [
   <SocialBar.Icon
     key={1}
     tooltip="Facebook"
-    icon={
-      <Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />
-    }
+    icon={<Facebook href="https://www.facebook.com/sharer/sharer.php?u=wix.com" />}
   />,
   <SocialBar.Icon
     key={2}
@@ -109,6 +111,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`SocialBar` is a component allowing to render a bar with icons of social media sites.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -125,10 +131,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

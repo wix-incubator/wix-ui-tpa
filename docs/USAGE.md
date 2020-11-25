@@ -104,6 +104,9 @@ TPAs get their colors and fonts (most of them) from the template's palette, and 
 
 You can read more about it [here](https://zeroheight.com/7sjjzhgo2/p/85d7a3-wiring).
 
-`wix-ui-tpa`'s components are wired to default colors and fonts from the site's palette, and in order to easily use and manipulate these variables, the library uses [`wix-style-processor`](https://github.com/wix/wix-style-processor) or [tpa-style-webpack-plugin](http://github.com/wix-incubator/tpa-style-webpack-plugin).
+`wix-ui-tpa`'s components are wired to default colors and fonts from the site's palette, and in order to easily use and manipulate these variables, 
+the library relies on using the [tpa-style-webpack-plugin](http://github.com/wix-incubator/tpa-style-webpack-plugin) 
+in conjunction with [`withStyles`](https://github.com/wix-private/native-components-infra#withstyles),
+or [`wix-style-processor`](https://github.com/wix/wix-style-processor) (which is deprecated).
 
 `wix-style-processor` should be added to your apps runtime.
