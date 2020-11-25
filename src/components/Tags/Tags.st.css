@@ -40,6 +40,7 @@
 /*Overrides*/
 :vars {
     /*
+      The font of the tag text instead of the default font |
       @default Depends on the size prop
     */
     MainTextFont: --overridable;

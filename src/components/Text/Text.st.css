@@ -19,8 +19,8 @@
 /*Overrides*/
 :vars {
     /*
-    The color of the text instead of the default color set by typography
-    @default color-5
+      The color of the text instead of the default color set by typography
+      @default color-5
     */
     MainTextColor: --overridable;
     /*

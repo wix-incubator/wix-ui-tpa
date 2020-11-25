@@ -10,6 +10,9 @@
 
 /*Overrides*/
 :vars {
+    /*
+      @default color-5
+    */
     PathColor: --overridable;
 }
 

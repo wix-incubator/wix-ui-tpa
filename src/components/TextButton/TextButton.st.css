@@ -21,13 +21,13 @@
 /*Overrides*/
 :vars {
     /*
-    The color of the text instead of the default
-    @default color-8 for primary, color-5 for others
+      The color of the text instead of the default
+      @default color-8 for primary, color-5 for others
     */
     MainTextColor: --overridable;
     /*
-    The font of the text instead of the default font
-    @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'} and {theme: 'Body-M', size: '14px', lineHeight: '1.44em'} for mobile
+      The font of the text instead of the default font
+      @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'} and {theme: 'Body-M', size: '14px', lineHeight: '1.44em'} for mobile
     */
     MainTextFont: --overridable;
 }
