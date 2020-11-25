@@ -93,7 +93,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('ColorPicker allowing the user to select a color from a set of predefined colors.'),
+          description(
+            'ColorPicker allowing the user to select a color from a set of predefined colors.',
+          ),
 
           importExample({
             source: examples.importExample,
