@@ -174,7 +174,39 @@
 /******************************************************/
 
 
-/*!* month and years dropdowns *!*/
+/* month and years dropdowns */
+
+/*.wsrDatePicker::calendar::header::monthDropdown {*/
+/*    sivan: 'hi';*/
+/*}*/
+
+/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption,*/
+/*.wsrDatePicker::calendar::header::YearDropdown::dropdown::list::selectableOption {*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*}*/
+
+/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,*/
+/*.wsrDatePicker::calendar::header::YearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {*/
+/*    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);*/
+/*}*/
+
+/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected,*/
+/*.wsrDatePicker::calendar::header::YearDropdown::dropdown::list::selectableOption:selected {*/
+/*    !* todo: ask michal what is the real styling *!*/
+/*    !* background-color, color *!*/
+/*}*/
+
+/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,*/
+/*.wsrDatePicker::calendar::header::YearDropdown::dropdown::list::selectableOption:selected:hover {*/
+/*    !* todo: ask michal what is the real styling *!*/
+/*    !* background-color, color *!*/
+/*}*/
+
+/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption::title,*/
+/*.wsrDatePicker::calendar::header::YearDropdown::dropdown::list::selectableOption::title {*/
+/*    color: value(CurrentDayColor);*/
+/*    font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");*/
+/*}*/
 
 /*.dropdownItem {*/
 /*    -st-extends: WSRListItemSelect;*/
