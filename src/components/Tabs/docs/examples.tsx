@@ -1,92 +1,73 @@
 import * as React from 'react';
 
-import CodeExample from 'wix-storybook-utils/CodeExample';
+const generateItems = (length) => new Array(length).fill(0).map((__, idx) => `{ title: 'Title ${idx + 1}', id: 'tab-${idx}' }`)
 
-import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
-import { TabsExtendedExample } from './TabsExtendedExample';
+const items = `[
+  ${generateItems(4)}
+]`;
+const manyItems = `[
+  ${generateItems(10)}
+]`;
 
-import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
-import * as MobileRawSource from '!raw-loader!./TabsMobileExample.tsx';
-import { TabsMobileExample } from './TabsMobileExample';
-
-const items = [
-  { title: 'Title 1', id: 'tab-1' },
-  { title: 'Title 2', id: 'tab-2' },
-  { title: 'Title 3', id: 'tab-3' },
-  { title: 'Title 4', id: 'tab-4' },
-];
-
-export const Examples = () => {
-  const [tabIndex1, setTabIndex1] = React.useState(0);
-  const [tabIndex2, setTabIndex2] = React.useState(0);
-
+export const importExample = `import { Tabs } from 'wix-ui-tpa/Tabs'`;
+export const skins = `() => {
+  const [activeTab, setActiveTab] = React.useState(0);
+  
   return (
-    <div>
-      <div className="tpa-container">
-        <CodeExample
-          title="Tabs Extended"
-          code={[
-            '//.st.css',
-            ExtendedCSSRawSource,
-            '',
-            '//.tsx',
-            ExtendedRawSource,
-          ].join('\n')}
-        >
-          <TabsExtendedExample
-            items={items}
-            activeTabIndex={tabIndex1}
-            onTabClick={index => setTabIndex1(index)}
-          />
-        </CodeExample>
-      </div>
-      <div>
-        <div className="tpa-container">
-          <CodeExample
-            title="Tabs Mobile"
-            code={[
-              '//.st.css',
-              ExtendedCSSRawSource,
-              '',
-              '//.tsx',
-              MobileRawSource,
-            ].join('\n')}
-          >
-            <TabsMobileExample
-              items={items}
-              activeTabIndex={tabIndex2}
-              onTabClick={index => setTabIndex2(index)}
-            />
-          </CodeExample>
-        </div>
-        <MockSettings
-          wixColorParams={[
-            {
-              label: 'Tab Text Color',
-              wixParam: 'textColor',
-              defaultColor: 'color-5',
-            },
-            {
-              label: 'Selected Tab Indicator Border Color',
-              wixParam: 'selectedTabIndicatorColor',
-              defaultColor: 'color-8',
-            },
-            {
-              label: 'Indicator Border Color',
-              wixParam: 'indicatorColor',
-              defaultColor: 'color-5',
-            },
-          ]}
-          wixFontParams={[
-            {
-              label: 'Tab Text Font',
-              wixParam: 'textFont',
-              defaultFont: 'arial',
-            },
-          ]}
-        />
-      </div>
+    <>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>Full underline</Text>  
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} skin={SKIN.fullUnderline}/>
+      <br/>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>Fit underline</Text>
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} skin={SKIN.fitUnderline}/>
+      <br/>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>No underline</Text>
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} skin={SKIN.clear}/>
+    </>
+  );
+}
+`;
+
+export const alignment = `() => {
+  const [activeTab, setActiveTab] = React.useState(0);
+  
+  return (
+    <>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>Left alignment</Text>  
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} alignment={ALIGNMENT.left}/>
+      <br/>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>center alignment</Text>
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} alignment={ALIGNMENT.center}/>
+      <br/>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>right alignment</Text>
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} alignment={ALIGNMENT.right}/>
+    </>
+  );
+}
+`;
+
+export const variants = `() => {
+  const [activeTab, setActiveTab] = React.useState(0);
+  
+  return (
+    <>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>Full width</Text>  
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} variant={VARIANT.fullWidth}/>
+      <br/>
+      <Text tagName="h3" typography={TYPOGRAPHY.listText}>Fit</Text>
+      <Tabs items={${items}} activeTabIndex={activeTab} onTabClick={setActiveTab} variant={VARIANT.fit}/>
+    </>
+  );
+}
+`;
+
+export const scroll = `() => {
+  const [activeTab, setActiveTab] = React.useState(0);
+  
+  return (
+    <div style={{width: '50%'}}>
+      <Tabs items={${manyItems}} activeTabIndex={activeTab} onTabClick={setActiveTab}/>
     </div>
   );
-};
+}
+`;
