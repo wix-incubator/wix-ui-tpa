@@ -19,7 +19,7 @@ import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { IconToggleExtendedExample } from './IconToggleExtendedExample';
-import ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample';
+import ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample.tsx';
 import ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
 import * as examples from './examples';
 import { allComponents } from '../../../../stories/utils/allComponents';

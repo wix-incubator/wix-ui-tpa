@@ -25,7 +25,7 @@ import {
 } from '../helpers';
 import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
 import { DropdownExtendedExample } from './DropdownExtendedExample';
-import ExtendedRawSource from '!raw-loader!./DropdownExtendedExample';
+import ExtendedRawSource from '!raw-loader!./DropdownExtendedExample.tsx';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 

@@ -23,7 +23,7 @@ import {
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { TabsExtendedExample } from './TabsExtendedExample';
-import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
