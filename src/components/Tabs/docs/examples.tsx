@@ -1,6 +1,9 @@
 import * as React from 'react';
 
-const generateItems = (length) => new Array(length).fill(0).map((__, idx) => `{ title: 'Title ${idx + 1}', id: 'tab-${idx}' }`)
+const generateItems = length =>
+  new Array(length)
+    .fill(0)
+    .map((__, idx) => `{ title: 'Title ${idx + 1}', id: 'tab-${idx}' }`);
 
 const items = `[
   ${generateItems(4)}
