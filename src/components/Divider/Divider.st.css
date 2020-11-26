@@ -3,15 +3,23 @@
     -st-named: color, fallback, applyUnit, zeroAsTrue;
 }
 
+/* Defaults */
 :vars {
-    /*Constance*/
     MainColor: color-5;
     MainWidth: 1;
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+    Divider color
+    @default color-5
+     */
     MainDividerColor: value(MainColor);
+    /*
+    Divider width
+    @default 1px
+     */
     MainDividerWidth: value(MainWidth);
 }
 

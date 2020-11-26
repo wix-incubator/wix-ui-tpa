@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DotNavigation, DotNavigationProps } from '../DotNavigation';
-import { classes, st } from '../../Counter/docs/CounterExtendedExample.st.css';
+import { classes } from './DotNavigationExtendedExample.st.css';
 
 interface DotNavigationExtendedExampleState {
   currentIndex: number;

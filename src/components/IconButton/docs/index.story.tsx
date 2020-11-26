@@ -22,6 +22,8 @@ import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx'
 import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
 import { IconButtonExtendedExample } from './IconButtonExtendedExample';
 import * as examples from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
+
 ShareIcon.displayName = 'Share';
 HeartIcon.displayName = 'Heart';
 
@@ -40,7 +42,7 @@ const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'IconButton',
   component: IconButton,
   componentPath: '../IconButton.tsx',

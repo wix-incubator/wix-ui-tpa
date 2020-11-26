@@ -25,6 +25,7 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
 import { ExtendedExample } from './ExtendedExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -46,7 +47,7 @@ const exampleItems = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'AvatarGroup',
   component: AvatarGroup,
   componentPath: '../AvatarGroup.tsx',

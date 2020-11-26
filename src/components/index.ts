@@ -3,6 +3,7 @@ export * from './OverlappingCard';
 export * from './Text';
 export * from './Divider';
 export * from './Button';
+export * from './StatesButton';
 export * from './TPAComponentsConfig';
 export * from './StripCard';
 export * from './Grid';

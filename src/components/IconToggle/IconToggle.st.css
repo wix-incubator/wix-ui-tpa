@@ -10,10 +10,22 @@
     DefaultFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The color of the icon
+        @default color-5
+     */
     IconColor: --overridable;
+    /*
+        The color of the label
+        @default color-5
+     */
     LabelColor: --overridable;
+    /*
+        The color of the label
+        @default "{theme: 'Body-M', size: '12px', lineHeight: '16px'}"
+     */
     LabelFont: --overridable;
 }
 

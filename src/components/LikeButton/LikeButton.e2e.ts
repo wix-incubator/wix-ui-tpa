@@ -4,6 +4,7 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { likeButtonTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 /**
  * For tests containing interactions.
@@ -11,7 +12,7 @@ import { likeButtonTestkitFactory } from '../../testkit/protractor';
  * */
 describe('likeButton', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: StoryCategory.COMPONENTS,
     story: 'LikeButton',
     withExamples: true,
   });

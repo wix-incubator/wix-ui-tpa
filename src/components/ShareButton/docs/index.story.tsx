@@ -23,12 +23,13 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
 import { ShareButtonWiringExample } from './ShareButtonWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components/Share',
+  category: StoryCategory.COMPONENTS,
   storyName: 'ShareButton',
   component: ShareButton,
   componentPath: '../ShareButton.tsx',

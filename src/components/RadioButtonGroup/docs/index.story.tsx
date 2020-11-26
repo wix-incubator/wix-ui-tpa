@@ -20,12 +20,13 @@ import * as RadioButtonGroupWiringExampleCSSRaw from '!raw-loader!./RadioButtonG
 import { RadioButtonGroupWiringExample } from './RadioButtonGroupWiringExample';
 import { RadioButtonGroup, RadioButtonGroupLayout } from '../';
 import { RadioButton, RadioButtonTheme } from '../../RadioButton/RadioButton';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'RadioButtonGroup',
   component: RadioButtonGroup,
   componentPath: '../RadioButtonGroup.tsx',

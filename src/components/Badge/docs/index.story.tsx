@@ -25,6 +25,7 @@ import { BadgeExtendedExample } from './BadgeExtendedExample';
 import * as exampleOverrides from './BadgeExtendedExample.st.css';
 import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -34,7 +35,7 @@ const example = (config, extraContext = {}) =>
   });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Badge',
   component: Badge,
   componentPath: '../Badge.tsx',

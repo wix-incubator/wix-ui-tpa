@@ -78,6 +78,7 @@
     "@applitools/eyes-storybook": "3.9.1",
     "@storybook/addon-links": "^5.0.9",
     "@storybook/react": "^5.0.9",
+    "@storybook/theming": "^6.1.6",
     "@stylable/cli": "^3.5.0",
     "@stylable/core": "^3.5.0",
     "@svgr/core": "^4.3.2",

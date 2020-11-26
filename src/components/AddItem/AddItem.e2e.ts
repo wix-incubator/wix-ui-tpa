@@ -6,10 +6,11 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { addItemTestkitFactory } from '../../testkit/protractor';
 import { DATA_HOOKS } from './constants';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('AddItem', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: StoryCategory.COMPONENTS,
     story: 'AddItem',
     withExamples: true,
   });

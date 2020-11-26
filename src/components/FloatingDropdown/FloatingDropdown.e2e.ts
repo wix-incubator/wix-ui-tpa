@@ -4,10 +4,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { floatingDropdownTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('floatingDropdown', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: StoryCategory.COMPONENTS,
     story: 'FloatingDropdown',
     withExamples: true,
   });

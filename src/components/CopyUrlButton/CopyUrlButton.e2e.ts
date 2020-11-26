@@ -4,6 +4,7 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { copyUrlButtonTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 /**
  * For tests containing interactions.
@@ -11,7 +12,7 @@ import { copyUrlButtonTestkitFactory } from '../../testkit/protractor';
  * */
 describe('copyUrlButton', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components/Share',
+    kind: StoryCategory.COMPONENTS,
     story: 'CopyUrlButton',
     withExamples: true,
   });

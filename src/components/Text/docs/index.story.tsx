@@ -23,12 +23,13 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
 import { TextWiringExample } from './TextWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Text',
 
   component: Text,

@@ -5,10 +5,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { stripCardTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('stripCard', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Bookings',
+    kind: StoryCategory.BOOKINGS,
     story: 'StripCard',
     withExamples: true,
   });

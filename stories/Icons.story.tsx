@@ -1,8 +1,6 @@
 import * as React from 'react';
-
 import {
     description,
-    importExample,
     header,
     divider,
     tab,
@@ -10,15 +8,14 @@ import {
     title,
     code as baseCode
 } from 'wix-storybook-utils/Sections';
-
-
 import { allComponents } from './utils/allComponents';
+import { StoryCategory } from './storyHierarchy';
 
 const code = config =>
     baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-    category: 'Icons',
+    category: StoryCategory.ICONS,
     storyName: 'Icons',
     sections: [
         header(),

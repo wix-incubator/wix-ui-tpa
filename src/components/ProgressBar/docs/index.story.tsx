@@ -19,12 +19,13 @@ import * as ProgressBarWiringExampleRaw from '!raw-loader!./ProgressBarWiringExa
 import * as ProgressBarWiringExampleCSSRaw from '!raw-loader!./ProgressBarWiringExample.st.css';
 import { ProgressBarWiringExample } from './ProgressBarWiringExample';
 import { ProgressBar } from '../';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'ProgressBar',
   component: ProgressBar,
   componentPath: '../ProgressBar.tsx',

@@ -5,10 +5,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { gridTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('grid', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Bookings',
+    kind: StoryCategory.BOOKINGS,
     story: 'Grid',
     withExamples: true,
   });

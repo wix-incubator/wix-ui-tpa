@@ -6,10 +6,11 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { tabsTestkitFactory } from '../../testkit/protractor';
 import { NavButtonOptions } from './constants';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('Tabs', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Tests',
+    kind: StoryCategory.TESTS,
     story: 'Tabs',
     withExamples: true,
   });
