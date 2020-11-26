@@ -12,9 +12,12 @@ import { MobileExample } from './MobileExample';
  */
 export const allComponents = {
   ...componentsScope,
+
+  // todo: should be removed in the next major version
   ...icons,
+
   Modal,
-  Icons: iconsScope,
+  Icons: { ...iconsScope, ...icons },
   ExampleWithContextProps: ({ children, mobile, rtl }) => (
     <componentsScope.TPAComponentsProvider value={{ mobile, rtl }}>
       {children}
