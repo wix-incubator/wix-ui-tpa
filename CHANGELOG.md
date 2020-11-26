@@ -1,3 +1,22 @@
+## [2.11.1](https://github.com/wix/wix-ui-tpa/compare/v2.11.0...v2.11.1) (2020-11-19)
+
+
+### Bug Fixes
+
+* **Tabs:** Add aria-label and aria-labelledby to nav element ([150734e](https://github.com/wix/wix-ui-tpa/commit/150734eda1a450157134863126cd32bed92009ad))
+
+
+
+# [2.11.0](https://github.com/wix/wix-ui-tpa/compare/v2.10.1...v2.11.0) (2020-11-18)
+
+
+### Bug Fixes
+
+* **Checkbox:**  fix RTL support for box theme ([252c5fd](https://github.com/wix/wix-ui-tpa/commit/252c5fd369fedac7c15464433420b13752176bc6))
+* **Tabs:** fix scrolling mechanism for rtl ([d8aa596](https://github.com/wix/wix-ui-tpa/commit/d8aa5967a3299d9bb5ed3fc8ce873fcd9da11b76))
+
+
+
 ## [2.10.1](https://github.com/wix/wix-ui-tpa/compare/v2.10.0...v2.10.1) (2020-11-12)
 
 

@@ -13,6 +13,7 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { BUTTON_PRIORITY, NOTIFICATION_TYPE, SectionNotification } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
 import * as examples from './examples';
 
@@ -113,6 +114,7 @@ export default {
       }),
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),

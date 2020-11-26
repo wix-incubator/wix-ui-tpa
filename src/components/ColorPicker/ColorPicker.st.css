@@ -4,9 +4,17 @@
     -st-named: value;
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The size (width and height) of a single ColorPickerItem
+        @default 24
+     */
     ItemSize: --overridable;
+    /*
+        The border radius of ColorPickerItem
+        @default 12
+     */
     BorderRadius: --overridable;
 }
 

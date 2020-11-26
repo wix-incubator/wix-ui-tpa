@@ -11,15 +11,21 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as TagsWiringExampleRaw from '!raw-loader!./TagsWiringExample.tsx';
 import * as TagsWiringExampleCSSRaw from '!raw-loader!./TagsWiringExample.st.css';
 import { TagsWiringExample } from './TagsWiringExample';
 import { Tags } from '../';
 import { ALIGNMENT, SIZE, SKIN } from '../constants';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -38,49 +44,23 @@ const exampleItems = [
 ];
 
 function ExampleTags(props) {
-  const [rtl, setRtl] = React.useState(false);
   const [update, forceUpdate] = React.useState(false);
-  const rootRef = React.useRef<HTMLDivElement>();
-
-  React.useEffect(() => {
-    if (rootRef && rootRef.current) {
-      const observer = new MutationObserver(mutationsList => {
-        mutationsList.map(mutation => {
-          if (mutation.attributeName === 'dir') {
-            setRtl(
-              (rootRef.current.parentNode as any).getAttribute('dir') === 'rtl',
-            );
-          }
-        });
-      });
-
-      observer.observe(rootRef.current.parentNode, { attributes: true });
-
-      return function cleanup() {
-        observer.disconnect();
-      };
-    }
-  }, [rootRef]);
 
   return (
-    <div ref={rootRef}>
-      <TPAComponentsProvider value={{ mobile: false, rtl }}>
-        <Tags
-          {...props}
-          onClick={item => {
-            item.checked = !item.checked;
-            forceUpdate(!update);
-          }}
-        />
-      </TPAComponentsProvider>
-    </div>
+    <Tags
+      {...props}
+      onClick={item => {
+        item.checked = !item.checked;
+        forceUpdate(!update);
+      }}
+    />
   );
 }
 
 export default {
   category: 'Components',
   storyName: 'Tags',
-  component: ExampleTags,
+  component: storyComponent(ExampleTags),
   componentPath: '../Tags.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Tags',
@@ -102,6 +82,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`Tags` is a component allowing to render a selection of tags.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -115,9 +99,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

@@ -15,6 +15,8 @@ export * from './TextArea';
 export * from './TextField';
 export * from './Badge';
 export * from './Avatar';
+export * from './Tabs';
+export * from './Tooltip';
 export { IconButton } from './IconButton';
 export * from './Ratings';
 export { AvatarGroup } from './AvatarGroup';

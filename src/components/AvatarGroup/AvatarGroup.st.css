@@ -13,15 +13,27 @@
     -st-default: TextButton;
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     DefaultAvatarBorderColor: color-1;
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The Avatar Border color
+        @default color-1
+    */
      AvatarBorderColor: --overridable;
+    /*
+        Button Text Font
+        @default {theme: 'Body-M', size: '14px', lineHeight: '1.44em'}
+    */
      TextButtonFont: --overridable;
+    /*
+        Button Text Color
+        @default color-5
+    */
      TextButtonColor: --overridable;
 }
 

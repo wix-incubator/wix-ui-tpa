@@ -1,15 +1,7 @@
-
-
 /*Defaults*/
 :vars {
   IconWidth: 24px;
   IconsGap: 40px;
-  /*Defaults params goes here*/
-}
-
-/*Overrides*/
-:vars {
-  /*Deceleration of overridable placeholders*/
 }
 
 .root {

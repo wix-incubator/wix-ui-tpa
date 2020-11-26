@@ -3,8 +3,8 @@
     -st-named: color, fallback, font;
 }
 
+/*Defaults*/
 :vars {
-    /*Constance*/
     TextColor: color-5;
     SmallTitleFont: "{theme: 'Page-title', size: '24px', lineHeight: '1.33em'}";
     RunningTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
@@ -16,8 +16,17 @@
     MobileLargeTitleFont: "{theme: 'Heading-M', size: '24px', lineHeight: '1.33em'}";
 }
 
+/*Overrides*/
 :vars {
+    /*
+      The color of the text instead of the default color set by typography
+      @default color-5
+    */
     MainTextColor: --overridable;
+    /*
+      The font of the text instead of the default font set by typography
+      @default Depends on the typography prop
+    */
     MainTextFont: --overridable;
 }
 

@@ -1,17 +1,16 @@
+:import {
+  -st-from: "../../common/fonts.st.css";
+  -st-named: fixedFont55;
+}
+
 /*Defaults*/
 :vars {
-  /*Defaults params goes here*/
   CheckButtonHeight: 19px;
   SuccessTextPadding: 10px;
 }
 
-/*Overrides*/
-:vars {
-  /*Deceleration of overridable placeholders*/
-}
-
 .root {
-  -st-states: theme(enum(light, dark));
+  -st-states: theme(enum(light, dark)), mobile;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,27 +34,34 @@
 
 .success {
   display: flex;
-  flex-direction: column;
   align-items: center;
+}
+
+.root:not(:mobile) .success {
+  flex-direction: column;
   animation: bounce-in 0.5s ease 0s 1 normal;
   position: relative;
 }
 
-.successMobile {
-  display: flex;
-  align-items: center;
+.successText {
+  font-size: 14px;
+  line-height: 1.2;
+  font-family: value(fixedFont55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.successText {
+.root:not(:mobile) .successText {
   position: absolute;
   top: calc(value(CheckButtonHeight) + value(SuccessTextPadding));
   text-align: center;
-  width: 100px;
+  max-width: 150px;
 }
 
-
-.successTextMobile {
+.root:mobile .successText {
   padding-left: 10px;
+  color: white;
 }
 
 .copyInput {

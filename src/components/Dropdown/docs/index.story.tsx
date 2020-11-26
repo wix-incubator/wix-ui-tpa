@@ -13,6 +13,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { Dropdown } from '../';
 import { DROPDOWN_ALIGNMENT } from '../Dropdown';
 import {
@@ -127,6 +128,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),

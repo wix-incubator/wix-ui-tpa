@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ActionsMenuLayout, Alignment } from '../';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -15,10 +16,15 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';
 import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -36,7 +42,7 @@ function generateItem(props) {
 export default {
   category: 'Components',
   storyName: 'ActionsMenuLayout',
-  component: ActionsMenuLayout,
+  component: storyComponent(ActionsMenuLayout),
   componentPath: '../ActionsMenuLayout.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ActionsMenuLayout',
@@ -77,6 +83,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            'ActionsMenuLayout component wraps multiple options into a list.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -94,9 +104,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

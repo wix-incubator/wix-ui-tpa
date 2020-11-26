@@ -1,12 +1,13 @@
 import * as React from 'react';
-// @ts-ignore
-import * as isEqual from 'lodash/isEqual';
+import { detectScrollType, ScrollType } from 'normalize-scroll-left';
 import { Tab, TabItem } from '../Tab/Tab';
 import { ALIGNMENT as Alignment, VARIANT as Variant } from '../../Tabs';
 import { animateElementByProp } from '../../../common/animations';
 import { TABS_DATA_HOOKS, TABS_DATA_KEYS } from '../dataHooks';
-import { st, classes } from './ScrollableTabs.st.css';
 import { TPAComponentProps } from '../../../types';
+import { st, classes } from './ScrollableTabs.st.css';
+
+const isEqual = require('lodash/isEqual');
 
 export interface ScrollPosition {
   scrollLeft: number;
@@ -33,6 +34,8 @@ interface ScrollableTabsProps extends TPAComponentProps {
   animateIndicator?: boolean;
   scrollButtons: ScrollButtons;
   rtl: boolean;
+  'aria-label'?: string;
+  'aria-labelledby'?: string;
 }
 
 interface ScrollableTabsState {
@@ -47,6 +50,7 @@ export class ScrollableTabs extends React.Component<
   _listRef: React.RefObject<HTMLUListElement>;
   _selectedTabRef: React.RefObject<HTMLLIElement>;
   private _cancelAnimation: () => void;
+  private _rtlScrollType: ScrollType;
 
   static defaultProps = {
     scrollButtons: {
@@ -71,21 +75,33 @@ export class ScrollableTabs extends React.Component<
   }
 
   componentDidMount() {
-    this._updateComponent();
+    const { rtl } = this.props;
+
+    if (rtl) {
+      this._setRtlScrollType();
+    }
+
+    this._updateComponent(true);
   }
 
   componentDidUpdate(
     prevProps: ScrollableTabsProps,
     prevState: ScrollableTabsState,
   ) {
+    if (this.props.rtl && !this._rtlScrollType) {
+      this._setRtlScrollType();
+    }
+
     if (
       prevProps.activeTabIndex !== this.props.activeTabIndex ||
       !isEqual(prevProps.items, this.props.items) ||
       prevProps.alignment !== this.props.alignment ||
-      prevProps.variant !== this.props.variant
+      prevProps.variant !== this.props.variant ||
+      prevProps.rtl !== this.props.rtl
     ) {
       this._updateComponent(
-        prevProps.activeTabIndex !== this.props.activeTabIndex,
+        prevProps.activeTabIndex !== this.props.activeTabIndex ||
+          prevProps.rtl !== this.props.rtl,
       );
     }
   }
@@ -94,9 +110,47 @@ export class ScrollableTabs extends React.Component<
     this._updateIndicatorPosition();
   }
 
-  _updateComponent(newSelectedTab = false) {
+  _setRtlScrollType() {
+    this._rtlScrollType = detectScrollType();
+  }
+
+  _getNormalizedScrollLeft() {
+    const { rtl } = this.props;
+    let normalizedLeft = 0;
+
+    if (this._navRef.current) {
+      const { scrollLeft, scrollWidth, offsetWidth } = this._navRef.current;
+      normalizedLeft = Math.abs(scrollLeft);
+
+      if (
+        rtl &&
+        (this._rtlScrollType === 'negative' ||
+          this._rtlScrollType === 'reverse')
+      ) {
+        normalizedLeft = scrollWidth - (normalizedLeft + offsetWidth);
+      }
+    }
+
+    return normalizedLeft;
+  }
+
+  _getNormalizedScrollRight(scrollLeft: number) {
+    let normalizedRight = 0;
+
+    if (this._navRef.current) {
+      const { scrollWidth, offsetWidth } = this._navRef.current;
+      normalizedRight = scrollWidth - (scrollLeft + offsetWidth);
+    }
+
+    return normalizedRight;
+  }
+
+  _updateComponent(shouldScroll = false) {
     this._updateIndicatorPosition();
-    this._scrollToViewIfNeeded(newSelectedTab);
+
+    if (shouldScroll) {
+      this._scrollToViewIfNeeded();
+    }
   }
 
   _updateIndicatorPosition() {
@@ -117,55 +171,73 @@ export class ScrollableTabs extends React.Component<
     }
   }
 
-  _scrollToViewIfNeeded = (newSelectedTab: boolean) => {
+  _scrollToViewIfNeeded = () => {
     const { rtl, scrollButtons } = this.props;
     const { left, right } = scrollButtons;
 
-    if (this._selectedTabRef && this._selectedTabRef.current) {
+    if (this._selectedTabRef.current) {
       const currentTabElement = this._selectedTabRef.current;
       const navElement = this._navRef.current;
-      const leftLimit = navElement.scrollLeft;
-      const rightLimit = leftLimit + navElement.clientWidth;
-      const leftDelta = currentTabElement.offsetLeft - leftLimit;
-      const rightDelta =
-        currentTabElement.offsetLeft +
-        currentTabElement.clientWidth -
-        rightLimit;
+
+      const tabOffsetLeft = currentTabElement.offsetLeft;
+      const tabOffsetWidth = currentTabElement.offsetWidth;
+      const navOffsetWidth = navElement.offsetWidth;
+      const navScrollWidth = navElement.scrollWidth;
+
       const buttonGap = rtl ? right : left;
-      let scrollAmount = currentTabElement.offsetLeft - buttonGap;
+      let scrollTo = tabOffsetLeft - buttonGap;
 
       if (rtl) {
-        scrollAmount =
-          navElement.scrollWidth -
-          (navElement.offsetWidth -
-            (currentTabElement.offsetLeft +
-              buttonGap +
-              currentTabElement.offsetWidth)) -
-          navElement.offsetWidth;
+        const rtlOffset = navOffsetWidth - tabOffsetWidth - 2 * buttonGap;
+        switch (this._rtlScrollType) {
+          case 'default':
+            scrollTo += navScrollWidth - navOffsetWidth - rtlOffset;
+            break;
+          case 'reverse':
+            scrollTo = -scrollTo + rtlOffset;
+            break;
+          default:
+            scrollTo -= rtlOffset;
+        }
       }
 
-      if (newSelectedTab || leftDelta < 0 || rightDelta > 0) {
-        this._animateScroll(scrollAmount);
-      }
+      this._animateScroll(scrollTo);
     }
   };
 
   _getMaxMinScroll() {
-    const navElement = this._navRef.current;
+    const { rtl } = this.props;
+    let min = 0;
+    let max = 0;
+
+    if (this._navRef.current) {
+      const { scrollWidth, offsetWidth } = this._navRef.current;
+      max = scrollWidth - offsetWidth;
+
+      if (rtl) {
+        // tslint:disable-next-line:switch-default
+        switch (this._rtlScrollType) {
+          case 'negative':
+            min = -1 * max;
+            max = 0;
+        }
+      }
+    }
 
     return {
-      max: navElement.scrollWidth - navElement.offsetWidth,
-      min: 0,
+      min,
+      max,
     };
   }
 
-  _animateScroll(scrollLeft: number) {
+  _animateScroll(scrollTo: number) {
     if (this._cancelAnimation) {
       this._cancelAnimation();
     }
 
     const { min, max } = this._getMaxMinScroll();
-    const moveTo = Math.min(Math.max(scrollLeft, min), max);
+    const moveTo = Math.min(Math.max(scrollTo, min), max);
+
     const { cancel, done } = animateElementByProp({
       propToAnimate: 'scrollLeft',
       element: this._navRef.current,
@@ -191,22 +263,24 @@ export class ScrollableTabs extends React.Component<
   }
 
   _scrollToSide(scrollDirection: number) {
-    const scrollLeft = this._navRef.current.scrollLeft;
-    const clientWidth = this._navRef.current.clientWidth;
-    const scrollDistance = scrollDirection * (clientWidth / 2);
+    if (this._navRef.current) {
+      const { scrollLeft, clientWidth } = this._navRef.current;
+      const rtlDirectionFix = this._rtlScrollType === 'reverse' ? -1 : 1;
+      const scrollDistance =
+        rtlDirectionFix * scrollDirection * (clientWidth / 2);
 
-    this._animateScroll(scrollLeft + scrollDistance);
+      this._animateScroll(scrollLeft + scrollDistance);
+    }
   }
 
   getNavScrollPosition(): ScrollPosition {
     const scrollPosition = { scrollLeft: 0, scrollRight: 0 };
 
     if (this._navRef && this._navRef.current) {
-      const element = this._navRef.current;
+      const scrollLeft = this._getNormalizedScrollLeft();
 
-      scrollPosition.scrollLeft = element.scrollLeft;
-      scrollPosition.scrollRight =
-        element.scrollWidth - (element.scrollLeft + element.offsetWidth);
+      scrollPosition.scrollLeft = scrollLeft;
+      scrollPosition.scrollRight = this._getNormalizedScrollRight(scrollLeft);
     }
 
     return scrollPosition;
@@ -221,6 +295,11 @@ export class ScrollableTabs extends React.Component<
     };
   }
 
+  _onScroll = e => {
+    const { onScroll } = this.props;
+    onScroll(e);
+  };
+
   render() {
     const { selectedIndicatorRect } = this.state;
     const {
@@ -232,6 +311,8 @@ export class ScrollableTabs extends React.Component<
       variant,
       animateIndicator,
       className,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabeledBy,
     } = this.props;
 
     return (
@@ -244,7 +325,13 @@ export class ScrollableTabs extends React.Component<
         {...this._getDataAttributes()}
         data-hook={TABS_DATA_HOOKS.scrollableTabs}
       >
-        <nav className={classes.nav} ref={this._navRef} onScroll={onScroll}>
+        <nav
+          className={classes.nav}
+          ref={this._navRef}
+          onScroll={this._onScroll}
+          aria-labelledby={ariaLabeledBy}
+          aria-label={ariaLabel}
+        >
           <ul className={classes.itemsList} ref={this._listRef}>
             {items.map((item, index) => (
               <Tab

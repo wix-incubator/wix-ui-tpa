@@ -14,12 +14,14 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as DialogWiringExampleRaw from '!raw-loader!./DialogWiringExample.tsx';
 import * as DialogWiringExampleCSSRaw from '!raw-loader!./DialogWiringExample.st.css';
 import { DialogWiringExample } from './DialogWiringExample';
 import { Dialog } from '../';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Button, PRIORITY } from '../../Button';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -72,7 +74,7 @@ const childrenExamples = [
 export default {
   category: 'Components',
   storyName: 'Dialog',
-  component: Dialog,
+  component: storyComponent(Dialog),
   componentPath: '../Dialog.tsx',
   componentProps: setState => ({
     'data-hook': 'storybook-Dialog',
@@ -107,6 +109,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
         {

@@ -14,6 +14,7 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import Examples from './exampleWithSettingPanel';
 import { OverlappingCard, OverlappingCardRatioOptions } from '../';
 import { Button } from '../../Button';
@@ -87,6 +88,7 @@ export default {
 
       ...[
         { title: 'API', sections: [api()] },
+        { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
       ].map(tab),

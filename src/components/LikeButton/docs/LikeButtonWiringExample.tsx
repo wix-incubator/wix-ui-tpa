@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { LikeButton } from '../LikeButton';
-import { classes } from './LikeButtonExtendedExample.st.css';
+import { classes } from './LikeButtonWiringExample.st.css';
 
 interface State {
   checked: boolean;
   counter: number;
 }
 
-export class LikeButtonExtendedExample extends React.Component<{}, State> {
+export class LikeButtonWiringExample extends React.Component<{}, State> {
   state = { checked: false, counter: 0 };
 
   handleChange = ({ checked }) =>

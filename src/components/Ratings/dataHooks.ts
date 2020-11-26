@@ -9,4 +9,5 @@ export enum RATINGS_DATA_KEYS {
   Error = 'data-error',
   Disabled = 'data-disabled',
   Size = 'data-size',
+  Hovered = 'data-hovered',
 }

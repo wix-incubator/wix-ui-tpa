@@ -5,9 +5,15 @@
 
 /*Overrides*/
 :vars {
-    /* Background color */
+    /*
+        Background color
+        @default color-5 with opacity 0.1
+    */
     BadgeBgColor: --overridable;
-    /* Text color */
+    /*
+        Text color
+        @default priority default and light: color-5, priority primary: color-1
+    */
     BadgeTextColor: --overridable;
 }
 

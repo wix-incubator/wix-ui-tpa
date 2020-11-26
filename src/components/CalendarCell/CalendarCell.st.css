@@ -23,16 +23,60 @@
 
 /*Overrides*/
 :vars {
+    /*
+        The border width
+        @default 1px
+    */
     BorderWidth: --overridable;
+    /*
+        The font color of a day from a past month
+        @default color-4
+    */
     PastFontColor: --overridable;
+    /*
+        The font color for a day from the current month
+        @default color-5
+    */
     FontColor: --overridable;
+    /*
+        The font color of a day from a future month
+        @default color-4
+    */
     FutureFontColor: --overidable;
+    /*
+        The background color for a day from the current month
+        @default color-1
+    */
     BackgroundColor: --overridable;
+    /*
+        The background color of a day from a future month
+        @default color-1
+    */
     FutureBackgroundColor: --overridable;
+    /*
+        The background color of a day from a past month
+        @default color-1
+    */
     PastBackgroundColor: --overridable;
+    /*
+        The border color for a day from the current month
+        @default color-2
+    */
     BorderColor: --overridable;
+    /*
+        The color for today
+        @default color-8
+    */
     TodayColor: --overridable;
+    /*
+        A day font
+        @default {theme: 'Body-M', size:'16px' lineHeight: '1em'}
+    */
     FontStyle: --overridable;
+    /*
+        A day font size
+        @default 16px
+    */
     FontSize: --overridable;
 }
 

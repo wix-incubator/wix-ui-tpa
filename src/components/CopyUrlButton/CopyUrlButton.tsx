@@ -34,7 +34,7 @@ export class CopyUrlButton extends React.Component<
   state: CopyUrlButtonState = { success: false };
   inputRef = React.createRef<HTMLInputElement>();
 
-  renderSuccess = ({ mobile }: { mobile: boolean }) => {
+  _renderSuccess = ({ mobile }: { mobile: boolean }) => {
     const { successText } = this.props;
 
     if (mobile) {
@@ -45,9 +45,9 @@ export class CopyUrlButton extends React.Component<
           shouldAnimate
           isShown
         >
-          <div className={classes.successMobile}>
+          <div className={classes.success}>
             <Check height={13} width={13} />
-            <span className={classes.successTextMobile}>{successText}</span>
+            <span className={classes.successText}>{successText}</span>
           </div>
         </Toast>
       );
@@ -59,7 +59,8 @@ export class CopyUrlButton extends React.Component<
       </div>
     );
   };
-  onButtonClick: SocialBarIconProps['onClick'] = async event => {
+
+  _onButtonClick: SocialBarIconProps['onClick'] = async event => {
     if (document.queryCommandSupported('copy')) {
       this.inputRef.current.select();
       document.execCommand('copy');
@@ -73,7 +74,7 @@ export class CopyUrlButton extends React.Component<
     this.setState({ success: false });
   };
 
-  renderIconButton = ({ mobile }: { mobile: boolean }) => {
+  _renderIconButton = ({ mobile }: { mobile: boolean }) => {
     const { success } = this.state;
     const {
       tooltipText,
@@ -94,7 +95,7 @@ export class CopyUrlButton extends React.Component<
         icon={<CopyLink />}
         as="button"
         {...otherProps}
-        onClick={this.onButtonClick}
+        onClick={this._onButtonClick}
       />
     );
   };
@@ -107,7 +108,11 @@ export class CopyUrlButton extends React.Component<
       <TPAComponentsConsumer>
         {({ mobile }) => (
           <div
-            className={st(classes.root, { theme: socialBarTheme }, className)}
+            className={st(
+              classes.root,
+              { theme: socialBarTheme, mobile },
+              className,
+            )}
             data-hook={this.props['data-hook']}
           >
             <input
@@ -118,8 +123,8 @@ export class CopyUrlButton extends React.Component<
               aria-hidden="true"
               tabIndex={-1}
             />
-            {this.renderIconButton({ mobile })}
-            {success && this.renderSuccess({ mobile })}
+            {this._renderIconButton({ mobile })}
+            {success && this._renderSuccess({ mobile })}
           </div>
         )}
       </TPAComponentsConsumer>
