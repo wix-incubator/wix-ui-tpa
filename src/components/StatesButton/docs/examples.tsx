@@ -1,7 +1,8 @@
 export const importExample = `import { StatesButton } from 'wix-ui-tpa/StatesButton'`;
 
 export const simpleExample = `() => {
-  const [successButtonState, setSuccessButtonState] = React.useState();
+  const [successButtonState, setSuccessButtonState] = React.useState(BUTTON_STATES.IDLE);
+  const [errorButtonState, setErrorButtonState] = React.useState(BUTTON_STATES.IDLE);
   
   return (
       <>
@@ -14,9 +15,9 @@ export const simpleExample = `() => {
             successContent={'Success!'}
             inProgressContent={'Loading...'}
             failureContent={'Failed to process'}
-            state={buttonStateSuccess}
-            onClick={this._onClickSuccess}
-            onNotificationEnd={this._onNotificationEndSuccess}
+            state={successButtonState}
+            onClick={() => setSuccessButtonState(BUTTON_STATES.SUCCESS)}
+            onNotificationEnd={() => setSuccessButtonState(BUTTON_STATES.IDLE)}
           />
         </div>
         <div>
@@ -27,10 +28,10 @@ export const simpleExample = `() => {
             idleContent={'Click Me'}
             successContent={'Success!'}
             inProgressContent={'Loading...'}
-            failureContent={'Failed to process'}
-            state={buttonStateFailure}
-            onClick={this._onClickError}
-            onNotificationEnd={this._onNotificationEndFailure}
+            failureContent={'Failed'}
+            state={errorButtonState}
+            onClick={() => setErrorButtonState(BUTTON_STATES.FAILURE)}
+            onNotificationEnd={() => setErrorButtonState(BUTTON_STATES.IDLE)}
           />
         </div>
       </>

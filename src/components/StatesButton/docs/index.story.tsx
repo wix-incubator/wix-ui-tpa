@@ -82,7 +82,7 @@ export default {
             {
               title: 'States Button',
               description: 'Has Idle,  In progress, Success and Failure states',
-              source: '',
+              source: examples.simpleExample,
             },
           ].map(example),
         ],
