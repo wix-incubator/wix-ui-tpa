@@ -24,7 +24,6 @@ import * as TagsWiringExampleCSSRaw from '!raw-loader!./TagsWiringExample.st.css
 import { TagsWiringExample } from './TagsWiringExample';
 import { Tags } from '../';
 import { ALIGNMENT, SIZE, SKIN } from '../constants';
-import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>

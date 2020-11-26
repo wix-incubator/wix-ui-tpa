@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import { st, classes } from './Card.st.css';
 import {
   TPAComponentsConsumer,
@@ -74,7 +75,10 @@ export class Card extends React.Component<CardProps> {
       className,
     } = this.props;
     return upgrade ? (
-      <NewCard {...this.props} />
+      <NewCard
+        {...this.props}
+        className={st(classes.root, {}, classes.upgraded, className)}
+      />
     ) : (
       <TPAComponentsConsumer>
         {({ mobile }) => (
@@ -89,6 +93,7 @@ export class Card extends React.Component<CardProps> {
                 mobile,
                 mediaAspectRatio: !!mediaAspectRatio || stacked,
               },
+              classes.deprecated,
               className,
             )}
             data-hook={this.props['data-hook']}
