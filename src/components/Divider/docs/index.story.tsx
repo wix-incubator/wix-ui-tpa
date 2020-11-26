@@ -48,7 +48,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('Divider is a component helping to separate elements into sections'),
+          description(
+            'Divider is a component helping to separate elements into sections',
+          ),
 
           importExample({
             source: examples.importExample,
