@@ -19,8 +19,8 @@ import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { IconToggleExtendedExample } from './IconToggleExtendedExample';
-import ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample.tsx';
-import ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
+import * as ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
 import * as examples from './examples';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
@@ -82,20 +82,10 @@ export default {
 
           ...[
             {
-              title: 'Star toggle with counter',
-              description: '',
+              title: 'Basic Example',
+              description: 'Star toggle with counter',
               source: examples.counter,
             },
-            // {
-            //   title: 'Icon prefix',
-            //   description: 'Icon prefix can be set per icon',
-            //   // source: examples.icons,
-            // },
-            // {
-            //   title: 'RTL support',
-            //   description: 'RTL is supported using the native css property',
-            //   // source: examples.rtl,
-            // },
           ].map(example),
         ],
       }),
