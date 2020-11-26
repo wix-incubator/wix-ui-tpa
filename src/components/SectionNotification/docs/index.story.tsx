@@ -16,6 +16,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
 import * as examples from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -64,7 +65,7 @@ const children = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'SectionNotification',
   component: SectionNotification,
   componentPath: '../SectionNotification.tsx',

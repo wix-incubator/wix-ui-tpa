@@ -25,6 +25,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { TabsExtendedExample } from './TabsExtendedExample';
 import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample';
 import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -43,7 +44,7 @@ const exampleItems = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Tabs',
   component: storyComponent(Tabs),
   source: TabsSource,

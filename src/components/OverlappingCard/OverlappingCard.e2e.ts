@@ -5,10 +5,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { cardTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('OverlappingCard', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Bookings',
+    kind: StoryCategory.BOOKINGS,
     story: 'OverlappingCard',
     withExamples: true,
   });

@@ -8,7 +8,7 @@
 //
 // describe('Autocomplete', () => {
 //   const storyUrl = createStoryUrl({
-//     kind: 'Components',
+//     kind: Category.COMPONENTS,
 //     story: 'Autocomplete',
 //     withExamples: true,
 //   });

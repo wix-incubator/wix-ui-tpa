@@ -20,12 +20,13 @@ import * as EventWiringExampleCSSRaw from '!raw-loader!./EventWiringExample.st.c
 import { EventWiringExample } from './EventWiringExample';
 import { Event } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Event',
   component: storyComponent(Event),
   componentPath: '../Event.tsx',

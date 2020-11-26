@@ -4,13 +4,14 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { checkboxTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 const hoveredColor = 'rgb(0, 0, 0)';
 const errorColor = 'rgb(223, 49, 49)';
 
 describe('checkbox', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Tests',
+    kind: StoryCategory.TESTS,
     story: 'Checkbox',
     withExamples: true,
   });

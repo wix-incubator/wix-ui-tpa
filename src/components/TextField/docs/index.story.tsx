@@ -26,12 +26,13 @@ import * as textFieldRawSource from '!raw-loader!./TextFieldExtendedExample.tsx'
 import * as textFieldCSSRawSource from '!raw-loader!./TextFieldExtendedExample.st.css';
 import { ReactComponent as CalendarIcon } from '../../../assets/icons/Calendar.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'TextField',
 
   component: TextField,

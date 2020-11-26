@@ -22,6 +22,7 @@ import { Dialog } from '../';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { Button, PRIORITY } from '../../Button';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -72,7 +73,7 @@ const childrenExamples = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Dialog',
   component: storyComponent(Dialog),
   componentPath: '../Dialog.tsx',

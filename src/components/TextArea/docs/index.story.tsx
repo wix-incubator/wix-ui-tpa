@@ -19,12 +19,13 @@ import { TextAreaConnected as TextArea } from './connected';
 import { TextAreaTheme } from '../TextAreaEnums';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'TextArea',
   component: storyComponent(TextArea),
   componentPath: '../TextArea.tsx',

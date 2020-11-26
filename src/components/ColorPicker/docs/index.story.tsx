@@ -31,6 +31,7 @@ import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherEx
 import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
 import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExample';
 import { ColorPickerFocusTabExample } from './ColorPickerFocusTabExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -74,7 +75,7 @@ const CHILDREN = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'ColorPicker',
   component: ColorPicker,
   componentPath: '../ColorPicker.tsx',

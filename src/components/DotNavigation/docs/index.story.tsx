@@ -20,6 +20,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawSource from '!raw-loader!./DotNavigationExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./DotNavigationExtendedExample.st.css';
 import { DotNavigationExtendedExample } from './DotNavigationExtendedExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -29,7 +30,7 @@ const example = (config, extraContext = {}) =>
   });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'DotNavigation',
   component: DotNavigation,
   componentPath: '../DotNavigation.tsx',

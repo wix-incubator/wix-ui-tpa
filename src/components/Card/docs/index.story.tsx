@@ -19,6 +19,7 @@ import * as examples from './examples';
 import * as exampleStyles from './examples.st.css';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -53,7 +54,7 @@ function ExampleCard(props) {
 }
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Card',
   component: storyComponent(ExampleCard),
   componentPath: '../../NewCard/NewCard.tsx',

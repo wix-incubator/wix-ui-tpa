@@ -20,6 +20,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawSource from '!raw-loader!./CheckboxGroupExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxGroupExtendedExample.st.css';
 import { CheckboxGroupExtendedExample } from './CheckboxGroupExtendedExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const noop = () => {};
 const el = [
@@ -32,7 +33,7 @@ const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'CheckboxGroup',
   component: CheckboxGroup,
   componentPath: '../CheckboxGroup.tsx',

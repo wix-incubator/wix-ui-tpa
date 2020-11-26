@@ -24,6 +24,7 @@ import {
 import { SpinnerProps, SPINNER_TYPES } from '../types';
 import * as examples from './examples';
 import { SpinnerWiringExample } from './SpinnerWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -43,7 +44,7 @@ function Spinner(props: SpinnerProps) {
 Spinner.defaultProps = SpinnerCore.defaultProps;
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Spinner',
   component: Spinner,
   componentPath: '../Spinner.tsx',

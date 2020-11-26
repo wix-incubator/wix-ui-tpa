@@ -23,12 +23,13 @@ import {
 import { Pagination } from '../Pagination';
 import * as examples from './examples';
 import { PaginationWiringExample } from './PaginationWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Pagination',
   component: storyComponent(Pagination),
   componentPath: '../Pagination.tsx',

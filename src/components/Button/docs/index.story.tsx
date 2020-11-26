@@ -26,12 +26,13 @@ import {
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 import { Button, PRIORITY, SIZE } from '..';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Button',
   component: Button,
   componentPath: '../Button.tsx',

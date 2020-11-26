@@ -20,6 +20,7 @@ import { OverlappingCard, OverlappingCardRatioOptions } from '../';
 import { Button } from '../../Button';
 import { Text, TYPOGRAPHY } from '../../Text';
 import readme from '../README.md';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const mediaExamples = [
   {
@@ -49,7 +50,7 @@ const infoExample = (
 );
 
 export default {
-  category: 'Bookings',
+  category: StoryCategory.BOOKINGS,
   storyName: 'OverlappingCard',
   component: OverlappingCard,
   componentPath: '../OverlappingCard.tsx',

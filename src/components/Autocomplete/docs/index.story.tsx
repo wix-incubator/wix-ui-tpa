@@ -3,11 +3,12 @@ import { Option } from 'wix-ui-core/dropdown-option';
 
 import { Autocomplete } from '../Autocomplete';
 import { generateOptions } from 'wix-ui-core/dist/src/components/dropdown-option/OptionsExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const options = generateOptions();
 
 export default {
-  category: 'Deprecated',
+  category: StoryCategory.DEPRECATED,
   storyName: 'Autocomplete',
 
   component: Autocomplete,

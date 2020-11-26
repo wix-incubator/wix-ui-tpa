@@ -8,7 +8,7 @@
 //
 // describe('Input', () => {
 //   const storyUrl = createStoryUrl({
-//     kind: 'Components',
+//     kind: Category.COMPONENTS,
 //     story: 'Input',
 //     withExamples: true,
 //   });

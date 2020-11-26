@@ -25,6 +25,7 @@ import { TagsWiringExample } from './TagsWiringExample';
 import { Tags } from '../';
 import { ALIGNMENT, SIZE, SKIN } from '../constants';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -57,7 +58,7 @@ function ExampleTags(props) {
 }
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Tags',
   component: storyComponent(ExampleTags),
   componentPath: '../Tags.tsx',

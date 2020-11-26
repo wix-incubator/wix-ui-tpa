@@ -23,6 +23,7 @@ import ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample';
 import ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
 import * as examples from './examples';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 StarIcon.displayName = 'Star';
 HeartIcon.displayName = 'Heart';
@@ -46,7 +47,7 @@ const iconExamples = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'IconToggle',
   component: IconToggle,
   componentPath: '../IconToggle.tsx',

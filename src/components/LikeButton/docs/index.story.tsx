@@ -23,12 +23,13 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
 import { LikeButtonWiringExample } from './LikeButtonWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'LikeButton',
   component: LikeButton,
   componentPath: '../LikeButton.tsx',

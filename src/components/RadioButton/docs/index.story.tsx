@@ -24,12 +24,13 @@ import {
 import { RadioButtonTheme } from '../RadioButton';
 import * as examples from './examples';
 import RadioButtonWiringExample from './RadioButtonWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'RadioButton',
   component: RadioButton,
   componentPath: '../RadioButton.tsx',

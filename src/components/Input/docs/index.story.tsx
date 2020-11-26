@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Input } from '..';
 import { Examples } from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 export default {
-  category: 'Deprecated',
+  category: StoryCategory.DEPRECATED,
   storyName: 'Input',
 
   component: Input,

@@ -4,10 +4,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { ratingsTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('Ratings', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Tests',
+    kind: StoryCategory.TESTS,
     story: 'Ratings',
     withExamples: true,
   });

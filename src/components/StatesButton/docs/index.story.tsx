@@ -25,8 +25,7 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
-
-const ref: React.RefObject<StatesButton> = React.createRef();
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -35,17 +34,8 @@ const example = (config, extraContext = {}) =>
     ...config,
   });
 
-const defaultProps: StatesButtonProps = {
-  disabled: false,
-  state: BUTTON_STATES.IDLE,
-  idleContent: 'Idle state',
-  inProgressContent: 'Loading...',
-  failureContent: 'Try Again',
-  size: SIZE.large,
-};
-
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'StatesButton',
   component: StatesButton,
   componentPath: '../StatesButton.tsx',

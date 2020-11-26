@@ -29,6 +29,7 @@ import { ReactComponent as Tumblr } from '../../../assets/icons/Social/Tumblr.sv
 import { CopyUrlButton } from '../../CopyUrlButton';
 import * as examples from './examples';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -91,7 +92,7 @@ const CHILDREN = [
 /* tslint:enable */
 
 export default {
-  category: 'Components/Share',
+  category: StoryCategory.COMPONENTS,
   storyName: 'SocialBar',
   component: SocialBar,
   componentPath: '../SocialBar.tsx',

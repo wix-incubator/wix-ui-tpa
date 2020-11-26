@@ -23,6 +23,7 @@ import { DividerExtendedExample } from './DividerExtendedExample.tsx';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as ExtendedRawSource from '!raw-loader!./DividerExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./DividerExtendedExample.st.css';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -32,7 +33,7 @@ const example = (config, extraContext = {}) =>
   });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Divider',
 
   component: Divider,
