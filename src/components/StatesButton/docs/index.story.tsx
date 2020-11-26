@@ -80,8 +80,8 @@ export default {
 
           ...[
             {
-              title: 'Priority skins',
-              description: 'The Badge component has different skins to apply',
+              title: 'States Button',
+              description: 'Has Idle,  In progress, Success and Failure states',
               source: '',
             },
           ].map(example),
