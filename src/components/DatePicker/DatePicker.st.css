@@ -167,7 +167,7 @@
 }
 .wsrDatePicker::calendar::day:singleDay:not(:outside):hover .dayCircle {
     /* todo: ask michal what is the real styling */
-     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.6);
+     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
 }
 
 
@@ -175,10 +175,29 @@
 
 
 /* month and years dropdowns */
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::popoverContent,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::popoverContent {
+    top: 4px !important;
+}
+
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::caption ,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::caption {
+    font: value(CurrentWeekdayFont); /* font-size is 14px and shouldn't be overridable */
+    color: value(CurrentWeekdayTextColor);
+}
+
+/* List */
+
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::contentContainer,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::contentContainer {
+    background-color: value(CurrentBackgroundColor);
+    padding: 12px 0;
+}
 
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption,
 .wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption {
     background-color: value(CurrentBackgroundColor);
+    padding: 0 20px;
 }
 
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
