@@ -23,7 +23,7 @@
 
     DefaultNavigationArrowsColor: color-5;
     DefaultMonthAndYearCaptionFont: "{theme: 'Body-M', lineHeight: '24px'}";
-    DefaultMonthAndYearCaptionColor: color-8;
+    DefaultMonthAndYearCaptionColor: color-5;
 
     DefaultWeekdayFont: "{theme: 'Body-M', lineHeight: '20px'}";
     DefaultWeekdayTextColor: color-8;
@@ -33,7 +33,6 @@
     DefaultSelectedDayColor: color-1;
     DefaultSelectedDayBGColor: color-8;
     DefaultDisabledDayColor: color-3;
-
 }
 
 /*Overrides*/
@@ -61,6 +60,7 @@
     CurrentNavigationArrowsColor: color(fallback(value(NavigationArrowsColor), value(DefaultNavigationArrowsColor)));
     CurrentMonthAndYearCaptionFont: fallback(font(value(MonthAndYearCaptionFont)), font(value(DefaultMonthAndYearCaptionFont)));
     CurrentMonthAndYearCaptionColor: color(fallback(value(MonthAndYearCaptionColor), value(DefaultMonthAndYearCaptionColor)));
+    DropdownOptionSelectedAndHoverBGColor: applyOpacity(value(CurrentDayColor), 0.06);;
 
     CurrentWeekdayFont: fallback(font(value(WeekdayFont)), font(value(DefaultWeekdayFont)));
     CurrentWeekdayTextColor: color(fallback(value(WeekdayTextColor), value(DefaultWeekdayTextColor)));
@@ -213,19 +213,17 @@
 
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
 .wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.06);
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected,
 .wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:selected {
-    /* todo: ask michal what is the real styling */
-    /* background-color, color */
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,
 .wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {
-    /* todo: ask michal what is the real styling */
-    /* background-color, color */
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption::title,
