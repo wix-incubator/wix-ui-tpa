@@ -76,7 +76,7 @@
 }
 
 
-/** Option 1: override the styling using the pseudo elements. Define custom-selector for all the "complicated" selectors in WSR **/
+/** Option 1: override the styling using the pseudo elements. **/
 
 .wsrDatePicker {
     -st-extends: WSRDatePicker;
@@ -98,12 +98,13 @@
     color: value(CurrentNavigationArrowsColor);
 }
 .wsrDatePicker::calendar::header::arrow:hover:not(active) {
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
+    background: none;
+    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
 .wsrDatePicker::calendar::header::arrow:active {
-    /* todo: ask michal what is the real styling */
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
+    background: none;
+    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
 .wsrDatePicker::calendar::header::caption {
@@ -145,14 +146,20 @@
 
 .wsrDatePicker::calendar::day:hover {
     color: color(value(DeafultDayColor));
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1); /* date Hover */
 }
 
 .wsrDatePicker::calendar::day:today:not(:selected):not(:hover) {
-    /* todo: ask michal what is the real styling */
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.2);
+    background: none;
+    color: value(CurrentSelectedDayBGColor);
     box-shadow: none;
 }
+
+.wsrDatePicker::calendar::day:today:not(:selected):hover {
+    color: value(CurrentSelectedDayBGColor);
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1); /* date hover */
+}
+
 .wsrDatePicker::calendar::day:today:not(:selected):not(:hover):focus {
     box-shadow: none;
 }
@@ -169,7 +176,6 @@
     background-color: value(CurrentSelectedDayBGColor);
 }
 .wsrDatePicker::calendar::day:singleDay:not(:outside):hover .dayCircle {
-    /* todo: ask michal what is the real styling */
      background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
 }
 
@@ -183,6 +189,7 @@
     top: 4px !important;
 }
 
+/** todo: fix it.. */
 .wsrDatePicker::calendar::header::monthDropdown::dropdown::caption ,
 .wsrDatePicker::calendar::header::yearDropdown::dropdown::caption {
     font: value(CurrentWeekdayFont);
@@ -228,9 +235,6 @@
 }
 
 /******************************************************/
-
-
-
 
 
 
