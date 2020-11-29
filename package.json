@@ -68,7 +68,7 @@
     "lodash": "^4.17.11",
     "normalize-scroll-left": "^0.2.1",
     "react-resize-detector": "^4.1.3",
-    "wix-style-react": "http://cdn.dev.wixpress.com/wix-style-react/0.0.0-667f88f9a682527828a0b6b1e7d66228",
+    "wix-style-react": "http://cdn.dev.wixpress.com/wix-style-react/0.0.0-d65972a9f003f2d7d7cb966537d100ee",
     "wix-ui-core": "^3.0.150",
     "wix-ui-icons-common": "^2.0.0",
     "yoshi-stylable-dependencies": "^4.86.0",
