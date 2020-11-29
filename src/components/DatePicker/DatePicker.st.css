@@ -249,29 +249,55 @@
 
 /*.wsrDatePicker {*/
 /*    -st-mixin: WSRDatePicker(*/
-/*            CalendarWidth value(calendarWidth),*/
-/*            CalendarHeight value(calendarHeight),*/
+/*        CalendarWidth value(calendarWidth),*/
+/*        CalendarHeight value(calendarHeight),*/
 
 /*            !* calendar header *!*/
-/*            CalendarHeaderPadding 28px value(sidePadding) 0,*/
-/*            CalendarHeaderBGColor value(CurrentBackgroundColor),*/
-/*            !**********************!*/
-
-/*            !* calendar Weekdays *!*/
-/*            CalendarWeekdaysPadding 0 value(sidePadding),*/
-/*            CalendarWeekdaysBGColor value(CurrentBackgroundColor),*/
-/*            CalendarWeekdayPadding 20px 0 16px,*/
-/*            CalendarWeekdayFont value(CurrentWeekdayFont),*/
-/*            CalendarWeekdayTextColor value(CurrentWeekdayTextColor),*/
-/*            !**********************!*/
-
-/*            !* calendar body *!*/
-/*            CalendarBodyPadding 0 value(sidePadding) 20px,*/
-/*            CalendarBodyBGColor value(CurrentBackgroundColor),*/
-
-/*            CalendarDayFont value(CurrentDayFont),*/
-/*            CalendarDayDefaultColor  value(CurrentDayColor),*/
-
-/*            !**********************!*/
+/*        CalendarHeaderPadding 28px value(sidePadding) 0,*/
+/*        CalendarHeaderBGColor value(CurrentBackgroundColor),*/
+/*        CalendarArrowColor: value(CurrentNavigationArrowsColor),*/
+/*        CalendarArrowColorHover applyOpacity(value(CurrentNavigationArrowsColor), 0.7),*/
+/*        CalendarArrowBGColorHover none,*/
+/*        CalendarArrowColorActive applyOpacity(value(CurrentNavigationArrowsColor), 0.7),*/
+/*        CalendarArrowBGColorActive none,*/
+/*        CalendarHeaderCaptionFont value(CurrentMonthAndYearCaptionFont),*/
+/*        CalendarHeaderCaptionFontSize 16px,*/
+/*        CalendarHeaderCaptionColor value(CurrentMonthAndYearCaptionColor), */
+/*        */
+/*        !* month and years dropdowns *!*/
+/*        DropdownTopPosition 4px,*/
+/*        DropdownElementFont value(CurrentWeekdayFont),*/
+/*        DropdownElementFontSize 14px,*/
+/*        DropdownElementTextColor value(CurrentWeekdayTextColor),*/
+/*    */
+/*        DropdownListBGColor value(CurrentBackgroundColor),*/
+/*        DropdownListPadding 12px 0,*/
+/*    */
+/*        DropdownListOptionItemFont font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}"),*/
+/*        DropdownListOptionItemColor value(CurrentDayColor),*/
+/*        DropdownListOptionItemPadding 0 20px,*/
+/*        DropdownListOptionItemBGColorHover applyOpacity(value(CurrentSelectedDayBGColor), 0.06),*/
+/*        DropdownListOptionItemSelectedBGColor ?,*/
+/*        DropdownListOptionItemSelectedBGColorHover ?,*/
+/*        !**********************!*/
+/*    */
+/*        !* calendar Weekdays *!*/
+/*        CalendarWeekdaysPadding 0 value(sidePadding),*/
+/*        CalendarWeekdaysBGColor value(CurrentBackgroundColor),*/
+/*    */
+/*        CalendarWeekdayPadding 20px 0 16px,*/
+/*        CalendarWeekdayFont value(CurrentWeekdayFont),*/
+/*        CalendarWeekdayFontSize 14px,*/
+/*        CalendarWeekdayTextColor value(CurrentWeekdayTextColor),*/
+/*        !**********************!*/
+/*    */
+/*        !* calendar body *!*/
+/*        CalendarBodyPadding 0 value(sidePadding) 20px,*/
+/*        CalendarBodyBGColor value(CurrentBackgroundColor),*/
+/*    */
+/*        CalendarDayFont value(CurrentDayFont),*/
+/*        CalendarDayDefaultColor  value(CurrentDayColor),*/
+/*    */
+/*        !**********************!*/
 /*    );*/
 /*}*/
