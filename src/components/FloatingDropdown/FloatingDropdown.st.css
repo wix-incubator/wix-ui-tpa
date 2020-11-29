@@ -25,20 +25,40 @@
     -st-default: Text;
 }
 
+/*Constance*/
 :vars {
-    /*Constance*/
     DefaultTextColor: color-5;
     DefaultDisabledTextColor: color-3;
     DefaultDropdownBackgroundColor: color-1;
     DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The Dropdown Background color
+        @default color-1
+    */
     DropdownBackgroundColor: --overridable;
+    /*
+        The Button Text color for Disable state
+        @default color-3
+    */
     DisabledTextColor: --overridable;
+    /*
+        The Button Text color
+        @default color-5
+    */
     ButtonTextColor: --overridable;
+    /*
+        The Items Text color
+        @default color-5
+    */
     ItemTextColor: --overridable;
+    /*
+        The Texts font
+        @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'}
+    */
     TextFont: --overridable;
 }
 
