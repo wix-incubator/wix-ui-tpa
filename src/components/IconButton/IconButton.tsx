@@ -31,7 +31,12 @@ export class IconButton extends React.Component<IconButtonProps, State> {
     const { icon, disabled, skin, className, innerRef, ...rest } = this.props;
     return (
       <ButtonNext
-        className={st(classes.root, { disabled, skin }, className)}
+        className={st(
+          classes.root,
+          { disabled },
+          classes[`skin-${skin}`],
+          className,
+        )}
         {...rest}
         ref={innerRef}
       >

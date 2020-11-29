@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { st, classes } from './Dialog.st.css';
 import { DATA_HOOKS } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
-
 import { Modal } from '../internal/Modal';
 import { IconButton } from '../IconButton';
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { TPAComponentProps } from '../../types';
+import { st, classes } from './Dialog.st.css';
 
 export interface DialogProps extends TPAComponentProps {
   /** Whether the modal is opened */
@@ -31,6 +30,8 @@ export interface DialogProps extends TPAComponentProps {
   closeButtonAriaLabel?: string;
   /** Identifies the element that labels the close button element. Optional. */
   closeButtonAriaLabelledby?: string;
+  /** Whether the Dialog is wired to the site palette, or has a white background */
+  wiredToSiteColors?: boolean;
 }
 
 interface DefaultProps {
@@ -60,13 +61,19 @@ export class Dialog extends React.Component<DialogProps> {
       ['aria-describedby']: ariaDescribedBy,
       closeButtonAriaLabel,
       closeButtonAriaLabelledby,
+      wiredToSiteColors,
     } = this.props;
 
     return (
       <TPAComponentsConsumer>
         {({ mobile, rtl }) => (
           <div
-            className={st(classes.root, { mobile, rtl }, className)}
+            className={st(
+              classes.root,
+              { mobile, rtl },
+              classes[`skin-${wiredToSiteColors ? 'wired' : 'fixed'}`],
+              className,
+            )}
             data-hook={this.props['data-hook']}
             data-mobile={mobile}
           >

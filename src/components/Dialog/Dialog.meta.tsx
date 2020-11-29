@@ -6,7 +6,7 @@ const DialogMetadata = Registry.getComponentMetadata(Dialog);
 DialogMetadata.nonReactStrictModeCompliant = true;
 
 const DialogContent = () => (
-  <div>
+  <div style={{ backgroundColor: 'white' }}>
     <h2 id="dialog4_label" className="dialog_label">
       End of the Road!
     </h2>
@@ -32,7 +32,9 @@ DialogMetadata.addSim({
   title: 'Manual Focus',
   props: {
     isOpen: true,
-    children: <div>This is the content!</div>,
+    children: (
+      <div style={{ backgroundColor: 'white' }}>This is the content!</div>
+    ),
     manualFocus: true,
     closeButtonRef: React.createRef<HTMLButtonElement>(),
     'aria-label': 'Dialog',

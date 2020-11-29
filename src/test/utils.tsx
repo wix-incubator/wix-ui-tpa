@@ -1,6 +1,6 @@
+import { UniDriver } from '@unidriver/core';
 import * as React from 'react';
 import { TPAComponentsProvider } from '../components/TPAComponentsConfig';
-import { UniDriver } from '@unidriver/core';
 
 export const TPAComponentsWrapper = ({ mobile = false, rtl = false }) => {
   return Component => {
