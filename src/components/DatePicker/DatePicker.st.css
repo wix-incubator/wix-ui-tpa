@@ -13,6 +13,11 @@
     -st-named: dayCircle; /* currently due to a stylable issue this is the best way to override styling of nested classes */
 }
 
+:import {
+    -st-from: "wix-style-react/dist/src/Calendar/DatePickerDropdown/DatePickerDropdown.st.css";
+    -st-named: caption;
+}
+
 /*Defaults*/
 :vars {
     calendarWidth: 280px;
@@ -190,12 +195,12 @@
     top: 4px !important;
 }
 
-/** todo: fix it.. */
-.wsrDatePicker::calendar::header::monthDropdown::dropdown::caption ,
-.wsrDatePicker::calendar::header::yearDropdown::dropdown::caption {
-    font: value(CurrentWeekdayFont);
-    font-size: 14px;
-    color: value(CurrentWeekdayTextColor);
+/** todo: check if there is an option to change the styling without importing the caption class from the DatePickerDropdown.st.css */
+.wsrDatePicker::calendar::header::monthDropdown::dropdown .caption ,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown .caption {
+    font: value(CurrentMonthAndYearCaptionFont);
+    font-size: 16px;
+    color: value(CurrentMonthAndYearCaptionColor);
 }
 
 /* List */
