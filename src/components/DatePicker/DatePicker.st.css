@@ -67,6 +67,7 @@
 
     CurrentDayFont: fallback(font(value(DayFont)), font(value(DefaultDayFont)));
     CurrentDayColor: color(fallback(value(DayColor), value(DeafultDayColor)));
+    CurrentDayBGColorHover: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
     CurrentSelectedDayColor: color(fallback(value(SelectedDayColor), value(DefaultSelectedDayColor)));
     CurrentSelectedDayBGColor: color(fallback(value(SelectedDayBGColor), value(DefaultSelectedDayBGColor)));
     CurrentDisabledDayColor: color(fallback(value(DisabledDayColor), value(DefaultDisabledDayColor)));
@@ -146,7 +147,7 @@
 
 .wsrDatePicker::calendar::day:hover {
     color: color(value(DeafultDayColor));
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1); /* date Hover */
+    background-color: value(CurrentDayBGColorHover);
 }
 
 .wsrDatePicker::calendar::day:today:not(:selected):not(:hover) {
@@ -157,7 +158,7 @@
 
 .wsrDatePicker::calendar::day:today:not(:selected):hover {
     color: value(CurrentSelectedDayBGColor);
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.1); /* date hover */
+    background-color: value(CurrentDayBGColorHover);
 }
 
 .wsrDatePicker::calendar::day:today:not(:selected):not(:hover):focus {
@@ -250,8 +251,8 @@
 /*        CalendarWidth value(calendarWidth),*/
 /*        CalendarHeight value(calendarHeight),*/
 
-/*            !* calendar header *!*/
-/*        CalendarHeaderPadding 28px value(sidePadding) 0,*/
+/*        !* calendar header *!*/
+/*        CalendarHeaderPadding 28px value(sidePadding) 0, */
 /*        CalendarHeaderBGColor value(CurrentBackgroundColor),*/
 /*        CalendarArrowColor: value(CurrentNavigationArrowsColor),*/
 /*        CalendarArrowColorHover applyOpacity(value(CurrentNavigationArrowsColor), 0.7),*/
@@ -260,8 +261,8 @@
 /*        CalendarArrowBGColorActive none,*/
 /*        CalendarHeaderCaptionFont value(CurrentMonthAndYearCaptionFont),*/
 /*        CalendarHeaderCaptionFontSize 16px,*/
-/*        CalendarHeaderCaptionColor value(CurrentMonthAndYearCaptionColor), */
-/*        */
+/*        CalendarHeaderCaptionColor value(CurrentMonthAndYearCaptionColor),*/
+/*    */
 /*        !* month and years dropdowns *!*/
 /*        DropdownTopPosition 4px,*/
 /*        DropdownElementFont value(CurrentWeekdayFont),*/
@@ -276,7 +277,7 @@
 /*        DropdownListOptionItemPadding 0 20px,*/
 /*        DropdownListOptionItemBGColorHover value(DropdownOptionSelectedAndHoverBGColor),*/
 /*        DropdownListOptionItemSelectedBGColor value(DropdownOptionSelectedAndHoverBGColor),*/
-/*        DropdownListOptionItemSelectedBGColorHover value(DropdownOptionSelectedAndHoverBGColor),*/
+/*        DropdownListOptionItemSelectedBGColorHover value(DropdownOptionSelectedAndHoverBGColor), */
 /*        !**********************!*/
 /*    */
 /*        !* calendar Weekdays *!*/
@@ -294,7 +295,24 @@
 /*        CalendarBodyBGColor value(CurrentBackgroundColor),*/
 /*    */
 /*        CalendarDayFont value(CurrentDayFont),*/
-/*        CalendarDayDefaultColor  value(CurrentDayColor),*/
+/*        CalendarDayFontSize 14px,*/
+/*        CalendarDayTextColor  value(CurrentDayColor),*/
+/*        CalendarDayTextColorHover color(value(DeafultDayColor)),*/
+/*        CalendarDayBGColorHover value(CurrentDayBGColorHover),*/
+/*    */
+/*        CalendarDayTodayBGColor none,*/
+/*        CalendarDayTodayTextColor value(CurrentSelectedDayBGColor),*/
+/*        CalendarDayTodayBoxShadow none,*/
+/*        CalendarDayTodayBGColorHover value(CurrentDayBGColorHover),*/
+/*        CalendarDayTodayTextColorHover value(CurrentSelectedDayBGColor),*/
+/*        CalendarDayTodayBoxShadowFocus none,*/
+/*    */
+/*        CalendarDaySelectedBGColor value(CurrentSelectedDayBGColor),*/
+/*        CalendarDaySelectedTextColor  value(CurrentSelectedDayColor),*/
+/*        CalendarDaySelectedBGColorHover applyOpacity(value(CurrentSelectedDayBGColor), 0.7),*/
+/*    */
+/*        CalendarDayDisbaledColor value(CurrentDisabledDayColor),*/
+/*        CalendarDayOutsideColor value(CurrentDisabledDayColor),*/
 /*    */
 /*        !**********************!*/
 /*    );*/
