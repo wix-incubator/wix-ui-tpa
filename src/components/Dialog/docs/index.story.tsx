@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -93,6 +94,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            'A styled Modal component. Used to provide critical information or ask for a decision and/or user input.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
