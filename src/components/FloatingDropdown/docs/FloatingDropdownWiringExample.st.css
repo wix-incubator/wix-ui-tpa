@@ -1,7 +1,18 @@
-.root {
-
+:import {
+    -st-from: "../FloatingDropdown.st.css";
+    -st-default: FloatingDropdown;
 }
 
-.component {
+.root {
+    -st-mixin: FloatingDropdown(
+        DropdownBackgroundColor '"--DropdownBackgroundColor"',
+        DisabledTextColor '"--DisabledTextColor"',
+        ButtonTextColor '"--ButtonTextColor"',
+        ItemTextColor '"--ItemTextColor"',
+        TextFont '"--TextFont"'
+    );
+}
 
+.divider {
+    margin: 20px 0;
 }

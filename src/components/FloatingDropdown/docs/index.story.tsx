@@ -81,8 +81,35 @@ export default {
               rawSource: FloatingDropdownWiringExampleRaw,
               rawCSSSource: FloatingDropdownWiringExampleCSSRaw,
               params: {
-                colors: [],
-                fonts: [],
+                colors: [
+                  {
+                    label: 'Button Text Color',
+                    wixParam: 'ButtonTextColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Disabled Text Color',
+                    wixParam: 'DisabledTextColor',
+                    defaultColor: 'color-3',
+                  },
+                  {
+                    label: 'Item Text Color',
+                    wixParam: 'ItemTextColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Dropdown Background Color',
+                    wixParam: 'DropdownBackgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
+                fonts: [
+                  {
+                    label: 'Text Font',
+                    wixParam: 'TextFont',
+                    defaultFont: 'arial',
+                  },
+                ],
                 numbers: [],
               },
             }),
