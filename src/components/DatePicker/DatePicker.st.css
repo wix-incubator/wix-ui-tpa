@@ -42,10 +42,25 @@
 
 /*Overrides*/
 :vars {
+    /*
+        The calendar background color
+        @default color-1
+    */
     BackgroundColor: --overridable;
-
+    /*
+        The color of the calendar navigation arrows
+        @default color-5
+    */
     NavigationArrowsColor: --overridable;
+    /*
+        The font of the calendar month snd year caption. The font size is 16px and could not be overridden
+        @default {theme: 'Body-M', lineHeight: '24px'}
+    */
     MonthAndYearCaptionFont: --overridable;
+    /*
+        The color of the calendar month snd year caption
+        @default color-5
+    */
     MonthAndYearCaptionColor: --overridable;
 
     WeekdayFont:  --overridable;
