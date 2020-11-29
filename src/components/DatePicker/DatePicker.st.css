@@ -14,8 +14,8 @@
 }
 
 :import {
-    -st-from: "wix-style-react/dist/src/Calendar/DatePickerDropdown/DatePickerDropdown.st.css";
-    -st-named: caption;
+    -st-from: "wix-ui-core/dist/src/components/popover/Popover.st.css";
+    -st-named: popoverContent;
 }
 
 /*Defaults*/
@@ -205,14 +205,13 @@
 
 
 /* month and years dropdowns */
-.wsrDatePicker::calendar::header::monthDropdown::dropdown::popoverContent,
-.wsrDatePicker::calendar::header::yearDropdown::dropdown::popoverContent {
+.wsrDatePicker::calendar::header::monthDropdown::dropdown .popoverContent,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown .popoverContent {
     top: 4px !important;
 }
 
-/** todo: check if there is an option to change the styling without importing the caption class from the DatePickerDropdown.st.css */
-.wsrDatePicker::calendar::header::monthDropdown::dropdown .caption ,
-.wsrDatePicker::calendar::header::yearDropdown::dropdown .caption {
+.wsrDatePicker::calendar::header::monthDropdown::caption ,
+.wsrDatePicker::calendar::header::yearDropdown::caption {
     font: value(CurrentMonthAndYearCaptionFont);
     font-size: 16px;
     color: value(CurrentMonthAndYearCaptionColor);
