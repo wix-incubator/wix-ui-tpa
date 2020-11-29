@@ -274,9 +274,9 @@
 /*        DropdownListOptionItemFont font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}"),*/
 /*        DropdownListOptionItemColor value(CurrentDayColor),*/
 /*        DropdownListOptionItemPadding 0 20px,*/
-/*        DropdownListOptionItemBGColorHover applyOpacity(value(CurrentSelectedDayBGColor), 0.06),*/
-/*        DropdownListOptionItemSelectedBGColor ?,*/
-/*        DropdownListOptionItemSelectedBGColorHover ?,*/
+/*        DropdownListOptionItemBGColorHover value(DropdownOptionSelectedAndHoverBGColor),*/
+/*        DropdownListOptionItemSelectedBGColor value(DropdownOptionSelectedAndHoverBGColor),*/
+/*        DropdownListOptionItemSelectedBGColorHover value(DropdownOptionSelectedAndHoverBGColor),*/
 /*        !**********************!*/
 /*    */
 /*        !* calendar Weekdays *!*/
