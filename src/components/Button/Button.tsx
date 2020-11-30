@@ -61,7 +61,11 @@ class ButtonComponent extends React.Component<ButtonProps> {
   }
 
   _wrapAffix = (icon, type) => {
-    return <span className={classnames(classes[`${type}-icon`], classes.affixIcon)}>{icon}</span>;
+    return (
+      <span className={classnames(classes[`${type}-icon`], classes.affixIcon)}>
+        {icon}
+      </span>
+    );
   };
 
   _getAffixes = () => {
