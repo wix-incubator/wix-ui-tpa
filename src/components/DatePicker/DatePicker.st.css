@@ -53,23 +53,49 @@
     */
     NavigationArrowsColor: --overridable;
     /*
-        The font of the calendar month snd year caption. The font size is 16px and could not be overridden
+        The font of the calendar month snd year caption. The font size is 16px and could not be overridden.
         @default {theme: 'Body-M', lineHeight: '24px'}
     */
     MonthAndYearCaptionFont: --overridable;
     /*
-        The color of the calendar month snd year caption
+        The color of the calendar month and year caption
         @default color-5
     */
     MonthAndYearCaptionColor: --overridable;
-
+    /*
+        The font of the calendar's weekdays section. The font size is 14px and could not be overridden.
+        @default {theme: 'Body-M', lineHeight: '20px'}
+    */
     WeekdayFont:  --overridable;
+    /*
+        The font color of the calendar's weekdays.
+        @default color-8
+    */
     WeekdayTextColor: --overridable;
-
+    /*
+        The font of a specific date. The font size is 14px and could not be overridden.
+        @default {theme: 'Body-M', lineHeight: '20px'}
+    */
     DayFont: --overridable;
+    /*
+        The font color of a specific day.
+        @default color-5
+    */
     DayColor: --overridable;
+    /*
+        The font color of the selected day.
+        @default color-1
+    */
     SelectedDayColor: --overridable;
+    /*
+        The background color of the selected day.
+        @default color-color-8
+    */
     SelectedDayBGColor: --overridable;
+    /*
+        The background color of a disabled day. Disabled day is a date that are not selectable.
+        @default color-3
+    */
     DisabledDayColor: --overridable;
 }
 
