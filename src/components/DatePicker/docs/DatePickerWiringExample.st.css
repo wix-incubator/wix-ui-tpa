@@ -1,7 +1,21 @@
-.root {
-
+:import {
+    -st-from: "../DatePicker.st.css";
+    -st-default: TPADatePicker;
 }
 
-.component {
+.root {
+    -st-mixin: TPADatePicker(
+            BackgroundColor '"color(--customBackgroundColor)"',
+            NavigationArrowsColor '"color(--customNavigationArrowsColor)"',
+            MonthAndYearCaptionColor '"color(--customMonthAndYearCaptionColor)"',
+            WeekdayTextColor '"color(--customWeekdayTextColor)"',
+            DayColor '"color(--customDayColor)"',
+            SelectedDayColor '"color(--customSelectedDayColor)"',
+            SelectedDayBGColor '"color(--customSelectedDayBGColor)"',
+            DisabledDayColor '"color(--customDisabledDayColor)"',
 
+            MonthAndYearCaptionFont '"--customMonthAndYearCaptionFont"',
+            WeekdayFont '"--customWeekdayFont"',
+            DayFont '"--customDayFont"',
+    );
 }
