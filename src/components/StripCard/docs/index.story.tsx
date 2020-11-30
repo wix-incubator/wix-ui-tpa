@@ -17,6 +17,7 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { Text, TYPOGRAPHY } from '../../Text';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -54,7 +55,7 @@ const infoExample = (
 );
 
 export default {
-  category: 'Bookings',
+  category: StoryCategory.BOOKINGS,
   storyName: 'StripCard',
 
   component: StripCard,

@@ -7,6 +7,7 @@ import { allComponents } from '../utils/allComponents';
 // @ts-ignore
 import exampleCode from '!raw-loader!./example';
 import { Tabs, ALIGNMENT } from '../../src/components/Tabs';
+import { StoryCategory } from '../storyHierarchy';
 
 const LAYOUT_INDEX_MAP = {
   0: 'vertical',
@@ -44,7 +45,7 @@ const PlaygroundWrapper = () => {
 };
 
 export default {
-  category: 'Playground',
+  category: StoryCategory.PLAYGROUND,
   storyName: 'Playground',
   sections: [
     header({

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { NewCardWiringExample } from './NewCardWiringExample';
 import { NewCard } from '../';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'NewCard',
   component: NewCard,
   componentPath: '../NewCard.tsx',

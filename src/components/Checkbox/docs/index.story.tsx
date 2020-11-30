@@ -19,6 +19,7 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./CheckboxExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxExtendedExample.st.css';
 import { CheckboxExtendedExample } from './CheckboxExtendedExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -58,7 +59,7 @@ const codeExamples = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Checkbox',
   component: Checkbox,
   componentPath: '../Checkbox.tsx',

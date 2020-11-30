@@ -23,12 +23,13 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import { CopyUrlButtonWiringExample } from './CopyUrlButtonWiringExample';
 import * as examples from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components/Share',
+  category: StoryCategory.COMPONENTS,
   storyName: 'CopyUrlButton',
   component: CopyUrlButton,
   componentPath: '../CopyUrlButton.tsx',

@@ -18,12 +18,13 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./CounterExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CounterExtendedExample.st.css';
 import { CounterExtendedExample } from './CounterExtendedExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Counter',
   component: Counter,
   componentPath: '../Counter.tsx',

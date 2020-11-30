@@ -5,10 +5,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { modalDriverFactory } from './Modal.driver';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 describe('modal', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Tests',
+    kind: StoryCategory.TESTS,
     story: 'Modal',
     withExamples: true,
   });

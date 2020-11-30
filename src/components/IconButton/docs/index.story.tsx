@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IconButton, Skins } from '../';
 import {
   api,
-  code as baseCode,
   divider,
   header,
   importExample,
@@ -11,6 +10,7 @@ import {
   tabs,
   testkit,
   title,
+  example as baseExample,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 
@@ -22,6 +22,8 @@ import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx'
 import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
 import { IconButtonExtendedExample } from './IconButtonExtendedExample';
 import * as examples from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
+
 ShareIcon.displayName = 'Share';
 HeartIcon.displayName = 'Heart';
 
@@ -36,11 +38,15 @@ const iconExamples = [
   },
 ];
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = (config, extraContext = {}) =>
+  baseExample({
+    components: { ...allComponents, ...extraContext },
+    compact: true,
+    ...config,
+  });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'IconButton',
   component: IconButton,
   componentPath: '../IconButton.tsx',
@@ -68,9 +74,15 @@ export default {
           divider(),
 
           title('Examples'),
-          ...[{ title: 'Icon Button', source: examples.basicExample }].map(
-            code,
-          ),
+
+          ...[
+            {
+              title: 'Icon Button',
+              description:
+                'The IconButton component has different skins to apply',
+              source: examples.basicExample,
+            },
+          ].map(example),
         ],
       }),
 

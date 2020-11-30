@@ -4,6 +4,11 @@
 }
 
 :import {
+    -st-from: "../NewCard/NewCard.st.css";
+    -st-default: NewCard;
+}
+
+:import {
     -st-from: "./mixins.st.css";
     -st-named: withBorder, withDynamicPadding, withDynamicSidePadding;
 }
@@ -44,12 +49,15 @@
 }
 
 .root {
+    background-color: value(cardBGColor);
+}
+
+.deprecated {
     -st-states: ratio(enum(100, 50, 40, 30)), flippedRatio, invertInfoPosition, stacked, mediaAspectRatio, mobile;
     display: flex;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background-color: value(cardBGColor);
     -st-mixin: withBorder(
             BorderColor value(borderColor),
             BorderWidth value(borderWidth)
@@ -57,73 +65,73 @@
     min-width: value(MinWidth);
 }
 
-.root:stacked {
+.deprecated:stacked {
     min-width: value(MobileMinWidth);
 }
 
-.root:stacked:invertInfoPosition:mobile,
-.root:stacked:mobile,
-.root:stacked {
+.deprecated:stacked:invertInfoPosition:mobile,
+.deprecated:stacked:mobile,
+.deprecated:stacked {
     flex-direction: column;
 }
 
-.root:invertInfoPosition {
+.deprecated:invertInfoPosition {
     flex-direction: row-reverse;
 }
 
-.root:stacked:invertInfoPosition {
+.deprecated:stacked:invertInfoPosition {
     flex-direction: column-reverse;
     justify-content: space-between;
 }
 
-.root:ratio(100) > .infoContainer {
+.deprecated:ratio(100) > .infoContainer {
     flex: 100%;
 }
 
-.root:ratio(50) > .mediaWrapper,
-.root:ratio(50) > .infoContainer {
+.deprecated:ratio(50) > .mediaWrapper,
+.deprecated:ratio(50) > .infoContainer {
     flex: 50%;
 }
 
-.root:ratio(40):flippedRatio:invertInfoPosition > .mediaWrapper,
-.root:ratio(40):invertInfoPosition > .infoContainer,
-.root:ratio(40):flippedRatio > .infoContainer,
-.root:ratio(40) > .mediaWrapper {
+.deprecated:ratio(40):flippedRatio:invertInfoPosition > .mediaWrapper,
+.deprecated:ratio(40):invertInfoPosition > .infoContainer,
+.deprecated:ratio(40):flippedRatio > .infoContainer,
+.deprecated:ratio(40) > .mediaWrapper {
     flex: 40%;
 }
 
-.root:ratio(40):flippedRatio:invertInfoPosition > .infoContainer,
-.root:ratio(40):invertInfoPosition > .mediaWrapper,
-.root:ratio(40):flippedRatio > .mediaWrapper,
-.root:ratio(40) > .infoContainer {
+.deprecated:ratio(40):flippedRatio:invertInfoPosition > .infoContainer,
+.deprecated:ratio(40):invertInfoPosition > .mediaWrapper,
+.deprecated:ratio(40):flippedRatio > .mediaWrapper,
+.deprecated:ratio(40) > .infoContainer {
     flex: 60%;
 }
 
-.root:ratio(30):flippedRatio:invertInfoPosition > .mediaWrapper,
-.root:ratio(30):invertInfoPosition > .infoContainer,
-.root:ratio(30):flippedRatio > .infoContainer,
-.root:ratio(30) > .mediaWrapper {
+.deprecated:ratio(30):flippedRatio:invertInfoPosition > .mediaWrapper,
+.deprecated:ratio(30):invertInfoPosition > .infoContainer,
+.deprecated:ratio(30):flippedRatio > .infoContainer,
+.deprecated:ratio(30) > .mediaWrapper {
     flex: 30%;
 }
 
-.root:ratio(30):flippedRatio:invertInfoPosition > .infoContainer,
-.root:ratio(30):invertInfoPosition > .mediaWrapper,
-.root:ratio(30):flippedRatio > .mediaWrapper,
-.root:ratio(30) > .infoContainer {
+.deprecated:ratio(30):flippedRatio:invertInfoPosition > .infoContainer,
+.deprecated:ratio(30):invertInfoPosition > .mediaWrapper,
+.deprecated:ratio(30):flippedRatio > .mediaWrapper,
+.deprecated:ratio(30) > .infoContainer {
     flex: 70%;
 }
 
-.root:stacked:mediaAspectRatio:invertInfoPosition > .mediaWrapper {
+.deprecated:stacked:mediaAspectRatio:invertInfoPosition > .mediaWrapper {
     flex-grow: 0;
     flex-basis: auto;
 }
 
-.root:mediaAspectRatio > .mediaWrapper {
+.deprecated:mediaAspectRatio > .mediaWrapper {
     position: relative;
     flex: 0 0 0;
 }
 
-.root:mediaAspectRatio > .mediaWrapper > .mediaContainer {
+.deprecated:mediaAspectRatio > .mediaWrapper > .mediaContainer {
     position: absolute;
     top: 0;
     width: 100%;
@@ -143,7 +151,7 @@
     );
 }
 
-.root:stacked > .infoContainer {
+.deprecated:stacked > .infoContainer {
     -st-mixin: withDynamicPadding(
             PaddingSize value(stackedInfoPadding),
             BorderWidth value(borderWidth)
@@ -153,9 +161,13 @@
     );
 }
 
-.root:mobile > .infoContainer {
+.deprecated:mobile > .infoContainer {
     -st-mixin: withDynamicPadding(
             PaddingSize value(mobileInfoPadding),
             BorderWidth value(borderWidth)
     );
+}
+
+.upgraded {
+    -st-extends: NewCard;
 }

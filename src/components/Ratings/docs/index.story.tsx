@@ -19,12 +19,13 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./RatingsExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./RatingsExtendedExample.st.css';
 import { RatingsExtendedExample } from './RatingsExtendedExample';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Ratings',
   component: Ratings,
   componentPath: '../Ratings.tsx',

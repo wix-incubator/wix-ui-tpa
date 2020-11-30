@@ -9,7 +9,7 @@ import Timeout = NodeJS.Timeout;
 
 export interface StatesButtonProps extends ButtonProps, TPAComponentProps {
   state: BUTTON_STATES;
-  disabled: boolean;
+  disabled?: boolean;
   idleContent: string | React.ReactElement;
   failureContent?: string | React.ReactElement;
   inProgressContent?: string | React.ReactElement;

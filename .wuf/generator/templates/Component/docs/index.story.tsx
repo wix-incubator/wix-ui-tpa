@@ -21,12 +21,13 @@ import * as {%ComponentName%}WiringExampleCSSRaw from '!raw-loader!./{%Component
 import { {%ComponentName%}WiringExample } from './{%ComponentName%}WiringExample';
 import { {%ComponentName%} } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { Category } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: Category.COMPONENTS,
   storyName: '{%ComponentName%}',
   component: storyComponent({%ComponentName%}),
   componentPath: '../{%ComponentName%}.tsx',

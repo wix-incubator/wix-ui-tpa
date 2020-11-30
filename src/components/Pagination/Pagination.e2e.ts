@@ -4,6 +4,7 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { paginationTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 /**
  * For tests containing interactions.
@@ -11,7 +12,7 @@ import { paginationTestkitFactory } from '../../testkit/protractor';
  * */
 describe('pagination', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: StoryCategory.COMPONENTS,
     story: 'Pagination',
     withExamples: true,
   });

@@ -24,12 +24,13 @@ import * as AddItemWiringExampleCSSRaw from '!raw-loader!./AddItemWiringExample.
 import { AddItemWiringExample } from './AddItemWiringExample';
 import { AddItem, ALIGNMENT, ICON_SIZE, DIRECTION } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'AddItem',
   component: storyComponent(AddItem),
   componentPath: '../AddItem.tsx',

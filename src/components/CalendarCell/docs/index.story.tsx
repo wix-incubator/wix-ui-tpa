@@ -23,12 +23,13 @@ import * as CalendarCellWiringExampleRaw from '!raw-loader!./CalendarCellWiringE
 import * as CalendarCellWiringExampleCSSRaw from '!raw-loader!./CalendarCellWiringExample.st.css';
 import { CalendarCellWiringExample } from './CalendarCellWiringExample';
 import { CalendarCell, Alignment, Times } from '../';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'CalendarCell',
   component: CalendarCell,
   componentPath: '../CalendarCell.tsx',

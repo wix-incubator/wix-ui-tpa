@@ -21,7 +21,7 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: disabled, skin(enum(line, full));
+    -st-states: disabled;
     /*css goes here*/
     background-color: transparent;
     text-decoration: none;
@@ -44,28 +44,28 @@
     opacity: 1;
 }
 
-.root:skin(line):disabled .icon path {
-    stroke: color(value(DisabledColor));
-    fill: none;
-}
-
-.root:skin(full):disabled .icon path {
-    fill: color(value(DisabledColor));
-    stroke: color(value(DisabledColor));
-}
-
 .icon svg {
     display: block;
 }
 
-.root:skin(line) .icon path {
+.root:disabled.skin-line .icon path {
+    stroke: color(value(DisabledColor));
+    fill: none;
+}
+
+.root:disabled.skin-full .icon path {
+    fill: color(value(DisabledColor));
+    stroke: color(value(DisabledColor));
+}
+
+/* Variants - including style overrides capabilities */
+
+.root.skin-line .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: none;
 }
 
-.root:skin(full) .icon path {
+.root.skin-full .icon path {
     fill: color(fallback(value(IconColor), value(DefaultColor)));
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
 }
-
-

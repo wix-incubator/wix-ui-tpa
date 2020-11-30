@@ -5,10 +5,11 @@ import {
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { textTestkitFactory } from '../../testkit/protractor';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('Text', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Components',
+    kind: StoryCategory.COMPONENTS,
     story: 'Text',
     withExamples: true,
   });

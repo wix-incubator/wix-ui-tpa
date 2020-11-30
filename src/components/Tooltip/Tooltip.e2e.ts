@@ -6,10 +6,11 @@ import {
 } from 'wix-ui-test-utils/protractor';
 import { tooltipTestkitFactory } from '../../testkit/protractor';
 import { testPropsList } from './docs/testProps';
+import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('Tooltip', () => {
   const storyUrl = createStoryUrl({
-    kind: 'Tests',
+    kind: StoryCategory.TESTS,
     story: 'Tooltip',
     withExamples: true,
   });

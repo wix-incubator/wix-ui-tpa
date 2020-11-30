@@ -17,6 +17,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { Card } from '../../Card';
 import { Text } from '../../Text';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -54,7 +55,7 @@ const itemsExamples = [
 ];
 
 export default {
-  category: 'Bookings',
+  category: StoryCategory.BOOKINGS,
   storyName: 'Grid',
   component: Grid,
   componentPath: '../Grid.tsx',

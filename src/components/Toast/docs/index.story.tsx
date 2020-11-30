@@ -15,12 +15,13 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { TOAST_PLACEMENT, TOAST_SKIN } from '../types';
 import * as examples from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Toast',
   component: Toast,
   componentPath: '../Toast.tsx',

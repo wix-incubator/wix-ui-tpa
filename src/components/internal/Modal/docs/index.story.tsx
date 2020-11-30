@@ -16,6 +16,7 @@ import { allComponents } from '../../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../../stories/utils/SettingsApi';
 import { Modal as CoreModal, ModalProps } from '../index';
 import { Button } from '../../../Button';
+import { StoryCategory } from '../../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -86,7 +87,7 @@ class Modal extends React.Component<ModalProps> {
 }
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Modal',
   component: Modal,
   componentPath: '../Modal.tsx',

@@ -20,6 +20,7 @@ import * as FloatingDropdownWiringExampleCSSRaw from '!raw-loader!./FloatingDrop
 import { FloatingDropdownWiringExample } from './FloatingDropdownWiringExample';
 import { FloatingDropdown } from '../';
 import { getFloatingDropdownTestProps } from '../test-props';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -30,7 +31,7 @@ exampleProps.options = [
 ];
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'FloatingDropdown',
   component: FloatingDropdown,
   componentPath: '../FloatingDropdown.tsx',

@@ -18,6 +18,7 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { TooltipSkin } from '../TooltipEnums';
 import * as examples from './examples';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const childrenExamples = [
   { label: 'Simple text', value: <span>Hover me for a tooltip!</span> },
@@ -37,7 +38,7 @@ const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'Tooltip',
   component: Tooltip,
   source: TooltipSource,

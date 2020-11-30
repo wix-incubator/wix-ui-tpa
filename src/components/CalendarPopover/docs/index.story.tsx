@@ -19,14 +19,14 @@ import * as CalendarPopoverWiringExampleRaw from '!raw-loader!./CalendarPopoverW
 import * as CalendarPopoverWiringExampleCSSRaw from '!raw-loader!./CalendarPopoverWiringExample.st.css';
 import { CalendarPopoverWiringExample } from './CalendarPopoverWiringExample';
 import { CalendarPopover } from '..';
-import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: 'Components',
+  category: StoryCategory.COMPONENTS,
   storyName: 'CalendarPopover',
   component: storyComponent(CalendarPopover),
   componentPath: '../CalendarPopover.tsx',
