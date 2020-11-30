@@ -233,7 +233,7 @@
 /* month and years dropdowns */
 .wsrDatePicker::calendar::header::monthDropdown::dropdown .popoverContent,
 .wsrDatePicker::calendar::header::yearDropdown::dropdown .popoverContent {
-    top: 4px !important;
+    /* todo: add the space in a different way: top: 4px !important;*/
 }
 
 .wsrDatePicker::calendar::header::monthDropdown::caption ,
