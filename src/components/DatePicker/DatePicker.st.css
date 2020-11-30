@@ -289,6 +289,7 @@
 
 
 /** Option 2: overriding the styling using st-mixin **/
+/** This option are not optimized from performance prospective, so I chose the first option. **/
 
 
 /*.wsrDatePicker {*/
