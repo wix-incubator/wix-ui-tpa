@@ -33,7 +33,7 @@ export class IconButton extends React.Component<IconButtonProps, State> {
       <ButtonNext
         className={st(
           classes.root,
-          { disabled },
+          { disabled, skin },
           classes[`skin-${skin}`],
           className,
         )}
