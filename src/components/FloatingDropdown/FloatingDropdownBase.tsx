@@ -130,7 +130,11 @@ export class FloatingDropdownBase extends React.Component<
 
     return (
       <div
-        className={st(classes.root, { mobile, disabled }, classnames(classes.overrideStyleParams, className))}
+        className={st(
+          classes.root,
+          { mobile, disabled },
+          classnames(classes.overrideStyleParams, className),
+        )}
         data-hook={DATA_HOOKS.base}
       >
         {content}
