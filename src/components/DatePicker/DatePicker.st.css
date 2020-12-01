@@ -13,11 +13,6 @@
     -st-named: dayCircle; /* currently due to a stylable issue this is the best way to override styling of nested classes */
 }
 
-:import {
-    -st-from: "wix-ui-core/dist/src/components/popover/Popover.st.css";
-    -st-named: popoverContent;
-}
-
 /*Defaults*/
 :vars {
     calendarWidth: 280px;
@@ -235,16 +230,13 @@
 
 
 /* month and years dropdowns */
-.wsrDatePicker::calendar::header::monthDropdown::dropdown .popoverContent,
-.wsrDatePicker::calendar::header::yearDropdown::dropdown .popoverContent {
-    /* todo: add the space in a different way: top: 4px !important;*/
-}
 
 .wsrDatePicker::calendar::header::monthDropdown::caption ,
 .wsrDatePicker::calendar::header::yearDropdown::caption {
     font: value(CurrentMonthAndYearCaptionFont);
     font-size: 16px;
     color: value(CurrentMonthAndYearCaptionColor);
+    height: 24px;
 }
 
 /* List */
