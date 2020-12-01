@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, font;
+    -st-named: color, font, fallback;
 }
 
 :import {
@@ -13,6 +13,33 @@
     iconWith: 1em;
     maxWidth: 20vw;
     minWidth: 220px;
+}
+
+/*Constance*/
+:vars {
+    DefaultTextColor: color-5;
+    DefaultDisabledTextColor: color-3;
+    DefaultDropdownBackgroundColor: color-1;
+    DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The Button Text color
+        @default color-5
+    */
+    MainTextColor: --overridable;
+    /*
+        The Texts font
+        @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'}
+    */
+    MainTextFont: --overridable;
+}
+
+:vars {
+    TextColor: color(fallback(value(MainTextColor), value(DefaultTextColor)));
+    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextfont)));
 }
 
 .root {
@@ -103,4 +130,22 @@
 
 .root:mobile:disabled select {
     cursor: default;
+}
+
+.root:disabled .label,
+.root:disabled .content,
+.root:disabled .selectedValue {
+    color: color(value(DefaultDisabledTextColor));
+}
+
+.root:disabled .arrowIcon path {
+    fill: color(value(DefaultDisabledTextColor));
+}
+
+.btn::content {
+    color: value(TextColor);
+}
+
+.overridable {
+
 }

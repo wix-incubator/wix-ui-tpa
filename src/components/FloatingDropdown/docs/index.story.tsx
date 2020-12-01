@@ -89,11 +89,6 @@ export default {
                     defaultColor: 'color-5',
                   },
                   {
-                    label: 'Disabled Text Color',
-                    wixParam: 'DisabledTextColor',
-                    defaultColor: 'color-3',
-                  },
-                  {
                     label: 'Item Text Color',
                     wixParam: 'ItemTextColor',
                     defaultColor: 'color-5',

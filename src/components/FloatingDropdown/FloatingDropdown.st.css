@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, arrowIcon, label, content, selectedValue;
+    -st-named: minWidth, maxWidth, overridalbe;
 }
 
 :import {
@@ -27,7 +27,6 @@
 /*Constance*/
 :vars {
     DefaultTextColor: color-5;
-    DefaultDisabledTextColor: color-3;
     DefaultDropdownBackgroundColor: color-1;
     DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
@@ -39,11 +38,6 @@
         @default color-1
     */
     DropdownBackgroundColor: --overridable;
-    /*
-        The Button Text color for Disable state
-        @default color-3
-    */
-    DisabledTextColor: --overridable;
     /*
         The Button Text color
         @default color-5
@@ -61,8 +55,6 @@
     TextFont: --overridable;
 }
 
-.root {}
-
 .root .dropdown {
     min-width: value(minWidth);
     max-width: value(maxWidth);
@@ -70,35 +62,6 @@
 
 .root .dropdown:content-visible FloatingDropdownBase::arrowIcon {
     transform: translateX(-0.25em) rotate(180deg) scale(1.5);
-}
-
-.root .dropdown::dropdownContent Text {
-    color: color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor)));
-}
-
-.root FloatingDropdownBase::content,
-.root FloatingDropdownBase::content .label,
-.root FloatingDropdownBase:mobile .selectedValue {
-    color: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));
-}
-
-.root FloatingDropdownBase:disabled .label,
-.root FloatingDropdownBase:disabled .content,
-.root FloatingDropdownBase:disabled .selectedValue {
-    color: color(fallback(value(DisabledTextColor), value(DefaultDisabledTextColor)));
-}
-
-.root FloatingDropdownBase::arrowIcon path {
-    fill: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));
-}
-
-.root FloatingDropdownBase:disabled .arrowIcon path {
-    fill: color(fallback(value(DisabledTextColor), value(DefaultDisabledTextColor)));
-}
-
-.root FloatingDropdownBase::content,
-.root .dropdown::dropdownContent Text {
-    font: fallback(font(value(TextFont)), font(value(DefaultTextFont)));
 }
 
 .root .dropdown:content-visible FloatingDropdownBase {
@@ -125,3 +88,24 @@
 .root .dropdown::dropdownContent::dropdownOption:selected {
     background-color: applyOpacity(color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor))), 0.06);
 }
+
+.root .dropdown::dropdownContent Text {
+    color: color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor)));
+}
+
+.floatingDropdownBase {
+    /*-st-extends: FloatingDropdownBase;*/
+    -st-mixin: FloatingDropdownBase(
+        MainTextColor value(ButtonTextColor)
+    );
+    /*color: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));*/
+}
+
+/*.root FloatingDropdownBase::arrowIcon path {*/
+/*    fill: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));*/
+/*}*/
+
+/*.root FloatingDropdownBase::content,*/
+/*.root .dropdown::dropdownContent Text {*/
+/*    font: fallback(font(value(TextFont)), font(value(DefaultTextFont)));*/
+/*}*/
