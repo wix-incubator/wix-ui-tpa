@@ -88,14 +88,14 @@
     background-color: value(ItemTextColor);
 }
 
-.root .dropdown::dropdownContent .option::title {
-    color: value(ItemTextColor);
-    font: value(TextFont);
-}
-
 .root .dropdown::dropdownContent::dropdownOption:hovered,
 .root .dropdown::dropdownContent::dropdownOption:selected {
     background-color: applyOpacity(value(ItemTextColor), 0.06);
+}
+
+.root .dropdown::dropdownContent .option::title {
+    color: value(ItemTextColor);
+    font: value(TextFont);
 }
 
 .floatingDropdownBase {
