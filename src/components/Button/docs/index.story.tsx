@@ -27,9 +27,20 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 import { Button, PRIORITY, SIZE } from '..';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
+import { ReactComponent as Share } from '../../../assets/icons/Share.svg';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
+
+const prefixIcons = [
+  { value: undefined, label: 'None' },
+  { value: <Heart />, label: 'Heart' },
+];
+const suffixIcons = [
+  { value: undefined, label: 'None' },
+  { value: <Share />, label: 'Share' },
+];
 
 export default {
   category: StoryCategory.COMPONENTS,
@@ -43,10 +54,15 @@ export default {
     priority: PRIORITY.basic,
     size: SIZE.medium,
     fullWidth: false,
+    prefixIcon: prefixIcons[0].value,
+    suffixIcon: suffixIcons[0].value,
+    upgrade: true,
   },
   exampleProps: {
     priority: Object.values(PRIORITY),
     size: Object.values(SIZE),
+    prefixIcon: prefixIcons,
+    suffixIcon: suffixIcons,
   },
 
   sections: [

@@ -21,7 +21,7 @@
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: disabled;
+    -st-states: disabled, skin(enum(line, full));
     /*css goes here*/
     background-color: transparent;
     text-decoration: none;
@@ -68,4 +68,13 @@
 .root.skin-full .icon path {
     fill: color(fallback(value(IconColor), value(DefaultColor)));
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
+}
+
+/* Support state syntax */
+.root:skin(line) {
+    -st-extends: skin-line;
+}
+
+.root:skin(full) {
+    -st-extends: skin-full;
 }
