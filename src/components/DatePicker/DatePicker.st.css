@@ -143,6 +143,8 @@
 
 .wsrDatePicker::calendar::header::arrow {
     color: value(CurrentNavigationArrowsColor);
+    width: 24px;
+    height: 24px;
 }
 .wsrDatePicker::calendar::header::arrow:hover:not(active) {
     background: none;
@@ -189,6 +191,8 @@
     font: value(CurrentDayFont);
     font-size: 14px;
     color: value(CurrentDayColor);
+    width: 34px;
+    height: 34px;
 }
 
 .wsrDatePicker::calendar::day:hover {
@@ -300,6 +304,7 @@
 /*        !* calendar header *!*/
 /*        CalendarHeaderPadding 28px value(sidePadding) 0, */
 /*        CalendarHeaderBGColor value(CurrentBackgroundColor),*/
+/*        CalendarArrowColorSize 24px,*/
 /*        CalendarArrowColor: value(CurrentNavigationArrowsColor),*/
 /*        CalendarArrowColorHover applyOpacity(value(CurrentNavigationArrowsColor), 0.7),*/
 /*        CalendarArrowBGColorHover none,*/
@@ -340,6 +345,7 @@
 /*        CalendarBodyPadding 0 value(sidePadding) 20px,*/
 /*        CalendarBodyBGColor value(CurrentBackgroundColor),*/
 /*    */
+/*        CalendarDaySize 34px,*/
 /*        CalendarDayFont value(CurrentDayFont),*/
 /*        CalendarDayFontSize 14px,*/
 /*        CalendarDayTextColor  value(CurrentDayColor),*/
