@@ -9,16 +9,31 @@ visualize('DatePicker', () => {
       <DatePicker value={new Date()} onChange={() => {}} />,
     );
     snap(
-        'Without a selected date',
-        <DatePicker value="" onChange={() => {}} placeholderText="Select A Date" />,
+      'Without a selected date',
+      <DatePicker
+        value=""
+        onChange={() => {}}
+        placeholderText="Select A Date"
+      />,
     );
     snap(
-        'Disabled Mode',
-        <DatePicker value={new Date('2020/09/20')} onChange={() => {}} placeholderText="Select A Date" disabled />,
+      'Disabled Mode',
+      <DatePicker
+        value={new Date('2020/09/20')}
+        onChange={() => {}}
+        placeholderText="Select A Date"
+        disabled
+      />,
     );
     snap(
-        'Error mode',
-        <DatePicker value={new Date('2020/09/20')} onChange={() => {}} placeholderText="Select A Date" hasError errorMessage="Error Message"/>,
+      'Error mode',
+      <DatePicker
+        value={new Date('2020/09/20')}
+        onChange={() => {}}
+        placeholderText="Select A Date"
+        hasError
+        errorMessage="Error Message"
+      />,
     );
   });
 });
