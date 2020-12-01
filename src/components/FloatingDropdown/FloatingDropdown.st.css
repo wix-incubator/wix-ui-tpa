@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, overrideStyleParams;
+    -st-named: minWidth, maxWidth, overrideStyleParams, DefaultTextColor, DefaultTextFont;
 }
 
 :import {
@@ -19,16 +19,9 @@
     -st-named: dropdown, divider;
 }
 
-:import {
-    -st-from: "../Text/Text.st.css";
-    -st-default: Text;
-}
-
 /*Constance*/
 :vars {
-    DefaultTextColor: color-5;
     DefaultDropdownBackgroundColor: color-1;
-    DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
 /*Overrides*/
@@ -37,22 +30,29 @@
         The Dropdown Background color
         @default color-1
     */
-    DropdownBackgroundColor: --overridable;
+    MainDropdownBackgroundColor: --overridable;
     /*
         The Button Text color
         @default color-5
     */
-    ButtonTextColor: --overridable;
+    MainButtonTextColor: --overridable;
     /*
         The Items Text color
         @default color-5
     */
-    ItemTextColor: --overridable;
+    MainItemTextColor: --overridable;
     /*
         The Texts font
         @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'}
     */
-    TextFont: --overridable;
+    MainTextFont: --overridable;
+}
+
+:vars {
+    ButtonTextColor: color(value(MainButtonTextColor), value(DefaultTextColor)));
+    ItemTextColor: color(fallback(value(MainItemTextColor), value(MainButtonTextColor), value(DefaultTextColor)));
+    DropdownBackgroundColor: color(fallback(value(MainDropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));
+    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
 }
 
 .root .dropdown {
@@ -76,36 +76,32 @@
     -st-mixin: divider;
 }
 
-.root .dropdown::dropdownContent .optionDivider {
-    background-color: color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor)));
+.option {
+    -st-extends: DropdownOption;
 }
 
 .root .dropdown::dropdownContent {
-    background-color: color(fallback(value(DropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));
+    background-color: value(DropdownBackgroundColor);
+}
+
+.root .dropdown::dropdownContent .optionDivider {
+    background-color: value(ItemTextColor);
+}
+
+.root .dropdown::dropdownContent .option::title {
+    color: value(ItemTextColor);
+    font: value(TextFont);
 }
 
 .root .dropdown::dropdownContent::dropdownOption:hovered,
 .root .dropdown::dropdownContent::dropdownOption:selected {
-    background-color: applyOpacity(color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor))), 0.06);
+    background-color: applyOpacity(value(ItemTextColor), 0.06);
 }
-
-/*.root .dropdown::dropdownContent Text {*/
-/*    color: color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor)));*/
-/*}*/
 
 .floatingDropdownBase {
     -st-extends: FloatingDropdownBase;
     -st-mixin: overrideStyleParams(
-        MainTextColor value(ButtonTextColor)
+        MainTextColor value(MainButtonTextColor),
+        MainTextFont value(TextFont)
     );
-    /*color: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));*/
 }
-
-/*.root FloatingDropdownBase::arrowIcon path {*/
-/*    fill: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));*/
-/*}*/
-
-/*.root FloatingDropdownBase::content,*/
-/*.root .dropdown::dropdownContent Text {*/
-/*    font: fallback(font(value(TextFont)), font(value(DefaultTextFont)));*/
-/*}*/

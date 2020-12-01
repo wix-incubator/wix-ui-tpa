@@ -6,10 +6,10 @@
 
 .root {
     -st-mixin: FloatingDropdown(
-            DropdownBackgroundColor '"--DropdownBackgroundColor"',
-            ButtonTextColor '"--ButtonTextColor"',
-            ItemTextColor '"--ItemTextColor"',
-            TextFont '"--TextFont"'
+            MainDropdownBackgroundColor '"--DropdownBackgroundColor"',
+            MainButtonTextColor '"--ButtonTextColor"',
+            MainItemTextColor '"--ItemTextColor"',
+            MainTextFont '"--TextFont"'
     );
 }
 

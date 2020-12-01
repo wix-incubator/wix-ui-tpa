@@ -39,7 +39,7 @@
 
 :vars {
     TextColor: color(fallback(value(MainTextColor), value(DefaultTextColor)));
-    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextfont)));
+    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
 }
 
 .root {
@@ -132,22 +132,18 @@
     cursor: default;
 }
 
-.root:disabled .label,
-.root:disabled .content,
-.root:disabled .selectedValue {
+.overrideStyleParams .content {
+    color: value(TextColor);
+    font: value(TextFont);
+}
+.overrideStyleParams .arrowIcon path {
+    fill: value(TextColor);
+}
+
+.root:disabled .content .textContent {
     color: color(value(DefaultDisabledTextColor));
 }
 
-.root:disabled .arrowIcon path {
+.root:disabled .content .arrowIcon path {
     fill: color(value(DefaultDisabledTextColor));
-}
-
-.overrideStyleParams .content,
-.overrideStyleParams .textContent,
-.overrideStyleParams .label{
-    color: value(TextColor);
-}
-
-.overrideStyleParams {
-
 }
