@@ -336,23 +336,23 @@
     padding: calculate(string(-), 17px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary) .affixIcon svg path {
+.root .affixIcon svg path {
     fill: none;
+}
+
+.root:priority(primary) .affixIcon svg path {
     stroke: value(PrimaryTextColor);
 }
 
 .root:priority(secondary) .affixIcon svg path {
-    fill: none;
     stroke: value(SecondaryTextColor);
 }
 
 .root:priority(basic) .affixIcon svg path {
-    fill: none;
     stroke: value(PrimaryTextColor);
 }
 
 .root:priority(basicSecondary) .affixIcon svg path {
-    fill: none;
     stroke: value(BasicSecondaryTextColor);
 }
 
