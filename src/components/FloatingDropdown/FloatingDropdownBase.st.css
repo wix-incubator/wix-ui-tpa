@@ -142,10 +142,12 @@
     fill: color(value(DefaultDisabledTextColor));
 }
 
-.btn::content {
+.overrideStyleParams .content,
+.overrideStyleParams .textContent,
+.overrideStyleParams .label{
     color: value(TextColor);
 }
 
-.overridable {
+.overrideStyleParams {
 
 }

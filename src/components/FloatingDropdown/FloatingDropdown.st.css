@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, overridalbe;
+    -st-named: minWidth, maxWidth, overrideStyleParams;
 }
 
 :import {
@@ -60,11 +60,11 @@
     max-width: value(maxWidth);
 }
 
-.root .dropdown:content-visible FloatingDropdownBase::arrowIcon {
+.root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
     transform: translateX(-0.25em) rotate(180deg) scale(1.5);
 }
 
-.root .dropdown:content-visible FloatingDropdownBase {
+.root .dropdown:content-visible .floatingDropdownBase {
     background: transparent;
 }
 
@@ -89,13 +89,13 @@
     background-color: applyOpacity(color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor))), 0.06);
 }
 
-.root .dropdown::dropdownContent Text {
-    color: color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor)));
-}
+/*.root .dropdown::dropdownContent Text {*/
+/*    color: color(fallback(value(ItemTextColor), value(ButtonTextColor), value(DefaultTextColor)));*/
+/*}*/
 
 .floatingDropdownBase {
-    /*-st-extends: FloatingDropdownBase;*/
-    -st-mixin: FloatingDropdownBase(
+    -st-extends: FloatingDropdownBase;
+    -st-mixin: overrideStyleParams(
         MainTextColor value(ButtonTextColor)
     );
     /*color: color(fallback(value(ButtonTextColor), value(DefaultTextColor)));*/
