@@ -307,7 +307,7 @@
 /*        CalendarHeaderCaptionColor value(CurrentMonthAndYearCaptionColor),*/
 /*    */
 /*        !* month and years dropdowns *!*/
-/*        DropdownTopPosition 4px,*/
+/*        DropdownElementHeight 24px,*/
 /*        DropdownElementFont value(CurrentWeekdayFont),*/
 /*        DropdownElementFontSize 14px,*/
 /*        DropdownElementTextColor value(CurrentWeekdayTextColor),*/
