@@ -1,15 +1,15 @@
 
 :import {
     -st-from: "../FloatingDropdown.st.css";
-    -st-default: FloatingDropdown;
+    -st-named: overrideStyleParams;
 }
 
 .root {
-    -st-mixin: FloatingDropdown(
-            MainDropdownBackgroundColor '"--DropdownBackgroundColor"',
-            MainButtonTextColor '"--ButtonTextColor"',
-            MainItemTextColor '"--ItemTextColor"',
-            MainTextFont '"--TextFont"'
+    -st-mixin: overrideStyleParams(
+        MainDropdownBackgroundColor '"--DropdownBackgroundColor"',
+        MainButtonTextColor '"--ButtonTextColor"',
+        MainItemTextColor '"--ItemTextColor"',
+        MainTextFont '"--TextFont"'
     );
 }
 

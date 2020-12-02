@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, overrideStyleParams, DefaultTextColor, DefaultTextFont;
+    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont;
 }
 
 :import {
@@ -76,28 +76,28 @@
     -st-extends: DropdownOption;
 }
 
-.root .dropdown::dropdownContent {
+.overrideStyleParams .dropdown::dropdownContent {
     background-color: value(DropdownBackgroundColor);
 }
 
-.root .dropdown::dropdownContent .optionDivider {
+.overrideStyleParams .dropdown::dropdownContent .optionDivider {
     background-color: value(ItemTextColor);
 }
 
-.root .dropdown::dropdownContent::dropdownOption:hovered,
-.root .dropdown::dropdownContent::dropdownOption:selected {
+.overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,
+.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected {
     background-color: applyOpacity(value(ItemTextColor), 0.06);
 }
 
-.root .option::title {
+.overrideStyleParams .option::title {
     white-space: initial;
     color: value(ItemTextColor);
     font: value(TextFont);
 }
 
-.floatingDropdownBase {
+.overrideStyleParams .floatingDropdownBase {
     -st-extends: FloatingDropdownBase;
-    -st-mixin: overrideStyleParams(
+    -st-mixin: overrideStyleParamsBase(
         MainTextColor value(MainButtonTextColor),
         MainTextFont value(TextFont)
     );
