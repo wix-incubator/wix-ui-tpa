@@ -98,6 +98,18 @@
     font-size: 16px;
 }
 
+textarea:after {
+    background-color: grey;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    right: 10px;
+    bottom: 8px;
+    z-index: -1;
+}
+
 .textArea:hover,
 .textArea:focus
 {
@@ -122,15 +134,12 @@
 }
 
 .root:theme(line) .textArea {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
 }
 .root:theme(line) {
     border-top: none;
     border-left: none;
     border-right: none;
-    padding-top: 0;
-    padding-bottom: 0;
 }
 
 .root:error {
