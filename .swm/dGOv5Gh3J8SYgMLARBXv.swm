@@ -1,0 +1,39 @@
+{
+    "id": "dGOv5Gh3J8SYgMLARBXv",
+    "name": "Extending TPAComponentProps",
+    "dod": "In this unit you will extend TPAComponentProps",
+    "description": "Every component has an interface declaring its props. This interface should extend `TPAComponentProps` to declare the core props, such as `className` and `data-hook`.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/Dialog.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/Dialog.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/Dialog.tsx b/src/components/Dialog/Dialog.tsx\nindex 3245b6f..3245b6f 100644\n--- a/src/components/Dialog/Dialog.tsx\n+++ b/src/components/Dialog/Dialog.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -7,7 +7,6 @@",
+                        " import { TPAComponentProps } from '../../types';",
+                        " import { st, classes } from './Dialog.st.css';",
+                        " ",
+                        "-export interface DialogProps extends TPAComponentProps {",
+                        "   /** Whether the modal is opened */",
+                        "   isOpen?: boolean;",
+                        "   /** Whether to use our focus trap or to manage the focus manually. */"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "9ce3f6d8be77c5b5929df7b6addc67deb995aee3"
+}
