@@ -1,0 +1,40 @@
+{
+    "id": "K0mxbUGC2ZjCGkGNgYQW",
+    "name": "Consuming TPAComponentsContext",
+    "dod": "In this unit you consume the TPAComponentsContext correctly.",
+    "description": "We can use `TPAComponentsConsumer` when the component needs to be aware of `mobile` and `rtl` states of the containing application.\n\nFor more information check [this](https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#tpacomponentsprovider) out.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/Dialog.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/Dialog.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/Dialog.tsx b/src/components/Dialog/Dialog.tsx\nindex 3245b6f..3245b6f 100644\n--- a/src/components/Dialog/Dialog.tsx\n+++ b/src/components/Dialog/Dialog.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -65,8 +65,6 @@",
+                        "     } = this.props;",
+                        " ",
+                        "     return (",
+                        "-      <TPAComponentsConsumer>",
+                        "-        {({ mobile, rtl }) => (",
+                        "           <div",
+                        "             className={st(",
+                        "               classes.root,"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "e68b7b13b08c6540dc6fcd522b13243acff7dcc1"
+}
