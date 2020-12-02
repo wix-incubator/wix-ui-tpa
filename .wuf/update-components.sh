@@ -35,3 +35,10 @@ wuf export-testkits \
   --definitions .wuf/testkits/definitions.js \
   --template .wuf/testkits/protractor.template.ejs \
   --output src/testkit/protractor.ts
+
+# puppeteer testkits
+wuf export-testkits \
+  --components .wuf/components.json \
+  --definitions .wuf/testkits/definitions.js \
+  --template .wuf/testkits/puppeteer.template.ejs \
+  --output src/testkit/puppeteer.ts
