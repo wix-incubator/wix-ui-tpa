@@ -80,13 +80,13 @@
     background-color: value(DropdownBackgroundColor);
 }
 
-.overrideStyleParams .dropdown::dropdownContent .optionDivider {
-    background-color: value(ItemTextColor);
-}
-
 .overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,
 .overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected {
     background-color: applyOpacity(value(ItemTextColor), 0.06);
+}
+
+.overrideStyleParams .dropdown::dropdownContent .optionDivider {
+    background-color: value(ItemTextColor);
 }
 
 .overrideStyleParams .option::title {
