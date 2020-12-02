@@ -1,13 +1,11 @@
-
 const path = require('path');
 const {exists, mkdir, rmdir, writeFile, symlink} = require('./fs-async')
 const {commonJsPath, esmPath} = require('./common');
 const {createJsonContent} = require('./create-pakage-json');
 
-module.exports.run = async ({componentsFolder}) => {
+module.exports.run = async ({entryPath}) => {
   const components = require('../../.wuf/components.json');
   const componentsNames = Object.keys(components);
-  const entryPath = path.join(process.cwd(), componentsFolder);
 
   const cleanup = async () => {
     /* clean existing folders */
