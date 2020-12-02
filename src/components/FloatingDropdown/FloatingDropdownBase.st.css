@@ -1,11 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, font;
-}
-
-:import {
-    -st-from: "../Text/Text.st.css";
-    -st-default: TPAText;
+    -st-named: color, font, fallback;
 }
 
 :import {
@@ -14,24 +9,52 @@
 }
 
 :vars {
-    DisabledTextColor: color-3;
-    TextColor: color-5;
-    LabelFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
-    DisabledColor: color-3;
+    iconHeight: 1em;
+    iconWith: 1em;
+    maxWidth: 20vw;
+    minWidth: 220px;
+}
+
+/*Constance*/
+:vars {
+    DefaultTextColor: color-5;
+    DefaultDisabledTextColor: color-3;
+    DefaultDropdownBackgroundColor: color-1;
+    DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The Button Text color
+        @default color-5
+    */
+    MainTextColor: --overridable;
+    /*
+        The Texts font
+        @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'}
+    */
+    MainTextFont: --overridable;
 }
 
 :vars {
-    disabledTextColor: color(value(DisabledTextColor));
-    iconHeight: 24px;
-    iconWith: 24px;
-    maxWidth: 20vw;
-    minWidth: 220px;
-    textColor: color(value(TextColor));
+    TextColor: color(fallback(value(MainTextColor), value(DefaultTextColor)));
+    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
+}
+
+:vars {
+    ArrowTransformation: translateX(-0.25em) scale(1.5);
 }
 
 .root {
     -st-states: mobile, disabled;
     cursor: pointer;
+}
+
+.arrowIcon {
+    height: value(iconHeight);
+    width: value(iconWith);
+    transform: value(ArrowTransformation);
 }
 
 .btn {
@@ -46,26 +69,19 @@
 
 .textContent {
     max-width: calc(value(maxWidth) - value(iconWith));
-    max-height: value(iconHeight);
     overflow: hidden;
     display: flex;
+    flex-shrink: 0;
+    margin-right: 0.5em;
 }
 
 .content {
-    -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '16px'}"
-    );
     display: flex;
-    color: value(textColor);
-}
-
-.arrowIcon path {
-    fill: value(textColor);
+    align-items: center;
 }
 
 .label {
     display: flex;
-    opacity: 0.6;
     white-space: nowrap;
     text-overflow: ellipsis;
     cursor: pointer;
@@ -92,29 +108,13 @@
     cursor: default;
 }
 
-.btn:disabled .label,
-.btn:disabled .content {
-    opacity: 1;
-    color: value(disabledTextColor);
-}
-
 .root:disabled {
     cursor: default;
-}
-
-.root:disabled .arrowIcon path {
-    fill: value(disabledTextColor);
 }
 
 .root:mobile {
     display: inline-block;
     position: relative;
-}
-
-.root:mobile .label,
-.root:mobile .selectedValue {
-    font: font(value(LabelFont));
-    color: value(textColor);
 }
 
 .root:mobile select {
@@ -132,11 +132,22 @@
     color: transparent;
 }
 
-.root:mobile:disabled .label,
-.root:mobile:disabled .selectedValue {
-    color: value(disabledTextColor);
-}
-
 .root:mobile:disabled select {
     cursor: default;
+}
+
+.overrideStyleParams .content {
+    color: value(TextColor);
+    font: value(TextFont);
+}
+.overrideStyleParams .arrowIcon path {
+    fill: value(TextColor);
+}
+
+.root:disabled .content .textContent {
+    color: color(value(DefaultDisabledTextColor));
+}
+
+.root:disabled .content .arrowIcon path {
+    fill: color(value(DefaultDisabledTextColor));
 }

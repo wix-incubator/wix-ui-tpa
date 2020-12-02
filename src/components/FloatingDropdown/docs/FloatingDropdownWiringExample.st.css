@@ -1,7 +1,18 @@
-.root {
 
+:import {
+    -st-from: "../FloatingDropdown.st.css";
+    -st-named: overrideStyleParams;
 }
 
-.component {
+.root {
+    -st-mixin: overrideStyleParams(
+        MainDropdownBackgroundColor '"--DropdownBackgroundColor"',
+        MainButtonTextColor '"--ButtonTextColor"',
+        MainItemTextColor '"--ItemTextColor"',
+        MainTextFont '"--TextFont"'
+    );
+}
 
+.divider {
+    margin: 20px 0;
 }
