@@ -73,7 +73,6 @@
     box-sizing: border-box;
     display: flex;
     position: relative;
-    padding: 8px 0;
     width: 280px;
     height: 92px;
 }
@@ -92,7 +91,7 @@
     width:  100%;
     box-sizing: border-box;
     color: value(textColor);
-    padding: 0 12px;
+    padding: 8px 12px;
     overflow: hidden;
     background-color: inherit;
     font: fallback(font(value(TextFont)), font(value(DefaultTextFont)));
