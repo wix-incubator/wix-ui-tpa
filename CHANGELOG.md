@@ -4,7 +4,6 @@
 ### Bug Fixes
 
 * **Button:** Fix prefix and suffix alignments ([459580f](https://github.com/wix/wix-ui-tpa/commit/459580f2d9bb372a852dff2b1b89323ca929c1f2))
-* **IconButton:** fix stylable warning ([492a955](https://github.com/wix/wix-ui-tpa/commit/492a955cb025eee3b455eb4b6da8c35b6e771af5))
 
 
 ### Features
