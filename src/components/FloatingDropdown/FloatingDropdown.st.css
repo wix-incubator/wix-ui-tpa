@@ -68,10 +68,6 @@
     background: transparent;
 }
 
-.root .dropdown DropdownOption::title {
-    white-space: initial;
-}
-
 .optionDivider {
     -st-mixin: divider;
 }
@@ -93,7 +89,8 @@
     background-color: applyOpacity(value(ItemTextColor), 0.06);
 }
 
-.root .dropdown::dropdownContent .option::title {
+.root .option::title {
+    white-space: initial;
     color: value(ItemTextColor);
     font: value(TextFont);
 }
