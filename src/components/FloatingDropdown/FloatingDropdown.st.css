@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont;
+    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
 }
 
 :import {
@@ -61,7 +61,7 @@
 }
 
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
-    transform: translateX(-0.25em) rotate(180deg) scale(1.5);
+    transform: value(ArrowTransformation) rotate(180deg);
 }
 
 .root .dropdown:content-visible .floatingDropdownBase {
@@ -95,8 +95,11 @@
     font: value(TextFont);
 }
 
-.overrideStyleParams .floatingDropdownBase {
+.floatingDropdownBase {
     -st-extends: FloatingDropdownBase;
+}
+
+.overrideStyleParams .floatingDropdownBase {
     -st-mixin: overrideStyleParamsBase(
         MainTextColor value(MainButtonTextColor),
         MainTextFont value(TextFont)

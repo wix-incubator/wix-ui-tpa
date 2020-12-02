@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classnames from 'classnames';
 import { Dropdown as CoreDropdown } from 'wix-ui-core/dropdown';
 import { DropdownOption } from '../Dropdown/DropdownOption';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
@@ -167,7 +166,8 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
             className={st(
               classes.root,
               { mobile },
-              classnames(classes.overrideStyleParams, this.props.className),
+              classes.overrideStyleParams,
+              this.props.className,
             )}
           >
             {this._getContent(mobile)}

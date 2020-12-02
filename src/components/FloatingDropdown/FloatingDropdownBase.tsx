@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classnames from 'classnames';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
 import { TextButton, TEXT_BUTTON_PRIORITY } from '../TextButton';
 import { TPAComponentProps } from '../../types';
@@ -133,7 +132,8 @@ export class FloatingDropdownBase extends React.Component<
         className={st(
           classes.root,
           { mobile, disabled },
-          classnames(classes.overrideStyleParams, className),
+          classes.overrideStyleParams,
+          className,
         )}
         data-hook={DATA_HOOKS.base}
       >

@@ -42,6 +42,10 @@
     TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
 }
 
+:vars {
+    ArrowTransformation: translateX(-0.25em) scale(1.5);
+}
+
 .root {
     -st-states: mobile, disabled;
     cursor: pointer;
@@ -50,7 +54,7 @@
 .arrowIcon {
     height: value(iconHeight);
     width: value(iconWith);
-    transform: translateX(-0.25em) scale(1.5);
+    transform: value(ArrowTransformation);
 }
 
 .btn {
