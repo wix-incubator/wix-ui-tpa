@@ -9,8 +9,8 @@
 }
 
 :vars {
-    iconHeight: 1em;
-    iconWith: 1em;
+    iconHeight: 1.5em;
+    iconWith: auto;
     maxWidth: 20vw;
     minWidth: 220px;
 }
@@ -43,7 +43,7 @@
 }
 
 :vars {
-    ArrowTransformation: translateX(-0.25em) scale(1.5);
+    ArrowTransformation: translateX(-0.25em);
 }
 
 .root {
