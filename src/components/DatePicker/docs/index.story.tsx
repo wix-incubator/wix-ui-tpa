@@ -173,6 +173,21 @@ export default {
                     wixParam: 'customDisabledDayColor',
                     defaultColor: 'color-8',
                   },
+                  {
+                    label: 'DateInput BG Color',
+                    wixParam: 'customDateInputBGColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Date Input Text Color',
+                    wixParam: 'customDateInputTextColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Date Input Border Color',
+                    wixParam: 'customDateInputBorderColor',
+                    defaultColor: 'color-5',
+                  },
                 ],
                 fonts: [
                   {
@@ -188,6 +203,11 @@ export default {
                   {
                     label: 'Day Font',
                     wixParam: 'customDayFont',
+                    defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Date Input Font',
+                    wixParam: 'customDateInputFont',
                     defaultFont: 'arial',
                   },
                 ],

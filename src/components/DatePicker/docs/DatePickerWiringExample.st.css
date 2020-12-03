@@ -13,9 +13,13 @@
             SelectedDayColor '"color(--customSelectedDayColor)"',
             SelectedDayBGColor '"color(--customSelectedDayBGColor)"',
             DisabledDayColor '"color(--customDisabledDayColor)"',
+            DateInputBGColor '"color(--customDateInputBGColor)"',
+            DateInputTextColor '"color(--customDateInputTextColor)"',
+            DateInputBorderColor '"color(--customDateInputBorderColor)"',
 
             MonthAndYearCaptionFont '"--customMonthAndYearCaptionFont"',
             WeekdayFont '"--customWeekdayFont"',
             DayFont '"--customDayFont"',
+            DateInputFont '"--customDateInputFont"',
     );
 }

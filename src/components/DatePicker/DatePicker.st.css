@@ -2,6 +2,10 @@
     -st-from: "../../common/formatters.st";
     -st-named: color, applyOpacity, fallback, font;
 }
+:import {
+    -st-from: "../TextField/TextField.st.css";
+    -st-default: TextField;
+}
 
 :import {
     -st-from: "wix-style-react/dist/src/DatePicker/DatePicker.st.css";
@@ -92,6 +96,26 @@
         @default color-3
     */
     DisabledDayColor: --overridable;
+    /*
+        The background color of the date input.
+        @default color-1
+    */
+    DateInputBGColor: --overridable;
+    /*
+        The text color of the date input.
+        @default color-5
+    */
+    DateInputTextColor: --overridable;
+    /*
+        The date input border color.
+        @default color-5
+    */
+    DateInputBorderColor: --overridable;
+    /*
+        The date input font.
+        @default {theme: 'Body-M', size: '16px'}
+    */
+    DateInputFont: --overridable;
 }
 
 /*Fallbacks*/
@@ -117,6 +141,14 @@
 .root {
 }
 
+.textField {
+    -st-mixin: TextField(
+            MainBorderColor value(DateInputBorderColor),
+            MainBackgroundColor value(DateInputBGColor),
+            MainTextColor value(DateInputTextColor),
+            MainTextFont value(DateInputFont),
+    );
+}
 
 /** Option 1: override the styling using the pseudo elements. **/
 
