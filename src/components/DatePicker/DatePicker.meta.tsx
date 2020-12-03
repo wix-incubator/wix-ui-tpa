@@ -63,4 +63,3 @@ DatePickerMetadata.addSim({
     clearButtonAriaLabel: 'Clear Button',
   } as DatePickerProps,
 });
-
