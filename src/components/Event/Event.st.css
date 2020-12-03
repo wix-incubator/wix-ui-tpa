@@ -15,7 +15,7 @@
 
 /*Defaults*/
 :vars {
-    defaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '14px'}";
+    defaultTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1'}";
     defaultTimeColor: color-4;
     defaultTitleColor: color-5;
     defaultHoverOverlayColor: color-5;
