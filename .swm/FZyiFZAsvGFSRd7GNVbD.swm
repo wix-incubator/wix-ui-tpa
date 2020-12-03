@@ -1,0 +1,39 @@
+{
+    "id": "FZyiFZAsvGFSRd7GNVbD",
+    "name": "Documenting Style API",
+    "dod": "In this unit you will understand how to attach the \"Style API\" tab to the Stroybook page.",
+    "description": "The Style API tab should appear on Storybook page for components that have overridable style variables. It helps to document the available style variables.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/docs/index.story.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/docs/index.story.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/docs/index.story.tsx b/src/components/Dialog/docs/index.story.tsx\nindex 1ca46ea..1ca46ea 100644\n--- a/src/components/Dialog/docs/index.story.tsx\n+++ b/src/components/Dialog/docs/index.story.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -115,7 +115,6 @@",
+                        " ",
+                        "       ...[",
+                        "         { title: 'API', sections: [api()] },",
+                        "-        { title: 'Style API', sections: [settingsApi()] },",
+                        "         { title: 'TestKit', sections: [testkit()] },",
+                        "         { title: 'Playground', sections: [playground()] },",
+                        "         {"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "5b840e2be4718106ff026ac1cc2b69618731bd67"
+}
