@@ -38,7 +38,6 @@ export default {
     'data-hook': 'storybook-DatePicker',
     value: new Date(),
     placeholderText: 'Select Date',
-    dateFormat: 'LL/dd/yyyy',
     disabled: false,
     excludePastDates: false,
     showMonthDropdown: false,

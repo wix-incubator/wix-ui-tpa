@@ -9,19 +9,19 @@ import { DATA_HOOKS } from './constants';
 // import { datePickerDriverFactory as WSRDatePickerDriverFactory } from 'wix-style-react/dist/src/DatePicker/DatePicker.driver';
 
 export interface DatePickerDriver extends BaseUniDriver {
-  getTextFieldElement(): Promise<HTMLElement>;
+  // getTextFieldElement(): Promise<HTMLElement>;
   openCalendarWindow(): Promise<void>;
 }
 
 export const datePickerDriverFactory = (base: UniDriver): DatePickerDriver => {
-  const dateInputElement = base.$(`[data-hook=${DATA_HOOKS.DATE_INPUT}]`);
+  // const dateInputElement = base.$(`[data-hook=${DATA_HOOKS.DATE_INPUT}]`);
 
   return {
     ...baseUniDriverFactory(base),
 
-    getTextFieldElement: () => {
-      return dateInputElement.getNative();
-    },
+    // getTextFieldElement: () => {
+    //   return dateInputElement.getNative();
+    // },
     /**
      * open the calender window
      * @return {Promise<void>}
