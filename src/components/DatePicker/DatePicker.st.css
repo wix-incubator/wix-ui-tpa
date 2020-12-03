@@ -214,7 +214,7 @@
     color: value(CurrentSelectedDayColor);
 }
 
-.wsrDatePicker::calendar::day:outside, .wsrDatePicker::calendar::day.disabled {
+.wsrDatePicker::calendar::day:outside, .wsrDatePicker::calendar::day:disabled {
     color: value(CurrentDisabledDayColor);
 }
 

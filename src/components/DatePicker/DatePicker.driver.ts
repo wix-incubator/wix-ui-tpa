@@ -14,7 +14,7 @@ export interface DatePickerDriver extends BaseUniDriver {
 }
 
 export const datePickerDriverFactory = (base: UniDriver): DatePickerDriver => {
-  const dateInputElement = base.$(`[data-hook=${DATA_HOOKS.DATE_INPUT_FIELD}]`);
+  const dateInputElement = base.$(`[data-hook=${DATA_HOOKS.DATE_INPUT}]`);
 
   return {
     ...baseUniDriverFactory(base),
