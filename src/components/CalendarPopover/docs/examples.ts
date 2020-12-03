@@ -9,11 +9,10 @@ const createStringComponent = ({
       <div style={{width: "300px"}}>
          <h4>${title}</h4>
          <TPAComponentsProvider value={{ rtl: ${isRightToLeft} }}>
-               <CalendarPopover manualFocus={${manualFocus}} isShown={true} 
-               title=<h2 style={{marginTop: "0"}}>Events</h2> onClose={()=>alert('close click!')}>
-                  <div>Michal birthday party</div>
-                  <div>Movies night</div>
-                  <div>Football tournament</div>
+               <CalendarPopover manualFocus={${manualFocus}} isShown={true} title={'Events'} onClose={()=>alert('close click!')}>
+                  <Event time={'11:00'} title={'Michal\\'s birthday party'} />
+                  <Event time={'19:00'} title={'Movies night'} />
+                  <Event time={'21:00'} title={'Football tournament'}/>
                </CalendarPopover>
             </TPAComponentsProvider>
       </div>
@@ -26,6 +25,6 @@ const createComponentsSection = stringComponents => {
       `;
 };
 
-const defaultPopover = createStringComponent({ title: 'default' });
+const defaultPopover = createStringComponent({ title: 'Events' });
 
 export const popoverExample = createComponentsSection([defaultPopover]);

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { Text } from '../Text';
 import { EVENT_DATA_KEYS } from './dataHooks';
@@ -61,12 +60,12 @@ export class Event extends React.Component<EventProps> {
         }
       : null;
 
-  _getEvent = (rtl, isContainer, className, timeComponent, title) => (
+  _getEvent = (isContainer, className, timeComponent, title) => (
     <div
       {...this._getEventProps(isContainer)}
       className={st(
         classes.root,
-        { fullday: this.props.fullday, selected: this.props.selected, rtl },
+        { fullday: this.props.fullday, selected: this.props.selected },
         className,
       )}
     >
@@ -81,22 +80,16 @@ export class Event extends React.Component<EventProps> {
     const timeComponent =
       showTime && time ? <Text className={classes.time}>{time}</Text> : null;
 
-    return (
-      <TPAComponentsConsumer>
-        {({ rtl }) => {
-          return onClick ? (
-            <ButtonNext
-              onClick={() => !disabled && onClick()}
-              className={st(classes.buttonContainer)}
-              {...this._getEventProps(true)}
-            >
-              {this._getEvent(rtl, false, className, timeComponent, title)}
-            </ButtonNext>
-          ) : (
-            this._getEvent(rtl, true, className, timeComponent, title)
-          );
-        }}
-      </TPAComponentsConsumer>
+    return onClick ? (
+      <ButtonNext
+        onClick={() => !disabled && onClick()}
+        className={st(classes.buttonContainer)}
+        {...this._getEventProps(true)}
+      >
+        {this._getEvent(false, className, timeComponent, title)}
+      </ButtonNext>
+    ) : (
+      this._getEvent(true, className, timeComponent, title)
     );
   }
 }

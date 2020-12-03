@@ -4,19 +4,22 @@ import Registry from '@ui-autotools/registry';
 const CalendarPopoverMetadata = Registry.getComponentMetadata(CalendarPopover);
 CalendarPopoverMetadata.nonReactStrictModeCompliant = true;
 
-const onClose = () => {};
+const defaultProps = {
+  onClose: () => {},
+  closeAriaLabel: 'close',
+};
 
 CalendarPopoverMetadata.addSim({
   title: 'render',
   props: {
-    onClose,
+    ...defaultProps,
   },
 });
 
 CalendarPopoverMetadata.addSim({
   title: 'with left arrow',
   props: {
-    onClose,
+    ...defaultProps,
     withArrow: true,
   },
 });
@@ -24,7 +27,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'with title',
   props: {
-    onClose,
+    ...defaultProps,
     title: 'title',
   },
 });
@@ -32,7 +35,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'with shadow',
   props: {
-    onClose,
+    ...defaultProps,
     withShadow: true,
   },
 });
@@ -40,7 +43,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'with right arrow',
   props: {
-    onClose,
+    ...defaultProps,
     arrowSide: Sides.Right,
     withArrow: true,
   },
@@ -49,7 +52,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'with arrow top',
   props: {
-    onClose,
+    ...defaultProps,
     arrowTop: 66,
   },
 });
@@ -57,7 +60,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'shown',
   props: {
-    onClose,
+    ...defaultProps,
     isShown: true,
   },
 });
@@ -65,7 +68,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'animated',
   props: {
-    onClose,
+    ...defaultProps,
     animated: true,
   },
 });
@@ -73,7 +76,7 @@ CalendarPopoverMetadata.addSim({
 CalendarPopoverMetadata.addSim({
   title: 'auto focused',
   props: {
-    onClose,
+    ...defaultProps,
     manualFocus: true,
   },
 });
