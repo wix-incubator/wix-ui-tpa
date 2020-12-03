@@ -151,7 +151,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
 
     const customInput = (
       <TextField
-        data-hook="date-input"
+        data-hook={DATA_HOOKS.DATE_INPUT_FIELD}
         prefix=""
         suffix={<Calendar />}
         disabled={disabled}
