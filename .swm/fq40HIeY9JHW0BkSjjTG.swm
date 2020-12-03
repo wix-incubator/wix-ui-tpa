@@ -1,6 +1,6 @@
 {
     "id": "fq40HIeY9JHW0BkSjjTG",
-    "name": "Styling Wiring Example",
+    "name": "Styling wiring example",
     "dod": "In this unit you will understand how to connect the wired style variables to the example of the Settings Panel.",
     "description": "In order to connect the wired style variables to the example of the Settings Panel, we should use the style of the component as Stylable mixin and pass to it the overridable variables of the component, mapped to the corresponding wired variables.\n\nYou can read about the mixins [here](https://stylable.io/docs/references/mixins) and specifically focus on \"Stylable mixin with parameters and variables\".",
     "summary": "",
@@ -36,5 +36,5 @@
     },
     "app_version": "0.2.8",
     "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "e81282ac499ffa5f63e9bb125fcb81fa443ed1c4"
+    "last_commit_sha_for_swimm_patch": "b36188266e8a431c2aa50906ec3659556d29f9c6"
 }
