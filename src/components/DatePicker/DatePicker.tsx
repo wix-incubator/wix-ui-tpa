@@ -77,6 +77,10 @@ export interface DatePickerProps extends TPAComponentProps {
   popoverPlacement?: popoverPlacementType;
   /** Element to append the Popover to */
   popoverAppendTo?: AppendTo;
+  /** Defines a string value that labels the Date Picker element. Optional. */
+  'aria-label'?: string;
+  /** Identifies the element that labels the Date Picker element. Optional. */
+  'aria-labelledby'?: string;
   /** Defines a string value that labels the clear button element. Optional. */
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
@@ -143,10 +147,12 @@ export class DatePicker extends React.Component<DatePickerProps> {
       showYearDropdown,
       inputWidth,
       inputTheme,
-      clearButtonAriaLabel,
-      clearButtonAriaLabelledby,
       popoverPlacement,
       popoverAppendTo,
+      ['aria-label']: ariaLabel,
+      ['aria-labelledby']: ariaLabelledBy,
+      clearButtonAriaLabel,
+      clearButtonAriaLabelledby,
     } = this.props;
 
     const customInput = (
@@ -171,6 +177,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
           <div
             className={st(classes.root, className)}
             data-hook={this.props['data-hook']}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledBy}
           >
             <WSRDatePicker
               ref={this.WSRDatePickerRef}
