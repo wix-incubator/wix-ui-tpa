@@ -23,6 +23,7 @@ import * as DatePickerWiringExampleRaw from '!raw-loader!./DatePickerWiringExamp
 import * as DatePickerWiringExampleCSSRaw from '!raw-loader!./DatePickerWiringExample.st.css';
 import { DatePickerWiringExample } from './DatePickerWiringExample';
 import { DatePicker } from '../';
+import { TextFieldTheme } from '../../TextField/TextFieldEnums';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
@@ -37,21 +38,42 @@ export default {
     'data-hook': 'storybook-DatePicker',
     value: new Date(),
     placeholderText: 'Select Date',
-    disabled: false,
     dateFormat: 'LL/dd/yyyy',
+    disabled: false,
     excludePastDates: false,
-    firstDayOfWeek: 1,
+    showMonthDropdown: false,
+    showYearDropdown: false,
+    hasError: false,
+    errorMessage: 'Error Message',
   }),
   exampleProps: {
+    value: [
+      { label: 'Without selected day', value: '' },
+      { label: 'Today', value: new Date() },
+    ],
     locale: [
       { label: 'en', value: 'en' },
       { label: 'es', value: 'es' },
       { label: 'fr', value: 'fr' },
     ],
+    dateFormat: [
+      { label: 'LL/dd/yyyy', value: 'LL/dd/yyyy' },
+      { label: 'dd/LL/yy', value: 'dd/LL/yy' },
+      { label: 'LLL dd, yyyy', value: 'LLL dd, yyyy' },
+      { label: 'Custom', value: date => date.getDate() },
+    ],
     filterDate: [
       { label: 'Prior to the current date', value: date => date < new Date() },
-      { label: 'No filter', value: '' },
     ],
+    firstDayOfWeek: [
+      { label: 'Monday', value: 1 },
+      { label: 'Sunday', value: 0 },
+    ],
+    inputWidth: [
+      { label: '400px', value: 400 },
+      { label: '100%', value: '100%' },
+    ],
+    inputTheme: Object.values(TextFieldTheme),
   },
   dataHook: 'storybook-DatePicker',
   sections: [
