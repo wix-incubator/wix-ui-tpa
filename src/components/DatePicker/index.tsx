@@ -1,1 +1,5 @@
-export { DatePicker, DatePickerProps, popoverPlacementType } from './DatePicker';
+export {
+  DatePicker,
+  DatePickerProps,
+  popoverPlacementType,
+} from './DatePicker';
