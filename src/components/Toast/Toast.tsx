@@ -30,11 +30,11 @@ export class Toast extends React.Component<ToastProps> {
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) => (
+        {({ mobile, rtl }) => (
           <div
             className={st(
               classes.root,
-              { mobile, skin, shouldAnimate, isShown, placement },
+              { mobile, skin, shouldAnimate, isShown, placement, rtl },
               className,
             )}
             role="alert"
