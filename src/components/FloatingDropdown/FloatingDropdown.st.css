@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
+    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont;
 }
 
 :import {
@@ -61,7 +61,7 @@
 }
 
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
-    transform: value(ArrowTransformation) rotate(180deg);
+    transform: rotate(180deg);
 }
 
 .root .dropdown:content-visible .floatingDropdownBase {
