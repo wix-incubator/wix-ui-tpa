@@ -28,14 +28,11 @@ export type LanguageType =
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
-  value: Date | string;
+  value?: Date | string  | { from?: string | Date; to?: string | Date; };
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange(selectedDays: string | Date): void;
-  /** Custom date format, can be either:
-     `string` of tokens (see [`date-fns V2` docs](https://date-fns.org/v2.15.0/docs/format) for list of supported tokens)
-     `function` of signature `Date -> String`
-     */
-  dateFormat?: string | ((date: Date) => void);
+  /** A Callback function which is called whenever the user presses escape or clicks outside of the element or a date is selected and `shouldCloseOnSelect` is set */
+  onClose?(event: React.MouseEvent<HTMLButtonElement>): void; // todo: check if it's needed
   /** DatePicker instance locale */
   locale?: LanguageType | { distanceInWords?: {}; format?: {} };
   /** When true, past dates would be unselectable */
@@ -116,8 +113,8 @@ export class DatePicker extends React.Component<DatePickerProps> {
               showMonthDropdown={showMonthDropdown}
               showYearDropdown={showYearDropdown}
               rtl={rtl}
-              selectionMode="day"
-              numOfMonths={1}
+              selectionMode="day" // Todo: decide if to allow range as well
+              numOfMonths={1} // Todo: decide if to allow 1 and 2
             />
           </div>
         )}

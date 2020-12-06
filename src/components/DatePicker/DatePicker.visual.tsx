@@ -5,6 +5,6 @@ import { DatePicker } from './';
 
 visualize('DatePicker', () => {
   story('simple', () => {
-    snap('default props', <DatePicker />);
+    snap('default props', <DatePicker onChange={()=>{}} />);
   });
 });

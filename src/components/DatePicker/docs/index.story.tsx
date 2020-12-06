@@ -34,9 +34,28 @@ export default {
   componentPath: '../DatePicker.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-DatePicker',
+    value: new Date(),
+    excludePastDates: false,
+    showMonthDropdown: false,
+    showYearDropdown: false,
   }),
   exampleProps: {
-    //
+    value: [
+      { label: 'Without selected day', value: '' },
+      { label: 'Today', value: new Date() },
+    ],
+    locale: [
+      { label: 'en', value: 'en' },
+      { label: 'es', value: 'es' },
+      { label: 'fr', value: 'fr' },
+    ],
+    filterDate: [
+      { label: 'Prior to the current date', value: date => date < new Date() },
+    ],
+    firstDayOfWeek: [
+      { label: 'Monday', value: 1 },
+      { label: 'Sunday', value: 0 },
+    ],
   },
   dataHook: 'storybook-DatePicker',
   sections: [
@@ -60,8 +79,20 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'Example', source: examples.basicExample },
+            {
+              title: 'Filter Dates',
+              description:
+                  'In this example only prior dates to the current date can be selected.',
+              source: examples.filterExample,
+            },
+            {
+              title: 'Years And Months Dropdowns',
+              description:
+                  'Years or months dropdowns could be added for an easy selection.',
+              source: examples.yearsAndMonthDropdowns,
+            },
+            { title: 'RTL example', source: examples.rtlExample },
           ].map(code),
         ],
       }),

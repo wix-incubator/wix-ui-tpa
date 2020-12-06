@@ -1,4 +1,4 @@
-export const importExample = `import { DatePicker } from 'wix-ui-tpa/DatePickerInput';`;
+export const importExample = `import { DatePickerInput } from 'wix-ui-tpa/DatePickerInput';`;
 
 const buildExample = (initialValue: Date | string, content: string) => `
 class DatePickerExample extends React.Component {

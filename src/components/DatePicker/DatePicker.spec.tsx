@@ -12,14 +12,17 @@ import { DatePicker, DatePickerProps } from './';
 describe('DatePicker', () => {
   const createDriver = createUniDriverFactory(datePickerDriverFactory);
 
-  const bootstrap = (
-    props: Partial<
-      DatePickerProps
-    > = {} /*, contextProps: TPAComponentsConfig = {}*/,
-  ) => {
+  const bootstrap = (props = {}) => {
+    const dataHook = '';
+    const compProps = {
+      'data-hook': dataHook,
+          value: new Date(),
+      onChange: selectedDays => {},
+      ...props,
+    };
     return createDriver(
       // <TPAComponentsProvider value={contextProps}>
-      <DatePicker {...props} />,
+      <DatePicker {...compProps} />,
       // </TPAComponentsProvider>
     );
   };
@@ -32,7 +35,7 @@ describe('DatePicker', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<DatePicker />, datePickerTestkitFactory, {
+        await isUniTestkitExists(<DatePicker onChange={(selectedDays)=>{}} />, datePickerTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -43,7 +46,7 @@ describe('DatePicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <DatePicker />,
+          <DatePicker onChange={(selectedDays)=>{}} />,
           enzymeDatePickerTestkitFactory,
           mount,
           {

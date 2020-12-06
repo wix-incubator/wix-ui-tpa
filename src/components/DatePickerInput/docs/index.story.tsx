@@ -31,7 +31,7 @@ const code = config =>
 
 export default {
   category: StoryCategory.COMPONENTS,
-  storyName: 'DatePicker',
+  storyName: 'DatePickerInput',
   component: DatePickerInput,
   componentPath: '../DatePickerInput.tsx',
   componentProps: () => ({
