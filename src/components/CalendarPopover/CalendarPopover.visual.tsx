@@ -4,6 +4,7 @@ import { CalendarPopover, CalendarPopoverProps, Sides } from '.';
 
 const defaultProps: CalendarPopoverProps = {
   onClose: () => {},
+  closeAriaLabel: 'close',
 };
 
 visualize('CalendarPopover', () => {

@@ -10,6 +10,7 @@ import { calendarPopoverTestkitFactory as enzymePopoverTestkitFactory } from '..
 
 const defaultProps: CalendarPopoverProps = {
   onClose: () => {},
+  closeAriaLabel: 'close',
 };
 
 describe('CalendarPopover', () => {

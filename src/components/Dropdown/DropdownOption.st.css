@@ -21,6 +21,7 @@
 }
 
 .title {
+    -st-extends: TPAText;
     padding: 0 12px;
     display: block;
     text-overflow: ellipsis;

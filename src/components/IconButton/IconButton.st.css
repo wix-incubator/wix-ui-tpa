@@ -59,22 +59,14 @@
 }
 
 /* Variants - including style overrides capabilities */
+/* but also support state syntax */
 
-.root.skin-line .icon path {
+.skin-line .icon path, .root:skin(line) .icon path {
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
     fill: none;
 }
 
-.root.skin-full .icon path {
+.skin-full .icon path, .root:skin(full) .icon path {
     fill: color(fallback(value(IconColor), value(DefaultColor)));
     stroke: color(fallback(value(IconColor), value(DefaultColor)));
-}
-
-/* Support state syntax */
-.root:skin(line) {
-    -st-extends: skin-line;
-}
-
-.root:skin(full) {
-    -st-extends: skin-full;
 }

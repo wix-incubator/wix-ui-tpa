@@ -32,9 +32,19 @@ export default {
   componentPath: '../Event.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Event',
+    time: '21:30',
+    title: 'Yoga Class',
+    showTime: true,
+    fullday: false,
+    selected: false,
+    disabled: false,
+    onClick: undefined,
   }),
   exampleProps: {
-    //
+    onClick: [
+      { label: 'clickable', value: () => alert('Awesome!') },
+      { label: 'display only', value: null },
+    ],
   },
   dataHook: 'storybook-Event',
   sections: [

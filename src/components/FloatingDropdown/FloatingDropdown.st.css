@@ -1,7 +1,12 @@
 :import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, font, fallback, applyOpacity;
+}
+
+:import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth;
+    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
 }
 
 :import {
@@ -14,29 +19,89 @@
     -st-named: dropdown, divider;
 }
 
-.root {}
+/*Constance*/
+:vars {
+    DefaultDropdownBackgroundColor: color-1;
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The Dropdown Background color
+        @default color-1
+    */
+    MainDropdownBackgroundColor: --overridable;
+    /*
+        The Button Text color
+        @default color-5
+    */
+    MainButtonTextColor: --overridable;
+    /*
+        The Items Text color
+        @default color-5
+    */
+    MainItemTextColor: --overridable;
+    /*
+        The Texts font
+        @default {theme: 'Body-M', size: '16px', lineHeight: '1.5em'}
+    */
+    MainTextFont: --overridable;
+}
+
+:vars {
+    ButtonTextColor: color(value(MainButtonTextColor), value(DefaultTextColor)));
+    ItemTextColor: color(fallback(value(MainItemTextColor), value(MainButtonTextColor), value(DefaultTextColor)));
+    DropdownBackgroundColor: color(fallback(value(MainDropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));
+    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
+}
 
 .root .dropdown {
     min-width: value(minWidth);
     max-width: value(maxWidth);
 }
 
-.floatingDropdownBase {
-    -st-extends: FloatingDropdownBase;
-}
-
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
-    transform: rotate(180deg);
+    transform: value(ArrowTransformation) rotate(180deg);
 }
 
-.root .dropdown:content-visible .floatingDropdownBase::root {
+.root .dropdown:content-visible .floatingDropdownBase {
     background: transparent;
-}
-
-.root .dropdown DropdownOption::title {
-    white-space: initial;
 }
 
 .optionDivider {
     -st-mixin: divider;
+}
+
+.option {
+    -st-extends: DropdownOption;
+}
+
+.overrideStyleParams .dropdown::dropdownContent {
+    background-color: value(DropdownBackgroundColor);
+}
+
+.overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,
+.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected {
+    background-color: applyOpacity(value(ItemTextColor), 0.06);
+}
+
+.overrideStyleParams .dropdown::dropdownContent .optionDivider {
+    background-color: value(ItemTextColor);
+}
+
+.overrideStyleParams .option::title {
+    white-space: initial;
+    color: value(ItemTextColor);
+    font: value(TextFont);
+}
+
+.floatingDropdownBase {
+    -st-extends: FloatingDropdownBase;
+}
+
+.overrideStyleParams .floatingDropdownBase {
+    -st-mixin: overrideStyleParamsBase(
+        MainTextColor value(MainButtonTextColor),
+        MainTextFont value(TextFont)
+    );
 }

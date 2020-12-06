@@ -85,7 +85,9 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         ? OptionFactory.createDivider({ className: classes.optionDivider })
         : OptionFactory.create({
             ...option,
-            render: () => <DropdownOption {...option} />,
+            render: () => (
+              <DropdownOption className={classes.option} {...option} />
+            ),
           }),
     );
 
@@ -161,7 +163,12 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
           <div
             data-mobile={mobile}
             data-hook={this.props['data-hook']}
-            className={st(classes.root, { mobile }, this.props.className)}
+            className={st(
+              classes.root,
+              { mobile },
+              classes.overrideStyleParams,
+              this.props.className,
+            )}
           >
             {this._getContent(mobile)}
           </div>

@@ -15,7 +15,6 @@ export const allComponents = {
 
   // todo: should be removed in the next major version
   ...icons,
-
   Modal,
   Icons: { ...iconsScope, ...icons },
   ExampleWithContextProps: ({ children, mobile, rtl }) => (

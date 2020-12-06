@@ -1,19 +1,18 @@
 import {
-  protractorTestkitFactoryCreator,
-  protractorUniTestkitFactoryCreator,
-} from 'wix-ui-test-utils/protractor';
+  puppeteerUniTestkitFactoryCreator,
+} from 'wix-ui-test-utils/puppeteer';
 
-<% components.filter(component => !component.noTestkit).map(component => {
+<% components.filter(component => !component.noTestkit && !component.legacyDriver).map(component => {
   const camelName = utils.toCamel(component.name);
   const driverFactory = camelName + 'DriverFactory';
   const driverPath = component.testkitPath || [
     '../components',
     component.name,
-    component.name + (component.protractorLegacyTestkit ? '.protractor.driver' : '.driver'),
+    component.name + '.driver',
   ].join('\/');
 
   const testkitName = camelName + 'TestkitFactory';
-  const factoryName = component.protractorLegacyTestkit ? 'protractorTestkitFactoryCreator' : 'protractorUniTestkitFactoryCreator';
+  const factoryName = 'puppeteerUniTestkitFactoryCreator';
 %>
 import { <%= driverFactory %> } from '<%= driverPath %>';
 export const <%= testkitName %> = <%= factoryName%>(<%= driverFactory %>)
