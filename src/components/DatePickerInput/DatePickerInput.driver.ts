@@ -6,14 +6,14 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { DATA_HOOKS } from './constants';
 
 // @ts-ignore
-// import { datePickerDriverFactory as WSRDatePickerDriverFactory } from 'wix-style-react/dist/src/DatePicker/DatePicker.driver';
+// import { datePickerDriverFactory as WSRDatePickerDriverFactory } from 'wix-style-react/dist/src/DatePickerInput/DatePickerInput.driver';
 
-export interface DatePickerDriver extends BaseUniDriver {
+export interface DatePickerInputDriver extends BaseUniDriver {
   // getTextFieldElement(): Promise<HTMLElement>;
   openCalendarWindow(): Promise<void>;
 }
 
-export const datePickerDriverFactory = (base: UniDriver): DatePickerDriver => {
+export const datePickerInputDriverFactory = (base: UniDriver): DatePickerInputDriver => {
   // const dateInputElement = base.$(`[data-hook=${DATA_HOOKS.DATE_INPUT}]`);
 
   return {

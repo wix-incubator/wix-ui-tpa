@@ -1,10 +1,10 @@
-import { DatePicker, DatePickerProps } from '.';
+import { DatePickerInput, DatePickerInputProps } from '.';
 import Registry from '@ui-autotools/registry';
 
-const DatePickerMetadata = Registry.getComponentMetadata(DatePicker);
-DatePickerMetadata.nonReactStrictModeCompliant = true;
+const DatePickerInputMetadata = Registry.getComponentMetadata(DatePickerInput);
+DatePickerInputMetadata.nonReactStrictModeCompliant = true;
 
-DatePickerMetadata.addSim({
+DatePickerInputMetadata.addSim({
   title: 'render',
   props: {
     value: new Date(),
@@ -16,20 +16,20 @@ DatePickerMetadata.addSim({
     locale: 'en',
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
-  } as DatePickerProps,
+  } as DatePickerInputProps,
 });
 
-DatePickerMetadata.addSim({
+DatePickerInputMetadata.addSim({
   title: 'disabled',
   props: {
     value: new Date(),
     onChange: () => {},
     disabled: true,
     'aria-label': 'Date Picker',
-  } as DatePickerProps,
+  } as DatePickerInputProps,
 });
 
-DatePickerMetadata.addSim({
+DatePickerInputMetadata.addSim({
   title: 'has error',
   props: {
     value: new Date(),
@@ -38,10 +38,10 @@ DatePickerMetadata.addSim({
     errorMessage: 'Error Message',
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
-  } as DatePickerProps,
+  } as DatePickerInputProps,
 });
 
-DatePickerMetadata.addSim({
+DatePickerInputMetadata.addSim({
   title: 'excludePastDates',
   props: {
     value: new Date(),
@@ -49,10 +49,10 @@ DatePickerMetadata.addSim({
     excludePastDates: true,
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
-  } as DatePickerProps,
+  } as DatePickerInputProps,
 });
 
-DatePickerMetadata.addSim({
+DatePickerInputMetadata.addSim({
   title: 'Month and year dropdowns',
   props: {
     value: new Date(),
@@ -61,5 +61,5 @@ DatePickerMetadata.addSim({
     showYearDropdown: true,
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
-  } as DatePickerProps,
+  } as DatePickerInputProps,
 });

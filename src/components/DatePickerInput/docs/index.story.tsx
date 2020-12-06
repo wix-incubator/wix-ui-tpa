@@ -19,10 +19,10 @@ import {
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as DatePickerWiringExampleRaw from '!raw-loader!./DatePickerWiringExample.tsx';
-import * as DatePickerWiringExampleCSSRaw from '!raw-loader!./DatePickerWiringExample.st.css';
-import { DatePickerWiringExample } from './DatePickerWiringExample';
-import { DatePicker } from '../';
+import * as DatePickerInputWiringExampleRaw from '!raw-loader!./DatePickerInputWiringExample.tsx';
+import * as DatePickerInputWiringExampleCSSRaw from '!raw-loader!./DatePickerInputWiringExample.st.css';
+import { DatePickerInputWiringExample } from './DatePickerInputWiringExample';
+import { DatePickerInput } from '../';
 import { TextFieldTheme } from '../../TextField/TextFieldEnums';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
@@ -32,10 +32,10 @@ const code = config =>
 export default {
   category: StoryCategory.COMPONENTS,
   storyName: 'DatePicker',
-  component: DatePicker,
-  componentPath: '../DatePicker.tsx',
+  component: DatePickerInput,
+  componentPath: '../DatePickerInput.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-DatePicker',
+    'data-hook': 'storybook-DatePickerInput',
     value: new Date(),
     placeholderText: 'Select Date',
     disabled: false,
@@ -74,7 +74,7 @@ export default {
     ],
     inputTheme: Object.values(TextFieldTheme),
   },
-  dataHook: 'storybook-DatePicker',
+  dataHook: 'storybook-DatePickerInput',
   sections: [
     header(),
     tabs([
@@ -127,10 +127,10 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              title: 'DatePicker Panel',
-              example: <DatePickerWiringExample />,
-              rawSource: DatePickerWiringExampleRaw,
-              rawCSSSource: DatePickerWiringExampleCSSRaw,
+              title: 'DatePickerInput Panel',
+              example: <DatePickerInputWiringExample />,
+              rawSource: DatePickerInputWiringExampleRaw,
+              rawCSSSource: DatePickerInputWiringExampleCSSRaw,
               params: {
                 colors: [
                   {

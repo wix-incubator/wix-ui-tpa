@@ -1,10 +1,10 @@
 :import {
-    -st-from: "../DatePicker.st.css";
-    -st-default: TPADatePicker;
+    -st-from: "../DatePickerInput.st.css";
+    -st-default: TPADatePickerInput;
 }
 
 .root {
-    -st-mixin: TPADatePicker(
+    -st-mixin: TPADatePickerInput(
             BackgroundColor '"color(--customBackgroundColor)"',
             NavigationArrowsColor '"color(--customNavigationArrowsColor)"',
             MonthAndYearCaptionColor '"color(--customMonthAndYearCaptionColor)"',

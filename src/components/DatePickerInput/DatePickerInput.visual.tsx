@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
 import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
-import { DatePicker, DatePickerProps } from './';
-import { datePickerDriverFactory } from './DatePicker.driver';
+import { DatePickerInput, DatePickerInputProps } from './';
+import { datePickerInputDriverFactory } from './DatePickerInput.driver';
 
-const createDriver = uniTestkitFactoryCreator(datePickerDriverFactory);
-const dataHook = 'storybook-datepicker';
+const createDriver = uniTestkitFactoryCreator(datePickerInputDriverFactory);
+const dataHook = 'storybook-datePickerInput';
 
-interface DatePickerVisualProps {
-  datePickerProps: DatePickerProps;
+interface DatePickerInputVisualProps {
+  datePickerInputProps: DatePickerInputProps;
   onDone(): void;
 }
 
-class DatePickerVisualComponent extends React.Component<DatePickerVisualProps> {
+class DatePickerInputVisualComponent extends React.Component<DatePickerInputVisualProps> {
   static defaultProps = {
-    datePickerProps: {},
+    datePickerInputProps: {},
     onDone: () => {},
   };
 
@@ -27,17 +27,17 @@ class DatePickerVisualComponent extends React.Component<DatePickerVisualProps> {
     onDone();
   }
   render() {
-    const { datePickerProps } = this.props;
+    const { datePickerInputProps } = this.props;
 
-    return <DatePicker data-hook={dataHook} {...datePickerProps} />;
+    return <DatePickerInput data-hook={dataHook} {...datePickerInputProps} />;
   }
 }
 
-visualize('DatePicker', () => {
+visualize('DatePickerInput', () => {
   story('simple example', () => {
     snap('default props', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: new Date('2020/10/10'),
           onChange: () => {},
         }}
@@ -45,8 +45,8 @@ visualize('DatePicker', () => {
       />
     ));
     snap('Without a selected date', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: '',
           placeholderText: 'Select A Date',
           onChange: () => {},
@@ -55,8 +55,8 @@ visualize('DatePicker', () => {
       />
     ));
     snap('FilterDate - Prior for today dates (includes today)', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
           filterDate: date => date <= new Date('2020/10/10'),
@@ -66,8 +66,8 @@ visualize('DatePicker', () => {
       />
     ));
     snap('FilterDate - feature dates only (includes today)', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
           filterDate: date => date >= new Date('2020/10/10'),
@@ -77,8 +77,8 @@ visualize('DatePicker', () => {
       />
     ));
     snap('Months dropdown', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
           showMonthDropdown: true,
@@ -88,8 +88,8 @@ visualize('DatePicker', () => {
       />
     ));
     snap('Years dropdown', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
           showYearDropdown: true,
@@ -99,8 +99,8 @@ visualize('DatePicker', () => {
       />
     ));
     snap('Months and years dropdown', done => (
-      <DatePickerVisualComponent
-        datePickerProps={{
+      <DatePickerInputVisualComponent
+        datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
           showMonthDropdown: true,
@@ -112,7 +112,7 @@ visualize('DatePicker', () => {
     ));
     snap(
       'Disabled Mode',
-      <DatePicker
+      <DatePickerInput
         value={new Date('2020/09/20')}
         onChange={() => {}}
         placeholderText="Select A Date"
@@ -121,7 +121,7 @@ visualize('DatePicker', () => {
     );
     snap(
       'Error mode',
-      <DatePicker
+      <DatePickerInput
         value={new Date('2020/09/20')}
         onChange={() => {}}
         placeholderText="Select A Date"

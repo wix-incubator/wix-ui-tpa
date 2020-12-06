@@ -1,4 +1,4 @@
-export const importExample = `import { DatePicker } from 'wix-ui-tpa/DatePicker';`;
+export const importExample = `import { DatePicker } from 'wix-ui-tpa/DatePickerInput';`;
 
 const buildExample = (initialValue: Date | string, content: string) => `
 class DatePickerExample extends React.Component {
@@ -21,7 +21,7 @@ class DatePickerExample extends React.Component {
 export const basicExample = buildExample(
   'new Date()',
   `
-    <DatePicker
+    <DatePickerInput
         value={value}
         placeholderText="Select A Date"
         onChange={this._onChange} 
@@ -32,7 +32,7 @@ export const basicExample = buildExample(
 export const emptyExample = buildExample(
   '""',
   `
-    <DatePicker
+    <DatePickerInput
         value={value}
         placeholderText="Select A Date"
         onChange={this._onChange} 
@@ -43,7 +43,7 @@ export const emptyExample = buildExample(
 export const filterExample = buildExample(
   'new Date()',
   `
-    <DatePicker
+    <DatePickerInput
         value={value}
         onChange={this._onChange}
         filterDate={date => date < new Date()}
@@ -54,7 +54,7 @@ export const filterExample = buildExample(
 export const disabledExample = buildExample(
   'new Date()',
   `
-    <DatePicker
+    <DatePickerInput
         value={value}
         onChange={this._onChange}
         disabled
@@ -65,7 +65,7 @@ export const disabledExample = buildExample(
 export const errorExample = buildExample(
   'new Date("2020/09/20")',
   `
-    <DatePicker
+    <DatePickerInput
         value={value}
         placeholderText="Select A Date"
         onChange={this._onChange}
@@ -78,27 +78,27 @@ export const errorExample = buildExample(
 export const dateFormatExample = `
       <>
              <div style={{ marginBottom: '12px' }}>
-                  <DatePicker
+                  <DatePickerInput
                     value={new Date()}
                     onChange={() => {}}
                     dateFormat="LL/dd/yyyy"
                   />
              </div>
              <div style={{ marginBottom: '12px' }}>
-                  <DatePicker
+                  <DatePickerInput
                     value={new Date()}
                     onChange={() => {}}
                     dateFormat="dd/LL/yy"
                   />
             </div>
                     <div style={{ marginBottom: '12px' }}>
-                  <DatePicker
+                  <DatePickerInput
                     value={new Date()}
                     onChange={() => {}}
                     dateFormat="LLL dd, yyyy"
                   />
             </div>
-            <DatePicker
+            <DatePickerInput
               value={new Date()}
               onChange={() => {}}
               dateFormat={date => date.getDate()}
@@ -109,7 +109,7 @@ export const dateFormatExample = `
 export const yearsAndMonthDropdowns = buildExample(
   'new Date()',
   `
-    <DatePicker
+    <DatePickerInput
         value={value}
         placeholderText="Select A Date"
         showMonthDropdown

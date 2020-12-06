@@ -8,7 +8,7 @@ import { TextField } from '../TextField/TextField';
 import { TextFieldTheme } from '../TextField/TextFieldEnums';
 import { ReactComponent as Calendar } from '../../assets/icons/Calendar.svg';
 
-import { st, classes } from './DatePicker.st.css';
+import { st, classes } from './DatePickerInput.st.css';
 import { DATA_HOOKS } from './constants';
 
 export type LanguageType =
@@ -33,7 +33,7 @@ export type LanguageType =
 
 export type popoverPlacementType = 'bottom-start' | 'bottom-end';
 
-export interface DatePickerProps extends TPAComponentProps {
+export interface DatePickerInputProps extends TPAComponentProps {
   /** The selected date */
   value: Date | string;
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
@@ -103,8 +103,8 @@ interface DefaultProps {
 }
 
 /** The Date pickers presents a calendar and allows a user to select a specific date. */
-export class DatePicker extends React.Component<DatePickerProps> {
-  static displayName = 'DatePicker';
+export class DatePickerInput extends React.Component<DatePickerInputProps> {
+  static displayName = 'DatePickerInput';
   static defaultProps: DefaultProps = {
     placeholderText: 'MM/DD/YY',
     disabled: false,
