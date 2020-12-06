@@ -88,26 +88,6 @@
         @default color-3
     */
     DisabledDayColor: --overridable;
-    /*
-        The background color of the date input.
-        @default color-1
-    */
-    DateInputBGColor: --overridable;
-    /*
-        The text color of the date input.
-        @default color-5
-    */
-    DateInputTextColor: --overridable;
-    /*
-        The date input border color.
-        @default color-5
-    */
-    DateInputBorderColor: --overridable;
-    /*
-        The date input font.
-        @default {theme: 'Body-M', size: '16px'}
-    */
-    DateInputFont: --overridable;
 }
 
 /*Fallbacks*/
@@ -138,7 +118,6 @@
 
 .wsrCalendar {
     -st-extends: Calendar;
-    sivan: 'hi';
 }
 
 .wsrCalendar::month {
