@@ -387,7 +387,7 @@
 /*        CalendarDaySelectedTextColor  value(CurrentSelectedDayColor),*/
 /*        CalendarDaySelectedBGColorHover applyOpacity(value(CurrentSelectedDayBGColor), 0.7),*/
 /*    */
-/*        CalendarDayDisbaledColor value(CurrentDisabledDayColor),*/
+/*        CalendarDayDisabledColor value(CurrentDisabledDayColor),*/
 /*        CalendarDayOutsideColor value(CurrentDisabledDayColor),*/
 /*    */
 /*        !**********************!*/
