@@ -12,7 +12,9 @@ interface DatePickerInputVisualProps {
   onDone(): void;
 }
 
-class DatePickerInputVisualComponent extends React.Component<DatePickerInputVisualProps> {
+class DatePickerInputVisualComponent extends React.Component<
+  DatePickerInputVisualProps
+> {
   static defaultProps = {
     datePickerInputProps: {},
     onDone: () => {},

@@ -13,7 +13,9 @@ export interface DatePickerInputDriver extends BaseUniDriver {
   openCalendarWindow(): Promise<void>;
 }
 
-export const datePickerInputDriverFactory = (base: UniDriver): DatePickerInputDriver => {
+export const datePickerInputDriverFactory = (
+  base: UniDriver,
+): DatePickerInputDriver => {
   // const dateInputElement = base.$(`[data-hook=${DATA_HOOKS.DATE_INPUT}]`);
 
   return {
