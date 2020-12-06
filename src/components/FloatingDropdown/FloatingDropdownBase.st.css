@@ -10,7 +10,6 @@
 
 :vars {
     iconHeight: 1.5em;
-    iconWith: auto;
     maxWidth: 20vw;
     minWidth: 220px;
 }
@@ -53,7 +52,7 @@
 
 .arrowIcon {
     height: value(iconHeight);
-    width: value(iconWith);
+    width: auto;
     transform: value(ArrowTransformation);
 }
 
@@ -68,7 +67,7 @@
 }
 
 .textContent {
-    max-width: calc(value(maxWidth) - value(iconWith));
+    max-width: value(maxWidth);
     overflow: hidden;
     display: flex;
     flex-shrink: 0;

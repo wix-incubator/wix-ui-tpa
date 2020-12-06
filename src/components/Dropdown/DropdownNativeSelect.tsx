@@ -140,11 +140,9 @@ export class DropdownNativeSelect extends React.Component<
         </select>
         {shouldRenderIcon ? this.renderOptionIcon() : null}
         {error && errorMessage && this.renderErrorIcon()}
-        <ArrowIcon
-          className={classes.arrowIcon}
-          width={ICON_SIZE}
-          height={ICON_SIZE}
-        />
+        <span className={classes.arrowIcon}>
+          <ArrowIcon width={ICON_SIZE} height={ICON_SIZE} />
+        </span>
       </div>
     );
   }

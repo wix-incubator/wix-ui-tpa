@@ -106,6 +106,7 @@
 
 .arrowIcon path {
     fill: currentColor;
+    stroke: none;
 }
 
 .errorIcon {

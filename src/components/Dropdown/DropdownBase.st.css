@@ -37,6 +37,12 @@
     outline: none;
 }
 
+.arrowIcon {
+    color: color(color-5);
+    width: 100%;
+    height: 100%;
+}
+
 .root::content {
     flex: 1;
     text-align: start;
@@ -90,12 +96,13 @@
     border-color: value(colorDisabled);
 }
 
-.arrowIcon {
-    color: value(inputColor);
+.root:priority(basic)::affixIcon {
+    width: 1.5em;
 }
 
-.root:priority(basic):disabled .arrowIcon {
-    color: value(colorDisabled);
+.root:priority(basic)::affixIcon svg path {
+    stroke: none;
+    fill: currentColor !important;
 }
 
 .optionIcon {

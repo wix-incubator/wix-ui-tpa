@@ -60,11 +60,9 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
         ) : null
       }
       suffixIcon={
-        <ArrowIcon
-          className={classes.arrowIcon}
-          width={ICON_SIZE}
-          height={ICON_SIZE}
-        />
+        <span className={classes.arrowIcon}>
+          <ArrowIcon width={ICON_SIZE} height={ICON_SIZE} />
+        </span>
       }
     >
       <div className={classes.childrenWrapper} data-hook={DATA_HOOKS.baseText}>
