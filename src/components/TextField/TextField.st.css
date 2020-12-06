@@ -259,6 +259,8 @@
 
 .customSuffix {
     color: value(mainTextColor);
+    height: 100%;
+    display: flex;
 }
 
 .customSuffix path {

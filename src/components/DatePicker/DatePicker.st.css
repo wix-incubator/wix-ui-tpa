@@ -9,6 +9,11 @@
     -st-named: dayCircle; /* currently due to a stylable issue this is the best way to override styling of nested classes */
 }
 
+:import {
+    -st-from: "wix-ui-core/dist/src/components/popover/Popover.st.css";
+    -st-named: popoverContent;
+}
+
 /* Defaults - default params */
 :vars {
     calendarWidth: 280px;
@@ -111,6 +116,10 @@
 }
 
 .root {
+}
+
+.root .popoverContent {
+    border-radius: 0;
 }
 
 /** Option 1: override the styling using the pseudo elements. **/
