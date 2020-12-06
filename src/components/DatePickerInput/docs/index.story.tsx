@@ -81,7 +81,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('The Date pickers presents a calendar and allows a user to select a specific date.'),
+          description(
+            'The Date pickers presents a calendar and allows a user to select a specific date.',
+          ),
 
           importExample({
             source: examples.importExample,
