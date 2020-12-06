@@ -1,7 +1,9 @@
 ## [2.12.1](https://github.com/wix/wix-ui-tpa/compare/v2.12.0...v2.12.1) (2020-12-06)
 
 ### Features
+
 * Expose puppeteer testkits. e.g. `import { badgeTestkitFactory } from 'wix-ui-tpa/dist/src/testkit/puppeteer';`
+
 ### Bug Fixes
 
 * **DropDownOption:** extend text component in stylable ([a5d5022](https://github.com/wix/wix-ui-tpa/commit/a5d5022ed54683e5aaf87d5a04c55d089ad65343))
