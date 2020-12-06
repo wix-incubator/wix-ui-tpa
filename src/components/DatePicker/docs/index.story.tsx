@@ -17,10 +17,10 @@ import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as {%ComponentName%}WiringExampleRaw from '!raw-loader!./{%ComponentName%}WiringExample.tsx';
-import * as {%ComponentName%}WiringExampleCSSRaw from '!raw-loader!./{%ComponentName%}WiringExample.st.css';
-import { {%ComponentName%}WiringExample } from './{%ComponentName%}WiringExample';
-import { {%ComponentName%} } from '../';
+import * as DatePickerWiringExampleRaw from '!raw-loader!./DatePickerWiringExample.tsx';
+import * as DatePickerWiringExampleCSSRaw from '!raw-loader!./DatePickerWiringExample.st.css';
+import { DatePickerWiringExample } from './DatePickerWiringExample';
+import { DatePicker } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
@@ -29,16 +29,16 @@ const code = config =>
 
 export default {
   category: StoryCategory.COMPONENTS,
-  storyName: '{%ComponentName%}',
-  component: storyComponent({%ComponentName%}),
-  componentPath: '../{%ComponentName%}.tsx',
+  storyName: 'DatePicker',
+  component: storyComponent(DatePicker),
+  componentPath: '../DatePicker.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-{%ComponentName%}',
+    'data-hook': 'storybook-DatePicker',
   }),
   exampleProps: {
     //
   },
-  dataHook: 'storybook-{%ComponentName%}',
+  dataHook: 'storybook-DatePicker',
   sections: [
     header({
       component: <OptimizedStylesBanner />,
@@ -47,7 +47,9 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description(%description%),
+          description(
+              'The DatePicker allows a user to select a specific date.',
+          ),
 
           importExample({
             source: examples.importExample,
@@ -76,10 +78,10 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              title: '{%ComponentName%} Panel',
-              example: <{%ComponentName%}WiringExample />,
-              rawSource: {%ComponentName%}WiringExampleRaw,
-              rawCSSSource: {%ComponentName%}WiringExampleCSSRaw,
+              title: 'DatePicker Panel',
+              example: <DatePickerWiringExample />,
+              rawSource: DatePickerWiringExampleRaw,
+              rawCSSSource: DatePickerWiringExampleCSSRaw,
               params: {
                 colors: [
                   {
