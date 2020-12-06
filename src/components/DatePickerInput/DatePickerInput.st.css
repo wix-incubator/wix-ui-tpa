@@ -17,11 +17,6 @@
     -st-named: dayCircle; /* currently due to a stylable issue this is the best way to override styling of nested classes */
 }
 
-:import {
-    -st-from: "../DatePicker/DatePicker.st.css";
-    -st-default: TPADatePicker;
-}
-
 /*Defaults*/
 :vars {
     calendarWidth: 280px;
@@ -161,172 +156,155 @@
     -st-extends: WSRDatePicker;
 }
 
-.wsrDatePicker::calendar {
-    -st-extends: TPADatePicker;
-    -st-mixin: TPADatePicker(
-            BackgroundColor value(CurrentBackgroundColor),
-            NavigationArrowsColor value(CurrentNavigationArrowsColor),
-            MonthAndYearCaptionFont value(CurrentMonthAndYearCaptionFont),
-            MonthAndYearCaptionColor value(CurrentMonthAndYearCaptionColor),
-            WeekdayFont value(CurrentWeekdayFont),
-            WeekdayTextColor value(CurrentWeekdayTextColor),
-            DayFont value(CurrentWeekdayFont),
-            DayColor value(CurrentDayColor),
-            SelectedDayColor value(CurrentSelectedDayColor),
-            SelectedDayBGColor value(CurrentSelectedDayBGColor),
-            DisabledDayColor value(CurrentDisabledDayColor),
-    );
+.wsrDatePicker::calendar::month {
+    width: value(calendarWidth);
+    height: value(calendarHeight);
 }
 
-/*.wsrDatePicker::calendar::month {*/
-/*    width: value(calendarWidth);*/
-/*    height: value(calendarHeight);*/
-/*}*/
+/* calendar header */
 
-/*!* calendar header *!*/
+.wsrDatePicker::calendar::header {
+    padding: 28px value(sidePadding) 0;
+    background-color: value(CurrentBackgroundColor);
+}
 
-/*.wsrDatePicker::calendar::header {*/
-/*    padding: 28px value(sidePadding) 0;*/
-/*    background-color: value(CurrentBackgroundColor);*/
-/*}*/
+.wsrDatePicker::calendar::header::arrow {
+    color: value(CurrentNavigationArrowsColor);
+    width: 24px;
+    height: 24px;
+}
+.wsrDatePicker::calendar::header::arrow:hover:not(active) {
+    background: none;
+    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
+}
 
-/*.wsrDatePicker::calendar::header::arrow {*/
-/*    color: value(CurrentNavigationArrowsColor);*/
-/*    width: 24px;*/
-/*    height: 24px;*/
-/*}*/
-/*.wsrDatePicker::calendar::header::arrow:hover:not(active) {*/
-/*    background: none;*/
-/*    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);*/
-/*}*/
+.wsrDatePicker::calendar::header::arrow:active {
+    background: none;
+    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
+}
 
-/*.wsrDatePicker::calendar::header::arrow:active {*/
-/*    background: none;*/
-/*    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);*/
-/*}*/
+.wsrDatePicker::calendar::header::caption {
+    font: value(CurrentMonthAndYearCaptionFont);
+    font-size: 16px;
+    color: value(CurrentMonthAndYearCaptionColor);
+}
 
-/*.wsrDatePicker::calendar::header::caption {*/
-/*    font: value(CurrentMonthAndYearCaptionFont);*/
-/*    font-size: 16px;*/
-/*    color: value(CurrentMonthAndYearCaptionColor);*/
-/*}*/
+/******************************************************/
 
-/*!******************************************************!*/
+/* calendar Weekdays */
 
-/*!* calendar Weekdays *!*/
+.wsrDatePicker::calendar::weekdays {
+    padding: 0 value(sidePadding);
+    background-color: value(CurrentBackgroundColor);
+}
 
-/*.wsrDatePicker::calendar::weekdays {*/
-/*    padding: 0 value(sidePadding);*/
-/*    background-color: value(CurrentBackgroundColor);*/
-/*}*/
+.wsrDatePicker::calendar::weekday {
+    padding: 20px 0 16px;
+    font: value(CurrentWeekdayFont);
+    font-size: 14px;
+    color: value(CurrentWeekdayTextColor);
+}
 
-/*.wsrDatePicker::calendar::weekday {*/
-/*    padding: 20px 0 16px;*/
-/*    font: value(CurrentWeekdayFont);*/
-/*    font-size: 14px;*/
-/*    color: value(CurrentWeekdayTextColor);*/
-/*}*/
+/******************************************************/
 
-/*!******************************************************!*/
+/* calendar body */
 
-/*!* calendar body *!*/
+.wsrDatePicker::calendar::body {
+    padding: 0 value(sidePadding) 20px;
+    background-color: value(CurrentBackgroundColor);
+}
 
-/*.wsrDatePicker::calendar::body {*/
-/*    padding: 0 value(sidePadding) 20px;*/
-/*    background-color: value(CurrentBackgroundColor);*/
-/*}*/
+.wsrDatePicker::calendar::day {
+    font: value(CurrentDayFont);
+    font-size: 14px;
+    color: value(CurrentDayColor);
+    width: 34px;
+    height: 34px;
+}
 
-/*.wsrDatePicker::calendar::day {*/
-/*    font: value(CurrentDayFont);*/
-/*    font-size: 14px;*/
-/*    color: value(CurrentDayColor);*/
-/*    width: 34px;*/
-/*    height: 34px;*/
-/*}*/
+.wsrDatePicker::calendar::day:hover {
+    color: color(value(DeafultDayColor));
+    background-color: value(CurrentDayBGColorHover);
+}
 
-/*.wsrDatePicker::calendar::day:hover {*/
-/*    color: color(value(DeafultDayColor));*/
-/*    background-color: value(CurrentDayBGColorHover);*/
-/*}*/
+.wsrDatePicker::calendar::day:today:not(:selected):not(:hover) {
+    background: none;
+    color: value(CurrentSelectedDayBGColor);
+    box-shadow: none;
+}
 
-/*.wsrDatePicker::calendar::day:today:not(:selected):not(:hover) {*/
-/*    background: none;*/
-/*    color: value(CurrentSelectedDayBGColor);*/
-/*    box-shadow: none;*/
-/*}*/
+.wsrDatePicker::calendar::day:today:not(:selected):hover {
+    color: value(CurrentSelectedDayBGColor);
+    background-color: value(CurrentDayBGColorHover);
+}
 
-/*.wsrDatePicker::calendar::day:today:not(:selected):hover {*/
-/*    color: value(CurrentSelectedDayBGColor);*/
-/*    background-color: value(CurrentDayBGColorHover);*/
-/*}*/
+.wsrDatePicker::calendar::day:today:not(:selected):not(:hover):focus {
+    box-shadow: none;
+}
 
-/*.wsrDatePicker::calendar::day:today:not(:selected):not(:hover):focus {*/
-/*    box-shadow: none;*/
-/*}*/
+.wsrDatePicker::calendar::day:selected:not(:outside) {
+    color: value(CurrentSelectedDayColor);
+}
 
-/*.wsrDatePicker::calendar::day:selected:not(:outside) {*/
-/*    color: value(CurrentSelectedDayColor);*/
-/*}*/
+.wsrDatePicker::calendar::day:outside, .wsrDatePicker::calendar::day:disabled {
+    color: value(CurrentDisabledDayColor);
+}
 
-/*.wsrDatePicker::calendar::day:outside, .wsrDatePicker::calendar::day:disabled {*/
-/*    color: value(CurrentDisabledDayColor);*/
-/*}*/
-
-/*.wsrDatePicker::calendar::day:singleDay:not(:outside) .dayCircle {*/
-/*    background-color: value(CurrentSelectedDayBGColor);*/
-/*}*/
-/*.wsrDatePicker::calendar::day:singleDay:not(:outside):hover .dayCircle {*/
-/*     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);*/
-/*}*/
+.wsrDatePicker::calendar::day:singleDay:not(:outside) .dayCircle {
+    background-color: value(CurrentSelectedDayBGColor);
+}
+.wsrDatePicker::calendar::day:singleDay:not(:outside):hover .dayCircle {
+     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
+}
 
 
-/*!******************************************************!*/
+/******************************************************/
 
 
-/*!* month and years dropdowns *!*/
+/* month and years dropdowns */
 
-/*.wsrDatePicker::calendar::header::monthDropdown::caption ,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::caption {*/
-/*    font: value(CurrentMonthAndYearCaptionFont);*/
-/*    font-size: 16px;*/
-/*    color: value(CurrentMonthAndYearCaptionColor);*/
-/*    height: 24px;*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::caption ,
+.wsrDatePicker::calendar::header::yearDropdown::caption {
+    font: value(CurrentMonthAndYearCaptionFont);
+    font-size: 16px;
+    color: value(CurrentMonthAndYearCaptionColor);
+    height: 24px;
+}
 
-/*!* List *!*/
+/* List */
 
-/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::contentContainer,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::contentContainer {*/
-/*    background-color: value(CurrentBackgroundColor);*/
-/*    padding: 12px 0;*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::contentContainer,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::contentContainer {
+    background-color: value(CurrentBackgroundColor);
+    padding: 12px 0;
+}
 
-/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption {*/
-/*    background-color: value(CurrentBackgroundColor);*/
-/*    padding: 0 20px;*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption {
+    background-color: value(CurrentBackgroundColor);
+    padding: 0 20px;
+}
 
-/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {*/
-/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
 
-/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:selected {*/
-/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:selected {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
 
-/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {*/
-/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
 
-/*.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption::title,*/
-/*.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption::title {*/
-/*    color: value(CurrentDayColor);*/
-/*    font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");*/
-/*}*/
+.wsrDatePicker::calendar::header::monthDropdown::dropdown::list::selectableOption::title,
+.wsrDatePicker::calendar::header::yearDropdown::dropdown::list::selectableOption::title {
+    color: value(CurrentDayColor);
+    font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");
+}
 
 /*!******************************************************!*/
 
