@@ -357,14 +357,12 @@
 }
 
 .affixIcon {
-    height: 1.5em;
-    width: 1.5em;
     display: flex;
 }
 
 .affixIcon svg {
-    width: 100%;
-    height: 100%;
+    height: 1.5em;
+    width: 1.5em;
 }
 
 .prefix-icon::after, .suffix-icon::before {
