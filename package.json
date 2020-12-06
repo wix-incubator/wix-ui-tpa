@@ -4,6 +4,7 @@
   "sideEffects": false,
   "version": "2.12.0",
   "module": "./dist/es/src/index.js",
+  "types": "./dist/es/src/index.d.ts",
   "description": "Components for Wix Tpa applications",
   "author": {
     "name": "Wix",
