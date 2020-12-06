@@ -8,7 +8,7 @@
 }
 
 .root {
-    -st-states: mobile, shouldAnimate, isShown, skin(enum(success, error, status)), placement(enum(bottomFullWidth));
+    -st-states: mobile, shouldAnimate, isShown, skin(enum(success, error, status)), placement(enum(bottomFullWidth)), rtl;
     display: inline-flex;
     color: #FFFFFF;
     border-radius: 2px;
@@ -65,6 +65,7 @@
 .closeButtonWrapper {
     padding: 14px 12px;
     height: 24px;
+    margin-left: auto;
 }
 
 .root:mobile .message {
@@ -75,4 +76,9 @@
 
 .root:mobile .gapBeforeMessage {
     min-width: 20px;
+}
+
+.root:rtl .closeButtonWrapper {
+    margin-left: initial;
+    margin-right: auto;
 }

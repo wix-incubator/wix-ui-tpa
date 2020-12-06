@@ -16,6 +16,7 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { TOAST_PLACEMENT, TOAST_SKIN } from '../types';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -23,7 +24,7 @@ const code = config =>
 export default {
   category: StoryCategory.COMPONENTS,
   storyName: 'Toast',
-  component: Toast,
+  component: storyComponent(Toast),
   componentPath: '../Toast.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Toast',
