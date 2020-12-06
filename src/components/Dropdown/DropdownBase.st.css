@@ -39,8 +39,8 @@
 
 .arrowIcon {
     color: color(color-5);
-    width: 100%;
-    height: 100%;
+    width: 1.5em;
+    height: 1.5em;
 }
 
 .root::content {
@@ -97,7 +97,7 @@
 }
 
 .root:priority(basic)::affixIcon {
-    width: 1.5em;
+    width: auto;
 }
 
 .root:priority(basic)::affixIcon svg path {
