@@ -114,11 +114,11 @@
     margin-left: 1px;
     max-width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    background-color: "color(color-1)";
 }
 
 .dropdown::dropdownContent {
     padding: 12px 0;
+    background-color: color(color-1);
 }
 
 .dropdown::dropdownContent::dropdownOption:hovered,
