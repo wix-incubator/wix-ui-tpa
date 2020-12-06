@@ -102,7 +102,7 @@
 
 .root:priority(basic)::affixIcon svg path {
     stroke: none;
-    fill: currentColor !important;
+    fill: currentColor;
 }
 
 .optionIcon {
