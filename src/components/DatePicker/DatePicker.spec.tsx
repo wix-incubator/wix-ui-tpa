@@ -16,7 +16,7 @@ describe('DatePicker', () => {
     const dataHook = '';
     const compProps = {
       'data-hook': dataHook,
-          value: new Date(),
+      value: new Date(),
       onChange: selectedDays => {},
       ...props,
     };
@@ -35,9 +35,13 @@ describe('DatePicker', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<DatePicker onChange={(selectedDays)=>{}} />, datePickerTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <DatePicker onChange={selectedDays => {}} />,
+          datePickerTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -46,7 +50,7 @@ describe('DatePicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <DatePicker onChange={(selectedDays)=>{}} />,
+          <DatePicker onChange={selectedDays => {}} />,
           enzymeDatePickerTestkitFactory,
           mount,
           {
