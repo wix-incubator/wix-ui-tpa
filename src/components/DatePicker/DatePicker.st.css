@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-named: color, applyOpacity, fallback, font;
 }
 
 :import {
@@ -133,6 +133,8 @@
 .root {
   /*background-color: value(defaultBgColor);*/
 }
+
+/** Option 1: override the styling using the pseudo elements. **/
 
 .wsrCalendar {
     -st-extends: Calendar;
