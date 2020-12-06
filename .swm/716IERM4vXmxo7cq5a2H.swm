@@ -1,0 +1,56 @@
+{
+    "id": "716IERM4vXmxo7cq5a2H",
+    "name": "Exposing overrideStyleParams",
+    "dod": "In this unit you will expose `overrideStyleParams` as mixin of the component.",
+    "description": "After the component has style variables, we can use `overrideStyleParams` to make them [overridable in an optimized way](https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#an-optimized-way-for-style-overriding---new) by using them inside `overrideStyleParams` selectors.\n\nWe wrap the parts of the component we want to be customized with the `overrideStyleParams` selector, and apply the style variables inside on the specific CSS property. \n\nIn this way, we expose `overrideStyleParams` as a [Stylable mixin](https://stylable.io/docs/references/mixins).",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/FloatingDropdown/FloatingDropdown.st.css_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/FloatingDropdown/FloatingDropdown.st.css": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/FloatingDropdown/FloatingDropdown.st.css b/src/components/FloatingDropdown/FloatingDropdown.st.css\nindex 04bc86a..04bc86a 100644\n--- a/src/components/FloatingDropdown/FloatingDropdown.st.css\n+++ b/src/components/FloatingDropdown/FloatingDropdown.st.css",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -76,24 +76,6 @@",
+                        "     -st-extends: DropdownOption;",
+                        " }",
+                        " ",
+                        "-.overrideStyleParams .dropdown::dropdownContent {",
+                        "-    background-color: value(DropdownBackgroundColor);",
+                        "-}",
+                        "-",
+                        "-.overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,",
+                        "-.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected {",
+                        "-    background-color: applyOpacity(value(ItemTextColor), 0.06);",
+                        "-}",
+                        "-",
+                        "-.overrideStyleParams .dropdown::dropdownContent .optionDivider {",
+                        "-    background-color: value(ItemTextColor);",
+                        "-}",
+                        "-",
+                        "-.overrideStyleParams .option::title {",
+                        "-    white-space: initial;",
+                        "-    color: value(ItemTextColor);",
+                        "-    font: value(TextFont);",
+                        "-}",
+                        " ",
+                        " .floatingDropdownBase {",
+                        "     -st-extends: FloatingDropdownBase;"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "f2810a0b7da1430ebb7a8e8d3031856bfeb20c64"
+}

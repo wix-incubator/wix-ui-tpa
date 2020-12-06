@@ -1,0 +1,44 @@
+{
+    "id": "1VbSs88wFoa6GAZdNauE",
+    "name": "Adding component style variables",
+    "dod": "In this unit you you will add Stylable variables for the component.",
+    "description": "In some cases, you might want to style some component different from the others. While all components are mapped to the color palette, one can decide to map specific parts differently. This is why the components expose variables allowing to customize the styles when the consumer uses `overrideStyleParams`.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/FloatingDropdown/FloatingDropdown.st.css_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/FloatingDropdown/FloatingDropdown.st.css": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/FloatingDropdown/FloatingDropdown.st.css b/src/components/FloatingDropdown/FloatingDropdown.st.css\nindex 04bc86a..04bc86a 100644\n--- a/src/components/FloatingDropdown/FloatingDropdown.st.css\n+++ b/src/components/FloatingDropdown/FloatingDropdown.st.css",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -48,12 +48,6 @@",
+                        "     MainTextFont: --overridable;",
+                        " }",
+                        " ",
+                        "-:vars {",
+                        "-    ButtonTextColor: color(value(MainButtonTextColor), value(DefaultTextColor)));",
+                        "-    ItemTextColor: color(fallback(value(MainItemTextColor), value(MainButtonTextColor), value(DefaultTextColor)));",
+                        "-    DropdownBackgroundColor: color(fallback(value(MainDropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));",
+                        "-    TextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));",
+                        "-}",
+                        " ",
+                        " .root .dropdown {",
+                        "     min-width: value(minWidth);"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "f2810a0b7da1430ebb7a8e8d3031856bfeb20c64"
+}

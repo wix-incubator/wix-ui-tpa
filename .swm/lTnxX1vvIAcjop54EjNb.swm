@@ -1,8 +1,8 @@
 {
     "id": "lTnxX1vvIAcjop54EjNb",
-    "name": "Making styles overridable ",
-    "dod": "In this unit you should will understand how to make a Stylable variable overridable.",
-    "description": "Sometimes we allow the consumers to customize and override the style params of the component by design.",
+    "name": "Making palette styles overridable ",
+    "dod": "In this unit you should will understand how to make a Stylable variable (representing a palette style) overridable.",
+    "description": "Sometimes we allow the consumers to customize and override the style params of the palette that the component uses.",
     "summary": "",
     "hunksOrder": [
         "src/components/Dialog/Dialog.st.css_0"
@@ -39,5 +39,5 @@
     },
     "app_version": "0.2.8",
     "file_version": "1.0.4",
-    "last_commit_sha_for_swimm_patch": "719aa9b239b8c883269ebbb5299e62d4bcec6c2a"
+    "last_commit_sha_for_swimm_patch": "f2810a0b7da1430ebb7a8e8d3031856bfeb20c64"
 }
