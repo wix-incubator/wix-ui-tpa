@@ -30,7 +30,7 @@ const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: StoryCategory.COMPONENTS,
+  category: StoryCategory.WIP,
   storyName: 'DatePickerInput',
   component: DatePickerInput,
   componentPath: '../DatePickerInput.tsx',
@@ -81,7 +81,7 @@ export default {
       tab({
         title: 'Usage',
         sections: [
-          description('Desc.'),
+          description('The Date pickers presents a calendar and allows a user to select a specific date.'),
 
           importExample({
             source: examples.importExample,
