@@ -1,0 +1,63 @@
+{
+    "id": "zXrgewKPDQuUayLKzDeT",
+    "name": "Adding Settings Panel",
+    "dod": "In this unit you will understand how to attach the \"Settings Panel\" tab to the Stroybook page.",
+    "description": "The Settings Panel tab should appear on Storybook page for components that are wired to default colors and fonts from the site's palette.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/docs/index.story.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/docs/index.story.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/docs/index.story.tsx b/src/components/Dialog/docs/index.story.tsx\nindex 1ca46ea..1ca46ea 100644\n--- a/src/components/Dialog/docs/index.story.tsx\n+++ b/src/components/Dialog/docs/index.story.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -118,31 +118,6 @@",
+                        "         { title: 'Style API', sections: [settingsApi()] },",
+                        "         { title: 'TestKit', sections: [testkit()] },",
+                        "         { title: 'Playground', sections: [playground()] },",
+                        "-        {",
+                        "-          title: 'Settings Panel',",
+                        "-          sections: [",
+                        "-            settingsPanel({",
+                        "-              title: 'Dialog Panel',",
+                        "-              example: <DialogWiringExample />,",
+                        "-              rawSource: DialogWiringExampleRaw,",
+                        "-              rawCSSSource: DialogWiringExampleCSSRaw,",
+                        "-              params: {",
+                        "-                colors: [",
+                        "-                  {",
+                        "-                    label: 'Close Button Color',",
+                        "-                    wixParam: 'customCloseButtonColor',",
+                        "-                    defaultColor: 'color-5',",
+                        "-                  },",
+                        "-                  {",
+                        "-                    label: 'Background Color',",
+                        "-                    wixParam: 'customBackgroundColor',",
+                        "-                    defaultColor: 'color-1',",
+                        "-                  },",
+                        "-                ],",
+                        "-              },",
+                        "-            }),",
+                        "-          ],",
+                        "-        },",
+                        "       ].map(tab),",
+                        "     ]),",
+                        "   ],"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "e81282ac499ffa5f63e9bb125fcb81fa443ed1c4"
+}

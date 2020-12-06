@@ -1,0 +1,43 @@
+{
+    "id": "DMeTimnaYKXGRefWrbnt",
+    "name": "Using Stylable",
+    "dod": "In this unit you will use the st function.",
+    "description": "In order to apply Stylable on the component, we should invoke the `st` function with the root style selector and pass the result to `className`. The next arguments allow us to set [custom pseudo-classes](https://stylable.io/docs/references/pseudo-classes) and an external `className` as well.\n\nYou can read more about the [React integration](https://stylable.io/docs/getting-started/react-integration) of Stylable.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/Dialog.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/Dialog.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/Dialog.tsx b/src/components/Dialog/Dialog.tsx\nindex 3245b6f..3245b6f 100644\n--- a/src/components/Dialog/Dialog.tsx\n+++ b/src/components/Dialog/Dialog.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -68,11 +68,6 @@",
+                        "       <TPAComponentsConsumer>",
+                        "         {({ mobile, rtl }) => (",
+                        "           <div",
+                        "-            className={st(",
+                        "-              classes.root,",
+                        "-              { mobile, rtl },",
+                        "-              classes[`skin-${wiredToSiteColors ? 'wired' : 'fixed'}`],",
+                        "-              className,",
+                        "             )}",
+                        "             data-hook={this.props['data-hook']}",
+                        "             data-mobile={mobile}"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "fbeca8e97bb796ab258033d8ee631defbdd05701"
+}
