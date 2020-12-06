@@ -1,3 +1,17 @@
+# [2.12.0](https://github.com/wix/wix-ui-tpa/compare/v2.11.1...v2.12.0) (2020-12-02)
+
+
+### Bug Fixes
+
+* **Button:** Fix prefix and suffix alignments ([459580f](https://github.com/wix/wix-ui-tpa/commit/459580f2d9bb372a852dff2b1b89323ca929c1f2))
+
+
+### Features
+
+* **Dialog:** Allow to wire component to site palette ([60248f2](https://github.com/wix/wix-ui-tpa/commit/60248f2521e41644f213ccda0f3bc6250f81f8c1))
+
+
+
 ## [2.11.1](https://github.com/wix/wix-ui-tpa/compare/v2.11.0...v2.11.1) (2020-11-19)
 
 

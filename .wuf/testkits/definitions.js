@@ -8,18 +8,14 @@
 // legacyDriver means not unidriver
 // TODO: legacy drivers should eventually be migrated to unidriver
 module.exports = {
-  Autocomplete: { legacyDriver: true },
-  IconToggle: { legacyDriver: true },
-  Input: { legacyDriver: true },
-  LikeButton: { legacyDriver: true },
-  Pagination: { legacyDriver: true },
-  Text: { legacyDriver: true },
-  TextField: { legacyDriver: true },
-  ToggleSwitch: { legacyDriver: true, noTestkit: true },
-  Tooltip: { legacyDriver: true },
-
-  Divider: {
-    // component does not have a testkit at all
-    noTestkit: true,
-  },
+  Autocomplete: { legacyDriver: true, protractorLegacyTestkit: true },
+  Divider: { noTestkit: true },
+  IconToggle: { legacyDriver: true, protractorLegacyTestkit: true },
+  Input: { legacyDriver: true, protractorLegacyTestkit: true },
+  LikeButton: { legacyDriver: true, protractorLegacyTestkit: true },
+  Pagination: { legacyDriver: true, protractorLegacyTestkit: true },
+  Text: { legacyDriver: true, protractorLegacyTestkit: true },
+  TextField: { legacyDriver: true, protractorLegacyTestkit: true },
+  ToggleSwitch: { noTestkit: true },
+  Tooltip: { legacyDriver: true, protractorLegacyTestkit: true },
 };
