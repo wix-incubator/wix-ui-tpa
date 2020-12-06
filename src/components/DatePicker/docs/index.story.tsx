@@ -48,7 +48,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-              'The DatePicker allows a user to select a specific date.',
+            'The DatePicker allows a user to select a specific date.',
           ),
 
           importExample({

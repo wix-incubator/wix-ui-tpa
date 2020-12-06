@@ -6,7 +6,5 @@ DatePickerMetadata.nonReactStrictModeCompliant = true;
 
 DatePickerMetadata.addSim({
   title: 'render',
-  props: {
-
-  } as DatePickerProps,
+  props: {} as DatePickerProps,
 });

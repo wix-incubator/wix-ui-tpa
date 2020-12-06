@@ -12,10 +12,14 @@ import { DatePicker, DatePickerProps } from './';
 describe('DatePicker', () => {
   const createDriver = createUniDriverFactory(datePickerDriverFactory);
 
-  const bootstrap = (props: Partial<DatePickerProps> = {}/*, contextProps: TPAComponentsConfig = {}*/) => {
+  const bootstrap = (
+    props: Partial<
+      DatePickerProps
+    > = {} /*, contextProps: TPAComponentsConfig = {}*/,
+  ) => {
     return createDriver(
       // <TPAComponentsProvider value={contextProps}>
-        <DatePicker {...props} />
+      <DatePicker {...props} />,
       // </TPAComponentsProvider>
     );
   };
