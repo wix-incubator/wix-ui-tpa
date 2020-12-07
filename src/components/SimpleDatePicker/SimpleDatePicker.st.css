@@ -1,0 +1,46 @@
+@namespace "sivan";
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+/* Defaults - default params */
+:vars {
+  defaultBgColor: color(color-1);
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+  /*
+    Main background color
+  */
+  BgColor: --overridable;
+}
+
+/* Overrides */
+:vars {
+  bgColor: color(fallback(value(BgColor), value(defaultBgColor)));
+}
+
+.root {
+  -st-states: disabled, theme(enum(Box, Line));;
+  background-color: value(defaultBgColor);
+}
+
+.root:theme(Line) {
+    color: #00ffb3;
+}
+
+.root:theme(Box) {
+    color: #7a92a5;
+}
+
+.themeClassName {
+    color: white;
+    width: 100px;
+    height: 100px;
+}
+
+.root.overrideStyleParams {
+  background-color: value(bgColor);
+}

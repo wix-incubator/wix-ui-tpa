@@ -47,3 +47,4 @@ export { Dialog } from './Dialog';
 export { AddItem } from './AddItem';
 export { ProgressBar } from './ProgressBar';
 export { Image } from './Image';
+export { SimpleDatePicker } from './SimpleDatePicker';
