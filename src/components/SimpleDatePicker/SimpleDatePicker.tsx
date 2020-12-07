@@ -22,37 +22,27 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
   };
 
   _renderDays(weekIndex) {
-    const days = [1,2,3,4,5,6,7];
+    const days = [1, 2, 3, 4, 5, 6, 7];
 
-    return days.map(
-        dayIndex => {
-          let day = dayIndex + 7 * (weekIndex - 1);
-          return (
-              <div
-                  key={day}
-                  className={classes.day}
-              >
-              {day}
-            </div>
-          );
-        }
-    );
-  };
+    return days.map(dayIndex => {
+      const day = dayIndex + 7 * (weekIndex - 1);
+      return (
+        <div key={day} className={classes.day}>
+          {day}
+        </div>
+      );
+    });
+  }
 
   _renderWeeks() {
     const weeks = [1, 2, 3, 4];
 
-    return weeks.map(
-        weekIndex => (
-            <div
-                key={weekIndex}
-                className={classes.daysRow}
-            >
-              {this._renderDays(weekIndex)}
-            </div>
-        )
-    );
-  };
+    return weeks.map(weekIndex => (
+      <div key={weekIndex} className={classes.daysRow}>
+        {this._renderDays(weekIndex)}
+      </div>
+    ));
+  }
 
   render() {
     const { className, disabled } = this.props;
@@ -63,17 +53,11 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
       // <TPAComponentsConsumer>
       //   {({ mobile, rtl }) => (
       <div
-        className={st(
-          classes.root,
-          { disabled },
-          className,
-        )}
+        className={st(classes.root, { disabled }, className)}
         data-hook={this.props['data-hook']}
       >
         <div className={classes.header}>Header</div>
-        <div className={classes.daysContainer}>
-          {this._renderWeeks()}
-        </div>
+        <div className={classes.daysContainer}>{this._renderWeeks()}</div>
       </div>
       //   )}
       // </TPAComponentsConsumer>
