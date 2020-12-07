@@ -1,6 +1,11 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, applyOpacity, font;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
 }
 
 :import {
@@ -8,10 +13,17 @@
     -st-default: TPAButton;
 }
 
-:import {
-    -st-from: "../Input/Input.st.css";
-    -st-default: TPAInput;
-    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
+:vars {
+    inputColor: color(color-5);
+    borderColor: applyOpacity(value(inputColor), 0.6);
+    backgroundColor: color(color-1);
+
+    disabledOpacity: 0.3;
+    colorDisabled: applyOpacity(value(inputColor), value(disabledOpacity));
+    backgroundColorDisabled: applyOpacity(value(backgroundColor), value(disabledOpacity));
+    borderColorDisabled: applyOpacity(value(borderColor), value(disabledOpacity));
+
+    buttonFont: "{theme: 'Body-M', size: '16px'}";
 }
 
 :vars {
@@ -25,10 +37,11 @@
 .root {
     -st-extends: TPAButton;
     -st-mixin: TPAButton(
-        MainBackgroundColor 'value(backgroundColor)',
-        MainBorderWidth '1px',
-        MainBorderColor 'value(borderColor)',
-        MainTextColor 'value(inputColor)'
+            MainBackgroundColor value(backgroundColor),
+            MainBorderWidth '1px',
+            MainBorderColor value(borderColor),
+            MainTextColor value(inputColor)
+            MainTextFont value(buttonFont)
     );
     -st-states: error, placeholder, rtl;
     display: flex;
@@ -38,6 +51,7 @@
 }
 
 .arrowIcon {
+    font: font(value(buttonFont));
     color: color(color-5);
     width: 1.5em;
     height: 1.5em;
@@ -82,7 +96,7 @@
 
 
 .root:placeholder {
-    color: value(colorPlaceholder);
+    color: value(borderColor);
 }
 
 .root:priority(basic):disabled {

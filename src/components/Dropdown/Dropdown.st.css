@@ -51,15 +51,22 @@
 }
 
 .root {
-    -st-states: alignment(enum(center));
+    -st-states: alignment(enum(center)), mobile;
 }
 
 .label {
     -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '16px'}"
+        MainTextFont "{theme: 'Body-M', size: '14px'}"
     );
     display: block;
     margin-bottom: 8px;
+}
+
+.root:mobile .label {
+    -st-mixin: TPAText(
+            MainTextFont "{theme: 'Body-M', size: '12px'}"
+    );
+    -st-states: alignment(enum(center));
 }
 
 .dropdownBase {
