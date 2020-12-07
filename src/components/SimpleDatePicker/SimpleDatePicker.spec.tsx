@@ -12,10 +12,14 @@ import { SimpleDatePicker, SimpleDatePickerProps } from './';
 describe('SimpleDatePicker', () => {
   const createDriver = createUniDriverFactory(simpleDatePickerDriverFactory);
 
-  const bootstrap = (props: Partial<SimpleDatePickerProps> = {}/*, contextProps: TPAComponentsConfig = {}*/) => {
+  const bootstrap = (
+    props: Partial<
+      SimpleDatePickerProps
+    > = {} /*, contextProps: TPAComponentsConfig = {}*/,
+  ) => {
     return createDriver(
       // <TPAComponentsProvider value={contextProps}>
-        <SimpleDatePicker {...props} />
+      <SimpleDatePicker {...props} />,
       // </TPAComponentsProvider>
     );
   };
@@ -28,9 +32,13 @@ describe('SimpleDatePicker', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<SimpleDatePicker />, simpleDatePickerTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <SimpleDatePicker />,
+          simpleDatePickerTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });

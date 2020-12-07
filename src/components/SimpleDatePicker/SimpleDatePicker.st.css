@@ -23,23 +23,36 @@
 }
 
 .root {
-  -st-states: disabled, theme(enum(Box, Line));;
+  -st-states: disabled;
   background-color: value(defaultBgColor);
+  width: 220px;
+  height: 220px;
+  font-weight: bold;
 }
 
-.root:theme(Line) {
-    color: #00ffb3;
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    color: blue;
+    font-size: 20px;
 }
 
-.root:theme(Box) {
-    color: #7a92a5;
+.daysRow {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 10px;
 }
 
-.themeClassName {
-    color: white;
-    width: 100px;
-    height: 100px;
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
 }
+
 
 .root.overrideStyleParams {
   background-color: value(bgColor);
