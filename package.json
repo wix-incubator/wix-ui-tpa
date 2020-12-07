@@ -40,6 +40,7 @@
     "test:e2e": "yoshi test --protractor",
     "test:eyes-storybook": "if test \"$EYES_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
+    "test:perfer-bundles": "perfer --verbose --json --chunked",
     "lint": "yoshi lint --fix",
     "start": "npm run storybook",
     "postpublish": "npm run git:tag && npm run storybook:release",
@@ -63,6 +64,7 @@
   },
   "dependencies": {
     "@stylable/dom-test-kit": "^3.5.0",
+    "@wix/perfer": "^1.0.166",
     "classnames": "^2.2.6",
     "focus-trap": "^5.1.0",
     "lodash": "^4.17.11",
