@@ -1,0 +1,39 @@
+{
+    "id": "w8m40J8TlaVF5GBLxAgc",
+    "name": "Adding overrideStyleParams class name",
+    "dod": "In this unit you will add overrideStyleParams as a class name of the component's root.",
+    "description": "We should remember to pass the `overrideStyleParams` selector to the `st` function of the root element inside our component, in order to actually apply that selector as part of `classNames`.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/FloatingDropdown/FloatingDropdown.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/FloatingDropdown/FloatingDropdown.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/FloatingDropdown/FloatingDropdown.tsx b/src/components/FloatingDropdown/FloatingDropdown.tsx\nindex 3c0a16d..3c0a16d 100644\n--- a/src/components/FloatingDropdown/FloatingDropdown.tsx\n+++ b/src/components/FloatingDropdown/FloatingDropdown.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -166,7 +166,6 @@",
+                        "             className={st(",
+                        "               classes.root,",
+                        "               { mobile },",
+                        "-              classes.overrideStyleParams,",
+                        "               this.props.className,",
+                        "             )}",
+                        "           >"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "23697c37ad83d6f1474072c859d9d3bb0644d1ce"
+}
