@@ -1,0 +1,39 @@
+{
+    "id": "Pj31wibu4jBhjWTUP1pT",
+    "name": "Importing Stylable",
+    "dod": "In this unit you will import the Stylable functions correctly.",
+    "description": "`wix-ui-tpa` uses [Stylable](https://stylable.io/) to allow styling the components - and that's why we need to import it correctly.\n\nYou can read more about Stylable in the [official docs](https://stylable.io/).",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/Dialog.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/Dialog.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/Dialog.tsx b/src/components/Dialog/Dialog.tsx\nindex 3245b6f..3245b6f 100644\n--- a/src/components/Dialog/Dialog.tsx\n+++ b/src/components/Dialog/Dialog.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -5,7 +5,6 @@",
+                        " import { IconButton } from '../IconButton';",
+                        " import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';",
+                        " import { TPAComponentProps } from '../../types';",
+                        "-import { st, classes } from './Dialog.st.css';",
+                        " ",
+                        " export interface DialogProps extends TPAComponentProps {",
+                        "   /** Whether the modal is opened */"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "459580f2d9bb372a852dff2b1b89323ca929c1f2"
+}

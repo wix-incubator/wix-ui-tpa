@@ -1,0 +1,41 @@
+{
+    "id": "GsxfU9AklAL5B4GdnDNa",
+    "name": "Mocking TPAComponentsContext",
+    "dod": "In this unit you will understand how to mock the TPAComponentsContext.",
+    "description": "As we remember, we use `TPAComponentsContext` to consume states from the containing application. In order to mock `TPAComponentsContext` in the unit tests, we should merely use `TPAComponentsWrapper` when initializing the driver and set the desired state.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/Dialog.spec.tsx_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/Dialog.spec.tsx": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/Dialog.spec.tsx b/src/components/Dialog/Dialog.spec.tsx\nindex defb522..defb522 100644\n--- a/src/components/Dialog/Dialog.spec.tsx\n+++ b/src/components/Dialog/Dialog.spec.tsx",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -18,9 +18,6 @@",
+                        "   });",
+                        " ",
+                        "   it('should use mobile design', async () => {",
+                        "-    const driver = createDriver(",
+                        "-      TPAComponentsWrapper({ mobile: true })(<Dialog />),",
+                        "-    );",
+                        "     expect(await driver.isMobile()).toBe(true);",
+                        "   });",
+                        " "
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "2388c17a75dd8c513f7e6b7e4c765fc273b2e5d4"
+}

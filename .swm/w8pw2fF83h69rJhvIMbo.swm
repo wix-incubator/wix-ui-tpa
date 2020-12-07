@@ -1,0 +1,45 @@
+{
+    "id": "w8pw2fF83h69rJhvIMbo",
+    "name": "Setting style fallbacks",
+    "dod": "In this unit you will set fallbacks for styles using Stylable.",
+    "description": "We usually wrap the overridable styles with fallback, since they are optional and the consumer might not pass them at all. The default value for the fallback could be either hard-coded or wired.",
+    "summary": "",
+    "hunksOrder": [
+        "src/components/Dialog/Dialog.st.css_0"
+    ],
+    "tests": [],
+    "hints": [],
+    "play_mode": "walkthrough",
+    "swimmPatch": {
+        "src/components/Dialog/Dialog.st.css": {
+            "diffType": "MODIFIED",
+            "fileDiffHeader": "diff --git a/src/components/Dialog/Dialog.st.css b/src/components/Dialog/Dialog.st.css\nindex b126cf0..b126cf0 100644\n--- a/src/components/Dialog/Dialog.st.css\n+++ b/src/components/Dialog/Dialog.st.css",
+            "hunks": [
+                {
+                    "swimmHunkMetadata": {
+                        "hunkComments": []
+                    },
+                    "hunkDiffLines": [
+                        "@@ -14,13 +14,6 @@",
+                        "     BackgroundColor: --overridable;",
+                        " }",
+                        " ",
+                        "-/*Fallbacks*/",
+                        "-:vars {",
+                        "-    FixedCloseButtonColor: color(fallback(value(CloseButtonColor), black));",
+                        "-    FixedBackgroundColor: color(fallback(value(BackgroundColor), white));",
+                        "-    WiredCloseButtonColor: color(fallback(value(CloseButtonColor), color-5));",
+                        "-    WiredBackgroundColor: color(fallback(value(BackgroundColor), color-1));",
+                        "-}",
+                        " ",
+                        " .root {",
+                        "     -st-states: mobile, rtl;"
+                    ]
+                }
+            ]
+        }
+    },
+    "app_version": "0.2.8",
+    "file_version": "1.0.4",
+    "last_commit_sha_for_swimm_patch": "fbeca8e97bb796ab258033d8ee631defbdd05701"
+}
