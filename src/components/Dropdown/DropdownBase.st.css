@@ -101,7 +101,7 @@
 }
 
 .root:priority(basic)::affixIcon svg path {
-    stroke: none;
+    stroke: none !important;
     fill: currentColor;
 }
 
