@@ -46,10 +46,11 @@
     cursor: pointer;
     box-sizing: border-box;
     outline: none;
+    font: font(value(buttonFont));
 }
 
 .arrowIcon {
-    font: font(value(buttonFont));
+    font-size: inherit;
     color: color(color-5);
     width: 1.5em;
     height: 1.5em;
@@ -58,7 +59,7 @@
 .root::content {
     flex: 1;
     text-align: start;
-    font: font(value(buttonFont));
+    font-size: inherit;
 }
 
 .root:mobile:size(medium),
