@@ -1,6 +1,6 @@
-const jsFiles = [];
+const jsFiles = [['Spinner.bundle.min.js', 1]];
 
-const cssFiles = [];
+const cssFiles = [['Spinner.min.css', 1]];
 
 const getFiles = (files) =>
   files.map(([name, size]) => ({
