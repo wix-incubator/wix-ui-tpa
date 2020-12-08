@@ -1,6 +1,11 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: color, font;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor;
 }
 
 :import {
@@ -9,9 +14,8 @@
 }
 
 :import {
-    -st-from: "../Input/Input.st.css";
-    -st-default: TPAInput;
-    -st-named: backgroundColor, colorDisabled, colorPlaceholder, color as inputColor, errorColor, borderColor;
+    -st-from: "./DropdownBase.st.css";
+    -st-named: inputColor, borderColor, backgroundColor, colorDisabled, buttonFont;
 }
 
 :import {
@@ -41,10 +45,11 @@
 .root {
     -st-extends: TPAButton;
     -st-mixin: TPAButton(
-            MainBackgroundColor 'value(backgroundColor)',
+            MainBackgroundColor value(backgroundColor),
             MainBorderWidth '1px',
-            MainBorderColor 'value(borderColor)',
-            MainTextColor 'value(inputColor)'
+            MainBorderColor value(borderColor),
+            MainTextColor value(inputColor),
+            MainTextFont value(buttonFont)
     );
     -st-states: disabled, error, placeholder, rtl, icon;
     display: flex;
@@ -77,7 +82,7 @@
 
 
 .root:placeholder {
-    color: value(colorPlaceholder);
+    color: value(borderColor);
 }
 
 .root:priority(basic):disabled {
@@ -102,6 +107,8 @@
     transform: translateY(-50%);
     z-index: 0;
     pointer-events: none;
+    font: font(value(buttonFont));
+    height: 1.5em;
 }
 
 .arrowIcon path {

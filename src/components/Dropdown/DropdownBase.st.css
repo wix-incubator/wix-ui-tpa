@@ -17,12 +17,10 @@
     inputColor: color(color-5);
     borderColor: applyOpacity(value(inputColor), 0.6);
     backgroundColor: color(color-1);
-
     disabledOpacity: 0.3;
     colorDisabled: applyOpacity(value(inputColor), value(disabledOpacity));
     backgroundColorDisabled: applyOpacity(value(backgroundColor), value(disabledOpacity));
     borderColorDisabled: applyOpacity(value(borderColor), value(disabledOpacity));
-
     buttonFont: "{theme: 'Body-M', size: '16px'}";
 }
 
@@ -60,6 +58,7 @@
 .root::content {
     flex: 1;
     text-align: start;
+    font: font(value(buttonFont));
 }
 
 .root:mobile:size(medium),

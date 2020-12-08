@@ -22,72 +22,72 @@ const wrap = example => `
 `;
 
 export const simpleExample = wrap(`
-  <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+  <Dropdown upgrade placeholder="Placeholder Text" options={${JSON.stringify(
     simpleOptions,
   )}} />
 `);
 
 export const simpleNativeExample = `
     <ExampleWithContextProps mobile={true}>
-        <Dropdown placeholder="Placeholder Text" mobileNativeSelect options={${JSON.stringify(
+        <Dropdown upgrade placeholder="Placeholder Text" mobileNativeSelect options={${JSON.stringify(
           simpleOptions,
         )}} />
     </ExampleWithContextProps>
 `;
 
 export const disabledExample = `
-    <Dropdown placeholder="Placeholder Text" disabled options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" disabled options={${JSON.stringify(
       simpleOptions,
     )}}/>
 `;
 
 export const alignmentExample = `
-    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" options={${JSON.stringify(
       simpleOptions,
     )}} alignment="${DROPDOWN_ALIGNMENT.center}" label="Label Text" />
 `;
 
 export const errorExample = `
-    <Dropdown placeholder="Placeholder Text" error={true} options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" error={true} options={${JSON.stringify(
       simpleOptions,
     )}}/>
 `;
 
 export const errorWithMessageExample = `
-    <Dropdown placeholder="Placeholder Text" error={true} errorMessage="The coupon code is not valid" options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" error={true} errorMessage="The coupon code is not valid" options={${JSON.stringify(
       simpleOptions,
     )}}/>
 `;
 
 export const withLabelExample = wrap(`
-    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
       simpleOptions,
     )}}/>
 `);
 
 export const sectionTitleExample = `
-    <Dropdown placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" label="Label Text" options={${JSON.stringify(
       optionsWithSections,
     )}}/>
 `;
 
 export const withSubtitlesExample = `
-    <Dropdown placeholder="Placeholder Text" options={${JSON.stringify(
+    <Dropdown upgrade placeholder="Placeholder Text" options={${JSON.stringify(
       optionsWithSubtitle,
     )}} />
 `;
 
 export const withIconsExample = `
-    <Dropdown placeholder="Placeholder Text" options={${optionsWithIcon}} />
+    <Dropdown upgrade placeholder="Placeholder Text" options={${optionsWithIcon}} />
 `;
 
 export const withIconsAndSubtitlesExample = `
-    <Dropdown placeholder="Placeholder Text" options={${optionsWithIconAndSubtitles}} />
+    <Dropdown upgrade placeholder="Placeholder Text" options={${optionsWithIconAndSubtitles}} />
 `;
 
 export const minWidthExample = `
     <div style={{width: '0px'}}>
-        <Dropdown options={${JSON.stringify(
+        <Dropdown upgrade options={${JSON.stringify(
           numberOptions,
         )}} initialSelectedId={'0'}/>
     </div>
