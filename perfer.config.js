@@ -1,21 +1,15 @@
-const javascriptFiles = [];
+const jsFiles = [];
 
 const cssFiles = [];
 
-const getJS = () =>
-  javascriptFiles.map(([name, size]) => ({
-    maxSize: `${size}kb`,
+const getFiles = (files) =>
+  files.map(([name, size]) => ({
     glob: `.perfer/dist/statics/${name}`,
-  }));
-
-const getCSS = () =>
-  cssFiles.map(([name, size]) => ({
     maxSize: `${size}kb`,
-    glob: `.perfer/dist/statics/${name}`,
   }));
 
 module.exports = {
   bundleSize: {
-    files: [...getJS(), ...getCSS()],
+    files: [...getFiles(jsFiles), ...getFiles(cssFiles)],
   },
 };
