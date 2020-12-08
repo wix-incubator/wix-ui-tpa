@@ -59,6 +59,10 @@
     padding: 6px;
     border: none;
     cursor: pointer;
+    flex:1;
+    height:100%;
+    display: flex;
+    justify-content: center;
 }
 
 .btn path {
