@@ -162,6 +162,10 @@
     box-sizing: border-box;
 }
 
+.root:box:disabled .wrapper {
+    filter: none;
+    opacity: 1;
+}
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
