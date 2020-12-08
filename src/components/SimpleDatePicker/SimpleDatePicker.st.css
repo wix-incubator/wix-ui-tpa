@@ -1,4 +1,3 @@
-@namespace "sivan";
 :import {
     -st-from: "../../common/formatters.st";
     -st-named: color, fallback;
@@ -25,6 +24,7 @@
 .root {
   -st-states: disabled;
   background-color: value(defaultBgColor);
+  border: 1px solid #C9C9C9;
   width: 220px;
   height: 220px;
   font-weight: bold;
@@ -51,6 +51,7 @@
     align-items: center;
     width: 30px;
     height: 30px;
+    color: black;
 }
 
 

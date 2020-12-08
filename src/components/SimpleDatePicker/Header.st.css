@@ -1,0 +1,38 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+/* Defaults - default params */
+:vars {
+    defaultTextColor: color(color-8);
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+    /*
+      Main background color
+    */
+    TextColor: --overridable;
+}
+
+/* Overrides */
+:vars {
+    textColor: color(fallback(value(TextColor), value(defaultTextColor)));
+}
+
+.root {
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    color: value(textColor);
+    font-size: 20px;
+}
+
+.root.overrideStyleParams {
+    background-color: value(bgColor);
+}

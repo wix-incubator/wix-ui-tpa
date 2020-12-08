@@ -1,8 +1,8 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import { TPAComponentProps } from '../../types';
 
 import { st, classes } from './SimpleDatePicker.st.css';
+import { Header } from './Header';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface SimpleDatePickerProps extends TPAComponentProps {
@@ -56,7 +56,7 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
         className={st(classes.root, { disabled }, className)}
         data-hook={this.props['data-hook']}
       >
-        <div className={classes.header}>Header</div>
+        <Header className={classes.header} text="Header" />
         <div className={classes.daysContainer}>{this._renderWeeks()}</div>
       </div>
       //   )}
