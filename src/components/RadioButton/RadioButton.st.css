@@ -179,8 +179,10 @@
 }
 
 .root:box:disabled .wrapper {
+    /* overriding the styling from wix-ui-core */
     filter: none;
     opacity: 1;
+    /*******/
     border-color: color(value(DisabledColor));
     background-color: color(value(DefaultBackgroundColor));
 }

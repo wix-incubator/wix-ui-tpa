@@ -85,7 +85,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-              '`RadioButton` is a component allowing to render a single radio button',
+            'Checkbox allows the user to select one or more items from a set.',
           ),
 
           importExample({
