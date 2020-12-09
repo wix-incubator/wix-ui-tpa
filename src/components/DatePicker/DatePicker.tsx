@@ -28,7 +28,7 @@ export type LanguageType =
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
-  value: Date | string;
+  value?: Date | string;
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange(selectedDays: string | Date): void;
   /** Custom date format, can be either:

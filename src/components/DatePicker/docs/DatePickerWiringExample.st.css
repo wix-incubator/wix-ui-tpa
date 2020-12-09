@@ -5,6 +5,6 @@
 
 .root {
   -st-mixin: overrideStyleParams(
-    BgColor ''"color(--myBackgroundOverride)"''
+    /*BgColor ''"color(--myBackgroundOverride)"''*/
   );
 }

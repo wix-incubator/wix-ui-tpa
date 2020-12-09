@@ -7,21 +7,19 @@ import { datePickerDriverFactory } from './DatePicker.driver';
 import { datePickerTestkitFactory } from '../../testkit';
 import { datePickerTestkitFactory as enzymeDatePickerTestkitFactory } from '../../testkit/enzyme';
 // import { TPAComponentsProvider, TPAComponentsConfig } from '../TPAComponentsConfig';
-import { DatePicker, DatePickerProps } from './';
+import { DatePicker } from './';
 
 describe('DatePicker', () => {
   const createDriver = createUniDriverFactory(datePickerDriverFactory);
 
-  const bootstrap = (
-    props: Partial<
-      DatePickerProps
-    > = {} /*, contextProps: TPAComponentsConfig = {}*/,
-  ) => {
-    return createDriver(
-      // <TPAComponentsProvider value={contextProps}>
-      <DatePicker {...props} />,
-      // </TPAComponentsProvider>
-    );
+  const bootstrap = (props = {}) => {
+    const dataHook = 'compDataHook';
+    const compProps = {
+      'data-hook': dataHook,
+      onChange: () => {},
+      ...props,
+    };
+    return createDriver(<DatePicker {...compProps} />);
   };
 
   it('should render', async () => {
@@ -32,7 +30,7 @@ describe('DatePicker', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<DatePicker />, datePickerTestkitFactory, {
+        await isUniTestkitExists(<DatePicker onChange={()=>{}} />, datePickerTestkitFactory, {
           dataHookPropName: 'data-hook',
         }),
       ).toBe(true);
@@ -43,7 +41,7 @@ describe('DatePicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <DatePicker />,
+          <DatePicker onChange={()=>{}} />,
           enzymeDatePickerTestkitFactory,
           mount,
           {
