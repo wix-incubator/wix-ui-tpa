@@ -30,9 +30,13 @@ describe('DatePicker', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<DatePicker onChange={()=>{}} />, datePickerTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <DatePicker onChange={() => {}} />,
+          datePickerTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });
@@ -41,7 +45,7 @@ describe('DatePicker', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <DatePicker onChange={()=>{}} />,
+          <DatePicker onChange={() => {}} />,
           enzymeDatePickerTestkitFactory,
           mount,
           {
