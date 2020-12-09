@@ -35,6 +35,8 @@
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
+    /*CurrentBoxColor*/
+    /*CurrentBoxBorderColor*/
     LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
