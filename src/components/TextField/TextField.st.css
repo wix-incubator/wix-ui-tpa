@@ -250,11 +250,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.clearButton:skin(line)::icon path {
-    stroke: none;
-    fill: value(mainTextColor);
+    color: value(mainTextColor);
 }
 
 .customSuffix {
