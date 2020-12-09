@@ -24,9 +24,25 @@
 
 /*Overrides*/
 :vars {
+    /*
+        The radio button text color
+        @default color-5
+    */
     TextColor: --overridable;
+    /*
+        The border color. FYI, An opacity of 0.6 will be added.
+        @default color-5
+    */
     BorderColor: --overridable;
+    /*
+        The color of the icon. This color would be used as the box's border color as well.
+        @default color-8
+    */
     IconColor:  --overridable;
+    /*
+        The box's background color. FYI, This value won't be affected on disabled mode.
+        @default color-1
+    */
     BackgroundColor:--overridable;
 }
 

@@ -13,23 +13,43 @@
     -st-named: errorColor;
 }
 
+/*Defaults*/
 :vars {
-    /*Defaults*/
     DefaultTextColor: color-5;
     DefaultBorderColor: color-5;
-    DefaultBoxBorderColor: color-5;
     DefaultIconColor: color-8;
+    DefaultBoxBorderColor: color-5;
     DefaultBoxColor: color-1;
     DisabledColor: color-3;
     Font: font("{theme: 'Body-M', size: '16px', lineHeight: '24px'}");
 }
 
+/*Overrides*/
 :vars {
-    /*Overrides*/
+    /*
+        The checkbox text color
+        @default color-5
+    */
     TextColor: --overridable;
+    /*
+        The checkbox border color. FYI, An opacity of  0.6 will be added.
+        @default color-5
+    */
     BorderColor: --overridable;
-    BoxBorderColor: --overridable;
+    /*
+        The color of the icon
+        @default color-8
+    */
     IconColor: --overridable;
+    /*
+        The box border color. FYI, This value won't be affected on disabled mode.
+        @default color-5
+    */
+    BoxBorderColor: --overridable;
+    /*
+        The box background color. FYI, This value won't be affected on disabled mode.
+        @default color-1
+    */
     BoxColor: --overridable;
 }
 

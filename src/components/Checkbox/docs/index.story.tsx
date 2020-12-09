@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Checkbox, CheckboxTheme } from '../';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -14,7 +15,10 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as ExtendedRawSource from '!raw-loader!./CheckboxExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxExtendedExample.st.css';
@@ -43,6 +47,10 @@ const codeExamples = [
   {
     title: 'With checked box',
     source: examples.exampleWithCheckedBox,
+  },
+  {
+    title: 'With disabled box',
+    source: examples.exampleWithDisabledBox,
   },
   {
     title: 'With disabled, checked box',
@@ -76,6 +84,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+              '`RadioButton` is a component allowing to render a single radio button',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -89,10 +101,10 @@ export default {
       }),
 
       ...[
+        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
-        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [

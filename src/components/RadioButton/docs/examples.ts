@@ -15,7 +15,12 @@ export const disabledExample = `
 export const boxExample = `
 <RadioButton value={'Checked'}  checked theme='box' onChange={val => console.log(val)}  label="Checked" />
 `;
+
 export const boxExampleDisabled = `
+<RadioButton suffix="$" disabled theme='box' onChange={val => console.log(val)}  label="Checked" />
+`;
+
+export const boxExampleDisabledChecked = `
 <RadioButton value={'Checked'} suffix="$" disabled checked theme='box' onChange={val => console.log(val)}  label="Checked" />
 `;
 
