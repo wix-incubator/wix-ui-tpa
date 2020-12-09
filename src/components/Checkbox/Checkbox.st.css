@@ -151,8 +151,8 @@
 }
 
 .root:box.disabled, .root:box:disabled {
-    /*border-color: blue;*/
-    /*background-color: lightgray;*/
+    border-color: color(value(DisabledColor));
+    background-color: color(value(DefaultBoxColor))
 }
 
 .root:box.disabled:hover:not(:checked), .root:box:disabled:focus-within:not(:checked) {
@@ -160,8 +160,8 @@
 }
 
 .root:box.disabled:checked, .root:box:disabled:checked {
-    /*border-color: red;*/
-    /*background-color: lightpink;*/
+    border-color: color(value(DisabledColor));
+    background-color: applyOpacity(color(value(DisabledColor)), 0.1);
 }
 
 .root:box:checked::after {

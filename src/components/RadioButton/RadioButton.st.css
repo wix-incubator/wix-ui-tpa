@@ -35,8 +35,6 @@
     CurrentIconColor: color(fallback(value(IconColor), value(DefaultIconColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
     CurrentBackgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
-    /*CurrentBoxColor*/
-    /*CurrentBoxBorderColor*/
     LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
 }
 
@@ -167,13 +165,13 @@
 .root:box:disabled .wrapper {
     filter: none;
     opacity: 1;
-    /*border-color: blue;*/
-    /*background-color: lightgray;*/
+    border-color: color(value(DisabledColor));
+    background-color: color(value(DefaultBackgroundColor));
 }
 
 .root:box:disabled:checked .wrapper {
-    /*border-color: red;*/
-    /*background-color: lightpink;*/
+    border-color: color(value(DisabledColor));
+    background-color: applyOpacity(color(value(DisabledColor)), 0.1);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
