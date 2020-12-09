@@ -167,6 +167,13 @@
 .root:box:disabled .wrapper {
     filter: none;
     opacity: 1;
+    /*border-color: blue;*/
+    /*background-color: lightgray;*/
+}
+
+.root:box:disabled:checked .wrapper {
+    /*border-color: red;*/
+    /*background-color: lightpink;*/
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
