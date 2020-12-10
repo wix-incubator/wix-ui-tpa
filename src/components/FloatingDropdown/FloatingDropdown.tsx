@@ -31,6 +31,8 @@ export interface FloatingDropdownProps extends TPAComponentProps {
   options: FloatingDropdownOptionProps[];
   /** A placeholder which is being displayed when no value is selected. String. Optional. */
   placeholder?: string;
+  /** Hides placeholder from options in native version. Optional. Boolean */
+  hidePlaceholderFromOptions?: boolean;
   /** An id of initially selected item. String. Optional. */
   value?: string;
   /** Force dropdown open. Use for visual test. Optional. Boolean. */

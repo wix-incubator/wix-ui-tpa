@@ -18,6 +18,7 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   name?: string;
   id?: string;
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
+  hidePlaceholderFromOptions?: boolean;
 }
 
 export class FloatingDropdownBase extends React.Component<
@@ -41,6 +42,7 @@ export class FloatingDropdownBase extends React.Component<
     const {
       value,
       placeholder,
+      hidePlaceholderFromOptions,
       label,
       options,
       ['aria-labelledby']: ariaLabelledBy,
@@ -78,7 +80,7 @@ export class FloatingDropdownBase extends React.Component<
             onChange={this._onSelect}
             disabled={disabled}
           >
-            {placeholder ? (
+            {placeholder && !hidePlaceholderFromOptions ? (
               <option value="" disabled>
                 {placeholder}
               </option>
