@@ -13,6 +13,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
+import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import {
   autoSettingsPanel,
@@ -76,7 +77,9 @@ export default {
   },
   dataHook: 'storybook-DatePickerInput',
   sections: [
-    header(),
+    header({
+      component: <OptimizedStylesBanner />,
+    }),
     tabs([
       tab({
         title: 'Usage',
