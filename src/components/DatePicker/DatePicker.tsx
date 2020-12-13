@@ -99,7 +99,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
             aria-labelledby={ariaLabelledBy}
           >
             <WSRCalendar
-              className={classes.wsrCalendar}
+              className={classes.calendar}
               value={value}
               onChange={onChange}
               locale={locale}

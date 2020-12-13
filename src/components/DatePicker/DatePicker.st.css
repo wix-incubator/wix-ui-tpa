@@ -122,38 +122,38 @@
     border-radius: 0;
 }
 
-.wsrCalendar {
+.calendar {
     -st-extends: WSRCalendar;
 }
 
-.wsrCalendar::month {
+.calendar::month {
     width: value(calendarWidth);
     height: value(calendarHeight);
 }
 
 /* calendar header */
 
-.wsrCalendar::header {
+.calendar::header {
     padding: 28px value(sidePadding) 0;
     background-color: value(CurrentBackgroundColor);
 }
 
-.wsrCalendar::header::arrow {
+.calendar::header::arrow {
     color: value(CurrentNavigationArrowsColor);
     width: 24px;
     height: 24px;
 }
-.wsrCalendar::header::arrow:hover:not(active) {
+.calendar::header::arrow:hover:not(active) {
     background: none;
     color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
-.wsrCalendar::header::arrow:active {
+.calendar::header::arrow:active {
     background: none;
     color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
-.wsrCalendar::header::caption {
+.calendar::header::caption {
     font: value(CurrentMonthAndYearCaptionFont);
     font-size: 16px;
     color: value(CurrentMonthAndYearCaptionColor);
@@ -163,12 +163,12 @@
 
 /* calendar Weekdays */
 
-.wsrCalendar::weekdays {
+.calendar::weekdays {
     padding: 0 value(sidePadding);
     background-color: value(CurrentBackgroundColor);
 }
 
-.wsrCalendar::weekday {
+.calendar::weekday {
     padding: 20px 0 16px;
     font: value(CurrentWeekdayFont);
     font-size: 14px;
@@ -179,12 +179,12 @@
 
 /* calendar body */
 
-.wsrCalendar::body {
+.calendar::body {
     padding: 0 value(sidePadding) 20px;
     background-color: value(CurrentBackgroundColor);
 }
 
-.wsrCalendar::day {
+.calendar::day {
     font: value(CurrentDayFont);
     font-size: 14px;
     color: value(CurrentDayColor);
@@ -192,38 +192,38 @@
     height: 34px;
 }
 
-.wsrCalendar::day:hover {
+.calendar::day:hover {
     color: color(value(DeafultDayColor));
     background-color: value(CurrentDayBGColorHover);
 }
 
-.wsrCalendar::day:today:not(:selected):not(:hover) {
+.calendar::day:today:not(:selected):not(:hover) {
     background: none;
     color: value(CurrentSelectedDayBGColor);
     box-shadow: none;
 }
 
-.wsrCalendar::day:today:not(:selected):hover {
+.calendar::day:today:not(:selected):hover {
     color: value(CurrentSelectedDayBGColor);
     background-color: value(CurrentDayBGColorHover);
 }
 
-.wsrCalendar::day:today:not(:selected):not(:hover):focus {
+.calendar::day:today:not(:selected):not(:hover):focus {
     box-shadow: none;
 }
 
-.wsrCalendar::day:selected:not(:outside) {
+.calendar::day:selected:not(:outside) {
     color: value(CurrentSelectedDayColor);
 }
 
-.wsrCalendar::day:outside, .wsrCalendar::day:disabled {
+.calendar::day:outside, .calendar::day:disabled {
     color: value(CurrentDisabledDayColor);
 }
 
-.wsrCalendar::day:singleDay:not(:outside) .dayCircle {
+.calendar::day:singleDay:not(:outside) .dayCircle {
     background-color: value(CurrentSelectedDayBGColor);
 }
-.wsrCalendar::day:singleDay:not(:outside):hover .dayCircle {
+.calendar::day:singleDay:not(:outside):hover .dayCircle {
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
 }
 
@@ -233,8 +233,8 @@
 
 /* month and years dropdowns */
 
-.wsrCalendar::header::monthDropdown::caption ,
-.wsrCalendar::header::yearDropdown::caption {
+.calendar::header::monthDropdown::caption ,
+.calendar::header::yearDropdown::caption {
     font: value(CurrentMonthAndYearCaptionFont);
     font-size: 16px;
     color: value(CurrentMonthAndYearCaptionColor);
@@ -243,26 +243,26 @@
 
 /* List */
 
-.wsrCalendar::header::monthDropdown::dropdown::list::contentContainer,
-.wsrCalendar::header::yearDropdown::dropdown::list::contentContainer {
+.calendar::header::monthDropdown::dropdown::list::contentContainer,
+.calendar::header::yearDropdown::dropdown::list::contentContainer {
     background-color: value(CurrentBackgroundColor);
     padding: 12px 0;
 }
 
 /* List: Scroll */
-.wsrCalendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar,
-.wsrCalendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar {
+.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar,
+.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar {
     width: 16px;
 }
 
-/*.wsrCalendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-button,*/
-/*.wsrCalendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-button { */
+/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-button,*/
+/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-button { */
 /*    display: none;*/
 /*    height: 6px;*/
 /*}*/
 
-.wsrCalendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb,
-.wsrCalendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb {
+.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb,
+.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb {
     /* https://stackoverflow.com/a/16829330/5343330 */
     background-color: value(DropdownOptionSelectedAndHoverBGColor);
     background-clip: content-box;
@@ -271,40 +271,40 @@
     height: 72px;
 }
 
-.wsrCalendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover,
-.wsrCalendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover {
+.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover,
+.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover {
     background-color: applyOpacity(value(CurrentDayColor), 0.15);
 }
 
-.wsrCalendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active,
-.wsrCalendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active {
+.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active,
+.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active {
     background-color: applyOpacity(value(CurrentDayColor), 0.25);
 }
 /*!*************************!*/
 
-.wsrCalendar::header::monthDropdown::dropdown::list::selectableOption,
-.wsrCalendar::header::yearDropdown::dropdown::list::selectableOption {
+.calendar::header::monthDropdown::dropdown::list::selectableOption,
+.calendar::header::yearDropdown::dropdown::list::selectableOption {
     background-color: value(CurrentBackgroundColor);
     padding: 0 20px;
 }
 
-.wsrCalendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
-.wsrCalendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {
+.calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
+.calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {
     background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
-.wsrCalendar::header::monthDropdown::dropdown::list::selectableOption:selected,
-.wsrCalendar::header::yearDropdown::dropdown::list::selectableOption:selected {
+.calendar::header::monthDropdown::dropdown::list::selectableOption:selected,
+.calendar::header::yearDropdown::dropdown::list::selectableOption:selected {
     background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
-.wsrCalendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,
-.wsrCalendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {
+.calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,
+.calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {
     background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
-.wsrCalendar::header::monthDropdown::dropdown::list::selectableOption::title,
-.wsrCalendar::header::yearDropdown::dropdown::list::selectableOption::title {
+.calendar::header::monthDropdown::dropdown::list::selectableOption::title,
+.calendar::header::yearDropdown::dropdown::list::selectableOption::title {
     color: value(CurrentDayColor);
     font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");
 }
