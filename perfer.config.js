@@ -1,4 +1,4 @@
-const jsFiles = [
+const files = [
   ['ActionsMenuLayout.bundle.min.js', 6],
   ['Autocomplete.bundle.min.js', 35],
   ['Avatar.bundle.min.js', 16],
@@ -50,16 +50,11 @@ const jsFiles = [
   ['Tooltip.bundle.min.js', 31],
 ];
 
-const cssFiles = [];
-
-const getFiles = (files) =>
-  files.map(([name, size]) => ({
-    glob: `.perfer/dist/statics/${name}`,
-    maxSize: `${size}kb`,
-  }));
-
 module.exports = {
   bundleSize: {
-    files: [...getFiles(jsFiles), ...getFiles(cssFiles)],
+    files: files.map(([name, size]) => ({
+      glob: `.perfer/dist/statics/${name}`,
+      maxSize: `${size}kb`,
+    })),
   },
 };
