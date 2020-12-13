@@ -15,7 +15,6 @@ DatePickerMetadata.addSim({
   } as DatePickerProps,
 });
 
-
 DatePickerMetadata.addSim({
   title: 'excludePastDates',
   props: {
