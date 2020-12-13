@@ -132,120 +132,72 @@
 }
 
 /* calendar header */
-
 .calendar::header {
     padding: 28px value(sidePadding) 0;
-    background-color: value(CurrentBackgroundColor);
 }
 
 .calendar::header::arrow {
-    color: value(CurrentNavigationArrowsColor);
     width: 24px;
     height: 24px;
 }
 .calendar::header::arrow:hover:not(active) {
     background: none;
-    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
 .calendar::header::arrow:active {
     background: none;
-    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
 }
 
 .calendar::header::caption {
-    font: value(CurrentMonthAndYearCaptionFont);
     font-size: 16px;
-    color: value(CurrentMonthAndYearCaptionColor);
 }
-
 /******************************************************/
 
-/* calendar Weekdays */
 
+/* calendar Weekdays */
 .calendar::weekdays {
     padding: 0 value(sidePadding);
-    background-color: value(CurrentBackgroundColor);
 }
 
 .calendar::weekday {
     padding: 20px 0 16px;
-    font: value(CurrentWeekdayFont);
     font-size: 14px;
-    color: value(CurrentWeekdayTextColor);
 }
-
 /******************************************************/
 
-/* calendar body */
 
+/* calendar body */
 .calendar::body {
     padding: 0 value(sidePadding) 20px;
-    background-color: value(CurrentBackgroundColor);
 }
 
 .calendar::day {
-    font: value(CurrentDayFont);
     font-size: 14px;
-    color: value(CurrentDayColor);
     width: 34px;
     height: 34px;
 }
 
-.calendar::day:hover {
-    color: color(value(DeafultDayColor));
-    background-color: value(CurrentDayBGColorHover);
-}
-
 .calendar::day:today:not(:selected):not(:hover) {
     background: none;
-    color: value(CurrentSelectedDayBGColor);
     box-shadow: none;
-}
-
-.calendar::day:today:not(:selected):hover {
-    color: value(CurrentSelectedDayBGColor);
-    background-color: value(CurrentDayBGColorHover);
 }
 
 .calendar::day:today:not(:selected):not(:hover):focus {
     box-shadow: none;
 }
-
-.calendar::day:selected:not(:outside) {
-    color: value(CurrentSelectedDayColor);
-}
-
-.calendar::day:outside, .calendar::day:disabled {
-    color: value(CurrentDisabledDayColor);
-}
-
-.calendar::day:singleDay:not(:outside) .dayCircle {
-    background-color: value(CurrentSelectedDayBGColor);
-}
-.calendar::day:singleDay:not(:outside):hover .dayCircle {
-    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
-}
-
-
 /******************************************************/
 
 
 /* month and years dropdowns */
-
 .calendar::header::monthDropdown::caption ,
 .calendar::header::yearDropdown::caption {
-    font: value(CurrentMonthAndYearCaptionFont);
     font-size: 16px;
-    color: value(CurrentMonthAndYearCaptionColor);
     height: 24px;
 }
 
 /* List */
-
 .calendar::header::monthDropdown::dropdown::list::contentContainer,
 .calendar::header::yearDropdown::dropdown::list::contentContainer {
-    background-color: value(CurrentBackgroundColor);
     padding: 12px 0;
 }
 
@@ -255,61 +207,377 @@
     width: 16px;
 }
 
-/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-button,*/
-/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-button { */
-/*    display: none;*/
-/*    height: 6px;*/
-/*}*/
-
 .calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb,
 .calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb {
     /* https://stackoverflow.com/a/16829330/5343330 */
-    background-color: value(DropdownOptionSelectedAndHoverBGColor);
     background-clip: content-box;
     border-radius: calc(4px * 2);
     border: 4px solid transparent;
     height: 72px;
 }
-
-.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover,
-.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover {
-    background-color: applyOpacity(value(CurrentDayColor), 0.15);
-}
-
-.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active,
-.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active {
-    background-color: applyOpacity(value(CurrentDayColor), 0.25);
-}
-/*!*************************!*/
+/*************************/
 
 .calendar::header::monthDropdown::dropdown::list::selectableOption,
 .calendar::header::yearDropdown::dropdown::list::selectableOption {
-    background-color: value(CurrentBackgroundColor);
     padding: 0 20px;
-}
-
-.calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
-.calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {
-    background-color: value(DropdownOptionSelectedAndHoverBGColor);
-}
-
-.calendar::header::monthDropdown::dropdown::list::selectableOption:selected,
-.calendar::header::yearDropdown::dropdown::list::selectableOption:selected {
-    background-color: value(DropdownOptionSelectedAndHoverBGColor);
-}
-
-.calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,
-.calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {
-    background-color: value(DropdownOptionSelectedAndHoverBGColor);
 }
 
 .calendar::header::monthDropdown::dropdown::list::selectableOption::title,
 .calendar::header::yearDropdown::dropdown::list::selectableOption::title {
-    color: value(CurrentDayColor);
     font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");
 }
+/******************************************************/
+
+
+
+
+/* calendar header */
+.overrideStyleParams .calendar::header {
+    background-color: value(CurrentBackgroundColor);
+}
+
+.overrideStyleParams .calendar::header::arrow {
+    color: value(CurrentNavigationArrowsColor);
+}
+
+.overrideStyleParams .calendar::header::arrow:hover:not(active) {
+    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
+}
+
+.overrideStyleParams .calendar::header::arrow:active {
+    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);
+}
+
+.overrideStyleParams .calendar::header::caption {
+    font: value(CurrentMonthAndYearCaptionFont);
+    color: value(CurrentMonthAndYearCaptionColor);
+}
+/******************************************************/
+
+/* calendar Weekdays */
+.overrideStyleParams .calendar::weekdays {
+    background-color: value(CurrentBackgroundColor);
+}
+
+.overrideStyleParams .calendar::weekday {
+    font: value(CurrentWeekdayFont);
+    color: value(CurrentWeekdayTextColor);
+}
+/******************************************************/
+
+/* calendar body */
+.overrideStyleParams .calendar::body {
+    background-color: value(CurrentBackgroundColor);
+}
+
+.overrideStyleParams .calendar::day {
+    font: value(CurrentDayFont);
+    color: value(CurrentDayColor);
+}
+
+.overrideStyleParams .calendar::day:hover {
+    color: color(value(DeafultDayColor));
+    background-color: value(CurrentDayBGColorHover);
+}
+
+.overrideStyleParams .calendar::day:today:not(:selected):not(:hover) {
+    color: value(CurrentSelectedDayBGColor);
+}
+
+.overrideStyleParams .calendar::day:today:not(:selected):hover {
+    color: value(CurrentSelectedDayBGColor);
+    background-color: value(CurrentDayBGColorHover);
+}
+
+.overrideStyleParams .calendar::day:selected:not(:outside) {
+    color: value(CurrentSelectedDayColor);
+}
+
+.overrideStyleParams .calendar::day:outside, .calendar::day:disabled {
+    color: value(CurrentDisabledDayColor);
+}
+
+.overrideStyleParams .calendar::day:singleDay:not(:outside) .dayCircle {
+    background-color: value(CurrentSelectedDayBGColor);
+}
+.overrideStyleParams .calendar::day:singleDay:not(:outside):hover .dayCircle {
+    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
+}
+/******************************************************/
+
+/* month and years dropdowns */
+.overrideStyleParams .calendar::header::monthDropdown::caption ,
+.overrideStyleParams .calendar::header::yearDropdown::caption {
+    font: value(CurrentMonthAndYearCaptionFont);
+    color: value(CurrentMonthAndYearCaptionColor);
+}
+
+/* List */
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::contentContainer,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::contentContainer {
+    background-color: value(CurrentBackgroundColor);
+}
+
+/* List: Scroll */
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover {
+    background-color: applyOpacity(value(CurrentDayColor), 0.15);
+}
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active {
+    background-color: applyOpacity(value(CurrentDayColor), 0.25);
+}
+/*************************/
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::selectableOption,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::selectableOption {
+    background-color: value(CurrentBackgroundColor);
+}
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::selectableOption:selected,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::selectableOption:selected {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {
+    background-color: value(DropdownOptionSelectedAndHoverBGColor);
+}
+
+.overrideStyleParams .calendar::header::monthDropdown::dropdown::list::selectableOption::title,
+.overrideStyleParams .calendar::header::yearDropdown::dropdown::list::selectableOption::title {
+    color: value(CurrentDayColor);
+}
+/******************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* The component's css without the overrideStyleParams */
+
+/*.root {*/
+/*}*/
+
+/*.root .popoverContent {*/
+/*    border-radius: 0;*/
+/*}*/
+
+/*.calendar {*/
+/*    -st-extends: WSRCalendar;*/
+/*}*/
+
+/*.calendar::month {*/
+/*    width: value(calendarWidth);*/
+/*    height: value(calendarHeight);*/
+/*}*/
+
+/*!* calendar header *!*/
+
+/*.calendar::header {*/
+/*    padding: 28px value(sidePadding) 0;*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*}*/
+
+/*.calendar::header::arrow {*/
+/*    color: value(CurrentNavigationArrowsColor);*/
+/*    width: 24px;*/
+/*    height: 24px;*/
+/*}*/
+/*.calendar::header::arrow:hover:not(active) {*/
+/*    background: none;*/
+/*    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);*/
+/*}*/
+
+/*.calendar::header::arrow:active {*/
+/*    background: none;*/
+/*    color: applyOpacity(value(CurrentNavigationArrowsColor), 0.7);*/
+/*}*/
+
+/*.calendar::header::caption {*/
+/*    font: value(CurrentMonthAndYearCaptionFont);*/
+/*    font-size: 16px;*/
+/*    color: value(CurrentMonthAndYearCaptionColor);*/
+/*}*/
 
 /*!******************************************************!*/
 
-.root.overrideStyleParams {
-}
+/*!* calendar Weekdays *!*/
+
+/*.calendar::weekdays {*/
+/*    padding: 0 value(sidePadding);*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*}*/
+
+/*.calendar::weekday {*/
+/*    padding: 20px 0 16px;*/
+/*    font: value(CurrentWeekdayFont);*/
+/*    font-size: 14px;*/
+/*    color: value(CurrentWeekdayTextColor);*/
+/*}*/
+
+/*!******************************************************!*/
+
+/*!* calendar body *!*/
+
+/*.calendar::body {*/
+/*    padding: 0 value(sidePadding) 20px;*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*}*/
+
+/*.calendar::day {*/
+/*    font: value(CurrentDayFont);*/
+/*    font-size: 14px;*/
+/*    color: value(CurrentDayColor);*/
+/*    width: 34px;*/
+/*    height: 34px;*/
+/*}*/
+
+/*.calendar::day:hover {*/
+/*    color: color(value(DeafultDayColor));*/
+/*    background-color: value(CurrentDayBGColorHover);*/
+/*}*/
+
+/*.calendar::day:today:not(:selected):not(:hover) {*/
+/*    background: none;*/
+/*    color: value(CurrentSelectedDayBGColor);*/
+/*    box-shadow: none;*/
+/*}*/
+
+/*.calendar::day:today:not(:selected):hover {*/
+/*    color: value(CurrentSelectedDayBGColor);*/
+/*    background-color: value(CurrentDayBGColorHover);*/
+/*}*/
+
+/*.calendar::day:today:not(:selected):not(:hover):focus {*/
+/*    box-shadow: none;*/
+/*}*/
+
+/*.calendar::day:selected:not(:outside) {*/
+/*    color: value(CurrentSelectedDayColor);*/
+/*}*/
+
+/*.calendar::day:outside, .calendar::day:disabled {*/
+/*    color: value(CurrentDisabledDayColor);*/
+/*}*/
+
+/*.calendar::day:singleDay:not(:outside) .dayCircle {*/
+/*    background-color: value(CurrentSelectedDayBGColor);*/
+/*}*/
+/*.calendar::day:singleDay:not(:outside):hover .dayCircle {*/
+/*    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);*/
+/*}*/
+
+
+/*!******************************************************!*/
+
+
+/*!* month and years dropdowns *!*/
+
+/*.calendar::header::monthDropdown::caption ,*/
+/*.calendar::header::yearDropdown::caption {*/
+/*    font: value(CurrentMonthAndYearCaptionFont);*/
+/*    font-size: 16px;*/
+/*    color: value(CurrentMonthAndYearCaptionColor);*/
+/*    height: 24px;*/
+/*}*/
+
+/*!* List *!*/
+
+/*.calendar::header::monthDropdown::dropdown::list::contentContainer,*/
+/*.calendar::header::yearDropdown::dropdown::list::contentContainer {*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*    padding: 12px 0;*/
+/*}*/
+
+/*!* List: Scroll *!*/
+/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar,*/
+/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar {*/
+/*    width: 16px;*/
+/*}*/
+
+/*!*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-button,*!*/
+/*!*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-button { *!*/
+/*!*    display: none;*!*/
+/*!*    height: 6px;*!*/
+/*!*}*!*/
+
+/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb,*/
+/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb {*/
+/*    !* https://stackoverflow.com/a/16829330/5343330 *!*/
+/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
+/*    background-clip: content-box;*/
+/*    border-radius: calc(4px * 2);*/
+/*    border: 4px solid transparent;*/
+/*    height: 72px;*/
+/*}*/
+
+/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover,*/
+/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:hover {*/
+/*    background-color: applyOpacity(value(CurrentDayColor), 0.15);*/
+/*}*/
+
+/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active,*/
+/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active {*/
+/*    background-color: applyOpacity(value(CurrentDayColor), 0.25);*/
+/*}*/
+/*!*!*************************!*!*/
+
+/*.calendar::header::monthDropdown::dropdown::list::selectableOption,*/
+/*.calendar::header::yearDropdown::dropdown::list::selectableOption {*/
+/*    background-color: value(CurrentBackgroundColor);*/
+/*    padding: 0 20px;*/
+/*}*/
+
+/*.calendar::header::monthDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover,*/
+/*.calendar::header::yearDropdown::dropdown::list::selectableOption:not(:disabled):not(:selected):hover {*/
+/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
+/*}*/
+
+/*.calendar::header::monthDropdown::dropdown::list::selectableOption:selected,*/
+/*.calendar::header::yearDropdown::dropdown::list::selectableOption:selected {*/
+/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
+/*}*/
+
+/*.calendar::header::monthDropdown::dropdown::list::selectableOption:selected:hover,*/
+/*.calendar::header::yearDropdown::dropdown::list::selectableOption:selected:hover {*/
+/*    background-color: value(DropdownOptionSelectedAndHoverBGColor);*/
+/*}*/
+
+/*.calendar::header::monthDropdown::dropdown::list::selectableOption::title,*/
+/*.calendar::header::yearDropdown::dropdown::list::selectableOption::title {*/
+/*    color: value(CurrentDayColor);*/
+/*    font: font("{theme: 'Body-M', size: '14px', lineHeight: '20px'}");*/
+/*}*/
+
+/******************************************************/

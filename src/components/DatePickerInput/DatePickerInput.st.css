@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "../DatePicker/DatePicker.st.css";
-    -st-named: calendar;
+    -st-named: overrideStyleParams as datePickerOverrideStyleParams;
 }
 
 :import {
@@ -111,15 +111,6 @@
 .root {
 }
 
-.textField {
-    -st-mixin: TextField(
-            MainBorderColor value(DateInputBorderColor),
-            MainBackgroundColor value(DateInputBGColor),
-            MainTextColor value(DateInputTextColor),
-            MainTextFont value(DateInputFont),
-    );
-}
-
 .root .popoverContent {
     border-radius: 0;
 }
@@ -128,8 +119,22 @@
     -st-extends: WSRDatePicker;
 }
 
-.wsrDatePicker::calendar {
-    -st-mixin: calendar(
+.wsrDatePicker::calendar::month {
+    width: value(calendarWidth);
+    height: value(calendarHeight);
+}
+
+.overrideStyleParams .textField {
+    -st-mixin: TextField(
+            MainBorderColor value(DateInputBorderColor),
+            MainBackgroundColor value(DateInputBGColor),
+            MainTextColor value(DateInputTextColor),
+            MainTextFont value(DateInputFont),
+    );
+}
+
+.overrideStyleParams .wsrDatePicker::calendar {
+    -st-mixin: datePickerOverrideStyleParams(
             BackgroundColor value(BackgroundColor),
             NavigationArrowsColor value(NavigationArrowsColor),
             MonthAndYearCaptionColor value(MonthAndYearCaptionColor),
@@ -143,9 +148,4 @@
             WeekdayFont value(WeekdayFont),
             DayFont value(DayFont),
     );
-}
-
-.wsrDatePicker::calendar::month {
-    width: value(calendarWidth);
-    height: value(calendarHeight);
 }

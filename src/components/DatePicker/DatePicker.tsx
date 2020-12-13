@@ -93,7 +93,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       <TPAComponentsConsumer>
         {({ rtl }) => (
           <div
-            className={st(classes.root, className)}
+            className={st(classes.root, classes.overrideStyleParams, className)}
             data-hook={this.props['data-hook']}
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
