@@ -3,20 +3,27 @@ module.exports = (file, api, options) => {
   const { ComponentName } = options;
 
   const root = jscodeshift(file.source);
-  const pushNewValue = (name, value, size) => {
-    const list = root.find(jscodeshift.VariableDeclaration, {
-      declarations: [{ id: { name } }],
-    });
 
-    const newValue = jscodeshift.arrayExpression([
-      jscodeshift.literal(value),
-      jscodeshift.numericLiteral(size),
-    ]);
+  // The initial KB
+  const thresholdSize = 5;
 
-    list.get(0).node.declarations[0].init.elements.push(newValue);
-  };
+  // Finds the `files` array
+  const array = root.find(jscodeshift.VariableDeclaration, {
+    declarations: [{ id: { name: 'files' } }],
+  });
 
-  pushNewValue('files', `${ComponentName}.bundle.min.js`, 5);
+  // Creates new entry to be inserted
+  const entry = jscodeshift.arrayExpression([
+    jscodeshift.literal(`${ComponentName}.bundle.min.js`),
+    jscodeshift.numericLiteral(thresholdSize),
+  ]);
 
-  return root.toSource({ quote: 'single', trailingComma: true });
+  // Pushes the entry into the array
+  array.get(0).node.declarations[0].init.elements.push(entry);
+
+  // Formatting
+  return root.toSource({
+    quote: 'single',
+    trailingComma: true,
+  });
 };
