@@ -81,6 +81,10 @@ export interface DatePickerInputProps extends TPAComponentProps {
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */
   'aria-labelledby'?: string;
+  /** Defines a string value that labels the date input element. Optional. */
+  dateInputAriaLabel?: string;
+  /** Identifies the element that labels the date input element. Optional. */
+  dateInputAriaLabelledby?: string;
   /** Defines a string value that labels the clear button element. Optional. */
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
@@ -151,26 +155,38 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       popoverAppendTo,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
+      dateInputAriaLabel,
+      dateInputAriaLabelledby,
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
     } = this.props;
 
-    const customInput = (
-      <TextField
-        className={classes.textField}
-        data-hook={DATA_HOOKS.DATE_INPUT}
-        prefix=""
-        suffix={<Calendar />}
-        disabled={disabled}
-        error={hasError}
-        errorMessage={errorMessage}
-        theme={inputTheme}
-        withClearButton
-        onClear={this._onInputClearButtonClicked}
-        clearButtonAriaLabel={clearButtonAriaLabel}
-        clearButtonAriaLabelledby={clearButtonAriaLabelledby}
-      />
-    );
+    const CustomInput = wsrProps => {
+      const { value: formattedValue, onFocus, onKeyDown, tabIndex } = wsrProps;
+
+      return (
+        <TextField
+          className={classes.textField}
+          data-hook={DATA_HOOKS.DATE_INPUT}
+          value={formattedValue}
+          placeholder={placeholderText}
+          suffix={<Calendar />}
+          tabIndex={tabIndex}
+          disabled={disabled}
+          error={hasError}
+          errorMessage={errorMessage}
+          theme={inputTheme}
+          withClearButton
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
+          onClear={this._onInputClearButtonClicked}
+          clearButtonAriaLabel={clearButtonAriaLabel}
+          clearButtonAriaLabelledby={clearButtonAriaLabelledby}
+          aria-label={dateInputAriaLabel}
+          aria-labelledby={dateInputAriaLabelledby}
+        />
+      );
+    };
 
     return (
       <TPAComponentsConsumer>
@@ -188,7 +204,6 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
               value={value}
               onChange={onChange}
               onClose={onClose}
-              placeholderText={placeholderText}
               disabled={disabled}
               dateFormatV2={dateFormat}
               locale={locale}
@@ -197,7 +212,7 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
               firstDayOfWeek={firstDayOfWeek}
               showMonthDropdown={showMonthDropdown}
               showYearDropdown={showYearDropdown}
-              customInput={customInput}
+              customInput={<CustomInput />}
               width={inputWidth}
               rtl={rtl}
               selectionMode="day"

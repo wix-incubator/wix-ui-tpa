@@ -74,6 +74,12 @@ export default {
           ...[
             { title: 'Disabled box', source: examples.boxExampleDisabled },
           ].map(code),
+          ...[
+            {
+              title: 'Disabled, Checked box',
+              source: examples.boxExampleDisabledChecked,
+            },
+          ].map(code),
           ...[{ title: 'Suffixed', source: examples.suffixExample }].map(code),
           ...[{ title: 'Error', source: examples.errorExample }].map(code),
         ],
