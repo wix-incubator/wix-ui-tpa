@@ -18,8 +18,8 @@
     BorderWidth: 1;
     BorderRadius: 0;
     TinyFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.43em'}";
-    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";	
-    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";	 
+    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     LargeFont: "{theme: 'Body-M', size: '20px', lineHeight: '1.5em'}";
     MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
@@ -37,6 +37,11 @@
     */
     MainBackgroundColor: --overridable;
     /*
+        The Button Background color on hover
+        @default color-5 with 0.7 opacity
+    */
+    HoverBackgroundColor: --overridable;
+    /*
         The font of the button's text
         @default {theme: 'Body-M', size: '14px', lineHeight: '1.43em'}
     */
@@ -47,8 +52,13 @@
     */
     MainBorderColor: --overridable;
     /*
+        The border of the button on hover
+        @default Basic and Primary: color-8, basicSecondary and secondary: color-8 with 0.7 opacity
+    */
+    HoverBorderColor: --overridable;
+    /*
         The button's border width
-        @default color- Basic and Primary: 0px, basicSecondary and secondary: 1px
+        @default Basic and Primary: 0px, basicSecondary and secondary: 1px
     */
     MainBorderWidth: --overridable;
     /*
@@ -105,8 +115,9 @@
 .root:priority(basic):focus,
 .root:priority(basic):hover {
     background-color: applyOpacity(value(BasicBackgroundColor), 0.7);
-    background-color: smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(BasicBackgroundColor), 0.7));
+    background-color: fallback(value(HoverBackgroundColor), smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(BasicBackgroundColor), 0.7)));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
+    border-color: fallback(value(HoverBorderColor), value(PrimaryBorderColor));
 }
 
 /*BasicSecondary*/
@@ -127,7 +138,7 @@
 .root:priority(basicSecondary):focus,
 .root:priority(basicSecondary):hover {
     color: applyOpacity(value(BasicSecondaryTextColor), 0.7);
-    border-color: applyOpacity(value(BasicSecondaryBorderColor), 0.7);
+    border-color: fallback(value(HoverBorderColor), applyOpacity(value(BasicSecondaryBorderColor), 0.7));
 }
 
 /*Primary*/
@@ -146,8 +157,9 @@
 .root:priority(primary):focus,
 .root:priority(primary):hover {
     background-color: applyOpacity(value(PrimaryBackgroundColor), 0.7);
-    background-color: smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(PrimaryBackgroundColor), 0.7));
+    background-color: fallback(value(HoverBackgroundColor), smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(PrimaryBackgroundColor), 0.7)));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
+    border-color: fallback(value(HoverBorderColor), value(PrimaryBorderColor));
 }
 
 /*Secondary*/
@@ -168,7 +180,7 @@
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
     color: applyOpacity(value(SecondaryTextColor), 0.7);
-    border-color: applyOpacity(value(SecondaryBorderColor), 0.7);
+    border-color: fallback(value(HoverBorderColor), applyOpacity(value(SecondaryBorderColor), 0.7));
 }
 
 /*Disabled*/
