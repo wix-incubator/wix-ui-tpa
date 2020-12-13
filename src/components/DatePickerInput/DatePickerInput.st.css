@@ -2,6 +2,7 @@
     -st-from: "../../common/formatters.st";
     -st-named: color, applyOpacity, fallback, font;
 }
+
 :import {
     -st-from: "../TextField/TextField.st.css";
     -st-default: TextField;
