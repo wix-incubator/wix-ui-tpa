@@ -11,24 +11,30 @@ const VisualRadioButton = (
 visualize('RadioButton', () => {
   story('default', () => {
     Object.values(RadioButtonTheme).map(theme => {
-      snap(`${theme} / default`, <VisualRadioButton theme={theme}/>);
+      snap(`${theme} / default`, <VisualRadioButton theme={theme} />);
     });
   });
 
   story('checked', () => {
     Object.values(RadioButtonTheme).map(theme => {
-      snap(`${theme} / checked`,  <VisualRadioButton theme={theme} checked />);
+      snap(`${theme} / checked`, <VisualRadioButton theme={theme} checked />);
     });
   });
 
   story('disabled', () => {
     Object.values(RadioButtonTheme).map(theme => {
       snap(`${theme} / disabled`, <VisualRadioButton theme={theme} disabled />);
-      snap(`${theme} / disabled / checked`, <VisualRadioButton theme={theme} disabled checked />);
+      snap(
+        `${theme} / disabled / checked`,
+        <VisualRadioButton theme={theme} disabled checked />,
+      );
     });
   });
 
   story('error', () => {
-    snap(`${RadioButtonTheme.Default} / error`,  <VisualRadioButton theme={RadioButtonTheme.Default} error />);
+    snap(
+      `${RadioButtonTheme.Default} / error`,
+      <VisualRadioButton theme={RadioButtonTheme.Default} error />,
+    );
   });
 });

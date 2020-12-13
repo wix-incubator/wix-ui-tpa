@@ -16,34 +16,46 @@ class CheckboxVisual extends React.Component<any> {
 visualize('Checkbox', () => {
   story('default', () => {
     Object.values(CheckboxTheme).map(theme => {
-      snap(`${theme} / default`,  <CheckboxVisual theme={theme} />);
+      snap(`${theme} / default`, <CheckboxVisual theme={theme} />);
     });
   });
 
   story('checked', () => {
     Object.values(CheckboxTheme).map(theme => {
-      snap(`${theme} / checked`,  <CheckboxVisual theme={theme} checked />);
+      snap(`${theme} / checked`, <CheckboxVisual theme={theme} checked />);
     });
   });
 
   story('error', () => {
-    snap(`${CheckboxTheme.Default} / error`,  <CheckboxVisual theme={CheckboxTheme.Default} error />);
+    snap(
+      `${CheckboxTheme.Default} / error`,
+      <CheckboxVisual theme={CheckboxTheme.Default} error />,
+    );
   });
 
   story('disabled', () => {
     Object.values(CheckboxTheme).map(theme => {
-      snap(`${theme} / disabled`,  <CheckboxVisual theme={theme} disabled />);
-      snap(`${theme} / disabled / checked`,  <CheckboxVisual theme={theme} disabled checked />);
+      snap(`${theme} / disabled`, <CheckboxVisual theme={theme} disabled />);
+      snap(
+        `${theme} / disabled / checked`,
+        <CheckboxVisual theme={theme} disabled checked />,
+      );
     });
   });
 
   story('indeterminate', () => {
     Object.values(CheckboxTheme).map(theme => {
-      snap(`${theme} / indeterminate`,  <CheckboxVisual theme={theme} indeterminate />);
+      snap(
+        `${theme} / indeterminate`,
+        <CheckboxVisual theme={theme} indeterminate />,
+      );
     });
   });
 
   story('suffix', () => {
-    snap( `${CheckboxTheme.Box} / suffix`,  <CheckboxVisual theme={CheckboxTheme.Box} suffix="$50,000" />);
+    snap(
+      `${CheckboxTheme.Box} / suffix`,
+      <CheckboxVisual theme={CheckboxTheme.Box} suffix="$50,000" />,
+    );
   });
 });
