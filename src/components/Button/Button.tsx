@@ -90,6 +90,8 @@ class ButtonComponent extends React.Component<ButtonProps> {
       upgrade,
       children,
       className,
+      // @ts-ignore
+      disableMobileStyle,
       ...rest
     } = this.props;
 
@@ -103,7 +105,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
             data-hook={this.props['data-hook']}
             className={st(
               classes.root,
-              { priority, size, fullWidth, mobile, upgrade },
+              { priority, size, fullWidth, mobile: !disableMobileStyle && mobile, upgrade },
               className,
             )}
             {...rest}

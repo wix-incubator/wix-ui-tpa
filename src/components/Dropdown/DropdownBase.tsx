@@ -39,6 +39,8 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
     <Button
+      // @ts-ignore
+      disableMobileStyle
       upgrade={upgrade}
       fullWidth
       className={st(

@@ -62,6 +62,12 @@
     font-size: inherit;
 }
 
+.root:mobile::content {
+    flex: 1;
+    text-align: start;
+    font-size: inherit;
+}
+
 .root:mobile:size(medium),
 .root:size(medium) {
     padding: 8px 0;
