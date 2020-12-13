@@ -117,12 +117,63 @@ export default {
               params: {
                 colors: [
                   {
-                    label: 'Background color',
-                    wixParam: 'myBackgroundOverride',
+                    label: 'Background Color',
+                    wixParam: 'customBackgroundColor',
                     defaultColor: 'color-1',
                   },
+                  {
+                    label: 'Navigation Arrows Color',
+                    wixParam: 'customNavigationArrowsColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Month And Year Caption Color',
+                    wixParam: 'customMonthAndYearCaptionColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Weekday Text Color',
+                    wixParam: 'customWeekdayTextColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Day Color',
+                    wixParam: 'customDayColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Selected Day Color',
+                    wixParam: 'customSelectedDayColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Selected Day BG Color',
+                    wixParam: 'customSelectedDayBGColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Disabled Day Color',
+                    wixParam: 'customDisabledDayColor',
+                    defaultColor: 'color-8',
+                  },
                 ],
-                fonts: [],
+                fonts: [
+                  {
+                    label: 'Month And Year Caption Font',
+                    wixParam: 'customMonthAndYearCaptionFont',
+                    defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Weekday Font',
+                    wixParam: 'customWeekdayFont',
+                    defaultFont: 'arial',
+                  },
+                  {
+                    label: 'Day Font',
+                    wixParam: 'customDayFont',
+                    defaultFont: 'arial',
+                  },
+                ],
                 numbers: [],
               },
             }),
