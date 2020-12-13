@@ -28,6 +28,10 @@ export const exampleWithCheckedBox = `
 <Checkbox theme="box" checked onChange={val => console.log(val)} label="A checkbox!" />
 `;
 
+export const exampleWithDisabledBox = `
+<Checkbox theme="box" disabled onChange={val => console.log(val)} label="I'm a disabled, checked box 😶" />
+`;
+
 export const exampleWithDisabledCheckedBox = `
 <Checkbox theme="box" checked disabled onChange={val => console.log(val)} label="I'm a disabled, checked box 😶" />
 `;
