@@ -16,6 +16,7 @@ DatePickerInputMetadata.addSim({
     locale: 'en',
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
+    dateInputAriaLabel: 'Date Input',
   } as DatePickerInputProps,
 });
 
@@ -26,6 +27,7 @@ DatePickerInputMetadata.addSim({
     onChange: () => {},
     disabled: true,
     'aria-label': 'Date Picker',
+    dateInputAriaLabel: 'Date Input',
   } as DatePickerInputProps,
 });
 
@@ -38,6 +40,7 @@ DatePickerInputMetadata.addSim({
     errorMessage: 'Error Message',
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
+    dateInputAriaLabel: 'Date Input',
   } as DatePickerInputProps,
 });
 
@@ -48,6 +51,7 @@ DatePickerInputMetadata.addSim({
     onChange: () => {},
     excludePastDates: true,
     'aria-label': 'Date Picker',
+    dateInputAriaLabel: 'Date Input',
     clearButtonAriaLabel: 'Clear Button',
   } as DatePickerInputProps,
 });
@@ -60,6 +64,7 @@ DatePickerInputMetadata.addSim({
     showMonthDropdown: true,
     showYearDropdown: true,
     'aria-label': 'Date Picker',
+    dateInputAriaLabel: 'Date Input',
     clearButtonAriaLabel: 'Clear Button',
   } as DatePickerInputProps,
 });

@@ -81,6 +81,10 @@ export interface DatePickerInputProps extends TPAComponentProps {
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */
   'aria-labelledby'?: string;
+  /** Defines a string value that labels the date input element. Optional. */
+  dateInputAriaLabel?: string;
+  /** Identifies the element that labels the date input element. Optional. */
+  dateInputAriaLabelledby?: string;
   /** Defines a string value that labels the clear button element. Optional. */
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
@@ -151,6 +155,8 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       popoverAppendTo,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
+      dateInputAriaLabel,
+      dateInputAriaLabelledby,
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
     } = this.props;
@@ -176,6 +182,8 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
           onClear={this._onInputClearButtonClicked}
           clearButtonAriaLabel={clearButtonAriaLabel}
           clearButtonAriaLabelledby={clearButtonAriaLabelledby}
+          aria-label={dateInputAriaLabel}
+          aria-labelledby={dateInputAriaLabelledby}
         />
       );
     };
