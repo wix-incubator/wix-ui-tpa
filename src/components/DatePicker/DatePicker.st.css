@@ -22,7 +22,7 @@
 }
 
 .root {
-  background-color: value(defaultBgColor);
+  /*background-color: value(defaultBgColor);*/
 }
 
 .wsrCalendar {
