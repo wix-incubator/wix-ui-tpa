@@ -3,11 +3,7 @@ const path = require('path');
 const ROOT_DIR = process.cwd();
 const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args);
 
-// TODO: import the full list from components.json
-// const componentsToBundle = require(resolvePath('../.wuf/components.json'));
-const componentsToBundle = {
-  Spinner: { path: 'src/components/Spinner' },
-};
+const componentsToBundle = require(resolvePath('../.wuf/components.json'));
 
 const components = Object.keys(componentsToBundle).reduce(
   (accu, component) => ({
