@@ -155,22 +155,30 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       clearButtonAriaLabelledby,
     } = this.props;
 
-    const customInput = (
-      <TextField
-        className={classes.textField}
-        data-hook={DATA_HOOKS.DATE_INPUT}
-        prefix=""
-        suffix={<Calendar />}
-        disabled={disabled}
-        error={hasError}
-        errorMessage={errorMessage}
-        theme={inputTheme}
-        withClearButton
-        onClear={this._onInputClearButtonClicked}
-        clearButtonAriaLabel={clearButtonAriaLabel}
-        clearButtonAriaLabelledby={clearButtonAriaLabelledby}
-      />
-    );
+    const CustomInput = wsrProps => {
+      const { value: formattedValue, onFocus, onKeyDown, tabIndex } = wsrProps;
+
+      return (
+        <TextField
+          className={classes.textField}
+          data-hook={DATA_HOOKS.DATE_INPUT}
+          value={formattedValue}
+          placeholder={placeholderText}
+          suffix={<Calendar />}
+          tabIndex={tabIndex}
+          disabled={disabled}
+          error={hasError}
+          errorMessage={errorMessage}
+          theme={inputTheme}
+          withClearButton
+          onFocus={onFocus}
+          onKeyDown={onKeyDown}
+          onClear={this._onInputClearButtonClicked}
+          clearButtonAriaLabel={clearButtonAriaLabel}
+          clearButtonAriaLabelledby={clearButtonAriaLabelledby}
+        />
+      );
+    };
 
     return (
       <TPAComponentsConsumer>
@@ -188,7 +196,6 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
               value={value}
               onChange={onChange}
               onClose={onClose}
-              placeholderText={placeholderText}
               disabled={disabled}
               dateFormatV2={dateFormat}
               locale={locale}
@@ -197,7 +204,7 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
               firstDayOfWeek={firstDayOfWeek}
               showMonthDropdown={showMonthDropdown}
               showYearDropdown={showYearDropdown}
-              customInput={customInput}
+              customInput={<CustomInput />}
               width={inputWidth}
               rtl={rtl}
               selectionMode="day"
