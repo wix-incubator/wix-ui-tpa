@@ -31,11 +31,6 @@ export interface DatePickerProps extends TPAComponentProps {
   value?: Date | string;
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange(selectedDays: string | Date): void;
-  /** Custom date format, can be either:
-     `string` of tokens (see [`date-fns V2` docs](https://date-fns.org/v2.15.0/docs/format) for list of supported tokens)
-     `function` of signature `Date -> String`
-     */
-  dateFormat?: string | ((date: Date) => void);
   /** DatePicker instance locale */
   locale?: LanguageType | { distanceInWords?: {}; format?: {} };
   /** When true, past dates would be unselectable */
@@ -59,7 +54,6 @@ export interface DatePickerProps extends TPAComponentProps {
 }
 
 interface DefaultProps {
-  dateFormat: string;
   locale: LanguageType | { distanceInWords?: {}; format?: {} };
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
@@ -72,7 +66,6 @@ interface DefaultProps {
 export class DatePicker extends React.Component<DatePickerProps> {
   static displayName = 'DatePicker';
   static defaultProps: DefaultProps = {
-    dateFormat: 'LL/dd/yyyy',
     locale: 'en',
     excludePastDates: false,
     filterDate: () => true,
