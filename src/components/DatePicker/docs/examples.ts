@@ -19,8 +19,8 @@ class DatePickerExample extends React.Component {
 `;
 
 export const basicExample = buildExample(
-    'new Date()',
-    `
+  'new Date()',
+  `
     <DatePicker
         value={value}
         placeholderText="Select A Date"
@@ -30,8 +30,8 @@ export const basicExample = buildExample(
 );
 
 export const filterExample = buildExample(
-    'new Date()',
-    `
+  'new Date()',
+  `
     <DatePicker
         value={value}
         onChange={this._onChange}
@@ -41,8 +41,8 @@ export const filterExample = buildExample(
 );
 
 export const yearsAndMonthDropdowns = buildExample(
-    'new Date()',
-    `
+  'new Date()',
+  `
     <DatePicker
         value={value}
         placeholderText="Select A Date"

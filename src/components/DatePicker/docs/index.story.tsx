@@ -85,13 +85,13 @@ export default {
             {
               title: 'Filter Dates',
               description:
-                  'In this example only prior dates to the current date can be selected.',
+                'In this example only prior dates to the current date can be selected.',
               source: examples.filterExample,
             },
             {
               title: 'Years And Months Dropdowns',
               description:
-                  'Years or months dropdowns could be added for an easy selection.',
+                'Years or months dropdowns could be added for an easy selection.',
               source: examples.yearsAndMonthDropdowns,
             },
           ].map(code),
