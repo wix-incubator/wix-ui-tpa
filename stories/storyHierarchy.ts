@@ -7,6 +7,7 @@ export const StoryCategory = {
   COMPONENTS: 'Components API/Components',
   BOOKINGS: 'Components API/Bookings Components',
   DEPRECATED: 'Components API/Deprecated',
+  WIP: 'Components API/Working In Progress',
 
   TESTS: 'Tests',
 };

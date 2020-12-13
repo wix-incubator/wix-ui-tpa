@@ -1,0 +1,25 @@
+:import {
+    -st-from: "../DatePickerInput.st.css";
+    -st-default: TPADatePickerInput;
+}
+
+.root {
+    -st-mixin: TPADatePickerInput(
+            BackgroundColor '"color(--customBackgroundColor)"',
+            NavigationArrowsColor '"color(--customNavigationArrowsColor)"',
+            MonthAndYearCaptionColor '"color(--customMonthAndYearCaptionColor)"',
+            WeekdayTextColor '"color(--customWeekdayTextColor)"',
+            DayColor '"color(--customDayColor)"',
+            SelectedDayColor '"color(--customSelectedDayColor)"',
+            SelectedDayBGColor '"color(--customSelectedDayBGColor)"',
+            DisabledDayColor '"color(--customDisabledDayColor)"',
+            DateInputBGColor '"color(--customDateInputBGColor)"',
+            DateInputTextColor '"color(--customDateInputTextColor)"',
+            DateInputBorderColor '"color(--customDateInputBorderColor)"',
+
+            MonthAndYearCaptionFont '"--customMonthAndYearCaptionFont"',
+            WeekdayFont '"--customWeekdayFont"',
+            DayFont '"--customDayFont"',
+            DateInputFont '"--customDateInputFont"',
+    );
+}

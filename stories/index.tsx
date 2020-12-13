@@ -21,6 +21,7 @@ require('../src/components/ColorPicker/docs/index.story');
 require('../src/components/CopyUrlButton/docs/index.story');
 require('../src/components/Counter/docs/index.story');
 
+require('../src/components/DatePickerInput/docs/index.story');
 require('../src/components/Dialog/docs/index.story');
 require('../src/components/Divider/docs/index.story');
 require('../src/components/DotNavigation/docs/index.story');
