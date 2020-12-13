@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
+import { snap, story, visualize } from 'storybook-snapper';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Checkbox, CheckboxTheme } from './';
 
@@ -7,80 +7,43 @@ class CheckboxVisual extends React.Component<any> {
   render() {
     return (
       <VisualTestContainer>
-        <Checkbox {...this.props} onChange={() => {}} />
+        <Checkbox {...this.props} label="Amazing" onChange={() => {}} />
       </VisualTestContainer>
     );
   }
 }
 
-const tests = [
-  {
-    describe: 'basic',
-    its: [
-      {
-        it: 'default',
-        props: {
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-      {
-        it: 'error',
-        props: {
-          error: true,
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-      {
-        it: 'disabled',
-        props: {
-          disabled: true,
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-      {
-        it: 'checked',
-        props: {
-          checked: true,
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-      {
-        it: 'indeterminate',
-        props: {
-          indeterminate: true,
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-      {
-        it: 'box',
-        props: {
-          theme: CheckboxTheme.Box,
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-      {
-        it: 'suffix',
-        props: {
-          suffix: '$50,000',
-          theme: CheckboxTheme.Box,
-          onChange: () => {},
-          label: 'Amazing',
-        },
-      },
-    ],
-  },
-];
+visualize('Checkbox', () => {
+  story('default', () => {
+    Object.values(CheckboxTheme).map(theme => {
+      snap(`${theme} / default`,  <CheckboxVisual theme={theme} />);
+    });
+  });
 
-tests.forEach(({ describe, its }) => {
-  its.forEach(({ it, props }) => {
-    storiesOf(`Checkbox/${describe}`, module).add(it, () => (
-      <CheckboxVisual {...props} />
-    ));
+  story('checked', () => {
+    Object.values(CheckboxTheme).map(theme => {
+      snap(`${theme} / checked`,  <CheckboxVisual theme={theme} checked />);
+    });
+  });
+
+  story('error', () => {
+    snap(`${CheckboxTheme.Default} / error`,  <CheckboxVisual theme={CheckboxTheme.Default} error />);
+  });
+
+  story('disabled', () => {
+    Object.values(CheckboxTheme).map(theme => {
+      snap(`${theme} / disabled`,  <CheckboxVisual theme={theme} disabled />);
+      snap(`${theme} / disabled / checked`,  <CheckboxVisual theme={theme} disabled checked />);
+    });
+  });
+
+  story('indeterminate', () => {
+    Object.values(CheckboxTheme).map(theme => {
+      snap(`${theme} / indeterminate`,  <CheckboxVisual theme={theme} indeterminate />);
+    });
+  });
+
+  story('suffix', () => {
+    snap( `${CheckboxTheme.Box} / suffix`,  <CheckboxVisual theme={CheckboxTheme.Box} suffix="$50,000" />);
   });
 });
