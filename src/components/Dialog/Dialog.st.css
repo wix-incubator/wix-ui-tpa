@@ -23,7 +23,7 @@
 }
 
 .root {
-    -st-states: mobile, rtl;
+    -st-states: mobile, rtl, wired;
 }
 
 .contentWrapper {
@@ -63,21 +63,21 @@
 }
 
 /* New style overrides capabilities */
-.skin-fixed .contentWrapper {
+.root:not(:wired).skin-fixed .contentWrapper {
     background-color: value(FixedBackgroundColor);
 }
 
-.skin-fixed .closeIconButton {
+.root:not(:wired).skin-fixed .closeIconButton {
     -st-mixin: skin-line(
         IconColor value(FixedCloseButtonColor)
     );
 }
 
-.skin-wired .contentWrapper {
+.root:wired.skin-wired .contentWrapper {
     background-color: value(WiredBackgroundColor);
 }
 
-.skin-wired .closeIconButton {
+.root:wired.skin-wired .closeIconButton {
     -st-mixin: skin-line(
         IconColor value(WiredCloseButtonColor)
     );
