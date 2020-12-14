@@ -13,8 +13,8 @@ export interface DatePickerDriver extends BaseUniDriver {
 }
 
 export const datePickerDriverFactory = (
-    base: UniDriver,
-    body: UniDriver,
+  base: UniDriver,
+  body: UniDriver,
 ): DatePickerDriver => {
   const wsrCalendarNode = base.$(`[data-hook="${DATA_HOOKS.WSR_CALENDAR}"]`);
   const WSRCalendarDriver = WSRCalendarDriverFactory(wsrCalendarNode, body);
