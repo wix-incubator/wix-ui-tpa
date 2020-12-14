@@ -46,12 +46,13 @@ visualize('DatePickerInput', () => {
         onDone={done}
       />
     ));
-    snap('Without a selected date',
-        <DatePickerInput
-            value=""
-            onChange={() => {}}
-            placeholderText="Select A Date"
-        />
+    snap(
+      'Without a selected date',
+      <DatePickerInput
+        value=""
+        onChange={() => {}}
+        placeholderText="Select A Date"
+      />,
     );
     snap('FilterDate - Prior for today dates (includes today)', done => (
       <DatePickerInputVisualComponent
