@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 export enum Theme {
-  WIRED = 'WIRED',
-  BW = 'BW',
+  WIRED = 'wired',
+  BW = 'bw',
 }
 
 export interface IThemeContext {

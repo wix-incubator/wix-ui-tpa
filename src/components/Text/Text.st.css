@@ -31,45 +31,45 @@
 }
 
 .root {
-    -st-states: typography(enum(smallTitle, runningText, listText, largeTitle)), mobile;
+    -st-states: typography(enum(smallTitle, runningText, listText, largeTitle)), mobile, theme(enum(bw, wired));
+}
+
+.root:theme(bw) {
+    color: color(fallback(value(MainTextColor), black));
+}
+
+.root:theme(wired) {
+    color: color(fallback(value(MainTextColor), value(TextColor)));
 }
 
 .root:typography(smallTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(SmallTitleFont)));
 }
 
 .root:typography(runningText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(RunningTextFont)));
 }
 
 .root:typography(listText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(ListTextFont)));
 }
 
 .root:typography(largeTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(LargeTitleFont)));
 }
 
 .root:mobile:typography(smallTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(MobileSmallTitleFont)));
 }
 
 .root:mobile:typography(runningText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(MobileRunningTextFont)));
 }
 
 .root:mobile:typography(listText) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(MobileListTextFont)));
 }
 
 .root:mobile:typography(largeTitle) {
-    color: color(fallback(value(MainTextColor), value(TextColor)));
     font: fallback(font(value(MainTextFont)), font(value(MobileLargeTitleFont)));
 }

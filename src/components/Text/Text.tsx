@@ -5,6 +5,7 @@ import {
   TPAComponentsConsumer,
   TPAComponentsContext,
 } from '../TPAComponentsConfig';
+import { ThemeContextConsumer } from '../internal/ThemeContext/ThemeContext';
 import { TPAComponentProps } from '../../types';
 
 export interface TextProps extends TPAComponentProps {
@@ -27,25 +28,33 @@ export class Text extends React.Component<TextProps> {
 
     return (
       <TPAComponentsConsumer>
-        {({ mobile }) =>
-          React.createElement(
-            tagName || DEFAULT_TAG_NAME,
-            {
-              className: st(
-                classes.root,
+        {({ mobile }) => (
+          <ThemeContextConsumer>
+            {({ theme }) =>
+              React.createElement(
+                tagName || DEFAULT_TAG_NAME,
                 {
-                  typography,
-                  mobile,
+                  className: st(
+                    classes.root,
+                    {
+                      typography,
+                      mobile,
+                      theme,
+                    },
+                    className,
+                  ),
+                  'data-hook': this.props['data-hook'],
+                  role,
+                  id,
                 },
-                className,
-              ),
-              'data-hook': this.props['data-hook'],
-              role,
-              id,
-            },
-            children,
-          )
-        }
+                <>
+                  {' '}
+                  {theme} {children}
+                </>,
+              )
+            }
+          </ThemeContextConsumer>
+        )}
       </TPAComponentsConsumer>
     );
   }
