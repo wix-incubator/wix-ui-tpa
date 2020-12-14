@@ -67,7 +67,11 @@ export class DialogWiringExample extends React.Component {
             >
               SECONDARY
             </Button>
-            <Button upgrade style={{ marginLeft: '10px' }} priority={PRIORITY.primary}>
+            <Button
+              upgrade
+              style={{ marginLeft: '10px' }}
+              priority={PRIORITY.primary}
+            >
               PRIMARY
             </Button>
           </div>
