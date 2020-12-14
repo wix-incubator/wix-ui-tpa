@@ -63,29 +63,21 @@
 }
 
 /* New style overrides capabilities */
-.skin-fixed {
-    -st-extends: root;
-}
-
-.skin-wired {
-    -st-extends: root;
-}
-
-.skin-fixed:not(:wired) .contentWrapper {
+.root:not(:wired).skin-fixed .contentWrapper {
     background-color: value(FixedBackgroundColor);
 }
 
-.skin-fixed:not(:wired) .closeIconButton {
+.root:not(:wired).skin-fixed .closeIconButton {
     -st-mixin: skin-line(
         IconColor value(FixedCloseButtonColor)
     );
 }
 
-.skin-wired:wired .contentWrapper {
+.root:wired.skin-wired .contentWrapper {
     background-color: value(WiredBackgroundColor);
 }
 
-.skin-wired:wired .closeIconButton {
+.root:wired.skin-wired .closeIconButton {
     -st-mixin: skin-line(
         IconColor value(WiredCloseButtonColor)
     );
