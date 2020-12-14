@@ -7,10 +7,7 @@ visualize('DatePicker', () => {
   story('simple', () => {
     snap(
       'default props',
-      <DatePicker
-          value={new Date('2019/12/15')}
-          onChange={() => {}}
-      />,
+      <DatePicker value={new Date('2019/12/15')} onChange={() => {}} />,
     );
     snap(
       'FilterDate - Prior for today dates (includes today)',
