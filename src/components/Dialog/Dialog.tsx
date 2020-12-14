@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { DATA_HOOKS } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
+import { Theme, ThemeContextProvider } from '../internal/ThemeContext';
 import { Modal } from '../internal/Modal';
 import { IconButton } from '../IconButton';
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
 import { TPAComponentProps } from '../../types';
-import { st, classes } from './Dialog.st.css';
+import { classes, st } from './Dialog.st.css';
 
 export interface DialogProps extends TPAComponentProps {
   /** Whether the modal is opened */
@@ -82,28 +83,32 @@ export class Dialog extends React.Component<DialogProps> {
               focusTrap={!manualFocus}
               onRequestClose={onClose}
             >
-              <div
-                className={`${classes.contentWrapper} ${contentClassName ||
-                  ''}`}
-                role="dialog"
-                aria-modal="true"
-                aria-label={ariaLabel}
-                aria-labelledby={ariaLabelledBy}
-                aria-describedby={ariaDescribedBy}
+              <ThemeContextProvider
+                value={{ theme: wiredToSiteColors ? Theme.WIRED : Theme.BW }}
               >
-                <div className={classes.closeButtonWrapper}>
-                  <IconButton
-                    className={classes.closeIconButton}
-                    data-hook={DATA_HOOKS.CLOSE_BTN}
-                    aria-label={closeButtonAriaLabel}
-                    aria-labelledby={closeButtonAriaLabelledby}
-                    innerRef={closeButtonRef}
-                    onClick={onClose}
-                    icon={<CloseIcon />}
-                  />
+                <div
+                  className={`${classes.contentWrapper} ${contentClassName ||
+                    ''}`}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={ariaLabel}
+                  aria-labelledby={ariaLabelledBy}
+                  aria-describedby={ariaDescribedBy}
+                >
+                  <div className={classes.closeButtonWrapper}>
+                    <IconButton
+                      className={classes.closeIconButton}
+                      data-hook={DATA_HOOKS.CLOSE_BTN}
+                      aria-label={closeButtonAriaLabel}
+                      aria-labelledby={closeButtonAriaLabelledby}
+                      innerRef={closeButtonRef}
+                      onClick={onClose}
+                      icon={<CloseIcon />}
+                    />
+                  </div>
+                  <div className={classes.dialogContent}>{children}</div>
                 </div>
-                <div className={classes.dialogContent}>{children}</div>
-              </div>
+              </ThemeContextProvider>
             </Modal>
           </div>
         )}
