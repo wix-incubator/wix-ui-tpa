@@ -8,6 +8,11 @@
     -st-named: color, fallback, calculate, font, applyOpacity, string, smartContrast;
 }
 
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: disabledColor;
+}
+
 :vars {
     /*Constance*/
     MinWidth: 100px;
@@ -18,8 +23,8 @@
     BorderWidth: 1;
     BorderRadius: 0;
     TinyFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.43em'}";
-    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";	
-    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";	 
+    SmallFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    MediumFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     LargeFont: "{theme: 'Body-M', size: '20px', lineHeight: '1.5em'}";
     MobileMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.44em'}";
 }
@@ -63,11 +68,23 @@
     PrimaryBorderWidth: fallback(value(MainBorderWidth), 0px);
     PrimaryBorderColor: color(fallback(value(MainBorderColor), value(PrimaryColor)));
     PrimaryBorderRadius: fallback(value(MainBorderRadius), value(BorderRadius));
+
+    BWPrimaryTextColor: color(fallback(value(MainTextColor), white));
+    BWPrimaryTextHoverColor: color(fallback(value(MainTextColor), rgba(255, 255, 255, 0.7)));
+    BWPrimaryBackgroundColor: color(fallback(value(MainBackgroundColor), black));
+    BWPrimaryBackgroundHoverColor: color(fallback(value(MainBackgroundColor), rgba(0, 0, 0, 0.7)));
+
+    BWSecondaryTextColor: color(fallback(value(MainTextColor), black));
+    BWSecondaryTextHoverColor: color(fallback(value(MainTextColor), rgba(0, 0, 0, 0.7)));
+    BWSecondaryBorderColor: color(fallback(value(MainBorderColor), black));
+    BWSecondaryBorderHoverColor: color(fallback(value(MainBorderColor), rgba(0, 0, 0, 0.7)));
+
+    BWDisabledColor: value(disabledColor);
 }
 
 .root {
     -st-extends: ButtonNext;
-    -st-states: priority(enum(primary, secondary, basic, basicSecondary)), size(enum(tiny, small, medium, large)), fullWidth, mobile, upgrade;
+    -st-states: priority(enum(primary, secondary, basic, basicSecondary)), size(enum(tiny, small, medium, large)), fullWidth, mobile, upgrade, theme(enum(bw, wired));
 
     min-width: value(MinWidth);
     border-style: solid;
@@ -96,17 +113,32 @@
 }
 
 .root:priority(basic) {
-    color: value(PrimaryTextColor);
-    background-color: value(BasicBackgroundColor);
     border-width: value(PrimaryBorderWidth);
 }
 
-.root:priority(basic):active,
-.root:priority(basic):focus,
-.root:priority(basic):hover {
+.root:theme(wired):priority(basic) {
+    color: value(PrimaryTextColor);
+    background-color: value(BasicBackgroundColor);
+}
+
+.root:theme(bw):priority(basic) {
+    color: value(BWPrimaryTextColor);
+    background-color: value(BWPrimaryBackgroundColor);
+}
+
+.root:theme(wired):priority(basic):active,
+.root:theme(wired):priority(basic):focus,
+.root:theme(wired):priority(basic):hover {
     background-color: applyOpacity(value(BasicBackgroundColor), 0.7);
     background-color: smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(BasicBackgroundColor), 0.7));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
+}
+
+.root:theme(bw):priority(basic):active,
+.root:theme(bw):priority(basic):focus,
+.root:theme(bw):priority(basic):hover {
+    color: value(BWPrimaryTextHoverColor);
+    background-color: value(BWPrimaryBackgroundHoverColor);
 }
 
 /*BasicSecondary*/
@@ -117,10 +149,18 @@
 }
 
 .root:priority(basicSecondary) {
-    color: value(BasicSecondaryTextColor);
-    background-color: color(fallback(value(MainBackgroundColor), transparent));
-    border-color: value(BasicSecondaryBorderColor);
     border-width: fallback(value(MainBorderWidth), 1px);
+    background-color: color(fallback(value(MainBackgroundColor), transparent));
+}
+
+.root:theme(wired):priority(basicSecondary) {
+    color: value(BasicSecondaryTextColor);
+    border-color: value(BasicSecondaryBorderColor);
+}
+
+.root:theme(bw):priority(basicSecondary) {
+    color: value(BWSecondaryTextColor);
+    border-color: value(BWSecondaryBorderColor);
 }
 
 .root:priority(basicSecondary):active,
@@ -130,6 +170,13 @@
     border-color: applyOpacity(value(BasicSecondaryBorderColor), 0.7);
 }
 
+.root:priority(basicSecondary):active,
+.root:priority(basicSecondary):focus,
+.root:priority(basicSecondary):hover {
+    color: value(BWSecondaryTextHoverColor);
+    border-color: value(BWSecondaryBorderHoverColor);
+}
+
 /*Primary*/
 
 :vars {
@@ -137,17 +184,32 @@
 }
 
 .root:priority(primary) {
-    color: value(PrimaryTextColor);
-    background-color: value(PrimaryBackgroundColor);
     border-width: value(PrimaryBorderWidth);
 }
 
-.root:priority(primary):active,
-.root:priority(primary):focus,
-.root:priority(primary):hover {
+.root:theme(wired):priority(primary) {
+    color: value(PrimaryTextColor);
+    background-color: value(PrimaryBackgroundColor);
+}
+
+.root:theme(bw):priority(primary) {
+    color: value(BWPrimaryTextColor);
+    background-color: value(BWPrimaryBackgroundColor);
+}
+
+.root:theme(wired):priority(primary):active,
+.root:theme(wired):priority(primary):focus,
+.root:theme(wired):priority(primary):hover {
     background-color: applyOpacity(value(PrimaryBackgroundColor), 0.7);
     background-color: smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(PrimaryBackgroundColor), 0.7));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
+}
+
+.root:theme(bw):priority(primary):active,
+.root:theme(bw):priority(primary):focus,
+.root:theme(bw):priority(primary):hover {
+    color: value(BWPrimaryTextHoverColor);
+    background-color: value(BWPrimaryBackgroundHoverColor);
 }
 
 /*Secondary*/
@@ -158,30 +220,56 @@
 }
 
 .root:priority(secondary) {
-    color: value(SecondaryTextColor);
     background-color: color(fallback(value(MainBackgroundColor), transparent));
-    border-color: value(SecondaryBorderColor);
     border-width: fallback(value(MainBorderWidth), 1px);
 }
 
-.root:priority(secondary):active,
-.root:priority(secondary):focus,
-.root:priority(secondary):hover {
+.root:theme(wired):priority(secondary) {
+    color: value(SecondaryTextColor);
+    border-color: value(SecondaryBorderColor);
+}
+
+.root:theme(bw):priority(secondary) {
+    color: value(BWSecondaryTextColor);
+    border-color: value(BWSecondaryBorderColor);
+}
+
+.root:theme(wired):priority(secondary):active,
+.root:theme(wired):priority(secondary):focus,
+.root:theme(wired):priority(secondary):hover {
     color: applyOpacity(value(SecondaryTextColor), 0.7);
     border-color: applyOpacity(value(SecondaryBorderColor), 0.7);
 }
 
+.root:theme(bw):priority(secondary):active,
+.root:theme(bw):priority(secondary):focus,
+.root:theme(bw):priority(secondary):hover {
+    color: value(BWSecondaryTextHoverColor);
+    border-color: value(BWSecondaryBorderHoverColor);
+}
+
 /*Disabled*/
 
-.root:priority(basic):disabled,
-.root:priority(primary):disabled {
+.root:theme(wired):priority(basic):disabled,
+.root:theme(wired):priority(primary):disabled {
     background-color: color(value(DisabledColor));
 }
 
-.root:priority(basicSecondary):disabled,
-.root:priority(secondary):disabled {
+.root:theme(bw):priority(basic):disabled,
+.root:theme(bw):priority(primary):disabled {
+    background-color: value(BWDisabledColor);
+}
+
+.root:theme(wired):priority(basicSecondary):disabled,
+.root:theme(wired):priority(secondary):disabled {
     color: color(value(DisabledColor));
     border-color: color(value(DisabledColor));
+}
+
+.root:theme(bw):priority(basicSecondary):disabled,
+.root:theme(bw):priority(secondary):disabled {
+    color: value(BWDisabledColor);
+    border-color: value(BWDisabledColor);
 }
 
 /*Tiny*/

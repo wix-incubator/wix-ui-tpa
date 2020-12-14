@@ -8,6 +8,7 @@ import {
 } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import { deprecationLog } from '../../common/deprecationLog';
+import { ThemeContextConsumer } from '../internal/ThemeContext';
 
 export enum PRIORITY {
   basic = 'basic',
@@ -73,18 +74,22 @@ class ButtonComponent extends React.Component<ButtonProps> {
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
-          <ButtonNext
-            {...this._getDataAttributes(mobile)}
-            ref={innerRef}
-            children={children}
-            data-hook={this.props['data-hook']}
-            className={st(
-              classes.root,
-              { priority, size, fullWidth, mobile, upgrade },
-              className,
+          <ThemeContextConsumer>
+            {({ theme }) => (
+              <ButtonNext
+                {...this._getDataAttributes(mobile)}
+                ref={innerRef}
+                children={children}
+                data-hook={this.props['data-hook']}
+                className={st(
+                  classes.root,
+                  { priority, size, fullWidth, mobile, upgrade, theme },
+                  className,
+                )}
+                {...rest}
+              />
             )}
-            {...rest}
-          />
+          </ThemeContextConsumer>
         )}
       </TPAComponentsConsumer>
     );
