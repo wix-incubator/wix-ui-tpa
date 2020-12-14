@@ -47,10 +47,7 @@ export class Text extends React.Component<TextProps> {
                   role,
                   id,
                 },
-                <>
-                  {' '}
-                  {theme} {children}
-                </>,
+                children,
               )
             }
           </ThemeContextConsumer>
