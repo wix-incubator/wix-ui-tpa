@@ -1,9 +1,6 @@
 import * as React from 'react';
-import { st, classes } from './DropdownNativeSelect.st.css';
-import { st as buttonSt } from '../Button/Button.st.css';
 import { DATA_ATTRIBUTES, DATA_HOOKS, ICON_SIZE } from './constants';
 import { ReactComponent as ArrowIcon } from '../../assets/icons/CaretDown.svg';
-import { PRIORITY, SIZE } from '../Button';
 import classNames from 'classnames';
 import { DropdownOptionProps } from './DropdownOption';
 import { TPAComponentsContext } from '../TPAComponentsConfig';
@@ -11,6 +8,8 @@ import { TPAComponentProps } from '../../types';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
 import { Tooltip } from '../Tooltip';
+import { st as buttonSt } from '../Button/Button.st.css';
+import { st, classes } from './DropdownNativeSelect.st.css';
 
 interface DropdownNativeSelectProps extends TPAComponentProps {
   onSelect(selectedOption: DropdownOptionProps): void;
@@ -105,10 +104,7 @@ export class DropdownNativeSelect extends React.Component<
     const shouldRenderIcon = selectedOption && !!selectedOption.icon;
 
     const buttonStyle = buttonSt(classes.root, {
-      priority: PRIORITY.basic,
-      size: SIZE.medium,
       fullWidth: true,
-      mobile: true,
     });
 
     const nativeSelectStyles = st(
