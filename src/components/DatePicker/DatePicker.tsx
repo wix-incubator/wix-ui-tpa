@@ -4,6 +4,7 @@ import { TPAComponentProps } from '../../types';
 import WSRCalendar from 'wix-style-react/dist/src/Calendar';
 
 import { st, classes } from './DatePicker.st.css';
+import { DATA_HOOKS } from './constants';
 import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export type LanguageType =
@@ -100,6 +101,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
           >
             <WSRCalendar
               className={classes.calendar}
+              dataHook={DATA_HOOKS.WSR_CALENDAR}
               value={value}
               onChange={onChange}
               locale={locale}
