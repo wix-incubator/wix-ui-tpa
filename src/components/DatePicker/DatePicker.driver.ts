@@ -9,31 +9,31 @@ import { DATA_HOOKS } from './constants';
 import { calendarUniDriverFactory as WSRCalendarUniDriverFactory } from 'wix-style-react/dist/src/Calendar/Calendar.uni.driver';
 
 export interface DatePickerDriver extends BaseUniDriver {
-  getCurrentMonthWithYear: () => Promise<string>;
-  getNthWeekDayName: (n: number) => Promise<string>;
-  clickOnNthDay: (n: number) => Promise<any>;
-  clickDay: (date: Date) => Promise<any>;
-  isDayActive: (date: Date) => Promise<boolean>;
-  clickOnYearDropdown: () => Promise<any>;
-  clickOnMonthDropdown: () => Promise<any>;
-  clickOnNthYear: (n: number) => Promise<any>;
-  clickOnPrevMonthButton: () => Promise<any>;
-  clickOnNextMonthButton: () => Promise<any>;
-  isYearDropdownExists: () => Promise<boolean>;
-  isYearCaptionExists: () => Promise<boolean>;
-  isMonthDropdownExists: () => Promise<boolean>;
-  isMonthCaptionExists: () => Promise<boolean>;
-  getMonthCaption: () => Promise<string>;
-  getMonthDropdownLabel: () => Promise<string>;
-  getSelectedYear: () => Promise<string>;
-  getFocusedDay: () => Promise<string | null>;
-  pressLeftArrow: () => Promise<any>;
-  pressRightArrow: () => Promise<any>;
-  getSelectedDay: () => Promise<string>;
-  triggerKeyDown: () => Promise<any>;
-  getMonthDropdownDriver: () => Promise<UniDriver>;
-  getYearDropdownDriver: () => Promise<UniDriver>;
-  getSelectedDays: () => Promise<number>;
+  getCurrentMonthWithYear(): Promise<string>;
+  getNthWeekDayName(n: number): Promise<string>;
+  clickOnNthDay(n: number): Promise<any>;
+  clickDay(date: Date): Promise<any>;
+  isDayActive(date: Date): Promise<boolean>;
+  clickOnYearDropdown(): Promise<any>;
+  clickOnMonthDropdown(): Promise<any>;
+  clickOnNthYear(n: number): Promise<any>;
+  clickOnPrevMonthButton(): Promise<any>;
+  clickOnNextMonthButton(): Promise<any>;
+  isYearDropdownExists(): Promise<boolean>;
+  isYearCaptionExists(): Promise<boolean>;
+  isMonthDropdownExists(): Promise<boolean>;
+  isMonthCaptionExists(): Promise<boolean>;
+  getMonthCaption(): Promise<string>;
+  getMonthDropdownLabel(): Promise<string>;
+  getSelectedYear(): Promise<string>;
+  getFocusedDay(): Promise<string | null>;
+  pressLeftArrow(): Promise<any>;
+  pressRightArrow(): Promise<any>;
+  getSelectedDay(): Promise<string>;
+  triggerKeyDown(): Promise<any>;
+  getMonthDropdownDriver(): Promise<UniDriver>;
+  getYearDropdownDriver(): Promise<UniDriver>;
+  getSelectedDays(): Promise<number>;
 }
 
 export const datePickerDriverFactory = (
@@ -48,12 +48,14 @@ export const datePickerDriverFactory = (
     /**
      * Get the month and years labels of the current displayed month in the following format `{Month} {year}`
      */
-    getCurrentMonthWithYear: async () => WSRCalendarDriver.getCurrentMonthWithYear(),
+    getCurrentMonthWithYear: async () =>
+      WSRCalendarDriver.getCurrentMonthWithYear(),
     /**
      * Get the the day name label of a specific date
      * @param n - the day index
      */
-    getNthWeekDayName: async (n: number) => WSRCalendarDriver.getNthWeekDayName(n),
+    getNthWeekDayName: async (n: number) =>
+      WSRCalendarDriver.getNthWeekDayName(n),
     /**
      * Click on the Nth day in the current displayed month
      * @param n - the day index
@@ -78,22 +80,28 @@ export const datePickerDriverFactory = (
      */
     clickOnMonthDropdown: async () => WSRCalendarDriver.clickOnMonthDropdown(),
     clickOnNthYear: async (n: number) => WSRCalendarDriver.clickOnNthYear(n),
-    clickOnPrevMonthButton: async () => WSRCalendarDriver.clickOnPrevMonthButton(),
-    clickOnNextMonthButton: async () => WSRCalendarDriver.clickOnNextMonthButton(),
+    clickOnPrevMonthButton: async () =>
+      WSRCalendarDriver.clickOnPrevMonthButton(),
+    clickOnNextMonthButton: async () =>
+      WSRCalendarDriver.clickOnNextMonthButton(),
     isYearDropdownExists: async () => WSRCalendarDriver.isYearDropdownExists(),
     isYearCaptionExists: async () => WSRCalendarDriver.isYearCaptionExists(),
-    isMonthDropdownExists: async () => WSRCalendarDriver.isMonthDropdownExists(),
+    isMonthDropdownExists: async () =>
+      WSRCalendarDriver.isMonthDropdownExists(),
     isMonthCaptionExists: async () => WSRCalendarDriver.isMonthCaptionExists(),
     getMonthCaption: async () => WSRCalendarDriver.getMonthCaption(),
-    getMonthDropdownLabel: async () => WSRCalendarDriver.getMonthDropdownLabel(),
+    getMonthDropdownLabel: async () =>
+      WSRCalendarDriver.getMonthDropdownLabel(),
     getSelectedYear: async () => WSRCalendarDriver.getSelectedYear(),
     getFocusedDay: async () => WSRCalendarDriver.getFocusedDay(),
     pressLeftArrow: async () => WSRCalendarDriver.pressLeftArrow(),
     pressRightArrow: async () => WSRCalendarDriver.pressRightArrow(),
     getSelectedDay: async () => WSRCalendarDriver.getSelectedDay(),
     triggerKeyDown: async () => WSRCalendarDriver.triggerKeyDown(),
-    getMonthDropdownDriver: async () => WSRCalendarDriver.getMonthDropdownDriver(),
-    getYearDropdownDriver: async () => WSRCalendarDriver.getYearDropdownDriver(),
+    getMonthDropdownDriver: async () =>
+      WSRCalendarDriver.getMonthDropdownDriver(),
+    getYearDropdownDriver: async () =>
+      WSRCalendarDriver.getYearDropdownDriver(),
     getSelectedDays: async () => WSRCalendarDriver.getSelectedDays(),
   };
 };

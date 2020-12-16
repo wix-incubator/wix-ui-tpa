@@ -28,7 +28,7 @@ describe('DatePicker', () => {
 
   it('should display the correct month and year captions', async () => {
     const date = new Date(2019, 11, 15);
-    const driver = bootstrap({ value: date, });
+    const driver = bootstrap({ value: date });
 
     expect(await driver.getMonthCaption()).toBe('December');
   });
@@ -36,7 +36,7 @@ describe('DatePicker', () => {
   it('should call onChange with the clicked day', async () => {
     const onChange = jest.fn();
     const date = new Date(2019, 11, 15);
-    const driver = bootstrap({ value: date, onChange, });
+    const driver = bootstrap({ value: date, onChange });
 
     expect(onChange).toHaveBeenCalledTimes(0);
 
