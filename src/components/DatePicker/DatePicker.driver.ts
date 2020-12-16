@@ -30,10 +30,9 @@ export interface DatePickerDriver extends BaseUniDriver {
   pressLeftArrow(): Promise<any>;
   pressRightArrow(): Promise<any>;
   getSelectedDay(): Promise<string>;
-  triggerKeyDown(): Promise<any>;
+  triggerKeyDown(key: string): Promise<any>;
   getMonthDropdownDriver(): Promise<UniDriver>;
   getYearDropdownDriver(): Promise<UniDriver>;
-  getSelectedDays(): Promise<number>;
 }
 
 export const datePickerDriverFactory = (
@@ -45,6 +44,7 @@ export const datePickerDriverFactory = (
 
   return {
     ...baseUniDriverFactory(base),
+
     /**
      * Get the month and years labels of the current displayed month in the following format `{Month} {year}`
      */
@@ -79,29 +79,81 @@ export const datePickerDriverFactory = (
      * Click on the month dropdown
      */
     clickOnMonthDropdown: async () => WSRCalendarDriver.clickOnMonthDropdown(),
+    /**
+     * Click on the Nth dropdown option in the year dropdown
+     * @param n - the index of the year in the list
+     */
     clickOnNthYear: async (n: number) => WSRCalendarDriver.clickOnNthYear(n),
+    /**
+     * Click on the prev month button
+     */
     clickOnPrevMonthButton: async () =>
       WSRCalendarDriver.clickOnPrevMonthButton(),
+    /**
+     * Click on the next month button
+     */
     clickOnNextMonthButton: async () =>
       WSRCalendarDriver.clickOnNextMonthButton(),
+    /**
+     * Check whether the year dropdown exist
+     */
     isYearDropdownExists: async () => WSRCalendarDriver.isYearDropdownExists(),
+    /**
+     * Check whether the year caption exist
+     */
     isYearCaptionExists: async () => WSRCalendarDriver.isYearCaptionExists(),
+    /**
+     * Check whether the month dropdown exist
+     */
     isMonthDropdownExists: async () =>
       WSRCalendarDriver.isMonthDropdownExists(),
+    /**
+     * Check whether the month caption exist
+     */
     isMonthCaptionExists: async () => WSRCalendarDriver.isMonthCaptionExists(),
+    /**
+     * Get the month caption text
+     */
     getMonthCaption: async () => WSRCalendarDriver.getMonthCaption(),
+    /**
+     * Get the label of the selected month dropdown option
+     */
     getMonthDropdownLabel: async () =>
       WSRCalendarDriver.getMonthDropdownLabel(),
+    /**
+     * Get the label of the selected year dropdown option
+     */
     getSelectedYear: async () => WSRCalendarDriver.getSelectedYear(),
+    /**
+     *  Returns the text of the focused day or `null` if there is no focused day
+    */
     getFocusedDay: async () => WSRCalendarDriver.getFocusedDay(),
+    /**
+     * Press left arrow
+     */
     pressLeftArrow: async () => WSRCalendarDriver.pressLeftArrow(),
+    /**
+     * Press right arrow
+     */
     pressRightArrow: async () => WSRCalendarDriver.pressRightArrow(),
+    /**
+     * Get the selected day
+     */
     getSelectedDay: async () => WSRCalendarDriver.getSelectedDay(),
-    triggerKeyDown: async () => WSRCalendarDriver.triggerKeyDown(),
+    /**
+     * Trigger key down event
+     * @param key
+     */
+    triggerKeyDown: async (key ) => WSRCalendarDriver.triggerKeyDown({ key }),
+    /**
+     * Get the month dropdown driver
+     */
     getMonthDropdownDriver: async () =>
       WSRCalendarDriver.getMonthDropdownDriver(),
+    /**
+     * Get the year dropdown driver
+     */
     getYearDropdownDriver: async () =>
       WSRCalendarDriver.getYearDropdownDriver(),
-    getSelectedDays: async () => WSRCalendarDriver.getSelectedDays(),
   };
 };

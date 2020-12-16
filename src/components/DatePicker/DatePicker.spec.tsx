@@ -26,11 +26,12 @@ describe('DatePicker', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should display the correct month and year captions', async () => {
+  it('should display the correct selected date', async () => {
     const date = new Date(2019, 11, 15);
     const driver = bootstrap({ value: date });
 
-    expect(await driver.getMonthCaption()).toBe('December');
+    expect(await driver.getSelectedDay()).toBe('15');
+    expect(await driver.getCurrentMonthWithYear()).toBe('December 2019');
   });
 
   it('should call onChange with the clicked day', async () => {
