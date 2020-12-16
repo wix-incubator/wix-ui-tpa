@@ -126,7 +126,7 @@ export const datePickerDriverFactory = (
     getSelectedYear: async () => WSRCalendarDriver.getSelectedYear(),
     /**
      *  Returns the text of the focused day or `null` if there is no focused day
-    */
+     */
     getFocusedDay: async () => WSRCalendarDriver.getFocusedDay(),
     /**
      * Press left arrow
@@ -144,7 +144,7 @@ export const datePickerDriverFactory = (
      * Trigger key down event
      * @param key
      */
-    triggerKeyDown: async (key ) => WSRCalendarDriver.triggerKeyDown({ key }),
+    triggerKeyDown: async key => WSRCalendarDriver.triggerKeyDown({ key }),
     /**
      * Get the month dropdown driver
      */
