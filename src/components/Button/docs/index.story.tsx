@@ -112,8 +112,18 @@ export default {
                     defaultColor: 'color-5',
                   },
                   {
+                    label: 'Hover Background Color',
+                    wixParam: 'hoverBackgroundColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
                     label: 'Border Color',
                     wixParam: 'borderColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Hover Border Color',
+                    wixParam: 'hoverBorderColor',
                     defaultColor: 'color-8',
                   },
                 ],
