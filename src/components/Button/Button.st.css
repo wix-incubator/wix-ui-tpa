@@ -105,15 +105,15 @@
     BasicBackgroundColor: color(fallback(value(MainBackgroundColor), value(BasicColor)));
 }
 
-.root:priority(basic) {
+.root, .root:priority(basic) {
     color: value(PrimaryTextColor);
     background-color: value(BasicBackgroundColor);
     border-width: value(PrimaryBorderWidth);
 }
 
-.root:priority(basic):active,
-.root:priority(basic):focus,
-.root:priority(basic):hover {
+.root:active, .root:priority(basic):active,
+.root:focus, .root:priority(basic):focus,
+.root:hover, .root:priority(basic):hover {
     background-color: color(fallback(value(HoverBackgroundColor), applyOpacity(value(BasicBackgroundColor), 0.7)));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
     border-color: fallback(value(HoverBorderColor), value(PrimaryBorderColor));
@@ -183,6 +183,7 @@
 
 /*Disabled*/
 
+.root:disabled,
 .root:priority(basic):disabled,
 .root:priority(primary):disabled {
     background-color: color(value(DisabledColor));
@@ -210,12 +211,12 @@
 
 /*Medium*/
 
-.root:size(medium){
+.root, .root:size(medium){
     padding: 8px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
 }
 
-.root:mobile:size(medium){
+.root:mobile, .root:mobile:size(medium){
     padding: 10px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
 }
@@ -273,7 +274,7 @@
     padding: calculate(string(-), 9px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
+.root:upgrade:size(tiny), .root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
     padding: calculate(string(-), 9px, value(PrimaryBorderWidth)) 16px;
 }
 
@@ -288,7 +289,7 @@
     padding: calculate(string(-), 10px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
+.root:upgrade:size(small), .root:priority(primary):upgrade:size(small), .root:priority(basic):upgrade:size(small){
     padding: calculate(string(-), 10px, value(PrimaryBorderWidth)) 16px;
 }
  /*upgrade small mobile*/
@@ -296,31 +297,37 @@
     padding: calculate(string(-), 11px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(small):mobile, .root:priority(basic):upgrade:size(small):mobile{
+.root:upgrade:size(small):mobile, .root:priority(primary):upgrade:size(small):mobile, .root:priority(basic):upgrade:size(small):mobile{
     padding: calculate(string(-), 11px, value(PrimaryBorderWidth)) 16px;
 }
 
 /* upgrade Medium*/
 
-.root:size(medium):upgrade:not(mobile){
+.root:upgrade:not(mobile), .root:size(medium):upgrade:not(mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeMediumFont)));
     line-height: 1;
 }
 
-.root:upgrade:priority(secondary):size(medium), .root:upgrade:priority(basicSecondary):size(medium){
+.root:upgrade:priority(secondary), .root:upgrade:priority(secondary):size(medium),
+.root:upgrade:priority(basicSecondary), .root:upgrade:priority(basicSecondary):size(medium) {
     padding: calculate(string(-), 12px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(medium), .root:priority(basic):upgrade:size(medium){
+.root:upgrade:size(medium),
+.root:priority(primary):upgrade, .root:priority(primary):upgrade:size(medium),
+.root:priority(basic):upgrade, .root:priority(basic):upgrade:size(medium) {
     padding: calculate(string(-), 12px, value(PrimaryBorderWidth)) 16px;
 }
 
 /*upgrade mobile medium*/
-.root:upgrade:priority(secondary):size(medium):mobile, .root:upgrade:priority(basicSecondary):size(medium):mobile{
+.root:upgrade:priority(secondary):mobile, .root:upgrade:priority(secondary):size(medium):mobile,
+.root:upgrade:priority(basicSecondary):mobile, .root:upgrade:priority(basicSecondary):size(medium):mobile {
     padding: calculate(string(-), 13px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(medium):mobile, .root:priority(basic):upgrade:size(medium):mobile{
+.root:upgrade:size(medium):mobile,
+.root:priority(primary):upgrade:mobile, .root:priority(primary):upgrade:size(medium):mobile,
+.root:priority(basic):upgrade:mobile, .root:priority(basic):upgrade:size(medium):mobile  {
     padding: calculate(string(-), 13px, value(PrimaryBorderWidth)) 16px;
 }
 
@@ -335,7 +342,7 @@
     padding: calculate(string(-), 16px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
+.root:upgrade:size(large), .root:priority(primary):upgrade:size(large), .root:priority(basic):upgrade:size(large){
     padding: calculate(string(-), 16px, value(PrimaryBorderWidth)) 16px;
 }
 
@@ -344,6 +351,6 @@
     padding: calculate(string(-), 17px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:priority(primary):upgrade:size(large):mobile, .root:priority(basic):upgrade:size(large):mobile{
+.root:upgrade:size(large):mobile, .root:priority(primary):upgrade:size(large):mobile, .root:priority(basic):upgrade:size(large):mobile{
     padding: calculate(string(-), 17px, value(secondaryBorderWidth)) 16px;
 }

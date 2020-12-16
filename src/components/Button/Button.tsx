@@ -35,8 +35,6 @@ class ButtonComponent extends React.Component<ButtonProps> {
   static contextType = TPAComponentsContext;
   static displayName = 'Button';
   static defaultProps = {
-    priority: PRIORITY.basic,
-    size: SIZE.medium,
     fullWidth: false,
     upgrade: false,
   };
