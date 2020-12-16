@@ -313,6 +313,7 @@
     padding: calculate(string(-), 12px, value(secondaryBorderWidth)) 16px;
 }
 
+.root:upgrade,
 .root:upgrade:size(medium),
 .root:priority(primary):upgrade, .root:priority(primary):upgrade:size(medium),
 .root:priority(basic):upgrade, .root:priority(basic):upgrade:size(medium) {
