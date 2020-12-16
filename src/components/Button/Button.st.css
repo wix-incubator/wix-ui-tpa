@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, calculate, font, applyOpacity, string, smartContrast;
+    -st-named: color, fallback, calculate, font, applyOpacity, string;
 }
 
 :vars {
@@ -115,7 +115,6 @@
 .root:priority(basic):focus,
 .root:priority(basic):hover {
     background-color: color(fallback(value(HoverBackgroundColor), applyOpacity(value(BasicBackgroundColor), 0.7)));
-    background-color: fallback(value(HoverBackgroundColor), smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(BasicBackgroundColor), 0.7)));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
     border-color: fallback(value(HoverBorderColor), value(PrimaryBorderColor));
 }
@@ -157,7 +156,6 @@
 .root:priority(primary):focus,
 .root:priority(primary):hover {
     background-color: color(fallback(value(HoverBackgroundColor), applyOpacity(value(PrimaryBackgroundColor), 0.7)));
-    background-color: fallback(value(HoverBackgroundColor), smartContrast(applyOpacity(value(PrimaryTextColor), 0.7), applyOpacity(value(PrimaryBackgroundColor), 0.7)));
     color: applyOpacity(value(PrimaryTextColor), 0.7);
     border-color: fallback(value(HoverBorderColor), value(PrimaryBorderColor));
 }
