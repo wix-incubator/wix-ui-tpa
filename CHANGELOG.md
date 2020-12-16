@@ -1,3 +1,20 @@
+## [2.13.1](https://github.com/wix/wix-ui-tpa/compare/v2.13.0...v2.13.1) (2020-12-16)
+
+### Features
+
+* **Button:** Expose new HoverBackgroundColor and HoverBorderColor stylable variables ([b38d6fd](https://github.com/wix/wix-ui-tpa/commit/b38d6fd7913fbbea21d6b9d39efc5296b9ba962b))
+
+### Bug Fixes
+
+* **Dialog:** Don't style override take effect when not wired to site colors ([990052f](https://github.com/wix/wix-ui-tpa/commit/990052f4f04a0b575f7e27055589837e17f3ef36))
+* **Dropdown:** Fix tooltip background css collision ([6462fd0](https://github.com/wix/wix-ui-tpa/commit/6462fd0b652d2f255ef1f01878dd657c8dcd28c3))
+
+
+### Reverts
+
+* "Use smart contrast on hover" ([7eecbb0](https://github.com/wix/wix-ui-tpa/commit/7eecbb024534bab827650884a99e782e1c4721a5))
+
+
 # [2.13.0](https://github.com/wix/wix-ui-tpa/compare/v2.12.1...v2.13.0) (2020-12-14)
 
 
