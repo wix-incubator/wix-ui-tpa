@@ -74,10 +74,15 @@ visualize('Tabs', () => {
   });
 
   story('Tab link', () => {
+    const linkTabs = Array.from({ length: 3 }, (_, index) => ({
+      title: `Link tab ${index + 1}`,
+      href: `/some-href-${index}`,
+    }));
+
     snap(
       'tab href',
       renderTest({
-        props: { items: [{ title: 'href tab', href: '/some-href' }] },
+        props: { items: linkTabs },
       }),
     );
   });

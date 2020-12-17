@@ -53,6 +53,7 @@
 
 .root a {
     text-decoration: none;
+    color: inherit;
 }
 
 .root a:focus + .focusIndicatorWrapper > .focusIndicator {
