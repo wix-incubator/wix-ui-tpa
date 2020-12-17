@@ -72,4 +72,13 @@ visualize('Tabs', () => {
       snap(skin, renderTest({ props: { skin } }));
     });
   });
+
+  story('Tab link', () => {
+    snap(
+      'tab href',
+      renderTest({
+        props: { items: [{ title: 'href tab', href: '/some-href' }] },
+      }),
+    );
+  });
 });

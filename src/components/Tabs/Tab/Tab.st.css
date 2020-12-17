@@ -50,3 +50,11 @@
 .root:focus .focusIndicator {
     background-color: color(value(focusIndicatorColor));
 }
+
+.root a {
+    text-decoration: none;
+}
+
+.root a:focus + .focusIndicatorWrapper > .focusIndicator {
+    background-color: color(value(focusIndicatorColor))
+}
