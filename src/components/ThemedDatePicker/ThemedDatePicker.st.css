@@ -1,0 +1,30 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+/* Defaults - default params */
+:vars {
+  defaultBgColor: color(color-1);
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+  /*
+    Main background color
+  */
+  BgColor: --overridable;
+}
+
+/* Overrides */
+:vars {
+  bgColor: color(fallback(value(BgColor), value(defaultBgColor)));
+}
+
+.root {
+  background-color: value(defaultBgColor);
+}
+
+.root.overrideStyleParams {
+  background-color: value(bgColor);
+}
