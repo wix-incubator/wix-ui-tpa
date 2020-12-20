@@ -92,6 +92,12 @@
     opacity: 0;
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
+
+.focused {
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff !important;
+    z-index: 999;
+}
+
 .root:box {
     margin-top: -1px;
     margin-bottom: -1px;
@@ -166,8 +172,6 @@
     content: '';
     width: 28px;
 }
-
-
 
 .root:box .wrapper{
     display: flex;

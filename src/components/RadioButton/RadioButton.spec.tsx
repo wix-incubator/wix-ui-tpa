@@ -4,7 +4,7 @@ import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 import { mount } from 'enzyme';
 import { radioButtonDriverFactory } from './RadioButton.driver';
-import { RadioButton } from './';
+import { RadioButton } from './RadioButton';
 import { radioButtonTestkitFactory } from '../../testkit';
 import { radioButtonTestkitFactory as enzymeRadioButtonTestkitFactory } from '../../testkit/enzyme';
 
@@ -24,14 +24,38 @@ describe('RadioButton', () => {
 
   it('should show checked state', async () => {
     const driver = createDriver(<RadioButton checked {...defProps} />);
-
     expect(await driver.isChecked()).toBeTruthy();
   });
 
   it('should show disabled state', async () => {
     const driver = createDriver(<RadioButton disabled {...defProps} />);
-
     expect(await driver.isDisabled()).toBeTruthy();
+  });
+
+  it('should have focus state', async () => {
+    const driver = createDriver(<RadioButton {...defProps} />);
+    await driver.clickInput();
+    expect(await driver.isFocused()).toBeTruthy();
+  });
+
+  it('should have focus ring with withFocusRing prop', async () => {
+    const driver = createDriver(<RadioButton withFocusRing {...defProps} />);
+    await driver.clickInput();
+    expect(await driver.isContainsFocusRing()).toBeTruthy();
+  });
+
+  it('should not have focus ring without prop', async () => {
+    const driver = createDriver(<RadioButton {...defProps} />);
+    await driver.clickInput();
+    expect(await driver.isContainsFocusRing()).toBeFalsy();
+  });
+
+  it('should not have focus ring after blur', async () => {
+    const driver = createDriver(<RadioButton withFocusRing {...defProps} />);
+    await driver.clickInput();
+    expect(await driver.isContainsFocusRing()).toBeTruthy();
+    await driver.blurInput();
+    expect(await driver.isContainsFocusRing()).toBeFalsy();
   });
 
   describe('testkit', () => {

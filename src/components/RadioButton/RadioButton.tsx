@@ -32,6 +32,7 @@ export interface RadioButtonProps {
   error?: boolean;
   theme?: RadioButtonTheme;
   suffix?: string;
+  withFocusRing?: boolean;
   onChange?: CoreRadioButtonProps['onChange'];
   'data-hook'?: string;
 }
@@ -42,19 +43,28 @@ interface DefaultProps {
   name: string;
   error: boolean;
   theme: RadioButtonTheme;
+  withFocusRing: boolean;
+}
+
+export interface RadioButtonState {
+  focused: boolean;
 }
 
 /** Radio button icon */
-const radioBtnIcon = (
-  <div className={st(classes.radioIcon)}>
+const radioBtnIcon = (isFocus: boolean) => (
+    <div className={st(classes.radioIcon, isFocus ? classes.focused : '')}>
     <div className={st(classes.innerCheck)} />
   </div>
 );
 
 /** RadioButton */
-export class RadioButton extends React.Component<RadioButtonProps> {
+export class RadioButton extends React.Component<
+  RadioButtonProps,
+  RadioButtonState
+> {
   static displayName = 'RadioButton';
   static defaultProps: DefaultProps = {
+    withFocusRing: false,
     checked: false,
     disabled: false,
     error: false,
@@ -62,11 +72,17 @@ export class RadioButton extends React.Component<RadioButtonProps> {
     theme: RadioButtonTheme.Default,
   };
 
+  state = {
+    focused: false,
+  };
+
   getDataAttributes() {
     const { checked, disabled } = this.props;
+    const { focused } = this.state;
     return {
       [RADIOBUTTON_DATA_KEYS.Checked]: checked,
       [RADIOBUTTON_DATA_KEYS.Disabled]: disabled,
+      [RADIOBUTTON_DATA_KEYS.Focused]: focused,
     };
   }
 
@@ -82,13 +98,23 @@ export class RadioButton extends React.Component<RadioButtonProps> {
       error,
       theme,
       suffix,
+      withFocusRing,
     } = this.props;
+    const focusedIcon =  withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
+    const focusedBox = withFocusRing && this.state.focused && theme === RadioButtonTheme.Box;
+
     return (
       <div
         className={st(
           classes.root,
-          { checked, error, disabled, box: theme === 'box' },
-          className,
+          {
+            checked,
+            error,
+            disabled,
+            box: theme === 'box',
+          },
+          focusedBox ? classes.focused : '',
+          className
         )}
         data-hook={this.props['data-hook']}
         {...this.getDataAttributes()}
@@ -98,6 +124,8 @@ export class RadioButton extends React.Component<RadioButtonProps> {
           disabled={disabled}
           tabIndex={0}
           value={value}
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
           label={
             <div className={classes.labelWrapper}>
               {' '}
@@ -118,12 +146,20 @@ export class RadioButton extends React.Component<RadioButtonProps> {
           }
           name={name}
           onChange={onChange}
-          checkedIcon={radioBtnIcon}
-          uncheckedIcon={radioBtnIcon}
+          checkedIcon={radioBtnIcon(focusedIcon)}
+          uncheckedIcon={radioBtnIcon(focusedIcon)}
           aria-label={label}
           className={classes.wrapper}
         />
       </div>
     );
   }
+
+  onFocus = () => {
+    this.setState({ focused: true });
+  }
+
+  onBlur = () => {
+    this.setState({ focused: false });
+  };
 }
