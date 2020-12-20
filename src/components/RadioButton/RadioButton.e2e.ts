@@ -20,7 +20,10 @@ describe('AddItem', () => {
   beforeEach(async () => {
     browser.get(storyUrl);
     driver = radioButtonTestkitFactory({ dataHook });
-    await waitForVisibilityOf(await driver.element(), 'Cannot find radioButton');
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find radioButton',
+    );
 
     expect((await driver.element()).isDisplayed()).toBe(true);
   });
