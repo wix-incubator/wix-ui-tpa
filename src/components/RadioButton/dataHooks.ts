@@ -8,4 +8,5 @@ export enum RADIOBUTTON_DATA_HOOKS {
   RadioButtonWrapper = 'radiobutton-wrapper',
   IconWrapper = 'icon-wrapper',
   LabelWrapper = 'label-wrapper',
+  coreRadioButton = 'core-radio-button',
 }

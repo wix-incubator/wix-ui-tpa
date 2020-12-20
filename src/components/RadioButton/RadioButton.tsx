@@ -51,8 +51,8 @@ export interface RadioButtonState {
 }
 
 /** Radio button icon */
-const radioBtnIcon = (isFocus: boolean) => (
-  <div className={st(classes.radioIcon, isFocus ? classes.focused : '')}>
+const radioBtnIcon = (isFocused: boolean) => (
+  <div className={st(classes.radioIcon, isFocused ? classes.focused : '')}>
     <div className={st(classes.innerCheck)} />
   </div>
 );
@@ -122,6 +122,7 @@ export class RadioButton extends React.Component<
         {...this.getDataAttributes()}
       >
         <CoreRadioButton
+          data-hook={RADIOBUTTON_DATA_HOOKS.coreRadioButton}
           checked={checked}
           disabled={disabled}
           tabIndex={0}

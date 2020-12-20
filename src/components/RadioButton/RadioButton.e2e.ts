@@ -8,7 +8,7 @@ import { radioButtonTestkitFactory } from '../../testkit/protractor';
 import { RADIOBUTTON_DATA_HOOKS } from './dataHooks';
 import { StoryCategory } from '../../../stories/storyHierarchy';
 
-describe('AddItem', () => {
+describe('RadioButton', () => {
   const storyUrl = createStoryUrl({
     kind: StoryCategory.COMPONENTS,
     story: 'RadioButton',
@@ -16,6 +16,7 @@ describe('AddItem', () => {
   });
   const dataHook = 'storybook-RadioButton';
   let driver;
+  let radioButtonElement;
 
   beforeEach(async () => {
     browser.get(storyUrl);
@@ -25,11 +26,17 @@ describe('AddItem', () => {
       'Cannot find radioButton',
     );
 
-    expect((await driver.element()).isDisplayed()).toBe(true);
+    radioButtonElement = element(by.css(`[data-hook="${RADIOBUTTON_DATA_HOOKS.coreRadioButton}"]`));
+    expect(radioButtonElement.isDisplayed()).toBe(true);
   });
 
   eyes.it('should show the correct design on focus', async () => {
-    await driver.clickInput();
-    expect(await driver.isFocused()).toBeTruthy();
+    await driver.click();
+    radioButtonElement.click();
+    expect(
+      await (await browser.driver.switchTo().activeElement()).getAttribute(
+        'data-hook',
+      ),
+    ).toBe(RADIOBUTTON_DATA_HOOKS.coreRadioButton);
   });
 });
