@@ -1,4 +1,3 @@
-import { Simulate } from 'react-dom/test-utils';
 import {
   BaseUniDriver,
   baseUniDriverFactory,
@@ -11,7 +10,7 @@ export interface RadioButtonDriver extends BaseUniDriver {
   isDisabled(): Promise<boolean>;
   isFocused(): Promise<boolean>;
   clickInput(): Promise<void>;
-  blurInput(): Promise<void>;
+  getInput(): Promise<HTMLInputElement>;
 }
 
 export const radioButtonDriverFactory = (
@@ -19,11 +18,11 @@ export const radioButtonDriverFactory = (
 ): RadioButtonDriver => {
   return {
     ...baseUniDriverFactory(base),
+    async getInput() {
+      return await base.$('input').getNative();
+    },
     async clickInput() {
       return base.$('input').click();
-    },
-    async blurInput() {
-      return Simulate.blur(await base.$('input').getNative());
     },
     async isChecked() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Checked)) === 'true';

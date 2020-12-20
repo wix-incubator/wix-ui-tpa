@@ -7,6 +7,7 @@ import { radioButtonDriverFactory } from './RadioButton.driver';
 import { RadioButton } from './RadioButton';
 import { radioButtonTestkitFactory } from '../../testkit';
 import { radioButtonTestkitFactory as enzymeRadioButtonTestkitFactory } from '../../testkit/enzyme';
+import { Simulate } from 'react-dom/test-utils';
 
 describe('RadioButton', () => {
   const createDriver = createUniDriverFactory(radioButtonDriverFactory);
@@ -42,7 +43,7 @@ describe('RadioButton', () => {
     const driver = createDriver(<RadioButton {...defProps} />);
     await driver.clickInput();
     expect(await driver.isFocused()).toBeTruthy();
-    await driver.blurInput();
+    Simulate.blur(await driver.getInput());
     expect(await driver.isFocused()).toBeFalsy();
   });
 
