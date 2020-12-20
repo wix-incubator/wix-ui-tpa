@@ -58,7 +58,7 @@
 
 :vars {
     borderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
-    backgroundColor: color(fallback(value(BackgroundColor), value(BackgroundColor)));
+    backgroundColor: color(fallback(value(BackgroundColor), value(DefaultBackgroundColor)));
     textColor: color(fallback(value(TextColor), value(DefaultTextColor)));
     disabledTextColor: color(fallback(value(DisabledTextColor), value(DefaultDisabledTextColor)));
     placeholderColor: color(fallback(value(PlaceholderColor), value(DefaultPlaceholderColor)));

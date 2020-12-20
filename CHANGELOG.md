@@ -1,3 +1,14 @@
+## [2.13.2](https://github.com/wix/wix-ui-tpa/compare/v2.13.1...v2.13.2) (2020-12-20)
+
+### Bug Fixes
+* **TextArea:** Use the default backgroundColor param ([c33b4d2](https://github.com/wix/wix-ui-tpa/commit/c33b4d2d0e8e4c934f3152eea9b9e1a921bfafff))
+
+### Reverts
+
+* "fix(Dropdown): Fix tooltip background css collision" ([4a2981b](https://github.com/wix/wix-ui-tpa/commit/4a2981bd742408327a1af51bf3d4b925350beb11))
+
+
+
 ## [2.13.1](https://github.com/wix/wix-ui-tpa/compare/v2.13.0...v2.13.1) (2020-12-16)
 
 ### Features
