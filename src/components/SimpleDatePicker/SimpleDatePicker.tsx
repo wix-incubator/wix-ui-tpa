@@ -16,7 +16,7 @@ interface DefaultProps {
 export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
   static displayName = 'SimpleDatePicker';
   static defaultProps: DefaultProps = {
-    disabled: true,
+    disabled: false,
   };
 
   _renderDays(weekIndex) {

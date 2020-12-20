@@ -1,23 +1,24 @@
 :import {
-    -st-from: "../SimpleDatePicker/SimpleDatePicker.st";
-    -st-default: SimpleDatePicker;
+    -st-from: "../SimpleDatePicker/SimpleDatePicker.st.css";
+    -st-default: TPASimpleDatePicker;
 }
 
 /* Defaults - default params */
 :vars {
-  boxBGColor: lightgray;
-  width: 400px;
-  height: 400px;
+  boxBGColor: #bcbce0;
   titleColor: white;
+  calWidth: 400px;
+  calHeight: 400px;
 }
 
 .root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: value(width);
-  height: value(height);
+  width: value(calWidth);
+  height: value(calHeight);
   background-color: value(boxBGColor);
+  font-weight: bold;
 }
 
 .title {
@@ -27,9 +28,11 @@
 }
 
 .myDatePicker {
-    -st-mixin: SimpleDatePicker(
-            bgColor value(boxBGColor),
+    -st-mixin: TPASimpleDatePicker(
+            containerBGColor value(boxBGColor),
             borderColor black,
+            containerWidth 220px,
+            containerHeight 220px,
             headerTextColor white,
             dayTextColor white,
     );

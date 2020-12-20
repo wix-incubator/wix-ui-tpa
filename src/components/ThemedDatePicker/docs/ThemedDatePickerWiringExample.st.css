@@ -1,10 +1,10 @@
-:import {
-  -st-from: "../ThemedDatePicker.st.css";
-  -st-named: overrideStyleParams;
-}
+/*:import {*/
+/*  -st-from: "../ThemedDatePicker.st.css";*/
+/*  -st-named: overrideStyleParams;*/
+/*}*/
 
-.root {
-  -st-mixin: overrideStyleParams(
-    BgColor ''"color(--myBackgroundOverride)"''
-  );
-}
+/*.root {*/
+/*  -st-mixin: overrideStyleParams(*/
+/*    BgColor ''"color(--myBackgroundOverride)"''*/
+/*  );*/
+/*}*/
