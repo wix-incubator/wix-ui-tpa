@@ -37,7 +37,7 @@ export const radioButtonDriverFactory = (
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Focused)) === 'true';
     },
     async isContainsFocusRing() {
-      return (await base.$$(`.${style.classes.focused}`).count()) > 0;
-    },
+      return await base.$$(`.${style.classes.focused}`).count() > 0;
+    }
   };
 };
