@@ -1,5 +1,7 @@
 ## [2.13.2](https://github.com/wix/wix-ui-tpa/compare/v2.13.1...v2.13.2) (2020-12-20)
 
+### Bug Fixes
+* **TextArea:** Use the default backgroundColor param ([c33b4d2](https://github.com/wix/wix-ui-tpa/commit/c33b4d2d0e8e4c934f3152eea9b9e1a921bfafff))
 
 ### Reverts
 
