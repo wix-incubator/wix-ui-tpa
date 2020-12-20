@@ -5,13 +5,11 @@ import {
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { RADIOBUTTON_DATA_KEYS } from './dataHooks';
-import * as style from './RadioButton.st.css';
 
 export interface RadioButtonDriver extends BaseUniDriver {
   isChecked(): Promise<boolean>;
   isDisabled(): Promise<boolean>;
   isFocused(): Promise<boolean>;
-  isContainsFocusRing(): Promise<boolean>;
   clickInput(): Promise<void>;
   blurInput(): Promise<void>;
 }
@@ -36,8 +34,5 @@ export const radioButtonDriverFactory = (
     async isFocused() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Focused)) === 'true';
     },
-    async isContainsFocusRing() {
-      return await base.$$(`.${style.classes.focused}`).count() > 0;
-    }
   };
 };

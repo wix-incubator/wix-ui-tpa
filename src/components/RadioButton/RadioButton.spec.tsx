@@ -38,24 +38,12 @@ describe('RadioButton', () => {
     expect(await driver.isFocused()).toBeTruthy();
   });
 
-  it('should have focus ring with withFocusRing prop', async () => {
-    const driver = createDriver(<RadioButton withFocusRing {...defProps} />);
-    await driver.clickInput();
-    expect(await driver.isContainsFocusRing()).toBeTruthy();
-  });
-
-  it('should not have focus ring without prop', async () => {
+  it('should lose have focus state on blur', async () => {
     const driver = createDriver(<RadioButton {...defProps} />);
     await driver.clickInput();
-    expect(await driver.isContainsFocusRing()).toBeFalsy();
-  });
-
-  it('should not have focus ring after blur', async () => {
-    const driver = createDriver(<RadioButton withFocusRing {...defProps} />);
-    await driver.clickInput();
-    expect(await driver.isContainsFocusRing()).toBeTruthy();
+    expect(await driver.isFocused()).toBeTruthy();
     await driver.blurInput();
-    expect(await driver.isContainsFocusRing()).toBeFalsy();
+    expect(await driver.isFocused()).toBeFalsy();
   });
 
   describe('testkit', () => {
