@@ -52,7 +52,7 @@ export interface RadioButtonState {
 
 /** Radio button icon */
 const radioBtnIcon = (isFocus: boolean) => (
-    <div className={st(classes.radioIcon, isFocus ? classes.focused : '')}>
+  <div className={st(classes.radioIcon, isFocus ? classes.focused : '')}>
     <div className={st(classes.innerCheck)} />
   </div>
 );
@@ -100,8 +100,10 @@ export class RadioButton extends React.Component<
       suffix,
       withFocusRing,
     } = this.props;
-    const focusedIcon =  withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
-    const focusedBox = withFocusRing && this.state.focused && theme === RadioButtonTheme.Box;
+    const focusedIcon =
+      withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
+    const focusedBox =
+      withFocusRing && this.state.focused && theme === RadioButtonTheme.Box;
 
     return (
       <div
@@ -114,7 +116,7 @@ export class RadioButton extends React.Component<
             box: theme === 'box',
           },
           focusedBox ? classes.focused : '',
-          className
+          className,
         )}
         data-hook={this.props['data-hook']}
         {...this.getDataAttributes()}
@@ -157,7 +159,7 @@ export class RadioButton extends React.Component<
 
   onFocus = () => {
     this.setState({ focused: true });
-  }
+  };
 
   onBlur = () => {
     this.setState({ focused: false });
