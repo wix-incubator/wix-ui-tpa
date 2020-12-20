@@ -8,7 +8,7 @@ visualize('SimpleDatePicker', () => {
     snap('default props', <SimpleDatePicker />);
     snap(
       'custom buttonText',
-      <SimpleDatePicker buttonText={'Some custom text'} />,
+      <SimpleDatePicker />,
     );
     // snap('mobile', (
     //   <TPAComponentsProvider value={{mobile: true}}>

@@ -7,7 +7,6 @@ import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface SimpleDatePickerProps extends TPAComponentProps {
   disabled?: boolean;
-  theme?: 'Box' | 'Line';
 }
 
 interface DefaultProps {
@@ -48,10 +47,6 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
     const { className, disabled } = this.props;
 
     return (
-      // Add this context consumer if the component needs to be aware of `mobile` and `rtl` states of the app
-      // For more information: https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#tpacomponentsprovider
-      // <TPAComponentsConsumer>
-      //   {({ mobile, rtl }) => (
       <div
         className={st(classes.root, { disabled }, className)}
         data-hook={this.props['data-hook']}
@@ -59,8 +54,6 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
         <Header className={classes.header} text="Header" />
         <div className={classes.daysContainer}>{this._renderWeeks()}</div>
       </div>
-      //   )}
-      // </TPAComponentsConsumer>
     );
   }
 }

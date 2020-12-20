@@ -9,6 +9,6 @@ SimpleDatePickerMetadata.nonReactStrictModeCompliant = true;
 SimpleDatePickerMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
+    disabled: false,
   } as SimpleDatePickerProps,
 });
