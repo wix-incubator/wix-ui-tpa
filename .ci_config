@@ -1,4 +1,11 @@
 {
+  "batches": [
+    "test:unit",
+    "test:eyes-storybook",
+    "test:e2e",
+    "autotools",
+    "test:perfer-bundles"
+  ],
   "pr_env_params" : {
     "APPLITOOLS_GITHUB_FT": "true",
     "node.publish": ""
