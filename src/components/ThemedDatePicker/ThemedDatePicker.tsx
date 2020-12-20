@@ -22,8 +22,8 @@ export class ThemedDatePicker extends React.Component<ThemedDatePickerProps> {
         className={st(classes.root, {}, className)}
         data-hook={this.props['data-hook']}
       >
-          <div className={classes.title}>My Day Picker</div>
-          <SimpleDatePicker className={classes.myDatePicker}/>
+        <div className={classes.title}>My Day Picker</div>
+        <SimpleDatePicker className={classes.myDatePicker} />
       </div>
     );
   }
