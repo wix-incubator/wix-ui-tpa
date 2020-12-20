@@ -6,10 +6,7 @@ import { SimpleDatePicker } from './';
 visualize('SimpleDatePicker', () => {
   story('simple', () => {
     snap('default props', <SimpleDatePicker />);
-    snap(
-      'custom buttonText',
-      <SimpleDatePicker />,
-    );
+    snap('custom buttonText', <SimpleDatePicker />);
     // snap('mobile', (
     //   <TPAComponentsProvider value={{mobile: true}}>
     //     <SimpleDatePicker buttonText={'Some custom text'} />
