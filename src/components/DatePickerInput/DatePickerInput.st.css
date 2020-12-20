@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "../DatePicker/DatePicker.st.css";
-    -st-named: overrideStyleParams as datePickerOverrideStyleParams, calendar;
+    -st-named: calendar;
 }
 
 :import {
@@ -133,8 +133,8 @@
     );
 }
 
-.overrideStyleParams .wsrDatePicker::calendar {
-    -st-mixin: datePickerOverrideStyleParams(
+.overrideStyleParams .wsrDatePicker {
+    -st-mixin: calendar(
             BackgroundColor value(BackgroundColor),
             NavigationArrowsColor value(NavigationArrowsColor),
             MonthAndYearCaptionColor value(MonthAndYearCaptionColor),
