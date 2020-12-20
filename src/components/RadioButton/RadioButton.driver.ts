@@ -19,7 +19,7 @@ export const radioButtonDriverFactory = (
   return {
     ...baseUniDriverFactory(base),
     async getInput() {
-      return await base.$('input').getNative();
+      return base.$('input').getNative();
     },
     async clickInput() {
       return base.$('input').click();
