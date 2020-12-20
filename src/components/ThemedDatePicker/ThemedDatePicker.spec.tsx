@@ -12,10 +12,14 @@ import { ThemedDatePicker, ThemedDatePickerProps } from './';
 describe('ThemedDatePicker', () => {
   const createDriver = createUniDriverFactory(themedDatePickerDriverFactory);
 
-  const bootstrap = (props: Partial<ThemedDatePickerProps> = {}/*, contextProps: TPAComponentsConfig = {}*/) => {
+  const bootstrap = (
+    props: Partial<
+      ThemedDatePickerProps
+    > = {} /*, contextProps: TPAComponentsConfig = {}*/,
+  ) => {
     return createDriver(
       // <TPAComponentsProvider value={contextProps}>
-        <ThemedDatePicker {...props} />
+      <ThemedDatePicker {...props} />,
       // </TPAComponentsProvider>
     );
   };
@@ -28,9 +32,13 @@ describe('ThemedDatePicker', () => {
   describe('testkit', () => {
     it('should exist', async () => {
       expect(
-        await isUniTestkitExists(<ThemedDatePicker />, themedDatePickerTestkitFactory, {
-          dataHookPropName: 'data-hook',
-        }),
+        await isUniTestkitExists(
+          <ThemedDatePicker />,
+          themedDatePickerTestkitFactory,
+          {
+            dataHookPropName: 'data-hook',
+          },
+        ),
       ).toBe(true);
     });
   });

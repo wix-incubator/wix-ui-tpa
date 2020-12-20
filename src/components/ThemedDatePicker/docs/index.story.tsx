@@ -21,13 +21,13 @@ import * as ThemedDatePickerWiringExampleCSSRaw from '!raw-loader!./ThemedDatePi
 import { ThemedDatePickerWiringExample } from './ThemedDatePickerWiringExample';
 import { ThemedDatePicker } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
-import { Category } from '../../../../stories/storyHierarchy';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: Category.COMPONENTS,
+  category: StoryCategory.COMPONENTS,
   storyName: 'ThemedDatePicker',
   component: storyComponent(ThemedDatePicker),
   componentPath: '../ThemedDatePicker.tsx',

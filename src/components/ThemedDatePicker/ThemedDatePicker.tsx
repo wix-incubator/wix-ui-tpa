@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 
-import { Text } from '../Text';
-import { Button } from '../Button';
 import { st, classes } from './ThemedDatePicker.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
-export interface ThemedDatePickerProps extends TPAComponentProps {
+import { SimpleDatePicker } from '../SimpleDatePicker';
 
-}
+export interface ThemedDatePickerProps extends TPAComponentProps {}
 
-interface DefaultProps {
-
-}
+interface DefaultProps {}
 
 /** ThemedDatePicker */
 export class ThemedDatePicker extends React.Component<ThemedDatePickerProps> {
@@ -20,11 +15,15 @@ export class ThemedDatePicker extends React.Component<ThemedDatePickerProps> {
   static defaultProps: DefaultProps = {};
 
   render() {
-    const { className, } = this.props;
+    const { className } = this.props;
 
     return (
-      <div className={st(classes.root, {}, className)} data-hook={this.props['data-hook']}>
-
+      <div
+        className={st(classes.root, {}, className)}
+        data-hook={this.props['data-hook']}
+      >
+          <div className={classes.title}>My Day Picker</div>
+          <SimpleDatePicker className={classes.myDatePicker}/>
       </div>
     );
   }

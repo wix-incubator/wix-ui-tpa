@@ -1,42 +1,26 @@
-:import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
-}
-
-/* Defaults - default params */
+/* Defaults */
 :vars {
-  defaultBgColor: color(color-1);
-}
-
-/* Overrides - deceleration of overridable parameters by the consumer */
-:vars {
-  /*
-    Main background color
-  */
-  BgColor: --overridable;
-}
-
-/* Overrides */
-:vars {
-  bgColor: color(fallback(value(BgColor), value(defaultBgColor)));
+  bgColor: white;
+  borderColor: #C9C9C9;
+  width: 220px;
+  height: 220px;
+  headerTextColor: blue;
+  dayTextColor: black;
 }
 
 .root {
   -st-states: disabled;
-  background-color: value(defaultBgColor);
-  border: 1px solid #C9C9C9;
-  width: 220px;
-  height: 220px;
+  background-color: value(bgColor);
+  border: 1px solid value(borderColor);
+  width: value(width);
+  height: value(height);
   font-weight: bold;
 }
 
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    color: blue;
-    font-size: 20px;
+}
+
+.daysContainer {
 }
 
 .daysRow {
@@ -51,10 +35,5 @@
     align-items: center;
     width: 30px;
     height: 30px;
-    color: black;
-}
-
-
-.root.overrideStyleParams {
-  background-color: value(bgColor);
+    color: value(dayTextColor);
 }

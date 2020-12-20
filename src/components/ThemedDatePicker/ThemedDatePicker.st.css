@@ -1,30 +1,36 @@
 :import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-from: "../SimpleDatePicker/SimpleDatePicker.st";
+    -st-default: SimpleDatePicker;
 }
 
 /* Defaults - default params */
 :vars {
-  defaultBgColor: color(color-1);
-}
-
-/* Overrides - deceleration of overridable parameters by the consumer */
-:vars {
-  /*
-    Main background color
-  */
-  BgColor: --overridable;
-}
-
-/* Overrides */
-:vars {
-  bgColor: color(fallback(value(BgColor), value(defaultBgColor)));
+  boxBGColor: lightgray;
+  width: 400px;
+  height: 400px;
+  titleColor: white;
 }
 
 .root {
-  background-color: value(defaultBgColor);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: value(width);
+  height: value(height);
+  background-color: value(boxBGColor);
 }
 
-.root.overrideStyleParams {
-  background-color: value(bgColor);
+.title {
+    color: value(titleColor);
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+.myDatePicker {
+    -st-mixin: SimpleDatePicker(
+            bgColor value(boxBGColor),
+            borderColor black,
+            headerTextColor white,
+            dayTextColor white,
+    );
 }

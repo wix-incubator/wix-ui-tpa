@@ -8,7 +8,9 @@ export interface ThemedDatePickerDriver extends BaseUniDriver {
   // isMobile(): Promise<boolean>;
 }
 
-export const themedDatePickerDriverFactory = (base: UniDriver): ThemedDatePickerDriver => {
+export const themedDatePickerDriverFactory = (
+  base: UniDriver,
+): ThemedDatePickerDriver => {
   return {
     ...baseUniDriverFactory(base),
     // isMobile: async () => (await base.attr('data-mobile')) === 'true',

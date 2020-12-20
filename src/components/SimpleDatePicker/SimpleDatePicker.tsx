@@ -3,7 +3,6 @@ import { TPAComponentProps } from '../../types';
 
 import { st, classes } from './SimpleDatePicker.st.css';
 import { Header } from './Header';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 
 export interface SimpleDatePickerProps extends TPAComponentProps {
   disabled?: boolean;
