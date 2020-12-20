@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "../DatePicker/DatePicker.st.css";
-    -st-named: overrideStyleParams as datePickerOverrideStyleParams;
+    -st-named: overrideStyleParams as datePickerOverrideStyleParams, calendar;
 }
 
 :import {

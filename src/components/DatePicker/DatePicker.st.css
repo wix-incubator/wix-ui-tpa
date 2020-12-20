@@ -133,6 +133,7 @@
 
 /* calendar header */
 .calendar::header {
+    background-color: value(CurrentBackgroundColor); /* for testing, remove it */
     padding: 28px value(sidePadding) 0;
 }
 
