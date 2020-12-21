@@ -11,7 +11,6 @@ describe('RadioButton', () => {
   const storyUrl = createStoryUrl({
     kind: StoryCategory.TESTS,
     story: 'RadioButton',
-    withExamples: true,
   });
   const boxThemeDataHook = 'radio-button-box';
   const defaultThemeDataHook = 'radio-button-default';

@@ -1,15 +1,16 @@
-import { storiesOf } from "@storybook/react";
-import * as React from "react";
-import { RadioButton, RadioButtonTheme } from "..";
+import { storiesOf } from '@storybook/react';
+import * as React from 'react';
+import { RadioButton, RadioButtonTheme } from '..';
 
-const kind = "Tests";
+const kind = 'Tests';
 
-function renderTest() {
+function renderTest(props?: any) {
   return (
-    <div style={{ margin: "10px", maxWidth: 200 }}>
+    <div style={{ margin: '10px', maxWidth: 200 }}>
       <div>
         <RadioButton
-          value={"Checked"}
+          value={'Checked'}
+          checked
           withFocusRing
           onChange={(val) => console.log(val)}
           theme={RadioButtonTheme.Box}
@@ -19,7 +20,8 @@ function renderTest() {
       </div>
       <div>
         <RadioButton
-          value={"Checked"}
+          value={'Checked'}
+          checked
           withFocusRing
           onChange={(val) => console.log(val)}
           theme={RadioButtonTheme.Default}
@@ -31,4 +33,4 @@ function renderTest() {
   );
 }
 
-storiesOf(kind, module).add("RadioButton", renderTest);
+storiesOf(kind, module).add('RadioButton', renderTest);

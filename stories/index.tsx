@@ -51,6 +51,7 @@ require('../src/components/Picker/docs/index.story');
 require('../src/components/ProgressBar/docs/index.story');
 
 require('../src/components/RadioButton/docs/index.story');
+require('../src/components/RadioButton/docs/RadioButtonTestStory');
 require('../src/components/RadioButtonGroup/docs/index.story');
 require('../src/components/Ratings/docs/index.story');
 require('../src/components/Ratings/docs/RatingsTestStory');
