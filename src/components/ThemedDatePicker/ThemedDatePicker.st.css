@@ -31,8 +31,6 @@
     -st-mixin: TPASimpleDatePicker(
             containerBGColor value(boxBGColor),
             borderColor black,
-            containerWidth 220px,
-            containerHeight 220px,
             headerTextColor white,
             dayTextColor white,
     );
