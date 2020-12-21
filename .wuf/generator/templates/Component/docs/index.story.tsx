@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as examples from './examples';
 import {
+  description,
   header,
   api,
   divider,
@@ -21,13 +22,13 @@ import * as {%ComponentName%}WiringExampleCSSRaw from '!raw-loader!./{%Component
 import { {%ComponentName%}WiringExample } from './{%ComponentName%}WiringExample';
 import { {%ComponentName%} } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
-import { Category } from '../../../../stories/storyHierarchy';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
-  category: Category.COMPONENTS,
+  category: StoryCategory.COMPONENTS,
   storyName: '{%ComponentName%}',
   component: storyComponent({%ComponentName%}),
   componentPath: '../{%ComponentName%}.tsx',
@@ -46,6 +47,8 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(%description%),
+
           importExample({
             source: examples.importExample,
           }),

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classnames from 'classnames';
 import { st, classes } from './Button.st.css';
 import { ButtonNext } from 'wix-ui-core/button-next';
 import { ButtonProps as ButtonNextProps } from 'wix-ui-core/dist/src/components/button-next/button-next';
@@ -60,27 +59,6 @@ class ButtonComponent extends React.Component<ButtonProps> {
     };
   }
 
-  _wrapAffix = (icon, type) => {
-    return (
-      <span className={classnames(classes[`${type}-icon`], classes.affixIcon)}>
-        {icon}
-      </span>
-    );
-  };
-
-  _getAffixes = () => {
-    const { prefixIcon, suffixIcon } = this.props;
-
-    return {
-      prefixIcon: prefixIcon
-        ? this._wrapAffix(prefixIcon, 'prefix')
-        : undefined,
-      suffixIcon: suffixIcon
-        ? this._wrapAffix(suffixIcon, 'suffix')
-        : undefined,
-    };
-  };
-
   render() {
     const {
       priority,
@@ -92,7 +70,6 @@ class ButtonComponent extends React.Component<ButtonProps> {
       className,
       ...rest
     } = this.props;
-
     return (
       <TPAComponentsConsumer>
         {({ mobile }) => (
@@ -107,7 +84,6 @@ class ButtonComponent extends React.Component<ButtonProps> {
               className,
             )}
             {...rest}
-            {...this._getAffixes()}
           />
         )}
       </TPAComponentsConsumer>

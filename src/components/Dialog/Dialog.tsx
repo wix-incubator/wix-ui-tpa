@@ -70,7 +70,7 @@ export class Dialog extends React.Component<DialogProps> {
           <div
             className={st(
               classes.root,
-              { mobile, rtl },
+              { mobile, rtl, wired: wiredToSiteColors },
               classes[`skin-${wiredToSiteColors ? 'wired' : 'fixed'}`],
               className,
             )}

@@ -1,0 +1,6 @@
+{
+  "name": "components-bundles",
+  "scripts": {
+    "build": "NODE_OPTIONS=--max_old_space_size=8000 NODE_ENV=production yoshi build"
+  }
+}
