@@ -12,8 +12,8 @@ describe('RadioButton', () => {
     kind: StoryCategory.TESTS,
     story: 'RadioButton',
   });
-  const boxThemeDataHook = 'radio-button-box';
   const defaultThemeDataHook = 'radio-button-default';
+  const boxThemeDataHook = 'radio-button-box';
   let driver;
 
   beforeEach(async () => {
