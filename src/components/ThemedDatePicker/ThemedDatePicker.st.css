@@ -28,29 +28,29 @@
 }
 
 /** The first option - using -st-mixin */
-/*.myDatePicker {*/
-/*    -st-mixin: SimpleDatePicker(*/
-/*            containerBGColor value(boxBGColor),*/
-/*            borderColor black,*/
-/*            headerTextColor #f542e6,*/
-/*            dayTextColor white,*/
-/*    );*/
-/*}*/
+.myDatePicker {
+    -st-mixin: SimpleDatePicker(
+            containerBGColor value(boxBGColor),
+            borderColor black,
+            headerTextColor #f542e6,
+            dayTextColor white,
+    );
+}
 /**************************************/
 
 
 /** The second option - using -st-extends */
-.myDatePicker {
-    -st-extends: SimpleDatePicker;
-    background-color: value(boxBGColor);
-    border-color: black;
-}
+/*.myDatePicker {*/
+/*    -st-extends: SimpleDatePicker;*/
+/*    background-color: value(boxBGColor);*/
+/*    border-color: black;*/
+/*}*/
 
-.myDatePicker::header::text {
-    color: #f542e6;
-}
+/*.myDatePicker::header::text {*/
+/*    color: #f542e6;*/
+/*}*/
 
-.myDatePicker::day {
-    color: white;
-}
+/*.myDatePicker::day {*/
+/*    color: white;*/
+/*}*/
 /**************************************/

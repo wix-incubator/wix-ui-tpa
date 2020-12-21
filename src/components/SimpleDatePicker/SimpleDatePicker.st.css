@@ -31,9 +31,9 @@
 
 
 /** The second option - using -st-extends */
-.header {
-    -st-extends: TPAHeader;
-}
+/*.header {*/
+/*    -st-extends: TPAHeader;*/
+/*}*/
 /**************************************/
 
 .daysContainer {
