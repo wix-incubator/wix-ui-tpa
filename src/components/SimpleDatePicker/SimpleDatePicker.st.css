@@ -14,7 +14,6 @@
 }
 
 .root {
-  -st-states: disabled;
   background-color: value(containerBGColor);
   border: 2px solid value(borderColor);
   width: value(containerWidth);

@@ -4,20 +4,14 @@ import { TPAComponentProps } from '../../types';
 import { st, classes } from './SimpleDatePicker.st.css';
 import { Header } from './Header';
 
-export interface SimpleDatePickerProps extends TPAComponentProps {
-  disabled?: boolean;
-}
+export interface SimpleDatePickerProps extends TPAComponentProps {}
 
-interface DefaultProps {
-  disabled: boolean;
-}
+interface DefaultProps {}
 
 /** SimpleDatePicker */
 export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
   static displayName = 'SimpleDatePicker';
-  static defaultProps: DefaultProps = {
-    disabled: false,
-  };
+  static defaultProps: DefaultProps = {};
 
   _renderDays(weekIndex) {
     const days = [1, 2, 3, 4, 5, 6, 7];
@@ -43,15 +37,15 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
   }
 
   render() {
-    const { className, disabled } = this.props;
+    const { className } = this.props;
 
     return (
       <div
-        className={st(classes.root, { disabled }, className)}
+        className={st(classes.root, className)}
         data-hook={this.props['data-hook']}
       >
         <Header className={classes.header} text="Header" />
-        <div className={classes.daysContainer}>{this._renderWeeks()}</div>
+        <div>{this._renderWeeks()}</div>
       </div>
     );
   }
