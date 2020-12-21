@@ -21,11 +21,20 @@
   font-weight: bold;
 }
 
+/** The first option - using -st-mixin */
 .header {
     -st-mixin: TPAHeader(
-            textColor blue,
+            textColor value(headerTextColor),
     );
 }
+/**************************************/
+
+
+/** The second option - using -st-extends */
+.header {
+    -st-extends: TPAHeader;
+}
+/**************************************/
 
 .daysContainer {
 }

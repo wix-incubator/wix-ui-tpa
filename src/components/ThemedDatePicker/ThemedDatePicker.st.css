@@ -1,6 +1,6 @@
 :import {
     -st-from: "../SimpleDatePicker/SimpleDatePicker.st.css";
-    -st-default: TPASimpleDatePicker;
+    -st-default: SimpleDatePicker;
 }
 
 /* Defaults - default params */
@@ -27,11 +27,30 @@
     margin: 20px 0;
 }
 
+/** The first option - using -st-mixin */
+/*.myDatePicker {*/
+/*    -st-mixin: SimpleDatePicker(*/
+/*            containerBGColor value(boxBGColor),*/
+/*            borderColor black,*/
+/*            headerTextColor #f542e6,*/
+/*            dayTextColor white,*/
+/*    );*/
+/*}*/
+/**************************************/
+
+
+/** The second option - using -st-extends */
 .myDatePicker {
-    -st-mixin: TPASimpleDatePicker(
-            containerBGColor value(boxBGColor),
-            borderColor black,
-            headerTextColor white,
-            dayTextColor white,
-    );
+    -st-extends: SimpleDatePicker;
+    background-color: value(boxBGColor);
+    border-color: black;
 }
+
+.myDatePicker::header::text {
+    color: #f542e6;
+}
+
+.myDatePicker::day {
+    color: white;
+}
+/**************************************/
