@@ -1,42 +1,41 @@
 import * as eyes from 'eyes.it';
-import { browser, by, element, Key } from 'protractor';
+import { browser } from 'protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
 import { radioButtonTestkitFactory } from '../../testkit/protractor';
-import { RADIOBUTTON_DATA_HOOKS } from './dataHooks';
 import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('RadioButton', () => {
   const storyUrl = createStoryUrl({
-    kind: StoryCategory.COMPONENTS,
+    kind: StoryCategory.TESTS,
     story: 'RadioButton',
     withExamples: true,
   });
-  const dataHook = 'storybook-RadioButton';
+  const boxThemeDataHook = 'radio-button-box';
+  const defaultThemeDataHook = 'radio-button-default';
   let driver;
-  let radioButtonElement;
 
   beforeEach(async () => {
     browser.get(storyUrl);
-    driver = radioButtonTestkitFactory({ dataHook });
+  });
+
+  eyes.it('should show the correct design on focus theme box', async () => {
+    driver = radioButtonTestkitFactory({ dataHook: boxThemeDataHook });
     await waitForVisibilityOf(
       await driver.element(),
       'Cannot find radioButton',
     );
-
-    radioButtonElement = element(by.css(`[data-hook="${RADIOBUTTON_DATA_HOOKS.coreRadioButton}"]`));
-    expect(radioButtonElement.isDisplayed()).toBe(true);
+    await driver.clickInput();
   });
 
-  eyes.it('should show the correct design on focus', async () => {
-    await driver.click();
-    radioButtonElement.click();
-    expect(
-      await (await browser.driver.switchTo().activeElement()).getAttribute(
-        'data-hook',
-      ),
-    ).toBe(RADIOBUTTON_DATA_HOOKS.coreRadioButton);
+  eyes.it('should show the correct design on focus theme default', async () => {
+    driver = radioButtonTestkitFactory({ dataHook: defaultThemeDataHook });
+    await waitForVisibilityOf(
+      await driver.element(),
+      'Cannot find radioButton',
+    );
+    await driver.clickInput();
   });
 });

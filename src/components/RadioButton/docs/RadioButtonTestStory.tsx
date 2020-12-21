@@ -1,0 +1,34 @@
+import { storiesOf } from "@storybook/react";
+import * as React from "react";
+import { RadioButton, RadioButtonTheme } from "..";
+
+const kind = "Tests";
+
+function renderTest() {
+  return (
+    <div style={{ margin: "10px", maxWidth: 200 }}>
+      <div>
+        <RadioButton
+          value={"Checked"}
+          withFocusRing
+          onChange={(val) => console.log(val)}
+          theme={RadioButtonTheme.Box}
+          label="box theme"
+          data-hook="radio-button-box"
+        />
+      </div>
+      <div>
+        <RadioButton
+          value={"Checked"}
+          withFocusRing
+          onChange={(val) => console.log(val)}
+          theme={RadioButtonTheme.Default}
+          label="default theme"
+          data-hook="radio-button-default"
+        />
+      </div>
+    </div>
+  );
+}
+
+storiesOf(kind, module).add("RadioButton", renderTest);
