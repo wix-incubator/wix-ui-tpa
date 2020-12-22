@@ -1,3 +1,52 @@
+## [2.13.2](https://github.com/wix/wix-ui-tpa/compare/v2.13.1...v2.13.2) (2020-12-20)
+
+### Bug Fixes
+* **TextArea:** Use the default backgroundColor param ([c33b4d2](https://github.com/wix/wix-ui-tpa/commit/c33b4d2d0e8e4c934f3152eea9b9e1a921bfafff))
+
+### Reverts
+
+* "fix(Dropdown): Fix tooltip background css collision" ([4a2981b](https://github.com/wix/wix-ui-tpa/commit/4a2981bd742408327a1af51bf3d4b925350beb11))
+
+
+
+## [2.13.1](https://github.com/wix/wix-ui-tpa/compare/v2.13.0...v2.13.1) (2020-12-16)
+
+### Features
+
+* **Button:** Expose new HoverBackgroundColor and HoverBorderColor stylable variables ([b38d6fd](https://github.com/wix/wix-ui-tpa/commit/b38d6fd7913fbbea21d6b9d39efc5296b9ba962b))
+
+### Bug Fixes
+
+* **Dialog:** Don't style override take effect when not wired to site colors ([990052f](https://github.com/wix/wix-ui-tpa/commit/990052f4f04a0b575f7e27055589837e17f3ef36))
+* **Dropdown:** Fix tooltip background css collision ([6462fd0](https://github.com/wix/wix-ui-tpa/commit/6462fd0b652d2f255ef1f01878dd657c8dcd28c3))
+
+
+### Reverts
+
+* "Use smart contrast on hover" ([7eecbb0](https://github.com/wix/wix-ui-tpa/commit/7eecbb024534bab827650884a99e782e1c4721a5))
+
+
+# [2.13.0](https://github.com/wix/wix-ui-tpa/compare/v2.12.1...v2.13.0) (2020-12-14)
+
+
+### Bug Fixes
+
+* **Toast:** Fix close button alignment ([1c285b7](https://github.com/wix/wix-ui-tpa/commit/1c285b75529cbc14b2198b8c10bf3d901ad01a3f))
+* **Dropdown:** Pass initialSelectedId to CoreDropdown when it updates ([ef3bff9](https://github.com/wix/wix-ui-tpa/commit/ef3bff981a360f2f87d48128010b3fc0819d3c74))
+
+
+### Features
+
+* **Button:** Use smart contrast on hover ([7eecbb0](https://github.com/wix/wix-ui-tpa/commit/7eecbb024534bab827650884a99e782e1c4721a5))
+* **RadioButton, Checkbox:** Add disabled mode state for theme box and some bug fixes. ([7e81f40](https://github.com/wix/wix-ui-tpa/commit/7e81f40bbe8311df5610c3fea4ffe4550c156d85))
+* **DatePickerInput:** - Add for working in progress ([2847526](https://github.com/wix/wix-ui-tpa/commit/2847526b051f126ec0afab3142f883e2c43a7a72))
+
+### Reverts
+
+* "fix(Button): Fix prefix and suffix alignments" ([8a18c7b](https://github.com/wix/wix-ui-tpa/commit/8a18c7b6edb547d7849db63cde2fd8bf98e68728))
+
+
+
 ## [2.12.1](https://github.com/wix/wix-ui-tpa/compare/v2.12.0...v2.12.1) (2020-12-06)
 
 ### Features
