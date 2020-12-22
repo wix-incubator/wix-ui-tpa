@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, applyOpacity, fallback, font;
+    -st-named: color, applyOpacity, fallback, font, zeroAsTrue;
 }
 
 :import {
@@ -33,6 +33,7 @@
     DeafultDayColor: color-5;
     DefaultSelectedDayColor: color-1;
     DefaultSelectedDayBGColor: color-8;
+    DefaultSelectedDayBorderRadius: 50%;
     DefaultDisabledDayColor: color-3;
 }
 
@@ -89,6 +90,11 @@
     */
     SelectedDayBGColor: --overridable;
     /*
+        The border radius of the selected day.
+        @default 50%
+    */
+    SelectedDayBorderRadius: --overridable;
+    /*
         The background color of a disabled day. Disabled day is a date that are not selectable.
         @default color-3
     */
@@ -112,6 +118,7 @@
     CurrentDayBGColorHover: applyOpacity(value(CurrentSelectedDayBGColor), 0.1);
     CurrentSelectedDayColor: color(fallback(value(SelectedDayColor), value(DefaultSelectedDayColor)));
     CurrentSelectedDayBGColor: color(fallback(value(SelectedDayBGColor), value(DefaultSelectedDayBGColor)));
+    CurrentSelectedDayBorderRadius: fallback(value(SelectedDayBorderRadius),value(DefaultSelectedDayBorderRadius));
     CurrentDisabledDayColor: color(fallback(value(DisabledDayColor), value(DefaultDisabledDayColor)));
 }
 
@@ -222,8 +229,15 @@
     color: value(CurrentDisabledDayColor);
 }
 
+/* todo: need to check if it's really override the viewer focus ring and if we should remove it..  */
+.calendar::day:focus::after {
+    border-radius: value(CurrentSelectedDayBorderRadius);
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff !important;
+}
+
 .calendar::day:singleDay:not(:outside) .dayCircle {
     background-color: value(CurrentSelectedDayBGColor);
+    border-radius: value(CurrentSelectedDayBorderRadius);
 }
 .calendar::day:singleDay:not(:outside):hover .dayCircle {
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
@@ -257,12 +271,6 @@
     width: 16px;
 }
 
-/*.calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-button,*/
-/*.calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-button { */
-/*    display: none;*/
-/*    height: 6px;*/
-/*}*/
-
 .calendar::header::monthDropdown::dropdown::list::options::-webkit-scrollbar-thumb,
 .calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb {
     /* https://stackoverflow.com/a/16829330/5343330 */
@@ -282,7 +290,7 @@
 .calendar::header::yearDropdown::dropdown::list::options::-webkit-scrollbar-thumb:active {
     background-color: applyOpacity(value(CurrentDayColor), 0.25);
 }
-/*/*************************/*/
+/*************************/
 
 .calendar::header::monthDropdown::dropdown::list::selectableOption,
 .calendar::header::yearDropdown::dropdown::list::selectableOption {

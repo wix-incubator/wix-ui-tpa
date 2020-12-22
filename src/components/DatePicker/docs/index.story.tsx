@@ -174,7 +174,14 @@ export default {
                     defaultFont: 'arial',
                   },
                 ],
-                numbers: [],
+                numbers: [
+                  {
+                    label: 'Selected Day Border Radius',
+                    wixParam: 'selectedDayBorderRadius',
+                    defaultNumber: 50,
+                    unit: '%',
+                  },
+                ],
               },
             }),
           ],
