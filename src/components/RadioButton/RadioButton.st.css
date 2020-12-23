@@ -59,7 +59,6 @@
     align-items: center;
     justify-content: space-between;
 }
-
 .wrapper{
     display: flex;
     align-items: center;
@@ -179,7 +178,6 @@
     content: '';
     width: 12px;
 }
-
 .root:box .wrapper{
     display: flex;
     padding: 16px;
