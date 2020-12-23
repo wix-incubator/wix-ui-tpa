@@ -18,7 +18,7 @@ visualize('DatePicker', () => {
       />,
     );
     snap(
-      'FilterDate - feature dates only (includes today)',
+      'FilterDate - future dates only (includes today)',
       <DatePicker
         value={new Date('2019/12/15')}
         filterDate={date => date >= new Date('2019/12/15')}
