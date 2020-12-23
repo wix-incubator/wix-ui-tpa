@@ -162,7 +162,7 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       clearButtonAriaLabelledby,
     } = this.props;
 
-    const CustomInput = wsrProps => {
+    const CustomInput = (wsrProps) => {
       const { value: formattedValue, onFocus, onKeyDown, tabIndex } = wsrProps;
 
       return (
