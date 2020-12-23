@@ -14,6 +14,11 @@
     -st-named: popoverContent;
 }
 
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: focusRing;
+}
+
 /* Defaults - default params */
 :vars {
     calendarWidth: 280px;
@@ -50,8 +55,9 @@
     */
     NavigationArrowsColor: --overridable;
     /*
-        The font of the calendar month snd year caption. The font size is 16px and could not be overridden.
+        The font of the calendar month snd year caption.
         @default {theme: 'Body-M', lineHeight: '24px'}
+        @fixed The font size is 16px and could not be overridden.
     */
     MonthAndYearCaptionFont: --overridable;
     /*
@@ -60,8 +66,9 @@
     */
     MonthAndYearCaptionColor: --overridable;
     /*
-        The font of the calendar's weekdays section. The font size is 14px and could not be overridden.
+        The font of the calendar's weekdays section.
         @default {theme: 'Body-M', lineHeight: '20px'}
+        @fixed The font size is 14px and could not be overridden.
     */
     WeekdayFont:  --overridable;
     /*
@@ -70,8 +77,9 @@
     */
     WeekdayTextColor: --overridable;
     /*
-        The font of a specific date. The font size is 14px and could not be overridden.
+        The font of a specific date.
         @default {theme: 'Body-M', lineHeight: '20px'}
+        @fixed The font size is 14px and could not be overridden.
     */
     DayFont: --overridable;
     /*
@@ -232,7 +240,7 @@
 /* todo: need to check if it's really override the viewer focus ring and if we should remove it..  */
 .calendar::day:focus::after {
     border-radius: value(CurrentSelectedDayBorderRadius);
-    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff !important;
+    -st-mixin: focusRing();
 }
 
 .calendar::day:singleDay:not(:outside) .dayCircle {
