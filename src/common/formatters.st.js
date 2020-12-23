@@ -18,3 +18,4 @@ module.exports.font = createStyleFunc('font');
 module.exports.join = createStyleFunc('join');
 module.exports.withoutOpacity = createStyleFunc('withoutOpacity');
 module.exports.darken = createStyleFunc('darken');
+module.exports.smartContrast = createStyleFunc('smartContrast');

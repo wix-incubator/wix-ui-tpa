@@ -27,20 +27,9 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
 import { Button, PRIORITY, SIZE } from '..';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
-import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
-import { ReactComponent as Share } from '../../../assets/icons/Share.svg';
 
 const code = config =>
   baseCode({ components: allComponents, compact: true, ...config });
-
-const prefixIcons = [
-  { value: undefined, label: 'None' },
-  { value: <Heart />, label: 'Heart' },
-];
-const suffixIcons = [
-  { value: undefined, label: 'None' },
-  { value: <Share />, label: 'Share' },
-];
 
 export default {
   category: StoryCategory.COMPONENTS,
@@ -54,15 +43,10 @@ export default {
     priority: PRIORITY.basic,
     size: SIZE.medium,
     fullWidth: false,
-    prefixIcon: prefixIcons[0].value,
-    suffixIcon: suffixIcons[0].value,
-    upgrade: true,
   },
   exampleProps: {
     priority: Object.values(PRIORITY),
     size: Object.values(SIZE),
-    prefixIcon: prefixIcons,
-    suffixIcon: suffixIcons,
   },
 
   sections: [
@@ -128,8 +112,18 @@ export default {
                     defaultColor: 'color-5',
                   },
                   {
+                    label: 'Hover Background Color',
+                    wixParam: 'hoverBackgroundColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
                     label: 'Border Color',
                     wixParam: 'borderColor',
+                    defaultColor: 'color-8',
+                  },
+                  {
+                    label: 'Hover Border Color',
+                    wixParam: 'hoverBorderColor',
                     defaultColor: 'color-8',
                   },
                 ],

@@ -24,9 +24,25 @@
 
 /*Overrides*/
 :vars {
+    /*
+        The radio button text color
+        @default color-5
+    */
     TextColor: --overridable;
+    /*
+        The border color. FYI, An opacity of 0.6 will be added.
+        @default color-5
+    */
     BorderColor: --overridable;
+    /*
+        The color of the icon. This color would be used as the box's border color as well.
+        @default color-8
+    */
     IconColor:  --overridable;
+    /*
+        The box's background color. FYI, This value won't be affected on disabled mode.
+        @default color-1
+    */
     BackgroundColor:--overridable;
 }
 
@@ -76,6 +92,12 @@
     opacity: 0;
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
+
+.focused {
+    box-shadow: 0 0 0 1px #ffffff, 0 0 0 3px #116dff !important;
+    z-index: 999;
+}
+
 .root:box {
     margin-top: -1px;
     margin-bottom: -1px;
@@ -151,8 +173,6 @@
     width: 28px;
 }
 
-
-
 .root:box .wrapper{
     display: flex;
     padding: 16px;
@@ -162,6 +182,19 @@
     box-sizing: border-box;
 }
 
+.root:box:disabled .wrapper {
+    /* overriding the styling from wix-ui-core */
+    filter: none;
+    opacity: 1;
+    /*******/
+    border-color: color(value(DisabledColor));
+    background-color: color(value(DefaultBackgroundColor));
+}
+
+.root:box:disabled:checked .wrapper {
+    border-color: color(value(DisabledColor));
+    background-color: applyOpacity(color(value(DisabledColor)), 0.1);
+}
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
