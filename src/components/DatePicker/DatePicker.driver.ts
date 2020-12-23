@@ -30,7 +30,6 @@ export interface DatePickerDriver extends BaseUniDriver {
   pressLeftArrow(): Promise<any>;
   pressRightArrow(): Promise<any>;
   getSelectedDay(): Promise<string>;
-  triggerKeyDown(key: string): Promise<any>;
   getMonthDropdownDriver(): Promise<UniDriver>;
   getYearDropdownDriver(): Promise<UniDriver>;
 }
@@ -140,11 +139,6 @@ export const datePickerDriverFactory = (
      * Get the selected day
      */
     getSelectedDay: async () => WSRCalendarDriver.getSelectedDay(),
-    /**
-     * Trigger key down event
-     * @param key
-     */
-    triggerKeyDown: async key => WSRCalendarDriver.triggerKeyDown({ key }),
     /**
      * Get the month dropdown driver
      */
