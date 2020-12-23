@@ -28,11 +28,12 @@ export interface RadioButtonProps {
   disabled?: boolean;
   value: string;
   name?: string;
-  label: string;
+  label?: string;
   error?: boolean;
   theme?: RadioButtonTheme;
   suffix?: string;
   withFocusRing?: boolean;
+  children?: React.ReactNode;
   onChange?: CoreRadioButtonProps['onChange'];
   'data-hook'?: string;
 }
@@ -51,13 +52,21 @@ export interface RadioButtonState {
 }
 
 /** Radio button icon */
-const radioBtnIcon = (isFocused: boolean) => (
-  <div className={st(classes.radioIcon, isFocused ? classes.focused : '')}>
+const radioBtnIcon = (isFocused: boolean, isChildren: boolean) => (
+  <div
+    className={classnames(
+      classes.radioIcon,
+      {
+        [classes.radioIconWithChildren]: isChildren,
+        [classes.focused]: isFocused,
+      },
+    )}
+  >
     <div className={st(classes.innerCheck)} />
   </div>
 );
 
-/** RadioButton */
+/** RadioButton **/
 export class RadioButton extends React.Component<
   RadioButtonProps,
   RadioButtonState
@@ -76,7 +85,7 @@ export class RadioButton extends React.Component<
     focused: false,
   };
 
-  getDataAttributes() {
+  _getDataAttributes() {
     const { checked, disabled } = this.props;
     const { focused } = this.state;
     return {
@@ -99,6 +108,7 @@ export class RadioButton extends React.Component<
       theme,
       suffix,
       withFocusRing,
+      children,
     } = this.props;
     const focusedIcon =
       withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
@@ -119,7 +129,7 @@ export class RadioButton extends React.Component<
           className,
         )}
         data-hook={this.props['data-hook']}
-        {...this.getDataAttributes()}
+        {...this._getDataAttributes()}
       >
         <CoreRadioButton
           data-hook={RADIOBUTTON_DATA_HOOKS.coreRadioButton}
@@ -127,42 +137,47 @@ export class RadioButton extends React.Component<
           disabled={disabled}
           tabIndex={0}
           value={value}
-          onFocus={this.onFocus}
-          onBlur={this.onBlur}
-          label={
-            <div className={classes.labelWrapper}>
-              {' '}
-              <div
-                data-hook={RADIOBUTTON_DATA_HOOKS.LabelWrapper}
-                className={classnames(classes.label, {
-                  [classes.suffixed]: suffix,
-                })}
-              >
-                {label}
-              </div>
-              {suffix && (
-                <div className={`${classes.label} ${classes.suffix}`}>
-                  {suffix}
-                </div>
-              )}
-            </div>
-          }
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          label={this._getContent(suffix, label, children)}
           name={name}
           onChange={onChange}
-          checkedIcon={radioBtnIcon(focusedIcon)}
-          uncheckedIcon={radioBtnIcon(focusedIcon)}
+          checkedIcon={radioBtnIcon(focusedIcon, !!children)}
+          uncheckedIcon={radioBtnIcon(focusedIcon, !!children)}
           aria-label={label}
-          className={classes.wrapper}
+          className={classnames(classes.wrapper, { [classes.withChildren]: !!children })}
         />
       </div>
     );
   }
 
-  onFocus = () => {
+  _getContent = (suffix: string, label: string, children: React.ReactNode) => {
+    if (children) {
+      return children;
+    }
+    return (
+      <div className={classes.labelWrapper}>
+        {' '}
+        <div
+          data-hook={RADIOBUTTON_DATA_HOOKS.LabelWrapper}
+          className={classnames(classes.label, {
+            [classes.suffixed]: suffix,
+          })}
+        >
+          {label}
+        </div>
+        {suffix && (
+          <div className={`${classes.label} ${classes.suffix}`}>{suffix}</div>
+        )}
+      </div>
+    );
+  };
+
+  _onFocus = () => {
     this.setState({ focused: true });
   };
 
-  onBlur = () => {
+  _onBlur = () => {
     this.setState({ focused: false });
   };
 }

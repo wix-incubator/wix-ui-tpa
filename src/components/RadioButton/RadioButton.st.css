@@ -65,6 +65,12 @@
     cursor: pointer;
 }
 
+.wrapperLabelOnly{
+    display: flex;
+    -st-extends: RadioButton;
+    cursor: pointer;
+}
+
 .root {
     -st-states: checked, disabled, box, error;
 }
@@ -81,6 +87,10 @@
     align-items: center;
     width: 16px;
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
+}
+
+.radioIconWithChildren {
+    top:calc(50% - 8px);
 }
 
 .innerCheck {
@@ -161,11 +171,14 @@
     display: flex;
     position: relative;
     margin-bottom: 1px;
-    top:4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+.wrapper:not(.withChildren)::icon {
+  top: 4px;
 }
 
 .wrapper::icon::before {
