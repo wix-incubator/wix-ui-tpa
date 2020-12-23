@@ -26,6 +26,8 @@ export type LanguageType =
   | 'zh'
   | 'th'
   | 'cs';
+export type Locale = LanguageType | { distanceInWords?: {}; format?: {} };
+export type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
@@ -33,7 +35,7 @@ export interface DatePickerProps extends TPAComponentProps {
   /** Callback function called with a Date or a Range whenever the user selects a day in the calendar */
   onChange(selectedDays: string | Date): void;
   /** DatePicker instance locale */
-  locale?: LanguageType | { distanceInWords?: {}; format?: {} };
+  locale?: Locale;
   /** When true, past dates would be unselectable */
   excludePastDates?: boolean;
   /**
@@ -43,7 +45,7 @@ export interface DatePickerProps extends TPAComponentProps {
    */
   filterDate?(date: Date): boolean;
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */
-  firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  firstDayOfWeek?: FirstDayOfWeek;
   /** Displays a selectable monthDropdown */
   showMonthDropdown?: boolean;
   /** Displays a selectable yearDropdown */
@@ -55,10 +57,10 @@ export interface DatePickerProps extends TPAComponentProps {
 }
 
 interface DefaultProps {
-  locale: LanguageType | { distanceInWords?: {}; format?: {} };
+  locale: Locale;
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
-  firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  firstDayOfWeek: FirstDayOfWeek;
   showMonthDropdown: boolean;
   showYearDropdown: boolean;
 }
