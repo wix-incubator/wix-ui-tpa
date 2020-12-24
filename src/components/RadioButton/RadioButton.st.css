@@ -59,6 +59,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .wrapper{
     display: flex;
     align-items: center;
@@ -161,23 +162,17 @@
 
 .wrapper::icon {
     display: flex;
-    position: relative;
-    margin-bottom: 1px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-
-.wrapper:not(.withChildren)::icon {
-  top: 4px;
-}
-
 .wrapper::icon::after {
     content: '';
     width: 12px;
 }
+
 .root:box .wrapper{
     display: flex;
     padding: 16px;
