@@ -30,7 +30,8 @@ export type LanguageType =
   | 'zh'
   | 'th'
   | 'cs';
-
+export type Locale = LanguageType | { distanceInWords?: {}; format?: {} };
+export type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 export type popoverPlacementType = 'bottom-start' | 'bottom-end';
 
 export interface DatePickerInputProps extends TPAComponentProps {
@@ -50,7 +51,7 @@ export interface DatePickerInputProps extends TPAComponentProps {
    */
   dateFormat?: string | ((date: Date) => void);
   /** DatePicker instance locale */
-  locale?: LanguageType | { distanceInWords?: {}; format?: {} };
+  locale?: Locale;
   /** When true, past dates would be unselectable */
   excludePastDates?: boolean;
   /**
@@ -60,7 +61,7 @@ export interface DatePickerInputProps extends TPAComponentProps {
    */
   filterDate?(date: Date): boolean;
   /** First day of the week, allowing only from 0 to 6 (Sunday to Saturday) */
-  firstDayOfWeek?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  firstDayOfWeek?: FirstDayOfWeek;
   /** Displays a selectable monthDropdown */
   showMonthDropdown?: boolean;
   /** Displays a selectable yearDropdown */
@@ -95,10 +96,10 @@ interface DefaultProps {
   placeholderText: string;
   disabled: boolean;
   dateFormat: string;
-  locale: LanguageType | { distanceInWords?: {}; format?: {} };
+  locale: Locale;
   excludePastDates: boolean;
   filterDate(date: Date): boolean;
-  firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+  firstDayOfWeek: FirstDayOfWeek;
   showMonthDropdown: boolean;
   showYearDropdown: boolean;
   hasError: boolean;
@@ -161,7 +162,7 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       clearButtonAriaLabelledby,
     } = this.props;
 
-    const CustomInput = wsrProps => {
+    const CustomInput = (wsrProps) => {
       const { value: formattedValue, onFocus, onKeyDown, tabIndex } = wsrProps;
 
       return (
@@ -192,7 +193,7 @@ export class DatePickerInput extends React.Component<DatePickerInputProps> {
       <TPAComponentsConsumer>
         {({ rtl }) => (
           <div
-            className={st(classes.root, className)}
+            className={st(classes.root, classes.overrideStyleParams, className)}
             data-hook={this.props['data-hook']}
             aria-label={ariaLabel}
             aria-labelledby={ariaLabelledBy}
