@@ -145,7 +145,7 @@ export class RadioButton extends React.Component<
           checkedIcon={radioBtnIcon(focusedIcon, !!children)}
           uncheckedIcon={radioBtnIcon(focusedIcon, !!children)}
           aria-label={label}
-          className={classnames(classes.wrapper, { [classes.withChildren]: !!children })}
+          className={classnames(classes.wrapper)}
         />
       </div>
     );
