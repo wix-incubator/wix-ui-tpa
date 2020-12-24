@@ -24,7 +24,7 @@ import { DatePicker } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -52,7 +52,10 @@ export default {
       { label: 'fr', value: 'fr' },
     ],
     filterDate: [
-      { label: 'Prior to the current date', value: date => date < new Date() },
+      {
+        label: 'Prior to the current date',
+        value: (date) => date < new Date(),
+      },
     ],
     firstDayOfWeek: [
       { label: 'Monday', value: 1 },
@@ -61,9 +64,11 @@ export default {
   },
   dataHook: 'storybook-DatePicker',
   sections: [
-    header({
-      component: <OptimizedStylesBanner />,
-    }),
+    header(),
+    // todo: Add it after fixing the overrideStyleParams
+    // header({
+    //   component: <OptimizedStylesBanner />,
+    // }),
     tabs([
       tab({
         title: 'Usage',
