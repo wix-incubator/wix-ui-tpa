@@ -59,8 +59,10 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .wrapper{
     display: flex;
+    align-items: center;
     -st-extends: RadioButton;
     cursor: pointer;
 }
@@ -70,8 +72,6 @@
 }
 
 .radioIcon {
-    position: absolute;
-    top:1px;
     background-color: transparent;
     height: 16px;
     border-radius: 50%;
@@ -109,13 +109,13 @@
 
 .label.suffixed {
     flex: 1;
-    white-space: nowrap;
     display: flex;
 }
 
 .label.suffixed::after {
     content: '';
     width: 5px;
+    flex: 1 0 5px;
 }
 
 .suffix {
@@ -170,13 +170,14 @@
     user-select: none;
 }
 
+
 .wrapper:not(.withChildren)::icon {
   top: 4px;
 }
 
-.wrapper::icon::before {
+.wrapper::icon::after {
     content: '';
-    width: 28px;
+    width: 12px;
 }
 
 .root:box .wrapper{

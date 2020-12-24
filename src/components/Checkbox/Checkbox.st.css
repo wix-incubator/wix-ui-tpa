@@ -79,7 +79,6 @@
 .root::childContainer {
     display: flex;
     flex: 1;
-    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -98,7 +97,6 @@
     display: flex;
     align-items: center;
 }
-
 
 .root:box {
     display: flex;
@@ -147,13 +145,13 @@
 
 .label.suffixed {
     flex: 1;
-    white-space: nowrap;
     display: flex;
 }
 
 .label.suffixed::after {
     content: '';
     width: 5px;
+    flex: 1 0 5px;
 }
 
 .suffix {
