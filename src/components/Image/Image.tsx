@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
-import {
-  MediaImage,
-  MediaPlatformItem as MediaItemProps,
-} from 'wix-ui-core/media-image';
+import { MediaImage, MediaImageScaling } from 'wix-ui-core/media-image';
 import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
 
@@ -22,7 +19,7 @@ export interface ImageProps extends TPAComponentProps {
   onError?: React.EventHandler<React.SyntheticEvent>;
 }
 
-/** Image is a component to literally display an image - whether a regular with full path or an item from the media manager */
+/** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
 
@@ -46,8 +43,11 @@ export class Image extends React.Component<ImageProps> {
         ) : (
           <MediaImage
             {...imageProps}
-            {...dimensions}
-            mediaPlatformItem={{ uri: src, ...dimensions }}
+            mediaPlatformItem={{
+              uri: src,
+              ...dimensions,
+            }}
+            scale={MediaImageScaling.FIT}
           />
         )}
       </div>
