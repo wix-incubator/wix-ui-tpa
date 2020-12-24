@@ -16,8 +16,20 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
+
+const sampleSources = [
+  {
+    label: 'General Absolute URL',
+    value:
+      'https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg',
+  },
+  {
+    label: 'Relative URI of a Media Item',
+    value: 'c5f754_91bd6af05038434a894097cd967c721a~mv2.jpg',
+  },
+];
 
 export default {
   category: StoryCategory.COMPONENTS,
@@ -26,25 +38,13 @@ export default {
   componentPath: '../Image.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Image',
-    src:
-      'https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg',
+    src: sampleSources[0].value,
     width: 300,
     height: 250,
     alt: 'Garfield smiles and puts his hand over chest',
   }),
   exampleProps: {
-    mediaItem: [
-      {
-        label: 'None',
-        value: null,
-      },
-      {
-        label: 'An image from media manager',
-        value: {
-          uri: 'c5f754_91bd6af05038434a894097cd967c721a~mv2.jpg',
-        },
-      },
-    ],
+    src: sampleSources,
   },
   dataHook: 'storybook-Image',
   sections: [
@@ -63,16 +63,16 @@ export default {
 
           ...[
             {
-              title: 'Regular Image',
+              title: 'General Absolute URL',
               description:
-                'This example demonstrates the usage of an external image with a full URL.',
-              source: examples.regularImageExample,
+                'This example demonstrates the usage of an image with an absolute full URL.',
+              source: examples.absoluteUrlExample,
             },
             {
-              title: 'Media Image',
+              title: 'Relative URI of a Media Item',
               description:
-                'This example demonstrates the usage of an item from the media manager.',
-              source: examples.mediaImageExample,
+                'This example demonstrates the usage of a media platform item with a relative URI.',
+              source: examples.relativeUriExample,
             },
           ].map(code),
         ],
