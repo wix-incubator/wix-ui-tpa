@@ -27,8 +27,8 @@ export interface DatePickerDriver extends BaseUniDriver {
   getMonthDropdownLabel(): Promise<string>;
   getSelectedYear(): Promise<string>;
   getFocusedDay(): Promise<string | null>;
-  pressLeftArrow(): Promise<any>;
-  pressRightArrow(): Promise<any>;
+  pressLeftArrowKey(): Promise<any>;
+  pressRightArrowKey(): Promise<any>;
   getSelectedDay(): Promise<string>;
   getMonthDropdownDriver(): Promise<UniDriver>;
   getYearDropdownDriver(): Promise<UniDriver>;
@@ -128,13 +128,13 @@ export const datePickerDriverFactory = (
      */
     getFocusedDay: async () => WSRCalendarDriver.getFocusedDay(),
     /**
-     * Press left arrow
+     * Simulating pressing on the left arrow key in the keyboard
      */
-    pressLeftArrow: async () => WSRCalendarDriver.pressLeftArrow(),
+    pressLeftArrowKey: async () => WSRCalendarDriver.pressLeftArrow(),
     /**
-     * Press right arrow
+     * Simulating pressing on the right arrow key in the keyboard
      */
-    pressRightArrow: async () => WSRCalendarDriver.pressRightArrow(),
+    pressRightArrowKey: async () => WSRCalendarDriver.pressRightArrow(),
     /**
      * Get the selected day
      */
