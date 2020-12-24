@@ -65,12 +65,6 @@
     cursor: pointer;
 }
 
-.wrapperLabelOnly{
-    display: flex;
-    -st-extends: RadioButton;
-    cursor: pointer;
-}
-
 .root {
     -st-states: checked, disabled, box, error;
 }
@@ -89,7 +83,7 @@
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
-.radioIconWithChildren {
+.withChildren .radioIcon {
     top:calc(50% - 8px);
 }
 

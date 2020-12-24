@@ -57,7 +57,7 @@ const radioBtnIcon = (isFocused: boolean, isChildren: boolean) => (
     className={classnames(
       classes.radioIcon,
       {
-        [classes.radioIconWithChildren]: isChildren,
+        [classes.withChildren]: isChildren,
         [classes.focused]: isFocused,
       },
     )}
