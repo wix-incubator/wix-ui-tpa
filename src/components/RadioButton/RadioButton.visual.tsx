@@ -42,6 +42,13 @@ visualize('RadioButton', () => {
     );
   });
 
+  story('with children prop', () => {
+    snap(
+      `${RadioButtonTheme.Default} / default`,
+      <VisualRadioButton theme={RadioButtonTheme.Default} children={<><div>Using children as the RadioButton label</div><div>Can add a subtitle as well</div></>} />,
+      );
+    });
+
   story('long', () => {
     snap(
       `${RadioButtonTheme.Box} / long`,

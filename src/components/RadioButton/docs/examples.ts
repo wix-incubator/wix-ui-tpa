@@ -31,3 +31,7 @@ export const suffixExample = `
 export const errorExample = `
 <RadioButton value={'Checked'} withFocusRing error checked theme='box' onChange={val => console.log(val)}  label="Checked" />
 `;
+
+export const withChildrenExample = `
+<RadioButton value={'Checked'} withFocusRing checked onChange={val => console.log(val)} ><span>With Children</span></RadioButton>
+`;

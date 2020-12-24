@@ -83,6 +83,10 @@
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
+.withChildren .radioIcon {
+    top:calc(50% - 8px);
+}
+
 .innerCheck {
     margin: 2px;
     width: 8px;
