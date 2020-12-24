@@ -20,19 +20,49 @@ describe('Image', () => {
 
   it('should render', async () => {
     const driver = createDriver(<Image src={sampleSources.absolute} />);
+
     expect(await driver.exists()).toBe(true);
+  });
+
+  describe('absolute', () => {
+    const src = sampleSources.absolute;
+
+    it('should return `src` as is', async () => {
+      const driver = createDriver(<Image src={src} />);
+
+      expect(await driver.getSrc()).toBe(src);
+    });
+
+    it('should return `src` as is even when providing an unsecured URL', async () => {
+      const unsecuredSrc = sampleSources.absolute.replace(
+        'https://',
+        'http://',
+      );
+      const driver = createDriver(<Image src={unsecuredSrc} />);
+
+      expect(await driver.getSrc()).toBe(unsecuredSrc);
+    });
+  });
+
+  describe('relative', () => {
+    const src = sampleSources.relative;
+
+    it('should return `src` as full media item URL containing the provided URI', async () => {
+      const driver = createDriver(<Image src={src} />);
+
+      const mediaItemUrl = await driver.getSrc();
+
+      expect(mediaItemUrl.startsWith('http')).toBe(true);
+      expect(mediaItemUrl.endsWith(src)).toBe(true);
+    });
   });
 
   describe.each(Object.keys(sampleSources))('%s', (sourceType) => {
     const src = sampleSources[sourceType];
 
-    it('should return `src`', async () => {
-      const driver = createDriver(<Image src={src} />);
-      expect(await driver.getSrc()).toBe(src);
-    });
-
     it('should return `alt`', async () => {
       const driver = createDriver(<Image src={src} alt={sampleAlt} />);
+
       expect(await driver.getAlt()).toBe(sampleAlt);
     });
   });
