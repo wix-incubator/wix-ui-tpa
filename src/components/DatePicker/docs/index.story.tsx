@@ -14,37 +14,32 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
-import { allComponents } from '../../../../stories/utils/allComponents';
-import {
-  autoSettingsPanel,
-  settingsPanel,
-} from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as DatePickerInputWiringExampleRaw from '!raw-loader!./DatePickerInputWiringExample.tsx';
-import * as DatePickerInputWiringExampleCSSRaw from '!raw-loader!./DatePickerInputWiringExample.st.css';
-import { DatePickerInputWiringExample } from './DatePickerInputWiringExample';
-import { DatePickerInput } from '../';
-import { TextFieldTheme } from '../../TextField/TextFieldEnums';
+import { allComponents } from '../../../../stories/utils/allComponents';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import * as DatePickerWiringExampleRaw from '!raw-loader!./DatePickerWiringExample.tsx';
+import * as DatePickerWiringExampleCSSRaw from '!raw-loader!./DatePickerWiringExample.st.css';
+import { DatePickerWiringExample } from './DatePickerWiringExample';
+import { DatePicker } from '../';
+import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
   category: StoryCategory.WIP,
-  storyName: 'DatePickerInput',
-  component: DatePickerInput,
-  componentPath: '../DatePickerInput.tsx',
+  storyName: 'DatePicker',
+  component: storyComponent(DatePicker),
+  componentPath: '../DatePicker.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-DatePickerInput',
+    'data-hook': 'storybook-DatePicker',
     value: new Date(),
     placeholderText: 'Select Date',
     disabled: false,
     excludePastDates: false,
     showMonthDropdown: false,
     showYearDropdown: false,
-    hasError: false,
-    errorMessage: 'Error Message',
   }),
   exampleProps: {
     value: [
@@ -56,36 +51,30 @@ export default {
       { label: 'es', value: 'es' },
       { label: 'fr', value: 'fr' },
     ],
-    dateFormat: [
-      { label: 'LL/dd/yyyy', value: 'LL/dd/yyyy' },
-      { label: 'dd/LL/yy', value: 'dd/LL/yy' },
-      { label: 'LLL dd, yyyy', value: 'LLL dd, yyyy' },
-      { label: 'Custom', value: date => date.getDate() },
-    ],
     filterDate: [
-      { label: 'Prior to the current date', value: date => date < new Date() },
+      {
+        label: 'Prior to the current date',
+        value: (date) => date < new Date(),
+      },
     ],
     firstDayOfWeek: [
       { label: 'Monday', value: 1 },
       { label: 'Sunday', value: 0 },
     ],
-    inputWidth: [
-      { label: '400px', value: 400 },
-      { label: '100%', value: '100%' },
-    ],
-    inputTheme: Object.values(TextFieldTheme),
   },
-  dataHook: 'storybook-DatePickerInput',
+  dataHook: 'storybook-DatePicker',
   sections: [
-    header({
-      component: <OptimizedStylesBanner />,
-    }),
+    header(),
+    // todo: Add it after fixing the overrideStyleParams
+    // header({
+    //   component: <OptimizedStylesBanner />,
+    // }),
     tabs([
       tab({
         title: 'Usage',
         sections: [
           description(
-            'The Date pickers presents a calendar and allows a user to select a specific date.',
+            'The DatePicker allows a user to select a specific date.',
           ),
 
           importExample({
@@ -98,13 +87,6 @@ export default {
 
           ...[
             { title: 'Simple Usage', source: examples.basicExample },
-            { title: 'Without a selected date', source: examples.emptyExample },
-            {
-              title: 'Date Format',
-              description:
-                'The date format could be either string of tokens (see [`date-fns V2` docs](https://date-fns.org/v2.15.0/docs/format) for list of supported tokens) or function. The default value is `LL/dd/yyyy`',
-              source: examples.dateFormatExample,
-            },
             {
               title: 'Filter Dates',
               description:
@@ -117,25 +99,26 @@ export default {
                 'Years or months dropdowns could be added for an easy selection.',
               source: examples.yearsAndMonthDropdowns,
             },
-            { title: 'Error Mode', source: examples.errorExample },
-            { title: 'Disabled Mode', source: examples.disabledExample },
           ].map(code),
         ],
       }),
 
       ...[
-        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
         { title: 'API', sections: [api()] },
-        { title: 'Style API', sections: [settingsApi()] },
+        {
+          title: 'Style API',
+          sections: [settingsApi()],
+        },
         { title: 'TestKit', sections: [testkit()] },
+        { title: 'Playground', sections: [playground()] },
         {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              title: 'DatePickerInput Panel',
-              example: <DatePickerInputWiringExample />,
-              rawSource: DatePickerInputWiringExampleRaw,
-              rawCSSSource: DatePickerInputWiringExampleCSSRaw,
+              title: 'DatePicker Panel',
+              example: <DatePickerWiringExample />,
+              rawSource: DatePickerWiringExampleRaw,
+              rawCSSSource: DatePickerWiringExampleCSSRaw,
               params: {
                 colors: [
                   {
@@ -178,21 +161,6 @@ export default {
                     wixParam: 'customDisabledDayColor',
                     defaultColor: 'color-8',
                   },
-                  {
-                    label: 'DateInput BG Color',
-                    wixParam: 'customDateInputBGColor',
-                    defaultColor: 'color-1',
-                  },
-                  {
-                    label: 'Date Input Text Color',
-                    wixParam: 'customDateInputTextColor',
-                    defaultColor: 'color-5',
-                  },
-                  {
-                    label: 'Date Input Border Color',
-                    wixParam: 'customDateInputBorderColor',
-                    defaultColor: 'color-5',
-                  },
                 ],
                 fonts: [
                   {
@@ -210,13 +178,15 @@ export default {
                     wixParam: 'customDayFont',
                     defaultFont: 'arial',
                   },
+                ],
+                numbers: [
                   {
-                    label: 'Date Input Font',
-                    wixParam: 'customDateInputFont',
-                    defaultFont: 'arial',
+                    label: 'Selected Day Border Radius',
+                    wixParam: 'selectedDayBorderRadius',
+                    defaultNumber: 50,
+                    unit: '%',
                   },
                 ],
-                numbers: [],
               },
             }),
           ],

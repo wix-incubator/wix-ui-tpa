@@ -6,7 +6,7 @@ import { UniDriver } from 'wix-ui-test-utils/unidriver';
 import { DATA_HOOKS } from './constants';
 
 // @ts-ignore
-// import { datePickerDriverFactory as WSRDatePickerDriverFactory } from 'wix-style-react/dist/src/DatePickerInput/DatePickerInput.driver';
+// import { datePickerDriverFactory as WSRDatePickerDriverFactory } from 'wix-style-react/dist/src/DatePicker/DatePicker.driver';
 
 export interface DatePickerInputDriver extends BaseUniDriver {
   // getTextFieldElement(): Promise<HTMLElement>;
