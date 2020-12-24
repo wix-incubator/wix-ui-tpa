@@ -54,13 +54,10 @@ export interface RadioButtonState {
 /** Radio button icon */
 const radioBtnIcon = (isFocused: boolean, isChildren: boolean) => (
   <div
-    className={classnames(
-      classes.radioIcon,
-      {
-        [classes.withChildren]: isChildren,
-        [classes.focused]: isFocused,
-      },
-    )}
+    className={classnames(classes.radioIcon, {
+      [classes.withChildren]: isChildren,
+      [classes.focused]: isFocused,
+    })}
   >
     <div className={st(classes.innerCheck)} />
   </div>
