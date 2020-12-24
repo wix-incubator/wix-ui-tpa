@@ -121,6 +121,10 @@
     background-color: "color(color-1)";
 }
 
+.dropdownError::popoverContent {
+    background-color: value(errorColor) !important;
+}
+
 .dropdown::dropdownContent {
     padding: 12px 0;
 }
