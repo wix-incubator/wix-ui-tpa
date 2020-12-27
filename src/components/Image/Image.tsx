@@ -47,7 +47,6 @@ export class Image extends React.Component<ImageProps> {
               uri: src,
               ...dimensions,
             }}
-            scale={MediaImageScaling.FIT}
           />
         )}
       </div>
