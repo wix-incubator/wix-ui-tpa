@@ -32,7 +32,7 @@ const sampleSources = [
 ];
 
 export default {
-  category: StoryCategory.COMPONENTS,
+  category: StoryCategory.WIP,
   storyName: 'Image',
   component: Image,
   componentPath: '../Image.tsx',
