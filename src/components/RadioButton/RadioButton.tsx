@@ -35,6 +35,7 @@ export interface RadioButtonProps {
   withFocusRing?: boolean;
   children?: React.ReactNode;
   onChange?: CoreRadioButtonProps['onChange'];
+  'aria-label'?: string;
   'data-hook'?: string;
 }
 
@@ -141,11 +142,16 @@ export class RadioButton extends React.Component<
           onChange={onChange}
           checkedIcon={radioBtnIcon(focusedIcon, !!children)}
           uncheckedIcon={radioBtnIcon(focusedIcon, !!children)}
-          aria-label={label}
+          aria-label={this._getAriaLabel()}
           className={classnames(classes.wrapper)}
         />
       </div>
     );
+  }
+
+  _getAriaLabel = () => {
+    const {label} = this.props;
+    return this.props['aria-label'] ? this.props['aria-label'] : label;
   }
 
   _getContent = (suffix: string, label: string, children: React.ReactNode) => {
