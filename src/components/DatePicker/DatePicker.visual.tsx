@@ -14,10 +14,7 @@ visualize('DatePicker', () => {
     snap(
       'responsiveness',
       <div style={{ width: '600px' }}>
-        <DatePicker
-          value={new Date('2019/12/15')}
-          onChange={() => {}}
-        />
+        <DatePicker value={new Date('2019/12/15')} onChange={() => {}} />
       </div>,
     );
     snap(
