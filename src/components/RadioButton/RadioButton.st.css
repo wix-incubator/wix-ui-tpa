@@ -175,7 +175,7 @@
 
 .root:box .wrapper{
     display: flex;
-    padding: 16px;
+    padding: 15px 16px;
     background-color:applyOpacity(value(CurrentBackgroundColor),1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;
