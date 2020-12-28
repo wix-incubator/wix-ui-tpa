@@ -87,15 +87,12 @@
     cursor: pointer;
 }
 
-.selectedValueContainer {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
 .selectedValue {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    min-width: 0;
+    flex: 1 1 0;
 }
 
 .label::after {

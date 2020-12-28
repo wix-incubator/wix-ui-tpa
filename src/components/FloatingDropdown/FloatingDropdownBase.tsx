@@ -53,13 +53,11 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
         <div className={classes.content}>
           <div className={classes.textContent}>
             <span className={classes.label}>{label}</span>
-            <div className={classes.selectedValueContainer}>
-              <div
-                className={classes.selectedValue}
-                data-hook={DATA_HOOKS.baseSelectedValue}
-              >
-                {selectedOption?.value || placeholder}
-              </div>
+            <div
+              className={classes.selectedValue}
+              data-hook={DATA_HOOKS.baseSelectedValue}
+            >
+              {selectedOption?.value || placeholder}
             </div>
           </div>
           <ArrowIcon
