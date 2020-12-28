@@ -99,3 +99,16 @@ export const preselected = `
   />
 </ExampleWithContextProps>
 </>`;
+
+export const ellipsis = `
+<div style={{width: 200}}>
+  <FloatingDropdown
+    options={[
+      {id: '1', value: 'Very very very very very very very very very long text', isSelectable: true},
+    ]}
+    label="Sort by:"
+    placeholder="Very very very very very very very very very long placeholder"
+    value="1"
+  />
+</div>
+`;

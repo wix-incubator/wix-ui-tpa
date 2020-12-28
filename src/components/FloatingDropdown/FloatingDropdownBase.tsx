@@ -20,15 +20,13 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
 }
 
-export class FloatingDropdownBase extends React.Component<
-  FloatingDropdownBaseProps
-> {
+export class FloatingDropdownBase extends React.Component<FloatingDropdownBaseProps> {
   _getSelectedOption = (selectedId: string) => {
     const { options } = this.props;
     return options.find(({ id }) => selectedId === id);
   };
 
-  _onSelect = e => {
+  _onSelect = (e) => {
     const { onChange } = this.props;
     const selectedId = e.target.value;
 
@@ -55,11 +53,13 @@ export class FloatingDropdownBase extends React.Component<
         <div className={classes.content}>
           <div className={classes.textContent}>
             <span className={classes.label}>{label}</span>
-            <div
-              className={classes.selectedValue}
-              data-hook={DATA_HOOKS.baseSelectedValue}
-            >
-              {selectedOption?.value || placeholder}
+            <div className={classes.selectedValueContainer}>
+              <div
+                className={classes.selectedValue}
+                data-hook={DATA_HOOKS.baseSelectedValue}
+              >
+                {selectedOption?.value || placeholder}
+              </div>
             </div>
           </div>
           <ArrowIcon
