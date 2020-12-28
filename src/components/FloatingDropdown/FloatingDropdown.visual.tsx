@@ -22,6 +22,17 @@ const extendedProps: Partial<FloatingDropdownProps> = {
 };
 const preselectedProps: Partial<FloatingDropdownProps> = { value: '3' };
 
+const longTextProps: Partial<FloatingDropdownProps> = {
+  value: '1',
+  options: [
+    {
+      id: '1',
+      value: 'very very very very very very very long text',
+      isSelectable: true,
+    },
+  ],
+};
+
 visualize('FloatingDropdown', () => {
   story('basic', () => {
     snap(
@@ -76,6 +87,17 @@ visualize('FloatingDropdown', () => {
       <TPAComponentsProvider value={{ mobile: true }}>
         <FloatingDropdownVisual {...getFloatingDropdownTestProps()} />
       </TPAComponentsProvider>,
+    );
+  });
+
+  story('long text', () => {
+    snap(
+      'long text',
+      <div style={{ maxWidth: '150px' }}>
+        <FloatingDropdownVisual
+          {...getFloatingDropdownTestProps({ ...longTextProps })}
+        />
+      </div>,
     );
   });
 });

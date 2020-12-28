@@ -68,6 +68,7 @@
 }
 
 .textContent {
+    max-width: calc(100% - value(iconWith));
     overflow: hidden;
     display: flex;
     flex-shrink: 0;
