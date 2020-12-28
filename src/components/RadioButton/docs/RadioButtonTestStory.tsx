@@ -18,7 +18,7 @@ function renderTest(props?: any) {
           data-hook="radio-button-box"
         />
       </div>
-      <div>
+      <div style={{ marginTop: '50px'}}>
         <RadioButton
           value={'Checked'}
           checked
