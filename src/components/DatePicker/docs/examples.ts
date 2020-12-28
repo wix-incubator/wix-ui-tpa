@@ -32,8 +32,8 @@ export const basicExample = buildExample(
 );
 
 export const responsiveExample = buildExample(
-    'new Date()',
-    `
+  'new Date()',
+  `
     <div style={{ width: '600px' }}>
           <DatePicker
               value={value}

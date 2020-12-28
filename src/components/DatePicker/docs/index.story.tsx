@@ -87,7 +87,12 @@ export default {
 
           ...[
             { title: 'Simple Usage', source: examples.basicExample },
-            { title: 'Responsiveness', description: 'The DatePicker width is defined according to the container width.', source: examples.responsiveExample },
+            {
+              title: 'Responsiveness',
+              description:
+                'The DatePicker width is defined according to the container width.',
+              source: examples.responsiveExample,
+            },
             {
               title: 'Filter Dates',
               description:
