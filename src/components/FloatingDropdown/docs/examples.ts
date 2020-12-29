@@ -112,3 +112,21 @@ export const ellipsis = `
   />
 </div>
 `;
+
+export const displayBlock = `
+<div style={{width: 200}}>
+  <FloatingDropdown
+    options={[
+      {id: '1', value: 'Most recent', isSelectable: true},
+      {id: '2', value: 'Most viewed', isSelectable: true},
+      {id: '3', value: 'Most liked', isSelectable: true},
+      {id: '4', value: 'Most comments', isSelectable: true},
+      {id: '5', value: 'Most recent posts in the whole galaxy', isSelectable: true},
+    ]}
+    label="Sort by:"
+    placeholder="Something"
+    value="1"
+    displayBlock
+  />
+</div>
+`;
