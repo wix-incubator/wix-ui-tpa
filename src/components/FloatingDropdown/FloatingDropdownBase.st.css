@@ -68,11 +68,11 @@
     width: 100%;
 }
 
-.displayBlockBtn {
+.displayBlock .btn {
     width: 100%;
 }
 
-.displayBlockContent {
+.displayBlock .content {
     justify-content: space-between;
 }
 
@@ -123,8 +123,11 @@
 }
 
 .root:mobile {
-    display: inline-block;
     position: relative;
+}
+
+.root:not(.displayBlock):mobile {
+  display: inline-block;
 }
 
 .root:mobile select {

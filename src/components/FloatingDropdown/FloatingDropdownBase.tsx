@@ -5,6 +5,7 @@ import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 import { st, classes } from './FloatingDropdownBase.st.css';
+import classnames from 'classnames';
 
 interface FloatingDropdownBaseProps extends TPAComponentProps {
   'aria-label'?: string;
@@ -52,7 +53,7 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
 
     return (
       <>
-        <div className={`${classes.content} ${displayBlock && classes.displayBlockContent}`}>
+        <div className={classes.content}>
           <div className={classes.textContent}>
             <span className={classes.label}>{label}</span>
             <div
@@ -121,7 +122,7 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
           aria-labelledby={ariaLabelledBy || id}
           disabled={disabled}
           priority={TEXT_BUTTON_PRIORITY.secondary}
-          className={`${classes.btn} ${displayBlock && classes.displayBlockBtn}`}
+          className={classes.btn}
         >
           {content}
         </TextButton>
@@ -133,8 +134,9 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
         className={st(
           classes.root,
           { mobile, disabled },
-          classes.overrideStyleParams,
-          className,
+          classnames(classes.overrideStyleParams, className, {
+            [classes.displayBlock]: displayBlock,
+          })
         )}
         data-hook={DATA_HOOKS.base}
       >

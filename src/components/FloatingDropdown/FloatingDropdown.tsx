@@ -15,6 +15,7 @@ import { Option, OptionFactory } from 'wix-ui-core/dropdown-option';
  * https://github.com/wix/wix-ui-tpa/pull/387 (or merged into a single component)
  */
 import '../Dropdown/Dropdown.st.css';
+import classnames from 'classnames';
 
 export interface FloatingDropdownProps extends TPAComponentProps {
   /** Defines a string value that labels the current element. Optional. */
@@ -48,7 +49,10 @@ export interface FloatingDropdownProps extends TPAComponentProps {
 }
 
 type DefaultProps = Required<
-  Pick<FloatingDropdownProps, 'disabled' | 'options' | 'placement' | 'displayBlock'>
+  Pick<
+    FloatingDropdownProps,
+    'disabled' | 'options' | 'placement' | 'displayBlock'
+  >
 >;
 
 /** Dropdown component for sort. */
@@ -75,7 +79,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       return;
     }
     const selectedOption = this.props.options.find(
-      ({ id }) => selectedCoreOption.id === id,
+      ({ id }) => selectedCoreOption.id === id
     );
     this._onSelect(selectedOption);
   };
@@ -83,7 +87,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
   _generateCoreOptions() {
     const { options } = this.props;
 
-    const coreOptions = options.map(option =>
+    const coreOptions = options.map((option) =>
       option.divider
         ? OptionFactory.createDivider({ className: classes.optionDivider })
         : OptionFactory.create({
@@ -91,7 +95,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
             render: () => (
               <DropdownOption className={classes.option} {...option} />
             ),
-          }),
+          })
     );
 
     return {
@@ -171,8 +175,9 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
             className={st(
               classes.root,
               { mobile },
-              classes.overrideStyleParams,
-              this.props.className,
+              classnames(classes.overrideStyleParams, this.props.className, {
+                [classes.displayInline]: !this.props.displayBlock,
+              })
             )}
           >
             {this._getContent(mobile)}

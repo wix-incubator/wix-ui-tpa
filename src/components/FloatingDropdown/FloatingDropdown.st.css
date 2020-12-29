@@ -58,7 +58,6 @@
 .root .dropdown {
     min-width: value(minWidth);
     max-width: 100%;
-    width: auto;
 }
 
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
@@ -67,6 +66,10 @@
 
 .root .dropdown:content-visible .floatingDropdownBase {
     background: transparent;
+}
+
+.displayInline {
+    width: auto;
 }
 
 .optionDivider {
