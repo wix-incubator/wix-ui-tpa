@@ -86,6 +86,13 @@ visualize('FloatingDropdown', () => {
         {...getFloatingDropdownTestProps({ displayBlock: true })}
       />,
     );
+
+    snap(
+      'mobile',
+      <TPAComponentsProvider value={{ mobile: true }}>
+        <FloatingDropdownVisual {...getFloatingDropdownTestProps({ displayBlock: true })} />
+      </TPAComponentsProvider>,
+    );
   });
 
   story('native', () => {
