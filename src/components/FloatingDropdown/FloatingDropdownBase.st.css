@@ -11,7 +11,6 @@
 :vars {
     iconHeight: 1em;
     iconWith: 1em;
-    maxWidth: 20vw;
     minWidth: 220px;
 }
 
@@ -55,6 +54,7 @@
     height: value(iconHeight);
     width: value(iconWith);
     transform: value(ArrowTransformation);
+    flex-shrink: 0;
 }
 
 .btn {
@@ -65,19 +65,19 @@
     outline: none;
     transition: none;
     padding: 8px 0;
-}
-
-.textContent {
-    max-width: calc(value(maxWidth) - value(iconWith));
-    overflow: hidden;
-    display: flex;
-    flex-shrink: 0;
-    margin-right: 0.5em;
+    width: 100%;
 }
 
 .content {
     display: flex;
     align-items: center;
+    width: 100%;
+}
+
+.textContent {
+    overflow: hidden;
+    display: flex;
+    margin-right: 0.5em;
 }
 
 .label {
@@ -90,8 +90,9 @@
 .selectedValue {
     white-space: nowrap;
     text-overflow: ellipsis;
-    flex-shrink: 2;
     overflow: hidden;
+    min-width: 0;
+    flex: 1 1 0;
 }
 
 .label::after {
@@ -102,6 +103,7 @@
 .btn::content {
     flex: 1;
     text-align: start;
+    max-width: 100%;
 }
 
 .btn:disabled {
