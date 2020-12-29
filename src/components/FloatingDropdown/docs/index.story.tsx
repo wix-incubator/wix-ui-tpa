@@ -22,7 +22,7 @@ import { FloatingDropdown } from '../';
 import { getFloatingDropdownTestProps } from '../test-props';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const exampleProps = getFloatingDropdownTestProps() as any;
@@ -64,6 +64,7 @@ export default {
             { title: 'MinWidth', source: examples.minWidth },
             { title: 'MaxWidth', source: examples.maxWidth },
             { title: 'Disabled', source: examples.disabled },
+            { title: 'Ellipsis', source: examples.ellipsis },
           ].map(code),
         ],
       }),

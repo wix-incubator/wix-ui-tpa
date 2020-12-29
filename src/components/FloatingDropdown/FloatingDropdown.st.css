@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, maxWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
+    -st-named: minWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
 }
 
 :import {
@@ -57,7 +57,8 @@
 
 .root .dropdown {
     min-width: value(minWidth);
-    max-width: value(maxWidth);
+    max-width: 100%;
+    width: auto;
 }
 
 .root .dropdown:content-visible .floatingDropdownBase::arrowIcon {
