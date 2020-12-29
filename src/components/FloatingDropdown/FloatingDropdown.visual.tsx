@@ -79,6 +79,15 @@ visualize('FloatingDropdown', () => {
     );
   });
 
+  story('displayBlock', () => {
+    snap(
+      'default',
+      <FloatingDropdownVisual
+        {...getFloatingDropdownTestProps({ displayBlock: true })}
+      />,
+    );
+  });
+
   story('native', () => {
     snap(
       'default',
