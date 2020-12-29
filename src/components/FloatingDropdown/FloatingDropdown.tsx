@@ -43,6 +43,8 @@ export interface FloatingDropdownProps extends TPAComponentProps {
   onExpandedChange?(isExpanded: boolean): void;
   name?: string;
   id?: string;
+  /* Sets the display type of the component to be block if true */
+  displayBlock?: boolean;
 }
 
 type DefaultProps = Required<
@@ -111,6 +113,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       placement,
       appendTo,
       onExpandedChange,
+      displayBlock,
     } = this.props;
     const { coreOptions } = this._generateCoreOptions();
 
@@ -128,6 +131,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         options={options}
         id={id}
         onChange={this._onSelect}
+        displayBlock={displayBlock}
       />
     );
 

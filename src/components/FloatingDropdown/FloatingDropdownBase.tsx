@@ -18,6 +18,7 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   name?: string;
   id?: string;
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
+  displayBlock: boolean;
 }
 
 export class FloatingDropdownBase extends React.Component<
@@ -46,13 +47,14 @@ export class FloatingDropdownBase extends React.Component<
       ['aria-labelledby']: ariaLabelledBy,
       mobile,
       disabled,
+      displayBlock,
     } = this.props;
 
     const selectedOption = this._getSelectedOption(value);
 
     return (
       <>
-        <div className={classes.content}>
+        <div className={`${classes.content} ${displayBlock && classes.displayBlockContent}`}>
           <div className={classes.textContent}>
             <span className={classes.label}>{label}</span>
             <div
@@ -108,6 +110,7 @@ export class FloatingDropdownBase extends React.Component<
       id,
       disabled,
       className,
+      displayBlock,
     } = this.props;
 
     let content = this._getContent();
@@ -120,7 +123,7 @@ export class FloatingDropdownBase extends React.Component<
           aria-labelledby={ariaLabelledBy || id}
           disabled={disabled}
           priority={TEXT_BUTTON_PRIORITY.secondary}
-          className={classes.btn}
+          className={`${classes.btn} ${displayBlock && classes.displayBlockBtn}`}
         >
           {content}
         </TextButton>

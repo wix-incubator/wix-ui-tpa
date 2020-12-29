@@ -67,6 +67,14 @@
     padding: 8px 0;
 }
 
+.displayBlockBtn {
+    width: 100%;
+}
+
+.displayBlockContent {
+    justify-content: space-between;
+}
+
 .textContent {
     max-width: calc(value(maxWidth) - value(iconWith));
     overflow: hidden;
