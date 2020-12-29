@@ -18,7 +18,7 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   name?: string;
   id?: string;
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
-  displayBlock: boolean;
+  displayBlock?: boolean;
 }
 
 export class FloatingDropdownBase extends React.Component<FloatingDropdownBaseProps> {
