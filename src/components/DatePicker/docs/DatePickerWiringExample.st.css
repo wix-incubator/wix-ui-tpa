@@ -1,7 +1,6 @@
 :import {
   -st-from: "../DatePicker.st.css";
   -st-default: TPADatePicker;
-  -st-named: overrideStyleParams;
 }
 
 .root {

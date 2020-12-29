@@ -3,31 +3,56 @@ import { visualize, story, snap } from 'storybook-snapper';
 
 import { DatePicker } from './';
 
+const VisualTestDatePicker = (props) => {
+  const { width, ...rest } = props;
+
+  return (
+    <div style={{ width }}>
+      <DatePicker {...rest} />
+    </div>
+  );
+};
+
 visualize('DatePicker', () => {
   story('simple', () => {
     snap(
       'default props',
-      <DatePicker value={new Date('2019/12/15')} onChange={() => {}} />,
+      <VisualTestDatePicker
+        width="280px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
+      />,
+    );
+    snap(
+      'responsiveness',
+      <VisualTestDatePicker
+        width="600px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
+      />,
     );
     snap(
       'FilterDate - Prior for today dates (includes today)',
-      <DatePicker
+      <VisualTestDatePicker
+        width="280px"
         value={new Date('2019/12/15')}
-        filterDate={date => date <= new Date('2019/12/15')}
+        filterDate={(date) => date <= new Date('2019/12/15')}
         onChange={() => {}}
       />,
     );
     snap(
       'FilterDate - future dates only (includes today)',
-      <DatePicker
+      <VisualTestDatePicker
+        width="280px"
         value={new Date('2019/12/15')}
-        filterDate={date => date >= new Date('2019/12/15')}
+        filterDate={(date) => date >= new Date('2019/12/15')}
         onChange={() => {}}
       />,
     );
     snap(
       'Months dropdown',
-      <DatePicker
+      <VisualTestDatePicker
+        width="280px"
         value={new Date('2019/12/15')}
         showMonthDropdown
         onChange={() => {}}
@@ -35,7 +60,8 @@ visualize('DatePicker', () => {
     );
     snap(
       'Years dropdown',
-      <DatePicker
+      <VisualTestDatePicker
+        width="280px"
         value={new Date('2019/12/15')}
         showYearDropdown
         onChange={() => {}}
@@ -43,7 +69,8 @@ visualize('DatePicker', () => {
     );
     snap(
       'Months and years dropdown',
-      <DatePicker
+      <VisualTestDatePicker
+        width="280px"
         value={new Date('2019/12/15')}
         showMonthDropdown
         showYearDropdown

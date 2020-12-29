@@ -21,7 +21,7 @@
 
 /* Defaults - default params */
 :vars {
-    calendarWidth: 280px;
+    calendarWidth: 100%;
     calendarHeight: 332px;
     sidePadding: 20px;
 
@@ -98,7 +98,7 @@
     */
     SelectedDayBGColor: --overridable;
     /*
-        The border radius of the selected day.
+        The border radius of the selected day. The value could be in px or %.
         @default 50%
     */
     SelectedDayBorderRadius: --overridable;

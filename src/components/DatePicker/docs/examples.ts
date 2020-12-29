@@ -21,34 +21,53 @@ class DatePickerExample extends React.Component {
 export const basicExample = buildExample(
   'new Date()',
   `
-    <DatePicker
-        value={value}
-        placeholderText="Select A Date"
-        onChange={this._onChange} 
-    />
+    <div style={{ width: '280px' }}>
+          <DatePicker
+              value={value}
+              placeholderText="Select A Date"
+              onChange={this._onChange} 
+          />
+    </div>
+`,
+);
+
+export const responsiveExample = buildExample(
+  'new Date()',
+  `
+    <div style={{ width: '600px' }}>
+          <DatePicker
+              value={value}
+              placeholderText="Select A Date"
+              onChange={this._onChange} 
+          />
+    </div>
 `,
 );
 
 export const filterExample = buildExample(
   'new Date()',
   `
-    <DatePicker
-        value={value}
-        onChange={this._onChange}
-        filterDate={date => date < new Date()}
-    />
+    <div style={{ width: '280px' }}>
+          <DatePicker
+              value={value}
+              onChange={this._onChange}
+              filterDate={date => date < new Date()}
+          />
+    </div>
 `,
 );
 
 export const yearsAndMonthDropdowns = buildExample(
   'new Date()',
   `
-    <DatePicker
-        value={value}
-        placeholderText="Select A Date"
-        showMonthDropdown
-        showYearDropdown
-        onChange={this._onChange} 
-    />
+    <div style={{ width: '280px' }}>
+          <DatePicker
+              value={value}
+              placeholderText="Select A Date"
+              showMonthDropdown
+              showYearDropdown
+              onChange={this._onChange} 
+          />
+    </div>
 `,
 );
