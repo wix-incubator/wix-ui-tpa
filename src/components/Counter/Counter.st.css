@@ -106,6 +106,17 @@
     font: font("{theme: 'Body-M', size: '12px', lineHeight: '1em'}");
 }
 
+.xsmall svg {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+}
+
+.xsmall.error {
+    width: 18px;
+    height: 18px;
+}
+
 .root:disabled input {
     color: color(value(counterDisabledColor));
 }

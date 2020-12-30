@@ -3,11 +3,8 @@ import { Input } from 'wix-ui-core/input';
 import { Button } from 'wix-ui-core/button';
 import { st, classes } from './Counter.st.css';
 import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
-import { ReactComponent as ErrorIconS } from '../../assets/icons/ErrorS.svg';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
-import { ReactComponent as PlusS } from '../../assets/icons/PlusS.svg';
-import { ReactComponent as MinusS } from '../../assets/icons/MinusS.svg';
 import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
@@ -70,21 +67,6 @@ export class Counter extends React.Component<CounterProps> {
     onChange((value + step).toString());
   };
 
-  _getPlus = () => {
-    const { size } = this.props;
-    return size === CounterSize.xSmall ? <PlusS /> : <Plus />;
-  }
-
-  _getMinus = () => {
-    const { size } = this.props;
-    return size === CounterSize.xSmall ? <MinusS /> : <Minus />;
-  }
-
-  _getError = () => {
-    const { size } = this.props;
-    return size === CounterSize.xSmall ? <ErrorIconS className={classes.error} /> : <ErrorIcon className={classes.error} />;
-  }
-
   render() {
     const {
       incrementAriaLabel,
@@ -120,7 +102,7 @@ export class Counter extends React.Component<CounterProps> {
           name="increment"
           disabled={disabled || (max && value + step > max)}
         >
-          {this._getPlus()}
+          <Plus className={sizeClass} />
         </Button>
         {shouldShowErrorMessageTooltip && (
           <Tooltip
@@ -130,7 +112,7 @@ export class Counter extends React.Component<CounterProps> {
             appendTo="window"
             skin={TooltipSkin.Error}
           >
-            {this._getError()}
+            <ErrorIcon className={`${classes.error} ${sizeClass}`} />
           </Tooltip>
         )}
         <div className={classes.inputWrapper}>
@@ -153,7 +135,7 @@ export class Counter extends React.Component<CounterProps> {
           name="decrement"
           disabled={disabled || value - step < min}
         >
-          {this._getMinus()}
+          <Minus className={sizeClass}/>
         </Button>
       </div>
     );
