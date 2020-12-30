@@ -33,9 +33,7 @@ export class Image extends React.Component<ImageProps> {
     onLoad && onLoad(event);
 
     if (!this.state.isLoaded) {
-      setTimeout(() => {
-        this.setState({ isLoaded: true });
-      }, 2000);
+      this.setState({ isLoaded: true });
     }
   }
 
@@ -53,10 +51,11 @@ export class Image extends React.Component<ImageProps> {
     const dimensions = { width, height };
 
     const isAbsoluteUrl = src.match('^https?://');
+    const hasLoading = loadingBehavior === 'blur';
 
     const MediaImageWithLoading = () => (
       <>
-        {!isLoaded && (
+        {hasLoading && !isLoaded && (
           <MediaImage
             {...imageProps}
             mediaPlatformItem={{
@@ -76,7 +75,7 @@ export class Image extends React.Component<ImageProps> {
             uri: src,
             ...dimensions,
           }}
-          onLoad={this._onLoad}
+          onLoad={(event) => this._onLoad(event)}
         />
       </>
     );
@@ -85,7 +84,7 @@ export class Image extends React.Component<ImageProps> {
       <div
         className={st(
           classes.root,
-          { preload: !isLoaded, loaded: isLoaded },
+          { ...(hasLoading && { preload: !isLoaded, loaded: isLoaded }) },
           className,
         )}
         data-hook={this.props['data-hook']}
