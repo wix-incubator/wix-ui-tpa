@@ -6,26 +6,30 @@ const kind = 'Tests';
 
 function renderTest(props?: any) {
   return (
-    <>
-    <RadioButton
-          value={'Checked'}
-          checked
-          withFocusRing
-          onChange={(val) => console.log(val)}
-          theme={RadioButtonTheme.Box}
-          label="box theme"
-          data-hook="radio-button-box"
-        />
-        <RadioButton
-          value={'Checked'}
-          checked
-          withFocusRing
-          onChange={(val) => console.log(val)}
-          theme={RadioButtonTheme.Default}
-          label="default theme"
-          data-hook="radio-button-default"
-        />
-    </>
+    <div style={{ margin: '10px', maxWidth: 200 }}>
+    <div>
+      <RadioButton
+        value={'Checked'}
+        checked
+        withFocusRing
+        onChange={(val) => console.log(val)}
+        theme={RadioButtonTheme.Box}
+        label="box theme"
+        data-hook="radio-button-box"
+      />
+    </div>
+    <div style={{ marginTop: '50px' }}>
+      <RadioButton
+        value={'Checked'}
+        checked
+        withFocusRing
+        onChange={(val) => console.log(val)}
+        theme={RadioButtonTheme.Default}
+        label="default theme"
+        data-hook="radio-button-default"
+      />
+    </div>
+  </div>
   );
 }
 

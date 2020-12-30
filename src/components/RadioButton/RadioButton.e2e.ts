@@ -24,7 +24,7 @@ describe('RadioButton', () => {
     driver = radioButtonTestkitFactory({ dataHook: boxThemeDataHook });
     await waitForVisibilityOf(
       await driver.element(),
-      'Cannot find radioButton'
+      'Cannot find radioButton',
     );
     await driver.clickInput();
     await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
@@ -35,7 +35,7 @@ describe('RadioButton', () => {
     driver = radioButtonTestkitFactory({ dataHook: defaultThemeDataHook });
     await waitForVisibilityOf(
       await driver.element(),
-      'Cannot find radioButton'
+      'Cannot find radioButton',
     );
     await driver.clickInput();
     await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
