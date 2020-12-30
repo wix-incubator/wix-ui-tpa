@@ -135,7 +135,7 @@ export class RadioButton extends React.Component<
           disabled={disabled}
           tabIndex={0}
           value={value}
-          onFocus={this._onFocus}
+          onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           label={this._getContent(suffix, label, children)}
           name={name}
@@ -150,9 +150,9 @@ export class RadioButton extends React.Component<
   }
 
   _getAriaLabel = () => {
-    const {label} = this.props;
+    const { label } = this.props;
     return this.props['aria-label'] ? this.props['aria-label'] : label;
-  }
+  };
 
   _getContent = (suffix: string, label: string, children: React.ReactNode) => {
     if (children) {
