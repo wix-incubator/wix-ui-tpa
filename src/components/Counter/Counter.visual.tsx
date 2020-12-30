@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Counter, Size } from './';
+import { Counter, CounterSize } from './';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 
 class CounterVisual extends React.Component<any> {
@@ -45,15 +45,15 @@ const tests = [
       },
       {
         it: 'xSmal',
-        props: { size: Size.xSmall },
+        props: { size: CounterSize.xSmall },
       },
       {
         it: 'xSmal disabled',
-        props: { size: Size.xSmall, disabled: true },
+        props: { size: CounterSize.xSmall, disabled: true },
       },
       {
         it: 'xSmal error',
-        props: { size: Size.xSmall, error: true },
+        props: { size: CounterSize.xSmall, error: true },
       },
     ],
   },

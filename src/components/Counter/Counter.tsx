@@ -12,7 +12,7 @@ import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
 
-export enum Size {
+export enum CounterSize {
   medium = 'medium',
   xSmall = 'xSmall',
 }
@@ -31,13 +31,13 @@ export interface CounterProps extends TPAComponentProps {
   error?: boolean;
   disabled?: boolean;
   errorMessage?: string;
-  size?: Size;
+  size?: CounterSize;
 }
 
 interface DefaultProps {
   step: number;
   value: number;
-  size: Size;
+  size: CounterSize;
 }
 
 /** Counter */
@@ -46,7 +46,7 @@ export class Counter extends React.Component<CounterProps> {
   static defaultProps: DefaultProps = {
     step: 1,
     value: 0,
-    size: Size.medium,
+    size: CounterSize.medium,
   };
 
   _onDecrement = () => {
@@ -72,17 +72,17 @@ export class Counter extends React.Component<CounterProps> {
 
   _getPlus = () => {
     const { size } = this.props;
-    return size === Size.xSmall ? <PlusS /> : <Plus />;
+    return size === CounterSize.xSmall ? <PlusS /> : <Plus />;
   }
 
   _getMinus = () => {
     const { size } = this.props;
-    return size === Size.xSmall ? <MinusS /> : <Minus />;
+    return size === CounterSize.xSmall ? <MinusS /> : <Minus />;
   }
 
   _getError = () => {
     const { size } = this.props;
-    return size === Size.xSmall ? <ErrorIconS className={classes.error} /> : <ErrorIcon className={classes.error} />;
+    return size === CounterSize.xSmall ? <ErrorIconS className={classes.error} /> : <ErrorIcon className={classes.error} />;
   }
 
   render() {
@@ -103,7 +103,7 @@ export class Counter extends React.Component<CounterProps> {
     } = this.props;
 
     const shouldShowErrorMessageTooltip = error && errorMessage;
-    const sizeClass = (size === Size.xSmall) ? classes.xsmall : '';
+    const sizeClass = (size === CounterSize.xSmall) ? classes.xsmall : '';
     return (
       <div
         className={st(classes.root, { disabled, error }, sizeClass, className)}
