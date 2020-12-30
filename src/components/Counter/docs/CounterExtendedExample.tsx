@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classes } from './CounterExtendedExample.st.css';
-import { Counter } from '../Counter';
+import { Counter, CounterSize } from '../Counter';
 
 interface State {
   value: number;
@@ -49,6 +49,17 @@ export class CounterExtendedExample extends React.Component<{}, State> {
         value={this.state.value}
         max={15}
         min={-5}
+        {...this.props}
+        className={classes.root}
+      />
+      <h3>xSmall Counter</h3>
+      <Counter
+        inputAriaLabel={'amount'}
+        incrementAriaLabel={'increment'}
+        decrementAriaLabel={'decrement'}
+        onChange={this.handleChange}
+        value={this.state.value}
+        size={CounterSize.xSmall}
         {...this.props}
         className={classes.root}
       />

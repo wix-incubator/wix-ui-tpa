@@ -15,6 +15,7 @@
     DefaultErrorColor: value(errorColor);
     DefaultBackgroundColor: color-1;
     DefaultWidth: 104px;
+    DefaultWidthXsmall: 64px;
 }
 
 :vars {
@@ -28,6 +29,7 @@
     counterColor: color(fallback(value(MainColor), value(DefaultColor)));
     counterDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
     counterWidth: fallback(value(MainWidth), value(DefaultWidth));
+    counterWidthXsmall: fallback(value(MainWidth), value(DefaultWidthXsmall));
 }
 
 .root {
@@ -46,9 +48,9 @@
     border-color: color(value(counterColor));
 }
 
-.root.xsmall {
+.xsmall {
     padding: 0 4px;
-    width: 64px;
+    width: value(counterWidthXsmall);
     height: 28px;
 }
 .root:error {
