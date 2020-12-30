@@ -1,3 +1,12 @@
+# [2.16.0](https://github.com/wix/wix-ui-tpa/compare/v2.15.0...v2.16.0) (2020-12-30)
+
+
+### Features
+
+* **FloatingDropdown:** New 'displayBlock' prop ([29c9377](https://github.com/wix/wix-ui-tpa/commit/29c93772498a6549e9e1c78685c09ced36eed42e))
+
+
+
 # [2.15.0](https://github.com/wix/wix-ui-tpa/compare/v2.14.0...v2.15.0) (2020-12-29)
 
 
