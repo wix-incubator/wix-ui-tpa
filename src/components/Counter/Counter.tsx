@@ -85,7 +85,7 @@ export class Counter extends React.Component<CounterProps> {
     } = this.props;
 
     const shouldShowErrorMessageTooltip = error && errorMessage;
-    const sizeClass = (size === CounterSize.xSmall) ? classes.xsmall : '';
+    const sizeClass = size === CounterSize.xSmall ? classes.xsmall : '';
     return (
       <div
         className={st(classes.root, { disabled, error }, sizeClass, className)}
@@ -118,7 +118,7 @@ export class Counter extends React.Component<CounterProps> {
         <div className={classes.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
-            onChange={ev => onChange(ev.target.value)}
+            onChange={(ev) => onChange(ev.target.value)}
             type="number"
             disabled={disabled}
             min={min}
@@ -135,7 +135,7 @@ export class Counter extends React.Component<CounterProps> {
           name="decrement"
           disabled={disabled || value - step < min}
         >
-          <Minus className={sizeClass}/>
+          <Minus className={sizeClass} />
         </Button>
       </div>
     );
