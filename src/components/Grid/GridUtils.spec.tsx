@@ -41,19 +41,23 @@ describe('GridUtils', () => {
       const expectedStyle = `
 @media (min-width: ${expectedMinWidths[2]}px) {
   #${expectedGridId} .${expectedClassName} {
-    -ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-      2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
-    grid-template-columns: repeat(${expectedMaxItemsPerRow -
-      2}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
+    -ms-grid-columns: repeat(${
+      expectedMaxItemsPerRow - 2
+    }, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
+    grid-template-columns: repeat(${
+      expectedMaxItemsPerRow - 2
+    }, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
   }
 }
 
 @media (min-width: ${expectedMinWidths[1]}px) {
   #${expectedGridId} .${expectedClassName} {
-    -ms-grid-columns: repeat(${expectedMaxItemsPerRow -
-      1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
-    grid-template-columns: repeat(${expectedMaxItemsPerRow -
-      1}, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
+    -ms-grid-columns: repeat(${
+      expectedMaxItemsPerRow - 1
+    }, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
+    grid-template-columns: repeat(${
+      expectedMaxItemsPerRow - 1
+    }, minmax(${expectedMinItemWidth}px, ${expectedMaxItemWidth}));
   }
 }
 

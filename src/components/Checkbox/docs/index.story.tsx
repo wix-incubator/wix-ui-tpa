@@ -25,7 +25,7 @@ import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxExtendedExample.st.
 import { CheckboxExtendedExample } from './CheckboxExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const codeExamples = [

@@ -4,9 +4,7 @@ import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
 import { SectionNotificationIconProps } from '../types';
 import { classes } from '../SectionNotification.st.css';
 
-export class SectionNotificationIcon extends React.Component<
-  SectionNotificationIconProps
-> {
+export class SectionNotificationIcon extends React.Component<SectionNotificationIconProps> {
   static displayName = 'SectionNotification.Icon';
 
   render() {

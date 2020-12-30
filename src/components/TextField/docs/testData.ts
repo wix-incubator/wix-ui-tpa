@@ -60,9 +60,9 @@ export function generateDataHook(
 
 export const dataHooks = [];
 
-cases.themes.forEach(theme => {
-  cases.variations.forEach(variation => {
-    cases.states.forEach(state => {
+cases.themes.forEach((theme) => {
+  cases.variations.forEach((variation) => {
+    cases.states.forEach((state) => {
       dataHooks.push(generateDataHook(theme, variation.title, state.title));
     });
   });

@@ -20,7 +20,7 @@ describe('TextArea', () => {
     expect(await driver.placeholder()).toBe('Placeholder');
   });
 
-  it('should hide success icon by default', async function() {
+  it('should hide success icon by default', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea
@@ -33,8 +33,8 @@ describe('TextArea', () => {
     expect(await driver.success()).toBe(false);
   });
 
-  it('should trigger onChange', async function() {
-    const onChange = jest.fn(e => {
+  it('should trigger onChange', async function () {
+    const onChange = jest.fn((e) => {
       expect(e.target.value).toBe('Test 1');
     });
     const driver = createDriver(
@@ -52,7 +52,7 @@ describe('TextArea', () => {
     expect(onChange).toHaveBeenCalled();
   });
 
-  it('should not trigger onChange when disabled', async function() {
+  it('should not trigger onChange when disabled', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea
@@ -69,7 +69,7 @@ describe('TextArea', () => {
     expect(onChange).not.toHaveBeenCalled();
   });
 
-  it('should be able to show success icon', async function() {
+  it('should be able to show success icon', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea
@@ -83,7 +83,7 @@ describe('TextArea', () => {
     expect(await driver.success()).toBe(true);
   });
 
-  it('should provide default theme', async function() {
+  it('should provide default theme', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea
@@ -97,7 +97,7 @@ describe('TextArea', () => {
     expect(await driver.theme()).toBe(TextAreaTheme.Box);
   });
 
-  it('should accept theme', async function() {
+  it('should accept theme', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea
@@ -111,7 +111,7 @@ describe('TextArea', () => {
     expect(await driver.theme()).toBe(TextAreaTheme.Line);
   });
 
-  it('should hide error by default', async function() {
+  it('should hide error by default', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea ariaLabel={'test'} value={'Test'} onChange={onChange} />,
@@ -119,7 +119,7 @@ describe('TextArea', () => {
     expect(await driver.error()).toBe(false);
   });
 
-  it('should show error with icon and description', async function() {
+  it('should show error with icon and description', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea
@@ -134,7 +134,7 @@ describe('TextArea', () => {
     expect(await driver.errorIcon()).toBe(true);
   });
 
-  it('should not show error icon in case when error description is not provided', async function() {
+  it('should not show error icon in case when error description is not provided', async function () {
     const onChange = jest.fn();
     const driver = createDriver(
       <TextArea ariaLabel={'test'} error value={'Test'} onChange={onChange} />,
@@ -143,7 +143,7 @@ describe('TextArea', () => {
     expect(await driver.errorIcon()).toBe(false);
   });
 
-  it('should handle blur event', async function() {
+  it('should handle blur event', async function () {
     const onChange = jest.fn();
     const onBlur = jest.fn();
     const driver = createDriver(

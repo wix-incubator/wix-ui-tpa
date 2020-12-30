@@ -19,13 +19,13 @@ class CheckboxVisual extends React.Component<Partial<CheckboxProps>> {
 
 visualize('Checkbox', () => {
   story('default', () => {
-    Object.values(CheckboxTheme).map(theme => {
+    Object.values(CheckboxTheme).map((theme) => {
       snap(`${theme} / default`, <CheckboxVisual theme={theme} />);
     });
   });
 
   story('checked', () => {
-    Object.values(CheckboxTheme).map(theme => {
+    Object.values(CheckboxTheme).map((theme) => {
       snap(`${theme} / checked`, <CheckboxVisual theme={theme} checked />);
     });
   });
@@ -38,7 +38,7 @@ visualize('Checkbox', () => {
   });
 
   story('disabled', () => {
-    Object.values(CheckboxTheme).map(theme => {
+    Object.values(CheckboxTheme).map((theme) => {
       snap(`${theme} / disabled`, <CheckboxVisual theme={theme} disabled />);
       snap(
         `${theme} / disabled / checked`,
@@ -48,7 +48,7 @@ visualize('Checkbox', () => {
   });
 
   story('indeterminate', () => {
-    Object.values(CheckboxTheme).map(theme => {
+    Object.values(CheckboxTheme).map((theme) => {
       snap(
         `${theme} / indeterminate`,
         <CheckboxVisual theme={theme} indeterminate />,

@@ -62,7 +62,7 @@ export class StatesButton extends React.Component<StatesButtonProps> {
     this.buttonRef.current.focus();
   };
 
-  private readonly debounceOnClick = e => {
+  private readonly debounceOnClick = (e) => {
     const { state, onClick } = this.props;
     if (state === BUTTON_STATES.IDLE) {
       onClick(e);

@@ -25,7 +25,7 @@ import { CopyUrlButtonWiringExample } from './CopyUrlButtonWiringExample';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {

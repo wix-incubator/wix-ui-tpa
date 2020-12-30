@@ -5,7 +5,7 @@ import { Text, TYPOGRAPHY } from '../Text';
 import { Button, PRIORITY } from '../Button';
 // import { setDarkPalette } from '../../test/visualTestUtils';
 
-const DialogWithContent = props => (
+const DialogWithContent = (props) => (
   <Dialog isOpen wiredToSiteColors={props.wired}>
     <div className="content" style={{ textAlign: 'center' }}>
       <Text typography={TYPOGRAPHY.largeTitle}>Are You Sure?</Text>

@@ -25,7 +25,7 @@ import { Button, PRIORITY } from '../../Button';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const childrenExamples = [
@@ -78,7 +78,7 @@ export default {
   storyName: 'Dialog',
   component: storyComponent(Dialog),
   componentPath: '../Dialog.tsx',
-  componentProps: setState => ({
+  componentProps: (setState) => ({
     'data-hook': 'storybook-Dialog',
     isOpen: false,
     onClose: () => setState({ isOpen: false }),

@@ -19,7 +19,7 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { AvatarSize } from '../Avatar';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -56,7 +56,7 @@ export default {
           title('Examples'),
 
           ...Object.keys(AvatarSize)
-            .map(size => ({
+            .map((size) => ({
               title: size,
               source: examples.example[size],
             }))

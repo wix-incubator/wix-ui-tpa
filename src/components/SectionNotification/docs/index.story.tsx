@@ -18,7 +18,7 @@ import { ReactComponent as ErrorIcon } from '../../../assets/icons/Error.svg';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const childrenProps = {
@@ -97,7 +97,7 @@ export default {
           title('Examples'),
 
           ...Object.values(NOTIFICATION_TYPE)
-            .map(type => ({
+            .map((type) => ({
               title: type,
               source: examples.example.desktop[type],
             }))
@@ -106,7 +106,7 @@ export default {
           title('Mobile Examples'),
 
           ...Object.values(NOTIFICATION_TYPE)
-            .map(type => ({
+            .map((type) => ({
               title: type,
               source: examples.example.mobile[type],
             }))

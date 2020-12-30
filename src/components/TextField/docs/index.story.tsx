@@ -28,7 +28,7 @@ import { ReactComponent as CalendarIcon } from '../../../assets/icons/Calendar.s
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {

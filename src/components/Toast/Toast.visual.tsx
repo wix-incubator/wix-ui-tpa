@@ -29,7 +29,7 @@ class ToastVisual extends React.Component<ToastVisualProps & ToastProps> {
 }
 
 function getTests(isMobile) {
-  return Object.values(TOAST_SKIN).map(skin => ({
+  return Object.values(TOAST_SKIN).map((skin) => ({
     it: skin,
     props: {
       mobile: isMobile,

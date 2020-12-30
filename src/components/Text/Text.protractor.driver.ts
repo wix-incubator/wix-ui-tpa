@@ -8,7 +8,7 @@ export interface TextDriver extends BaseDriver {
   getTagName(): Promise<string>;
 }
 
-export const textDriverFactory: DriverFactory<TextDriver> = component => {
+export const textDriverFactory: DriverFactory<TextDriver> = (component) => {
   return {
     /** returns the component element */
     element: () => component,

@@ -26,7 +26,7 @@ import * as examples from './examples';
 import { SpinnerWiringExample } from './SpinnerWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 function Spinner(props: SpinnerProps) {

@@ -25,7 +25,7 @@ import * as examples from './examples';
 import { PaginationWiringExample } from './PaginationWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -34,7 +34,7 @@ export default {
   component: storyComponent(Pagination),
   componentPath: '../Pagination.tsx',
 
-  componentProps: setState => ({
+  componentProps: (setState) => ({
     'data-hook': 'storybook-Pagination',
     totalPages: 10,
     maxPagesToShow: 5,

@@ -9,9 +9,9 @@ const items = [
   { title: 'Title 4', id: 'tab-4' },
 ];
 
-export const TabsExtendedExample: React.FunctionComponent<Partial<
-  TabsProps
->> = props => {
+export const TabsExtendedExample: React.FunctionComponent<
+  Partial<TabsProps>
+> = (props) => {
   const [activeTab, setActiveTab] = React.useState(0);
 
   return (

@@ -7,7 +7,7 @@ export const DatePickerInputWiringExample = class DatePickerInputExample extends
     value: new Date(),
   };
 
-  _onChange = date => this.setState({ value: date });
+  _onChange = (date) => this.setState({ value: date });
 
   render() {
     const { value } = this.state;

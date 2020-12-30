@@ -33,13 +33,13 @@ import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExamp
 import { ColorPickerFocusTabExample } from './ColorPickerFocusTabExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const CHILDREN = [
   {
     label: '4 colors',
-    value: [1, 2, 3, 4].map(n => (
+    value: [1, 2, 3, 4].map((n) => (
       <ColorPicker.Item
         key={n}
         value={COLORS[n].value}
@@ -49,7 +49,7 @@ const CHILDREN = [
   },
   {
     label: '3 colors with second selected',
-    value: [1, 2, 3].map(n => (
+    value: [1, 2, 3].map((n) => (
       <ColorPicker.Item
         checked={n === 2}
         key={n}
@@ -60,7 +60,7 @@ const CHILDREN = [
   },
   {
     label: 'Crossed out and disabled states plus tooltip',
-    value: [1, 2, 3, 4, 5].map(n => (
+    value: [1, 2, 3, 4, 5].map((n) => (
       <ColorPicker.Item
         checked={n === 2}
         key={n}
@@ -81,7 +81,7 @@ export default {
   componentPath: '../ColorPicker.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ColorPicker',
-    onChange: color => console.log(color),
+    onChange: (color) => console.log(color),
     children: CHILDREN[0].value,
   }),
   exampleProps: {

@@ -2,16 +2,16 @@ import * as React from 'react';
 import { TPAComponentsProvider } from '../../src/components/TPAComponentsConfig';
 
 // tslint:disable:react-hooks-nesting
-export const storyComponent = Component => {
-  return props => {
+export const storyComponent = (Component) => {
+  return (props) => {
     const { mobile = false, ...rest } = props;
     const [rtl, setRtl] = React.useState(false);
     const rootRef = React.useRef<HTMLDivElement>();
 
     React.useEffect(() => {
       if (rootRef && rootRef.current) {
-        const observer = new MutationObserver(mutationsList => {
-          mutationsList.map(mutation => {
+        const observer = new MutationObserver((mutationsList) => {
+          mutationsList.map((mutation) => {
             if (mutation.attributeName === 'dir') {
               setRtl(
                 (rootRef.current.parentNode as any).getAttribute('dir') ===

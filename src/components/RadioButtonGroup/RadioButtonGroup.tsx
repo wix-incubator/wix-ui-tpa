@@ -73,7 +73,7 @@ export class RadioButtonGroup extends React.Component<RadioButtonGroupProps> {
                     error,
                     theme,
                     checked: child.props.value === this.props.value,
-                    onChange: e => {
+                    onChange: (e) => {
                       this.props.onChange(e.value);
                     },
                   })}

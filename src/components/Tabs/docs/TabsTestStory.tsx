@@ -32,8 +32,8 @@ class TabsE2eTest extends React.Component {
 
   componentDidMount() {
     if (this._rootRef.current) {
-      this._observer = new MutationObserver(mutationsList => {
-        mutationsList.map(mutation => {
+      this._observer = new MutationObserver((mutationsList) => {
+        mutationsList.map((mutation) => {
           if (mutation.attributeName === 'dir') {
             const rtl = this._rootRef.current.getAttribute('dir') === 'rtl';
             this.setState({ rtl });
