@@ -25,15 +25,69 @@ export interface ImageProps extends TPAComponentProps {
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
 
+  state = { isLoaded: false };
+
+  _onLoad(event) {
+    const { onLoad } = this.props;
+
+    onLoad && onLoad(event);
+
+    if (!this.state.isLoaded) {
+      setTimeout(() => {
+        this.setState({ isLoaded: true });
+      }, 2000);
+    }
+  }
+
   render() {
-    const { className, src, width, height, ...imageProps } = this.props;
+    const {
+      className,
+      src,
+      width,
+      height,
+      onLoad,
+      loadingBehavior,
+      ...imageProps
+    } = this.props;
+    const { isLoaded } = this.state;
     const dimensions = { width, height };
 
     const isAbsoluteUrl = src.match('^https?://');
 
+    const MediaImageWithLoading = () => (
+      <>
+        {!isLoaded && (
+          <MediaImage
+            {...imageProps}
+            mediaPlatformItem={{
+              uri: src,
+              ...dimensions,
+              options: {
+                filters: {
+                  blur: 3,
+                },
+              },
+            }}
+          />
+        )}
+        <MediaImage
+          {...imageProps}
+          mediaPlatformItem={{
+            uri: src,
+            ...dimensions,
+          }}
+          onLoad={this._onLoad}
+        />
+      </>
+    );
+
     return (
       <div
-        className={st(classes.root, className)}
+        className={st(
+          classes.root,
+          { preload: !isLoaded, loaded: isLoaded },
+          className,
+        )}
         data-hook={this.props['data-hook']}
       >
         {isAbsoluteUrl ? (
@@ -43,13 +97,7 @@ export class Image extends React.Component<ImageProps> {
             src={src}
           />
         ) : (
-          <MediaImage
-            {...imageProps}
-            mediaPlatformItem={{
-              uri: src,
-              ...dimensions,
-            }}
-          />
+          <MediaImageWithLoading />
         )}
       </div>
     );

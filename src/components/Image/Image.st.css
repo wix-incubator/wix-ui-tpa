@@ -1,2 +1,33 @@
 .root {
+  -st-states: preload, loaded;
+
+  display: grid;
+}
+
+img {
+  grid-area: 1 / 1;
+}
+
+@keyframes blur-load {
+  0% {
+    opacity: 0;
+    filter: blur(3px) drop-shadow(0);
+  }
+  100% {
+    /* opacity: 1; */
+    filter: none;
+  }
+}
+
+.root:preload img:last-child {
+  opacity: 0;
+  filter: blur(3px) drop-shadow(0);
+}
+
+.root:loaded img:last-child {
+  animation-name: blur-load;
+  animation-duration: 3s;
+  animation-timing-function: easeout;
+  opacity: 1;
+  /* filter: blur(3px); */
 }
