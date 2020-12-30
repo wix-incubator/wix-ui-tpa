@@ -74,6 +74,12 @@ export default {
                 'This example demonstrates the usage of a media platform item with a relative URI.',
               source: examples.relativeUriExample,
             },
+            {
+              title: 'Blurry Loading',
+              description:
+                'The image can be loaded progressively with a blur placeholder by setting the `loadingBehavior` as `blur`.',
+              source: examples.blurLoadingExample,
+            },
           ].map(code),
         ],
       }),
