@@ -9,5 +9,9 @@ try {
 module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     concurrency: 50,
+    accessibilityValidation: {
+      level: 'AA',
+      guidelinesVersion: 'WCAG_2_1'
+    }
   }),
 });
