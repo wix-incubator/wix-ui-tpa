@@ -6,9 +6,8 @@ const kind = 'Tests';
 
 function renderTest(props?: any) {
   return (
-    <div style={{ margin: '10px', maxWidth: 200 }}>
-      <div>
-        <RadioButton
+    <>
+    <RadioButton
           value={'Checked'}
           checked
           withFocusRing
@@ -17,8 +16,6 @@ function renderTest(props?: any) {
           label="box theme"
           data-hook="radio-button-box"
         />
-      </div>
-      <div style={{ marginTop: '50px' }}>
         <RadioButton
           value={'Checked'}
           checked
@@ -28,8 +25,7 @@ function renderTest(props?: any) {
           label="default theme"
           data-hook="radio-button-default"
         />
-      </div>
-    </div>
+    </>
   );
 }
 

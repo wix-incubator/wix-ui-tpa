@@ -1,5 +1,5 @@
 import * as eyes from 'eyes.it';
-import { browser } from 'protractor';
+import { browser, Key } from 'protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
@@ -24,17 +24,21 @@ describe('RadioButton', () => {
     driver = radioButtonTestkitFactory({ dataHook: boxThemeDataHook });
     await waitForVisibilityOf(
       await driver.element(),
-      'Cannot find radioButton',
+      'Cannot find radioButton'
     );
     await driver.clickInput();
+    await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
+    expect(await driver.isFocused()).toBeTruthy();
   });
 
   eyes.it('should show the correct design on focus theme default', async () => {
     driver = radioButtonTestkitFactory({ dataHook: defaultThemeDataHook });
     await waitForVisibilityOf(
       await driver.element(),
-      'Cannot find radioButton',
+      'Cannot find radioButton'
     );
     await driver.clickInput();
+    await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
+    expect(await driver.isFocused()).toBeTruthy();
   });
 });
