@@ -68,6 +68,14 @@
     width: 100%;
 }
 
+.displayBlock .btn {
+    width: 100%;
+}
+
+.displayBlock .content {
+    justify-content: space-between;
+}
+
 .content {
     display: flex;
     align-items: center;
@@ -115,8 +123,11 @@
 }
 
 .root:mobile {
-    display: inline-block;
     position: relative;
+}
+
+.root:not(.displayBlock):mobile {
+  display: inline-block;
 }
 
 .root:mobile select {

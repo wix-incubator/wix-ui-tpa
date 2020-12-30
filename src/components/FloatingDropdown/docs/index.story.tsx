@@ -65,6 +65,7 @@ export default {
             { title: 'MaxWidth', source: examples.maxWidth },
             { title: 'Disabled', source: examples.disabled },
             { title: 'Ellipsis', source: examples.ellipsis },
+            { title: 'Block Display', source: examples.displayBlock },
           ].map(code),
         ],
       }),

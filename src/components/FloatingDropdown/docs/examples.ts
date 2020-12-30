@@ -112,3 +112,37 @@ export const ellipsis = `
   />
 </div>
 `;
+
+export const displayBlock = `
+<>
+<h2>Desktop Example</h2>
+<FloatingDropdown
+    options={[
+      {id: '1', value: 'Most recent', isSelectable: true},
+      {id: '2', value: 'Most viewed', isSelectable: true},
+      {id: '3', value: 'Most liked', isSelectable: true},
+      {id: '4', value: 'Most comments', isSelectable: true},
+      {id: '5', value: 'Most recent posts in the whole galaxy', isSelectable: true},
+    ]}
+    label="Sort by:"
+    placeholder="Something"
+    value="1"
+    displayBlock
+/>
+<h2>Native Example</h2>
+<ExampleWithContextProps mobile={true}>
+  <FloatingDropdown
+    options={[
+      {id: '1', value: 'Most recent', isSelectable: true},
+      {id: '2', value: 'Most viewed', isSelectable: true},
+      {id: '3', value: 'Most liked', isSelectable: true},
+      {id: '4', value: 'Most comments', isSelectable: true},
+      {id: '5', value: 'Most recent posts in the whole galaxy', isSelectable: true},
+    ]}
+    label="Sort by:"
+    placeholder="Something"
+    value="1"
+    displayBlock
+  />
+</ExampleWithContextProps>
+</>`;
