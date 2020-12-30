@@ -2,12 +2,20 @@ import * as React from 'react';
 import { Input } from 'wix-ui-core/input';
 import { Button } from 'wix-ui-core/button';
 import { st, classes } from './Counter.st.css';
+import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
+import { ReactComponent as ErrorIconS } from '../../assets/icons/ErrorS.svg';
 import { ReactComponent as Plus } from '../../assets/icons/plus.svg';
 import { ReactComponent as Minus } from '../../assets/icons/minus.svg';
+import { ReactComponent as PlusS } from '../../assets/icons/PlusS.svg';
+import { ReactComponent as MinusS } from '../../assets/icons/MinusS.svg';
 import { TPAComponentProps } from '../../types';
 import { Tooltip } from '../Tooltip';
 import { TooltipSkin } from '../Tooltip/TooltipEnums';
-import { ReactComponent as ErrorIcon } from '../../assets/icons/Error.svg';
+
+export enum Size {
+  medium = 'medium',
+  xSmall = 'xSmall',
+}
 
 export interface CounterProps extends TPAComponentProps {
   onChange(val: string): void;
@@ -23,11 +31,13 @@ export interface CounterProps extends TPAComponentProps {
   error?: boolean;
   disabled?: boolean;
   errorMessage?: string;
+  size?: Size;
 }
 
 interface DefaultProps {
   step: number;
   value: number;
+  size: Size;
 }
 
 /** Counter */
@@ -36,6 +46,7 @@ export class Counter extends React.Component<CounterProps> {
   static defaultProps: DefaultProps = {
     step: 1,
     value: 0,
+    size: Size.medium,
   };
 
   _onDecrement = () => {
@@ -59,6 +70,21 @@ export class Counter extends React.Component<CounterProps> {
     onChange((value + step).toString());
   };
 
+  _getPlus = () => {
+    const { size } = this.props;
+    return size === Size.xSmall ? <PlusS /> : <Plus />;
+  }
+
+  _getMinus = () => {
+    const { size } = this.props;
+    return size === Size.xSmall ? <MinusS /> : <Minus />;
+  }
+
+  _getError = () => {
+    const { size } = this.props;
+    return size === Size.xSmall ? <ErrorIconS className={classes.error} /> : <ErrorIcon className={classes.error} />;
+  }
+
   render() {
     const {
       incrementAriaLabel,
@@ -73,12 +99,14 @@ export class Counter extends React.Component<CounterProps> {
       error,
       errorMessage,
       className,
+      size,
     } = this.props;
 
     const shouldShowErrorMessageTooltip = error && errorMessage;
+    const sizeClass = (size === Size.xSmall) ? classes.xsmall : '';
     return (
       <div
-        className={st(classes.root, { disabled, error }, className)}
+        className={st(classes.root, { disabled, error }, sizeClass, className)}
         dir="ltr"
         role="region"
         aria-labelledby={this.props['aria-labelledby']}
@@ -92,7 +120,7 @@ export class Counter extends React.Component<CounterProps> {
           name="increment"
           disabled={disabled || (max && value + step > max)}
         >
-          <Plus />
+          {this._getPlus()}
         </Button>
         {shouldShowErrorMessageTooltip && (
           <Tooltip
@@ -102,7 +130,7 @@ export class Counter extends React.Component<CounterProps> {
             appendTo="window"
             skin={TooltipSkin.Error}
           >
-            <ErrorIcon className={classes.error} />
+            {this._getError()}
           </Tooltip>
         )}
         <div className={classes.inputWrapper}>
@@ -125,7 +153,7 @@ export class Counter extends React.Component<CounterProps> {
           name="decrement"
           disabled={disabled || value - step < min}
         >
-          <Minus />
+          {this._getMinus()}
         </Button>
       </div>
     );

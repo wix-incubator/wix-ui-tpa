@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Counter } from './';
+import { Counter, Size } from './';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 
 class CounterVisual extends React.Component<any> {
@@ -42,6 +42,18 @@ const tests = [
       {
         it: 'disabled plus',
         props: { max: 10, value: 10 },
+      },
+      {
+        it: 'xSmal',
+        props: { size: Size.xSmall },
+      },
+      {
+        it: 'xSmal disabled',
+        props: { size: Size.xSmall, disabled: true },
+      },
+      {
+        it: 'xSmal error',
+        props: { size: Size.xSmall, error: true },
       },
     ],
   },

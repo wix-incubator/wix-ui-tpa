@@ -75,6 +75,10 @@ export default {
               title: 'Error',
               source: `<Counter error={true} errorMessage="This is an error message"/>`,
             },
+            {
+              title: 'XSmall',
+              source: `<Counter size='xSmall'/>`,
+            },
           ].map(code),
         ],
       }),

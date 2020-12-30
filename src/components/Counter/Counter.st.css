@@ -46,6 +46,11 @@
     border-color: color(value(counterColor));
 }
 
+.root.xsmall {
+    padding: 0 4px;
+    width: 64px;
+    height: 28px;
+}
 .root:error {
     border-color: value(DefaultErrorColor);
 }
@@ -93,6 +98,10 @@
     width: 100%;
     color: value(counterColor);
     font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+}
+
+.xsmall input {
+    font: font("{theme: 'Body-M', size: '12px', lineHeight: '1em'}");
 }
 
 .root:disabled input {
