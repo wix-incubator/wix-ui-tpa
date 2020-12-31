@@ -36,6 +36,7 @@ export interface IWixFontParam {
   wixParam: string;
   defaultFont: string;
   size?: number;
+  fixedSize?: boolean;
 }
 
 export interface IWixColorParam {
@@ -412,7 +413,7 @@ export class MockSettings extends React.PureComponent<
         </h2>
         <div className={styles.fontPickerContainer}>
           <ul className={styles.pickerList}>
-            {this.props.wixFontParams.map(({ label, wixParam }) => (
+            {this.props.wixFontParams.map(({ label, wixParam, fixedSize }) => (
               <li key={wixParam}>
                 <label>{label}</label>
                 <UI.FontFamilyPicker
@@ -423,13 +424,15 @@ export class MockSettings extends React.PureComponent<
                     this.onFontChange(selectedFont, wixParam)
                   }
                 />
-                <UI.Slider
-                  value={this.state.selectedFont[wixParam].size}
-                  unit="px"
-                  min={12}
-                  max={24}
-                  onChange={(value) => this.onFontSizeChange(value, wixParam)}
-                />
+                {!fixedSize ? (
+                  <UI.Slider
+                    value={this.state.selectedFont[wixParam].size}
+                    unit="px"
+                    min={12}
+                    max={24}
+                    onChange={(value) => this.onFontSizeChange(value, wixParam)}
+                  />
+                ) : null}
               </li>
             ))}
           </ul>
