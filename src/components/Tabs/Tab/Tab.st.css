@@ -54,6 +54,8 @@
 .root a {
     text-decoration: none;
     color: inherit;
+    position: relative;
+    z-index: 1;
 }
 
 .root a:focus + .focusIndicatorWrapper > .focusIndicator {

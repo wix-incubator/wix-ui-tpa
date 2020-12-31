@@ -38,14 +38,12 @@ const items = Array(20)
   .fill('')
   .map((item, index) => ({ title: `Title ${index + 1}` }));
 
-const anchorItems = Array.from(
-  { length: 5 },
-  (item, index) => ({
-    title: `Anchor ${index + 1}`,
-    href: `/some-href-${index + 1}`,
-    target: '_blank',
-    rel: 'noopener noreferrer',
-  }));
+const anchorItems = Array.from({ length: 5 }, (item, index) => ({
+  title: `Anchor ${index + 1}`,
+  href: `/some-href-${index + 1}`,
+  target: '_blank',
+  rel: 'noopener noreferrer',
+}));
 
 const exampleItems = [
   { label: 'few items', value: items.slice(0, 4) },
@@ -121,7 +119,7 @@ export default {
               title: 'Tabs links',
               description: 'Render anchors',
               source: examples.anchors,
-            }
+            },
           ].map(example),
         ],
       }),

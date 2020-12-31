@@ -12,15 +12,16 @@ const manyItems = `[
   ${generateItems(10)}
 ]`;
 
-const generateAnchorItems = (length = 1) => Array.from(
-  { length },
-  (item, index) => (`{
+const generateAnchorItems = (length = 1) =>
+  Array.from(
+    { length },
+    (item, index) => `{
     title: 'Anchor ${index + 1}',
     href: '/some-href-${index + 1}',
     target: '_blank',
     rel: 'noopener noreferrer'
-  }`),
-);
+  }`,
+  );
 
 const anchorItems = `[
   ${generateAnchorItems(5)}

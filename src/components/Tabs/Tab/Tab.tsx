@@ -56,7 +56,13 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       tabIndex={href ? -1 : 0}
       aria-current={isActive}
     >
-      {href ? <a href={href} target={target} rel={rel}>{title}</a> : <span role="link">{title}</span>}
+      {href ? (
+        <a href={href} target={target} rel={rel}>
+          {title}
+        </a>
+      ) : (
+        <span role="link">{title}</span>
+      )}
       <div
         className={classes.focusIndicatorWrapper}
         tabIndex={-1}
