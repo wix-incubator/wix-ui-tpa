@@ -88,6 +88,12 @@ export default {
           ...[
             { title: 'Simple Usage', source: examples.basicExample },
             {
+              title: 'Responsiveness',
+              description:
+                'The DatePicker width is defined according to the container width.',
+              source: examples.responsiveExample,
+            },
+            {
               title: 'Filter Dates',
               description:
                 'In this example only prior dates to the current date can be selected.',

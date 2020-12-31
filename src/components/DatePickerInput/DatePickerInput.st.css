@@ -119,11 +119,6 @@
     -st-extends: WSRDatePicker;
 }
 
-.wsrDatePicker::calendar::month {
-    width: value(calendarWidth);
-    height: value(calendarHeight);
-}
-
 .overrideStyleParams .textField {
     -st-mixin: TextField(
             MainBorderColor value(DateInputBorderColor),
@@ -148,4 +143,9 @@
             WeekdayFont value(WeekdayFont),
             DayFont value(DayFont),
     );
+}
+
+.wsrDatePicker::calendar::month {
+    width: value(calendarWidth);
+    height: value(calendarHeight);
 }

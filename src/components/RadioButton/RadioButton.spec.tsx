@@ -33,13 +33,7 @@ describe('RadioButton', () => {
     expect(await driver.isDisabled()).toBeTruthy();
   });
 
-  it('should have focus state', async () => {
-    const driver = createDriver(<RadioButton {...defProps} />);
-    await driver.clickInput();
-    expect(await driver.isFocused()).toBeTruthy();
-  });
-
-  it('should lose have focus state on blur', async () => {
+  it('should lose focus state on blur', async () => {
     const driver = createDriver(<RadioButton {...defProps} />);
     await driver.clickInput();
     expect(await driver.isFocused()).toBeTruthy();

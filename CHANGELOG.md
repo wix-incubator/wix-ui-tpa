@@ -1,3 +1,26 @@
+# [2.16.0](https://github.com/wix/wix-ui-tpa/compare/v2.15.0...v2.16.0) (2020-12-30)
+
+
+### Features
+
+* **FloatingDropdown:** New 'displayBlock' prop ([29c9377](https://github.com/wix/wix-ui-tpa/commit/29c93772498a6549e9e1c78685c09ced36eed42e))
+
+
+
+# [2.15.0](https://github.com/wix/wix-ui-tpa/compare/v2.14.0...v2.15.0) (2020-12-29)
+
+
+### Bug Fixes
+
+* **FloatingDropdown:** Floating dropdown max-width and ellipsis fix ([9dc9ab1](https://github.com/wix/wix-ui-tpa/commit/9dc9ab1beceb7ca05d243364d5e70e692a512e17))
+* **RadioButton, Checkbox:** Fix height ([#554](https://github.com/wix/wix-ui-tpa/issues/554)) ([3a02616](https://github.com/wix/wix-ui-tpa/commit/3a02616038642f16e63c057dfc36955ccf16b138))
+
+
+### Features
+* **DatePicker:** change for responsive width ([#556](https://github.com/wix/wix-ui-tpa/pull/556)) ([0e1b12d](https://github.com/wix/wix-ui-tpa/commit/0e1b12d98bbae71555531e465843cd183251be27))
+* **Image:** make `src` support absolute and relative ([#551](https://github.com/wix/wix-ui-tpa/pull/551)) ([be5c726](https://github.com/wix/wix-ui-tpa/commit/be5c726c2fbbdb17e18aace1a40a7570c1a3e9ac))
+
+
 # [2.14.0](https://github.com/wix/wix-ui-tpa/compare/v2.13.2...v2.14.0) (2020-12-27)
 
 
