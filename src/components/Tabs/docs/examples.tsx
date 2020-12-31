@@ -12,6 +12,20 @@ const manyItems = `[
   ${generateItems(10)}
 ]`;
 
+const generateAnchorItems = (length = 1) => Array.from(
+  { length },
+  (item, index) => (`{
+    title: 'Anchor ${index + 1}',
+    href: '/some-href-${index + 1}',
+    target: '_blank',
+    rel: 'noopener noreferrer'
+  }`),
+);
+
+const anchorItems = `[
+  ${generateAnchorItems(5)}
+]`;
+
 export const importExample = `import { Tabs } from 'wix-ui-tpa/Tabs'`;
 export const skins = `() => {
   const [activeTab, setActiveTab] = React.useState(0);
@@ -70,6 +84,17 @@ export const scroll = `() => {
   return (
     <div style={{width: '50%'}}>
       <Tabs items={${manyItems}} activeTabIndex={activeTab} onTabClick={setActiveTab}/>
+    </div>
+  );
+}
+`;
+
+export const anchors = `() => {
+  const [activeTab, setActiveTab] = React.useState(0);
+  
+  return (
+    <div>
+      <Tabs items={${anchorItems}} activeTabIndex={activeTab} onTabClick={setActiveTab}/>
     </div>
   );
 }

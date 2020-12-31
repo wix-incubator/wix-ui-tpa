@@ -38,9 +38,19 @@ const items = Array(20)
   .fill('')
   .map((item, index) => ({ title: `Title ${index + 1}` }));
 
+const anchorItems = Array.from(
+  { length: 5 },
+  (item, index) => ({
+    title: `Anchor ${index + 1}`,
+    href: `/some-href-${index + 1}`,
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  }));
+
 const exampleItems = [
   { label: 'few items', value: items.slice(0, 4) },
   { label: 'many items', value: items },
+  { label: 'with anchors', value: anchorItems },
 ];
 
 export default {
@@ -107,6 +117,11 @@ export default {
                 "Arrow icons appear when items can't all fit the container",
               source: examples.scroll,
             },
+            {
+              title: 'Tabs links',
+              description: 'Render anchors',
+              source: examples.anchors,
+            }
           ].map(example),
         ],
       }),
