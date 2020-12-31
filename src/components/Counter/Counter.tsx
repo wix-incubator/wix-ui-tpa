@@ -102,7 +102,7 @@ export class Counter extends React.Component<CounterProps> {
           name="increment"
           disabled={disabled || (max && value + step > max)}
         >
-          <Plus className={sizeClass} />
+          <Plus />
         </Button>
         {shouldShowErrorMessageTooltip && (
           <Tooltip
@@ -112,7 +112,7 @@ export class Counter extends React.Component<CounterProps> {
             appendTo="window"
             skin={TooltipSkin.Error}
           >
-            <ErrorIcon className={`${classes.error} ${sizeClass}`} />
+            <ErrorIcon className={classes.error} />
           </Tooltip>
         )}
         <div className={classes.inputWrapper}>
@@ -135,7 +135,7 @@ export class Counter extends React.Component<CounterProps> {
           name="decrement"
           disabled={disabled || value - step < min}
         >
-          <Minus className={sizeClass} />
+          <Minus />
         </Button>
       </div>
     );
