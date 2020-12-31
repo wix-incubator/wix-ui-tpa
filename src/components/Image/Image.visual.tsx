@@ -48,6 +48,15 @@ visualize('Image', () => {
       snap('with onError', (done) => (
         <ImageWrapper src={invalidSrc} onDone={done} />
       ));
+      snap('with blurry loading', (done) => (
+        <Image
+          src={src}
+          width={200}
+          height={200}
+          loadingBehavior="blur"
+          onLoad={done}
+        />
+      ));
     });
   });
 });
