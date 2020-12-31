@@ -50,8 +50,8 @@
 
 .xsmall {
     padding: 0 4px;
-    width: value(counterWidthXsmall);
-    height: 28px;
+    width: value(counterWidthXsmall) !important;
+    height: 28px !important;
 }
 .root:error {
     border-color: value(DefaultErrorColor);
@@ -103,7 +103,7 @@
 }
 
 .xsmall input {
-    font: font("{theme: 'Body-M', size: '12px', lineHeight: '1em'}");
+    font: font("{theme: 'Body-M', size: '12px', lineHeight: '1em'}") !important;
 }
 
 .xsmall svg {
