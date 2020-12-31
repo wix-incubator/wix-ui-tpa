@@ -1,0 +1,66 @@
+apiDoc:
+  title: wix-ui-tpa
+  description: Our official library of React components that are designed to be used in Wix TPA's.
+  category: fe-guild
+  status: ga
+  gitUrl: js
+  markdownOnlyAutoUpdate: true
+  docs:
+    - file: README.md
+      title: Getting Started
+    - file: docs/USAGE.md
+      title: Usage
+    - file: Contribution/docs/CONTRIBUTION.md
+      title: How to Contribute?
+    - file: docs/COMPONENT_GUIDELINES.md
+      title: Contribution/Guidelines for creating a `wix-ui-tpa` component
+    - file: docs/MIGRATING-V1-V2.md
+      title: Migrating `wix-ui-tpa` from v1 to v2
+    - file: docs/RTL.md
+      title: RTL Support
+    - file: docs/internal/VERSION_RELEASE.md
+      title: Version Release Instructions
+    - file: CHANGELOG.md
+      title: Change Log
+    - file: CHANGELOG-v1.md
+      title: Change Log v1
+    - file: src/components/Tabs/README.md
+      title: components/Tabs
+    - file: src/components/Dropdown/README.md
+      title: components/Dropdown
+    - file: src/components/Card/README.md
+      title: components/Card
+    - file: src/components/SectionNotification/README.md
+      title: components/SectionNotification
+    - file: src/components/CheckboxGroup/README.md
+      title: components/CheckboxGroup
+    - file: src/components/Input/README.md
+      title: components/Input
+    - file: src/components/OverlappingCard/README.md
+      title: components/OverlappingCard
+    - file: src/components/StatesButton/README.md
+      title: components/StatesButton
+    - file: src/components/Ratings/README.md
+      title: components/Ratings
+    - file: src/components/Checkbox/README.md
+      title: components/Checkbox
+    - file: src/components/DotNavigation/README.md
+      title: components/DotNavigation
+    - file: src/components/StripCard/README.md
+      title: components/StripCard
+    - file: src/components/Divider/README.md
+      title: components/Divider
+    - file: src/components/RadioButtonGroup/README.md
+      title: components/RadioButtonGroup
+    - file: src/components/IconButton/README.md
+      title: components/IconButton
+    - file: src/components/NewCard/README.md
+      title: components/NewCard
+    - file: src/components/Counter/README.md
+      title: components/Counter
+    - file: src/components/IconToggle/README.md
+      title: components/IconToggle
+    - file: src/components/FloatingDropdown/README.md
+      title: components/FloatingDropdown
+    - file: src/components/Grid/README.md
+      title: components/Grid
