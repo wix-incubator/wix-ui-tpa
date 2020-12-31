@@ -77,7 +77,7 @@ export default {
             {
               title: 'Blurry Loading',
               description:
-                'The image can be loaded progressively with a blur placeholder by setting the `loadingBehavior` as `blur`.',
+                'The image can be loaded progressively with a blur placeholder by setting the `loadingBehavior` as `blur`. Notice that the wrapper class and the button are only to allow simulating the behavior again easily.',
               source: examples.blurLoadingExample,
             },
           ].map(code),
