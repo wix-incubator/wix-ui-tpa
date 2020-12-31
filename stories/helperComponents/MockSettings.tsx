@@ -36,6 +36,7 @@ export interface IWixFontParam {
   wixParam: string;
   defaultFont: string;
   size?: number;
+  fixedSize?: boolean;
 }
 
 export interface IWixColorParam {
@@ -44,13 +45,7 @@ export interface IWixColorParam {
   defaultColor: string;
 }
 
-const COLOR_PALETTE = [
-  ['#FFFFFF', '#F2F2F2', '#CFCFCF', '#A8A8A8', '#606060'],
-  ['#A4E6F7', '#77D7EF', '#00B9E8', '#007B9A', '#003D4D'],
-  ['#F0ADA0', '#E28371', '#D32300', '#8D1700', '#460B00'],
-  ['#D3E9AA', '#B6D47E', '#89BF24', '#5B7F18', '#2D3F0C'],
-  ['#FFEFAA', '#FFE77F', '#FFD000', '#A98A00', '#544500'],
-];
+const DEFAULT_FONT_SIZE = 14;
 
 const DEFAULT_EXAMPLES = [
   {
@@ -151,7 +146,7 @@ export class MockSettings extends React.PureComponent<
       const tpaIdx = parseInt(item.defaultColor.split('-')[1], 10) - 1;
       const { row, col } = this.getPaletteIndicesFromTPAIdx(tpaIdx);
       obj[item.wixParam] = {
-        value: COLOR_PALETTE[col][row],
+        value: palettes[0][col][row],
         index: row * 5 + col,
       };
       return obj;
@@ -169,6 +164,7 @@ export class MockSettings extends React.PureComponent<
     return wixParams.reduce((obj, item) => {
       obj[item.wixParam] = {
         value: item.defaultFont,
+        size: item.size || DEFAULT_FONT_SIZE,
       };
       return obj;
     }, {});
@@ -188,7 +184,24 @@ export class MockSettings extends React.PureComponent<
       {
         selectedFont: {
           ...this.state.selectedFont,
-          ...{ [wixParam]: { value: selectedFont } },
+          ...{
+            [wixParam]: {
+              ...this.state.selectedFont[wixParam],
+              value: selectedFont,
+            },
+          },
+        },
+      },
+      () => this.triggerChanged('font'),
+    );
+  }
+
+  private onFontSizeChange(size, wixParam) {
+    this.setState(
+      {
+        selectedFont: {
+          ...this.state.selectedFont,
+          ...{ [wixParam]: { ...this.state.selectedFont[wixParam], size } },
         },
       },
       () => this.triggerChanged('font'),
@@ -207,7 +220,7 @@ export class MockSettings extends React.PureComponent<
     );
   }
 
-  onPaletteChange = selectedPalette => {
+  onPaletteChange = (selectedPalette) => {
     const selectedColors = this.props.wixColorParams.reduce((obj, param) => {
       const colorIndex = this.state.selectedColors[param.wixParam].index;
       const { row, col } = this.getPaletteIndicesFromTPAIdx(
@@ -258,7 +271,10 @@ export class MockSettings extends React.PureComponent<
           const font = this.getFontByFontFamily(
             this.state.selectedFont[item.wixParam].value,
           );
-          const size = item.size || 30;
+          const size =
+            this.state.selectedFont[item.wixParam].size ||
+            item.size ||
+            DEFAULT_FONT_SIZE;
           obj[item.wixParam] = {
             cssFontFamily: font.cssFontFamily,
             family: font.fontFamily,
@@ -303,7 +319,7 @@ export class MockSettings extends React.PureComponent<
     return DEFAULT_EXAMPLES.reduce(
       (selectedFont, fontGroup) =>
         !selectedFont
-          ? fontGroup.fonts.find(font => font.fontFamily === fontFamily)
+          ? fontGroup.fonts.find((font) => font.fontFamily === fontFamily)
           : selectedFont,
       undefined,
     );
@@ -378,7 +394,7 @@ export class MockSettings extends React.PureComponent<
                     max={max}
                     hideNumericInput
                     value={this.state.selectedNumber[wixParam]}
-                    onChange={value => this.onNumberChange(value, wixParam)}
+                    onChange={(value) => this.onNumberChange(value, wixParam)}
                   />
                 </li>
               ),
@@ -397,19 +413,26 @@ export class MockSettings extends React.PureComponent<
         </h2>
         <div className={styles.fontPickerContainer}>
           <ul className={styles.pickerList}>
-            {this.props.wixFontParams.map(({ label, wixParam }) => (
+            {this.props.wixFontParams.map(({ label, wixParam, fixedSize }) => (
               <li key={wixParam}>
-                <label>
-                  {label} - {this.state.selectedFont[wixParam].value}
-                </label>
+                <label>{label}</label>
                 <UI.FontFamilyPicker
                   fonts={DEFAULT_EXAMPLES}
                   value={this.state.selectedFont[wixParam].value}
                   getMissingFontName={this.getMissingFontName}
-                  onChange={selectedFont =>
+                  onChange={(selectedFont) =>
                     this.onFontChange(selectedFont, wixParam)
                   }
                 />
+                {!fixedSize ? (
+                  <UI.Slider
+                    value={this.state.selectedFont[wixParam].size}
+                    unit="px"
+                    min={12}
+                    max={24}
+                    onChange={(value) => this.onFontSizeChange(value, wixParam)}
+                  />
+                ) : null}
               </li>
             ))}
           </ul>

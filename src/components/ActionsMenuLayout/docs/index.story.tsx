@@ -122,12 +122,12 @@ export default {
                   {
                     label: 'Menu Background Color',
                     wixParam: 'backgroundColor',
-                    defaultColor: 'color-6',
+                    defaultColor: 'color-1',
                   },
                   {
                     label: 'Menu Border Color',
                     wixParam: 'borderColor',
-                    defaultColor: 'color-2',
+                    defaultColor: 'color-5',
                   },
                 ],
                 fonts: [
