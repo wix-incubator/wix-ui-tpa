@@ -78,7 +78,7 @@ export class Image extends React.Component<ImageProps> {
     const { isLoaded } = this.state;
     const dimensions = { width, height };
 
-    const isAbsoluteUrl = src.match('^https?://');
+    const isAbsoluteUrl = src && src.match('^https?://');
     const hasLoadingBehavior = loadingBehavior === 'blur';
 
     return (
