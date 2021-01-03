@@ -15,7 +15,7 @@
     DefaultErrorColor: value(errorColor);
     DefaultBackgroundColor: color-1;
     DefaultWidth: 104px;
-    DefaultWidthXsmall: 64px;
+    DefaultWidthXsmall: 80px;
 }
 
 :vars {
@@ -119,8 +119,8 @@
 }
 
 .xsmall .error {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
 }
 
 .root:disabled input {
