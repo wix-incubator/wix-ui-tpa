@@ -15,7 +15,7 @@ apiDoc:
     - file: docs/COMPONENT_GUIDELINES.md
       title: Contribution/Guidelines
     - file: docs/MIGRATING-V1-V2.md
-      title: Migrating `wix-ui-tpa` from v1 to v2
+      title: Migration/V1 to V2
     - file: docs/RTL.md
       title: RTL Support
     - file: docs/internal/VERSION_RELEASE.md
