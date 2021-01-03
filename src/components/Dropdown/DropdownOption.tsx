@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text, TYPOGRAPHY } from '../Text';
 import { st, classes } from './DropdownOption.st.css';
 import { TPAComponentProps } from '../../types';
-import { TPAComponentsProvider } from '../TPAComponentsConfig/TPAComponentsConfig';
 
 export interface DropdownOptionProps {
   id?: string;
@@ -14,8 +13,9 @@ export interface DropdownOptionProps {
   divider?: boolean;
 }
 
-export const DropdownOption: React.FC<DropdownOptionProps &
-  TPAComponentProps> = props => {
+export const DropdownOption: React.FC<
+  DropdownOptionProps & TPAComponentProps
+> = (props) => {
   const {
     value,
     id,
@@ -40,19 +40,17 @@ export const DropdownOption: React.FC<DropdownOptionProps &
     >
       {icon && <div className={classes.icon}>{icon}</div>}
       <div className={classes.contentWrapper}>
-        <TPAComponentsProvider value={{ mobile: false }}>
-          <Text className={classes.title} typography={TYPOGRAPHY.runningText}>
-            {value}
+        <Text className={classes.title} typography={TYPOGRAPHY.runningText}>
+          {value}
+        </Text>
+        {subtitle && (
+          <Text
+            className={classes.subtitle}
+            typography={TYPOGRAPHY.runningText}
+          >
+            {subtitle}
           </Text>
-          {subtitle && (
-            <Text
-              className={classes.subtitle}
-              typography={TYPOGRAPHY.runningText}
-            >
-              {subtitle}
-            </Text>
-          )}
-        </TPAComponentsProvider>
+        )}
       </div>
     </div>
   );
