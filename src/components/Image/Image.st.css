@@ -17,7 +17,7 @@
   display: grid;
 }
 
-.absoluteImage, .relativeImage, .placeholder {
+.placeholder, .relativeImage {
   grid-area: 1 / 1;
 }
 
