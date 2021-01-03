@@ -1,3 +1,12 @@
+## [2.16.1](https://github.com/wix/wix-ui-tpa/compare/v2.16.0...v2.16.1) (2020-12-31)
+
+
+### Bug Fixes
+
+* **RadioButton:** Don't show focus ring on mouse click ([2c88fd7](https://github.com/wix/wix-ui-tpa/commit/2c88fd707f3add94e79d7c0255ce49ee0532cef0))
+
+
+
 # [2.16.0](https://github.com/wix/wix-ui-tpa/compare/v2.15.0...v2.16.0) (2020-12-30)
 
 
