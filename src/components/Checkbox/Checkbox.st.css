@@ -79,7 +79,6 @@
 .root::childContainer {
     display: flex;
     flex: 1;
-    flex-wrap: wrap;
     align-items: center;
 }
 
@@ -99,7 +98,6 @@
     align-items: center;
 }
 
-
 .root:box {
     display: flex;
     background-color: color(value(CurrentBoxColor));
@@ -110,7 +108,7 @@
 }
 
 .root:box::childContainer {
-    padding: 16px 0;
+    padding: 15px 0;
 }
 
 .icon {
@@ -147,13 +145,13 @@
 
 .label.suffixed {
     flex: 1;
-    white-space: nowrap;
     display: flex;
 }
 
 .label.suffixed::after {
     content: '';
     width: 5px;
+    flex: 1 0 5px;
 }
 
 .suffix {

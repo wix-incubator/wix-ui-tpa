@@ -10,61 +10,60 @@ import { imageDriverFactory } from './Image.driver';
 
 describe('Image', () => {
   const createDriver = createUniDriverFactory(imageDriverFactory);
-  const sampleUrl =
-    'https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg';
+
+  const sampleSources = {
+    absolute:
+      'https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg',
+    relative: 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg',
+  };
   const sampleAlt = 'Garfield smiles and puts his hand over chest';
 
   it('should render', async () => {
-    const driver = createDriver(<Image src={sampleUrl} />);
+    const driver = createDriver(<Image src={sampleSources.absolute} />);
+
     expect(await driver.exists()).toBe(true);
   });
 
-  describe('regular image', () => {
-    it('should return `src`', async () => {
-      const expectedSrc = sampleUrl;
-      const driver = createDriver(<Image src={expectedSrc} />);
-      expect(await driver.getSrc()).toBe(expectedSrc);
+  describe('absolute', () => {
+    const src = sampleSources.absolute;
+
+    it('should return `src` as is', async () => {
+      const driver = createDriver(<Image src={src} />);
+
+      expect(await driver.getSrc()).toBe(src);
     });
 
-    it('should return `alt`', async () => {
-      const expectedAlt = sampleAlt;
-      const driver = createDriver(<Image src={sampleUrl} alt={expectedAlt} />);
-      expect(await driver.getAlt()).toBe(expectedAlt);
+    it('should return `src` as is even when providing an unsecured URL', async () => {
+      const unsecuredSrc = sampleSources.absolute.replace(
+        'https://',
+        'http://',
+      );
+      const driver = createDriver(<Image src={unsecuredSrc} />);
+
+      expect(await driver.getSrc()).toBe(unsecuredSrc);
     });
   });
 
-  describe('media image', () => {
-    const uri = 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg';
-    const width = 300;
-    const height = 250;
+  describe('relative', () => {
+    const src = sampleSources.relative;
 
-    it('should return `src`', async () => {
-      const expectedSrc = `https://static.wixstatic.com/media/${uri}/v1/fill/w_${width},h_${height},al_c,q_80/${uri}`;
-      const driver = createDriver(
-        <Image
-          mediaItem={{
-            uri,
-            width,
-            height,
-          }}
-        />,
-      );
-      expect(await driver.getSrc()).toBe(expectedSrc);
+    it('should return `src` as full media item URL containing the provided URI', async () => {
+      const driver = createDriver(<Image src={src} />);
+
+      const mediaItemUrl = await driver.getSrc();
+
+      expect(mediaItemUrl.startsWith('http')).toBe(true);
+      expect(mediaItemUrl.endsWith(src)).toBe(true);
     });
+  });
+
+  describe.each(Object.keys(sampleSources))('%s', (sourceType) => {
+    const src = sampleSources[sourceType];
 
     it('should return `alt`', async () => {
-      const expectedAlt = sampleAlt;
-      const driver = createDriver(
-        <Image
-          mediaItem={{
-            uri,
-            width,
-            height,
-          }}
-          alt={expectedAlt}
-        />,
-      );
-      expect(await driver.getAlt()).toBe(expectedAlt);
+      const driver = createDriver(<Image src={src} alt={sampleAlt} />);
+
+      expect(await driver.getAlt()).toBe(sampleAlt);
     });
   });
 
@@ -72,7 +71,7 @@ describe('Image', () => {
     it('should exist', async () => {
       expect(
         await isUniTestkitExists(
-          <Image src={sampleUrl} />,
+          <Image src={sampleSources.absolute} />,
           imageTestkitFactory,
           {
             dataHookPropName: 'data-hook',
@@ -86,7 +85,7 @@ describe('Image', () => {
     it('should exist', async () => {
       expect(
         await isUniEnzymeTestkitExists(
-          <Image src={sampleUrl} />,
+          <Image src={sampleSources.absolute} />,
           enzymeImageTestkitFactory,
           mount,
           {

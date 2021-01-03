@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "../../common/palette.st.css";
-    -st-named: errorColor;
+    -st-named: errorColor, focusRing;
 }
 
 /*Defaults*/
@@ -59,8 +59,10 @@
     align-items: center;
     justify-content: space-between;
 }
+
 .wrapper{
     display: flex;
+    align-items: center;
     -st-extends: RadioButton;
     cursor: pointer;
 }
@@ -70,8 +72,6 @@
 }
 
 .radioIcon {
-    position: absolute;
-    top:1px;
     background-color: transparent;
     height: 16px;
     border-radius: 50%;
@@ -83,6 +83,10 @@
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
 }
 
+.withChildren .radioIcon {
+    top:calc(50% - 8px);
+}
+
 .innerCheck {
     margin: 2px;
     width: 8px;
@@ -92,6 +96,11 @@
     opacity: 0;
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
 }
+
+.focused {
+    -st-mixin: focusRing();
+}
+
 .root:box {
     margin-top: -1px;
     margin-bottom: -1px;
@@ -100,13 +109,13 @@
 
 .label.suffixed {
     flex: 1;
-    white-space: nowrap;
     display: flex;
 }
 
 .label.suffixed::after {
     content: '';
     width: 5px;
+    flex: 1 0 5px;
 }
 
 .suffix {
@@ -153,25 +162,20 @@
 
 .wrapper::icon {
     display: flex;
-    position: relative;
-    margin-bottom: 1px;
-    top:4px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
-.wrapper::icon::before {
+.wrapper::icon::after {
     content: '';
-    width: 28px;
+    width: 12px;
 }
-
-
 
 .root:box .wrapper{
     display: flex;
-    padding: 16px;
+    padding: 15px 16px;
     background-color:applyOpacity(value(CurrentBackgroundColor),1);
     border: 1px solid applyOpacity(value(CurrentBorderColor), 0.6);
     cursor: pointer;

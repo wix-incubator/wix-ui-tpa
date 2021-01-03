@@ -26,8 +26,15 @@ import * as examples from './examples';
 import RadioButtonWiringExample from './RadioButtonWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
+
+const childrenExamples = [
+  {
+    label: 'With Children',
+    value: <div>With Children</div>,
+  },
+];
 
 export default {
   category: StoryCategory.COMPONENTS,
@@ -39,10 +46,11 @@ export default {
     disabled: false,
     theme: RadioButtonTheme.Default,
     label: 'Im a Radiobutton',
+    children: childrenExamples[0].value,
   }),
   exampleProps: {
     theme: [RadioButtonTheme.Default, RadioButtonTheme.Box],
-    //
+    children: childrenExamples,
   },
   dataHook: 'storybook-RadioButton',
   sections: [
@@ -82,6 +90,7 @@ export default {
           ].map(code),
           ...[{ title: 'Suffixed', source: examples.suffixExample }].map(code),
           ...[{ title: 'Error', source: examples.errorExample }].map(code),
+          ...[{ title: 'With Children', source: examples.withChildrenExample }].map(code),
         ],
       }),
 

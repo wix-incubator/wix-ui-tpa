@@ -8,6 +8,9 @@ import { RADIOBUTTON_DATA_KEYS } from './dataHooks';
 export interface RadioButtonDriver extends BaseUniDriver {
   isChecked(): Promise<boolean>;
   isDisabled(): Promise<boolean>;
+  isFocused(): Promise<boolean>;
+  clickInput(): Promise<void>;
+  getInput(): Promise<HTMLInputElement>;
 }
 
 export const radioButtonDriverFactory = (
@@ -15,11 +18,20 @@ export const radioButtonDriverFactory = (
 ): RadioButtonDriver => {
   return {
     ...baseUniDriverFactory(base),
+    async getInput() {
+      return base.$('input').getNative();
+    },
+    async clickInput() {
+      return base.$('input').click();
+    },
     async isChecked() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Checked)) === 'true';
     },
     async isDisabled() {
       return (await base.attr(RADIOBUTTON_DATA_KEYS.Disabled)) === 'true';
+    },
+    async isFocused() {
+      return (await base.attr(RADIOBUTTON_DATA_KEYS.Focused)) === 'true';
     },
   };
 };

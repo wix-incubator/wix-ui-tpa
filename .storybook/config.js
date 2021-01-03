@@ -1,7 +1,6 @@
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import styleProcessor from 'wix-style-processor';
-import { storySort } from './utils';
-import { create, themes } from '@storybook/theming';
+import { create } from '@storybook/theming';
 import { version } from '../package.json';
 import FocusRingToggle from './addons/FocusRingToggle';
 
@@ -19,7 +18,7 @@ function configureStorybook() {
 }
 
 const theme = create({
-  base: themes.light,
+  base: 'light',
   brandTitle: `wix-ui-tpa v${version}`,
   brandUrl: 'https://github.com/wix/wix-ui-tpa',
 });

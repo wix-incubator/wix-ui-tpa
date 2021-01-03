@@ -1,18 +1,17 @@
 import * as React from 'react';
-import { DatePickerInput } from '../';
-import { classes } from './DatePickerInputWiringExample.st.css';
+import { DatePicker } from '../';
+import { classes } from './DatePickerWiringExample.st.css';
 
-export const DatePickerInputWiringExample = class DatePickerInputExample extends React.Component {
+export const DatePickerWiringExample = class DatePickerExample extends React.Component {
   state = {
     value: new Date(),
   };
-
   _onChange = date => this.setState({ value: date });
 
   render() {
     const { value } = this.state;
     return (
-      <DatePickerInput
+      <DatePicker
         className={classes.root}
         value={value}
         onChange={this._onChange}

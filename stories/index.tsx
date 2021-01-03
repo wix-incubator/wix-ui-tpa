@@ -21,6 +21,7 @@ require('../src/components/ColorPicker/docs/index.story');
 require('../src/components/CopyUrlButton/docs/index.story');
 require('../src/components/Counter/docs/index.story');
 
+require('../src/components/DatePicker/docs/index.story');
 require('../src/components/DatePickerInput/docs/index.story');
 require('../src/components/Dialog/docs/index.story');
 require('../src/components/Divider/docs/index.story');
@@ -51,6 +52,7 @@ require('../src/components/Picker/docs/index.story');
 require('../src/components/ProgressBar/docs/index.story');
 
 require('../src/components/RadioButton/docs/index.story');
+require('../src/components/RadioButton/docs/RadioButtonTestStory');
 require('../src/components/RadioButtonGroup/docs/index.story');
 require('../src/components/Ratings/docs/index.story');
 require('../src/components/Ratings/docs/RatingsTestStory');

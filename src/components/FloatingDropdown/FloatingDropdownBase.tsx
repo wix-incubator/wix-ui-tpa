@@ -5,6 +5,7 @@ import { TPAComponentProps } from '../../types';
 import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { FloatingDropdownOptionProps } from './FloatingDropdownOption';
 import { st, classes } from './FloatingDropdownBase.st.css';
+import classnames from 'classnames';
 
 interface FloatingDropdownBaseProps extends TPAComponentProps {
   'aria-label'?: string;
@@ -18,17 +19,16 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   name?: string;
   id?: string;
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
+  displayBlock?: boolean;
 }
 
-export class FloatingDropdownBase extends React.Component<
-  FloatingDropdownBaseProps
-> {
+export class FloatingDropdownBase extends React.Component<FloatingDropdownBaseProps> {
   _getSelectedOption = (selectedId: string) => {
     const { options } = this.props;
     return options.find(({ id }) => selectedId === id);
   };
 
-  _onSelect = e => {
+  _onSelect = (e) => {
     const { onChange } = this.props;
     const selectedId = e.target.value;
 
@@ -46,6 +46,7 @@ export class FloatingDropdownBase extends React.Component<
       ['aria-labelledby']: ariaLabelledBy,
       mobile,
       disabled,
+      displayBlock,
     } = this.props;
 
     const selectedOption = this._getSelectedOption(value);
@@ -108,6 +109,7 @@ export class FloatingDropdownBase extends React.Component<
       id,
       disabled,
       className,
+      displayBlock,
     } = this.props;
 
     let content = this._getContent();
@@ -132,8 +134,9 @@ export class FloatingDropdownBase extends React.Component<
         className={st(
           classes.root,
           { mobile, disabled },
-          classes.overrideStyleParams,
-          className,
+          classnames(classes.overrideStyleParams, className, {
+            [classes.displayBlock]: displayBlock,
+          })
         )}
         data-hook={DATA_HOOKS.base}
       >

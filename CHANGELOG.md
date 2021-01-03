@@ -1,3 +1,44 @@
+# [2.16.0](https://github.com/wix/wix-ui-tpa/compare/v2.15.0...v2.16.0) (2020-12-30)
+
+
+### Features
+
+* **FloatingDropdown:** New 'displayBlock' prop ([29c9377](https://github.com/wix/wix-ui-tpa/commit/29c93772498a6549e9e1c78685c09ced36eed42e))
+
+
+
+# [2.15.0](https://github.com/wix/wix-ui-tpa/compare/v2.14.0...v2.15.0) (2020-12-29)
+
+
+### Bug Fixes
+
+* **FloatingDropdown:** Floating dropdown max-width and ellipsis fix ([9dc9ab1](https://github.com/wix/wix-ui-tpa/commit/9dc9ab1beceb7ca05d243364d5e70e692a512e17))
+* **RadioButton, Checkbox:** Fix height ([#554](https://github.com/wix/wix-ui-tpa/issues/554)) ([3a02616](https://github.com/wix/wix-ui-tpa/commit/3a02616038642f16e63c057dfc36955ccf16b138))
+
+
+### Features
+* **DatePicker:** change for responsive width ([#556](https://github.com/wix/wix-ui-tpa/pull/556)) ([0e1b12d](https://github.com/wix/wix-ui-tpa/commit/0e1b12d98bbae71555531e465843cd183251be27))
+* **Image:** make `src` support absolute and relative ([#551](https://github.com/wix/wix-ui-tpa/pull/551)) ([be5c726](https://github.com/wix/wix-ui-tpa/commit/be5c726c2fbbdb17e18aace1a40a7570c1a3e9ac))
+
+
+# [2.14.0](https://github.com/wix/wix-ui-tpa/compare/v2.13.2...v2.14.0) (2020-12-27)
+
+
+### Bug Fixes
+
+* **Checkbox & RadioButton:** Fix text overflow for box theme ([5544eb0](https://github.com/wix/wix-ui-tpa/commit/5544eb0ad083562a5edd62211397c8296ce32d60))
+* **Dropdown:** Prevent Dropdown's error tooltip to get a wired background ([21b96d5](https://github.com/wix/wix-ui-tpa/commit/21b96d5078591563fff2a135bc26e33365745dc5))
+
+
+### Features
+
+* **DatePicker:** add to Working in Progress ([06896cc](https://github.com/wix/wix-ui-tpa/commit/06896cc681ccc8620633ba5deaffd83eb517f97d))
+* **RadioButton:** Add aria-label prop ([e0df5ec](https://github.com/wix/wix-ui-tpa/commit/e0df5ecf9d8ffbb3de934a11537f833525e7e925))
+* **RadioButton:** Added a focus-ring ([2eb0907](https://github.com/wix/wix-ui-tpa/commit/2eb09078873af6f8164f0123626139b62c7a7bb7))
+* **RadioButton:** Support React.Node as children ([3f20b18](https://github.com/wix/wix-ui-tpa/commit/3f20b18f2c234f34999789cbb76fb3091305b425))
+
+
+
 ## [2.13.2](https://github.com/wix/wix-ui-tpa/compare/v2.13.1...v2.13.2) (2020-12-20)
 
 ### Bug Fixes
