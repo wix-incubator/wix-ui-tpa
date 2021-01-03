@@ -8,7 +8,6 @@ import { DATA_HOOKS, ICON_SIZE } from './constants';
 import { DropdownOptionProps } from './DropdownOption';
 
 import { st, classes } from './DropdownBase.st.css';
-import { TPAComponentsProvider } from '../TPAComponentsConfig/TPAComponentsConfig';
 
 interface DropdownBaseProps {
   selectedOption: DropdownOptionProps;
@@ -39,43 +38,38 @@ export const DropdownBase = (props: DropdownBaseProps & TPAComponentProps) => {
   } = props;
   const hasPlaceholder = !selectedOption || !selectedOption.value;
   return (
-    <TPAComponentsProvider value={{ mobile: false, rtl }}>
-      <Button
-        upgrade={upgrade}
-        fullWidth
-        className={st(
-          classes.root,
-          { error, placeholder: hasPlaceholder, upgrade, rtl },
-          className,
-        )}
-        data-hook={DATA_HOOKS.base}
-        data-dropdown-base-error={error}
-        disabled={disabled}
-        aria-activedescendant={ariaActivedescendant}
-        aria-expanded={isExpanded}
-        aria-label={ariaLabel}
-        aria-labelledby={ariaLabelledBy}
-        role="listbox"
-        prefixIcon={
-          selectedOption && selectedOption.icon ? (
-            <div className={classes.optionIcon}>{selectedOption.icon}</div>
-          ) : null
-        }
-        suffixIcon={
-          <ArrowIcon
-            className={classes.arrowIcon}
-            width={ICON_SIZE}
-            height={ICON_SIZE}
-          />
-        }
-      >
-        <div
-          className={classes.childrenWrapper}
-          data-hook={DATA_HOOKS.baseText}
-        >
-          {(selectedOption && selectedOption.value) || placeholder}
-        </div>
-      </Button>
-    </TPAComponentsProvider>
+    <Button
+      upgrade={upgrade}
+      fullWidth
+      className={st(
+        classes.root,
+        { error, placeholder: hasPlaceholder, upgrade, rtl },
+        className,
+      )}
+      data-hook={DATA_HOOKS.base}
+      data-dropdown-base-error={error}
+      disabled={disabled}
+      aria-activedescendant={ariaActivedescendant}
+      aria-expanded={isExpanded}
+      aria-label={ariaLabel}
+      aria-labelledby={ariaLabelledBy}
+      role="listbox"
+      prefixIcon={
+        selectedOption && selectedOption.icon ? (
+          <div className={classes.optionIcon}>{selectedOption.icon}</div>
+        ) : null
+      }
+      suffixIcon={
+        <ArrowIcon
+          className={classes.arrowIcon}
+          width={ICON_SIZE}
+          height={ICON_SIZE}
+        />
+      }
+    >
+      <div className={classes.childrenWrapper} data-hook={DATA_HOOKS.baseText}>
+        {(selectedOption && selectedOption.value) || placeholder}
+      </div>
+    </Button>
   );
 };
