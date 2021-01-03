@@ -47,9 +47,7 @@ export default {
 
           title('Examples'),
 
-          ...[
-            { title: 'Example', source: `<ThemedDatePicker />` },
-          ].map(code),
+          ...[{ title: 'Example', source: `<ThemedDatePicker />` }].map(code),
         ],
       }),
 

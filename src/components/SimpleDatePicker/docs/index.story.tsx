@@ -47,9 +47,7 @@ export default {
 
           title('Examples'),
 
-          ...[
-            { title: 'Example', source: `<SimpleDatePicker />` },
-          ].map(code),
+          ...[{ title: 'Example', source: `<SimpleDatePicker />` }].map(code),
         ],
       }),
 
