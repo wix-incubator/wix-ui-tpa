@@ -19,6 +19,9 @@
   width: value(containerWidth);
   height: value(containerHeight);
   font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /** The first option - using -st-mixin */
@@ -36,10 +39,7 @@
 /*}*/
 /**************************************/
 
-.daysContainer {
-}
-
-.daysRow {
+.week {
     display: flex;
     flex-direction: row;
     margin: 5px 10px;

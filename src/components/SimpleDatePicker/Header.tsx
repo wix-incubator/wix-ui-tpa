@@ -24,7 +24,6 @@ export class Header extends React.Component<HeaderProps> {
     return (
       <div
         className={st(classes.root, className)}
-        data-hook={this.props['data-hook']}
       >
         <div className={classes.text}>{text}</div>
       </div>
