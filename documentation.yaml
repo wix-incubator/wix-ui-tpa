@@ -13,7 +13,7 @@ apiDoc:
     - file: Contribution/docs/CONTRIBUTION.md
       title: How to Contribute?
     - file: docs/COMPONENT_GUIDELINES.md
-      title: Contribution/Guidelines for creating a `wix-ui-tpa` component
+      title: Contribution/Guidelines
     - file: docs/MIGRATING-V1-V2.md
       title: Migrating `wix-ui-tpa` from v1 to v2
     - file: docs/RTL.md
