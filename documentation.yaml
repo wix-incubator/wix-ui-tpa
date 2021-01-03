@@ -11,7 +11,7 @@ apiDoc:
     - file: docs/USAGE.md
       title: Usage
     - file: Contribution/docs/CONTRIBUTION.md
-      title: How to Contribute?
+      title: Contribution/How To Contribute
     - file: docs/COMPONENT_GUIDELINES.md
       title: Contribution/Guidelines
     - file: docs/MIGRATING-V1-V2.md
