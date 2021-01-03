@@ -1,11 +1,12 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+    -st-named: color, font, fallback;
 }
 
 /* Defaults - default params */
 :vars {
   defaultBgColor: color(color-1);
+  defaultFont: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5'}");
 }
 
 /* Overrides - deceleration of overridable parameters by the consumer */
@@ -14,17 +15,24 @@
     Main background color
   */
   BgColor: --overridable;
+  /*
+    Main text font
+  */
+  TextFont: --overridable;
 }
 
 /* Overrides */
 :vars {
   bgColor: color(fallback(value(BgColor), value(defaultBgColor)));
+  textFont: font(fallback(value(TextFont), value(defaultFont)));
 }
 
 .root {
   background-color: value(defaultBgColor);
+  font: value(defaultFont);
 }
 
 .root.overrideStyleParams {
   background-color: value(bgColor);
+  font: value(textFont);
 }

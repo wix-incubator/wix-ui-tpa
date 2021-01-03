@@ -56,22 +56,22 @@
     -moz-appearance: none;
 }
 
-.root:mobile:size(medium) {
+.root:mobile {
     padding: 8px 12px;
     background-color: transparent;
 }
 
-.root:mobile:size(medium):icon {
+.root:mobile:icon {
     padding: 8px 36px;
 }
 
-.root:priority(basic):focus {
+.root:focus {
     border-color: value(borderHoverColor);
     background-color: value(backgroundColor);
 }
 
 .root:error,
-.root:priority(basic):error:focus {
+.root:error:focus {
     border-color: value(errorColor);
 }
 
@@ -80,18 +80,18 @@
     color: value(colorPlaceholder);
 }
 
-.root:priority(basic):disabled {
+.root:disabled {
     cursor: default;
     background-color: value(backgroundColor);
     color: value(colorDisabled);
     border-color: value(colorDisabled);
 }
 
-.root:priority(basic):disabled:hover {
+.root:disabled:hover {
     border-color: value(colorDisabled);
 }
 
-.root:priority(basic):disabled ~ .arrowIcon {
+.root:disabled ~ .arrowIcon {
     color: value(colorDisabled);
 }
 
