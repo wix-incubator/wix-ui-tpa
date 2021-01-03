@@ -18,7 +18,7 @@ import { SimpleDatePicker } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -34,15 +34,14 @@ export default {
   },
   dataHook: 'storybook-SimpleDatePicker',
   sections: [
-    header({
-    }),
+    header(),
     tabs([
       tab({
         title: 'Usage',
         sections: [
-          // importExample({
-          //   source: `import { SimpleDatePicker } from 'wix-ui-tpa/SimpleDatePicker';`,
-          // }),
+          importExample({
+            source: `import { SimpleDatePicker } from 'wix-ui-tpa/SimpleDatePicker';`,
+          }),
 
           divider(),
 
@@ -62,6 +61,7 @@ export default {
         },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        // { title: 'Settings Panel', sections: [] },
       ].map(tab),
     ]),
   ],
