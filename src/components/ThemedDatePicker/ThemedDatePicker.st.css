@@ -3,26 +3,22 @@
     -st-default: SimpleDatePicker;
 }
 
-/* Defaults - default params */
 :vars {
   boxBGColor: #bcbce0;
-  titleColor: white;
-  calWidth: 400px;
-  calHeight: 400px;
 }
 
 .root {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: value(calWidth);
-  height: value(calHeight);
-  background-color: value(boxBGColor);
-  font-weight: bold;
+    width: 400px;
+    height: 400px;
+    background-color: value(boxBGColor);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .title {
-    color: value(titleColor);
+    color: white;
     font-size: 30px;
     margin: 20px 0;
 }
