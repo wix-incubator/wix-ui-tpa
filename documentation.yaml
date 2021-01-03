@@ -23,7 +23,7 @@ apiDoc:
     - file: CHANGELOG.md
       title: Change Log
     - file: CHANGELOG-v1.md
-      title: Change Log v1
+      title: Change Log/V1
     - file: src/components/Tabs/README.md
       title: components/Tabs
     - file: src/components/Dropdown/README.md
