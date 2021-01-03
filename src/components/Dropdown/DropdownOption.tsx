@@ -13,8 +13,9 @@ export interface DropdownOptionProps {
   divider?: boolean;
 }
 
-export const DropdownOption: React.FC<DropdownOptionProps &
-  TPAComponentProps> = props => {
+export const DropdownOption: React.FC<
+  DropdownOptionProps & TPAComponentProps
+> = (props) => {
   const {
     value,
     id,

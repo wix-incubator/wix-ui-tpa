@@ -35,8 +35,6 @@ class ButtonComponent extends React.Component<ButtonProps> {
   static contextType = TPAComponentsContext;
   static displayName = 'Button';
   static defaultProps = {
-    priority: PRIORITY.basic,
-    size: SIZE.medium,
     fullWidth: false,
     upgrade: false,
   };
@@ -80,7 +78,13 @@ class ButtonComponent extends React.Component<ButtonProps> {
             data-hook={this.props['data-hook']}
             className={st(
               classes.root,
-              { priority, size, fullWidth, mobile, upgrade },
+              {
+                priority,
+                size,
+                fullWidth,
+                mobile,
+                upgrade,
+              },
               className,
             )}
             {...rest}
