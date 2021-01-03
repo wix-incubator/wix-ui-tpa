@@ -16,7 +16,7 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
   _renderDays(weekIndex) {
     const days = [1, 2, 3, 4, 5, 6, 7];
 
-    return days.map(dayIndex => {
+    return days.map((dayIndex) => {
       const day = dayIndex + 7 * (weekIndex - 1);
       return (
         <div key={day} className={classes.day}>
@@ -35,10 +35,10 @@ export class SimpleDatePicker extends React.Component<SimpleDatePickerProps> {
         data-hook={this.props['data-hook']}
       >
         <Header className={classes.header} text="Header" />
-        {[1, 2, 3, 4].map(weekIndex => (
-            <div key={weekIndex} className={classes.week}>
-              {this._renderDays(weekIndex)}
-            </div>
+        {[1, 2, 3, 4].map((weekIndex) => (
+          <div key={weekIndex} className={classes.week}>
+            {this._renderDays(weekIndex)}
+          </div>
         ))}
       </div>
     );

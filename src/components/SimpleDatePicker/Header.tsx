@@ -22,9 +22,7 @@ export class Header extends React.Component<HeaderProps> {
     const { className, text } = this.props;
 
     return (
-      <div
-        className={st(classes.root, className)}
-      >
+      <div className={st(classes.root, className)}>
         <div className={classes.text}>{text}</div>
       </div>
     );

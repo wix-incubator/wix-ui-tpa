@@ -18,9 +18,7 @@ export class ThemedDatePicker extends React.Component<ThemedDatePickerProps> {
     const { className } = this.props;
 
     return (
-      <div
-        className={st(classes.root, className)}
-      >
+      <div className={st(classes.root, className)}>
         <div className={classes.title}>My Date Picker</div>
         <SimpleDatePicker className={classes.myDatePicker} />
       </div>
