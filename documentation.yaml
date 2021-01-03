@@ -21,7 +21,7 @@ apiDoc:
     - file: docs/internal/VERSION_RELEASE.md
       title: Version Release Instructions
     - file: CHANGELOG.md
-      title: Change Log
+      title: Change Log/V2
     - file: CHANGELOG-v1.md
       title: Change Log/V1
     - file: src/components/Tabs/README.md
