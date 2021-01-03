@@ -46,6 +46,7 @@ const Placeholder = ({
         },
       },
     }}
+    className={classes.placeholder}
   />
 );
 
@@ -97,6 +98,7 @@ export class Image extends React.Component<ImageProps> {
             {...imageProps}
             nativeProps={{ ...dimensions }}
             src={src}
+            className={classes.absoluteImage}
             onLoad={(event) => this._onLoad(event)}
           />
         ) : (
@@ -114,6 +116,7 @@ export class Image extends React.Component<ImageProps> {
                 uri: src,
                 ...dimensions,
               }}
+              className={classes.relativeImage}
               onLoad={(event) => this._onLoad(event)}
             />
           </>

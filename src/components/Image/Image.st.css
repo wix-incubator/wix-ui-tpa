@@ -17,15 +17,15 @@
   display: grid;
 }
 
-.root img {
+.absoluteImage, .relativeImage, .placeholder {
   grid-area: 1 / 1;
 }
 
-.root:preload img:last-child {
+.root:preload .absoluteImage, .root:preload .placeholder {
   filter: blur(value(BlurRadius));
 }
 
-.root:loaded img:last-child {
+.root:loaded .absoluteImage, .root:loaded .relativeImage {
   animation-name: blurry-loading;
   animation-duration: 0.3s;
   animation-timing-function: easeout;
