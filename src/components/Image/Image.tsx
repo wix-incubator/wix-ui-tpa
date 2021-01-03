@@ -56,7 +56,7 @@ export class Image extends React.Component<ImageProps> {
 
   state = { isLoaded: false };
 
-  _onLoad(event) {
+  _onLoad = (event) => {
     const { onLoad } = this.props;
 
     if (!this.state.isLoaded) {
@@ -64,7 +64,7 @@ export class Image extends React.Component<ImageProps> {
     }
 
     onLoad && onLoad(event);
-  }
+  };
 
   render() {
     const {
@@ -99,7 +99,7 @@ export class Image extends React.Component<ImageProps> {
             nativeProps={{ ...dimensions }}
             src={src}
             className={classes.absoluteImage}
-            onLoad={(event) => this._onLoad(event)}
+            onLoad={this._onLoad}
           />
         ) : (
           <>
@@ -117,7 +117,7 @@ export class Image extends React.Component<ImageProps> {
                 ...dimensions,
               }}
               className={classes.relativeImage}
-              onLoad={(event) => this._onLoad(event)}
+              onLoad={this._onLoad}
             />
           </>
         )}
