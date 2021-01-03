@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as examples from './examples';
+
 import {
   header,
   api,
@@ -12,13 +12,8 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import * as ThemedDatePickerWiringExampleRaw from '!raw-loader!./ThemedDatePickerWiringExample.tsx';
-import * as ThemedDatePickerWiringExampleCSSRaw from '!raw-loader!./ThemedDatePickerWiringExample.st.css';
-import { ThemedDatePickerWiringExample } from './ThemedDatePickerWiringExample';
 import { ThemedDatePicker } from '../';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
@@ -39,24 +34,20 @@ export default {
   },
   dataHook: 'storybook-ThemedDatePicker',
   sections: [
-    header({
-      component: <OptimizedStylesBanner />,
-    }),
     tabs([
       tab({
         title: 'Usage',
         sections: [
-          importExample({
-            source: examples.importExample,
-          }),
+          // importExample({
+          //   source: `import { ThemedDatePicker } from 'wix-ui-tpa/ThemedDatePicker';`,
+          // }),
 
           divider(),
 
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'Example', source: `<ThemedDatePicker />` },
           ].map(code),
         ],
       }),
@@ -69,28 +60,6 @@ export default {
         },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
-        {
-          title: 'Settings Panel',
-          sections: [
-            settingsPanel({
-              title: 'ThemedDatePicker Panel',
-              example: <ThemedDatePickerWiringExample />,
-              rawSource: ThemedDatePickerWiringExampleRaw,
-              rawCSSSource: ThemedDatePickerWiringExampleCSSRaw,
-              params: {
-                colors: [
-                  {
-                    label: 'Background color',
-                    wixParam: 'myBackgroundOverride',
-                    defaultColor: 'color-1',
-                  },
-                ],
-                fonts: [],
-                numbers: [],
-              },
-            }),
-          ],
-        },
       ].map(tab),
     ]),
   ],
