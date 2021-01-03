@@ -8,8 +8,8 @@ visualize('temporary test', () => {
       style={{
         width: 200,
         height: 200,
-        backgroundColor: 'royalblue',
-        color: 'lavenderblush',
+        backgroundColor: 'blue',
+        color: 'yellow',
       }}
     >
       hello world
