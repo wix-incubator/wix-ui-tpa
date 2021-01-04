@@ -173,5 +173,9 @@
   "yoshi": {
     "exports": "wix-ui-tpa",
     "tpaStyle": true
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
   }
 }
