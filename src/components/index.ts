@@ -50,3 +50,4 @@ export { Image } from './Image';
 export { DatePicker } from './DatePicker';
 export { DatePickerInput } from './DatePickerInput';
 export { Tag } from './Tag';
+export { Popover } from './Popover';
