@@ -55,3 +55,4 @@ export { DatePickerInput } from './DatePickerInput';
 export { Popover } from './Popover';
 export { BoxSelection } from './BoxSelection';
 export { Tag } from './Tag';
+export { Popover } from './Popover';
