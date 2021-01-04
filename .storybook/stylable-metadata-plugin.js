@@ -165,37 +165,41 @@ const getOverridableVars = ast => {
 
 module.exports = async function({ source, metadata, basePath }) {
   const relativeComponentPath = await pathFinder(source);
-  const absoluteComponentPath = path.resolve(basePath, relativeComponentPath);
+  const data = { metadata };
 
-  const componentSource = fs.readFileSync(absoluteComponentPath, {
-    encoding: 'utf8',
-  });
-  const componentAst = parse(componentSource);
+  if (relativeComponentPath) {
+    const absoluteComponentPath = path.resolve(basePath, relativeComponentPath);
 
-  const relativeStylablePath = await getImportedStylablePath(componentAst);
+    const componentSource = fs.readFileSync(absoluteComponentPath, {
+      encoding: 'utf8',
+    });
+    const componentAst = parse(componentSource);
 
-  if (!relativeStylablePath) {
-    return { metadata };
-  }
+    const relativeStylablePath = await getImportedStylablePath(componentAst);
 
-  const absoluteStylablePath = path.resolve(
-    path.dirname(absoluteComponentPath),
-    relativeStylablePath,
-  );
+    if (!relativeStylablePath) {
+      return {metadata};
+    }
 
-  const stylableSource = fs.readFileSync(absoluteStylablePath, {
-    encoding: 'utf8',
-  });
-  const stylableAst = parseStylable(stylableSource);
+    const absoluteStylablePath = path.resolve(
+        path.dirname(absoluteComponentPath),
+        relativeStylablePath,
+    );
 
-  const overridableVars = getOverridableVars(stylableAst);
+    const stylableSource = fs.readFileSync(absoluteStylablePath, {
+      encoding: 'utf8',
+    });
+    const stylableAst = parseStylable(stylableSource);
 
-  return {
-    metadata: {
-      ...metadata,
+    const overridableVars = getOverridableVars(stylableAst);
+
+    data.metadata = {
+      ...data.metadata,
       stylable: {
         overridableVars,
-      },
-    },
-  };
+      }
+    }
+  }
+
+  return data;
 };
