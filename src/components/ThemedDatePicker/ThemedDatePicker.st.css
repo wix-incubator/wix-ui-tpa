@@ -1,6 +1,7 @@
 :import {
     -st-from: "../SimpleDatePicker/SimpleDatePicker.st.css";
     -st-default: SimpleDatePicker;
+    /*-st-named: --containerBGColor, --borderColor, --dayTextColor;*/
 }
 
 :vars {
@@ -46,7 +47,20 @@
 /*    color: #f542e6;*/
 /*}*/
 
-/*.myDatePicker::day {*/
-/*    color: white;*/
-/*}*/
+.myDatePicker::day {
+    color: white;
+}
 /**************************************/
+
+
+
+/** The third option - using css vars */
+.myDatePicker {
+    -st-extends: SimpleDatePicker;
+    --containerBGColor: value(boxBGColor);
+    --borderColor: black;
+    --dayTextColor: white;
+}
+
+/**************************************/
+

@@ -53,3 +53,44 @@
     height: 30px;
     color: value(dayTextColor);
 }
+
+
+
+
+
+/** The third option - using css vars */
+/*.root {*/
+/*    --containerBGColor: white;*/
+/*    --borderColor: #C9C9C9;*/
+/*    --containerWidth: 220px;*/
+/*    --containerHeight: 220px;*/
+/*    --headerTextColor: blue;*/
+/*    --dayTextColor: black;*/
+/*}*/
+
+/*.root {*/
+/*    background-color: var(--containerBGColor);*/
+/*    border: 2px solid var(--borderColor);*/
+/*    width: var(--containerWidth);*/
+/*    height: var(--containerHeight);*/
+/*    font-weight: bold;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*.week {*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    margin: 5px 10px;*/
+/*}*/
+
+/*.day {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    color: var(--dayTextColor);*/
+/*}*/
+/**************************************/
