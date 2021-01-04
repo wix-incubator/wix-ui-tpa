@@ -17,9 +17,13 @@ export interface ImageProps extends TPAComponentProps {
   onLoad?: React.EventHandler<React.SyntheticEvent>;
   /** A callback to be called if error occurs while loading */
   onError?: React.EventHandler<React.SyntheticEvent>;
+  /** Specifies how the image is resized to fit its container */
+  resize?: 'cover' | 'contain';
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: 'none' | 'blur';
 }
+
+type DefaultProps = Pick<ImageProps, 'resize'>;
 
 interface Dimensions {
   width: ImageProps['width'];
@@ -53,6 +57,7 @@ const Placeholder = ({
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
+  static defaultProps: DefaultProps = { resize: 'cover' };
 
   state = { isLoaded: false };
 
