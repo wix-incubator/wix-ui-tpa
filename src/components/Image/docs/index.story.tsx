@@ -74,6 +74,12 @@ export default {
                 'This example demonstrates the usage of a media platform item with a relative URI.',
               source: examples.relativeUriExample,
             },
+            {
+              title: 'Blurry Loading',
+              description:
+                'The image can be loaded progressively with a blur placeholder by setting the `loadingBehavior` as `blur`. Important to mention that an actual progressive loading would work only for a relative media image, whereas for an absolute image it would just have the same effect (but the image will not be loaded progressively). Also notice that the wrapper class and the button are only to allow simulating the behavior again easily.',
+              source: examples.blurLoadingExample,
+            },
           ].map(code),
         ],
       }),

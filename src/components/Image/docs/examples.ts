@@ -17,3 +17,32 @@ export const relativeUriExample = `
   alt="Garfield smiles and puts his hand over chest"
 />
 `;
+
+export const blurLoadingExample = `
+class MediaImageWithBlurryLoading extends React.Component {
+  state = {
+    renderer: Date.now(),
+  };
+
+  _reload() {
+    this.setState({ renderer: Date.now() });
+  }
+
+  render() {
+    const { renderer } = this.state;
+
+    return (
+      <>
+        <Image
+          key={renderer}
+          src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+          width="500"
+          height="500"
+          loadingBehavior="blur"
+        />
+        <Button onClick={() => this._reload()}>Reload</Button>
+      </>
+    );
+  }
+}
+`;
