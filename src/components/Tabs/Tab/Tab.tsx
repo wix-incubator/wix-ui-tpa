@@ -9,6 +9,12 @@ export interface TabItem {
   id?: string;
   /** Title of the tab */
   title?: string;
+  /** URL if tab is link */
+  href?: string;
+  /** Target for link */
+  target?: string;
+  /** Rel for link */
+  rel?: string;
 }
 
 interface TabProps extends TPAComponentProps {
@@ -21,7 +27,7 @@ interface TabProps extends TPAComponentProps {
 
 export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
   const { index, item, onClick, isActive, indicateActive, className } = props;
-  const title = item.title;
+  const { title, href, target, rel } = item;
   const onSelectTab = () => {
     onClick(index);
   };
@@ -47,10 +53,16 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       id={item.id}
       onClick={onSelectTab}
       onKeyDown={onKeyDown}
-      tabIndex={0}
+      tabIndex={href ? -1 : 0}
       aria-current={isActive}
     >
-      <span role="link">{title}</span>
+      {href ? (
+        <a href={href} target={target} rel={rel}>
+          {title}
+        </a>
+      ) : (
+        <span role="link">{title}</span>
+      )}
       <div
         className={classes.focusIndicatorWrapper}
         tabIndex={-1}

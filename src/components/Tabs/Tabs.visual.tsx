@@ -72,4 +72,18 @@ visualize('Tabs', () => {
       snap(skin, renderTest({ props: { skin } }));
     });
   });
+
+  story('Tab link', () => {
+    const linkTabs = Array.from({ length: 3 }, (_, index) => ({
+      title: `Link tab ${index + 1}`,
+      href: `/some-href-${index}`,
+    }));
+
+    snap(
+      'tab href',
+      renderTest({
+        props: { items: linkTabs },
+      }),
+    );
+  });
 });
