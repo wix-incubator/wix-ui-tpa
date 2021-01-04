@@ -18,7 +18,7 @@ import { Modal as CoreModal, ModalProps } from '../index';
 import { Button } from '../../../Button';
 import { StoryCategory } from '../../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const childrenExamples = [
@@ -91,7 +91,7 @@ export default {
   storyName: 'Modal',
   component: Modal,
   componentPath: '../Modal.tsx',
-  componentProps: setState => ({
+  componentProps: (setState) => ({
     isOpen: false,
     children: childrenExamples[0].value,
     'data-hook': 'storybook-Modal',

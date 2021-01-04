@@ -10,7 +10,7 @@ interface DropdownErrorProps extends TPAComponentProps {
   errorMessage: string;
 }
 
-export const DropdownError: React.FC<DropdownErrorProps> = props => {
+export const DropdownError: React.FC<DropdownErrorProps> = (props) => {
   return (
     <Tooltip
       className={st(classes.root, props.className)}

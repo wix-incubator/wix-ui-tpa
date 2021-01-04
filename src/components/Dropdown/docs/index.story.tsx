@@ -29,7 +29,7 @@ import ExtendedRawSource from '!raw-loader!./DropdownExtendedExample.tsx';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const options = [
@@ -43,14 +43,14 @@ const options = [
   },
   {
     label: 'w. icon',
-    value: simpleOptions.map(option => ({
+    value: simpleOptions.map((option) => ({
       ...option,
       icon: <Heart />,
     })),
   },
   {
     label: 'w. icon & subtitle',
-    value: optionsWithSubtitle.map(option => ({
+    value: optionsWithSubtitle.map((option) => ({
       ...option,
       icon: <Heart />,
     })),
@@ -84,7 +84,7 @@ export default {
     errorMessage: '',
     options,
     initialSelectedId: '',
-    onChange: option => console.log(option),
+    onChange: (option) => console.log(option),
   },
   dataHook: 'storybook-Dropdown',
   sections: [

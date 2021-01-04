@@ -6,7 +6,7 @@ export const DatePickerWiringExample = class DatePickerExample extends React.Com
   state = {
     value: new Date(),
   };
-  _onChange = date => this.setState({ value: date });
+  _onChange = (date) => this.setState({ value: date });
 
   render() {
     const { value } = this.state;

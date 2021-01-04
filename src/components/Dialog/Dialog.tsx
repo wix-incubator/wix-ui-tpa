@@ -83,8 +83,9 @@ export class Dialog extends React.Component<DialogProps> {
               onRequestClose={onClose}
             >
               <div
-                className={`${classes.contentWrapper} ${contentClassName ||
-                  ''}`}
+                className={`${classes.contentWrapper} ${
+                  contentClassName || ''
+                }`}
                 role="dialog"
                 aria-modal="true"
                 aria-label={ariaLabel}

@@ -18,7 +18,7 @@ export class RadioButtonGroupWiringExample extends React.Component {
         Horizontal Layout
         <div className={classes.component}>
           <RadioButtonGroup
-            onChange={val => {
+            onChange={(val) => {
               console.log('val', val);
               this.setState({ firstGroup: val });
             }}
@@ -66,7 +66,7 @@ export class RadioButtonGroupWiringExample extends React.Component {
         Box
         <div className={classes.component}>
           <RadioButtonGroup
-            onChange={val => {
+            onChange={(val) => {
               this.setState({ boxGroup: val });
             }}
             withSpacing
@@ -82,7 +82,7 @@ export class RadioButtonGroupWiringExample extends React.Component {
         Without Spacing
         <div className={classes.component}>
           <RadioButtonGroup
-            onChange={val => {
+            onChange={(val) => {
               this.setState({ boxNoSpace: val });
             }}
             theme={RadioButtonTheme.Box}

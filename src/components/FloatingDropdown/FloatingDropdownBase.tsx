@@ -136,7 +136,7 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
           { mobile, disabled },
           classnames(classes.overrideStyleParams, className, {
             [classes.displayBlock]: displayBlock,
-          })
+          }),
         )}
         data-hook={DATA_HOOKS.base}
       >

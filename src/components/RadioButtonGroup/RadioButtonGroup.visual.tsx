@@ -12,7 +12,7 @@ class RadioButtonGroupVisual extends React.Component<any> {
       <VisualTestContainer>
         <RadioButtonGroup
           name={'group'}
-          onChange={e => console.log(e)}
+          onChange={(e) => console.log(e)}
           value={'option'}
           {...this.props}
         />

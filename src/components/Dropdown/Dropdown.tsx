@@ -104,7 +104,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     return {
       selectedOption:
         nextProps.options.find(
-          option => option.id === nextProps.initialSelectedId,
+          (option) => option.id === nextProps.initialSelectedId,
         ) || null,
     };
   }
@@ -185,7 +185,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         error={error}
         errorMessage={errorMessage}
         options={options}
-        onSelect={selectedOption => this.onSelect(selectedOption)}
+        onSelect={(selectedOption) => this.onSelect(selectedOption)}
         placeholder={placeholder}
         selectedOption={this.state.selectedOption}
       />
@@ -212,7 +212,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
     const { rtl, mobile: isMobile } = this.context;
     const { selectedOption, ariaActivedescendant, isOpen } = this.state;
 
-    const coreOptions = options.map(option =>
+    const coreOptions = options.map((option) =>
       option.divider
         ? OptionFactory.createDivider({
             className: classes.divider,

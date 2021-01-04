@@ -14,19 +14,19 @@ const VisualRadioButton = (props: Partial<RadioButtonProps>) => (
 
 visualize('RadioButton', () => {
   story('default', () => {
-    Object.values(RadioButtonTheme).map(theme => {
+    Object.values(RadioButtonTheme).map((theme) => {
       snap(`${theme} / default`, <VisualRadioButton theme={theme} />);
     });
   });
 
   story('checked', () => {
-    Object.values(RadioButtonTheme).map(theme => {
+    Object.values(RadioButtonTheme).map((theme) => {
       snap(`${theme} / checked`, <VisualRadioButton theme={theme} checked />);
     });
   });
 
   story('disabled', () => {
-    Object.values(RadioButtonTheme).map(theme => {
+    Object.values(RadioButtonTheme).map((theme) => {
       snap(`${theme} / disabled`, <VisualRadioButton theme={theme} disabled />);
       snap(
         `${theme} / disabled / checked`,
@@ -45,9 +45,17 @@ visualize('RadioButton', () => {
   story('with children prop', () => {
     snap(
       `${RadioButtonTheme.Default} / default`,
-      <VisualRadioButton theme={RadioButtonTheme.Default} children={<><div>Using children as the RadioButton label</div><div>Can add a subtitle as well</div></>} />,
-      );
-    });
+      <VisualRadioButton
+        theme={RadioButtonTheme.Default}
+        children={
+          <>
+            <div>Using children as the RadioButton label</div>
+            <div>Can add a subtitle as well</div>
+          </>
+        }
+      />,
+    );
+  });
 
   story('long', () => {
     snap(

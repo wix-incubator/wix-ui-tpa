@@ -7,7 +7,7 @@ const ToastMetadata = Registry.getComponentMetadata(Toast);
 ToastMetadata.nonReactStrictModeCompliant = true;
 ToastMetadata.nonA11yCompliant = true;
 
-Object.values(TOAST_SKIN).forEach(skin => {
+Object.values(TOAST_SKIN).forEach((skin) => {
   ToastMetadata.addSim({
     title: `${skin} with close`,
     props: {

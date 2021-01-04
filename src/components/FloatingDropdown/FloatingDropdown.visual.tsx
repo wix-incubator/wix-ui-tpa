@@ -90,7 +90,9 @@ visualize('FloatingDropdown', () => {
     snap(
       'mobile',
       <TPAComponentsProvider value={{ mobile: true }}>
-        <FloatingDropdownVisual {...getFloatingDropdownTestProps({ displayBlock: true })} />
+        <FloatingDropdownVisual
+          {...getFloatingDropdownTestProps({ displayBlock: true })}
+        />
       </TPAComponentsProvider>,
     );
   });

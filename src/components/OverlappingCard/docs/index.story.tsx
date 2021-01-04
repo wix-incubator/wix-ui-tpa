@@ -62,7 +62,7 @@ export default {
   exampleProps: {
     media: mediaExamples,
     ratio: Object.keys(OverlappingCardRatioOptions).map(
-      key => OverlappingCardRatioOptions[key],
+      (key) => OverlappingCardRatioOptions[key],
     ),
   },
 

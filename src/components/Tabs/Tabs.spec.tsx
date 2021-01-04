@@ -12,7 +12,7 @@ describe('Tabs', () => {
   it('should render list of items with titles', async () => {
     driver = createDriver(<Tabs items={items} activeTabIndex={1} />);
 
-    const expectedTitles = items.map(item => item.title);
+    const expectedTitles = items.map((item) => item.title);
     const receivedTitles = await Promise.all(
       Array(items.length)
         .fill(0)

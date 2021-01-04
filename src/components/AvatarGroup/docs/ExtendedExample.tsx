@@ -11,7 +11,7 @@ const items = [
   { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
 ];
 
-export const ExtendedExample = props => (
+export const ExtendedExample = (props) => (
   <div>
     <div>
       <AvatarGroup

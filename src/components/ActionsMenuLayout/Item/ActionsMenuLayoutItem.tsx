@@ -26,9 +26,7 @@ export interface ActionsMenuLayoutItemProps extends TPAComponentProps {
 }
 
 /** ActionsMenuLayout */
-export class ActionsMenuLayoutItem extends React.Component<
-  ActionsMenuLayoutItemProps
-> {
+export class ActionsMenuLayoutItem extends React.Component<ActionsMenuLayoutItemProps> {
   private readonly liRef = React.createRef<HTMLLIElement>();
   static displayName = 'ActionsMenuLayout.Item';
 

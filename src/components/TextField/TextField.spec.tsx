@@ -48,7 +48,7 @@ describe('TextField', () => {
     let ref: React.RefObject<TextField>;
     ref = React.createRef();
 
-    it('should getTheme', function() {
+    it('should getTheme', function () {
       const driverLine = createDriver(
         <TextField value={'Theme Test'} theme={TextFieldTheme.Line} />,
       );
@@ -59,7 +59,7 @@ describe('TextField', () => {
       expect(driverBox.getTheme()).toBe(TextFieldTheme.Box);
     });
 
-    it('should isSuccess', function() {
+    it('should isSuccess', function () {
       const driver = createDriver(<TextField success value={'Theme Test'} />);
       expect(driver.isSuccess()).toBe(true);
     });
@@ -91,7 +91,7 @@ describe('TextField', () => {
       expect(driver.isFocused()).toEqual(false);
     });
 
-    it('should getErrorMessage', function() {
+    it('should getErrorMessage', function () {
       const driver = createDriver(
         <TextField error errorMessage={'ErrorMessage'} value={'Theme Test'} />,
       );
@@ -99,7 +99,7 @@ describe('TextField', () => {
       expect(driver.getErrorMessage()).toBe('ErrorMessage');
     });
 
-    it('should hasEmptyState', function() {
+    it('should hasEmptyState', function () {
       const emptyStateDriver = createDriver(
         <TextField error errorMessage={'ErrorMessage'} value={''} />,
       );
@@ -110,7 +110,7 @@ describe('TextField', () => {
       expect(notEmptyStateDriver.hasEmptyState()).toBe(false);
     });
 
-    it('should onChange', function() {
+    it('should onChange', function () {
       const onChange = jest.fn();
       const driver = createDriver(
         <TextField onChange={onChange} value={'Test'} />,
@@ -119,7 +119,7 @@ describe('TextField', () => {
       expect(onChange.mock.calls[0][0].target.value).toBe('Test 1');
     });
 
-    it('should disabled work', function() {
+    it('should disabled work', function () {
       const onChange = jest.fn();
       const disabledStateDriver = createDriver(
         <TextField disabled onChange={onChange} value={'Test'} />,
@@ -131,21 +131,21 @@ describe('TextField', () => {
       expect(regularStateDriver.isDisabled()).toBe(false);
     });
 
-    it('should has clear button', function() {
+    it('should has clear button', function () {
       const emptyStateDriver = createDriver(
         <TextField withClearButton value="text" />,
       );
       expect(emptyStateDriver.hasClearButton()).toBe(true);
     });
 
-    it('should not have clear button when the input is empty', function() {
+    it('should not have clear button when the input is empty', function () {
       const emptyStateDriver = createDriver(
         <TextField withClearButton value="" />,
       );
       expect(emptyStateDriver.hasClearButton()).toBe(false);
     });
 
-    it('should call onClear after clicking on the clear button', function() {
+    it('should call onClear after clicking on the clear button', function () {
       const onClear = jest.fn();
       const driver = createDriver(
         <TextField withClearButton onClear={onClear} value="text" />,
@@ -154,14 +154,14 @@ describe('TextField', () => {
       expect(onClear).toHaveBeenCalled();
     });
 
-    it('should has custom suffix', function() {
+    it('should has custom suffix', function () {
       const emptyStateDriver = createDriver(
         <TextField value="hello" suffix={<Calendar />} />,
       );
       expect(emptyStateDriver.hasCustomSuffix()).toBe(true);
     });
 
-    it('should not have custom suffix', function() {
+    it('should not have custom suffix', function () {
       const emptyStateDriver = createDriver(<TextField value="hello" />);
       expect(emptyStateDriver.hasCustomSuffix()).toBe(false);
     });

@@ -4,9 +4,7 @@ import { SECTION_NOTIFICATION_DATA_HOOKS } from '../dataHooks';
 import { SectionNotificationTextProps } from '../types';
 import { classes } from '../SectionNotification.st.css';
 
-export class SectionNotificationText extends React.Component<
-  SectionNotificationTextProps
-> {
+export class SectionNotificationText extends React.Component<SectionNotificationTextProps> {
   static displayName = 'SectionNotification.Text';
 
   render() {

@@ -117,7 +117,7 @@ const eyesConfig = {
     .add(
       'both nav buttons',
       () => {
-        const onTestReady = async driver => {
+        const onTestReady = async (driver) => {
           if (direction === 'ltr') {
             await driver.clickRightNavButton();
           } else {
@@ -134,7 +134,7 @@ const eyesConfig = {
     .add(
       `scroll to ${forwardSide} end`,
       () => {
-        const onTestReady = async driver => {
+        const onTestReady = async (driver) => {
           await scrollToEnd(
             driver,
             direction === 'ltr'

@@ -17,11 +17,11 @@ export interface SectionNotificationDriver extends BaseUniDriver {
   getButtons(): UniDriverList;
 }
 
-const getIconContainer = base =>
+const getIconContainer = (base) =>
   base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.icon}"]`);
-const getTextContainer = base =>
+const getTextContainer = (base) =>
   base.$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.text}"]`);
-const getButtons = base =>
+const getButtons = (base) =>
   base.$$(`[data-hook="${SECTION_NOTIFICATION_DATA_HOOKS.button}"]`);
 
 export const sectionNotificationDriverFactory = (

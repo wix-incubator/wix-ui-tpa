@@ -108,7 +108,7 @@ export class Counter extends React.Component<CounterProps> {
         <div className={classes.inputWrapper}>
           <Input
             aria-label={inputAriaLabel}
-            onChange={ev => onChange(ev.target.value)}
+            onChange={(ev) => onChange(ev.target.value)}
             type="number"
             disabled={disabled}
             min={min}

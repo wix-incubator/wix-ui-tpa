@@ -37,7 +37,7 @@ export class SocialBar extends React.Component<SocialBarProps> {
             className={st(classes.root, { mobile }, className)}
             data-hook={this.props['data-hook']}
           >
-            {React.Children.map(children, child => {
+            {React.Children.map(children, (child) => {
               if (!React.isValidElement(child)) {
                 return child;
               }

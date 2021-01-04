@@ -11,8 +11,8 @@ class RadioButtonWiringExample extends React.Component<{}, IState> {
   state = {
     isChecked: false,
   };
-  handleChange = event => {
-    this.setState(prevState => {
+  handleChange = (event) => {
+    this.setState((prevState) => {
       return {
         isChecked: !prevState.isChecked,
       };

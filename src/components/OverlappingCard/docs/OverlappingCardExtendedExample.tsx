@@ -5,7 +5,7 @@ import { TYPOGRAPHY, Text } from '../../Text';
 import { Divider } from '../../Divider';
 import { Button } from '../../Button';
 
-export const CardExtendedExample = props => (
+export const CardExtendedExample = (props) => (
   <div>
     <OverlappingCard
       media={

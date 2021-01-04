@@ -39,7 +39,7 @@ export const Autocomplete: AutocompleteType = ((props: AutocompleteProps) => {
       error={error}
       errorMessage={errorMessage}
       disabled={disabled}
-      render={errorProps => (
+      render={(errorProps) => (
         <CoreAutocomplete
           className={st(classes.root, { error }, className)}
           {...coreAutocompleteProps}

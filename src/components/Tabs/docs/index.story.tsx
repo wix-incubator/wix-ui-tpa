@@ -49,10 +49,10 @@ export default {
   component: storyComponent(Tabs),
   source: TabsSource,
   componentPath: '../Tabs.tsx',
-  componentProps: setState => ({
+  componentProps: (setState) => ({
     dataHook: 'storybook-Tabs',
     items: exampleItems[1].value,
-    onTabClick: selectedTabIndex => {
+    onTabClick: (selectedTabIndex) => {
       setState({ activeTabIndex: selectedTabIndex });
     },
     activeTabIndex: 0,
@@ -61,9 +61,9 @@ export default {
     variant: VARIANT.fit,
   }),
   exampleProps: {
-    skin: Object.keys(SKIN).map(key => SKIN[key]),
-    alignment: Object.keys(ALIGNMENT).map(key => ALIGNMENT[key]),
-    variant: Object.keys(VARIANT).map(key => VARIANT[key]),
+    skin: Object.keys(SKIN).map((key) => SKIN[key]),
+    alignment: Object.keys(ALIGNMENT).map((key) => ALIGNMENT[key]),
+    variant: Object.keys(VARIANT).map((key) => VARIANT[key]),
     items: exampleItems,
   },
 

@@ -31,7 +31,7 @@ import * as examples from './examples';
 import { SocialBarWiringExample } from './SocialBarWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 /* tslint:disable */
