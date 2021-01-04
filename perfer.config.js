@@ -62,6 +62,7 @@ const files = [
   ['Tooltip.bundle.min.js', 31],
   ['Popover.bundle.min.js', 29],
   ['BoxSelection.bundle.min.js', 10],
+  ['Tag.bundle.min.js', 5],
 ];
 
 module.exports = {
