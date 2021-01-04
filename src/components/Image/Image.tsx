@@ -5,7 +5,7 @@ import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
 
 export interface ImageProps extends TPAComponentProps {
-  /** The source could be any absolute full URL or a relative URI of a media platform item */
+  /** The source could be any absolute full URL or a relative URI of a media platform item   */
   src?: string;
   /** The intrinsic width of the image in pixels */
   width?: number;
