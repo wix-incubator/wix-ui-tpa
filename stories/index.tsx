@@ -77,4 +77,5 @@ require('../src/components/Toast/docs/index.story');
 require('../src/components/ToggleSwitch/docs/index.story');
 require('../src/components/Tooltip/docs/index.story');
 require('../src/components/Tooltip/docs/TooltipTestStory');
+require('../src/components/Popover/docs/index.story');
 require('../src/components/BoxSelection/docs/index.story');
