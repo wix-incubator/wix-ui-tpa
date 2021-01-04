@@ -22,7 +22,7 @@ class ImageWrapper extends React.Component<ImageWrapperProps> {
   state = { hasError: false };
 
   onError(onDone: ImageWrapperProps['onDone']) {
-    this.setState({ hasError: true }, onDone);
+    this.setState({ hasError: true }, () => setTimeout(() => onDone(), 500));
   }
 
   render() {
@@ -41,7 +41,9 @@ class ImageWrapper extends React.Component<ImageWrapperProps> {
 visualize('Image', () => {
   stories.forEach(({ name, src, invalidSrc }) => {
     story(name, () => {
-      snap('default', (done) => <Image src={src} onLoad={done} />);
+      snap('default', (done) => (
+        <Image src={src} width={480} height={360} onLoad={done} />
+      ));
       snap('with width & height', (done) => (
         <Image src={src} width={200} height={200} onLoad={done} />
       ));
