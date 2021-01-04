@@ -14,7 +14,7 @@ const testProps = {
     url: 'https://wix.com',
     text: 'some text',
   },
-  onClick: sharePromise => {
+  onClick: (sharePromise) => {
     console.log(navigator.share);
     if (!sharePromise) {
       alert('share clicked');

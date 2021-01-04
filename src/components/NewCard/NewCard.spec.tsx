@@ -8,7 +8,7 @@ import { NewCard } from './';
 import { newCardTestkitFactory } from '../../testkit';
 import { newCardTestkitFactory as enzymeNewCardTestkitFactory } from '../../testkit/enzyme';
 
-const TestComp: React.FC<any> = props => (
+const TestComp: React.FC<any> = (props) => (
   <NewCard {...props}>
     <NewCard.Container>test</NewCard.Container>
     <NewCard.Container>test</NewCard.Container>

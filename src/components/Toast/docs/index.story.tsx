@@ -18,7 +18,7 @@ import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -55,7 +55,7 @@ export default {
           title('Examples'),
 
           ...Object.keys(TOAST_SKIN)
-            .map(skin => ({
+            .map((skin) => ({
               title: skin,
               source: examples.example.desktop[skin],
             }))
@@ -64,7 +64,7 @@ export default {
           title('Mobile Examples'),
 
           ...Object.keys(TOAST_SKIN)
-            .map(skin => ({
+            .map((skin) => ({
               title: skin,
               source: examples.example.mobile[skin],
             }))

@@ -23,9 +23,7 @@ interface DropdownNativeSelectProps extends TPAComponentProps {
   'aria-labelledby'?: string;
 }
 
-export class DropdownNativeSelect extends React.Component<
-  DropdownNativeSelectProps
-> {
+export class DropdownNativeSelect extends React.Component<DropdownNativeSelectProps> {
   static contextType = TPAComponentsContext;
 
   private onSelect(e) {
@@ -125,7 +123,7 @@ export class DropdownNativeSelect extends React.Component<
           {...this.getDataAttributes()}
           defaultValue={''}
           {...(selectedOption && { value: selectedOption.id })}
-          onChange={e => this.onSelect(e)}
+          onChange={(e) => this.onSelect(e)}
           data-hook={DATA_HOOKS.nativeSelect}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}

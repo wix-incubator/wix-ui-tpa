@@ -17,7 +17,7 @@ describe('Tooltip', () => {
 
   beforeEach(() => browser.get(storyUrl));
 
-  testPropsList.forEach(prop => {
+  testPropsList.forEach((prop) => {
     const dataHook = prop['data-hook'];
     eyes.it(`Visual test: ${dataHook}`, async () => {
       const driver = tooltipTestkitFactory({ dataHook });

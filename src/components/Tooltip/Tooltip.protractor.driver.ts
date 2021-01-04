@@ -5,7 +5,7 @@ import {
 
 export interface TooltipProtractorDriver extends coreTooltipDriver {}
 
-export const tooltipDriverFactory = component => {
+export const tooltipDriverFactory = (component) => {
   const tooltipDriver = coreDriver(component);
 
   return {

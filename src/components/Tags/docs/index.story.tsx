@@ -27,7 +27,7 @@ import { ALIGNMENT, SIZE, SKIN } from '../constants';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const items = Array(20)
@@ -49,7 +49,7 @@ function ExampleTags(props) {
   return (
     <Tags
       {...props}
-      onClick={item => {
+      onClick={(item) => {
         item.checked = !item.checked;
         forceUpdate(!update);
       }}
@@ -71,9 +71,9 @@ export default {
   }),
   exampleProps: {
     items: exampleItems,
-    alignment: Object.keys(ALIGNMENT).map(key => ALIGNMENT[key]),
-    size: Object.keys(SIZE).map(key => SIZE[key]),
-    skin: Object.keys(SKIN).map(key => SKIN[key]),
+    alignment: Object.keys(ALIGNMENT).map((key) => ALIGNMENT[key]),
+    size: Object.keys(SIZE).map((key) => SIZE[key]),
+    skin: Object.keys(SKIN).map((key) => SKIN[key]),
   },
   dataHook: 'storybook-Tags',
   sections: [

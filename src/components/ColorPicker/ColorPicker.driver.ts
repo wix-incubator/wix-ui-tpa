@@ -20,7 +20,8 @@ export const colorPickerDriverFactory = (
   body: UniDriver,
 ): ColorPickerDriver => {
   const children = base.$$(`[data-hook="${colorPickerItemDataHook}"]`);
-  const childByColor = color => base.$(`[style="background-color: ${color};"]`);
+  const childByColor = (color) =>
+    base.$(`[style="background-color: ${color};"]`);
 
   return {
     ...baseUniDriverFactory(base),

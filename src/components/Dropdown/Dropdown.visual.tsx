@@ -62,13 +62,13 @@ function getTests(isMobile = false) {
 
 visualize('Dropdown', () => {
   story('desktop', () => {
-    getTests().map(testConfig => {
+    getTests().map((testConfig) => {
       snap(testConfig.it, <DropdownVisual {...testConfig.props} />);
     });
   });
 
   story('mobile', () => {
-    getTests(true).map(testConfig => {
+    getTests(true).map((testConfig) => {
       snap(testConfig.it, <DropdownVisual {...testConfig.props} />);
     });
   });

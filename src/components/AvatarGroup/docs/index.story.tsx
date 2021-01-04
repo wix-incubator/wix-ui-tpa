@@ -27,7 +27,7 @@ import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
 import { ExtendedExample } from './ExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const items = [
@@ -80,7 +80,7 @@ export default {
           title('Examples'),
 
           ...Object.keys(AvatarGroupSize)
-            .map(size => ({
+            .map((size) => ({
               title: size,
               source: examples.example[size],
             }))

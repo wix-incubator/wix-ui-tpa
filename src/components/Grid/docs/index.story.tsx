@@ -19,7 +19,7 @@ import { Card } from '../../Card';
 import { Text } from '../../Text';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 function generateCardItems(amount = 3) {

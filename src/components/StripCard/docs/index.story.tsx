@@ -19,7 +19,7 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { Text, TYPOGRAPHY } from '../../Text';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const mediaExamples = [

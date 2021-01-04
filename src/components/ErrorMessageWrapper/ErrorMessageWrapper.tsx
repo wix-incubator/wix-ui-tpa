@@ -13,7 +13,9 @@ export interface ErrorMessageWrapperProps extends TPAComponentProps {
   errorMessage: string;
 }
 
-export const ErrorMessageWrapper: React.FunctionComponent<ErrorMessageWrapperProps> = props => {
+export const ErrorMessageWrapper: React.FunctionComponent<ErrorMessageWrapperProps> = (
+  props,
+) => {
   const { render, error, disabled, errorMessage, className } = props;
 
   const inErrorState = error && !disabled && !!errorMessage;

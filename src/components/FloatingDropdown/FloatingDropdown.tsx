@@ -79,7 +79,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       return;
     }
     const selectedOption = this.props.options.find(
-      ({ id }) => selectedCoreOption.id === id
+      ({ id }) => selectedCoreOption.id === id,
     );
     this._onSelect(selectedOption);
   };
@@ -95,7 +95,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
             render: () => (
               <DropdownOption className={classes.option} {...option} />
             ),
-          })
+          }),
     );
 
     return {
@@ -177,7 +177,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
               { mobile },
               classnames(classes.overrideStyleParams, this.props.className, {
                 [classes.displayInline]: !this.props.displayBlock,
-              })
+              }),
             )}
           >
             {this._getContent(mobile)}

@@ -25,7 +25,7 @@ import * as examples from './examples';
 import { ShareButtonWiringExample } from './ShareButtonWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -40,7 +40,7 @@ export default {
       url: 'https://wix.com',
     },
     withIcon: true,
-    onClick: sharePromise => {
+    onClick: (sharePromise) => {
       if (!sharePromise) {
         alert('share clicked');
       }

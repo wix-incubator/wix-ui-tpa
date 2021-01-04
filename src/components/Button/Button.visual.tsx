@@ -5,7 +5,7 @@ import { SIZE, PRIORITY } from './Button';
 
 function priorityTestSuite() {
   story(`Priority`, () => {
-    Object.values(PRIORITY).forEach(priority => {
+    Object.values(PRIORITY).forEach((priority) => {
       snap(`${priority}`, () => (
         <Button priority={priority}>{priority}</Button>
       ));
@@ -15,7 +15,7 @@ function priorityTestSuite() {
 
 function sizeTestSuite() {
   story(`Size`, () => {
-    Object.values(SIZE).forEach(size => {
+    Object.values(SIZE).forEach((size) => {
       snap(`${size}`, () => <Button size={size}>{size}</Button>);
     });
   });
@@ -24,7 +24,7 @@ function sizeTestSuite() {
 function upgradeTestSuite() {
   story(`Upgrade`, () => {
     story(`Size`, () => {
-      Object.values(SIZE).forEach(size => {
+      Object.values(SIZE).forEach((size) => {
         snap(`${size}`, () => (
           <Button upgrade size={size}>
             {size}
@@ -33,7 +33,7 @@ function upgradeTestSuite() {
       });
     });
     story(`Priority`, () => {
-      Object.values(PRIORITY).forEach(priority => {
+      Object.values(PRIORITY).forEach((priority) => {
         snap(`${priority}`, () => (
           <Button upgrade priority={priority}>
             {priority}

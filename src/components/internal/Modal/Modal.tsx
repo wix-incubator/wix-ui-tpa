@@ -66,7 +66,7 @@ export class Modal extends React.Component<ModalProps> {
     this._focusTrapInstance = null;
   }
 
-  _contentRefCallback = ref => {
+  _contentRefCallback = (ref) => {
     const { focusTrap, isOpen } = this.props;
     this._contentRef = ref;
 
@@ -95,7 +95,7 @@ export class Modal extends React.Component<ModalProps> {
     }
   }
 
-  _onEscKeyup = e => {
+  _onEscKeyup = (e) => {
     if (e.keyCode === KEY_CODES.Esc) {
       this._onClose();
     }

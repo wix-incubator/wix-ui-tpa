@@ -28,10 +28,7 @@ describe('AddItem', () => {
   });
 
   eyes.it('should show the correct design on hover', async () => {
-    browser
-      .actions()
-      .mouseMove(addItemElement)
-      .perform();
+    browser.actions().mouseMove(addItemElement).perform();
   });
 
   eyes.it('should show the correct design on focus', async () => {

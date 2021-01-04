@@ -13,7 +13,7 @@ export const RatingsExtendedExample = () => {
           name={'example1'}
           value={value}
           inputOptions={['Very baasa', 'Baasa', 'OK', 'Magniv', 'Achla']}
-          onSelect={val => {
+          onSelect={(val) => {
             setValue(val);
           }}
           className={classes.ratings}

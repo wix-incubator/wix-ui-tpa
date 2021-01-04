@@ -20,7 +20,7 @@ const createStringComponent = (
     `;
 };
 
-const createComponentsSection = stringComponents => {
+const createComponentsSection = (stringComponents) => {
   return `<div style={{display: "flex", "justifyContent": "space-around"}}>
         ${stringComponents.join(' ')}
     </div>

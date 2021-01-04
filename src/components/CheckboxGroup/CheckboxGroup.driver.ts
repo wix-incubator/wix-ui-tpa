@@ -25,7 +25,7 @@ export const checkboxGroupDriverFactory = (
     },
     async isCheckboxesDisabled() {
       const checkboxes = base.$$(checkboxDatahook);
-      const filtered = checkboxes.filter(async checkbox => {
+      const filtered = checkboxes.filter(async (checkbox) => {
         const cd = checkboxDriverFactory(checkbox);
 
         return cd.hasDisabled();
@@ -35,7 +35,7 @@ export const checkboxGroupDriverFactory = (
     },
     async isCheckboxesErrored() {
       const checkboxes = base.$$(checkboxDatahook);
-      const filtered = checkboxes.filter(async checkbox => {
+      const filtered = checkboxes.filter(async (checkbox) => {
         const cd = checkboxDriverFactory(checkbox);
 
         return cd.hasError();

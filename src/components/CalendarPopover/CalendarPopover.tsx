@@ -82,7 +82,7 @@ export class CalendarPopover extends React.Component<CalendarPopoverProps> {
       this.lastActiveElement.focus();
   };
 
-  _onEsc = e => {
+  _onEsc = (e) => {
     if (e.keyCode === KEY_CODES.Esc) {
       this.props.onClose();
     }

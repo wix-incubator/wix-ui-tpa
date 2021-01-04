@@ -22,7 +22,7 @@ describe('ActionsMenuLayout', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should trigger onClick', async function() {
+  it('should trigger onClick', async function () {
     const onClick = jest.fn();
     const driver = createDriver(
       <ActionsMenuLayout>
@@ -34,7 +34,7 @@ describe('ActionsMenuLayout', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('should focus first element if focusedIndex undefined', async function() {
+  it('should focus first element if focusedIndex undefined', async function () {
     const driver = createDriver(
       <ActionsMenuLayout>
         <ActionsMenuLayout.Item onClick={() => {}} content="test" />
@@ -45,7 +45,7 @@ describe('ActionsMenuLayout', () => {
     expect(document.activeElement).toEqual(item);
   });
 
-  it('should focus 2nd element if focusedIndex=1', async function() {
+  it('should focus 2nd element if focusedIndex=1', async function () {
     const driver = createDriver(
       <ActionsMenuLayout focusedIndex={1}>
         <ActionsMenuLayout.Item onClick={() => {}} content="test1" />
@@ -57,7 +57,7 @@ describe('ActionsMenuLayout', () => {
     expect(document.activeElement).toEqual(item);
   });
 
-  it('should navigate by keyboard keys', async function() {
+  it('should navigate by keyboard keys', async function () {
     const driver = createDriver(
       <ActionsMenuLayout>
         <ActionsMenuLayout.Item onClick={() => {}} content="test1" />
@@ -88,7 +88,7 @@ describe('ActionsMenuLayout', () => {
     expect(document.activeElement).toEqual(item3);
   });
 
-  it('should fire onClick on space and enter keys', async function() {
+  it('should fire onClick on space and enter keys', async function () {
     const onClick = jest.fn();
 
     const driver = createDriver(

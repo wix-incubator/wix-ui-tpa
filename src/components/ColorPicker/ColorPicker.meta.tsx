@@ -7,6 +7,6 @@ ColorPickerMetadata.nonReactStrictModeCompliant = true;
 ColorPickerMetadata.addSim({
   title: 'render',
   props: {
-    onChange: e => {},
+    onChange: (e) => {},
   },
 });

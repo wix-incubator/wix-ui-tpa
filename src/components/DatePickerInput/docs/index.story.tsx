@@ -27,7 +27,7 @@ import { DatePickerInput } from '../';
 import { TextFieldTheme } from '../../TextField/TextFieldEnums';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -60,10 +60,13 @@ export default {
       { label: 'LL/dd/yyyy', value: 'LL/dd/yyyy' },
       { label: 'dd/LL/yy', value: 'dd/LL/yy' },
       { label: 'LLL dd, yyyy', value: 'LLL dd, yyyy' },
-      { label: 'Custom', value: date => date.getDate() },
+      { label: 'Custom', value: (date) => date.getDate() },
     ],
     filterDate: [
-      { label: 'Prior to the current date', value: date => date < new Date() },
+      {
+        label: 'Prior to the current date',
+        value: (date) => date < new Date(),
+      },
     ],
     firstDayOfWeek: [
       { label: 'Monday', value: 1 },

@@ -21,7 +21,7 @@ import { ProgressBarWiringExample } from './ProgressBarWiringExample';
 import { ProgressBar } from '../';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {

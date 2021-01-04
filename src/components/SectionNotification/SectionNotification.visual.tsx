@@ -34,7 +34,7 @@ class SectionNotificationVisual extends React.Component<
           <SectionNotification {...componentProps}>
             {icon ? <SectionNotification.Icon icon={icon} /> : null}
             <SectionNotification.Text>{text}</SectionNotification.Text>
-            {buttons.map(title => (
+            {buttons.map((title) => (
               <SectionNotification.Button key={title}>
                 {title}
               </SectionNotification.Button>
@@ -54,7 +54,7 @@ function getTests({
   buttons = [],
   isMobile = false,
 }) {
-  return Object.values(NOTIFICATION_TYPE).map(type => ({
+  return Object.values(NOTIFICATION_TYPE).map((type) => ({
     it: `${description} - ${type}`,
     props: {
       mobile: isMobile,

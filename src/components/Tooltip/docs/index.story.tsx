@@ -34,7 +34,7 @@ const contentExamples = [
 
 const skinExamples = Object.values(TooltipSkin);
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {

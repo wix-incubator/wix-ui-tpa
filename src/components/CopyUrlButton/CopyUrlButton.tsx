@@ -8,7 +8,7 @@ import { SocialBarIcon, SocialBarIconProps } from '../SocialBar/SocialBarIcon';
 import { SocialBarTheme } from '../SocialBar/SocialBar';
 import { Omit } from '../../types';
 
-const delay = time => new Promise(resolve => setTimeout(resolve, time));
+const delay = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 export interface CopyUrlButtonProps extends Omit<SocialBarIconProps, 'icon'> {
   icon?: SocialBarIconProps['icon']; //make it optional
@@ -60,7 +60,7 @@ export class CopyUrlButton extends React.Component<
     );
   };
 
-  _onButtonClick: SocialBarIconProps['onClick'] = async event => {
+  _onButtonClick: SocialBarIconProps['onClick'] = async (event) => {
     if (document.queryCommandSupported('copy')) {
       this.inputRef.current.select();
       document.execCommand('copy');

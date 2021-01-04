@@ -37,7 +37,7 @@ export function genericApiTable({ title, columns, items }: IGenericApiConfig) {
           <tbody key="body">
             {items.map((item, row) => (
               <tr key={`row_${row}`}>
-                {Object.keys(columns).map(columnId => (
+                {Object.keys(columns).map((columnId) => (
                   <td key={`value_${columnId}_${row}`}>{item[columnId]}</td>
                 ))}
               </tr>

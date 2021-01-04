@@ -10,7 +10,7 @@ import { checkboxGroupTestkitFactory } from '../../testkit';
 import { checkboxGroupTestkitFactory as enzymeCheckboxGroupTestkitFactory } from '../../testkit/enzyme';
 
 const noop = () => {};
-const TestComp: React.FunctionComponent<any> = props => (
+const TestComp: React.FunctionComponent<any> = (props) => (
   <CheckboxGroup {...props}>
     <Checkbox name="group1" onChange={noop} label="Checkbox 1️⃣" />
     <Checkbox name="group1" onChange={noop} label="Checkbox 2️⃣" />

@@ -47,7 +47,7 @@ export class AvatarGroup extends React.Component<AvatarGroupProps> {
   getTextButton = () => {
     const { children } = this.props;
     const textButton = React.Children.toArray(children).find(
-      child =>
+      (child) =>
         React.isValidElement(child) &&
         (child.type === TextButton || child.type === AvatarGroupTextButton),
     ) as React.ReactElement;

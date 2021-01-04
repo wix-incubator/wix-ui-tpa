@@ -25,7 +25,7 @@ import * as examples from './examples';
 import { TextWiringExample } from './TextWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -41,7 +41,7 @@ export default {
     typography: TYPOGRAPHY.runningText,
   },
   exampleProps: {
-    typography: Object.keys(TYPOGRAPHY).map(key => TYPOGRAPHY[key]),
+    typography: Object.keys(TYPOGRAPHY).map((key) => TYPOGRAPHY[key]),
   },
   sections: [
     header(),

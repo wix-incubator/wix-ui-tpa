@@ -20,7 +20,7 @@ export interface PaginationProps
     TPAComponentProps {}
 
 /** Pagination component */
-export const Pagination: React.FunctionComponent<PaginationProps> = props => {
+export const Pagination: React.FunctionComponent<PaginationProps> = (props) => {
   return (
     <TPAComponentsConsumer>
       {({ mobile, rtl }) => {
