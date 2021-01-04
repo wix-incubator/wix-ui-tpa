@@ -1,0 +1,95 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:import {
+  -st-from: "../Text/Text.st.css";
+  -st-default: Text;
+}
+
+/* Defaults - default params */
+:vars {
+  defaultBackgroundColor: color(color-5);
+  smallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+  mediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+  largeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+  /*
+    Main background color
+  */
+  BackgroundColor: --overridable;
+  Font: --overridable;
+}
+
+/* Overrides */
+:vars {
+  backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+}
+
+.root {
+  -st-states: skin(enum(light, solid)), size(enum(small, medium, large)), removable, clickable;
+  padding: 4px 0;
+  display: inline-flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+.root:clickable {
+  cursor: pointer;
+}
+
+.root:clickable:hover {
+  background-color: applyOpacity(#000, 0.12);
+}
+
+.root:removable {
+  padding: 4px 4px 4px 0;
+}
+
+.root .label {
+  margin: 0 12px;
+}
+
+.root:size(small) .label {
+  -st-mixin: Text(
+    MainTextFont fallback(font(value(Font)), font(value(smallFont)))
+  );
+}
+
+
+.root:size(medium) .label {
+  -st-mixin: Text(
+    MainTextFont fallback(font(value(Font)), font(value(mediumFont)))
+  );
+}
+
+.root:size(large) .label {
+  -st-mixin: Text(
+    MainTextFont fallback(font(value(Font)), font(value(largeFont)))
+  );
+}
+
+.root:skin(solid) {
+  background-color: applyOpacity(value(backgroundColor), 0.1);
+}
+
+.root:skin(light) {
+  border: 1px solid applyOpacity(value(backgroundColor), 0.1);
+}
+
+.root.overrideStyleParams {
+  background-color: applyOpacity(value(backgroundColor), 0.1);
+}
+
+.iconWrapper {
+  font-size: 0;
+}
+
+.removeIcon {
+  width: 14px;
+  height: 14px;
+}
