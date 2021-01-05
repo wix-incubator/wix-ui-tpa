@@ -60,6 +60,8 @@ export class CounterExtendedExample extends React.Component<{}, State> {
         onChange={this.handleChange}
         value={this.state.value}
         size={CounterSize.xSmall}
+        max={999}
+        min={-999}
         {...this.props}
         className={classes.root}
       />
