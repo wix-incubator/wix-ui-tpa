@@ -9,6 +9,6 @@ try {
 module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     concurrency: 50,
-    browser: 'chrome-one-version-back'
+    browser: { name: 'chrome-one-version-back' }
   }),
 });
