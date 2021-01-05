@@ -18,6 +18,25 @@ export const relativeUriExample = `
 />
 `;
 
+export const resizingExample = `
+<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width="300"
+    height="250"
+    alt="Garfield smiles and puts his hand over chest"
+    resize="cover"
+  />
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width="300"
+    height="250"
+    alt="Garfield smiles and puts his hand over chest"
+    resize="contain"
+  />
+</div>
+`;
+
 export const blurLoadingExample = `
 class MediaImageWithBlurryLoading extends React.Component {
   state = {
