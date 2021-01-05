@@ -177,26 +177,24 @@ module.exports = async function({ source, metadata, basePath }) {
 
     const relativeStylablePath = await getImportedStylablePath(componentAst);
 
-    if (!relativeStylablePath) {
-      return {metadata};
-    }
+    if (relativeStylablePath) {
+      const absoluteStylablePath = path.resolve(
+          path.dirname(absoluteComponentPath),
+          relativeStylablePath,
+      );
 
-    const absoluteStylablePath = path.resolve(
-        path.dirname(absoluteComponentPath),
-        relativeStylablePath,
-    );
+      const stylableSource = fs.readFileSync(absoluteStylablePath, {
+        encoding: 'utf8',
+      });
+      const stylableAst = parseStylable(stylableSource);
 
-    const stylableSource = fs.readFileSync(absoluteStylablePath, {
-      encoding: 'utf8',
-    });
-    const stylableAst = parseStylable(stylableSource);
+      const overridableVars = getOverridableVars(stylableAst);
 
-    const overridableVars = getOverridableVars(stylableAst);
-
-    data.metadata = {
-      ...data.metadata,
-      stylable: {
-        overridableVars,
+      data.metadata = {
+        ...data.metadata,
+        stylable: {
+          overridableVars,
+        }
       }
     }
   }
