@@ -78,6 +78,7 @@ export class Image extends React.Component<ImageProps> {
       width,
       height,
       onLoad,
+      resize,
       loadingBehavior,
       ...imageProps
     } = this.props;
@@ -85,6 +86,7 @@ export class Image extends React.Component<ImageProps> {
     const dimensions = { width, height };
 
     const isAbsoluteUrl = src && src.match('^https?://');
+    const isContained = resize === 'contain';
     const hasLoadingBehavior = loadingBehavior === 'blur';
 
     return (
@@ -92,6 +94,7 @@ export class Image extends React.Component<ImageProps> {
         className={st(
           classes.root,
           {
+            contain: isContained,
             ...(hasLoadingBehavior && { preload: !isLoaded, loaded: isLoaded }),
           },
           className,

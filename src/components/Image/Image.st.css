@@ -12,9 +12,13 @@
 }
 
 .root {
-  -st-states: preload, loaded;
+  -st-states: contain, preload, loaded;
 
   display: grid;
+}
+
+.root:contain .absoluteImage, .root:contain .relativeImage, .root:contain .placeholder {
+  object-fit: contain;
 }
 
 .placeholder, .relativeImage {
