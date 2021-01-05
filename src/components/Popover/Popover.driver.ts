@@ -1,16 +1,10 @@
-import {
-  BaseUniDriver,
-  baseUniDriverFactory,
-} from 'wix-ui-test-utils/base-driver';
-import { UniDriver } from 'wix-ui-test-utils/unidriver';
+import { Simulate } from 'react-dom/test-utils';
 
-export interface PopoverDriver extends BaseUniDriver {
-  // isMobile(): Promise<boolean>;
-}
+import { popoverDriverFactory as corePopoverDriverFactory } from 'wix-ui-core/dist/src/components/popover/Popover.driver';
 
-export const popoverDriverFactory = (base: UniDriver): PopoverDriver => {
-  return {
-    ...baseUniDriverFactory(base),
-    // isMobile: async () => (await base.attr('data-mobile')) === 'true',
-  };
+export const popoverDriverFactory = ({ element }) => {
+  return corePopoverDriverFactory({
+    element,
+    eventTrigger: Simulate,
+  });
 };

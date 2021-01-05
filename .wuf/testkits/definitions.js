@@ -14,6 +14,7 @@ module.exports = {
   Input: { legacyDriver: true, protractorLegacyTestkit: true },
   LikeButton: { legacyDriver: true, protractorLegacyTestkit: true },
   Pagination: { legacyDriver: true, protractorLegacyTestkit: true },
+  Popover: { legacyDriver: true, protractorLegacyTestkit: true },
   Text: { legacyDriver: true, protractorLegacyTestkit: true },
   TextField: { legacyDriver: true, protractorLegacyTestkit: true },
   ToggleSwitch: { noTestkit: true },
