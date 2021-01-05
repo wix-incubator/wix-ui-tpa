@@ -1,30 +1,80 @@
 import * as React from 'react';
-import { ButtonProps, Button } from '../Button';
-import { classes } from './ButtonExtendedWithStyleParamsExample.st.css';
+import { Button, ButtonProps, SIZE } from '../Button';
+import { classes, st } from './ButtonExtendedWithStyleParamsExample.st.css';
 import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
 import { ReactComponent as Share } from '../../../assets/icons/Share.svg';
-import { Text, TYPOGRAPHY } from '../../Text';
 
 export const ButtonExtendedWithStyleParamsExample: React.FunctionComponent<ButtonProps> = (
   props,
 ) => (
-  <div>
+  <div className={st(classes.root)}>
     <div>
-      <Text typography={TYPOGRAPHY.smallTitle}>Regular Button</Text>
-      <Button upgrade {...props} className={classes.root}>
+      <Button upgrade {...props} className={classes.btn} size={SIZE.tiny}>
         Button
       </Button>
     </div>
-    <div style={{ marginTop: 20 }}>
-      <Text typography={TYPOGRAPHY.smallTitle}>Button with icons</Text>
+    <div>
+      <Button upgrade {...props} className={classes.btn} size={SIZE.small}>
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button upgrade {...props} className={classes.btn} size={SIZE.medium}>
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button upgrade {...props} className={classes.btn} size={SIZE.large}>
+        Button
+      </Button>
+    </div>
+
+    <div>
       <Button
-        upgrade
-        {...props}
         prefixIcon={<Heart />}
         suffixIcon={<Share />}
-        className={classes.root}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.tiny}
       >
-        Button with icons
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button
+        prefixIcon={<Heart />}
+        suffixIcon={<Share />}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.small}
+      >
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button
+        prefixIcon={<Heart />}
+        suffixIcon={<Share />}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.medium}
+      >
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button
+        prefixIcon={<Heart />}
+        suffixIcon={<Share />}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.large}
+      >
+        Button
       </Button>
     </div>
   </div>

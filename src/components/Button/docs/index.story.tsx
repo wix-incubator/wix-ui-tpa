@@ -148,6 +148,7 @@ export default {
                     label: 'Font',
                     wixParam: 'buttonTextFont',
                     defaultFont: 'arial',
+                    size: 16,
                   },
                 ],
               },

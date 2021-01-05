@@ -4,6 +4,12 @@
 }
 
 .root {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1em;
+}
+
+.btn {
   -st-extends: TPAButton;
   -st-mixin: TPAButton(
           MainTextColor '"--buttonTextColor"',
