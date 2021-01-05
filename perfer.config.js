@@ -52,7 +52,6 @@ const files = [
   ['ToggleSwitch.bundle.min.js', 6],
   ['Tooltip.bundle.min.js', 31],
   ['Tag.bundle.min.js', 5],
-  ['Popover.bundle.min.js', 5],
 ];
 
 module.exports = {
