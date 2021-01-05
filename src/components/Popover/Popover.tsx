@@ -18,12 +18,12 @@ export interface PopoverProps
   wiredToSiteColors?: boolean;
 }
 
-interface StaticComponents {
+interface ChildComponents {
   Element?: React.FC;
   Content?: React.FC;
 }
 
-export const Popover: React.FC<PopoverProps> & StaticComponents = props => {
+export const Popover: React.FC<PopoverProps> & ChildComponents = props => {
   const {
     triggerAction,
     wiredToSiteColors,
