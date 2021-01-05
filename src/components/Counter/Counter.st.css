@@ -71,6 +71,10 @@
     cursor: pointer;
 }
 
+.xsmall .btn {
+    padding: 4px;
+}
+
 .btn path {
     fill: color(value(counterColor));
 }
@@ -121,6 +125,7 @@
 .xsmall .error {
     width: 16px;
     height: 16px;
+    padding: 2px 0 0 0;
 }
 
 .root:disabled input {
