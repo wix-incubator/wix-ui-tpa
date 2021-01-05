@@ -71,8 +71,9 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            { title: 'Removable', source: examples.removable },
+            { title: 'Clickable', source: examples.clickable },
+            { title: 'Readonly', source: examples.readonly },
           ].map(code),
         ],
       }),
@@ -96,13 +97,31 @@ export default {
               params: {
                 colors: [
                   {
-                    label: 'Background color',
-                    wixParam: 'myBackgroundOverride',
-                    defaultColor: 'color-1',
+                    label: 'Background',
+                    wixParam: 'backgroundOverride',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Text Color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
                   },
                 ],
-                fonts: [],
-                numbers: [],
+                fonts: [
+                  {
+                    label: 'Tag label',
+                    wixParam: 'textFont',
+                    defaultFont: 'helvetica-w01-roman',
+                  },
+                ],
+                numbers: [
+                  {
+                    label: 'Border radius',
+                    defaultNumber: 0,
+                    wixParam: 'borderRadius',
+                    unit: 'px',
+                  },
+                ],
               },
             }),
           ],

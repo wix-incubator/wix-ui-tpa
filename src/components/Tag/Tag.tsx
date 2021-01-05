@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { TPAComponentProps } from '../../types';
+import cls from 'classnames';
 
-import { Text, TYPOGRAPHY } from '../Text';
-import { classes, st } from './Tag.st.css';
-import { SIZE, SKIN } from './constants';
+import { TPAComponentProps } from '../../types';
 import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
+import { Text, TYPOGRAPHY } from '../Text';
+
+import { classes } from './Tag.st.css';
+import { SIZE, SKIN } from './constants';
 
 export interface TagProps extends TPAComponentProps {
   onClick?: React.MouseEventHandler;
@@ -29,23 +31,21 @@ export const Tag: React.FC<TagProps> = props => {
     removeButtonAriaLabel,
     children,
     className,
-    tagName: TagName,
+    tagName,
   } = props;
+
+  const isClickable = !!(onRemove || onClick);
+  const TagName = isClickable ? 'button' : tagName;
 
   return (
     <TagName
-      className={st(
-        classes.root,
-        {
-          skin,
-          size,
-          removable: isRemovable,
-          clickable: !!(onRemove || onClick),
-        },
-        className,
-      )}
+      className={cls(classes.root, classes[skin], classes[size], className, {
+        [classes.clickable]: isClickable,
+      })}
       onClick={handleClick}
+      data-hook={props['data-hook']}
     >
+      <div className={classes.opaque} />
       <Text className={classes.label} typography={TYPOGRAPHY.listText}>
         {children}
       </Text>
@@ -53,6 +53,7 @@ export const Tag: React.FC<TagProps> = props => {
         <span
           className={classes.iconWrapper}
           aria-label={removeButtonAriaLabel}
+          data-hook="remove-icon"
         >
           <CloseIcon className={classes.removeIcon} />
         </span>

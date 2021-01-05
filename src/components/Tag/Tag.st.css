@@ -11,6 +11,8 @@
 /* Defaults - default params */
 :vars {
   defaultBackgroundColor: color(color-5);
+  defaultTextColor: color(color-5);
+  defaultBorderRadius: 0px;
   smallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
   mediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
   largeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
@@ -20,69 +22,115 @@
 :vars {
   /*
     Main background color
+    @default color-5
   */
   BackgroundColor: --overridable;
+
+  /*
+    Main text color
+    @default color-5
+  */
+  TextColor: --overridable;
+
+  /*
+    Border radius
+    @default 0px
+  */
+  BorderRadius: --overridable;
+
+  /*
+  Main text font
+  @default small: {theme: 'Body-M', size: '12px', lineHeight: '16px'}, medium: {theme: 'Body-M', size: '14px', lineHeight: '20px'}, large: {theme: 'Body-M', size: '16px', lineHeight: '24px'}
+  */
   Font: --overridable;
 }
 
 /* Overrides */
 :vars {
   backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+  borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
+  textColor: color(fallback(value(TextColor), value(defaultTextColor)))
 }
 
 .root {
-  -st-states: skin(enum(light, solid)), size(enum(small, medium, large)), removable, clickable;
   padding: 4px 0;
   display: inline-flex;
   align-items: center;
   background-color: #fff;
+  width: fit-content;
+  border: 0;
+  position: relative;
 }
 
-.root:clickable {
+.opaque {
+  position: absolute;
+  opacity: 0.1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.root.clickable {
   cursor: pointer;
 }
 
-.root:clickable:hover {
-  background-color: applyOpacity(#000, 0.12);
+.root.clickable:focus .opaque,
+.root.clickable:hover .opaque {
+  opacity: 0.12;
 }
 
-.root:removable {
-  padding: 4px 4px 4px 0;
-}
-
-.root .label {
+.label {
   margin: 0 12px;
+  position: relative;
 }
 
-.root:size(small) .label {
+.root.small.overrideStyleParams .label,
+.root.small .label {
   -st-mixin: Text(
+    MainTextColor value(textColor),
     MainTextFont fallback(font(value(Font)), font(value(smallFont)))
   );
 }
 
-
-.root:size(medium) .label {
+.root.medium.overrideStyleParams .label,
+.root.medium .label {
   -st-mixin: Text(
+    MainTextColor value(textColor),
     MainTextFont fallback(font(value(Font)), font(value(mediumFont)))
   );
 }
 
-.root:size(large) .label {
+.root.large.overrideStyleParams .label,
+.root.large .label {
   -st-mixin: Text(
+    MainTextColor value(textColor),
     MainTextFont fallback(font(value(Font)), font(value(largeFont)))
   );
 }
 
-.root:skin(solid) {
-  background-color: applyOpacity(value(backgroundColor), 0.1);
+.root.solid .opaque {
+  background-color: value(backgroundColor);
 }
 
-.root:skin(light) {
-  border: 1px solid applyOpacity(value(backgroundColor), 0.1);
+.root.light .opaque {
+  border: 1px solid value(backgroundColor);
 }
 
-.root.overrideStyleParams {
-  background-color: applyOpacity(value(backgroundColor), 0.1);
+.root.solid.overrideStyleParams .opaque {
+  background-color: value(backgroundColor);
+}
+
+.root.light.overrideStyleParams .opaque {
+  border-color: value(backgroundColor);
+}
+
+.root,
+.opaque,
+.root.overrideStyleParams,
+.root.overrideStyleParams .opaque {
+  border-radius: value(borderRadius);
 }
 
 .iconWrapper {
@@ -92,4 +140,10 @@
 .removeIcon {
   width: 14px;
   height: 14px;
+}
+
+.iconWrapper::after {
+  content: " ";
+  display: inline-block;
+  width: 4px;
 }
