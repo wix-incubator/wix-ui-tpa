@@ -5,6 +5,9 @@
 
 .root {
   -st-mixin: overrideStyleParams(
-    BackgroundColor ''"color(--myBackgroundOverride)"''
+    BackgroundColor '"--backgroundOverride"',
+    Font '"--textFont"',
+    BorderRadius '"unit(--borderRadius, px)"',
+    TextColor '"--textColor"'
   );
 }

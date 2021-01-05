@@ -7,8 +7,8 @@ TagMetadata.nonReactStrictModeCompliant = true;
 TagMetadata.addSim({
   title: 'render',
   props: {
-    buttonText: 'Click me!',
     size: SIZE.small,
     skin: SKIN.solid,
+    children: 'Tag Name',
   } as TagProps,
 });
