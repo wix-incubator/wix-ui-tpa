@@ -68,15 +68,18 @@ class ButtonComponent extends React.Component<ButtonProps> {
 
   _getAffixes = () => {
     const { prefixIcon, suffixIcon } = this.props;
+    const hasIcons = prefixIcon || suffixIcon;
 
-    return {
-      prefixIcon: prefixIcon
-        ? this._wrapAffix(prefixIcon, 'prefix')
-        : undefined,
-      suffixIcon: suffixIcon
-        ? this._wrapAffix(suffixIcon, 'suffix')
-        : undefined,
-    };
+    return hasIcons
+      ? {
+          prefixIcon: prefixIcon
+            ? this._wrapAffix(prefixIcon, 'prefix')
+            : undefined,
+          suffixIcon: suffixIcon
+            ? this._wrapAffix(suffixIcon, 'suffix')
+            : undefined,
+        }
+      : null;
   };
 
   render() {
@@ -90,6 +93,7 @@ class ButtonComponent extends React.Component<ButtonProps> {
       className,
       ...rest
     } = this.props;
+    const affixes = this._getAffixes();
 
     return (
       <TPAComponentsConsumer>
@@ -108,10 +112,10 @@ class ButtonComponent extends React.Component<ButtonProps> {
                 mobile,
                 upgrade,
               },
-              className,
+              classnames(className, { [classes.hasIcon]: !!affixes }),
             )}
             {...rest}
-            {...this._getAffixes()}
+            {...affixes}
           />
         )}
       </TPAComponentsConsumer>

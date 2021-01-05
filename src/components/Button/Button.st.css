@@ -197,33 +197,36 @@
 
 /*Tiny*/
 
-.root:size(tiny){
+.root:size(tiny) {
     padding: 6px 16px;
     font: fallback(font(value(MainTextFont)), font(value(TinyFont)));
 }
 
+.root:size(tiny).hasIcon {
+    padding: 5.5px 16px;
+}
 /*Small*/
 
-.root:size(small){
+.root:size(small) {
     padding: 7px 16px;
     font: fallback(font(value(MainTextFont)), font(value(SmallFont)));
 }
 
 /*Medium*/
 
-.root, .root:size(medium){
+.root, .root:size(medium) {
     padding: 8px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MediumFont)));
 }
 
-.root:mobile, .root:mobile:size(medium){
+.root:mobile, .root:mobile:size(medium) {
     padding: 10px 16px;
     font: fallback(font(value(MainTextFont)), font(value(MobileMediumFont)));
 }
 
 /*Large*/
 
-.root:size(large){
+.root:size(large) {
     padding: 10px 16px;
     font: fallback(font(value(MainTextFont)), font(value(LargeFont)));
 }
@@ -270,11 +273,11 @@
     line-height: 1;
 }
 
-.root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny){
+.root:priority(secondary):upgrade:size(tiny), .root:priority(basicSecondary):upgrade:size(tiny) {
     padding: calculate(string(-), 9px, value(secondaryBorderWidth)) 16px;
 }
 
-.root:upgrade:size(tiny), .root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny){
+.root:upgrade:size(tiny), .root:priority(primary):upgrade:size(tiny), .root:priority(basic):upgrade:size(tiny) {
     padding: calculate(string(-), 9px, value(PrimaryBorderWidth)) 16px;
 }
 
@@ -358,28 +361,42 @@
 
 .root .affixIcon svg path {
     fill: none;
+    transition: stroke .2s ease-in-out;
 }
 
+.root .affixIcon svg path,
+.root:priority(basic) .affixIcon svg path,
 .root:priority(primary) .affixIcon svg path {
     stroke: value(PrimaryTextColor);
+}
+
+.root:hover .affixIcon svg path,
+.root:priority(basic):hover .affixIcon svg path,
+.root:priority(primary):hover .affixIcon svg path {
+    stroke: applyOpacity(value(PrimaryTextColor), 0.7);
 }
 
 .root:priority(secondary) .affixIcon svg path {
     stroke: value(SecondaryTextColor);
 }
 
-.root:priority(basic) .affixIcon svg path {
-    stroke: value(PrimaryTextColor);
+.root:priority(secondary):hover .affixIcon svg path {
+    stroke: applyOpacity(value(SecondaryTextColor), 0.7);
 }
 
 .root:priority(basicSecondary) .affixIcon svg path {
     stroke: value(BasicSecondaryTextColor);
 }
 
+.root:priority(basicSecondary):hover .affixIcon svg path {
+    stroke: applyOpacity(value(BasicSecondaryTextColor), 0.7);
+}
+
 .affixIcon {
     height: 1.5em;
     width: 1.5em;
     display: flex;
+    margin: calc(-1 * (1.5em / 4)) 0;
 }
 
 .affixIcon svg {

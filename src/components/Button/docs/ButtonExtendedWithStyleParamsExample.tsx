@@ -9,19 +9,23 @@ export const ButtonExtendedWithStyleParamsExample: React.FunctionComponent<Butto
   props,
 ) => (
   <div>
-    <Text typography={TYPOGRAPHY.smallTitle}>Regular Button</Text>
-    <Button upgrade {...props} className={classes.root}>
-      Button
-    </Button>
-    <Text typography={TYPOGRAPHY.smallTitle}>Button with icons</Text>
-    <Button
-      upgrade
-      {...props}
-      prefixIcon={<Heart />}
-      suffixIcon={<Share />}
-      className={classes.root}
-    >
-      Button
-    </Button>
+    <div>
+      <Text typography={TYPOGRAPHY.smallTitle}>Regular Button</Text>
+      <Button upgrade {...props} className={classes.root}>
+        Button
+      </Button>
+    </div>
+    <div style={{ marginTop: 20 }}>
+      <Text typography={TYPOGRAPHY.smallTitle}>Button with icons</Text>
+      <Button
+        upgrade
+        {...props}
+        prefixIcon={<Heart />}
+        suffixIcon={<Share />}
+        className={classes.root}
+      >
+        Button with icons
+      </Button>
+    </div>
   </div>
 );

@@ -15,8 +15,5 @@
           MainBorderColor '"--borderColor"',
           HoverBorderColor '"--hoverBorderColor"'
   );
-}
-
-.root + .root {
-    margin-left: 10px;
+  margin-left: 20px;
 }
