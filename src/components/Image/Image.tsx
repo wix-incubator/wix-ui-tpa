@@ -41,6 +41,7 @@ const Placeholder = ({
 }) => (
   <MediaImage
     {...imageProps}
+    {...dimensions}
     mediaPlatformItem={{
       uri: src,
       ...dimensions,
@@ -120,6 +121,7 @@ export class Image extends React.Component<ImageProps> {
             )}
             <MediaImage
               {...imageProps}
+              {...dimensions}
               mediaPlatformItem={{
                 uri: src,
                 ...dimensions,
