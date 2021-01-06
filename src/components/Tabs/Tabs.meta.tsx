@@ -10,3 +10,10 @@ tabsMetadata.addSim({
     items: [{ title: 'first tab' }],
   },
 });
+
+tabsMetadata.addSim({
+  title: 'render tab with href',
+  props: {
+    items: [{ title: 'href tab', href: '/some-href' }],
+  },
+});

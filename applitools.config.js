@@ -9,5 +9,6 @@ try {
 module.exports = applitoolsConfig({
   config: merge(privateConfig, {
     concurrency: 50,
+    browser: { name: 'chrome-two-versions-back', width: 1024, height: 768 }
   }),
 });

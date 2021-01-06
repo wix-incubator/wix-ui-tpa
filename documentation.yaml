@@ -10,7 +10,7 @@ apiDoc:
       title: Getting Started
     - file: docs/USAGE.md
       title: Usage
-    - file: Contribution/docs/CONTRIBUTION.md
+    - file: docs/CONTRIBUTION.md
       title: Contribution/How To Contribute
     - file: docs/COMPONENT_GUIDELINES.md
       title: Contribution/Guidelines
