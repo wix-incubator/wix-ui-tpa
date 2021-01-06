@@ -64,8 +64,8 @@ visualize('Image', () => {
         snap('as cover', (done) => (
           <Image
             src={src}
-            width={480}
-            height={360}
+            width={300}
+            height={250}
             resize="cover"
             onLoad={done}
           />
@@ -73,8 +73,8 @@ visualize('Image', () => {
         snap('as contain', (done) => (
           <Image
             src={src}
-            width={480}
-            height={360}
+            width={300}
+            height={250}
             resize="contain"
             onLoad={done}
           />
