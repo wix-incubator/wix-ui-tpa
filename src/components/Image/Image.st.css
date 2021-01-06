@@ -12,7 +12,7 @@
 }
 
 .root {
-  -st-states: resize(enum(cover, contain)), preload, loaded;
+  -st-states: resize(enum(contain, cover)), preload, loaded;
 
   display: grid;
 }
