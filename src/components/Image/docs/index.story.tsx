@@ -77,7 +77,7 @@ export default {
             {
               title: 'Resizing',
               description:
-                'The image can be resized to fit its container, supporting two values - `cover` & `contain`. The `cover` value means to fill the container entirety when keeping the aspect ratio and cropping the outside areas if necessary. In contrast, `contain` means to fill the container with the entire image as much as possible while keeping the aspect ratio but without cropping.',
+                'The image can be resized to fit its container, supporting two values - `contain` & `cover`. The `contain` option means to fill the container with the entire **image** as much as possible while keeping the aspect ratio but without cropping. In contrast, `cover` means to fill the **container** entirety while keeping the aspect ratio and cropping the outside areas if necessary.',
               source: examples.resizingExample,
             },
             {

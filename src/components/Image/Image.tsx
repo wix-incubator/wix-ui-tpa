@@ -18,7 +18,7 @@ export interface ImageProps extends TPAComponentProps {
   /** A callback to be called if error occurs while loading */
   onError?: React.EventHandler<React.SyntheticEvent>;
   /** Specifies how the image is resized to fit its container */
-  resize?: 'cover' | 'contain';
+  resize?: 'contain' | 'cover';
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: 'none' | 'blur';
 }
@@ -58,7 +58,7 @@ const Placeholder = ({
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
-  static defaultProps: DefaultProps = { resize: 'cover' };
+  static defaultProps: DefaultProps = { resize: 'contain' };
 
   state = { isLoaded: false };
 
@@ -87,7 +87,6 @@ export class Image extends React.Component<ImageProps> {
     const dimensions = { width, height };
 
     const isAbsoluteUrl = src && src.match('^https?://');
-    const isContained = resize === 'contain';
     const hasLoadingBehavior = loadingBehavior === 'blur';
 
     return (
@@ -95,7 +94,7 @@ export class Image extends React.Component<ImageProps> {
         className={st(
           classes.root,
           {
-            contain: isContained,
+            resize,
             ...(hasLoadingBehavior && { preload: !isLoaded, loaded: isLoaded }),
           },
           className,
