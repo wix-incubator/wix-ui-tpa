@@ -15,6 +15,7 @@
     DefaultErrorColor: value(errorColor);
     DefaultBackgroundColor: color-1;
     DefaultWidth: 104px;
+    DefaultWidthXsmall: 80px;
 }
 
 :vars {
@@ -28,6 +29,7 @@
     counterColor: color(fallback(value(MainColor), value(DefaultColor)));
     counterDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
     counterWidth: fallback(value(MainWidth), value(DefaultWidth));
+    counterWidthXsmall: fallback(value(MainWidth), value(DefaultWidthXsmall));
 }
 
 .root {
@@ -37,15 +39,23 @@
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-    width: value(counterWidth);
-    height: 40px;
-    padding: 0 6px;
     background: color(value(DefaultBackgroundColor));
     border-width: 1px;
     border-style: solid;
     border-color: color(value(counterColor));
 }
 
+.root:not(.xsmall) {
+    width: value(counterWidth);
+    height: 40px;
+    padding: 0 6px;
+}
+
+.root.xsmall {
+    padding: 0 4px;
+    width: value(counterWidthXsmall);
+    height: 28px;
+}
 .root:error {
     border-color: value(DefaultErrorColor);
 }
@@ -59,6 +69,10 @@
     padding: 6px;
     border: none;
     cursor: pointer;
+}
+
+.xsmall .btn {
+    padding: 4px;
 }
 
 .btn path {
@@ -92,7 +106,26 @@
     text-align: center;
     width: 100%;
     color: value(counterColor);
-    font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
+}
+
+.root:not(.xsmall) input{
+    font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");;
+}
+
+.xsmall input {
+    font: font("{theme: 'Body-M', size: '12px', lineHeight: '1em'}");
+}
+
+.xsmall svg {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+}
+
+.xsmall .error {
+    width: 16px;
+    height: 16px;
+    padding: 2px 0 0 0;
 }
 
 .root:disabled input {
