@@ -59,6 +59,27 @@ visualize('Image', () => {
           onLoad={done}
         />
       ));
+
+      story('with resize', () => {
+        snap('as contain', (done) => (
+          <Image
+            src={src}
+            width={300}
+            height={250}
+            resize="contain"
+            onLoad={done}
+          />
+        ));
+        snap('as cover', (done) => (
+          <Image
+            src={src}
+            width={300}
+            height={250}
+            resize="cover"
+            onLoad={done}
+          />
+        ));
+      });
     });
   });
 });

@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
-import { MediaImage, MediaImageScaling } from 'wix-ui-core/media-image';
+import { MediaImage } from 'wix-ui-core/media-image';
 import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
+
+const enum ResizeOptions {
+  contain = 'contain',
+  cover = 'cover',
+}
 
 export interface ImageProps extends TPAComponentProps {
   /** The source could be any absolute full URL or a relative URI of a media platform item */
@@ -17,9 +22,13 @@ export interface ImageProps extends TPAComponentProps {
   onLoad?: React.EventHandler<React.SyntheticEvent>;
   /** A callback to be called if error occurs while loading */
   onError?: React.EventHandler<React.SyntheticEvent>;
+  /** Specifies how the image is resized to fit its container */
+  resize?: 'contain' | 'cover';
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: 'none' | 'blur';
 }
+
+type DefaultProps = Pick<ImageProps, 'resize'>;
 
 interface Dimensions {
   width: ImageProps['width'];
@@ -37,6 +46,7 @@ const Placeholder = ({
 }) => (
   <MediaImage
     {...imageProps}
+    {...dimensions}
     mediaPlatformItem={{
       uri: src,
       ...dimensions,
@@ -53,6 +63,7 @@ const Placeholder = ({
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
+  static defaultProps: DefaultProps = { resize: ResizeOptions.contain };
 
   state = { isLoaded: false };
 
@@ -73,6 +84,7 @@ export class Image extends React.Component<ImageProps> {
       width,
       height,
       onLoad,
+      resize,
       loadingBehavior,
       ...imageProps
     } = this.props;
@@ -87,8 +99,10 @@ export class Image extends React.Component<ImageProps> {
         className={st(
           classes.root,
           {
+            resize,
             ...(hasLoadingBehavior && { preload: !isLoaded, loaded: isLoaded }),
           },
+          resize === ResizeOptions.cover ? classes.cover : classes.contain,
           className,
         )}
         data-hook={this.props['data-hook']}
@@ -112,6 +126,7 @@ export class Image extends React.Component<ImageProps> {
             )}
             <MediaImage
               {...imageProps}
+              {...dimensions}
               mediaPlatformItem={{
                 uri: src,
                 ...dimensions,

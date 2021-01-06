@@ -75,6 +75,12 @@ export default {
               source: examples.relativeUriExample,
             },
             {
+              title: 'Resizing',
+              description:
+                'The image can be resized to fit its container, supporting two values - `contain` & `cover`. The `contain` option means to fill the container with the entire **image** as much as possible while keeping the aspect ratio but without cropping. In contrast, `cover` means to fill the **container** entirety while keeping the aspect ratio and cropping the outside areas if necessary.',
+              source: examples.resizingExample,
+            },
+            {
               title: 'Blurry Loading',
               description:
                 'The image can be loaded progressively with a blur placeholder by setting the `loadingBehavior` as `blur`. Important to mention that an actual progressive loading would work only for a relative media image, whereas for an absolute image it would just have the same effect (but the image will not be loaded progressively). Also notice that the wrapper class and the button are only to allow simulating the behavior again easily.',

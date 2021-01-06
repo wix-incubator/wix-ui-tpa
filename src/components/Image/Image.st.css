@@ -17,6 +17,14 @@
   display: grid;
 }
 
+.root.contain .absoluteImage, .root.contain .relativeImage, .root.contain .placeholder {
+  object-fit: contain;
+}
+
+.root.cover .absoluteImage, .root.cover .relativeImage, .root.cover .placeholder {
+  object-fit: cover;
+}
+
 .placeholder, .relativeImage {
   grid-area: 1 / 1;
 }
