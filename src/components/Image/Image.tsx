@@ -4,6 +4,11 @@ import { MediaImage } from 'wix-ui-core/media-image';
 import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
 
+const enum ResizeOptions {
+  contain = 'contain',
+  cover = 'cover',
+}
+
 export interface ImageProps extends TPAComponentProps {
   /** The source could be any absolute full URL or a relative URI of a media platform item */
   src?: string;
@@ -58,7 +63,7 @@ const Placeholder = ({
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
-  static defaultProps: DefaultProps = { resize: 'contain' };
+  static defaultProps: DefaultProps = { resize: ResizeOptions.contain };
 
   state = { isLoaded: false };
 
@@ -97,6 +102,7 @@ export class Image extends React.Component<ImageProps> {
             resize,
             ...(hasLoadingBehavior && { preload: !isLoaded, loaded: isLoaded }),
           },
+          resize === ResizeOptions.cover ? classes.cover : classes.contain,
           className,
         )}
         data-hook={this.props['data-hook']}

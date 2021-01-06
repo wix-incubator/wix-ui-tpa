@@ -12,16 +12,16 @@
 }
 
 .root {
-  -st-states: resize(enum(contain, cover)), preload, loaded;
+  -st-states: preload, loaded;
 
   display: grid;
 }
 
-.root:resize(contain) .absoluteImage, .root:resize(contain) .relativeImage, .root:resize(contain) .placeholder {
+.root.contain .absoluteImage, .root.contain .relativeImage, .root.contain .placeholder {
   object-fit: contain;
 }
 
-.root:resize(cover) .absoluteImage, .root:resize(cover) .relativeImage, .root:resize(cover) .placeholder {
+.root.cover .absoluteImage, .root.cover .relativeImage, .root.cover .placeholder {
   object-fit: cover;
 }
 
