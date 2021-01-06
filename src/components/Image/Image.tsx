@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
-import { MediaImage, MediaImageScaling } from 'wix-ui-core/media-image';
+import { MediaImage } from 'wix-ui-core/media-image';
 import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
 
