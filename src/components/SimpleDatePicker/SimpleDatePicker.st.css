@@ -1,9 +1,9 @@
 :import {
-    -st-from: "./Header.st.css";
-    -st-default: TPAHeader;
+    -st-from: "../SimpleDatePicker/Header.st.css";
+    -st-default: Header;
+    /*-st-named: --textColor;*/ /* for the third option */
 }
 
-/* Defaults */
 :vars {
   containerBGColor: white;
   borderColor: #C9C9C9;
@@ -64,8 +64,8 @@
 /*    --borderColor: #C9C9C9;*/
 /*    --containerWidth: 220px;*/
 /*    --containerHeight: 220px;*/
-/*    --headerTextColor: blue;*/
 /*    --dayTextColor: black;*/
+/*    --headerTextColor: green;*/
 /*}*/
 
 /*.root {*/
@@ -77,6 +77,11 @@
 /*    display: flex;*/
 /*    flex-direction: column;*/
 /*    justify-content: center;*/
+/*}*/
+
+/*.header {*/
+/*    -st-extends: TPAHeader;*/
+/*    --textColor: var(--headerTextColor)*/
 /*}*/
 
 /*.week {*/

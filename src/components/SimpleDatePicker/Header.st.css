@@ -14,3 +14,22 @@
     color: value(textColor);
     font-size: 20px;
 }
+
+
+/* Third option: using css vars */
+/*.root {*/
+/*    --textColor: #f542dd;*/
+/*}*/
+
+/*.root {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    height: 50px;*/
+/*}*/
+
+/*.text {*/
+/*    color: var(--textColor);*/
+/*    font-size: 20px;*/
+/*}*/
+/***********************/
