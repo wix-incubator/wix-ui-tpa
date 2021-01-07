@@ -60,6 +60,45 @@ visualize('Image', () => {
         />
       ));
 
+      story('with aspectRatio', () => {
+        snap('as 1:1', (done) => (
+          <Image
+            src={src}
+            width={480}
+            height={360}
+            aspectRatio="1:1"
+            onLoad={done}
+          />
+        ));
+        snap('as 16:9', (done) => (
+          <Image
+            src={src}
+            width={480}
+            height={360}
+            aspectRatio="16:9"
+            onLoad={done}
+          />
+        ));
+        snap('as 4:3', (done) => (
+          <Image
+            src={src}
+            width={480}
+            height={360}
+            aspectRatio="4:3"
+            onLoad={done}
+          />
+        ));
+        snap('as custom number', (done) => (
+          <Image
+            src={src}
+            width={480}
+            height={360}
+            aspectRatio={1.5}
+            onLoad={done}
+          />
+        ));
+      });
+
       story('with resize', () => {
         snap('as contain', (done) => (
           <Image
