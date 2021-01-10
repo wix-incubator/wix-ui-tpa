@@ -36,7 +36,7 @@ export interface ImageProps extends TPAComponentProps {
   loadingBehavior?: 'none' | 'blur';
 }
 
-type DefaultProps = Pick<ImageProps, 'aspectRatio' | 'resize'>;
+type DefaultProps = Pick<ImageProps, 'resize' | 'aspectRatio'>;
 
 interface Dimensions {
   width: ImageProps['width'];
