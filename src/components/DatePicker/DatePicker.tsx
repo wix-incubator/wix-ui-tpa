@@ -50,6 +50,13 @@ export interface DatePickerProps extends TPAComponentProps {
   showMonthDropdown?: boolean;
   /** Displays a selectable yearDropdown */
   showYearDropdown?: boolean;
+  /**
+   ##### This function allows you to add an indication under a specific date.
+   The function should return the indication node of a specific date or null if this day doesn't have an indication.
+   * `param` {Date} `date` - a date
+   * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
+   */
+  renderDateIndication?: (date: Date) => React.ReactNode;
   /** Defines a string value that labels the Date Picker element. Optional. */
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */
@@ -63,6 +70,7 @@ interface DefaultProps {
   firstDayOfWeek: FirstDayOfWeek;
   showMonthDropdown: boolean;
   showYearDropdown: boolean;
+  renderDateIndication(date: Date): React.ReactNode;
 }
 
 /** The DatePicker allows a user to select a specific date. */
@@ -75,6 +83,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
     firstDayOfWeek: 1,
     showMonthDropdown: false,
     showYearDropdown: false,
+    renderDateIndication: (date: Date) => null,
   };
 
   render() {
@@ -88,6 +97,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       firstDayOfWeek,
       showMonthDropdown,
       showYearDropdown,
+      renderDateIndication,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
@@ -115,6 +125,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
               rtl={rtl}
               selectionMode="day"
               numOfMonths={1}
+              renderDateIndication={renderDateIndication}
             />
           </div>
         )}
