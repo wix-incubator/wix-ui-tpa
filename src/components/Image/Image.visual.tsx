@@ -61,41 +61,17 @@ visualize('Image', () => {
       ));
 
       story('with aspectRatio', () => {
-        snap('as 1:1', (done) => (
-          <Image
-            src={src}
-            width={480}
-            height={360}
-            aspectRatio="1:1"
-            onLoad={done}
-          />
+        snap('as square', (done) => (
+          <Image src={src} width={480} aspectRatio="square" onLoad={done} />
         ));
-        snap('as 16:9', (done) => (
-          <Image
-            src={src}
-            width={480}
-            height={360}
-            aspectRatio="16:9"
-            onLoad={done}
-          />
+        snap('as cinema', (done) => (
+          <Image src={src} width={480} aspectRatio="cinema" onLoad={done} />
         ));
-        snap('as 4:3', (done) => (
-          <Image
-            src={src}
-            width={480}
-            height={360}
-            aspectRatio="4:3"
-            onLoad={done}
-          />
+        snap('as landscape', (done) => (
+          <Image src={src} width={480} aspectRatio="landscape" onLoad={done} />
         ));
         snap('as custom number', (done) => (
-          <Image
-            src={src}
-            width={480}
-            height={360}
-            aspectRatio={1.5}
-            onLoad={done}
-          />
+          <Image src={src} width={480} aspectRatio={1.5} onLoad={done} />
         ));
       });
 
