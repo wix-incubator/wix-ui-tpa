@@ -98,9 +98,9 @@ visualize('DatePicker', () => {
                 className="indication"
                 style={{
                   borderRadius: '50%',
-                  width: '2px',
-                  height: '2px',
-                  backgroundColor: 'black',
+                  width: '3px',
+                  height: '3px',
+                  backgroundColor: '#ED24D9',
                 }}
               />
             </div>
