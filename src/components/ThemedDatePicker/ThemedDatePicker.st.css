@@ -57,7 +57,6 @@
 
 /** The third option - using css vars */
 /*.myDatePicker {*/
-/*    -st-extends: SimpleDatePicker;*/
 /*    --containerBGColor: value(boxBGColor);*/
 /*    --borderColor: black;*/
 /*    --dayTextColor: white;*/
