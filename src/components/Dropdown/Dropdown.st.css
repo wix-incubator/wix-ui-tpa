@@ -107,8 +107,12 @@
     transform: rotate(180deg);
 }
 
-.dropdown .dropdownBase::arrowIcon path {
+.dropdown .dropdownBase::arrowIcon path,
+.dropdown:hover .dropdownBase::arrowIcon path,
+.root:mobile .dropdown .dropdownBase::arrowIcon path,
+.root:mobile .dropdown:hover .dropdownBase::arrowIcon path {
     fill: currentColor;
+    stroke: none;
 }
 
 .dropdown::popoverContent {

@@ -152,3 +152,7 @@
 .root:upgrade:rtl {
     padding: 7px 12px 7px 7px;
 }
+
+.root:upgrade::affixIcon {
+    line-height: 1.5;
+}
