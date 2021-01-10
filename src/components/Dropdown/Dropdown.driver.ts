@@ -125,7 +125,7 @@ const nativeDriver = (
       const isDisabled = (await option.attr('disabled')) !== null;
       !isDisabled && Simulate.change(await option.getNative());
     },
-    hoverOptionAt: async _index => warnUnsupportedFunction('hoverOptionAt'),
+    hoverOptionAt: async (_index) => warnUnsupportedFunction('hoverOptionAt'),
     getOptionsCount: async () => getNativeOptions().count(),
     hasErrorMessage: async () =>
       (await getTooltipDriver(baseUniDriver)).exists(),

@@ -267,7 +267,7 @@ describe('Dropdown', () => {
 
 describe('Native Dropdown', () => {
   const createDriver = createUniDriverFactory(dropdownDriverFactory);
-  const NativeConfiguredDropdown = props =>
+  const NativeConfiguredDropdown = (props) =>
     TPAComponentsWrapper({ mobile: true })(
       <Dropdown options={[]} mobileNativeSelect {...props} />,
     );

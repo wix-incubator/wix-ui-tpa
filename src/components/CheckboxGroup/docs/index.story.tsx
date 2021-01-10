@@ -29,7 +29,7 @@ const el = [
   <Checkbox key={3} name="group1" onChange={noop} label="Checkbox 3" />,
 ];
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {

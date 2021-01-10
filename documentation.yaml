@@ -1,0 +1,26 @@
+apiDoc:
+  title: wix-ui-tpa
+  description: Our official library of React components that are designed to be used in Wix TPA's.
+  category: fe-guild
+  status: ga
+  gitUrl: js
+  markdownOnlyAutoUpdate: true
+  docs:
+    - file: README.md
+      title: Getting Started
+    - file: docs/USAGE.md
+      title: Usage
+    - file: docs/CONTRIBUTION.md
+      title: Contribution/How To Contribute
+    - file: docs/COMPONENT_GUIDELINES.md
+      title: Contribution/Guidelines
+    - file: docs/MIGRATING-V1-V2.md
+      title: Migration/V1 to V2
+    - file: docs/RTL.md
+      title: RTL Support
+    - file: docs/internal/VERSION_RELEASE.md
+      title: Version Release Instructions
+    - file: CHANGELOG.md
+      title: Change Log/V2
+    - file: CHANGELOG-v1.md
+      title: Change Log/V1

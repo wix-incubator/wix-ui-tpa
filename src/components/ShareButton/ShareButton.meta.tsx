@@ -11,7 +11,7 @@ ShareButtonMetadata.addSim({
       title: 'Share title',
       url: 'https://wix.com',
     },
-    onClick: sharePromise => {
+    onClick: (sharePromise) => {
       if (!sharePromise) {
         alert('share clicked');
       }

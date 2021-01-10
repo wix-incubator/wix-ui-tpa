@@ -1,2 +1,40 @@
+:vars {
+  BlurRadius: 3px;
+}
+
+@keyframes blurry-loading {
+  0% {
+    filter: blur(value(BlurRadius));
+  }
+  100% {
+    filter: none;
+  }
+}
+
 .root {
+  -st-states: preload, loaded;
+
+  display: grid;
+}
+
+.root.contain .absoluteImage, .root.contain .relativeImage, .root.contain .placeholder {
+  object-fit: contain;
+}
+
+.root.cover .absoluteImage, .root.cover .relativeImage, .root.cover .placeholder {
+  object-fit: cover;
+}
+
+.placeholder, .relativeImage {
+  grid-area: 1 / 1;
+}
+
+.root:preload .absoluteImage, .root:preload .placeholder {
+  filter: blur(value(BlurRadius));
+}
+
+.root:loaded .absoluteImage, .root:loaded .relativeImage {
+  animation-name: blurry-loading;
+  animation-duration: 0.3s;
+  animation-timing-function: easeout;
 }

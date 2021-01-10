@@ -38,9 +38,17 @@ const items = Array(20)
   .fill('')
   .map((item, index) => ({ title: `Title ${index + 1}` }));
 
+const anchorItems = Array.from({ length: 5 }, (item, index) => ({
+  title: `Anchor ${index + 1}`,
+  href: `/some-href-${index + 1}`,
+  target: '_blank',
+  rel: 'noopener noreferrer',
+}));
+
 const exampleItems = [
   { label: 'few items', value: items.slice(0, 4) },
   { label: 'many items', value: items },
+  { label: 'with anchors', value: anchorItems },
 ];
 
 export default {
@@ -49,10 +57,10 @@ export default {
   component: storyComponent(Tabs),
   source: TabsSource,
   componentPath: '../Tabs.tsx',
-  componentProps: setState => ({
+  componentProps: (setState) => ({
     dataHook: 'storybook-Tabs',
     items: exampleItems[1].value,
-    onTabClick: selectedTabIndex => {
+    onTabClick: (selectedTabIndex) => {
       setState({ activeTabIndex: selectedTabIndex });
     },
     activeTabIndex: 0,
@@ -61,9 +69,9 @@ export default {
     variant: VARIANT.fit,
   }),
   exampleProps: {
-    skin: Object.keys(SKIN).map(key => SKIN[key]),
-    alignment: Object.keys(ALIGNMENT).map(key => ALIGNMENT[key]),
-    variant: Object.keys(VARIANT).map(key => VARIANT[key]),
+    skin: Object.keys(SKIN).map((key) => SKIN[key]),
+    alignment: Object.keys(ALIGNMENT).map((key) => ALIGNMENT[key]),
+    variant: Object.keys(VARIANT).map((key) => VARIANT[key]),
     items: exampleItems,
   },
 
@@ -106,6 +114,11 @@ export default {
               description:
                 "Arrow icons appear when items can't all fit the container",
               source: examples.scroll,
+            },
+            {
+              title: 'Tabs links',
+              description: 'Render anchors',
+              source: examples.anchors,
             },
           ].map(example),
         ],

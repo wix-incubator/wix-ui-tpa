@@ -9,7 +9,7 @@ class ColorPickerVisual extends React.Component<any> {
 
     return (
       <VisualTestContainer>
-        <ColorPicker {...rest} onChange={e => {}}>
+        <ColorPicker {...rest} onChange={(e) => {}}>
           {childProps.map((props, index) => (
             <ColorPicker.Item key={index} {...props} />
           ))}

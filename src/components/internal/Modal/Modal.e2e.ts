@@ -47,7 +47,7 @@ describe('modal', () => {
     await waitForVisibilityOf(await driver.element(), 'Cannot find Modal');
 
     openModalButton.click();
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
     const firstInput = element(by.css(`.${firstInputClassName}`));
     const secondInput = element(by.css(`.${secondInputClassName}`));
@@ -62,7 +62,7 @@ describe('modal', () => {
       ),
     ).toBe(secondInputClassName);
 
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 300));
     secondInput.sendKeys(Key.TAB);
     close.sendKeys(Key.TAB);
 

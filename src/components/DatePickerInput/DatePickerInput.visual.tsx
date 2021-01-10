@@ -12,9 +12,7 @@ interface DatePickerInputVisualProps {
   onDone(): void;
 }
 
-class DatePickerInputVisualComponent extends React.Component<
-  DatePickerInputVisualProps
-> {
+class DatePickerInputVisualComponent extends React.Component<DatePickerInputVisualProps> {
   static defaultProps = {
     datePickerInputProps: {},
     onDone: () => {},
@@ -37,7 +35,7 @@ class DatePickerInputVisualComponent extends React.Component<
 
 visualize('DatePickerInput', () => {
   story('simple example', () => {
-    snap('default props', done => (
+    snap('default props', (done) => (
       <DatePickerInputVisualComponent
         datePickerInputProps={{
           value: new Date('2020/10/10'),
@@ -54,29 +52,29 @@ visualize('DatePickerInput', () => {
         placeholderText="Select A Date"
       />,
     );
-    snap('FilterDate - Prior for today dates (includes today)', done => (
+    snap('FilterDate - Prior for today dates (includes today)', (done) => (
       <DatePickerInputVisualComponent
         datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
-          filterDate: date => date <= new Date('2020/10/10'),
+          filterDate: (date) => date <= new Date('2020/10/10'),
           onChange: () => {},
         }}
         onDone={done}
       />
     ));
-    snap('FilterDate - feature dates only (includes today)', done => (
+    snap('FilterDate - feature dates only (includes today)', (done) => (
       <DatePickerInputVisualComponent
         datePickerInputProps={{
           value: new Date('2020/10/10'),
           placeholderText: 'Select A Date',
-          filterDate: date => date >= new Date('2020/10/10'),
+          filterDate: (date) => date >= new Date('2020/10/10'),
           onChange: () => {},
         }}
         onDone={done}
       />
     ));
-    snap('Months dropdown', done => (
+    snap('Months dropdown', (done) => (
       <DatePickerInputVisualComponent
         datePickerInputProps={{
           value: new Date('2020/10/10'),
@@ -87,7 +85,7 @@ visualize('DatePickerInput', () => {
         onDone={done}
       />
     ));
-    snap('Years dropdown', done => (
+    snap('Years dropdown', (done) => (
       <DatePickerInputVisualComponent
         datePickerInputProps={{
           value: new Date('2020/10/10'),
@@ -98,7 +96,7 @@ visualize('DatePickerInput', () => {
         onDone={done}
       />
     ));
-    snap('Months and years dropdown', done => (
+    snap('Months and years dropdown', (done) => (
       <DatePickerInputVisualComponent
         datePickerInputProps={{
           value: new Date('2020/10/10'),

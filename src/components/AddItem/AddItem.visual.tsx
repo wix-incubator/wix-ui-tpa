@@ -21,8 +21,8 @@ visualize('AddItem', () => {
   });
 
   story('Sizes', () => {
-    Object.values(ICON_SIZE).map(size => {
-      Object.values(DIRECTION).map(direction => {
+    Object.values(ICON_SIZE).map((size) => {
+      Object.values(DIRECTION).map((direction) => {
         snap(
           `${size} / ${direction}`,
           <div
@@ -41,13 +41,13 @@ visualize('AddItem', () => {
   });
 
   story('Alignments', () => {
-    Object.values(ALIGNMENT).map(alignment => {
+    Object.values(ALIGNMENT).map((alignment) => {
       snap(alignment, <AddItem alignment={alignment}>Add Item</AddItem>);
     });
   });
 
   story('only icons', () => {
-    Object.values(ICON_SIZE).map(size => {
+    Object.values(ICON_SIZE).map((size) => {
       snap(
         size,
         <div

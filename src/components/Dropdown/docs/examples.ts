@@ -9,7 +9,7 @@ import {
   optionsWithSubtitle,
 } from '../helpers';
 
-const wrap = example => `
+const wrap = (example) => `
   <div>
     <div>Desktop:</div>
       ${example}

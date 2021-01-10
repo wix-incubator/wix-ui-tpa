@@ -17,7 +17,7 @@ interface DefaultProps {
   stacked: false;
 }
 
-const Container: React.FunctionComponent<ContainerProps> = props => {
+const Container: React.FunctionComponent<ContainerProps> = (props) => {
   const { className, children, minWidth } = props;
   return (
     <div

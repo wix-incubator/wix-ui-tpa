@@ -19,8 +19,9 @@ import * as ExtendedRawSource from '!raw-loader!./CounterExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CounterExtendedExample.st.css';
 import { CounterExtendedExample } from './CounterExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { CounterSize } from '../Counter';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 export default {
@@ -52,6 +53,7 @@ export default {
     incrementAriaLabel: ['increment', 'plus'],
     decrementAriaLabel: ['decrement', 'minus'],
     inputAriaLabel: ['amount', 'value'],
+    size: [CounterSize.medium, CounterSize.xSmall],
   },
   dataHook: 'storybook-Counter',
   sections: [
@@ -74,6 +76,10 @@ export default {
             {
               title: 'Error',
               source: `<Counter error={true} errorMessage="This is an error message"/>`,
+            },
+            {
+              title: 'XSmall',
+              source: `<Counter size='xSmall'/>`,
             },
           ].map(code),
         ],

@@ -10,7 +10,7 @@ import { radioButtonGroupTestkitFactory as enzymeRadioButtonGroupTestkitFactory 
 import { RadioButton } from '../RadioButton';
 
 const noop = () => {};
-const TestComp: React.FunctionComponent<any> = props => (
+const TestComp: React.FunctionComponent<any> = (props) => (
   <RadioButtonGroup {...props}>
     <RadioButton
       value="group1"

@@ -32,7 +32,7 @@ describe('FloatingDropdown', () => {
   });
 
   describe('native mobile', () => {
-    const FloatingDropdownTest = props => {
+    const FloatingDropdownTest = (props) => {
       return (
         <TPAComponentsProvider value={{ mobile: true }}>
           <FloatingDropdown {...props} />

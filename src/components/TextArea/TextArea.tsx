@@ -102,7 +102,7 @@ export class TextArea extends React.Component<TextAreaProps> {
               <textarea
                 value={value}
                 disabled={disabled}
-                onChange={e => {
+                onChange={(e) => {
                   if (!disabled) {
                     onChange(e);
                   }

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { TPAComponentsProvider } from '../components/TPAComponentsConfig';
 
 export const TPAComponentsWrapper = ({ mobile = false, rtl = false }) => {
-  return Component => {
+  return (Component) => {
     return (
       <TPAComponentsProvider value={{ mobile, rtl }}>
         {Component}
@@ -25,4 +25,4 @@ export const hasMobile = async (base: UniDriver): Promise<boolean> => {
   return hasDataAttr(base, 'mobile', 'true');
 };
 
-export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+export const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));

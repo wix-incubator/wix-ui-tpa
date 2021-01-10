@@ -11,9 +11,9 @@ const items = Array(20)
     value: `value ${index + 1}`,
   }));
 
-export const TagsWiringExample = props => {
+export const TagsWiringExample = (props) => {
   const [update, forceUpdate] = React.useState(false);
-  const onClick = item => {
+  const onClick = (item) => {
     item.checked = !item.checked;
     forceUpdate(!update);
   };

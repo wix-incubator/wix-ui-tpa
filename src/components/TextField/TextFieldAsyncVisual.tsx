@@ -15,9 +15,7 @@ interface TextFieldAsyncVisualProps {
   children: React.ReactElement;
 }
 
-export class TextFieldAsyncVisual extends React.Component<
-  TextFieldAsyncVisualProps
-> {
+export class TextFieldAsyncVisual extends React.Component<TextFieldAsyncVisualProps> {
   static defaultProps = {
     dir: 'ltr',
     onDone: () => {},

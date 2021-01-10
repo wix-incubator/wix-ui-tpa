@@ -3,7 +3,7 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { ALIGNMENT, SKIN, Tabs, VARIANT, TabsProps } from '.';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 
-const items = [0, 1, 2, 4].map(i => ({ title: `Title ${i}` }));
+const items = [0, 1, 2, 4].map((i) => ({ title: `Title ${i}` }));
 
 interface TabsVisualProps {
   tabsProps: TabsProps;
@@ -56,20 +56,34 @@ visualize('Tabs', () => {
   });
 
   story('Alignments', () => {
-    Object.values(ALIGNMENT).map(alignment => {
+    Object.values(ALIGNMENT).map((alignment) => {
       snap(alignment, renderTest({ props: { alignment } }));
     });
   });
 
   story('Variants', () => {
-    Object.values(VARIANT).map(variant => {
+    Object.values(VARIANT).map((variant) => {
       snap(variant, renderTest({ props: { variant } }));
     });
   });
 
   story('Skins', () => {
-    Object.values(SKIN).map(skin => {
+    Object.values(SKIN).map((skin) => {
       snap(skin, renderTest({ props: { skin } }));
     });
+  });
+
+  story('Tab link', () => {
+    const linkTabs = Array.from({ length: 3 }, (_, index) => ({
+      title: `Link tab ${index + 1}`,
+      href: `/some-href-${index}`,
+    }));
+
+    snap(
+      'tab href',
+      renderTest({
+        props: { items: linkTabs },
+      }),
+    );
   });
 });

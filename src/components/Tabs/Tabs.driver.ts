@@ -19,14 +19,14 @@ export interface TabsDriver extends BaseUniDriver {
 const getTab: any = (base: UniDriver, index: number) =>
   base.$(`[data-hook="${TABS_DATA_HOOKS.tab}-${index}"]`);
 
-const getTabs: any = base =>
+const getTabs: any = (base) =>
   base.$(`[data-hook="${TABS_DATA_HOOKS.scrollableTabs}"]`);
 
 export const tabsDriverFactory = (base: UniDriver): TabsDriver => {
   return {
     ...baseUniDriverFactory(base),
-    getTitleAt: index => getTab(base, index).text(),
-    clickTabAt: index => getTab(base, index).click(),
+    getTitleAt: (index) => getTab(base, index).text(),
+    clickTabAt: (index) => getTab(base, index).click(),
     getActiveTabIndex: async () =>
       +(await base
         .$(`[${TABS_DATA_KEYS.tabIsActive}="true"]`)

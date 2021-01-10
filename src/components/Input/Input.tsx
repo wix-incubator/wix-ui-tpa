@@ -26,7 +26,7 @@ export const Input: React.FunctionComponent<InputProps> = (
       error={error}
       errorMessage={errorMessage}
       disabled={disabled}
-      render={errorProps => (
+      render={(errorProps) => (
         <CoreInput
           className={st(classes.root, { error }, className)}
           error={errorProps.error}

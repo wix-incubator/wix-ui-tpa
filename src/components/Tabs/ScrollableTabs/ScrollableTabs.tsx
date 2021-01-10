@@ -295,7 +295,7 @@ export class ScrollableTabs extends React.Component<
     };
   }
 
-  _onScroll = e => {
+  _onScroll = (e) => {
     const { onScroll } = this.props;
     onScroll(e);
   };

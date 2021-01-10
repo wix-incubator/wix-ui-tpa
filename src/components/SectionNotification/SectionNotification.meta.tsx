@@ -9,7 +9,7 @@ const SectionNotificationMetadata = Registry.getComponentMetadata(
 SectionNotificationMetadata.nonReactStrictModeCompliant = true;
 
 // tslint:disable:jsx-wrap-multiline
-Object.values(NOTIFICATION_TYPE).forEach(type => {
+Object.values(NOTIFICATION_TYPE).forEach((type) => {
   SectionNotificationMetadata.addSim({
     title: `Render notification of type ${type}`,
     props: {

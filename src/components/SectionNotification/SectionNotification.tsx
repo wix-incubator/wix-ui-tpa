@@ -10,9 +10,7 @@ import { SectionNotificationIcon } from './Icon/SectionNotificationIcon';
 import { st, classes } from './SectionNotification.st.css';
 
 /** Section notification displays an important, succinct message, and provides actions for users to address and can not be dismissed.  */
-export class SectionNotification extends React.Component<
-  SectionNotificationProps
-> {
+export class SectionNotification extends React.Component<SectionNotificationProps> {
   static displayName = 'SectionNotification';
   static defaultProps: SectionNotificationDefaultProps = {
     type: NOTIFICATION_TYPE.default,

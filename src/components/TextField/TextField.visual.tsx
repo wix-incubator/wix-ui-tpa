@@ -101,7 +101,7 @@ function snapTest({
     `${theme}${success ? '/success' : ''}${error ? '/error' : ''}${
       suffix ? '/suffix' : ''
     }${withClearButton ? '/withClearButton' : ''}/${mouseAction}`,
-    done => (
+    (done) => (
       <TextFieldAsyncVisual onDone={done} hover={hover} focus={focus} dir={dir}>
         <TextField
           theme={theme}
@@ -121,8 +121,8 @@ function snapTest({
 visualize('TextField', () => {
   ['ltr', 'rtl'].forEach((dir: 'ltr' | 'rtl') => {
     story(dir, () => {
-      Object.values(TextFieldTheme).forEach(theme => {
-        ['hover', 'focus'].forEach(mouseAction => {
+      Object.values(TextFieldTheme).forEach((theme) => {
+        ['hover', 'focus'].forEach((mouseAction) => {
           const hover = mouseAction === 'hover';
           const focus = mouseAction === 'focus';
 

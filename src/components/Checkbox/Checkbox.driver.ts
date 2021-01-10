@@ -42,7 +42,7 @@ export const checkboxDriverFactory = (base: UniDriver): CheckboxDriver => {
       return Simulate.change(inputNative);
     },
     async hoverCheckbox() {
-      return new Promise(async done => {
+      return new Promise(async (done) => {
         await base.$(`${iconDatahook}`).hover();
         // wait for transition to end
         setTimeout(done, 200);

@@ -50,7 +50,7 @@ export class Event extends React.Component<EventProps> {
     };
   }
 
-  _getEventProps = isContainer =>
+  _getEventProps = (isContainer) =>
     isContainer
       ? {
           'data-hook': this.props['data-hook'],

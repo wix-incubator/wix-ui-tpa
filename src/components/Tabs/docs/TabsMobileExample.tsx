@@ -3,7 +3,9 @@ import { Tabs, TabsProps } from '../Tabs';
 import { classes } from './TabsExtendedExample.st.css';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
-export const TabsMobileExample: React.FunctionComponent<TabsProps> = props => {
+export const TabsMobileExample: React.FunctionComponent<TabsProps> = (
+  props,
+) => {
   return (
     <div style={{ width: 480 }}>
       <TPAComponentsProvider value={{ mobile: true }}>

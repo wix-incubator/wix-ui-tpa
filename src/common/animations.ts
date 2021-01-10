@@ -25,7 +25,7 @@ export function animateElementByProp({
   const startPoint: number = element[propToAnimate];
   let start: number = null;
   let doneResolve;
-  const done: Promise<void> = new Promise(res => {
+  const done: Promise<void> = new Promise((res) => {
     doneResolve = res;
   });
   let animationId = null;
@@ -38,7 +38,7 @@ export function animateElementByProp({
     moveTo += newTarget;
   };
 
-  const step = timestamp => {
+  const step = (timestamp) => {
     if (start === null) {
       start = timestamp;
     }

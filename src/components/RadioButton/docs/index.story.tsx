@@ -90,7 +90,9 @@ export default {
           ].map(code),
           ...[{ title: 'Suffixed', source: examples.suffixExample }].map(code),
           ...[{ title: 'Error', source: examples.errorExample }].map(code),
-          ...[{ title: 'With Children', source: examples.withChildrenExample }].map(code),
+          ...[
+            { title: 'With Children', source: examples.withChildrenExample },
+          ].map(code),
         ],
       }),
 
