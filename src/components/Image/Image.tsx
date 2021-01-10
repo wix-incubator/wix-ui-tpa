@@ -4,16 +4,16 @@ import { MediaImage } from 'wix-ui-core/media-image';
 import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
 
-const enum AspectRatioOptions {
-  square = 1,
-  cinema = 16 / 9,
-  landscape = 4 / 3,
-}
-
 const enum ResizeOptions {
   contain = 'contain',
   cover = 'cover',
 }
+
+const AspectRatioOptions = {
+  square: 1,
+  cinema: 16 / 9,
+  landscape: 4 / 3,
+};
 
 export interface ImageProps extends TPAComponentProps {
   /** The source could be any absolute full URL or a relative URI of a media platform item */
@@ -31,7 +31,7 @@ export interface ImageProps extends TPAComponentProps {
   /** Specifies how the image is resized to fit its container */
   resize?: 'contain' | 'cover';
   // Specifies the proportional relationship between width and height
-  aspectRatio?: '1:1' | '16:9' | '4:3' | number;
+  aspectRatio?: 'square' | 'cinema' | 'landscape' | number;
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: 'none' | 'blur';
 }
@@ -107,7 +107,9 @@ export class Image extends React.Component<ImageProps> {
     const isAbsoluteUrl = src && src.match('^https?://');
 
     const aspectRatioAsNumber =
-      typeof aspectRatio === 'number' ? aspectRatio : 1;
+      typeof aspectRatio === 'number'
+        ? aspectRatio
+        : AspectRatioOptions[aspectRatio];
     const sourceDimensions = { width, height };
     const containerDimensions = {
       width:

@@ -83,7 +83,7 @@ export default {
             {
               title: 'Aspect Ratio',
               description:
-                'The proportional relationship between width and height of the image can be adjusted using the `aspectRatio`.',
+                'The proportional relationship between width and height of the image can be adjusted using `aspectRatio`. The prop also supports predefined values in order to apply their ratio - such as: `square`, `cinema` and `landscape`.',
               source: examples.aspectRatioExample,
             },
             {
