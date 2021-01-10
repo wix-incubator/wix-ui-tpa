@@ -28,10 +28,10 @@ export interface ImageProps extends TPAComponentProps {
   onLoad?: React.EventHandler<React.SyntheticEvent>;
   /** A callback to be called if error occurs while loading */
   onError?: React.EventHandler<React.SyntheticEvent>;
-  // Specifies the proportional relationship between width and height
-  aspectRatio?: '1:1' | '16:9' | '4:3' | number;
   /** Specifies how the image is resized to fit its container */
   resize?: 'contain' | 'cover';
+  // Specifies the proportional relationship between width and height
+  aspectRatio?: '1:1' | '16:9' | '4:3' | number;
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: 'none' | 'blur';
 }
@@ -74,8 +74,8 @@ const Placeholder = ({
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
   static defaultProps: DefaultProps = {
-    aspectRatio: 1,
     resize: ResizeOptions.contain,
+    aspectRatio: 1,
   };
 
   state = { isLoaded: false };
@@ -110,8 +110,10 @@ export class Image extends React.Component<ImageProps> {
       typeof aspectRatio === 'number' ? aspectRatio : 1;
     const sourceDimensions = { width, height };
     const containerDimensions = {
-      width,
-      height: width / aspectRatioAsNumber,
+      width:
+        !width && aspectRatioAsNumber ? height * aspectRatioAsNumber : width,
+      height:
+        !height && aspectRatioAsNumber ? width / aspectRatioAsNumber : height,
     };
 
     const hasLoadingBehavior = loadingBehavior === 'blur';
