@@ -77,5 +77,36 @@ visualize('DatePicker', () => {
         onChange={() => {}}
       />,
     );
+    snap(
+        'Date Indication - should be added except for the selected day',
+        <VisualTestDatePicker
+            width="280px"
+            value={new Date('2019/12/12')}
+            onChange={() => {}}
+            renderDateIndication={date => (
+                date <= new Date('2019/12/15') ? (
+                    <div
+                      className="Indications"
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                      }}
+                    >
+                    <div
+                        className="indication"
+                        style={{
+                          borderRadius: '50%',
+                          width: '2px',
+                          height: '2px',
+                          backgroundColor: 'black',
+                        }}
+                    />
+                  </div>
+               ) : null
+            )}
+        />,
+    );
   });
 });
