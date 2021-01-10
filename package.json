@@ -103,6 +103,7 @@
     "concurrently": "^5.3.0",
     "conventional-changelog-cli": "^2.0.23",
     "core-js": "^2.6.0",
+    "draftlog": "^1.0.12",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.11.0",
     "eyes.it": "^2.0.53",
