@@ -73,8 +73,8 @@ export const yearsAndMonthDropdowns = buildExample(
 );
 
 export const dateIndication = buildExample(
-    'new Date()',
-    `
+  'new Date()',
+  `
     <div style={{ width: '280px' }}>
           <DatePicker
               value={value}

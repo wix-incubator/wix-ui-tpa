@@ -56,7 +56,7 @@ export interface DatePickerProps extends TPAComponentProps {
    * `param` {Date} `date` - a date
    * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
    */
-  renderDateIndication?: (date: Date) => React.ReactNode;
+  renderDateIndication?(date: Date): React.ReactNode;
   /** Defines a string value that labels the Date Picker element. Optional. */
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */
