@@ -36,42 +36,57 @@
 }
 
 .tpaArrow {
+    -st-states: placement(enum(top, right, bottom, left));
+    
     display: block;
     position: absolute;
     margin: 0;
+
+    width: 0;
+    height: 0;
+    
+    
+    border-width: 7px 6px 0 6px;
+    border-style: solid;
+    border-color: #757575 transparent transparent transparent;
 }
 
-.tpaArrow svg {
-    display: block;
+.tpaArrow::before {
+    content: "";
+    position: absolute;
+
+
+    width: 0;
+    height: 0;
+    
+    border-width: 6px 5px 0 5px;
+    border-style: solid;
+    border-color: #212121 transparent transparent transparent;
+    
+
+    transform: translate(-5px,-7px);
 }
 
-.root::popover[data-placement*="top"].withArrow { padding-bottom: 6px; }
-.root::popover[data-placement*="bottom"].withArrow { padding-top: 6px; }
-.root::popover[data-placement*="left"].withArrow { padding-right: 6px; }
-.root::popover[data-placement*="right"].withArrow { padding-left: 6px; }
-
-.root::popover[data-placement*="top"] .tpaArrow {
-    bottom: 0;
-    width: 12px;
-    height: 7px;
+.tpaArrow:placement(top) {
+    bottom: -1px;  
 }
 
-.root::popover[data-placement*="bottom"] .tpaArrow {
-    top: 0;
-    width: 12px;
-    height: 7px;
+.tpaArrow:placement(bottom) {
+    top: -1px;
+
+    transform: rotate(-180deg);  
 }
 
-.root::popover[data-placement*="left"] .tpaArrow {
-    right: 0;
-    width: 7px;
-    height: 12px;
+.tpaArrow:placement(left) {
+    right: -3px;
+
+    transform: rotate(-90deg);  
 }
 
-.root::popover[data-placement*="right"] .tpaArrow {
-    left: 0;
-    width: 7px;
-    height: 12px;
+.tpaArrow:placement(right) {
+    left: -3px;
+
+    transform: rotate(90deg);  
 }
 
 .root::popover[data-placement*="top"].popoverAnimation-enter {
@@ -115,6 +130,10 @@
     border: 1px solid rgba(255,255,255,0.25);
 }
 
-.root:skin(error) .tpaArrow path {
-    fill: value(errorColor);
+.root:skin(error) .tpaArrow {
+    border-color: value(errorColor) transparent transparent transparent;
+}
+
+.root:skin(error) .tpaArrow::before {
+    border-color: value(errorColor) transparent transparent transparent;
 }
