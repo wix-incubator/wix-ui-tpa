@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, ButtonProps, SIZE } from '../Button';
+import { Button, ButtonProps, PRIORITY, SIZE } from '../Button';
 import { classes, st } from './ButtonExtendedWithStyleParamsExample.st.css';
 import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
 import { ReactComponent as Share } from '../../../assets/icons/Share.svg';
@@ -69,6 +69,51 @@ export const ButtonExtendedWithStyleParamsExample: React.FunctionComponent<Butto
       <Button
         prefixIcon={<Heart />}
         suffixIcon={<Share />}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.large}
+      >
+        Button
+      </Button>
+    </div>
+
+    <div>
+      <Button
+        priority={PRIORITY.basic}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.tiny}
+      >
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button
+        priority={PRIORITY.primary}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.small}
+      >
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button
+        priority={PRIORITY.secondary}
+        upgrade
+        {...props}
+        className={classes.btn}
+        size={SIZE.medium}
+      >
+        Button
+      </Button>
+    </div>
+    <div>
+      <Button
+        priority={PRIORITY.basicSecondary}
         upgrade
         {...props}
         className={classes.btn}
