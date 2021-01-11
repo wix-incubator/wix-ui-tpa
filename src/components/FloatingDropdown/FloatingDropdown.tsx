@@ -107,14 +107,12 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
     };
   }
 
-  private readonly onExpandedChange = (isExpanded: boolean) => {
+  private readonly _onExpandedChange = (isExpanded: boolean) => {
     const { onExpandedChange } = this.props;
-
-    this.setState({ isExpanded: !this.state.isExpanded });
-
-    if (typeof onExpandedChange === 'function') {
-      onExpandedChange(isExpanded);
-    }
+    this.setState(
+      { isExpanded: !this.state.isExpanded },
+      () => onExpandedChange && onExpandedChange(isExpanded),
+    );
   };
 
   _getContent(mobile) {
@@ -131,7 +129,6 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
       id,
       placement,
       appendTo,
-      onExpandedChange,
       displayBlock,
     } = this.props;
     const { coreOptions } = this._generateCoreOptions();
@@ -171,7 +168,7 @@ export class FloatingDropdown extends React.Component<FloatingDropdownProps> {
         disabled={disabled}
         options={coreOptions}
         placement={placement}
-        onExpandedChange={this.onExpandedChange}
+        onExpandedChange={this._onExpandedChange}
         appendTo={appendTo}
         dynamicWidth={appendTo === 'window' ? true : undefined}
       >
