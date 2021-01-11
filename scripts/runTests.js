@@ -1,5 +1,4 @@
 const { spawn } = require('child_process');
-const readline = require('readline');
 const packageJson = require('../package.json');
 const chalk = require('chalk');
 require('draftlog').into(console).addLineListener(process.stdin)
@@ -7,20 +6,6 @@ require('draftlog').into(console).addLineListener(process.stdin)
 const stdouts = {};
 const stderrs = {};
 const errors = {};
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-function createSingleTestLogger (dy, prefix = '', numberOfRows) {
-  return (txt) => {
-    readline.cursorTo(process.stdout, 0, dy + 2, () => {
-      rl.write(`${prefix} ${txt}`);
-      readline.cursorTo(process.stdout, 0, numberOfRows + 2);
-    })
-  }
-}
 
 console.clear();
 
@@ -33,13 +18,7 @@ function runTests() {
 
   tests.forEach((script, index) => {
     const prefix = `${index + 1}. ${script}`;
-    const ellipsis = '...';
-    let ellipsisCount = 0;
-    const logger = console.draft(chalk.yellow(prefix), chalk.yellow(`running${ellipsis}`));
-    const interval = setInterval(() => {
-      ellipsisCount = (ellipsisCount + 1) % 4;
-      logger(chalk.yellow(prefix), chalk.yellow(`running${ellipsis.substr(0, ellipsisCount)}`));
-    }, 500);
+    const logger = console.draft(chalk.yellow(prefix), chalk.yellow('running...'));
 
     const startTime = Date.now();
     const spawned = spawn('npm', ['run', script]);
@@ -54,7 +33,6 @@ function runTests() {
     });
 
     spawned.on('close', (code) => {
-      clearInterval(interval);
       const endTime = `${(Date.now() - startTime) / 1000.} seconds`;
       processCount -= 1;
 
@@ -77,16 +55,19 @@ function finalize (tests) {
 
   if (!numOfErrors) {
     console.log(chalk.green('All tests passed successfully!'));
-  } else {
-    tests.filter(script => !errors[script]).forEach(script => {
-      if (process.env.IS_BUILD_AGENT) {
-        console.log(`##teamcity[blockOpened name='${script}']`);
-      }
-      console.log(stdouts[script]);
-      if (process.env.IS_BUILD_AGENT) {
-        console.log(`##teamcity[blockClosed name='${script}']`);
-      }
-    })
+  }
+
+  tests.filter(script => !errors[script]).forEach(script => {
+    if (process.env.IS_BUILD_AGENT) {
+      console.log(`##teamcity[blockOpened name='${script}']`);
+    }
+    console.log(stdouts[script]);
+    if (process.env.IS_BUILD_AGENT) {
+      console.log(`##teamcity[blockClosed name='${script}']`);
+    }
+  });
+
+  if (numOfErrors) {
     Object.keys(errors).forEach(script => {
       if (process.env.IS_BUILD_AGENT) {
         console.log(`##teamcity[blockOpened name='${script}']`);
