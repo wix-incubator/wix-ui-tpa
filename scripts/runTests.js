@@ -14,6 +14,7 @@ runTests();
 function runTests() {
   const tests = Object.keys(packageJson.scripts).filter(scriptName => scriptName.indexOf('test:') === 0 && scriptName.indexOf(':watch') === -1);
   let processCount = tests.length;
+  let timer;
   console.log(`Running ${processCount} tests:\n`)
 
   tests.forEach((script, index) => {
@@ -44,10 +45,20 @@ function runTests() {
       }
 
       if (processCount === 0) {
+        clearInterval(timer);
         finalize(tests);
       }
     });
   });
+
+  if (!process.env.IS_BUILD_AGENT) {
+    let counter = 0;
+    let workingChars = ['\\', '|', '/', '-'];
+    const workingLog = console.draft(chalk.yellow(workingChars[counter]));
+    timer = setInterval(() => {
+      workingLog(workingChars[counter++ % workingChars.length]);
+    }, 500);
+  }
 }
 
 function finalize (tests) {
