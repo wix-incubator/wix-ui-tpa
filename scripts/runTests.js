@@ -1,6 +1,7 @@
 const { spawn } = require('child_process');
 const readline = require('readline');
 const packageJson = require('../package.json');
+const chalk = require('chalk');
 require('draftlog').into(console).addLineListener(process.stdin)
 
 const stdouts = {};
@@ -34,10 +35,10 @@ function runTests() {
     const prefix = `${index + 1}. ${script}`;
     const ellipsis = '...';
     let ellipsisCount = 0;
-    const logger = console.draft(prefix, `running${ellipsis}`);
+    const logger = console.draft(chalk.yellow(prefix), chalk.yellow(`running${ellipsis}`));
     const interval = setInterval(() => {
       ellipsisCount = (ellipsisCount + 1) % 4;
-      logger(prefix, `running${ellipsis.substr(0, ellipsisCount)}`);
+      logger(chalk.yellow(prefix), chalk.yellow(`running${ellipsis.substr(0, ellipsisCount)}`));
     }, 500);
 
     const startTime = Date.now();
@@ -59,9 +60,9 @@ function runTests() {
 
       if (code !== 0) {
         errors[script] = code;
-        logger(prefix, `failed after ${endTime} with code ${code}`);
+        logger(chalk.red(prefix), chalk.red(`failed after ${endTime} with code ${code}`));
       } else {
-        logger(prefix, `successfully ended after ${endTime}`);
+        logger(chalk.green(prefix), chalk.green(`successfully ended after ${endTime}`));
       }
 
       if (processCount === 0) {
@@ -72,18 +73,33 @@ function runTests() {
 }
 
 function finalize (tests) {
-  console.log('Summary:');
-  tests.filter(script => !errors[script]).forEach(script => {
-    console.log(script);
-    console.log(stdouts[script]);
-  })
-  Object.keys(errors).forEach(script => {
-    console.log(script);
-    console.log(stderrs[script]);
-  })
-  const errorCodes = Object.keys(errors);
+  const numOfErrors = Object.keys(errors).length;
 
-  if (errorCodes.length) {
-    process.exit(errorCodes[errorCodes.length - 1]);
+  if (!numOfErrors) {
+    console.log(chalk.green('All tests passed successfully!'));
+  } else {
+    tests.filter(script => !errors[script]).forEach(script => {
+      if (process.env.IS_BUILD_AGENT) {
+        console.log(`##teamcity[blockOpened name='${script}']`);
+      }
+      console.log(stdouts[script]);
+      if (process.env.IS_BUILD_AGENT) {
+        console.log(`##teamcity[blockClosed name='${script}']`);
+      }
+    })
+    Object.keys(errors).forEach(script => {
+      if (process.env.IS_BUILD_AGENT) {
+        console.log(`##teamcity[blockOpened name='${script}']`);
+      }
+      console.log(stderrs[script]);
+      if (process.env.IS_BUILD_AGENT) {
+        console.log(`##teamcity[blockClosed name='${script}']`);
+      }
+    })
+    const errorCodes = Object.keys(errors);
+
+    if (errorCodes.length) {
+      process.exit(errorCodes[errorCodes.length - 1]);
+    }
   }
 }
