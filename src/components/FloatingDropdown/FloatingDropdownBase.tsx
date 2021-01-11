@@ -19,6 +19,7 @@ interface FloatingDropdownBaseProps extends TPAComponentProps {
   name?: string;
   id?: string;
   onChange?(selectedOption: FloatingDropdownOptionProps): void;
+  isExpanded: boolean;
   displayBlock?: boolean;
 }
 
@@ -118,9 +119,11 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
       content = (
         <TextButton
           aria-haspopup
+          aria-expanded={this.props.isExpanded}
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy || id}
           disabled={disabled}
+          data-hook={DATA_HOOKS.floatingDropdownButton}
           priority={TEXT_BUTTON_PRIORITY.secondary}
           className={classes.btn}
         >
