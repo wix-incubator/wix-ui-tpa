@@ -19,7 +19,9 @@ function customArrow(placement: Placement, arrowProps) {
   );
 }
 
-export interface TooltipProps extends CoreTooltipProps, TPAComponentProps {
+export interface TooltipProps
+  extends Omit<CoreTooltipProps, 'customArrow'>,
+    TPAComponentProps {
   /** Changes appearance of tooltip according to skin. Possible values: 'standard', 'error'*/
   skin?: TooltipSkin;
 }
@@ -37,6 +39,8 @@ export class Tooltip extends React.Component<TooltipProps> {
     const { className, ...rest } = this.props;
     return (
       <CoreTooltip
+        // remove this after dev
+        shown={true}
         className={st(classes.root, { skin: this.props.skin }, className)}
         timeout={{ enter: 120, exit: 80 }}
         customArrow={customArrow}
