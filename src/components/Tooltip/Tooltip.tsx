@@ -20,9 +20,7 @@ function customArrow(placement: Placement, arrowProps) {
   );
 }
 
-export interface TooltipProps
-  extends Omit<CoreTooltipProps, 'customArrow'>,
-    TPAComponentProps {
+export interface TooltipProps extends CoreTooltipProps, TPAComponentProps {
   /** Changes appearance of tooltip according to skin. Possible values: 'standard', 'error'*/
   skin?: TooltipSkin;
 }
