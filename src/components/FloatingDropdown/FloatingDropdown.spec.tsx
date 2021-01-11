@@ -19,7 +19,6 @@ describe('FloatingDropdown', () => {
     it('should change isExpanded prop after click on dropdownBase', async () => {
       const driver = createDriver(<FloatingDropdown {...testProps} />);
       await driver.clickOnDropdownBase();
-      console.log(await driver.isAriaExpanded());
       const isAriaExpanded = (await driver.isAriaExpanded()) === 'true';
       expect(isAriaExpanded).toBe(true);
     });
