@@ -28,6 +28,8 @@ export interface TPATextFieldProps extends TPAComponentProps {
   errorMessage?: string;
   /** error tooltip max width */
   errorTooltipMaxWidth?: number;
+  /** Placement for Popover. Optional. */
+  errorTooltipPlacement?: Placement;
   /** possible values: 'line', 'box' */
   theme?: TextFieldTheme;
   /** apply success state */
@@ -44,8 +46,6 @@ export interface TPATextFieldProps extends TPAComponentProps {
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
   clearButtonAriaLabelledby?: string;
-  /** Placement for Popover. Optional. */
-  placement?: Placement;
 }
 
 interface DefaultProps {
@@ -55,7 +55,7 @@ interface DefaultProps {
   withClearButton: boolean;
   disabled: boolean;
   theme: TextFieldTheme;
-  placement: Placement;
+  errorTooltipPlacement: Placement;
 }
 
 export type TextFieldProps = ErrorProps & TPATextFieldProps & CoreInputProps;
@@ -69,7 +69,7 @@ export class TextField extends React.Component<TextFieldProps> {
     withClearButton: false,
     disabled: false,
     theme: TextFieldTheme.Box,
-    placement: 'top-end',
+    errorTooltipPlacement: 'top-end',
   };
   public TextFieldRef = React.createRef<CoreInput>();
 
@@ -95,7 +95,7 @@ export class TextField extends React.Component<TextFieldProps> {
       value,
       disabled,
       errorTooltipMaxWidth,
-      placement,
+      errorTooltipPlacement,
     } = this.props;
 
     const shouldShowCustomSuffix = !!suffix;
@@ -137,7 +137,7 @@ export class TextField extends React.Component<TextFieldProps> {
           success={success}
           successIcon={successIcon}
           errorTooltipMaxWidth={errorTooltipMaxWidth}
-          placement={placement}
+          errorTooltipPlacement={errorTooltipPlacement}
         />
         {suffix && (
           <div
@@ -199,10 +199,10 @@ export class TextField extends React.Component<TextFieldProps> {
   }
 }
 
-const ErrorSuffix = ({ errorMessage, tooltipMaxWidth, placement }) => (
+const ErrorSuffix = ({ errorMessage, tooltipMaxWidth, errorTooltipPlacement }) => (
   <Tooltip
     appendTo="scrollParent"
-    placement={placement}
+    placement={errorTooltipPlacement}
     skin={TooltipSkin.Error}
     content={errorMessage}
     moveBy={{ x: 5, y: 0 }}
@@ -218,7 +218,7 @@ const StatusIcon = ({
   success,
   successIcon,
   errorTooltipMaxWidth,
-  placement,
+  errorTooltipPlacement,
 }) => {
   let statusIcon = null;
 
@@ -227,7 +227,7 @@ const StatusIcon = ({
       <ErrorSuffix
         errorMessage={errorMessage}
         tooltipMaxWidth={errorTooltipMaxWidth}
-        placement={placement}
+        errorTooltipPlacement={errorTooltipPlacement}
       />
     );
   } else if (successIcon && success) {
