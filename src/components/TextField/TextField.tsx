@@ -69,7 +69,7 @@ export class TextField extends React.Component<TextFieldProps> {
     withClearButton: false,
     disabled: false,
     theme: TextFieldTheme.Box,
-    placement: "top-end",
+    placement: 'top-end',
   };
   public TextFieldRef = React.createRef<CoreInput>();
 
