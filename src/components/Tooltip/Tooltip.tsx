@@ -37,12 +37,12 @@ export class Tooltip extends React.Component<TooltipProps> {
   render() {
     const { className, ...rest } = this.props;
     return (
-          <CoreTooltip
-            className={st(classes.root, { skin: this.props.skin }, className)}
-            timeout={{ enter: 120, exit: 80 }}
-            customArrow={customArrow}
-            {...rest}
-          />
+      <CoreTooltip
+        className={st(classes.root, { skin: this.props.skin }, className)}
+        timeout={{ enter: 120, exit: 80 }}
+        customArrow={customArrow}
+        {...rest}
+      />
     );
   }
 }
