@@ -199,7 +199,11 @@ export class TextField extends React.Component<TextFieldProps> {
   }
 }
 
-const ErrorSuffix = ({ errorMessage, tooltipMaxWidth, errorTooltipPlacement }) => (
+const ErrorSuffix = ({
+  errorMessage,
+  tooltipMaxWidth,
+  errorTooltipPlacement,
+}) => (
   <Tooltip
     appendTo="scrollParent"
     placement={errorTooltipPlacement}
