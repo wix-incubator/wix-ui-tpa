@@ -111,11 +111,16 @@ export class Image extends React.Component<ImageProps> {
         ? aspectRatio
         : AspectRatioOptions[aspectRatio];
     const sourceDimensions = { width, height };
+
     const containerDimensions = {
       width:
-        !width && aspectRatioAsNumber ? height * aspectRatioAsNumber : width,
+        !width && height && aspectRatioAsNumber
+          ? height * aspectRatioAsNumber
+          : width,
       height:
-        !height && aspectRatioAsNumber ? width / aspectRatioAsNumber : height,
+        !height && width && aspectRatioAsNumber
+          ? width / aspectRatioAsNumber
+          : height,
     };
 
     const hasLoadingBehavior = loadingBehavior === 'blur';
