@@ -81,6 +81,12 @@ export default {
               source: examples.resizingExample,
             },
             {
+              title: 'Aspect Ratio',
+              description:
+                'The proportional relationship between width and height of the image can be adjusted using `aspectRatio`. The prop also supports predefined values in order to apply their ratio - such as: `square`, `cinema` and `landscape`.',
+              source: examples.aspectRatioExample,
+            },
+            {
               title: 'Blurry Loading',
               description:
                 'The image can be loaded progressively with a blur placeholder by setting the `loadingBehavior` as `blur`. Important to mention that an actual progressive loading would work only for a relative media image, whereas for an absolute image it would just have the same effect (but the image will not be loaded progressively). Also notice that the wrapper class and the button are only to allow simulating the behavior again easily.',
