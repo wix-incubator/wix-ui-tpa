@@ -21,6 +21,7 @@ import {
   DATA_HOOKS,
 } from './dataKeys';
 import { TPAComponentProps } from '../../types';
+import { Placement } from 'wix-ui-core/popover';
 
 export interface TPATextFieldProps extends TPAComponentProps {
   /** the error message to display */
@@ -43,6 +44,8 @@ export interface TPATextFieldProps extends TPAComponentProps {
   clearButtonAriaLabel?: string;
   /** Identifies the element that labels the clear button element. Optional. */
   clearButtonAriaLabelledby?: string;
+  /** Placement for Popover. Optional. */
+  placement?: Placement;
 }
 
 interface DefaultProps {
@@ -52,6 +55,7 @@ interface DefaultProps {
   withClearButton: boolean;
   disabled: boolean;
   theme: TextFieldTheme;
+  placement: Placement;
 }
 
 export type TextFieldProps = ErrorProps & TPATextFieldProps & CoreInputProps;
@@ -65,6 +69,7 @@ export class TextField extends React.Component<TextFieldProps> {
     withClearButton: false,
     disabled: false,
     theme: TextFieldTheme.Box,
+    placement: "top-end",
   };
   public TextFieldRef = React.createRef<CoreInput>();
 
@@ -90,6 +95,7 @@ export class TextField extends React.Component<TextFieldProps> {
       value,
       disabled,
       errorTooltipMaxWidth,
+      placement,
     } = this.props;
 
     const shouldShowCustomSuffix = !!suffix;
@@ -131,6 +137,7 @@ export class TextField extends React.Component<TextFieldProps> {
           success={success}
           successIcon={successIcon}
           errorTooltipMaxWidth={errorTooltipMaxWidth}
+          placement={placement}
         />
         {suffix && (
           <div
@@ -192,10 +199,10 @@ export class TextField extends React.Component<TextFieldProps> {
   }
 }
 
-const ErrorSuffix = ({ errorMessage, tooltipMaxWidth }) => (
+const ErrorSuffix = ({ errorMessage, tooltipMaxWidth, placement }) => (
   <Tooltip
     appendTo="scrollParent"
-    placement="top-end"
+    placement={placement}
     skin={TooltipSkin.Error}
     content={errorMessage}
     moveBy={{ x: 5, y: 0 }}
@@ -211,6 +218,7 @@ const StatusIcon = ({
   success,
   successIcon,
   errorTooltipMaxWidth,
+  placement,
 }) => {
   let statusIcon = null;
 
@@ -219,6 +227,7 @@ const StatusIcon = ({
       <ErrorSuffix
         errorMessage={errorMessage}
         tooltipMaxWidth={errorTooltipMaxWidth}
+        placement={placement}
       />
     );
   } else if (successIcon && success) {
