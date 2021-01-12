@@ -165,6 +165,7 @@ export class TextField extends React.Component<TextFieldProps> {
       onClear,
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
+      errorTooltipPlacement,
       ...restProps
     } = this.props;
 
