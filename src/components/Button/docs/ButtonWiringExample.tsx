@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { st, classes } from './ButtonWiringExample.st.css';
 import { Button, ButtonProps, SIZE } from '../Button';
-import { classes, st } from './ButtonExtendedWithStyleParamsExample.st.css';
 import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
 import { ReactComponent as Share } from '../../../assets/icons/Share.svg';
 
-export const ButtonExtendedWithStyleParamsExample: React.FunctionComponent<ButtonProps> = (
+export const ButtonWiringExample: React.FunctionComponent<ButtonProps> = (
   props,
 ) => (
   <div className={st(classes.root)}>
