@@ -283,7 +283,7 @@
 
 /* upgrade Small*/
 
-.root:size(small):upgrade:not(mobile){
+.root:size(small):upgrade:not(:mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeSmallFont)));
     line-height: 1;
 }
@@ -306,7 +306,7 @@
 
 /* upgrade Medium*/
 
-.root:upgrade:not(mobile), .root:size(medium):upgrade:not(mobile){
+.root:upgrade:not(:mobile), .root:size(medium):upgrade:not(:mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeMediumFont)));
     line-height: 1;
 }
@@ -337,7 +337,7 @@
 
 /* upgrade Large*/
 
-.root:size(large):upgrade:not(mobile){
+.root:size(large):upgrade:not(:mobile){
     font: fallback(font(value(MainTextFont)), font(value(UpgradeLargeFont)));
     line-height: 1;
 }
