@@ -3,7 +3,7 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
-import { optionsWithSections, simpleOptions } from './helpers';
+import {optionsWithIconAndSubtitles, optionsWithSections, simpleOptions} from './helpers';
 
 class DropdownVisual extends React.Component<any> {
   static defaultProps = {
@@ -53,6 +53,16 @@ function getTests(isMobile = false) {
         error: true,
         errorMessage: 'The coupon code is not valid',
         options: optionsWithSections,
+        forceContentElementVisibility: true,
+        mobile: isMobile,
+      },
+    },
+    {
+      it: 'With Icon',
+      props: {
+        placeholder: 'Placeholder text',
+        label: 'Label Text',
+        options: optionsWithIconAndSubtitles,
         forceContentElementVisibility: true,
         mobile: isMobile,
       },
