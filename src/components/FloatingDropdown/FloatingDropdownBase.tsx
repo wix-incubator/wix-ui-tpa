@@ -47,7 +47,7 @@ export class FloatingDropdownBase extends React.Component<FloatingDropdownBasePr
       ['aria-labelledby']: ariaLabelledBy,
       mobile,
       disabled,
-      displayBlock,
+      name,
     } = this.props;
 
     const selectedOption = this._getSelectedOption(value);
