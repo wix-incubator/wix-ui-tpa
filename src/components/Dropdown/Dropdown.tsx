@@ -43,6 +43,7 @@ export interface DropdownProps extends TPAComponentProps {
   fixed?: boolean;
   /** Element to append the Popover to */
   appendTo?: AppendTo;
+  name?: string;
 }
 
 interface DefaultProps {
@@ -174,6 +175,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
       errorMessage,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
+      name,
     } = this.props;
 
     return (
@@ -183,6 +185,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         disabled={disabled}
         className={classes.dropdownNativeSelect}
         error={error}
+        name={name}
         errorMessage={errorMessage}
         options={options}
         onSelect={(selectedOption) => this.onSelect(selectedOption)}
