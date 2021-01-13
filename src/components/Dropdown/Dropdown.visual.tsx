@@ -3,11 +3,25 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
-import {
-  optionsWithIconAndSubtitles,
-  optionsWithSections,
-  simpleOptions,
-} from './helpers';
+import { optionsWithSections, simpleOptions } from './helpers';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+
+const optionsWithIconAndSubtitles = [
+  {
+    id: '1',
+    value: 'Share 01',
+    subtitle: 'Subtitle Share 01',
+    isSelectable: true,
+    icon: <Heart />,
+  },
+  {
+    id: '2',
+    value: 'Share 02',
+    subtitle: 'Subtitle Share 02',
+    isSelectable: true,
+    icon: <Heart />,
+  },
+];
 
 class DropdownVisual extends React.Component<any> {
   static defaultProps = {
@@ -67,6 +81,7 @@ function getTests(isMobile = false) {
         placeholder: 'Placeholder text',
         label: 'Label Text',
         options: optionsWithIconAndSubtitles,
+        initialSelectedId: optionsWithIconAndSubtitles[0].id,
         forceContentElementVisibility: true,
         mobile: isMobile,
       },
