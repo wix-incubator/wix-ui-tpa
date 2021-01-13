@@ -6,7 +6,7 @@
 :import {
     -st-from: "./FloatingDropdownBase.st.css";
     -st-default: FloatingDropdownBase;
-    -st-named: minWidth, overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
+    -st-named: overrideStyleParams as overrideStyleParamsBase, DefaultTextColor, DefaultTextFont, ArrowTransformation;
 }
 
 :import {
@@ -56,7 +56,6 @@
 }
 
 .root .dropdown {
-    min-width: value(minWidth);
     max-width: 100%;
 }
 
