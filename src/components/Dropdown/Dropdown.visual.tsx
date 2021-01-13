@@ -3,7 +3,11 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { TPAComponentsProvider } from '../TPAComponentsConfig';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { Dropdown } from './';
-import {optionsWithIconAndSubtitles, optionsWithSections, simpleOptions} from './helpers';
+import {
+  optionsWithIconAndSubtitles,
+  optionsWithSections,
+  simpleOptions,
+} from './helpers';
 
 class DropdownVisual extends React.Component<any> {
   static defaultProps = {
