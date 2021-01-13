@@ -6,21 +6,32 @@ const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args);
 
 const componentsToBundle = require(resolvePath('../.wuf/components.json'));
 
+function getExtendedFilePath (component, filePath) {
+    let extendedFilePathPrefix = `${filePath}/docs/${component}WiringExample.js`;
+    let extendedFilePath = '';
+
+    if (fs.existsSync(resolvePath(extendedFilePathPrefix))) {
+        extendedFilePath = extendedFilePathPrefix;
+    }
+
+    return extendedFilePath;
+}
+
 const components = Object.keys(componentsToBundle).reduce(
   (accu, component) => {
       const filePath = componentsToBundle[component].path.replace(
           'src/',
           '../dist/es/src/'
       );
-      const extendedFilePath = `${filePath}/docs/${component}WiringExample.js`;
-      const hasExtendedComponent = fs.existsSync(path.resolve(__dirname, extendedFilePath));
-      const extendedComponent = hasExtendedComponent ? { [`${component}Extended`]: `../${extendedFilePath}` } : {};
+      const extendedFilePath = getExtendedFilePath(component, filePath);
 
-      return ({
+      return {
           ...accu,
           [component]: `../${filePath}/index`,
-          ...extendedComponent,
-      })
+          ...(extendedFilePath ? {
+              [`${component}Extended`]: `../${extendedFilePath}`,
+          } : {}),
+      }
   },
   {}
 );
