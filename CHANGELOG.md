@@ -4,6 +4,7 @@
 ### Bug Fixes
 
 * **Dropdown:** fix items with icons alignments ([3a53cda](https://github.com/wix/wix-ui-tpa/commit/3a53cda74c0a54d308e10d4409a02e33670086f9))
+* **Dropdown:** Fix undeclared variable `name` ([c730f85](https://github.com/wix/wix-ui-tpa/commit/c730f8508f11e2e9ceab0231089076c4c85f694c))
 * **SectionNotification:** Add role="alert" attribute ([36938e3](https://github.com/wix/wix-ui-tpa/commit/36938e381780433fafaed934ad8e923d8fc49703))
 * **Tooltip:** Adding default value to Max width (240px) ([5c54771](https://github.com/wix/wix-ui-tpa/commit/5c54771c1fc5fb81b6a76b93cbf75ad0277324fe))
 
