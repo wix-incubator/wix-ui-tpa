@@ -16,9 +16,9 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as ExtendedRawSource from '!raw-loader!./RatingsExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./RatingsExtendedExample.st.css';
-import { RatingsExtendedExample } from './RatingsExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./RatingsWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./RatingsWiringExample.st.css';
+import { RatingsWiringExample } from './RatingsWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = (config) =>
@@ -88,7 +88,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Settings Panel',
-              example: <RatingsExtendedExample />,
+              example: <RatingsWiringExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

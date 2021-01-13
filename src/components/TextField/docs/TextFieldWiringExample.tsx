@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { classes } from './TextFieldExtendedExample.st.css';
+import { classes } from './TextFieldWiringExample.st.css';
 import { TextField, TextFieldProps } from '../TextField';
 import { TextFieldTheme } from '../TextFieldEnums';
 
-export const TextFieldExtendedExample: React.FunctionComponent<TextFieldProps> = (
+export const TextFieldWiringExample: React.FunctionComponent<TextFieldProps> = (
   props,
 ) => (
   <>

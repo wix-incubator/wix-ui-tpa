@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Ratings, Mode } from '../index';
-import { classes } from './RatingsExtendedExample.st.css';
+import { classes } from './RatingsWiringExample.st.css';
 
-export const RatingsExtendedExample = () => {
+export const RatingsWiringExample = () => {
   const [value, setValue] = React.useState(0);
 
   return (

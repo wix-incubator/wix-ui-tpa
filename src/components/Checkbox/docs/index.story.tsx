@@ -20,9 +20,9 @@ import {
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as ExtendedRawSource from '!raw-loader!./CheckboxExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxExtendedExample.st.css';
-import { CheckboxExtendedExample } from './CheckboxExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./CheckboxWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxWiringExample.st.css';
+import { CheckboxWiringExample } from './CheckboxWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = (config) =>
@@ -110,7 +110,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Settings Panel',
-              example: <CheckboxExtendedExample />,
+              example: <CheckboxWiringExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

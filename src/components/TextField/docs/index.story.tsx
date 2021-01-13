@@ -16,14 +16,14 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import * as examples from './examples';
-import { TextFieldExtendedExample } from './TextFieldExtendedExample';
+import { TextFieldWiringExample } from './TextFieldWiringExample';
 import {
   autoSettingsPanel,
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as textFieldRawSource from '!raw-loader!./TextFieldExtendedExample.tsx';
-import * as textFieldCSSRawSource from '!raw-loader!./TextFieldExtendedExample.st.css';
+import * as textFieldRawSource from '!raw-loader!./TextFieldWiringExample.tsx';
+import * as textFieldCSSRawSource from '!raw-loader!./TextFieldWiringExample.st.css';
 import { ReactComponent as CalendarIcon } from '../../../assets/icons/Calendar.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
@@ -164,7 +164,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <TextFieldExtendedExample value="Test" />,
+              example: <TextFieldWiringExample value="Test" />,
               rawSource: textFieldRawSource,
               title: 'Text area preferences',
               rawCSSSource: textFieldCSSRawSource,

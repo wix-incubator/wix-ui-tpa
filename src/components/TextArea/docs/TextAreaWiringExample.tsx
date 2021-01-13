@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { TextArea } from '../TextArea';
-import { classes } from './TextAreaExtendedExample.st.css';
+import { classes } from './TextAreaWiringExample.st.css';
 
-export const TextAreaExtendedExample = () => {
+export const TextAreaWiringExample = () => {
   return (
     <table>
       <tbody>

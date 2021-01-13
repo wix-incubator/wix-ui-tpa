@@ -21,9 +21,9 @@ import {
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutExtendedExample.st.css';
-import { ActionsMenuLayoutExtendedExample } from './ActionsMenuLayoutExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./ActionsMenuLayoutWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ActionsMenuLayoutWiringExample.st.css';
+import { ActionsMenuLayoutWiringExample } from './ActionsMenuLayoutWiringExample';
 import { storyComponent } from '../../../../stories/helperComponents/storyComponent';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
@@ -114,7 +114,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Settings Panel',
-              example: <ActionsMenuLayoutExtendedExample />,
+              example: <ActionsMenuLayoutWiringExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

@@ -22,9 +22,9 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import { TabsExtendedExample } from './TabsExtendedExample';
-import * as ExtendedRawSource from '!raw-loader!./TabsExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./TabsExtendedExample.st.css';
+import { TabsWiringExample } from './TabsWiringExample';
+import * as ExtendedRawSource from '!raw-loader!./TabsWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./TabsWiringExample.st.css';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
@@ -136,7 +136,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <TabsExtendedExample />,
+              example: <TabsWiringExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               title: 'Tabs Extended',

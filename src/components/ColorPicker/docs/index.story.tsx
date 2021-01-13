@@ -25,10 +25,10 @@ import {
   COLORS,
 } from './ColorPickerExtendedExample';
 import * as ExtendedRawSource from '!raw-loader!./ColorPickerExtendedExample.tsx';
-import * as AnotherExtendedRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.tsx';
+import * as AnotherExtendedRawSource from '!raw-loader!./ColorPickerAnotherWiringExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./ColorPickerExtendedExample.st.css';
-import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherExtendedExample.st.css';
-import { ColorPickerAnotherExtendedExample } from './ColorPickerAnotherExtendedExample';
+import * as AnotherExtendedCSSRawSource from '!raw-loader!./ColorPickerAnotherWiringExample.st.css';
+import { ColorPickerAnotherWiringExample } from './ColorPickerAnotherWiringExample';
 import { ColorPickerMobileTooltipExample } from './ColorPickerMobileTooltipExample';
 import { ColorPickerFocusTabExample } from './ColorPickerFocusTabExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
@@ -138,7 +138,7 @@ export default {
               params: {},
             }),
             settingsPanel({
-              example: <ColorPickerAnotherExtendedExample />,
+              example: <ColorPickerAnotherWiringExample />,
               rawSource: AnotherExtendedRawSource,
               rawCSSSource: AnotherExtendedCSSRawSource,
               title: 'Colorpicker extended with border-radius in %',

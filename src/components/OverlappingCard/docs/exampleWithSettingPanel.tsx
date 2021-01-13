@@ -2,10 +2,10 @@ import * as React from 'react';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
-import * as ExtendedRawSource from '!raw-loader!./OverlappingCardExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./OverlappingCardExtendedExample.st.css';
+import * as ExtendedRawSource from '!raw-loader!./OverlappingCardWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./OverlappingCardWiringExample.st.css';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
-import { CardExtendedExample } from './OverlappingCardExtendedExample';
+import { CardExtendedExample } from './OverlappingCardWiringExample';
 
 export default () => (
   <div>

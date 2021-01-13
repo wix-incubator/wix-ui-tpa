@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Divider } from '../Divider';
-import { classes } from './DividerExtendedExample.st.css';
+import { classes } from './DividerWiringExample.st.css';
 
-export const DividerExtendedExample = (props) => (
+export const DividerWiringExample = (props) => (
   <Divider {...props} className={classes.root} />
 );

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { classes } from './IconButtonExtendedExample.st.css';
+import { classes } from './IconButtonWiringExample.st.css';
 import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { IconButton, Skins } from '../IconButton';
 
-export class IconButtonExtendedExample extends React.Component {
+export class IconButtonWiringExample extends React.Component {
   render = () => (
     <div>
       <h3>

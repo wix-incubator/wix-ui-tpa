@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { CheckboxGroup } from '../index';
 import { Checkbox } from '../../Checkbox';
-import { classes } from './CheckboxGroupExtendedExample.st.css';
+import { classes } from './CheckboxGroupWiringExample.st.css';
 
-export const CheckboxGroupExtendedExample = () => {
+export const CheckboxGroupWiringExample = () => {
   const [value, setValue] = React.useState({});
 
   return (

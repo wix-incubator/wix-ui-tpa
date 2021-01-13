@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import CodeExample from 'wix-storybook-utils/CodeExample';
 
-import * as ExtendedRawSource from '!raw-loader!./InputExtendedExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./InputExtendedExample.st.css';
-import { InputExtendedExample } from './InputExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./InputWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./InputWiringExample.st.css';
+import { InputWiringExample } from './InputWiringExample';
 import { MockSettings } from '../../../../stories/helperComponents/MockSettings';
 
 export const Examples = () => (
@@ -20,7 +20,7 @@ export const Examples = () => (
           ExtendedRawSource,
         ].join('\n')}
       >
-        <InputExtendedExample placeholder="Some text here" />
+        <InputWiringExample placeholder="Some text here" />
       </CodeExample>
     </div>
     <MockSettings

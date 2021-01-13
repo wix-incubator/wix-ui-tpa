@@ -24,8 +24,8 @@ import {
   optionsWithSubtitle,
 } from '../helpers';
 import { ReactComponent as Heart } from '../../../assets/icons/Heart.svg';
-import { DropdownExtendedExample } from './DropdownExtendedExample';
-import ExtendedRawSource from '!raw-loader!./DropdownExtendedExample.tsx';
+import { DropdownWiringExample } from './DropdownWiringExample';
+import ExtendedRawSource from '!raw-loader!./DropdownWiringExample.tsx';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
@@ -142,7 +142,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <DropdownExtendedExample />,
+              example: <DropdownWiringExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ('' as unknown) as typeof import('*.st.css'),
               title: 'Dropdown Extended',

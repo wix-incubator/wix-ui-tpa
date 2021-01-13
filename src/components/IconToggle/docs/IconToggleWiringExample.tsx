@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconToggle } from '../IconToggle';
-import { classes } from './IconToggleExtendedExample.st.css';
+import { classes } from './IconToggleWiringExample.st.css';
 import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 
 interface State {
@@ -8,7 +8,7 @@ interface State {
   counter: number;
 }
 
-export class IconToggleExtendedExample extends React.Component<{}, State> {
+export class IconToggleWiringExample extends React.Component<{}, State> {
   state = { checked: false, counter: 0 };
 
   handleChange = ({ checked }) =>
