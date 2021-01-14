@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { DotNavigation, DotNavigationProps } from '../DotNavigation';
-import { classes } from './DotNavigationWiringExample.st.css';
+import { classes } from './DotNavigationExtendedExample.st.css';
 
 interface DotNavigationExtendedExampleState {
   currentIndex: number;
 }
 
-export class DotNavigationWiringExample extends React.Component<
+export class DotNavigationExtendedExample extends React.Component<
   DotNavigationProps,
   DotNavigationExtendedExampleState
 > {

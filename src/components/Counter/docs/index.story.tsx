@@ -15,9 +15,9 @@ import {
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as ExtendedRawSource from '!raw-loader!./CounterWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./CounterWiringExample.st.css';
-import { CounterWiringExample } from './CounterWiringExample';
+import * as ExtendedRawSource from '!raw-loader!./CounterExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./CounterExtendedExample.st.css';
+import { CounterExtendedExample } from './CounterExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { CounterSize } from '../Counter';
 
@@ -94,7 +94,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <CounterWiringExample />,
+              example: <CounterExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               title: 'Counter extended',

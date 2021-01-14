@@ -19,10 +19,10 @@ import {
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import { DividerWiringExample } from './DividerWiringExample.tsx';
+import { DividerExtendedExample } from './DividerExtendedExample.tsx';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import * as ExtendedRawSource from '!raw-loader!./DividerWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./DividerWiringExample.st.css';
+import * as ExtendedRawSource from '!raw-loader!./DividerExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./DividerExtendedExample.st.css';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
@@ -82,7 +82,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <DividerWiringExample />,
+              example: <DividerExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               title: 'Divider Extended',

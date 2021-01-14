@@ -22,9 +22,9 @@ import {
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as ExtendedRawSource from '!raw-loader!./AvatarGroupWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./AvatarGroupWiringExample.st.css';
-import { AvatarGroupWiringExample } from './AvatarGroupWiringExample';
+import * as ExtendedRawSource from '!raw-loader!./ExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ExtendedExample.st.css';
+import { ExtendedExample } from './ExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = (config) =>
@@ -98,7 +98,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Avatar Group',
-              example: <AvatarGroupWiringExample />,
+              example: <ExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

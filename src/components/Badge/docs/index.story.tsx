@@ -21,10 +21,10 @@ import {
 } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 
-import { BadgeWiringExample } from './BadgeWiringExample';
-import * as exampleOverrides from './BadgeWiringExample.st.css';
-import * as ExtendedRawSource from '!raw-loader!./BadgeWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./BadgeWiringExample.st.css';
+import { BadgeExtendedExample } from './BadgeExtendedExample';
+import * as exampleOverrides from './BadgeExtendedExample.st.css';
+import * as ExtendedRawSource from '!raw-loader!./BadgeExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./BadgeExtendedExample.st.css';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
@@ -117,7 +117,7 @@ return (
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <BadgeWiringExample />,
+              example: <BadgeExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               title: 'Badge Extended',

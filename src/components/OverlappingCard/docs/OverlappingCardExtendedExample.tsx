@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { OverlappingCard } from '../index';
-import { classes } from './OverlappingCardWiringExample.st.css';
+import { classes } from './OverlappingCardExtendedExample.st.css';
 import { TYPOGRAPHY, Text } from '../../Text';
 import { Divider } from '../../Divider';
 import { Button } from '../../Button';

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { classes } from './BadgeWiringExample.st.css';
+import { classes } from './BadgeExtendedExample.st.css';
 import { Badge } from '../Badge';
 
-export const BadgeWiringExample: React.FC = () => (
+export const BadgeExtendedExample: React.FC = () => (
   <div>
     <h3>
       Override the style for the basic wiring (regardless to any theme) - this

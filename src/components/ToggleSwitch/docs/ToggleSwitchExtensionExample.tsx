@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ToggleSwitch, ToggleSwitchProps } from '../ToggleSwitch';
-import { classes } from './ToggleSwitchWiringExample.st.css';
+import { classes } from './ToggleSwitchExtensionExample.st.css';
 
-export class ToggleSwitchWiringExample extends React.Component<
+export class ToggleSwitchExtensionExample extends React.Component<
   ToggleSwitchProps,
   {
     checked: boolean;

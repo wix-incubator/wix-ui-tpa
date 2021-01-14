@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { ActionsMenuLayout } from '../ActionsMenuLayout';
-import { classes } from './ActionsMenuLayoutWiringExample.st.css';
+import { classes } from './ActionsMenuLayoutExtendedExample.st.css';
 
 const onClick = () => console.log('clicked');
-export const ActionsMenuLayoutWiringExample: React.FC = () => {
+export const ActionsMenuLayoutExtendedExample: React.FC = () => {
   return (
     <ActionsMenuLayout className={classes.root}>
       <ActionsMenuLayout.Item

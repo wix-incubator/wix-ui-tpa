@@ -17,9 +17,9 @@ import {
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import * as ExtendedRawSource from '!raw-loader!./CheckboxGroupWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxGroupWiringExample.st.css';
-import { CheckboxGroupWiringExample } from './CheckboxGroupWiringExample';
+import * as ExtendedRawSource from '!raw-loader!./CheckboxGroupExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./CheckboxGroupExtendedExample.st.css';
+import { CheckboxGroupExtendedExample } from './CheckboxGroupExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const noop = () => {};
@@ -96,7 +96,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Settings Panel',
-              example: <CheckboxGroupWiringExample />,
+              example: <CheckboxGroupExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

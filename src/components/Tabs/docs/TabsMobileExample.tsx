@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tabs, TabsProps } from '../Tabs';
-import { classes } from './TabsWiringExample.st.css';
+import { classes } from './TabsExtendedExample.st.css';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 export const TabsMobileExample: React.FunctionComponent<TabsProps> = (

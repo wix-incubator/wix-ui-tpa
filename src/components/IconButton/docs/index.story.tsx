@@ -18,9 +18,9 @@ import { ReactComponent as ShareIcon } from '../../../assets/icons/Share.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
-import * as ExtendedRawSource from '!raw-loader!./IconButtonWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonWiringExample.st.css';
-import { IconButtonWiringExample } from './IconButtonWiringExample';
+import * as ExtendedRawSource from '!raw-loader!./IconButtonExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./IconButtonExtendedExample.st.css';
+import { IconButtonExtendedExample } from './IconButtonExtendedExample';
 import * as examples from './examples';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
@@ -96,7 +96,7 @@ export default {
           sections: [
             settingsPanel({
               title: 'Icon Button',
-              example: <IconButtonWiringExample />,
+              example: <IconButtonExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               params: {

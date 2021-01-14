@@ -17,9 +17,9 @@ import {
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { allComponents } from '../../../../stories/utils/allComponents';
-import * as ExtendedRawSource from '!raw-loader!./DotNavigationWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./DotNavigationWiringExample.st.css';
-import { DotNavigationWiringExample } from './DotNavigationWiringExample';
+import * as ExtendedRawSource from '!raw-loader!./DotNavigationExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./DotNavigationExtendedExample.st.css';
+import { DotNavigationExtendedExample } from './DotNavigationExtendedExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const example = (config, extraContext = {}) =>
@@ -109,7 +109,7 @@ export default {
           sections: [
             settingsPanel({
               example: (
-                <DotNavigationWiringExample
+                <DotNavigationExtendedExample
                   length={10}
                   showBorder
                   theme={Theme.Light}

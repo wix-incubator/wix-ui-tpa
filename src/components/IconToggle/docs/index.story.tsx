@@ -18,9 +18,9 @@ import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { ReactComponent as StarIcon } from '../../../assets/icons/Star.svg';
 import { ReactComponent as HeartIcon } from '../../../assets/icons/Heart.svg';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
-import { IconToggleWiringExample } from './IconToggleWiringExample';
-import * as ExtendedRawSource from '!raw-loader!./IconToggleWiringExample.tsx';
-import * as ExtendedCSSRawSource from '!raw-loader!./IconToggleWiringExample.st.css';
+import { IconToggleExtendedExample } from './IconToggleExtendedExample';
+import * as ExtendedRawSource from '!raw-loader!./IconToggleExtendedExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./IconToggleExtendedExample.st.css';
 import * as examples from './examples';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
@@ -99,7 +99,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <IconToggleWiringExample />,
+              example: <IconToggleExtendedExample />,
               rawSource: ExtendedRawSource,
               rawCSSSource: ExtendedCSSRawSource,
               title: 'IconToggle Extended',

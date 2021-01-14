@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { classes } from './CounterWiringExample.st.css';
+import { classes } from './CounterExtendedExample.st.css';
 import { Counter, CounterSize } from '../Counter';
 
 interface State {
   value: number;
 }
 
-export class CounterWiringExample extends React.Component<{}, State> {
+export class CounterExtendedExample extends React.Component<{}, State> {
   state = { value: 10 };
 
   handleChange = (num: string) => {

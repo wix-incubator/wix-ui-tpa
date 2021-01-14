@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classes } from './ColorPickerAnotherWiringExample.st.css';
+import { classes } from './ColorPickerAnotherExtendedExample.st.css';
 import { ColorPicker } from '../ColorPicker';
 import {
   RadioButtonChangeEvent,
@@ -11,7 +11,7 @@ interface State {
   selectedColor: string;
 }
 
-export class ColorPickerAnotherWiringExample extends React.Component<
+export class ColorPickerAnotherExtendedExample extends React.Component<
   {},
   State
 > {

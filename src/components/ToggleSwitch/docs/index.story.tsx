@@ -1,5 +1,5 @@
-import * as ExtendedCSSRawSource from '!raw-loader!./ToggleSwitchWiringExample.st.css';
-import * as ExtendedRawSource from '!raw-loader!./ToggleSwitchWiringExample.tsx';
+import * as ExtendedCSSRawSource from '!raw-loader!./ToggleSwitchExtensionExample.st.css';
+import * as ExtendedRawSource from '!raw-loader!./ToggleSwitchExtensionExample.tsx';
 import * as React from 'react';
 import {
   api,
@@ -22,7 +22,7 @@ import {
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
-import { ToggleSwitchWiringExample } from './ToggleSwitchWiringExample';
+import { ToggleSwitchExtensionExample } from './ToggleSwitchExtensionExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 const code = (config) =>
@@ -79,7 +79,7 @@ export default {
         sections: [
           settingsPanel({
             title: 'Settings Panel',
-            example: <ToggleSwitchWiringExample />,
+            example: <ToggleSwitchExtensionExample />,
             rawSource: ExtendedRawSource,
             rawCSSSource: ExtendedCSSRawSource,
             params: {

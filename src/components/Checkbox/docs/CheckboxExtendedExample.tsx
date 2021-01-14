@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Checkbox, CheckboxTheme } from '../index';
-import { classes } from './CheckboxWiringExample.st.css';
+import { classes } from './CheckboxExtendedExample.st.css';
 
-export const CheckboxWiringExample = () => {
+export const CheckboxExtendedExample = () => {
   const [value, setValue] = React.useState(false);
 
   return (

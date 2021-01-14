@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { AvatarGroup } from '../index';
 import { AvatarGroupSize } from '../AvatarGroup';
-import { classes } from './AvatarGroupWiringExample.st.css';
+import { classes } from './ExtendedExample.st.css';
 
 const items = [
   {},
@@ -11,7 +11,7 @@ const items = [
   { name: 'John', src: 'https://randomuser.me/api/portraits/men/69.jpg' },
 ];
 
-export const AvatarGroupWiringExample = (props) => (
+export const ExtendedExample = (props) => (
   <div>
     <div>
       <AvatarGroup

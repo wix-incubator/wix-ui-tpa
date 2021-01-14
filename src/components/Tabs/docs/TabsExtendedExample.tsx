@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Tabs, TabsProps } from '../Tabs';
-import { classes } from './TabsWiringExample.st.css';
+import { classes } from './TabsExtendedExample.st.css';
 
 const items = [
   { title: 'Title 1', id: 'tab-1' },
@@ -9,9 +9,9 @@ const items = [
   { title: 'Title 4', id: 'tab-4' },
 ];
 
-export const TabsWiringExample: React.FunctionComponent<Partial<TabsProps>> = (
-  props,
-) => {
+export const TabsExtendedExample: React.FunctionComponent<
+  Partial<TabsProps>
+> = (props) => {
   const [activeTab, setActiveTab] = React.useState(0);
 
   return (
