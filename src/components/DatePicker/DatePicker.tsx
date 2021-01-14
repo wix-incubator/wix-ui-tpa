@@ -29,10 +29,10 @@ export type LanguageType =
 export type Locale = LanguageType | { distanceInWords?: {}; format?: {} };
 export type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
-export type dateIndicationProps =  {
+export interface dateIndicationProps {
   date: Date;
   isSelected: boolean;
-} ;
+}
 
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
@@ -61,7 +61,7 @@ export interface DatePickerProps extends TPAComponentProps {
    * `param` {Date} `date` - a date
    * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
    */
-  dateIndication?:  React.FC<dateIndicationProps>;
+  dateIndication?: React.FC<dateIndicationProps>;
   /** Defines a string value that labels the Date Picker element. Optional. */
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */

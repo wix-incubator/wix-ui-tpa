@@ -78,12 +78,12 @@ visualize('DatePicker', () => {
       />,
     );
     snap(
-      'Date Indication - should be added except for the selected day',
+      'Date Indication',
       <VisualTestDatePicker
         width="280px"
         value={new Date('2019/12/12')}
         onChange={() => {}}
-        dateIndication={(date) =>
+        dateIndication={({ date, isSelected }) =>
           date <= new Date('2019/12/15') ? (
             <div
               className="Indications"
