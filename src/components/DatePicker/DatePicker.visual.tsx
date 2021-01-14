@@ -83,7 +83,7 @@ visualize('DatePicker', () => {
         width="280px"
         value={new Date('2019/12/12')}
         onChange={() => {}}
-        renderDateIndication={(date) =>
+        dateIndication={(date) =>
           date <= new Date('2019/12/15') ? (
             <div
               className="Indications"
