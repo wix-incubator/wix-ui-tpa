@@ -43,6 +43,7 @@ export class SectionNotification extends React.Component<SectionNotificationProp
           { error: isError, alert: isAlert },
           className,
         )}
+        role="alert"
         data-error={isError}
         data-alert={isAlert}
         aria-live="assertive"

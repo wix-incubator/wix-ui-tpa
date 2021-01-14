@@ -25,12 +25,13 @@ export interface TooltipProps extends CoreTooltipProps, TPAComponentProps {
 }
 
 export interface TooltipDefaultProps
-  extends Required<Pick<TooltipProps, 'skin'>> {}
+  extends Required<Pick<TooltipProps, 'skin' | 'maxWidth'>> {}
 
 export class Tooltip extends React.Component<TooltipProps> {
   static displayName = 'Tooltip';
   static defaultProps: TooltipDefaultProps = {
     skin: TooltipSkin.Standard,
+    maxWidth: 240,
   };
 
   render() {

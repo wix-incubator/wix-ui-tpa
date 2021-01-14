@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Button } from './';
 import { snap, story, visualize } from 'storybook-snapper';
+import { ReactComponent as Heart } from '../../assets/icons/Heart.svg';
+import { ReactComponent as Share } from '../../assets/icons/Share.svg';
 import { SIZE, PRIORITY } from './Button';
 
 function priorityTestSuite() {
@@ -40,6 +42,24 @@ function upgradeTestSuite() {
           </Button>
         ));
       });
+    });
+
+    story(`With icons`, () => {
+      snap(`prefix icon`, () => (
+        <Button upgrade prefixIcon={<Heart />}>
+          Button
+        </Button>
+      ));
+      snap(`suffix icon`, () => (
+        <Button upgrade suffixIcon={<Share />}>
+          Button
+        </Button>
+      ));
+      snap(`both icon`, () => (
+        <Button upgrade prefixIcon={<Heart />} suffixIcon={<Share />}>
+          Button
+        </Button>
+      ));
     });
   });
 }

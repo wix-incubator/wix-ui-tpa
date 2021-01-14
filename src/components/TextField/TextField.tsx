@@ -21,12 +21,15 @@ import {
   DATA_HOOKS,
 } from './dataKeys';
 import { TPAComponentProps } from '../../types';
+import { Placement } from 'wix-ui-core/popover';
 
 export interface TPATextFieldProps extends TPAComponentProps {
   /** the error message to display */
   errorMessage?: string;
   /** error tooltip max width */
   errorTooltipMaxWidth?: number;
+  /** Placement for Popover. Optional. */
+  errorTooltipPlacement?: Placement;
   /** possible values: 'line', 'box' */
   theme?: TextFieldTheme;
   /** apply success state */
@@ -52,6 +55,7 @@ interface DefaultProps {
   withClearButton: boolean;
   disabled: boolean;
   theme: TextFieldTheme;
+  errorTooltipPlacement: Placement;
 }
 
 export type TextFieldProps = ErrorProps & TPATextFieldProps & CoreInputProps;
@@ -65,6 +69,7 @@ export class TextField extends React.Component<TextFieldProps> {
     withClearButton: false,
     disabled: false,
     theme: TextFieldTheme.Box,
+    errorTooltipPlacement: 'top-end',
   };
   public TextFieldRef = React.createRef<CoreInput>();
 
@@ -90,6 +95,7 @@ export class TextField extends React.Component<TextFieldProps> {
       value,
       disabled,
       errorTooltipMaxWidth,
+      errorTooltipPlacement,
     } = this.props;
 
     const shouldShowCustomSuffix = !!suffix;
@@ -131,6 +137,7 @@ export class TextField extends React.Component<TextFieldProps> {
           success={success}
           successIcon={successIcon}
           errorTooltipMaxWidth={errorTooltipMaxWidth}
+          errorTooltipPlacement={errorTooltipPlacement}
         />
         {suffix && (
           <div
@@ -158,6 +165,7 @@ export class TextField extends React.Component<TextFieldProps> {
       onClear,
       clearButtonAriaLabel,
       clearButtonAriaLabelledby,
+      errorTooltipPlacement,
       ...restProps
     } = this.props;
 
@@ -192,10 +200,14 @@ export class TextField extends React.Component<TextFieldProps> {
   }
 }
 
-const ErrorSuffix = ({ errorMessage, tooltipMaxWidth }) => (
+const ErrorSuffix = ({
+  errorMessage,
+  tooltipMaxWidth,
+  errorTooltipPlacement,
+}) => (
   <Tooltip
     appendTo="scrollParent"
-    placement="top-end"
+    placement={errorTooltipPlacement}
     skin={TooltipSkin.Error}
     content={errorMessage}
     moveBy={{ x: 5, y: 0 }}
@@ -211,6 +223,7 @@ const StatusIcon = ({
   success,
   successIcon,
   errorTooltipMaxWidth,
+  errorTooltipPlacement,
 }) => {
   let statusIcon = null;
 
@@ -219,6 +232,7 @@ const StatusIcon = ({
       <ErrorSuffix
         errorMessage={errorMessage}
         tooltipMaxWidth={errorTooltipMaxWidth}
+        errorTooltipPlacement={errorTooltipPlacement}
       />
     );
   } else if (successIcon && success) {
