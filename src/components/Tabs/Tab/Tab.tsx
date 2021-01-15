@@ -43,6 +43,9 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
     [TABS_DATA_KEYS.tabIsActive]: isActive,
   };
 
+  const [isFocused, setIsFocused] = React.useState(false);
+
+
   return (
     <li
       ref={ref}
@@ -55,6 +58,8 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       onKeyDown={onKeyDown}
       tabIndex={href ? -1 : 0}
       aria-current={isActive}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
     >
       {href ? (
         <a href={href} target={target} rel={rel}>
@@ -63,13 +68,11 @@ export const Tab = React.forwardRef<HTMLLIElement, TabProps>((props, ref) => {
       ) : (
         <span role="link">{title}</span>
       )}
-      <div
-        className={classes.focusIndicatorWrapper}
+      {isFocused && !isActive && (<div
+        className={classes.focusIndicator}
         tabIndex={-1}
         aria-hidden="true"
-      >
-        <div className={classes.focusIndicator} tabIndex={-1} />
-      </div>
+      />)}
     </li>
   );
 });
