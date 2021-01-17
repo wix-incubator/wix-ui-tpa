@@ -6,6 +6,7 @@ import {
 import { RADIOBUTTON_DATA_KEYS, RADIOBUTTON_DATA_HOOKS } from './dataHooks';
 import { st, classes } from './RadioButton.st.css';
 import classnames from 'classnames';
+import { TPAComponentsContext } from '../TPAComponentsConfig';
 
 export interface RadioButtonChangeEvent
   extends React.MouseEvent<HTMLDivElement> {
@@ -70,6 +71,7 @@ export class RadioButton extends React.Component<
   RadioButtonState
 > {
   static displayName = 'RadioButton';
+  static contextType = TPAComponentsContext;
   static defaultProps: DefaultProps = {
     withFocusRing: false,
     checked: false,
@@ -108,10 +110,13 @@ export class RadioButton extends React.Component<
       withFocusRing,
       children,
     } = this.props;
+
+    const { mobile: isMobile } = this.context;
+
     const focusedIcon =
-      withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
+      !isMobile && withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
     const focusedBox =
-      withFocusRing && this.state.focused && theme === RadioButtonTheme.Box;
+      !isMobile && withFocusRing && this.state.focused && theme === RadioButtonTheme.Box;
 
     return (
       <div
