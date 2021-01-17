@@ -58,7 +58,7 @@ export interface DatePickerProps extends TPAComponentProps {
   /**
    ##### This function allows you to add an indication under a specific date.
    The function should return the indication node of a specific date or null if this day doesn't have an indication.
-   * `param` {Date} `date` - a date
+   * `param` {date: Date, isSelected: boolean } `date` - a date, `isSelected` - whether this date is the selected date
    * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
    */
   dateIndication?: React.FC<dateIndicationProps>;
