@@ -58,7 +58,7 @@ const files = [
   ['Toast.bundle.min.js', 8.3],
   ['ToggleSwitch.bundle.min.js', 6],
   ['Tooltip.bundle.min.js', 31],
-  ['BoxSelection.bundle.min.js', 5],
+  ['BoxSelection.bundle.min.js', 10],
 ];
 
 module.exports = {
