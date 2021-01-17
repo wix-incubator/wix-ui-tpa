@@ -22,7 +22,7 @@
 /* Defaults - default params */
 :vars {
     calendarWidth: 100%;
-    calendarHeight: 332px;
+    calendarHeight: 100%;
     sidePadding: 20px;
 
     DefaultBackgroundColor: color-1;
@@ -34,7 +34,7 @@
     DefaultWeekdayFont: "{theme: 'Body-M', lineHeight: '20px'}";
     DefaultWeekdayTextColor: color-8;
 
-    DefaultDayFont: "{theme: 'Body-M', lineHeight: '20px'}";
+    DefaultDayFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
     DeafultDayColor: color-5;
     DefaultSelectedDayColor: color-1;
     DefaultSelectedDayBGColor: color-8;
@@ -78,8 +78,7 @@
     WeekdayTextColor: --overridable;
     /*
         The font of a specific date.
-        @default {theme: 'Body-M', lineHeight: '20px'}
-        @fixed The font size is 14px and could not be overridden.
+        @default {theme: 'Body-M', size: '14px', lineHeight: '20px'}
     */
     DayFont: --overridable;
     /*
@@ -146,6 +145,8 @@
 .calendar::month {
     width: value(calendarWidth);
     height: value(calendarHeight);
+    min-width: 280px;
+    min-height: 332px;
 }
 
 /* calendar header */
@@ -203,10 +204,18 @@
 
 .calendar::day {
     font: value(CurrentDayFont);
-    font-size: 14px;
     color: value(CurrentDayColor);
-    width: 34px;
-    height: 34px;
+    width: calc(34em/14);
+    height: calc(34em/14);
+}
+
+.calendar::dayText {
+    line-height: 1;
+}
+
+.calendar::dayIndicationContainer {
+    padding: calc(4em/14) 0;
+    height: calc(12em/14);
 }
 
 .calendar::day:hover {
