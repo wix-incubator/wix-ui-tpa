@@ -58,7 +58,6 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
     'aria-labelledby': '',
     value: '',
   };
-
   // state = {
   //   value: '',
   // };
