@@ -114,9 +114,15 @@ export class RadioButton extends React.Component<
     const { mobile: isMobile } = this.context;
 
     const focusedIcon =
-      !isMobile && withFocusRing && this.state.focused && theme === RadioButtonTheme.Default;
+      !isMobile &&
+      withFocusRing &&
+      this.state.focused &&
+      theme === RadioButtonTheme.Default;
     const focusedBox =
-      !isMobile && withFocusRing && this.state.focused && theme === RadioButtonTheme.Box;
+      !isMobile &&
+      withFocusRing &&
+      this.state.focused &&
+      theme === RadioButtonTheme.Box;
 
     return (
       <div
