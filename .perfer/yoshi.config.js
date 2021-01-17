@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 
 const ROOT_DIR = process.cwd();
 const resolvePath = (...args) => path.resolve(ROOT_DIR, ...args);
@@ -11,11 +12,29 @@ const components = Object.keys(componentsToBundle).reduce(
           'src/',
           '../dist/es/src/'
       );
+      const perfFolder = resolvePath(filePath, 'perf');
+      const hasExtendedTests = fs.existsSync(perfFolder);
+      let extendedFiles = {};
+
+      if (hasExtendedTests) {
+        extendedFiles = fs.readdirSync(perfFolder).reduce((acc, fileName) => {
+          const isJsFile = fileName.endsWith('js');
+
+          return {
+            ...acc,
+            ...(isJsFile ? {[`${component}.perf.${fileName}`]: `../${filePath}/perf/${fileName}`} : {})
+          }
+        }, {});
+      }
+
+      if (Object.keys(extendedFiles).length) {
+        console.log('adler', 'yoshi.config.js:29', JSON.stringify(extendedFiles, null, 2));
+      }
 
       return {
           ...accu,
-          [component]: `../${filePath}/perf/basic.js`,
-          [`${component}Extended`]: `../${filePath}/perf/extended.js`,
+          [component]: `../${filePath}/index`,
+          ...extendedFiles,
       }
   },
   {}
