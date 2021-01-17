@@ -1,0 +1,157 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: errorColor, focusRing;
+}
+
+:import {
+    -st-from: "wix-ui-core/index.st.css";
+    -st-named: RadioButton;
+}
+
+/*Defaults*/
+:vars {
+    DefaultSelectedBoxColor: color-8;
+    DefaultBoxFillColor: color-1;
+    DefaultBoxFillOpacity: 1;
+    DefaultBorderColor: color-5;
+    DefaultBoxBorderWidth: 1px;
+    DefaultBoxBorderRadius: 0px;
+    DefaultBoxPadding: 16px;
+    LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
+    DisabledColor: color-3;
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The BG color of the box
+        @default color-1
+    */
+    BoxFillColor: --overridable;
+    /*
+        The border color of the box (unavailable line as well)
+        @default color-5
+    */
+    BorderColor: --overridable;
+    /*
+        The BG opacity of the box
+        @default 1 (100%)
+    */
+    BoxFillOpacity: --overridable;
+    /*
+        The border width of the box (unavailable line as well)
+        @default 1px 
+    */
+    BoxBorderWidth: --overridable;
+    /*
+        The border radius for each box
+        @default 0px
+    */
+    BoxBorderRadius: --overridable;
+     /*
+        The padding of the box. Predefined by size prop
+        @default 16px
+    */
+    BoxPadding: --overridable;
+    /*
+        The highlight color of a selected option
+        @default color-8
+    */
+    SelectedBoxColor: --overridable;
+}
+
+:vars {
+    CurrentBoxFillColor: color(fallback(value(BoxFillColor), value(DefaultBoxFillColor)));
+    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentBoxFillOpacity: fallback(value(BoxFillOpacity), value(DefaultBoxFillOpacity));
+    CurrentBoxBorderWidth: fallback(value(BoxBorderWidth), value(DefaultBoxBorderWidth));
+    CurrentBoxBorderRadius: fallback(value(BoxBorderRadius), value(DefaultBoxBorderRadius));
+    CurrentBoxPadding: fallback(value(BoxPadding), value(DefaultBoxPadding));
+    CurrentSelectedBoxColor: color(fallback(value(SelectedBoxColor), value(DefaultSelectedBoxColor)));
+}
+
+.focused {
+    -st-mixin: focusRing();
+}
+.root:size(small) .wrapper{
+    padding: 8px 16px;
+}
+.root:size(large) .wrapper{
+    padding: 16px;
+}
+
+.root {
+    -st-states: checked, disabled, unavailable, size(enum(small, large));
+    display: flex;
+}
+
+.root .wrapper{
+    -st-extends: RadioButton;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    min-width: 120px;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    padding: value(CurrentBoxPadding);
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-style: solid;
+    border-width: value(CurrentBoxBorderWidth);
+    border-radius: value(CurrentBoxBorderRadius);
+    background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
+}
+
+
+/* CHECKED */
+.root:checked, .root:disabled{
+    background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
+    border-radius: value(CurrentBoxBorderRadius);
+}
+.root:checked .wrapper{
+    background-color: applyOpacity(value(CurrentSelectedBoxColor), 0.1);
+    border-color: value(CurrentSelectedBoxColor);
+} 
+/* DISABLED */
+.root:disabled:not(:checked) .wrapper{
+    cursor: default;
+    pointer-events: none;
+    background-color: applyOpacity(color(value(DefaultBoxFillColor)), 1);
+    border-color: color(value(DisabledColor));
+}
+
+/* CHECKED + DISABLED */
+.root:disabled:checked .wrapper{
+    cursor: default;
+    background-color: applyOpacity(color(value(DisabledColor)), 0.1);
+    border-color: color(value(DisabledColor));
+} 
+
+/* HOVER + FOCUS */
+.root:not(:disabled):not(:checked):not(:unavailable):hover .wrapper,
+.root:not(:disabled):not(:checked):not(:unavailable):focus-within .wrapper{
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+} 
+
+/* UNAVAILABLE */
+
+.root:unavailable {
+    pointer-events: none;
+    cursor: default;
+}
+.root:unavailable .wrapper{
+    pointer-events: none;
+    cursor: default;
+    border-color: color(value(DisabledColor));
+    background: linear-gradient(to top left,
+        color(value(DefaultBoxFillColor)) 0%,
+        color(value(DefaultBoxFillColor)) calc(50% - 0.8px),
+        rgba(0,0,0,1) 50%,
+        color(value(DefaultBoxFillColor)) calc(50% + 0.8px),
+        color(value(DefaultBoxFillColor)) 100%)
+}

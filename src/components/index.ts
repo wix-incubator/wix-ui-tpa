@@ -49,3 +49,4 @@ export { ProgressBar } from './ProgressBar';
 export { Image } from './Image';
 export { DatePicker } from './DatePicker';
 export { DatePickerInput } from './DatePickerInput';
+export { BoxSelection } from './BoxSelection';
