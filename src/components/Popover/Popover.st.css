@@ -22,7 +22,6 @@
   BackgroundColor: --overridable;
 }
 
-/* Overrides */
 :vars {
   backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
 }
@@ -37,8 +36,9 @@
   padding: 20px;
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.1);
-  min-width: 150px;
-  max-width: 250px;
+  min-width: 40px;
+  max-width: 320px;
+  min-height: 20px;
 }
 
 .root .popover .arrow {

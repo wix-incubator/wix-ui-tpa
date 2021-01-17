@@ -8,7 +8,7 @@ import {
   importExample,
   playground,
   tab,
-  code as baseCode,
+  example as baseExample,
   tabs,
   testkit,
   title,
@@ -25,16 +25,21 @@ import { storyComponent } from '../../../../stories/helperComponents/storyCompon
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { Text } from '../../Text';
 
-const code = config =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = config =>
+  baseExample({ components: allComponents, compact: true, ...config });
 
-const PopoverContent = [
-  <Popover.Element key="element">
-    <Text>This is the Popover.Element</Text>
-  </Popover.Element>,
-  <Popover.Content key="content">
-    <div>This is the Popover.Content</div>
-  </Popover.Content>,
+const childrenExamples = [
+  {
+    label: 'Simple content',
+    value: [
+      <Popover.Element key="element">
+        <Text>This is the Popover.Element</Text>
+      </Popover.Element>,
+      <Popover.Content key="content">
+        <div>This is the Popover.Content</div>
+      </Popover.Content>,
+    ],
+  },
 ];
 
 export default {
@@ -46,12 +51,13 @@ export default {
     'data-hook': 'storybook-Popover',
     placement: 'top',
     wiredToSiteColors: true,
-    children: PopoverContent,
+    children: childrenExamples[0].value,
     triggerAction: TriggerAction.click,
   }),
   exampleProps: {
     placement: ['top', 'right', 'bottom', 'left'],
     triggerAction: Object.values(TriggerAction),
+    children: childrenExamples,
   },
   dataHook: 'storybook-Popover',
   sections: [
@@ -75,7 +81,7 @@ export default {
           ...[
             { title: 'Hover tooltip', source: examples.hover },
             { title: 'Popover', source: examples.click },
-          ].map(code),
+          ].map(example),
         ],
       }),
 

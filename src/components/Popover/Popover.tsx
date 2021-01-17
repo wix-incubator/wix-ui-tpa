@@ -6,7 +6,7 @@ import {
 
 import { TPAComponentProps } from '../../types';
 import { generateKey } from '../../common/random';
-import { KEYS } from '../../common/keyCodes';
+import { isSelectKey, KEYS } from '../../common/keyCodes';
 
 import { TriggerAction } from './constants';
 import { st, classes } from './Popover.st.css';
@@ -30,37 +30,50 @@ export const Popover: React.FC<PopoverProps> & {
     ...rest
   } = props;
   const [isShown, setIsShown] = React.useState<boolean>(false);
-  const [id] = React.useState(generateKey('popover'));
+  const id = React.useRef(generateKey('popover'));
+  const isVertical = React.useMemo(
+    () =>
+      ['bottom', 'top'].some(position =>
+        new RegExp(position).test(props.placement),
+      ),
+    [props.placement],
+  );
 
-  const [Element, Content] = React.Children.toArray(
-    children,
+  const [Element, Content] = React.Children.toArray(children).sort(
+    (e1: React.ReactElement, e2: React.ReactElement) => {
+      if (![e1, e2].every(React.isValidElement)) {
+        return;
+      }
+
+      return e1.type === Popover.Element ? -1 : 0;
+    },
   ) as React.ReactElement[];
 
   return (
     <CorePopover
-      id={id}
       showArrow
       shown={isShown}
+      moveBy={isVertical ? { y: 8 } : { x: 8 }}
       className={st(classes.root, { wired: wiredToSiteColors }, className)}
-      {...getCoreProps()}
+      {..._getCoreProps()}
       {...rest}
     >
       {React.cloneElement(
         Element,
         {},
-        React.cloneElement(Element.props.children, getTriggerProps()),
+        React.cloneElement(Element.props.children, _getTriggerProps()),
       )}
       {Content}
     </CorePopover>
   );
 
-  function getTriggerProps() {
+  function _getTriggerProps() {
     switch (triggerAction) {
       case TriggerAction.hover:
         return {
           'aria-describedby': id,
-          onFocus: handleOpen,
-          onBlur: handleClose,
+          onFocus: _handleOpen,
+          onBlur: _handleClose,
         };
 
       case TriggerAction.click:
@@ -69,38 +82,39 @@ export const Popover: React.FC<PopoverProps> & {
     }
   }
 
-  function getCoreProps(): Partial<CorePopoverProps> {
+  function _getCoreProps(): Partial<CorePopoverProps> {
     switch (triggerAction) {
       case TriggerAction.click:
         return {
-          onClick: handleOpen,
-          onClickOutside: handleClose,
-          onKeyDown: handleKeyDown,
+          onClick: _handleOpen,
+          onClickOutside: _handleClose,
+          onKeyDown: _handleKeyDown,
           role: 'dialog',
           appendTo: 'parent',
         };
       case TriggerAction.hover:
       default:
         return {
-          onMouseEnter: handleOpen,
-          onMouseLeave: handleClose,
+          onMouseEnter: _handleOpen,
+          onMouseLeave: _handleClose,
           role: 'tooltip',
+          id: id.current,
         };
     }
   }
 
-  function handleOpen() {
+  function _handleOpen() {
     setIsShown(true);
   }
 
-  function handleClose() {
+  function _handleClose() {
     setIsShown(false);
   }
 
-  function handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
-    if (e.key === KEYS.Spacebar || e.key === KEYS.Enter) {
+  function _handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
+    if (isSelectKey(e)) {
       e.preventDefault();
-      handleOpen();
+      _handleOpen();
     }
   }
 };

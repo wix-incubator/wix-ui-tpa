@@ -1,10 +1,5 @@
-import { Simulate } from 'react-dom/test-utils';
+import { testkit as corePopoverDriverFactory } from 'wix-ui-core/dist/src/components/popover/Popover.uni.driver';
 
-import { popoverDriverFactory as corePopoverDriverFactory } from 'wix-ui-core/dist/src/components/popover/Popover.driver';
-
-export const popoverDriverFactory = ({ element }) => {
-  return corePopoverDriverFactory({
-    element,
-    eventTrigger: Simulate,
-  });
+export const popoverDriverFactory = (base, body) => {
+  return corePopoverDriverFactory(base, body);
 };

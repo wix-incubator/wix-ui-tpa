@@ -17,9 +17,19 @@ const PopoverMetadata = Registry.getComponentMetadata(Popover);
 PopoverMetadata.nonReactStrictModeCompliant = true;
 
 PopoverMetadata.addSim({
-  title: 'render',
+  title: 'Popover render',
   props: {
     children: PopoverContent,
     placement: 'top',
+    triggerAction: 'click',
+  } as PopoverProps,
+});
+
+PopoverMetadata.addSim({
+  title: 'Tooltip render',
+  props: {
+    children: PopoverContent,
+    placement: 'top',
+    triggerAction: 'hover',
   } as PopoverProps,
 });

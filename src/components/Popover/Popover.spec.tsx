@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 
-import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
+import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
 import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
 
@@ -12,7 +12,7 @@ import { popoverDriverFactory } from './Popover.driver';
 import { Popover, PopoverProps } from './';
 
 describe('Popover', () => {
-  const createDriver = createDriverFactory(popoverDriverFactory);
+  const createDriver = createUniDriverFactory(popoverDriverFactory);
 
   const bootstrap = (props: Partial<PopoverProps> = {}) => {
     return createDriver(
@@ -32,16 +32,16 @@ describe('Popover', () => {
 
   it('should render', async () => {
     const driver = bootstrap();
-    expect(driver.exists()).toBe(true);
+    expect(await driver.exists()).toBe(true);
   });
 
   describe('behaviour', () => {
     it('should open on element click', async () => {
       const driver = bootstrap();
 
-      expect(driver.isContentElementExists()).toBeFalsy();
+      expect(await driver.isContentElementExists()).toBeFalsy();
       await driver.click();
-      expect(driver.isContentElementExists()).toBeTruthy();
+      expect(await driver.isContentElementExists()).toBeTruthy();
     });
   });
 
