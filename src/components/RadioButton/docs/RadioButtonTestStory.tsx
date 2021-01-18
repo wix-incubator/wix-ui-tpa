@@ -31,17 +31,17 @@ function renderTest(props?: any) {
         />
       </div>
       <div style={{ marginTop: '50px' }}>
-      {TPAComponentsWrapper({ mobile: true })(
-        <RadioButton
-          value={'Checked'}
-          checked
-          withFocusRing
-          onChange={(val) => console.log(val)}
-          theme={RadioButtonTheme.Default}
-          label="default theme"
-          data-hook="radio-button-default-mobile"
-        />
-      )}
+        {TPAComponentsWrapper({ mobile: true })(
+          <RadioButton
+            value={'Checked'}
+            checked
+            withFocusRing
+            onChange={(val) => console.log(val)}
+            theme={RadioButtonTheme.Default}
+            label="default theme"
+            data-hook="radio-button-default-mobile"
+          />,
+        )}
       </div>
     </div>
   );

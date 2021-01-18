@@ -43,13 +43,18 @@ describe('RadioButton', () => {
     expect(await driver.isFocused()).toBeTruthy();
   });
 
-  eyes.it('should show the correct design on focus theme default on mobile', async () => {
-    driver = radioButtonTestkitFactory({ dataHook: defaultThemeMobileDataHook });
-    await waitForVisibilityOf(
-      await driver.element(),
-      'Cannot find radioButton',
-    );
-    await driver.clickInput();
-    await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
-  });
+  eyes.it(
+    'should show the correct design on focus theme default on mobile',
+    async () => {
+      driver = radioButtonTestkitFactory({
+        dataHook: defaultThemeMobileDataHook,
+      });
+      await waitForVisibilityOf(
+        await driver.element(),
+        'Cannot find radioButton',
+      );
+      await driver.clickInput();
+      await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
+    },
+  );
 });
