@@ -101,8 +101,11 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Unchecked', source: examples.uncheckedExample },
-            { title: 'Checked', source: examples.checkedExample },
+            {
+              title: 'Unchecked And Checked',
+              source: examples.uncheckedAndCheckedExample,
+            },
+            { title: 'Small Size', source: examples.smallSizeExample },
             { title: 'Disabled', source: examples.disabledExmaple },
             {
               title: 'Checked And Disabled',
@@ -146,12 +149,6 @@ export default {
                     label: 'Border Width',
                     wixParam: 'boxBorderWidth',
                     defaultNumber: 1,
-                    unit: 'px',
-                  },
-                  {
-                    label: 'Box Padding',
-                    wixParam: 'boxPadding',
-                    defaultNumber: 16,
                     unit: 'px',
                   },
                 ],

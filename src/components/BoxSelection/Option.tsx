@@ -34,11 +34,18 @@ export interface OptionProps extends TPAComponentProps {
    * indicates that the option is unavailable
    */
   unavailable?: boolean;
+  /**
+   * size variations
+   */
   size?: BoxSize;
   /**
    * The content of the option
    */
   children?: React.ReactNode;
+  /**
+   * The onChange callback
+   */
+  onChange?({ id: string }): void;
 }
 
 interface DefaultProps {
@@ -81,11 +88,18 @@ export class Option extends React.Component<OptionProps, OptionState> {
     this.setState({ focused: false });
   };
 
+  _onChange = () => {
+    const { id, onChange } = this.props;
+
+    if (onChange) {
+      onChange({ id });
+    }
+  };
+
   render() {
     const {
       children,
       id,
-      className,
       name,
       checked,
       disabled,
@@ -104,10 +118,13 @@ export class Option extends React.Component<OptionProps, OptionState> {
             disabled,
             unavailable,
           },
-          focused ? classes.focused : '',
-          className,
+          classnames({
+            [classes.focused]: focused,
+          }),
         )}
+        data-id={id}
         data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
+        tabIndex={0}
         {...this._getDataAttributes()}
       >
         <CoreRadioButton
@@ -116,12 +133,13 @@ export class Option extends React.Component<OptionProps, OptionState> {
           label={children}
           checked={checked}
           value={id}
-          data-id={id}
+          onChange={this._onChange}
+          id={id}
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           disabled={disabled}
           className={classnames(classes.wrapper)}
-        ></CoreRadioButton>
+        />
       </div>
     );
   }

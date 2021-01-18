@@ -22,7 +22,6 @@
     DefaultBoxBorderWidth: 1px;
     DefaultBoxBorderRadius: 0px;
     DefaultBoxPadding: 16px;
-    LabelTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}";
     DisabledColor: color-3;
 }
 
@@ -37,7 +36,7 @@
         The border color of the box (unavailable line as well)
         @default color-5
     */
-    BorderColor: --overridable;
+    BoxBorderColor: --overridable;
     /*
         The BG opacity of the box
         @default 1 (100%)
@@ -67,7 +66,7 @@
 
 :vars {
     CurrentBoxFillColor: color(fallback(value(BoxFillColor), value(DefaultBoxFillColor)));
-    CurrentBorderColor: color(fallback(value(BorderColor), value(DefaultBorderColor)));
+    CurrentBorderColor: color(fallback(value(BoxBorderColor), value(DefaultBorderColor)));
     CurrentBoxFillOpacity: fallback(value(BoxFillOpacity), value(DefaultBoxFillOpacity));
     CurrentBoxBorderWidth: fallback(value(BoxBorderWidth), value(DefaultBoxBorderWidth));
     CurrentBoxBorderRadius: fallback(value(BoxBorderRadius), value(DefaultBoxBorderRadius));
@@ -76,9 +75,7 @@
 }
 
 .focused {
-    /* -st-mixin: focusRing(); */
-    box-shadow: 0 0 0 1px #ffffff,0 0 0 3px #116dff !important;
-    z-index: 999;
+    -st-mixin: focusRing();
 }
 .root:size(small) .wrapper{
     padding: 8px 16px;
@@ -101,24 +98,41 @@
     box-sizing: border-box;
     justify-content: center;
     text-align: center;
-    padding: value(CurrentBoxPadding);
-    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-color: applyOpacity(color(value(DefaultBorderColor)), 0.6);
     border-style: solid;
+    border-width: value(DefaultBoxBorderWidth);
+    border-radius: value(DefaultBoxBorderRadius);
+    background-color: applyOpacity(color(value(DefaultBoxFillColor)), value(DefaultBoxFillOpacity));
+}
+
+
+.overrideStyleParamsOption .wrapper{
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
     border-width: value(CurrentBoxBorderWidth);
     border-radius: value(CurrentBoxBorderRadius);
     background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
 }
 
-
 /* CHECKED */
 .root:checked, .root:disabled{
+    background-color: applyOpacity(color(value(DefaultBoxFillColor)), value(DefaultBoxFillOpacity));
+    border-radius: value(DefaultBoxBorderRadius);
+}
+.overrideStyleParamsOption:checked, .overrideStyleParamsOption:disabled{
     background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
     border-radius: value(CurrentBoxBorderRadius);
 }
+
 .root:checked .wrapper{
+    background-color: applyOpacity(color(value(DefaultSelectedBoxColor)), 0.1);
+    border-color: value(DefaultBorderColor);
+}
+
+.root:checked.overrideStyleParamsOption .wrapper{
     background-color: applyOpacity(value(CurrentSelectedBoxColor), 0.1);
-    border-color: value(CurrentSelectedBoxColor);
-} 
+    border-color: value(CurrentBorderColor);
+}
+
 /* DISABLED */
 .root:disabled:not(:checked) .wrapper{
     cursor: default;
@@ -137,6 +151,10 @@
 /* HOVER + FOCUS */
 .root:not(:disabled):not(:checked):not(:unavailable):hover .wrapper,
 .root:not(:disabled):not(:checked):not(:unavailable):focus-within .wrapper{
+    border-color: applyOpacity(color(value(DefaultBorderColor)), 1);
+} 
+.root:not(:disabled):not(:checked):not(:unavailable):hover.overrideStyleParamsOption .wrapper,
+.root:not(:disabled):not(:checked):not(:unavailable):focus-within.overrideStyleParamsOption .wrapper{
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 } 
 

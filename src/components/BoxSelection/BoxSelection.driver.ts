@@ -3,46 +3,44 @@ import {
   baseUniDriverFactory,
 } from 'wix-ui-test-utils/base-driver';
 import { UniDriver } from 'wix-ui-test-utils/unidriver';
-import {
-  BOX_SELECTION_DATA_ATTRIBUTES,
-  BOX_SELECTION_DATA_HOOKS,
-} from './dataHooks';
+import { BOX_SELECTION_DATA_HOOKS } from './dataHooks';
 
 export interface BoxSelectionDriver extends BaseUniDriver {
-  isChecked(): Promise<boolean>;
-  isDisabled(): Promise<boolean>;
-  isUnavailable(): Promise<boolean>;
+  isChecked(id: string): Promise<boolean>;
+  isDisabled(id: string): Promise<boolean>;
+  isUnavailable(id: string): Promise<boolean>;
   getOptionsCount(): Promise<number>;
-  click(): Promise<void>;
+  clickOnOption(id: string): Promise<void>;
 }
 export const boxSelectionDriverFactory = (
   base: UniDriver,
 ): BoxSelectionDriver => {
   const boxOptionDataHook = `[data-hook=${BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}]`;
-  const boxOptionWrapperDataHook = `[data-hook=${BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}]`;
-  const getOption = async () => base.$('input').getNative();
-  const getOptionWrapper = async () => base.$(boxOptionWrapperDataHook);
+  const getOptionById = async (id: string) =>
+    base.$$(`[data-id="${id}"]`).get(0);
   return {
     ...baseUniDriverFactory(base),
     async getOptionsCount() {
       return base.$$(boxOptionDataHook).count();
     },
-    async isChecked() {
-      const option = await getOption();
-      return option.checked;
+    async isChecked(id: string) {
+      const option = await getOptionById(id);
+      const isChecked = (await option.attr('data-checked')) === 'true';
+      return isChecked;
     },
-    async isDisabled() {
-      const option = await getOption();
-      return option.disabled;
+    async isDisabled(id: string) {
+      const option = await getOptionById(id);
+      const isDisabled = (await option.attr('data-disabled')) === 'true';
+      return isDisabled;
     },
-    async isUnavailable() {
-      const optionWrapper = await getOptionWrapper();
-      const unavailableAttr = await optionWrapper.attr('data-unavailable');
-      return unavailableAttr === 'true';
+    async isUnavailable(id: string) {
+      const option = await getOptionById(id);
+      const isUnavailable = (await option.attr('data-unavailable')) === 'true';
+      return isUnavailable;
     },
-    async click() {
-      const option = await getOption();
-      if (!option.disabled) {
+    async clickOnOption(id: string) {
+      const option = base.$(`[data-id="${id}"] input`);
+      if (!(await this.isDisabled(id)) && !(await this.isUnavailable(id))) {
         await option.click();
       }
     },

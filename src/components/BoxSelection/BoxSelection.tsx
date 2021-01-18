@@ -48,8 +48,6 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
 
   static defaultProps: DefaultProps = {
     size: BoxSize.xLarge,
-    'aria-label': '',
-    'aria-labelledby': '',
   };
 
   render() {
@@ -58,6 +56,7 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
       children,
       size,
       name,
+      onChange,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
@@ -68,12 +67,6 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
         data-hook={this.props['data-hook']}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
-        onClick={(e) => {
-          const target = e.target as HTMLElement;
-          return this.props.onChange({
-            id: target.getAttribute('data-id'),
-          });
-        }}
       >
         {React.Children.map(
           children,
@@ -82,9 +75,9 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
               React.isValidElement(child) &&
               React.cloneElement(child, {
                 key,
-                id: `${key}`,
                 name,
                 size,
+                onChange,
               })
             );
           },

@@ -12,14 +12,9 @@ export const BoxSelectionWiringExample = () => {
         return setSelectedId(id);
       }}
     >
-      {[1, 2, 3].map((_n, i) => (
-        <BoxSelection.Option
-          key={i}
-          id={`${i}`}
-          name="hours"
-          checked={selectedId === `${i}`}
-        >
-          Item-{i}
+      {['1', '2', '3'].map((n) => (
+        <BoxSelection.Option key={n} id={n} checked={selectedId === n}>
+          Item-{n}
         </BoxSelection.Option>
       ))}
     </BoxSelection>

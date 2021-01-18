@@ -1,11 +1,11 @@
 :import {
   -st-from: "../BoxSelection.st.css";
-  -st-default: overrideStyleParams;
+  -st-named: overrideStyleParams;
 }
 
 :import {
   -st-from: "../Option.st.css";
-  -st-default: Option;
+  -st-named: overrideStyleParamsOption;
 }
 
 .root {
@@ -13,13 +13,13 @@
     ItemGap '"fallback(zeroAsTrue(--itemGap), 12)"',
   );
 }
-.boxSelectionOption {
-  -st-mixin: Option(
+
+.root > div{
+  -st-mixin: overrideStyleParamsOption(
     SelectedBoxColor '"color(--selectedBoxColor)"',
     BoxFillColor '"color(--boxFillColor)"',
     BoxBorderRadius '"unit(--boxBorderRadius, px)"',
     BoxBorderWidth '"unit(fallback(--boxBorderWidth, 1), px)"',
-    BorderColor '"color(--borderColor)"',
-    BoxPadding '"unit(fallback(--boxPadding, 16), px)"',
+    BoxBorderColor '"color(--borderColor)"',
   );
 }

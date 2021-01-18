@@ -1,19 +1,27 @@
 export const importExample = `import { BoxSelection } from 'wix-ui-tpa/BoxSelection';`;
 
-export const uncheckedExample = `
-<ExampleWithContextProps>
-  <BoxSelection name="hours">
-    <BoxSelection.Option id={'1'}>
-      <div>Unchecked</div>
-    </BoxSelection.Option>
-  </BoxSelection>
-</ExampleWithContextProps>
+export const uncheckedAndCheckedExample = `
+() => {
+  const [selectedId, setSelectedId] = React.useState('1');
+  
+  return (
+    <BoxSelection
+      name="hours"
+      onChange={({ id }) => {
+        return setSelectedId(id);
+      }}>
+      {['1', '2', '3'].map((n) => {
+        return  <BoxSelection.Option id={n} checked={selectedId === n}><div>Item {n}</div></BoxSelection.Option>
+      })}
+    </BoxSelection>
+  );
+}
 `;
 
-export const checkedExample = `
-<BoxSelection name="hours">
-  <BoxSelection.Option id={'1'} checked> 
-    <div>Checked</div>
+export const smallSizeExample = `
+<BoxSelection name="hours" size="small">
+  <BoxSelection.Option id={'1'}>
+    <div>Small</div>
   </BoxSelection.Option>
 </BoxSelection>
 `;

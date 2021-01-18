@@ -25,5 +25,8 @@
 .root {
   display: flex;
   flex-wrap: wrap;
+  gap: applyUnit(value(defaultItemGap), px);
+}
+.overrideStyleParams {
   gap: value(boxSelectionGap);
 }
