@@ -6,7 +6,7 @@
 :import {
     -st-from: "wix-style-react/dist/src/Calendar/Calendar.st.css";
     -st-default: WSRCalendar;
-    -st-named: dayCircle; /* currently due to a stylable issue this is the best way to override styling of nested classes */
+    -st-named: dayWrapper; /* currently due to a stylable issue this is the best way to override styling of nested classes */
 }
 
 :import {
@@ -252,11 +252,11 @@
     -st-mixin: focusRing();
 }
 
-.calendar::day:singleDay:not(:outside) .dayCircle {
+.calendar::day:singleDay:not(:outside) .dayWrapper {
     background-color: value(CurrentSelectedDayBGColor);
     border-radius: value(CurrentSelectedDayBorderRadius);
 }
-.calendar::day:singleDay:not(:outside):hover .dayCircle {
+.calendar::day:singleDay:not(:outside):hover .dayWrapper {
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
 }
 
@@ -533,10 +533,10 @@
 /*    color: value(CurrentDisabledDayColor);*/
 /*}*/
 
-/*.overrideStyleParams .calendar::day:singleDay:not(:outside) .dayCircle {*/
+/*.overrideStyleParams .calendar::day:singleDay:not(:outside) .dayWrapper {*/
 /*    background-color: value(CurrentSelectedDayBGColor);*/
 /*}*/
-/*.overrideStyleParams .calendar::day:singleDay:not(:outside):hover .dayCircle {*/
+/*.overrideStyleParams .calendar::day:singleDay:not(:outside):hover .dayWrapper {*/
 /*    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);*/
 /*}*/
 /*!******************************************************!*/

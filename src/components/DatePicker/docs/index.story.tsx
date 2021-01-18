@@ -105,6 +105,12 @@ export default {
                 'Years or months dropdowns could be added for an easy selection.',
               source: examples.yearsAndMonthDropdowns,
             },
+            {
+              title: 'Date Indication',
+              description:
+                'Date indication allows you to add a custom indication under a specific date. It could be an indication for event, appointment, meeting etc.',
+              source: examples.dateIndication,
+            },
           ].map(code),
         ],
       }),
