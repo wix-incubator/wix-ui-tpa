@@ -7,7 +7,7 @@ import {
 import { radioButtonTestkitFactory } from '../../testkit/protractor';
 import { StoryCategory } from '../../../stories/storyHierarchy';
 
-describe('RadioButton', () => {
+xdescribe('RadioButton', () => {
   const storyUrl = createStoryUrl({
     kind: StoryCategory.TESTS,
     story: 'RadioButton',
