@@ -122,11 +122,13 @@ export class Image extends React.Component<ImageProps> {
           containerDimensions.width &&
           containerDimensions.height && (
             <RelativeImage
+              {...imageProps}
               src={src}
               sourceDimensions={sourceDimensions}
               containerDimensions={containerDimensions}
               isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
               onLoad={this._onLoad}
+              className={classes.relativeImage}
             />
           )
         )}
