@@ -10,7 +10,7 @@
 
 .root {
   -st-mixin: overrideStyleParams(
-    ItemGap '"number(--itemGap)"',
+    ItemGap '"fallback(zeroAsTrue(--itemGap), 12)"',
   );
 }
 .boxSelectionOption {

@@ -39,19 +39,12 @@ export interface OptionProps extends TPAComponentProps {
    * The content of the option
    */
   children?: React.ReactNode;
-  /**
-   * The onChange callback
-   */
-  onChange?: CoreRadioButtonProps['onChange'];
-  withFocusRing: boolean;
-  'aria-label'?: string;
 }
 
 interface DefaultProps {
   checked: boolean;
   disabled: boolean;
   unavailable: boolean;
-  withFocusRing: boolean;
 }
 
 export interface OptionState {
@@ -64,7 +57,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
     checked: false,
     disabled: false,
     unavailable: false,
-    withFocusRing: false,
   };
   state = {
     focused: false,
@@ -98,49 +90,39 @@ export class Option extends React.Component<OptionProps, OptionState> {
       checked,
       disabled,
       unavailable,
-      ['aria-label']: ariaLabel,
-      withFocusRing,
       size,
-      onChange,
     } = this.props;
     const { focused } = this.state;
-    console.log(focused);
 
     return (
-      <TPAComponentsConsumer>
-        {() => (
-          <div
-            className={st(
-              classes.root,
-              {
-                size,
-                checked,
-                disabled,
-                unavailable,
-              },
-              focused ? classes.focused : '',
-              className,
-            )}
-            data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
-            {...this._getDataAttributes()}
-          >
-            <CoreRadioButton
-              data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}
-              tabIndex={0}
-              name={name}
-              label={children}
-              checked={checked}
-              value={id}
-              onChange={onChange}
-              onFocusByKeyboard={this._onFocus}
-              onBlur={this._onBlur}
-              disabled={disabled}
-              className={classnames(classes.wrapper)}
-              aria-label={ariaLabel}
-            ></CoreRadioButton>
-          </div>
+      <div
+        className={st(
+          classes.root,
+          {
+            size,
+            checked,
+            disabled,
+            unavailable,
+          },
+          focused ? classes.focused : '',
+          className,
         )}
-      </TPAComponentsConsumer>
+        data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
+        {...this._getDataAttributes()}
+      >
+        <CoreRadioButton
+          data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}
+          name={name}
+          label={children}
+          checked={checked}
+          value={id}
+          data-id={id}
+          onFocusByKeyboard={this._onFocus}
+          onBlur={this._onBlur}
+          disabled={disabled}
+          className={classnames(classes.wrapper)}
+        ></CoreRadioButton>
+      </div>
     );
   }
 }

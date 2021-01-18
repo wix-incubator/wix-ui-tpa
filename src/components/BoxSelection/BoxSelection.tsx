@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 import { st, classes } from './BoxSelection.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { Option as BoxSelectionOption } from './Option';
 
 export enum BoxSize {
@@ -29,11 +28,7 @@ export interface BoxSelectionProps extends TPAComponentProps {
   /**
    * The onChange callback
    */
-  onChange?(id: string): void;
-  /**
-   * The Box selected option value
-   */
-  value?: string;
+  onChange?({ id: string }): void;
   /**
    * The Box selected childrens
    */
@@ -44,7 +39,6 @@ interface DefaultProps {
   size?: BoxSize;
   'aria-label'?: string;
   'aria-labelledby'?: string;
-  value: string;
 }
 
 /** The box selection is used to give the user to select single or multiple boxes. */
@@ -56,15 +50,7 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
     size: BoxSize.xLarge,
     'aria-label': '',
     'aria-labelledby': '',
-    value: '',
   };
-  // state = {
-  //   value: '',
-  // };
-
-  // _onChange(value: string) {
-  //   this.setState({ value });
-  // }
 
   render() {
     const {
@@ -76,42 +62,34 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
 
-    //const { value } = this.state;
     return (
-      <TPAComponentsConsumer>
-        {() => (
-          <div
-            className={st(classes.root, {}, className)}
-            data-hook={this.props['data-hook']}
-            aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
-          >
-            {React.Children.map(
-              children,
-              (child: BoxSelectionOption, key: number) => {
-                return (
-                  React.isValidElement(child) && (
-                    <>
-                      {React.cloneElement(child, {
-                        key,
-                        id: `"${key}"`,
-                        name,
-                        size,
-                        checked: child.props.id === this.props.value,
-                        className: 'boxSelectionOption',
-                        onChange: (e) => {
-                          this.props.onChange(e.value);
-                          //this._onChange(e.value);
-                        },
-                      })}
-                    </>
-                  )
-                );
-              },
-            )}
-          </div>
+      <div
+        className={st(classes.root, {}, className)}
+        data-hook={this.props['data-hook']}
+        aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy}
+        onClick={(e) => {
+          const target = e.target as HTMLElement;
+          return this.props.onChange({
+            id: target.getAttribute('data-id'),
+          });
+        }}
+      >
+        {React.Children.map(
+          children,
+          (child: BoxSelectionOption, key: number) => {
+            return (
+              React.isValidElement(child) &&
+              React.cloneElement(child, {
+                key,
+                id: `${key}`,
+                name,
+                size,
+              })
+            );
+          },
         )}
-      </TPAComponentsConsumer>
+      </div>
     );
   }
 }

@@ -33,7 +33,7 @@ const children = [
   {
     label: '1 child',
     value: (
-      <BoxSelection.Option key={1} id={'1'} checked>
+      <BoxSelection.Option key={1} id={'1'}>
         <div>Item-{1}</div>
       </BoxSelection.Option>
     ),
@@ -41,7 +41,7 @@ const children = [
   {
     label: '10 childrens with second selected',
     value: Array.apply(null, Array(10)).map((_n, i: number) => (
-      <BoxSelection.Option key={i + 1} id={`${i + 1}`}>
+      <BoxSelection.Option key={i} id={`${i}`} checked={i === 1}>
         <div>Item-{i + 1}</div>
       </BoxSelection.Option>
     )),
@@ -74,7 +74,6 @@ export default {
     ariaLabel: '',
     ariaLabelledBy: '',
     children: children[0].value,
-    value: '2',
   }),
   exampleProps: {
     children,

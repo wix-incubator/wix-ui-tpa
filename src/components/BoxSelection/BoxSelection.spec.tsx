@@ -39,7 +39,7 @@ describe('BoxSelection', () => {
 
   it('should show checked state', async () => {
     const driver = createDriver(
-      <BoxSelection {...defProps} name={'hours'} value="1">
+      <BoxSelection {...defProps} name={'hours'}>
         <BoxSelection.Option key={1} id={'1'} checked />
       </BoxSelection>,
     );

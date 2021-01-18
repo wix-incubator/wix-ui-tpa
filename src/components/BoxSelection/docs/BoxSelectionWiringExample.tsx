@@ -3,18 +3,24 @@ import { BoxSelection } from '../';
 import { classes } from './BoxSelectionWiringExample.st.css';
 
 export const BoxSelectionWiringExample = () => {
+  const [selectedId, setSelectedId] = React.useState('1');
   return (
-    <BoxSelection name="hours" value={'1'} className={classes.root}>
+    <BoxSelection
+      name="hours"
+      className={classes.root}
+      onChange={({ id }) => {
+        return setSelectedId(id);
+      }}
+    >
       {[1, 2, 3].map((_n, i) => (
-        <div key={i}>
-          <BoxSelection.Option
-            id={`${i}`}
-            className={classes.boxSelectionOption}
-            checked={i === 1}
-          >
-            <div className={classes.wrapper}>Item-{i}</div>
-          </BoxSelection.Option>
-        </div>
+        <BoxSelection.Option
+          key={i}
+          id={`${i}`}
+          name="hours"
+          checked={selectedId === `${i}`}
+        >
+          Item-{i}
+        </BoxSelection.Option>
       ))}
     </BoxSelection>
   );
