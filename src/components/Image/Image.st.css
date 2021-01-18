@@ -12,8 +12,6 @@
 }
 
 .root {
-  -st-states: preload, loaded;
-
   display: grid;
   min-height: 100%;
 }
@@ -26,11 +24,11 @@
   object-fit: cover;
 }
 
-.root:preload .absoluteImage {
+.absoluteImage.preload {
   filter: blur(value(BlurRadius));
 }
 
-.root:loaded .absoluteImage {
+.absoluteImage.loaded {
   animation-name: blurry-loading;
   animation-duration: 0.3s;
   animation-timing-function: easeout;

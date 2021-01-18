@@ -11,14 +11,12 @@ interface RelativeImageProps extends Omit<ImageProps, 'width' | 'height'> {
 
 const Placeholder = ({
   src,
+  className,
   sourceDimensions,
   containerDimensions,
-  className,
   ...imageProps
 }: RelativeImageProps) => (
   <MediaImage
-    {...imageProps}
-    {...containerDimensions}
     mediaPlatformItem={{
       uri: src,
       ...sourceDimensions,
@@ -29,17 +27,19 @@ const Placeholder = ({
       },
     }}
     className={className}
+    {...containerDimensions}
+    {...imageProps}
   />
 );
 
 export class RelativeImage extends React.Component<RelativeImageProps> {
   render() {
     const {
-      className,
       src,
-      isPlaceholderDisplayed,
+      className,
       sourceDimensions,
       containerDimensions,
+      isPlaceholderDisplayed,
       onLoad,
       ...imageProps
     } = this.props;
@@ -48,22 +48,22 @@ export class RelativeImage extends React.Component<RelativeImageProps> {
       <>
         {isPlaceholderDisplayed && (
           <Placeholder
-            {...imageProps}
             src={src}
+            className={st(classes.placeholder, className)}
             sourceDimensions={sourceDimensions}
             containerDimensions={containerDimensions}
-            className={st(classes.placeholder, className)}
+            {...imageProps}
           />
         )}
         <MediaImage
-          {...imageProps}
-          {...containerDimensions}
           mediaPlatformItem={{
             uri: src,
             ...sourceDimensions,
           }}
           className={st(classes.root, className)}
           onLoad={onLoad}
+          {...containerDimensions}
+          {...imageProps}
         />
       </>
     );

@@ -89,10 +89,6 @@ export class Image extends React.Component<ImageProps> {
         ref={this.containerRef}
         className={st(
           classes.root,
-          {
-            resize,
-            ...(hasLoadingBehavior && { preload: !isLoaded, loaded: isLoaded }),
-          },
           resize === ResizeOptions.cover ? classes.cover : classes.contain,
           className,
         )}
@@ -100,23 +96,27 @@ export class Image extends React.Component<ImageProps> {
       >
         {isAbsoluteUrl ? (
           <CoreImage
-            {...imageProps}
-            nativeProps={{ ...containerDimensions }}
             src={src}
-            className={classes.absoluteImage}
+            className={st(
+              classes.absoluteImage,
+              hasLoadingBehavior &&
+                (isLoaded ? classes.loaded : classes.preload),
+            )}
+            nativeProps={{ ...containerDimensions }}
             onLoad={this._onLoad}
+            {...imageProps}
           />
         ) : (
           containerDimensions.width &&
           containerDimensions.height && (
             <RelativeImage
-              {...imageProps}
               src={src}
+              className={classes.relativeImage}
               sourceDimensions={sourceDimensions}
               containerDimensions={containerDimensions}
               isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
               onLoad={this._onLoad}
-              className={classes.relativeImage}
+              {...imageProps}
             />
           )
         )}
