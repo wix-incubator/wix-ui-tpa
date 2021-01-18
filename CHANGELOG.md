@@ -1,3 +1,38 @@
+# [2.18.0](https://github.com/wix/wix-ui-tpa/compare/v2.17.0...v2.18.0) (2021-01-13)
+
+
+### Bug Fixes
+
+* **Dropdown:** fix items with icons alignments ([3a53cda](https://github.com/wix/wix-ui-tpa/commit/3a53cda74c0a54d308e10d4409a02e33670086f9))
+* **Dropdown:** Fix undeclared variable `name` ([c730f85](https://github.com/wix/wix-ui-tpa/commit/c730f8508f11e2e9ceab0231089076c4c85f694c))
+* **SectionNotification:** Add role="alert" attribute ([36938e3](https://github.com/wix/wix-ui-tpa/commit/36938e381780433fafaed934ad8e923d8fc49703))
+* **Tooltip:** Adding default value to Max width (240px) ([5c54771](https://github.com/wix/wix-ui-tpa/commit/5c54771c1fc5fb81b6a76b93cbf75ad0277324fe))
+
+
+### Features
+
+* **TextField:** Adding errorTooltipPlacement prop ([#597](https://github.com/wix/wix-ui-tpa/issues/597)) ([3a76e40](https://github.com/wix/wix-ui-tpa/commit/3a76e4002d818cd59d0a00ba2589b900bd4b6c24))
+
+
+
+# [2.17.0](https://github.com/wix/wix-ui-tpa/compare/v2.16.1...v2.17.0) (2021-01-11)
+
+
+### Bug Fixes
+
+* **Button:** Fix Button icon affixes ([d917f15](https://github.com/wix/wix-ui-tpa/commit/d917f152c1a4683ad0e94fe4256c56e05c4a6290))
+* **Button:** remove default button priority and size states ([f55bb29](https://github.com/wix/wix-ui-tpa/commit/f55bb29f6309ff9ca16fa6e176976f1fabd71ae8))
+* **TextField:** fix the breaking suffix icon ([#589](https://github.com/wix/wix-ui-tpa/issues/589)) ([3711cf0](https://github.com/wix/wix-ui-tpa/commit/3711cf03ff9b457c222fa25d0ca1512bb7878d3f))
+
+
+### Features
+
+* **Counter:** Add xSmall size ([dccea78](https://github.com/wix/wix-ui-tpa/commit/dccea78291a3d874fbe73036f8b3b48552d307d8))
+* **FloatingDropdown:** add aria-expanded ([23142bf](https://github.com/wix/wix-ui-tpa/commit/23142bff15479a138826384c7e7e15b579333344)), closes [#SCHED-19786](https://github.com/wix/wix-ui-tpa/issues/SCHED-19786) [#DSM-1425](https://github.com/wix/wix-ui-tpa/issues/DSM-1425)
+* **Tabs:** add support for anchors as tabs ([1397fc0](https://github.com/wix/wix-ui-tpa/commit/1397fc0c9995e8bf7156eecd9f0b8bf8437c90ac))
+
+
+
 ## [2.16.1](https://github.com/wix/wix-ui-tpa/compare/v2.16.0...v2.16.1) (2020-12-31)
 
 

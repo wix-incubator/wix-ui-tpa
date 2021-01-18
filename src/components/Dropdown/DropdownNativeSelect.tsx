@@ -21,6 +21,7 @@ interface DropdownNativeSelectProps extends TPAComponentProps {
   errorMessage?: string;
   'aria-label'?: string;
   'aria-labelledby'?: string;
+  name?: string;
 }
 
 export class DropdownNativeSelect extends React.Component<DropdownNativeSelectProps> {
@@ -95,6 +96,7 @@ export class DropdownNativeSelect extends React.Component<DropdownNativeSelectPr
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
       className,
+      name,
     } = this.props;
     const { rtl } = this.context;
 
@@ -128,6 +130,7 @@ export class DropdownNativeSelect extends React.Component<DropdownNativeSelectPr
           aria-label={ariaLabel}
           aria-labelledby={ariaLabelledBy}
           disabled={disabled}
+          name={name}
           className={classNames(nativeSelectStyles, buttonStyle)}
         >
           {this.renderOptions(hasPlaceholder)}
