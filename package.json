@@ -33,7 +33,7 @@
     "postbuild": "",
     "pr-postbuild": "npm run storybook:release",
     "pretest": "",
-    "test": "node scripts/applitoolsConfigTest.js",
+    "test": "node scripts/applitoolsConfigTest.js && npm run test:eyes-storybook",
     "posttest": "",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
