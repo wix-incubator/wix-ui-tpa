@@ -30,7 +30,7 @@ export const Popover: React.FC<PopoverProps> & {
     ...rest
   } = props;
   const [isShown, setIsShown] = React.useState<boolean>(false);
-  const [id] = React.useState(generateKey('popover'));
+  const id = React.useRef(generateKey('popover'));
 
   const [Element, Content] = React.Children.toArray(
     children,
@@ -38,7 +38,6 @@ export const Popover: React.FC<PopoverProps> & {
 
   return (
     <CorePopover
-      id={id}
       showArrow
       shown={isShown}
       className={st(classes.root, { wired: wiredToSiteColors }, className)}
@@ -85,6 +84,7 @@ export const Popover: React.FC<PopoverProps> & {
           onMouseEnter: handleOpen,
           onMouseLeave: handleClose,
           role: 'tooltip',
+          id: id.current,
         };
     }
   }

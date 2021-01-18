@@ -10,5 +10,6 @@ TagMetadata.addSim({
     size: SIZE.small,
     skin: SKIN.solid,
     children: 'Tag Name',
+    tagName: 'span',
   } as TagProps,
 });
