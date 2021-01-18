@@ -10,12 +10,12 @@ export const absoluteUrlExample = `
 `;
 
 export const relativeUriExample = `
+<div style={{width: '400px', height: '300px'}}>
 <Image
   src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
-  width="480"
-  height="360"
   alt="Garfield smiles and puts his hand over chest"
 />
+</div>
 `;
 
 export const resizingExample = `

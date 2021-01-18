@@ -1,0 +1,18 @@
+:import {
+    -st-from: "../Image.st.css";
+    -st-named: BlurRadius, keyframes(blurry-loading);
+}
+
+.root {
+  animation-name: blurry-loading;
+  animation-duration: 0.3s;
+  animation-timing-function: easeout;
+}
+ 
+.root, .placeholder {
+  grid-area: 1 / 1;
+}
+
+.placeholder {
+  filter: blur(value(BlurRadius));
+}

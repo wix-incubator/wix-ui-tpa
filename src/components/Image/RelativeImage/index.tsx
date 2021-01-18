@@ -1,0 +1,1 @@
+export { RelativeImage } from './RelativeImage';

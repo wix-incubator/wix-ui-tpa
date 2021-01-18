@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
 import { MediaImage } from 'wix-ui-core/media-image';
-import { TPAComponentProps } from '../../types';
 import { classes, st } from './Image.st.css';
+import { RelativeImage } from './RelativeImage';
+import { Dimensions, ImageProps } from './types';
 
 const enum ResizeOptions {
   contain = 'contain',
@@ -15,60 +16,7 @@ const AspectRatioOptions = {
   landscape: 4 / 3,
 };
 
-export interface ImageProps extends TPAComponentProps {
-  /** The source could be any absolute full URL or a relative URI of a media platform item */
-  src?: string;
-  /** The intrinsic width of the image in pixels */
-  width?: number;
-  /** The intrinsic height of the image in pixels */
-  height?: number;
-  /** The alternative text description of the image. Allowing better SEO when the image has meaning of content */
-  alt?: string;
-  /** A callback to be called when the image is loaded */
-  onLoad?: React.EventHandler<React.SyntheticEvent>;
-  /** A callback to be called if error occurs while loading */
-  onError?: React.EventHandler<React.SyntheticEvent>;
-  /** Specifies how the image is resized to fit its container */
-  resize?: 'contain' | 'cover';
-  // Specifies the proportional relationship between width and height
-  aspectRatio?: 'square' | 'cinema' | 'landscape' | number;
-  /** An experience to set while the image is fetched and loaded  */
-  loadingBehavior?: 'none' | 'blur';
-}
-
 type DefaultProps = Pick<ImageProps, 'resize' | 'aspectRatio'>;
-
-interface Dimensions {
-  width: ImageProps['width'];
-  height: ImageProps['height'];
-}
-
-const Placeholder = ({
-  imageProps,
-  src,
-  sourceDimensions,
-  containerDimensions,
-}: {
-  imageProps: Partial<ImageProps>;
-  src: ImageProps['src'];
-  sourceDimensions: Dimensions;
-  containerDimensions: Dimensions;
-}) => (
-  <MediaImage
-    {...imageProps}
-    {...containerDimensions}
-    mediaPlatformItem={{
-      uri: src,
-      ...sourceDimensions,
-      options: {
-        filters: {
-          blur: 3,
-        },
-      },
-    }}
-    className={classes.placeholder}
-  />
-);
 
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
@@ -78,7 +26,9 @@ export class Image extends React.Component<ImageProps> {
     aspectRatio: 1,
   };
 
-  state = { isLoaded: false };
+  state = { isLoaded: false, width: null, height: null };
+
+  containerRef = React.createRef<HTMLDivElement>();
 
   _onLoad = (event) => {
     const { onLoad } = this.props;
@@ -89,6 +39,32 @@ export class Image extends React.Component<ImageProps> {
 
     onLoad && onLoad(event);
   };
+
+  _calculateDimensions = (
+    width: number,
+    height: number,
+    aspectRatio: number,
+  ) => {
+    const sourceDimensions = { width, height };
+    const containerDimensions = {
+      width: !width && height && aspectRatio ? height * aspectRatio : width,
+      height: !height && width && aspectRatio ? width / aspectRatio : height,
+    };
+
+    return {
+      sourceDimensions,
+      containerDimensions,
+    };
+  };
+
+  componentDidMount() {
+    const {
+      width,
+      height,
+    } = this.containerRef.current?.getBoundingClientRect();
+
+    this.setState({ width, height });
+  }
 
   render() {
     const {
@@ -110,23 +86,19 @@ export class Image extends React.Component<ImageProps> {
       typeof aspectRatio === 'number'
         ? aspectRatio
         : AspectRatioOptions[aspectRatio];
-    const sourceDimensions = { width, height };
 
-    const containerDimensions = {
-      width:
-        !width && height && aspectRatioAsNumber
-          ? height * aspectRatioAsNumber
-          : width,
-      height:
-        !height && width && aspectRatioAsNumber
-          ? width / aspectRatioAsNumber
-          : height,
-    };
+    const { sourceDimensions, containerDimensions } = this._calculateDimensions(
+      width || this.state.width,
+      height || this.state.height,
+      aspectRatioAsNumber,
+    );
 
     const hasLoadingBehavior = loadingBehavior === 'blur';
 
+    console.log({ sourceDimensions, containerDimensions });
     return (
       <div
+        ref={this.containerRef}
         className={st(
           classes.root,
           {
@@ -147,26 +119,16 @@ export class Image extends React.Component<ImageProps> {
             onLoad={this._onLoad}
           />
         ) : (
-          <>
-            {hasLoadingBehavior && !isLoaded && (
-              <Placeholder
-                imageProps={imageProps}
-                src={src}
-                sourceDimensions={sourceDimensions}
-                containerDimensions={containerDimensions}
-              />
-            )}
-            <MediaImage
-              {...imageProps}
-              {...containerDimensions}
-              mediaPlatformItem={{
-                uri: src,
-                ...sourceDimensions,
-              }}
-              className={classes.relativeImage}
+          containerDimensions.width &&
+          containerDimensions.height && (
+            <RelativeImage
+              src={src}
+              sourceDimensions={sourceDimensions}
+              containerDimensions={containerDimensions}
+              isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
               onLoad={this._onLoad}
             />
-          </>
+          )
         )}
       </div>
     );

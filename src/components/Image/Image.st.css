@@ -15,6 +15,7 @@
   -st-states: preload, loaded;
 
   display: grid;
+  min-height: 100%;
 }
 
 .root.contain .absoluteImage, .root.contain .relativeImage, .root.contain .placeholder {
@@ -25,15 +26,11 @@
   object-fit: cover;
 }
 
-.placeholder, .relativeImage {
-  grid-area: 1 / 1;
-}
-
-.root:preload .absoluteImage, .root:preload .placeholder {
+.root:preload .absoluteImage {
   filter: blur(value(BlurRadius));
 }
 
-.root:loaded .absoluteImage, .root:loaded .relativeImage {
+.root:loaded .absoluteImage {
   animation-name: blurry-loading;
   animation-duration: 0.3s;
   animation-timing-function: easeout;
