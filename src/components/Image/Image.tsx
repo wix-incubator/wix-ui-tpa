@@ -66,6 +66,7 @@ const Placeholder = ({
         },
       },
     }}
+    // @ts-ignore
     className={classes.placeholder}
   />
 );
@@ -143,6 +144,7 @@ export class Image extends React.Component<ImageProps> {
             {...imageProps}
             nativeProps={{ ...containerDimensions }}
             src={src}
+            // @ts-ignore
             className={classes.absoluteImage}
             onLoad={this._onLoad}
           />
@@ -163,6 +165,7 @@ export class Image extends React.Component<ImageProps> {
                 uri: src,
                 ...sourceDimensions,
               }}
+              // @ts-ignore
               className={classes.relativeImage}
               onLoad={this._onLoad}
             />

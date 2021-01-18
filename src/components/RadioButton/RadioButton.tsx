@@ -146,6 +146,7 @@ export class RadioButton extends React.Component<
           disabled={disabled}
           tabIndex={0}
           value={value}
+          // @ts-ignore
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           label={this._getContent(suffix, label, children)}
