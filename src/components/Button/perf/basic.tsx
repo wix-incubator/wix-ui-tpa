@@ -1,6 +1,7 @@
-import * as React from 'react';
-import { Button } from '..';
 
-export function ButtonPerfBasic() {
-  return <Button>Click Me</Button>;
-}
+import * as React from 'react';
+import { Button } from '../';
+
+export const ButtonPerferBasic = () => {
+  return <Button />;
+};

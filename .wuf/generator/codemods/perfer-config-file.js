@@ -2,6 +2,12 @@ module.exports = (file, api, options) => {
   const { jscodeshift } = api;
   const { ComponentName } = options;
 
+  const fileBundlesToAdd = [
+    `${ComponentName}.bundle.min.js`,
+    `${ComponentName}.perf.basic.bundle.min.js`
+    `${ComponentName}.perf.extended.bundle.min.js`
+  ]
+
   const root = jscodeshift(file.source);
 
   // The initial KB
@@ -13,13 +19,15 @@ module.exports = (file, api, options) => {
   });
 
   // Creates new entry to be inserted
-  const entry = jscodeshift.arrayExpression([
-    jscodeshift.literal(`${ComponentName}.bundle.min.js`),
-    jscodeshift.numericLiteral(thresholdSize),
-  ]);
+  fileBundlesToAdd.forEach(fileBundleName => {
+    const entry = jscodeshift.arrayExpression([
+      jscodeshift.literal(fileBundleName),
+      jscodeshift.numericLiteral(thresholdSize),
+    ]);
 
-  // Pushes the entry into the array
-  array.get(0).node.declarations[0].init.elements.push(entry);
+    // Pushes the entry into the array
+    array.get(0).node.declarations[0].init.elements.push(entry);
+  });
 
   // Formatting
   return root.toSource({
