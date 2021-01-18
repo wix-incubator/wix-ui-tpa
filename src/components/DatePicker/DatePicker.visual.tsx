@@ -112,10 +112,10 @@ visualize('DatePicker', () => {
     snap(
       'Adaptive to font change',
       <VisualTestDatePicker
-          className={classes.dayFontSizeOverride}
-          width="650px"
-          value={new Date('2019/12/15')}
-          onChange={() => {}}
+        className={classes.dayFontSizeOverride}
+        width="650px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
       />,
     );
   });
