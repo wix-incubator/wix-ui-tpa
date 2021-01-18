@@ -71,3 +71,23 @@ export const yearsAndMonthDropdowns = buildExample(
     </div>
 `,
 );
+
+export const dateIndication = buildExample(
+  'new Date()',
+  `
+    <div style={{ width: '280px' }}>
+          <DatePicker
+              value={value}
+              placeholderText="Select A Date"
+              onChange={this._onChange}
+              dateIndication={({ date, isSelected }) => (
+                  date <= new Date() && !isSelected ? (
+                      <div className="Indications" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+                           <div className="indication" style={{ borderRadius: '50%', width: '3px', height: '3px', backgroundColor: '#ED24D9' }}/>
+                      </div>
+                    ) : null)
+                }
+          />
+    </div>
+`,
+);

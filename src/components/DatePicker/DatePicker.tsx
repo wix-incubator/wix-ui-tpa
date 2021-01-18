@@ -29,6 +29,11 @@ export type LanguageType =
 export type Locale = LanguageType | { distanceInWords?: {}; format?: {} };
 export type FirstDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
+export interface dateIndicationProps {
+  date: Date;
+  isSelected: boolean;
+}
+
 export interface DatePickerProps extends TPAComponentProps {
   /** The selected date */
   value?: Date | string;
@@ -50,6 +55,13 @@ export interface DatePickerProps extends TPAComponentProps {
   showMonthDropdown?: boolean;
   /** Displays a selectable yearDropdown */
   showYearDropdown?: boolean;
+  /**
+   ##### This function allows you to add an indication under a specific date.
+   The function should return the indication node of a specific date or null if this day doesn't have an indication.
+   * `param` {date: Date, isSelected: boolean } `date` - a date, `isSelected` - whether this date is the selected date
+   * `return` {React.node} - the indication node of a specific date or null if this day doesn't have an indication.
+   */
+  dateIndication?: React.FC<dateIndicationProps>;
   /** Defines a string value that labels the Date Picker element. Optional. */
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */
@@ -63,6 +75,7 @@ interface DefaultProps {
   firstDayOfWeek: FirstDayOfWeek;
   showMonthDropdown: boolean;
   showYearDropdown: boolean;
+  dateIndication?: React.FC<dateIndicationProps>;
 }
 
 /** The DatePicker allows a user to select a specific date. */
@@ -75,6 +88,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
     firstDayOfWeek: 1,
     showMonthDropdown: false,
     showYearDropdown: false,
+    dateIndication: ({ date: Date, isSelected: boolean }) => null,
   };
 
   render() {
@@ -88,6 +102,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
       firstDayOfWeek,
       showMonthDropdown,
       showYearDropdown,
+      dateIndication,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
@@ -115,6 +130,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
               rtl={rtl}
               selectionMode="day"
               numOfMonths={1}
+              dateIndication={dateIndication}
             />
           </div>
         )}

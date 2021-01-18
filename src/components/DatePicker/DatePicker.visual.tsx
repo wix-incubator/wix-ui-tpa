@@ -77,5 +77,36 @@ visualize('DatePicker', () => {
         onChange={() => {}}
       />,
     );
+    snap(
+      'Date Indication',
+      <VisualTestDatePicker
+        width="280px"
+        value={new Date('2019/12/12')}
+        onChange={() => {}}
+        dateIndication={({ date, isSelected }) =>
+          date <= new Date('2019/12/15') ? (
+            <div
+              className="Indications"
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                className="indication"
+                style={{
+                  borderRadius: '50%',
+                  width: '3px',
+                  height: '3px',
+                  backgroundColor: '#ED24D9',
+                }}
+              />
+            </div>
+          ) : null
+        }
+      />,
+    );
   });
 });
