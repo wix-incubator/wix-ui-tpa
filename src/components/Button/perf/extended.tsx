@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { Button } from '../';
 import { st, classes } from './extended.st.css';
