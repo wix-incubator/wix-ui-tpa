@@ -10,29 +10,33 @@ const stories: { name: string; src: string; invalidSrc: string }[] = [
     invalidSrc: 'https://invalid.something/resource.jpg',
   },
   {
-    name: 'Relative URI',
+    name: 'Relative Media URI',
     src: 'c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg',
     invalidSrc: 'invalid-resource.jpg',
   },
 ];
 
-type ImageWrapperProps = ImageProps & { onDone(): void };
+type ImageWithWrapperProps = ImageProps;
 
-class ImageWrapper extends React.Component<ImageWrapperProps> {
+class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
 
-  onError(onDone: ImageWrapperProps['onDone']) {
-    this.setState({ hasError: true }, () => setTimeout(() => onDone(), 500));
+  onError(onError: ImageWithWrapperProps['onError']) {
+    this.setState({ hasError: true }, () => setTimeout(() => onError(), 500));
   }
 
   render() {
-    const { onDone, ...imageProps } = this.props;
+    const { onError, ...imageProps } = this.props;
     const { hasError } = this.state;
-    const style = hasError ? { border: '1px solid red' } : null;
+    const style = {
+      width: 480,
+      height: 360,
+      ...(hasError && { border: '1px solid red' }),
+    };
 
     return (
       <div style={style}>
-        <Image {...imageProps} onError={() => this.onError(onDone)} />
+        <Image {...imageProps} onError={() => this.onError(onError)} />
       </div>
     );
   }
@@ -41,43 +45,54 @@ class ImageWrapper extends React.Component<ImageWrapperProps> {
 visualize('Image', () => {
   stories.forEach(({ name, src, invalidSrc }) => {
     story(name, () => {
-      snap('default', (done) => (
-        <Image src={src} width={480} height={360} onLoad={done} />
-      ));
-      snap('with width & height', (done) => (
-        <Image src={src} width={200} height={200} onLoad={done} />
-      ));
+      snap('default', (done) => <ImageWithWrapper src={src} onLoad={done} />);
       snap('with onError', (done) => (
-        <ImageWrapper src={invalidSrc} onDone={done} />
+        <ImageWithWrapper src={invalidSrc} onError={done} />
       ));
       snap('with blurry loading', (done) => (
-        <Image
-          src={src}
-          width={200}
-          height={200}
-          loadingBehavior="blur"
-          onLoad={done}
-        />
+        <ImageWithWrapper src={src} loadingBehavior="blur" onLoad={done} />
       ));
+
+      story('with dimensions', () => {
+        snap('as fixed', (done) => (
+          <ImageWithWrapper src={src} width={300} height={225} onLoad={done} />
+        ));
+        snap('as fixed width and aspectRatio', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={300}
+            aspectRatio={1}
+            onLoad={done}
+          />
+        ));
+        snap('as fixed height and aspectRatio', (done) => (
+          <ImageWithWrapper
+            src={src}
+            height={300}
+            aspectRatio={1}
+            onLoad={done}
+          />
+        ));
+      });
 
       story('with aspectRatio', () => {
         snap('as square', (done) => (
-          <Image src={src} width={480} aspectRatio="square" onLoad={done} />
+          <ImageWithWrapper src={src} aspectRatio="square" onLoad={done} />
         ));
         snap('as cinema', (done) => (
-          <Image src={src} width={480} aspectRatio="cinema" onLoad={done} />
+          <ImageWithWrapper src={src} aspectRatio="cinema" onLoad={done} />
         ));
         snap('as landscape', (done) => (
-          <Image src={src} width={480} aspectRatio="landscape" onLoad={done} />
+          <ImageWithWrapper src={src} aspectRatio="landscape" onLoad={done} />
         ));
         snap('as custom number', (done) => (
-          <Image src={src} width={480} aspectRatio={1.5} onLoad={done} />
+          <ImageWithWrapper src={src} aspectRatio={1.5} onLoad={done} />
         ));
       });
 
       story('with resize', () => {
         snap('as contain', (done) => (
-          <Image
+          <ImageWithWrapper
             src={src}
             width={300}
             height={250}
@@ -86,7 +101,7 @@ visualize('Image', () => {
           />
         ));
         snap('as cover', (done) => (
-          <Image
+          <ImageWithWrapper
             src={src}
             width={300}
             height={250}
