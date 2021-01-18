@@ -21,7 +21,7 @@ export interface PopoverProps
 export const Popover: React.FC<PopoverProps> & {
   Element?: React.FC;
   Content?: React.FC;
-} = props => {
+} = (props) => {
   const {
     triggerAction,
     wiredToSiteColors,

@@ -25,7 +25,7 @@ import { storyComponent } from '../../../../stories/helperComponents/storyCompon
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { Text } from '../../Text';
 
-const code = config =>
+const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
 
 const PopoverContent = [
