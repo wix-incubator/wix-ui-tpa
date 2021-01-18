@@ -38,7 +38,7 @@ function renderTest(props?: any) {
             withFocusRing
             onChange={(val) => console.log(val)}
             theme={RadioButtonTheme.Default}
-            label="default theme"
+            label="no focus-ring on mobile"
             data-hook="radio-button-default-mobile"
           />,
         )}
