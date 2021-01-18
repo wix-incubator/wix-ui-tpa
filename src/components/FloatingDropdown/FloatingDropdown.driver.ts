@@ -14,6 +14,7 @@ export interface FloatingDropdownDriver extends BaseUniDriver {
   clickOnDropdownBase(): Promise<void>;
   selectOptionAt(i: number): Promise<void>;
   getBaseSelectedValue(): Promise<string>;
+  getAriaExpanded(): Promise<string>;
 }
 
 type LocalDriver = Omit<FloatingDropdownDriver, 'exists' | 'click' | 'element'>;
@@ -27,6 +28,10 @@ export const floatingDropdownDriverFactory = (
 
   const getDropdownBase = async () => {
     return base.$(selectorFromDataHook(DATA_HOOKS.base));
+  };
+
+  const getDropdownFloatingButton = async () => {
+    return base.$(selectorFromDataHook(DATA_HOOKS.floatingDropdownButton));
   };
 
   const getDropdownCoreDriver = async () => {
@@ -51,6 +56,9 @@ export const floatingDropdownDriverFactory = (
         .$(selectorFromDataHook(DATA_HOOKS.baseSelectedValue))
         .text();
     },
+    getAriaExpanded: async () => {
+      return (await getDropdownFloatingButton()).attr('aria-expanded');
+    },
   });
 
   const getNativeProp = async (prop: string) => {
@@ -68,6 +76,8 @@ export const floatingDropdownDriverFactory = (
       const options = await getNativeProp('options');
       return options[selectedIndex]?.text;
     },
+    getAriaExpanded: async () =>
+      (await getDropdownFloatingButton()).attr('aria-expanded'),
   });
 
   const getDriver = async (): Promise<LocalDriver> =>
@@ -82,6 +92,7 @@ export const floatingDropdownDriverFactory = (
       (await getDriver()).selectOptionAt(index),
     getBaseSelectedValue: async () =>
       (await getDriver()).getBaseSelectedValue(),
+    getAriaExpanded: async () => (await getDriver()).getAriaExpanded(),
   };
 };
 
