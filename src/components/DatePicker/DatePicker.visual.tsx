@@ -2,6 +2,7 @@ import * as React from 'react';
 import { visualize, story, snap } from 'storybook-snapper';
 
 import { DatePicker } from './';
+import { classes } from './DatePicker.visual.st.css';
 
 const VisualTestDatePicker = (props) => {
   const { width, ...rest } = props;
@@ -106,6 +107,15 @@ visualize('DatePicker', () => {
             </div>
           ) : null
         }
+      />,
+    );
+    snap(
+      'Adaptive to font change',
+      <VisualTestDatePicker
+        className={classes.dayFontSizeOverride}
+        width="650px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
       />,
     );
   });
