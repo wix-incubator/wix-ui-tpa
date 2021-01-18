@@ -78,7 +78,8 @@
     WeekdayTextColor: --overridable;
     /*
         The font of a specific date.
-        @default {theme: 'Body-M', size: '14px', lineHeight: '20px'}
+        @default {theme: 'Body-M', size: '14px', lineHeight: 1 }
+        @fixed The line height is 1 and could not be overridden.
     */
     DayFont: --overridable;
     /*
