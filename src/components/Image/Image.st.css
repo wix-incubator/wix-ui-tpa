@@ -24,12 +24,20 @@
   object-fit: cover;
 }
 
-.absoluteImage.preload {
+.preload {
   filter: blur(value(BlurRadius));
 }
 
-.absoluteImage.loaded {
+.loaded {
   animation-name: blurry-loading;
   animation-duration: 0.3s;
   animation-timing-function: easeout;
+}
+
+.absoluteImage.preload {
+  -st-mixin: preload;
+}
+
+.absoluteImage.loaded {
+  -st-mixin: loaded;
 }
