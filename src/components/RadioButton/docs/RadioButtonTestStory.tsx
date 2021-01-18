@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
-import { TPAComponentsWrapper } from 'src/test/utils';
+import { TPAComponentsWrapper } from '../../../test/utils';
 import { RadioButton, RadioButtonTheme } from '..';
 
 const kind = 'Tests';
