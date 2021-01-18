@@ -25,3 +25,14 @@ export interface Dimensions {
   width: ImageProps['width'];
   height: ImageProps['height'];
 }
+
+export const enum ResizeOptions {
+  contain = 'contain',
+  cover = 'cover',
+}
+
+export const AspectRatioOptions = {
+  square: 1,
+  cinema: 16 / 9,
+  landscape: 4 / 3,
+};

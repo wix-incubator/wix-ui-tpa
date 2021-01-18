@@ -1,20 +1,8 @@
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
-import { MediaImage } from 'wix-ui-core/media-image';
 import { classes, st } from './Image.st.css';
 import { RelativeImage } from './RelativeImage';
-import { Dimensions, ImageProps } from './types';
-
-const enum ResizeOptions {
-  contain = 'contain',
-  cover = 'cover',
-}
-
-const AspectRatioOptions = {
-  square: 1,
-  cinema: 16 / 9,
-  landscape: 4 / 3,
-};
+import { AspectRatioOptions, ImageProps, ResizeOptions } from './types';
 
 type DefaultProps = Pick<ImageProps, 'resize' | 'aspectRatio'>;
 
