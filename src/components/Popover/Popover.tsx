@@ -105,6 +105,8 @@ export const Popover: React.FC<PopoverProps> & {
   }
 };
 
+Popover.displayName = 'Popover';
+
 Popover.defaultProps = {
   triggerAction: TriggerAction.click,
   wiredToSiteColors: true,
