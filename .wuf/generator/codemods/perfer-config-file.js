@@ -4,8 +4,8 @@ module.exports = (file, api, options) => {
 
   const fileBundlesToAdd = [
     `${ComponentName}.bundle.min.js`,
-    `${ComponentName}.perf.basic.bundle.min.js`
-    `${ComponentName}.perf.extended.bundle.min.js`
+    `${ComponentName}PerfBasic.bundle.min.js`
+    `${ComponentName}PerfExtended.bundle.min.js`
   ]
 
   const root = jscodeshift(file.source);
