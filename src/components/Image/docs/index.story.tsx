@@ -65,7 +65,7 @@ export default {
             {
               title: 'General Absolute URL',
               description:
-                'This example demonstrates the usage of an image with an absolute full URL.',
+                'This example demonstrates the usage of an external image with an absolute full URL.',
               source: examples.absoluteUrlExample,
             },
             {
@@ -73,6 +73,12 @@ export default {
               description:
                 'This example demonstrates the usage of a media platform item with a relative URI.',
               source: examples.relativeUriExample,
+            },
+            {
+              title: 'Dimensions',
+              description:
+                'The image supports fixed `width` and `height` values and this is the **optimal** way to render (both of performance and SEO aspects). In case the dimensions are not provided (or only one of them is provided), they would be calculated based on the bounding rectangle and the aspect ratio. This means that if the parent element sets any dimensions, they would be used to calculate.',
+              source: examples.dimensionsExample,
             },
             {
               title: 'Resizing',
@@ -83,7 +89,7 @@ export default {
             {
               title: 'Aspect Ratio',
               description:
-                'The proportional relationship between width and height of the image can be adjusted using `aspectRatio`. The prop also supports predefined values in order to apply their ratio - such as: `square`, `cinema` and `landscape`.',
+                'The proportional relationship between width and height of the image can be adjusted using `aspectRatio`. The prop also supports predefined values in order to apply their ratio - such as: `square`, `cinema` and `landscape`. If one of the dimensions is missing, `aspectRatio` would be used to calculate it.',
               source: examples.aspectRatioExample,
             },
             {
