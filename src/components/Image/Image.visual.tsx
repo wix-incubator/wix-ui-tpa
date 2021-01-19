@@ -21,7 +21,7 @@ type ImageWithWrapperProps = ImageProps;
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
 
-  onError(onError: ImageWithWrapperProps['onError']) {
+  onError(onError) {
     this.setState({ hasError: true }, () => setTimeout(() => onError(), 500));
   }
 
