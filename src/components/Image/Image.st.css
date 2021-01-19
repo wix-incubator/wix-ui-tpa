@@ -16,11 +16,13 @@
   min-height: 100%;
 }
 
-.root.contain .absoluteImage, .root.contain .relativeImage {
+.root.contain .absoluteImage,
+.root.contain .relativeImage {
   object-fit: contain;
 }
 
-.root.cover .absoluteImage, .root.cover .relativeImage {
+.root.cover .absoluteImage,
+.root.cover .relativeImage {
   object-fit: cover;
 }
 
