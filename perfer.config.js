@@ -12,7 +12,7 @@ const files = [
   ['BadgePerfExtendedGood.bundle.min.js', 5],
   ['Button.bundle.min.js', 9],
   ['ButtonPerfBasic.bundle.min.js', 9],
-  ['ButtonPerfExtended.bundle.min.js', 9],
+  ['ButtonPerfExtended.bundle.min.js', 10],
   ['CalendarCell.bundle.min.js', 5],
   ['CalendarPopover.bundle.min.js', 10],
   ['Card.bundle.min.js', 5],
