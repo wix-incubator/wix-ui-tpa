@@ -77,7 +77,7 @@ export default {
             {
               title: 'Dimensions',
               description:
-                'The image supports fixed `width` and `height` values and this is the **optimal** way to render (both of performance and SEO aspects). In case the dimensions are not provided (or only one of them is provided), they would be calculated based on the bounding rectangle and the aspect ratio. This means that if the parent element sets any dimensions, they would be used to calculate.',
+                'The image supports fixed `width` and `height` values and this is the **optimal** way to render (both of performance and SEO aspects). In case the dimensions are not provided, they would be calculated based on the bounding rectangle and the aspect ratio. This means that if the parent element sets any dimensions, they would be used to calculate. If only one of the dimensions is provided, the other one would be calculated based on the provided dimension and aspect ratio.',
               source: examples.dimensionsExample,
             },
             {
@@ -89,7 +89,7 @@ export default {
             {
               title: 'Aspect Ratio',
               description:
-                'The proportional relationship between width and height of the image can be adjusted using `aspectRatio`. The prop also supports predefined values in order to apply their ratio - such as: `square`, `cinema` and `landscape`. If one of the dimensions is missing, `aspectRatio` would be used to calculate it.',
+                'The proportional relationship between width and height of the image can be adjusted using `aspectRatio`. The prop also supports predefined values in order to apply their ratio - such as: `square`, `cinema` and `landscape`. As said, if one of the dimensions is missing, the aspect ratio would be used to calculate it.',
               source: examples.aspectRatioExample,
             },
             {
