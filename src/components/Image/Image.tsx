@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
 import { classes, st } from './Image.st.css';
+import { calculateDimensions } from './ImageUtils';
 import { RelativeImage } from './RelativeImage';
 import { AspectRatioOptions, ImageProps, ResizeOptions } from './types';
 
@@ -14,7 +15,7 @@ export class Image extends React.Component<ImageProps> {
     aspectRatio: 1,
   };
 
-  state = { isLoaded: false, width: null, height: null };
+  state = { isLoaded: false, boundingRectDimensions: null };
 
   containerRef = React.createRef<HTMLDivElement>();
 
@@ -28,30 +29,23 @@ export class Image extends React.Component<ImageProps> {
     onLoad && onLoad(event);
   };
 
-  _calculateDimensions = (
-    width: number,
-    height: number,
-    aspectRatio: number,
-  ) => {
-    const sourceDimensions = { width, height };
-    const containerDimensions = {
-      width: !width && height && aspectRatio ? height * aspectRatio : width,
-      height: !height && width && aspectRatio ? width / aspectRatio : height,
-    };
-
-    return {
-      sourceDimensions,
-      containerDimensions,
-    };
-  };
-
   componentDidMount() {
-    const {
-      width,
-      height,
-    } = this.containerRef.current?.getBoundingClientRect();
+    const { width, height, aspectRatio } = this.props;
 
-    this.setState({ width, height });
+    // Updating the state only if we don't have enough information to calculate the dimensions
+    if (!(width && height) || !((width || height) && aspectRatio)) {
+      const {
+        width: boundingRectWidth,
+        height: boundingRectHeight,
+      } = this.containerRef.current?.getBoundingClientRect();
+
+      this.setState({
+        boundingRectDimensions: {
+          width: boundingRectWidth,
+          height: boundingRectHeight,
+        },
+      });
+    }
   }
 
   render() {
@@ -66,7 +60,7 @@ export class Image extends React.Component<ImageProps> {
       loadingBehavior,
       ...imageProps
     } = this.props;
-    const { isLoaded } = this.state;
+    const { isLoaded, boundingRectDimensions } = this.state;
 
     const isAbsoluteUrl = src && src.match('^https?://');
 
@@ -75,15 +69,20 @@ export class Image extends React.Component<ImageProps> {
         ? aspectRatio
         : AspectRatioOptions[aspectRatio];
 
-    const { sourceDimensions, containerDimensions } = this._calculateDimensions(
-      width || this.state.width,
-      height || this.state.height,
-      aspectRatioAsNumber,
-    );
+    // Taking the dimensions from props or from its bounding rectangle in case they're missing
+    const sourceDimensions = {
+      width: width || boundingRectDimensions?.width,
+      height: height || boundingRectDimensions?.height,
+    };
+
+    // Calculating the dimensions considering the given values and aspect ratio
+    const calculatedDimensions = calculateDimensions({
+      ...sourceDimensions,
+      aspectRatio: aspectRatioAsNumber,
+    });
 
     const hasLoadingBehavior = loadingBehavior === 'blur';
 
-    console.log({ sourceDimensions, containerDimensions });
     return (
       <div
         ref={this.containerRef}
@@ -102,23 +101,22 @@ export class Image extends React.Component<ImageProps> {
               hasLoadingBehavior &&
                 (isLoaded ? classes.loaded : classes.preload),
             )}
-            nativeProps={{ ...containerDimensions }}
+            {...(calculatedDimensions && {
+              nativeProps: { ...calculatedDimensions },
+            })}
             onLoad={this._onLoad}
             {...imageProps}
           />
         ) : (
-          containerDimensions.width &&
-          containerDimensions.height && (
-            <RelativeImage
-              src={src}
-              className={classes.relativeImage}
-              sourceDimensions={sourceDimensions}
-              containerDimensions={containerDimensions}
-              isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
-              onLoad={this._onLoad}
-              {...imageProps}
-            />
-          )
+          <RelativeImage
+            src={src}
+            className={classes.relativeImage}
+            sourceDimensions={sourceDimensions}
+            containerDimensions={calculatedDimensions}
+            isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
+            onLoad={this._onLoad}
+            {...imageProps}
+          />
         )}
       </div>
     );

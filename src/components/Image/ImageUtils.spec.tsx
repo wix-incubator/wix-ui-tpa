@@ -52,29 +52,23 @@ describe('ImageUtils', () => {
     expect(calculatedDimensions).toEqual(expectedDimensions);
   });
 
-  it('should throw an exception when both dimensions are missing', async () => {
-    const invalidUsage = () => {
-      calculateDimensions({});
-    };
+  it('should return `null` when both dimensions are missing', async () => {
+    const calculatedDimensions = calculateDimensions({});
 
-    expect(invalidUsage).toThrow(Error);
+    expect(calculatedDimensions).toBeNull();
   });
 
-  it('should throw an exception when having width but aspect ratio is missing', async () => {
+  it('should return `null` when having width but aspect ratio is missing', async () => {
     const { width } = sampleDimensions;
-    const invalidUsage = () => {
-      calculateDimensions({ width });
-    };
+    const calculatedDimensions = calculateDimensions({ width });
 
-    expect(invalidUsage).toThrow(Error);
+    expect(calculatedDimensions).toBeNull();
   });
 
-  it('should throw an exception when having height but aspect ratio is missing', async () => {
+  it('should return `null` when having height but aspect ratio is missing', async () => {
     const { height } = sampleDimensions;
-    const invalidUsage = () => {
-      calculateDimensions({ height });
-    };
+    const calculatedDimensions = calculateDimensions({ height });
 
-    expect(invalidUsage).toThrow(Error);
+    expect(calculatedDimensions).toBeNull();
   });
 });

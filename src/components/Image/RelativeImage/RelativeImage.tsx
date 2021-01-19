@@ -45,27 +45,29 @@ export class RelativeImage extends React.Component<RelativeImageProps> {
     } = this.props;
 
     return (
-      <>
-        {isPlaceholderDisplayed && (
-          <Placeholder
-            src={src}
-            className={st(classes.placeholder, className)}
-            sourceDimensions={sourceDimensions}
-            containerDimensions={containerDimensions}
+      containerDimensions && (
+        <>
+          {isPlaceholderDisplayed && (
+            <Placeholder
+              src={src}
+              className={st(classes.placeholder, className)}
+              sourceDimensions={sourceDimensions}
+              containerDimensions={containerDimensions}
+              {...imageProps}
+            />
+          )}
+          <MediaImage
+            mediaPlatformItem={{
+              uri: src,
+              ...sourceDimensions,
+            }}
+            className={st(classes.root, className)}
+            onLoad={onLoad}
+            {...containerDimensions}
             {...imageProps}
           />
-        )}
-        <MediaImage
-          mediaPlatformItem={{
-            uri: src,
-            ...sourceDimensions,
-          }}
-          className={st(classes.root, className)}
-          onLoad={onLoad}
-          {...containerDimensions}
-          {...imageProps}
-        />
-      </>
+        </>
+      )
     );
   }
 }
