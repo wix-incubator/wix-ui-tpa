@@ -1,3 +1,18 @@
+# [2.19.0](https://github.com/wix/wix-ui-tpa/compare/v2.18.0...v2.19.0) (2021-01-19)
+
+
+### Bug Fixes
+
+* **RadioButton:** remove focus ring on mobile ([32c18b7](https://github.com/wix/wix-ui-tpa/commit/32c18b772f620f4aa468897cfd0af441a7de3f67))
+
+
+### Features
+
+* **DatePicker:** Adaptive to font change ([#609](https://github.com/wix/wix-ui-tpa/issues/609)) ([9a8ce22](https://github.com/wix/wix-ui-tpa/commit/9a8ce22c9cf0840d1b4da4c3330baf70fbe4a480))
+* **DatePicker:** Add day indication slot ([#590](https://github.com/wix/wix-ui-tpa/issues/590)) ([73d6441](https://github.com/wix/wix-ui-tpa/commit/73d6441335536988c275e3c0d1ea822c8bb1571e))
+
+
+
 # [2.18.0](https://github.com/wix/wix-ui-tpa/compare/v2.17.0...v2.18.0) (2021-01-13)
 
 
