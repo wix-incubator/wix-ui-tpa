@@ -14,7 +14,7 @@ export const BoxSelectionWiringExample = () => {
     >
       {['1', '2', '3'].map((n) => (
         <BoxSelection.Option key={n} id={n} checked={selectedId === n}>
-          Item-{n}
+          <div>Item-{n}</div>
         </BoxSelection.Option>
       ))}
     </BoxSelection>

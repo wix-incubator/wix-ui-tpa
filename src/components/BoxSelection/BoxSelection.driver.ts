@@ -16,8 +16,8 @@ export const boxSelectionDriverFactory = (
   base: UniDriver,
 ): BoxSelectionDriver => {
   const boxOptionDataHook = `[data-hook=${BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}]`;
-  const getOptionById = async (id: string) =>
-    base.$$(`[data-id="${id}"]`).get(0);
+  const getOptionById = async (id: string) => base.$(`[id="${id}"]`);
+  const getOptionByDataId = async (id: string) => base.$(`[data-id="${id}"]`);
   return {
     ...baseUniDriverFactory(base),
     async getOptionsCount() {
@@ -25,21 +25,21 @@ export const boxSelectionDriverFactory = (
     },
     async isChecked(id: string) {
       const option = await getOptionById(id);
-      const isChecked = (await option.attr('data-checked')) === 'true';
+      const isChecked = await option._prop('checked');
       return isChecked;
     },
     async isDisabled(id: string) {
       const option = await getOptionById(id);
-      const isDisabled = (await option.attr('data-disabled')) === 'true';
+      const isDisabled = await option._prop('disabled');
       return isDisabled;
     },
     async isUnavailable(id: string) {
-      const option = await getOptionById(id);
+      const option = await getOptionByDataId(id);
       const isUnavailable = (await option.attr('data-unavailable')) === 'true';
       return isUnavailable;
     },
     async clickOnOption(id: string) {
-      const option = base.$(`[data-id="${id}"] input`);
+      const option = await getOptionById(id);
       if (!(await this.isDisabled(id)) && !(await this.isUnavailable(id))) {
         await option.click();
       }

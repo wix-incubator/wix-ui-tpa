@@ -37,8 +37,6 @@ export interface BoxSelectionProps extends TPAComponentProps {
 
 interface DefaultProps {
   size?: BoxSize;
-  'aria-label'?: string;
-  'aria-labelledby'?: string;
 }
 
 /** The box selection is used to give the user to select single or multiple boxes. */
@@ -65,6 +63,7 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
       <div
         className={st(classes.root, {}, className)}
         data-hook={this.props['data-hook']}
+        aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
       >
         {React.Children.map(
