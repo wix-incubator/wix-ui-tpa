@@ -65,7 +65,6 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
       <div
         className={st(classes.root, {}, className)}
         data-hook={this.props['data-hook']}
-        aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
       >
         {React.Children.map(

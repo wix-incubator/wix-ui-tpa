@@ -95,6 +95,10 @@ export class Option extends React.Component<OptionProps, OptionState> {
       onChange({ id });
     }
   };
+  _getAriaLabel = () => {
+    const { children } = this.props;
+    return this.props['aria-label'] ? this.props['aria-label'] : children;
+  };
 
   render() {
     const {
@@ -138,6 +142,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           disabled={disabled}
+          aria-label={this._getAriaLabel()}
           className={classnames(classes.wrapper)}
         />
       </div>
