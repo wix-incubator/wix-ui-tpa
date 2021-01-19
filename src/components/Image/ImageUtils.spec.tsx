@@ -48,4 +48,30 @@ describe('ImageUtils', () => {
 
     expect(calculatedDimensions).toEqual(expectedDimensions);
   });
+
+  it('should throw an exception when both dimensions are missing', async () => {
+    const invalidUsage = () => {
+      calculateDimensions({});
+    };
+
+    expect(invalidUsage).toThrow(Error);
+  });
+
+  it('should throw an exception when having width but aspect ratio is missing', async () => {
+    const { width } = sampleDimensions;
+    const invalidUsage = () => {
+      calculateDimensions({ width });
+    };
+
+    expect(invalidUsage).toThrow(Error);
+  });
+
+  it('should throw an exception when having height but aspect ratio is missing', async () => {
+    const { height } = sampleDimensions;
+    const invalidUsage = () => {
+      calculateDimensions({ height });
+    };
+
+    expect(invalidUsage).toThrow(Error);
+  });
 });
