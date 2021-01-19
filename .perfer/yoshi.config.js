@@ -19,16 +19,13 @@ const components = Object.keys(componentsToBundle).reduce(
       if (hasExtendedTests) {
         extendedFiles = fs.readdirSync(perfFolder).reduce((acc, fileName) => {
           const isJsFile = fileName.endsWith('js');
+          let nameSuffix = fileName.replace(new RegExp(`${component}|\.js`, 'gi'), '');
 
           return {
             ...acc,
-            ...(isJsFile ? {[`${component}.perf.${fileName}`]: `../${filePath}/perf/${fileName}`} : {})
+            ...(isJsFile ? {[`${component}Perf${nameSuffix}`]: `../${filePath}/perf/${fileName}`} : {})
           }
         }, {});
-      }
-
-      if (Object.keys(extendedFiles).length) {
-        console.log('adler', 'yoshi.config.js:29', JSON.stringify(extendedFiles, null, 2));
       }
 
       return {
@@ -39,6 +36,8 @@ const components = Object.keys(componentsToBundle).reduce(
   },
   {}
 );
+
+console.log('adler', 'yoshi.config.js:41', components);
 
 module.exports = {
   entry: {

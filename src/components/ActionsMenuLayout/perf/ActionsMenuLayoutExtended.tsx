@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ActionsMenuLayout } from '../';
-import { st, classes } from './extended.st.css';
+import { st, classes } from './ActionsMenuLayoutExtended.st.css';
 
 export const ActionsMenuLayoutPerfer = () => {
   return (
