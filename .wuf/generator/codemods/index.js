@@ -12,6 +12,6 @@ module.exports = [
   {
     codemod: 'perfer-config-file.js',
     dist: 'perfer.config.js',
-    description: 'Add a default threshold for the new component',
+    description: 'Add a default threshold for the new component\'s bundles',
   },
 ];

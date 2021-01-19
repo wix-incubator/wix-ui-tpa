@@ -14,11 +14,11 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 
-import * as ExtendedRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.tsx';
-import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonExtendedWithStyleParamsExample.st.css';
+import * as ExtendedRawWithStyleParams from '!raw-loader!./ButtonWiringExample.tsx';
+import * as ExtendedCSSRawWithStyleParams from '!raw-loader!./ButtonWiringExample.st.css';
 
 import { examples } from './examples';
-import { ButtonExtendedWithStyleParamsExample } from './ButtonExtendedWithStyleParamsExample';
+import { ButtonWiringExample } from './ButtonWiringExample';
 import {
   autoSettingsPanel,
   settingsPanel,
@@ -96,7 +96,7 @@ export default {
           title: 'Settings Panel',
           sections: [
             settingsPanel({
-              example: <ButtonExtendedWithStyleParamsExample />,
+              example: <ButtonWiringExample />,
               rawSource: ExtendedRawWithStyleParams,
               rawCSSSource: ExtendedCSSRawWithStyleParams,
               title: 'Button with style params',

@@ -1,0 +1,8 @@
+:import {
+    -st-from: "../Component.st.css";
+    -st-named: overrideStyleParams;
+}
+
+.root {
+    -st-mixin: overrideStyleParams();
+}
