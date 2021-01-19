@@ -46,10 +46,6 @@ export interface OptionProps extends TPAComponentProps {
    * The onChange callback
    */
   onChange?({ id: string }): void;
-  /**
-   * Used for a11y label
-   */
-  'aria-label'?: string;
 }
 
 interface DefaultProps {
@@ -99,6 +95,10 @@ export class Option extends React.Component<OptionProps, OptionState> {
       onChange({ id });
     }
   };
+  _getAriaLabel = () => {
+    const { children } = this.props;
+    return this.props['aria-label'] ? this.props['aria-label'] : children;
+  };
 
   render() {
     const {
@@ -108,7 +108,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
       checked,
       disabled,
       unavailable,
-      ['aria-label']: ariaLabel,
       size,
     } = this.props;
     const { focused } = this.state;
@@ -136,7 +135,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
           data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}
           name={name}
           label={children}
-          aria-label={ariaLabel}
           checked={checked}
           value={id}
           onChange={this._onChange}
@@ -144,6 +142,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           disabled={disabled}
+          aria-label={this._getAriaLabel()}
           className={classnames(classes.wrapper)}
         />
       </div>
