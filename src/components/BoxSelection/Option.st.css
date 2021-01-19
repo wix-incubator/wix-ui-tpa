@@ -23,6 +23,8 @@
     DefaultBoxBorderRadius: 0px;
     DefaultBoxPadding: 16px;
     DisabledColor: color-3;
+    DefaultTextColor: color-5;
+    DefaultDisabledTextColor: color-3;
 }
 
 /*Overrides*/
@@ -62,6 +64,16 @@
         @default color-8
     */
     SelectedBoxColor: --overridable;
+    /*
+        Text color of the box
+        @default color-5
+    */
+    TextColor: --overridable;
+    /*
+        Text color of the box when disabled or Unavailable
+        @default color-3
+    */
+    DisabledTextColor: --overridable;
 }
 
 :vars {
@@ -72,6 +84,8 @@
     CurrentBoxBorderRadius: fallback(value(BoxBorderRadius), value(DefaultBoxBorderRadius));
     CurrentBoxPadding: fallback(value(BoxPadding), value(DefaultBoxPadding));
     CurrentSelectedBoxColor: color(fallback(value(SelectedBoxColor), value(DefaultSelectedBoxColor)));
+    CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
+    CurrentDisabledTextColor: color(fallback(value(DisabledTextColor), value(DefaultDisabledTextColor)));
 }
 
 .focused {
@@ -91,6 +105,7 @@
 
 .root .wrapper{
     -st-extends: RadioButton;
+    margin: -1px;
     align-items: center;
     cursor: pointer;
     display: flex;
@@ -103,6 +118,7 @@
     border-width: value(DefaultBoxBorderWidth);
     border-radius: value(DefaultBoxBorderRadius);
     background-color: applyOpacity(color(value(DefaultBoxFillColor)), value(DefaultBoxFillOpacity));
+    color: color(value(DefaultTextColor));
 }
 
 
@@ -111,9 +127,13 @@
     border-width: value(CurrentBoxBorderWidth);
     border-radius: value(CurrentBoxBorderRadius);
     background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
+    color: value(CurrentTextColor);
 }
 
 /* CHECKED */
+.root:checked {
+    z-index: 999;
+}
 .root:checked, .root:disabled{
     background-color: applyOpacity(color(value(DefaultBoxFillColor)), value(DefaultBoxFillOpacity));
     border-radius: value(DefaultBoxBorderRadius);
@@ -130,7 +150,7 @@
 
 .root:checked.overrideStyleParamsOption .wrapper{
     background-color: applyOpacity(value(CurrentSelectedBoxColor), 0.1);
-    border-color: value(CurrentBorderColor);
+    border-color: value(CurrentSelectedBoxColor);
 }
 
 /* DISABLED */
@@ -139,6 +159,10 @@
     pointer-events: none;
     background-color: applyOpacity(color(value(DefaultBoxFillColor)), 1);
     border-color: color(value(DisabledColor));
+    color: color(value(DefaultDisabledTextColor));
+}
+.root:disabled:not(:checked).overrideStyleParamsOption .wrapper{
+    color: value(CurrentDisabledTextColor);
 }
 
 /* CHECKED + DISABLED */
@@ -168,10 +192,14 @@
     pointer-events: none;
     cursor: default;
     border-color: color(value(DisabledColor));
+    color: color(value(DefaultDisabledTextColor));
     background: linear-gradient(to top left,
         color(value(DefaultBoxFillColor)) 0%,
         color(value(DefaultBoxFillColor)) calc(50% - 0.8px),
-        rgba(0,0,0,1) 50%,
+        color(value(DisabledColor)) 50%,
         color(value(DefaultBoxFillColor)) calc(50% + 0.8px),
         color(value(DefaultBoxFillColor)) 100%)
+}
+.root:unavailable.overrideStyleParamsOption .wrapper{
+    color: value(CurrentDisabledTextColor);
 }

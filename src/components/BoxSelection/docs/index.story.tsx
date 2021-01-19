@@ -168,6 +168,16 @@ export default {
                     wixParam: 'borderColor',
                     defaultColor: 'color-5',
                   },
+                  {
+                    label: 'Box Text color',
+                    wixParam: 'textColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Box Text Disabled + Unavailable color',
+                    wixParam: 'disabledTextColor',
+                    defaultColor: 'color-3',
+                  },
                 ],
               },
             }),

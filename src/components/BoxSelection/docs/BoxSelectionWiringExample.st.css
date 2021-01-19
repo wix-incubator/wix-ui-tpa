@@ -19,7 +19,9 @@
     SelectedBoxColor '"color(--selectedBoxColor)"',
     BoxFillColor '"color(--boxFillColor)"',
     BoxBorderRadius '"unit(--boxBorderRadius, px)"',
-    BoxBorderWidth '"unit(fallback(--boxBorderWidth, 1), px)"',
+    BoxBorderWidth '"unit(fallback(zeroAsTrue(--boxBorderWidth), 1), px)"',
     BoxBorderColor '"color(--borderColor)"',
+    TextColor '"color(--textColor)"',
+    DisabledTextColor '"color(--disabledTextColor)"',
   );
 }
