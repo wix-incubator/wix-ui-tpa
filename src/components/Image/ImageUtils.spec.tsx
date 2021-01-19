@@ -10,10 +10,11 @@ describe('ImageUtils', () => {
     expect(calculatedDimensions).toEqual(sampleDimensions);
   });
 
-  it('should calculate both dimensions by the given aspect ratio', async () => {
+  it('should calculate the height when having both dimensions and aspect ratio', async () => {
+    const { width } = sampleDimensions;
     const expectedDimensions = {
-      width: sampleDimensions.width / sampleAspectRatio,
-      height: sampleDimensions.height / sampleAspectRatio,
+      width,
+      height: width / sampleAspectRatio,
     };
     const calculatedDimensions = calculateDimensions({
       ...sampleDimensions,
@@ -24,12 +25,13 @@ describe('ImageUtils', () => {
   });
 
   it('should calculate the missing height by the given width and aspect ratio', async () => {
+    const { width, height } = sampleDimensions;
     const expectedDimensions = {
-      width: sampleDimensions.width,
-      height: sampleDimensions.height / sampleAspectRatio,
+      width,
+      height: width / sampleAspectRatio,
     };
     const calculatedDimensions = calculateDimensions({
-      width: sampleDimensions.width,
+      width,
       aspectRatio: sampleAspectRatio,
     });
 
@@ -37,12 +39,13 @@ describe('ImageUtils', () => {
   });
 
   it('should calculate the missing width by the given height and aspect ratio', async () => {
+    const { height } = sampleDimensions;
     const expectedDimensions = {
-      width: sampleDimensions.width / sampleAspectRatio,
-      height: sampleDimensions.height,
+      width: height * sampleAspectRatio,
+      height,
     };
     const calculatedDimensions = calculateDimensions({
-      height: sampleDimensions.height,
+      height,
       aspectRatio: sampleAspectRatio,
     });
 
