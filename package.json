@@ -37,7 +37,7 @@
     "test": "concurrently npm:lint npm:test:unit npm:test:e2e npm:test:eyes-storybook npm:autotools npm:test:perfer-bundles",
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
-    "test:e2e": "yoshi test --protractor",
+    "test:e2e": "yoshi test --protractor --debug=3201",
     "test:eyes-storybook": "if test \"$EYES_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "test:perfer-bundles": "npm run build:perfer-bundles && perfer --verbose",
@@ -173,6 +173,11 @@
   },
   "yoshi": {
     "exports": "wix-ui-tpa",
-    "tpaStyle": true
+    "tpaStyle": true,
+    "servers": {
+      "cdn": {
+        "port": 3201
+      }
+    }
   }
 }
