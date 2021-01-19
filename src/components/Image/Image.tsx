@@ -109,7 +109,10 @@ export class Image extends React.Component<ImageProps> {
         ) : (
           <RelativeMediaImage
             src={src}
-            className={classes.relativeImage}
+            className={st(
+              classes.relativeImage,
+              hasLoadingBehavior && isLoaded && classes.loaded,
+            )}
             sourceDimensions={sourceDimensions}
             containerDimensions={calculatedDimensions}
             isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
