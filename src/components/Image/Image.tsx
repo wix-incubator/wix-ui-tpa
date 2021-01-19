@@ -5,14 +5,13 @@ import { calculateDimensions } from './ImageUtils';
 import { RelativeImage } from './RelativeImage';
 import { AspectRatioOptions, ImageProps, ResizeOptions } from './types';
 
-type DefaultProps = Pick<ImageProps, 'resize' | 'aspectRatio'>;
+type DefaultProps = Pick<ImageProps, 'resize'>;
 
 /** Image is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI */
 export class Image extends React.Component<ImageProps> {
   static displayName = 'Image';
   static defaultProps: DefaultProps = {
     resize: ResizeOptions.contain,
-    aspectRatio: 1,
   };
 
   state = { isLoaded: false, boundingRectDimensions: null };
