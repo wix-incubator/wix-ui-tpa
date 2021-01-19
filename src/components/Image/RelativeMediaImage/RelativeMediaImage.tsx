@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { MediaImage } from 'wix-ui-core/media-image';
 import { Dimensions, ImageProps } from '../types';
-import { classes, st } from './RelativeImage.st.css';
+import { classes, st } from './RelativeMediaImage.st.css';
 
-interface RelativeImageProps extends Omit<ImageProps, 'width' | 'height'> {
+interface RelativeMediaImageProps extends Omit<ImageProps, 'width' | 'height'> {
   sourceDimensions: Dimensions;
   containerDimensions: Dimensions;
   isPlaceholderDisplayed?: boolean;
@@ -15,7 +15,7 @@ const Placeholder = ({
   sourceDimensions,
   containerDimensions,
   ...imageProps
-}: RelativeImageProps) => (
+}: RelativeMediaImageProps) => (
   <MediaImage
     mediaPlatformItem={{
       uri: src,
@@ -32,7 +32,7 @@ const Placeholder = ({
   />
 );
 
-export class RelativeImage extends React.Component<RelativeImageProps> {
+export class RelativeMediaImage extends React.Component<RelativeMediaImageProps> {
   render() {
     const {
       src,

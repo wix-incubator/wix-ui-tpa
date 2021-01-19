@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
 import { classes, st } from './Image.st.css';
 import { calculateDimensions } from './ImageUtils';
-import { RelativeImage } from './RelativeImage';
+import { RelativeMediaImage } from './RelativeMediaImage';
 import { AspectRatioOptions, ImageProps, ResizeOptions } from './types';
 
 type DefaultProps = Pick<ImageProps, 'resize'>;
@@ -107,7 +107,7 @@ export class Image extends React.Component<ImageProps> {
             {...imageProps}
           />
         ) : (
-          <RelativeImage
+          <RelativeMediaImage
             src={src}
             className={classes.relativeImage}
             sourceDimensions={sourceDimensions}

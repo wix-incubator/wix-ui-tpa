@@ -1,16 +1,17 @@
 :import {
-    -st-from: "../Image.st.css";
-    -st-named: preload, loaded;
+  -st-from: '../Image.st.css';
+  -st-named: preload, loaded;
 }
 
 .root {
   -st-mixin: loaded;
 }
- 
+
 .placeholder {
   -st-mixin: preload;
 }
 
-.root, .placeholder {
+.root,
+.placeholder {
   grid-area: 1 / 1;
 }
