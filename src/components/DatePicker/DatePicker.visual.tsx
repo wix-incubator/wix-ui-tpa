@@ -118,5 +118,14 @@ visualize('DatePicker', () => {
         onChange={() => {}}
       />,
     );
+    snap(
+      'Selected day border radius',
+      <VisualTestDatePicker
+        className={classes.selectedDayBorderRadius}
+        width="650px"
+        value={new Date('2019/12/15')}
+        onChange={() => {}}
+      />,
+    );
   });
 });
