@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
 import { Image, ImageProps } from './';
-import { ResizeOptions, AspectRatios } from './types';
+import {
+  ResizeOptions,
+  AspectRatioPresets,
+  LoadingBehaviorOptions,
+} from './types';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
@@ -51,7 +55,11 @@ visualize('Image', () => {
         <ImageWithWrapper src={invalidSrc} onError={done} />
       ));
       snap('with blurry loading', (done) => (
-        <ImageWithWrapper src={src} loadingBehavior="blur" onLoad={done} />
+        <ImageWithWrapper
+          src={src}
+          loadingBehavior={LoadingBehaviorOptions.blur}
+          onLoad={done}
+        />
       ));
 
       story('with dimensions', () => {
@@ -80,21 +88,21 @@ visualize('Image', () => {
         snap('as square', (done) => (
           <ImageWithWrapper
             src={src}
-            aspectRatio={AspectRatios.square}
+            aspectRatio={AspectRatioPresets.square}
             onLoad={done}
           />
         ));
         snap('as cinema', (done) => (
           <ImageWithWrapper
             src={src}
-            aspectRatio={AspectRatios.cinema}
+            aspectRatio={AspectRatioPresets.cinema}
             onLoad={done}
           />
         ));
         snap('as landscape', (done) => (
           <ImageWithWrapper
             src={src}
-            aspectRatio={AspectRatios.landscape}
+            aspectRatio={AspectRatioPresets.landscape}
             onLoad={done}
           />
         ));

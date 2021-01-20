@@ -1,6 +1,6 @@
-import { ResizeOptions, AspectRatios } from '../';
+import { ResizeOptions, AspectRatioPresets, LoadingBehaviorOptions } from '../';
 
-// This method helps to show the consumer the preset value by the actual key
+// This method helps to show the consumer the preset value by the actual key (relevant when the key is different from the mapped value)
 const getKeyByValue = (object, value) =>
   Object.keys(object).find((key) => object[key] === value);
 
@@ -67,14 +67,20 @@ export const aspectRatioExample = `
     width={300}
     alt="Garfield smiles and puts his hand over chest"
     resize="${ResizeOptions.cover}"
-    aspectRatio="${getKeyByValue(AspectRatios, AspectRatios.square)}"
+    aspectRatio="${getKeyByValue(
+      AspectRatioPresets,
+      AspectRatioPresets.square,
+    )}"
   />
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
     width={300}
     alt="Garfield smiles and puts his hand over chest"
     resize="${ResizeOptions.cover}"
-    aspectRatio="${getKeyByValue(AspectRatios, AspectRatios.cinema)}"
+    aspectRatio="${getKeyByValue(
+      AspectRatioPresets,
+      AspectRatioPresets.cinema,
+    )}"
   />
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
@@ -106,7 +112,7 @@ class MediaImageWithBlurryLoading extends React.Component {
           src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
           width={480}
           height={360}
-          loadingBehavior="blur"
+          loadingBehavior="${LoadingBehaviorOptions.blur}"
         />
         <Button onClick={() => this._reload()}>Reload</Button>
       </>

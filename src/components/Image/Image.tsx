@@ -4,7 +4,12 @@ import { Image as CoreImage } from 'wix-ui-core/image';
 import { classes, st } from './Image.st.css';
 import { calculateDimensions } from './ImageUtils';
 import { RelativeMediaImage } from './RelativeMediaImage';
-import { ImageProps, ResizeOptions, AspectRatios } from './types';
+import {
+  ImageProps,
+  ResizeOptions,
+  AspectRatioPresets,
+  LoadingBehaviorOptions,
+} from './types';
 
 type DefaultProps = Pick<ImageProps, 'resize'>;
 
@@ -65,7 +70,9 @@ export class Image extends React.Component<ImageProps> {
     const isAbsoluteUrl = src && src.match('^https?://');
 
     const aspectRatioAsNumber =
-      typeof aspectRatio === 'number' ? aspectRatio : AspectRatios[aspectRatio];
+      typeof aspectRatio === 'number'
+        ? aspectRatio
+        : AspectRatioPresets[aspectRatio];
 
     // Taking the dimensions from props or from its bounding rectangle in case they're missing
     const sourceDimensions = {
@@ -79,7 +86,7 @@ export class Image extends React.Component<ImageProps> {
       aspectRatio: aspectRatioAsNumber,
     });
 
-    const hasLoadingBehavior = loadingBehavior === 'blur';
+    const hasLoadingBehavior = loadingBehavior === LoadingBehaviorOptions.blur;
 
     return (
       <div
