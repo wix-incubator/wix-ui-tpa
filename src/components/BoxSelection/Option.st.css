@@ -8,11 +8,6 @@
     -st-named: errorColor, focusRing;
 }
 
-:import {
-    -st-from: "wix-ui-core/index.st.css";
-    -st-named: RadioButton;
-}
-
 /*Defaults*/
 :vars {
     DefaultSelectedBoxColor: color-8;
@@ -104,7 +99,6 @@
 }
 
 .root .wrapper{
-    -st-extends: RadioButton;
     margin: -1px;
     align-items: center;
     cursor: pointer;
@@ -183,22 +177,34 @@
 } 
 
 /* UNAVAILABLE */
-
 .root:unavailable {
     pointer-events: none;
     cursor: default;
+    position: relative;
+}
+.root:unavailable .unavailableDiagonalLine{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.root:unavailable .unavailableDiagonalLine line {
+    stroke: color(value(DisabledColor));
+    stroke-width: value(DefaultBoxBorderWidth);
+}
+.root:unavailable.overrideStyleParamsOption .unavailableDiagonalLine line {
+    stroke-width: value(CurrentBoxBorderWidth);
 }
 .root:unavailable .wrapper{
     pointer-events: none;
     cursor: default;
     border-color: color(value(DisabledColor));
     color: color(value(DefaultDisabledTextColor));
-    background: linear-gradient(to top left,
+    /* background: linear-gradient(to top left,
         color(value(DefaultBoxFillColor)) 0%,
         color(value(DefaultBoxFillColor)) calc(50% - 0.8px),
         color(value(DisabledColor)) 50%,
         color(value(DefaultBoxFillColor)) calc(50% + 0.8px),
-        color(value(DefaultBoxFillColor)) 100%)
+        color(value(DefaultBoxFillColor)) 100%) */
 }
 .root:unavailable.overrideStyleParamsOption .wrapper{
     color: value(CurrentDisabledTextColor);

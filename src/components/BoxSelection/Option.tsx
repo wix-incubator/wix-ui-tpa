@@ -131,6 +131,11 @@ export class Option extends React.Component<OptionProps, OptionState> {
         tabIndex={0}
         {...this._getDataAttributes()}
       >
+        {unavailable && (
+          <svg className={classes.unavailableDiagonalLine}>
+            <line x1="0" y1="100%" x2="100%" y2="0" />
+          </svg>
+        )}
         <CoreRadioButton
           data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}
           name={name}
