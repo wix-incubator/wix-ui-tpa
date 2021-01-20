@@ -5,8 +5,9 @@ const {
 exports.config = {
   ...baseProtractorConfig,
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 360000
+    defaultTimeoutInterval: 180000
   },
+  allScriptsTimeout: 180000,
   capabilities: {
     browserName: "chrome",
     chromeOptions: {
