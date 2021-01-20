@@ -130,6 +130,7 @@ export class DatePicker extends React.Component<DatePickerProps> {
               rtl={rtl}
               selectionMode="day"
               numOfMonths={1}
+              autoFocus={false}
               dateIndication={dateIndication}
             />
           </div>
