@@ -122,7 +122,7 @@ visualize('DatePicker', () => {
       'Selected day border radius',
       <VisualTestDatePicker
         className={classes.selectedDayBorderRadius}
-        width="650px"
+        width="280px"
         value={new Date('2019/12/15')}
         onChange={() => {}}
       />,
