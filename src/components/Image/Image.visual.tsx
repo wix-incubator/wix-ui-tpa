@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
 import { Image, ImageProps } from './';
-import { ResizeOptions } from './types';
+import { ResizeOptions, AspectRatios } from './types';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
@@ -78,13 +78,25 @@ visualize('Image', () => {
 
       story('with aspectRatio', () => {
         snap('as square', (done) => (
-          <ImageWithWrapper src={src} aspectRatio="square" onLoad={done} />
+          <ImageWithWrapper
+            src={src}
+            aspectRatio={AspectRatios.square}
+            onLoad={done}
+          />
         ));
         snap('as cinema', (done) => (
-          <ImageWithWrapper src={src} aspectRatio="cinema" onLoad={done} />
+          <ImageWithWrapper
+            src={src}
+            aspectRatio={AspectRatios.cinema}
+            onLoad={done}
+          />
         ));
         snap('as landscape', (done) => (
-          <ImageWithWrapper src={src} aspectRatio="landscape" onLoad={done} />
+          <ImageWithWrapper
+            src={src}
+            aspectRatio={AspectRatios.landscape}
+            onLoad={done}
+          />
         ));
         snap('as custom number', (done) => (
           <ImageWithWrapper src={src} aspectRatio={1.5} onLoad={done} />

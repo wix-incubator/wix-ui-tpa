@@ -10,7 +10,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { Image, ResizeOptions } from '../';
+import { Image, ResizeOptions, AspectRatios } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as examples from './examples';
@@ -46,6 +46,10 @@ export default {
   exampleProps: {
     src: sampleSources,
     resize: Object.keys(ResizeOptions),
+    aspectRatio: [
+      ...Object.keys(AspectRatios),
+      { label: 'example of custom number (2.33)', value: 2.33 },
+    ],
   },
   dataHook: 'storybook-Image',
   sections: [

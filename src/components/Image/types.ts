@@ -16,7 +16,7 @@ export interface ImageProps extends TPAComponentProps {
   /** Specifies how the image is resized to fit its container */
   resize?: ResizeOptions;
   // Specifies the proportional relationship between width and height
-  aspectRatio?: 'square' | 'cinema' | 'landscape' | number;
+  aspectRatio?: keyof typeof AspectRatios | number;
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: 'none' | 'blur';
 }
@@ -31,7 +31,7 @@ export enum ResizeOptions {
   cover = 'cover',
 }
 
-export const AspectRatioOptions = {
+export const AspectRatios = {
   square: 1,
   cinema: 16 / 9,
   landscape: 4 / 3,

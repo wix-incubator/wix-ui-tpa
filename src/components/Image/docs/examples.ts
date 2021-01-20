@@ -1,4 +1,8 @@
-import { ResizeOptions } from '../';
+import { ResizeOptions, AspectRatios } from '../';
+
+// This method helps to show the consumer the preset value by the actual key
+const getKeyByValue = (object, value) =>
+  Object.keys(object).find((key) => object[key] === value);
 
 export const importExample = `import { Image } from 'wix-ui-tpa/Image';`;
 
@@ -63,14 +67,14 @@ export const aspectRatioExample = `
     width={300}
     alt="Garfield smiles and puts his hand over chest"
     resize="${ResizeOptions.cover}"
-    aspectRatio={1}
+    aspectRatio="${getKeyByValue(AspectRatios, AspectRatios.square)}"
   />
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
     width={300}
     alt="Garfield smiles and puts his hand over chest"
     resize="${ResizeOptions.cover}"
-    aspectRatio="cinema"
+    aspectRatio="${getKeyByValue(AspectRatios, AspectRatios.cinema)}"
   />
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
