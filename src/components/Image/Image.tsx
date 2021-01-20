@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
 import { classes, st } from './Image.st.css';
@@ -95,11 +96,10 @@ export class Image extends React.Component<ImageProps> {
         {isAbsoluteUrl ? (
           <CoreImage
             src={src}
-            className={st(
-              classes.absoluteImage,
-              hasLoadingBehavior &&
-                (isLoaded ? classes.loaded : classes.preload),
-            )}
+            className={classnames(classes.absoluteImage, {
+              [classes.preload]: hasLoadingBehavior && !isLoaded,
+              [classes.loaded]: hasLoadingBehavior && isLoaded,
+            })}
             {...(calculatedDimensions && {
               nativeProps: { ...calculatedDimensions },
             })}
@@ -109,10 +109,9 @@ export class Image extends React.Component<ImageProps> {
         ) : (
           <RelativeMediaImage
             src={src}
-            className={st(
-              classes.relativeImage,
-              hasLoadingBehavior && isLoaded && classes.loaded,
-            )}
+            className={classnames(classes.relativeImage, {
+              [classes.loaded]: hasLoadingBehavior && isLoaded,
+            })}
             sourceDimensions={sourceDimensions}
             containerDimensions={calculatedDimensions}
             isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
