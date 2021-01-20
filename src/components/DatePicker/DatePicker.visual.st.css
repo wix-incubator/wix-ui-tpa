@@ -11,6 +11,6 @@
 
 .selectedDayBorderRadius{
     -st-mixin: DatePicker(
-            SelectedDayBorderRadius 0,
+       SelectedDayBorderRadius 0,
     );
 }
