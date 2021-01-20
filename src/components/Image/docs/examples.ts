@@ -1,3 +1,5 @@
+import { ResizeOptions } from '../';
+
 export const importExample = `import { Image } from 'wix-ui-tpa/Image';`;
 
 export const absoluteUrlExample = `
@@ -42,14 +44,14 @@ export const resizingExample = `
     width={300}
     height={250}
     alt="Garfield smiles and puts his hand over chest"
-    resize="contain"
+    resize="${ResizeOptions.contain}"
   />
   <Image
     src="https://static.wixstatic.com/media/c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg/v1/fill/w_480,h_360,al_c,lg_1,q_80/c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.webp"
     width={300}
     height={250}
     alt="Garfield smiles and puts his hand over chest"
-    resize="cover"
+    resize="${ResizeOptions.cover}"
   />
 </div>
 `;
@@ -60,21 +62,21 @@ export const aspectRatioExample = `
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
     width={300}
     alt="Garfield smiles and puts his hand over chest"
-    resize="cover"
+    resize="${ResizeOptions.cover}"
     aspectRatio={1}
   />
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
     width={300}
     alt="Garfield smiles and puts his hand over chest"
-    resize="cover"
+    resize="${ResizeOptions.cover}"
     aspectRatio="cinema"
   />
   <Image
     src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
     width={300}
     alt="Garfield smiles and puts his hand over chest"
-    resize="cover"
+    resize="${ResizeOptions.cover}"
     aspectRatio={1.333}
   />
 </div>

@@ -14,7 +14,7 @@ export interface ImageProps extends TPAComponentProps {
   /** A callback to be called if error occurs while loading */
   onError?: React.EventHandler<React.SyntheticEvent>;
   /** Specifies how the image is resized to fit its container */
-  resize?: 'contain' | 'cover';
+  resize?: ResizeOptions;
   // Specifies the proportional relationship between width and height
   aspectRatio?: 'square' | 'cinema' | 'landscape' | number;
   /** An experience to set while the image is fetched and loaded  */
@@ -26,7 +26,7 @@ export interface Dimensions {
   height: ImageProps['height'];
 }
 
-export const enum ResizeOptions {
+export enum ResizeOptions {
   contain = 'contain',
   cover = 'cover',
 }

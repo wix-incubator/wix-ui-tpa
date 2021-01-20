@@ -10,7 +10,7 @@ import {
   testkit,
   title,
 } from 'wix-storybook-utils/Sections';
-import { Image } from '../';
+import { Image, ResizeOptions } from '../';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import * as examples from './examples';
@@ -45,6 +45,7 @@ export default {
   }),
   exampleProps: {
     src: sampleSources,
+    resize: Object.keys(ResizeOptions),
   },
   dataHook: 'storybook-Image',
   sections: [

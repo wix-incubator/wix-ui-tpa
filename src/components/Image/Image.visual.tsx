@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
 import { Image, ImageProps } from './';
+import { ResizeOptions } from './types';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
@@ -96,7 +97,7 @@ visualize('Image', () => {
             src={src}
             width={300}
             height={250}
-            resize="contain"
+            resize={ResizeOptions.contain}
             onLoad={done}
           />
         ));
@@ -105,7 +106,7 @@ visualize('Image', () => {
             src={src}
             width={300}
             height={250}
-            resize="cover"
+            resize={ResizeOptions.cover}
             onLoad={done}
           />
         ));
