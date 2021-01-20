@@ -268,7 +268,7 @@
 
 /* upgrade Tiny*/
 
-.root:size(tiny):upgrade{
+.root:size(tiny):upgrade:not(:mobile) {
     font: fallback(font(value(MainTextFont)), font(value(UpgradeTinyFont)));
     line-height: 1;
 }
@@ -283,7 +283,7 @@
 
 /* upgrade Small*/
 
-.root:size(small):upgrade:not(:mobile){
+.root:size(small):upgrade:not(:mobile) {
     font: fallback(font(value(MainTextFont)), font(value(UpgradeSmallFont)));
     line-height: 1;
 }
