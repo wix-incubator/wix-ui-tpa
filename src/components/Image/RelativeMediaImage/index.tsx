@@ -1,0 +1,1 @@
+export { RelativeMediaImage } from './RelativeMediaImage';
