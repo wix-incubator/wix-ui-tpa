@@ -76,19 +76,6 @@ describe('BoxSelection', () => {
     expect(await driver.isUnavailable(optionId)).toBeTruthy();
   });
 
-  // it('should change state', async () => {
-  //   const optionId = '5';
-  //   const driver = createDriver(
-  //     <BoxSelection {...defProps} name={'hours'}>
-  //       <BoxSelection.Option id={optionId} />
-  //     </BoxSelection>,
-  //   );
-
-  //   expect(await driver.isChecked(optionId)).toBeFalsy();
-  //   await driver.clickOnOption(optionId);
-  //   expect(await driver.isChecked(optionId)).toBeTruthy();
-  // });
-
   describe('testkit', () => {
     it('should exist', async () => {
       expect(

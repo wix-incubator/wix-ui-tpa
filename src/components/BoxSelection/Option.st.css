@@ -19,7 +19,6 @@
     DefaultBoxPadding: 16px;
     DisabledColor: color-3;
     DefaultTextColor: color-5;
-    DefaultDisabledTextColor: color-3;
 }
 
 /*Overrides*/
@@ -64,11 +63,6 @@
         @default color-5
     */
     TextColor: --overridable;
-    /*
-        Text color of the box when disabled or Unavailable
-        @default color-3
-    */
-    DisabledTextColor: --overridable;
 }
 
 :vars {
@@ -80,7 +74,6 @@
     CurrentBoxPadding: fallback(value(BoxPadding), value(DefaultBoxPadding));
     CurrentSelectedBoxColor: color(fallback(value(SelectedBoxColor), value(DefaultSelectedBoxColor)));
     CurrentTextColor: color(fallback(value(TextColor), value(DefaultTextColor)));
-    CurrentDisabledTextColor: color(fallback(value(DisabledTextColor), value(DefaultDisabledTextColor)));
 }
 
 .focused {
@@ -139,12 +132,12 @@
 
 .root:checked .wrapper{
     background-color: applyOpacity(color(value(DefaultSelectedBoxColor)), 0.1);
-    border-color: value(DefaultBorderColor);
+    border-color: color(value(DefaultSelectedBoxColor));
 }
 
 .root:checked.overrideStyleParamsOption .wrapper{
     background-color: applyOpacity(value(CurrentSelectedBoxColor), 0.1);
-    border-color: value(CurrentSelectedBoxColor);
+    border-color: color(value(CurrentSelectedBoxColor));
 }
 
 /* DISABLED */
@@ -153,10 +146,7 @@
     pointer-events: none;
     background-color: applyOpacity(color(value(DefaultBoxFillColor)), 1);
     border-color: color(value(DisabledColor));
-    color: color(value(DefaultDisabledTextColor));
-}
-.root:disabled:not(:checked).overrideStyleParamsOption .wrapper{
-    color: value(CurrentDisabledTextColor);
+    color: color(value(DisabledColor));
 }
 
 /* CHECKED + DISABLED */
@@ -198,14 +188,6 @@
     pointer-events: none;
     cursor: default;
     border-color: color(value(DisabledColor));
-    color: color(value(DefaultDisabledTextColor));
-    /* background: linear-gradient(to top left,
-        color(value(DefaultBoxFillColor)) 0%,
-        color(value(DefaultBoxFillColor)) calc(50% - 0.8px),
-        color(value(DisabledColor)) 50%,
-        color(value(DefaultBoxFillColor)) calc(50% + 0.8px),
-        color(value(DefaultBoxFillColor)) 100%) */
-}
-.root:unavailable.overrideStyleParamsOption .wrapper{
-    color: value(CurrentDisabledTextColor);
+    color: color(value(DisabledColor));
+    background-color: applyOpacity(color(value(DisabledColor)), 0.1);
 }

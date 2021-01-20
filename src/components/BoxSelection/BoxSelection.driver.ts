@@ -10,7 +10,6 @@ export interface BoxSelectionDriver extends BaseUniDriver {
   isDisabled(id: string): Promise<boolean>;
   isUnavailable(id: string): Promise<boolean>;
   getOptionsCount(): Promise<number>;
-  clickOnOption(id: string): Promise<void>;
 }
 export const boxSelectionDriverFactory = (
   base: UniDriver,
@@ -37,12 +36,6 @@ export const boxSelectionDriverFactory = (
       const option = await getOptionByDataId(id);
       const isUnavailable = (await option.attr('data-unavailable')) === 'true';
       return isUnavailable;
-    },
-    async clickOnOption(id: string) {
-      const option = await getOptionById(id);
-      if (!(await this.isDisabled(id)) && !(await this.isUnavailable(id))) {
-        await option.click();
-      }
     },
   };
 };

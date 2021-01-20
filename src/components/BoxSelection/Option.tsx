@@ -97,7 +97,11 @@ export class Option extends React.Component<OptionProps, OptionState> {
   };
   _getAriaLabel = () => {
     const { children } = this.props;
-    return this.props['aria-label'] ? this.props['aria-label'] : children;
+    return this.props['aria-label']
+      ? this.props['aria-label']
+      : typeof children === 'string'
+      ? children
+      : null;
   };
 
   render() {
@@ -128,7 +132,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
         )}
         data-id={id}
         data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
-        tabIndex={0}
         {...this._getDataAttributes()}
       >
         {unavailable && (

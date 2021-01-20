@@ -154,12 +154,12 @@ export default {
                 ],
                 colors: [
                   {
-                    label: 'Box Selection BG',
+                    label: 'Box Selection color',
                     wixParam: 'selectedBoxColor',
                     defaultColor: 'color-8',
                   },
                   {
-                    label: 'Box BG',
+                    label: 'Box color',
                     wixParam: 'boxFillColor',
                     defaultColor: 'color-1',
                   },
@@ -172,11 +172,6 @@ export default {
                     label: 'Box Text color',
                     wixParam: 'textColor',
                     defaultColor: 'color-5',
-                  },
-                  {
-                    label: 'Box Text Disabled + Unavailable color',
-                    wixParam: 'disabledTextColor',
-                    defaultColor: 'color-3',
                   },
                 ],
               },

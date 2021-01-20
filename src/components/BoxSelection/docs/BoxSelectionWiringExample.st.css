@@ -22,6 +22,5 @@
     BoxBorderWidth '"unit(fallback(zeroAsTrue(--boxBorderWidth), 1), px)"',
     BoxBorderColor '"color(--borderColor)"',
     TextColor '"color(--textColor)"',
-    DisabledTextColor '"color(--disabledTextColor)"',
   );
 }
