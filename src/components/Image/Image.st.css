@@ -1,10 +1,44 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+/* Overrides */
 :vars {
-  BlurRadius: 3px;
+  /*
+    A background color by a color from the palette for the container
+  */
+  ContainerBackgroundColor: --overridable;
+  /*
+    A bordr color by a color from the palette for the container
+  */
+  ContainerBorderColor: --overridable;
+  /*
+    A border radius in pixels for the container
+  */
+  ContainerBorderRadius: --overridable;
+  /*
+    A border width in pixels for the container
+  */
+  ContainerBorderWidth: --overridable;
+  /*
+    An opacity between 0 to 100 for the container
+  */
+  ContainerOpacity: --overridable;
+  /*
+    An opacity between 0 to 100 for the image itself
+  */
+  ImageOpacity: --overridable;
+}
+
+:vars {
+  backgroundColor: color(value(ContainerBackgroundColor));
+  blurRadius: 3px;
 }
 
 @keyframes blurry-loading {
   0% {
-    filter: blur(value(BlurRadius));
+    filter: blur(value(blurRadius));
   }
   100% {
     filter: none;
@@ -14,6 +48,10 @@
 .root {
   display: grid;
   min-height: 100%;
+}
+
+.root.overrideStyleParams {
+  background-color: value(backgroundColor);
 }
 
 .root.contain .absoluteImage,
@@ -27,7 +65,7 @@
 }
 
 .preload {
-  filter: blur(value(BlurRadius));
+  filter: blur(value(blurRadius));
 }
 
 .loaded {
