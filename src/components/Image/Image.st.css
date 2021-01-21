@@ -3,6 +3,11 @@
   -st-named: color, fallback;
 }
 
+/*Defaults*/
+:vars {
+  defaultImageOpacity: 100%;
+}
+
 /* Overrides */
 :vars {
   /*
@@ -27,12 +32,14 @@
   ContainerOpacity: --overridable;
   /*
     An opacity between 0 to 100 for the image itself
+    @default 100%
   */
   ImageOpacity: --overridable;
 }
 
 :vars {
   backgroundColor: color(value(ContainerBackgroundColor));
+  imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
   blurRadius: 3px;
 }
 
@@ -52,6 +59,11 @@
 
 .root.overrideStyleParams {
   background-color: value(backgroundColor);
+}
+
+.root.overrideStyleParams .absoluteImage, 
+.root.overrideStyleParams .relativeImage {
+  opacity: value(imageOpacity);
 }
 
 .root.contain .absoluteImage,

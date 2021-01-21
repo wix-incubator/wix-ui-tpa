@@ -139,6 +139,14 @@ export default {
                     defaultColor: 'color-5',
                   },
                 ],
+                numbers: [
+                  {
+                    label: 'Image opacity',
+                    wixParam: 'imageOpacity',
+                    defaultNumber: 100,
+                    unit: '%',
+                  },
+                ],
               },
             }),
           ],

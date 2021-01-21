@@ -6,6 +6,7 @@
 
 .root {
   -st-mixin: overrideStyleParams(
-    ContainerBackgroundColor '"color(--containerBackgroundColor)"'
+    ContainerBackgroundColor '"color(--containerBackgroundColor)"',
+    ImageOpacity '"unit(--imageOpacity, %)"',
   );
 }
