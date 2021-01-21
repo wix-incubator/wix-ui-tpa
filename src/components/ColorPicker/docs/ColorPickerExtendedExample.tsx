@@ -7,7 +7,7 @@ import {
 } from 'wix-ui-core/src/components/radio-button/RadioButton';
 
 interface State {
-  selectedColor: string;
+  selectedColor: string | number;
 }
 
 export const COLORS = [

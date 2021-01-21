@@ -9,7 +9,7 @@ import { ColorPicker } from '../ColorPicker';
 import classNames from 'classnames';
 
 interface State {
-  selectedColor: string;
+  selectedColor: string | number;
 }
 
 interface Props {
