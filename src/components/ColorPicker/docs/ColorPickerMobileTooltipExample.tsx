@@ -8,7 +8,7 @@ import {
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
 
 interface State {
-  selectedColor: string;
+  selectedColor: string | number;
 }
 
 export const COLORS = [

@@ -14,7 +14,7 @@ interface ColorPickerProps extends TPAComponentProps {
   onChange?(event: RadioButtonChangeEvent | RadioButtonClickEvent): void;
   /** aria-label - Accessibility */
   'aria-label'?: string;
-  'aria-labeledby'?: string;
+  'aria-labelledby'?: string;
   /** The group name for all color options */
   name?: string;
 }
@@ -40,7 +40,7 @@ export class ColorPicker extends React.Component<ColorPickerProps> {
         className={st(classes.root, className)}
         data-hook={this.props['data-hook']}
         aria-label={this.props['aria-label']}
-        aria-labelledby={this.props['aria-labeledby']}
+        aria-labelledby={this.props['aria-labelledby']}
       >
         <div className={classes.wrapper}>
           {React.Children.map(

@@ -8,7 +8,7 @@ import {
 import { COLORS } from './ColorPickerExtendedExample';
 
 interface State {
-  selectedColor: string;
+  selectedColor: string | number;
 }
 
 export class ColorPickerAnotherExtendedExample extends React.Component<
