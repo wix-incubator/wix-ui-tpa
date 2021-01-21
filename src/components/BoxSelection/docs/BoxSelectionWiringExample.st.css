@@ -21,6 +21,6 @@
     BoxBorderRadius '"unit(--boxBorderRadius, px)"',
     BoxBorderWidth '"unit(fallback(zeroAsTrue(--boxBorderWidth), 1), px)"',
     BoxBorderColor '"color(--borderColor)"',
-    TextColor '"color(--textColor)"',
+    DisabledColor '"color(--disabledColor)"',
   );
 }

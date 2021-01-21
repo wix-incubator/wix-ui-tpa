@@ -12,17 +12,19 @@ export const BoxSelectionWiringExample = () => {
         return setSelectedId(id);
       }}
     >
-      {['1', '2', '3', '4', '5'].map((n) => (
-        <BoxSelection.Option
-          key={n}
-          id={n}
-          checked={selectedId === n}
-          disabled={n === '4'}
-          unavailable={n === '5'}
-        >
-          <div>Item-{n}</div>
-        </BoxSelection.Option>
-      ))}
+      {['1', '2', '3', 'disabled', 'disabledAndSelected', 'unavailable'].map(
+        (n) => (
+          <BoxSelection.Option
+            key={n}
+            id={n}
+            checked={n === selectedId || n === 'disabledAndSelected'}
+            disabled={n === 'disabled' || n === 'disabledAndSelected'}
+            unavailable={n === 'unavailable'}
+          >
+            <div>Item-{n}</div>
+          </BoxSelection.Option>
+        ),
+      )}
     </BoxSelection>
   );
 };

@@ -11,7 +11,7 @@ export const uncheckedAndCheckedExample = `
         return setSelectedId(id);
       }}>
       {['1', '2', '3'].map((n) => {
-        return  <BoxSelection.Option id={n} checked={selectedId === n}><div>Item {n}</div></BoxSelection.Option>
+        return  <BoxSelection.Option id={n} key={n} checked={selectedId === n}><div>Item {n}</div></BoxSelection.Option>
       })}
     </BoxSelection>
   );
@@ -20,7 +20,7 @@ export const uncheckedAndCheckedExample = `
 
 export const smallSizeExample = `
 <BoxSelection name="hours" size="small">
-  <BoxSelection.Option id={'1'}>
+  <BoxSelection.Option id={'1'} key={'1'}>
     <div>Small</div>
   </BoxSelection.Option>
 </BoxSelection>
@@ -28,7 +28,7 @@ export const smallSizeExample = `
 
 export const disabledExmaple = `
 <BoxSelection name="hours">
-  <BoxSelection.Option id={'1'} disabled> 
+  <BoxSelection.Option id={'1'} key={'1'} disabled> 
     <div>Disabled</div>
   </BoxSelection.Option>
 </BoxSelection>
@@ -36,7 +36,7 @@ export const disabledExmaple = `
 
 export const disabledAndCheckedExmaple = `
 <BoxSelection name="hours">
-  <BoxSelection.Option id={'1'} checked disabled> 
+  <BoxSelection.Option id={'1'} key={'1'} checked disabled> 
     <div>Checked And Disabled</div>
   </BoxSelection.Option>
 </BoxSelection>
@@ -44,7 +44,7 @@ export const disabledAndCheckedExmaple = `
 
 export const unavailableExample = `
 <BoxSelection name="hours">
-  <BoxSelection.Option id={'1'} unavailable>
+  <BoxSelection.Option id={'1'} key={'1'} unavailable>
     <div>Unavailable</div>
   </BoxSelection.Option>
 </BoxSelection>
