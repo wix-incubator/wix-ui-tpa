@@ -10,7 +10,7 @@ const components = Object.keys(componentsToBundle).reduce(
   (accu, component) => {
       const filePath = componentsToBundle[component].path.replace(
           'src/',
-          '../dist/es/src/'
+          '../dist/src/'
       );
       const perfFolder = resolvePath(filePath, 'perf');
       const hasExtendedTests = fs.existsSync(perfFolder);
