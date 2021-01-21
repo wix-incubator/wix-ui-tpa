@@ -1,3 +1,6 @@
+import * as ImageWiringExampleCSSRaw from '!raw-loader!./ImageWiringExample.st.css';
+import * as ImageWiringExampleRaw from '!raw-loader!./ImageWiringExample.tsx';
+import * as React from 'react';
 import {
   api,
   code as baseCode,
@@ -11,15 +14,17 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import {
-  Image,
-  ResizeOptions,
   AspectRatioPresets,
+  Image,
   LoadingBehaviorOptions,
+  ResizeOptions,
 } from '../';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
-import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { ImageWiringExample } from './ImageWiringExample';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -118,6 +123,26 @@ export default {
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Image Panel',
+              example: <ImageWiringExample />,
+              rawSource: ImageWiringExampleRaw,
+              rawCSSSource: ImageWiringExampleCSSRaw,
+              params: {
+                colors: [
+                  {
+                    label: 'Container background color',
+                    wixParam: 'containerBackgroundColor',
+                    defaultColor: 'color-5',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],

@@ -1,6 +1,6 @@
 :import {
-    -st-from: "../../common/formatters.st";
-    -st-named: color, fallback;
+  -st-from: "../../common/formatters.st";
+  -st-named: color, fallback;
 }
 
 /* Overrides */
@@ -10,7 +10,7 @@
   */
   ContainerBackgroundColor: --overridable;
   /*
-    A bordr color by a color from the palette for the container
+    A border color by a color from the palette for the container
   */
   ContainerBorderColor: --overridable;
   /*

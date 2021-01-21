@@ -1,0 +1,11 @@
+:import {
+  -st-from: '../Image.st.css';
+  -st-default: Image;
+  -st-named: overrideStyleParams;
+}
+
+.root {
+  -st-mixin: overrideStyleParams(
+    ContainerBackgroundColor '"color(--containerBackgroundColor)"'
+  );
+}
