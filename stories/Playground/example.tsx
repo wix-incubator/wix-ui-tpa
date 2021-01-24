@@ -35,7 +35,7 @@ import * as React from "react";
             <Image
               width={400}
               height={520}
-              src="./product.png"
+              src="c5f754_23cf5dfa1ea44dc09e87a03df0996f83~mv2.png"
               alt="Product Image"
             />
           </Card.Container>
