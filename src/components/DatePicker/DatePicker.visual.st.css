@@ -8,3 +8,9 @@
         DayFont "{theme: 'Body-M', size: '24px' }",
     );
 }
+
+.selectedDayBorderRadius{
+    -st-mixin: DatePicker(
+       SelectedDayBorderRadius 0,
+    );
+}

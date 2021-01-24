@@ -208,6 +208,7 @@
     color: value(CurrentDayColor);
     width: calc(34em/14);
     height: calc(34em/14);
+    border-radius: value(CurrentSelectedDayBorderRadius);
 }
 
 .calendar::dayText {
@@ -255,10 +256,14 @@
 
 .calendar::day:singleDay:not(:outside) .dayWrapper {
     background-color: value(CurrentSelectedDayBGColor);
-    border-radius: value(CurrentSelectedDayBorderRadius);
 }
+
 .calendar::day:singleDay:not(:outside):hover .dayWrapper {
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
+}
+
+.dayWrapper {
+    border-radius: value(CurrentSelectedDayBorderRadius);
 }
 
 
@@ -422,6 +427,11 @@
 /*.calendar::day:today:not(:selected):not(:hover):focus {*/
 /*    box-shadow: none;*/
 /*}*/
+
+/*.calendar::day:focus::after {*/
+/*    -st-mixin: focusRing();*/
+/*}*/
+
 /*!******************************************************!*/
 
 
@@ -510,6 +520,7 @@
 /*.overrideStyleParams .calendar::day {*/
 /*    font: value(CurrentDayFont);*/
 /*    color: value(CurrentDayColor);*/
+/*    border-radius: value(CurrentSelectedDayBorderRadius);*/
 /*}*/
 
 /*.overrideStyleParams .calendar::day:hover {*/
@@ -534,11 +545,18 @@
 /*    color: value(CurrentDisabledDayColor);*/
 /*}*/
 
+/*.overrideStyleParams .calendar::day:focus::after {*/
+/*    border-radius: value(CurrentSelectedDayBorderRadius);*/
+/*}*/
+
 /*.overrideStyleParams .calendar::day:singleDay:not(:outside) .dayWrapper {*/
 /*    background-color: value(CurrentSelectedDayBGColor);*/
 /*}*/
 /*.overrideStyleParams .calendar::day:singleDay:not(:outside):hover .dayWrapper {*/
 /*    background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);*/
+/*}*/
+/*.overrideStyleParams .dayWrapper {*/
+/*    border-radius: value(CurrentSelectedDayBorderRadius);*/
 /*}*/
 /*!******************************************************!*/
 
