@@ -15,36 +15,52 @@ This will generate all the necessary files that are required for the new compone
 * `Component.visual.tsx` - an `eyes-storybook` test file.
 * `Component.meta.tsx` - a [`ui-autotools`](https://github.com/wix-incubator/ui-autotools) test file - tests `SSR` and `A11Y`.
 * `docs` folder - for `storybook` documentation.
-    * `index.story.ts` - The storybook configuration.
-    * `examples.ts` - The examples that will be displayed in the storybook under the `usage` tab.
+  * `index.story.ts` - The storybook configuration.
+  * `examples.ts` - The examples that will be displayed in the storybook under the `usage` tab.
+* `perf` folder - for bundle size tests using [perfer](https://bo.wix.com/pages/perfer/)
+  * `ComponentBasic.tsx` - A basic usage of our Component
+  * `ComponentExtended.tsx` - Using the Component with style overrides (using Stylable's [`-st-mixin`](https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#an-optimized-way-for-style-overriding---new))
+  * `ComponentExtended.st.css` - Used by `ComponentExtended.tsx` ☝️
 * `index.tsx` - for exporting.
 
 ## Developing A Component
 refer to [Component Guidelines](COMPONENT_GUIDELINES.md).
 
 ## Testing
-When generating a new component we get 3 different test files:
+When generating a new component we get 4 different types of test files:
 1) `*.spec.tsx` - enzyme test file
 2) `*.visual.tsx` - eyes-storybook visual test file
 3) `*.e2e.tsx` - protractor test file
+4) `perf/*.tsx` - perfer test files
 
+#### `spec`
 Enzyme tests should be done for all components, and are used to ensure the component's 
 API works as expected.  
-For more on enzyme tests see [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/TESTING.md#component-unit-tests).
+For more on enzyme tests see [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/TESTING.md#component-unit-tests).
 
+#### `visual`
 `eyes-storybook` tests take snapshots of the component, and ensure the component's style and 
 responsive behaviour work as expected.  
-For more on `eyes-storybook` visual tests see [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/VISUAL_TESTING.md).
+For more on `eyes-storybook` visual tests see [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/VISUAL_TESTING.md).
 
+#### `e2e`
 Protractor e2e tests are mostly needed when a real browser is needed to ensure the component
 is working as expected.  
 Some components have different states on different user interactions, that cannot be tested using enzyme, 
 and visual tests. In these cases e2e tests come in handy.  
-For more on e2e tests see [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/WRITING_E2E_TESTS.md).  
+For more on e2e tests see [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/WRITING_E2E_TESTS.md).  
 
 For component interaction we write the `*.driver.tsx` driver file.  
-More on this can be read [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/TEST_DRIVERS_GUIDELINES.md).
+More on this can be read [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/TEST_DRIVERS_GUIDELINES.md).
 
+#### `perf`
+It's important for us to make sure our components don't take up too much space in our consumer's bundle.  
+For that, we've integrated [perfer](https://bo.wix.com/pages/perfer/) into the library, and we test each component's bundle size.  
+In addition, we want to make sure that overriding our component's styles doesn't take too much space as well.  
+For that we have the `perf` folder with 2 simple files.  
+One file has the most basic usage of the component, which tests the bundle size when using the component as-is, without style overrides.  
+The second file uses the component, but also overrides any styling the component allows, so that we can assess the amount of extra space the stylesheet is taking.  
+We can add any React file in this folder, and they will be added to the perfer test. This allows us to test special uses of the component, such as different prop variations, child components, etc.
  
 ## `wix-style-processor`
 TPA's get their colors and fonts (most of them) from the template's palette, 
@@ -101,7 +117,7 @@ For more on Stylable formatters read [here](https://stylable.io/docs/references/
 ## How to create a PR
 Your commits must be signed so please follow all the following steps.
 
-Read more about it in `wix-style-react`'s excellent. Documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/CREATE_PR.md).
+Read more about it in `wix-style-react`'s excellent. Documentation [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/CREATE_PR.md).
 
 
 

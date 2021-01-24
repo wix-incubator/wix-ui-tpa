@@ -41,7 +41,10 @@ export class ColorPickerItem extends React.Component<
 
   getRadioVisual = ({ value }: ColorPickerItemProps) => (
     <div className={classes.radioOuter}>
-      <div className={classes.radioInner} style={{ backgroundColor: value }} />
+      <div
+        className={classes.radioInner}
+        style={{ backgroundColor: value as string }}
+      />
     </div>
   );
 
