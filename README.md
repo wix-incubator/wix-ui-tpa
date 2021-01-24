@@ -23,7 +23,7 @@ Please refer to the [Usage document](https://github.com/wix/wix-ui-tpa/blob/mast
 ## ✅ Test drivers
 All of `wix-ui-tpa` components are 100% tested and supplies test drivers for easy 
 interactions in your tests. Read more about it in `wix-style-react`'s excellent 
-documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/usage/COMPONENTS_DRIVERS.md).
+documentation [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/usage/COMPONENTS_DRIVERS.md).
 
 ## 🤝 Contributing
 Please refer to the [Contribution document](https://github.com/wix/wix-ui-tpa/blob/master/docs/CONTRIBUTION.md).

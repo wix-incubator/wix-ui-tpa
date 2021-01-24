@@ -36,22 +36,22 @@ When generating a new component we get 4 different types of test files:
 #### `spec`
 Enzyme tests should be done for all components, and are used to ensure the component's 
 API works as expected.  
-For more on enzyme tests see [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/TESTING.md#component-unit-tests).
+For more on enzyme tests see [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/TESTING.md#component-unit-tests).
 
 #### `visual`
 `eyes-storybook` tests take snapshots of the component, and ensure the component's style and 
 responsive behaviour work as expected.  
-For more on `eyes-storybook` visual tests see [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/VISUAL_TESTING.md).
+For more on `eyes-storybook` visual tests see [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/VISUAL_TESTING.md).
 
 #### `e2e`
 Protractor e2e tests are mostly needed when a real browser is needed to ensure the component
 is working as expected.  
 Some components have different states on different user interactions, that cannot be tested using enzyme, 
 and visual tests. In these cases e2e tests come in handy.  
-For more on e2e tests see [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/WRITING_E2E_TESTS.md).  
+For more on e2e tests see [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/WRITING_E2E_TESTS.md).  
 
 For component interaction we write the `*.driver.tsx` driver file.  
-More on this can be read [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/TEST_DRIVERS_GUIDELINES.md).
+More on this can be read [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/TEST_DRIVERS_GUIDELINES.md).
 
 #### `perf`
 It's important for us to make sure our components don't take up too much space in our consumer's bundle.  
@@ -117,7 +117,7 @@ For more on Stylable formatters read [here](https://stylable.io/docs/references/
 ## How to create a PR
 Your commits must be signed so please follow all the following steps.
 
-Read more about it in `wix-style-react`'s excellent. Documentation [here](https://github.com/wix/wix-style-react/blob/master/docs/contribution/CREATE_PR.md).
+Read more about it in `wix-style-react`'s excellent. Documentation [here](https://github.com/wix/wix-style-react/blob/master/packages/wix-style-react/docs/contribution/CREATE_PR.md).
 
 
 
