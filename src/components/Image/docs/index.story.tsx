@@ -19,6 +19,7 @@ import {
   LoadingBehaviorOptions,
   ResizeOptions,
 } from '../';
+import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
@@ -64,7 +65,9 @@ export default {
   },
   dataHook: 'storybook-Image',
   sections: [
-    header(),
+    header({
+      component: <OptimizedStylesBanner />,
+    }),
     tabs([
       tab({
         title: 'Usage',
