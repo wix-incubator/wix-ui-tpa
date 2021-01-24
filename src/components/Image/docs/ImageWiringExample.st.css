@@ -1,0 +1,15 @@
+:import {
+  -st-from: '../Image.st.css';
+  -st-default: Image;
+  -st-named: overrideStyleParams;
+}
+
+.root {
+  -st-mixin: overrideStyleParams(
+    BackgroundColor '"color(--backgroundColor)"',
+    BorderColor '"color(--borderColor)"',
+    BorderWidth '"unit(fallback(--borderWidth, 0), px)"',
+    BorderRadius '"unit(fallback(--borderRadius, 0), px)"',
+    ImageOpacity '"unit(--imageOpacity, %)"',
+  );
+}

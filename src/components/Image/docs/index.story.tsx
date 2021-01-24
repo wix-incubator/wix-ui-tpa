@@ -1,3 +1,6 @@
+import * as ImageWiringExampleCSSRaw from '!raw-loader!./ImageWiringExample.st.css';
+import * as ImageWiringExampleRaw from '!raw-loader!./ImageWiringExample.tsx';
+import * as React from 'react';
 import {
   api,
   code as baseCode,
@@ -11,15 +14,18 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import {
-  Image,
-  ResizeOptions,
   AspectRatioPresets,
+  Image,
   LoadingBehaviorOptions,
+  ResizeOptions,
 } from '../';
+import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
 import * as examples from './examples';
-import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { ImageWiringExample } from './ImageWiringExample';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
@@ -59,7 +65,9 @@ export default {
   },
   dataHook: 'storybook-Image',
   sections: [
-    header(),
+    header({
+      component: <OptimizedStylesBanner />,
+    }),
     tabs([
       tab({
         title: 'Usage',
@@ -118,6 +126,51 @@ export default {
         { title: 'Style API', sections: [settingsApi()] },
         { title: 'TestKit', sections: [testkit()] },
         { title: 'Playground', sections: [playground()] },
+        {
+          title: 'Settings Panel',
+          sections: [
+            settingsPanel({
+              title: 'Image Panel',
+              example: <ImageWiringExample />,
+              rawSource: ImageWiringExampleRaw,
+              rawCSSSource: ImageWiringExampleCSSRaw,
+              params: {
+                colors: [
+                  {
+                    label: 'Background color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Border color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-1',
+                  },
+                ],
+                numbers: [
+                  {
+                    label: 'Border width',
+                    wixParam: 'borderWidth',
+                    defaultNumber: 0,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Border radius',
+                    wixParam: 'borderRadius',
+                    defaultNumber: 0,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Image opacity',
+                    wixParam: 'imageOpacity',
+                    defaultNumber: 100,
+                    unit: '%',
+                  },
+                ],
+              },
+            }),
+          ],
+        },
       ].map(tab),
     ]),
   ],
