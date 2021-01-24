@@ -32,12 +32,7 @@
   */
   ContainerBorderRadius: --overridable;
   /*
-    An opacity between 0 to 100 for the container
-    @default 100%
-  */
-  ContainerOpacity: --overridable;
-  /*
-    An opacity between 0 to 100 for the image itself
+    An opacity between 0 to 100 for the image
     @default 100%
   */
   ImageOpacity: --overridable;
@@ -48,7 +43,6 @@
   borderColor: color(value(ContainerBorderColor));
   borderWidth: fallback(value(ContainerBorderWidth), value(defaultBorderWidth));
   borderRadius: fallback(value(ContainerBorderRadius), value(defaultBorderRadius));
-  containerOpacity: fallback(value(ContainerOpacity), value(defaultContainerOpacity));
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
   blurRadius: 3px;
 }
@@ -99,7 +93,6 @@
   background-color: value(backgroundColor);
   border: value(borderWidth) solid value(borderColor);
   border-radius: value(borderRadius);
-  opacity: value(containerOpacity);
 }
 
 .root.overrideStyleParams .absoluteImage, 
