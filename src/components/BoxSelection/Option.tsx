@@ -111,7 +111,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
       size,
     } = this.props;
     const { focused } = this.state;
-    console.log(focused);
 
     return (
       <div
