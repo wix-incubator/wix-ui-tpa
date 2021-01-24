@@ -1,6 +1,6 @@
 :import {
   -st-from: "../../common/formatters.st";
-  -st-named: color, fallback, applyUnit;
+  -st-named: color, fallback;
 }
 
 /*Defaults*/
@@ -67,18 +67,6 @@
   min-height: 100%;
 }
 
-.root.overrideStyleParams {
-  background-color: value(backgroundColor);
-  border: value(borderWidth) solid value(borderColor);
-  border-radius: value(borderRadius);
-  opacity: value(containerOpacity);
-}
-
-.root.overrideStyleParams .absoluteImage, 
-.root.overrideStyleParams .relativeImage {
-  opacity: value(imageOpacity);
-}
-
 .root.contain .absoluteImage,
 .root.contain .relativeImage {
   object-fit: contain;
@@ -105,4 +93,16 @@
 
 .absoluteImage.loaded {
   -st-mixin: loaded;
+}
+
+.root.overrideStyleParams {
+  background-color: value(backgroundColor);
+  border: value(borderWidth) solid value(borderColor);
+  border-radius: value(borderRadius);
+  opacity: value(containerOpacity);
+}
+
+.root.overrideStyleParams .absoluteImage, 
+.root.overrideStyleParams .relativeImage {
+  opacity: value(imageOpacity);
 }
