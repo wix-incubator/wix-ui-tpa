@@ -11,7 +11,7 @@ export const uncheckedAndCheckedExample = `
         return setSelectedId(id);
       }}>
       {['1', '2', '3'].map((n) => {
-        return  <BoxSelection.Option id={n} key={n} checked={selectedId === n}><div>Item {n}</div></BoxSelection.Option>
+        return <BoxSelection.Option id={n} key={n} checked={selectedId === n}><div>Item {n}</div></BoxSelection.Option>
       })}
     </BoxSelection>
   );

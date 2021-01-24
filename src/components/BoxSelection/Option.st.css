@@ -5,7 +5,7 @@
 
 :import {
     -st-from: "../../common/palette.st.css";
-    -st-named: errorColor, focusRing;
+    -st-named: focusRing;
 }
 
 /*Defaults*/
@@ -142,10 +142,10 @@
 /* DISABLED */
 .root:disabled{
     border-radius: value(DefaultBoxBorderRadius);
-    background-color: color(value(DefaultBoxFillColor));
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
 }
 .root:disabled.overrideStyleParamsOption{
-    background-color: color(value(CurrentBoxFillColor));
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
 }
 
 
@@ -154,12 +154,12 @@
     opacity: 1;
     cursor: default;
     pointer-events: none;
-    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+    background-color: color(value(DefaultBoxFillColor));
     border-color: color(value(DefaultDisabledColor));
     color: color(value(DefaultDisabledColor));
 }
 .root:disabled:not(:checked).overrideStyleParamsOption .wrapper{
-    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+    background-color: color(value(CurrentBoxFillColor));
     border-color: color(value(CurrentDisabledColor));
     color: color(value(CurrentDisabledColor));
 }
@@ -201,17 +201,21 @@
     pointer-events: none;
     cursor: default;
     position: relative;
-    background-color: color(value(DefaultBoxFillColor));
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
 }
 
 .root:unavailable.overrideStyleParamsOption{
-    background-color: color(value(CurrentBoxFillColor));
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
 }
 
 .root:unavailable .unavailableDiagonalLine{
     width: 100%;
     height: 100%;
     position: absolute;
+    border-radius: value(DefaultBoxBorderRadius);
+}
+.root:unavailable.overrideStyleParamsOption .unavailableDiagonalLine{
+    border-radius: value(CurrentBoxBorderRadius);
 }
 .root:unavailable .unavailableDiagonalLine line {
     stroke: color(value(DefaultDisabledColor));
@@ -226,10 +230,10 @@
     cursor: default;
     border-color: color(value(DefaultDisabledColor));
     color: color(value(DefaultDisabledColor));
-    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+    background-color: color(value(DefaultBoxFillColor));
 }
 .root:unavailable.overrideStyleParamsOption .wrapper{
-    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+    background-color: color(value(CurrentBoxFillColor));
     border-color: color(value(CurrentDisabledColor));
     color: color(value(CurrentDisabledColor));
 }

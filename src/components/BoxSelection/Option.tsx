@@ -126,9 +126,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
             disabled,
             unavailable,
           },
-          classnames({
-            [classes.focused]: focused,
-          }),
+          focused ? classes.focused : '',
         )}
         data-id={id}
         data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
@@ -147,6 +145,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
           value={id}
           onChange={this._onChange}
           id={id}
+          tabIndex={0}
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           disabled={disabled}
