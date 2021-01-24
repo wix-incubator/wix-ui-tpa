@@ -10,6 +10,7 @@
     ContainerBorderColor '"color(--containerBorderColor)"',
     ContainerBorderWidth '"unit(fallback(--containerBorderWidth, 0), px)"',
     ContainerBorderRadius '"unit(fallback(--containerBorderRadius, 0), px)"',
+    ContainerOpacity '"unit(--containerOpacity, %)"',
     ImageOpacity '"unit(--imageOpacity, %)"',
   );
 }

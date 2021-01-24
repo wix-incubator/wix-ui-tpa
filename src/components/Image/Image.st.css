@@ -5,9 +5,10 @@
 
 /*Defaults*/
 :vars {
-  defaultImageOpacity: 100%;
   defaultBorderWidth: 0px;
   defaultBorderRadius: 0px;
+  defaultContainerOpacity: 100%;
+  defaultImageOpacity: 100%;
 }
 
 /* Overrides */
@@ -32,6 +33,7 @@
   ContainerBorderRadius: --overridable;
   /*
     An opacity between 0 to 100 for the container
+    @default 100%
   */
   ContainerOpacity: --overridable;
   /*
@@ -46,6 +48,7 @@
   borderColor: color(value(ContainerBorderColor));
   borderWidth: fallback(value(ContainerBorderWidth), value(defaultBorderWidth));
   borderRadius: fallback(value(ContainerBorderRadius), value(defaultBorderRadius));
+  containerOpacity: fallback(value(ContainerOpacity), value(defaultContainerOpacity));
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
   blurRadius: 3px;
 }
@@ -68,6 +71,7 @@
   background-color: value(backgroundColor);
   border: value(borderWidth) solid value(borderColor);
   border-radius: value(borderRadius);
+  opacity: value(containerOpacity);
 }
 
 .root.overrideStyleParams .absoluteImage, 

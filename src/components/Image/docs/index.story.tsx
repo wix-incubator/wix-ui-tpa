@@ -158,6 +158,12 @@ export default {
                     unit: 'px',
                   },
                   {
+                    label: 'Container opacity',
+                    wixParam: 'containerOpacity',
+                    defaultNumber: 100,
+                    unit: '%',
+                  },
+                  {
                     label: 'Image opacity',
                     wixParam: 'imageOpacity',
                     defaultNumber: 100,
