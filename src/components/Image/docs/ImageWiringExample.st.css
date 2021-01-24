@@ -6,10 +6,10 @@
 
 .root {
   -st-mixin: overrideStyleParams(
-    ContainerBackgroundColor '"color(--containerBackgroundColor)"',
-    ContainerBorderColor '"color(--containerBorderColor)"',
-    ContainerBorderWidth '"unit(fallback(--containerBorderWidth, 0), px)"',
-    ContainerBorderRadius '"unit(fallback(--containerBorderRadius, 0), px)"',
+    BackgroundColor '"color(--backgroundColor)"',
+    BorderColor '"color(--borderColor)"',
+    BorderWidth '"unit(fallback(--borderWidth, 0), px)"',
+    BorderRadius '"unit(fallback(--borderRadius, 0), px)"',
     ImageOpacity '"unit(--imageOpacity, %)"',
   );
 }

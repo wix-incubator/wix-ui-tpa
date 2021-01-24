@@ -137,26 +137,26 @@ export default {
               params: {
                 colors: [
                   {
-                    label: 'Container background color',
-                    wixParam: 'containerBackgroundColor',
-                    defaultColor: 'color-5',
+                    label: 'Background color',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
                   },
                   {
-                    label: 'Container border color',
-                    wixParam: 'containerBorderColor',
-                    defaultColor: 'color-5',
+                    label: 'Border color',
+                    wixParam: 'borderColor',
+                    defaultColor: 'color-1',
                   },
                 ],
                 numbers: [
                   {
-                    label: 'Container border width',
-                    wixParam: 'containerBorderWidth',
+                    label: 'Border width',
+                    wixParam: 'borderWidth',
                     defaultNumber: 0,
                     unit: 'px',
                   },
                   {
-                    label: 'Container border radius',
-                    wixParam: 'containerBorderRadius',
+                    label: 'Border radius',
+                    wixParam: 'borderRadius',
                     defaultNumber: 0,
                     unit: 'px',
                   },
