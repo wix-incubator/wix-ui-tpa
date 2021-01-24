@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  RadioButton as CoreRadioButton,
-  RadioButtonProps as CoreRadioButtonProps,
-} from 'wix-ui-core/radio-button';
+import { RadioButton as CoreRadioButton } from 'wix-ui-core/radio-button';
 import { st, classes } from './Option.st.css';
-import { TPAComponentsConsumer } from '../TPAComponentsConfig';
 import { TPAComponentProps } from '../../types';
 import {
   BOX_SELECTION_DATA_ATTRIBUTES,
@@ -115,6 +111,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
       size,
     } = this.props;
     const { focused } = this.state;
+    console.log(focused);
 
     return (
       <div
@@ -145,7 +142,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
           value={id}
           onChange={this._onChange}
           id={id}
-          tabIndex={0}
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           disabled={disabled}
