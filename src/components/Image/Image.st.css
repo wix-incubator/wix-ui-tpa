@@ -1,11 +1,13 @@
 :import {
   -st-from: "../../common/formatters.st";
-  -st-named: color, fallback;
+  -st-named: color, fallback, applyUnit;
 }
 
 /*Defaults*/
 :vars {
   defaultImageOpacity: 100%;
+  defaultBorderWidth: 0px;
+  defaultBorderRadius: 0px;
 }
 
 /* Overrides */
@@ -19,13 +21,15 @@
   */
   ContainerBorderColor: --overridable;
   /*
-    A border radius in pixels for the container
-  */
-  ContainerBorderRadius: --overridable;
-  /*
     A border width in pixels for the container
+    @default 0px
   */
   ContainerBorderWidth: --overridable;
+  /*
+    A border radius in pixels for the container
+    @default 0px
+  */
+  ContainerBorderRadius: --overridable;
   /*
     An opacity between 0 to 100 for the container
   */
@@ -39,6 +43,9 @@
 
 :vars {
   backgroundColor: color(value(ContainerBackgroundColor));
+  borderColor: color(value(ContainerBorderColor));
+  borderWidth: fallback(value(ContainerBorderWidth), value(defaultBorderWidth));
+  borderRadius: fallback(value(ContainerBorderRadius), value(defaultBorderRadius));
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
   blurRadius: 3px;
 }
@@ -59,6 +66,8 @@
 
 .root.overrideStyleParams {
   background-color: value(backgroundColor);
+  border: value(borderWidth) solid value(borderColor);
+  border-radius: value(borderRadius);
 }
 
 .root.overrideStyleParams .absoluteImage, 

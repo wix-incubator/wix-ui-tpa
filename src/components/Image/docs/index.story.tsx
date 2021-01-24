@@ -138,8 +138,25 @@ export default {
                     wixParam: 'containerBackgroundColor',
                     defaultColor: 'color-5',
                   },
+                  {
+                    label: 'Container border color',
+                    wixParam: 'containerBorderColor',
+                    defaultColor: 'color-5',
+                  },
                 ],
                 numbers: [
+                  {
+                    label: 'Container border width',
+                    wixParam: 'containerBorderWidth',
+                    defaultNumber: 0,
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Container border radius',
+                    wixParam: 'containerBorderRadius',
+                    defaultNumber: 0,
+                    unit: 'px',
+                  },
                   {
                     label: 'Image opacity',
                     wixParam: 'imageOpacity',
