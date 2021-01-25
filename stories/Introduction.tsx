@@ -12,7 +12,9 @@ const ComponentGuideline = require('../docs/COMPONENT_GUIDELINES.md').default;
 storiesOf(StoryCategory.CONSUMING, module)
   .add('Overview', () => <Markdown source={README} />)
   .add('Using the library', () => <Markdown source={Usage} />)
-  .add('How to override styles properly', () => <Markdown source={HOW_TO_OVERRIDE_STYLES_PROPERLY} />)
+  .add('How to override styles properly', () => (
+    <Markdown source={HOW_TO_OVERRIDE_STYLES_PROPERLY} />
+  ))
   .add('RTL Support', () => <Markdown source={RTL} />);
 
 storiesOf(StoryCategory.CONTRIBUTION, module)

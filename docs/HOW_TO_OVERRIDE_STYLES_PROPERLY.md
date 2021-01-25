@@ -71,7 +71,7 @@ In any case **DO NOT** use `-st-extends` to override styles by targeting interna
    -st-extends: TPAComponent;
 }
 
-.myComponent::innerElement {
+.myComponent::innerElement { /* Don't target internal elements, these might change */
    background-color: <some-color>;
 }
 ```
@@ -79,7 +79,7 @@ In any case **DO NOT** use `-st-extends` to override styles by targeting interna
 ## FAQ's
 
 #### "The component doesn't expose the variables I need, what should I do?"
-First, contact us at [#wix-ui-tpa](slack://channel?id=CJRU3U97A&team=T02T01M9Y).  
+First, contact us at [#wix-ui-tpa](https://wix.slack.com/archives/CJRU3U97A).  
 We'll check with our designers that the variables align with the [design system](
 https://zeroheight.com/7sjjzhgo2/p/7181b5-tpa-design-system).  
 If the designers approve, you'll be able to contribute the new variables.
@@ -94,7 +94,7 @@ Don't use this className to change text or background color, border's or padding
 break the component, or it might not be aligned to the design system at all.  
 Also beware of using the `display` rule on the root element, as this may break the component's 
 internal layout. If you need to change its `display` and it breaks the component, please contact us
-at our [slack channel](slack://channel?id=CJRU3U97A&team=T02T01M9Y) and we'll try to find a solution 
+at our [slack channel](https://wix.slack.com/archives/CJRU3U97A) and we'll try to find a solution 
 together.
 
 Examples:
@@ -125,6 +125,7 @@ Examples:
 
 .myComponent {
    -st-mixin: overrideStyleParams(...);
+   /* don't add styles like these below: */
    background-color: cornflowerblue;
    border: 1px solid gold;
    display: inline;
@@ -133,12 +134,12 @@ Examples:
  
 
 #### "I have a release in an hour, and I'm targeting internal elements. I'll add a task to fix it in the future, that's ok right?" 
-Well, you do you.  
-But be aware that even a minor change we will make might cause your app to break, and might cause a 
-**[serious production issue](https://jira.wixpress.com/browse/INC-5684)**.  
+Well, there's not much we, the wix-ui-tpa team, can do at this point.  
+However, you should be aware that even a minor change we will make might cause your app to break, 
+and might cause a **[serious production issue](https://jira.wixpress.com/browse/INC-5684)**.  
 Before your release, make sure you have visual tests that cover all your use-cases, and most
 importantly, test these use-cases with at least one light and one dark theme.
 
 
 #### "I read the document, but I'm still not sure I'm overriding components correctly. What should I do?"
-Contact us at [#wix-ui-tpa](slack://channel?id=CJRU3U97A&team=T02T01M9Y), and show us your use-case
+Contact us at [#wix-ui-tpa](https://wix.slack.com/archives/CJRU3U97A), and show us your use-case
