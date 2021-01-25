@@ -6,6 +6,36 @@ const getKeyByValue = (object, value) =>
 
 export const importExample = `import { Image } from 'wix-ui-tpa/Image';`;
 
+export const commonExampleProps = {
+  resize: Object.keys(ResizeOptions),
+  aspectRatio: [
+    ...Object.keys(AspectRatioPresets),
+    { label: 'example of custom number (2.33)', value: 2.33 },
+  ],
+  loadingBehavior: Object.keys(LoadingBehaviorOptions),
+};
+
+export const commonWiringNumberParams = [
+  {
+    label: 'Border width',
+    wixParam: 'borderWidth',
+    defaultNumber: 0,
+    unit: 'px',
+  },
+  {
+    label: 'Border radius',
+    wixParam: 'borderRadius',
+    defaultNumber: 0,
+    unit: 'px',
+  },
+  {
+    label: 'Image opacity',
+    wixParam: 'imageOpacity',
+    defaultNumber: 100,
+    unit: '%',
+  },
+];
+
 export const absoluteUrlExample = `
 <Image
   src="https://m.media-amazon.com/images/M/MV5BZGMwOGIwZjUtOWQ1OS00YWRjLWJmZGMtN2Y1OWQ3ZDYwYTM3XkEyXkFqcGdeQXVyNzU1NzE3NTg@._V1_.jpg"

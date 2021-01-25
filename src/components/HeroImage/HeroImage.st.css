@@ -18,6 +18,7 @@
 :vars {
   /*
     A background color by a color from the palette for the container
+    @default color-5
   */
   BackgroundColor: --overridable;
   /*

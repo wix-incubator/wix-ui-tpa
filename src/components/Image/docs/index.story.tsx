@@ -56,12 +56,7 @@ export default {
   }),
   exampleProps: {
     src: sampleSources,
-    resize: Object.keys(ResizeOptions),
-    aspectRatio: [
-      ...Object.keys(AspectRatioPresets),
-      { label: 'example of custom number (2.33)', value: 2.33 },
-    ],
-    loadingBehavior: Object.keys(LoadingBehaviorOptions),
+    ...examples.commonExampleProps,
   },
   dataHook: 'storybook-Image',
   sections: [
@@ -147,26 +142,7 @@ export default {
                     defaultColor: 'color-1',
                   },
                 ],
-                numbers: [
-                  {
-                    label: 'Border width',
-                    wixParam: 'borderWidth',
-                    defaultNumber: 0,
-                    unit: 'px',
-                  },
-                  {
-                    label: 'Border radius',
-                    wixParam: 'borderRadius',
-                    defaultNumber: 0,
-                    unit: 'px',
-                  },
-                  {
-                    label: 'Image opacity',
-                    wixParam: 'imageOpacity',
-                    defaultNumber: 100,
-                    unit: '%',
-                  },
-                ],
+                numbers: examples.commonWiringNumberParams,
               },
             }),
           ],
