@@ -262,7 +262,7 @@
     background-color: applyOpacity(value(CurrentSelectedDayBGColor), 0.7);
 }
 
-.dayWrapper {
+.root .dayWrapper {
     border-radius: value(CurrentSelectedDayBorderRadius);
 }
 
