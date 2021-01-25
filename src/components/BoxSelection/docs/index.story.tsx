@@ -33,7 +33,7 @@ const children = [
   {
     label: '1 child',
     value: (
-      <BoxSelection.Option key={1} id={'1'}>
+      <BoxSelection.Option key={1} id={'1'} aria-describedby={`1`}>
         <div>Item-{1}</div>
       </BoxSelection.Option>
     ),
@@ -41,7 +41,12 @@ const children = [
   {
     label: '10 childrens with second selected',
     value: Array.apply(null, Array(10)).map((_n, i: number) => (
-      <BoxSelection.Option key={i} id={`${i}`} checked={i === 1}>
+      <BoxSelection.Option
+        key={i}
+        id={`${i}`}
+        aria-describedby={`${i}`}
+        checked={i === 1}
+      >
         <div>Item-{i + 1}</div>
       </BoxSelection.Option>
     )),
@@ -52,6 +57,7 @@ const children = [
       <BoxSelection.Option
         key={n}
         id={`${n}`}
+        aria-describedby={`${n}`}
         unavailable={n === 1}
         disabled={n === 2 || n === 3}
         checked={n === 3}

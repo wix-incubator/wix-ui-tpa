@@ -73,6 +73,11 @@ input[type='radio'] {
     opacity: 1;
     clip: rect(1px, 1px, 1px, 1px);
 }
+
+.hide{
+    display: none;
+}
+
 .focused {
     -st-mixin: focusRing();
 }

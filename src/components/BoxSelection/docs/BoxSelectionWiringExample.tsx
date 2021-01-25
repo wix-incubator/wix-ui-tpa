@@ -17,6 +17,7 @@ export const BoxSelectionWiringExample = () => {
           <BoxSelection.Option
             key={n}
             id={n}
+            aria-describedby={n}
             checked={n === selectedId || n === 'disabledAndSelected'}
             disabled={n === 'disabled' || n === 'disabledAndSelected'}
             unavailable={n === 'unavailable'}
