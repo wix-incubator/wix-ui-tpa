@@ -13,6 +13,7 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import { HeroImage } from '..';
 import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
@@ -47,6 +48,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`HeroImage` is a component representing a header with high presence providing context about the page content.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),
@@ -58,7 +63,7 @@ export default {
           ...[
             {
               title: 'Basic Usage',
-              description: 'This example demonstrates the usage of',
+              description: 'This example demonstrates a simple hero image.',
               source: examples.basicExample,
             },
           ].map(code),

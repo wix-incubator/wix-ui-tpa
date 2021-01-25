@@ -8,7 +8,7 @@ export const HeroImageWiringExample = () => {
       src="c5f754_186e90ba2c9b47de8a4a0a0346865b72~mv2.png"
       width={820}
       height={312}
-      alt="Garfield smiles and puts his hand over chest"
+      alt="One narrow vase with two wide vases"
       className={classes.root}
     />
   );

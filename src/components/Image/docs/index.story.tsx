@@ -12,6 +12,7 @@ import {
   tabs,
   testkit,
   title,
+  description,
 } from 'wix-storybook-utils/Sections';
 import {
   AspectRatioPresets,
@@ -67,6 +68,10 @@ export default {
       tab({
         title: 'Usage',
         sections: [
+          description(
+            '`Image` is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI.',
+          ),
+
           importExample({
             source: examples.importExample,
           }),

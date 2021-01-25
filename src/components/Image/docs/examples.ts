@@ -11,6 +11,7 @@ export const commonExampleProps = {
   aspectRatio: [
     ...Object.keys(AspectRatioPresets),
     { label: 'example of custom number (2.33)', value: 2.33 },
+    { label: 'none', value: null },
   ],
   loadingBehavior: Object.keys(LoadingBehaviorOptions),
 };

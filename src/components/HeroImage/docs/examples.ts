@@ -5,6 +5,6 @@ export const basicExample = `
   src="c5f754_186e90ba2c9b47de8a4a0a0346865b72~mv2.png"
   width={800}
   height={300}
-  alt="Garfield smiles and puts his hand over chest"
+  alt="One narrow vase with two wide vases"
 />
 `;
