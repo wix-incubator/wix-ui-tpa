@@ -8,8 +8,8 @@
    Run tests using both a light theme and a dark theme.
 
 
-### How to override a component's styles?
-> Be sure to read the guide in our [Usage document](
+### How to override a component's stylesheet?
+> Be sure to read our [Usage document](
 https://github.com/wix/wix-ui-tpa/blob/master/docs/USAGE.md#overriding-predefined-style-params)
 
 wix-ui-tpa components are wired to users' sites palettes and fonts out-of-the-box.  
@@ -24,8 +24,7 @@ Each component declares the variables it exposes, like this:
      Text Color
      @default color-5
    */
-   MainTextColor
-   ...
+   MainTextColor: --overridable;
 }
 ```
 These variables will be found in the `Style API` tab in the component's storybook.
@@ -37,64 +36,109 @@ If not, then use its "default" `.root` export for overrides.
 
 In any case **DO NOT** use `-st-extends` to override styles by targeting internal elements.
 
+#### Examples
 
-<div style="background-color: transparent; display: grid; grid-gap: 20px; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));">
-   <div style="background-color: white; padding: 16px; margin-right: 20px;">
-    <div style="background-color: rgba(63, 219, 144, 0.3)">
-      <pre style="white-space: pre-wrap;margin: 0;"><span style="color: #BB0066; font-weight: bold">:import</span> {
-  <span style="color: #008800; font-weight: bold">-st-from</span><span style="color: #333333">:</span> <span style="color: #007020">"wix-ui-tpa/.../Component.st.css"</span>;
-  <span style="color: #008800; font-weight: bold">-st-named</span><span style="color: #333333">:</span> <span style="color: #007020">overrideStyleParams</span>;
-  /* If overrideStyleParams doesn't exist use: */
-  /* <span style="font-weight: bold">-st-default</span>: TPAComponent; */
+✅ DO
+
+```css
+:import {
+   -st-from: "wix-ui-tpa/.../Component.st.css";
+   -st-named: overrideStyleParams;
+   
+   /* If overrideStyleParams doesn't exist use: */
+   /* -st-default: TPAComponent; */
 }
-<span style="color: #BB0066; font-weight: bold">.myComponent</span> {
-  <span style="color: #008800; font-weight: bold">-st-mixin</span><span style="color: #333333">:</span> <span style="color: #007020">overrideStyleParams(</span>
-    <span style="color: #007020">TextColor &lt;your-variable-here&gt;</span>
-  <span style="color: #007020">)</span>;
-  /* If overrideStyleParams doesn't exist use: */
-  /* <span style="font-weight: bold">-st-mixin</span>: TPAComponents(...); */
-}</pre>
-    </div>
-    <span style="display: inline-block; margin-top: 16px;background-color: rgba(63, 219, 144, 1); font-size: 13px; padding: 4px 16px; border-radius: 1.5em; color: white; line-height: 18px;">
-      Correct usage!
-    </span>
-    <p style="color: black;">
-     Use the <code>overrideStyleParams</code> mixin to override styles.
-    </p>
-   </div>
 
-   <div style="background-color: white; padding: 16px; margin-right: 20px;">
-    <div style="background-color: rgba(244, 67, 54, 0.3)">
-      <pre style="margin: 0;"><span style="color: #BB0066; font-weight: bold">:import</span> {
-  <span style="color: #008800; font-weight: bold">-st-from</span><span style="color: #333333">:</span> <span style="color: #007020">"wix-ui-tpa/.../Component.st.css"</span>;
-  <span style="color: #008800; font-weight: bold">-st-default</span><span style="color: #333333">:</span> <span style="color: #007020">TPAComponent</span>;
+.myComponent {
+   -st-mixin: overrideStyleParams(
+     TextColor <your-color-here>
+   );
+
+   /* If overrideStyleParams doesn't exist use: */
+   /* -st-mixin: TPAComponent(...); */
 }
-<span style="color: #BB0066; font-weight: bold">.myComponent</span> {
-  <span style="color: #008800; font-weight: bold">-st-extends</span><span style="color: #333333">:</span> <span style="color: #007020">TPAComponent</span>;
+```
+
+❌ DON'T
+
+```css
+:import {
+   -st-from: "wix-ui-tpa/.../Component.st.css";
+   -st-default: TPAComponent; 
 }
-<span style="color: #BB0066; font-weight: bold">.myComponent::innerElement</span> {
-  <span style="color: #008800; font-weight: bold">background-color</span><span style="color: #333333">:</span> <span style="color: #007020">&lt;some-color&gt;</span>;
-}</pre>
-    </div>
-    <span style="display: inline-block; margin-top: 16px;background-color: rgba(244, 67, 54, 1); font-size: 13px; padding: 4px 16px; border-radius: 1.5em; color: white; line-height: 18px;">
-      Wrong usage :( 
-    </span>
-    <p style="color: black;">
-     Do not override internal elements' styles, as they may change, which will cause your app to break in production
-    </p>
-   </div>
-</div>
 
-## troubleshooting:
-1. Feature is missing -> contact us #wix-ui-tpa
-2. 
+.myComponent {
+   -st-extends: TPAComponent;
+}
 
-## You're targeting internal elements 
-Well, in that case there's not much we can do at the moment.  
-However, you must understand that anything except style variables is considered private api, and can be changed at any point in time.  
+.myComponent::innerElement {
+   background-color: <some-color>;
+}
+```
+
+## FAQ's
+
+#### "The component doesn't expose the variables I need, what should I do?"
+First, contact us at [#wix-ui-tpa](slack://channel?id=CJRU3U97A&team=T02T01M9Y).  
+We'll check with our designers that the variables align with the [design system](
+https://zeroheight.com/7sjjzhgo2/p/7181b5-tpa-design-system).  
+If the designers approve, you'll be able to contribute the new variables.
+
+#### "Can I style the component's root element?"
+Well yes, and no 😳  
+All of our components accept a `className` prop, which is applied to the root element.  
+In addition to extending styles, using `-st-mixin`, you can use this className to control the 
+layout of you app.  
+So you can use rules such as `position`, `width`, `left`, `top`, `flex`, etc.  
+Don't use this className to change text or background color, border's or padding, as this might 
+break the component, or it might not be aligned to the design system at all.  
+Also beware of using the `display` rule on the root element, as this may break the component's 
+internal layout. If you need to change its `display` and it breaks the component, please contact us
+at our [slack channel](slack://channel?id=CJRU3U97A&team=T02T01M9Y) and we'll try to find a solution 
+together.
+
+Examples:
+
+✅ DO
+
+```css
+:import {
+   -st-from: "wix-ui-tpa/.../Component.st.css";
+   -st-named: overrideStyleParams;
+}
+
+.myComponent {
+   -st-mixin: overrideStyleParams(...);
+   position: absolute;
+   top: 0;
+   left: 0;
+}
+```
+
+❌ DON'T
+
+```css
+:import {
+   -st-from: "wix-ui-tpa/.../Component.st.css";
+   -st-named: overrideStyleParams;
+}
+
+.myComponent {
+   -st-mixin: overrideStyleParams(...);
+   background-color: cornflowerblue;
+   border: 1px solid gold;
+   display: inline;
+}
+```
+ 
+
+#### "I have a release in an hour, and I'm targeting internal elements. I'll add a task to fix it in the future, that's ok right?" 
+Well, you do you.  
+But be aware that even a minor change we will make might cause your app to break, and might cause a 
+**[serious production issue](https://jira.wixpress.com/browse/INC-5684)**.  
+Before your release, make sure you have visual tests that cover all your use-cases, and most
+importantly, test these use-cases with at least one light and one dark theme.
 
 
-## I don't know if I'm overriding components right or wrong, what should I do?
-1. contact us at #wix-ui-tpa, and show us your use-case
-2. 
-
+#### "I read the document, but I'm still not sure I'm overriding components correctly. What should I do?"
+Contact us at [#wix-ui-tpa](slack://channel?id=CJRU3U97A&team=T02T01M9Y), and show us your use-case
