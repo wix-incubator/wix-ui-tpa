@@ -43,9 +43,9 @@ export interface OptionProps extends TPAComponentProps {
    */
   onChange?({ id: string }): void;
   /**
-   * Used for SR labelling the group of options (by id)
+   * Used for SR labelling aria-describedBy
    */
-  'aria-describedby'?: string;
+  description?: string;
 }
 
 interface DefaultProps {
@@ -112,7 +112,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
       checked,
       disabled,
       unavailable,
-      ['aria-describedby']: ariaDescribeddBy,
+      description,
       size,
     } = this.props;
     const { focused } = this.state;
@@ -131,7 +131,6 @@ export class Option extends React.Component<OptionProps, OptionState> {
         )}
         data-id={id}
         data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
-        aria-describedby={ariaDescribeddBy}
         {...this._getDataAttributes()}
       >
         {unavailable && (
@@ -139,9 +138,11 @@ export class Option extends React.Component<OptionProps, OptionState> {
             <line x1="0" y1="100%" x2="100%" y2="0" />
           </svg>
         )}
-        <span className={classes.hide} id={ariaDescribeddBy}>
-          {ariaDescribeddBy}
-        </span>
+        {description && (
+          <span className={classes.hide} id={`description-${id}`}>
+            {description}
+          </span>
+        )}
         <CoreRadioButton
           data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION}
           name={name}
@@ -153,6 +154,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
           onFocusByKeyboard={this._onFocus}
           onBlur={this._onBlur}
           disabled={disabled}
+          aria-describedBy={`description-${id}`}
           aria-label={this._getAriaLabel()}
           className={classnames(classes.wrapper)}
         />
