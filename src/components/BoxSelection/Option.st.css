@@ -12,7 +12,6 @@
 :vars {
     DefaultSelectedBoxColor: color-8;
     DefaultBoxFillColor: color-1;
-    DefaultBoxFillOpacity: 1;
     DefaultBorderColor: color-5;
     DefaultBoxBorderWidth: 1px;
     DefaultBoxBorderRadius: 0px;
@@ -33,11 +32,6 @@
         @default color-5
     */
     BoxBorderColor: --overridable;
-    /*
-        The BG opacity of the box
-        @default 1 (100%)
-    */
-    BoxFillOpacity: --overridable;
     /*
         The border width of the box (unavailable line as well)
         @default 1px 
@@ -68,7 +62,6 @@
 :vars {
     CurrentBoxFillColor: color(fallback(value(BoxFillColor), value(DefaultBoxFillColor)));
     CurrentBorderColor: color(fallback(value(BoxBorderColor), value(DefaultBorderColor)));
-    CurrentBoxFillOpacity: fallback(value(BoxFillOpacity), value(DefaultBoxFillOpacity));
     CurrentBoxBorderWidth: fallback(value(BoxBorderWidth), value(DefaultBoxBorderWidth));
     CurrentBoxBorderRadius: fallback(value(BoxBorderRadius), value(DefaultBoxBorderRadius));
     CurrentBoxPadding: fallback(value(BoxPadding), value(DefaultBoxPadding));
@@ -109,7 +102,7 @@ input[type='radio'] {
     border-style: solid;
     border-width: value(DefaultBoxBorderWidth);
     border-radius: value(DefaultBoxBorderRadius);
-    background-color: applyOpacity(color(value(DefaultBoxFillColor)), value(DefaultBoxFillOpacity));
+    background-color: color(value(DefaultBoxFillColor));
 }
 
 
@@ -117,7 +110,7 @@ input[type='radio'] {
     border-color: applyOpacity(value(CurrentBorderColor), 0.6);
     border-width: value(CurrentBoxBorderWidth);
     border-radius: value(CurrentBoxBorderRadius);
-    background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
+    background-color: value(CurrentBoxFillColor);
 }
 
 /* CHECKED */
@@ -125,11 +118,11 @@ input[type='radio'] {
     z-index: 999;
 }
 .root:checked{
-    background-color: applyOpacity(color(value(DefaultBoxFillColor)), value(DefaultBoxFillOpacity));
+    background-color: color(value(DefaultBoxFillColor));
     border-radius: value(DefaultBoxBorderRadius);
 }
 .root:checked.overrideStyleParamsOption{
-    background-color: applyOpacity(value(CurrentBoxFillColor), value(CurrentBoxFillOpacity));
+    background-color: value(CurrentBoxFillColor);
     border-radius: value(CurrentBoxBorderRadius);
 }
 
