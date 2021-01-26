@@ -96,6 +96,11 @@ export class Image extends React.Component<ImageProps> {
           resize === ResizeOptions.cover ? classes.cover : classes.contain,
           className,
         )}
+        style={{
+          // If fixed dimensions were passed, we set the calculated values to fit the container with the fixed image
+          width: width && calculatedDimensions.width,
+          height: height && calculatedDimensions.height,
+        }}
         data-hook={this.props['data-hook']}
       >
         {isAbsoluteUrl ? (
