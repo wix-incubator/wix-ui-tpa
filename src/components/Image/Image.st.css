@@ -92,6 +92,7 @@
   background-color: value(backgroundColor);
   border: value(borderWidth) solid value(borderColor);
   border-radius: value(borderRadius);
+  overflow: hidden;
 }
 
 .root.overrideStyleParams .absoluteImage, 
