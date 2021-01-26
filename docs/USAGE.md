@@ -83,6 +83,8 @@ Starting of version 2.10.0, new components will support a more optimized way to 
 
 The main difference is that this approach mixes only the override classes instead of the entire component stylesheet.
 
+For more on how to override wix-ui-tpa's components' styles properly, read [here](HOW_TO_OVERRIDE_STYLES_PROPERLY.md)
+
 ### Common configuration and widget state - `TPAComponentsProvider`
 Some components might have special behaviours and designs on `mobile` and `rtl` views.  
 To support this, add the `TPAComponentsProvider` to the root of your application:
