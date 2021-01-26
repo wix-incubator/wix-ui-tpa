@@ -1,0 +1,65 @@
+:import {
+  -st-from: "../../common/formatters.st";
+  -st-named: color, fallback;
+}
+
+:import {
+  -st-from: "../Image/Image.st.css";
+  -st-default: Image;
+  -st-named: overrideStyleParams as overrideStyleParamsImage, defaultBorderWidth, defaultBorderRadius, defaultImageOpacity;
+}
+
+/*Defaults*/
+:vars {
+  defaultBackgroundColor: color-5;
+}
+
+/* Overrides */
+:vars {
+  /*
+    A background color by a color from the palette for the container
+    @default color-5
+  */
+  BackgroundColor: --overridable;
+  /*
+    A border color by a color from the palette for the container
+  */
+  BorderColor: --overridable;
+  /*
+    A border width in pixels for the container
+    @default 0px
+  */
+  BorderWidth: --overridable;
+  /*
+    A border radius in pixels for the container
+    @default 0px
+  */
+  BorderRadius: --overridable;
+  /*
+    An opacity between 0 to 100 for the image
+    @default 100%
+  */
+  ImageOpacity: --overridable;
+}
+
+:vars {
+  backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+  borderColor: color(value(BorderColor));
+  borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
+  borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
+  imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
+}
+
+.root {
+  -st-extends: Image;
+}
+
+.root.overrideStyleParams {
+    -st-mixin: overrideStyleParamsImage(
+      BackgroundColor value(backgroundColor),
+      BorderColor value(borderColor),
+      BorderWidth value(borderWidth),
+      BorderRadius value(borderRadius),
+      ImageOpacity value(imageOpacity)
+  );
+}

@@ -48,5 +48,6 @@ export { AddItem } from './AddItem';
 export { ProgressBar } from './ProgressBar';
 export { Image } from './Image';
 export { HeroImage } from './HeroImage';
+export { ThumbnailImage } from './ThumbnailImage';
 export { DatePicker } from './DatePicker';
 export { DatePickerInput } from './DatePickerInput';
