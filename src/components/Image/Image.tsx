@@ -94,17 +94,17 @@ export class Image extends React.Component<ImageProps> {
         className={st(
           classes.root,
           resize === ResizeOptions.cover ? classes.cover : classes.contain,
-          className,
+          classnames(className, {
+            [classes.preload]: hasLoadingBehavior && !isLoaded,
+            [classes.loaded]: hasLoadingBehavior && isLoaded,
+          }),
         )}
         data-hook={this.props['data-hook']}
       >
         {isAbsoluteUrl ? (
           <CoreImage
             src={src}
-            className={classnames(classes.absoluteImage, {
-              [classes.preload]: hasLoadingBehavior && !isLoaded,
-              [classes.loaded]: hasLoadingBehavior && isLoaded,
-            })}
+            className={classes.image}
             {...(calculatedDimensions && {
               nativeProps: { ...calculatedDimensions },
             })}
@@ -114,9 +114,7 @@ export class Image extends React.Component<ImageProps> {
         ) : (
           <RelativeMediaImage
             src={src}
-            className={classnames(classes.relativeImage, {
-              [classes.loaded]: hasLoadingBehavior && isLoaded,
-            })}
+            className={classes.image}
             sourceDimensions={sourceDimensions}
             containerDimensions={calculatedDimensions}
             isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}

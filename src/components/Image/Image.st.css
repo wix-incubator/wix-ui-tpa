@@ -60,32 +60,22 @@
   min-height: 100%;
 }
 
-.root.contain .absoluteImage,
-.root.contain .relativeImage {
+.root.contain .image {
   object-fit: contain;
 }
 
-.root.cover .absoluteImage,
-.root.cover .relativeImage {
+.root.cover .image {
   object-fit: cover;
 }
 
-.preload {
+.root.preload .image {
   filter: blur(value(blurRadius));
 }
 
-.loaded {
+.root.loaded .image {
   animation-name: blurry-loading;
   animation-duration: 0.3s;
-  animation-timing-function: easeout;
-}
-
-.absoluteImage.preload {
-  -st-mixin: preload;
-}
-
-.absoluteImage.loaded {
-  -st-mixin: loaded;
+  animation-timing-function: ease-out;
 }
 
 .root.overrideStyleParams {
@@ -94,7 +84,6 @@
   border-radius: value(borderRadius);
 }
 
-.root.overrideStyleParams .absoluteImage, 
-.root.overrideStyleParams .relativeImage {
+.root.overrideStyleParams .image {
   opacity: value(imageOpacity);
 }
