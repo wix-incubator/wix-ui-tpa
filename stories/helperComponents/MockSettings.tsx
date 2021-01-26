@@ -1,8 +1,14 @@
 import * as React from 'react';
-import * as UI from 'wix-base-ui/dist/base-ui';
+import {
+  ColorPickerPalette,
+  ColorPickerPalettePicker,
+  Slider,
+  FontFamilyPicker,
+} from '@wix/wix-base-ui';
 import styles from './MockSettings.scss';
 import SettingsChangedEvent from '../../mocks/fakeTPAChange.json';
 import { palettes } from './palettes';
+import './baseUI.global.scss';
 
 export interface IMockSettingsState {
   selectedNumber: any;
@@ -348,7 +354,7 @@ export class MockSettings extends React.PureComponent<
                   <label>
                     {label} - {this.state.selectedColors[wixParam].value}
                   </label>
-                  <UI.ColorPickerPalette
+                  <ColorPickerPalette
                     onChange={(value, index) =>
                       this.onColorChanged({ value, index }, wixParam)
                     }
@@ -362,7 +368,7 @@ export class MockSettings extends React.PureComponent<
           <div className={styles.palettePickerContainer}>
             <div className={styles.palettePicker}>
               <label>Palette Picker</label>
-              <UI.ColorPickerPalettePicker
+              <ColorPickerPalettePicker
                 palettePresets={palettes}
                 value={this.state.selectedPalette}
                 onChange={this.onPaletteChange}
@@ -389,7 +395,7 @@ export class MockSettings extends React.PureComponent<
                     {label} - {this.state.selectedNumber[wixParam]}
                     {unit}
                   </label>
-                  <UI.Slider
+                  <Slider
                     min={min}
                     max={max}
                     hideNumericInput
@@ -416,7 +422,7 @@ export class MockSettings extends React.PureComponent<
             {this.props.wixFontParams.map(({ label, wixParam, fixedSize }) => (
               <li key={wixParam}>
                 <label>{label}</label>
-                <UI.FontFamilyPicker
+                <FontFamilyPicker
                   fonts={DEFAULT_EXAMPLES}
                   value={this.state.selectedFont[wixParam].value}
                   getMissingFontName={this.getMissingFontName}
@@ -425,7 +431,7 @@ export class MockSettings extends React.PureComponent<
                   }
                 />
                 {!fixedSize ? (
-                  <UI.Slider
+                  <Slider
                     value={this.state.selectedFont[wixParam].size}
                     unit="px"
                     min={12}
