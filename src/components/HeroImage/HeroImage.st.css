@@ -44,7 +44,7 @@
 
 :vars {
   backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
-  borderColor: color(fallback(value(BorderColor), value(defaultBorderColor)));
+  borderColor: color(value(BorderColor));
   borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
   borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
