@@ -35,7 +35,7 @@ const children = [
     value: (
       <BoxSelection.Option key={1} id={'1'} aria-describedby={`1`}>
         <div>Item-{1}</div>
-      </BoxSelection.Option> 
+      </BoxSelection.Option>
     ),
   },
   {
