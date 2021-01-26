@@ -34,9 +34,9 @@ export default {
   componentPath: '../ThumbnailImage.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-ThumbnailImage',
-    src: 'c5f754_186e90ba2c9b47de8a4a0a0346865b72~mv2.png',
-    width: 500,
-    height: 200,
+    src: 'c5f754_f4ccb2e3ed75479dbfd55e02ef9c47e8~mv2.png',
+    width: 300,
+    height: 300,
   }),
   exampleProps: commonExampleProps,
   dataHook: 'storybook-ThumbnailImage',
@@ -49,7 +49,7 @@ export default {
         title: 'Usage',
         sections: [
           description(
-            '`ThumbnailImage` is a component representing a header with high presence providing context about the page content.',
+            '`ThumbnailImage` is a component representing a relativity small image that typically act as target leading to a primary content (page/flow).',
           ),
 
           importExample({
@@ -89,12 +89,12 @@ export default {
                   {
                     label: 'Background color',
                     wixParam: 'backgroundColor',
-                    defaultColor: 'color-5',
+                    defaultColor: 'color-2',
                   },
                   {
                     label: 'Border color',
                     wixParam: 'borderColor',
-                    defaultColor: 'color-1',
+                    defaultColor: 'color-5',
                   },
                 ],
                 numbers: commonWiringNumberParams,

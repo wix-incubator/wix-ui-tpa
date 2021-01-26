@@ -11,18 +11,20 @@
 
 /*Defaults*/
 :vars {
-  defaultBackgroundColor: color-5;
+  defaultBackgroundColor: color-2;
+  defaultBorderColor: color-5;
 }
 
 /* Overrides */
 :vars {
   /*
     A background color by a color from the palette for the container
-    @default color-5
+    @default color-2
   */
   BackgroundColor: --overridable;
   /*
     A border color by a color from the palette for the container
+    @default color-5
   */
   BorderColor: --overridable;
   /*
@@ -44,7 +46,7 @@
 
 :vars {
   backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
-  borderColor: color(value(BorderColor));
+  borderColor: color(fallback(value(BorderColor), value(defaultBorderColor)));
   borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
   borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));

@@ -11,8 +11,8 @@ import { thumbnailImageDriverFactory } from './ThumbnailImage.driver';
 describe('ThumbnailImage', () => {
   const createDriver = createUniDriverFactory(thumbnailImageDriverFactory);
 
-  const sampleSource = 'c5f754_186e90ba2c9b47de8a4a0a0346865b72~mv2.png';
-  const sampleDimensions = { width: 800, height: 300 };
+  const sampleSource = 'c5f754_f4ccb2e3ed75479dbfd55e02ef9c47e8~mv2.png';
+  const sampleDimensions = { width: 300, height: 300 };
 
   it('should render', async () => {
     const driver = createDriver(
