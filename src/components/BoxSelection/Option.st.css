@@ -69,7 +69,7 @@
     CurrentDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
 }
 
-input[type='radio'] {
+.root input[type="radio"] {
     opacity: 1;
     clip: rect(1px, 1px, 1px, 1px);
 }
@@ -93,8 +93,7 @@ input[type='radio'] {
     display: flex;
 }
 
-.root .wrapper{
-    -st-extends: RadioButton;
+.wrapper {
     margin: -1px;
     align-items: center;
     cursor: pointer;
