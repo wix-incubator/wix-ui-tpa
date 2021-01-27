@@ -1,0 +1,41 @@
+:import {
+  -st-from: "../../common/formatters.st";
+  -st-named: color, fallback;
+}
+
+:import {
+  -st-from: "../Image/Image.st.css";
+  -st-default: Image;
+  -st-named: overrideStyleParams as overrideStyleParamsImage, defaultImageOpacity;
+}
+
+/* Defaults */
+:vars {
+  defaultBackgroundColor: color-5;
+}
+
+/* Overrides */
+:vars {
+  /*
+    A background color by a color from the palette for the container
+    @default color-5
+  */
+  BackgroundColor: --overridable;
+  /*
+    An opacity between 0 to 100 for the image
+    @default 100%
+  */
+  ImageOpacity: --overridable;
+}
+
+:vars {
+  backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+  imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
+}
+
+.root.overrideStyleParams {
+    -st-mixin: overrideStyleParamsImage(
+      BackgroundColor value(backgroundColor),
+      ImageOpacity value(imageOpacity)
+  );
+}

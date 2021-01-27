@@ -1,0 +1,11 @@
+:import {
+  -st-from: '../HeroImage.st.css';
+  -st-named: overrideStyleParams;
+}
+
+.root {
+  -st-mixin: overrideStyleParams(
+    BackgroundColor '"color(--backgroundColor)"',
+    ImageOpacity '"unit(--imageOpacity, %)"'
+  );
+}

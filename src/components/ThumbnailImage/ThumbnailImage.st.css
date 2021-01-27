@@ -3,21 +3,28 @@
   -st-named: color, fallback;
 }
 
-/*Defaults*/
+:import {
+  -st-from: "../Image/Image.st.css";
+  -st-default: Image;
+  -st-named: overrideStyleParams as overrideStyleParamsImage, defaultBorderWidth, defaultBorderRadius, defaultImageOpacity;
+}
+
+/* Default s*/
 :vars {
-  defaultBorderWidth: 0px;
-  defaultBorderRadius: 0px;
-  defaultImageOpacity: 100%;
+  defaultBackgroundColor: color-2;
+  defaultBorderColor: color-5;
 }
 
 /* Overrides */
 :vars {
   /*
     A background color by a color from the palette for the container
+    @default color-2
   */
   BackgroundColor: --overridable;
   /*
     A border color by a color from the palette for the container
+    @default color-5
   */
   BorderColor: --overridable;
   /*
@@ -38,53 +45,19 @@
 }
 
 :vars {
-  backgroundColor: color(value(BackgroundColor));
-  borderColor: color(value(BorderColor));
+  backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+  borderColor: color(fallback(value(BorderColor), value(defaultBorderColor)));
   borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
   borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
-  blurRadius: 3px;
-}
-
-@keyframes blurry-loading {
-  0% {
-    filter: blur(value(blurRadius));
-  }
-  100% {
-    filter: none;
-  }
-}
-
-.root {
-  display: grid;
-  min-height: 100%;
-}
-
-.root.contain .image {
-  object-fit: contain;
-}
-
-.root.cover .image {
-  object-fit: cover;
-}
-
-.root.preload .image {
-  filter: blur(value(blurRadius));
-}
-
-.root.loaded .image {
-  animation-name: blurry-loading;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
 }
 
 .root.overrideStyleParams {
-  background-color: value(backgroundColor);
-  border: value(borderWidth) solid value(borderColor);
-  border-radius: value(borderRadius);
-  overflow: hidden;
-}
-
-.root.overrideStyleParams .image {
-  opacity: value(imageOpacity);
+    -st-mixin: overrideStyleParamsImage(
+      BackgroundColor value(backgroundColor),
+      BorderColor value(borderColor),
+      BorderWidth value(borderWidth),
+      BorderRadius value(borderRadius),
+      ImageOpacity value(imageOpacity)
+  );
 }

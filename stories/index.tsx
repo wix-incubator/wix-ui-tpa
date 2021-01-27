@@ -38,6 +38,8 @@ require('../src/components/Grid/docs/index.story');
 require('../src/components/IconButton/docs/index.story');
 require('../src/components/IconToggle/docs/index.story');
 require('../src/components/Image/docs/index.story');
+require('../src/components/HeroImage/docs/index.story');
+require('../src/components/ThumbnailImage/docs/index.story');
 require('../src/components/Input/docs/index.story');
 
 require('../src/components/LikeButton/docs/index.story');

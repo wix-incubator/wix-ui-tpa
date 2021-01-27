@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
 import { Image, ImageProps } from './';
+import { classes } from './Image.visual.st.css';
 import {
-  ResizeOptions,
   AspectRatioPresets,
   LoadingBehaviorOptions,
+  ResizeOptions,
 } from './types';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
@@ -127,6 +128,45 @@ visualize('Image', () => {
             width={300}
             height={250}
             resize={ResizeOptions.cover}
+            onLoad={done}
+          />
+        ));
+      });
+
+      story('with wiring', () => {
+        snap('override background color', (done) => (
+          <ImageWithWrapper
+            src={invalidSrc}
+            width={480}
+            height={360}
+            className={classes.backgroundColorOverride}
+            onLoad={done}
+          />
+        ));
+        snap('override border', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            className={classes.borderOverride}
+            onLoad={done}
+          />
+        ));
+        snap('override border radius', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            className={classes.borderRadiusOverride}
+            onLoad={done}
+          />
+        ));
+        snap('override opacity', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            className={classes.opacityOverride}
             onLoad={done}
           />
         ));
