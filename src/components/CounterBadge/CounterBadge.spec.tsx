@@ -14,73 +14,51 @@ describe('CounterBadge', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  it('should render the right value', async () => {
+  it('should render the right value in the getContent()', async () => {
     const driver = createDriver(<CounterBadge value={6} />);
 
-    expect((await driver.element()).textContent).toBe('6');
+    expect(await driver.getContent()).toBe('6');
   });
 
-  describe('testkit', () => {
-    it('should render default badge', async () => {
+  it('should render +99 badge as default if value is above 99', async () => {
+    const driver = createDriver(<CounterBadge value={134} />);
+
+    expect(await driver.getContent()).toBe('+99');
+  });
+
+  it('should render +[maximum] if value is above maximum', async () => {
+    const maximum = 9;
+    const driver = createDriver(
+      <CounterBadge maximum={maximum} value={maximum + 1} />,
+    );
+
+    expect(await driver.getContent()).toBe(`+${maximum}`);
+  });
+
+  [
+    COUNTER_BADGE_PRIORITY.default,
+    COUNTER_BADGE_PRIORITY.primary,
+    COUNTER_BADGE_PRIORITY.default,
+  ].forEach((priority) => {
+    it(`should render counter badge for priority = ${priority}`, async () => {
       const driver = createDriver(
         <CounterBadge priority={COUNTER_BADGE_PRIORITY.default} value={8} />,
       );
-      expect(await driver.isDefault()).toBeTruthy();
-      expect(await driver.exists()).toBe(true);
-    });
-    it('should render light badge', async () => {
-      const driver = createDriver(
-        <CounterBadge priority={COUNTER_BADGE_PRIORITY.secondary} value={8} />,
-      );
-      expect(await driver.isSecondary()).toBeTruthy();
-      expect(await driver.exists()).toBe(true);
-    });
-    it('should render primary badge', async () => {
-      const driver = createDriver(
-        <CounterBadge priority={COUNTER_BADGE_PRIORITY.primary} value={8} />,
-      );
-      expect(await driver.isPrimary()).toBeTruthy();
+
       expect(await driver.exists()).toBe(true);
     });
   });
 
-  describe('priority', () => {});
-
-  describe('maximum validation', () => {
-    it('should default to 99 as maximum', async () => {
-      const driver = createDriver(<CounterBadge value={132} />);
-
-      expect((await driver.element()).textContent).toBe('+99');
-    });
-
-    it('should change maximum based on maximum props', async () => {
-      const driver = createDriver(<CounterBadge maximum={50} value={132} />);
-
-      expect((await driver.element()).textContent).toBe('+50');
-    });
-  });
-
-  describe('validation', () => {
-    it(`should present rounded down the prop value`, async () => {
-      const driver = createDriver(<CounterBadge value={13.6} />);
-
-      expect(await driver.exists()).toBe(true);
-      expect((await driver.element()).textContent).toBe('13');
-    });
-  });
-
-  describe('enzyme testkit', () => {
-    it('should exist', async () => {
-      expect(
-        await isUniEnzymeTestkitExists(
-          <CounterBadge value={16} />,
-          enzymeBadgeTestkitFactory,
-          mount,
-          {
-            dataHookPropName: 'data-hook',
-          },
-        ),
-      ).toBe(true);
-    });
+  it('enzyme testkit - should exist', async () => {
+    expect(
+      await isUniEnzymeTestkitExists(
+        <CounterBadge value={16} />,
+        enzymeBadgeTestkitFactory,
+        mount,
+        {
+          dataHookPropName: 'data-hook',
+        },
+      ),
+    ).toBe(true);
   });
 });
