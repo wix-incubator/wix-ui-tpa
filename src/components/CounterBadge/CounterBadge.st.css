@@ -1,0 +1,75 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback;
+}
+
+/*Overrides*/
+:vars {
+    /*
+        Background color
+        @default color-5 with opacity 0.1
+    */
+    CounterBadgeBgColor: --overridable;
+    /*
+        Text color
+        @default priority default and light: color-5, priority primary: color-1
+    */
+    CounterBadgeTextColor: --overridable;
+}
+
+:vars {
+    defaultBgColor: color(fallback(value(CounterBadgeBgColor), color(color-8)));
+    defaultTextColor: color(fallback(value(CounterBadgeTextColor), color(color-5)));
+}
+
+:vars {
+    lightBgColor: color(fallback(value(CounterBadgeBgColor), applyOpacity(color(color-8),0.1)));
+    lightTextColor: color(fallback(value(CounterBadgeTextColor), color(color-8)));
+}
+
+:vars {
+    primaryBgColor: color(fallback(value(CounterBadgeBgColor), color(color-8)));
+    primaryTextColor: color(fallback(value(CounterBadgeTextColor), color(color-1)));
+}
+
+.root {
+    -st-states: withIcon;
+    display: inline-flex;
+    line-height: 20px;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+.overrideStyleParams {
+    background-color: color(value(defaultBgColor));
+    color: color(value(defaultTextColor));
+}
+
+.innerContainer {
+    align-items: center;
+    padding: 0 6px;
+}
+
+.maximumNumber {
+    padding: 0 8px 0 6px;
+}
+
+/* Deprecated - Old style params overriding for full mixin */
+
+.root {
+    min-width: 20px;
+    justify-content: center;
+}
+
+/* Variants - including style overrides capabilities */
+
+.priority-primary {
+    background-color: color(value(primaryBgColor));
+    color: color(value(primaryTextColor));
+}
+
+.priority-secondary {
+    background-color: color(value(lightBgColor));
+    color: color(value(lightTextColor));
+}
+

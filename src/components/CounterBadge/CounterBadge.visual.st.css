@@ -1,0 +1,32 @@
+:import {
+  -st-from: "./CounterBadge.st.css";
+  -st-default: CounterBadge;
+  -st-named: overrideStyleParams;
+}
+
+.palette {
+  -st-mixin: CounterBadge(
+    CounterBadgeBgColor "color(color-11)",
+    CounterBadgeTextColor "color(color-15)",
+  );
+}
+
+.staticColors {
+  -st-mixin: Badge(
+    CounterBadgeBgColor gold,
+    CounterBadgeTextColor black,
+  );
+}
+
+.paletteStyleParams {
+  -st-mixin: overrideStyleParams(
+    CounterBadgeBgColor "color(color-11)",
+    CounterBadgeTextColor "color(color-15)",
+  );
+}
+.staticColorsSiteParams {
+  -st-mixin: overrideStyleParams(
+    CounterBadgeBgColor gold,
+    CounterBadgeTextColor black,
+  );
+}
