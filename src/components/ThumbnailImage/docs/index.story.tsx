@@ -82,6 +82,12 @@ export default {
                 'This example demonstrates a simple thumbnail image.',
               source: examples.basicExample,
             },
+            {
+              title: 'Within a Card',
+              description:
+                'This example demonstrates a thumbnail image appearing withing a card.',
+              source: examples.cardExample,
+            },
           ].map(code),
         ],
       }),
