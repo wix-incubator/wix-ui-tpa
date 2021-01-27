@@ -9,7 +9,7 @@
   -st-named: overrideStyleParams as overrideStyleParamsImage, defaultImageOpacity;
 }
 
-/*Defaults*/
+/* Defaults */
 :vars {
   defaultBackgroundColor: color-5;
 }

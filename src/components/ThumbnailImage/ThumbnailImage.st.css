@@ -9,7 +9,7 @@
   -st-named: overrideStyleParams as overrideStyleParamsImage, defaultBorderWidth, defaultBorderRadius, defaultImageOpacity;
 }
 
-/*Defaults*/
+/* Default s*/
 :vars {
   defaultBackgroundColor: color-2;
   defaultBorderColor: color-5;
