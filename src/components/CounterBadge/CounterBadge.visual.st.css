@@ -11,7 +11,7 @@
 }
 
 .staticColors {
-  -st-mixin: Badge(
+  -st-mixin: CounterBadge(
     CounterBadgeBgColor gold,
     CounterBadgeTextColor black,
   );

@@ -38,7 +38,7 @@ export default {
   component: CounterBadge,
   componentPath: '../CounterBadge.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-Badge',
+    'data-hook': 'storybook-CounterBadge',
     value: 4,
     priority: COUNTER_BADGE_PRIORITY.primary,
     maximum: 99,
