@@ -1,6 +1,5 @@
 :import {
   -st-from: '../HeroImage.st.css';
-  -st-default: HeroImage;
   -st-named: overrideStyleParams;
 }
 

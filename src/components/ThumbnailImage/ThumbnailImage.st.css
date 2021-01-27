@@ -52,10 +52,6 @@
   imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
 }
 
-.root {
-  -st-extends: Image;
-}
-
 .root.overrideStyleParams {
     -st-mixin: overrideStyleParamsImage(
       BackgroundColor value(backgroundColor),
