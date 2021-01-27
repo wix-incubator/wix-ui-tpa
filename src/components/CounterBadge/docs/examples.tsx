@@ -2,37 +2,21 @@ export const importExample = `import { CounterBadge } from 'wix-ui-tpa/CounterBa
 
 export const priority = `
   <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge>1</CounterBadge>
-    <CounterBadge priority={COUNTER_BADGE_PRIORITY.secondary}>15</CounterBadge>
-    <CounterBadge>88</CounterBadge>
+    <CounterBadge value={1} />
+    <CounterBadge priority={COUNTER_BADGE_PRIORITY.secondary} value={15} />
+    <CounterBadge value={88} />
   </div>
 `;
 
 export const validationMaximum = `
   <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge>134</CounterBadge>
-    <CounterBadge maximum={500}>5436</CounterBadge>
+    <CounterBadge value={134} />
+    <CounterBadge maximum={50} value={134} />
   </div>
 `;
 
 export const formating = `
   <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge>  25  </CounterBadge>
-    <CounterBadge maximum={10000}>5,345</CounterBadge>
-  </div>
-`;
-
-export const validationMinimum = `
-  <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge>-4</CounterBadge>
-    <CounterBadge minimum={5}>3</CounterBadge>
-  </div>
-`;
-
-export const validationInput = `
-  <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge>54.65</CounterBadge>
-    <CounterBadge>123,42</CounterBadge>
-    <CounterBadge>abD</CounterBadge>
+    <CounterBadge value={16.87} />
   </div>
 `;

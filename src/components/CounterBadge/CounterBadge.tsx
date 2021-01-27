@@ -7,7 +7,7 @@ export const COUNTER_BADGE_DEFAULT = {
   maximum: 99,
 };
 export enum COUNTER_BADGE_PRIORITY {
-  default = 'primary',
+  default = 'default',
   primary = 'primary',
   secondary = 'secondary',
 }
@@ -15,15 +15,15 @@ export enum COUNTER_BADGE_PRIORITY {
 export interface CounterBadgeProps extends TPAComponentProps {
   /** define style preset */
   priority?: COUNTER_BADGE_PRIORITY;
-  /** define minimum value that below the counterBadge will be hidden */
-  minimum?: number;
+  /** define value that counterBadge will present */
+  value: number;
   /** define maximum value that above that number the counterBadge will present `+${maximum}` */
   maximum?: number;
 }
 
 interface DefaultProps {
   priority: COUNTER_BADGE_PRIORITY;
-  minimum: number;
+  value: number;
   maximum: number;
 }
 
@@ -31,30 +31,22 @@ class CounterBadge extends React.Component<CounterBadgeProps> {
   static displayName = 'CounterBadge';
   static defaultProps: DefaultProps = {
     priority: COUNTER_BADGE_PRIORITY.default,
-    minimum: 0,
+    value: 0,
     maximum: 99,
   };
 
   render() {
-    const { priority, children, className } = this.props;
-    const inputNumberString: string = children.toString();
-    const inputNumberTrimed: string = inputNumberString.trim();
-    const regex = /^\d{1,3}(,\d{3})*?$|^\d+$/g;
-    const isInputNotValidPositiveNumber: boolean = !inputNumberTrimed.match(
-      regex,
-    );
-    if (isInputNotValidPositiveNumber) {
-      return null;
-    }
+    const { className, value } = this.props;
 
-    const inputNumberNoCommas: string = inputNumberTrimed.replace(',', '');
-    const inputNumber: number = parseInt(inputNumberNoCommas, 10);
-    const minimum = this.props.minimum ?? 0;
-    const maximum = this.props.maximum ?? 99;
-
-    if (inputNumber < minimum) {
-      return null;
-    }
+    const priority =
+      this.props.priority === COUNTER_BADGE_PRIORITY.secondary
+        ? COUNTER_BADGE_PRIORITY.secondary
+        : COUNTER_BADGE_PRIORITY.primary;
+    const inputNumber: number = Math.floor(value);
+    const maximum =
+      this.props.maximum || this.props.maximum > 99 || this.props.maximum < 1
+        ? this.props.maximum
+        : 99;
 
     const numberToPresent =
       inputNumber > maximum ? `+${maximum}` : `${inputNumber}`;

@@ -38,6 +38,8 @@
     line-height: 20px;
     font-size: 12px;
     border-radius: 10px;
+    min-width: 20px;
+    justify-content: center;
 }
 
 .overrideStyleParams {
@@ -52,13 +54,6 @@
 
 .maximumNumber {
     padding: 0 8px 0 6px;
-}
-
-/* Deprecated - Old style params overriding for full mixin */
-
-.root {
-    min-width: 20px;
-    justify-content: center;
 }
 
 /* Variants - including style overrides capabilities */

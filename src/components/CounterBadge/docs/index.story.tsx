@@ -18,6 +18,12 @@ import { allComponents } from '../../../../stories/utils/allComponents';
 import * as exampleOverrides from './CounterBadgeExtendedExample.st.css';
 import * as ExtendedCSSRawSource from '!raw-loader!./CounterBadgeExtendedExample.st.css';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
+import { settingsApi } from '../../../../stories/utils/SettingsApi';
+import {
+  autoSettingsPanel,
+  settingsPanel,
+} from '../../../../stories/utils/SettingsPanel';
+import * as ExtendedExample from '!raw-loader!./CounterBadgeExtendedExample.tsx';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -33,14 +39,12 @@ export default {
   componentPath: '../CounterBadge.tsx',
   componentProps: () => ({
     'data-hook': 'storybook-Badge',
-    children: 'CounterBadge',
+    value: 4,
     priority: COUNTER_BADGE_PRIORITY.primary,
     maximum: 99,
   }),
   exampleProps: {
     priority: Object.values(COUNTER_BADGE_PRIORITY),
-    minimum: 0,
-    maximum: 99,
   },
   dataHook: 'storybook-CounterBadge',
   sections: [
@@ -74,22 +78,9 @@ export default {
             source: examples.validationMaximum,
           }),
           example({
-            title: 'Fromating',
-            description:
-              'The Counter Badge trim, and remove commas from positive numbers.',
+            title: 'Rounding value',
+            description: 'The Counter Badge flooring the prop value.',
             source: examples.formating,
-          }),
-          example({
-            title: 'Minimum Validation',
-            description:
-              'The Counter Badge pefrom minimum valucation and has default of 0 but can be changed. (Below minimum return NULL)',
-            source: examples.validationMinimum,
-          }),
-          example({
-            title: 'Input Validation',
-            description:
-              'The Counter Badge pefrom input number validation on children and return NULL if not valid.',
-            source: examples.validationInput,
           }),
           example(
             {
@@ -103,8 +94,8 @@ ${(ExtendedCSSRawSource as any).default}\`
 
 return (
   <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge className={classes.mixPrioritySecondary}>23</CounterBadge>
-    <CounterBadge className={classes.mixPriorityPrimary}>1</CounterBadge>
+    <CounterBadge className={classes.mixPrioritySecondary} value={23} />
+    <CounterBadge className={classes.mixPriorityPrimary} value={1} />
   </div>
   );
 }
@@ -116,7 +107,37 @@ return (
       }),
       tab({ title: 'Playground', sections: [playground()] }),
       tab({ title: 'API', sections: [api()] }),
+      {
+        title: 'Style API',
+        sections: [settingsApi()],
+      },
       tab({ title: 'TestKit', sections: [testkit()] }),
+      tab({
+        title: 'Settings Panel',
+        sections: [
+          settingsPanel({
+            example: <CounterBadge value={8} />,
+            rawSource: ExtendedExample,
+            rawCSSSource: ExtendedCSSRawSource,
+            title: 'Badge Extended',
+            params: {
+              colors: [
+                {
+                  label: 'CounterBadge background color',
+                  wixParam: 'counterBadgeBgColor',
+                  defaultColor: 'color-5',
+                },
+                {
+                  label: 'CounterBadge text color',
+                  wixParam: 'counterBadgeTextColor',
+                  defaultColor: 'color-1',
+                },
+              ],
+            },
+          }),
+        ],
+      },),
+
     ]),
   ],
 };

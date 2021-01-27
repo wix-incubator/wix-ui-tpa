@@ -22,45 +22,30 @@ const tests = [
         it: 'default',
         props: {
           priority: COUNTER_BADGE_PRIORITY.default,
-          children: ['5'],
+          value: 5,
         },
       },
       {
         it: 'primary',
         props: {
           priority: COUNTER_BADGE_PRIORITY.primary,
-          children: ['143'],
+          value: 88,
         },
       },
       {
         it: 'secondery',
         props: {
           priority: COUNTER_BADGE_PRIORITY.secondary,
-          children: ['143'],
-          maximum: 50,
+          value: 13,
+          maximum: 9,
         },
       },
       {
         it: 'above maximum',
         props: {
           className: classes.palette,
-          children: ['143'],
+          value: 143,
           maximum: 50,
-        },
-      },
-      {
-        it: 'below minimum',
-        props: {
-          className: classes.staticColors,
-          children: ['5'],
-          maximum: 6,
-        },
-      },
-      {
-        it: 'not valid',
-        props: {
-          className: classes.staticColors,
-          children: ['asv'],
         },
       },
     ],

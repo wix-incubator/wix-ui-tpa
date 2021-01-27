@@ -1,6 +1,5 @@
 :import {
   -st-from: "./CounterBadge.st.css";
-  -st-default: CounterBadge;
   -st-named: overrideStyleParams;
 }
 

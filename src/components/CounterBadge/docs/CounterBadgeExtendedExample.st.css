@@ -1,6 +1,5 @@
 :import {
     -st-from: "../CounterBadge.st.css";
-    -st-default: TPACounterBadge;
     -st-named: overrideStyleParams, priority-secondary, priority-primary;
 }
 
