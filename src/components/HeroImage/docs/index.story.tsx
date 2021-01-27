@@ -1,10 +1,11 @@
 import * as HeroImageWiringExampleCSSRaw from '!raw-loader!./HeroImageWiringExample.st.css';
 import * as HeroImageWiringExampleRaw from '!raw-loader!./HeroImageWiringExample.tsx';
+import LinkTo from '@storybook/addon-links/react';
 import * as React from 'react';
-import { commonExampleProps, commonWiringNumberParams } from '../../Image/docs';
 import {
   api,
   code as baseCode,
+  description,
   divider,
   header,
   importExample,
@@ -13,7 +14,6 @@ import {
   tabs,
   testkit,
   title,
-  description,
 } from 'wix-storybook-utils/Sections';
 import { HeroImage } from '..';
 import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
@@ -21,11 +21,14 @@ import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import { settingsPanel } from '../../../../stories/utils/SettingsPanel';
+import { commonExampleProps } from '../../Image/docs';
 import * as examples from './examples';
 import { HeroImageWiringExample } from './HeroImageWiringExample';
 
 const code = (config) =>
   baseCode({ components: allComponents, compact: true, ...config });
+
+const dataHook = 'storybook-HeroImage';
 
 export default {
   category: StoryCategory.WIP,
@@ -33,13 +36,13 @@ export default {
   component: HeroImage,
   componentPath: '../HeroImage.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-HeroImage',
+    'data-hook': dataHook,
     src: 'c5f754_186e90ba2c9b47de8a4a0a0346865b72~mv2.png',
     width: 500,
     height: 200,
   }),
   exampleProps: commonExampleProps,
-  dataHook: 'storybook-HeroImage',
+  dataHook,
   sections: [
     header({
       component: <OptimizedStylesBanner />,
@@ -51,6 +54,18 @@ export default {
           description(
             '`HeroImage` is a component representing a header with high presence providing context about the page content.',
           ),
+
+          description({
+            text: [
+              <p style={{ marginBottom: '20px' }} key={`${dataHook}-link`}>
+                ⚠️ This component inherits the props API from{' '}
+                <LinkTo kind={'Working In Progress'} story="Image">
+                  {'<Image/>'}
+                </LinkTo>
+                , so take a look at that component for additional examples.
+              </p>,
+            ],
+          }),
 
           importExample({
             source: examples.importExample,

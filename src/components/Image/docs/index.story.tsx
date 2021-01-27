@@ -1,9 +1,11 @@
 import * as ImageWiringExampleCSSRaw from '!raw-loader!./ImageWiringExample.st.css';
 import * as ImageWiringExampleRaw from '!raw-loader!./ImageWiringExample.tsx';
+import LinkTo from '@storybook/addon-links/react';
 import * as React from 'react';
 import {
   api,
   code as baseCode,
+  description,
   divider,
   header,
   importExample,
@@ -12,14 +14,8 @@ import {
   tabs,
   testkit,
   title,
-  description,
 } from 'wix-storybook-utils/Sections';
-import {
-  AspectRatioPresets,
-  Image,
-  LoadingBehaviorOptions,
-  ResizeOptions,
-} from '../';
+import { Image } from '../';
 import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { allComponents } from '../../../../stories/utils/allComponents';
@@ -43,13 +39,15 @@ const sampleSources = [
   },
 ];
 
+const dataHook = 'storybook-Image';
+
 export default {
   category: StoryCategory.WIP,
   storyName: 'Image',
   component: Image,
   componentPath: '../Image.tsx',
   componentProps: () => ({
-    'data-hook': 'storybook-Image',
+    'data-hook': dataHook,
     src: sampleSources[0].value,
     width: 300,
     height: 250,
@@ -59,7 +57,7 @@ export default {
     src: sampleSources,
     ...examples.commonExampleProps,
   },
-  dataHook: 'storybook-Image',
+  dataHook,
   sections: [
     header({
       component: <OptimizedStylesBanner />,
@@ -71,6 +69,23 @@ export default {
           description(
             '`Image` is a component to literally display an image - whether an absolute with full URL or a media platform item with relative URI.',
           ),
+
+          description({
+            text: [
+              <p style={{ marginBottom: '20px' }} key={`${dataHook}-links`}>
+                ⚠️ This component is mainly for general image usages - consider
+                using{' '}
+                <LinkTo kind={'Working In Progress'} story="HeroImage">
+                  {'<HeroImage/>'}
+                </LinkTo>{' '}
+                and{' '}
+                <LinkTo kind={'Working In Progress'} story="ThumbnailImage">
+                  {'<ThumbnailImage/>'}
+                </LinkTo>{' '}
+                instead, which are meant for common TPAs use-cases.
+              </p>,
+            ],
+          }),
 
           importExample({
             source: examples.importExample,
