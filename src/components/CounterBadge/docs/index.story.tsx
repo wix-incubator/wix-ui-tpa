@@ -68,7 +68,7 @@ export default {
           example({
             title: 'Priority skins',
             description:
-              'The Counter Badge component has different skins to apply.',
+              'The Counter Badge component has 2 different skins to apply: `primary` and `secondary`. The default value is primary.',
             source: examples.priority,
           }),
           example({
