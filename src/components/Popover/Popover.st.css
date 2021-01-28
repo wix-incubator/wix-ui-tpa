@@ -62,26 +62,26 @@
 }
 
 .root:wired .popoverContent,
-.root.overrideStyleParams .popoverContent {
+.root:wired.overrideStyleParams .popoverContent {
   background-color: value(backgroundColor);
 }
 
 .root:wired .popover[data-placement*="right"] .arrow,
-.root.overrideStyleParams .popover[data-placement*="right"] .arrow {
+.root:wired.overrideStyleParams .popover[data-placement*="right"] .arrow {
   border-right-color: value(backgroundColor);
 }
 
 .root:wired .popover[data-placement*="left"] .arrow,
-.root.overrideStyleParams .popover[data-placement*="left"] .arrow {
+.root:wired.overrideStyleParams .popover[data-placement*="left"] .arrow {
   border-left-color: value(backgroundColor);
 }
 
 .root:wired .popover[data-placement*="bottom"] .arrow,
-.root.overrideStyleParams .popover[data-placement*="bottom"] .arrow {
+.root:wired.overrideStyleParams .popover[data-placement*="bottom"] .arrow {
   border-bottom-color: value(backgroundColor);
 }
 
 .root:wired .popover[data-placement*="top"] .arrow,
-.root.overrideStyleParams .popover[data-placement*="top"] .arrow {
+.root:wired.overrideStyleParams .popover[data-placement*="top"] .arrow {
   border-top-color: value(backgroundColor);
 }

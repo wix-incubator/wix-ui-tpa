@@ -21,7 +21,7 @@ export interface PopoverProps
 export const Popover: React.FC<PopoverProps> & {
   Element?: React.FC;
   Content?: React.FC;
-} = props => {
+} = (props) => {
   const {
     triggerAction,
     wiredToSiteColors,
@@ -33,7 +33,7 @@ export const Popover: React.FC<PopoverProps> & {
   const id = React.useRef(generateKey('popover'));
   const isVertical = React.useMemo(
     () =>
-      ['bottom', 'top'].some(position =>
+      ['bottom', 'top'].some((position) =>
         new RegExp(position).test(props.placement),
       ),
     [props.placement],

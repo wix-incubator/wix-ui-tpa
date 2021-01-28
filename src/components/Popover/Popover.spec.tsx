@@ -46,8 +46,8 @@ describe('Popover', () => {
 
   describe('testkit', () => {
     it('should exist', async () => {
-      await expect(
-        isUniTestkitExists(
+      expect(
+        await isUniTestkitExists(
           <Popover placement="top">
             <Popover.Element>
               <span>element</span>
@@ -67,8 +67,8 @@ describe('Popover', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', async () => {
-      await expect(
-        isUniEnzymeTestkitExists(
+      expect(
+        await isUniEnzymeTestkitExists(
           <Popover placement="top">
             <Popover.Element>
               <span>element</span>
