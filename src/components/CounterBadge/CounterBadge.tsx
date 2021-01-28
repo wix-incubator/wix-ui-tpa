@@ -43,10 +43,10 @@ class CounterBadge extends React.Component<CounterBadgeProps> {
         ? COUNTER_BADGE_PRIORITY.secondary
         : COUNTER_BADGE_PRIORITY.primary;
     const inputNumber: number = Math.floor(value);
-    const maximum =
-      this.props.maximum || this.props.maximum > 99 || this.props.maximum < 1
-        ? this.props.maximum
-        : 99;
+    const maximumValue =
+     maximum > RANGE.maximum || maximum < RANGE.minimum
+        ? maximum
+        : RANGE.maximum;
 
     const numberToPresent =
       inputNumber > maximum ? `+${maximum}` : `${inputNumber}`;
