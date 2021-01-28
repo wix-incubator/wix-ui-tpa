@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-
 import { createUniDriverFactory } from 'wix-ui-test-utils/uni-driver-factory';
-import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
-import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
+import { isUniEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
+import { isUniTestkitExists } from 'wix-ui-test-utils/vanilla';
 
 import { popoverTestkitFactory } from '../../testkit';
 import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
@@ -47,8 +46,8 @@ describe('Popover', () => {
 
   describe('testkit', () => {
     it('should exist', async () => {
-      expect(
-        isTestkitExists(
+      await expect(
+        isUniTestkitExists(
           <Popover placement="top">
             <Popover.Element>
               <span>element</span>
@@ -68,8 +67,8 @@ describe('Popover', () => {
 
   describe('enzyme testkit', () => {
     it('should exist', async () => {
-      expect(
-        isEnzymeTestkitExists(
+      await expect(
+        isUniEnzymeTestkitExists(
           <Popover placement="top">
             <Popover.Element>
               <span>element</span>
