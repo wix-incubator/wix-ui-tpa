@@ -17,7 +17,7 @@ export interface CounterBadgeProps extends TPAComponentProps {
   priority?: COUNTER_BADGE_PRIORITY;
   /** define value that counterBadge will present */
   value: number;
-  /** define maximum value that above that number the counterBadge will present `+${maximum}` */
+  /** A number between 1  to 99 that defines the maximum value that above that number the counterBadge will present `+${maximum}` */
   maximum?: number;
 }
 
