@@ -13,7 +13,7 @@ export enum COUNTER_BADGE_PRIORITY {
 }
 
 export interface CounterBadgeProps extends TPAComponentProps {
-  /** define style preset */
+  /** There are 2 different themes: `primary` and `secondary`. The default value is ‘primary’. */
   priority?: COUNTER_BADGE_PRIORITY;
   /** define value that counterBadge will present */
   value: number;
