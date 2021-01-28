@@ -51,3 +51,4 @@ export { HeroImage } from './HeroImage';
 export { ThumbnailImage } from './ThumbnailImage';
 export { DatePicker } from './DatePicker';
 export { DatePickerInput } from './DatePickerInput';
+export { BoxSelection } from './BoxSelection';

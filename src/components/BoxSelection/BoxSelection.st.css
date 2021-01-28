@@ -1,0 +1,32 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, font, fallback, applyUnit;
+}
+
+/* Defaults - default params */
+:vars {
+ defaultItemGap: 12;
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+  /*
+  The gap between the box selection options
+  @default 12
+*/
+  ItemGap: --overridable;
+}
+
+/* Overrides */
+:vars {
+  boxSelectionGap: applyUnit(fallback(value(ItemGap), value(defaultItemGap)), px);
+}
+
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: applyUnit(value(defaultItemGap), px);
+}
+.overrideStyleParams {
+  gap: value(boxSelectionGap);
+}
