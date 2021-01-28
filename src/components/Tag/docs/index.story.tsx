@@ -102,6 +102,11 @@ export default {
                     defaultColor: 'color-5',
                   },
                   {
+                    label: 'Border',
+                    wixParam: 'borderOverride',
+                    defaultColor: 'color-5',
+                  },
+                  {
                     label: 'Text Color',
                     wixParam: 'textColor',
                     defaultColor: 'color-5',
@@ -119,6 +124,14 @@ export default {
                     label: 'Border radius',
                     defaultNumber: 0,
                     wixParam: 'borderRadius',
+                    unit: 'px',
+                  },
+                  {
+                    label: 'Border width',
+                    defaultNumber: 1,
+                    max: 5,
+                    min: 1,
+                    wixParam: 'borderWidthOverride',
                     unit: 'px',
                   },
                 ],

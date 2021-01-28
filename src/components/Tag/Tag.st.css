@@ -11,8 +11,12 @@
 /* Defaults - default params */
 :vars {
   defaultBackgroundColor: color(color-5);
+  defaultBorderColor: color(color-5);
   defaultTextColor: color(color-5);
   defaultBorderRadius: 0px;
+  defaultBackgroundOpacity: 0.1;
+  defaultBorderOpacity: 0.3;
+  defaultBorderWidth: 1px;
   smallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
   mediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
   largeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
@@ -21,10 +25,16 @@
 /* Overrides - deceleration of overridable parameters by the consumer */
 :vars {
   /*
-    Main background color
+    Background color
     @default color-5
   */
   BackgroundColor: --overridable;
+
+  /*
+    Border color
+    @default color-5
+  */
+  BorderColor: --overridable;
 
   /*
     Main text color
@@ -39,6 +49,24 @@
   BorderRadius: --overridable;
 
   /*
+    Border width
+    @default 1px
+  */
+  BorderWidth: --overridable;
+
+  /*
+    Background opacity
+    @default 0.1
+  */
+  BackgroundOpacity: --overridable;
+
+  /*
+    Border opacity
+    @default 0.3
+  */
+  BorderOpacity: --overridable;
+
+  /*
   Main text font
   @default small: {theme: 'Body-M', size: '12px', lineHeight: '16px'}, medium: {theme: 'Body-M', size: '14px', lineHeight: '20px'}, large: {theme: 'Body-M', size: '16px', lineHeight: '24px'}
   */
@@ -48,7 +76,11 @@
 /* Overrides */
 :vars {
   backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+  backgroundOpacity: fallback(value(BackgroundOpacity), value(defaultBackgroundOpacity));
+  borderColor: color(fallback(value(BorderColor), value(defaultBorderColor)));
   borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
+  borderOpacity: fallback(value(BorderOpacity), value(defaultBorderOpacity));
+  borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
   textColor: color(fallback(value(TextColor), value(defaultTextColor)))
 }
 
@@ -60,16 +92,18 @@
   width: fit-content;
   border: 0;
   position: relative;
+  box-sizing: border-box;
 }
 
 .opaque {
   position: absolute;
-  opacity: 0.1;
+  background: #000;
+  opacity: 0;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
-  box-sizing: border-box;
+  transition: opacity 300ms;
 }
 
 .root.clickable {
@@ -114,20 +148,16 @@
   );
 }
 
-.root.solid .opaque {
-  background-color: value(backgroundColor);
+.root.solid,
+.root.solid.overrideStyleParams {
+  background-color: applyOpacity(value(backgroundColor), value(backgroundOpacity));
 }
 
-.root.light .opaque {
-  border: 1px solid value(backgroundColor);
-}
-
-.root.solid.overrideStyleParams .opaque {
-  background-color: value(backgroundColor);
-}
-
-.root.light.overrideStyleParams .opaque {
-  border-color: value(backgroundColor);
+.root.light,
+.root.light.overrideStyleParams {
+  border-width: value(borderWidth);
+  border-style: solid;
+  border-color: applyOpacity(value(borderColor), value(borderOpacity));
 }
 
 .root,
