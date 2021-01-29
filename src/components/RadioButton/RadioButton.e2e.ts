@@ -1,10 +1,9 @@
 import * as eyes from 'eyes.it';
-import { browser, Key } from 'protractor';
+import { browser, by, element, Key } from 'protractor';
 import {
   createStoryUrl,
   waitForVisibilityOf,
 } from 'wix-ui-test-utils/protractor';
-import { radioButtonTestkitFactory } from '../../testkit/protractor';
 import { StoryCategory } from '../../../stories/storyHierarchy';
 
 describe('RadioButton', () => {
@@ -12,49 +11,29 @@ describe('RadioButton', () => {
     kind: StoryCategory.TESTS,
     story: 'RadioButton',
   });
-  const defaultThemeDataHook = 'radio-button-default';
-  const boxThemeDataHook = 'radio-button-box';
-  const defaultThemeMobileDataHook = 'radio-button-default-mobile';
-  let driver;
+  const initialFocusElementId = 'initial-focus';
 
   beforeEach(async () => {
     browser.get(storyUrl);
+    const focusElement = element(by.id(initialFocusElementId));
+
+    await waitForVisibilityOf(await focusElement, 'Cannot find radioButton');
+
+    return focusElement.click();
   });
 
   eyes.it('should show the correct design on focus theme box', async () => {
-    driver = radioButtonTestkitFactory({ dataHook: boxThemeDataHook });
-    await waitForVisibilityOf(
-      await driver.element(),
-      'Cannot find radioButton',
-    );
-    await driver.clickInput();
-    await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
-    expect(await driver.isFocused()).toBeTruthy();
+    await browser.actions().sendKeys(Key.TAB);
   });
 
   eyes.it('should show the correct design on focus theme default', async () => {
-    driver = radioButtonTestkitFactory({ dataHook: defaultThemeDataHook });
-    await waitForVisibilityOf(
-      await driver.element(),
-      'Cannot find radioButton',
-    );
-    await driver.clickInput();
-    await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
-    expect(await driver.isFocused()).toBeTruthy();
+    await browser.actions().sendKeys(Key.TAB, Key.ARROW_DOWN);
   });
 
   eyes.it(
     'should show the correct design on focus theme default on mobile',
     async () => {
-      driver = radioButtonTestkitFactory({
-        dataHook: defaultThemeMobileDataHook,
-      });
-      await waitForVisibilityOf(
-        await driver.element(),
-        'Cannot find radioButton',
-      );
-      await driver.clickInput();
-      await browser.actions().sendKeys(Key.ARROW_DOWN, Key.ARROW_UP);
+      await browser.actions().sendKeys(Key.TAB, Key.ARROW_DOWN, Key.ARROW_DOWN);
     },
   );
 });
