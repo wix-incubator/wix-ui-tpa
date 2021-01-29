@@ -42,7 +42,7 @@ const files = [
   ['Pagination.bundle.min.js', 10.1],
   ['Picker.bundle.min.js', 9],
   ['ProgressBar.bundle.min.js', 6],
-  ['RadioButton.bundle.min.js', 7.1],
+  ['RadioButton.bundle.min.js', 7.2],
   ['RadioButtonGroup.bundle.min.js', 5],
   ['Ratings.bundle.min.js', 7.6],
   ['SectionNotification.bundle.min.js', 10.5],
