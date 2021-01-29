@@ -5,26 +5,25 @@
 
 /*Overrides*/
 :vars {
+    fixedFont45: HelveticaNeueW01-45Ligh, HelveticaNeueW02-45Ligh, HelveticaNeueW10-45Ligh, Helvetica Neue, Helvetica, Arial, メイリオ, meiryo, ヒラギノ角ゴ pro w3, hiragino kaku gothic pro, sans-serif;
+}
+
+:vars {
     /*
         Background color
-        @default color-5 with opacity 0.1
+        @default primaryBgColor: color-8, secondaryBgColor: color-8 with opacity 0.1
     */
     CounterBadgeBgColor: --overridable;
     /*
         Text color
-        @default priority default and light: color-5, priority primary: color-1
+        @default primaryTextColor: color-1, secondaryTextColor: color-8
     */
     CounterBadgeTextColor: --overridable;
 }
 
 :vars {
-    defaultBgColor: color(fallback(value(CounterBadgeBgColor), color(color-8)));
-    defaultTextColor: color(fallback(value(CounterBadgeTextColor), color(color-5)));
-}
-
-:vars {
-    lightBgColor: color(fallback(value(CounterBadgeBgColor), applyOpacity(color(color-8),0.1)));
-    lightTextColor: color(fallback(value(CounterBadgeTextColor), color(color-8)));
+    secondaryBgColor: color(fallback(value(CounterBadgeBgColor), applyOpacity(color(color-8),0.1)));
+    secondaryTextColor: color(fallback(value(CounterBadgeTextColor), color(color-8)));
 }
 
 :vars {
@@ -33,18 +32,13 @@
 }
 
 .root {
-    -st-states: withIcon;
+    font-family: value(fixedFont45);
     display: inline-flex;
     line-height: 20px;
     font-size: 12px;
     border-radius: 10px;
     min-width: 20px;
     justify-content: center;
-}
-
-.overrideStyleParams {
-    background-color: color(value(defaultBgColor));
-    color: color(value(defaultTextColor));
 }
 
 .innerContainer {
@@ -58,13 +52,18 @@
 
 /* Variants - including style overrides capabilities */
 
+.overrideStyleParams {
+    background-color: color(value(primaryBgColor));
+    color: color(value(primaryTextColor));
+}
+
 .priority-primary {
     background-color: color(value(primaryBgColor));
     color: color(value(primaryTextColor));
 }
 
 .priority-secondary {
-    background-color: color(value(lightBgColor));
-    color: color(value(lightTextColor));
+    background-color: color(value(secondaryBgColor));
+    color: color(value(secondaryTextColor));
 }
 

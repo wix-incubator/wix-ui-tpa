@@ -15,7 +15,9 @@ import {
   title,
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
+import { CounterBadgeExtendedExample } from './CounterBadgeExtendedExample';
 import * as exampleOverrides from './CounterBadgeExtendedExample.st.css';
+import * as ExtendedRawSource from '!raw-loader!./CounterBadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CounterBadgeExtendedExample.st.css';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
@@ -23,7 +25,7 @@ import {
   autoSettingsPanel,
   settingsPanel,
 } from '../../../../stories/utils/SettingsPanel';
-import * as ExtendedExample from '!raw-loader!./CounterBadgeExtendedExample.tsx';
+import { OptimizedStylesBanner } from '../../../../stories/OptimizedStylesBanner';
 
 const example = (config, extraContext = {}) =>
   baseExample({
@@ -48,7 +50,9 @@ export default {
   },
   dataHook: 'storybook-CounterBadge',
   sections: [
-    header(),
+    header({
+      component: <OptimizedStylesBanner />,
+    }),
     tabs([
       tab({
         title: 'Usage',
@@ -77,11 +81,6 @@ export default {
               'The Counter Badge perform maximum validations and has default of 99 but can be changed.',
             source: examples.validationMaximum,
           }),
-          example({
-            title: 'Rounding value',
-            description: 'The Counter Badge flooring the prop value.',
-            source: examples.formating,
-          }),
           example(
             {
               title: 'Style params override',
@@ -105,7 +104,10 @@ return (
           ),
         ],
       }),
-      tab({ title: 'Playground', sections: [playground()] }),
+      tab({
+        title: 'Playground',
+        sections: [playground(), autoSettingsPanel()],
+      }),
       tab({ title: 'API', sections: [api()] }),
       {
         title: 'Style API',
@@ -116,10 +118,10 @@ return (
         title: 'Settings Panel',
         sections: [
           settingsPanel({
-            example: <CounterBadge value={8} />,
-            rawSource: ExtendedExample,
+            example: <CounterBadgeExtendedExample />,
+            rawSource: ExtendedRawSource,
             rawCSSSource: ExtendedCSSRawSource,
-            title: 'Badge Extended',
+            title: 'CounterBadge Extended',
             params: {
               colors: [
                 {

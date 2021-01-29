@@ -7,7 +7,7 @@ CounterBadgeMetadata.nonReactStrictModeCompliant = true;
 CounterBadgeMetadata.addSim({
   title: 'render',
   props: {
-    priority: COUNTER_BADGE_PRIORITY.default,
+    priority: COUNTER_BADGE_PRIORITY.primary,
     maximum: 99,
     value: 16,
   },

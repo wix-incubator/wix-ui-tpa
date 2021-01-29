@@ -10,13 +10,6 @@
   );
 }
 
-.staticColors {
-  -st-mixin: CounterBadge(
-    CounterBadgeBgColor gold,
-    CounterBadgeTextColor black,
-  );
-}
-
 .paletteStyleParams {
   -st-mixin: overrideStyleParams(
     CounterBadgeBgColor "color(color-11)",

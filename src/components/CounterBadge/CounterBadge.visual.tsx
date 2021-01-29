@@ -19,13 +19,6 @@ const tests = [
     describe: 'basic',
     its: [
       {
-        it: 'default',
-        props: {
-          priority: COUNTER_BADGE_PRIORITY.default,
-          value: 5,
-        },
-      },
-      {
         it: 'primary',
         props: {
           priority: COUNTER_BADGE_PRIORITY.primary,

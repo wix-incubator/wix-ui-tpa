@@ -2,12 +2,12 @@ import * as React from 'react';
 import { TPAComponentProps } from '../../types';
 import { st, classes } from './CounterBadge.st.css';
 
-export const COUNTER_BADGE_DEFAULT = {
-  minimum: 0,
+const RANGE = {
+  minimum: 1,
   maximum: 99,
 };
+
 export enum COUNTER_BADGE_PRIORITY {
-  default = 'default',
   primary = 'primary',
   secondary = 'secondary',
 }
@@ -30,26 +30,16 @@ interface DefaultProps {
 class CounterBadge extends React.Component<CounterBadgeProps> {
   static displayName = 'CounterBadge';
   static defaultProps: DefaultProps = {
-    priority: COUNTER_BADGE_PRIORITY.default,
+    priority: COUNTER_BADGE_PRIORITY.primary,
     value: 0,
     maximum: 99,
   };
 
   render() {
-    const { className, value } = this.props;
+    const { priority, maximum, className, value } = this.props;
 
-    const priority =
-      this.props.priority === COUNTER_BADGE_PRIORITY.secondary
-        ? COUNTER_BADGE_PRIORITY.secondary
-        : COUNTER_BADGE_PRIORITY.primary;
-    const inputNumber: number = Math.floor(value);
-    const maximumValue =
-     maximum > RANGE.maximum || maximum < RANGE.minimum
-        ? maximum
-        : RANGE.maximum;
-
-    const numberToPresent =
-      inputNumber > maximum ? `+${maximum}` : `${inputNumber}`;
+    const isMaximumNumber = value > maximum;
+    const numberToPresent = isMaximumNumber ? `+${maximum}` : `${value}`;
 
     return (
       <div
@@ -58,10 +48,10 @@ class CounterBadge extends React.Component<CounterBadgeProps> {
         data-hook={this.props['data-hook']}
       >
         <div
-          className={st(
-            classes.innerContainer,
-            classes[`${numberToPresent[0] === '+' ? 'maximumNumber' : ''}`],
-          )}
+          className={st(classes.innerContainer, {
+            maximumNumber: isMaximumNumber,
+          })}
+          data-hook={'counter-badge-value'}
         >
           {numberToPresent}
         </div>

@@ -13,6 +13,6 @@ export const counterBadgeDriverFactory = (
 ): CounterBadgeDriver => {
   return {
     ...baseUniDriverFactory(base),
-    getContent: async () => (await base.getNative()).textContent,
+    getContent: async () => base.$('[data-hook="counter-badge-value"]').text(),
   };
 };

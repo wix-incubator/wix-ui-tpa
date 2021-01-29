@@ -35,19 +35,17 @@ describe('CounterBadge', () => {
     expect(await driver.getContent()).toBe(`+${maximum}`);
   });
 
-  [
-    COUNTER_BADGE_PRIORITY.default,
-    COUNTER_BADGE_PRIORITY.primary,
-    COUNTER_BADGE_PRIORITY.default,
-  ].forEach((priority) => {
-    it(`should render counter badge for priority = ${priority}`, async () => {
-      const driver = createDriver(
-        <CounterBadge priority={COUNTER_BADGE_PRIORITY.default} value={8} />,
-      );
+  [COUNTER_BADGE_PRIORITY.primary, COUNTER_BADGE_PRIORITY.secondary].forEach(
+    (priority) => {
+      it(`should render counter badge for priority = ${priority}`, async () => {
+        const driver = createDriver(
+          <CounterBadge priority={priority} value={8} />,
+        );
 
-      expect(await driver.exists()).toBe(true);
-    });
-  });
+        expect(await driver.exists()).toBe(true);
+      });
+    },
+  );
 
   it('enzyme testkit - should exist', async () => {
     expect(

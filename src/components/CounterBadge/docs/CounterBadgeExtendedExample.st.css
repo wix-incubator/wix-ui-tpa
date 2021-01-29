@@ -12,14 +12,14 @@
 
 .mixPrioritySecondary {
   -st-mixin: priority-secondary(
-        CounterBadgeBgColor '"color(#FFbbbb)"',
+        CounterBadgeBgColor '"color(--counterBadgeBgColor)"',
         CounterBadgeTextColor '"color(--counterBadgeTextColor)"',
     );
 }
 
 .mixPriorityPrimary {
   -st-mixin: priority-primary(
-        CounterBadgeBgColor '"color(#FF0000)"',
+        CounterBadgeBgColor '"color(--counterBadgeBgColor)"',
         CounterBadgeTextColor '"color(--counterBadgeTextColor)"',
     );
 }

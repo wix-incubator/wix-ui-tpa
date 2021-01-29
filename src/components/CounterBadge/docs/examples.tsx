@@ -14,9 +14,3 @@ export const validationMaximum = `
     <CounterBadge maximum={50} value={134} />
   </div>
 `;
-
-export const formating = `
-  <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge value={16.87} />
-  </div>
-`;
