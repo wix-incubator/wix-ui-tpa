@@ -8,7 +8,8 @@ import { popoverTestkitFactory } from '../../testkit';
 import { popoverTestkitFactory as enzymePopoverTestkitFactory } from '../../testkit/enzyme';
 
 import { popoverDriverFactory } from './Popover.driver';
-import { Popover, PopoverProps } from './';
+import { Popover, PopoverProps, TriggerAction } from './';
+import { Simulate } from 'react-dom/test-utils';
 
 describe('Popover', () => {
   const createDriver = createUniDriverFactory(popoverDriverFactory);
@@ -34,12 +35,29 @@ describe('Popover', () => {
     expect(await driver.exists()).toBe(true);
   });
 
-  describe('behaviour', () => {
-    it('should open on element click', async () => {
+  describe('uncontrolled', () => {
+    it("shouldn't open on click", async () => {
       const driver = bootstrap();
-
-      expect(await driver.isContentElementExists()).toBeFalsy();
       await driver.click();
+      expect(await driver.isContentElementExists()).toBeFalsy();
+    });
+
+    it("shouldn't open on click", async () => {
+      const driver = bootstrap();
+      expect(await driver.isContentElementExists()).toBeFalsy();
+      Simulate.mouseEnter(await driver.element());
+      expect(await driver.isContentElementExists()).toBeTruthy();
+    });
+  });
+
+  describe('controlled', () => {
+    it('should be open when shown is false', async () => {
+      const driver = bootstrap({ shown: false });
+      expect(await driver.isContentElementExists()).toBeFalsy();
+    });
+
+    it('should be open when shown is true', async () => {
+      const driver = bootstrap({ shown: true });
       expect(await driver.isContentElementExists()).toBeTruthy();
     });
   });

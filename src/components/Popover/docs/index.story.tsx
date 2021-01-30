@@ -25,7 +25,7 @@ import { storyComponent } from '../../../../stories/helperComponents/storyCompon
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { Text } from '../../Text';
 
-const example = config =>
+const example = (config) =>
   baseExample({ components: allComponents, compact: true, ...config });
 
 const childrenExamples = [
@@ -79,8 +79,26 @@ export default {
           title('Examples'),
 
           ...[
-            { title: 'Hover tooltip', source: examples.hover },
-            { title: 'Popover', source: examples.click },
+            {
+              title: 'Uncontrolled',
+              text:
+                'The component can be used uncontrolled. In this case the tooltip will appear on hover.',
+              source: examples.uncontrolled,
+            },
+            {
+              title: 'Controlled: Click',
+              text:
+                'Controlling the Popover can be done by click.<br />' +
+                '`triggerAction` is used to adjust the component to use correct a11y configuration',
+              source: examples.controlledClick,
+            },
+            {
+              title: 'Controlled: Hover',
+              text:
+                'Controlling the Popover can be done by hover.<br />' +
+                '`triggerAction` is used to adjust the component to use correct a11y configuration',
+              source: examples.controlledHover,
+            },
           ].map(example),
         ],
       }),

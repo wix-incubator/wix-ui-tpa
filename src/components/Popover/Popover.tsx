@@ -3,17 +3,15 @@ import {
   Popover as CorePopover,
   PopoverProps as CorePopoverProps,
 } from 'wix-ui-core/popover';
-
 import { TPAComponentProps } from '../../types';
 import { generateKey } from '../../common/random';
-import { isSelectKey, KEYS } from '../../common/keyCodes';
-
 import { TriggerAction } from './constants';
 import { st, classes } from './Popover.st.css';
 
 export interface PopoverProps
   extends TPAComponentProps,
     Omit<CorePopoverProps, 'shown'> {
+  shown?: boolean;
   triggerAction?: TriggerAction;
   wiredToSiteColors?: boolean;
 }
@@ -27,9 +25,13 @@ export const Popover: React.FC<PopoverProps> & {
     wiredToSiteColors,
     children,
     className,
+    shown,
     ...rest
   } = props;
-  const [isShown, setIsShown] = React.useState<boolean>(false);
+  const [isShown, setIsShown] = React.useState<boolean>(shown);
+  const isControlled = React.useRef(
+    typeof shown !== 'undefined' || triggerAction === TriggerAction.click,
+  );
   const id = React.useRef(generateKey('popover'));
   const isVertical = React.useMemo(
     () =>
@@ -52,28 +54,35 @@ export const Popover: React.FC<PopoverProps> & {
   return (
     <CorePopover
       showArrow
-      shown={isShown}
+      shown={shown || isShown}
       moveBy={isVertical ? { y: 8 } : { x: 8 }}
       className={st(classes.root, { wired: wiredToSiteColors }, className)}
-      {..._getCoreProps()}
+      {..._getCoreProps(isControlled)}
       {...rest}
     >
       {React.cloneElement(
         Element,
         {},
-        React.cloneElement(Element.props.children, _getTriggerProps()),
+        React.cloneElement(
+          Element.props.children,
+          _getTriggerProps(isControlled),
+        ),
       )}
       {Content}
     </CorePopover>
   );
 
-  function _getTriggerProps() {
+  function _getTriggerProps(_isControlled) {
     switch (triggerAction) {
       case TriggerAction.hover:
         return {
           'aria-describedby': id,
-          onFocus: _handleOpen,
-          onBlur: _handleClose,
+          ...(_isControlled.current
+            ? {}
+            : {
+                onFocus: _handleOpen,
+                onBlur: _handleClose,
+              }),
         };
 
       case TriggerAction.click:
@@ -82,21 +91,22 @@ export const Popover: React.FC<PopoverProps> & {
     }
   }
 
-  function _getCoreProps(): Partial<CorePopoverProps> {
+  function _getCoreProps(_isControlled): Partial<CorePopoverProps> {
     switch (triggerAction) {
       case TriggerAction.click:
         return {
-          onClick: _handleOpen,
-          onClickOutside: _handleClose,
-          onKeyDown: _handleKeyDown,
           role: 'dialog',
           appendTo: 'parent',
         };
       case TriggerAction.hover:
       default:
         return {
-          onMouseEnter: _handleOpen,
-          onMouseLeave: _handleClose,
+          ...(_isControlled.current
+            ? {}
+            : {
+                onMouseEnter: _handleOpen,
+                onMouseLeave: _handleClose,
+              }),
           role: 'tooltip',
           id: id.current,
         };
@@ -110,17 +120,10 @@ export const Popover: React.FC<PopoverProps> & {
   function _handleClose() {
     setIsShown(false);
   }
-
-  function _handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
-    if (isSelectKey(e)) {
-      e.preventDefault();
-      _handleOpen();
-    }
-  }
 };
 
 Popover.defaultProps = {
-  triggerAction: TriggerAction.click,
+  triggerAction: TriggerAction.hover,
   wiredToSiteColors: true,
   placement: 'top',
 };
