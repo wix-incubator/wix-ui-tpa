@@ -53,6 +53,7 @@ export default {
     wiredToSiteColors: true,
     children: childrenExamples[0].value,
     triggerAction: TriggerAction.click,
+    shown: false,
   }),
   exampleProps: {
     placement: ['top', 'right', 'bottom', 'left'],

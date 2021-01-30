@@ -127,6 +127,7 @@ Popover.defaultProps = {
   wiredToSiteColors: true,
   placement: 'top',
 };
+Popover.displayName = 'Popover';
 
 Object.assign(Popover, {
   Element: CorePopover.Element,
