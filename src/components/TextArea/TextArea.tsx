@@ -28,6 +28,7 @@ export interface TextAreaProps extends TPAComponentProps {
   autoFocus?: boolean;
   onChange(event: React.ChangeEvent<HTMLTextAreaElement>): void;
   onBlur?(): void;
+  maxLength?: number;
 }
 
 interface DefaultProps {
@@ -76,6 +77,7 @@ export class TextArea extends React.Component<TextAreaProps> {
       errorDescription,
       autoFocus,
       className,
+      maxLength,
     } = this.props;
     const dataObject = this._getDataAttributes();
     const showErrorIcon = error && errorDescription;
@@ -108,6 +110,7 @@ export class TextArea extends React.Component<TextAreaProps> {
                   }
                 }}
                 id={id}
+                maxLength={maxLength}
                 autoFocus={autoFocus}
                 onBlur={onBlur}
                 placeholder={placeholder}

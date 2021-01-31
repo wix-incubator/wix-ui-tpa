@@ -71,6 +71,7 @@ require('../src/components/Tabs/docs/TabsTestStory');
 require('../src/components/Tags/docs/index.story');
 require('../src/components/Text/docs/index.story');
 require('../src/components/TextArea/docs/index.story');
+require('../src/components/TextArea/docs/TextAreaTestStory');
 require('../src/components/TextButton/docs/index.story');
 require('../src/components/TextField/docs/index.story');
 require('../src/components/Toast/docs/index.story');
