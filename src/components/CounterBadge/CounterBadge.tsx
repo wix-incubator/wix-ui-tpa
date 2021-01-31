@@ -31,7 +31,6 @@ class CounterBadge extends React.Component<CounterBadgeProps> {
   static displayName = 'CounterBadge';
   static defaultProps: DefaultProps = {
     priority: COUNTER_BADGE_PRIORITY.primary,
-    value: 0,
     maximum: 99,
   };
 
