@@ -4,6 +4,11 @@
 }
 
 :import {
+    -st-from: "../Input/Input.st.css";
+    -st-named: colorPlaceholder;
+}
+
+:import {
     -st-from: "wix-ui-core/index.st.css";
     -st-named: Divider;
 }
@@ -15,7 +20,7 @@
 
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color;
+    -st-named: applyUnit, color, font, zeroAsTrue, fallback;
 }
 
 :import {
@@ -50,20 +55,114 @@
     -st-default: DropdownOption;
 }
 
+:import {
+    -st-from: "./DropdownOption.st.css";
+    -st-default: TPADropdownOption;
+}
+
+/* Defaults - default param */
+:vars {
+    DefaultButtonTextColor: color-5;
+    DefaultButtonTextDisabledColor: color-3;
+    DefaultButtonBorderColor: color-5;
+    DefaultBorderDisabledColor: color-3;
+    DefaultBorderWidth: 1;
+    DefaultBackgroundColor: color-1;
+    DefaultPlaceholderColor: color-4;
+    DefaultTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5'}";
+    DefaultMobileTextFont: "{theme: 'Body-M', size: '14px', lineHeight: '1.5'}";
+    DefaultDropdownBackgroundColor: color-1;
+    DefaultItemTextColor: color-5;
+    DefaultItemTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5'}";
+    DefaultItemTextDisabledColor: color-3;
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The button’s text color
+        @default 0
+    */
+    MainButtonTextColor: --overridable;
+    /*
+        The disabled button’s text color
+        @default 0
+    */
+    MainButtonTextDisabledColor: --overridable;
+    /*
+        The button's border color
+        @default color-1
+    */
+    MainButtonBorderColor: --overridable;
+    /*
+        The disabled button's border color
+        @default color-1
+    */
+    MainBorderDisabledColor: --overridable;
+    /*
+        The button's border width
+        @default color-1
+    */
+    MainBorderWidth: --overridable;
+    /*
+        The button's background color
+        @default color-1
+    */
+    MainBackgroundColor: --overridable;
+    /*
+        The button's placeholder color
+        @default color-1
+    */
+    MainPlaceholderColor: --overridable;
+    /*
+        The button's font
+        @default "{theme: 'Body-M', size: '14px'}"
+    */
+    MainTextFont: --overridable;
+    /*
+        Dropdown's background color
+        @default color-1
+    */
+    MainDropdownBackgroundColor: --overridable;
+    /*
+        Item text color
+        @default color-1
+    */
+    MainItemTextColor: --overridable;
+    /*
+        Item text font
+        @default "{theme: 'Body-M', size: '16px'}"
+    */
+    MainItemTextFont: --overridable;
+    /*
+        Item text disabled color
+        @default color-3
+    */
+    MainItemTextDisabledColor: --overridable;
+}
+
+:vars {
+    CurrentButtonTextColor: color(fallback(value(MainButtonTextColor), value(DefaultButtonTextColor)));
+    CurrentButtonTextDisabledColor: color(fallback(value(MainButtonTextDisabledColor), value(DefaultButtonTextDisabledColor)));
+    CurrentButtonBorderColor: color(fallback(value(MainButtonBorderColor), value(DefaultButtonBorderColor)));
+    CurrentBorderDisabledColor: color(fallback(value(MainBorderDisabledColor), value(DefaultBorderDisabledColor)));
+    CurrentBorderWidth: applyUnit(fallback(zeroAsTrue(value(MainBorderWidth)), value(DefaultBorderWidth)), px);
+    CurrentBackgroundColor: color(fallback(value(MainBackgroundColor), value(DefaultBackgroundColor)));
+    CurrentPlaceholderColor: color(fallback(value(MainPlaceholderColor), value(DefaultPlaceholderColor)));
+    CurrentTextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
+    CurrentDropdownBackgroundColor: color(fallback(value(MainDropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));
+    CurrentItemTextColor: color(fallback(value(MainItemTextColor), value(DefaultItemTextColor)));
+    CurrentItemTextFont: fallback(value(MainItemTextFont), fallback(font(value(MainTextFont)), font(value(DefaultTextFont))));
+    CurrentItemTextDisabledColor: color(fallback(value(MainItemTextDisabledColor), value(DefaultItemTextDisabledColor)));
+}
+
+
 .root {
     -st-states: alignment(enum(center)), mobile;
 }
 
-.root:mobile .label {
-    -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '12px'}"
-    );
-}
 
 .label {
-    -st-mixin: TPAText(
-        MainTextFont "{theme: 'Body-M', size: '14px'}"
-    );
     display: block;
     margin-bottom: 8px;
 }
@@ -72,8 +171,13 @@
     -st-extends: DropdownBase;
 }
 
-.dropdownOption {
+.dropdownOption{
     -st-extends: DropdownOption;
+     -st-mixin: TPADropdownOption(
+         MainTitleTextFont value(CurrentItemTextFont),
+         MainTitleTextColor value(CurrentItemTextColor),
+         MainItemTextDisabledColor value(CurrentItemTextDisabledColor),
+    );
 }
 
 .dropdownNativeSelect {
@@ -95,8 +199,29 @@
     min-width: 68px;
 }
 
+.dropdown .dropdownBase {
+    color: value(CurrentButtonTextColor);
+    border-color: value(CurrentButtonBorderColor);
+    border-width: value(CurrentBorderWidth);
+    background: value(CurrentBackgroundColor);
+    font: value(CurrentTextFont);
+}
+
+.dropdown .dropdownBase::arrowIcon {
+    color: value(CurrentItemTextColor);
+}
+
+.dropdown .dropdownBase::root:disabled {
+    color: value(CurrentButtonTextDisabledColor);;
+    border-color: value(CurrentBorderDisabledColor);;
+}
+
+.dropdown .dropdownBase::root:placeholder {
+    color: value(CurrentPlaceholderColor);
+}
+
 .dropdown:content-visible .dropdownBase::root {
-    border-color: value(borderHoverColor);
+   border-color: value(borderHoverColor);
 }
 
 .dropdown:content-visible .dropdownBase::root:error {
@@ -116,13 +241,14 @@
 }
 
 .dropdown::popoverContent {
-    border-width: 0;
+    border-width: 1px;
+    border-color: rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     /* Popover fix. For some reason popover has inline style with transform: translate3d(-1px, 42px, 0px); */
     margin-left: 1px;
     max-width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
-    background-color: "color(color-1)";
+    background-color: value(CurrentDropdownBackgroundColor);
 }
 
 .dropdownError::popoverContent {
@@ -153,6 +279,8 @@
 
 .divider {
     -st-extends: Divider;
+    opacity: 30%;
+    background-color: value(CurrentItemTextColor);
 }
 
 .divider:not(.customDivider) {

@@ -8,6 +8,29 @@
     -st-default: TPAText;
 }
 
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font;
+}
+
+:vars {
+    DefaultTitleTextColor: "color-5";
+    DefaultTitleTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5'}";
+}
+
+/*Overrides*/
+:vars {
+    MainTitleTextColor: --overridable;
+    MainTitleTextFont: --overridable;
+    MainItemTextDisabledColor: --overridable;
+}
+
+:vars {
+    CurrentTitleTextColor: color(fallback(value(MainTitleTextColor), value(DefaultTitleTextColor)));
+    CurrentTitleTextFont: fallback(font(value(MainTitleTextFont)), font(value(DefaultTitleTextFont)));
+    CurrentItemTextDisabledColor: color(fallback(value(MainItemTextDisabledColor), value(colorPlaceholder)));
+} 
+
 .root {
     -st-states: withIcon, selectable, sectionTitle;
     box-sizing: border-box;
@@ -21,7 +44,10 @@
 }
 
 .title {
-    -st-extends: TPAText;
+ -st-mixin: TPAText(
+        MainTextColor value(CurrentTitleTextColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
     padding: 0 12px;
     display: block;
     text-overflow: ellipsis;
@@ -31,7 +57,7 @@
 
 .root:not(:selectable) .title {
     -st-mixin: TPAText(
-        MainTextColor 'value(colorPlaceholder)'
+        MainTextColor value(CurrentItemTextDisabledColor)
     );
 }
 
@@ -40,11 +66,12 @@
 }
 
 .subtitle {
-    -st-extends: TPAText;
-    -st-mixin: TPAText(
-        MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
+     -st-mixin: TPAText(
+        MainTextColor value(CurrentTitleTextColor),
+        MainTextFont value(CurrentTitleTextFont)
     );
+    font-size: 14px !important;
+    opacity: 60%;
     margin-top: 4px;
     padding: 0 12px;
     display: block;

@@ -223,7 +223,7 @@ export class Dropdown extends React.Component<DropdownProps, State> {
         : OptionFactory.create({
             ...option,
             render: () => (
-              <DropdownOption className={classes.dropdownOption} {...option} />
+              <DropdownOption className={`${classes.dropdownOption}`} {...option} />
             ),
           }),
     );

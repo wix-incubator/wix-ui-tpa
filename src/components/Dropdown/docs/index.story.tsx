@@ -147,13 +147,78 @@ export default {
               rawCSSSource: ('' as unknown) as typeof import('*.st.css'),
               title: 'Dropdown Extended',
               params: {
+                numbers: [
+                  {
+                    label: 'Button border width',
+                    wixParam: 'mainBorderWidth',
+                    defaultNumber: 0,
+                    unit: 'px',
+                    min: 0,
+                    max: 10,
+                  },
+
+                ],
                 colors: [
                   {
+                    label: 'Button text color',
+                    wixParam: 'mainButtonTextColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Button text disabled color',
+                    wixParam: 'mainButtonTextDisabledColor',
+                    defaultColor: 'color-3',
+                  },
+                  {
+                    label: 'Button border color',
+                    wixParam: 'mainBorderColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Button border disabled color',
+                    wixParam: 'mainBorderDisabledColor',
+                    defaultColor: 'color-3',
+                  },
+                  {
+                    label: 'Button background color',
+                    wixParam: 'mainBackgroundColor',
                     defaultColor: 'color-1',
-                    label: 'No style params found',
-                    wixParam: 'noParam',
+                  },
+                  {
+                    label: 'Button placeholder color',
+                    wixParam: 'mainPlaceholderColor',
+                    defaultColor: 'color-4',
+                  },
+                  {
+                    label: 'Dropdown background color',
+                    wixParam: 'mainDropdownBackgroundColor',
+                    defaultColor: 'color-1',
+                  },
+                  {
+                    label: 'Item text color',
+                    wixParam: 'mainItemTextColor',
+                    defaultColor: 'color-5',
+                  },
+                  {
+                    label: 'Item text disabled color',
+                    wixParam: 'mainItemTextDisabledColor',
+                    defaultColor: 'color-3',
                   },
                 ],
+                fonts: [{
+                  label: 'Text Font',
+                  wixParam: 'mainTextFont',
+                  defaultFont: 'arial',
+                  size: 16,
+                  fixedSize: false,
+                },
+                {
+                  label: 'Item text Font',
+                  wixParam: 'mainItemTextFont',
+                  defaultFont: 'arial',
+                  size: 16,
+                  fixedSize: false,
+                }]
               },
             }),
           ],
