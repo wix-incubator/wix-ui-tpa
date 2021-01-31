@@ -4,9 +4,9 @@ module.exports = (file, api, options) => {
 
   const { ComponentName } = options;
 
-  root.find(j.ImportDeclaration).forEach(p => {
-    console.log('adler', 'stories-file.js:8', p);
-  })
+  const foobar = root.find(j.ImportDeclaration);
+
+  console.log('adler', 'stories-file.js:9', foobar);
 
   root.get().node.program.body.push( `require('../src/components/${ComponentName}/docs/index.story');`);
 
