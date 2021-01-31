@@ -2,9 +2,9 @@ import * as React from 'react';
 import Registry from '@ui-autotools/registry';
 
 import { Text } from '../Text';
-import { Popover, PopoverProps } from '.';
+import { Popover, PopoverProps, TriggerAction } from '.';
 
-const PopoverContent = () => [
+const PopoverContent = [
   <Popover.Element key="element">
     <Text>This is the Popover.Element</Text>
   </Popover.Element>,
@@ -15,21 +15,34 @@ const PopoverContent = () => [
 
 const PopoverMetadata = Registry.getComponentMetadata(Popover);
 PopoverMetadata.nonReactStrictModeCompliant = true;
+PopoverMetadata.nonHydrationTestCompliant = true;
+PopoverMetadata.nonEventListenerTestCompliant = true;
 
 PopoverMetadata.addSim({
-  title: 'Popover render',
+  title: 'Controlled Popover render',
   props: {
     children: PopoverContent,
     placement: 'top',
-    triggerAction: 'click',
+    shown: true,
+    triggerAction: TriggerAction.click,
   } as PopoverProps,
 });
 
 PopoverMetadata.addSim({
-  title: 'Tooltip render',
+  title: 'Controlled Tooltip render',
   props: {
     children: PopoverContent,
     placement: 'top',
-    triggerAction: 'hover',
+    shown: true,
+    triggerAction: TriggerAction.hover,
+  } as PopoverProps,
+});
+
+PopoverMetadata.addSim({
+  title: 'Uncontrolled Tooltip render',
+  props: {
+    children: PopoverContent,
+    placement: 'top',
+    triggerAction: TriggerAction.hover,
   } as PopoverProps,
 });
