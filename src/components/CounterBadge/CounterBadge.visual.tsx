@@ -41,6 +41,20 @@ const tests = [
           maximum: 50,
         },
       },
+      {
+        it: 'style params override - palette',
+        props: {
+          className: classes.paletteStyleParams,
+          value: 53,
+        },
+      },
+      {
+        it: 'style params override - static',
+        props: {
+          className: classes.staticStyleParams,
+          value: 7,
+        },
+      },
     ],
   },
 ];

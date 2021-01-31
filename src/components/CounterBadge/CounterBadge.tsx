@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TPAComponentProps } from '../../types';
+import { DATA_HOOKS } from './constant';
 import { st, classes } from './CounterBadge.st.css';
 
 const RANGE = {
@@ -51,7 +52,7 @@ class CounterBadge extends React.Component<CounterBadgeProps> {
           className={st(classes.innerContainer, {
             maximumNumber: isMaximumNumber,
           })}
-          data-hook={'counter-badge-value'}
+          data-hook={DATA_HOOKS.VALUE}
         >
           {numberToPresent}
         </div>

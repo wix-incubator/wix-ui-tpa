@@ -3,22 +3,15 @@
   -st-named: overrideStyleParams;
 }
 
-.palette {
-  -st-mixin: CounterBadge(
-    CounterBadgeBgColor "color(color-11)",
-    CounterBadgeTextColor "color(color-15)",
-  );
-}
-
 .paletteStyleParams {
   -st-mixin: overrideStyleParams(
     CounterBadgeBgColor "color(color-11)",
-    CounterBadgeTextColor "color(color-15)",
+    CounterBadgeTextColor "color(color-8)",
   );
 }
-.staticColorsSiteParams {
+.staticStyleParams {
   -st-mixin: overrideStyleParams(
-    CounterBadgeBgColor gold,
-    CounterBadgeTextColor black,
+    CounterBadgeBgColor red,
+    CounterBadgeTextColor white,
   );
 }

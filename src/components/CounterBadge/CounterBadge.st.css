@@ -3,11 +3,13 @@
     -st-named: color, applyOpacity, fallback;
 }
 
-/*Overrides*/
-:vars {
-    fixedFont45: HelveticaNeueW01-45Ligh, HelveticaNeueW02-45Ligh, HelveticaNeueW10-45Ligh, Helvetica Neue, Helvetica, Arial, メイリオ, meiryo, ヒラギノ角ゴ pro w3, hiragino kaku gothic pro, sans-serif;
+:import {
+    -st-from: "../../common/fonts.st.css";
+    -st-named: fixedFont45;
 }
 
+
+/*Overrides*/
 :vars {
     /*
         Background color
@@ -42,11 +44,12 @@
 }
 
 .innerContainer {
+    -st-states: maximumNumber;
     align-items: center;
     padding: 0 6px;
 }
 
-.maximumNumber {
+.innerContainer:maximumNumber {
     padding: 0 8px 0 6px;
 }
 

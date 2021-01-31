@@ -16,6 +16,8 @@ import {
 } from 'wix-storybook-utils/Sections';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { CounterBadgeExtendedExample } from './CounterBadgeExtendedExample';
+import * as staticExampleOverrides from '../CounterBadge.visual.st.css';
+import * as StaticExampleOverrides from '!raw-loader!../CounterBadge.visual.st.css';
 import * as exampleOverrides from './CounterBadgeExtendedExample.st.css';
 import * as ExtendedRawSource from '!raw-loader!./CounterBadgeExtendedExample.tsx';
 import * as ExtendedCSSRawSource from '!raw-loader!./CounterBadgeExtendedExample.st.css';
@@ -87,20 +89,40 @@ export default {
               description:
                 'Override specific style variables to customize the component. Go to the "Settings Panel" and start changing colors, see how it reflects this one as well',
               source: `() => {
-  \`
+\`
 //MyComponent.st.css
 ${(ExtendedCSSRawSource as any).default}\`
 
 return (
   <div style={{'display': 'flex', gap: '16px'}}>
-    <CounterBadge className={classes.mixPrioritySecondary} value={23} />
-    <CounterBadge className={classes.mixPriorityPrimary} value={1} />
+    <CounterBadge className={classes.mixPriorityPrimary} value={11} />
   </div>
   );
 }
 `,
             },
             { classes: exampleOverrides.classes },
+          ),
+          example(
+            {
+              title: 'Style params override with statics',
+              description:
+                'Override specific style variables to customize the component with override from pallete or statics.',
+              source: `() => {
+\`
+//MyComponent.st.css
+${(StaticExampleOverrides as any).default}\`
+
+return (
+  <div style={{'display': 'flex', gap: '16px'}}>
+    <CounterBadge className={classes.paletteStyleParams} value={18} />
+    <CounterBadge className={classes.staticStyleParams} value={25} />
+  </div>
+  );
+}
+`,
+            },
+            { classes: staticExampleOverrides.classes },
           ),
         ],
       }),
