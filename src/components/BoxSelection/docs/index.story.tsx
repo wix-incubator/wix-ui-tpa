@@ -8,7 +8,7 @@ import {
   importExample,
   playground,
   tab,
-  code as baseCode,
+  example as baseExample,
   tabs,
   testkit,
   title,
@@ -26,8 +26,8 @@ import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { BoxSize } from '../BoxSelection';
 import { BOX_SELECTION_DATA_HOOKS } from '../dataHooks';
 
-const code = (config) =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = (config) =>
+  baseExample({ components: allComponents, compact: true, ...config });
 
 const children = [
   {
@@ -80,6 +80,7 @@ export default {
     ariaLabel: '',
     ariaLabelledBy: '',
     children: children[0].value,
+    vertical: false,
   }),
   exampleProps: {
     children,
@@ -108,6 +109,14 @@ export default {
 
           ...[
             {
+              title: 'playground',
+              source: examples.playground,
+            },
+            {
+              title: 'playground vertical',
+              source: examples.playgroundVertical,
+            },
+            {
               title: 'Unchecked And Checked',
               source: examples.uncheckedAndCheckedExample,
             },
@@ -118,7 +127,7 @@ export default {
               source: examples.disabledAndCheckedExmaple,
             },
             { title: 'Unavailable', source: examples.unavailableExample },
-          ].map(code),
+          ].map(example),
         ],
       }),
       ...[

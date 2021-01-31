@@ -1,4 +1,5 @@
 import * as React from 'react';
+import classnames from 'classnames';
 import { TPAComponentProps } from '../../types';
 import { st, classes } from './BoxSelection.st.css';
 import { Option as BoxSelectionOption } from './Option';
@@ -6,6 +7,11 @@ import { Option as BoxSelectionOption } from './Option';
 export enum BoxSize {
   small = 'small',
   xLarge = 'large',
+}
+
+export enum BoxLayout {
+  horizontal = 'horizontal',
+  vertical = 'vertical',
 }
 
 export interface BoxSelectionProps extends TPAComponentProps {
@@ -33,10 +39,18 @@ export interface BoxSelectionProps extends TPAComponentProps {
    * The Box selected childrens
    */
   children?: React.ReactNode;
+  /**
+   * Layout boxes vertically
+   */
+  vertical?: boolean;
+  /**
+   * Display inline
+   */
+  inline?: boolean;
 }
 
 interface DefaultProps {
-  size?: BoxSize;
+  size: BoxSize;
 }
 
 /** The box selection is used to give the user to select single or multiple boxes. */
@@ -55,13 +69,22 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
       size,
       name,
       onChange,
+      vertical,
+      inline,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
     } = this.props;
 
     return (
       <div
-        className={st(classes.root, {}, className)}
+        className={st(
+          classes.root,
+          {},
+          classnames(className, {
+            [classes.vertical]: vertical,
+            [classes.inline]: inline,
+          }),
+        )}
         data-hook={this.props['data-hook']}
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
