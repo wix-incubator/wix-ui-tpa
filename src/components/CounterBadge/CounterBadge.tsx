@@ -24,7 +24,6 @@ export interface CounterBadgeProps extends TPAComponentProps {
 
 interface DefaultProps {
   priority: COUNTER_BADGE_PRIORITY;
-  value: number;
   maximum: number;
 }
 
