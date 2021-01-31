@@ -114,6 +114,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
       unavailable,
       description,
       size,
+      className,
     } = this.props;
     const { focused } = this.state;
 
@@ -127,6 +128,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
             disabled,
             unavailable,
           },
+          className,
           focused ? classes.focused : '',
         )}
         data-id={id}

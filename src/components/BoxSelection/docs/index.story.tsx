@@ -81,6 +81,7 @@ export default {
     ariaLabelledBy: '',
     children: children[0].value,
     vertical: false,
+    inline: false,
   }),
   exampleProps: {
     children,
@@ -109,18 +110,14 @@ export default {
 
           ...[
             {
-              title: 'playground',
-              source: examples.playground,
+              title: 'Horizontal example',
+              source: examples.horizontalExample,
             },
             {
-              title: 'playground vertical',
-              source: examples.playgroundVertical,
+              title: 'Vertical example',
+              source: examples.verticalExample,
             },
-            {
-              title: 'Unchecked And Checked',
-              source: examples.uncheckedAndCheckedExample,
-            },
-            { title: 'Small Size', source: examples.smallSizeExample },
+            { title: 'Small Size with inline display', source: examples.smallSizeExample },
             { title: 'Disabled', source: examples.disabledExmaple },
             {
               title: 'Checked And Disabled',
@@ -153,18 +150,24 @@ export default {
                     wixParam: 'itemGap',
                     defaultNumber: 12,
                     unit: 'px',
+                    min: 0,
+                    max: 24,
                   },
                   {
                     label: 'Border Radius',
                     wixParam: 'boxBorderRadius',
                     defaultNumber: 1,
                     unit: 'px',
+                    min: 0,
+                    max: 24,
                   },
                   {
                     label: 'Border Width',
                     wixParam: 'boxBorderWidth',
                     defaultNumber: 1,
                     unit: 'px',
+                    min: 0,
+                    max: 8,
                   },
                 ],
                 colors: [

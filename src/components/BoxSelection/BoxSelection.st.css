@@ -37,8 +37,7 @@
 }
 
 .root:not(.vertical) .option {
-    flex-shrink: 0;
-    flex-grow: 1;
+    flex: 1;
 }
 
 .root.vertical {
