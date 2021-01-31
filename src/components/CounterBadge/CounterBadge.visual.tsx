@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { CounterBadge, COUNTER_BADGE_PRIORITY } from '.';
+import { CounterBadge, COUNTER_BADGE_PRIORITY, CounterBadgeProps } from '.';
 import { VisualTestContainer } from '../../../test/visual/VisualTestContainer';
 import { classes } from './CounterBadge.visual.st.css';
 
-class CounterBadgeVisual extends React.Component<any> {
+class CounterBadgeVisual extends React.Component<CounterBadgeProps> {
   render() {
     return (
       <VisualTestContainer>
@@ -26,7 +26,7 @@ const tests = [
         },
       },
       {
-        it: 'secondery',
+        it: 'secondary',
         props: {
           priority: COUNTER_BADGE_PRIORITY.secondary,
           value: 13,
