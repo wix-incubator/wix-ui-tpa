@@ -36,7 +36,6 @@ const tests = [
       {
         it: 'above maximum',
         props: {
-          className: classes.palette,
           value: 143,
           maximum: 50,
         },
