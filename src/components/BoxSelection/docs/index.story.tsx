@@ -117,7 +117,10 @@ export default {
               title: 'Vertical example',
               source: examples.verticalExample,
             },
-            { title: 'Small Size with inline display', source: examples.smallSizeExample },
+            {
+              title: 'Small Size with inline display',
+              source: examples.smallSizeExample,
+            },
             { title: 'Disabled', source: examples.disabledExmaple },
             {
               title: 'Checked And Disabled',
