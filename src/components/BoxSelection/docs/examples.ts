@@ -50,14 +50,23 @@ export const unavailableExample = `
 </BoxSelection>
 `;
 
-const loremIpsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt';
+const loremIpsum =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt';
 
 export const playground = `
 <div style={{resize: 'both', overflow: 'hidden', padding: 10}}>
 <BoxSelection name={'playground'}>
-    ${new Array(8).fill(0).map((_, i) => 
-        `<BoxSelection.Option unavailable={${i % 3 === 0}}>${loremIpsum.substr(0, Math.ceil(Math.random() * 20))}</BoxSelection.Option>`    
-    )}
+    ${new Array(8)
+      .fill(0)
+      .map(
+        (_, i) =>
+          `<BoxSelection.Option unavailable={${
+            i % 3 === 0
+          }}>${loremIpsum.substr(
+            0,
+            Math.ceil(Math.random() * 20),
+          )}</BoxSelection.Option>`,
+      )}
 </BoxSelection>
 </div> 
 `;
@@ -65,9 +74,17 @@ export const playground = `
 export const playgroundVertical = `
 <div style={{resize: 'both', overflow: 'hidden', padding: 10}}>
 <BoxSelection name={'playground'} vertical>
-    ${new Array(8).fill(0).map((_, i) => 
-        `<BoxSelection.Option unavailable={${i % 3 === 0}}>${loremIpsum.substr(0, Math.ceil(Math.random() * 20))}</BoxSelection.Option>`    
-    )}
+    ${new Array(8)
+      .fill(0)
+      .map(
+        (_, i) =>
+          `<BoxSelection.Option unavailable={${
+            i % 3 === 0
+          }}>${loremIpsum.substr(
+            0,
+            Math.ceil(Math.random() * 20),
+          )}</BoxSelection.Option>`,
+      )}
 </BoxSelection>
 </div> 
 `;
