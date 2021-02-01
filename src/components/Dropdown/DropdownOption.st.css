@@ -39,15 +39,22 @@
     padding: 8px 12px;
 }
 
+.root.overrideStyleParams .title {
+ -st-mixin: TPAText(
+        MainTextColor value(CurrentTitleTextColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
+}
+
+.overrideStyleParams {
+    -st-extends: root;
+}
+
 .contentWrapper {
     max-width: 100%;
 }
 
 .title {
- -st-mixin: TPAText(
-        MainTextColor value(CurrentTitleTextColor),
-        MainTextFont value(CurrentTitleTextFont)
-    );
     padding: 0 12px;
     display: block;
     text-overflow: ellipsis;
@@ -57,7 +64,14 @@
 
 .root:not(:selectable) .title {
     -st-mixin: TPAText(
-        MainTextColor value(CurrentItemTextDisabledColor)
+        MainTextColor value(colorPlaceholder)
+    );
+}
+
+.overrideStyleParams:not(:selectable) .title {
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentItemTextDisabledColor),
+        MainTextFont value(CurrentTitleTextFont)
     );
 }
 
@@ -65,11 +79,21 @@
     padding: 0;
 }
 
-.subtitle {
+.overrideStyleParams .subtitle {
      -st-mixin: TPAText(
         MainTextColor value(CurrentTitleTextColor),
         MainTextFont value(CurrentTitleTextFont)
     );
+}
+
+.overrideStyleParams:not(:selectable) .subtitle {
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentItemTextDisabledColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
+}
+
+.subtitle {
     font-size: 14px !important;
     opacity: 60%;
     margin-top: 4px;

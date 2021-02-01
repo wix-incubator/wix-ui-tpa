@@ -58,6 +58,7 @@
 :import {
     -st-from: "./DropdownOption.st.css";
     -st-default: TPADropdownOption;
+    -st-named: overrideStyleParams as overrideStyleParamsOptionMixin;
 }
 
 /* Defaults - default param */
@@ -152,7 +153,8 @@
     CurrentTextFont: fallback(font(value(MainTextFont)), font(value(DefaultTextFont)));
     CurrentDropdownBackgroundColor: color(fallback(value(MainDropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));
     CurrentItemTextColor: color(fallback(value(MainItemTextColor), value(DefaultItemTextColor)));
-    CurrentItemTextFont: fallback(value(MainItemTextFont), fallback(font(value(MainTextFont)), font(value(DefaultTextFont))));
+    CurrentItemTextFont: fallback(font(value(MainItemTextFont)), font(value(MainTextFont)), font(value(DefaultTextFont)));
+    /* TBD ^ why the fallback to MainTextFont does not work? */
     CurrentItemTextDisabledColor: color(fallback(value(MainItemTextDisabledColor), value(DefaultItemTextDisabledColor)));
 }
 
@@ -171,9 +173,9 @@
     -st-extends: DropdownBase;
 }
 
-.dropdownOption{
+.root.overrideStyleParams .dropdownOption{
     -st-extends: DropdownOption;
-     -st-mixin: TPADropdownOption(
+     -st-mixin: overrideStyleParamsOptionMixin(
          MainTitleTextFont value(CurrentItemTextFont),
          MainTitleTextColor value(CurrentItemTextColor),
          MainItemTextDisabledColor value(CurrentItemTextDisabledColor),
@@ -199,7 +201,7 @@
     min-width: 68px;
 }
 
-.dropdown .dropdownBase {
+.root.overrideStyleParams .dropdown .dropdownBase {
     color: value(CurrentButtonTextColor);
     border-color: value(CurrentButtonBorderColor);
     border-width: value(CurrentBorderWidth);
@@ -207,16 +209,16 @@
     font: value(CurrentTextFont);
 }
 
-.dropdown .dropdownBase::arrowIcon {
+.root.overrideStyleParams .dropdown .dropdownBase::arrowIcon {
     color: value(CurrentItemTextColor);
 }
 
-.dropdown .dropdownBase::root:disabled {
+.root.overrideStyleParams .dropdown .dropdownBase::root:disabled {
     color: value(CurrentButtonTextDisabledColor);;
     border-color: value(CurrentBorderDisabledColor);;
 }
 
-.dropdown .dropdownBase::root:placeholder {
+.root.overrideStyleParams .dropdown .dropdownBase::root:placeholder {
     color: value(CurrentPlaceholderColor);
 }
 
@@ -240,7 +242,7 @@
     stroke: none;
 }
 
-.dropdown::popoverContent {
+.root.overrideStyleParams .dropdown::popoverContent {
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.4);
     box-sizing: border-box;

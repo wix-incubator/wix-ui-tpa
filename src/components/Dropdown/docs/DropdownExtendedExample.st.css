@@ -1,10 +1,11 @@
 :import {
     -st-from: "../Dropdown.st.css";
     -st-default: TPADropdaown;
+    -st-named: overrideStyleParams;
 }
 
 .root {
-    -st-mixin: TPADropdaown(
+    -st-mixin: overrideStyleParams(
             MainButtonTextColor '"--mainButtonTextColor"',
             MainButtonTextDisabledColor '"--mainButtonTextDisabledColor"',
             MainButtonBorderColor '"--mainBorderColor"',
