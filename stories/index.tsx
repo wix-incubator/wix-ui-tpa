@@ -1,6 +1,7 @@
 require('./Introduction');
 require('./Playground/Playground.story');
 require('./Icons.story');
+require('./utils/MobilePageStory');
 
 require('../src/components/ActionsMenuLayout/docs/index.story');
 require('../src/components/AddItem/docs/index.story');
@@ -47,7 +48,6 @@ require('../src/components/Input/docs/index.story');
 require('../src/components/LikeButton/docs/index.story');
 
 require('../src/components/internal/Modal/docs/ModalTestStory');
-require('./utils/MobilePageStory');
 
 require('../src/components/OverlappingCard/docs/index.story');
 
