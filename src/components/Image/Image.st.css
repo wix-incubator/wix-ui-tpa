@@ -1,13 +1,13 @@
 :import {
-  -st-from: '../../common/formatters.st';
+  -st-from: "../../common/formatters.st";
   -st-named: color, fallback;
 }
 
 /*Defaults*/
 :vars {
-  defaultborderwidth: 0px;
-  defaultborderradius: 0px;
-  defaultimageopacity: 100%;
+  defaultBorderWidth: 0px;
+  defaultBorderRadius: 0px;
+  defaultImageOpacity: 100%;
 }
 
 /* Overrides */
@@ -15,35 +15,35 @@
   /*
     A background color by a color from the palette for the container
   */
-  backgroundcolor: --overridable;
+  BackgroundColor: --overridable;
   /*
     A border color by a color from the palette for the container
   */
-  bordercolor: --overridable;
+  BorderColor: --overridable;
   /*
     A border width in pixels for the container
     @default 0px
   */
-  borderwidth: --overridable;
+  BorderWidth: --overridable;
   /*
     A border radius in pixels for the container
     @default 0px
   */
-  borderradius: --overridable;
+  BorderRadius: --overridable;
   /*
     An opacity between 0 to 100 for the image
     @default 100%
   */
-  imageopacity: --overridable;
+  ImageOpacity: --overridable;
 }
 
 :vars {
-  backgroundcolor: color(value(BackgroundColor));
-  bordercolor: color(value(BorderColor));
-  borderwidth: fallback(value(BorderWidth), value(defaultBorderWidth));
-  borderradius: fallback(value(BorderRadius), value(defaultBorderRadius));
-  imageopacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
-  blurradius: 3px;
+  backgroundColor: color(value(BackgroundColor));
+  borderColor: color(value(BorderColor));
+  borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
+  borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
+  imageOpacity: fallback(value(ImageOpacity), value(defaultImageOpacity));
+  blurRadius: 3px;
 }
 
 @keyframes blurry-loading {
