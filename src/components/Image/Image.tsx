@@ -38,7 +38,7 @@ export class Image extends React.Component<ImageProps> {
     const { width, height, aspectRatio } = this.props;
 
     // Updating the state only if we don't have enough information to calculate the dimensions
-    if (!(width && height) || !((width || height) && aspectRatio)) {
+    if (!(width && height) && !((width || height) && aspectRatio)) {
       const {
         width: boundingRectWidth,
         height: boundingRectHeight,
@@ -104,8 +104,8 @@ export class Image extends React.Component<ImageProps> {
         {...(!fluid && {
           style: {
             // If fixed dimensions were passed, we set the calculated values to fit the container with the fixed image
-            width: width && calculatedDimensions.width,
-            height: height && calculatedDimensions.height,
+            width: width && calculatedDimensions?.width,
+            height: height && calculatedDimensions?.height,
           },
         })}
         data-hook={this.props['data-hook']}
