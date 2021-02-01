@@ -1,0 +1,72 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, applyOpacity, fallback;
+}
+
+:import {
+    -st-from: "../../common/fonts.st.css";
+    -st-named: fixedFont45;
+}
+
+
+/*Overrides*/
+:vars {
+    /*
+        Background color
+        @default primaryBgColor: color-8, secondaryBgColor: color-8 with opacity 0.1
+    */
+    CounterBadgeBgColor: --overridable;
+    /*
+        Text color
+        @default primaryTextColor: color-1, secondaryTextColor: color-8
+    */
+    CounterBadgeTextColor: --overridable;
+}
+
+:vars {
+    secondaryBgColor: color(fallback(value(CounterBadgeBgColor), applyOpacity(color(color-8),0.1)));
+    secondaryTextColor: color(fallback(value(CounterBadgeTextColor), color(color-8)));
+}
+
+:vars {
+    primaryBgColor: color(fallback(value(CounterBadgeBgColor), color(color-8)));
+    primaryTextColor: color(fallback(value(CounterBadgeTextColor), color(color-1)));
+}
+
+.root {
+    font-family: value(fixedFont45);
+    display: inline-flex;
+    line-height: 20px;
+    font-size: 12px;
+    border-radius: 10px;
+    min-width: 20px;
+    justify-content: center;
+}
+
+.innerContainer {
+    -st-states: maximumNumber;
+    align-items: center;
+    padding: 0 6px;
+}
+
+.innerContainer:maximumNumber {
+    padding: 0 8px 0 6px;
+}
+
+/* Variants - including style overrides capabilities */
+
+.overrideStyleParams {
+    background-color: color(value(primaryBgColor));
+    color: color(value(primaryTextColor));
+}
+
+.priority-primary {
+    background-color: color(value(primaryBgColor));
+    color: color(value(primaryTextColor));
+}
+
+.priority-secondary {
+    background-color: color(value(secondaryBgColor));
+    color: color(value(secondaryTextColor));
+}
+

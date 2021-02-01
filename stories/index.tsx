@@ -20,6 +20,7 @@ require('../src/components/CheckboxGroup/docs/index.story');
 require('../src/components/ColorPicker/docs/index.story');
 require('../src/components/CopyUrlButton/docs/index.story');
 require('../src/components/Counter/docs/index.story');
+require('../src/components/CounterBadge/docs/index.story');
 
 require('../src/components/DatePicker/docs/index.story');
 require('../src/components/DatePickerInput/docs/index.story');

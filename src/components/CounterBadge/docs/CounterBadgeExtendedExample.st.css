@@ -1,0 +1,25 @@
+:import {
+    -st-from: "../CounterBadge.st.css";
+    -st-named: overrideStyleParams, priority-secondary, priority-primary;
+}
+
+.mixStyleParams {
+  -st-mixin: overrideStyleParams(
+        CounterBadgeBgColor '"color(--counterBadgeBgColor)"',
+        CounterBadgeTextColor '"color(--counterBadgeTextColor)"',
+    );
+}
+
+.mixPrioritySecondary {
+  -st-mixin: priority-secondary(
+        CounterBadgeBgColor '"color(--counterBadgeBgColor)"',
+        CounterBadgeTextColor '"color(--counterBadgeTextColor)"',
+    );
+}
+
+.mixPriorityPrimary {
+  -st-mixin: priority-primary(
+        CounterBadgeBgColor '"color(--counterBadgeBgColor)"',
+        CounterBadgeTextColor '"color(--counterBadgeTextColor)"',
+    );
+}

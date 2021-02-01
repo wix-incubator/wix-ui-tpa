@@ -28,6 +28,7 @@ export { ActionsMenuLayout } from './ActionsMenuLayout';
 export * from './Checkbox';
 export { DotNavigation } from './DotNavigation';
 export * from './CheckboxGroup';
+export * from './CounterBadge';
 export * from './Dropdown';
 export * from './NewCard';
 export { SocialBar } from './SocialBar';
