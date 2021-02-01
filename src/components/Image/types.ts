@@ -15,6 +15,8 @@ export interface ImageProps extends TPAComponentProps {
   onError?: React.EventHandler<React.SyntheticEvent>;
   /** Specifies how the image is resized to fit its container */
   resize?: ResizeOptions;
+  /** Specifies wether the image adapts and scales relatively to the containing layout */
+  fluid?: boolean;
   // Specifies the proportional relationship between width and height
   aspectRatio?: keyof typeof AspectRatioPresets | number;
   /** An experience to set while the image is fetched and loaded  */

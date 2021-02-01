@@ -123,6 +123,22 @@ export const aspectRatioExample = `
 </div>
 `;
 
+export const fluidExample = `
+<div style={{ height: '200px' }}>
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={600}
+    alt="Garfield smiles and puts his hand over chest"
+    resize="${ResizeOptions.cover}"
+    aspectRatio="${getKeyByValue(
+      AspectRatioPresets,
+      AspectRatioPresets.square,
+    )}"
+    fluid
+  />
+</div>
+`;
+
 export const blurLoadingExample = `
 class MediaImageWithBlurryLoading extends React.Component {
   state = {
