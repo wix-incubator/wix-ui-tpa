@@ -36,17 +36,8 @@
     max-width: 100%;
 }
 
-.root:not(.vertical) .option {
-    flex: 1;
-}
-
 .root.vertical {
     flex-direction: column;
-}
-
-.root.vertical .option {
-    flex-grow: 0;
-    flex-shrink: 0;
 }
 
 .root.inline {

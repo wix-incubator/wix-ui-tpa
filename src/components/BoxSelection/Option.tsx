@@ -19,6 +19,10 @@ export interface OptionProps extends TPAComponentProps {
    */
   name?: string;
   /**
+   * Vertical alignment, received from parent.
+   */
+  vertical?: boolean;
+  /**
    * indicates that the option is selected
    */
   checked?: boolean;
@@ -115,6 +119,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
       description,
       size,
       className,
+      vertical,
     } = this.props;
     const { focused } = this.state;
 
@@ -128,8 +133,10 @@ export class Option extends React.Component<OptionProps, OptionState> {
             disabled,
             unavailable,
           },
-          className,
-          focused ? classes.focused : '',
+          classnames(className, {
+            [classes.focused]: focused,
+            [classes.vertical]: vertical,
+          }),
         )}
         data-id={id}
         data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}

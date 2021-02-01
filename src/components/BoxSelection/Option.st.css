@@ -72,11 +72,7 @@
 .root {
     -st-states: checked, disabled, unavailable, size(enum(small, large));
     display: flex;
-}
-
-.root input[type="radio"] {
-    opacity: 1;
-    clip: rect(1px, 1px, 1px, 1px);
+    flex: 1;
 }
 
 .hide{
@@ -237,4 +233,10 @@
     background-color: color(value(CurrentBoxFillColor));
     border-color: color(value(CurrentDisabledColor));
     color: color(value(CurrentDisabledColor));
+}
+
+.root.vertical {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
 }

@@ -94,6 +94,7 @@ export class BoxSelection extends React.Component<BoxSelectionProps> {
                 name,
                 size,
                 onChange,
+                vertical,
               })
             );
           },
