@@ -198,7 +198,23 @@
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
+.root:box:hover:checked .wrapper {
+    border-color: applyOpacity(value(CurrentIconColor), 1);
+}
+
+.root:box:hover:not(:checked) .wrapper {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.root:box:focus-within .wrapper {
+    border-color: applyOpacity(value(CurrentIconColor), 1);
+}
+
 .root:hover .radioIcon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+.root:focus-within .radioIcon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
 }
 
