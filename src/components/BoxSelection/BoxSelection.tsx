@@ -9,11 +9,6 @@ export enum BoxSize {
   xLarge = 'large',
 }
 
-export enum BoxLayout {
-  horizontal = 'horizontal',
-  vertical = 'vertical',
-}
-
 export interface BoxSelectionProps extends TPAComponentProps {
   /**
    * Is used to group options together
