@@ -35,6 +35,6 @@ module.exports = (file, api, options) => {
   } else if (first) {
     first.insertBefore(requireStatement);
   }
-  
-  return root.toSource().replace(/\n\n/g, "\n");
+
+  return root.toSource();
 };
