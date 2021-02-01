@@ -1,1 +1,1 @@
-export { BoxSelection, BoxSelectionProps } from './BoxSelection';
+export * from './BoxSelection';

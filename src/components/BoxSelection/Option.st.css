@@ -34,7 +34,7 @@
     BoxBorderColor: --overridable;
     /*
         The border width of the box (unavailable line as well)
-        @default 1px 
+        @default 1px
     */
     BoxBorderWidth: --overridable;
     /*
@@ -69,9 +69,10 @@
     CurrentDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
 }
 
-.root input[type="radio"] {
-    opacity: 1;
-    clip: rect(1px, 1px, 1px, 1px);
+.root {
+    -st-states: checked, disabled, unavailable, size(enum(small, large));
+    display: flex;
+    flex: 1;
 }
 
 .hide{
@@ -88,17 +89,12 @@
     padding: 16px;
 }
 
-.root {
-    -st-states: checked, disabled, unavailable, size(enum(small, large));
-    display: flex;
-}
-
 .wrapper {
     margin: -1px;
     align-items: center;
     cursor: pointer;
     display: flex;
-    min-width: 120px;
+    flex: 1;
     box-sizing: border-box;
     justify-content: center;
     text-align: center;
@@ -181,21 +177,21 @@
     cursor: default;
     background-color: applyOpacity(color(value(WhiteColor)), 0.3);
     border-color: color(value(DefaultDisabledColor));
-} 
+}
 .root:disabled:checked.overrideStyleParamsOption .wrapper{
     border-color: color(value(CurrentDisabledColor));
     background-color: applyOpacity(color(value(WhiteColor)), 0.3);
-} 
+}
 
 /* HOVER + FOCUS */
 .root:not(:disabled):not(:checked):not(:unavailable):hover .wrapper,
 .root:not(:disabled):not(:checked):not(:unavailable):focus-within .wrapper{
     border-color: applyOpacity(color(value(DefaultBorderColor)), 1);
-} 
+}
 .root:not(:disabled):not(:checked):not(:unavailable):hover.overrideStyleParamsOption .wrapper,
 .root:not(:disabled):not(:checked):not(:unavailable):focus-within.overrideStyleParamsOption .wrapper{
     border-color: applyOpacity(value(CurrentBorderColor), 1);
-} 
+}
 
 /* UNAVAILABLE */
 .root:unavailable {
@@ -237,4 +233,10 @@
     background-color: color(value(CurrentBoxFillColor));
     border-color: color(value(CurrentDisabledColor));
     color: color(value(CurrentDisabledColor));
+}
+
+.root.vertical {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
 }

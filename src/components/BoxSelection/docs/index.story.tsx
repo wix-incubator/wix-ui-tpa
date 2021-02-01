@@ -8,7 +8,7 @@ import {
   importExample,
   playground,
   tab,
-  code as baseCode,
+  example as baseExample,
   tabs,
   testkit,
   title,
@@ -26,8 +26,8 @@ import { StoryCategory } from '../../../../stories/storyHierarchy';
 import { BoxSize } from '../BoxSelection';
 import { BOX_SELECTION_DATA_HOOKS } from '../dataHooks';
 
-const code = (config) =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = (config) =>
+  baseExample({ components: allComponents, compact: true, ...config });
 
 const children = [
   {
@@ -80,6 +80,8 @@ export default {
     ariaLabel: '',
     ariaLabelledBy: '',
     children: children[0].value,
+    vertical: false,
+    inline: false,
   }),
   exampleProps: {
     children,
@@ -108,17 +110,24 @@ export default {
 
           ...[
             {
-              title: 'Unchecked And Checked',
-              source: examples.uncheckedAndCheckedExample,
+              title: 'Horizontal example',
+              source: examples.horizontalExample,
             },
-            { title: 'Small Size', source: examples.smallSizeExample },
+            {
+              title: 'Vertical example',
+              source: examples.verticalExample,
+            },
+            {
+              title: 'Small Size with inline display',
+              source: examples.smallSizeExample,
+            },
             { title: 'Disabled', source: examples.disabledExmaple },
             {
               title: 'Checked And Disabled',
               source: examples.disabledAndCheckedExmaple,
             },
             { title: 'Unavailable', source: examples.unavailableExample },
-          ].map(code),
+          ].map(example),
         ],
       }),
       ...[
@@ -144,18 +153,24 @@ export default {
                     wixParam: 'itemGap',
                     defaultNumber: 12,
                     unit: 'px',
+                    min: 0,
+                    max: 24,
                   },
                   {
                     label: 'Border Radius',
                     wixParam: 'boxBorderRadius',
                     defaultNumber: 1,
                     unit: 'px',
+                    min: 0,
+                    max: 24,
                   },
                   {
                     label: 'Border Width',
                     wixParam: 'boxBorderWidth',
                     defaultNumber: 1,
                     unit: 'px',
+                    min: 0,
+                    max: 8,
                   },
                 ],
                 colors: [

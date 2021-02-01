@@ -9,6 +9,7 @@ require('../src/components/Avatar/docs/index.story');
 require('../src/components/AvatarGroup/docs/index.story');
 
 require('../src/components/Badge/docs/index.story');
+require('../src/components/BoxSelection/docs/index.story');
 require('../src/components/Button/docs/index.story');
 
 require('../src/components/Card/docs/index.story');
@@ -52,6 +53,7 @@ require('../src/components/OverlappingCard/docs/index.story');
 
 require('../src/components/Pagination/docs/index.story');
 require('../src/components/Picker/docs/index.story');
+require('../src/components/Popover/docs/index.story');
 require('../src/components/ProgressBar/docs/index.story');
 
 require('../src/components/RadioButton/docs/index.story');
@@ -79,5 +81,3 @@ require('../src/components/Toast/docs/index.story');
 require('../src/components/ToggleSwitch/docs/index.story');
 require('../src/components/Tooltip/docs/index.story');
 require('../src/components/Tooltip/docs/TooltipTestStory');
-require('../src/components/Popover/docs/index.story');
-require('../src/components/BoxSelection/docs/index.story');
