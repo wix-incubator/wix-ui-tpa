@@ -5,8 +5,8 @@
 
 .paletteStyleParams {
   -st-mixin: overrideStyleParams(
-    CounterBadgeBgColor "color(color-11)",
-    CounterBadgeTextColor "color(color-8)",
+    CounterBadgeBgColor '"color(color-11)"',
+    CounterBadgeTextColor '"color(color-8)"',
   );
 }
 .staticStyleParams {

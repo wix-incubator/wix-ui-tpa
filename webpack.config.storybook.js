@@ -31,6 +31,7 @@ function reconfigureStylable(config) {
         return stylableResult;
       },
     },
+    diagnosticsMode: 'strict', //This ensures the storybook build will fail in case incorrect usage of stylable rules
   });
 
   //remove previous stylable config and attach new one

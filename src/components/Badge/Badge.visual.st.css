@@ -6,8 +6,8 @@
 
 .palette {
   -st-mixin: Badge(
-    BadgeBgColor "color(color-11)",
-    BadgeTextColor "color(color-15)",
+    BadgeBgColor '"color(color-11)"',
+    BadgeTextColor '"color(color-15)"',
   );
 }
 
@@ -20,8 +20,8 @@
 
 .paletteStyleParams {
   -st-mixin: overrideStyleParams(
-    BadgeBgColor "color(color-11)",
-    BadgeTextColor "color(color-15)",
+    BadgeBgColor '"color(color-11)"',
+    BadgeTextColor '"color(color-15)"',
   );
 }
 .staticColorsSiteParams {
