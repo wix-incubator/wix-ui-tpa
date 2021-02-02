@@ -3,46 +3,21 @@
     -st-named: color, applyOpacity, fallback;
 }
 
-/*Overrides*/
-:vars {
-    /*
-        Background color
-        @default color-5 with opacity 0.1
-    */
-    BadgeBgColor: --overridable;
-    /*
-        Text color
-        @default priority default and light: color-5, priority primary: color-1
-    */
-    BadgeTextColor: --overridable;
-}
-
-:vars {
-    defaultBgColor: color(fallback(value(BadgeBgColor), applyOpacity(color(color-5), 0.1)));
-    defaultTextColor: color(fallback(value(BadgeTextColor), color(color-5)));
-}
-
-:vars {
-    lightBgColor: color(fallback(value(BadgeBgColor), color(color-1)));
-    lightTextColor: color(fallback(value(BadgeTextColor), color(color-5)));
-    lightBorderColor: applyOpacity(color(color-5), 0.10);
-}
-
-:vars {
-    primaryBgColor: color(fallback(value(BadgeBgColor), color(color-8)));
-    primaryTextColor: color(fallback(value(BadgeTextColor), color(color-1)));
-}
-
 .root {
+    --default-bg-color: applyOpacity(color(color-5), 0.1);
+    --default-text-color: color(color-5);
     -st-states: withIcon;
     display: inline-flex;
     border-radius: 12px;
     line-height: 20px;
     font-size: 12px;
+    background-color: var(--bg-color, var(--default-bg-color));
+    color: var(--text-color, var(--default-text-color));
+    border: none;
 }
 
 .root::before, .root::after {
-    content: '';
+    content: ' ';
     width: 12px;;
 }
 
@@ -71,50 +46,21 @@
     height: 16px;
 }
 
-/* Deprecated - Old style params overriding for full mixin */
-
-.root {
-    background-color: color(value(defaultBgColor));
-    color: color(value(defaultTextColor));
-    border: none;
-}
-
 .root .icon path {
-    fill: color(value(defaultTextColor));
-}
-
-/* Variants - including style overrides capabilities */
-
-.overrideStyleParams {
-    background-color: color(value(defaultBgColor));
-    color: color(value(defaultTextColor));
-    border: none;
-}
-
-.overrideStyleParams .icon path /* default */ {
-    fill: color(value(defaultTextColor));
+    fill: var(--text-color);
 }
 
 .priority-light {
-    background-color: color(value(lightBgColor));
-    color: color(value(lightTextColor));
-    border-color: color(value(lightBorderColor));
+    --bg-color: color(color-1);
+    --text-color: color(color-5);
+    border-color: applyOpacity(color(color-5), 0.10);
     box-sizing: border-box;
     border-width: 1px;
     border-style: solid;
     line-height: 18px;
 }
 
-.priority-light .icon path {
-    fill: color(value(lightTextColor));
-}
-
 .priority-primary {
-    background-color: color(value(primaryBgColor));
-    color: color(value(primaryTextColor));
-    border: none;
-}
-
-.priority-primary .icon path {
-    fill: color(value(primaryTextColor));
+    --bg-color: color(color-8);
+    --text-color: color(color-1);
 }
