@@ -1,3 +1,34 @@
+# [2.20.0](https://github.com/wix/wix-ui-tpa/compare/v2.19.0...v2.20.0) (2021-02-02)
+
+
+### Bug Fixes
+
+* **Button:** Fix stylable use of mobile state ([5b32ec9](https://github.com/wix/wix-ui-tpa/commit/5b32ec9f9c4cb6c10f2193e26f4a80e2f048f0fd)), closes [#601](https://github.com/wix/wix-ui-tpa/issues/601)
+* **ColorPicker:** Adjust ColorPicker to new RadioButton types ([fe4c176](https://github.com/wix/wix-ui-tpa/commit/fe4c176218977c3a21cb1495bea948d334b84dec))
+* **DatePicker:** change the hover circle according to the border radius ([#619](https://github.com/wix/wix-ui-tpa/issues/619)) ([9d86c29](https://github.com/wix/wix-ui-tpa/commit/9d86c2998ec4553962299adaa2eed6cbaeee6bfe))
+* **DatePicker:** remove the auto focus ([#618](https://github.com/wix/wix-ui-tpa/issues/618)) ([14c730a](https://github.com/wix/wix-ui-tpa/commit/14c730abb0833deb1f0f2771e85f7d975cb32275))
+* **Image & DatePicker:** Fix stylable warnings ([eb6e148](https://github.com/wix/wix-ui-tpa/commit/eb6e148befb77afae3c774632cebb79608bd3433))
+* **Image:** Fix dimension calculation issues ([3a897d2](https://github.com/wix/wix-ui-tpa/commit/3a897d25b2ab554f2466ea94974aeffbe6d6633f))
+* **Playground:** use media item in image ([#626](https://github.com/wix/wix-ui-tpa/issues/626)) ([df6b71f](https://github.com/wix/wix-ui-tpa/commit/df6b71f62508f37506804aa12b524ee0accfa303))
+* **Popover:** Stylable warning ([#637](https://github.com/wix/wix-ui-tpa/issues/637)) ([9ebaf59](https://github.com/wix/wix-ui-tpa/commit/9ebaf5936a0794f470346df61fce1881336fa426))
+* **RadioButton:** Fix e2e test ([bd9d081](https://github.com/wix/wix-ui-tpa/commit/bd9d0811c22360482131b17d0e88c3ee0806259f))
+
+
+### Features
+
+* **BoxSelection:** New Component ([82e26ff](https://github.com/wix/wix-ui-tpa/commit/82e26ffd75cdc178ca66c9fa5224abef06134bfe))
+* **BoxSelection:** Add `vertical` and `inline` props ([cc985ae](https://github.com/wix/wix-ui-tpa/commit/cc985ae1f2ac2d3c273934520475f84d66b7f7e3))
+* **CounterBadge:** New component ([116fd5a](https://github.com/wix/wix-ui-tpa/commit/116fd5a587289d12168a16b90cb65c617813fb55))
+* **Image:** Implement dimensions logic ([75096e3](https://github.com/wix/wix-ui-tpa/commit/75096e3948db6d8122270280c24e86085b9113b7))
+* **Image:** Support style wiring ([2f544b0](https://github.com/wix/wix-ui-tpa/commit/2f544b0d7436bd8c847938173aa31c077551b4d2))
+* **Image:** Change default resize to cover ([558b601](https://github.com/wix/wix-ui-tpa/commit/558b6010b2aedf1cb2a1ce3c07ea5346878c6aa1))
+* **Image:** Implement `fluid` prop ([aec62f4](https://github.com/wix/wix-ui-tpa/commit/aec62f465ed5f499b65a19d14db43351f1d666c4))
+* **HeroImage & ThumbnailImage:** New components ([11d05c2](https://github.com/wix/wix-ui-tpa/commit/11d05c2ac4ad38283aba050025b231d26066ffde))
+* **Popover:** New component ([f3edb3d](https://github.com/wix/wix-ui-tpa/commit/f3edb3d3a0ef3588d6d19e45675fdf4575bfad11))
+* **TextArea:** maxLength prop ([b1ecf30](https://github.com/wix/wix-ui-tpa/commit/b1ecf3053224ad45e79198ee6fb484edaaae3b01))
+
+
+
 # [2.19.0](https://github.com/wix/wix-ui-tpa/compare/v2.18.0...v2.19.0) (2021-01-19)
 
 
