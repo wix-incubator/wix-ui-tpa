@@ -40,7 +40,7 @@
     "test:watch": "yoshi test --jest --watch",
     "test:unit": "yoshi test --jest",
     "test:e2e": "yoshi test --protractor",
-    "test:eyes-storybook": "if test \"$EYES_API_KEY\"; then npm run test:eyes-storybook:local ; fi",
+    "test:eyes-storybook": "",
     "test:eyes-storybook:local": "eyes-storybook -c ./.storybook-test -s ./.storybook-test/public",
     "test:perfer-bundles": "npm run build:perfer-bundles && perfer --verbose",
     "lint": "yoshi lint",
