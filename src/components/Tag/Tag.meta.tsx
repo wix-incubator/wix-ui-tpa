@@ -3,6 +3,7 @@ import Registry from '@ui-autotools/registry';
 
 const TagMetadata = Registry.getComponentMetadata(Tag);
 TagMetadata.nonReactStrictModeCompliant = true;
+TagMetadata.nonA11yCompliant = true;
 
 TagMetadata.addSim({
   title: 'render',
