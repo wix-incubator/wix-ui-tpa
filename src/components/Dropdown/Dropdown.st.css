@@ -162,8 +162,16 @@
     -st-states: alignment(enum(center)), mobile;
 }
 
+.root:mobile .label {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '12px'}"
+    );
+}
 
 .label {
+    -st-mixin: TPAText(
+        MainTextFont "{theme: 'Body-M', size: '14px'}"
+    );
     display: block;
     margin-bottom: 8px;
 }
@@ -172,8 +180,11 @@
     -st-extends: DropdownBase;
 }
 
+.dropdownOption {
+  -st-extends: DropdownOption;
+}
+
 .root.overrideStyleParams .dropdownOption{
-    -st-extends: DropdownOption;
      -st-mixin: overrideStyleParamsOptionMixin(
          MainTitleTextFont value(CurrentItemTextFont),
          MainTitleTextColor value(CurrentItemTextColor),
@@ -222,7 +233,7 @@
 }
 
 .dropdown:content-visible .dropdownBase::root {
-   border-color: value(borderHoverColor);
+    border-color: value(borderHoverColor);
 }
 
 .dropdown:content-visible .dropdownBase::root:error {
@@ -279,8 +290,10 @@
 }
 
 .divider {
-    -st-extends: Divider;
     opacity: 30%;
+}
+
+.root.overrideStyleParams .divider {
     background-color: value(CurrentItemTextColor);
 }
 
