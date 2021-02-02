@@ -20,18 +20,13 @@
 /*Overrides*/
 :vars {
     /*
-      The color of the text instead of the default color set by typography
-      @default color-5
+        The color of the text instead of the default color set by priority
+        @default for primary priority: color-5, for secondary priority: color-4
     */
     MainTextColor: --overridable;
     /*
-      The color to use instead of default color for secondary text
-      @default color-4
-    */
-    SecondaryTextColor: --overridable;
-    /*
-      The font of the text instead of the default font set by typography
-      @default Depends on the typography prop
+        The font of the text instead of the default font set by typography
+        @default Depends on the typography prop
     */
     MainTextFont: --overridable;
 }
@@ -45,7 +40,7 @@
 }
 
 .root:priority(secondary){
-    color: color(fallback(value(SecondaryTextColor), value(DefaultSecondaryTextColor)));
+    color: color(fallback(value(MainTextColor), value(DefaultSecondaryTextColor)));
 }
 
 .root:typography(smallTitle) {
