@@ -3,7 +3,6 @@ import * as TextWiringExampleCSSRaw from '!raw-loader!./TextWiringExample.st.css
 import * as TextWiringExampleRaw from '!raw-loader!./TextWiringExample.tsx';
 import {
   api,
-  code as baseCode,
   description,
   divider,
   header,
@@ -13,8 +12,9 @@ import {
   tabs,
   testkit,
   title,
+  example as baseExample,
 } from 'wix-storybook-utils/Sections';
-import { Text, TYPOGRAPHY } from '..';
+import { Text, TYPOGRAPHY, TEXT_PRIORITY } from '..';
 import { allComponents } from '../../../../stories/utils/allComponents';
 import { settingsApi } from '../../../../stories/utils/SettingsApi';
 import {
@@ -25,8 +25,11 @@ import * as examples from './examples';
 import { TextWiringExample } from './TextWiringExample';
 import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const code = (config) =>
-  baseCode({ components: allComponents, compact: true, ...config });
+const example = (config) =>
+  baseExample({
+    components: allComponents,
+    ...config,
+  });
 
 export default {
   category: StoryCategory.COMPONENTS,
@@ -42,6 +45,7 @@ export default {
   },
   exampleProps: {
     typography: Object.keys(TYPOGRAPHY).map((key) => TYPOGRAPHY[key]),
+    priority: Object.keys(TEXT_PRIORITY).map((key) => TEXT_PRIORITY[key]),
   },
   sections: [
     header(),
@@ -66,7 +70,13 @@ export default {
               title: 'Basic Usage',
               source: examples.basic,
             },
-          ].map(code),
+            {
+              title: 'Priority',
+              text:
+                'Control text priority. Possible values:  `primary`, `secondary`',
+              source: examples.priority,
+            },
+          ].map(example),
         ],
       }),
 
