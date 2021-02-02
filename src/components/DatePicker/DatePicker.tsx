@@ -67,21 +67,21 @@ export interface DatePickerProps extends TPAComponentProps {
   /** Identifies the element that labels the Date Picker element. Optional. */
   'aria-labelledby'?: string;
   /** Defines a string value that labels the left arrow in calendar header */
-  leftArrowAriaLabel: string,
+  leftArrowAriaLabel: string;
   /**  Identifies the element that labels the left arrow in calendar header */
-  leftArrowAriaLabelledBy: string,
+  leftArrowAriaLabelledBy: string;
   /** Defines a string value that labels the right arrow in calendar header */
-  rightArrowAriaLabel: string,
+  rightArrowAriaLabel: string;
   /** Identifies the element that labels the right arrow in calendar header */
-  rightArrowAriaLabelledBy: string,
+  rightArrowAriaLabelledBy: string;
   /** Defines a string value that labels the months dropdown in calendar header */
-  monthDropdownAriaLabel: string,
+  monthDropdownAriaLabel: string;
   /** Identifies the element that labels the months dropdown in calendar header */
-  monthDropdownAriaLabelledBy: string,
+  monthDropdownAriaLabelledBy: string;
   /** Defines a string value that labels the years dropdown in calendar header */
-  yearDropdownAriaLabel: string,
+  yearDropdownAriaLabel: string;
   /** Identifies the element that labels the years dropdown in calendar header */
-  yearDropdownAriaLabelledBy: string,
+  yearDropdownAriaLabelledBy: string;
 }
 
 interface DefaultProps {
