@@ -13,11 +13,6 @@ const wrap = (example) => `
   <div>
     <div>Desktop:</div>
       ${example}
-      <br/>
-      <div>Mobile:</div>
-      <ExampleWithContextProps mobile={true}>
-        ${example}
-      </ExampleWithContextProps>
   </div>
 `;
 

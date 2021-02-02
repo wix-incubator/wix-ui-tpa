@@ -154,7 +154,6 @@
     CurrentDropdownBackgroundColor: color(fallback(value(MainDropdownBackgroundColor), value(DefaultDropdownBackgroundColor)));
     CurrentItemTextColor: color(fallback(value(MainItemTextColor), value(DefaultItemTextColor)));
     CurrentItemTextFont: fallback(font(value(MainItemTextFont)), font(value(MainTextFont)), font(value(DefaultTextFont)));
-    /* TBD ^ why the fallback to MainTextFont does not work? */
     CurrentItemTextDisabledColor: color(fallback(value(MainItemTextDisabledColor), value(DefaultItemTextDisabledColor)));
 }
 
