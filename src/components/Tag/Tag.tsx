@@ -21,7 +21,7 @@ export interface TagProps extends TPAComponentProps {
   skin?: SKIN;
 }
 
-export const Tag: React.FC<TagProps> = props => {
+export const Tag: React.FC<TagProps> = (props) => {
   const {
     skin,
     size,
