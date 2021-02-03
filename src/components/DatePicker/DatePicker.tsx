@@ -66,22 +66,22 @@ export interface DatePickerProps extends TPAComponentProps {
   'aria-label'?: string;
   /** Identifies the element that labels the Date Picker element. Optional. */
   'aria-labelledby'?: string;
-  // /** Defines a string value that labels the left arrow in calendar header */
-  // leftArrowAriaLabel: string;
-  // /**  Identifies the element that labels the left arrow in calendar header */
-  // leftArrowAriaLabelledBy: string;
-  // /** Defines a string value that labels the right arrow in calendar header */
-  // rightArrowAriaLabel: string;
-  // /** Identifies the element that labels the right arrow in calendar header */
-  // rightArrowAriaLabelledBy: string;
-  // /** Defines a string value that labels the months dropdown in calendar header */
-  // monthDropdownAriaLabel: string;
-  // /** Identifies the element that labels the months dropdown in calendar header */
-  // monthDropdownAriaLabelledBy: string;
-  // /** Defines a string value that labels the years dropdown in calendar header */
-  // yearDropdownAriaLabel: string;
-  // /** Identifies the element that labels the years dropdown in calendar header */
-  // yearDropdownAriaLabelledBy: string;
+  /** Defines a string value that labels the left arrow in calendar header */
+  leftArrowAriaLabel?: string;
+  /**  Identifies the element that labels the left arrow in calendar header */
+  leftArrowAriaLabelledBy?: string;
+  /** Defines a string value that labels the right arrow in calendar header */
+  rightArrowAriaLabel?: string;
+  /** Identifies the element that labels the right arrow in calendar header */
+  rightArrowAriaLabelledBy?: string;
+  /** Defines a string value that labels the months dropdown in calendar header */
+  monthDropdownAriaLabel?: string;
+  /** Identifies the element that labels the months dropdown in calendar header */
+  monthDropdownAriaLabelledBy?: string;
+  /** Defines a string value that labels the years dropdown in calendar header */
+  yearDropdownAriaLabel?: string;
+  /** Identifies the element that labels the years dropdown in calendar header */
+  yearDropdownAriaLabelledBy?: string;
 }
 
 interface DefaultProps {
@@ -121,14 +121,14 @@ export class DatePicker extends React.Component<DatePickerProps> {
       dateIndication,
       ['aria-label']: ariaLabel,
       ['aria-labelledby']: ariaLabelledBy,
-      // leftArrowAriaLabel,
-      // leftArrowAriaLabelledBy,
-      // rightArrowAriaLabel,
-      // rightArrowAriaLabelledBy,
-      // monthDropdownAriaLabel,
-      // monthDropdownAriaLabelledBy,
-      // yearDropdownAriaLabel,
-      // yearDropdownAriaLabelledBy,
+      leftArrowAriaLabel,
+      leftArrowAriaLabelledBy,
+      rightArrowAriaLabel,
+      rightArrowAriaLabelledBy,
+      monthDropdownAriaLabel,
+      monthDropdownAriaLabelledBy,
+      yearDropdownAriaLabel,
+      yearDropdownAriaLabelledBy,
     } = this.props;
 
     return (
@@ -156,14 +156,14 @@ export class DatePicker extends React.Component<DatePickerProps> {
               numOfMonths={1}
               autoFocus={false}
               dateIndication={dateIndication}
-              // leftArrowAriaLabel={leftArrowAriaLabel}
-              // leftArrowAriaLabelledBy={leftArrowAriaLabelledBy}
-              // rightArrowAriaLabel={rightArrowAriaLabel}
-              // rightArrowAriaLabelledBy={rightArrowAriaLabelledBy}
-              // monthDropdownAriaLabel={monthDropdownAriaLabel}
-              // monthDropdownAriaLabelledBy={monthDropdownAriaLabelledBy}
-              // yearDropdownAriaLabel={yearDropdownAriaLabel}
-              // yearDropdownAriaLabelledBy={yearDropdownAriaLabelledBy}
+              leftArrowAriaLabel={leftArrowAriaLabel}
+              leftArrowAriaLabelledBy={leftArrowAriaLabelledBy}
+              rightArrowAriaLabel={rightArrowAriaLabel}
+              rightArrowAriaLabelledBy={rightArrowAriaLabelledBy}
+              monthDropdownAriaLabel={monthDropdownAriaLabel}
+              monthDropdownAriaLabelledBy={monthDropdownAriaLabelledBy}
+              yearDropdownAriaLabel={yearDropdownAriaLabel}
+              yearDropdownAriaLabelledBy={yearDropdownAriaLabelledBy}
             />
           </div>
         )}

@@ -111,6 +111,12 @@ export default {
                 'Date indication allows you to add a custom indication under a specific date. It could be an indication for event, appointment, meeting etc.',
               source: examples.dateIndication,
             },
+            {
+              title: 'A11Y',
+              description:
+                  'This component adds aria attributes for the buttons elements. These values should be translated and should be passed by the props.',
+              source: examples.a11y,
+            },
           ].map(code),
         ],
       }),

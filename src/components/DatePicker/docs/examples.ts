@@ -91,3 +91,23 @@ export const dateIndication = buildExample(
     </div>
 `,
 );
+
+
+export const a11y = buildExample(
+    'new Date()',
+    `
+    <div style={{ width: '280px' }}>
+          <DatePicker
+              value={value}
+              placeholderText="Select A Date"
+              showMonthDropdown
+              showYearDropdown
+              onChange={this._onChange}
+              leftArrowAriaLabel="previous month"
+              rightArrowAriaLabel="next month"
+              monthDropdownAriaLabel="month"
+              yearDropdownAriaLabel="year"
+          />
+    </div>
+`,
+);
