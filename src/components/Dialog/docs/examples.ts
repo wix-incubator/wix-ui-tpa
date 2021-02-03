@@ -52,12 +52,12 @@ export const mobileExample = buildExample(`
       <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
       <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} >
         <div className="content" style={{ textAlign: 'center' }}>
-            <Text typography="MobileSmallTitleFont" tagName="div">Discard draft?</Text>
+            <Text typography="largeTitle" tagName="div">Discard draft?</Text>
             <div className="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
-                <Text typography="MobileRunningTextFont" tagName="div">Are You Sure you want to discard the changes you made?</Text>
+                <Text typography="runningText" tagName="div">Are You Sure you want to discard the changes you made?</Text>
             </div>
             <div className="primary-btn-container" style={{marginBottom: '8px'}}>
-                  <Button upgrade>
+                  <Button upgrade style={{ width: '100%', boxSizing: 'border-box' }}>
                     PRIMARY
                   </Button>
             </div>
