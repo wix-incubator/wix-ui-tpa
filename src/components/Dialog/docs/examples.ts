@@ -77,7 +77,7 @@ export const mobileExampleNotFullscreen = buildExample(`
       <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
       <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} notFullscreenOnMobile>
         <div className="content" style={{ textAlign: 'center' }}>
-            <Text typography="MobileSmallTitleFont" tagName="div">Discard draft?</Text>
+            <Text typography="largeTitle" tagName="div">Discard draft?</Text>
             <div className="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
                 <Text typography="runningText" tagName="div">Are You Sure you want to discard the changes you made?</Text>
             </div>
