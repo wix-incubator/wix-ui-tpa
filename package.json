@@ -30,6 +30,7 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
+    "--------scripts": "",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run generate-stylable-index && npm run storybook:build",
     "build:perfer-bundles": "npm run build --prefix .perfer",
