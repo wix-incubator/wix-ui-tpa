@@ -2,8 +2,7 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Modal } from '../index';
 import { Button } from '../../../Button';
-
-const kind = 'Tests';
+import { StoryCategory } from '../../../../../stories/storyHierarchy';
 
 class ModalTestStory extends React.Component {
   state = {
@@ -73,4 +72,4 @@ function renderTest() {
   return <ModalTestStory />;
 }
 
-storiesOf(kind, module).add('Modal', renderTest);
+storiesOf(StoryCategory.TESTS, module).add('Modal', renderTest);

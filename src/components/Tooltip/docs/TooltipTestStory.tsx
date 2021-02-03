@@ -2,6 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Tooltip, TooltipProps } from '..';
 import { testPropsList } from './testProps';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 function renderTest() {
   const defaultProps: Partial<TooltipProps> = {
@@ -23,4 +24,4 @@ function renderTest() {
   );
 }
 
-storiesOf('Tests', module).add('Tooltip', renderTest);
+storiesOf(StoryCategory.TESTS, module).add('Tooltip', renderTest);
