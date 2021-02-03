@@ -17,6 +17,10 @@ DatePickerInputMetadata.addSim({
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
     dateInputAriaLabel: 'Date Input',
+    leftArrowAriaLabel: 'previous month',
+    rightArrowAriaLabel: 'next month',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerInputProps,
 });
 
@@ -28,6 +32,10 @@ DatePickerInputMetadata.addSim({
     disabled: true,
     'aria-label': 'Date Picker',
     dateInputAriaLabel: 'Date Input',
+    leftArrowAriaLabel: 'previous month',
+    rightArrowAriaLabel: 'next month',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerInputProps,
 });
 
@@ -41,6 +49,10 @@ DatePickerInputMetadata.addSim({
     'aria-label': 'Date Picker',
     clearButtonAriaLabel: 'Clear Button',
     dateInputAriaLabel: 'Date Input',
+    leftArrowAriaLabel: 'previous month',
+    rightArrowAriaLabel: 'next month',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerInputProps,
 });
 
@@ -53,6 +65,10 @@ DatePickerInputMetadata.addSim({
     'aria-label': 'Date Picker',
     dateInputAriaLabel: 'Date Input',
     clearButtonAriaLabel: 'Clear Button',
+    leftArrowAriaLabel: 'previous month',
+    rightArrowAriaLabel: 'next month',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerInputProps,
 });
 
@@ -66,5 +82,9 @@ DatePickerInputMetadata.addSim({
     'aria-label': 'Date Picker',
     dateInputAriaLabel: 'Date Input',
     clearButtonAriaLabel: 'Clear Button',
+    leftArrowAriaLabel: 'previous month',
+    rightArrowAriaLabel: 'next month',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerInputProps,
 });
