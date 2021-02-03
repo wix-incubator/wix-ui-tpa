@@ -82,7 +82,7 @@ export const mobileExampleNotFullscreen = buildExample(`
                 <Text typography="runningText" tagName="div">Are You Sure you want to discard the changes you made?</Text>
             </div>
             <div className="primary-btn-container" style={{marginBottom: '8px'}}>
-                  <Button upgrade>
+                  <Button upgrade style={{ width: '100%', boxSizing: 'border-box' }}>
                     PRIMARY
                   </Button>
             </div>
