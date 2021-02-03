@@ -20,7 +20,7 @@
 
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: applyUnit, color, font, zeroAsTrue, fallback;
+    -st-named: applyUnit, color, font, zeroAsTrue, fallback, applyOpacity;
 }
 
 :import {
@@ -220,7 +220,7 @@
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase::arrowIcon {
-    color: value(CurrentItemTextColor);
+    color: value(CurrentTextFont);
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase::root:disabled {
@@ -271,9 +271,10 @@
     padding: 12px 0;
 }
 
-.dropdown::dropdownContent::dropdownOption:hovered,
-.dropdown::dropdownContent::dropdownOption:selected,
-.dropdown::dropdownContent::dropdownOption:selected:hovered {
+.root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,
+.root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected,
+.root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected:hovered {
+    /* background-color: applyOpacity(value(CurrentDropdownBackgroundColor), 0.06); TO CHECK WITH JHOANNA */
     background-color: value(backgroundColorHover);
 }
 

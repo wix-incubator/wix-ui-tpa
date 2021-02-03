@@ -10,7 +10,7 @@
 
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, font;
+    -st-named: color, fallback, applyOpacity, font;
 }
 
 :vars {
@@ -71,6 +71,13 @@
 .overrideStyleParams:not(:selectable) .title {
     -st-mixin: TPAText(
         MainTextColor value(CurrentItemTextDisabledColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
+}
+
+.overrideStyleParams:sectionTitle .title {
+    -st-mixin: TPAText(
+        MainTextColor applyOpacity(value(CurrentTitleTextColor), 0.6),
         MainTextFont value(CurrentTitleTextFont)
     );
 }
