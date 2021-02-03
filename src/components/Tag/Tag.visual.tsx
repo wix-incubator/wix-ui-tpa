@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
-import { noop } from 'wix-ui-core/src/utils';
-
 import { SKIN, Tag } from './';
+
+const noop = () => {};
 
 visualize('Tag', () => {
   story('simple', () => {
