@@ -17,8 +17,8 @@ DatePickerMetadata.addSim({
     'aria-label': 'Date Picker',
     leftArrowAriaLabel: 'previous month',
     rightArrowAriaLabel: 'next month',
-    monthDropdownAriaLabel:'month',
-    yearDropdownAriaLabel:'year',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerProps,
 });
 
@@ -31,8 +31,8 @@ DatePickerMetadata.addSim({
     'aria-label': 'Date Picker',
     leftArrowAriaLabel: 'previous month',
     rightArrowAriaLabel: 'next month',
-    monthDropdownAriaLabel:'month',
-    yearDropdownAriaLabel:'year',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerProps,
 });
 
@@ -46,7 +46,7 @@ DatePickerMetadata.addSim({
     'aria-label': 'Date Picker',
     leftArrowAriaLabel: 'previous month',
     rightArrowAriaLabel: 'next month',
-    monthDropdownAriaLabel:'month',
-    yearDropdownAriaLabel:'year',
+    monthDropdownAriaLabel: 'month',
+    yearDropdownAriaLabel: 'year',
   } as DatePickerProps,
 });

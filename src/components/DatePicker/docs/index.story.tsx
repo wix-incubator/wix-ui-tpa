@@ -114,7 +114,7 @@ export default {
             {
               title: 'A11Y',
               description:
-                  'This component adds aria attributes for the buttons elements. These values should be translated and should be passed by the props.',
+                'This component adds aria attributes for the buttons elements. These values should be translated and should be passed by the props.',
               source: examples.a11y,
             },
           ].map(code),
