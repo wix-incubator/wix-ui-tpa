@@ -64,6 +64,7 @@ export const mobileExample = buildExample(`
             <Button
               upgrade
               priority={PRIORITY.basicSecondary}
+              style={{ width: '100%', boxSizing: 'border-box' }}
             >
               SECONDARY
             </Button>
