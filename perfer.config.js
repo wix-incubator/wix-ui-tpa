@@ -8,7 +8,7 @@ const files = [
   ['AvatarGroup.bundle.min.js', 19.5],
   ['Badge.bundle.min.js', 3],
   ['BadgePerfBasic.bundle.min.js', 3],
-  ['BadgePerfExtendedBad.bundle.min.js', 3],
+  ['BadgePerfExtendedBad.bundle.min.js', 3.1],
   ['BadgePerfExtendedGood.bundle.min.js', 3],
   ['Button.bundle.min.js', 9],
   ['ButtonPerfBasic.bundle.min.js', 9],
