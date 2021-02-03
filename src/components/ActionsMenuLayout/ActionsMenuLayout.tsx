@@ -9,6 +9,10 @@ import { KEYS } from '../../common/keyCodes';
 
 export interface ActionsMenuLayoutProps extends TPAComponentProps {
   alignment?: Alignment;
+  /**
+   * Provide item index which will be focused on initial render.
+   * If prop is not provided, no item will be autofocused
+   */
   focusedIndex?: number;
   /** a11y */
   'aria-labeledby'?: string;
@@ -23,7 +27,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
   static displayName = 'ActionsMenuLayout';
 
   state = {
-    focusedIdx: 0,
+    focusedIdx: this.props.focusedIndex ?? 0,
   };
 
   liRefs: {
@@ -34,11 +38,8 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
 
   componentDidMount() {
     const { focusedIndex } = this.props;
-
     if (focusedIndex) {
       this._focusItem(focusedIndex);
-    } else {
-      this._focusItem(this.state.focusedIdx);
     }
   }
 
@@ -87,20 +88,21 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     }
   };
 
-  _onFocus = () => {
-    const { focusedIdx } = this.state;
-    const { focusedIndex } = this.props;
-
-    this._focusItem(
-      typeof focusedIndex !== 'undefined' ? focusedIndex : focusedIdx,
+  _onFocus = (e) => {
+    const focusOnChild = !!Object.values(this.liRefs).find(
+      (i) => i.liRef?.current === e.target,
     );
+    //reset focus on first item
+    if (!focusOnChild) {
+      this._focusItem(0);
+    }
   };
 
   // to get proper index on mouse click
   _onClick = (e) => {
-    const indexValue = Object.values(this.liRefs).findIndex((i) => {
-      return i.liRef?.current === e.target;
-    });
+    const indexValue = Object.values(this.liRefs).findIndex(
+      (i) => i.liRef?.current === e.target,
+    );
 
     if (indexValue >= 0) {
       this._focusItem(indexValue);
@@ -122,7 +124,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
             role="menu"
             aria-labelledby={this.props['aria-labeledby']}
             aria-label={this.props['aria-label']}
-            tabIndex={-1}
+            tabIndex={0}
           >
             {React.Children.map(children, (child: React.ReactElement, index) =>
               child.type === ActionsMenuLayoutItem
