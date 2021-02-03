@@ -1,7 +1,6 @@
 require('./Introduction');
 require('./Playground/Playground.story');
 require('./Icons.story');
-require('./utils/MobilePageStory');
 
 require('../src/components/ActionsMenuLayout/docs/index.story');
 require('../src/components/AddItem/docs/index.story');
@@ -60,5 +59,3 @@ require('../src/components/Toast/docs/index.story');
 require('../src/components/ToggleSwitch/docs/index.story');
 require('../src/components/Tooltip/docs/index.story');
 require('../src/components/Tag/docs/index.story');
-
-require('./testStories');
