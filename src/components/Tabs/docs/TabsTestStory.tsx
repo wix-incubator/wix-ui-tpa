@@ -2,8 +2,8 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Tabs } from '..';
 import { TPAComponentsProvider } from '../../TPAComponentsConfig';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
-const kind = 'Tests';
 const items = [
   { title: 'Title 1' },
   { title: 'Title 2' },
@@ -71,4 +71,4 @@ class TabsE2eTest extends React.Component {
   }
 }
 
-storiesOf(kind, module).add('Tabs', () => <TabsE2eTest />);
+storiesOf(StoryCategory.TESTS, module).add('Tabs', () => <TabsE2eTest />);

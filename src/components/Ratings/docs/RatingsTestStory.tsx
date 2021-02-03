@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Ratings } from '..';
-
-const kind = 'Tests';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 function renderTest(props?: any) {
   const defaultProps = {
@@ -41,4 +40,4 @@ function renderTest(props?: any) {
   );
 }
 
-storiesOf(kind, module).add('Ratings', renderTest);
+storiesOf(StoryCategory.TESTS, module).add('Ratings', renderTest);
