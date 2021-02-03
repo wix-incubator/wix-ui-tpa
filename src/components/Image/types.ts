@@ -21,6 +21,8 @@ export interface ImageProps extends TPAComponentProps {
   aspectRatio?: keyof typeof AspectRatioPresets | number;
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: LoadingBehaviorOptions;
+  /** An effect to appear when the image is hovered  */
+  hoverEffect?: HoverEffectOptions;
 }
 
 export interface Dimensions {
@@ -42,4 +44,9 @@ export const AspectRatioPresets = {
 export enum LoadingBehaviorOptions {
   none = 'none',
   blur = 'blur',
+}
+
+export enum HoverEffectOptions {
+  none = 'none',
+  darken = 'darken',
 }
