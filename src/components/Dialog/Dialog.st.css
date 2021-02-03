@@ -65,6 +65,7 @@
     display: flex;
     align-items: center;
     position:absolute;
+    overflow: hidden;
 
     top: value(NotFullscreenMobilePadding);
     left: value(NotFullscreenMobilePadding);

@@ -4,7 +4,12 @@ import { PixelFrame } from './PixelFrame';
 import { TPAComponentsProvider } from '../../src/components/TPAComponentsConfig';
 import { st, classes } from './MobileExample.st.css';
 
-export class MobileExample extends React.Component {
+export class MobileExample extends React.Component<{
+  isRtl?: boolean;
+}> {
+  static defaultProps = {
+    isRtl: false,
+  };
   private readonly _frameRef = React.createRef<HTMLIFrameElement>();
   private _frameBody: HTMLElement;
 
@@ -18,9 +23,9 @@ export class MobileExample extends React.Component {
   };
 
   _getContent() {
-    const { children } = this.props;
+    const { children, isRtl } = this.props;
     return (
-      <TPAComponentsProvider value={{ mobile: true }}>
+      <TPAComponentsProvider value={{ mobile: true, rtl: isRtl }}>
         {children}
       </TPAComponentsProvider>
     );
