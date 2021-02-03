@@ -37,8 +37,6 @@ const components = Object.keys(componentsToBundle).reduce(
   {}
 );
 
-console.log('adler', 'yoshi.config.js:41', components);
-
 module.exports = {
   entry: {
     ...components,
