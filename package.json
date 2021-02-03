@@ -30,7 +30,6 @@
     "!webpack.config.storybook.js"
   ],
   "scripts": {
-    "--------scripts": "",
     "prebuild": "npm run update-components",
     "build": "yoshi build && npm run copy-styleable-ext && npm run generate-stylable-index && npm run storybook:build",
     "build:perfer-bundles": "npm run build --prefix .perfer",
@@ -79,7 +78,7 @@
     "yoshi-style-dependencies": "^4.6.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "3.9.1",
+    "@applitools/eyes-storybook": "^3.16.5",
     "@storybook/addon-links": "^5.0.9",
     "@storybook/react": "^5.0.9",
     "@storybook/theming": "^6.1.6",
