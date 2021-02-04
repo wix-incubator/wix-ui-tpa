@@ -32,11 +32,14 @@ export interface DialogProps extends TPAComponentProps {
   closeButtonAriaLabelledby?: string;
   /** Whether the Dialog is wired to the site palette, or has a white background */
   wiredToSiteColors?: boolean;
+  /** Determines whether Dialog should open in a non-fullscreen mode on mobile */
+  notFullscreenOnMobile?: boolean;
 }
 
 interface DefaultProps {
   isOpen: boolean;
   manualFocus: boolean;
+  notFullscreenOnMobile: boolean;
 }
 
 /** Dialog */
@@ -45,6 +48,7 @@ export class Dialog extends React.Component<DialogProps> {
   static defaultProps: DefaultProps = {
     isOpen: false,
     manualFocus: false,
+    notFullscreenOnMobile: false,
   };
 
   render() {
@@ -62,6 +66,7 @@ export class Dialog extends React.Component<DialogProps> {
       closeButtonAriaLabel,
       closeButtonAriaLabelledby,
       wiredToSiteColors,
+      notFullscreenOnMobile,
     } = this.props;
 
     return (
@@ -70,7 +75,12 @@ export class Dialog extends React.Component<DialogProps> {
           <div
             className={st(
               classes.root,
-              { mobile, rtl, wired: wiredToSiteColors },
+              {
+                mobile,
+                rtl,
+                wired: wiredToSiteColors,
+                notFullscreenMobile: mobile && notFullscreenOnMobile,
+              },
               classes[`skin-${wiredToSiteColors ? 'wired' : 'fixed'}`],
               className,
             )}
@@ -82,28 +92,30 @@ export class Dialog extends React.Component<DialogProps> {
               focusTrap={!manualFocus}
               onRequestClose={onClose}
             >
-              <div
-                className={`${classes.contentWrapper} ${
-                  contentClassName || ''
-                }`}
-                role="dialog"
-                aria-modal="true"
-                aria-label={ariaLabel}
-                aria-labelledby={ariaLabelledBy}
-                aria-describedby={ariaDescribedBy}
-              >
-                <div className={classes.closeButtonWrapper}>
-                  <IconButton
-                    className={classes.closeIconButton}
-                    data-hook={DATA_HOOKS.CLOSE_BTN}
-                    aria-label={closeButtonAriaLabel}
-                    aria-labelledby={closeButtonAriaLabelledby}
-                    innerRef={closeButtonRef}
-                    onClick={onClose}
-                    icon={<CloseIcon />}
-                  />
+              <div className={classes.outerContentWrapper}>
+                <div
+                  className={`${classes.contentWrapper} ${
+                    contentClassName || ''
+                  }`}
+                  role="dialog"
+                  aria-modal="true"
+                  aria-label={ariaLabel}
+                  aria-labelledby={ariaLabelledBy}
+                  aria-describedby={ariaDescribedBy}
+                >
+                  <div className={classes.closeButtonWrapper}>
+                    <IconButton
+                      className={classes.closeIconButton}
+                      data-hook={DATA_HOOKS.CLOSE_BTN}
+                      aria-label={closeButtonAriaLabel}
+                      aria-labelledby={closeButtonAriaLabelledby}
+                      innerRef={closeButtonRef}
+                      onClick={onClose}
+                      icon={<CloseIcon />}
+                    />
+                  </div>
+                  <div className={classes.dialogContent}>{children}</div>
                 </div>
-                <div className={classes.dialogContent}>{children}</div>
               </div>
             </Modal>
           </div>

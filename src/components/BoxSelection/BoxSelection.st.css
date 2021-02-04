@@ -1,0 +1,49 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, font, fallback, applyUnit;
+}
+
+:import {
+    -st-from: "./Option.st.css";
+    -st-named: root as option;
+}
+
+/* Defaults - default params */
+:vars {
+    defaultItemGap: 12;
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+    /*
+    The gap between the box selection options
+    @default 12
+    */
+    ItemGap: --overridable;
+}
+
+/* Overrides */
+:vars {
+    boxSelectionGap: applyUnit(fallback(value(ItemGap), value(defaultItemGap)), px);
+}
+
+.root {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: applyUnit(value(defaultItemGap), px);
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.root.vertical {
+    flex-direction: column;
+}
+
+.root.inline {
+    display: inline-flex;
+}
+
+.overrideStyleParams {
+    gap: value(boxSelectionGap);
+}

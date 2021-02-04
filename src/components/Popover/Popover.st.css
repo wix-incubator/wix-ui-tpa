@@ -1,0 +1,87 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback;
+}
+
+:import {
+  -st-from: "wix-ui-core/dist/src/components/popover/Popover.st.css";
+  -st-default: Popover;
+  -st-named: arrow, popover, popoverContent;
+}
+
+/* Defaults - default params */
+:vars {
+  defaultBackgroundColor: color(color-1);
+}
+
+/* Overrides - deceleration of overridable parameters by the consumer */
+:vars {
+  /*
+    Main background color
+  */
+  BackgroundColor: --overridable;
+}
+
+:vars {
+  backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
+}
+
+.root {
+  -st-states: wired;
+  -st-extends: Popover;
+}
+
+.root .popoverContent {
+  border: 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.12), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+  min-width: 40px;
+  max-width: 320px;
+  min-height: 20px;
+}
+
+.root .popover .arrow {
+  border-color: transparent;
+}
+
+.root .popover[data-placement*="right"] .arrow {
+  border-right-color: #fff;
+}
+
+.root .popover[data-placement*="left"] .arrow {
+  border-left-color: #fff;
+}
+
+.root .popover[data-placement*="bottom"] .arrow {
+  border-bottom-color: #fff;
+}
+
+.root .popover[data-placement*="top"] .arrow {
+  border-top-color: #fff;
+}
+
+.root:wired .popoverContent,
+.root:wired.overrideStyleParams .popoverContent {
+  background-color: value(backgroundColor);
+}
+
+.root:wired .popover[data-placement*="right"] .arrow,
+.root:wired.overrideStyleParams .popover[data-placement*="right"] .arrow {
+  border-right-color: value(backgroundColor);
+}
+
+.root:wired .popover[data-placement*="left"] .arrow,
+.root:wired.overrideStyleParams .popover[data-placement*="left"] .arrow {
+  border-left-color: value(backgroundColor);
+}
+
+.root:wired .popover[data-placement*="bottom"] .arrow,
+.root:wired.overrideStyleParams .popover[data-placement*="bottom"] .arrow {
+  border-bottom-color: value(backgroundColor);
+}
+
+.root:wired .popover[data-placement*="top"] .arrow,
+.root:wired.overrideStyleParams .popover[data-placement*="top"] .arrow {
+  border-top-color: value(backgroundColor);
+}

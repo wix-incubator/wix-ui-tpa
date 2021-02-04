@@ -1,0 +1,11 @@
+:import {
+  -st-from: "../Badge.st.css";
+  -st-default: TPABadge;
+}
+
+.bad {
+  -st-mixin: TPABadge(
+          BadgeBgColor '"color(--badgeBgColor)"',
+          BadgeTextColor '"color(--badgeTextColor)"',
+  );
+}

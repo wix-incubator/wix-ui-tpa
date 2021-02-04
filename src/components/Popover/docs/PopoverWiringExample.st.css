@@ -1,0 +1,10 @@
+:import {
+  -st-from: "../Popover.st.css";
+  -st-named: overrideStyleParams;
+}
+
+.root {
+  -st-mixin: overrideStyleParams(
+    BackgroundColor '"color(--BackgroundOverride)"'
+  );
+}

@@ -1,8 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import { Checkbox } from '..';
-
-const kind = 'Tests';
+import { StoryCategory } from '../../../../stories/storyHierarchy';
 
 function renderTest(props?: any) {
   const defaultProps = {
@@ -30,4 +29,4 @@ function renderTest(props?: any) {
   );
 }
 
-storiesOf(kind, module).add('Checkbox', renderTest);
+storiesOf(StoryCategory.TESTS, module).add('Checkbox', renderTest);

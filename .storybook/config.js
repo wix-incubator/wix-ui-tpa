@@ -6,6 +6,7 @@ import FocusRingToggle from './addons/FocusRingToggle';
 
 function loadStories() {
   require('../stories');
+  require('../stories/testStories');
   require('../mocks');
   require('./stories.scss');
   setTimeout(() => {
@@ -28,7 +29,6 @@ addParameters({
     theme,
     name: 'wix-ui-tpa',
     url: 'https://github.com/wix/wix-ui-tpa',
-    // storySort,
     showRoots: true,
   },
 });

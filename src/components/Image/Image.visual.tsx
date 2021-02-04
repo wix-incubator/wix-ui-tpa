@@ -22,7 +22,9 @@ const stories: { name: string; src: string; invalidSrc: string }[] = [
   },
 ];
 
-type ImageWithWrapperProps = ImageProps;
+type ImageWithWrapperProps = ImageProps & {
+  wrapperStyle?: React.CSSProperties;
+};
 
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
@@ -32,12 +34,13 @@ class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   }
 
   render() {
-    const { onError, ...imageProps } = this.props;
+    const { onError, wrapperStyle, ...imageProps } = this.props;
     const { hasError } = this.state;
     const style = {
       width: 480,
       height: 360,
       ...(hasError && { border: '1px solid red' }),
+      ...wrapperStyle,
     };
 
     return (
@@ -129,6 +132,31 @@ visualize('Image', () => {
             height={250}
             resize={ResizeOptions.cover}
             onLoad={done}
+          />
+        ));
+      });
+
+      story('with fluid', () => {
+        snap('as full viewport', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            resize={ResizeOptions.cover}
+            fluid
+            onLoad={done}
+            wrapperStyle={{ width: '100%' }}
+          />
+        ));
+        snap('as half viewport', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            resize={ResizeOptions.cover}
+            fluid
+            onLoad={done}
+            wrapperStyle={{ width: '50%' }}
           />
         ));
       });

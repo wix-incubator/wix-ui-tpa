@@ -1,0 +1,242 @@
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, font, applyOpacity, join;
+}
+
+:import {
+    -st-from: "../../common/palette.st.css";
+    -st-named: focusRing;
+}
+
+/*Defaults*/
+:vars {
+    DefaultSelectedBoxColor: color-8;
+    DefaultBoxFillColor: color-1;
+    DefaultBorderColor: color-5;
+    DefaultBoxBorderWidth: 1px;
+    DefaultBoxBorderRadius: 0px;
+    DefaultBoxPadding: 16px;
+    DefaultDisabledColor: color-3;
+    WhiteColor: #fff;
+}
+
+/*Overrides*/
+:vars {
+    /*
+        The BG color of the box
+        @default color-1
+    */
+    BoxFillColor: --overridable;
+    /*
+        The border color of the box (unavailable line as well)
+        @default color-5
+    */
+    BoxBorderColor: --overridable;
+    /*
+        The border width of the box (unavailable line as well)
+        @default 1px
+    */
+    BoxBorderWidth: --overridable;
+    /*
+        The border radius for each box
+        @default 0px
+    */
+    BoxBorderRadius: --overridable;
+     /*
+        The padding of the box. Predefined by size prop
+        @default 16px
+    */
+    BoxPadding: --overridable;
+    /*
+        The highlight color of a selected option
+        @default color-8
+    */
+    SelectedBoxColor: --overridable;
+    /*
+        The Disabled color
+        @default color-3
+    */
+    DisabledColor: --overridable;
+}
+
+:vars {
+    CurrentBoxFillColor: color(fallback(value(BoxFillColor), value(DefaultBoxFillColor)));
+    CurrentBorderColor: color(fallback(value(BoxBorderColor), value(DefaultBorderColor)));
+    CurrentBoxBorderWidth: fallback(value(BoxBorderWidth), value(DefaultBoxBorderWidth));
+    CurrentBoxBorderRadius: fallback(value(BoxBorderRadius), value(DefaultBoxBorderRadius));
+    CurrentBoxPadding: fallback(value(BoxPadding), value(DefaultBoxPadding));
+    CurrentSelectedBoxColor: color(fallback(value(SelectedBoxColor), value(DefaultSelectedBoxColor)));
+    CurrentDisabledColor: color(fallback(value(DisabledColor), value(DefaultDisabledColor)));
+}
+
+.root {
+    -st-states: checked, disabled, unavailable, size(enum(small, large));
+    display: flex;
+    flex: 1;
+}
+
+.hide{
+    display: none;
+}
+
+.focused {
+    -st-mixin: focusRing();
+}
+.root:size(small) .wrapper{
+    padding: 8px 16px;
+}
+.root:size(large) .wrapper{
+    padding: 16px;
+}
+
+.wrapper {
+    margin: -1px;
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    flex: 1;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    border-color: applyOpacity(color(value(DefaultBorderColor)), 0.6);
+    border-style: solid;
+    border-width: value(DefaultBoxBorderWidth);
+    border-radius: value(DefaultBoxBorderRadius);
+    background-color: color(value(DefaultBoxFillColor));
+}
+
+
+.overrideStyleParamsOption .wrapper{
+    border-color: applyOpacity(value(CurrentBorderColor), 0.6);
+    border-width: value(CurrentBoxBorderWidth);
+    border-radius: value(CurrentBoxBorderRadius);
+    background-color: value(CurrentBoxFillColor);
+}
+
+/* CHECKED */
+.root:checked {
+    z-index: 999;
+}
+.root:checked{
+    background-color: color(value(DefaultBoxFillColor));
+    border-radius: value(DefaultBoxBorderRadius);
+}
+.root:checked.overrideStyleParamsOption{
+    background-color: value(CurrentBoxFillColor);
+    border-radius: value(CurrentBoxBorderRadius);
+}
+
+.root:checked .wrapper{
+    background-color: applyOpacity(color(value(DefaultSelectedBoxColor)), 0.1);
+    border-color: color(value(DefaultSelectedBoxColor));
+}
+
+.root:checked.overrideStyleParamsOption .wrapper{
+    background-color: applyOpacity(value(CurrentSelectedBoxColor), 0.1);
+    border-color: color(value(CurrentSelectedBoxColor));
+}
+
+/* DISABLED */
+.root:disabled{
+    border-radius: value(DefaultBoxBorderRadius);
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+}
+.root:disabled.overrideStyleParamsOption{
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+}
+
+
+.root:disabled:not(:checked) .wrapper{
+    filter: none;
+    opacity: 1;
+    cursor: default;
+    pointer-events: none;
+    background-color: color(value(DefaultBoxFillColor));
+    border-color: color(value(DefaultDisabledColor));
+    color: color(value(DefaultDisabledColor));
+}
+.root:disabled:not(:checked).overrideStyleParamsOption .wrapper{
+    background-color: color(value(CurrentBoxFillColor));
+    border-color: color(value(CurrentDisabledColor));
+    color: color(value(CurrentDisabledColor));
+}
+
+/* CHECKED + DISABLED */
+.root:disabled:checked {
+    background-color: color(value(DefaultBoxFillColor));
+    border-color: color(value(DefaultDisabledColor));
+    color: color(value(DefaultDisabledColor));
+}
+.root:disabled:checked.overrideStyleParamsOption {
+    background-color: color(value(CurrentBoxFillColor));
+    color: color(value(CurrentDisabledColor));
+}
+.root:disabled:checked .wrapper {
+    filter: none;
+    opacity: 1;
+    cursor: default;
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+    border-color: color(value(DefaultDisabledColor));
+}
+.root:disabled:checked.overrideStyleParamsOption .wrapper{
+    border-color: color(value(CurrentDisabledColor));
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+}
+
+/* HOVER + FOCUS */
+.root:not(:disabled):not(:checked):not(:unavailable):hover .wrapper,
+.root:not(:disabled):not(:checked):not(:unavailable):focus-within .wrapper{
+    border-color: applyOpacity(color(value(DefaultBorderColor)), 1);
+}
+.root:not(:disabled):not(:checked):not(:unavailable):hover.overrideStyleParamsOption .wrapper,
+.root:not(:disabled):not(:checked):not(:unavailable):focus-within.overrideStyleParamsOption .wrapper{
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+}
+
+/* UNAVAILABLE */
+.root:unavailable {
+    pointer-events: none;
+    cursor: default;
+    position: relative;
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+}
+
+.root:unavailable.overrideStyleParamsOption{
+    background-color: applyOpacity(color(value(WhiteColor)), 0.3);
+}
+
+.root:unavailable .unavailableDiagonalLine{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: value(DefaultBoxBorderRadius);
+}
+.root:unavailable.overrideStyleParamsOption .unavailableDiagonalLine{
+    border-radius: value(CurrentBoxBorderRadius);
+}
+.root:unavailable .unavailableDiagonalLine line {
+    stroke: color(value(DefaultDisabledColor));
+    stroke-width: value(DefaultBoxBorderWidth);
+}
+.root:unavailable.overrideStyleParamsOption .unavailableDiagonalLine line {
+    stroke: color(value(CurrentDisabledColor));
+    stroke-width: value(CurrentBoxBorderWidth);
+}
+.root:unavailable .wrapper{
+    pointer-events: none;
+    cursor: default;
+    border-color: color(value(DefaultDisabledColor));
+    color: color(value(DefaultDisabledColor));
+    background-color: color(value(DefaultBoxFillColor));
+}
+.root:unavailable.overrideStyleParamsOption .wrapper{
+    background-color: color(value(CurrentBoxFillColor));
+    border-color: color(value(CurrentDisabledColor));
+    color: color(value(CurrentDisabledColor));
+}
+
+.root.vertical {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+}

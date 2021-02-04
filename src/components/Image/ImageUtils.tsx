@@ -25,9 +25,9 @@ export function calculateDimensions({
 
   if (aspectRatio) {
     if (width) {
-      calculatedHeight = width / aspectRatio;
+      calculatedHeight = Math.round(width / aspectRatio);
     } else {
-      calculatedWidth = height * aspectRatio;
+      calculatedWidth = Math.round(height * aspectRatio);
     }
   }
 

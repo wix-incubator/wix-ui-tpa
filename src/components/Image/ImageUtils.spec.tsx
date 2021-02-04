@@ -14,7 +14,7 @@ describe('ImageUtils', () => {
     const { width } = sampleDimensions;
     const expectedDimensions = {
       width,
-      height: width / sampleAspectRatio,
+      height: Math.round(width / sampleAspectRatio),
     };
     const calculatedDimensions = calculateDimensions({
       ...sampleDimensions,
@@ -25,10 +25,10 @@ describe('ImageUtils', () => {
   });
 
   it('should calculate the missing height by the given width and aspect ratio', async () => {
-    const { width, height } = sampleDimensions;
+    const { width } = sampleDimensions;
     const expectedDimensions = {
       width,
-      height: width / sampleAspectRatio,
+      height: Math.round(width / sampleAspectRatio),
     };
     const calculatedDimensions = calculateDimensions({
       width,
@@ -41,7 +41,7 @@ describe('ImageUtils', () => {
   it('should calculate the missing width by the given height and aspect ratio', async () => {
     const { height } = sampleDimensions;
     const expectedDimensions = {
-      width: height * sampleAspectRatio,
+      width: Math.round(height * sampleAspectRatio),
       height,
     };
     const calculatedDimensions = calculateDimensions({

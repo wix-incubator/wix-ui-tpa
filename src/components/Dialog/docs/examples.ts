@@ -12,9 +12,9 @@ class ModalExample extends React.Component {
 
   render() {
     const { isDialogOpen } = this.state;
-    
+
     return (
-      ${content} 
+      ${content}
     );
   }
 }
@@ -52,18 +52,45 @@ export const mobileExample = buildExample(`
       <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
       <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} >
         <div className="content" style={{ textAlign: 'center' }}>
-            <Text typography="MobileSmallTitleFont" tagName="div">Discard draft?</Text>
+            <Text typography="largeTitle" tagName="div">Discard draft?</Text>
             <div className="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
-                <Text typography="MobileRunningTextFont" tagName="div">Are You Sure you want to discard the changes you made?</Text>
+                <Text typography="runningText" tagName="div">Are You Sure you want to discard the changes you made?</Text>
             </div>
             <div className="primary-btn-container" style={{marginBottom: '8px'}}>
-                  <Button upgrade>
+                  <Button upgrade style={{ width: '100%', boxSizing: 'border-box' }}>
                     PRIMARY
                   </Button>
             </div>
             <Button
               upgrade
               priority={PRIORITY.basicSecondary}
+              style={{ width: '100%', boxSizing: 'border-box' }}
+            >
+              SECONDARY
+            </Button>
+        </div>
+      </Dialog>
+     </MobileExample>
+`);
+
+export const mobileExampleNotFullscreen = buildExample(`
+    <MobileExample>
+      <Button upgrade onClick={this.onOpenDialogButtonClick}>Open Dialog</Button>
+      <Dialog isOpen={isDialogOpen} onClose={this.onCloseDialog} notFullscreenOnMobile>
+        <div className="content" style={{ textAlign: 'center' }}>
+            <Text typography="largeTitle" tagName="div">Discard draft?</Text>
+            <div className="text-container" style={{ marginTop: '16px', marginBottom: '32px' }}>
+                <Text typography="runningText" tagName="div">Are You Sure you want to discard the changes you made?</Text>
+            </div>
+            <div className="primary-btn-container" style={{marginBottom: '8px'}}>
+                  <Button upgrade style={{ width: '100%', boxSizing: 'border-box' }}>
+                    PRIMARY
+                  </Button>
+            </div>
+            <Button
+              upgrade
+              priority={PRIORITY.basicSecondary}
+               style={{ width: '100%', boxSizing: 'border-box' }}
             >
               SECONDARY
             </Button>

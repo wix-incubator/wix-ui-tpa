@@ -4,7 +4,7 @@
   "sideEffects": [
     "./stories/**/*.*"
   ],
-  "version": "2.19.0",
+  "version": "2.20.0",
   "module": "./dist/es/src/index.js",
   "description": "Components for Wix Tpa applications",
   "author": {
@@ -78,7 +78,7 @@
     "yoshi-style-dependencies": "^4.6.0"
   },
   "devDependencies": {
-    "@applitools/eyes-storybook": "3.9.1",
+    "@applitools/eyes-storybook": "^3.16.5",
     "@storybook/addon-links": "^5.0.9",
     "@storybook/react": "^5.0.9",
     "@storybook/theming": "^6.1.6",
