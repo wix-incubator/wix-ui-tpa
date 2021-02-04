@@ -43,6 +43,7 @@ export const AspectRatioPresets = {
 
 export enum HoverEffectOptions {
   none = 'none',
+  zoom = 'zoom',
   darken = 'darken',
 }
 

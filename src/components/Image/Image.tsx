@@ -99,6 +99,7 @@ export class Image extends React.Component<ImageProps> {
           resize === ResizeOptions.cover ? classes.cover : classes.contain,
           classnames(className, {
             [classes.fluid]: fluid,
+            [classes.zoom]: hoverEffect === HoverEffectOptions.zoom,
             [classes.darken]: hoverEffect === HoverEffectOptions.darken,
             [classes.preload]: hasLoadingBehavior && !isLoaded,
             [classes.loaded]: hasLoadingBehavior && isLoaded,

@@ -135,7 +135,7 @@ export default {
             {
               title: 'Hover Effects',
               description:
-                'The image can have an effect appearing when the image is hovered using the `hoverEffect` prop - which accepts `darken` and `zoom` values.',
+                'The image can have an effect appearing when the image is hovered using the `hoverEffect` prop - which accepts `zoom` and `darken` values.',
               source: examples.hoverEffectsExample,
             },
             {

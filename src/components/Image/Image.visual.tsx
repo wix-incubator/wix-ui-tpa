@@ -178,6 +178,16 @@ visualize('Image', () => {
       });
 
       story('with hover', () => {
+        snap('as zoom', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            hoverEffect={HoverEffectOptions.zoom}
+            onLoad={done}
+            isHovered
+          />
+        ));
         snap('as darken', (done) => (
           <ImageWithWrapper
             src={src}
