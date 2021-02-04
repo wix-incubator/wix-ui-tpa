@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { textDriverFactory } from './Text.driver';
-import { Text, TYPOGRAPHY } from './';
+import { Text, TYPOGRAPHY, TEXT_PRIORITY } from './';
 import { createDriverFactory } from 'wix-ui-test-utils/driver-factory';
 import { isEnzymeTestkitExists } from 'wix-ui-test-utils/enzyme';
 import { isTestkitExists } from 'wix-ui-test-utils/vanilla';
@@ -13,9 +13,14 @@ describe('Text', () => {
   const createDriver = createDriverFactory(textDriverFactory);
   let driver;
 
-  function expectTextToHaveAttributes(expectedTag, expectedTypography) {
+  function expectTextToHaveAttributes(
+    expectedTag,
+    expectedTypography: TYPOGRAPHY,
+    expectedPriority?: TEXT_PRIORITY,
+  ) {
     expect(driver.getTagName()).toEqual(expectedTag);
     expect(driver.getTypography()).toEqual(expectedTypography);
+    expectedPriority && expect(driver.getPriority()).toEqual(expectedPriority);
   }
 
   it('should render', () => {
@@ -46,6 +51,26 @@ describe('Text', () => {
     );
 
     expectTextToHaveAttributes(expectedTag, expectedTypography);
+  });
+
+  it('should render runningText with secondary priority', () => {
+    const expectedTag = 'p';
+    const expectedTypography = TYPOGRAPHY.runningText;
+    const expectedPriority = TEXT_PRIORITY.secondary;
+
+    driver = createDriver(
+      <Text
+        tagName={expectedTag}
+        typography={expectedTypography}
+        priority={expectedPriority}
+      />,
+    );
+
+    expectTextToHaveAttributes(
+      expectedTag,
+      expectedTypography,
+      expectedPriority,
+    );
   });
 
   it('should render listText', () => {

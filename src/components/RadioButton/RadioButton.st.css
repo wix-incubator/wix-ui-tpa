@@ -198,8 +198,20 @@
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
 
+
+.root:box:hover:not(:checked) .wrapper {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+    transition: border-color .2s ease-in-out;
+}
+
 .root:hover .radioIcon {
     border-color: applyOpacity(value(CurrentBorderColor), 1);
+    transition: border-color .2s ease-in-out;
+}
+
+.root:focus-within .radioIcon {
+    border-color: applyOpacity(value(CurrentBorderColor), 1);
+    transition: border-color .2s ease-in-out;
 }
 
 .root:checked .innerCheck {

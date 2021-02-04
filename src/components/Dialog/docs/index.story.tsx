@@ -108,7 +108,14 @@ export default {
 
           ...[
             { title: 'Example', source: examples.example },
-            { title: 'Mobile Example', source: examples.mobileExample },
+            {
+              title: 'Mobile Example',
+              source: examples.mobileExample,
+            },
+            {
+              title: 'Mobile Example with non-fullscreen Dialog',
+              source: examples.mobileExampleNotFullscreen,
+            },
           ].map(code),
         ],
       }),

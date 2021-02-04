@@ -19,6 +19,8 @@ export interface ImageProps extends TPAComponentProps {
   fluid?: boolean;
   // Specifies the proportional relationship between width and height
   aspectRatio?: keyof typeof AspectRatioPresets | number;
+  /** An effect to appear when the image is hovered  */
+  hoverEffect?: HoverEffectOptions;
   /** An experience to set while the image is fetched and loaded  */
   loadingBehavior?: LoadingBehaviorOptions;
 }
@@ -38,6 +40,12 @@ export const AspectRatioPresets = {
   cinema: 16 / 9,
   landscape: 4 / 3,
 };
+
+export enum HoverEffectOptions {
+  none = 'none',
+  zoom = 'zoom',
+  darken = 'darken',
+}
 
 export enum LoadingBehaviorOptions {
   none = 'none',
