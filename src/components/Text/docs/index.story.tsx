@@ -44,7 +44,12 @@ export default {
     typography: TYPOGRAPHY.runningText,
   },
   exampleProps: {
-    typography: Object.keys(TYPOGRAPHY).map((key) => TYPOGRAPHY[key]),
+    typography: [
+      { label: `${TYPOGRAPHY.largeTitle} - 32px`, value: TYPOGRAPHY.largeTitle },
+      { label: `${TYPOGRAPHY.smallTitle} - 24px`, value: TYPOGRAPHY.smallTitle },
+      { label: `${TYPOGRAPHY.listText} - 16px`, value: TYPOGRAPHY.listText },
+      { label: `${TYPOGRAPHY.runningText} - 16px`, value: TYPOGRAPHY.runningText },
+    ],
     priority: Object.keys(TEXT_PRIORITY).map((key) => TEXT_PRIORITY[key]),
   },
   sections: [
