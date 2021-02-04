@@ -6,7 +6,7 @@ import { st, classes } from './MobileExample.st.css';
 
 export class MobileExample extends React.Component<{
   isRtl?: boolean;
-  onMobileReady?: () => void;
+  onMobileReady?(): void;
 }> {
   static defaultProps = {
     isRtl: false,
@@ -42,10 +42,7 @@ export class MobileExample extends React.Component<{
           onLoad={this._onIframeLoad}
         >
           {this._frameBody &&
-            ReactDOM.createPortal(
-              this._getContent(),
-              this._frameBody,
-            )}
+            ReactDOM.createPortal(this._getContent(), this._frameBody)}
         </iframe>
         <PixelFrame className={classes.frame} />
       </div>
