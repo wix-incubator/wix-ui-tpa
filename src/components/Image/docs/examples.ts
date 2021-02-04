@@ -18,6 +18,7 @@ export const commonExampleProps = {
     { label: 'example of custom number (2.33)', value: 2.33 },
     { label: 'none', value: null },
   ],
+  hoverEffect: Object.keys(HoverEffectOptions),
   loadingBehavior: Object.keys(LoadingBehaviorOptions),
 };
 

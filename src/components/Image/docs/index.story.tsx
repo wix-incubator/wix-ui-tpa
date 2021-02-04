@@ -49,7 +49,7 @@ export default {
   componentProps: () => ({
     'data-hook': dataHook,
     src: sampleSources[0].value,
-    width: 300,
+    width: 520,
     height: 250,
     alt: 'Garfield smiles and puts his hand over chest',
   }),
