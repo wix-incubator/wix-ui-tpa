@@ -1,6 +1,6 @@
-const introductionPath = '1. Introduction';
-const componentsPath = '2. Components';
-const testsPath = '3. Tests';
+const introductionPath = 'Introduction';
+const componentsPath = 'Components';
+const testsPath = 'Tests';
 
 export const StoryCategory = {
   CONSUMING: `${introductionPath}/Getting Started`,
