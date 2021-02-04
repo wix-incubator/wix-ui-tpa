@@ -60,7 +60,7 @@
 .root:priority(primary):active,
 .root:priority(primary):focus,
 .root:priority(primary):hover {
-    color: applyOpacity(value(PrimaryTextColor), 0.6);
+    color: applyOpacity(value(PrimaryTextColor), 0.7);
 }
 
 /* Secondary */
@@ -76,7 +76,7 @@
 .root:priority(secondary):active,
 .root:priority(secondary):focus,
 .root:priority(secondary):hover {
-    color: applyOpacity(value(SecondaryTextColor), 0.6);
+    color: applyOpacity(value(SecondaryTextColor), 0.7);
 }
 
 /* Link */
@@ -93,7 +93,7 @@
 .root:priority(link):active,
 .root:priority(link):focus,
 .root:priority(link):hover {
-    color: applyOpacity(value(LinkTextColor), 0.6);
+    color: applyOpacity(value(LinkTextColor), 0.7);
 }
 
 /* Disabled */
