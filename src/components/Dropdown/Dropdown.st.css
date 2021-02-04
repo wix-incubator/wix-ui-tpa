@@ -254,7 +254,6 @@
 
 .dropdown::popoverContent {
     border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
     /* Popover fix. For some reason popover has inline style with transform: translate3d(-1px, 42px, 0px); */
     margin-left: 1px;
@@ -264,6 +263,7 @@
 
 .root.overrideStyleParams .dropdown::popoverContent {
     background-color: value(CurrentDropdownBackgroundColor);
+    border-color: applyOpacity(value(CurrentItemTextColor), 0.4);
 }
 
 .dropdownError::popoverContent {
