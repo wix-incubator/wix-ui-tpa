@@ -3,10 +3,10 @@ import { visualize, story, snap } from 'storybook-snapper';
 import { Dialog } from './';
 import { Text, TYPOGRAPHY } from '../Text';
 import { Button, PRIORITY } from '../Button';
-import { VisualTestWrapper } from '../../test/visualTestWrapper';
+import { AsyncVisualTestWrapper } from '../../test/visualTestWrapper';
 // import { setDarkPalette } from '../../test/visualTestUtils';
 
-const MobileDialogWithContent = props => (
+const MobileDialogWithContent = (props) => (
   <Dialog isOpen {...props}>
     <div className="content" style={{ textAlign: 'center' }}>
       <Text typography={TYPOGRAPHY.largeTitle} tagName="div">
@@ -20,14 +20,8 @@ const MobileDialogWithContent = props => (
           Are You Sure you want to discard the changes you made?
         </Text>
       </div>
-      <div
-        className="primary-btn-container"
-        style={{ marginBottom: '8px' }}
-      >
-        <Button
-          upgrade
-          style={{ width: '100%', boxSizing: 'border-box' }}
-        >
+      <div className="primary-btn-container" style={{ marginBottom: '8px' }}>
+        <Button upgrade style={{ width: '100%', boxSizing: 'border-box' }}>
           PRIMARY
         </Button>
       </div>
@@ -42,7 +36,7 @@ const MobileDialogWithContent = props => (
   </Dialog>
 );
 
-const DialogWithContent = props => (
+const DialogWithContent = (props) => (
   <Dialog isOpen {...props}>
     <div className="content" style={{ textAlign: 'center' }}>
       <Text typography={TYPOGRAPHY.largeTitle}>Are You Sure?</Text>
@@ -69,45 +63,53 @@ const DialogWithContent = props => (
   </Dialog>
 );
 
-const runDesktopSnapshots = isRtl => {
+const runDesktopSnapshots = (isRtl) => {
   story('Basic', () => {
-    snap(`Desktop with default props  ${isRtl ? 'rtl' : ''}`, () => (
-      <VisualTestWrapper isRtl={isRtl} isMobile={false}>
+    snap(`Desktop with default props  ${isRtl ? 'rtl' : ''}`, (doSnap) => (
+      <AsyncVisualTestWrapper
+        isRtl={isRtl}
+        isMobile={false}
+        onDoneCallback={doSnap}
+      >
         <Dialog isOpen />
-      </VisualTestWrapper>
+      </AsyncVisualTestWrapper>
     ));
     snap(
       `Desktop Dialog with some content  ${isRtl ? 'rtl' : ''}`,
-      () => (
-        <VisualTestWrapper isRtl={isRtl} isMobile={false}>
+      (doSnap) => (
+        <AsyncVisualTestWrapper
+          isRtl={isRtl}
+          isMobile={false}
+          onDoneCallback={doSnap}
+        >
           <DialogWithContent />
-        </VisualTestWrapper>
+        </AsyncVisualTestWrapper>
       ),
     );
   });
 };
 
-const runMobileSnapshots = isRtl => {
+const runMobileSnapshots = (isRtl) => {
   story('Basic', () => {
-    snap(`Mobile with default props  ${isRtl ? 'rtl' : ''}`, () => (
-      <VisualTestWrapper isRtl={isRtl} isMobile>
+    snap(`Mobile with default props  ${isRtl ? 'rtl' : ''}`, (doSnap) => (
+      <AsyncVisualTestWrapper isRtl={isRtl} isMobile onDoneCallback={doSnap}>
         <MobileDialogWithContent />
-      </VisualTestWrapper>
+      </AsyncVisualTestWrapper>
     ));
     snap(
       `Mobile with not fullscreen version  ${isRtl ? 'rtl' : ''}`,
-      () => (
-        <VisualTestWrapper isRtl={isRtl} isMobile>
+      (doSnap) => (
+        <AsyncVisualTestWrapper isRtl={isRtl} isMobile onDoneCallback={doSnap}>
           <MobileDialogWithContent notFullscreenOnMobile />
-        </VisualTestWrapper>
+        </AsyncVisualTestWrapper>
       ),
     );
   });
 };
 
 visualize('Dialog', () => {
-  [false, true].map(value => runMobileSnapshots(value));
-  [false, true].map(value => runDesktopSnapshots(value));
+  [false, true].map((value) => runMobileSnapshots(value));
+  [false, true].map((value) => runDesktopSnapshots(value));
 
   story('Wired to palette', () => {
     snap('Dialog with some content', () => {
