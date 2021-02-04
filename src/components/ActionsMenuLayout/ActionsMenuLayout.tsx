@@ -7,6 +7,11 @@ import { ActionsMenuLayoutDivider } from './ActionsMenuLayoutDivider/ActionsMenu
 import { TPAComponentProps } from '../../types';
 import { KEYS } from '../../common/keyCodes';
 
+interface LiRefs {
+  [key: number]: {
+    liRef: React.RefObject<HTMLLIElement>;
+  };
+}
 export interface ActionsMenuLayoutProps extends TPAComponentProps {
   alignment?: Alignment;
   /**
@@ -30,17 +35,18 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     focusedIdx: this.props.focusedIndex ?? 0,
   };
 
-  liRefs: {
-    [key: number]: {
-      liRef: React.RefObject<HTMLLIElement>;
-    };
-  } = {};
+  liRefs: LiRefs = {};
 
   componentDidMount() {
     const { focusedIndex } = this.props;
     if (focusedIndex) {
       this._focusItem(focusedIndex);
     }
+    this._attachRefListeners(this.liRefs);
+  }
+
+  componentwillUnmount() {
+    this._removeRefListeners(this.liRefs);
   }
 
   getDataAttributes(mobile: boolean) {
@@ -48,6 +54,24 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
       [ACTIONS_MENU_DATA_KEYS.mobile]: mobile,
     };
   }
+
+  _attachRefListeners = (refs: LiRefs) => {
+    const refArr = Object.values(refs);
+
+    if (refArr.length) {
+      refArr.map(({ liRef }) =>
+        liRef.current.addEventListener('click', this._onListItemClick),
+      );
+    }
+  };
+  _removeRefListeners = (refs: LiRefs) => {
+    const refArr = Object.values(refs);
+    if (refArr.length) {
+      refArr.map(({ liRef }) =>
+        liRef.current.removeEventListener('click', this._onListItemClick),
+      );
+    }
+  };
 
   _getNextItemIdx(direction: 1 | -1): number {
     const nextItem = this.state.focusedIdx + direction;
@@ -76,6 +100,16 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     );
   }
 
+  _onListItemClick = (e: MouseEvent) => {
+    const indexValue = Object.values(this.liRefs).findIndex(
+      (i) => i.liRef?.current === e.currentTarget,
+    );
+
+    if (indexValue >= 0) {
+      this._focusItem(indexValue);
+    }
+  };
+
   _onKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
     if (e.key === KEYS.ArrowDown || e.key === KEYS.ArrowDownIE) {
       e.preventDefault(); // remove scroll on space
@@ -92,22 +126,14 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     const focusOnChild = !!Object.values(this.liRefs).find(
       (i) => i.liRef?.current === e.target,
     );
-    //reset focus on first item
+    //focus on initial list item after tab focusing
     if (!focusOnChild) {
       this._focusItem(0);
     }
   };
 
-  // to get proper index on mouse click
-  _onClick = (e) => {
-    const indexValue = Object.values(this.liRefs).findIndex(
-      (i) => i.liRef?.current === e.target,
-    );
-
-    if (indexValue >= 0) {
-      this._focusItem(indexValue);
-    }
-  };
+  //prevent firing focus after mouse click events
+  _preventFocus = (e: React.SyntheticEvent) => e.preventDefault();
 
   render() {
     const { alignment, children, className } = this.props;
@@ -116,7 +142,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
         {({ mobile }) => (
           <ul
             onFocus={this._onFocus}
-            onClick={this._onClick}
+            onMouseDown={this._preventFocus}
             onKeyDown={this._onKeyDown}
             className={st(classes.root, { mobile }, className)}
             {...this.getDataAttributes(mobile)}
