@@ -74,6 +74,10 @@
   overflow: hidden;
 }
 
+.root.darken:hover .image {
+  filter: brightness(85%) contrast(115%);
+}
+
 .root.preload .image {
   filter: blur(value(blurRadius));
 }
