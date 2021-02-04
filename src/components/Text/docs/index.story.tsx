@@ -73,7 +73,7 @@ export default {
             {
               title: 'Priority',
               text:
-                'Control text priority. Possible values:  `primary`, `secondary`',
+                'The priority defines the text color. There are 2 possible values:  `primary`, `secondary`. The default value is `primary `',
               source: examples.priority,
             },
           ].map(example),
@@ -81,7 +81,10 @@ export default {
       }),
 
       ...[
-        { title: 'Playground', sections: [playground(), autoSettingsPanel()] },
+        {
+          title: 'Playground',
+          sections: [playground(), autoSettingsPanel()],
+        },
         { title: 'API', sections: [api()] },
         {
           title: 'Style API',

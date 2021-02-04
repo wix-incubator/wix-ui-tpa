@@ -1,13 +1,17 @@
+const introductionPath = 'Introduction';
+const componentsPath = 'Components';
+const testsPath = 'Tests';
+
 export const StoryCategory = {
-  CONSUMING: 'Introduction/Getting Started',
-  CONTRIBUTION: 'Introduction/Contribution',
-  PLAYGROUND: 'Introduction/Playground',
-  ICONS: 'Introduction/Icons',
+  CONSUMING: `${introductionPath}/Getting Started`,
+  CONTRIBUTION: `${introductionPath}/Contribution`,
+  PLAYGROUND: `${introductionPath}/Playground`,
+  ICONS: `${introductionPath}/Icons`,
 
-  COMPONENTS: 'Components API/Components',
-  BOOKINGS: 'Components API/Bookings Components',
-  DEPRECATED: 'Components API/Deprecated',
-  WIP: 'Components API/Working In Progress',
+  COMPONENTS: `${componentsPath}/Components`,
+  BOOKINGS: `${componentsPath}/Bookings Components`,
+  DEPRECATED: `${componentsPath}/Deprecated`,
+  WIP: `${componentsPath}/Working In Progress`,
 
-  TESTS: 'Tests',
+  TESTS: `${testsPath}`,
 };
