@@ -45,10 +45,19 @@ export default {
   },
   exampleProps: {
     typography: [
-      { label: `${TYPOGRAPHY.largeTitle} - 32px`, value: TYPOGRAPHY.largeTitle },
-      { label: `${TYPOGRAPHY.smallTitle} - 24px`, value: TYPOGRAPHY.smallTitle },
+      {
+        label: `${TYPOGRAPHY.largeTitle} - 32px`,
+        value: TYPOGRAPHY.largeTitle,
+      },
+      {
+        label: `${TYPOGRAPHY.smallTitle} - 24px`,
+        value: TYPOGRAPHY.smallTitle,
+      },
       { label: `${TYPOGRAPHY.listText} - 16px`, value: TYPOGRAPHY.listText },
-      { label: `${TYPOGRAPHY.runningText} - 16px`, value: TYPOGRAPHY.runningText },
+      {
+        label: `${TYPOGRAPHY.runningText} - 16px`,
+        value: TYPOGRAPHY.runningText,
+      },
     ],
     priority: Object.keys(TEXT_PRIORITY).map((key) => TEXT_PRIORITY[key]),
   },
