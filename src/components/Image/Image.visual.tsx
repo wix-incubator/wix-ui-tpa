@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
-import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import { Image, ImageProps } from './';
-import { imageDriverFactory } from './Image.driver';
 import { classes } from './Image.visual.st.css';
 import {
   AspectRatioPresets,
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
-
-const createDriver = uniTestkitFactoryCreator(imageDriverFactory);
-const dataHook = 'storybook-Image';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
