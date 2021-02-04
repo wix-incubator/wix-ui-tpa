@@ -49,7 +49,7 @@ export default {
   componentProps: () => ({
     'data-hook': dataHook,
     src: sampleSources[0].value,
-    width: 300,
+    width: 520,
     height: 250,
     alt: 'Garfield smiles and puts his hand over chest',
   }),
@@ -131,6 +131,12 @@ export default {
               description:
                 "The image can be adapted and scaled relatively to the containing layout using the `fluid` prop. This behaves in contrast to the default fixed mode defining that the image is always displayed the same without considering resizing of the containing element. Note that in both modes the dimensions (whether given explicitly or calculated by the bounding rectangle) specify the size of the source to be fetched - but the difference is that in fixed mode the image is **displayed statically** by these dimensions, whereas in fluid mode, the image **scales to fit** the containing element.<br/><br/> In the example below, we set a fixed width of 600px and aspect ratio as `square` which makes the height to equal to 600px. So, the minimal resolution for fetching the resource is 600x600 pixels. However, we place the image inside an element with a different height in **fluid** mode, and that's why the image is fitted to the element. Also, if we try to resize the viewport we'd notice that the image scales accordingly.",
               source: examples.fluidExample,
+            },
+            {
+              title: 'Hover Effects',
+              description:
+                'The image can have an effect appearing when the image is hovered using the `hoverEffect` prop - which accepts `zoom` and `darken` values.',
+              source: examples.hoverEffectsExample,
             },
             {
               title: 'Blurry Loading',

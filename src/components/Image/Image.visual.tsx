@@ -29,7 +29,7 @@ type ImageWithWrapperProps = ImageProps & {
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
 
-  onError(onError) {
+  _onError(onError) {
     this.setState({ hasError: true }, () => setTimeout(() => onError(), 500));
   }
 
@@ -45,7 +45,7 @@ class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
 
     return (
       <div style={style}>
-        <Image {...imageProps} onError={() => this.onError(onError)} />
+        <Image {...imageProps} onError={() => this._onError(onError)} />
       </div>
     );
   }

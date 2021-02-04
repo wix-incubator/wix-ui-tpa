@@ -1,4 +1,9 @@
-import { ResizeOptions, AspectRatioPresets, LoadingBehaviorOptions } from '../';
+import {
+  AspectRatioPresets,
+  HoverEffectOptions,
+  LoadingBehaviorOptions,
+  ResizeOptions,
+} from '../';
 
 // This method helps to show the consumer the preset value by the actual key (relevant when the key is different from the mapped value)
 const getKeyByValue = (object, value) =>
@@ -13,6 +18,7 @@ export const commonExampleProps = {
     { label: 'example of custom number (2.33)', value: 2.33 },
     { label: 'none', value: null },
   ],
+  hoverEffect: Object.keys(HoverEffectOptions),
   loadingBehavior: Object.keys(LoadingBehaviorOptions),
 };
 
@@ -135,6 +141,25 @@ export const fluidExample = `
       AspectRatioPresets.square,
     )}"
     fluid
+  />
+</div>
+`;
+
+export const hoverEffectsExample = `
+<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={480}
+    height={360}
+    alt="Garfield smiles and puts his hand over chest"
+    hoverEffect="${HoverEffectOptions.zoom}"
+  />
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={480}
+    height={360}
+    alt="Garfield smiles and puts his hand over chest"
+    hoverEffect="${HoverEffectOptions.darken}"
   />
 </div>
 `;
