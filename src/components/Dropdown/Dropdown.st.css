@@ -274,8 +274,7 @@
 .root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,
 .root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected,
 .root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected:hovered {
-    /* background-color: applyOpacity(value(CurrentDropdownBackgroundColor), 0.06); TO CHECK WITH JHOANNA */
-    background-color: value(backgroundColorHover);
+    background-color: applyOpacity(value(CurrentItemTextColor), 0.06);
 }
 
 .root:alignment(center) {
