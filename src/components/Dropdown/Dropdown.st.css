@@ -252,7 +252,7 @@
     stroke: none;
 }
 
-.root.overrideStyleParams .dropdown::popoverContent {
+.dropdown::popoverContent {
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.4);
     box-sizing: border-box;
@@ -260,6 +260,9 @@
     margin-left: 1px;
     max-width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.root.overrideStyleParams .dropdown::popoverContent {
     background-color: value(CurrentDropdownBackgroundColor);
 }
 
