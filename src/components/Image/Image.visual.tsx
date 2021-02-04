@@ -31,8 +31,10 @@ class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
 
   async onError(onError) {
-    this.setState({ hasError: true }, () => () => onError());
-    await delay(500);
+    this.setState({ hasError: true }, async () => {
+      await delay(500);
+      onError();
+    });
   }
 
   render() {
