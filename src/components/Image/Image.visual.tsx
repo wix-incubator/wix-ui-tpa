@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { delay } from '../../test/utils';
 import { snap, story, visualize } from 'storybook-snapper';
 import { Image, ImageProps } from './';
 import { classes } from './Image.visual.st.css';
@@ -29,8 +30,9 @@ type ImageWithWrapperProps = ImageProps & {
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
 
-  onError(onError) {
-    this.setState({ hasError: true }, () => setTimeout(() => onError(), 500));
+  async onError(onError) {
+    this.setState({ hasError: true }, () => () => onError());
+    await delay(500);
   }
 
   render() {
@@ -164,7 +166,7 @@ visualize('Image', () => {
       story('with wiring', () => {
         snap('override background color', (done) => (
           <ImageWithWrapper
-            src={invalidSrc}
+            src={src}
             width={480}
             height={360}
             className={classes.backgroundColorOverride}

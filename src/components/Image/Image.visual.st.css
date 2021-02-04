@@ -5,7 +5,7 @@
 }
 
 .backgroundColorOverride {
-  -st-mixin: overrideStyleParams(BackgroundColor 'color-5');
+  -st-mixin: overrideStyleParams(BackgroundColor 'color-5', ImageOpacity '0%');
 }
 
 .borderOverride {
