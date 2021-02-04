@@ -1,9 +1,11 @@
 import * as React from 'react';
+import * as Color from 'color';
 import {
   ColorPickerPalette,
   ColorPickerPalettePicker,
   Slider,
   FontFamilyPicker,
+  OpacityPicker,
 } from '@wix/wix-base-ui';
 import styles from './MockSettings.scss';
 import SettingsChangedEvent from '../../mocks/fakeTPAChange.json';
@@ -18,6 +20,7 @@ export interface IMockSettingsState {
     [id: string]: {
       value: string;
       index: number;
+      opacity: number;
     };
   };
 }
@@ -49,6 +52,7 @@ export interface IWixColorParam {
   label: string;
   wixParam: string;
   defaultColor: string;
+  fixedOpacity?: boolean;
 }
 
 const DEFAULT_FONT_SIZE = 14;
@@ -260,6 +264,20 @@ export class MockSettings extends React.PureComponent<
     );
   }
 
+  onOpacityChange(opacity, wixParam) {
+    this.setState(
+      {
+        selectedColors: {
+          ...this.state.selectedColors,
+          ...{
+            [wixParam]: { ...this.state.selectedColors[wixParam], opacity },
+          },
+        },
+      },
+      () => this.triggerChanged('color'),
+    );
+  }
+
   private triggerChanged(changed: 'color' | 'font' | 'number' | 'palette') {
     if (changed === 'number') {
       SettingsChangedEvent.params.style.numbers = this.props.wixNumberParams.reduce(
@@ -300,9 +318,21 @@ export class MockSettings extends React.PureComponent<
       SettingsChangedEvent.params.style.colors = this.props.wixColorParams.reduce(
         (obj, item) => {
           const color = this.state.selectedColors[item.wixParam];
+          const opacity = color.opacity;
+          const hasOpacity = typeof opacity !== 'undefined' && opacity < 100;
+          const themeName = hasOpacity
+            ? item.wixParam
+            : `color_${this.toTPAIndex(color.index)}`;
+          const value = hasOpacity
+            ? new Color(this.state.selectedColors[item.wixParam].value)
+                .alpha(opacity / 100)
+                .toString()
+            : this.state.selectedColors[item.wixParam].value;
+
           obj[item.wixParam] = {
-            themeName: `color_${this.toTPAIndex(color.index)}`,
-            value: this.state.selectedColors[item.wixParam].value,
+            themeName,
+            value,
+            rgba: value,
           };
           return obj;
         },
@@ -349,20 +379,30 @@ export class MockSettings extends React.PureComponent<
         <div className={styles.colorPalettePicker}>
           <div className={styles.colorPickerContainer}>
             <ul className={styles.pickerList}>
-              {this.props.wixColorParams.map(({ label, wixParam }) => (
-                <li key={wixParam}>
-                  <label>
-                    {label} - {this.state.selectedColors[wixParam].value}
-                  </label>
-                  <ColorPickerPalette
-                    onChange={(value, index) =>
-                      this.onColorChanged({ value, index }, wixParam)
-                    }
-                    value={this.state.selectedColors[wixParam].value}
-                    palette={this.state.selectedPalette}
-                  />
-                </li>
-              ))}
+              {this.props.wixColorParams.map(
+                ({ label, wixParam, fixedOpacity }) => (
+                  <li key={wixParam}>
+                    <label>
+                      {label} - {this.state.selectedColors[wixParam].value}
+                    </label>
+                    <ColorPickerPalette
+                      onChange={(value, index) =>
+                        this.onColorChanged({ value, index }, wixParam)
+                      }
+                      value={this.state.selectedColors[wixParam].value}
+                      palette={this.state.selectedPalette}
+                    />
+                    {!fixedOpacity ? (
+                      <OpacityPicker
+                        value={this.state.selectedColors[wixParam].opacity}
+                        onChange={(value) =>
+                          this.onOpacityChange(value, wixParam)
+                        }
+                      />
+                    ) : null}
+                  </li>
+                ),
+              )}
             </ul>
           </div>
           <div className={styles.palettePickerContainer}>
