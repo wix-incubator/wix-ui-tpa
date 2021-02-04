@@ -20,9 +20,9 @@
 
   defaultBorderRadius: 0;
 
-  smallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
-  mediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
-  largeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+  defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+  defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+  defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
 }
 
 /* Overrides - deceleration of overridable parameters by the consumer */
@@ -82,7 +82,11 @@
   lightBorderWidth: unit(fallback(value(BorderWidth), 1), px);
   solidBorderWidth: unit(fallback(value(BorderWidth), 0), px);
 
-  textColor: color(fallback(value(TextColor), value(defaultTextColor)))
+  textColor: color(fallback(value(TextColor), value(defaultTextColor)));
+
+  smallFont: fallback(font(value(TextFont)), font(value(defaultSmallFont)));
+  mediumFont: fallback(font(value(TextFont)), font(value(defaultMediumFont)));
+  largeFont: fallback(font(value(TextFont)), font(value(defaultLargeFont)));
 }
 
 .root {
@@ -127,21 +131,21 @@
 .root.small .label {
   -st-mixin: Text(
     MainTextColor value(defaultTextColor),
-    MainTextFont font(value(smallFont))
+    MainTextFont font(value(defaultSmallFont))
   );
 }
 
 .root.medium .label {
   -st-mixin: Text(
     MainTextColor value(defaultTextColor),
-    MainTextFont font(value(mediumFont))
+    MainTextFont font(value(defaultMediumFont))
   );
 }
 
 .root.large .label {
   -st-mixin: Text(
     MainTextColor value(defaultTextColor),
-    MainTextFont font(value(largeFont))
+    MainTextFont font(value(defaultLargeFont))
   );
 }
 
@@ -161,13 +165,27 @@
 }
 
 .iconWrapper {
-  font-size: 0;
   margin: 0 -5px 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small .iconWrapper {
+  font: font(value(defaultSmallFont));
+}
+
+.medium .iconWrapper {
+  font: font(value(defaultMediumFont));
+}
+
+.large .iconWrapper {
+  font: font(value(defaultLargeFont));
 }
 
 .removeIcon {
-  width: 14px;
-  height: 14px;
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .removeIcon path {
@@ -203,25 +221,37 @@
 .root.small.overrideStyleParams .label {
   -st-mixin: Text(
           MainTextColor value(textColor),
-          MainTextFont fallback(font(value(TextFont)), font(value(smallFont)))
+          MainTextFont value(smallFont)
   );
 }
 
 .root.medium.overrideStyleParams .label {
   -st-mixin: Text(
           MainTextColor value(textColor),
-          MainTextFont fallback(font(value(TextFont)), font(value(mediumFont)))
+          MainTextFont value(mediumFont)
   );
 }
 
 .root.large.overrideStyleParams .label {
   -st-mixin: Text(
           MainTextColor value(textColor),
-          MainTextFont fallback(font(value(TextFont)), font(value(largeFont)))
+          MainTextFont value(largeFont)
   );
 }
 
 .root.overrideStyleParams,
 .root.overrideStyleParams .opaque {
   border-radius: value(borderRadius);
+}
+
+.small.overrideStyleParams .iconWrapper {
+  font: value(smallFont);
+}
+
+.medium.overrideStyleParams .iconWrapper {
+  font: value(mediumFont);
+}
+
+.large.overrideStyleParams .iconWrapper {
+  font: value(largeFont);
 }
