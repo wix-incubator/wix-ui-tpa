@@ -10,6 +10,7 @@ export interface ImageDriver extends BaseUniDriver {
   getAlt(): Promise<string>;
   isLoaded(): Promise<boolean>;
   isError(): Promise<boolean>;
+  hover(): Promise<void>;
 }
 
 export const imageDriverFactory = (base: UniDriver): ImageDriver => {
@@ -23,5 +24,6 @@ export const imageDriverFactory = (base: UniDriver): ImageDriver => {
     getAlt,
     isLoaded,
     isError,
+    hover: base.hover,
   };
 };

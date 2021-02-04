@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { snap, story, visualize } from 'storybook-snapper';
+import { uniTestkitFactoryCreator } from 'wix-ui-test-utils/vanilla';
 import { Image, ImageProps } from './';
+import { imageDriverFactory } from './Image.driver';
 import { classes } from './Image.visual.st.css';
 import {
   AspectRatioPresets,
+  HoverEffectOptions,
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
+
+const createDriver = uniTestkitFactoryCreator(imageDriverFactory);
+const dataHook = 'storybook-Image';
 
 const stories: { name: string; src: string; invalidSrc: string }[] = [
   {
@@ -24,13 +30,23 @@ const stories: { name: string; src: string; invalidSrc: string }[] = [
 
 type ImageWithWrapperProps = ImageProps & {
   wrapperStyle?: React.CSSProperties;
+  isHovered?: boolean;
 };
 
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
   state = { hasError: false };
 
-  onError(onError) {
+  _onError(onError) {
     this.setState({ hasError: true }, () => setTimeout(() => onError(), 500));
+  }
+
+  async componentDidMount() {
+    const { isHovered } = this.props;
+
+    if (isHovered) {
+      const driver = createDriver({ wrapper: document.body, dataHook });
+      await driver.hover();
+    }
   }
 
   render() {
@@ -45,7 +61,7 @@ class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
 
     return (
       <div style={style}>
-        <Image {...imageProps} onError={() => this.onError(onError)} />
+        <Image {...imageProps} onError={() => this._onError(onError)} />
       </div>
     );
   }
@@ -157,6 +173,19 @@ visualize('Image', () => {
             fluid
             onLoad={done}
             wrapperStyle={{ width: '50%' }}
+          />
+        ));
+      });
+
+      story('with hover', () => {
+        snap('as darken', (done) => (
+          <ImageWithWrapper
+            src={src}
+            width={480}
+            height={360}
+            hoverEffect={HoverEffectOptions.darken}
+            onLoad={done}
+            isHovered
           />
         ));
       });
