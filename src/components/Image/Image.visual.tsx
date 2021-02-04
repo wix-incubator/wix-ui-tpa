@@ -6,7 +6,6 @@ import { imageDriverFactory } from './Image.driver';
 import { classes } from './Image.visual.st.css';
 import {
   AspectRatioPresets,
-  HoverEffectOptions,
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
@@ -30,7 +29,6 @@ const stories: { name: string; src: string; invalidSrc: string }[] = [
 
 type ImageWithWrapperProps = ImageProps & {
   wrapperStyle?: React.CSSProperties;
-  isHovered?: boolean;
 };
 
 class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
@@ -38,15 +36,6 @@ class ImageWithWrapper extends React.Component<ImageWithWrapperProps> {
 
   _onError(onError) {
     this.setState({ hasError: true }, () => setTimeout(() => onError(), 500));
-  }
-
-  async componentDidMount() {
-    const { isHovered } = this.props;
-
-    if (isHovered) {
-      const driver = createDriver({ wrapper: document.body, dataHook });
-      await driver.hover();
-    }
   }
 
   render() {
@@ -173,29 +162,6 @@ visualize('Image', () => {
             fluid
             onLoad={done}
             wrapperStyle={{ width: '50%' }}
-          />
-        ));
-      });
-
-      story('with hover', () => {
-        snap('as zoom', (done) => (
-          <ImageWithWrapper
-            src={src}
-            width={480}
-            height={360}
-            hoverEffect={HoverEffectOptions.zoom}
-            onLoad={done}
-            isHovered
-          />
-        ));
-        snap('as darken', (done) => (
-          <ImageWithWrapper
-            src={src}
-            width={480}
-            height={360}
-            hoverEffect={HoverEffectOptions.darken}
-            onLoad={done}
-            isHovered
           />
         ));
       });
