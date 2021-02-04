@@ -13,6 +13,7 @@ export interface ActionsMenuLayoutDriver extends BaseUniDriver {
   clickItem(content): Promise<any>;
   item(content): UniDriver<HTMLLIElement>;
   layout(): UniDriver<HTMLUListElement>;
+  isItemFocused(content): Promise<boolean>;
 }
 
 function actionsMenuLayoutItem(base: UniDriver, content) {
@@ -30,6 +31,9 @@ export const actionsMenuLayoutDriverFactory = (
       (await base.attr(ACTIONS_MENU_DATA_KEYS.mobile)) === 'true',
     item: (content) => actionsMenuLayoutItem(base, content),
     clickItem: (content) => actionsMenuLayoutItem(base, content).click(),
+    isItemFocused: async (content) =>
+      (await actionsMenuLayoutItem(base, content).getNative()) ===
+      document.activeElement,
     layout: () => base,
   };
 };

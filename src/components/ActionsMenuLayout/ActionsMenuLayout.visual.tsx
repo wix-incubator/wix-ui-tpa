@@ -84,6 +84,12 @@ function testSuite(alignment) {
         </ActionsMenuLayout>
       </TPAComponentsProvider>
     ));
+
+    snap('should have focus on second item', () => (
+      <ActionsMenuLayout alignment={alignment} focusedIndex={1}>
+        {generateItems()}
+      </ActionsMenuLayout>
+    ));
   });
 }
 

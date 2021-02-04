@@ -34,15 +34,14 @@ describe('ActionsMenuLayout', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('should focus first element if focusedIndex undefined', async function () {
+  it('should not focus first element if focusedIndex is not provided', async function () {
     const driver = createDriver(
       <ActionsMenuLayout>
         <ActionsMenuLayout.Item onClick={() => {}} content="test" />
       </ActionsMenuLayout>,
     );
 
-    const item = await driver.item('test').getNative();
-    expect(document.activeElement).toEqual(item);
+    expect(await driver.isItemFocused('test')).toEqual(false);
   });
 
   it('should focus 2nd element if focusedIndex=1', async function () {
@@ -53,39 +52,31 @@ describe('ActionsMenuLayout', () => {
       </ActionsMenuLayout>,
     );
 
-    const item = await driver.item('test2').getNative();
-    expect(document.activeElement).toEqual(item);
+    expect(await driver.isItemFocused('test2')).toEqual(true);
   });
 
   it('should navigate by keyboard keys', async function () {
     const driver = createDriver(
-      <ActionsMenuLayout>
+      <ActionsMenuLayout focusedIndex={1}>
         <ActionsMenuLayout.Item onClick={() => {}} content="test1" />
         <ActionsMenuLayout.Item onClick={() => {}} content="test2" />
         <ActionsMenuLayout.Item onClick={() => {}} content="test3" />
       </ActionsMenuLayout>,
     );
 
-    const item1 = await driver.item('test1').getNative();
-    const item2 = await driver.item('test2').getNative();
-    const item3 = await driver.item('test3').getNative();
     const layout = driver.layout();
 
-    expect(document.activeElement).toEqual(item1);
+    expect(await driver.isItemFocused('test2')).toEqual(true);
 
     await layout.pressKey(KEYS.ArrowDown);
 
-    expect(document.activeElement).toEqual(item2);
-
+    expect(await driver.isItemFocused('test3')).toEqual(true);
     await layout.pressKey(KEYS.ArrowDown);
 
-    expect(document.activeElement).toEqual(item3);
-
-    await layout.pressKey(KEYS.ArrowDown);
-    expect(document.activeElement).toEqual(item1);
+    expect(await driver.isItemFocused('test1')).toEqual(true);
 
     await layout.pressKey(KEYS.ArrowUp);
-    expect(document.activeElement).toEqual(item3);
+    expect(await driver.isItemFocused('test3')).toEqual(true);
   });
 
   it('should fire onClick on space and enter keys', async function () {
