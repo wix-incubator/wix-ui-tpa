@@ -1,7 +1,7 @@
 const files = [
   ['ActionsMenuLayout.bundle.min.js', 6],
-  ['ActionsMenuLayoutPerfBasic.bundle.min.js', 6],
-  ['ActionsMenuLayoutPerfExtended.bundle.min.js', 6.5],
+  ['ActionsMenuLayoutPerfBasic.bundle.min.js', 6.5],
+  ['ActionsMenuLayoutPerfExtended.bundle.min.js', 7],
   ['AddItem.bundle.min.js', 45.5],
   ['Autocomplete.bundle.min.js', 37],
   ['Avatar.bundle.min.js', 16.1],
