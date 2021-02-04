@@ -90,7 +90,7 @@
 }
 
 .root {
-  padding: 4px 12px;
+  padding: 4px 0;
   display: inline-flex;
   align-items: center;
   background-color: #fff;
@@ -98,6 +98,17 @@
   position: relative;
   box-sizing: border-box;
   border-style: solid;
+}
+
+.root::before,
+.root::after {
+  content: '';
+  width: 12px;
+  display: inline-block;
+}
+
+.root.withIcon::after {
+  width: 4px;
 }
 
 .opaque {
@@ -165,10 +176,15 @@
 }
 
 .iconWrapper {
-  margin: 0 -5px 0 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.iconWrapper::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
 }
 
 .small .iconWrapper {
@@ -190,12 +206,6 @@
 
 .removeIcon path {
   stroke: currentColor;
-}
-
-.iconWrapper::after {
-  content: " ";
-  display: inline-block;
-  width: 4px;
 }
 
 .root.overrideStyleParams {

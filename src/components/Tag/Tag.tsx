@@ -41,6 +41,7 @@ export const Tag: React.FC<TagProps> = (props) => {
     <TagName
       className={cls(classes.root, classes[skin], classes[size], className, {
         [classes.clickable]: isClickable,
+        [classes.withIcon]: isRemovable,
       })}
       onClick={handleClick}
       data-hook={props['data-hook']}
