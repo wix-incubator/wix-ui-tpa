@@ -1,7 +1,7 @@
 module.exports = [
   {
     codemod: 'stories-file.js',
-    dist: 'stories/index.tsx',
+    dist: 'stories/index.ts',
     description: 'Add story to the stories file',
   },
   {
