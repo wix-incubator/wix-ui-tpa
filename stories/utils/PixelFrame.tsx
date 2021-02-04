@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-export class PixelFrame extends React.Component<{ className: string }> {
+export class PixelFrame extends React.Component<{
+  className: string;
+}> {
   render() {
     const { className } = this.props;
     return (
@@ -28,7 +30,7 @@ export class PixelFrame extends React.Component<{ className: string }> {
             fillRule="evenodd"
             rx="80"
             ry="80"
-            height="1456"
+            height="1216"
             width="682"
             y="-403.64"
             x="0"
@@ -39,7 +41,7 @@ export class PixelFrame extends React.Component<{ className: string }> {
               fillOpacity=".86667"
               rx="25"
               ry="25"
-              height="1250"
+              height="900"
               width="625"
               y="-300.64"
               x="28.5"
@@ -50,7 +52,7 @@ export class PixelFrame extends React.Component<{ className: string }> {
               ry="5"
               height="18"
               width="160"
-              y="992.36"
+              y="752.36"
               x="261"
             />
             <rect

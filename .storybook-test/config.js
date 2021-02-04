@@ -4,7 +4,7 @@ import { init } from '../test/visual/StyleProcessorUtil';
 
 function loadStories() {
   require('../mocks');
-
+  require('../stories/utils/MobilePageStory');
   const req = require.context('../src', true, /\.visual\.tsx$/);
   req.keys().forEach(filename => req(filename));
 
