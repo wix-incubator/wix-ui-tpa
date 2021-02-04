@@ -1,0 +1,11 @@
+:import {
+  -st-from: "../Badge.st.css";
+  -st-named: overrideStyleParams;
+}
+
+.good {
+  -st-mixin: overrideStyleParams(
+          BadgeBgColor '"color(--badgeBgColor)"',
+          BadgeTextColor '"color(--badgeTextColor)"',
+  );
+}
