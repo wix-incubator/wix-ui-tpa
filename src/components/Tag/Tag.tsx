@@ -2,9 +2,8 @@ import * as React from 'react';
 import cls from 'classnames';
 
 import { TPAComponentProps } from '../../types';
-import { ReactComponent as CloseIcon } from '../../assets/icons/Close.svg';
+import { ReactComponent as XIcon } from '../../assets/icons/XSmall.svg';
 import { Text, TYPOGRAPHY } from '../Text';
-
 import { classes } from './Tag.st.css';
 import { SIZE, SKIN } from './constants';
 
@@ -41,6 +40,7 @@ export const Tag: React.FC<TagProps> = (props) => {
     <TagName
       className={cls(classes.root, classes[skin], classes[size], className, {
         [classes.clickable]: isClickable,
+        [classes.withIcon]: isRemovable,
       })}
       onClick={handleClick}
       data-hook={props['data-hook']}
@@ -55,7 +55,7 @@ export const Tag: React.FC<TagProps> = (props) => {
           aria-label={removeButtonAriaLabel}
           data-hook="remove-icon"
         >
-          <CloseIcon className={classes.removeIcon} />
+          <XIcon className={classes.removeIcon} />
         </span>
       )}
     </TagName>

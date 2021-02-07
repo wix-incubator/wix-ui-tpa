@@ -5,11 +5,11 @@
 
 .root {
   -st-mixin: overrideStyleParams(
-    BackgroundColor '"--backgroundOverride"',
-    BorderColor '"--borderOverride"',
-    BorderWidth '"unit(--borderWidthOverride, px)"',
-    Font '"--textFont"',
+    BackgroundColor '"--backgroundColor"',
+    BorderColor '"--borderColor"',
+    BorderWidth '"--borderWidth"',
     BorderRadius '"unit(--borderRadius, px)"',
+    TextFont '"--textFont"',
     TextColor '"--textColor"'
   );
 }

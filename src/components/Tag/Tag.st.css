@@ -1,6 +1,6 @@
 :import {
     -st-from: "../../common/formatters.st";
-    -st-named: color, fallback, font, applyOpacity;
+    -st-named: color, fallback, font, applyOpacity, unit;
 }
 
 :import {
@@ -10,16 +10,19 @@
 
 /* Defaults - default params */
 :vars {
-  defaultBackgroundColor: color(color-5);
-  defaultBorderColor: color(color-5);
+  defaultSolidBackgroundColor: applyOpacity(color(color-5), 0.1);
+  defaultLightBackgroundColor: color(color-1);
+
+  defaultSolidBorderColor: color(color-5);
+  defaultLightBorderColor: applyOpacity(color(color-5), 0.3);
+
   defaultTextColor: color(color-5);
-  defaultBorderRadius: 0px;
-  defaultBackgroundOpacity: 0.1;
-  defaultBorderOpacity: 0.3;
-  defaultBorderWidth: 1px;
-  smallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
-  mediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
-  largeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
+
+  defaultBorderRadius: 0;
+
+  defaultSmallFont: "{theme: 'Body-M', size: '12px', lineHeight: '16px'}";
+  defaultMediumFont: "{theme: 'Body-M', size: '14px', lineHeight: '20px'}";
+  defaultLargeFont: "{theme: 'Body-M', size: '16px', lineHeight: '24px'}";
 }
 
 /* Overrides - deceleration of overridable parameters by the consumer */
@@ -44,21 +47,15 @@
 
   /*
     Border radius
-    @default 0px
+    @default 0
   */
   BorderRadius: --overridable;
 
   /*
     Border width
-    @default 1px
+    @default 1
   */
   BorderWidth: --overridable;
-
-  /*
-    Background opacity
-    @default 0.1
-  */
-  BackgroundOpacity: --overridable;
 
   /*
     Border opacity
@@ -70,29 +67,63 @@
   Main text font
   @default small: {theme: 'Body-M', size: '12px', lineHeight: '16px'}, medium: {theme: 'Body-M', size: '14px', lineHeight: '20px'}, large: {theme: 'Body-M', size: '16px', lineHeight: '24px'}
   */
-  Font: --overridable;
+  TextFont: --overridable;
 }
 
 /* Overrides */
 :vars {
-  backgroundColor: color(fallback(value(BackgroundColor), value(defaultBackgroundColor)));
-  backgroundOpacity: fallback(value(BackgroundOpacity), value(defaultBackgroundOpacity));
-  borderColor: color(fallback(value(BorderColor), value(defaultBorderColor)));
+  solidBackgroundColor: color(fallback(value(BackgroundColor), value(defaultSolidBackgroundColor)));
+  lightBackgroundColor: color(fallback(value(BackgroundColor), value(defaultLightBackgroundColor)));
+
+  solidBorderColor: color(fallback(value(BorderColor), value(defaultSolidBorderColor)));
+  lightBorderColor: color(fallback(value(BorderColor), value(defaultLightBorderColor)));
+
   borderRadius: fallback(value(BorderRadius), value(defaultBorderRadius));
-  borderOpacity: fallback(value(BorderOpacity), value(defaultBorderOpacity));
-  borderWidth: fallback(value(BorderWidth), value(defaultBorderWidth));
-  textColor: color(fallback(value(TextColor), value(defaultTextColor)))
+  lightBorderWidth: unit(fallback(value(BorderWidth), 1), px);
+  solidBorderWidth: unit(fallback(value(BorderWidth), 0), px);
+
+  textColor: color(fallback(value(TextColor), value(defaultTextColor)));
+
+  smallFont: fallback(font(value(TextFont)), font(value(defaultSmallFont)));
+  mediumFont: fallback(font(value(TextFont)), font(value(defaultMediumFont)));
+  largeFont: fallback(font(value(TextFont)), font(value(defaultLargeFont)));
 }
 
 .root {
-  padding: 4px 12px;
   display: inline-flex;
   align-items: center;
   background-color: #fff;
   width: fit-content;
-  border: 0;
   position: relative;
   box-sizing: border-box;
+  border-style: solid;
+  padding: 0;
+}
+
+.root::before,
+.root::after {
+  content: '';
+  width: 12px;
+  display: inline-block;
+}
+
+.root.withIcon::after {
+  width: 4px;
+}
+
+.small {
+  font: font(value(defaultSmallFont));
+  height: calc((16 / 12) * 1em + 8px);
+}
+
+.medium {
+  font: font(value(defaultMediumFont));
+  height: calc((20 / 14) * 1em + 12px);
+}
+
+.large {
+  font: font(value(defaultLargeFont));
+  height: calc((24 / 16) * 1em + 12px);
 }
 
 .opaque {
@@ -119,70 +150,124 @@
   position: relative;
 }
 
-.root.overrideStyleParams .removeIcon,
 .root .removeIcon {
-  color: value(textColor);
+  color: value(defaultTextColor);
 }
 
-.root.small.overrideStyleParams .label,
 .root.small .label {
   -st-mixin: Text(
-    MainTextColor value(textColor),
-    MainTextFont fallback(font(value(Font)), font(value(smallFont)))
+    MainTextColor value(defaultTextColor),
+    MainTextFont font(value(defaultSmallFont))
   );
 }
 
-.root.medium.overrideStyleParams .label,
 .root.medium .label {
   -st-mixin: Text(
-    MainTextColor value(textColor),
-    MainTextFont fallback(font(value(Font)), font(value(mediumFont)))
+    MainTextColor value(defaultTextColor),
+    MainTextFont font(value(defaultMediumFont))
   );
 }
 
-.root.large.overrideStyleParams .label,
 .root.large .label {
   -st-mixin: Text(
-    MainTextColor value(textColor),
-    MainTextFont fallback(font(value(Font)), font(value(largeFont)))
+    MainTextColor value(defaultTextColor),
+    MainTextFont font(value(defaultLargeFont))
   );
 }
 
-.root.solid,
-.root.solid.overrideStyleParams {
-  background-color: applyOpacity(value(backgroundColor), value(backgroundOpacity));
+.root.solid {
+  background-color: value(defaultSolidBackgroundColor);
+  border-width: 0;
 }
 
-.root.light,
-.root.light.overrideStyleParams {
-  border-width: value(borderWidth);
-  border-style: solid;
-  border-color: applyOpacity(value(borderColor), value(borderOpacity));
+.root.light {
+  border-width: 1px;
+  border-color: value(defaultLightBorderColor);
 }
 
 .root,
-.opaque,
+.opaque {
+  border-radius: value(defaultBorderRadius);
+}
+
+.iconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: inherit;
+}
+
+.iconWrapper::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+}
+
+.removeIcon {
+  width: 1.5em;
+  height: 1.5em;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.removeIcon path {
+  fill: currentColor;
+}
+
+.root.overrideStyleParams {
+  border-radius: value(borderRadius);
+}
+
+.root.light.overrideStyleParams {
+  background-color: value(lightBackgroundColor);
+  border-width: value(lightBorderWidth);
+  border-color: value(lightBorderColor);
+}
+
+.root.solid.overrideStyleParams {
+  background-color: value(solidBackgroundColor);
+  border-color: value(solidBorderColor);
+  border-width: value(solidBorderWidth);
+}
+
+.root.overrideStyleParams .removeIcon {
+  color: value(textColor);;
+}
+
+.root.small.overrideStyleParams .label {
+  -st-mixin: Text(
+          MainTextColor value(textColor),
+          MainTextFont value(smallFont)
+  );
+}
+
+.root.medium.overrideStyleParams .label {
+  -st-mixin: Text(
+          MainTextColor value(textColor),
+          MainTextFont value(mediumFont)
+  );
+}
+
+.root.large.overrideStyleParams .label {
+  -st-mixin: Text(
+          MainTextColor value(textColor),
+          MainTextFont value(largeFont)
+  );
+}
+
 .root.overrideStyleParams,
 .root.overrideStyleParams .opaque {
   border-radius: value(borderRadius);
 }
 
-.iconWrapper {
-  font-size: 0;
-  margin: 0 -5px 0 5px;
+.small.overrideStyleParams {
+  font: value(smallFont);
 }
 
-.removeIcon {
-  width: 14px;
-  height: 14px;
+.medium.overrideStyleParams {
+  font: value(mediumFont);
 }
 
-.removeIcon path {
-  stroke: currentColor;
-}
-
-.iconWrapper::after {
-  content: " ";
-  display: inline-block;
-  width: 4px;
+.large.overrideStyleParams {
+  font: value(largeFont);
 }

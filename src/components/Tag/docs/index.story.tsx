@@ -98,12 +98,12 @@ export default {
                 colors: [
                   {
                     label: 'Background',
-                    wixParam: 'backgroundOverride',
-                    defaultColor: 'color-5',
+                    wixParam: 'backgroundColor',
+                    defaultColor: 'color-1',
                   },
                   {
-                    label: 'Border',
-                    wixParam: 'borderOverride',
+                    label: 'Border Color',
+                    wixParam: 'borderColor',
                     defaultColor: 'color-5',
                   },
                   {
@@ -116,7 +116,8 @@ export default {
                   {
                     label: 'Tag label',
                     wixParam: 'textFont',
-                    defaultFont: 'helvetica-w01-roman',
+                    defaultFont: 'arial',
+                    size: 14,
                   },
                 ],
                 numbers: [
@@ -128,10 +129,10 @@ export default {
                   },
                   {
                     label: 'Border width',
-                    defaultNumber: 1,
+                    defaultNumber: 0,
                     max: 5,
                     min: 1,
-                    wixParam: 'borderWidthOverride',
+                    wixParam: 'borderWidth',
                     unit: 'px',
                   },
                 ],

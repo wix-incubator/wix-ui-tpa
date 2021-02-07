@@ -19,3 +19,5 @@ module.exports.join = createStyleFunc('join');
 module.exports.withoutOpacity = createStyleFunc('withoutOpacity');
 module.exports.darken = createStyleFunc('darken');
 module.exports.smartContrast = createStyleFunc('smartContrast');
+module.exports.number = createStyleFunc('number');
+module.exports.unit = createStyleFunc('unit');
