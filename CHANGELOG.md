@@ -1,3 +1,19 @@
+# [2.21.0](https://github.com/wix/wix-ui-tpa/compare/v2.20.0...v2.21.0) (2021-02-07)
+
+
+### Bug Fixes
+
+* **RadioButton:** Box border should change from 60% to 100% both on hover and focus ([a639a6e](https://github.com/wix/wix-ui-tpa/commit/a639a6ef2de5ed477ef4900ac5090e96a81b5324))
+* **TextButton:** change hover opacity to 70% ([9f88f00](https://github.com/wix/wix-ui-tpa/commit/9f88f000ac7d34001bb437375eed9de74b6c7bb9))
+
+
+### Features
+
+* **Dropdown:** Expose style API ([0fbad93](https://github.com/wix/wix-ui-tpa/commit/0fbad936ecacd8a11b978f5efaf98e03c109da14))
+* **Tag:** New component ([d07a49c](https://github.com/wix/wix-ui-tpa/commit/d07a49cf6322b9e0a4896aae9efadc338caa7cdc))
+
+
+
 # [2.20.0](https://github.com/wix/wix-ui-tpa/compare/v2.19.0...v2.20.0) (2021-02-02)
 
 
