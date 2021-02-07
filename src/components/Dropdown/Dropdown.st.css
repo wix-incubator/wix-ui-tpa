@@ -288,10 +288,11 @@
     max-width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
     background-color: color(color-1);
-    border: 1px solid applyOpacity(value(CurrentItemTextColor), 0.4);
+    border: 1px solid applyOpacity(color(color-5), 0.4);
 }
 
 .root.overrideStyleParams .dropdown::popoverContent {
+    border: 1px solid applyOpacity(value(CurrentItemTextColor), 0.4);
     background-color: value(CurrentDropdownBackgroundColor);
 }
 
