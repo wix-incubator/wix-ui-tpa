@@ -94,7 +94,8 @@ export class Image extends React.Component<ImageProps> {
       aspectRatio: aspectRatioAsNumber,
     });
 
-    const focalPointCoordinates = resolveFocalPointCoordinates(focalPoint);
+    const focalPointCoordinates =
+      focalPoint && resolveFocalPointCoordinates(focalPoint);
 
     const hasLoadingBehavior = loadingBehavior === LoadingBehaviorOptions.blur;
 

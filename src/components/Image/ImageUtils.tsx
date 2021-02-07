@@ -1,4 +1,4 @@
-import { Dimensions } from './types';
+import { Dimensions, FocalPointPresets } from './types';
 
 /**
  * This function calculates the dimensions according the following logic:
@@ -34,4 +34,8 @@ export function calculateDimensions({
   return { width: calculatedWidth, height: calculatedHeight };
 }
 
-export function resolveFocalPointCoordinates(focalPoint) {}
+export function resolveFocalPointCoordinates(focalPoint) {
+  return typeof focalPoint === 'string'
+    ? FocalPointPresets[focalPoint]
+    : focalPoint;
+}
