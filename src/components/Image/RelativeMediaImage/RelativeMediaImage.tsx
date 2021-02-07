@@ -14,6 +14,7 @@ const Placeholder = ({
   className,
   sourceDimensions,
   containerDimensions,
+  focalPoint,
   ...imageProps
 }: RelativeMediaImageProps) => (
   <MediaImage
@@ -21,6 +22,7 @@ const Placeholder = ({
       uri: src,
       ...sourceDimensions,
       options: {
+        focalPoint,
         filters: {
           blur: 3,
         },
@@ -40,6 +42,7 @@ export class RelativeMediaImage extends React.Component<RelativeMediaImageProps>
       sourceDimensions,
       containerDimensions,
       isPlaceholderDisplayed,
+      focalPoint,
       onLoad,
       ...imageProps
     } = this.props;
@@ -53,6 +56,7 @@ export class RelativeMediaImage extends React.Component<RelativeMediaImageProps>
               className={st(classes.placeholder, className)}
               sourceDimensions={sourceDimensions}
               containerDimensions={containerDimensions}
+              focalPoint={focalPoint}
               {...imageProps}
             />
           )}
@@ -60,6 +64,9 @@ export class RelativeMediaImage extends React.Component<RelativeMediaImageProps>
             mediaPlatformItem={{
               uri: src,
               ...sourceDimensions,
+              options: {
+                focalPoint,
+              },
             }}
             className={st(classes.root, className)}
             onLoad={onLoad}
