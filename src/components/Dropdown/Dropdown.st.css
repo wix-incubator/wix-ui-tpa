@@ -184,6 +184,14 @@
   -st-extends: DropdownOption;
 }
 
+.dropdownOption{
+     -st-mixin: overrideStyleParamsOptionMixin(
+         MainTitleTextFont value(DefaultItemTextFont),
+         MainTitleTextColor value(DefaultItemTextColor),
+         MainItemTextDisabledColor value(DefaultItemTextDisabledColor),
+    );
+}
+
 .root.overrideStyleParams .dropdownOption{
      -st-mixin: overrideStyleParamsOptionMixin(
          MainTitleTextFont value(CurrentItemTextFont),
@@ -211,6 +219,14 @@
     min-width: 68px;
 }
 
+.dropdown .dropdownBase {
+    color: value(DefaultButtonTextColor);
+    border-color: value(DefaultButtonBorderColor);
+    border-width: value(DefaultBorderWidth);
+    background: value(DefaultBackgroundColor);
+    font: value(DefaultTextFont);
+}
+
 .root.overrideStyleParams .dropdown .dropdownBase {
     color: value(CurrentButtonTextColor);
     border-color: value(CurrentButtonBorderColor);
@@ -219,13 +235,26 @@
     font: value(CurrentTextFont);
 }
 
+.dropdown .dropdownBase::arrowIcon {
+    color: value(DefaultButtonTextColor);
+}
+
 .root.overrideStyleParams .dropdown .dropdownBase::arrowIcon {
-    color: value(CurrentTextFont);
+    color: value(CurrentButtonTextColor);
+}
+
+.dropdown .dropdownBase::root:disabled {
+    color: value(DefaultButtonTextDisabledColor);;
+    border-color: value(DefaultBorderDisabledColor);;
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase::root:disabled {
     color: value(CurrentButtonTextDisabledColor);;
     border-color: value(CurrentBorderDisabledColor);;
+}
+
+.dropdown .dropdownBase::root:placeholder {
+    color: value(DefaultPlaceholderColor);
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase::root:placeholder {
@@ -259,11 +288,12 @@
     margin-left: 1px;
     max-width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: color(color-1);
+    border: 1px solid applyOpacity(value(CurrentItemTextColor), 0.4);
 }
 
 .root.overrideStyleParams .dropdown::popoverContent {
     background-color: value(CurrentDropdownBackgroundColor);
-    border-color: applyOpacity(value(CurrentItemTextColor), 0.4);
 }
 
 .dropdownError::popoverContent {
@@ -294,6 +324,7 @@
 
 .divider {
     opacity: 30%;
+    background-color: value(DefaultItemTextColor);
 }
 
 .root.overrideStyleParams .divider {
