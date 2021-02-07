@@ -304,6 +304,12 @@
     padding: 12px 0;
 }
 
+.dropdown::dropdownContent::dropdownOption:hovered,
+.dropdown::dropdownContent::dropdownOption:selected,
+.dropdown::dropdownContent::dropdownOption:selected:hovered {
+    background-color: applyOpacity(color(color-5), 0.06);
+}
+
 .root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:hovered,
 .root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected,
 .root.overrideStyleParams .dropdown::dropdownContent::dropdownOption:selected:hovered {
