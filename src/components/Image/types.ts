@@ -15,10 +15,12 @@ export interface ImageProps extends TPAComponentProps {
   onError?: React.EventHandler<React.SyntheticEvent>;
   /** Specifies how the image is resized to fit its container */
   resize?: ResizeOptions;
+  /** Specifies the proportional relationship between width and height */
+  aspectRatio?: keyof typeof AspectRatioPresets | number;
+  /** Centers an area of the image by given coordinates */
+  focalPoint?: keyof typeof FocalPointPresets | { x: number; y: number };
   /** Specifies wether the image adapts and scales relatively to the containing layout */
   fluid?: boolean;
-  // Specifies the proportional relationship between width and height
-  aspectRatio?: keyof typeof AspectRatioPresets | number;
   /** An effect to appear when the image is hovered  */
   hoverEffect?: HoverEffectOptions;
   /** An experience to set while the image is fetched and loaded  */
@@ -39,6 +41,10 @@ export const AspectRatioPresets = {
   square: 1,
   cinema: 16 / 9,
   landscape: 4 / 3,
+};
+
+export const FocalPointPresets = {
+  topLeft: { x: 0, y: 0 },
 };
 
 export enum HoverEffectOptions {
