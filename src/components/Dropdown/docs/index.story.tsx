@@ -156,7 +156,6 @@ export default {
                     min: 0,
                     max: 10,
                   },
-
                 ],
                 colors: [
                   {
@@ -205,20 +204,22 @@ export default {
                     defaultColor: 'color-3',
                   },
                 ],
-                fonts: [{
-                  label: 'Text Font',
-                  wixParam: 'mainTextFont',
-                  defaultFont: 'arial',
-                  size: 16,
-                  fixedSize: false,
-                },
-                {
-                  label: 'Item text Font',
-                  wixParam: 'mainItemTextFont',
-                  defaultFont: 'arial',
-                  size: 16,
-                  fixedSize: false,
-                }]
+                fonts: [
+                  {
+                    label: 'Text Font',
+                    wixParam: 'mainTextFont',
+                    defaultFont: 'arial',
+                    size: 16,
+                    fixedSize: false,
+                  },
+                  {
+                    label: 'Item text Font',
+                    wixParam: 'mainItemTextFont',
+                    defaultFont: 'arial',
+                    size: 16,
+                    fixedSize: false,
+                  },
+                ],
               },
             }),
           ],
