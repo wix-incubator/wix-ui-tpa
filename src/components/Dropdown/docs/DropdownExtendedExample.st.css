@@ -1,0 +1,21 @@
+:import {
+    -st-from: "../Dropdown.st.css";
+    -st-named: overrideStyleParams;
+}
+
+.root {
+    -st-mixin: overrideStyleParams(
+            MainButtonTextColor '"--mainButtonTextColor"',
+            MainButtonTextDisabledColor '"--mainButtonTextDisabledColor"',
+            MainButtonBorderColor '"--mainBorderColor"',
+            MainBorderDisabledColor '"--mainBorderDisabledColor"',
+            MainBorderWidth '"--mainBorderWidth"',
+            MainBackgroundColor '"--mainBackgroundColor"',
+            MainPlaceholderColor '"--mainPlaceholderColor"',
+            MainTextFont '"--mainTextFont"',
+            MainDropdownBackgroundColor '"--mainDropdownBackgroundColor"',
+            MainItemTextColor '"--mainItemTextColor"',
+            MainItemTextFont '"--mainItemTextFont"',
+            MainItemTextDisabledColor '"--mainItemTextDisabledColor"',
+    );
+}

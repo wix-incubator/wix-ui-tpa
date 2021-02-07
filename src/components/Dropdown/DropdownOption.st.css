@@ -8,6 +8,29 @@
     -st-default: TPAText;
 }
 
+:import {
+    -st-from: "../../common/formatters.st";
+    -st-named: color, fallback, applyOpacity, font;
+}
+
+:vars {
+    DefaultTitleTextColor: "color-5";
+    DefaultTitleTextFont: "{theme: 'Body-M', size: '16px', lineHeight: '1.5'}";
+}
+
+/*Overrides*/
+:vars {
+    MainTitleTextColor: --overridable;
+    MainTitleTextFont: --overridable;
+    MainItemTextDisabledColor: --overridable;
+}
+
+:vars {
+    CurrentTitleTextColor: color(fallback(value(MainTitleTextColor), value(DefaultTitleTextColor)));
+    CurrentTitleTextFont: fallback(font(value(MainTitleTextFont)), font(value(DefaultTitleTextFont)));
+    CurrentItemTextDisabledColor: color(fallback(value(MainItemTextDisabledColor), value(colorPlaceholder)));
+} 
+
 .root {
     -st-states: withIcon, selectable, sectionTitle;
     box-sizing: border-box;
@@ -16,12 +39,22 @@
     padding: 8px 12px;
 }
 
+.root.overrideStyleParams .title {
+ -st-mixin: TPAText(
+        MainTextColor value(CurrentTitleTextColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
+}
+
+.overrideStyleParams {
+    -st-extends: root;
+}
+
 .contentWrapper {
     max-width: 100%;
 }
 
 .title {
-    -st-extends: TPAText;
     padding: 0 12px;
     display: block;
     text-overflow: ellipsis;
@@ -31,7 +64,21 @@
 
 .root:not(:selectable) .title {
     -st-mixin: TPAText(
-        MainTextColor 'value(colorPlaceholder)'
+        MainTextColor value(colorPlaceholder)
+    );
+}
+
+.overrideStyleParams:not(:selectable) .title {
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentItemTextDisabledColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
+}
+
+.overrideStyleParams:sectionTitle .title {
+    -st-mixin: TPAText(
+        MainTextColor applyOpacity(value(CurrentTitleTextColor), 0.6),
+        MainTextFont value(CurrentTitleTextFont)
     );
 }
 
@@ -39,12 +86,23 @@
     padding: 0;
 }
 
-.subtitle {
-    -st-extends: TPAText;
-    -st-mixin: TPAText(
-        MainTextColor "value(colorPlaceholder)",
-        MainTextFont "{theme: 'Body-M', size: '14px', lineHeight: '20px'}"
+.overrideStyleParams .subtitle {
+     -st-mixin: TPAText(
+        MainTextColor value(CurrentTitleTextColor),
+        MainTextFont value(CurrentTitleTextFont)
     );
+}
+
+.overrideStyleParams:not(:selectable) .subtitle {
+    -st-mixin: TPAText(
+        MainTextColor value(CurrentItemTextDisabledColor),
+        MainTextFont value(CurrentTitleTextFont)
+    );
+}
+
+.subtitle {
+    font-size: 14px !important;
+    opacity: 60%;
     margin-top: 4px;
     padding: 0 12px;
     display: block;
