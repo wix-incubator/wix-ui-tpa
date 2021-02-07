@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { delay } from '../../test/utils';
 import { snap, story, visualize } from 'storybook-snapper';
+import { delay } from '../../test/utils';
 import { Image, ImageProps } from './';
 import { classes } from './Image.visual.st.css';
 import {
   AspectRatioPresets,
+  FocalPointPresets,
   LoadingBehaviorOptions,
   ResizeOptions,
 } from './types';
@@ -135,6 +136,27 @@ visualize('Image', () => {
             width={300}
             height={250}
             resize={ResizeOptions.cover}
+            onLoad={done}
+          />
+        ));
+      });
+
+      story('with focalPoint', () => {
+        Object.entries(FocalPointPresets).forEach(([key, value]) =>
+          snap(`as ${key}`, (done) => (
+            <ImageWithWrapper
+              src={src}
+              resize={ResizeOptions.cover}
+              focalPoint={value}
+              onLoad={done}
+            />
+          )),
+        );
+        snap('as custom', (done) => (
+          <ImageWithWrapper
+            src={src}
+            resize={ResizeOptions.cover}
+            focalPoint={{ x: 120, y: 120 }}
             onLoad={done}
           />
         ));
