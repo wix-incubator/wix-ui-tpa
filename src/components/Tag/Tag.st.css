@@ -47,13 +47,13 @@
 
   /*
     Border radius
-    @default 0px
+    @default 0
   */
   BorderRadius: --overridable;
 
   /*
     Border width
-    @default 1px
+    @default 1
   */
   BorderWidth: --overridable;
 
@@ -97,6 +97,7 @@
   position: relative;
   box-sizing: border-box;
   border-style: solid;
+  padding: 0;
 }
 
 .root::before,
@@ -111,11 +112,18 @@
 }
 
 .small {
-  padding: 4px 0;
+  font: font(value(defaultSmallFont));
+  height: calc((16 / 12) * 1em + 8px);
 }
 
-.medium, .large {
-  padding: 6px 0;
+.medium {
+  font: font(value(defaultMediumFont));
+  height: calc((20 / 14) * 1em + 12px);
+}
+
+.large {
+  font: font(value(defaultLargeFont));
+  height: calc((24 / 16) * 1em + 12px);
 }
 
 .opaque {
@@ -186,24 +194,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font: inherit;
 }
 
 .iconWrapper::before {
   content: "";
   display: inline-block;
   width: 4px;
-}
-
-.small .iconWrapper {
-  font: font(value(defaultSmallFont));
-}
-
-.medium .iconWrapper {
-  font: font(value(defaultMediumFont));
-}
-
-.large .iconWrapper {
-  font: font(value(defaultLargeFont));
 }
 
 .removeIcon {
@@ -263,14 +260,14 @@
   border-radius: value(borderRadius);
 }
 
-.small.overrideStyleParams .iconWrapper {
+.small.overrideStyleParams {
   font: value(smallFont);
 }
 
-.medium.overrideStyleParams .iconWrapper {
+.medium.overrideStyleParams {
   font: value(mediumFont);
 }
 
-.large.overrideStyleParams .iconWrapper {
+.large.overrideStyleParams {
   font: value(largeFont);
 }
