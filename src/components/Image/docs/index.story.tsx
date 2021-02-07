@@ -127,6 +127,12 @@ export default {
               source: examples.aspectRatioExample,
             },
             {
+              title: 'Focal Point',
+              description:
+                'The center of the image can be repositioned using `focalPoint`, which determines the focused area by given coordinates. The prop is relevant when `resize` is set as `cover` and mainly useful to make sure that the important area of the image is actually visible and not cropped. Also, the prop accepts predefined values of coordinates such as `topLeft`/`centerRight`/`bottomCenter` and so on.',
+              source: examples.focalPointExample,
+            },
+            {
               title: 'Fluidly',
               description:
                 "The image can be adapted and scaled relatively to the containing layout using the `fluid` prop. This behaves in contrast to the default fixed mode defining that the image is always displayed the same without considering resizing of the containing element. Note that in both modes the dimensions (whether given explicitly or calculated by the bounding rectangle) specify the size of the source to be fetched - but the difference is that in fixed mode the image is **displayed statically** by these dimensions, whereas in fluid mode, the image **scales to fit** the containing element.<br/><br/> In the example below, we set a fixed width of 600px and aspect ratio as `square` which makes the height to equal to 600px. So, the minimal resolution for fetching the resource is 600x600 pixels. However, we place the image inside an element with a different height in **fluid** mode, and that's why the image is fitted to the element. Also, if we try to resize the viewport we'd notice that the image scales accordingly.",

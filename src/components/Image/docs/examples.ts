@@ -1,5 +1,6 @@
 import {
   AspectRatioPresets,
+  FocalPointPresets,
   HoverEffectOptions,
   LoadingBehaviorOptions,
   ResizeOptions,
@@ -17,6 +18,10 @@ export const commonExampleProps = {
     ...Object.keys(AspectRatioPresets),
     { label: 'example of custom number (2.33)', value: 2.33 },
     { label: 'none', value: null },
+  ],
+  focalPoint: [
+    ...Object.keys(FocalPointPresets),
+    { label: 'example of custom number (120,120)', value: { x: 120, y: 120 } },
   ],
   hoverEffect: Object.keys(HoverEffectOptions),
   loadingBehavior: Object.keys(LoadingBehaviorOptions),
@@ -125,6 +130,27 @@ export const aspectRatioExample = `
     alt="Garfield smiles and puts his hand over chest"
     resize="${ResizeOptions.cover}"
     aspectRatio={1.333}
+  />
+</div>
+`;
+
+export const focalPointExample = `
+<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={480}
+    height={360}
+    alt="Garfield smiles and puts his hand over chest"
+    resize="${ResizeOptions.cover}"
+    focalPoint="${FocalPointPresets.topLeft}"
+  />
+  <Image
+    src="c5f754_dd75514d14fa4057b4f4a6cc8ce7add3~mv2.jpg"
+    width={480}
+    height={360}
+    alt="Garfield smiles and puts his hand over chest"
+    resize="${ResizeOptions.cover}"
+    focalPoint={{ x: 120, y: 120 }}
   />
 </div>
 `;
