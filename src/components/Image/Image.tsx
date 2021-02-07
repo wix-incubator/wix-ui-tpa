@@ -2,7 +2,10 @@ import classnames from 'classnames';
 import * as React from 'react';
 import { Image as CoreImage } from 'wix-ui-core/image';
 import { classes, st } from './Image.st.css';
-import { calculateDimensions } from './ImageUtils';
+import {
+  calculateDimensions,
+  resolveFocalPointCoordinates,
+} from './ImageUtils';
 import { RelativeMediaImage } from './RelativeMediaImage';
 import {
   ImageProps,
@@ -10,6 +13,7 @@ import {
   AspectRatioPresets,
   LoadingBehaviorOptions,
   HoverEffectOptions,
+  FocalPointPresets,
 } from './types';
 
 type DefaultProps = Pick<ImageProps, 'resize'>;
@@ -63,6 +67,7 @@ export class Image extends React.Component<ImageProps> {
       onLoad,
       aspectRatio,
       resize,
+      focalPoint,
       fluid,
       hoverEffect,
       loadingBehavior,
@@ -88,6 +93,8 @@ export class Image extends React.Component<ImageProps> {
       ...sourceDimensions,
       aspectRatio: aspectRatioAsNumber,
     });
+
+    const focalPointCoordinates = resolveFocalPointCoordinates(focalPoint);
 
     const hasLoadingBehavior = loadingBehavior === LoadingBehaviorOptions.blur;
 
@@ -130,6 +137,7 @@ export class Image extends React.Component<ImageProps> {
             className={classes.image}
             sourceDimensions={sourceDimensions}
             containerDimensions={calculatedDimensions}
+            focalPoint={focalPointCoordinates}
             isPlaceholderDisplayed={hasLoadingBehavior && !isLoaded}
             onLoad={this._onLoad}
             {...imageProps}

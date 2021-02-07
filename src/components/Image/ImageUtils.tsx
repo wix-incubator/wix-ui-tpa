@@ -33,3 +33,5 @@ export function calculateDimensions({
 
   return { width: calculatedWidth, height: calculatedHeight };
 }
+
+export function resolveFocalPointCoordinates(focalPoint) {}
