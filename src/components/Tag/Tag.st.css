@@ -90,7 +90,6 @@
 }
 
 .root {
-  padding: 4px 0;
   display: inline-flex;
   align-items: center;
   background-color: #fff;
@@ -109,6 +108,14 @@
 
 .root.withIcon::after {
   width: 4px;
+}
+
+.small {
+  padding: 4px 0;
+}
+
+.medium, .large {
+  padding: 6px 0;
 }
 
 .opaque {
@@ -200,12 +207,14 @@
 }
 
 .removeIcon {
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .removeIcon path {
-  stroke: currentColor;
+  fill: currentColor;
 }
 
 .root.overrideStyleParams {
