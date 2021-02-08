@@ -4,6 +4,7 @@
 ### Bug Fixes
 
 * **Dropdown:** add missing unit ([43030f2](https://github.com/wix/wix-ui-tpa/commit/43030f290ec3d99045a1dc2e2a46b5a710d00301))
+* **Dropdown:** remove unnecessary stylable import ([7621315](https://github.com/wix/wix-ui-tpa/commit/7621315f0e2359a91ec3b2ce9da02dc61d873c96))
 
 
 
