@@ -9,7 +9,7 @@
 
 
 
-## [2.21.1](https://github.com/wix/wix-ui-tpa/compare/v2.21.0...v2.21.1) (2021-02-08)
+ ## [2.21.1](https://github.com/wix/wix-ui-tpa/compare/v2.21.0...v2.21.1) (2021-02-08)
 
 
 ### Bug Fixes

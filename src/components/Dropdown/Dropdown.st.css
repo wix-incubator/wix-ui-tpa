@@ -219,7 +219,7 @@
     border-color: value(DefaultButtonBorderColor);
     border-width: applyUnit(value(DefaultBorderWidth), px);
     background: value(DefaultBackgroundColor);
-    font: font(DefaultTextFont);
+    font: font(value(DefaultTextFont));
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase {
