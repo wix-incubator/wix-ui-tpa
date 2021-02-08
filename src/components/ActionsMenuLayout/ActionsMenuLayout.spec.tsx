@@ -22,6 +22,30 @@ describe('ActionsMenuLayout', () => {
     expect(await driver.exists()).toBe(true);
   });
 
+  it('should not focus first element if focusedIndex is not provided', async function () {
+    const driver = createDriver(
+      <ActionsMenuLayout>
+        <ActionsMenuLayout.Item onClick={() => {}} content="test" />
+      </ActionsMenuLayout>,
+    );
+
+    const item = await driver.item('test').getNative();
+    expect(document.activeElement).not.toEqual(item);
+  });
+
+  it('should focus 2nd element if focusedIndex=1', async function () {
+    const driver = createDriver(
+      <ActionsMenuLayout focusedIndex={1}>
+        <ActionsMenuLayout.Item onClick={() => {}} content="test1" />
+        <ActionsMenuLayout.Item onClick={() => {}} content="test2" />
+      </ActionsMenuLayout>,
+    );
+
+    const item = await driver.item('test2').getNative();
+
+    expect(document.activeElement).toEqual(item);
+  });
+
   it('should trigger onClick', async function () {
     const onClick = jest.fn();
     const driver = createDriver(
@@ -34,54 +58,27 @@ describe('ActionsMenuLayout', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('should focus first element if focusedIndex undefined', async function () {
-    const driver = createDriver(
-      <ActionsMenuLayout>
-        <ActionsMenuLayout.Item onClick={() => {}} content="test" />
-      </ActionsMenuLayout>,
-    );
-
-    const item = await driver.item('test').getNative();
-    expect(document.activeElement).toEqual(item);
-  });
-
-  it('should focus 2nd element if focusedIndex=1', async function () {
-    const driver = createDriver(
-      <ActionsMenuLayout focusedIndex={1}>
-        <ActionsMenuLayout.Item onClick={() => {}} content="test1" />
-        <ActionsMenuLayout.Item onClick={() => {}} content="test2" />
-      </ActionsMenuLayout>,
-    );
-
-    const item = await driver.item('test2').getNative();
-    expect(document.activeElement).toEqual(item);
-  });
-
   it('should navigate by keyboard keys', async function () {
     const driver = createDriver(
-      <ActionsMenuLayout>
+      <ActionsMenuLayout focusedIndex={1}>
         <ActionsMenuLayout.Item onClick={() => {}} content="test1" />
         <ActionsMenuLayout.Item onClick={() => {}} content="test2" />
         <ActionsMenuLayout.Item onClick={() => {}} content="test3" />
       </ActionsMenuLayout>,
     );
 
+    const layout = driver.layout();
     const item1 = await driver.item('test1').getNative();
     const item2 = await driver.item('test2').getNative();
     const item3 = await driver.item('test3').getNative();
-    const layout = driver.layout();
-
-    expect(document.activeElement).toEqual(item1);
-
-    await layout.pressKey(KEYS.ArrowDown);
 
     expect(document.activeElement).toEqual(item2);
 
     await layout.pressKey(KEYS.ArrowDown);
 
     expect(document.activeElement).toEqual(item3);
-
     await layout.pressKey(KEYS.ArrowDown);
+
     expect(document.activeElement).toEqual(item1);
 
     await layout.pressKey(KEYS.ArrowUp);

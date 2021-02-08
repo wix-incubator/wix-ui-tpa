@@ -7,8 +7,17 @@ import { ActionsMenuLayoutDivider } from './ActionsMenuLayoutDivider/ActionsMenu
 import { TPAComponentProps } from '../../types';
 import { KEYS } from '../../common/keyCodes';
 
+interface LiRefs {
+  [key: number]: {
+    liRef: React.RefObject<HTMLLIElement>;
+  };
+}
 export interface ActionsMenuLayoutProps extends TPAComponentProps {
   alignment?: Alignment;
+  /**
+   * Provide item index which will be focused on initial render.
+   * If prop is not provided, no item will be autofocused
+   */
   focusedIndex?: number;
   /** a11y */
   'aria-labeledby'?: string;
@@ -23,22 +32,15 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
   static displayName = 'ActionsMenuLayout';
 
   state = {
-    focusedIdx: 0,
+    focusedIdx: this.props.focusedIndex ?? 0,
   };
 
-  liRefs: {
-    [key: number]: {
-      liRef: React.RefObject<HTMLLIElement>;
-    };
-  } = {};
+  liRefs: LiRefs = {};
 
   componentDidMount() {
     const { focusedIndex } = this.props;
-
     if (focusedIndex) {
       this._focusItem(focusedIndex);
-    } else {
-      this._focusItem(this.state.focusedIdx);
     }
   }
 
@@ -87,25 +89,18 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     }
   };
 
-  _onFocus = () => {
-    const { focusedIdx } = this.state;
-    const { focusedIndex } = this.props;
-
-    this._focusItem(
-      typeof focusedIndex !== 'undefined' ? focusedIndex : focusedIdx,
+  _onFocus = (e) => {
+    const focusOnChild = !!Object.values(this.liRefs).find(
+      (i) => i.liRef?.current === e.target,
     );
-  };
-
-  // to get proper index on mouse click
-  _onClick = (e) => {
-    const indexValue = Object.values(this.liRefs).findIndex((i) => {
-      return i.liRef?.current === e.target;
-    });
-
-    if (indexValue >= 0) {
-      this._focusItem(indexValue);
+    //focus on initial list item after tab focusing
+    if (!focusOnChild) {
+      this._focusItem(0);
     }
   };
+
+  //prevent firing focus after mouse click events
+  _preventFocus = (e: React.SyntheticEvent) => e.preventDefault();
 
   render() {
     const { alignment, children, className } = this.props;
@@ -114,7 +109,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
         {({ mobile }) => (
           <ul
             onFocus={this._onFocus}
-            onClick={this._onClick}
+            onMouseDown={this._preventFocus}
             onKeyDown={this._onKeyDown}
             className={st(classes.root, { mobile }, className)}
             {...this.getDataAttributes(mobile)}
@@ -122,7 +117,7 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
             role="menu"
             aria-labelledby={this.props['aria-labeledby']}
             aria-label={this.props['aria-label']}
-            tabIndex={-1}
+            tabIndex={0}
           >
             {React.Children.map(children, (child: React.ReactElement, index) =>
               child.type === ActionsMenuLayoutItem
