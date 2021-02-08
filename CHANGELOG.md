@@ -1,3 +1,12 @@
+## [2.21.2](https://github.com/wix/wix-ui-tpa/compare/v2.21.1...v2.21.2) (2021-02-08)
+
+
+### Bug Fixes
+
+* **Dropdown:** add missing unit ([43030f2](https://github.com/wix/wix-ui-tpa/commit/43030f290ec3d99045a1dc2e2a46b5a710d00301))
+
+
+
 ## [2.21.1](https://github.com/wix/wix-ui-tpa/compare/v2.21.0...v2.21.1) (2021-02-08)
 
 
