@@ -42,11 +42,6 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
     if (focusedIndex) {
       this._focusItem(focusedIndex);
     }
-    this._attachRefListeners(this.liRefs);
-  }
-
-  componentwillUnmount() {
-    this._removeRefListeners(this.liRefs);
   }
 
   getDataAttributes(mobile: boolean) {
@@ -54,24 +49,6 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
       [ACTIONS_MENU_DATA_KEYS.mobile]: mobile,
     };
   }
-
-  _attachRefListeners = (refs: LiRefs) => {
-    const refArr = Object.values(refs);
-
-    if (refArr.length) {
-      refArr.map(({ liRef }) =>
-        liRef.current.addEventListener('click', this._onListItemClick),
-      );
-    }
-  };
-  _removeRefListeners = (refs: LiRefs) => {
-    const refArr = Object.values(refs);
-    if (refArr.length) {
-      refArr.map(({ liRef }) =>
-        liRef.current.removeEventListener('click', this._onListItemClick),
-      );
-    }
-  };
 
   _getNextItemIdx(direction: 1 | -1): number {
     const nextItem = this.state.focusedIdx + direction;
@@ -99,16 +76,6 @@ export class ActionsMenuLayout extends React.Component<ActionsMenuLayoutProps> {
       },
     );
   }
-
-  _onListItemClick = (e: MouseEvent) => {
-    const indexValue = Object.values(this.liRefs).findIndex(
-      (i) => i.liRef?.current === e.currentTarget,
-    );
-
-    if (indexValue >= 0) {
-      this._focusItem(indexValue);
-    }
-  };
 
   _onKeyDown = (e: React.KeyboardEvent<HTMLUListElement>) => {
     if (e.key === KEYS.ArrowDown || e.key === KEYS.ArrowDownIE) {

@@ -40,17 +40,4 @@ describe('ActionsMenuLayout', () => {
     await browser.actions().sendKeys(Key.ARROW_DOWN).perform();
     await browser.sleep(200);
   });
-
-  eyes.it('should focus on the last after clicking', async () => {
-    await driver.clickItem('item 5');
-    await browser.sleep(200);
-  });
-
-  eyes.it('should focus two items up after keyboard events', async () => {
-    //move mouse away so last item is not hovered
-    await browser.actions().mouseMove({ x: 0, y: 500 }).perform();
-    await browser.actions().sendKeys(Key.ARROW_UP).perform();
-    await browser.actions().sendKeys(Key.ARROW_UP).perform();
-    await browser.sleep(200);
-  });
 });
