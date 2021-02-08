@@ -1,4 +1,15 @@
-## [2.21.1](https://github.com/wix/wix-ui-tpa/compare/v2.21.0...v2.21.1) (2021-02-08)
+## [2.21.2](https://github.com/wix/wix-ui-tpa/compare/v2.21.1...v2.21.2) (2021-02-08)
+
+
+### Bug Fixes
+
+* **Dropdown:** add missing unit ([43030f2](https://github.com/wix/wix-ui-tpa/commit/43030f290ec3d99045a1dc2e2a46b5a710d00301))
+* **Dropdown:** fix mistake using value instead of font ([8014f31](https://github.com/wix/wix-ui-tpa/commit/8014f31bdf55838e4205af448a5e123669cbf09a))
+* **Dropdown:** remove unnecessary stylable import ([7621315](https://github.com/wix/wix-ui-tpa/commit/7621315f0e2359a91ec3b2ce9da02dc61d873c96))
+
+
+
+ ## [2.21.1](https://github.com/wix/wix-ui-tpa/compare/v2.21.0...v2.21.1) (2021-02-08)
 
 
 ### Bug Fixes

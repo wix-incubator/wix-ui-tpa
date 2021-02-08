@@ -53,11 +53,6 @@
 :import {
     -st-from: "./DropdownOption.st.css";
     -st-default: DropdownOption;
-}
-
-:import {
-    -st-from: "./DropdownOption.st.css";
-    -st-default: TPADropdownOption;
     -st-named: overrideStyleParams as overrideStyleParamsOptionMixin;
 }
 
@@ -224,7 +219,7 @@
     border-color: value(DefaultButtonBorderColor);
     border-width: applyUnit(value(DefaultBorderWidth), px);
     background: value(DefaultBackgroundColor);
-    font: value(DefaultTextFont);
+    font: font(value(DefaultTextFont));
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase {
@@ -324,7 +319,7 @@
     flex: 1;
 }
 
-.root:alignment(center) DropdownOption {
+.root:alignment(center) .dropdownOption {
     justify-content: center;
 }
 
