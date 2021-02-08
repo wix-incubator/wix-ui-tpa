@@ -231,7 +231,7 @@
 }
 
 .root.overrideStyleParams .removeIcon {
-  color: value(textColor);;
+  color: value(textColor);
 }
 
 .root.small.overrideStyleParams .label {
