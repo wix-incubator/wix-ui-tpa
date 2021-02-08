@@ -222,7 +222,7 @@
 .dropdown .dropdownBase {
     color: value(DefaultButtonTextColor);
     border-color: value(DefaultButtonBorderColor);
-    border-width: value(DefaultBorderWidth);
+    border-width: applyUnit(value(DefaultBorderWidth), px);
     background: value(DefaultBackgroundColor);
     font: value(DefaultTextFont);
 }
