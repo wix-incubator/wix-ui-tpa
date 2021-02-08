@@ -109,7 +109,7 @@
 }
 
 .root:not(.xsmall) input{
-    font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");;
+    font: font("{theme: 'Body-M', size: '16px', lineHeight: '1.5em'}");
 }
 
 .xsmall input {

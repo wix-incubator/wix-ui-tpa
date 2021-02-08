@@ -1,3 +1,12 @@
+## [2.21.1](https://github.com/wix/wix-ui-tpa/compare/v2.21.0...v2.21.1) (2021-02-08)
+
+
+### Bug Fixes
+
+* Remove double semicolons from st.css files ([dcf000c](https://github.com/wix/wix-ui-tpa/commit/dcf000ce510ff4d2277bc1def21a5f9b4ae42905))
+
+
+
 # [2.21.0](https://github.com/wix/wix-ui-tpa/compare/v2.20.0...v2.21.0) (2021-02-07)
 
 

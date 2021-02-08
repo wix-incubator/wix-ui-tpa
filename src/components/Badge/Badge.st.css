@@ -43,7 +43,7 @@
 
 .root::before, .root::after {
     content: '';
-    width: 12px;;
+    width: 12px;
 }
 
 .root:withIcon::before {

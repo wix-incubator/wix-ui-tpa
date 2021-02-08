@@ -244,13 +244,13 @@
 }
 
 .dropdown .dropdownBase::root:disabled {
-    color: value(DefaultButtonTextDisabledColor);;
-    border-color: value(DefaultBorderDisabledColor);;
+    color: value(DefaultButtonTextDisabledColor);
+    border-color: value(DefaultBorderDisabledColor);
 }
 
 .root.overrideStyleParams .dropdown .dropdownBase::root:disabled {
-    color: value(CurrentButtonTextDisabledColor);;
-    border-color: value(CurrentBorderDisabledColor);;
+    color: value(CurrentButtonTextDisabledColor);
+    border-color: value(CurrentBorderDisabledColor);
 }
 
 .dropdown .dropdownBase::root:placeholder {
