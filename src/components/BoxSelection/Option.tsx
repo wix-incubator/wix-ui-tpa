@@ -139,7 +139,7 @@ export class Option extends React.Component<OptionProps, OptionState> {
           }),
         )}
         data-id={id}
-        data-hook={BOX_SELECTION_DATA_HOOKS.BOX_SELECTION_OPTION_WRAPPER}
+        data-hook={this.props['data-hook']}
         {...this._getDataAttributes()}
       >
         {unavailable && (
