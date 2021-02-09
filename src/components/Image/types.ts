@@ -50,6 +50,14 @@ export interface FocalPoint {
 
 export const FocalPointPresets: { [key: string]: FocalPoint } = {
   topLeft: { x: 0, y: 0 },
+  topCenter: { x: 50, y: 0 },
+  topRight: { x: 100, y: 0 },
+  centerLeft: { x: 0, y: 50 },
+  center: { x: 50, y: 50 },
+  centerRight: { x: 100, y: 50 },
+  bottomLeft: { x: 0, y: 100 },
+  bottomCenter: { x: 50, y: 100 },
+  bottomRight: { x: 100, y: 100 },
 };
 
 export enum HoverEffectOptions {
