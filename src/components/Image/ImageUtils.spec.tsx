@@ -94,5 +94,12 @@ describe('ImageUtils', () => {
 
       expect(coordinates).toEqual(sampleCoordinates);
     });
+
+    it('should return `null` when having incorrect preset', async () => {
+      const incorrectPreset = 'Something';
+      const coordinates = resolveFocalPointCoordinates(incorrectPreset);
+
+      expect(coordinates).toBeNull();
+    });
   });
 });

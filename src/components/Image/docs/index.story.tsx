@@ -129,7 +129,7 @@ export default {
             {
               title: 'Focal Point',
               description:
-                'The center of the image can be repositioned using `focalPoint`, which determines the focused area by given coordinates. The prop is relevant when `resize` is set as `cover` and mainly useful to make sure that the important area of the image is actually visible and not cropped. Also, the prop accepts predefined values of coordinates such as `topLeft`/`centerRight`/`bottomCenter` and so on.',
+                'The center of the image can be repositioned using `focalPoint`, which determines the focused area by given coordinates of x and y in **percentages**. The prop is relevant when `resize` is set as `cover` and mainly useful to make sure that the important area of the image is actually visible and not cropped. Also, the prop accepts predefined values of coordinates such as `topLeft`/`centerRight`/`bottomCenter` and so on.',
               source: examples.focalPointExample,
             },
             {

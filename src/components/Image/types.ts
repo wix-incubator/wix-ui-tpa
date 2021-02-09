@@ -17,8 +17,8 @@ export interface ImageProps extends TPAComponentProps {
   resize?: ResizeOptions;
   /** Specifies the proportional relationship between width and height */
   aspectRatio?: keyof typeof AspectRatioPresets | number;
-  /** Centers an area of the image by given coordinates */
-  focalPoint?: keyof typeof FocalPointPresets | { x: number; y: number };
+  /** Centers an area of the image by given coordinates of x and y in percentages */
+  focalPoint?: Extract<keyof typeof FocalPointPresets, 'string'> | FocalPoint;
   /** Specifies wether the image adapts and scales relatively to the containing layout */
   fluid?: boolean;
   /** An effect to appear when the image is hovered  */
@@ -43,7 +43,12 @@ export const AspectRatioPresets = {
   landscape: 4 / 3,
 };
 
-export const FocalPointPresets = {
+export interface FocalPoint {
+  x: number;
+  y: number;
+}
+
+export const FocalPointPresets: { [key: string]: FocalPoint } = {
   topLeft: { x: 0, y: 0 },
 };
 
