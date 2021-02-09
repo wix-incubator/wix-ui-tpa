@@ -142,21 +142,34 @@ visualize('Image', () => {
       });
 
       story('with focalPoint', () => {
-        Object.entries(FocalPointPresets).forEach(([key, value]) =>
-          snap(`as ${key}`, (done) => (
-            <ImageWithWrapper
-              src={src}
-              resize={ResizeOptions.cover}
-              focalPoint={value}
-              onLoad={done}
-            />
-          )),
-        );
+        snap('with preset', (done) => (
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 250px)',
+              gridTemplateRows: 'repeat(3, 250px)',
+            }}
+          >
+            {Object.values(FocalPointPresets).map((focalPoint) => (
+              <ImageWithWrapper
+                key={focalPoint}
+                src="c5f754_90c679b1bff844d08028240643e1a400~mv2.png"
+                width={200}
+                aspectRatio={AspectRatioPresets.square}
+                resize={ResizeOptions.cover}
+                focalPoint={focalPoint}
+                onLoad={done}
+              />
+            ))}
+          </div>
+        ));
         snap('as custom', (done) => (
           <ImageWithWrapper
             src={src}
+            width={300}
+            aspectRatio={AspectRatioPresets.square}
             resize={ResizeOptions.cover}
-            focalPoint={{ x: 120, y: 120 }}
+            focalPoint={{ x: 70, y: 20 }}
             onLoad={done}
           />
         ));
